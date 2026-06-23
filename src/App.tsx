@@ -249,6 +249,15 @@ import LabM10TrigApplications from './components/LabM10TrigApplications';
 import LabM10CircleApplications from './components/LabM10CircleApplications';
 import LabM10StatsApplications from './components/LabM10StatsApplications';
 
+// Class 10 Biology Additions
+import LabB10DigestiveSystem from './components/LabB10DigestiveSystem';
+import LabB10BloodSmear from './components/LabB10BloodSmear';
+import LabB10RespiratorySystem from './components/LabB10RespiratorySystem';
+import LabB10KidneyDissection from './components/LabB10KidneyDissection';
+import LabB10NervousSystem from './components/LabB10NervousSystem';
+import LabB10Genetics from './components/LabB10Genetics';
+import LabB10Biostatistics from './components/LabB10Biostatistics';
+
 // Class 6 Science Additions
 import LabS6Microscope from './components/LabS6Microscope';
 import LabS6Unit1Projects from './components/LabS6Unit1Projects';
@@ -537,7 +546,16 @@ const LAB_MODULES = [
   { id: 'm10_app_7', classLevel: '10', subject: 'math', title: 'Unit 7: Vector Apps', desc: 'Calculate aviation crosswinds, swimming trajectories, and resultant pulling forces.', built: true, bg: 'from-slate-600 to-zinc-800' },
   { id: 'm10_app_8', classLevel: '10', subject: 'math', title: 'Unit 8: Trig Apps', desc: 'Measure inaccessible heights and calculate irregular land plot areas.', built: true, bg: 'from-amber-500 to-orange-700' },
   { id: 'm10_app_9', classLevel: '10', subject: 'math', title: 'Unit 9-11: Circle Apps', desc: 'Analyze mechanical tangency, arched bridges, and GPS satellite distances.', built: true, bg: 'from-indigo-500 to-violet-700' },
-  { id: 'm10_app_12', classLevel: '10', subject: 'math', title: 'Unit 12: Stats Apps', desc: 'Analyze salary percentiles, BMI scatter plots, and QC probability trees.', built: true, bg: 'from-teal-500 to-green-700' }
+  { id: 'm10_app_12', classLevel: '10', subject: 'math', title: 'Unit 12: Stats Apps', desc: 'Analyze salary percentiles, BMI scatter plots, and QC probability trees.', built: true, bg: 'from-teal-500 to-green-700' },
+
+  // Class 10 Biology
+  { id: 'b10_1', classLevel: '10', subject: 'biology', title: 'Unit 1: Digestive System', desc: 'Demonstrate peristalsis with a straw and bead, and perform lipid emulsification.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'b10_2', classLevel: '10', subject: 'biology', title: 'Unit 2: Circulatory System', desc: 'Prepare a human blood smear slide, stain it, and view it under a microscope.', built: true, bg: 'from-red-600 to-rose-800' },
+  { id: 'b10_3', classLevel: '10', subject: 'biology', title: 'Unit 3: Respiratory System', desc: 'Test for CO2 with lime water and operate a physics-based lung model.', built: true, bg: 'from-cyan-500 to-blue-700' },
+  { id: 'b10_4', classLevel: '10', subject: 'biology', title: 'Unit 4: Urinary System', desc: 'Dissect a virtual goat kidney to identify the cortex, medulla, and pelvis.', built: true, bg: 'from-fuchsia-600 to-purple-800' },
+  { id: 'b10_5', classLevel: '10', subject: 'biology', title: 'Unit 5: Nervous System', desc: 'Trigger a knee jerk reflex and analyze the 50ms monosynaptic reflex arc.', built: true, bg: 'from-emerald-500 to-green-700' },
+  { id: 'b10_7', classLevel: '10', subject: 'biology', title: 'Unit 7: Inheritance', desc: 'Simulate Mendel\'s laws of segregation using interactive colored beads.', built: true, bg: 'from-indigo-500 to-blue-800' },
+  { id: 'b10_11', classLevel: '10', subject: 'biology', title: 'Unit 11: Biostatistics', desc: 'Calculate medians and construct biological bar charts on digital graph paper.', built: true, bg: 'from-slate-600 to-zinc-800' }
 ];
 
 const CLASSES = ['6', '7', '8', '10'];
@@ -996,6 +1014,15 @@ function LabRunner() {
   if (moduleId === 'm10_app_8') return <LabM10TrigApplications onExit={handleExit} />;
   if (moduleId === 'm10_app_9') return <LabM10CircleApplications onExit={handleExit} />;
   if (moduleId === 'm10_app_12') return <LabM10StatsApplications onExit={handleExit} />;
+
+  // Class 10 Biology
+  if (moduleId === 'b10_1') return <LabB10DigestiveSystem onExit={handleExit} />;
+  if (moduleId === 'b10_2') return <LabB10BloodSmear onExit={handleExit} />;
+  if (moduleId === 'b10_3') return <LabB10RespiratorySystem onExit={handleExit} />;
+  if (moduleId === 'b10_4') return <LabB10KidneyDissection onExit={handleExit} />;
+  if (moduleId === 'b10_5') return <LabB10NervousSystem onExit={handleExit} />;
+  if (moduleId === 'b10_7') return <LabB10Genetics onExit={handleExit} />;
+  if (moduleId === 'b10_11') return <LabB10Biostatistics onExit={handleExit} />;
 
   return (
     <Layout>
