@@ -1,0 +1,129 @@
+import { useState } from 'react';
+import { ArrowLeft, RefreshCw, Scissors, ArrowRightLeft, Check } from 'lucide-react';
+
+interface LabS8CrossingOverProps {
+  onExit?: () => void;
+}
+
+export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
+  const [step, setStep] = useState(0);
+
+  const handleNext = () => {
+    if (step < 3) setStep(step + 1);
+  };
+
+  return (
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
+        <div className="flex items-center gap-4">
+          {onExit && (
+            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+          )}
+          <div>
+            <h1 className="text-xl font-bold text-slate-800">Act 3.3: Crossing Over</h1>
+            <p className="text-sm text-slate-500">Model genetic recombination during meiosis</p>
+          </div>
+        </div>
+        <button onClick={() => setStep(0)} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300 transition-colors">
+          <RefreshCw className="w-4 h-4" /> Reset
+        </button>
+      </div>
+
+      <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
+        {/* Left Column: Interactive Diagram */}
+        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center min-h-[500px]">
+          
+          <div className="relative w-80 h-96 flex justify-center items-center">
+            
+            {/* Paternal Chromosome (Blue) */}
+            <div 
+              className={`absolute w-12 h-64 rounded-full transition-all duration-1000 ${step >= 1 ? '-translate-x-6 rotate-6' : '-translate-x-12'}`}
+            >
+              <div className={`w-full h-1/2 rounded-t-full ${step >= 3 ? 'bg-pink-400' : 'bg-blue-400'}`} />
+              <div className="w-full h-1/2 bg-blue-500 rounded-b-full" />
+              {/* Centromere */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-blue-600 rounded-full z-10" />
+            </div>
+
+            {/* Maternal Chromosome (Pink) */}
+            <div 
+              className={`absolute w-12 h-64 rounded-full transition-all duration-1000 ${step >= 1 ? 'translate-x-6 -rotate-6' : 'translate-x-12'}`}
+            >
+              <div className={`w-full h-1/2 rounded-t-full ${step >= 3 ? 'bg-blue-400' : 'bg-pink-400'}`} />
+              <div className="w-full h-1/2 bg-pink-500 rounded-b-full" />
+              {/* Centromere */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-pink-600 rounded-full z-10" />
+            </div>
+
+            {/* Animation Overlays */}
+            {step === 2 && (
+              <div className="absolute top-16 z-20 animate-bounce">
+                <Scissors className="w-12 h-12 text-slate-700" />
+              </div>
+            )}
+
+            {step === 3 && (
+              <div className="absolute top-16 z-20 text-green-500 animate-pulse">
+                <ArrowRightLeft className="w-12 h-12" />
+              </div>
+            )}
+
+          </div>
+
+          <div className="mt-8">
+            <button 
+              onClick={handleNext}
+              disabled={step === 3}
+              className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-indigo-700 disabled:opacity-50 transition-colors text-lg shadow-sm"
+            >
+              {step === 0 && "Align Homologous Pairs"}
+              {step === 1 && "Make the Cut"}
+              {step === 2 && "Swap Segments"}
+              {step === 3 && "Recombination Complete"}
+            </button>
+          </div>
+
+        </div>
+
+        {/* Right Column: Educational Text */}
+        <div className="w-full md:w-80 flex flex-col gap-4">
+          <div className="bg-slate-800 rounded-2xl shadow-sm text-white p-6 border border-slate-700 h-full">
+            <h3 className="font-bold text-slate-200 mb-6 text-xl">The Process</h3>
+            
+            <div className="space-y-6">
+              <div className={`transition-opacity duration-300 ${step >= 0 ? 'opacity-100' : 'opacity-30'}`}>
+                <h4 className="font-bold text-indigo-300">1. Pairing Up</h4>
+                <p className="text-sm text-slate-400 mt-1">Homologous chromosomes (one from each parent) align perfectly next to each other.</p>
+              </div>
+
+              <div className={`transition-opacity duration-300 ${step >= 1 ? 'opacity-100' : 'opacity-30'}`}>
+                <h4 className="font-bold text-indigo-300">2. Chiasma Formation</h4>
+                <p className="text-sm text-slate-400 mt-1">The chromatids overlap at points called chiasmata, physically touching each other.</p>
+              </div>
+
+              <div className={`transition-opacity duration-300 ${step >= 2 ? 'opacity-100' : 'opacity-30'}`}>
+                <h4 className="font-bold text-indigo-300">3. DNA Cleavage</h4>
+                <p className="text-sm text-slate-400 mt-1">Enzymes cut both DNA molecules at identical locations.</p>
+              </div>
+
+              <div className={`transition-opacity duration-300 ${step >= 3 ? 'opacity-100' : 'opacity-30'}`}>
+                <h4 className="font-bold text-green-400 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5" /> 4. Recombination
+                </h4>
+                <p className="text-sm text-slate-400 mt-1">
+                  The broken DNA is repaired, but the segments are swapped! This creates new, unique combinations of genes, driving genetic variation in offspring.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CheckCircle2(props: any) {
+  return <Check {...props} />;
+}

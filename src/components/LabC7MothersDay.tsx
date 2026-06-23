@@ -1,0 +1,102 @@
+import { useState } from 'react';
+import { ArrowLeft, Save, Palette, Type, Image as ImageIcon } from 'lucide-react';
+
+interface LabProps {
+  onExit: () => void;
+}
+
+export default function LabC7MothersDay({ onExit }: LabProps) {
+  const [bgClass, setBgClass] = useState('bg-pink-100');
+  const [message, setMessage] = useState('Happy Mother\'s Day!');
+  const [image, setImage] = useState<string | null>(null);
+
+  const backgrounds = ['bg-pink-100', 'bg-purple-100', 'bg-rose-100', 'bg-amber-100', 'bg-sky-100'];
+  const images = [
+    '🌸', '💐', '❤️', '💝', '🦋', '👩‍👧‍👦'
+  ];
+
+  return (
+    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
+      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back to Dashboard
+        </button>
+
+        <h1 className="text-3xl font-bold mb-2">Mother's Day Card Competition</h1>
+        <p className="text-slate-600 mb-8">Design a creative greeting card applying your digital art skills.</p>
+
+        <div className="flex gap-8 max-w-5xl mx-auto w-full flex-1">
+          {/* Toolbar */}
+          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-8">
+            <div>
+              <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-3 flex items-center"><Palette className="w-4 h-4 mr-2" /> Card Color</h3>
+              <div className="flex gap-2">
+                {backgrounds.map(bg => (
+                  <button 
+                    key={bg}
+                    onClick={() => setBgClass(bg)}
+                    className={`w-10 h-10 rounded-full border-4 shadow-inner ${bg} ${bgClass === bg ? 'border-slate-800' : 'border-transparent'}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-3 flex items-center"><Type className="w-4 h-4 mr-2" /> Message</h3>
+              <textarea 
+                className="w-full h-24 border border-slate-300 rounded-lg p-3 outline-none focus:border-pink-500 resize-none font-serif"
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-3 flex items-center"><ImageIcon className="w-4 h-4 mr-2" /> Sticker</h3>
+              <div className="grid grid-cols-3 gap-2">
+                {images.map(img => (
+                  <button 
+                    key={img}
+                    onClick={() => setImage(img)}
+                    className={`text-3xl bg-slate-50 p-2 rounded-lg border hover:bg-slate-100 transition-colors ${image === img ? 'border-pink-500 bg-pink-50' : 'border-slate-200'}`}
+                  >
+                    {img}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-slate-200">
+              <button className="w-full bg-rose-500 text-white font-bold py-3 rounded-lg flex items-center justify-center hover:bg-rose-600 transition-colors shadow-md">
+                <Save className="w-5 h-5 mr-2" /> Submit Design
+              </button>
+            </div>
+          </div>
+
+          {/* Canvas */}
+          <div className="flex-1 flex items-center justify-center p-8 bg-slate-200 rounded-xl shadow-inner border-2 border-slate-300">
+            {/* The Card */}
+            <div className={`w-[400px] aspect-[3/4] shadow-2xl rounded-2xl border-8 border-white p-12 flex flex-col items-center justify-center relative overflow-hidden transition-colors ${bgClass}`}>
+              
+              {/* Decorative corners */}
+              <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-slate-800/20 rounded-tl-xl" />
+              <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-slate-800/20 rounded-tr-xl" />
+              <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-slate-800/20 rounded-bl-xl" />
+              <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-slate-800/20 rounded-br-xl" />
+
+              {image && (
+                <div className="text-8xl mb-8 drop-shadow-lg animate-in zoom-in">
+                  {image}
+                </div>
+              )}
+              
+              <h2 className="font-serif text-3xl text-center font-bold text-slate-800 leading-snug drop-shadow-sm break-words w-full">
+                {message || "..."}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,155 @@
+import { useState } from 'react';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
+
+interface LabProps {
+  onExit: () => void;
+}
+
+export default function LabC7ConditionalLogic({ onExit }: LabProps) {
+  const [selectedScenario, setSelectedScenario] = useState(0);
+  
+  const scenarios = [
+    {
+      text: "If you do not win scholarship, your father will be very sad.",
+      correct: ['IF', 'NOT win_scholarship', 'THEN', 'father_sad'],
+      options: ['IF', 'THEN', 'ELSE', 'NOT win_scholarship', 'win_scholarship', 'father_sad', 'father_happy']
+    },
+    {
+      text: "If you don't brush your teeth regularly, your teeth decays.",
+      correct: ['IF', 'NOT brush_teeth', 'THEN', 'teeth_decay'],
+      options: ['IF', 'THEN', 'ELSE', 'brush_teeth', 'NOT brush_teeth', 'teeth_decay', 'teeth_clean']
+    },
+    {
+      text: "If it rains tomorrow, I will stay at home, otherwise I will go for picnic.",
+      correct: ['IF', 'rains', 'THEN', 'stay_home', 'ELSE', 'go_picnic'],
+      options: ['IF', 'THEN', 'ELSE', 'rains', 'sunny', 'stay_home', 'go_picnic']
+    }
+  ];
+
+  const [workspace, setWorkspace] = useState<string[]>([]);
+  const [completed, setCompleted] = useState<boolean[]>([false, false, false]);
+
+  const handleDrop = (block: string) => {
+    setWorkspace([...workspace, block]);
+  };
+
+  const handleRemove = (index: number) => {
+    setWorkspace(workspace.filter((_, i) => i !== index));
+  };
+
+  const checkSolution = () => {
+    const current = scenarios[selectedScenario];
+    if (JSON.stringify(workspace) === JSON.stringify(current.correct)) {
+      const newCompleted = [...completed];
+      newCompleted[selectedScenario] = true;
+      setCompleted(newCompleted);
+    }
+  };
+
+  const nextScenario = () => {
+    if (selectedScenario < 2) {
+      setSelectedScenario(selectedScenario + 1);
+      setWorkspace([]);
+    }
+  };
+
+  const isAllComplete = completed.every(c => c);
+
+  return (
+    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
+      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back to Dashboard
+        </button>
+
+        <h1 className="text-3xl font-bold mb-2">Conditional Logic Translation</h1>
+        <p className="text-slate-600 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
+
+        {isAllComplete && (
+          <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
+            <CheckCircle className="w-6 h-6 mr-3" />
+            <span className="font-bold">Great Job!</span> You translated all three logical scenarios correctly.
+          </div>
+        )}
+
+        <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-8 max-w-4xl mx-auto w-full">
+          <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+            <h2 className="text-xl font-bold text-slate-700">Scenario {selectedScenario + 1} of 3</h2>
+            <div className="flex gap-2">
+              {[0, 1, 2].map(idx => (
+                <div key={idx} className={`w-3 h-3 rounded-full ${completed[idx] ? 'bg-emerald-500' : selectedScenario === idx ? 'bg-blue-500' : 'bg-slate-200'}`} />
+              ))}
+            </div>
+          </div>
+
+          <div className="text-xl text-center italic font-serif text-slate-600 mb-8 bg-slate-50 p-6 rounded-lg border border-slate-200">
+            "{scenarios[selectedScenario].text}"
+          </div>
+
+          <div className="flex gap-8">
+            {/* Palette */}
+            <div className="w-64">
+              <h3 className="font-bold text-sm uppercase text-slate-400 tracking-wider mb-4">Logic Blocks</h3>
+              <div className="flex flex-col gap-2">
+                {scenarios[selectedScenario].options.map((opt, i) => {
+                  let bgColor = 'bg-blue-100 border-blue-300 text-blue-800';
+                  if (['IF', 'THEN', 'ELSE'].includes(opt)) bgColor = 'bg-rose-100 border-rose-300 text-rose-800';
+                  
+                  return (
+                    <button 
+                      key={i}
+                      onClick={() => handleDrop(opt)}
+                      className={`p-3 border-2 rounded-lg font-bold shadow-sm transition-transform hover:-translate-y-1 ${bgColor} text-left`}
+                    >
+                      {opt}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Workspace */}
+            <div className="flex-1 bg-slate-800 rounded-xl p-6 shadow-inner relative border-4 border-slate-900">
+              <h3 className="font-bold text-sm uppercase text-slate-400 tracking-wider mb-4 text-center">Translation Workspace</h3>
+              
+              <div className="flex flex-wrap gap-2 mb-6 min-h-[100px] content-start">
+                {workspace.map((block, i) => {
+                  let bgColor = 'bg-blue-100 border-blue-300 text-blue-800';
+                  if (['IF', 'THEN', 'ELSE'].includes(block)) bgColor = 'bg-rose-100 border-rose-300 text-rose-800';
+                  
+                  return (
+                    <div 
+                      key={i}
+                      onClick={() => handleRemove(i)}
+                      className={`p-2 border-2 rounded-md font-bold cursor-pointer hover:opacity-80 flex items-center ${bgColor}`}
+                    >
+                      {block} <span className="ml-2 text-xs opacity-50">×</span>
+                    </div>
+                  )
+                })}
+                {workspace.length === 0 && (
+                  <div className="w-full text-center text-slate-500 font-medium italic mt-8">Click logic blocks to add them here</div>
+                )}
+              </div>
+
+              {!completed[selectedScenario] ? (
+                <div className="flex gap-4">
+                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg bg-slate-700 text-white hover:bg-slate-600 transition-colors">Clear</button>
+                  <button onClick={checkSolution} className="flex-1 py-3 font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">Check Code</button>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <div className="text-emerald-400 font-bold mb-4 flex justify-center items-center"><CheckCircle className="w-5 h-5 mr-2" /> Correct Logic Structure!</div>
+                  {selectedScenario < 2 && (
+                    <button onClick={nextScenario} className="w-full py-3 font-bold rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors">Next Scenario &rarr;</button>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

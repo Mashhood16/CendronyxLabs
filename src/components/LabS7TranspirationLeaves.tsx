@@ -1,0 +1,106 @@
+import { useState } from 'react';
+import { ArrowLeft, Info } from 'lucide-react';
+
+interface LabProps {
+  onExit: () => void;
+}
+
+export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
+  const [upperColor, setUpperColor] = useState('blue');
+  const [lowerColor, setLowerColor] = useState('blue');
+  const [tested, setTested] = useState(false);
+
+  const runTest = () => {
+    // Stomata are primarily on the lower surface. Upper surface has fewer/none depending on the plant.
+    setTested(true);
+    setTimeout(() => {
+      setLowerColor('pink'); // Water vapour turns dry cobalt chloride paper pink
+      setTimeout(() => {
+        setUpperColor('blue'); // Stays blue or turns slightly pink much slower (simulated as staying blue for contrast)
+      }, 1000);
+    }, 500);
+  };
+
+  const reset = () => {
+    setTested(false);
+    setUpperColor('blue');
+    setLowerColor('blue');
+  };
+
+  return (
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
+        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
+          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
+        </button>
+        <h1 className="text-xl font-bold text-slate-800">Unit 1: Transpiration from Leaves</h1>
+      </div>
+
+      <div className="flex-1 p-8 flex flex-col items-center">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
+          <h2 className="text-2xl font-bold text-blue-800 mb-4">Stomata and Water Vapour</h2>
+          <p className="text-slate-600 mb-6">Attach dry blue cobalt chloride paper to both sides of a leaf. Cobalt chloride paper turns from blue to pink in the presence of water vapour. Let's see which side loses more water.</p>
+          
+          <div className="flex justify-center gap-4">
+            <button 
+              onClick={runTest}
+              disabled={tested}
+              className="flex items-center px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium"
+            >
+              Wait 1 Hour
+            </button>
+            <button 
+              onClick={reset}
+              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div className="flex gap-16 justify-center mt-8">
+          {/* Upper Surface View */}
+          <div className="flex flex-col items-center">
+            <h3 className="font-bold text-slate-700 mb-4">Leaf Upper Surface</h3>
+            <div className="relative w-48 h-64 bg-green-500 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] shadow-md border-t border-green-400 flex items-center justify-center">
+               <div className="w-1 h-full bg-green-600 absolute"></div> {/* Midrib */}
+               {/* Tape & Paper */}
+               <div className="w-24 h-12 bg-white/30 backdrop-blur-sm border border-white/50 absolute rotate-[-10deg] flex items-center justify-center z-10 shadow-sm">
+                 {/* Cobalt Paper */}
+                 <div className={`w-16 h-8 transition-colors duration-1000 border border-slate-300 ${upperColor === 'blue' ? 'bg-blue-400' : 'bg-pink-400'}`}></div>
+               </div>
+            </div>
+            <div className="mt-4 font-medium text-slate-500">
+              Color: {upperColor === 'blue' ? <span className="text-blue-600">Dry (Blue)</span> : <span className="text-pink-500">Wet (Pink)</span>}
+            </div>
+          </div>
+
+          {/* Lower Surface View */}
+          <div className="flex flex-col items-center">
+            <h3 className="font-bold text-slate-700 mb-4">Leaf Lower Surface</h3>
+            <div className="relative w-48 h-64 bg-green-400 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] shadow-md border-t border-green-300 flex items-center justify-center">
+               <div className="w-2 h-full bg-green-600 absolute"></div> {/* Vein */}
+               {/* Stomata dots (stylized) */}
+               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_30%,_rgba(0,100,0,1)_2px,_transparent_3px)] bg-[length:15px_15px]"></div>
+               {/* Tape & Paper */}
+               <div className="w-24 h-12 bg-white/30 backdrop-blur-sm border border-white/50 absolute rotate-[5deg] flex items-center justify-center z-10 shadow-sm">
+                 {/* Cobalt Paper */}
+                 <div className={`w-16 h-8 transition-colors duration-1000 border border-slate-300 ${lowerColor === 'blue' ? 'bg-blue-400' : 'bg-pink-400'}`}></div>
+               </div>
+            </div>
+            <div className="mt-4 font-medium text-slate-500">
+              Color: {lowerColor === 'blue' ? <span className="text-blue-600">Dry (Blue)</span> : <span className="text-pink-500">Wet (Pink)</span>}
+            </div>
+          </div>
+        </div>
+
+        {tested && (
+          <div className="mt-12 p-6 bg-white shadow-lg text-slate-800 rounded-xl border-l-4 border-blue-500 max-w-xl animate-bounce">
+            <h4 className="font-bold text-lg mb-2 flex items-center"><Info className="w-5 h-5 mr-2 text-blue-500"/> Observation Result</h4>
+            <p>The paper on the <strong>lower surface</strong> turned pink, while the upper surface paper remained blue! This proves that transpiration occurs mainly through tiny pores called <strong>stomata</strong>, which are concentrated on the underside of leaves to reduce excessive water loss from direct sunlight.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
