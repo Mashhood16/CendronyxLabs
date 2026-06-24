@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { StudentAccount } from './services/studentService';
 import { studentService } from './services/studentService';
+import { historyDB } from './services/dbService';
+import type { LabRecord } from './services/dbService';
 
 // --- Types ---
 export interface User {
@@ -9,17 +11,6 @@ export interface User {
   email: string;
   classLevel: string;
   section: string;
-}
-
-export interface LabRecord {
-  labId: string;
-  title: string;
-  subject: string;
-  score: number;
-  maxScore: number;
-  timeSpentSeconds: number;
-  timestamp: number;
-  experimentData?: Record<string, string | number>;
 }
 
 // --- Auth Context ---
@@ -122,28 +113,24 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [history, setHistory] = useState<LabRecord[]>([]);
 
-  // Load history scoped to current user
+  // Load history scoped to current user from IndexedDB
   useEffect(() => {
     if (!user) {
       setHistory([]);
       return;
     }
-    const stored = localStorage.getItem(`virtuallab_history_${user.id}`);
-    if (stored) {
-      setHistory(JSON.parse(stored));
-    } else {
-      setHistory([]);
-    }
+    historyDB.getRecords(user.id).then(setHistory).catch(() => setHistory([]));
   }, [user?.id]);
 
-  const addRecord = useCallback((record: Omit<LabRecord, 'timestamp'>) => {
+  const addRecord = useCallback(async (record: Omit<LabRecord, 'timestamp'>) => {
     if (!user) return;
-    const newRecord = { ...record, timestamp: Date.now() };
-    setHistory((prev) => {
-      const updated = [newRecord, ...prev];
-      localStorage.setItem(`virtuallab_history_${user.id}`, JSON.stringify(updated));
-      return updated;
-    });
+    try {
+      await historyDB.addRecord(user.id, record);
+      const updated = await historyDB.getRecords(user.id);
+      setHistory(updated);
+    } catch (err) {
+      console.error('Failed to save history record', err);
+    }
   }, [user?.id, user]);
 
   return (

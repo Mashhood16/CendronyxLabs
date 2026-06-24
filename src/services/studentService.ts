@@ -130,6 +130,16 @@ export const studentService = {
 
   async login(email: string, password: string): Promise<StudentAccount> {
     const db = await getDB();
+    
+    // Rate limiting: track failed attempts per email in localStorage
+    const rateLimitKey = `virtuallab_ratelimit_${email.toLowerCase().trim()}`;
+    const rateLimitData = JSON.parse(localStorage.getItem(rateLimitKey) || '{"attempts":0,"lockedUntil":0}') as { attempts: number; lockedUntil: number };
+    
+    if (rateLimitData.lockedUntil > Date.now()) {
+      const waitMinutes = Math.ceil((rateLimitData.lockedUntil - Date.now()) / 60000);
+      throw new Error(`Too many failed attempts. Please try again in ${waitMinutes} minute${waitMinutes > 1 ? 's' : ''}.`);
+    }
+
     const accounts = await db.getAllFromIndex('students', 'by-email', email.toLowerCase().trim());
 
     if (accounts.length === 0) {
@@ -140,9 +150,21 @@ export const studentService = {
     const passwordHash = await hashPassword(password, account.salt);
 
     if (passwordHash !== account.passwordHash) {
+      // Increment failed attempts with exponential backoff
+      const newAttempts = rateLimitData.attempts + 1;
+      const lockMinutes = newAttempts >= 5 ? 15 : newAttempts >= 3 ? 5 : 0;
+      localStorage.setItem(rateLimitKey, JSON.stringify({
+        attempts: newAttempts,
+        lockedUntil: lockMinutes > 0 ? Date.now() + lockMinutes * 60000 : 0,
+      }));
+      if (lockMinutes > 0) {
+        throw new Error(`Incorrect password. Too many failed attempts — locked for ${lockMinutes} minutes.`);
+      }
       throw new Error('Incorrect password');
     }
 
+    // Reset rate limiting on successful login
+    localStorage.removeItem(rateLimitKey);
     return account;
   },
 

@@ -18,11 +18,7 @@ export const syncService = {
           body: JSON.stringify(record),
         });
 
-        // Only mark as synced if we get a real successful response back right now.
-        // If it fails but we are offline, Workbox queues the request internally.
-        if (response.ok || response.status === 404) {
-          // Note: using 404 as "success" here just for prototype since we don't have a real backend!
-          // In a real app, only check response.ok
+        if (response.ok) {
           if (record.id !== undefined) {
             await progressDB.markAsSynced(record.id);
           }

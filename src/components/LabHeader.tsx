@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../store';
 
 export type LabHeaderVariant = 'light' | 'dark' | 'emerald' | 'amber' | 'blue';
 
@@ -47,6 +48,7 @@ const variantStyles: Record<LabHeaderVariant, { container: string; button: strin
 
 export default function LabHeader({ onExit, title, subtitle, icon, rightContent, variant = 'light' }: LabHeaderProps) {
   const styles = variantStyles[variant];
+  const { theme, toggleTheme } = useTheme();
   return (
     <div className={`${styles.container} px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm shrink-0`}>
       <div className="flex items-center gap-4 min-w-0">
@@ -68,11 +70,16 @@ export default function LabHeader({ onExit, title, subtitle, icon, rightContent,
           )}
         </div>
       </div>
-      {rightContent && (
-        <div className="shrink-0 ml-4">
-          {rightContent}
-        </div>
-      )}
+      <div className="flex items-center gap-3 shrink-0 ml-4">
+        {rightContent}
+        <button
+          onClick={toggleTheme}
+          className={`${styles.button} shrink-0`}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        </button>
+      </div>
     </div>
   );
 }

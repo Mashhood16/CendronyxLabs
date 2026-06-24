@@ -18,6 +18,17 @@ export interface ProgressRecord {
   dataPoints?: DataPoint[]; // Store recorded experimental data
 }
 
+export interface LabRecord {
+  labId: string;
+  title: string;
+  subject: string;
+  score: number;
+  maxScore: number;
+  timeSpentSeconds: number;
+  timestamp: number;
+  experimentData?: Record<string, string | number>;
+}
+
 interface VirtualLabDB extends DBSchema {
   progress: {
     key: number;
@@ -28,10 +39,17 @@ interface VirtualLabDB extends DBSchema {
       'by-user': string;
     };
   };
+  history: {
+    key: number;
+    value: LabRecord & { id: number; userId: string };
+    indexes: {
+      'by-history-user': string;
+    };
+  };
 }
 
 const DB_NAME = 'VirtualLabDB';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
@@ -58,6 +76,16 @@ export const initDB = () => {
             store.createIndex('by-user', 'userId');
           }
           await tx.done;
+        }
+        if (oldVersion < 3) {
+          // Add history object store for per-user lab history
+          if (!db.objectStoreNames.contains('history')) {
+            const historyStore = db.createObjectStore('history', {
+              keyPath: 'id',
+              autoIncrement: true,
+            });
+            historyStore.createIndex('by-history-user', 'userId');
+          }
         }
       },
     });
@@ -112,5 +140,32 @@ export const progressDB = {
       record.synced = 1;
       await db.put('progress', record);
     }
+  }
+};
+
+// --- History DB ---
+
+export const historyDB = {
+  async addRecord(userId: string, record: Omit<LabRecord, 'timestamp'>) {
+    const db = await initDB();
+    const fullRecord = { ...record, timestamp: Date.now(), userId };
+    return db.add('history', fullRecord as LabRecord & { id: number; userId: string });
+  },
+
+  async getRecords(userId: string): Promise<LabRecord[]> {
+    const db = await initDB();
+    const records = await db.getAllFromIndex('history', 'by-history-user', userId);
+    // Sort by timestamp descending (newest first)
+    return records.sort((a, b) => b.timestamp - a.timestamp);
+  },
+
+  async clearUserRecords(userId: string) {
+    const db = await initDB();
+    const records = await db.getAllFromIndex('history', 'by-history-user', userId);
+    const tx = db.transaction('history', 'readwrite');
+    for (const record of records) {
+      await tx.store.delete(record.id);
+    }
+    await tx.done;
   }
 };

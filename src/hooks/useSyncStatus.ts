@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { progressDB } from '../services/dbService';
 import { syncService } from '../services/syncService';
 
@@ -7,36 +7,74 @@ export function useSyncStatus() {
   const [pendingCount, setPendingCount] = useState(0);
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const checkPending = async () => {
+  const checkPending = useCallback(async () => {
     try {
       const unsynced = await progressDB.getUnsyncedRecords();
       setPendingCount(unsynced.length);
     } catch (e) {
       console.error("Failed to check pending syncs", e);
     }
-  };
+  }, []);
 
-  const triggerSync = async () => {
+  const triggerSync = useCallback(async () => {
     if (!navigator.onLine) return;
     setIsSyncing(true);
     await syncService.syncAllUnsynced();
     await checkPending();
     setIsSyncing(false);
-  };
+  }, [checkPending]);
 
   useEffect(() => {
     checkPending();
-    // Poll for pending changes that might be added by components
-    const interval = setInterval(checkPending, 3000); 
+
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    const startPolling = () => {
+      if (interval) return;
+      interval = setInterval(checkPending, 10000);
+    };
+
+    const stopPolling = () => {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    };
+
+    // Only poll when tab is visible
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopPolling();
+      } else {
+        startPolling();
+        // Also trigger a pending check and sync when becoming visible
+        checkPending();
+        if (navigator.onLine) {
+          triggerSync();
+        }
+      }
+    };
+
+    // Only start polling if online and visible
+    if (navigator.onLine && !document.hidden) {
+      startPolling();
+    }
 
     const handleOnline = () => {
       setIsOnline(true);
-      triggerSync(); // Auto-sync when coming online
+      triggerSync();
+      if (!document.hidden) {
+        startPolling();
+      }
     };
-    const handleOffline = () => setIsOnline(false);
+    const handleOffline = () => {
+      setIsOnline(false);
+      stopPolling();
+    };
 
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     // Initial sync attempt if online
     if (navigator.onLine) {
@@ -44,11 +82,12 @@ export function useSyncStatus() {
     }
 
     return () => {
-      clearInterval(interval);
+      stopPolling();
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, []);
+  }, [checkPending, triggerSync]);
 
   return { isOnline, pendingCount, isSyncing, triggerSync, checkPending };
 }
