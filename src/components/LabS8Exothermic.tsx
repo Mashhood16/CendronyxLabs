@@ -20,28 +20,33 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
     setTimeout(() => setStage('reaction'), 1500);
   };
 
+  const handleReset = () => {
+    setStage('initial');
+    setTemp(20);
+  };
+
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="bg-slate-50 p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
+        <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
           
           <div className="flex gap-12 items-end mt-12 mb-16 relative">
             
             {/* Adding spoon */}
             <div className={`absolute -top-16 left-8 z-20 transition-all duration-1000 ${stage === 'initial' ? 'opacity-0 translate-y-[-20px]' : stage === 'adding' ? 'opacity-100 rotate-[-45deg] translate-y-10' : 'opacity-0'}`}>
               <div className="text-4xl -rotate-45">🥄</div>
-              <div className="absolute top-8 left-0 w-4 h-4 bg-slate-100 border border-slate-300 rounded-sm shadow blur-[1px] animate-pulse" />
+              <div className="absolute top-8 left-0 w-4 h-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-sm shadow blur-[1px] animate-pulse" />
             </div>
 
             {/* Beaker */}
-            <div className="relative w-40 h-48 border-4 border-slate-300 rounded-b-2xl border-t-0 flex flex-col justify-end bg-slate-50/50 backdrop-blur-sm shadow-inner z-10">
+            <div className="relative w-40 h-48 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-2xl border-t-0 flex flex-col justify-end bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm shadow-inner z-10">
               <div className="w-full h-1/2 bg-blue-50/80 relative overflow-hidden transition-all duration-1000">
                 {stage === 'reaction' && (
                   <div className="absolute inset-0">
                     {/* Dissolving effect */}
-                    <div className="absolute inset-0 bg-slate-50/20 animate-pulse" />
+                    <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900/20 animate-pulse" />
                     {/* Heat Radiating Effect */}
                     {temp > 30 && (
                       <div className="absolute inset-0 bg-orange-500/10 transition-colors duration-1000" />
@@ -58,12 +63,12 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
             </div>
 
             {/* Thermometer */}
-            <div className="w-12 h-64 bg-slate-200 rounded-full border-4 border-slate-300 p-1 flex flex-col justify-end items-center relative shadow-inner">
-              <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500">°C</div>
+            <div className="w-12 h-64 bg-slate-200 dark:bg-slate-800 rounded-full border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 p-1 flex flex-col justify-end items-center relative shadow-inner">
+              <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500 dark:text-slate-400">°C</div>
               {/* Markings */}
               {[10, 20, 30, 40, 50].map(m => (
-                <div key={m} className="absolute w-full border-b border-slate-400" style={{ bottom: `${(m/60)*100}%` }}>
-                  <span className="absolute -left-6 text-[10px] text-slate-500 top-[-8px]">{m}</span>
+                <div key={m} className="absolute w-full border-b border-slate-400 dark:border-slate-500" style={{ bottom: `${(m/60)*100}%` }}>
+                  <span className="absolute -left-6 text-[10px] text-slate-500 dark:text-slate-400 top-[-8px]">{m}</span>
                 </div>
               ))}
               <div 
@@ -76,7 +81,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
           </div>
 
           <div className="text-center w-full max-w-sm">
-            <div className="text-3xl font-mono font-bold mb-6 text-slate-800 flex items-center justify-center gap-2">
+            <div className="text-3xl font-mono font-bold mb-6 text-slate-800 dark:text-slate-100 flex items-center justify-center gap-2">
               {temp}°C
               {temp > 35 && <Flame className="w-8 h-8 text-orange-500 animate-pulse" />}
             </div>
@@ -89,10 +94,13 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
                 Add Calcium Chloride
               </button>
             ) : (
-              <div className="bg-orange-50 border-2 border-orange-200 px-6 py-4 rounded-xl text-orange-900 animate-fade-in">
-                <h3 className="font-bold text-lg mb-1">Temperature Increased!</h3>
-                <p className="text-sm">This is an <strong>Exothermic</strong> reaction. It releases energy as heat into its surroundings.</p>
-              </div>
+              <>
+                <div className="bg-orange-50 border-2 border-orange-200 px-6 py-4 rounded-xl text-orange-900 animate-fade-in">
+                  <h3 className="font-bold text-lg mb-1">Temperature Increased!</h3>
+                  <p className="text-sm">This is an <strong>Exothermic</strong> reaction. It releases energy as heat into its surroundings.</p>
+                </div>
+                <button onClick={handleReset} className="mt-4 text-sm font-medium text-slate-400 hover:text-slate-600 dark:text-slate-300 underline">Reset Experiment</button>
+              </>
             )}
           </div>
         </div>

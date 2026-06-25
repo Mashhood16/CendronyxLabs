@@ -11,16 +11,16 @@ export default function LabS8WindTurbine({ onExit }: LabProps) {
   const voltage = windSpeed < 10 ? 0 : (windSpeed / 100) * 5.0; // Max 5V
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.7: DIY Wind Turbine" subtitle="Convert kinetic energy into electrical energy" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
         {/* Controls */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 w-full mb-2 flex items-center gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 w-full mb-2 flex items-center gap-4">
           <Wind className={`w-8 h-8 transition-colors ${windSpeed > 0 ? 'text-sky-500 animate-pulse' : 'text-slate-300'}`} />
           <div className="flex-1">
-            <div className="flex justify-between text-sm font-bold text-slate-500 mb-2">
+            <div className="flex justify-between text-sm font-bold text-slate-500 dark:text-slate-400 mb-2">
               <span>No Wind (Pedestal Fan Off)</span>
               <span>High Speed (Max Fan)</span>
             </div>
@@ -32,7 +32,7 @@ export default function LabS8WindTurbine({ onExit }: LabProps) {
           </div>
         </div>
 
-        <div className="flex-1 w-full bg-slate-100 rounded-3xl shadow-inner border border-slate-300 p-8 flex relative overflow-hidden items-center justify-center">
+        <div className="flex-1 w-full bg-slate-100 dark:bg-slate-800 rounded-3xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-8 flex relative overflow-hidden items-center justify-center">
           
           {/* Voltmeter */}
           <div className="absolute top-8 right-8 w-48 h-32 bg-zinc-800 rounded-xl shadow-xl border-4 border-zinc-900 flex flex-col items-center justify-center z-20">
@@ -93,8 +93,8 @@ export default function LabS8WindTurbine({ onExit }: LabProps) {
                </div>
 
                {/* Stand */}
-               <div className="w-4 h-48 bg-slate-400 z-[-1]" />
-               <div className="w-32 h-4 bg-slate-500 rounded-t-xl" />
+               <div className="w-4 h-48 bg-slate-400 dark:bg-slate-800 z-[-1]" />
+               <div className="w-32 h-4 bg-slate-500 dark:bg-slate-800 rounded-t-xl" />
             </div>
 
             {/* Wires connecting motor to voltmeter */}

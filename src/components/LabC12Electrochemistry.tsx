@@ -60,22 +60,22 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Electrochemistry" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center">
             <Beaker className="mr-2" /> Theory & Setup
           </h2>
-          <div className="prose text-sm text-slate-700">
+          <div className="prose text-sm text-slate-700 dark:text-slate-200">
             <p><strong>Galvanic Cells</strong> convert chemical energy to electrical energy via spontaneous redox reactions.</p>
             <h3 className="text-md font-semibold mt-4">Standard Potential (E°)</h3>
-            <div className="bg-slate-100 p-3 rounded text-center font-mono my-2">E°_cell = E°_cathode - E°_anode</div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2">E°_cell = E°_cathode - E°_anode</div>
             
             <h3 className="text-md font-semibold mt-4">Nernst Equation</h3>
             <p>For non-standard concentrations:</p>
-            <div className="bg-slate-100 p-3 rounded text-center font-mono my-2">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2">
               E = E° - (0.0592 / n) log₁₀(Q)
             </div>
             
@@ -91,14 +91,14 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-indigo-900 mb-4">Galvanic Cell Simulator</h2>
           
           <div className="flex w-full justify-between mb-4 gap-4">
             <div className="w-1/2 space-y-2">
               <label className="block text-sm font-semibold">Left Beaker (Anode)</label>
               <select 
-                className="w-full p-2 border rounded bg-slate-50"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
                 value={leftElectrode}
                 onChange={e => setLeftElectrode(e.target.value)}
               >
@@ -112,7 +112,7 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
             <div className="w-1/2 space-y-2">
               <label className="block text-sm font-semibold">Right Beaker (Cathode)</label>
               <select 
-                className="w-full p-2 border rounded bg-slate-50"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
                 value={rightElectrode}
                 onChange={e => setRightElectrode(e.target.value)}
               >
@@ -124,7 +124,7 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
             </div>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-video bg-slate-50 border rounded-xl overflow-hidden mt-4">
+          <div className="relative w-full max-w-sm aspect-video bg-slate-50 dark:bg-slate-900 border rounded-xl overflow-hidden mt-4">
             <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-gray-800 text-green-400 font-mono text-xl px-4 py-2 rounded-lg shadow-inner z-10 border-2 border-gray-900">
               {cellVoltage.toFixed(3)} V
             </div>
@@ -157,13 +157,13 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
           </button>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center">
             <Activity className="mr-2" /> Assessment
           </h2>
           
-          <div className="flex-1 overflow-y-auto bg-slate-50 rounded-lg p-4 border border-slate-200 text-sm font-mono mb-4">
-            <h3 className="font-bold text-slate-700 mb-2 border-b pb-1">Lab Journal</h3>
+          <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900 rounded-lg p-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-sm font-mono mb-4">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2 border-b pb-1">Lab Journal</h3>
             {logs.length === 0 ? (
               <p className="text-slate-400 italic">No data recorded. Build a cell and record measurements.</p>
             ) : (

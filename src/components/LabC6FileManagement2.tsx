@@ -94,8 +94,8 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
   if (editingFileId) {
     const file = items.find(i => i.id === editingFileId);
     return (
-      <div className="flex h-screen font-sans bg-slate-50 p-8">
-        <div className="flex-1 bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-8 flex flex-col">
+      <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 p-8">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col">
           <div className="flex items-center justify-between mb-6 border-b pb-4">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <File className="w-6 h-6 text-blue-500" /> 
@@ -108,13 +108,13 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
               <Save className="w-5 h-5" /> Save & Close
             </button>
           </div>
-          <div className="mb-4 text-slate-500 text-sm">
+          <div className="mb-4 text-slate-500 dark:text-slate-400 text-sm">
             Write down the names of the subjects you are currently studying.
           </div>
           <textarea 
             value={fileContent}
             onChange={e => setFileContent(e.target.value)}
-            className="flex-1 w-full border border-slate-300 rounded-lg p-4 outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-slate-700 leading-relaxed"
+            className="flex-1 w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-slate-700 dark:text-slate-200 leading-relaxed"
             placeholder="e.g. Mathematics, English, Computer Science..."
           />
         </div>
@@ -123,9 +123,9 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 text-slate-800">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="File and Folder Management 2" subtitle="Create, edit, delete & recover files and folders" />
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6">
           <h3 className="font-bold mb-2">Tasks to Complete:</h3>
           <ul className="list-disc pl-5 space-y-1 text-sm">
@@ -135,9 +135,9 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
           </ul>
         </div>
 
-        <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-300 flex flex-col overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
           {/* Simulated File Explorer Header */}
-          <div className="bg-slate-100 border-b border-slate-300 p-3 flex items-center justify-between">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 p-3 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => {
@@ -145,28 +145,28 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                   else setCurrentFolderId('desktop');
                 }}
                 disabled={currentFolderId === 'desktop' || currentFolderId === 'recycle_bin'}
-                className="p-1 rounded hover:bg-slate-200 disabled:opacity-50"
+                className="p-1 rounded hover:bg-slate-200 dark:bg-slate-800 disabled:opacity-50"
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <div className="bg-slate-50 border border-slate-300 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600">
+              <div className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600 dark:text-slate-300">
                 {currentFolderId === 'desktop' ? <Monitor className="w-4 h-4" /> : currentFolderId === 'recycle_bin' ? <Trash2 className="w-4 h-4" /> : <Folder className="w-4 h-4" />}
                 {currentFolder?.name}
               </div>
             </div>
             
             <div className="flex items-center gap-2">
-              <button onClick={() => setCurrentFolderId('desktop')} className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 rounded text-sm font-bold flex items-center gap-2">
+              <button onClick={() => setCurrentFolderId('desktop')} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 rounded text-sm font-bold flex items-center gap-2">
                 <Monitor className="w-4 h-4" /> Desktop
               </button>
-              <button onClick={() => setCurrentFolderId('recycle_bin')} className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 rounded text-sm font-bold flex items-center gap-2">
+              <button onClick={() => setCurrentFolderId('recycle_bin')} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 rounded text-sm font-bold flex items-center gap-2">
                 <Trash2 className="w-4 h-4" /> Recycle Bin
               </button>
             </div>
           </div>
 
           {/* Toolbar */}
-          <div className="bg-slate-100 border-b border-slate-300 px-4 py-2 flex items-center gap-2">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 px-4 py-2 flex items-center gap-2">
             <button onClick={() => setIsCreatingFolder(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm font-bold transition-colors">
               <Plus className="w-4 h-4" /> New Folder
             </button>
@@ -186,7 +186,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
           </div>
 
           {/* File Grid */}
-          <div className="flex-1 p-6 bg-slate-50 overflow-y-auto">
+          <div className="flex-1 p-6 bg-slate-50 dark:bg-slate-900 overflow-y-auto">
             {isCreatingFolder && (
               <div className="mb-6 p-4 border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-950 rounded-lg max-w-sm">
                 <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">New Folder Name</label>
@@ -197,10 +197,10 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                     value={inputName} 
                     onChange={e => setInputName(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleCreateFolder()}
-                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
+                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 dark:border-slate-500 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
                   />
                   <button onClick={handleCreateFolder} className="px-3 py-1.5 bg-amber-600 text-white rounded font-bold">OK</button>
-                  <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
+                  <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
                 </div>
               </div>
             )}
@@ -215,10 +215,10 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                     value={inputName} 
                     onChange={e => setInputName(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleCreateFile()}
-                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
+                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 dark:border-slate-500 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
                   />
                   <button onClick={handleCreateFile} className="px-3 py-1.5 bg-blue-600 text-white rounded font-bold">OK</button>
-                  <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
+                  <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
                 </div>
               </div>
             )}
@@ -245,7 +245,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                     }
                   }}
                   className={`w-28 flex flex-col items-center gap-2 p-3 rounded-lg border-2 border-transparent transition-colors ${
-                    selectedItemId === item.id ? 'bg-blue-50 border-blue-200' : 'hover:bg-slate-100'
+                    selectedItemId === item.id ? 'bg-blue-50 border-blue-200' : 'hover:bg-slate-100 dark:bg-slate-800'
                   }`}
                 >
                   {item.type === 'folder' ? (
@@ -259,7 +259,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
             </div>
           </div>
           
-          <div className="bg-slate-100 border-t border-slate-200 p-2 text-xs text-slate-500">
+          <div className="bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-xs text-slate-500 dark:text-slate-400">
             {(currentFolderId === 'recycle_bin' ? recycleBinItems : currentItems).length} items | {selectedItemId ? '1 item selected' : ''}
           </div>
         </div>

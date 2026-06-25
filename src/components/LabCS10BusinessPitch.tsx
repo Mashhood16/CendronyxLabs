@@ -105,20 +105,20 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Business Pitch & Brainstorming" />
 
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Layout className="text-purple-600" /> Pitch Theory
           </h2>
           
-          <div className="prose prose-sm text-slate-600 space-y-4">
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300 space-y-4">
             <div>
-              <h3 className="text-md font-semibold text-slate-700">The Elevator Pitch</h3>
+              <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">The Elevator Pitch</h3>
               <p>A brief, persuasive speech that you use to spark interest in what your organization does. It should last no longer than a short elevator ride (about 30 to 60 seconds).</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Hook:</strong> Grab attention immediately.</li>
@@ -129,7 +129,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
             </div>
             
             <div>
-              <h3 className="text-md font-semibold text-slate-700">Business Plan vs. Pitch Deck</h3>
+              <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Business Plan vs. Pitch Deck</h3>
               <p><strong>Pitch Deck:</strong> A 10-15 slide presentation used to get a meeting or spark interest. Highly visual.</p>
               <p><strong>Business Plan:</strong> A 15-50 page document detailing every aspect of the business. Text-heavy, deep financials.</p>
             </div>
@@ -137,13 +137,13 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Clock className="text-purple-600" /> Pitch Simulator
           </h2>
           
           {/* Timed Simulator */}
-          <div className="bg-slate-900 text-white p-6 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="bg-slate-900 dark:bg-slate-800 text-white p-6 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
             <div className={`absolute top-0 left-0 h-1 bg-purple-500 transition-all duration-1000`} style={{ width: `${(timeLeft/60)*100}%` }} />
             
             <div className="text-6xl font-mono font-black mb-2 tracking-wider">
@@ -170,7 +170,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
             {notes.map(note => (
               <div 
                 key={note.id}
-                className="absolute w-32 h-32 bg-yellow-200 shadow-md p-2 text-xs font-handwriting cursor-move transform rotate-1 transition-transform hover:scale-105 hover:z-10 text-slate-800"
+                className="absolute w-32 h-32 bg-yellow-200 shadow-md p-2 text-xs font-handwriting cursor-move transform rotate-1 transition-transform hover:scale-105 hover:z-10 text-slate-800 dark:text-slate-100"
                 style={{ left: `${note.x}%`, top: `${note.y}%` }}
                 onMouseDown={() => setDraggingNoteId(note.id)}
                 onMouseMove={(e) => {
@@ -196,7 +196,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
               value={newNote}
               onChange={(e) => setNewNote(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && addNote()}
-              className="flex-1 px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+              className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               placeholder="Type idea and press Enter..."
             />
             <button onClick={addNote} className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-sm font-semibold">
@@ -206,29 +206,29 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-purple-600" /> Assessment & Logs
           </h2>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <h3 className="font-semibold text-slate-700 mb-3 text-sm">Document Analyzer</h3>
-            <p className="text-xs text-slate-500 mb-4">Assign each item to its correct document type.</p>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-3 text-sm">Document Analyzer</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Assign each item to its correct document type.</p>
             
             <div className="space-y-3">
               {categorizedItems.map(item => (
-                <div key={item.id} className="flex flex-col gap-1 p-2 bg-slate-50 rounded border border-slate-200 shadow-sm">
-                  <span className="text-xs font-medium text-slate-700">{item.text}</span>
+                <div key={item.id} className="flex flex-col gap-1 p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+                  <span className="text-xs font-medium text-slate-700 dark:text-slate-200">{item.text}</span>
                   <div className="flex gap-2 mt-1">
                     <button 
                       onClick={() => handleCategorize(item.id, 'Plan')}
-                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Plan' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Plan' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
                     >
                       Business Plan
                     </button>
                     <button 
                       onClick={() => handleCategorize(item.id, 'Deck')}
-                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-purple-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
                     >
                       Pitch Deck
                     </button>
@@ -239,7 +239,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
 
             <button 
               onClick={checkCategorization}
-              className="mt-4 w-full bg-slate-800 text-white py-2 rounded-md hover:bg-slate-900 transition-colors text-sm font-semibold"
+              className="mt-4 w-full bg-slate-800 dark:bg-slate-800 text-white py-2 rounded-md hover:bg-slate-900 dark:bg-slate-800 transition-colors text-sm font-semibold"
             >
               Verify Assignments
             </button>
@@ -251,9 +251,9 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
           </div>
 
           <div className="flex-1 overflow-auto mt-2">
-            <h3 className="font-semibold text-slate-700 mb-2 text-sm">Pitch Practice Logs</h3>
-            <table className="w-full text-xs text-left text-slate-600">
-              <thead className="bg-slate-100 text-slate-700 uppercase">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2 text-sm">Pitch Practice Logs</h3>
+            <table className="w-full text-xs text-left text-slate-600 dark:text-slate-300">
+              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase">
                 <tr>
                   <th className="p-2">Attempt</th>
                   <th className="p-2">Time Elapsed</th>

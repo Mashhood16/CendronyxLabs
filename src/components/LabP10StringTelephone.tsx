@@ -73,19 +73,19 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 13: String Telephone & Wave Speed" subtitle="Investigate the speed of a mechanical wave through a solid medium." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Setup</h2>
-          <div className="prose prose-sm text-slate-600 mb-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Setup</h2>
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300 mb-6">
             <p>
               In a string telephone, a mechanical wave travels along a taut string. 
               The speed <span className="font-mono">v</span> of a transverse wave in a string depends on the tension <span className="font-mono">T</span> and the linear mass density <span className="font-mono">μ</span> (mass per unit length):
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg text-center font-mono font-bold text-lg">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono font-bold text-lg">
               v = √(T / μ)
             </div>
             <p className="mt-2">
@@ -95,13 +95,13 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
 
           <div className="space-y-6 flex-1">
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>String Material</span>
               </label>
               <select 
                 value={materialId} 
                 onChange={(e) => { setMaterialId(e.target.value); setTimeMeasured(null); }}
-                className="w-full p-2 border border-slate-300 rounded-md bg-slate-50"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md bg-slate-50 dark:bg-slate-900"
               >
                 {MATERIALS.map(m => (
                   <option key={m.id} value={m.id}>{m.name}</option>
@@ -110,7 +110,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>Tension (T)</span>
                 <span className="text-emerald-600 font-bold">{tension} N</span>
               </label>
@@ -123,7 +123,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>Distance (L)</span>
                 <span className="text-blue-600 font-bold">{length} m</span>
               </label>
@@ -138,7 +138,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-700 p-6 flex flex-col items-center relative overflow-hidden">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center relative overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
           
           <div className="flex-1 w-full flex flex-col items-center justify-center relative">
@@ -150,7 +150,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
               </div>
 
               {/* The String */}
-              <div className="flex-1 h-0.5 bg-slate-500 relative flex items-center">
+              <div className="flex-1 h-0.5 bg-slate-500 dark:bg-slate-800 relative flex items-center">
                 {isPlaying && timeMeasured && (
                   <div 
                     className="absolute w-4 h-4 bg-yellow-400 rounded-full shadow-[0_0_10px_#facc15]"
@@ -175,7 +175,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
               <button 
                 onClick={handlePulse}
                 disabled={isPlaying}
-                className="flex items-center gap-2 px-8 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 text-white rounded-full font-bold shadow-lg transition-all active:scale-95"
+                className="flex items-center gap-2 px-8 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 dark:bg-slate-800 text-white rounded-full font-bold shadow-lg transition-all active:scale-95"
               >
                 <Play className="w-5 h-5" /> {isPlaying ? 'Pulsing...' : 'Send Pulse'}
               </button>
@@ -200,21 +200,21 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Assessment */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-slate-800">Data Logger</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logger</h2>
             <button 
               onClick={recordData}
               disabled={timeMeasured === null || isPlaying}
-              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-300 text-white rounded text-sm font-medium transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-300 dark:bg-slate-800 text-white rounded text-sm font-medium transition-colors"
             >
               <Save className="w-4 h-4" /> Record Data
             </button>
           </div>
 
-          <div className="overflow-auto max-h-48 border border-slate-200 rounded-lg mb-4">
+          <div className="overflow-auto max-h-48 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg mb-4">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-3 py-2 border-b">T (N)</th>
                   <th className="px-3 py-2 border-b">L (m)</th>
@@ -230,7 +230,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
                   </tr>
                 )}
                 {data.map(d => (
-                  <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50">
+                  <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-3 py-2">{d.tension}</td>
                     <td className="px-3 py-2">{d.length}</td>
                     <td className="px-3 py-2">{d.time}</td>
@@ -242,8 +242,8 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-4 relative mb-4">
-            <h3 className="text-xs font-bold text-slate-500 uppercase absolute top-2 left-3">v² vs T Graph</h3>
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative mb-4">
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase absolute top-2 left-3">v² vs T Graph</h3>
             {/* Simple Scatter Plot */}
             <div className="w-full h-full pt-6">
                <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

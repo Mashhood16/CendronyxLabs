@@ -25,14 +25,13 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Problem Decomposition" />
 
-        <h1 className="text-3xl font-bold mb-2">Problem Decomposition</h1>
-        <p className="text-slate-600 mb-8">Break down the main problem ("How to do grocery shopping?") into smaller, manageable sub-problems.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Break down the main problem ("How to do grocery shopping?") into smaller, manageable sub-problems.</p>
 
-        <div className="flex-1 flex flex-col items-center bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-12">
+        <div className="flex-1 flex flex-col items-center bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-12">
           
           <div className="bg-blue-600 text-white p-6 rounded-2xl shadow-lg border-4 border-blue-700 w-full max-w-lg text-center relative z-10 flex flex-col items-center gap-3">
             <ShoppingBag className="w-10 h-10" />
@@ -55,8 +54,8 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
             ))}
           </div>
 
-          <div className="mt-12 bg-slate-100 border border-slate-200 p-6 rounded-xl w-full max-w-xl flex flex-col gap-4">
-            <h3 className="font-bold text-slate-700">Add a Sub-Problem</h3>
+          <div className="mt-12 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 rounded-xl w-full max-w-xl flex flex-col gap-4">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200">Add a Sub-Problem</h3>
             <div className="flex gap-2">
               <input 
                 type="text" 
@@ -64,7 +63,7 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
                 onChange={e => setInputText(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && addProblem()}
                 placeholder="e.g. Go to the supermarket..."
-                className="flex-1 p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button 
                 onClick={addProblem}

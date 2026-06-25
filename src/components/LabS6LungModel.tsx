@@ -10,11 +10,11 @@ export default function LabS6LungModel({ onExit }: LabProps) {
   const [inhale, setInhale] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 4: Working Model of Lungs" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
+        <div className="w-full max-w-5xl bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex gap-8">
           
           <div className="flex-1">
              <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-xl mb-8 flex gap-4">
@@ -33,29 +33,29 @@ export default function LabS6LungModel({ onExit }: LabProps) {
                </div>
              </div>
 
-             <div className="border border-slate-200 rounded-xl p-6">
-                <h3 className="font-bold text-slate-800 mb-4">Upload Assignment</h3>
-                <div className="p-8 text-center text-slate-400 border-2 border-dashed border-slate-300 rounded-xl mb-4 bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer">
+             <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl p-6">
+                <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-4">Upload Assignment</h3>
+                <div className="p-8 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl mb-4 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer">
                   <ImageIcon className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                  <span className="font-medium text-slate-600">Upload a video or photo of your working model</span>
+                  <span className="font-medium text-slate-600 dark:text-slate-300">Upload a video or photo of your working model</span>
                 </div>
                 <button className="w-full py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors">Submit Project</button>
              </div>
           </div>
 
-          <div className="w-96 bg-slate-100 rounded-xl border border-slate-200 p-8 flex flex-col items-center">
-             <h3 className="font-bold text-slate-700 mb-2 text-center">Interactive Diagram</h3>
-             <p className="text-xs text-slate-500 text-center mb-8">Pull the diaphragm down to inhale.</p>
+          <div className="w-96 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center">
+             <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2 text-center">Interactive Diagram</h3>
+             <p className="text-xs text-slate-500 dark:text-slate-400 text-center mb-8">Pull the diaphragm down to inhale.</p>
 
              <div className="relative w-48 h-64 mb-8">
                 {/* Trachea (Y-tube main) */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-16 bg-slate-300 border-x-2 border-slate-400 z-10"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-16 bg-slate-300 dark:bg-slate-800 border-x-2 border-slate-400 dark:border-slate-500 z-10"></div>
                 
                 {/* Bottle */}
-                <div className="absolute top-12 w-full h-48 border-4 border-slate-300/50 rounded-t-[40px] bg-blue-50/20 overflow-hidden shadow-inner">
+                <div className="absolute top-12 w-full h-48 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500/50 rounded-t-[40px] bg-blue-50/20 overflow-hidden shadow-inner">
                   
                   {/* Bronchi (Y-tube branches) */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-12 border-t-4 border-l-4 border-r-4 border-slate-400 rounded-t-xl z-10"></div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-12 border-t-4 border-l-4 border-r-4 border-slate-400 dark:border-slate-500 rounded-t-xl z-10"></div>
 
                   {/* Lungs (Balloons) */}
                   <div className={`absolute top-10 left-[20px] w-16 bg-pink-400 rounded-full transition-all duration-300 shadow-inner ${inhale ? 'h-24 scale-110' : 'h-16 scale-90'}`}></div>
@@ -82,9 +82,9 @@ export default function LabS6LungModel({ onExit }: LabProps) {
                 </div>
              </div>
 
-             <div className="text-center bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-200 w-full">
-               <span className="block font-bold text-slate-800 text-lg mb-1">{inhale ? 'Inhalation' : 'Exhalation'}</span>
-               <span className="text-sm text-slate-600">
+             <div className="text-center bg-slate-50 dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 w-full">
+               <span className="block font-bold text-slate-800 dark:text-slate-100 text-lg mb-1">{inhale ? 'Inhalation' : 'Exhalation'}</span>
+               <span className="text-sm text-slate-600 dark:text-slate-300">
                  {inhale 
                    ? "Diaphragm contracts (moves down). Volume increases, pressure drops. Air rushes IN." 
                    : "Diaphragm relaxes (moves up). Volume decreases, pressure rises. Air pushed OUT."}

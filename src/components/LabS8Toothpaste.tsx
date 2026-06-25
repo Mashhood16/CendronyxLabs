@@ -21,17 +21,21 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
   const isPerfect = ingredients.glycerin === 2 && ingredients.bakingSoda === 3 && ingredients.salt === 1 && ingredients.peppermint === 5;
   const isMixed = progress >= 80;
 
+  const handleReset = () => {
+    setIngredients({ glycerin: 0, bakingSoda: 0, salt: 0, peppermint: 0 });
+  };
+
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
         {/* Ingredients Panel */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <h3 className="font-bold text-slate-700">Add Ingredients</h3>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200">Add Ingredients</h3>
           
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Glycerin (tsp)</span>
               <span className="text-blue-600">{ingredients.glycerin} / 2</span>
@@ -44,7 +48,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Baking Soda (tsp)</span>
               <span className="text-zinc-600">{ingredients.bakingSoda} / 3</span>
@@ -57,20 +61,20 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Salt (pinches)</span>
-              <span className="text-slate-600">{ingredients.salt} / 1</span>
+              <span className="text-slate-600 dark:text-slate-300">{ingredients.salt} / 1</span>
             </div>
             <button 
               onClick={() => setIngredients({...ingredients, salt: Math.min(3, ingredients.salt + 1)})}
-              className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium flex justify-center items-center gap-2"
+              className="w-full py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium flex justify-center items-center gap-2"
             >
               Add Pinch
             </button>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Peppermint Oil (drops)</span>
               <span className="text-emerald-600">{ingredients.peppermint} / 5</span>
@@ -85,20 +89,20 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
         </div>
 
         {/* Mixing Bowl Area */}
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden h-[500px] justify-center">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center relative overflow-hidden h-[500px] justify-center">
           
           {/* Progress Bar */}
-          <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3/4 max-w-md h-4 bg-slate-100 rounded-full border border-slate-200 overflow-hidden">
+          <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3/4 max-w-md h-4 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
              <div className="h-full bg-blue-500 transition-all duration-500" style={{ width: `${progress}%` }} />
           </div>
 
           {/* The Mortar/Bowl */}
           <div className="relative mt-12 w-64 h-48">
-            <div className="absolute inset-0 bg-slate-200 rounded-[50%] shadow-[inset_0_-20px_30px_rgba(0,0,0,0.1)] border-b-8 border-slate-300" />
-            <div className="absolute top-2 left-2 right-2 bottom-6 bg-slate-300 rounded-[50%] shadow-[inset_0_20px_30px_rgba(0,0,0,0.1)] overflow-hidden flex items-end justify-center pb-4">
+            <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 rounded-[50%] shadow-[inset_0_-20px_30px_rgba(0,0,0,0.1)] border-b-8 border-slate-300 dark:border-slate-700 dark:border-slate-500" />
+            <div className="absolute top-2 left-2 right-2 bottom-6 bg-slate-300 dark:bg-slate-800 rounded-[50%] shadow-[inset_0_20px_30px_rgba(0,0,0,0.1)] overflow-hidden flex items-end justify-center pb-4">
                {/* Paste visualization */}
                <div 
-                  className="w-32 bg-slate-50 rounded-full transition-all duration-700 shadow-inner"
+                  className="w-32 bg-slate-50 dark:bg-slate-900 rounded-full transition-all duration-700 shadow-inner"
                   style={{ 
                     height: `${Math.max(10, progress * 0.8)}%`,
                     backgroundColor: isMixed ? '#f8fafc' : '#e2e8f0'
@@ -123,9 +127,12 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
                  Almost there, check your measurements.
                </div>
             ) : (
-               <div className="text-slate-500 font-medium">
+               <div className="font-medium" style={{color: 'rgb(var(--slate-500))'}}>
                  Add ingredients to the mortar and mix them to form a paste.
                </div>
+            )}
+            {(progress > 0 || isPerfect) && (
+              <button onClick={handleReset} className="mt-3 text-sm font-medium text-slate-400 hover:text-slate-600 dark:text-slate-300 underline">Reset</button>
             )}
           </div>
 

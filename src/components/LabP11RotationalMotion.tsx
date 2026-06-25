@@ -54,16 +54,16 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
   const armPixels = 40 + armRadius * 60; // visual scale
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Rotational Motion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Conservation of Angular Momentum</h2>
-          <div className="prose prose-sm text-slate-600">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Conservation of Angular Momentum</h2>
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300">
             <p>When no external torque acts on a system, its angular momentum <strong>L</strong> remains constant.</p>
-            <p className="text-center font-mono bg-slate-100 p-2 rounded text-slate-800">L = I × ω = constant</p>
+            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-slate-800 dark:text-slate-100">L = I × ω = constant</p>
             <p>where <strong>I</strong> is the moment of inertia and <strong>ω</strong> is angular velocity.</p>
             <ul className="list-disc pl-4 mt-2 space-y-1">
               <li>A skater pulls their arms in to reduce <em>r</em>.</li>
@@ -74,14 +74,14 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
           
           <div className="mt-6 space-y-4">
             <div>
-              <label className="text-sm font-medium text-slate-700 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                 <span>Arm Radius (m)</span> <span>{armRadius.toFixed(2)} m</span>
               </label>
               <input type="range" min="0.2" max="1.0" step="0.05" value={armRadius} onChange={e => setArmRadius(Number(e.target.value))} className="w-full accent-purple-500" />
             </div>
             {!spinning && (
               <div>
-                <label className="text-sm font-medium text-slate-700 flex justify-between">
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                   <span>Initial ω (rad/s)</span> <span>{initialOmega.toFixed(1)}</span>
                 </label>
                 <input type="range" min="1" max="5" step="0.1" value={initialOmega} onChange={e => setInitialOmega(Number(e.target.value))} className="w-full accent-purple-500" />
@@ -98,10 +98,10 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-center">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Skater Visualizer</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center justify-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Skater Visualizer</h2>
           
-          <div className="relative w-64 h-64 bg-slate-100 rounded-full border-4 border-slate-200 shadow-inner flex items-center justify-center overflow-hidden">
+          <div className="relative w-64 h-64 bg-slate-100 dark:bg-slate-800 rounded-full border-4 border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-inner flex items-center justify-center overflow-hidden">
             {/* Spinning Container */}
             <div 
               className="absolute"
@@ -122,41 +122,41 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
             </div>
           </div>
           
-          <div className="mt-6 flex gap-6 text-sm font-mono bg-slate-100 p-3 rounded-lg border border-slate-200">
+          <div className="mt-6 flex gap-6 text-sm font-mono bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
             <div className="flex flex-col items-center">
-              <span className="text-slate-500">I (Inertia)</span>
+              <span className="text-slate-500 dark:text-slate-400">I (Inertia)</span>
               <span className="font-bold text-purple-700">{currentI.toFixed(2)}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-slate-500">ω (Velocity)</span>
+              <span className="text-slate-500 dark:text-slate-400">ω (Velocity)</span>
               <span className="font-bold text-blue-700">{currentOmega.toFixed(2)}</span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-slate-500">L (Momentum)</span>
+              <span className="text-slate-500 dark:text-slate-400">L (Momentum)</span>
               <span className="font-bold text-emerald-700">{angularMomentum.toFixed(2)}</span>
             </div>
           </div>
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Calculate Final Velocity
           </h2>
           
-          <div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-2 text-sm text-slate-700">
+          <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg space-y-2 text-sm text-slate-700 dark:text-slate-200">
             <p><strong>I_body</strong> = {I_body} kg·m²</p>
             <p><strong>m_arms</strong> = {m_arms} kg</p>
             <p><strong>r</strong> = {armRadius.toFixed(2)} m</p>
-            <p className="mt-2 pt-2 border-t border-slate-200">
+            <p className="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <strong>L</strong> = {angularMomentum.toFixed(2)} kg·m²/s
             </p>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                 Final Angular Velocity ω (rad/s):
               </label>
               <input
@@ -164,18 +164,18 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
                 value={omegaGuess}
                 onChange={(e) => setOmegaGuess(e.target.value)}
                 placeholder="e.g. 3.5"
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             
             <button 
               onClick={checkAnswer}
               disabled={!spinning}
-              className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 dark:bg-slate-800 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
             >
               <CheckCircle className="w-4 h-4" /> Check Answer
             </button>
-            {!spinning && <p className="text-xs text-center text-slate-500">Start spinning first!</p>}
+            {!spinning && <p className="text-xs text-center text-slate-500 dark:text-slate-400">Start spinning first!</p>}
 
             {feedback && (
               <div className={`p-3 rounded-lg text-sm flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

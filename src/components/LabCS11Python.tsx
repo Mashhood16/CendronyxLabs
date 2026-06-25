@@ -61,23 +61,23 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="CS11: Python Turtle Graphics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <PenTool className="text-indigo-500" />
             Turtle Engine Theory
           </h2>
-          <div className="prose prose-sm text-slate-600 flex-1 overflow-y-auto">
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300 flex-1 overflow-y-auto">
             <p>
               <strong>Turtle Graphics</strong> is a popular way for introducing programming to kids. It was part of the original Logo programming language.
             </p>
             <p className="mt-4">
               Imagine a robotic turtle starting at the center of the screen. You can control it using simple text commands:
             </p>
-            <ul className="space-y-2 mt-4 font-mono bg-slate-100 p-4 rounded-md text-slate-800">
+            <ul className="space-y-2 mt-4 font-mono bg-slate-100 dark:bg-slate-800 p-4 rounded-md text-slate-800 dark:text-slate-100">
               <li><strong>FD 50</strong> : Forward 50 pixels</li>
               <li><strong>RT 90</strong> : Right Turn 90 degrees</li>
               <li><strong>LT 45</strong> : Left Turn 45 degrees</li>
@@ -89,34 +89,34 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <Play className="text-amber-500" />
             Interactive Canvas Simulator
           </h2>
           
           <div className="w-full flex gap-4 h-full">
             <div className="w-1/3 flex flex-col">
-              <label className="text-xs font-bold text-slate-500 mb-1 uppercase">Command Trace</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase">Command Trace</label>
               <textarea 
                 value={code}
                 onChange={e => set(e.target.value)}
-                className="flex-1 w-full bg-slate-900 text-green-400 font-mono text-sm p-4 rounded-xl border-4 border-slate-700 outline-none resize-none focus:border-indigo-500 transition-colors"
+                className="flex-1 w-full bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-sm p-4 rounded-xl border-4 border-slate-700 dark:border-slate-500 outline-none resize-none focus:border-indigo-500 transition-colors"
                 spellCheck={false}
               />
             </div>
 
-            <div className="w-2/3 relative bg-slate-50 border-2 border-slate-200 rounded-xl shadow-inner overflow-hidden flex items-center justify-center">
+            <div className="w-2/3 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl shadow-inner overflow-hidden flex items-center justify-center">
               <div className="absolute top-2 left-2 flex gap-2">
-                <div className="px-2 py-1 bg-slate-100 rounded text-xs font-mono text-slate-500 border border-slate-200">
+                <div className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs font-mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   X: {Math.round(points[points.length-1]?.x - 200)}
                 </div>
-                <div className="px-2 py-1 bg-slate-100 rounded text-xs font-mono text-slate-500 border border-slate-200">
+                <div className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs font-mono text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   Y: {Math.round(200 - points[points.length-1]?.y)}
                 </div>
               </div>
               
-              <svg width="400" height="400" className="bg-slate-50/50">
+              <svg width="400" height="400" className="bg-slate-50 dark:bg-slate-900/50">
                 <g transform="translate(0,0)">
                   {/* Grid */}
                   <line x1="200" y1="0" x2="200" y2="400" stroke="#e2e8f0" strokeWidth="1" />
@@ -148,16 +148,16 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <CheckCircle className="text-green-500" />
             Programming Challenge
           </h2>
           <div className="flex-1">
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-600 dark:text-slate-300 mb-4">
               Your task is to write a sequence of commands in the simulator to draw a perfect <strong>Equilateral Triangle</strong>.
             </p>
-            <p className="text-slate-600 mb-6">
+            <p className="text-slate-600 dark:text-slate-300 mb-6">
               Requirements:
               <br/>- Exactly 3 sides (use FD).
               <br/>- Must return exactly to the starting position.

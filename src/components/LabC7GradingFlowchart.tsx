@@ -46,12 +46,11 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
   );
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Grading Flowchart Builder" />
 
-        <h1 className="text-3xl font-bold mb-2">Grading Flowchart Builder</h1>
-        <p className="text-slate-600 mb-8">Drag and drop the flowchart shapes to construct the logic for determining a Pass or Fail grade.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Drag and drop the flowchart shapes to construct the logic for determining a Pass or Fail grade.</p>
 
         {isComplete && (
           <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
@@ -62,8 +61,8 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
 
         <div className="flex gap-8 max-w-5xl mx-auto w-full">
           {/* Palette */}
-          <div className="w-64 bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
-            <h2 className="font-bold text-slate-700 mb-4 uppercase tracking-wider text-sm">Flowchart Nodes</h2>
+          <div className="w-64 bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h2 className="font-bold text-slate-700 dark:text-slate-200 mb-4 uppercase tracking-wider text-sm">Flowchart Nodes</h2>
             <div className="flex flex-col gap-4">
               {nodes.filter(n => n.placedAt === null).map(node => (
                 <div 
@@ -90,15 +89,15 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
           </div>
 
           {/* Canvas */}
-          <div className="flex-1 bg-slate-50 p-8 rounded-xl shadow-inner border-2 border-slate-200 flex flex-col items-center">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-8 rounded-xl shadow-inner border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
             
             {/* Slot 0: Start */}
             <Slot id={0} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(0)} />
-            <div className="h-8 w-1 bg-slate-300 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
+            <div className="h-8 w-1 bg-slate-300 dark:bg-slate-800 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
             
             {/* Slot 1: Input */}
             <Slot id={1} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(1)} />
-            <div className="h-8 w-1 bg-slate-300 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
+            <div className="h-8 w-1 bg-slate-300 dark:bg-slate-800 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
             
             {/* Slot 2: Condition */}
             <Slot id={2} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(2)} />
@@ -106,29 +105,29 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
             <div className="flex w-full justify-center">
               {/* True Branch */}
               <div className="flex flex-col items-end mr-8 mt-4">
-                <div className="flex items-center h-1 bg-slate-300 w-32 relative">
+                <div className="flex items-center h-1 bg-slate-300 dark:bg-slate-800 w-32 relative">
                   <span className="absolute -top-6 left-1/2 font-bold text-emerald-600 text-sm">Yes (True)</span>
                 </div>
-                <div className="w-1 h-8 bg-slate-300 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
+                <div className="w-1 h-8 bg-slate-300 dark:bg-slate-800 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
                 <Slot id={3} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(3)} />
-                <div className="w-1 h-12 bg-slate-300" />
+                <div className="w-1 h-12 bg-slate-300 dark:bg-slate-800" />
               </div>
 
               {/* False Branch */}
               <div className="flex flex-col items-start ml-8 mt-4">
-                <div className="flex items-center h-1 bg-slate-300 w-32 relative">
+                <div className="flex items-center h-1 bg-slate-300 dark:bg-slate-800 w-32 relative">
                   <span className="absolute -top-6 left-1/2 font-bold text-rose-600 text-sm">No (False)</span>
                 </div>
-                <div className="w-1 h-8 bg-slate-300 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
+                <div className="w-1 h-8 bg-slate-300 dark:bg-slate-800 relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
                 <Slot id={4} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(4)} />
-                <div className="w-1 h-12 bg-slate-300" />
+                <div className="w-1 h-12 bg-slate-300 dark:bg-slate-800" />
               </div>
             </div>
 
             {/* Merge paths */}
             <div className="flex w-full justify-center">
-              <div className="h-1 w-64 bg-slate-300 translate-y-[-48px] relative z-0">
-                <div className="w-1 h-8 bg-slate-300 absolute left-1/2 -translate-x-1/2"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
+              <div className="h-1 w-64 bg-slate-300 dark:bg-slate-800 translate-y-[-48px] relative z-0">
+                <div className="w-1 h-8 bg-slate-300 dark:bg-slate-800 absolute left-1/2 -translate-x-1/2"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
               </div>
             </div>
 
@@ -151,7 +150,7 @@ function Slot({ id, nodes, setNodes, onDrop }: { id: number, nodes: any[], setNo
     <div 
       onDragOver={(e) => e.preventDefault()}
       onDrop={onDrop}
-      className={`min-w-[160px] min-h-[60px] border-2 border-dashed rounded-lg flex items-center justify-center relative transition-colors ${node ? 'border-transparent bg-transparent' : 'border-slate-300 bg-slate-50'}`}
+      className={`min-w-[160px] min-h-[60px] border-2 border-dashed rounded-lg flex items-center justify-center relative transition-colors ${node ? 'border-transparent bg-transparent' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900'}`}
     >
       {node && (
         <div 

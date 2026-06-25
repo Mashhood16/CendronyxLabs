@@ -23,27 +23,27 @@ export default function LabS6VegetativePropagation({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 2: Vegetative Propagation Experiment" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-5xl bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8">
           
           <div className="flex items-start gap-4 mb-8 bg-emerald-50 border border-emerald-200 p-6 rounded-xl">
             <Leaf className="w-8 h-8 text-emerald-600 shrink-0 mt-1" />
             <div>
               <h2 className="text-xl font-bold text-emerald-800 mb-2">Long-term Observation Project</h2>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                 In winter, take seeds and stem cuttings from the same rose plant. Plant them in separate pots with identical soil, water, light, and temperature conditions. Observe them over three months. After three months, record your findings in the observation table below to compare the benefits of vegetative propagation (cuttings) versus sexual reproduction (seeds).
               </p>
             </div>
           </div>
 
-          <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><Edit2 className="w-5 h-5" /> Data Collection Table</h3>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><Edit2 className="w-5 h-5" /> Data Collection Table</h3>
           
-          <div className="overflow-x-auto border border-slate-200 rounded-xl mb-8">
+          <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl mb-8">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100 text-slate-700">
-                  <th className="p-4 border-b border-slate-200 font-bold w-1/3">Observation Parameter</th>
-                  <th className="p-4 border-b border-slate-200 border-l font-bold w-1/3">Group 1 (Grown from Seeds)</th>
-                  <th className="p-4 border-b border-slate-200 border-l font-bold w-1/3">Group 2 (Grown from Cuttings)</th>
+                <tr className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                  <th className="p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 font-bold w-1/3">Observation Parameter</th>
+                  <th className="p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 border-l font-bold w-1/3">Group 1 (Grown from Seeds)</th>
+                  <th className="p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 border-l font-bold w-1/3">Group 2 (Grown from Cuttings)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200">
@@ -55,26 +55,26 @@ export default function LabS6VegetativePropagation({ onExit }: LabProps) {
                   { key: 'smell', label: 'Smell of flowers' },
                   { key: 'total', label: 'Total production of flowers' },
                 ].map((row) => (
-                  <tr key={row.key} className="hover:bg-slate-50 transition-colors">
-                    <td className="p-4 text-sm font-medium text-slate-700">{row.label}</td>
-                    <td className="p-2 border-l border-slate-200">
+                  <tr key={row.key} className="hover:bg-slate-50 dark:bg-slate-900 transition-colors">
+                    <td className="p-4 text-sm font-medium text-slate-700 dark:text-slate-200">{row.label}</td>
+                    <td className="p-2 border-l border-slate-200 dark:border-slate-700 dark:border-slate-500">
                       <input 
                         type="text" 
                         value={data.seeds[row.key as keyof typeof data.seeds]}
                         onChange={(e) => setData({ ...data, seeds: { ...data.seeds, [row.key]: e.target.value } })}
                         placeholder="Enter observation..."
                         disabled={submitted}
-                        className="w-full p-2 border border-slate-300 rounded focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none disabled:bg-slate-50 dark:bg-slate-900 disabled:text-slate-500 dark:text-slate-400"
                       />
                     </td>
-                    <td className="p-2 border-l border-slate-200">
+                    <td className="p-2 border-l border-slate-200 dark:border-slate-700 dark:border-slate-500">
                       <input 
                         type="text" 
                         value={data.cuttings[row.key as keyof typeof data.cuttings]}
                         onChange={(e) => setData({ ...data, cuttings: { ...data.cuttings, [row.key]: e.target.value } })}
                         placeholder="Enter observation..."
                         disabled={submitted}
-                        className="w-full p-2 border border-slate-300 rounded focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none disabled:bg-slate-50 dark:bg-slate-900 disabled:text-slate-500 dark:text-slate-400"
                       />
                     </td>
                   </tr>

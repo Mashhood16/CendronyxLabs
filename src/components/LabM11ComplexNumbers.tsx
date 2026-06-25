@@ -86,13 +86,13 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
   }, [amplitude, omega, phase]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Complex Numbers & Phasors Lab" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
           <h2 className="text-xl font-bold text-gray-800">Theory: Euler's Formula</h2>
           <p className="text-gray-600 text-sm">
             A complex number can be written in polar form using Euler's formula:
@@ -141,11 +141,11 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow-hidden relative">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow-hidden relative">
           <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Phasor Simulation</h2>
           <div className="text-sm text-gray-500 absolute top-10 left-6">t = {time.toFixed(2)} s</div>
           
-          <svg viewBox="-15 -15 30 30" className="w-full h-64 max-w-sm mt-8 border border-gray-100 rounded-lg shadow-inner bg-slate-50">
+          <svg viewBox="-15 -15 30 30" className="w-full h-64 max-w-sm mt-8 border border-gray-100 rounded-lg shadow-inner bg-slate-50 dark:bg-slate-900">
             {/* Axes */}
             <line x1="-15" y1="0" x2="15" y2="0" stroke="#ccc" strokeWidth="0.2" />
             <line x1="0" y1="-15" x2="0" y2="15" stroke="#ccc" strokeWidth="0.2" />
@@ -165,7 +165,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
 
           {/* Time Domain Graph */}
           <div className="w-full h-32 mt-6 relative">
-             <svg viewBox="0 -12 100 24" className="w-full h-full border border-gray-100 bg-slate-50 rounded-lg" preserveAspectRatio="none">
+             <svg viewBox="0 -12 100 24" className="w-full h-full border border-gray-100 bg-slate-50 dark:bg-slate-900 rounded-lg" preserveAspectRatio="none">
                <line x1="0" y1="0" x2="100" y2="0" stroke="#ccc" strokeWidth="0.5" />
                {history.length > 1 && (
                  <>
@@ -190,7 +190,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
           <h2 className="text-xl font-bold text-gray-800">Analysis & Assessment</h2>
           <p className="text-sm text-gray-600 mb-2">Use the simulation parameters to solve the following problems.</p>
 

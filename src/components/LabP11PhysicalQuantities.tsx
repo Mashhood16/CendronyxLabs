@@ -33,17 +33,17 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Physical Quantities & Errors" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <Activity className="w-5 h-5 text-indigo-500" />
             Accuracy & Precision
           </h2>
-          <div className="prose prose-sm text-slate-600">
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300">
             <p><strong>Accuracy</strong> refers to how close a measured value is to the true or accepted value. High accuracy means low <em>systematic error</em>.</p>
             <p><strong>Precision</strong> refers to how close measurements of the same item are to each other. High precision means low <em>random error</em>.</p>
             <p>In our target shooting simulator, the center of the target (0,0) represents the true value.</p>
@@ -56,9 +56,9 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Target Simulator</h2>
-          <svg width="300" height="300" className="bg-slate-100 rounded-full border border-slate-300 cursor-crosshair shadow-inner" onClick={handleShoot}>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Target Simulator</h2>
+          <svg width="300" height="300" className="bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 cursor-crosshair shadow-inner" onClick={handleShoot}>
             {/*rings */}
             <circle cx="150" cy="150" r="140" fill="white" stroke="#cbd5e1" strokeWidth="2" />
             <circle cx="150" cy="150" r="105" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="2" />
@@ -75,23 +75,23 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
             ))}
           </svg>
           <div className="mt-4 flex gap-3">
-            <button onClick={clearShots} className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg font-medium transition-colors">
+            <button onClick={clearShots} className="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors">
               Clear Target
             </button>
           </div>
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Data Analysis
           </h2>
           
-          <div className="mb-4 max-h-48 overflow-y-auto border border-slate-200 rounded p-2 bg-slate-50">
+          <div className="mb-4 max-h-48 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded p-2 bg-slate-50 dark:bg-slate-900">
             <table className="w-full text-sm text-left">
               <thead>
-                <tr className="border-b border-slate-300 text-slate-600">
+                <tr className="border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300">
                   <th className="pb-1 px-2">Shot</th>
                   <th className="pb-1 px-2">X Coord</th>
                   <th className="pb-1 px-2">Y Coord</th>
@@ -112,7 +112,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                 Calculate Mean X coordinate (Systematic Error in X):
               </label>
               <input
@@ -120,14 +120,14 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
                 value={meanGuess}
                 onChange={(e) => setMeanGuess(e.target.value)}
                 placeholder="Enter mean X"
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             
             <button 
               onClick={checkAnswer}
               disabled={shots.length === 0}
-              className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 dark:bg-slate-800 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
             >
               <CheckCircle className="w-4 h-4" /> Check Answer
             </button>

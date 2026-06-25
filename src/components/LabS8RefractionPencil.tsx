@@ -8,26 +8,26 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
 
   const liquids = {
     none: { name: 'Empty (Air)', index: 1.0, color: 'bg-transparent', bend: 0 },
-    water: { name: 'Water', index: 1.33, color: 'bg-blue-400/40', bend: 8 },
-    oil: { name: 'Cooking Oil', index: 1.47, color: 'bg-amber-400/40', bend: 14 }
+    water: { name: 'Water', index: 1.33, color: 'bg-blue-400/40', bend: 12 },
+    oil: { name: 'Cooking Oil', index: 1.47, color: 'bg-amber-400/40', bend: 20 }
   };
 
   const current = liquids[liquid];
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 9.4: The Bending Pencil" subtitle="Observe refraction in different liquids" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
         {/* Liquid Selection */}
         <div className="w-full md:w-64 flex flex-col gap-2">
-          <h3 className="font-bold text-slate-700 mb-2">Select Fluid</h3>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Select Fluid</h3>
           {(Object.keys(liquids) as Array<keyof typeof liquids>).map(k => (
             <button 
               key={k}
               onClick={() => setLiquid(k)}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${liquid === k ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 transition-colors ${liquid === k ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}
             >
               {liquids[k].name}
               <div className="text-xs font-normal opacity-70">Refractive Index: {liquids[k].index}</div>
@@ -35,26 +35,26 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
           ))}
         </div>
 
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
           
           <div className="relative w-64 h-80 flex flex-col items-center justify-end mb-8">
             
             {/* The Pencil (Top Half in Air) */}
-            <div className="absolute top-10 left-32 w-4 h-48 bg-yellow-400 border-x border-t border-yellow-600 rounded-t-sm rotate-[15deg] origin-bottom shadow-sm z-20">
+            <div className="absolute top-10 left-32 w-4 h-48 bg-yellow-400 border-x border-t border-yellow-600 rounded-t-sm rotate-[15deg] origin-bottom shadow-sm z-20 transition-all duration-500">
                {/* Eraser */}
                <div className="absolute top-0 w-full h-4 bg-pink-400 border-b border-pink-600 rounded-t-sm" />
             </div>
 
             {/* The Glass Beaker */}
-            <div className="w-48 h-48 border-4 border-slate-300 rounded-b-3xl border-t-0 flex flex-col justify-end bg-slate-50/30 backdrop-blur-[2px] shadow-inner relative z-30 overflow-hidden">
+            <div className="w-48 h-48 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-3xl border-t-0 flex flex-col justify-end bg-slate-50 dark:bg-slate-900/30 backdrop-blur-[2px] shadow-inner relative z-30 overflow-hidden">
                
                {/* The Pencil (Bottom Half in Liquid) */}
                {/* We clip the pencil so it only shows inside the glass, and shift it based on the refraction bend */}
                <div 
-                 className="absolute top-[-20%] w-4 h-64 bg-yellow-400 border-x border-b border-yellow-600 rotate-[15deg] origin-top transition-transform duration-500 z-10"
+                 className="absolute top-[-20%] w-4 h-64 bg-yellow-400 border-x border-b border-yellow-600 origin-top transition-transform duration-500 z-10"
                  style={{ 
                    left: 'calc(50% + 12px)',
-                   transform: `rotate(15deg) translateX(-${current.bend}px)`
+                   transform: `rotate(${15 + current.bend * 0.3}deg) translateX(-${current.bend}px)`
                  }}
                >
                  {/* Tip */}
@@ -71,14 +71,14 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
             
             {/* Dashed line showing true position */}
             {liquid !== 'none' && (
-              <div className="absolute top-[50%] left-32 w-4 h-32 border-x-2 border-dashed border-slate-300 rotate-[15deg] origin-top z-40 opacity-50 pointer-events-none" />
+              <div className="absolute top-[50%] left-32 w-4 h-32 border-x-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rotate-[15deg] origin-top z-40 opacity-50 pointer-events-none" />
             )}
 
           </div>
 
           <div className="text-center w-full max-w-md">
-            <h3 className="font-bold text-xl mb-2 text-slate-800">Refraction</h3>
-            <p className="text-slate-600">
+            <h3 className="font-bold text-xl mb-2 text-slate-800 dark:text-slate-100">Refraction</h3>
+            <p className="text-slate-600 dark:text-slate-300">
               {liquid === 'none' 
                 ? "In air, light travels in a straight line, so the pencil looks straight." 
                 : `Because light travels slower in ${current.name} than in air, the light rays bend at the surface. This makes the pencil appear broken or shifted.`}

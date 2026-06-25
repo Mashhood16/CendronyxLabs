@@ -107,39 +107,39 @@ export default function LabM10CircleBasics({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-50 shadow-sm px-6 py-4 flex items-center justify-between z-10">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <div className="bg-slate-50 dark:bg-slate-900 shadow-sm px-6 py-4 flex items-center justify-between z-10">
         <LabHeader onExit={onExit} title="Lab: Circle Basics & Construction" />
       </div>
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-500" /> Concepts
             </h2>
             <div className="prose prose-slate text-sm space-y-3">
               <p><strong>1. Finding the Center:</strong> The perpendicular bisector of any chord passes through the center. Using 3 points on an arc, we can find the center by drawing bisectors of two chords.</p>
-              <p><strong>2. Distance to Chord:</strong> The perpendicular from the center to a chord bisects the chord. This forms a right triangle where <code className="bg-slate-100 px-1 rounded">d² + (L/2)² = r²</code>.</p>
+              <p><strong>2. Distance to Chord:</strong> The perpendicular from the center to a chord bisects the chord. This forms a right triangle where <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">d² + (L/2)² = r²</code>.</p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
               <Settings2 className="w-5 h-5 text-blue-500" /> Interactive Modes
             </h2>
             
-            <div className="flex flex-col gap-2 p-1 bg-slate-100 rounded-lg mb-4">
+            <div className="flex flex-col gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg mb-4">
               <button 
                 onClick={() => { setMode('construction'); setStep(0); }} 
-                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'construction' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'construction' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:text-slate-100'}`}
               >
                 Find Center & Circle
               </button>
               <button 
                 onClick={() => setMode('chord')} 
-                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'chord' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'chord' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:text-slate-100'}`}
               >
                 Chord Distance Properties
               </button>
@@ -148,20 +148,20 @@ export default function LabM10CircleBasics({ onExit }: Props) {
             {mode === 'construction' && (
               <div className="space-y-4 bg-blue-50 p-4 rounded-lg border border-blue-100">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-slate-700">Construction Steps</span>
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-200">Construction Steps</span>
                   <button onClick={() => setStep(0)} className="text-xs text-blue-600 hover:underline">Reset</button>
                 </div>
                 <div className="space-y-2">
-                  <div className={`text-sm flex items-center gap-2 ${step >= 1 ? 'text-green-600 font-medium' : 'text-slate-500'}`}>
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 1 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300'}`}>1</div>
+                  <div className={`text-sm flex items-center gap-2 ${step >= 1 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 1 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>1</div>
                     Draw Chords AB and BC
                   </div>
-                  <div className={`text-sm flex items-center gap-2 ${step >= 2 ? 'text-green-600 font-medium' : 'text-slate-500'}`}>
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 2 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300'}`}>2</div>
+                  <div className={`text-sm flex items-center gap-2 ${step >= 2 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 2 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>2</div>
                     Perpendicular Bisectors
                   </div>
-                  <div className={`text-sm flex items-center gap-2 ${step >= 3 ? 'text-green-600 font-medium' : 'text-slate-500'}`}>
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 3 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300'}`}>3</div>
+                  <div className={`text-sm flex items-center gap-2 ${step >= 3 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 3 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>3</div>
                     Locate Center & Draw Circle
                   </div>
                 </div>
@@ -177,21 +177,21 @@ export default function LabM10CircleBasics({ onExit }: Props) {
             )}
             
             {mode === 'chord' && (
-              <p className="text-sm text-slate-600 italic">Drag the horizontal chord up and down to observe the relationship between distance to center, chord length, and radius.</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 italic">Drag the horizontal chord up and down to observe the relationship between distance to center, chord length, and radius.</p>
             )}
           </div>
         </div>
 
         {/* Middle Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
-          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 flex items-center gap-2 z-10">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2 z-10">
             <Compass className="w-5 h-5 text-indigo-500" /> Interactive Canvas
           </h2>
 
           <svg 
             ref={svgRef}
             viewBox="0 0 400 400" 
-            className="w-full max-w-[400px] aspect-square border border-slate-200 rounded-lg bg-slate-50 touch-none"
+            className="w-full max-w-[400px] aspect-square border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 touch-none"
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
@@ -266,7 +266,7 @@ export default function LabM10CircleBasics({ onExit }: Props) {
                 <text x={10} y={50} className="text-sm fill-slate-700 font-medium">Distance (d) = {Math.abs(dy).toFixed(1)}</text>
                 <text x={10} y={70} className="text-sm fill-slate-700 font-medium">Chord (L) = {(halfX * 2).toFixed(1)}</text>
                 
-                <text x={cCenter.x + 5} y={(cCenter.y + chordY)/2} className="text-xs font-bold text-slate-600">d</text>
+                <text x={cCenter.x + 5} y={(cCenter.y + chordY)/2} className="text-xs font-bold text-slate-600 dark:text-slate-300">d</text>
                 <text x={cCenter.x + halfX/2} y={chordY - 5} className="text-xs font-bold text-red-500">L/2</text>
                 <text x={cCenter.x + halfX/2 + 5} y={(cCenter.y + chordY)/2 - 5} className="text-xs font-bold text-blue-600">r</text>
               </>
@@ -275,13 +275,13 @@ export default function LabM10CircleBasics({ onExit }: Props) {
         </div>
 
         {/* Right Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
-          <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-green-500" /> Assessment
           </h2>
           
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-            <p className="text-sm text-slate-800 font-medium mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
+            <p className="text-sm text-slate-800 dark:text-slate-100 font-medium mb-4">
               {questionParams.type === 'find_d' && 
                 `A circle has a radius of ${questionParams.given.r} cm. A chord has a length of ${questionParams.given.L} cm. What is its perpendicular distance from the center?`
               }
@@ -299,7 +299,7 @@ export default function LabM10CircleBasics({ onExit }: Props) {
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 placeholder="Enter answer (cm)"
-                className="flex-1 px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button 
                 onClick={checkAnswer}

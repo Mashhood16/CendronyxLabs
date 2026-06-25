@@ -66,7 +66,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Unit 16: Resistors in Series" subtitle="Analyze current and equivalent resistance in a series loop." />
 
@@ -74,34 +74,34 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
-            <p className="text-slate-600 text-sm mb-3">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-3">
               In a series circuit, there is only one path for the electrons to flow. The current (I) is the same through every component.
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg text-center font-serif text-slate-800 mb-2">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-serif text-slate-800 dark:text-slate-100 mb-2">
               <div className="mb-1">R_eq = R₁ + R₂ + ... + r_int</div>
               <div>I = V / R_eq</div>
             </div>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Adding more resistors increases total resistance, decreasing the current and therefore reducing the power/brightness of each bulb.
             </p>
           </div>
 
-          <div className="h-px bg-slate-200" />
+          <div className="h-px bg-slate-200 dark:bg-slate-800" />
 
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-4">Experiment Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Experiment Setup</h2>
             
             <div className="mb-4">
-              <label className="text-sm font-medium text-slate-700 block mb-2">Number of Resistors</label>
-              <div className="flex bg-slate-100 p-1 rounded-lg">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 block mb-2">Number of Resistors</label>
+              <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                 {[1, 2, 3].map((n) => (
                   <button 
                     key={n}
                     onClick={() => setNumResistors(n)}
-                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numResistors === n ? 'bg-slate-50 shadow-sm text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
+                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numResistors === n ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
                   >
                     {n} Bulb{n > 1 ? 's' : ''}
                   </button>
@@ -111,7 +111,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
 
             <div className="mb-5">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700">Battery Voltage (V)</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Battery Voltage (V)</label>
                 <span className="text-sm font-mono text-emerald-600">{voltage} V</span>
               </div>
               <input 
@@ -123,8 +123,8 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
 
             <div className="mb-4">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700">Internal Resistance (r_int)</label>
-                <span className="text-sm font-mono text-slate-500">{rInt} Ω</span>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Internal Resistance (r_int)</label>
+                <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{rInt} Ω</span>
               </div>
               <input 
                 type="range" min="0" max="10" step="1" value={rInt}
@@ -137,7 +137,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
               {[ { r: r1, setR: setR1, id: 1 }, { r: r2, setR: setR2, id: 2 }, { r: r3, setR: setR3, id: 3 } ].map((item, idx) => (
                 <div key={item.id} className={idx < numResistors ? 'opacity-100' : 'opacity-40 pointer-events-none'}>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700">Bulb {item.id} Resistance</label>
+                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Bulb {item.id} Resistance</label>
                     <span className="text-sm font-mono text-amber-600">{item.r} Ω</span>
                   </div>
                   <input 
@@ -153,7 +153,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-700 p-6 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col relative overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">Circuit Simulation</h2>
           
           <div className="flex-1 flex flex-col items-center justify-center relative pt-10">
@@ -192,7 +192,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
                          boxShadow: currentExact > 0 ? `0 0 ${40 * brightness}px ${20 * brightness}px #facc15` : 'none'
                        }} />
                        {/* The Bulb Physical */}
-                       <div className="w-10 h-10 bg-slate-50/10 border-2 border-white/30 rounded-full z-10 flex flex-col items-center justify-end pb-1 backdrop-blur-sm">
+                       <div className="w-10 h-10 bg-slate-50 dark:bg-slate-900/10 border-2 border-white/30 rounded-full z-10 flex flex-col items-center justify-end pb-1 backdrop-blur-sm">
                           <div className={`w-2 h-4 border rounded-t-full ${currentExact > 0 ? 'border-yellow-300' : 'border-zinc-500'}`} />
                        </div>
                        {/* Base */}
@@ -210,21 +210,21 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
             </div>
 
             {/* Ammeter display */}
-            <div className="mt-12 bg-black p-4 rounded-xl border border-slate-700 flex flex-col items-center w-48 shadow-lg">
+            <div className="mt-12 bg-black p-4 rounded-xl border border-slate-700 dark:border-slate-500 flex flex-col items-center w-48 shadow-lg">
               <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Ammeter</span>
               <div className="font-mono text-2xl font-bold text-red-500 tracking-wider">
                 {currentMA.toFixed(0)} <span className="text-sm">mA</span>
               </div>
-              <span className="text-slate-600 text-[10px] mt-1">±1% precision</span>
+              <span className="text-slate-600 dark:text-slate-300 text-[10px] mt-1">±1% precision</span>
             </div>
 
           </div>
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-slate-800">Data Logging</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logging</h2>
             <button 
               onClick={recordData}
               className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors"
@@ -233,9 +233,9 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 rounded-lg max-h-[200px]">
+          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[200px]">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-600 uppercase bg-slate-50 sticky top-0">
+              <thead className="text-xs text-slate-600 dark:text-slate-300 uppercase bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-4 py-2">Bulbs</th>
                   <th className="px-4 py-2">V_bat (V)</th>
@@ -246,11 +246,11 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
               <tbody>
                 {dataPoints.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 italic">No data recorded yet.</td>
+                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-slate-400 italic">No data recorded yet.</td>
                   </tr>
                 ) : (
                   dataPoints.map((dp) => (
-                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50">
+                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                       <td className="px-4 py-2 font-mono">{dp.n}</td>
                       <td className="px-4 py-2 font-mono">{dp.v}</td>
                       <td className="px-4 py-2 font-mono">{dp.req}</td>
@@ -262,13 +262,13 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="h-px bg-slate-200 mb-6" />
+          <div className="h-px bg-slate-200 dark:bg-slate-800 mb-6" />
 
           {/* Assessment Section */}
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Analysis Check</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis Check</h2>
             <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-              <p className="text-sm text-slate-700 mb-3">
+              <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
                 <strong>Problem:</strong> In a perfect series circuit (r_int = 0 Ω), a 12V battery is connected to three resistors. You know R₁ = 20 Ω and R₂ = 20 Ω. The ammeter reads exactly 200 mA (0.2 A). 
                 What is the resistance of R₃?
               </p>
@@ -278,9 +278,9 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
                   placeholder="e.g. 50"
                   value={assessmentAnswer}
                   onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
-                  className="border border-slate-300 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <span className="text-sm font-medium text-slate-600 mr-2">Ω</span>
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-300 mr-2">Ω</span>
                 <button 
                   onClick={checkAnswer}
                   className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors"

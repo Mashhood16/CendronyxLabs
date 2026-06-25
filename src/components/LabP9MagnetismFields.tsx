@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Info, Compass, Sparkles, RefreshCw, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Filing {
   id: number;
@@ -94,19 +95,16 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-blue-900 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">Lab: Magnetic Field Lines</h1>
-        {onExit && <button onClick={onExit} className="px-4 py-2 bg-blue-700 hover:bg-blue-600 rounded-lg font-medium transition-colors">Exit</button>}
-      </div>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Lab: Magnetic Field Lines" subtitle="Investigate magnetic field lines using compasses and iron filings" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold mb-4 flex items-center text-slate-800 dark:text-slate-100">
             <Info className="mr-2" /> Theory & Setup
           </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200 leading-relaxed">
             <p>
               A <strong>magnetic field</strong> is the region around a magnet where magnetic forces act. We can visualize this invisible field using magnetic field lines.
             </p>
@@ -129,9 +127,9 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-blue-800 text-center">Interactive Simulator</h2>
-          <div className="flex-1 relative flex items-center justify-center bg-slate-100 rounded-xl overflow-hidden border-2 border-slate-300 shadow-inner">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100 text-center">Interactive Simulator</h2>
+          <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
             <svg
               ref={svgRef}
               viewBox="0 0 400 400"
@@ -168,14 +166,14 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setMode('compass')}
-              className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'compass' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`}
+              className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'compass' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:bg-slate-800'}`}
             >
               <Compass className="w-4 h-4 mr-2" />
               Place Compass
             </button>
             <button
               onClick={sprinkleFilings}
-              className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'filings' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`}
+              className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'filings' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:bg-slate-800'}`}
             >
               <Sparkles className="w-4 h-4 mr-2" />
               Sprinkle Filings
@@ -191,30 +189,30 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-blue-800">Data Logging & Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100">Data Logging & Analysis</h2>
           
-          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 rounded-lg max-h-64">
+          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-64">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 sticky top-0">
+              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0">
                 <tr>
-                  <th className="px-4 py-3 border-b font-semibold text-slate-700">Reading #</th>
-                  <th className="px-4 py-3 border-b font-semibold text-slate-700">Position (x,y)</th>
-                  <th className="px-4 py-3 border-b font-semibold text-slate-700">Angle (°)</th>
+                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-slate-200">Reading #</th>
+                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-slate-200">Position (x,y)</th>
+                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-slate-200">Angle (°)</th>
                 </tr>
               </thead>
               <tbody>
                 {compasses.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="px-4 py-8 text-center text-slate-500 italic">
+                    <td colSpan={3} className="px-4 py-8 text-center text-slate-500 dark:text-slate-400 italic">
                       Place compasses on the simulator to record field directions.
                     </td>
                   </tr>
                 ) : (
                   compasses.map((c, i) => (
-                    <tr key={c.id} className="border-b hover:bg-slate-50 transition-colors">
-                      <td className="px-4 py-2 text-slate-600">{i + 1}</td>
-                      <td className="px-4 py-2 font-mono text-slate-600">({Math.round(c.x)}, {Math.round(c.y)})</td>
+                    <tr key={c.id} className="border-b hover:bg-slate-50 dark:bg-slate-900 transition-colors">
+                      <td className="px-4 py-2 text-slate-600 dark:text-slate-300">{i + 1}</td>
+                      <td className="px-4 py-2 font-mono text-slate-600 dark:text-slate-300">({Math.round(c.x)}, {Math.round(c.y)})</td>
                       <td className="px-4 py-2 font-mono text-blue-600 font-medium">{Math.round(c.angle)}°</td>
                     </tr>
                   ))
@@ -228,7 +226,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
               <CheckCircle className="w-5 h-5 mr-2" />
               Assessment
             </h3>
-            <p className="text-sm text-slate-700 mb-4 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 leading-relaxed">
               Based on your observations, what is the approximate direction (in degrees, from 0 to 360, where 0 is right, 90 is down) of the magnetic field <strong>directly above the center</strong> of the magnet?
             </p>
             <div className="flex gap-2">
@@ -237,7 +235,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
                 value={assessmentAnswer}
                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                 placeholder="e.g. 180"
-                className="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                className="flex-1 px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
               />
               <button
                 onClick={checkAssessment}

@@ -29,16 +29,16 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
   const isSolved = isSolvedTop || isSolvedBottom;
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 9.1: Tracing Mirror Reflections" subtitle="Navigate the laser through the maze" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
-        <div className="w-full bg-slate-900 rounded-2xl shadow-xl border-4 border-slate-700 p-8 flex flex-col items-center relative overflow-hidden h-[500px]">
+        <div className="w-full bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-xl border-4 border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center relative overflow-hidden h-[500px]">
           
           {/* Laser Source */}
           <div className="absolute left-0 top-[140px] flex items-center">
-             <div className="w-12 h-8 bg-slate-700 rounded-r-md border border-slate-500 flex items-center justify-end pr-1 z-20">
+             <div className="w-12 h-8 bg-slate-700 dark:bg-slate-800 rounded-r-md border border-slate-500 dark:border-slate-500 flex items-center justify-end pr-1 z-20">
                 <div className="w-2 h-4 bg-red-500 rounded-sm" />
              </div>
           </div>
@@ -56,9 +56,9 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
           </div>
 
           {/* Obstacles */}
-          <div className="absolute left-[180px] top-0 w-8 h-[120px] bg-slate-800 border border-slate-600 rounded-b-md" />
-          <div className="absolute left-[180px] bottom-0 w-8 h-[120px] bg-slate-800 border border-slate-600 rounded-t-md" />
-          <div className="absolute left-[180px] top-[180px] w-8 h-[40px] bg-slate-800 border border-slate-600 rounded-sm" />
+          <div className="absolute left-[180px] top-0 w-8 h-[120px] bg-slate-800 dark:bg-slate-800 border border-slate-600 dark:border-slate-500 rounded-b-md" />
+          <div className="absolute left-[180px] bottom-0 w-8 h-[120px] bg-slate-800 dark:bg-slate-800 border border-slate-600 dark:border-slate-500 rounded-t-md" />
+          <div className="absolute left-[180px] top-[180px] w-8 h-[40px] bg-slate-800 dark:bg-slate-800 border border-slate-600 dark:border-slate-500 rounded-sm" />
 
           {/* Laser Beams */}
           {laserOn && (
@@ -104,7 +104,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => rotateMirror(m.id)}
-              className="absolute w-12 h-12 -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full hover:bg-slate-50/10 active:bg-slate-50/20 transition-colors"
+              className="absolute w-12 h-12 -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full hover:bg-slate-50 dark:bg-slate-900/10 active:bg-slate-50 dark:bg-slate-900/20 transition-colors"
               style={{ left: m.x, top: m.y }}
             >
               <div 
@@ -118,7 +118,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
           <div className="absolute bottom-6 flex flex-col items-center gap-4 z-40">
             <button 
               onClick={() => setLaserOn(!laserOn)}
-              className={`px-8 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all active:scale-95 ${laserOn ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-500/50' : 'bg-slate-200 hover:bg-slate-300 text-slate-800'}`}
+              className={`px-8 py-3 rounded-full font-bold text-lg flex items-center gap-2 shadow-lg transition-all active:scale-95 ${laserOn ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-500/50' : 'bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100'}`}
             >
               <Zap className={`w-5 h-5 ${laserOn ? 'animate-pulse text-yellow-300' : ''}`} /> 
               {laserOn ? 'Laser ON' : 'Laser OFF'}

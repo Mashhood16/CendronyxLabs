@@ -23,16 +23,8 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-900 flex flex-col font-sans">
-      <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
-        <div className="flex items-center gap-4">
-          <LabHeader onExit={onExit} title="Act 1.2: Networking Devices Demo" />
-          <div>
-            <h1 className="text-xl font-bold text-sky-400">Act 1.2: Networking Devices Demo</h1>
-            <p className="text-sm text-slate-400">Identify devices and configure the server rack.</p>
-          </div>
-        </div>
-      </header>
+    <div className="w-full h-screen bg-slate-900 dark:bg-slate-800 flex flex-col font-sans">
+      <LabHeader onExit={onExit} title="Act 1.2: Networking Devices Demo" subtitle="Identify devices and configure the server rack." variant="dark" />
 
       <div className="flex-1 flex overflow-hidden">
         
@@ -40,29 +32,29 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
         <div className="flex-1 bg-slate-950 p-12 flex flex-col items-center justify-center relative shadow-inner bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
           
           {/* Server Rack Background */}
-          <div className="w-[600px] h-[600px] bg-slate-800 rounded border-8 border-slate-700 shadow-2xl p-4 flex flex-col gap-6 relative">
+          <div className="w-[600px] h-[600px] bg-slate-800 dark:bg-slate-800 rounded border-8 border-slate-700 dark:border-slate-500 shadow-2xl p-4 flex flex-col gap-6 relative">
              
              {/* Router */}
              <div 
-               className={`w-full h-24 bg-slate-900 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'router' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600'}`}
+               className={`w-full h-24 bg-slate-900 dark:bg-slate-800 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'router' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
                onClick={() => setSelectedDevice('router')}
              >
-                <div className="absolute top-2 left-4 font-bold text-slate-500 uppercase tracking-widest text-xs">Edge Router</div>
+                <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-xs">Edge Router</div>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-4">
                    {/* Internet Port */}
-                   <div className="w-8 h-8 bg-black rounded border border-slate-700 flex items-center justify-center">
+                   <div className="w-8 h-8 bg-black rounded border border-slate-700 dark:border-slate-500 flex items-center justify-center">
                      <div className="w-4 h-4 bg-yellow-500 rounded-sm"></div>
                    </div>
                    {/* LAN Port */}
                    <button 
-                     className={`w-8 h-8 rounded border flex items-center justify-center transition-colors ${cables.routerToSwitch ? 'bg-blue-500 border-blue-400' : 'bg-black border-slate-700 hover:border-slate-400'}`}
+                     className={`w-8 h-8 rounded border flex items-center justify-center transition-colors ${cables.routerToSwitch ? 'bg-blue-500 border-blue-400' : 'bg-black border-slate-700 dark:border-slate-500 hover:border-slate-400 dark:border-slate-500'}`}
                      onClick={(e) => { e.stopPropagation(); setCables(c => ({...c, routerToSwitch: !c.routerToSwitch})); }}
                    >
-                     {cables.routerToSwitch && <div className="w-2 h-2 bg-slate-50 rounded-full"></div>}
+                     {cables.routerToSwitch && <div className="w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full"></div>}
                    </button>
                 </div>
                 {/* Status LED */}
-                <div className={`absolute left-4 bottom-4 w-3 h-3 rounded-full ${power.router ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700'}`}></div>
+                <div className={`absolute left-4 bottom-4 w-3 h-3 rounded-full ${power.router ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700 dark:bg-slate-800'}`}></div>
              </div>
 
              {/* Cable 1 */}
@@ -72,29 +64,29 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
 
              {/* Switch */}
              <div 
-               className={`w-full h-24 bg-slate-900 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'switch' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600'}`}
+               className={`w-full h-24 bg-slate-900 dark:bg-slate-800 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'switch' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
                onClick={() => setSelectedDevice('switch')}
              >
-                <div className="absolute top-2 left-4 font-bold text-slate-500 uppercase tracking-widest text-xs">24-Port Switch</div>
+                <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-xs">24-Port Switch</div>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
                    {/* Uplink Port */}
                    <div className="w-8 h-8 mr-4 rounded border bg-blue-500 border-blue-400 flex items-center justify-center opacity-50"></div>
                    
                    {/* standard ports */}
                    {[...Array(6)].map((_, i) => (
-                     <div key={i} className="w-6 h-6 bg-black border border-slate-700 rounded-sm"></div>
+                     <div key={i} className="w-6 h-6 bg-black border border-slate-700 dark:border-slate-500 rounded-sm"></div>
                    ))}
                    
                    {/* Port to WAP */}
                    <button 
-                     className={`w-6 h-6 ml-4 rounded border flex items-center justify-center transition-colors ${cables.switchToWap ? 'bg-orange-500 border-orange-400' : 'bg-black border-slate-700 hover:border-slate-400'}`}
+                     className={`w-6 h-6 ml-4 rounded border flex items-center justify-center transition-colors ${cables.switchToWap ? 'bg-orange-500 border-orange-400' : 'bg-black border-slate-700 dark:border-slate-500 hover:border-slate-400 dark:border-slate-500'}`}
                      onClick={(e) => { e.stopPropagation(); setCables(c => ({...c, switchToWap: !c.switchToWap})); }}
                    ></button>
                 </div>
                 {/* Status LEDs */}
                 <div className="absolute left-4 bottom-4 flex gap-2">
-                   <div className={`w-3 h-3 rounded-full ${power.switch ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700'}`}></div>
-                   <div className={`w-3 h-3 rounded-full ${networkOnline ? 'bg-blue-400 animate-pulse' : 'bg-slate-700'}`}></div>
+                   <div className={`w-3 h-3 rounded-full ${power.switch ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700 dark:bg-slate-800'}`}></div>
+                   <div className={`w-3 h-3 rounded-full ${networkOnline ? 'bg-blue-400 animate-pulse' : 'bg-slate-700 dark:bg-slate-800'}`}></div>
                 </div>
              </div>
 
@@ -105,14 +97,14 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
 
              {/* WAP */}
              <div 
-               className={`w-full h-32 bg-slate-900 border-2 rounded-lg relative cursor-pointer transition-all flex justify-center items-center ${selectedDevice === 'wap' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600'}`}
+               className={`w-full h-32 bg-slate-900 dark:bg-slate-800 border-2 rounded-lg relative cursor-pointer transition-all flex justify-center items-center ${selectedDevice === 'wap' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
                onClick={() => setSelectedDevice('wap')}
              >
-                <div className="absolute top-2 left-4 font-bold text-slate-500 uppercase tracking-widest text-xs">Wireless Access Point</div>
+                <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-xs">Wireless Access Point</div>
                 
                 {/* Antennas */}
-                <div className="absolute top-[-30px] left-10 w-2 h-10 bg-slate-400 rounded-t-full"></div>
-                <div className="absolute top-[-30px] left-20 w-2 h-10 bg-slate-400 rounded-t-full"></div>
+                <div className="absolute top-[-30px] left-10 w-2 h-10 bg-slate-400 dark:bg-slate-800 rounded-t-full"></div>
+                <div className="absolute top-[-30px] left-20 w-2 h-10 bg-slate-400 dark:bg-slate-800 rounded-t-full"></div>
                 
                 {wifiOnline && (
                   <svg className="absolute w-64 h-64 -top-32 pointer-events-none opacity-50">
@@ -125,14 +117,14 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
                 
                 {/* Status LEDs */}
                 <div className="absolute left-4 bottom-4 flex gap-2">
-                   <div className={`w-3 h-3 rounded-full ${power.wap ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700'}`}></div>
-                   <div className={`w-3 h-3 rounded-full ${wifiOnline ? 'bg-sky-400 animate-pulse' : 'bg-slate-700'}`}></div>
+                   <div className={`w-3 h-3 rounded-full ${power.wap ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-slate-700 dark:bg-slate-800'}`}></div>
+                   <div className={`w-3 h-3 rounded-full ${wifiOnline ? 'bg-sky-400 animate-pulse' : 'bg-slate-700 dark:bg-slate-800'}`}></div>
                 </div>
              </div>
 
              {/* Desktop PC (NIC) */}
              <div 
-               className={`absolute bottom-4 left-4 w-48 h-32 bg-slate-800 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'nic' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600'}`}
+               className={`absolute bottom-4 left-4 w-48 h-32 bg-slate-800 dark:bg-slate-800 border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'nic' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
                onClick={() => setSelectedDevice('nic')}
              >
                 <div className="absolute top-2 left-4 font-bold text-slate-400 uppercase tracking-widest text-xs">Workstation PC</div>
@@ -148,28 +140,28 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
         </div>
 
         {/* Control Panel */}
-        <div className="w-96 bg-slate-800 p-8 flex flex-col border-l border-slate-700 z-10 text-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-2">Hardware Setup</h2>
+        <div className="w-96 bg-slate-800 dark:bg-slate-800 p-8 flex flex-col border-l border-slate-700 dark:border-slate-500 z-10 text-slate-200 overflow-y-auto">
+          <h2 className="text-xl font-bold text-white mb-6 border-b border-slate-700 dark:border-slate-500 pb-2">Hardware Setup</h2>
           
           <div className="grid grid-cols-2 gap-4 mb-8">
              <button 
                onClick={() => setPower(p => ({...p, router: !p.router}))}
-               className={`py-2 px-4 rounded font-bold border transition-colors ${power.router ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 border-slate-600 hover:bg-slate-600'}`}
+               className={`py-2 px-4 rounded font-bold border transition-colors ${power.router ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-slate-800'}`}
              >Power Router</button>
              <button 
                onClick={() => setPower(p => ({...p, switch: !p.switch}))}
-               className={`py-2 px-4 rounded font-bold border transition-colors ${power.switch ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 border-slate-600 hover:bg-slate-600'}`}
+               className={`py-2 px-4 rounded font-bold border transition-colors ${power.switch ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-slate-800'}`}
              >Power Switch</button>
              <button 
                onClick={() => setPower(p => ({...p, wap: !p.wap}))}
-               className={`py-2 px-4 rounded font-bold border transition-colors ${power.wap ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 border-slate-600 hover:bg-slate-600'}`}
+               className={`py-2 px-4 rounded font-bold border transition-colors ${power.wap ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-slate-800'}`}
              >Power WAP</button>
           </div>
 
           <p className="text-sm text-slate-400 mb-6">Click empty ports on the devices to plug in cables. Click on a device to read its function.</p>
 
           {selectedDevice ? (
-             <div className="bg-slate-900 p-6 rounded-xl border border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.1)] animate-fade-in">
+             <div className="bg-slate-900 dark:bg-slate-800 p-6 rounded-xl border border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.1)] animate-fade-in">
                <h3 className="font-bold text-sky-400 tracking-wider text-lg mb-2 uppercase">
                   {devices[selectedDevice as keyof typeof devices].name}
                </h3>
@@ -178,8 +170,8 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
                </p>
              </div>
           ) : (
-             <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 border-dashed text-center">
-                <span className="text-slate-500 font-bold uppercase tracking-widest text-xs">Select a Device to Inspect</span>
+             <div className="bg-slate-900 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-700 dark:border-slate-500 border-dashed text-center">
+                <span className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-xs">Select a Device to Inspect</span>
              </div>
           )}
 

@@ -49,7 +49,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
     const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.vol / maxY) * 100}`).join(' ');
 
     return (
-      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 border rounded-lg p-2 overflow-visible">
+      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-slate-900 border rounded-lg p-2 overflow-visible">
         <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
@@ -63,26 +63,26 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none p-4">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none p-4">
 <LabHeader onExit={onExit} title="Reaction Kinetics: Reactant Quantity" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Theory & Setup</h2>
-          <p className="text-slate-600 text-sm mb-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Theory & Setup</h2>
+          <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
             Increasing the amount of reactants increases the total volume of product gas generated. We monitor the neutralization of stomach acid (HCl) using Calcium Carbonate (CaCO₃) antacid tablets.
           </p>
-          <div className="bg-slate-100 p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
             CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)
           </div>
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Number of Tablets</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Number of Tablets</label>
               <select 
                 value={tablets} 
                 onChange={(e) => { setTablets(parseInt(e.target.value)); handleReset(); }}
-                className="w-full p-2 border border-slate-300 rounded-md"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md"
               >
                 <option value="1">1 Tablet</option>
                 <option value="2">2 Tablets</option>
@@ -91,20 +91,20 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4 self-start">Simulation Viewer</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 self-start">Simulation Viewer</h2>
           
           <div className="w-full flex justify-center space-x-4 mb-6">
             <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
               {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
               {isPlaying ? 'Pause' : 'Start'}
             </button>
-            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300">
+            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800">
               <RotateCcw className="w-4 h-4 mr-2" /> Reset
             </button>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 rounded-lg border border-slate-200 overflow-hidden">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
             <svg viewBox="0 0 200 200" className="w-full h-full">
               {/* Flask */}
               <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
@@ -135,20 +135,20 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
           </div>
 
           <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center">
-            <div className="bg-slate-100 p-3 rounded-lg">
-              <div className="text-xs text-slate-500 uppercase font-bold">Time</div>
-              <div className="text-xl font-mono text-slate-800">{time} s</div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">Time</div>
+              <div className="text-xl font-mono text-slate-800 dark:text-slate-100">{time} s</div>
             </div>
-            <div className="bg-slate-100 p-3 rounded-lg">
-              <div className="text-xs text-slate-500 uppercase font-bold">CO₂ Volume</div>
-              <div className="text-xl font-mono text-slate-800">{currentVol.toFixed(1)} mL</div>
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">CO₂ Volume</div>
+              <div className="text-xl font-mono text-slate-800 dark:text-slate-100">{currentVol.toFixed(1)} mL</div>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-slate-800">Data & Analysis</h2>
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
             <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700">
               <Save className="w-4 h-4 mr-1" /> Record
             </button>
@@ -156,9 +156,9 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
 
           {renderGraph()}
 
-          <div className="mt-4 flex-1 overflow-y-auto min-h-[100px] border border-slate-200 rounded-lg">
+          <div className="mt-4 flex-1 overflow-y-auto min-h-[100px] border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-3 py-2 border-b">Time (s)</th>
                   <th className="px-3 py-2 border-b">Tablets</th>
@@ -167,7 +167,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
               </thead>
               <tbody>
                 {data.map((d, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-3 py-2">{d.t}</td>
                     <td className="px-3 py-2">{d.tabs}</td>
                     <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>

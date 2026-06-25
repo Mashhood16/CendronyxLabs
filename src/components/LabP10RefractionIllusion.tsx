@@ -65,7 +65,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       {/* Header */}
       <LabHeader onExit={onExit} title="Refraction & Snell's Law" subtitle="Investigate the bending of light across different media" />
 
@@ -73,19 +73,19 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory and Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 border-b border-slate-200 p-4">
-            <h2 className="font-semibold text-slate-800">Theory & Setup</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Theory & Setup</h2>
           </div>
           <div className="p-5 flex-1 overflow-y-auto space-y-6">
-            <div className="space-y-2 text-sm text-slate-600">
+            <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
               <p>
                 When light travels from one transparent medium to another, its speed changes, causing the ray to bend. This is called <strong>refraction</strong>.
               </p>
               <p>
                 <strong>Snell's Law</strong> describes this relationship quantitatively:
               </p>
-              <div className="bg-slate-50 p-3 rounded border border-slate-100 text-center font-mono text-base text-slate-800">
+              <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-100 text-center font-mono text-base text-slate-800 dark:text-slate-100">
                 n₁·sin(θ₁) = n₂·sin(θ₂)
               </div>
               <p>
@@ -95,7 +95,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
 
             <div className="border-t border-slate-100 pt-4 space-y-4">
               <div className="space-y-2">
-                <label className="flex justify-between text-sm font-medium text-slate-700">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                   <span>Angle of Incidence (θ₁)</span>
                   <span>{angleI}°</span>
                 </label>
@@ -111,13 +111,13 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
                   Refracting Medium (n₂)
                 </label>
                 <select
                   value={material}
                   onChange={(e) => setMaterial(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
                   {Object.entries(materials).map(([key, mat]) => (
                     <option key={key} value={key}>
@@ -137,11 +137,11 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden lg:col-span-1">
-          <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800">Simulation View</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden lg:col-span-1">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Simulation View</h2>
           </div>
-          <div className="p-4 flex-1 flex flex-col items-center justify-center bg-slate-900 relative overflow-hidden">
+          <div className="p-4 flex-1 flex flex-col items-center justify-center bg-slate-900 dark:bg-slate-800 relative overflow-hidden">
             
             <svg viewBox="-200 -200 400 400" className="w-full max-w-[350px] aspect-square drop-shadow-xl">
               {/* Backgrounds */}
@@ -257,12 +257,12 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
             </svg>
 
             {/* Readout */}
-            <div className="mt-6 flex justify-around w-full max-w-sm bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
+            <div className="mt-6 flex justify-around w-full max-w-sm bg-slate-800 dark:bg-slate-800 p-4 rounded-xl border border-slate-700 dark:border-slate-500 shadow-inner">
               <div className="text-center">
                 <p className="text-xs text-slate-400 uppercase tracking-wider">Incidence (θ₁)</p>
                 <p className="text-2xl font-mono text-amber-400">{angleI.toFixed(1)}°</p>
               </div>
-              <div className="w-px bg-slate-700"></div>
+              <div className="w-px bg-slate-700 dark:bg-slate-800"></div>
               <div className="text-center">
                 <p className="text-xs text-slate-400 uppercase tracking-wider">Refraction (θ₂)</p>
                 <p className="text-2xl font-mono text-sky-400">{measuredR.toFixed(1)}°</p>
@@ -273,9 +273,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800">Data & Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
             <div className="flex gap-2">
               <button
                 onClick={handleRecordData}
@@ -285,7 +285,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
               </button>
               <button
                 onClick={handleClearData}
-                className="flex items-center gap-1 bg-slate-200 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
               >
                 <Trash2 className="w-4 h-4" /> Clear
               </button>
@@ -295,9 +295,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
           <div className="p-4 flex-1 overflow-y-auto space-y-6">
             
             {/* Data Table */}
-            <div className="border border-slate-200 rounded-lg overflow-hidden">
+            <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 text-slate-600 font-medium border-b border-slate-200">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-medium border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <tr>
                     <th className="px-3 py-2 text-center">θ₁ (°)</th>
                     <th className="px-3 py-2 text-center">θ₂ (°)</th>
@@ -314,7 +314,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
                     </tr>
                   ) : (
                     data.map((point) => (
-                      <tr key={point.id} className="hover:bg-slate-50">
+                      <tr key={point.id} className="hover:bg-slate-50 dark:bg-slate-900">
                         <td className="px-3 py-2 text-center">{point.angleI.toFixed(1)}</td>
                         <td className="px-3 py-2 text-center">{point.angleR.toFixed(1)}</td>
                         <td className="px-3 py-2 text-center">{point.sinI.toFixed(3)}</td>
@@ -327,9 +327,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
             </div>
 
             {/* Graph */}
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 className="text-sm font-bold text-slate-700 mb-2 text-center">Graph of sin(θ₁) vs sin(θ₂)</h3>
-              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 border-l-2 border-b-2 border-slate-600">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-2 text-center">Graph of sin(θ₁) vs sin(θ₂)</h3>
+              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-slate-900 border-l-2 border-b-2 border-slate-600 dark:border-slate-500">
                 {/* Grid lines */}
                 {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
                   <div key={`grid-${val}`}>
@@ -339,9 +339,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
                 ))}
                 
                 {/* Axis Labels */}
-                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 font-medium">sin(θ₂)</div>
+                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-slate-400 font-medium">sin(θ₂)</div>
                 <div className="absolute top-0 bottom-0 -left-6 flex items-center">
-                  <div className="transform -rotate-90 text-[10px] text-slate-500 font-medium whitespace-nowrap">sin(θ₁)</div>
+                  <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">sin(θ₁)</div>
                 </div>
 
                 {/* Data Points */}

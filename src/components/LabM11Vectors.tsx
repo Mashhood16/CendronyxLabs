@@ -54,14 +54,12 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-teal-600 text-white p-4 shadow-md flex items-center justify-between">
-        <LabHeader onExit={onExit} title="Vector Aviation & Operations" />
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Vector Aviation & Operations" variant="dark" subtitle="Mathematics Class 11" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-teal-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-teal-500">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2"><Navigation size={20} /> Vector Components</h2>
           <p className="text-gray-600 text-sm">
             In aviation, a plane's true velocity is the vector sum of its intended heading velocity (<b>Va</b>) and the wind velocity (<b>Vw</b>).
@@ -94,7 +92,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* MIDDLE: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-cyan-500 relative overflow-hidden">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-cyan-500 relative overflow-hidden">
           <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Radar Display</h2>
           
           {/* Compass rose background */}
@@ -150,7 +148,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
           <h2 className="text-xl font-bold text-gray-800">Flight Analysis</h2>
 
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">

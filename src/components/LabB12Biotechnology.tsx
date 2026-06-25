@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Activity, Play, CheckCircle, Search, Scissors, Link } from 'lucide-react';
+import { Play, CheckCircle, Search, Scissors, Link } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabB12Biotechnology({ onExit }: { onExit?: () => void }) {
@@ -37,23 +37,14 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-blue-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <LabHeader onExit={onExit} title="Lab 12.1: Genetic Engineering & PCR" />
-          <h1 className="text-xl font-bold">Lab 12.1: Genetic Engineering & PCR</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Activity className="w-5 h-5" />
-          <span className="font-medium">Grade 12 Biology</span>
-        </div>
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Genetic Engineering & PCR" subtitle="Recombinant DNA & Thermocycling" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Theory & Context</h2>
-          <div className="space-y-4 text-sm text-slate-600">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Theory & Context</h2>
+          <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
             <p>
               <strong>Recombinant DNA Technology:</strong> This process involves isolating a gene of interest (e.g., human insulin) and inserting it into a bacterial plasmid vector.
             </p>
@@ -75,11 +66,11 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Interactive */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Simulation Workspace</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Simulation Workspace</h2>
           
           <div className="flex-1 flex flex-col items-center justify-center space-y-8">
-            <div className="relative w-64 h-64 bg-slate-100 rounded-full flex items-center justify-center shadow-inner border border-slate-300">
+            <div className="relative w-64 h-64 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500">
               {/* Plasmid SVG */}
               <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
                 <circle cx="100" cy="100" r="70" fill="none" stroke="#cbd5e1" strokeWidth="16" />
@@ -99,7 +90,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
               </svg>
               
               <div className="absolute inset-0 flex items-center justify-center flex-col">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Plasmid Vector</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Plasmid Vector</span>
               </div>
             </div>
 
@@ -125,9 +116,9 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
             </div>
 
             {/* PCR Section */}
-            <div className={`w-full bg-slate-100 rounded-lg p-4 border border-slate-300 transition-opacity ${plasmidState === 'ligated' ? 'opacity-100' : 'opacity-40 pointer-events-none'}`}>
+            <div className={`w-full bg-slate-100 dark:bg-slate-800 rounded-lg p-4 border border-slate-300 dark:border-slate-700 dark:border-slate-500 transition-opacity ${plasmidState === 'ligated' ? 'opacity-100' : 'opacity-40 pointer-events-none'}`}>
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-bold text-slate-700">PCR Thermocycler</h3>
+                <h3 className="font-bold text-slate-700 dark:text-slate-200">PCR Thermocycler</h3>
                 <span className="text-xs font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded">Temp: {pcrTemp}°C</span>
               </div>
               <div className="flex items-center gap-4">
@@ -137,15 +128,15 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
                   className="flex items-center gap-1 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 disabled:opacity-50">
                   <Play className="w-4 h-4" /> Run Cycle
                 </button>
-                <div className="flex-1 bg-slate-200 h-2 rounded-full overflow-hidden">
+                <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                   <div className="bg-blue-500 h-full transition-all duration-300" style={{ width: `${(pcrTemp / 100) * 100}%` }}></div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs text-slate-500">Cycles</div>
-                  <div className="text-xl font-bold text-slate-800">{pcrCycles}</div>
+                  <div className="text-xs text-slate-500 dark:text-slate-400">Cycles</div>
+                  <div className="text-xl font-bold text-slate-800 dark:text-slate-100">{pcrCycles}</div>
                 </div>
               </div>
-              <div className="mt-3 text-center text-xs font-medium text-slate-500">
+              <div className="mt-3 text-center text-xs font-medium text-slate-500 dark:text-slate-400">
                 Copies: {Math.pow(2, pcrCycles)}
               </div>
             </div>
@@ -153,17 +144,17 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Data Log & Assessment</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Data Log & Assessment</h2>
           
           <div className="space-y-6">
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
                 1. If you run 10 full PCR cycles starting with 1 recombinant plasmid, how many total copies of the target DNA sequence will you have?
               </label>
               <input 
                 type="number" 
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono"
                 value={ans1}
                 onChange={e => setAns1(e.target.value)}
                 placeholder="e.g. 1024"
@@ -171,12 +162,12 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
                 2. EcoRI recognizes the sequence GAATTC and cuts between G and A. What type of ends does this enzyme produce? (Enter "sticky" or "blunt")
               </label>
               <input 
                 type="text" 
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-blue-500 outline-none"
                 value={ans2}
                 onChange={e => setAns2(e.target.value)}
                 placeholder="Type here..."

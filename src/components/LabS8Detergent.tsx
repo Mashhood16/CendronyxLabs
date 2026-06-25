@@ -28,31 +28,31 @@ export default function LabS8Detergent({ onExit }: LabProps) {
   };
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.4: DIY Detergent" subtitle="Combine raw powders to make washing powder" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
         {/* Ingredients Shelf */}
         <div className="w-full md:w-64 flex flex-col gap-3">
-          <h3 className="font-bold text-slate-700">Ingredients (Select All)</h3>
+          <h3 className="font-bold" style={{color: 'rgb(var(--slate-700))'}}>Ingredients (Select All)</h3>
           {required.map(ing => (
             <button 
               key={ing}
               onClick={() => addIngredient(ing)}
               disabled={ingredients.includes(ing) || isDone}
-              className={`p-4 text-left rounded-xl border-2 transition-all flex justify-between items-center ${ingredients.includes(ing) ? 'bg-emerald-50 border-emerald-500 text-emerald-800 opacity-50' : 'bg-slate-50 border-slate-200 hover:border-slate-300'}`}
+              className={`p-4 text-left rounded-xl border-2 transition-all flex justify-between items-center ${ingredients.includes(ing) ? 'bg-emerald-50 border-emerald-500 text-emerald-800 opacity-50' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}
             >
-              <span className="font-bold">{ing}</span>
+              <span className="font-bold" style={{color: ingredients.includes(ing) ? undefined : 'rgb(var(--slate-800))'}}>{ing}</span>
               {ingredients.includes(ing) && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
             </button>
           ))}
         </div>
 
         {/* The Container */}
-        <div className="flex-1 bg-slate-50 rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
           
-          <div className={`w-48 h-64 border-8 border-slate-300 rounded-xl relative overflow-hidden flex flex-col justify-end bg-slate-50 transition-transform duration-75 ${isShaking ? 'animate-[shake_0.1s_infinite]' : ''}`}>
+          <div className={`w-48 h-64 border-8 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl relative overflow-hidden flex flex-col justify-end bg-slate-50 dark:bg-slate-900 transition-transform duration-75 ${isShaking ? 'animate-[shake_0.1s_infinite]' : ''}`}>
              
              {/* Cap */}
              <div className="absolute top-[-24px] left-1/2 -translate-x-1/2 w-32 h-6 bg-blue-500 rounded-t-lg z-20" />
@@ -61,7 +61,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
              {ingredients.map((ing) => (
                <div 
                  key={ing} 
-                 className={`w-full h-1/4 flex items-center justify-center font-bold text-xs uppercase tracking-wider text-black/40 ${isDone ? 'bg-slate-200' : 'bg-blue-100 border-b border-blue-200'}`}
+                 className={`w-full h-1/4 flex items-center justify-center font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 ${isDone ? 'bg-slate-200 dark:bg-slate-700 dark:bg-slate-800' : 'bg-blue-100 dark:bg-blue-900/30 border-b border-blue-200 dark:border-blue-800'}`}
                  style={{ 
                    backgroundColor: isDone ? '#f1f5f9' : 
                                   ing === 'Washing Soda' ? '#e0f2fe' : 
@@ -75,7 +75,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
 
              {isDone && (
                <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="bg-slate-50/80 px-4 py-2 rounded font-bold text-slate-800 rotate-[-15deg] border-2 border-slate-300">
+                 <div className="bg-slate-50 dark:bg-slate-900/80 px-4 py-2 rounded font-bold text-slate-800 dark:text-slate-100 rotate-[-15deg] border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500">
                    DETERGENT
                  </div>
                </div>
@@ -87,7 +87,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
               <button 
                 onClick={mix}
                 disabled={ingredients.length < 4 || isShaking}
-                className={`px-8 py-3 rounded-full font-bold text-lg transition-all ${ingredients.length === 4 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg active:scale-95' : 'bg-slate-200 text-slate-400'}`}
+                className={`px-8 py-3 rounded-full font-bold text-lg transition-all ${ingredients.length === 4 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg active:scale-95' : 'bg-slate-200 dark:bg-slate-800 text-slate-400'}`}
               >
                 {isShaking ? 'Shaking...' : ingredients.length === 4 ? 'Shake & Mix!' : 'Add all ingredients first'}
               </button>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Settings, Info, Activity, Database, CheckCircle,  Factory, Gauge, XCircle, Save } from 'lucide-react';
+import { Settings, Info, Activity, Database, CheckCircle, Gauge, XCircle, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LogEntry {
@@ -43,23 +43,16 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
-        {onExit && (
-          <LabHeader onExit={onExit} title="Industrial Equilibrium" />
-        )}
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <Factory className="text-blue-400" /> Industrial Equilibrium
-        </h1>
-      </div>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Industrial Equilibrium" subtitle="Le Chatelier's Principle & Process Optimization" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
         {/* Column 1 */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-blue-500" /> Theory & Setup
           </h2>
-          <div className="text-sm text-slate-600 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
             <p><strong>Le Chatelier's Principle</strong> states that if a dynamic equilibrium is disturbed, the position of equilibrium shifts to counteract the change.</p>
             {processType === 'haber' ? (
               <p>The <strong>Haber Process</strong> synthesizes Ammonia: <br/><code>N₂ + 3H₂ ⇌ 2NH₃ (ΔH = -92 kJ/mol)</code>.</p>
@@ -73,7 +66,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
             <div>
               <label className="block text-sm font-semibold mb-1">Industrial Process</label>
               <select 
-                className="w-full p-2 border rounded bg-slate-50"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
                 value={processType} 
                 onChange={(e) => {
                   setProcessType(e.target.value as 'haber' | 'contact');
@@ -86,8 +79,8 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
               </select>
             </div>
             
-            <div className="bg-slate-50 p-4 rounded-lg border space-y-4">
-              <h3 className="font-semibold flex items-center gap-2 text-slate-700">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border space-y-4">
+              <h3 className="font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-200">
                 <Settings size={18} /> Control Panel
               </h3>
               <div>
@@ -112,12 +105,12 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
         </div>
 
         {/* Column 2 */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-blue-500" /> Industrial Reactor
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 rounded-lg border p-4 relative">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border p-4 relative">
             <svg viewBox="0 0 300 300" className="w-full h-64 drop-shadow-md">
               <rect x="80" y="50" width="140" height="200" rx="20" fill="#f1f5f9" stroke="#64748b" strokeWidth="6" />
               <rect 
@@ -154,15 +147,15 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
         </div>
 
         {/* Column 3 */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-blue-500" /> Data & Analysis
           </h2>
           
-          <div className="h-48 overflow-y-auto border rounded bg-slate-50 p-2 text-sm font-mono flex-shrink-0">
+          <div className="h-48 overflow-y-auto border rounded bg-slate-50 dark:bg-slate-900 p-2 text-sm font-mono flex-shrink-0">
             <table className="w-full text-center">
               <thead>
-                <tr className="border-b text-slate-500">
+                <tr className="border-b text-slate-500 dark:text-slate-400">
                   <th className="pb-1">Temp (°C)</th>
                   <th className="pb-1">Pres (atm)</th>
                   <th className="pb-1">Yield (%)</th>
@@ -171,7 +164,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
               <tbody>
                 {logs.length === 0 && <tr><td colSpan={3} className="py-4 text-slate-400">No attempts logged</td></tr>}
                 {logs.map((log, i) => (
-                  <tr key={i} className="border-b border-slate-200 last:border-0 hover:bg-slate-100">
+                  <tr key={i} className="border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 last:border-0 hover:bg-slate-100 dark:bg-slate-800">
                     <td className="py-2">{log.t}</td>
                     <td>{log.p}</td>
                     <td className={log.y > 80 ? 'text-green-600 font-bold' : ''}>{log.y}%</td>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
     onExit?: () => void;
@@ -80,16 +81,13 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
     const controlColorOpacity = flowProgress > 80 ? ((flowProgress - 80) / 20) * (controlIntensity / 100) : 0;
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-pink-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold">Biochemical Test: hCG Lateral Flow Assay</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-pink-700 hover:bg-pink-800 rounded">Exit</button>}
-            </div>
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+            <LabHeader onExit={onExit} title="Biochemical Test: hCG Lateral Flow Assay" subtitle="Immunoassay Simulation" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-pink-600"/> Setup & Theory</h2>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-slate-700 dark:text-slate-200">
                         Pregnancy tests use a lateral flow assay to detect human chorionic gonadotropin (hCG) in urine.
                         Antibodies conjugated to color particles bind hCG and are captured at the Test (T) line. Unbound antibodies are captured at the Control (C) line.
                     </p>
@@ -108,16 +106,16 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
                             <button onClick={handleRun} disabled={isRunning || flowProgress > 0} className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50 flex justify-center items-center">
                                 <Play className="w-4 h-4 mr-1"/> Apply Sample
                             </button>
-                            <button onClick={handleReset} className="flex-1 bg-slate-600 text-white py-2 rounded hover:bg-slate-700 flex justify-center items-center">
+                            <button onClick={handleReset} className="flex-1 bg-slate-600 dark:bg-slate-800 text-white py-2 rounded hover:bg-slate-700 dark:bg-slate-800 flex justify-center items-center">
                                 <RotateCcw className="w-4 h-4 mr-1"/> Reset
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Test Strip</h2>
-                    <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center">
+                    <div className="w-full h-64 mt-12 bg-slate-100 dark:bg-slate-800 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
                             <rect x="50" y="70" width="400" height="60" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="3" rx="10"/>
                             <circle cx="90" cy="100" r="15" fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="2"/>
@@ -141,7 +139,7 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-pink-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={flowProgress < 100} className="w-full bg-pink-100 text-pink-700 py-2 rounded font-medium hover:bg-pink-200 disabled:opacity-50">
@@ -150,7 +148,7 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
 
                     <div className="flex-1 overflow-y-auto">
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100">
+                            <thead className="bg-slate-100 dark:bg-slate-800">
                                 <tr>
                                     <th className="p-2 border">Vol(drops)</th>
                                     <th className="p-2 border">hCG(mIU/mL)</th>
@@ -169,7 +167,7 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
                         </table>
                     </div>
 
-                    <div className="bg-slate-100 p-3 rounded">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded">
                         <h3 className="font-semibold text-sm mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-600"/> Assessment</h3>
                         <p className="text-xs mb-2">Based on your data using 3 drops of sample, a linear relationship exists: <code>OD = Conc * 2</code>. An unknown sample yields an OD of {unknownOD}. What is its hCG concentration?</p>
                         <div className="flex space-x-2">

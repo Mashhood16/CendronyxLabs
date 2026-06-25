@@ -28,11 +28,11 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 6: Elements vs. Compounds" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-3xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-3xl bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8">
           
           <div className="bg-blue-50 border border-blue-200 text-blue-800 p-6 rounded-xl mb-8">
             <h2 className="font-bold text-lg mb-2 flex items-center gap-2"><HelpCircle className="w-6 h-6" /> Identification Activity</h2>
@@ -43,21 +43,21 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
 
           <div className="space-y-4 mb-8">
             {questions.map((q) => (
-              <div key={q.id} className="p-4 border border-slate-200 rounded-xl bg-slate-50 flex items-center justify-between">
-                <span className="font-bold text-slate-800 text-lg w-1/3">{q.name}</span>
+              <div key={q.id} className="p-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl bg-slate-50 dark:bg-slate-900 flex items-center justify-between">
+                <span className="font-bold text-slate-800 dark:text-slate-100 text-lg w-1/3">{q.name}</span>
                 
                 <div className="flex gap-2 w-1/3 justify-center">
                   <button 
                     onClick={() => handleSelect(q.id, 'Element')}
                     disabled={showResults}
-                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Element' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-50 border-slate-300 text-slate-600 hover:border-blue-300'}`}
+                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Element' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:border-blue-300'}`}
                   >
                     Element
                   </button>
                   <button 
                     onClick={() => handleSelect(q.id, 'Compound')}
                     disabled={showResults}
-                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-purple-500 border-purple-500 text-white' : 'bg-slate-50 border-slate-300 text-slate-600 hover:border-purple-300'}`}
+                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-purple-500 border-purple-500 text-white' : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:border-purple-300'}`}
                   >
                     Compound
                   </button>
@@ -67,7 +67,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
                   {showResults && (
                     <span className={`text-sm font-bold ${answers[q.id] === q.correct ? 'text-emerald-600' : 'text-red-500'}`}>
                       {answers[q.id] === q.correct ? '✓ Correct' : `✗ Incorrect (It's a ${q.correct})`}
-                      <p className="text-xs text-slate-500 font-normal mt-1 text-left">{q.desc}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 font-normal mt-1 text-left">{q.desc}</p>
                     </span>
                   )}
                 </div>
@@ -79,17 +79,17 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
             <button 
               onClick={() => setShowResults(true)}
               disabled={Object.keys(answers).length < questions.length}
-              className="w-full py-4 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 disabled:opacity-50 transition-colors"
+              className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors"
             >
               Check Answers
             </button>
           ) : (
-            <div className="text-center p-6 bg-slate-100 rounded-xl border border-slate-200">
-              <h3 className="text-2xl font-black text-slate-800 mb-2">Score: {calculateScore()} / {questions.length}</h3>
+            <div className="text-center p-6 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100 mb-2">Score: {calculateScore()} / {questions.length}</h3>
               {calculateScore() === questions.length ? (
                 <p className="text-emerald-600 font-bold flex items-center justify-center gap-2"><CheckCircle className="w-5 h-5" /> Perfect! You understand the difference.</p>
               ) : (
-                <button onClick={() => { setShowResults(false); setAnswers({}); }} className="px-6 py-2 bg-slate-50 border-2 border-slate-300 rounded font-bold text-slate-600 hover:bg-slate-50">Try Again</button>
+                <button onClick={() => { setShowResults(false); setAnswers({}); }} className="px-6 py-2 bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800 transition-colors">Try Again</button>
               )}
             </div>
           )}

@@ -66,14 +66,14 @@ if (score >= 90) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       <div className="flex items-center justify-between bg-indigo-600 text-white p-4 shadow-md">
         <LabHeader onExit={onExit} title="JavaScript Logic Sandbox" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-indigo-700">
             <BookOpen size={24} /> Theory & Context
           </h2>
@@ -90,17 +90,17 @@ if (score >= 90) {
               <li><code>score &gt;= 60</code> and <code>&lt; 70</code> : <b>C</b></li>
               <li><code>score &lt; 60</code> : <b>F</b></li>
             </ul>
-            <div className="bg-slate-100 p-3 rounded-lg border border-slate-200 font-mono text-sm text-slate-700 mb-4 whitespace-pre-wrap">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 font-mono text-sm text-slate-700 dark:text-slate-200 mb-4 whitespace-pre-wrap">
               {`if (score >= 90) {\n  return 'A+';\n} else if (score >= 80) {\n  return 'A';\n}`}
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               Ensure you handle all possible conditions. The automated test suite will run your logic against random scores to verify correctness.
             </p>
           </div>
         </div>
 
         {/* Middle Column: Interactive Sandbox */}
-        <div className="bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-800 flex flex-col text-slate-100">
+        <div className="bg-slate-900 dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-800 dark:border-slate-500 flex flex-col text-slate-100">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-blue-400">
             <Code size={24} /> Code Editor
           </h2>
@@ -109,7 +109,7 @@ if (score >= 90) {
               function getGrade(score) {'{'}
             </div>
             <textarea
-              className="flex-1 w-full bg-slate-800 text-green-400 p-4 font-mono text-sm rounded border border-slate-700 focus:outline-none focus:border-blue-500 resize-none"
+              className="flex-1 w-full bg-slate-800 dark:bg-slate-800 text-green-400 p-4 font-mono text-sm rounded border border-slate-700 dark:border-slate-500 focus:outline-none focus:border-blue-500 resize-none"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               spellCheck={false}
@@ -127,7 +127,7 @@ if (score >= 90) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-indigo-700">
             <ListChecks size={24} /> Automated Test Suite
           </h2>
@@ -142,18 +142,18 @@ if (score >= 90) {
                 {testResults.map((result, idx) => (
                   <div key={idx} className={`p-3 rounded-lg border ${result.passed ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'} flex flex-col gap-1`}>
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-700">Test {idx + 1}: Score = {result.score}</span>
+                      <span className="font-bold text-slate-700 dark:text-slate-200">Test {idx + 1}: Score = {result.score}</span>
                       {result.passed ? (
                         <CheckCircle size={20} className="text-green-600" />
                       ) : (
                         <XCircle size={20} className="text-red-600" />
                       )}
                     </div>
-                    <div className="text-sm text-slate-600">
-                      Expected: <span className="font-mono bg-slate-50 px-1 border rounded">{result.expected}</span>
+                    <div className="text-sm text-slate-600 dark:text-slate-300">
+                      Expected: <span className="font-mono bg-slate-50 dark:bg-slate-900 px-1 border rounded">{result.expected}</span>
                     </div>
-                    <div className="text-sm text-slate-600">
-                      Actual: <span className="font-mono bg-slate-50 px-1 border rounded text-red-600">{result.actual}</span>
+                    <div className="text-sm text-slate-600 dark:text-slate-300">
+                      Actual: <span className="font-mono bg-slate-50 dark:bg-slate-900 px-1 border rounded text-red-600">{result.actual}</span>
                     </div>
                   </div>
                 ))}

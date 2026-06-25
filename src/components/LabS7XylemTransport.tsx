@@ -27,9 +27,9 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 1: Xylem Transport Demonstration" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-blue-800 mb-4">Capillary Action in Xylem</h2>
-          <p className="text-slate-600 mb-6">Observe how a white flower changes color over time when its stem is placed in colored water. This demonstrates how xylem vessels transport water upwards from the roots to the leaves.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Observe how a white flower changes color over time when its stem is placed in colored water. This demonstrates how xylem vessels transport water upwards from the roots to the leaves.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -42,7 +42,7 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
             </button>
             <button 
               onClick={() => { setTime(0); setRunning(false); }}
-              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+              className="flex items-center px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium"
             >
               Reset
             </button>
@@ -50,9 +50,9 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
         </div>
 
         {/* Experiment Setup */}
-        <div className="w-96 h-96 relative flex justify-center items-end p-8 bg-slate-50 rounded-3xl shadow-sm border border-slate-200">
+        <div className="w-96 h-96 relative flex justify-center items-end p-8 bg-slate-50 dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           {/* Beaker */}
-          <div className="w-32 h-40 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-xl relative flex justify-center overflow-hidden">
+          <div className="w-32 h-40 border-b-4 border-l-4 border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-xl relative flex justify-center overflow-hidden">
             {/* Colored Water */}
             <div className="absolute bottom-0 w-full h-24 bg-blue-500/80 border-t-2 border-blue-400">
                {/* Particles flowing up */}

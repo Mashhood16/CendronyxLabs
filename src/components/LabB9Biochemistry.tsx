@@ -54,16 +54,16 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Biochemistry Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <Info className="mr-2 text-rose-600" /> Macromolecule Tests
           </h2>
-          <div className="space-y-4 text-slate-600 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
             <p>You have 4 unknown solutions (A, B, C, D). Use the reagents to identify the macromolecule in each.</p>
             
             <div className="space-y-3">
@@ -79,31 +79,31 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
                 <strong>3. Benedict's Test (Reducing Sugars)</strong><br/>
                 Turns from blue to <span className="font-bold text-red-500">brick-red</span> if glucose is present, <em>but requires heating in a water bath</em>.
               </div>
-              <div className="bg-slate-100 p-3 rounded border border-slate-200">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <strong>4. Ethanol Emulsion Test (Lipids)</strong><br/>
-                Forms a <span className="font-bold text-white bg-slate-400 px-1 rounded">milky white</span> emulsion if lipids are present.
+                Forms a <span className="font-bold text-white bg-slate-400 dark:bg-slate-800 px-1 rounded">milky white</span> emulsion if lipids are present.
               </div>
             </div>
           </div>
         </div>
 
         {/* Simulation */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold text-slate-800">Lab Bench</h2>
-            <button onClick={washTubes} className="flex items-center text-sm bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Lab Bench</h2>
+            <button onClick={washTubes} className="flex items-center text-sm bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 py-1 rounded">
               <RotateCcw className="w-4 h-4 mr-1" /> Wash Tubes
             </button>
           </div>
           
-          <div className="flex justify-around items-end h-48 mb-8 border-b-4 border-slate-800 pb-2 relative">
+          <div className="flex justify-around items-end h-48 mb-8 border-b-4 border-slate-800 dark:border-slate-500 pb-2 relative">
             {tubes.map(t => (
               <div 
                 key={t.id} 
                 onClick={() => setSelectedTubeId(t.id)}
                 className="flex flex-col items-center cursor-pointer transition-transform hover:-translate-y-2"
               >
-                <div className={`mb-2 font-bold ${selectedTubeId === t.id ? 'text-rose-600 scale-110' : 'text-slate-500'}`}>
+                <div className={`mb-2 font-bold ${selectedTubeId === t.id ? 'text-rose-600 scale-110' : 'text-slate-500 dark:text-slate-400'}`}>
                   Tube {t.id}
                   {selectedTubeId === t.id && <span className="block w-2 h-2 bg-rose-600 rounded-full mx-auto mt-1"></span>}
                 </div>
@@ -128,7 +128,7 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
             <button onClick={() => applyReagent('benedict')} className="flex items-center justify-center p-3 border border-blue-300 bg-blue-50 hover:bg-blue-100 rounded-lg font-bold text-blue-800 transition-colors">
               <Droplet className="w-4 h-4 mr-2" /> Add Benedict's
             </button>
-            <button onClick={() => applyReagent('ethanol')} className="flex items-center justify-center p-3 border border-slate-300 bg-slate-50 hover:bg-slate-100 rounded-lg font-bold text-slate-800 transition-colors">
+            <button onClick={() => applyReagent('ethanol')} className="flex items-center justify-center p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:bg-slate-800 rounded-lg font-bold text-slate-800 dark:text-slate-100 transition-colors">
               <Droplet className="w-4 h-4 mr-2" /> Add Ethanol
             </button>
           </div>
@@ -143,22 +143,22 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <CheckCircle className="mr-2 text-rose-600" /> Identification
           </h2>
           
           <div className="space-y-4">
-            <p className="text-sm text-slate-600">Based on your tests, identify the contents of Tube A and Tube C.</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">Based on your tests, identify the contents of Tube A and Tube C.</p>
             
             <div>
-              <label className="block text-sm font-bold text-slate-700 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
                 1. What macromolecule is in Tube A?
               </label>
               <select 
                 value={q1} 
                 onChange={(e) => setQ1(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-rose-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-rose-500 outline-none"
               >
                 <option value="">Select...</option>
                 <option value="starch">Starch</option>
@@ -169,13 +169,13 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
                 2. What macromolecule is in Tube C?
               </label>
               <select 
                 value={q2} 
                 onChange={(e) => setQ2(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-rose-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-rose-500 outline-none"
               >
                 <option value="">Select...</option>
                 <option value="starch">Starch</option>

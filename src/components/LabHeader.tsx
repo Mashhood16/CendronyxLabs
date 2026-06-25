@@ -15,32 +15,32 @@ interface LabHeaderProps {
 
 const variantStyles: Record<LabHeaderVariant, { container: string; button: string; title: string; subtitle: string }> = {
   light: {
-    container: 'bg-slate-50 border-b border-slate-200',
-    button: 'p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600',
-    title: 'text-slate-800',
-    subtitle: 'text-slate-500',
+    container: 'bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:bg-slate-900 dark:border-slate-700 dark:border-slate-500',
+    button: 'p-2 rounded-full transition-colors text-slate-600 dark:text-slate-300 hover:bg-slate-100/50 dark:hover:bg-white/10',
+    title: 'text-slate-800 dark:text-white',
+    subtitle: 'text-slate-500 dark:text-slate-400',
   },
   dark: {
-    container: 'bg-slate-800 border-b border-slate-700 text-white',
-    button: 'p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-300',
+    container: 'bg-slate-800 dark:bg-slate-800 border-b border-slate-700 dark:border-slate-500 text-white',
+    button: 'p-2 rounded-full transition-colors text-slate-300 hover:bg-white/10',
     title: 'text-white',
     subtitle: 'text-slate-300',
   },
   emerald: {
-    container: 'bg-emerald-700 text-white',
-    button: 'p-2 hover:bg-emerald-600 rounded-full transition-colors text-white/80',
+    container: 'bg-emerald-700 text-white dark:bg-emerald-900',
+    button: 'p-2 rounded-full transition-colors text-white/80 hover:bg-white/10',
     title: 'text-white',
     subtitle: 'text-emerald-100',
   },
   amber: {
-    container: 'bg-amber-700 text-white',
-    button: 'p-2 hover:bg-amber-600 rounded-full transition-colors text-white/80',
+    container: 'bg-amber-700 text-white dark:bg-amber-900',
+    button: 'p-2 rounded-full transition-colors text-white/80 hover:bg-white/10',
     title: 'text-white',
     subtitle: 'text-amber-100',
   },
   blue: {
     container: 'bg-blue-900 text-white',
-    button: 'p-2 hover:bg-blue-800 rounded-full transition-colors text-white/80',
+    button: 'p-2 rounded-full transition-colors text-white/80 hover:bg-white/10',
     title: 'text-white',
     subtitle: 'text-blue-200',
   },

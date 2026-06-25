@@ -57,12 +57,11 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
   const isAllComplete = completed.every(c => c);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans" style={{backgroundColor: 'rgb(var(--slate-50))', color: 'rgb(var(--slate-800))'}}>
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Conditional Logic Translation" />
 
-        <h1 className="text-3xl font-bold mb-2">Conditional Logic Translation</h1>
-        <p className="text-slate-600 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
 
         {isAllComplete && (
           <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
@@ -71,17 +70,17 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-8 max-w-4xl mx-auto w-full">
+        <div className="rounded-xl shadow-lg border p-8 max-w-4xl mx-auto w-full" style={{backgroundColor: 'rgb(var(--slate-50))', borderColor: 'rgb(var(--slate-200))'}}>
           <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-            <h2 className="text-xl font-bold text-slate-700">Scenario {selectedScenario + 1} of 3</h2>
+            <h2 className="text-xl font-bold text-slate-700 dark:text-slate-200">Scenario {selectedScenario + 1} of 3</h2>
             <div className="flex gap-2">
               {[0, 1, 2].map(idx => (
-                <div key={idx} className={`w-3 h-3 rounded-full ${completed[idx] ? 'bg-emerald-500' : selectedScenario === idx ? 'bg-blue-500' : 'bg-slate-200'}`} />
+                <div key={idx} className={`w-3 h-3 rounded-full ${completed[idx] ? 'bg-emerald-500' : selectedScenario === idx ? 'bg-blue-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
               ))}
             </div>
           </div>
 
-          <div className="text-xl text-center italic font-serif text-slate-600 mb-8 bg-slate-50 p-6 rounded-lg border border-slate-200">
+          <div className="text-xl text-center italic font-serif mb-8 p-6 rounded-lg border" style={{backgroundColor: 'rgb(var(--slate-50))', borderColor: 'rgb(var(--slate-200))', color: 'rgb(var(--slate-600))'}}>
             "{scenarios[selectedScenario].text}"
           </div>
 
@@ -108,7 +107,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
             </div>
 
             {/* Workspace */}
-            <div className="flex-1 bg-slate-800 rounded-xl p-6 shadow-inner relative border-4 border-slate-900">
+            <div className="flex-1 rounded-xl p-6 shadow-inner relative border-4" style={{backgroundColor: '#1e293b', borderColor: '#0f172a'}}>
               <h3 className="font-bold text-sm uppercase text-slate-400 tracking-wider mb-4 text-center">Translation Workspace</h3>
               
               <div className="flex flex-wrap gap-2 mb-6 min-h-[100px] content-start">
@@ -127,13 +126,13 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
                   )
                 })}
                 {workspace.length === 0 && (
-                  <div className="w-full text-center text-slate-500 font-medium italic mt-8">Click logic blocks to add them here</div>
+                  <div className="w-full text-center text-slate-500 dark:text-slate-400 font-medium italic mt-8">Click logic blocks to add them here</div>
                 )}
               </div>
 
               {!completed[selectedScenario] ? (
                 <div className="flex gap-4">
-                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg bg-slate-700 text-white hover:bg-slate-600 transition-colors">Clear</button>
+                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg transition-colors border" style={{backgroundColor: 'rgb(var(--slate-700))', borderColor: 'rgb(var(--slate-600))', color: 'rgb(var(--slate-100))'}}>Clear</button>
                   <button onClick={checkSolution} className="flex-1 py-3 font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">Check Code</button>
                 </div>
               ) : (

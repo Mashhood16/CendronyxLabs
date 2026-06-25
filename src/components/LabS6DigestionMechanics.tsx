@@ -14,9 +14,9 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 4: Physical Digestion Mechanics" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-orange-100 max-w-2xl w-full text-center mb-8">
-          <h2 className="text-2xl font-bold text-orange-800 mb-4">Relating Tools to Digestion</h2>
-          <p className="text-slate-600 mb-6">Physical digestion involves breaking down food into smaller pieces without chemical changes. Apply the tools to the banana to simulate this process.</p>
+        <div className="bg-slate-50 dark:bg-slate-800 dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-900 max-w-2xl w-full text-center mb-8">
+          <h2 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-4">Relating Tools to Digestion</h2>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Physical digestion involves breaking down food into smaller pieces without chemical changes. Apply the tools to the banana to simulate this process.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -25,8 +25,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
               className="flex flex-col items-center gap-3 p-4 bg-orange-100 rounded-xl hover:bg-orange-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-orange-200"
             >
               <KnifeIcon className="w-8 h-8 text-orange-700" />
-              <span className="font-bold text-orange-900">Knife</span>
-              <span className="text-xs text-orange-700 font-medium">(Incisors)</span>
+              <span className="font-bold text-orange-900 dark:text-orange-200">Knife</span>
+              <span className="text-xs text-orange-700 dark:text-orange-300 font-medium">(Incisors)</span>
             </button>
             <button 
               onClick={() => setBananaState('crushed')}
@@ -34,8 +34,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
               className="flex flex-col items-center gap-3 p-4 bg-amber-100 rounded-xl hover:bg-amber-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-amber-200"
             >
               <Utensils className="w-8 h-8 text-amber-700" />
-              <span className="font-bold text-amber-900">Spoon</span>
-              <span className="text-xs text-amber-700 font-medium">(Premolars)</span>
+              <span className="font-bold text-amber-900 dark:text-amber-200">Spoon</span>
+              <span className="text-xs text-amber-700 dark:text-amber-300 font-medium">(Premolars)</span>
             </button>
             <button 
               onClick={() => setBananaState('mashed')}
@@ -43,8 +43,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
               className="flex flex-col items-center gap-3 p-4 bg-yellow-100 rounded-xl hover:bg-yellow-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-yellow-200"
             >
               <Utensils className="w-8 h-8 text-yellow-700 rotate-180" />
-              <span className="font-bold text-yellow-900">Fork</span>
-              <span className="text-xs text-yellow-700 font-medium">(Molars/Tongue)</span>
+              <span className="font-bold text-yellow-900 dark:text-yellow-200">Fork</span>
+              <span className="text-xs text-yellow-700 dark:text-yellow-300 font-medium">(Molars/Tongue)</span>
             </button>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             {bananaState === 'whole' && (
               <div className="w-48 h-16 bg-yellow-400 rounded-full border-2 border-yellow-500 transform -rotate-12 shadow-lg relative flex items-center overflow-hidden">
                  <div className="w-4 h-full bg-green-500 absolute left-0"></div>
-                 <div className="w-4 h-full bg-slate-800 absolute right-0"></div>
+                 <div className="w-4 h-full bg-slate-800 dark:bg-slate-800 absolute right-0"></div>
               </div>
             )}
 
@@ -73,7 +73,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
 
             {bananaState === 'crushed' && (
               <div className="w-48 h-48 bg-yellow-100 rounded-full blob-shape border-2 border-yellow-300 relative">
-                 <div className="absolute w-8 h-8 bg-slate-50/50 rounded-full top-8 left-12 blur-sm"></div>
+                 <div className="absolute w-8 h-8 bg-slate-50 dark:bg-slate-900/50 rounded-full top-8 left-12 blur-sm"></div>
                  <div className="absolute w-6 h-6 bg-yellow-300/50 rounded-full bottom-12 right-12 blur-sm"></div>
               </div>
             )}
@@ -81,7 +81,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             {bananaState === 'mashed' && (
               <div className="w-64 h-64 bg-yellow-50 rounded-full flex items-center justify-center relative">
                  {/* Milk added */}
-                 <div className="w-56 h-56 bg-slate-50/80 rounded-full blob-shape-alt border border-yellow-100 flex items-center justify-center shadow-inner">
+                 <div className="w-56 h-56 bg-slate-50 dark:bg-slate-900/80 rounded-full blob-shape-alt border border-yellow-100 flex items-center justify-center shadow-inner">
                     <div className="w-40 h-40 bg-yellow-100/80 blob-shape border border-yellow-200"></div>
                  </div>
               </div>

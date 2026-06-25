@@ -8,13 +8,13 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
   const [step, setStep] = useState(0);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 4.1: Making of Yogurt" subtitle="Observe bacterial fermentation of milk" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center">
           
-          <div className="relative w-64 h-64 flex justify-center items-end border-b-4 border-slate-300 pb-2">
+          <div className="relative w-64 h-64 flex justify-center items-end border-b-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 pb-2">
             
             {/* Stove/Heat */}
             {step === 1 && (
@@ -24,11 +24,11 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
             )}
 
             {/* Pot */}
-            <div className="w-48 h-32 border-4 border-slate-400 rounded-b-3xl rounded-t-sm relative overflow-hidden bg-slate-100 flex flex-col justify-end z-10">
+            <div className="w-48 h-32 border-4 border-slate-400 dark:border-slate-500 rounded-b-3xl rounded-t-sm relative overflow-hidden bg-slate-100 dark:bg-slate-800 flex flex-col justify-end z-10">
               
               {/* Liquid Level */}
               <div 
-                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-slate-50 h-[80%]'}`}
+                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-slate-50 dark:bg-slate-900 h-[80%]'}`}
               >
                 {step === 1 && (
                   <div className="w-full h-full flex items-center justify-center animate-pulse opacity-50">
@@ -43,7 +43,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
 
             {/* Spoon adding yogurt starter */}
             {step === 2 && (
-              <div className="absolute top-10 right-10 animate-bounce text-slate-600 text-4xl">
+              <div className="absolute top-10 right-10 animate-bounce text-slate-600 dark:text-slate-300 text-4xl">
                 🥄
               </div>
             )}

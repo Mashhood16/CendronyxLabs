@@ -102,35 +102,35 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
     const mapY = (y: number) => 250 - (y / 100) * 200;
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} title="Statistics & Scatter Plots" />
 
             {/* Main Content Grid */}
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-orange-500">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-orange-500">
                     <div className="flex items-center mb-4 text-orange-800 shrink-0">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
                     </div>
-                    <div className="prose prose-orange flex-1 text-slate-700">
+                    <div className="prose prose-orange flex-1 text-slate-700 dark:text-slate-200">
                         <p>
                             <strong>Scatter plots</strong> are used to visualize the relationship (or correlation) between two distinct variables.
                         </p>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800">Types of Correlation</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Types of Correlation</h3>
                         <ul className="list-disc pl-5 space-y-2">
                             <li><strong>Positive Correlation:</strong> As one variable increases, the other also increases.</li>
                             <li><strong>Negative Correlation:</strong> As one variable increases, the other decreases.</li>
                             <li><strong>No Correlation:</strong> The points are scattered randomly with no clear pattern.</li>
                         </ul>
                         
-                        <h3 className="text-lg font-bold mt-4 text-slate-800">Line of Best Fit</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Line of Best Fit</h3>
                         <p>
                             A <strong>Line of Best Fit</strong> (or trendline) is a straight line drawn through the center of the data points that best represents the trend. It can be used to make <strong>predictions</strong> (interpolation or extrapolation).
                         </p>
                         
-                        <h3 className="text-lg font-bold mt-4 text-slate-800">Pearson Correlation (r)</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Pearson Correlation (r)</h3>
                         <p>
                             The correlation coefficient <code>r</code> measures the strength of the linear relationship, ranging from -1 (perfect negative) to 1 (perfect positive).
                         </p>
@@ -138,13 +138,13 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500">
                     <div className="flex items-center mb-4 text-blue-800 shrink-0">
                         <LineChart className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 relative bg-slate-50 rounded-lg overflow-hidden border border-slate-200 flex flex-col min-h-[300px]">
+                    <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
                         <div className="flex-1 relative w-full h-full p-2">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Axes */}
@@ -198,14 +198,14 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                             </svg>
                         </div>
 
-                        <div className="p-4 bg-slate-50 border-t border-slate-200 space-y-4 shrink-0 shadow-inner">
+                        <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4 shrink-0 shadow-inner">
                             <div className="flex items-center space-x-4">
                                 <div className="flex-1">
-                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">True Trend</label>
+                                    <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">True Trend</label>
                                     <select 
                                         value={trend} 
                                         onChange={(e) => setTrend(Number(e.target.value))}
-                                        className="w-full p-2 border border-slate-300 rounded text-sm bg-slate-50"
+                                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-sm bg-slate-50 dark:bg-slate-900"
                                     >
                                         <option value={1}>Positive (More Exercise = Fitter)</option>
                                         <option value={-1}>Negative (More Exercise = Lower BMI)</option>
@@ -213,7 +213,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                                     </select>
                                 </div>
                                 <div className="flex-1">
-                                    <label className="block text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Variance (Noise)</label>
+                                    <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider">Variance (Noise)</label>
                                     <input
                                         type="range"
                                         min="2"
@@ -234,25 +234,25 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-amber-500">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-amber-500">
                     <div className="flex items-center mb-4 text-amber-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Data Analysis</h2>
                     </div>
                     
                     <div className="flex-1 flex flex-col space-y-5">
-                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 text-slate-800">
+                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 text-slate-800 dark:text-slate-100">
                             <p className="mb-2">
                                 Observe the generated scatter plot mapping daily <strong>Active Minutes</strong> (x) to a <strong>Fitness Score</strong> (y).
                             </p>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">1. What type of correlation does this dataset show?</label>
+                            <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">1. What type of correlation does this dataset show?</label>
                             <select 
                                 value={userCorrelation}
                                 onChange={(e) => setUserCorrelation(e.target.value)}
-                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 text-lg"
+                                className="w-full p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 dark:bg-slate-900 text-lg"
                             >
                                 <option value="positive">Positive Correlation</option>
                                 <option value="negative">Negative Correlation</option>
@@ -261,7 +261,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                         </div>
 
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">
+                            <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">
                                 2. Based on the Line of Best Fit, predict the Fitness Score (y) if a person exercises for <strong>{predictX} minutes</strong>:
                             </label>
                             <input
@@ -269,10 +269,10 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                                 step="1"
                                 value={userPredictY}
                                 onChange={(e) => setUserPredictY(e.target.value)}
-                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none transition-shadow text-lg font-mono"
+                                className="w-full p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none transition-shadow text-lg font-mono"
                                 placeholder="e.g. 75"
                             />
-                            <p className="text-xs text-slate-500 mt-1">(Estimate using the dashed orange line or the equation)</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">(Estimate using the dashed orange line or the equation)</p>
                         </div>
 
                         <button
@@ -292,7 +292,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                         <div className="mt-auto pt-4">
                             <button
                                 onClick={generateData}
-                                className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg transition-colors border border-slate-300"
+                                className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-lg transition-colors border border-slate-300 dark:border-slate-700 dark:border-slate-500"
                             >
                                 <RotateCcw size={20} />
                                 <span>Generate New Dataset</span>

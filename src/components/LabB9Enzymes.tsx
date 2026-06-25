@@ -66,12 +66,12 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Enzyme Kinetics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
             <h2 className="text-xl font-bold text-gray-800 flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
@@ -126,13 +126,13 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
           <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
             <Beaker className="w-5 h-5 mr-2 text-emerald-600" />
             Interactive Simulation
           </h2>
           
-          <div className="relative bg-slate-100 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 flex-1">
+          <div className="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1">
             <svg viewBox="0 0 400 300" className="w-full h-full">
               {/* Background gradient for temperature */}
               <rect x="0" y="0" width="400" height="300" fill={temp > 60 ? '#fef2f2' : temp < 10 ? '#f0fdfa' : '#f8fafc'} />
@@ -207,7 +207,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Data & Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
           <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Data Logging & Analysis

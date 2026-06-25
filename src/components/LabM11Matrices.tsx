@@ -70,14 +70,12 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-purple-600 text-white p-4 shadow-md flex items-center justify-between">
-        <LabHeader onExit={onExit} title="Matrix Transformations & Cryptography" />
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Matrix Transformations & Cryptography" variant="dark" subtitle="Mathematics Class 11" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-purple-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-purple-500">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2"><Grid size={20} /> Matrix Operations</h2>
           <p className="text-gray-600 text-sm">
             Matrices can represent geometric transformations or be used as cipher keys to encrypt data.
@@ -125,10 +123,10 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* MIDDLE: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-fuchsia-500 relative">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-fuchsia-500 relative">
           <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Transformation Space</h2>
           
-          <svg viewBox="-10 -10 20 20" className="w-full h-80 max-w-md mt-6 border border-gray-200 rounded-lg shadow-inner bg-slate-50">
+          <svg viewBox="-10 -10 20 20" className="w-full h-80 max-w-md mt-6 border border-gray-200 rounded-lg shadow-inner bg-slate-50 dark:bg-slate-900">
             {/* Grid lines */}
             {[...Array(21)].map((_, i) => (
               <line key={`v-${i}`} x1={i-10} y1="-10" x2={i-10} y2="10" stroke={i === 10 ? "#000" : "#ddd"} strokeWidth={i === 10 ? 0.1 : 0.05} />
@@ -161,7 +159,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-pink-500">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-pink-500">
           <h2 className="text-xl font-bold text-gray-800">Cryptography Tasks</h2>
           <p className="text-sm text-gray-600 mb-2">Use the current matrix A to perform these operations.</p>
 

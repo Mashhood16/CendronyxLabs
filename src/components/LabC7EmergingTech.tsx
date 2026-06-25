@@ -20,12 +20,11 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
   ];
 
   return (
-    <div className="flex h-screen font-sans bg-slate-100 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Emerging Technologies" />
 
-        <h1 className="text-3xl font-bold mb-2">Emerging Technologies</h1>
-        <p className="text-slate-600 mb-8">Watch the presentation on emerging tech, then select one to build your mini-project.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Watch the presentation on emerging tech, then select one to build your mini-project.</p>
 
         {!videoWatched ? (
           <div className="bg-black rounded-2xl w-full max-w-3xl aspect-video flex flex-col items-center justify-center text-white relative shadow-2xl overflow-hidden group cursor-pointer" onClick={() => setVideoWatched(true)}>
@@ -47,19 +46,19 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
                 <button 
                   key={tech.id}
                   onClick={() => setSelectedTech(tech.id)}
-                  className={`p-6 rounded-xl border-2 text-left transition-all ${selectedTech === tech.id ? 'border-blue-500 bg-slate-50 shadow-md' : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-blue-300'}`}
+                  className={`p-6 rounded-xl border-2 text-left transition-all ${selectedTech === tech.id ? 'border-blue-500 bg-slate-50 dark:bg-slate-900 shadow-md' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900/50 hover:bg-slate-50 dark:bg-slate-900 hover:border-blue-300'}`}
                 >
                   <h3 className="font-bold text-lg mb-2">{tech.name}</h3>
-                  <p className="text-sm text-slate-500">{tech.desc}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{tech.desc}</p>
                 </button>
               ))}
             </div>
 
             {selectedTech && !submitted && (
-              <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
+              <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <h3 className="font-bold text-lg mb-4">Project Proposal</h3>
                 <textarea 
-                  className="w-full h-32 p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4 resize-none"
+                  className="w-full h-32 p-4 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4 resize-none"
                   placeholder="Describe what your group will build or research for this technology..."
                   value={projectNotes}
                   onChange={(e) => setProjectNotes(e.target.value)}
@@ -75,35 +74,35 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
             )}
 
             {submitted && (
-              <div className="bg-slate-50 p-8 rounded-xl shadow-xl text-center border border-slate-200 border-t-8 border-t-blue-500">
+              <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-xl shadow-xl text-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 border-t-8 border-t-blue-500">
                 <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8" />
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Project Submitted!</h2>
-                <p className="text-slate-600">Your proposal for the {technologies.find(t => t.id === selectedTech)?.name} project has been recorded.</p>
+                <p className="text-slate-600 dark:text-slate-300">Your proposal for the {technologies.find(t => t.id === selectedTech)?.name} project has been recorded.</p>
               </div>
             )}
           </div>
         )}
       </div>
       
-      <div className="w-80 bg-slate-50 p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
+      <div className="w-80 bg-slate-50 dark:bg-slate-900 p-6 border-l border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
         <h2 className="font-bold text-lg mb-4 flex items-center"><Video className="w-5 h-5 mr-2 text-blue-500"/> Task List</h2>
         <ul className="space-y-4">
-          <li className="flex items-center text-slate-600">
-            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${videoWatched ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300'}`}>
+          <li className="flex items-center text-slate-600 dark:text-slate-300">
+            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${videoWatched ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>
               {videoWatched && <CheckCircle className="w-4 h-4" />}
             </div>
             Watch the Tech Video
           </li>
-          <li className="flex items-center text-slate-600">
-            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${selectedTech ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300'}`}>
+          <li className="flex items-center text-slate-600 dark:text-slate-300">
+            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${selectedTech ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>
               {selectedTech && <CheckCircle className="w-4 h-4" />}
             </div>
             Select a Technology
           </li>
-          <li className="flex items-center text-slate-600">
-            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${submitted ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300'}`}>
+          <li className="flex items-center text-slate-600 dark:text-slate-300">
+            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center mr-3 ${submitted ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>
               {submitted && <CheckCircle className="w-4 h-4" />}
             </div>
             Submit Project Proposal

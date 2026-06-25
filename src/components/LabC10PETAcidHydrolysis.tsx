@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
     onExit?: () => void;
@@ -86,16 +87,13 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-orange-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold">Chemical Recycling: PET Acid Hydrolysis</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-orange-700 hover:bg-orange-800 rounded">Exit</button>}
-            </div>
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+            <LabHeader onExit={onExit} title="Chemical Recycling: PET Acid Hydrolysis" subtitle="Depolymerisation of PET" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-orange-600"/> Setup & Theory</h2>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-slate-700 dark:text-slate-200">
                         Chemical recycling of PET involves breaking the ester bonds via acid hydrolysis at high temperatures.
                         This depolymerises the plastic back into its original monomers: terephthalic acid (TPA) and ethylene glycol (EG).
                     </p>
@@ -118,16 +116,16 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                             <button onClick={handleReact} disabled={isReacting || progress > 0} className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50 flex justify-center items-center">
                                 <Play className="w-4 h-4 mr-1"/> Hydrolyse
                             </button>
-                            <button onClick={handleReset} className="flex-1 bg-slate-600 text-white py-2 rounded hover:bg-slate-700 flex justify-center items-center">
+                            <button onClick={handleReset} className="flex-1 bg-slate-600 dark:bg-slate-800 text-white py-2 rounded hover:bg-slate-700 dark:bg-slate-800 flex justify-center items-center">
                                 <RotateCcw className="w-4 h-4 mr-1"/> Reset
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Reactor Vessel</h2>
-                    <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-64 mt-12 bg-slate-100 dark:bg-slate-800 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center overflow-hidden">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
                             <rect x="0" y={100 + (100 - progress)} width="500" height="100" fill="#fca5a5" opacity="0.3" />
                             
@@ -157,7 +155,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-orange-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={!isReacting && progress === 0} className="w-full bg-orange-100 text-orange-700 py-2 rounded font-medium hover:bg-orange-200 disabled:opacity-50">
@@ -166,7 +164,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
 
                     <div className="flex-1 overflow-y-auto">
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100">
+                            <thead className="bg-slate-100 dark:bg-slate-800">
                                 <tr>
                                     <th className="p-2 border">Time (s)</th>
                                     <th className="p-2 border">PET (g)</th>
@@ -185,7 +183,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                         </table>
                     </div>
 
-                    <div className="bg-slate-100 p-3 rounded">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded">
                         <h3 className="font-semibold text-sm mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-600"/> Assessment</h3>
                         <p className="text-xs mb-2">Assuming 100% yield, what mass of Terephthalic acid (TPA) is recovered from {unknownMass} g of PET waste? (PET unit = 192.17 g/mol, TPA = 166.13 g/mol)</p>
                         <div className="flex space-x-2">

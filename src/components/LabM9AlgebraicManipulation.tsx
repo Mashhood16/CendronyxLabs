@@ -77,35 +77,35 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
   const objX = 150 - uVal * 3;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Algebraic Manipulation" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <BookOpen className="mr-2" /> Theory & Context
           </h2>
           
-          <div className="flex bg-slate-100 p-1 rounded-lg mb-6 shrink-0">
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg mb-6 shrink-0">
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-slate-50 shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-slate-50 dark:bg-slate-900 shadow text-indigo-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setMode('poly')}
             >
               Polynomials
             </button>
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-slate-50 shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-slate-50 dark:bg-slate-900 shadow text-indigo-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setMode('optics')}
             >
               Optics & LCM
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700">
+          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
             {mode === 'poly' ? (
               <>
-                <h3 className="text-lg font-semibold text-slate-800">Area Model for Binomials</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Area Model for Binomials</h3>
                 <p>To multiply two binomials like <strong>(x + a)(x + b)</strong>, we can use an area model.</p>
                 <p>Imagine a rectangle with width <code>(x + a)</code> and height <code>(x + b)</code>. The total area is the sum of four smaller rectangles:</p>
                 <ul className="list-disc pl-5 space-y-1">
@@ -118,13 +118,13 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold text-slate-800">Algebraic Fractions in Optics</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Algebraic Fractions in Optics</h3>
                 <p>The thin lens equation relates the object distance <code>u</code>, image distance <code>v</code>, and focal length <code>f</code>:</p>
-                <div className="bg-slate-100 p-3 rounded text-center font-mono text-lg my-2 border border-slate-200">
+                <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono text-lg my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   1/f = 1/u + 1/v
                 </div>
                 <p>To find the focal length <code>f</code>, we find the Lowest Common Multiple (LCM) or simply a common denominator for the algebraic fraction:</p>
-                <div className="bg-slate-100 p-3 rounded text-center font-mono my-2 border border-slate-200">
+                <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   1/f = (v + u) / (uv)
                 </div>
                 <p>Taking the reciprocal gives: <code>f = uv / (u + v)</code>. This demonstrates how algebraic manipulation solves physical equations.</p>
@@ -134,12 +134,12 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <Activity className="mr-2" /> Interactive Simulator
           </h2>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex-1 flex flex-col mb-4 min-h-[300px]">
+          <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 flex-1 flex flex-col mb-4 min-h-[300px]">
             {mode === 'poly' ? (
               <div className="flex-1 flex flex-col items-center justify-center">
                 <svg width="250" height="250" viewBox="0 0 250 250" className="drop-shadow-md">
@@ -178,7 +178,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                   <path d={`M ${objX} 60 L 150 60 L ${imgX} ${imgY}`} stroke="#ef4444" fill="none" strokeWidth="1.5" opacity="0.7" />
                   <path d={`M ${objX} 60 L 150 100 L ${imgX} ${imgY}`} stroke="#3b82f6" fill="none" strokeWidth="1.5" opacity="0.7" />
                 </svg>
-                <div className="absolute top-2 right-2 bg-slate-50/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
+                <div className="absolute top-2 right-2 bg-slate-50 dark:bg-slate-900/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   f = {f.toFixed(2)} cm
                 </div>
               </div>
@@ -189,17 +189,17 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
             {mode === 'poly' ? (
               <>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700">Base x:</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Base x:</label>
                   <input type="range" min="3" max="10" value={xVal} onChange={(e) => setXVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{xVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700">Value a:</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Value a:</label>
                   <input type="range" min="1" max="5" value={aVal} onChange={(e) => setAVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{aVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700">Value b:</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Value b:</label>
                   <input type="range" min="1" max="5" value={bVal} onChange={(e) => setBVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{bVal}</span>
                 </div>
@@ -207,12 +207,12 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
             ) : (
               <>
                 <div className="flex items-center gap-4">
-                  <label className="w-32 text-sm font-medium text-slate-700">Obj dist (u):</label>
+                  <label className="w-32 text-sm font-medium text-slate-700 dark:text-slate-200">Obj dist (u):</label>
                   <input type="range" min="10" max="40" value={uVal} onChange={(e) => setUVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
                   <span className="w-12 text-right font-mono">{uVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <label className="w-32 text-sm font-medium text-slate-700">Img dist (v):</label>
+                  <label className="w-32 text-sm font-medium text-slate-700 dark:text-slate-200">Img dist (v):</label>
                   <input type="range" min="10" max="40" value={vVal} onChange={(e) => setVVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
                   <span className="w-12 text-right font-mono">{vVal}</span>
                 </div>
@@ -228,14 +228,14 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <TableIcon className="mr-2" /> Analysis & Data
           </h2>
 
-          <div className="bg-slate-50 rounded-lg border border-slate-200 p-3 mb-6 h-48 overflow-y-auto">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 mb-6 h-48 overflow-y-auto">
             <table className="w-full text-sm text-left">
-              <thead className="sticky top-0 bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+              <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <tr>
                   <th className="pb-2">Type</th>
                   <th className="pb-2">Inputs</th>
@@ -247,7 +247,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                   <tr><td colSpan={3} className="py-4 text-center text-slate-400">No data recorded</td></tr>
                 ) : (
                   logs.map((log, i) => (
-                    <tr key={i} className="hover:bg-slate-100 transition">
+                    <tr key={i} className="hover:bg-slate-100 dark:bg-slate-800 transition">
                       <td className="py-2">{log.mode}</td>
                       <td className="py-2">{log.input}</td>
                       <td className="py-2 font-semibold text-indigo-600">{log.res}</td>
@@ -258,12 +258,12 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 pt-4">
-            <h3 className="font-semibold text-slate-800 mb-3">Knowledge Check</h3>
+          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
             
             {mode === 'poly' ? (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-slate-700 dark:text-slate-200">
                   Expand: <code className="font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded">(x + {qPolyA})(x + {qPolyB})</code>
                 </p>
                 <div className="flex items-center gap-2">
@@ -272,14 +272,14 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                     type="number" 
                     value={ansPolyX} 
                     onChange={(e) => setAnsPolyX(e.target.value)}
-                    className="w-16 border border-slate-300 rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
                   />
                   <span>x + </span>
                   <input 
                     type="number" 
                     value={ansPolyC} 
                     onChange={(e) => setAnsPolyC(e.target.value)}
-                    className="w-16 border border-slate-300 rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
                   />
                 </div>
                 <div className="flex items-center gap-4 mt-4">
@@ -292,7 +292,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-slate-700 dark:text-slate-200">
                   Given u = {qOpticsU} cm, v = {qOpticsV} cm. <br/>
                   Find focal length f (2 decimal places).
                 </p>
@@ -302,7 +302,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                     type="number" 
                     value={ansOpticsF} 
                     onChange={(e) => setAnsOpticsF(e.target.value)}
-                    className="w-24 border border-slate-300 rounded p-1 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-24 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 focus:ring-2 focus:ring-indigo-500 outline-none"
                     placeholder="0.00"
                   />
                   <span>cm</span>

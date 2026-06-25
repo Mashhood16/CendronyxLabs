@@ -34,28 +34,20 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-50 flex flex-col font-sans">
-      <header className="bg-purple-800 text-white p-4 shadow-md flex justify-between items-center z-20">
-        <div className="flex items-center gap-4">
-          <LabHeader onExit={onExit} title="Act 6.1: Business Plan Drafting" />
-          <div>
-            <h1 className="text-xl font-bold">Act 6.1: Business Plan Drafting</h1>
-            <p className="text-sm text-purple-200">Draft your startup pitch deck and present it to partners.</p>
-          </div>
-        </div>
-      </header>
+    <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 flex flex-col font-sans">
+      <LabHeader onExit={onExit} title="Act 6.1: Business Plan Drafting" subtitle="Draft your startup pitch deck and present it to partners." variant="dark" />
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Editor Area */}
-        <div className="flex-1 bg-slate-50 p-12 overflow-y-auto">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-12 overflow-y-auto">
           
           <div className="max-w-3xl mx-auto">
              <div className="border-b-4 border-purple-800 pb-4 mb-8 flex justify-between items-end">
                 <input 
                   type="text" 
                   placeholder="Brand / Company Name"
-                  className="text-4xl font-bold outline-none text-slate-800 w-2/3 placeholder-slate-300"
+                  className="text-4xl font-bold outline-none text-slate-800 dark:text-slate-100 w-2/3 placeholder-slate-300"
                   value={plan.name} onChange={e=>setPlan({...plan, name: e.target.value})}
                 />
                 <span className="text-slate-400 font-bold uppercase tracking-widest text-sm">Official Business Plan</span>
@@ -64,52 +56,52 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
              <div className="space-y-8">
                 
                 <div className="group">
-                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 mb-2">
+                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">
                      <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm">1</span>
                      Business Overview
                    </label>
-                   <p className="text-sm text-slate-500 mb-2">What does your company do? What problem are you solving?</p>
+                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">What does your company do? What problem are you solving?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
                      placeholder="e.g. We are creating a smart backpack that charges devices..."
                      value={plan.overview} onChange={e=>setPlan({...plan, overview: e.target.value})}
                    ></textarea>
                 </div>
 
                 <div className="group">
-                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 mb-2">
+                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">
                      <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm">2</span>
                      Objectives
                    </label>
-                   <p className="text-sm text-slate-500 mb-2">What are your short-term and long-term goals?</p>
+                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">What are your short-term and long-term goals?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
                      placeholder="e.g. Sell 10,000 units in year 1. Expand to Europe in year 2."
                      value={plan.objectives} onChange={e=>setPlan({...plan, objectives: e.target.value})}
                    ></textarea>
                 </div>
 
                 <div className="group">
-                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 mb-2">
+                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">
                      <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm">3</span>
                      Market Analysis
                    </label>
-                   <p className="text-sm text-slate-500 mb-2">Who are your customers? Who are your competitors?</p>
+                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Who are your customers? Who are your competitors?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
                      placeholder="e.g. Target audience is college students aged 18-24. Main competitor is BrandX."
                      value={plan.market} onChange={e=>setPlan({...plan, market: e.target.value})}
                    ></textarea>
                 </div>
 
                 <div className="group">
-                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 mb-2">
+                   <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">
                      <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm">4</span>
                      Financial Costing
                    </label>
-                   <p className="text-sm text-slate-500 mb-2">What is the budget required? Break down the costs.</p>
+                   <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">What is the budget required? Break down the costs.</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
                      placeholder="e.g. Production: $50,000. Marketing: $10,000. Website: $2,000."
                      value={plan.costing} onChange={e=>setPlan({...plan, costing: e.target.value})}
                    ></textarea>
@@ -131,17 +123,17 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
 
         {/* Partners Feedback Panel */}
         {feedback && (
-          <div className="w-96 bg-slate-900 text-white p-8 shadow-[-20px_0_40px_rgba(0,0,0,0.2)] z-10 animate-fade-in flex flex-col overflow-y-auto">
-             <h2 className="text-2xl font-bold mb-6 text-purple-400 border-b border-slate-700 pb-2">Boardroom Decision</h2>
+          <div className="w-96 bg-slate-900 dark:bg-slate-800 text-white p-8 shadow-[-20px_0_40px_rgba(0,0,0,0.2)] z-10 animate-fade-in flex flex-col overflow-y-auto">
+             <h2 className="text-2xl font-bold mb-6 text-purple-400 border-b border-slate-700 dark:border-slate-500 pb-2">Boardroom Decision</h2>
              
              <div className="flex-1">
-               <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 relative">
+               <div className="bg-slate-800 dark:bg-slate-800 p-6 rounded-xl border border-slate-700 dark:border-slate-500 relative">
                   <div className="absolute -left-3 top-6 w-0 h-0 border-y-8 border-y-transparent border-r-8 border-r-slate-800"></div>
                   <p className="text-lg leading-relaxed">{feedback}</p>
                </div>
              </div>
 
-             <button onClick={() => setFeedback(null)} className="w-full py-3 bg-slate-700 hover:bg-slate-600 rounded font-bold transition-colors mt-auto">Return to Editing</button>
+             <button onClick={() => setFeedback(null)} className="w-full py-3 bg-slate-700 dark:bg-slate-800 hover:bg-slate-600 dark:bg-slate-800 rounded font-bold transition-colors mt-auto">Return to Editing</button>
           </div>
         )}
 

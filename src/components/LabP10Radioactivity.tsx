@@ -82,53 +82,53 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
   });
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 20: Radioactivity & Attenuation" subtitle="Quantitative analysis of ionizing radiation absorption." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* LEFT: Theory & Setup */}
         <div className="flex flex-col gap-6">
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
-            <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-purple-600"/> Theory</h2>
-            <p className="text-sm text-slate-600 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-purple-600"/> Theory</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               Radiation intensity <strong>I</strong> decreases exponentially as it passes through an absorber of thickness <strong>x</strong>:
             </p>
             <div className="bg-purple-50 p-3 rounded-lg text-center font-mono text-purple-900 mb-4 font-bold border border-purple-100">
               I = I₀ e^(-μx)
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               Where <strong>I₀</strong> is the initial intensity and <strong>μ</strong> is the linear attenuation coefficient. 
               The <em>half-thickness</em> is the thickness needed to halve the intensity: <strong>x_½ = ln(2) / μ</strong>.
             </p>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
-            <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-purple-600"/> Setup</h2>
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-purple-600"/> Setup</h2>
             
             <div className="space-y-5">
               <div>
-                <div className="text-sm font-medium mb-2 text-slate-700">Source Type</div>
+                <div className="text-sm font-medium mb-2 text-slate-700 dark:text-slate-200">Source Type</div>
                 <div className="flex gap-2">
                   {(['Alpha', 'Beta', 'Gamma'] as SourceType[]).map(s => (
                     <button 
                       key={s} onClick={() => setSource(s)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900'}`}
                     >
                       {s}
                     </button>
                   ))}
                 </div>
-                <div className="text-xs text-slate-500 mt-2">{sourceData[source].desc}</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 mt-2">{sourceData[source].desc}</div>
               </div>
 
               <div>
-                <div className="text-sm font-medium mb-2 text-slate-700">Absorber Material</div>
+                <div className="text-sm font-medium mb-2 text-slate-700 dark:text-slate-200">Absorber Material</div>
                 <div className="flex gap-2">
                   {(['Paper', 'Aluminum', 'Lead'] as AbsorberType[]).map(a => (
                     <button 
                       key={a} onClick={() => setAbsorber(a)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900'}`}
                     >
                       {a}
                     </button>
@@ -138,7 +138,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
-                  <span className="text-slate-700">Absorber Thickness</span>
+                  <span className="text-slate-700 dark:text-slate-200">Absorber Thickness</span>
                   <span className="text-purple-600 font-mono">{thickness} mm</span>
                 </div>
                 <input type="range" min="0" max="30" step="1" value={thickness} onChange={(e) => setThickness(Number(e.target.value))} className="w-full accent-purple-600" />
@@ -147,7 +147,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
             <button 
               onClick={() => setSourceOpen(!sourceOpen)}
-              className={`mt-6 w-full py-3 rounded-xl font-bold text-white transition-colors ${sourceOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-slate-700 hover:bg-slate-800'}`}
+              className={`mt-6 w-full py-3 rounded-xl font-bold text-white transition-colors ${sourceOpen ? 'bg-amber-500 hover:bg-amber-600 text-amber-950' : 'bg-slate-700 dark:bg-slate-800 hover:bg-slate-800 dark:bg-slate-800'}`}
             >
               {sourceOpen ? 'CLOSE LEAD SHIELD' : 'OPEN LEAD SHIELD'}
             </button>
@@ -155,7 +155,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 flex flex-col relative overflow-hidden h-full min-h-[500px]">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 flex flex-col relative overflow-hidden h-full min-h-[500px]">
           <div className="absolute top-4 left-4 text-white font-medium text-sm flex items-center gap-2 z-10">
             <Info className="w-4 h-4 text-purple-400" /> Virtual Geiger-Muller Bench
           </div>
@@ -230,7 +230,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
           </div>
 
-          <div className="bg-slate-800 p-4 border-t border-slate-700 flex justify-between items-center text-white">
+          <div className="bg-slate-800 dark:bg-slate-800 p-4 border-t border-slate-700 dark:border-slate-500 flex justify-between items-center text-white">
             <div className="text-sm text-slate-400">GM Tube Count Rate</div>
             <div className="font-mono text-3xl font-bold text-amber-400">
               {currentCPM} <span className="text-sm text-amber-600">CPM</span>
@@ -240,9 +240,9 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
         {/* RIGHT: Data & Assessment */}
         <div className="flex flex-col gap-6">
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-[400px]">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col h-[400px]">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Table2 className="w-5 h-5 text-purple-600"/> Data Log</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2"><Table2 className="w-5 h-5 text-purple-600"/> Data Log</h2>
               <button 
                 onClick={recordData}
                 disabled={!sourceOpen}
@@ -252,23 +252,23 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto border border-slate-200 rounded-lg mb-4">
+            <div className="flex-1 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg mb-4">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                   <tr>
-                    <th className="p-3 font-semibold text-slate-700">Source</th>
-                    <th className="p-3 font-semibold text-slate-700">Mat.</th>
-                    <th className="p-3 font-semibold text-slate-700">x (mm)</th>
-                    <th className="p-3 font-semibold text-slate-700">CPM</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">Source</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">Mat.</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">x (mm)</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">CPM</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {loggedData.length === 0 && <tr><td colSpan={4} className="p-4 text-center text-slate-400 italic">No data recorded</td></tr>}
                   {loggedData.map((d, i) => (
-                    <tr key={i} className="hover:bg-slate-50">
-                      <td className="p-3 font-mono text-slate-600">{d.source}</td>
-                      <td className="p-3 font-mono text-slate-600">{d.absorber}</td>
-                      <td className="p-3 font-mono text-slate-600">{d.thickness}</td>
+                    <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
+                      <td className="p-3 font-mono text-slate-600 dark:text-slate-300">{d.source}</td>
+                      <td className="p-3 font-mono text-slate-600 dark:text-slate-300">{d.absorber}</td>
+                      <td className="p-3 font-mono text-slate-600 dark:text-slate-300">{d.thickness}</td>
                       <td className="p-3 font-mono font-bold text-purple-600">{d.cpm}</td>
                     </tr>
                   ))}
@@ -276,7 +276,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
               </table>
             </div>
 
-            <div className="h-32 border border-slate-200 rounded-lg p-2 relative bg-slate-50">
+            <div className="h-32 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 relative bg-slate-50 dark:bg-slate-900">
               <div className="absolute top-2 left-2 text-[10px] text-slate-400 font-bold">CPM vs Thickness</div>
               <svg className="w-full h-full" viewBox="0 0 300 200" preserveAspectRatio="none">
                 <line x1="0" y1="200" x2="300" y2="200" stroke="#cbd5e1" strokeWidth="2" />
@@ -292,7 +292,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-slate-800 rounded-2xl shadow-sm border border-slate-700 p-6 text-white flex-1">
+          <div className="bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 text-white flex-1">
             <h2 className="text-lg font-bold mb-3 text-amber-400">Analysis Assessment</h2>
             <p className="text-sm text-slate-300 mb-4 leading-relaxed">
               Based on the formula <code>I = I₀ e^(-μx)</code>, if a student finds that exactly <strong>10 mm</strong> of Lead is required to halve the Gamma ray count rate, calculate the attenuation coefficient <strong>μ</strong> of Lead in mm⁻¹. (Use ln(2) ≈ 0.693).
@@ -303,7 +303,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                 placeholder="e.g. 0.05"
                 value={assessmentAns}
                 onChange={e => setAssessmentAns(e.target.value)}
-                className="flex-1 bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-400"
+                className="flex-1 bg-slate-700 dark:bg-slate-800 border border-slate-600 dark:border-slate-500 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-400"
               />
               <button onClick={checkAssessment} className="bg-amber-600 hover:bg-amber-500 px-4 py-2 rounded-lg font-bold text-sm">
                 Check

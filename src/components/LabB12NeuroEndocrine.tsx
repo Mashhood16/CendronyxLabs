@@ -62,7 +62,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
   }, []);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Interactive Neurology & Pharmacology" />
 
@@ -70,18 +70,18 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <Brain className="mr-2 text-blue-500" /> Theory & Diagnostics
           </h2>
-          <div className="space-y-4 text-slate-600 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
             <div className="p-4 bg-blue-50 rounded-lg border border-blue-100">
               <h3 className="font-semibold text-blue-800 mb-2">The Nervous System & Reaction Time</h3>
               <p>
                 Reaction time is the interval between the presentation of a stimulus and the initiation of the muscular response. 
                 Using a ruler-drop test, we can calculate reaction time using the kinematic equation: 
                 <br /><br />
-                <code className="bg-slate-50 px-2 py-1 rounded text-blue-900 font-mono">d = ½ g t²</code>
+                <code className="bg-slate-50 dark:bg-slate-900 px-2 py-1 rounded text-blue-900 font-mono">d = ½ g t²</code>
                 <br /><br />
                 Where <strong>d</strong> is the distance the ruler fell, <strong>g</strong> is acceleration due to gravity (9.8 m/s²), and <strong>t</strong> is time in seconds.
               </p>
@@ -98,14 +98,14 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center relative overflow-hidden">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center relative overflow-hidden">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex w-full">
             <Activity className="mr-2 text-indigo-500" /> Visual Ruler-Drop Simulator
           </h2>
           
           <div className="flex-grow flex flex-col items-center justify-center w-full space-y-8">
             {/* Ruler area */}
-            <div className="relative w-24 h-64 bg-slate-100 border-2 border-slate-300 rounded-md overflow-hidden flex justify-center">
+            <div className="relative w-24 h-64 bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md overflow-hidden flex justify-center">
               <div 
                 className={`w-8 bg-yellow-400 absolute transition-all border-x border-b border-yellow-600 ${gameState === 'dropping' ? 'duration-1000 ease-in' : 'duration-0'} ${gameState === 'idle' ? 'top-0' : gameState === 'dropping' ? 'top-full' : ''}`}
                 style={{
@@ -142,29 +142,29 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
               </button>
               <button 
                 onClick={resetRuler} 
-                className="px-6 py-2 bg-slate-200 text-slate-800 rounded-lg font-semibold hover:bg-slate-300"
+                className="px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-lg font-semibold hover:bg-slate-300 dark:bg-slate-800"
               >
                 Reset
               </button>
             </div>
 
             {/* NSAID toggle visual */}
-            <div className="w-full mt-4 p-4 border rounded-xl bg-slate-50 flex items-center justify-between">
+            <div className="w-full mt-4 p-4 border rounded-xl bg-slate-50 dark:bg-slate-900 flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Beaker className="text-teal-500" />
                 <span className="text-sm font-semibold">Administer NSAID?</span>
               </div>
               <button
                 onClick={() => setCoxBlocked(!coxBlocked)}
-                className={`px-4 py-1 rounded-full text-sm font-bold transition-colors ${coxBlocked ? 'bg-teal-500 text-white' : 'bg-slate-300 text-slate-600'}`}
+                className={`px-4 py-1 rounded-full text-sm font-bold transition-colors ${coxBlocked ? 'bg-teal-500 text-white' : 'bg-slate-300 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}
               >
                 {coxBlocked ? 'COX Blocked' : 'Normal State'}
               </button>
             </div>
             {/* Visual feedback of pain signal */}
-            <div className="w-full h-8 bg-slate-200 rounded-full overflow-hidden relative">
+            <div className="w-full h-8 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden relative">
                <div className={`absolute left-0 top-0 h-full w-full bg-rose-500 opacity-50 ${coxBlocked ? 'w-0 transition-all duration-1000' : 'animate-pulse'}`}></div>
-               <span className="absolute inset-0 flex items-center justify-center text-xs font-bold z-10 text-slate-800">
+               <span className="absolute inset-0 flex items-center justify-center text-xs font-bold z-10 text-slate-800 dark:text-slate-100">
                  {coxBlocked ? 'Inflammation Reduced (Prostaglandins ↓)' : 'Active Pain Signal'}
                </span>
             </div>
@@ -172,33 +172,33 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Data Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Data Analysis</h2>
           
           <div className="flex-grow space-y-6">
-            <div className="p-4 bg-slate-100 rounded-lg">
-              <h3 className="font-semibold text-slate-700 mb-2">Experimental Results</h3>
-              <p className="text-sm text-slate-600 mb-1">Measured Reaction Time:</p>
+            <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2">Experimental Results</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-1">Measured Reaction Time:</p>
               <div className="text-3xl font-mono font-bold text-blue-600">
                 {reactionTime !== null ? `${reactionTime.toFixed(3)} s` : '--- s'}
               </div>
             </div>
 
             <div className="space-y-4">
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-slate-700 dark:text-slate-200">
                 Based on the reaction time measured above, calculate the distance the ruler fell before you caught it. 
                 Assume <strong>g = 9.8 m/s²</strong>.
               </p>
               
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">
                   Distance Fallen (meters)
                 </label>
                 <div className="flex space-x-2">
                   <input 
                     type="number"
                     step="0.01"
-                    className="flex-grow p-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-grow p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="e.g. 0.45"
                     value={assessmentDistance}
                     onChange={(e) => setAssessmentDistance(e.target.value)}

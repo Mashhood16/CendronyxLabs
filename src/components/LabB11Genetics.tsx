@@ -73,16 +73,13 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      {/* Header */}
-      <header className="bg-indigo-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <LabHeader onExit={onExit} title="Molecular Genetics Lab" />
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Molecular Genetics Lab" variant="dark" subtitle="Meselson-Stahl & Hershey-Chase" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 p-6 border-r overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
@@ -117,8 +114,8 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-100 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-slate-50 rounded-lg p-1 shadow-sm mb-6 shrink-0">
+        <div className="bg-slate-100 dark:bg-slate-800 p-6 flex flex-col overflow-y-auto">
+          <div className="flex bg-slate-50 dark:bg-slate-900 rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'meselson' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => setActiveTab('meselson')}
@@ -135,7 +132,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'meselson' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
+              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
                 <h3 className="font-bold text-gray-800 mb-2">Density Gradient Centrifugation</h3>
                 <p className="text-sm text-gray-500 mb-6">Current Medium: <span className="font-bold text-blue-600">14N (Light)</span></p>
                 
@@ -211,7 +208,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'hershey' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <h3 className="font-bold text-gray-800 mb-4">Hershey-Chase Viral Infection</h3>
                 
                 <div className="flex bg-gray-100 rounded-lg p-1 mb-6">
@@ -231,7 +228,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                   </button>
                 </div>
 
-                <div className="flex-1 flex flex-col justify-center items-center relative bg-slate-50 border rounded-xl p-4 mb-4">
+                <div className="flex-1 flex flex-col justify-center items-center relative bg-slate-50 dark:bg-slate-900 border rounded-xl p-4 mb-4">
                   {hcStep === 0 && <p className="text-gray-400 font-medium text-center">Select label type and click next to infect bacteria.</p>}
                   
                   {/* Infection SVG */}
@@ -322,7 +319,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 p-6 border-l flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment</h2>
           
           <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex-1 flex flex-col">

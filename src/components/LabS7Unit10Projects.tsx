@@ -7,16 +7,16 @@ interface LabProps {
 
 export default function LabS7Unit10Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 10: Heat and Temperature Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 max-w-4xl w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-4xl w-full">
           <div className="flex items-center mb-8">
             <div className="bg-blue-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-blue-600" /></div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-800">Homemade Insulated Cooler</h2>
-              <p className="text-slate-500">Project Work Submission Guide</p>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100">Homemade Insulated Cooler</h2>
+              <p className="text-slate-500 dark:text-slate-400">Project Work Submission Guide</p>
             </div>
           </div>
 

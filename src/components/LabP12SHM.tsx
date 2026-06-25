@@ -100,19 +100,19 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
   }, [frequency, timeState]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Oscillations & Waves" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4 overflow-y-auto">
           {scenario === 'damping' ? (
             <>
-              <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
                 <Car className="text-blue-600"/> Damped Harmonic Motion
               </h2>
-              <div className="text-slate-600 space-y-4">
+              <div className="text-slate-600 dark:text-slate-300 space-y-4">
                 <p>
                   A car suspension system uses springs and shock absorbers (dampers) to isolate the vehicle from road bumps.
                 </p>
@@ -132,10 +132,10 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
                 <Waves className="text-red-500"/> Standing Waves
               </h2>
-              <div className="text-slate-600 space-y-4">
+              <div className="text-slate-600 dark:text-slate-300 space-y-4">
                 <p>
                   When two identical waves traveling in opposite directions interfere, they can form a <strong>Standing Wave</strong>.
                 </p>
@@ -155,17 +155,17 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 w-full">
             {scenario === 'damping' ? <Car className="text-purple-500"/> : <Volume2 className="text-purple-500"/>}
             Interactive Visualizer
           </h2>
           
-          <div className="w-full aspect-square max-w-md bg-slate-900 rounded-xl relative overflow-hidden flex flex-col items-center justify-end border-4 border-slate-800 shadow-inner pb-10">
+          <div className="w-full aspect-square max-w-md bg-slate-900 dark:bg-slate-800 rounded-xl relative overflow-hidden flex flex-col items-center justify-end border-4 border-slate-800 dark:border-slate-500 shadow-inner pb-10">
             {scenario === 'damping' ? (
               <div className="relative w-full h-full flex justify-center items-center">
                 {/* Reference line */}
-                <div className="absolute top-1/2 w-full border-t border-dashed border-slate-600"></div>
+                <div className="absolute top-1/2 w-full border-t border-dashed border-slate-600 dark:border-slate-500"></div>
                 
                 {/* Mass (Car Chassis) */}
                 <div 
@@ -177,7 +177,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
 
                 {/* Spring/Damper */}
                 <div 
-                  className="w-4 bg-slate-400 absolute left-[calc(50%-2rem)]"
+                  className="w-4 bg-slate-400 dark:bg-slate-800 absolute left-[calc(50%-2rem)]"
                   style={{ 
                     bottom: '20%', 
                     height: `${50 - displacement * 50}px`,
@@ -194,7 +194,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                 />
                 
                 {/* Ground Wheel */}
-                <div className="absolute bottom-[10%] w-64 h-2 bg-slate-700 rounded"></div>
+                <div className="absolute bottom-[10%] w-64 h-2 bg-slate-700 dark:bg-slate-800 rounded"></div>
                 
                 {/* Control Panel overlay */}
                 <div className="absolute top-4 right-4 flex flex-col gap-2">
@@ -219,10 +219,10 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                   ))}
                 </div>
                 {/* Tube */}
-                <div className="w-full h-6 bg-slate-400 rounded-sm border-2 border-slate-500 relative flex items-center">
-                  <div className="absolute left-[-10px] w-4 h-8 bg-slate-800 rounded-l" /> {/* Speaker */}
-                  <div className="absolute right-[-10px] w-2 h-8 bg-slate-600" /> {/* Closed end */}
-                  <span className="text-xs font-bold text-slate-800 w-full text-center">L = 1.0 m</span>
+                <div className="w-full h-6 bg-slate-400 dark:bg-slate-800 rounded-sm border-2 border-slate-500 dark:border-slate-500 relative flex items-center">
+                  <div className="absolute left-[-10px] w-4 h-8 bg-slate-800 dark:bg-slate-800 rounded-l" /> {/* Speaker */}
+                  <div className="absolute right-[-10px] w-2 h-8 bg-slate-600 dark:bg-slate-800" /> {/* Closed end */}
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-100 w-full text-center">L = 1.0 m</span>
                 </div>
               </div>
             )}
@@ -233,35 +233,35 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
               <>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Mass (m)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Mass (m)</label>
                     <span className="text-sm font-mono text-purple-600">{mass} kg</span>
                   </div>
                   <input 
                     type="range" min="500" max="2000" step="50" 
                     value={mass} onChange={(e) => setMass(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-600"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Spring Constant (k)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Spring Constant (k)</label>
                     <span className="text-sm font-mono text-purple-600">{springK} N/m</span>
                   </div>
                   <input 
                     type="range" min="10000" max="100000" step="1000" 
                     value={springK} onChange={(e) => setSpringK(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-600"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Damping (c)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Damping (c)</label>
                     <span className="text-sm font-mono text-purple-600">{dampingC} Ns/m</span>
                   </div>
                   <input 
                     type="range" min="0" max="30000" step="100" 
                     value={dampingC} onChange={(e) => setDampingC(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-purple-600"
                   />
                 </div>
               </>
@@ -269,7 +269,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
               <>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Speaker Frequency (f)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Speaker Frequency (f)</label>
                     <span className="text-sm font-mono text-red-600">{frequency} Hz</span>
                   </div>
                   <input 
@@ -277,7 +277,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                     min="50" max="1000" step="1" 
                     value={frequency} 
                     onChange={(e) => setFrequency(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-red-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-red-600"
                   />
                 </div>
               </>
@@ -286,17 +286,17 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Engineering Tasks
           </h2>
 
           <div className="space-y-6">
             {scenario === 'damping' ? (
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h3 className="font-semibold text-slate-800 mb-2">Tune the Suspension</h3>
-                <p className="text-sm text-slate-600 mb-3">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Tune the Suspension</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                   A car has a mass of <strong>1000 kg</strong> and a combined spring constant of <strong>40,000 N/m</strong>.
                   Calculate the exact damping coefficient <em>c</em> required for <strong>Critical Damping</strong>.
                 </p>
@@ -306,7 +306,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                     value={dampingAns}
                     onChange={(e) => setDampingAns(e.target.value)}
                     placeholder="e.g. 12000"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <button 
                     onClick={checkDamping}
@@ -323,9 +323,9 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                 {dampingStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Use c = 2√(mk).</p>}
               </div>
             ) : (
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h3 className="font-semibold text-slate-800 mb-2">Find the Harmonic</h3>
-                <p className="text-sm text-slate-600 mb-3">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Find the Harmonic</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                   For a closed tube of length L = 1.0 m, calculate the frequency required to generate the <strong>3rd Harmonic (n=3)</strong> standing wave. Assume the speed of sound v = 340 m/s.
                 </p>
                 <div className="flex gap-2">
@@ -334,7 +334,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                     value={waveAns}
                     onChange={(e) => setWaveAns(e.target.value)}
                     placeholder="e.g. 400"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
                   />
                   <button 
                     onClick={checkWave}

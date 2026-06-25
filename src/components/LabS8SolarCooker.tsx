@@ -21,7 +21,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
   };
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.5: Solar Cooker" subtitle="Parabolic mirror concentrating solar energy" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
@@ -46,7 +46,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
             )}
 
             {/* Parabolic Reflector */}
-            <div className="relative w-96 h-48 bg-gradient-to-b from-slate-200 to-slate-400 rounded-b-full shadow-[0_20px_30px_rgba(0,0,0,0.2)] border-b-8 border-slate-500 flex items-center justify-center z-10 overflow-hidden">
+            <div className="relative w-96 h-48 bg-gradient-to-b from-slate-200 to-slate-400 rounded-b-full shadow-[0_20px_30px_rgba(0,0,0,0.2)] border-b-8 border-slate-500 dark:border-slate-500 flex items-center justify-center z-10 overflow-hidden">
                {/* Foil texture */}
                <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDBsNDAgNDBNNDAgMEwwIDQwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')]" />
                
@@ -61,9 +61,9 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
                   <div className={`w-full bg-amber-700 transition-all duration-[3000ms] ${sunlight ? 'h-full' : 'h-1/2'}`}>
                      {sunlight && (
                        <div className="w-full h-full flex flex-wrap gap-1 p-1 opacity-50">
-                         <div className="w-3 h-3 bg-slate-50 rounded-full animate-bounce" />
-                         <div className="w-2 h-2 bg-slate-50 rounded-full animate-ping" />
-                         <div className="w-4 h-4 bg-slate-50 rounded-full animate-bounce delay-75" />
+                         <div className="w-3 h-3 bg-slate-50 dark:bg-slate-900 rounded-full animate-bounce" />
+                         <div className="w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full animate-ping" />
+                         <div className="w-4 h-4 bg-slate-50 dark:bg-slate-900 rounded-full animate-bounce delay-75" />
                        </div>
                      )}
                   </div>
@@ -71,12 +71,12 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
             </div>
 
             {/* Stand */}
-            <div className="w-4 h-24 bg-slate-700 z-0" />
-            <div className="w-48 h-4 bg-slate-800 rounded-full z-0" />
+            <div className="w-4 h-24 bg-slate-700 dark:bg-slate-800 z-0" />
+            <div className="w-48 h-4 bg-slate-800 dark:bg-slate-800 rounded-full z-0" />
 
             {/* Temperature Gauge */}
-            <div className="absolute bottom-10 right-10 bg-slate-50 px-6 py-4 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center gap-2">
-               <span className="text-sm font-bold text-slate-500 uppercase">Pot Temp</span>
+            <div className="absolute bottom-10 right-10 bg-slate-50 dark:bg-slate-900 px-6 py-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center gap-2">
+               <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase">Pot Temp</span>
                <span className={`text-4xl font-black font-mono transition-colors duration-1000 ${temperature > 50 ? 'text-red-500' : 'text-blue-500'}`}>
                  {temperature}°C
                </span>
@@ -86,7 +86,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
 
           <button 
             onClick={handleSunlight}
-            className={`absolute bottom-10 left-10 px-8 py-3 rounded-full font-bold shadow-lg transition-transform active:scale-95 ${sunlight ? 'bg-slate-800 text-white' : 'bg-yellow-400 hover:bg-yellow-500 text-yellow-900'}`}
+            className={`absolute bottom-10 left-10 px-8 py-3 rounded-full font-bold shadow-lg transition-transform active:scale-95 border-2 ${sunlight ? 'bg-slate-800 dark:bg-slate-800 text-white border-slate-700 dark:border-slate-500' : 'bg-yellow-400 hover:bg-yellow-500 text-yellow-900 border-yellow-500'}`}
           >
             {sunlight ? 'Block Sun' : 'Expose to Sun'}
           </button>

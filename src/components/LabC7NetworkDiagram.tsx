@@ -13,7 +13,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
   const tools = [
     { id: 'server', name: 'Server', icon: <Server className="w-6 h-6" />, color: 'text-purple-600 bg-purple-100 border-purple-300' },
     { id: 'client', name: 'Client PC', icon: <Monitor className="w-6 h-6" />, color: 'text-blue-600 bg-blue-100 border-blue-300' },
-    { id: 'printer', name: 'Printer', icon: <Printer className="w-6 h-6" />, color: 'text-slate-600 bg-slate-200 border-slate-400' },
+    { id: 'printer', name: 'Printer', icon: <Printer className="w-6 h-6" />, color: 'text-slate-600 dark:text-slate-300 bg-slate-200 dark:bg-slate-800 border-slate-400 dark:border-slate-500' },
     { id: 'switch', name: 'Switch/Hub', icon: <Network className="w-6 h-6" />, color: 'text-emerald-600 bg-emerald-100 border-emerald-300' }
   ];
 
@@ -37,12 +37,11 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
   const isValid = hasSwitch && hasServer && hasClient;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Network Diagram Builder" />
 
-        <h1 className="text-3xl font-bold mb-2">Network Diagram Builder</h1>
-        <p className="text-slate-600 mb-6">Select a component from the toolbar and click on the canvas to place it. Build a basic Client-Server network topology.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-6">Select a component from the toolbar and click on the canvas to place it. Build a basic Client-Server network topology.</p>
 
         {isValid && (
           <div className="bg-emerald-100 text-emerald-800 p-3 rounded-lg flex items-center mb-6 w-fit border border-emerald-300 shadow-sm">
@@ -53,13 +52,13 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
 
         <div className="flex flex-1 gap-6">
           {/* Toolbar */}
-          <div className="w-48 bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-3">
-            <h3 className="font-bold text-slate-700 text-sm uppercase tracking-wider mb-2">Components</h3>
+          <div className="w-48 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl p-4 shadow-sm flex flex-col gap-3">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 text-sm uppercase tracking-wider mb-2">Components</h3>
             {tools.map(tool => (
               <button
                 key={tool.id}
                 onClick={() => setSelectedTool(tool.id)}
-                className={`flex items-center gap-3 p-3 rounded-lg border-2 transition-all ${selectedTool === tool.id ? 'border-blue-500 ring-2 ring-blue-200 shadow-md' : 'border-transparent hover:bg-slate-100'}`}
+                className={`flex items-center gap-3 p-3 rounded-lg border-2 transition-all ${selectedTool === tool.id ? 'border-blue-500 ring-2 ring-blue-200 shadow-md' : 'border-transparent hover:bg-slate-100 dark:bg-slate-800'}`}
               >
                 <div className={`p-2 rounded-md border ${tool.color}`}>
                   {tool.icon}
@@ -67,7 +66,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
                 <span className="font-medium text-sm">{tool.name}</span>
               </button>
             ))}
-            <div className="mt-auto pt-4 border-t border-slate-200">
+            <div className="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <button onClick={clearCanvas} className="w-full py-2 text-sm text-rose-600 font-medium hover:bg-rose-50 rounded-lg transition-colors">
                 Clear Canvas
               </button>
@@ -76,7 +75,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
 
           {/* Canvas */}
           <div 
-            className={`flex-1 bg-slate-50 border-2 border-slate-200 rounded-xl shadow-inner relative overflow-hidden ${selectedTool ? 'cursor-crosshair bg-blue-50/30' : ''}`}
+            className={`flex-1 bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl shadow-inner relative overflow-hidden ${selectedTool ? 'cursor-crosshair bg-blue-50/30' : ''}`}
             onClick={handleCanvasClick}
           >
             {/* Draw lines to switch if it exists */}
@@ -104,7 +103,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
                   <div className={`p-3 rounded-xl border-2 shadow-lg mb-2 ${toolDef?.color} group-hover:scale-110 transition-transform`}>
                     {toolDef?.icon}
                   </div>
-                  <span className="text-xs font-bold bg-slate-50 px-2 py-1 rounded border border-slate-200 shadow-sm whitespace-nowrap">
+                  <span className="text-xs font-bold bg-slate-50 dark:bg-slate-900 px-2 py-1 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm whitespace-nowrap">
                     {toolDef?.name}
                   </span>
                 </div>

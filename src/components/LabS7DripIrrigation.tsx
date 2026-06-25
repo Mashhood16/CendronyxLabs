@@ -29,9 +29,9 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 11: Drip Irrigation Model" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-green-800 mb-4">Water Conservation</h2>
-          <p className="text-slate-600 mb-6">Drip irrigation delivers water directly to the roots of plants drop by drop. This minimizes evaporation waste and ensures highly efficient water usage compared to flood or sprinkler irrigation.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Drip irrigation delivers water directly to the roots of plants drop by drop. This minimizes evaporation waste and ensures highly efficient water usage compared to flood or sprinkler irrigation.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -44,7 +44,7 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
             </button>
             <button 
               onClick={() => { setWaterTank(100); setSoilMoisture(0); setRunning(false); }}
-              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+              className="flex items-center px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium"
             >
               Refill Tank
             </button>
@@ -52,20 +52,20 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
         </div>
 
         {/* Simulation Area */}
-        <div className="relative w-full max-w-4xl h-[400px] bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex items-end justify-center p-8 mt-4 overflow-hidden">
+        <div className="relative w-full max-w-4xl h-[400px] bg-slate-50 dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm flex items-end justify-center p-8 mt-4 overflow-hidden">
            
            {/* Water Tank */}
-           <div className="absolute left-8 bottom-16 w-32 h-48 border-4 border-slate-300 bg-slate-50 rounded-xl shadow-inner flex flex-col justify-end z-20 overflow-hidden">
+           <div className="absolute left-8 bottom-16 w-32 h-48 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-inner flex flex-col justify-end z-20 overflow-hidden">
               {/* Water Level */}
               <div 
                 className="w-full bg-blue-500/80 transition-all duration-200 border-t-2 border-blue-400"
                 style={{ height: `${waterTank}%` }}
               ></div>
-              <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-600 mix-blend-overlay text-xl">TANK</div>
+              <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 mix-blend-overlay text-xl">TANK</div>
            </div>
 
            {/* The Main Pipe */}
-           <div className="absolute left-40 bottom-24 w-[600px] h-4 bg-slate-800 z-10 border-b-2 border-slate-900 rounded-r shadow-md">
+           <div className="absolute left-40 bottom-24 w-[600px] h-4 bg-slate-800 dark:bg-slate-800 z-10 border-b-2 border-slate-900 dark:border-slate-500 rounded-r shadow-md">
               {/* Pipe Valve */}
               <div className="absolute -left-2 -top-2 w-4 h-8 bg-red-500 rounded flex justify-center items-center">
                  <div className={`w-8 h-2 bg-red-600 rounded transition-transform ${running ? 'rotate-0' : 'rotate-90'}`}></div>
@@ -85,7 +85,7 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
            {[0, 1, 2, 3].map((i) => (
              <div key={i} className="absolute bottom-16 flex flex-col items-center" style={{ left: `${250 + i * 140}px` }}>
                 {/* Drip line connecting main pipe to soil */}
-                <div className="w-1 h-8 bg-slate-700 relative z-20">
+                <div className="w-1 h-8 bg-slate-700 dark:bg-slate-800 relative z-20">
                    {/* Water Drops */}
                    {running && (
                      <Droplet className={`w-3 h-3 text-blue-400 absolute left-[-4px] animate-[fall_1s_linear_infinite]`} style={{ animationDelay: `${i * 0.2}s` }} />

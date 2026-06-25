@@ -48,7 +48,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Unit 15: Coulomb's Law & Electrostatics" subtitle="Investigate the electric force between two point charges." />
 
@@ -56,28 +56,28 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
-            <p className="text-slate-600 text-sm mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
               Coulomb's Law states that the electrical force between two charged objects is directly proportional to the product of the quantity of charge on the objects and inversely proportional to the square of the separation distance between the two objects.
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg text-center font-serif text-lg text-slate-800 mb-2">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-serif text-lg text-slate-800 dark:text-slate-100 mb-2">
               F = k · |q₁q₂| / r²
             </div>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Where k ≈ 8.99 × 10⁹ N·m²/C² (Coulomb's constant). Measurements include realistic sensor noise (±2%).
             </p>
           </div>
 
-          <div className="h-px bg-slate-200" />
+          <div className="h-px bg-slate-200 dark:bg-slate-800" />
 
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-4">Experiment Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Experiment Setup</h2>
             
             <div className="mb-5">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700">Charge 1 (q₁)</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Charge 1 (q₁)</label>
                 <span className="text-sm font-mono text-blue-600">{q1 > 0 ? '+' : ''}{q1} μC</span>
               </div>
               <input 
@@ -89,7 +89,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
             <div className="mb-5">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700">Charge 2 (q₂)</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Charge 2 (q₂)</label>
                 <span className="text-sm font-mono text-red-600">{q2 > 0 ? '+' : ''}{q2} μC</span>
               </div>
               <input 
@@ -101,7 +101,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
             <div className="mb-5">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700">Separation Distance (r)</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Separation Distance (r)</label>
                 <span className="text-sm font-mono text-emerald-600">{distance} cm</span>
               </div>
               <input 
@@ -114,7 +114,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-700 p-6 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col relative overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">Simulation</h2>
           
           <div className="flex-1 flex items-center justify-center relative">
@@ -182,19 +182,19 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
             </svg>
           </div>
 
-          <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center">
+          <div className="bg-slate-800 dark:bg-slate-800 p-4 rounded-xl border border-slate-700 dark:border-slate-500 flex flex-col items-center">
             <span className="text-slate-400 text-sm font-medium mb-1">Force Sensor Output</span>
             <div className="font-mono text-3xl font-bold text-amber-400 tracking-wider">
               {F_measured.toFixed(1)} <span className="text-xl">N</span>
             </div>
-            <span className="text-slate-500 text-xs mt-1">± 2% environmental noise</span>
+            <span className="text-slate-500 dark:text-slate-400 text-xs mt-1">± 2% environmental noise</span>
           </div>
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-slate-800">Data Logging</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logging</h2>
             <button 
               onClick={recordData}
               className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors"
@@ -203,9 +203,9 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 rounded-lg max-h-[200px]">
+          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[200px]">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-600 uppercase bg-slate-50 sticky top-0">
+              <thead className="text-xs text-slate-600 dark:text-slate-300 uppercase bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-4 py-2">q₁ (μC)</th>
                   <th className="px-4 py-2">q₂ (μC)</th>
@@ -216,11 +216,11 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
               <tbody>
                 {dataPoints.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 italic">No data recorded yet.</td>
+                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-slate-400 italic">No data recorded yet.</td>
                   </tr>
                 ) : (
                   dataPoints.map((dp) => (
-                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50">
+                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                       <td className="px-4 py-2 font-mono">{dp.q1}</td>
                       <td className="px-4 py-2 font-mono">{dp.q2}</td>
                       <td className="px-4 py-2 font-mono">{dp.r}</td>
@@ -232,13 +232,13 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="h-px bg-slate-200 mb-6" />
+          <div className="h-px bg-slate-200 dark:bg-slate-800 mb-6" />
 
           {/* Assessment Section */}
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Analysis Check</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis Check</h2>
             <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-              <p className="text-sm text-slate-700 mb-3">
+              <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
                 <strong>Problem:</strong> In a separate experiment, charge q₁ is fixed at +4 μC. A force sensor measures 90.0 N of repulsive force when charge q₂ is placed exactly 2.0 cm away. 
                 What is the magnitude of q₂ in μC?
               </p>
@@ -249,9 +249,9 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
                   placeholder="e.g. 5.0"
                   value={assessmentAnswer}
                   onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
-                  className="border border-slate-300 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <span className="text-sm font-medium text-slate-600 mr-2">μC</span>
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-300 mr-2">μC</span>
                 <button 
                   onClick={checkAnswer}
                   className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors"

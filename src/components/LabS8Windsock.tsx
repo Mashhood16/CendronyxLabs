@@ -12,22 +12,32 @@ export default function LabS8Windsock({ onExit }: LabProps) {
   const sockAngle = (windDir + 180) % 360;
   
   // Lift angle based on speed (0 speed = pointing down, 100 speed = horizontal)
-  // We'll simulate 3D via 2D rotation. If speed is 0, it hangs.
   const droop = 90 - (windSpeed * 0.9); // degrees to hang down
 
+  // Convert wind direction to compass label
+  const getCompassDir = (deg: number) => {
+    const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    return dirs[Math.round(deg / 45) % 8];
+  };
+
+  const getSockDir = (deg: number) => {
+    const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    return dirs[Math.round(((deg + 180) % 360) / 45) % 8];
+  };
+
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.9: Design a Windsock" subtitle="Visualizing wind direction and speed" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
         {/* Weather Controls */}
         <div className="w-full md:w-64 flex flex-col gap-6">
-          <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
-             <h3 className="font-bold text-slate-700 mb-4">Wind Direction</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+             <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4">Wind Direction</h3>
              
              {/* Compass Dial */}
-             <div className="w-40 h-40 rounded-full bg-slate-100 border-4 border-slate-300 mx-auto relative flex items-center justify-center mb-4">
+             <div className="w-40 h-40 rounded-full bg-slate-100 dark:bg-slate-800 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 mx-auto relative flex items-center justify-center mb-4">
                 <span className="absolute top-2 font-bold text-slate-400 text-xs">N</span>
                 <span className="absolute right-2 font-bold text-slate-400 text-xs">E</span>
                 <span className="absolute bottom-2 font-bold text-slate-400 text-xs">S</span>
@@ -46,10 +56,11 @@ export default function LabS8Windsock({ onExit }: LabProps) {
                onChange={(e) => setWindDir(Number(e.target.value))}
                className="w-full accent-blue-500"
              />
+             <div className="text-center mt-2 font-bold text-sky-600">Wind from {getCompassDir(windDir)}</div>
           </div>
 
-          <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
-             <h3 className="font-bold text-slate-700 mb-4">Wind Speed</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+             <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4">Wind Speed</h3>
              <input 
                type="range" min="0" max="100" value={windSpeed} 
                onChange={(e) => setWindSpeed(Number(e.target.value))}
@@ -72,7 +83,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
           <div className="absolute top-20 left-60 text-8xl text-white/40 animate-[wind_dash_15s_linear_infinite]" style={{ animationDuration: `${80 / Math.max(1, windSpeed)}s` }}>☁️</div>
 
           {/* Windsock Pole */}
-          <div className="relative w-4 h-[350px] bg-slate-400 z-10 border-l-2 border-slate-300 rounded-t-lg mb-8">
+          <div className="relative w-4 h-[350px] bg-slate-400 dark:bg-slate-800 z-10 border-l-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-t-lg mb-8">
              
              {/* Swivel Ring */}
              <div className="absolute top-4 -left-2 w-8 h-4 border-4 border-zinc-600 rounded-full" />
@@ -87,8 +98,8 @@ export default function LabS8Windsock({ onExit }: LabProps) {
              >
                 {/* Wind Sock Fabric */}
                 <div className={`w-48 h-12 bg-gradient-to-r from-orange-500 via-white to-orange-500 rounded-r-3xl rounded-l-full shadow-lg border border-orange-600/50 relative overflow-hidden ${windSpeed > 30 ? 'animate-[flutter_0.1s_infinite]' : ''}`}>
-                   <div className="absolute inset-y-0 left-1/4 w-1/4 bg-slate-50" />
-                   <div className="absolute inset-y-0 right-1/4 w-1/4 bg-slate-50" />
+                   <div className="absolute inset-y-0 left-1/4 w-1/4 bg-slate-50 dark:bg-slate-900" />
+                   <div className="absolute inset-y-0 right-1/4 w-1/4 bg-slate-50 dark:bg-slate-900" />
                 </div>
              </div>
           </div>
@@ -104,13 +115,14 @@ export default function LabS8Windsock({ onExit }: LabProps) {
           )}
 
           {/* Hint */}
-          <div className="absolute bottom-6 bg-slate-50/80 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-slate-200 text-center z-30">
-            <h4 className="font-bold text-slate-800 mb-1 flex items-center justify-center gap-2">
+          <div className="absolute bottom-6 bg-slate-50 dark:bg-slate-900/80 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-center z-30">
+            <h4 className="font-bold text-slate-800 dark:text-slate-100 mb-1 flex items-center justify-center gap-2">
               <Flag className="w-5 h-5 text-orange-500" /> Observation
             </h4>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               The windsock fills with air and points <strong>opposite</strong> to where the wind is blowing from.<br/>
-              A horizontal sock indicates strong winds.
+              Wind from {getCompassDir(windDir)} &rarr; Sock points {getSockDir(windDir)}.<br/>
+              {windSpeed === 0 ? 'No wind — sock hangs limp.' : windSpeed < 30 ? 'Light breeze — sock droops slightly.' : windSpeed < 70 ? 'Strong wind — sock extends outward.' : 'Gale force — sock is nearly horizontal!'}
             </p>
           </div>
 

@@ -64,32 +64,32 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Thermodynamics: Isochoric Pressure Vessel" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Theory & Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Info className="text-blue-500" />
             <h2 className="text-lg font-semibold">Theory & Setup</h2>
           </div>
-          <div className="text-sm text-slate-600 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
             <p><strong>Isochoric Process:</strong> A thermodynamic process in which the volume remains constant. (Similar to the combustion phase in a 4-stroke Otto cycle engine).</p>
             <p><strong>Gay-Lussac's Law:</strong> For a given mass and constant volume of an ideal gas, the pressure exerted on the sides of its container is directly proportional to its absolute temperature.</p>
-            <p><code className="bg-slate-100 px-1 rounded">P₁/T₁ = P₂/T₂</code></p>
+            <p><code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">P₁/T₁ = P₂/T₂</code></p>
           </div>
           
           <div className="space-y-4 mt-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                 <span>Added Heat (Joules)</span>
                 <span>{heat} J</span>
               </label>
               <input type="range" min="0" max="10000" step="100" value={heat} onChange={(e) => setHeat(Number(e.target.value))} className="w-full mt-1" />
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                 <span>Amount of Gas (moles)</span>
                 <span>{moles} mol</span>
               </label>
@@ -99,12 +99,12 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="text-green-500" />
             <h2 className="text-lg font-semibold">Interactive Simulator</h2>
           </div>
-          <div className="relative flex-1 bg-slate-200 rounded-lg overflow-hidden border border-slate-200 min-h-[300px]">
+          <div className="relative flex-1 bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 min-h-[300px]">
             <svg viewBox="0 0 400 400" className="w-full h-full absolute inset-0">
               <rect x="100" y="100" width="200" height="150" fill="rgba(255,255,255,0.8)" stroke="#475569" strokeWidth="8" rx="10" />
               
@@ -121,7 +121,7 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
             <Target className="text-purple-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>
@@ -135,7 +135,7 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
             <div className="mt-2 text-sm max-h-40 overflow-y-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-slate-100">
+                  <tr className="bg-slate-100 dark:bg-slate-800">
                     <th className="border p-1">Heat (J)</th>
                     <th className="border p-1">Temp (K)</th>
                     <th className="border p-1">Press (kPa)</th>

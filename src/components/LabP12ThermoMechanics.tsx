@@ -31,11 +31,11 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Extreme States of Matter" />
-      <div className="bg-slate-900 text-white p-2 flex justify-end">
+      <div className="bg-slate-900 dark:bg-slate-800 text-white p-2 flex justify-end">
         <select 
-          className="bg-slate-800 border border-slate-700 text-white px-3 py-1 rounded-md outline-none focus:border-orange-500"
+          className="bg-slate-800 dark:bg-slate-800 border border-slate-700 dark:border-slate-500 text-white px-3 py-1 rounded-md outline-none focus:border-orange-500"
           value={scenario}
           onChange={(e) => setScenario(e.target.value as any)}
         >
@@ -47,13 +47,13 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4 overflow-y-auto">
           {scenario === 'maglev' ? (
             <>
-              <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
                 <Train className="text-blue-600"/> Superconductivity
               </h2>
-              <div className="text-slate-600 space-y-4">
+              <div className="text-slate-600 dark:text-slate-300 space-y-4">
                 <p>
                   At extremely low temperatures, certain materials undergo a phase transition where their electrical resistance drops exactly to zero.
                 </p>
@@ -71,10 +71,10 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
                 <Star className="text-orange-500"/> Electron Degeneracy
               </h2>
-              <div className="text-slate-600 space-y-4">
+              <div className="text-slate-600 dark:text-slate-300 space-y-4">
                 <p>
                   When a medium-sized star exhausts its nuclear fuel, it collapses under its own gravity to form a White Dwarf.
                 </p>
@@ -94,13 +94,13 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 w-full">
             {scenario === 'maglev' ? <Thermometer className="text-blue-500"/> : <Star className="text-orange-500"/>}
             Interactive Visualizer
           </h2>
           
-          <div className="w-full aspect-square max-w-md bg-slate-900 rounded-xl relative overflow-hidden flex items-center justify-center border-4 border-slate-800 shadow-inner">
+          <div className="w-full aspect-square max-w-md bg-slate-900 dark:bg-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center border-4 border-slate-800 dark:border-slate-500 shadow-inner">
             {scenario === 'maglev' ? (
               <svg viewBox="0 0 200 200" className="w-full h-full">
                 {/* Track */}
@@ -184,7 +184,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
               <>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Temperature (T)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Temperature (T)</label>
                     <span className="text-sm font-mono text-blue-600">{temperature} K</span>
                   </div>
                   <input 
@@ -192,9 +192,9 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                     min="10" max="300" step="1" 
                     value={temperature} 
                     onChange={(e) => setTemperature(parseInt(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
                   />
-                  <div className="text-xs text-slate-500 mt-1 flex justify-between">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex justify-between">
                     <span>Liquid Helium (4K)</span>
                     <span>Liquid N2 (77K)</span>
                     <span>Room Temp</span>
@@ -202,7 +202,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Magnetic Field (B)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Magnetic Field (B)</label>
                     <span className="text-sm font-mono text-blue-600">{magneticField.toFixed(1)} Tesla</span>
                   </div>
                   <input 
@@ -210,7 +210,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                     min="0" max="5" step="0.1" 
                     value={magneticField} 
                     onChange={(e) => setMagneticField(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
                   />
                 </div>
               </>
@@ -218,7 +218,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
               <>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-semibold text-slate-700">Star Mass (M)</label>
+                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Star Mass (M)</label>
                     <span className="text-sm font-mono text-orange-600">{mass.toFixed(2)} M_sun</span>
                   </div>
                   <input 
@@ -226,7 +226,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                     min="0.1" max="2.0" step="0.01" 
                     value={mass} 
                     onChange={(e) => setMass(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-orange-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-orange-600"
                   />
                 </div>
               </>
@@ -235,17 +235,17 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Analysis & Computation
           </h2>
 
           <div className="space-y-6">
             {scenario === 'maglev' ? (
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h3 className="font-semibold text-slate-800 mb-2">Magnetic Pressure</h3>
-                <p className="text-sm text-slate-600 mb-3">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Magnetic Pressure</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                   To levitate a train of mass 50,000 kg over an area of 50 m², the magnetic pressure P = F/A must equal the pressure from gravity. 
                   Given P = B² / 2μ₀ (where μ₀ = 4π × 10⁻⁷ T·m/A) and g = 9.8 m/s².
                   Calculate the required Magnetic Field (B) in milliTesla (mT).
@@ -256,7 +256,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                     value={maglevAns}
                     onChange={(e) => setMaglevAns(e.target.value)}
                     placeholder="e.g. 9.8"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <button 
                     onClick={checkMaglev}
@@ -269,9 +269,9 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                 {maglevStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Evaluate mg/A first, then solve for B.</p>}
               </div>
             ) : (
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                <h3 className="font-semibold text-slate-800 mb-2">Chandrasekhar Limit</h3>
-                <p className="text-sm text-slate-600 mb-3">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Chandrasekhar Limit</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                   Subrahmanyan Chandrasekhar determined that a white dwarf cannot support itself if its mass exceeds a certain limit.
                   Based on the simulation, at what exact mass (in M_sun) does the star completely collapse?
                 </p>
@@ -281,7 +281,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
                     value={wdAns}
                     onChange={(e) => setWdAns(e.target.value)}
                     placeholder="e.g. 1.44"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
                   />
                   <button 
                     onClick={checkWd}

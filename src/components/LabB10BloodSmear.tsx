@@ -29,26 +29,26 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
   const blurAmount = Math.abs(50 - focus) / 5;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Top Header */}
       <LabHeader onExit={onExit} title="Lab B10.2: Blood Smear & Microscopy" subtitle="Preparation & Cell Identification" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-red-100 text-red-600 rounded-lg"><BookOpen className="w-6 h-6" /></div>
-            <h2 className="text-xl font-bold text-slate-800">Theory & Context</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Theory & Context</h2>
           </div>
           <div className="prose prose-slate text-sm flex-grow overflow-y-auto pr-2">
-            <h3 className="font-semibold text-slate-800">The Peripheral Blood Smear</h3>
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100">The Peripheral Blood Smear</h3>
             <p>
               A blood smear is a technique used to view individual blood cells under a microscope. 
               A drop of blood is placed on a glass slide and spread using a second slide held at a 45-degree angle. 
               This creates a <strong>feathered edge</strong> where cells are spread into a single monolayer, preventing them from overlapping and obscuring each other.
             </p>
-            <h3 className="font-semibold text-slate-800 mt-4">Wright's Stain</h3>
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Wright's Stain</h3>
             <p>
               Unstained blood cells are mostly transparent, except for the red hemoglobin in Red Blood Cells (RBCs). 
               To identify White Blood Cells (WBCs) and platelets, we use a differential stain like <strong>Wright's Stain</strong>. 
@@ -58,21 +58,21 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col relative overflow-hidden">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Activity className="w-6 h-6" /></div>
-              <h2 className="text-xl font-bold text-slate-800">Interactive Bench</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Interactive Bench</h2>
             </div>
-            <div className="text-sm font-semibold text-slate-500">Step {step} of 4</div>
+            <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">Step {step} of 4</div>
           </div>
           
-          <div className="flex flex-col flex-grow items-center justify-center bg-slate-50 rounded-xl border border-slate-200 p-6">
+          <div className="flex flex-col flex-grow items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
             
             {/* Step 1: Draw Blood */}
             {step === 1 && (
               <div className="flex flex-col items-center gap-6">
-                <p className="text-center text-slate-700 font-medium">Step 1: Lance the finger to draw a drop of blood onto the slide.</p>
+                <p className="text-center text-slate-700 dark:text-slate-200 font-medium">Step 1: Lance the finger to draw a drop of blood onto the slide.</p>
                 <div className="relative w-48 h-32 flex justify-center items-end pb-4">
                   <div className="w-16 h-24 bg-rose-200 rounded-t-full border-2 border-rose-300 shadow-sm relative">
                      {/* Blood drop */}
@@ -88,10 +88,10 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
             {/* Step 2: Smear */}
             {step === 2 && (
               <div className="flex flex-col items-center gap-6 w-full">
-                <p className="text-center text-slate-700 font-medium">Step 2: Drag the spreader slide to create a feathered edge.</p>
+                <p className="text-center text-slate-700 dark:text-slate-200 font-medium">Step 2: Drag the spreader slide to create a feathered edge.</p>
                 <div className="relative w-72 h-32 flex items-center justify-center">
                   {/* Primary Slide */}
-                  <div className="absolute w-64 h-20 bg-blue-50/50 border border-slate-300 shadow-sm rounded-sm" />
+                  <div className="absolute w-64 h-20 bg-blue-50/50 border border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-sm rounded-sm" />
                   
                   {/* Blood smear */}
                   <div 
@@ -112,7 +112,7 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
                   />
                   {/* Visual Spreader slide */}
                   <div 
-                    className="absolute w-4 h-24 bg-blue-100/80 border border-slate-400 rotate-12 z-10 pointer-events-none shadow-md"
+                    className="absolute w-4 h-24 bg-blue-100/80 border border-slate-400 dark:border-slate-500 rotate-12 z-10 pointer-events-none shadow-md"
                     style={{ left: `calc(2rem + ${smearProgress * 2}px)` }}
                   />
                 </div>
@@ -129,9 +129,9 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
             {/* Step 3: Stain */}
             {step === 3 && (
               <div className="flex flex-col items-center gap-6 w-full">
-                <p className="text-center text-slate-700 font-medium">Step 3: Apply Wright's Stain.</p>
+                <p className="text-center text-slate-700 dark:text-slate-200 font-medium">Step 3: Apply Wright's Stain.</p>
                 <div className="relative w-72 h-32 flex items-center justify-center">
-                  <div className="absolute w-64 h-20 bg-blue-50/50 border border-slate-300 shadow-sm rounded-sm" />
+                  <div className="absolute w-64 h-20 bg-blue-50/50 border border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-sm rounded-sm" />
                   <div 
                     className="absolute h-10 rounded-full left-[2rem] w-48 transition-colors duration-1000" 
                     style={{ 
@@ -155,12 +155,12 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
             {/* Step 4: Microscope */}
             {step === 4 && (
               <div className="flex flex-col items-center gap-4 w-full">
-                <p className="text-center text-slate-700 font-medium flex items-center gap-2">
+                <p className="text-center text-slate-700 dark:text-slate-200 font-medium flex items-center gap-2">
                   <Microscope className="w-5 h-5" /> Step 4: Focus Microscope
                 </p>
                 
                 {/* Microscope Viewport */}
-                <div className="w-64 h-64 rounded-full bg-pink-50 border-8 border-slate-800 relative overflow-hidden shadow-inner">
+                <div className="w-64 h-64 rounded-full bg-pink-50 border-8 border-slate-800 dark:border-slate-500 relative overflow-hidden shadow-inner">
                   <div className="absolute inset-0 transition-all duration-200" style={{ filter: `blur(${blurAmount}px)` }}>
                     {/* RBCs */}
                     {Array.from({length: 40}).map((_, i) => (
@@ -186,7 +186,7 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
 
                 {/* Focus Knobs */}
                 <div className="flex flex-col w-full px-8 gap-2">
-                  <label className="text-xs font-semibold text-slate-500 text-center">Coarse Focus Dial</label>
+                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 text-center">Coarse Focus Dial</label>
                   <input 
                     type="range" min="0" max="100" 
                     value={focus}
@@ -195,7 +195,7 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
                   />
                 </div>
                 
-                <button onClick={() => { setStep(1); setSmearProgress(0); setStained(false); setFocus(0); }} className="text-sm text-slate-500 hover:text-slate-700 underline mt-2">
+                <button onClick={() => { setStep(1); setSmearProgress(0); setStained(false); setFocus(0); }} className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200 underline mt-2">
                   Restart Preparation
                 </button>
               </div>
@@ -204,42 +204,42 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><Edit3 className="w-6 h-6" /></div>
-            <h2 className="text-xl font-bold text-slate-800">Assessment</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Assessment</h2>
           </div>
           
           <div className="flex-grow flex flex-col gap-6 overflow-y-auto pr-2">
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-slate-700">
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 1. Why is it critical to create a "feathered edge" when preparing a blood smear slide?
               </label>
               <textarea 
                 value={q1}
                 onChange={e => setQ1(e.target.value)}
                 placeholder="Discuss cell layers..."
-                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none text-sm"
+                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none text-sm"
                 rows={4}
               />
             </div>
             
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-slate-700">
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 2. Which specific blood cells are visualized by Wright's stain turning dark purple, and what cell structure takes up this stain?
               </label>
               <textarea 
                 value={q2}
                 onChange={e => setQ2(e.target.value)}
                 placeholder="Identify the cell type and structure..."
-                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-sm"
+                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-sm"
                 rows={4}
               />
             </div>
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-3 bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-slate-800 dark:bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-700 dark:bg-slate-800 transition-colors flex items-center justify-center gap-2"
             >
               <CheckCircle className="w-5 h-5" /> Check Answers
             </button>

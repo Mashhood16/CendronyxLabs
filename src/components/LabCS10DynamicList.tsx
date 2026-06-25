@@ -90,20 +90,20 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="Dynamic List Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <FileText className="mr-2 text-teal-500" /> Theory
                     </h2>
-                    <div className="prose prose-sm text-slate-600">
+                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
                         <p>
                             An <strong>Array</strong> is a fundamental data structure consisting of a collection of elements identified by index or key.
                         </p>
-                        <h3 className="font-semibold text-slate-800 mt-4">Common Operations</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Common Operations</h3>
                         <ul className="list-disc pl-5 space-y-1">
                             <li><strong>Push / Pop:</strong> Add or remove from the end of the array. Very fast (O(1)).</li>
                             <li><strong>Unshift / Shift:</strong> Add or remove from the beginning. Slower (O(n)) because all other elements must be shifted.</li>
@@ -113,12 +113,12 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <Database className="mr-2 text-teal-500" /> Simulation
                     </h2>
                     
-                    <div className="mb-6 border border-slate-200 rounded-lg p-4 bg-slate-50 overflow-x-auto">
+                    <div className="mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 bg-slate-50 dark:bg-slate-900 overflow-x-auto">
                         <div className="flex items-end gap-2 min-h-[80px]">
                             {array.length === 0 ? (
                                 <span className="text-slate-400 italic mx-auto">Array is empty</span>
@@ -142,7 +142,7 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Value..."
-                                className="flex-grow p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-teal-500"
+                                className="flex-grow p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-teal-500"
                             />
                             <button onClick={pushItem} className="flex items-center px-3 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700">
                                 <Plus size={16} className="mr-1" /> Push
@@ -157,14 +157,14 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
                                 type="number"
                                 value={insertIndex}
                                 onChange={(e) => setInsertIndex(parseInt(e.target.value) || 0)}
-                                className="w-20 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-teal-500"
+                                className="w-20 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-teal-500"
                             />
                             <button onClick={insertAt} className="flex-grow flex items-center justify-center px-3 py-2 bg-teal-100 text-teal-800 border border-teal-300 rounded-md hover:bg-teal-200">
                                 Insert at Index
                             </button>
                         </div>
 
-                        <hr className="my-2 border-slate-200" />
+                        <hr className="my-2 border-slate-200 dark:border-slate-700 dark:border-slate-500" />
 
                         <div className="flex gap-2">
                             <button onClick={popItem} className="flex-grow flex justify-center items-center px-3 py-2 bg-red-100 text-red-800 border border-red-300 rounded-md hover:bg-red-200">
@@ -180,7 +180,7 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
                                 type="number"
                                 value={removeIndex}
                                 onChange={(e) => setRemoveIndex(parseInt(e.target.value) || 0)}
-                                className="w-20 p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-red-500"
+                                className="w-20 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-red-500"
                             />
                             <button onClick={removeAt} className="flex-grow flex items-center justify-center px-3 py-2 bg-red-100 text-red-800 border border-red-300 rounded-md hover:bg-red-200">
                                 Remove at Index
@@ -190,15 +190,15 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <FileText className="mr-2 text-teal-500" /> Data & Assessment
                     </h2>
                     
                     <div className="mb-6 flex-grow">
-                        <h3 className="text-sm font-semibold text-slate-500 uppercase mb-2">Operation Log</h3>
-                        <div className="bg-slate-900 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
-                            {logs.length === 0 && <span className="text-slate-500">No operations yet.</span>}
+                        <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase mb-2">Operation Log</h3>
+                        <div className="bg-slate-900 dark:bg-slate-800 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
+                            {logs.length === 0 && <span className="text-slate-500 dark:text-slate-400">No operations yet.</span>}
                             {logs.map((log, i) => (
                                 <div key={i}>{`> ${log}`}</div>
                             ))}

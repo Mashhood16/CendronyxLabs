@@ -59,15 +59,13 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-900 flex flex-col font-sans">
-      <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
-        <LabHeader onExit={onExit} title="Act 3.2: Dice Game Algorithm" />
-      </header>
+    <div className="w-full h-screen bg-slate-900 dark:bg-slate-800 flex flex-col font-sans">
+      <LabHeader onExit={onExit} title="Act 3.2: Dice Game Algorithm" variant="dark" />
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Left Panel: Algorithm Visualization */}
-        <div className="w-[500px] bg-[#1e1e1e] border-r border-slate-700 flex flex-col z-10">
+        <div className="w-[500px] bg-[#1e1e1e] border-r border-slate-700 dark:border-slate-500 flex flex-col z-10">
            
            <div className="h-10 bg-[#2d2d2d] flex items-center px-4 border-b border-black">
               <span className="text-slate-400 font-mono text-sm">dice_game.pseudo</span>
@@ -77,8 +75,8 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
               <div className="text-emerald-400">SET player1_score = 0</div>
               <div className="text-emerald-400">SET player2_score = 0</div>
               <br />
-              <div className="text-pink-400 font-bold bg-slate-800/50 p-1 rounded">FOR turn = 1 TO 10</div>
-              <div className="ml-4 border-l-2 border-slate-700 pl-4 py-2">
+              <div className="text-pink-400 font-bold bg-slate-800 dark:bg-slate-800/50 p-1 rounded">FOR turn = 1 TO 10</div>
+              <div className="ml-4 border-l-2 border-slate-700 dark:border-slate-500 pl-4 py-2">
                  <div className="text-blue-300">// Player 1's Turn</div>
                  <div className="text-orange-300">DO</div>
                  <div className="ml-4">
@@ -95,7 +93,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
                  </div>
                  <div className="text-orange-300">WHILE roll == 6</div>
               </div>
-              <div className="text-pink-400 font-bold bg-slate-800/50 p-1 rounded">NEXT turn</div>
+              <div className="text-pink-400 font-bold bg-slate-800 dark:bg-slate-800/50 p-1 rounded">NEXT turn</div>
               <br />
               <div className="text-emerald-400">IF player1_score {'>'} player2_score THEN</div>
               <div className="ml-4 text-white">OUTPUT "Player 1 Wins"</div>
@@ -108,21 +106,21 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
         </div>
 
         {/* Right Panel: Execution / Game Board */}
-        <div className="flex-1 bg-slate-800 flex flex-col relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        <div className="flex-1 bg-slate-800 dark:bg-slate-800 flex flex-col relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
            
            {/* Scores */}
-           <div className="flex justify-around p-8 bg-slate-900 border-b border-slate-700 shadow-lg">
-              <div className={`flex flex-col items-center p-4 rounded-xl border-2 transition-colors ${currentPlayer === 'p1' ? 'bg-indigo-900 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)]' : 'bg-slate-800 border-slate-700'}`}>
+           <div className="flex justify-around p-8 bg-slate-900 dark:bg-slate-800 border-b border-slate-700 dark:border-slate-500 shadow-lg">
+              <div className={`flex flex-col items-center p-4 rounded-xl border-2 transition-colors ${currentPlayer === 'p1' ? 'bg-indigo-900 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)]' : 'bg-slate-800 dark:bg-slate-800 border-slate-700 dark:border-slate-500'}`}>
                  <span className="text-slate-400 font-bold tracking-widest text-sm uppercase">Player 1</span>
                  <span className="text-5xl font-mono text-white mt-2">{scores.p1}</span>
               </div>
 
               <div className="flex flex-col items-center justify-center">
-                 <span className="text-slate-500 font-bold tracking-widest uppercase mb-2">Round</span>
+                 <span className="text-slate-500 dark:text-slate-400 font-bold tracking-widest uppercase mb-2">Round</span>
                  <span className="text-3xl font-mono text-emerald-500 bg-black px-6 py-2 rounded-full border border-emerald-900">{Math.min(turn + 1, 10)} / 10</span>
               </div>
 
-              <div className={`flex flex-col items-center p-4 rounded-xl border-2 transition-colors ${currentPlayer === 'p2' ? 'bg-rose-900 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.5)]' : 'bg-slate-800 border-slate-700'}`}>
+              <div className={`flex flex-col items-center p-4 rounded-xl border-2 transition-colors ${currentPlayer === 'p2' ? 'bg-rose-900 border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.5)]' : 'bg-slate-800 dark:bg-slate-800 border-slate-700 dark:border-slate-500'}`}>
                  <span className="text-slate-400 font-bold tracking-widest text-sm uppercase">Player 2</span>
                  <span className="text-5xl font-mono text-white mt-2">{scores.p2}</span>
               </div>
@@ -131,20 +129,20 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
            {/* The Dice */}
            <div className="flex-1 flex flex-col items-center justify-center">
               {currentDice ? (
-                 <div className="w-32 h-32 bg-slate-50 rounded-2xl shadow-2xl flex flex-wrap p-4 gap-2 justify-between animate-bounce">
+                 <div className="w-32 h-32 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-2xl flex flex-wrap p-4 gap-2 justify-between animate-bounce">
                     {/* Render dots based on dice value */}
                     {[...Array(currentDice)].map((_, i) => (
-                      <div key={i} className="w-6 h-6 bg-slate-900 rounded-full"></div>
+                      <div key={i} className="w-6 h-6 bg-slate-900 dark:bg-slate-800 rounded-full"></div>
                     ))}
                  </div>
               ) : (
-                 <div className="w-32 h-32 bg-slate-700 rounded-2xl border-4 border-slate-600 border-dashed opacity-50"></div>
+                 <div className="w-32 h-32 bg-slate-700 dark:bg-slate-800 rounded-2xl border-4 border-slate-600 dark:border-slate-500 border-dashed opacity-50"></div>
               )}
 
               {!isRunning && turn === 0 && (
                 <button 
                   onClick={startGame}
-                  className="mt-12 px-12 py-4 bg-emerald-600 hover:bg-emerald-500 text-black font-bold font-sans uppercase tracking-widest text-xl rounded-full shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all active:scale-95"
+                  className="mt-12 px-12 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold font-sans uppercase tracking-widest text-xl rounded-full shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all active:scale-95"
                 >
                   Execute Program
                 </button>
@@ -152,7 +150,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
            </div>
 
            {/* Execution Logs */}
-           <div className="h-64 bg-black border-t border-slate-700 p-4 font-mono text-sm overflow-y-auto flex flex-col">
+           <div className="h-64 bg-black border-t border-slate-700 dark:border-slate-500 p-4 font-mono text-sm overflow-y-auto flex flex-col">
               {logs.map((log, i) => (
                 <div key={i} className={`mb-1 ${log.includes('Wins') || log.includes('OVER') ? 'text-yellow-400 font-bold text-base' : log.includes('roll again') ? 'text-pink-400' : 'text-slate-400'}`}>
                   {log}

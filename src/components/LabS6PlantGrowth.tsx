@@ -52,10 +52,10 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
 
       <div className="flex-1 flex flex-col p-8 items-center">
         
-        <div className="w-full max-w-4xl bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 flex items-center justify-between">
+        <div className="w-full max-w-4xl bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-8 flex items-center justify-between">
           <div>
              <h2 className="text-2xl font-bold text-green-800">Time-Lapse Simulator</h2>
-             <p className="text-slate-600">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
+             <p className="text-slate-600 dark:text-slate-300">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
           </div>
           <div className="flex items-center gap-6">
             <div className="text-center">
@@ -72,7 +72,7 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
           </div>
         </div>
 
-        <div className="flex gap-12 items-end justify-center h-96 w-full max-w-4xl border-b-4 border-slate-300 pb-2 relative">
+        <div className="flex gap-12 items-end justify-center h-96 w-full max-w-4xl border-b-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 pb-2 relative">
           
           {/* Pot A */}
           <div className="flex flex-col items-center">
@@ -132,9 +132,9 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
         </div>
 
         {day >= 28 && (
-          <div className="mt-8 p-6 bg-slate-50 border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
+          <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-900 border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
             <h3 className="font-bold text-lg text-green-800 mb-2">Experiment Conclusion</h3>
-            <p className="text-slate-600">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
+            <p className="text-slate-600 dark:text-slate-300">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
           </div>
         )}
 

@@ -78,7 +78,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
     const fovArcPath = `M ${arcLeftX},${arcLeftY} A ${rArcO},${rArcO} 0 0,1 ${arcRightX},${arcRightY}`;
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
             {/* Header */}
             <LabHeader onExit={onExit} title="Grade 12: Inverse Trigonometry Simulator" />
 
@@ -86,23 +86,23 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
                     
                     {/* Column 1: Theory */}
-                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col overflow-y-auto border border-slate-100">
+                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col overflow-y-auto border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Theoretical Concepts</h2>
                         
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold text-indigo-700 mb-2 flex items-center">
                                 <Building2 className="w-5 h-5 mr-2" /> Surveying Heights
                             </h3>
-                            <p className="text-sm text-slate-600 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                                 Using a clinometer or theodolite, surveyors measure the angle of elevation to the top of a building.
                             </p>
-                            <p className="text-sm text-slate-600 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                                 If the horizontal distance is { "$$ d $$" }, the height { "$$ h $$" } is found using:
                             </p>
-                            <div className="bg-slate-50 p-3 rounded-lg mt-3 text-center text-sm overflow-x-auto">
+                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg mt-3 text-center text-sm overflow-x-auto">
                                 { "$$ \\tan(\\theta) = \\frac{h}{d} \\implies h = d \\tan(\\theta) $$" }
                             </div>
-                            <p className="text-sm text-slate-600 mt-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-3">
                                 Conversely, to find the angle given dimensions, we use the inverse tangent: { "$$ \\theta = \\arctan(\\frac{h}{d}) $$" }
                             </p>
                         </div>
@@ -111,33 +111,33 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                             <h3 className="text-lg font-semibold text-purple-700 mb-2 flex items-center">
                                 <Camera className="w-5 h-5 mr-2" /> Optics & Field of View
                             </h3>
-                            <p className="text-sm text-slate-600 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                                 In 3D graphics and camera optics, the Field of View (FOV) determines how much of the scene is visible.
                             </p>
-                            <p className="text-sm text-slate-600 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                                 For an object of width { "$$ w $$" } perfectly framed at distance { "$$ d $$" }, the angle { "$$ \\alpha $$" } subtended at the lens is found using right triangles:
                             </p>
-                            <div className="bg-slate-50 p-3 rounded-lg mt-3 text-center text-sm overflow-x-auto">
+                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg mt-3 text-center text-sm overflow-x-auto">
                                 { "$$ \\tan\\left(\\frac{\\alpha}{2}\\right) = \\frac{w/2}{d} $$" }
                             </div>
-                            <p className="text-sm text-slate-600 mt-3 text-center font-semibold">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-3 text-center font-semibold">
                                 { "$$ \\alpha = 2 \\arctan\\left(\\frac{w}{2d}\\right) $$" }
                             </p>
                         </div>
                     </div>
 
                     {/* Column 2: Simulation */}
-                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
-                        <div className="flex space-x-2 mb-6 bg-slate-100 p-1 rounded-lg shrink-0">
+                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                        <div className="flex space-x-2 mb-6 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg shrink-0">
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'survey' ? 'bg-slate-50 shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'survey' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-indigo-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
                                 onClick={() => setActiveTab('survey')}
                             >
                                 <Building2 className="w-4 h-4 mr-2" />
                                 Surveying
                             </button>
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'optics' ? 'bg-slate-50 shadow-sm text-purple-600' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'optics' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-purple-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
                                 onClick={() => setActiveTab('optics')}
                             >
                                 <Camera className="w-4 h-4 mr-2" />
@@ -148,7 +148,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                         <div className="flex-1 flex flex-col items-center justify-center">
                             {activeTab === 'survey' && (
                                 <div className="w-full flex flex-col items-center">
-                                    <svg viewBox="0 0 400 350" className="w-full max-w-md bg-slate-50 rounded-lg shadow-inner mb-6">
+                                    <svg viewBox="0 0 400 350" className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
                                         {/* Ground */}
                                         <line x1="20" y1={surveyorY} x2="380" y2={surveyorY} stroke="#94a3b8" strokeWidth="3" />
                                         
@@ -189,7 +189,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
 
                             {activeTab === 'optics' && (
                                 <div className="w-full flex flex-col items-center">
-                                    <svg viewBox="0 0 400 400" className="w-full max-w-md bg-slate-50 rounded-lg shadow-inner mb-6">
+                                    <svg viewBox="0 0 400 400" className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
                                         {/* Camera */}
                                         <circle cx={camX} cy={camY} r="8" fill="#1e293b" />
                                         <rect x={camX - 15} y={camY + 8} width="30" height="15" fill="#334155" rx="2" />
@@ -227,27 +227,27 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                     </div>
 
                     {/* Column 3: Assessment */}
-                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Analysis & Assessment</h2>
 
                         {activeTab === 'survey' && (
                             <div className="flex-1 flex flex-col">
-                                <p className="text-sm text-slate-600 mb-4">A surveyor looks at a building under the conditions shown in the simulation:</p>
-                                <div className="bg-slate-100 p-4 rounded-lg mb-6 font-mono text-center text-sm">
+                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">A surveyor looks at a building under the conditions shown in the simulation:</p>
+                                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     Distance (d) = {distance} m
                                     <br />
                                     Angle (θ) = {angleDeg}°
                                 </div>
-                                <p className="text-sm font-semibold mb-4 text-slate-800">Calculate the true height of the building (h). (Round to 2 decimal places):</p>
+                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-slate-100">Calculate the true height of the building (h). (Round to 2 decimal places):</p>
                                 
                                 <div className="space-y-4 mb-6">
                                     <div>
-                                        <label className="block text-xs font-medium text-slate-500 mb-1">Building Height (h)</label>
+                                        <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Building Height (h)</label>
                                         <input 
                                             type="number" 
                                             value={ansHeight} 
                                             onChange={(e) => setAnsHeight(e.target.value)} 
-                                            className="w-full border border-slate-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                             placeholder="Enter h..."
                                         />
                                     </div>
@@ -275,22 +275,22 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
 
                         {activeTab === 'optics' && (
                             <div className="flex-1 flex flex-col">
-                                <p className="text-sm text-slate-600 mb-4">An object needs to be perfectly framed by a 3D camera with these parameters:</p>
-                                <div className="bg-slate-100 p-4 rounded-lg mb-6 font-mono text-center text-sm">
+                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">An object needs to be perfectly framed by a 3D camera with these parameters:</p>
+                                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     Width (w) = {widthObj}
                                     <br />
                                     Distance (d) = {distObj}
                                 </div>
-                                <p className="text-sm font-semibold mb-4 text-slate-800">Calculate the required Field of View (FOV) angle in DEGREES. (Round to 2 decimal places):</p>
+                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-slate-100">Calculate the required Field of View (FOV) angle in DEGREES. (Round to 2 decimal places):</p>
                                 
                                 <div className="space-y-4 mb-6">
                                     <div>
-                                        <label className="block text-xs font-medium text-slate-500 mb-1">FOV Angle (α) in degrees</label>
+                                        <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">FOV Angle (α) in degrees</label>
                                         <input 
                                             type="number" 
                                             value={ansFov} 
                                             onChange={(e) => setAnsFov(e.target.value)} 
-                                            className="w-full border border-slate-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                             placeholder="Enter α..."
                                         />
                                     </div>

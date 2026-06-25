@@ -67,14 +67,14 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab 12.1: Quantum & Nuclear Engineering" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Theory & Context</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 border-b pb-2">Theory & Context</h2>
           
-          <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
             <section>
               <h3 className="font-semibold text-slate-900 flex items-center gap-2">
                 <Shield size={16} className="text-emerald-600"/> Nuclear Fission & Reactors
@@ -101,12 +101,12 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col relative overflow-hidden">
-          <h2 className="text-lg font-bold text-slate-800 mb-2">Reactor Control Panel</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col relative overflow-hidden">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Reactor Control Panel</h2>
           
-          <div className="flex gap-4 mb-4 bg-slate-100 p-3 rounded-lg">
+          <div className="flex gap-4 mb-4 bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
             <div className="flex-1">
-              <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block mb-1">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider block mb-1">
                 Control Rod Depth: {controlRodDepth}%
               </label>
               <input 
@@ -117,7 +117,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
               />
             </div>
             <div className="flex-1">
-              <label className="text-xs font-semibold text-slate-600 uppercase tracking-wider block mb-1">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider block mb-1">
                 Coolant Flow: {coolantFlow}%
               </label>
               <input 
@@ -130,19 +130,19 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="flex justify-around mb-4">
-            <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700'}`}>
+            <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'}`}>
               <ThermometerSun size={24} className="mb-1" />
               <span className="text-xl font-bold">{temperature}°C</span>
               <span className="text-xs">Core Temp</span>
             </div>
-            <div className="p-3 rounded-lg flex flex-col items-center bg-slate-100 text-slate-700">
+            <div className="p-3 rounded-lg flex flex-col items-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
               <Activity size={24} className="mb-1 text-emerald-600" />
               <span className="text-xl font-bold">{power} MW</span>
               <span className="text-xs">Power Output</span>
             </div>
           </div>
 
-          <div className="flex-1 border-2 border-slate-200 rounded-lg bg-slate-900 relative overflow-hidden flex items-center justify-center">
+          <div className="flex-1 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-900 dark:bg-slate-800 relative overflow-hidden flex items-center justify-center">
             {meltdown ? (
               <div className="text-center text-red-500 animate-pulse flex flex-col items-center">
                 <AlertTriangle size={64} className="mb-4" />
@@ -172,13 +172,13 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Analysis & Computing</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 border-b pb-2">Analysis & Computing</h2>
           
           <div className="space-y-6">
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 className="font-semibold text-slate-800 mb-2">Q1: PET Scan Annihilation</h3>
-              <p className="text-sm text-slate-600 mb-3">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Q1: PET Scan Annihilation</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                 In a PET scan, a positron and electron annihilate. Calculate the total energy of the two gamma rays produced in <strong>MeV</strong>.
                 <br/><span className="text-xs italic">(m_e = 9.11×10⁻³¹ kg, c = 3×10⁸ m/s, 1 eV = 1.6×10⁻¹⁹ J)</span>
               </p>
@@ -195,9 +195,9 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
               {petFeedback && <p className={`mt-2 text-sm font-medium ${petFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{petFeedback}</p>}
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 className="font-semibold text-slate-800 mb-2">Q2: Mass Defect</h3>
-              <p className="text-sm text-slate-600 mb-3">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Q2: Mass Defect</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
                 If your reactor operates continuously at 1.0 GW (10⁹ W), how much mass is converted to pure energy every second? (Provide answer in <strong>×10⁻⁸ kg</strong>).
                 <br/><span className="text-xs italic">Use E = mc²</span>
               </p>
@@ -207,7 +207,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
                   placeholder="e.g. 1.11" 
                   className="flex-1 border rounded px-3 py-1.5 text-sm"
                 />
-                <span className="text-sm text-slate-600">× 10⁻⁸ kg</span>
+                <span className="text-sm text-slate-600 dark:text-slate-300">× 10⁻⁸ kg</span>
                 <button onClick={checkReactor} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700">
                   Check
                 </button>

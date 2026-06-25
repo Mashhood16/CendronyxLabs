@@ -69,23 +69,21 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-slate-50 shadow-sm px-6 py-4 flex items-center justify-between border-b border-slate-200">
-                <LabHeader onExit={onExit} title="Liquid Pressure Lab" subtitle="Investigate the relationship between liquid depth and pressure." />
-            </div>
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+            <LabHeader onExit={onExit} title="Liquid Pressure Lab" subtitle="Investigate the relationship between liquid depth and pressure." />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 {/* Column 1: Setup */}
-                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <div className="flex items-center gap-2 mb-4">
                         <Info className="w-5 h-5 text-blue-600" />
-                        <h2 className="text-lg font-semibold text-slate-800">1. Setup & Theory</h2>
+                        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">1. Setup & Theory</h2>
                     </div>
-                    <p className="text-sm text-slate-600 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                         Fluid pressure increases with depth due to the weight of the fluid above. 
                         The pressure <strong>P</strong> at depth <strong>h</strong> in a liquid of density <strong>ρ</strong> is: 
                         <br/><br/>
-                        <span className="font-mono bg-slate-100 p-1 rounded">P = ρ × g × h</span>
+                        <span className="font-mono bg-slate-100 dark:bg-slate-800 p-1 rounded">P = ρ × g × h</span>
                         <br/><br/>
                         Higher pressure results in a higher ejection velocity (v) from a hole, causing the water to spurt further.
                     </p>
@@ -102,12 +100,12 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2: Simulation */}
-                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 flex flex-col items-center">
-                    <h2 className="text-lg font-semibold text-slate-800 mb-4 w-full">2. Interactive Simulation</h2>
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 w-full">2. Interactive Simulation</h2>
                     <svg 
                         ref={svgRef} 
                         viewBox="0 0 400 400" 
-                        className="w-full max-w-md h-auto bg-[#f8fafc] rounded border border-slate-200"
+                        className="w-full max-w-md h-auto bg-[#f8fafc] rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500"
                         onPointerMove={handlePointerMove} 
                         onPointerUp={handlePointerUp} 
                         onPointerLeave={handlePointerUp}
@@ -160,25 +158,25 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
-                    <h2 className="text-lg font-semibold text-slate-800 mb-4">3. Data Logging & Assessment</h2>
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">3. Data Logging & Assessment</h2>
                     
                     <div className="mb-6">
                         <div className="flex gap-2 mb-3">
                             <input 
                                 type="number" placeholder="Depth (cm)" 
                                 value={inputDepth} onChange={(e) => setInputDepth(e.target.value)}
-                                className="flex-1 p-2 border border-slate-300 rounded text-sm"
+                                className="flex-1 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-sm"
                             />
                             <input 
                                 type="number" placeholder="Range (cm)" 
                                 value={inputRange} onChange={(e) => setInputRange(e.target.value)}
-                                className="flex-1 p-2 border border-slate-300 rounded text-sm"
+                                className="flex-1 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-sm"
                             />
                             <button onClick={handleAddLog} className="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700">Add</button>
                         </div>
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100 text-slate-700">
+                            <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
                                 <tr>
                                     <th className="p-2 border">Hole Depth (cm)</th>
                                     <th className="p-2 border">Splash Range (cm)</th>
@@ -186,7 +184,7 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
                             </thead>
                             <tbody>
                                 {logs.length === 0 ? (
-                                    <tr><td colSpan={2} className="p-4 text-center text-slate-500">No measurements recorded.</td></tr>
+                                    <tr><td colSpan={2} className="p-4 text-center text-slate-500 dark:text-slate-400">No measurements recorded.</td></tr>
                                 ) : (
                                     logs.map((log, i) => (
                                         <tr key={i}>

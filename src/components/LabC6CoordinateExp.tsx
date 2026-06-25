@@ -23,18 +23,17 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Coordinate Experimentation" />
 
-        <h1 className="text-3xl font-bold mb-2">Coordinate Experimentation</h1>
-        <p className="text-slate-600 mb-8">Relocate the Rocket sprite to different coordinates on the Cartesian plane stage.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Relocate the Rocket sprite to different coordinates on the Cartesian plane stage.</p>
 
         <div className="flex gap-8 flex-1">
           {/* Blocks Editor (Mock) */}
-          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+          <div className="w-80 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
             <div className="bg-blue-500 text-white font-bold p-3 text-sm">Blocks</div>
-            <div className="flex-1 p-6 flex flex-col gap-4 bg-slate-50/50">
+            <div className="flex-1 p-6 flex flex-col gap-4 bg-slate-50 dark:bg-slate-900/50">
               
               <div className="bg-blue-600 rounded-lg shadow-sm border border-blue-700 p-4 w-full text-white font-bold text-sm">
                 <div className="flex items-center gap-2 mb-2">
@@ -43,7 +42,7 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
                     type="number" 
                     value={inputX} 
                     onChange={e => setInputX(e.target.value)} 
-                    className="w-16 px-2 py-1 rounded bg-slate-50 text-black font-mono border-none outline-none"
+                    className="w-16 px-2 py-1 rounded bg-slate-50 dark:bg-slate-900 text-black dark:text-white font-mono border-none outline-none"
                   />
                 </div>
                 <div className="flex items-center gap-2">
@@ -52,14 +51,14 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
                     type="number" 
                     value={inputY} 
                     onChange={e => setInputY(e.target.value)} 
-                    className="w-16 px-2 py-1 rounded bg-slate-50 text-black font-mono border-none outline-none ml-5"
+                    className="w-16 px-2 py-1 rounded bg-slate-50 dark:bg-slate-900 text-black dark:text-white font-mono border-none outline-none ml-5"
                   />
                 </div>
               </div>
 
               <button 
                 onClick={applyCoordinates}
-                className="mt-4 px-4 py-2 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition-colors"
+                className="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Execute Block
               </button>
@@ -69,11 +68,11 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
 
           {/* Stage Area */}
           <div className="flex-1 flex flex-col">
-            <div className="bg-slate-50 rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
-              <span className="font-bold text-sm text-slate-600">Scratch Stage</span>
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-t-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 border-b-0 p-3 flex justify-between items-center bg-slate-100 dark:bg-slate-800">
+              <span className="font-bold text-sm text-slate-600 dark:text-slate-300">Scratch Stage</span>
             </div>
             
-            <div className="bg-slate-50 flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
+            <div className="bg-slate-50 dark:bg-slate-900 flex-1 rounded-b-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden flex items-center justify-center">
               
               {/* Cartesian Grid Background */}
               <div className="absolute inset-0 opacity-10" style={{
@@ -103,7 +102,7 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
               >
                 <div className="relative">
                   <Rocket className="w-12 h-12 text-blue-600" fill="#3b82f6" strokeWidth={1} />
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-2 py-0.5 rounded text-[10px] whitespace-nowrap opacity-75">
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] whitespace-nowrap opacity-90 font-mono">
                     ({x}, {y})
                   </div>
                 </div>

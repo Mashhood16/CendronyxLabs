@@ -1,37 +1,95 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { BellRing } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
 const MATERIALS = [
-  { id: 'steel', name: 'Steel Plate', type: 'metal', color: 'bg-slate-300', soundType: 'ring' },
+  { id: 'steel', name: 'Steel Plate', type: 'metal', color: 'bg-slate-300 dark:bg-slate-800', soundType: 'ring' },
   { id: 'wood', name: 'Wooden Block', type: 'non-metal', color: 'bg-amber-800', soundType: 'thud' },
   { id: 'brass', name: 'Brass Bell', type: 'metal', color: 'bg-yellow-500', soundType: 'ring' },
   { id: 'plastic', name: 'Plastic Box', type: 'non-metal', color: 'bg-blue-400', soundType: 'thud' },
 ];
+
+// Web Audio API sound synthesis
+let audioCtx: AudioContext | null = null;
+function getAudioCtx(): AudioContext {
+  if (!audioCtx) audioCtx = new AudioContext();
+  return audioCtx;
+}
+
+function playMetalRing() {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
+  // Bell-like: multiple sine partials with fast attack and long decay
+  const freqs = [523, 659, 784, 1047, 1319]; // C5, E5, G5, C6, E6
+  freqs.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.25 / (i + 1), now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5 - i * 0.1);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 1.8);
+  });
+}
+
+function playThud() {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
+  // Dull thud: low frequency burst with noise
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(120, now);
+  osc.frequency.exponentialRampToValueAtTime(60, now + 0.15);
+  gain.gain.setValueAtTime(0.6, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + 0.3);
+
+  // Add a noise burst for the "knock" texture
+  const bufferSize = ctx.sampleRate * 0.1;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+  const noise = ctx.createBufferSource();
+  noise.buffer = buffer;
+  const noiseGain = ctx.createGain();
+  noiseGain.gain.setValueAtTime(0.4, now);
+  noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+  noise.connect(noiseGain);
+  noiseGain.connect(ctx.destination);
+  noise.start(now);
+  noise.stop(now + 0.15);
+}
 
 export default function LabS8Sonorous({ onExit }: LabProps) {
   const [selected, setSelected] = useState(MATERIALS[0]);
   const [isStriking, setIsStriking] = useState(false);
   const [waves, setWaves] = useState<number[]>([]);
 
-  const strike = () => {
+  const strike = useCallback(() => {
     setIsStriking(true);
     setTimeout(() => {
       setIsStriking(false);
       
-      // Generate sound waves based on material type
+      // Play the matching sound
       if (selected.soundType === 'ring') {
-        // Many waves for ringing metal
+        playMetalRing();
         setWaves([1, 2, 3, 4, 5]);
       } else {
-        // Just one dull wave for thud
+        playThud();
         setWaves([1]);
       }
       
     }, 150);
-  };
+  }, [selected]);
 
   // Clear waves after animation
   useEffect(() => {
@@ -44,18 +102,18 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
   }, [waves]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 5.7: Sonorous Nature" subtitle="Strike materials to hear if they produce a ringing sound" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
         <div className="w-full md:w-64 flex flex-col gap-2">
-          <h3 className="font-bold text-slate-700 mb-2">Select Material</h3>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Select Material</h3>
           {MATERIALS.map(m => (
             <button 
               key={m.id}
               onClick={() => { setSelected(m); setWaves([]); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200'}`}
             >
               {m.name}
             </button>
@@ -63,7 +121,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           <div className="relative w-64 h-64 flex items-center justify-center mb-8">
             
@@ -97,7 +155,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
               }}
             >
               <div className="absolute top-4 right-4 w-16 h-4 bg-amber-200 rounded-full rotate-45" />
-              <div className="absolute top-0 right-16 w-8 h-8 bg-slate-700 rounded-full" />
+              <div className="absolute top-0 right-16 w-8 h-8 bg-slate-700 dark:bg-slate-800 rounded-full" />
             </div>
 
           </div>
@@ -112,7 +170,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
             </button>
 
             {waves.length > 0 && (
-              <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.soundType === 'ring' ? 'bg-purple-50 border-purple-200 text-purple-800' : 'bg-slate-100 border-slate-300 text-slate-800'}`}>
+              <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.soundType === 'ring' ? 'bg-purple-50 border-purple-200 text-purple-800' : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-800 dark:text-slate-100'}`}>
                 <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
                 <p className="text-sm">
                   {selected.soundType === 'ring' 

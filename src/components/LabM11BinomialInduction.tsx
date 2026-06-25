@@ -92,18 +92,18 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} title="Grade 11: Induction & Binomial Theorem" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
                 {/* Left Column: Theory */}
-                <div className="p-6 bg-slate-50 border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
+                <div className="p-6 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col gap-6">
                     {mode === 'induction' ? (
                         <>
                             <div>
-                                <h2 className="text-2xl font-bold text-slate-800 mb-2">Mathematical Induction</h2>
-                                <p className="text-slate-600 mb-4">A method of mathematical proof typically used to establish that a given statement is true for all natural numbers.</p>
+                                <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Mathematical Induction</h2>
+                                <p className="text-slate-600 dark:text-slate-300 mb-4">A method of mathematical proof typically used to establish that a given statement is true for all natural numbers.</p>
                                 
                                 <div className="bg-amber-50 p-4 rounded-xl border border-amber-200 mb-4">
                                     <h3 className="font-semibold text-amber-900 mb-2">The Domino Effect</h3>
@@ -113,14 +113,14 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                         <li><strong>Inductive Step:</strong> Show that if domino $k$ falls, it knocks over domino $k+1$.</li>
                                     </ol>
                                 </div>
-                                <p className="text-sm text-slate-600">If both conditions are met, the entire infinite line of dominoes will fall. If there is a gap (missing domino), the chain stops!</p>
+                                <p className="text-sm text-slate-600 dark:text-slate-300">If both conditions are met, the entire infinite line of dominoes will fall. If there is a gap (missing domino), the chain stops!</p>
                             </div>
                         </>
                     ) : (
                         <>
                             <div>
-                                <h2 className="text-2xl font-bold text-slate-800 mb-2">Pascal's& Binomial Theorem</h2>
-                                <p className="text-slate-600 mb-4">Pascal's Triangle gives the coefficients for binomial expansions, represented by combinations {"$\\binom{n}{k}$"}.</p>
+                                <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Pascal's& Binomial Theorem</h2>
+                                <p className="text-slate-600 dark:text-slate-300 mb-4">Pascal's Triangle gives the coefficients for binomial expansions, represented by combinations {"$\\binom{n}{k}$"}.</p>
                                 
                                 <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-200 mb-4">
                                     <h3 className="font-semibold text-indigo-900 mb-2">Binomial Theorem</h3>
@@ -129,9 +129,9 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                     </p>
                                     <p className="text-xs text-indigo-700">Where $nCk$ (or {"$\\binom{n}{k}$"}) is the number in the $n$-th row and $k$-th column of Pascal's triangle.</p>
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                                    <h3 className="font-semibold text-slate-800 mb-2">Formula for nCr</h3>
-                                    <p className="text-sm font-mono text-slate-700">
+                                <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Formula for nCr</h3>
+                                    <p className="text-sm font-mono text-slate-700 dark:text-slate-200">
                                         {"$$ nCr = \\frac{n!}{r! (n-r)!} $$"}
                                     </p>
                                 </div>
@@ -141,19 +141,19 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                 </div>
 
                 {/* Middle Column: Interactive Simulator */}
-                <div className="bg-slate-100 relative flex flex-col p-6 overflow-y-auto items-center justify-center">
-                    <h2 className="text-xl font-bold text-slate-800 mb-6 absolute top-6">Interactive Visualizer</h2>
+                <div className="bg-slate-100 dark:bg-slate-800 relative flex flex-col p-6 overflow-y-auto items-center justify-center">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 absolute top-6">Interactive Visualizer</h2>
                     
                     {mode === 'induction' && (
                         <div className="w-full flex flex-col items-center gap-12 mt-10">
                             {/* Domino Track */}
-                            <div className="w-full max-w-2xl bg-slate-300 h-4 rounded-full relative flex items-end justify-between px-4 pb-4">
+                            <div className="w-full max-w-2xl bg-slate-300 dark:bg-slate-800 h-4 rounded-full relative flex items-end justify-between px-4 pb-4">
                                 {dominoesState.map((isFallen, idx) => (
                                     <div key={idx} className="relative w-8 flex justify-center">
                                         {idx !== missingDomino && (
                                             <div className={`w-3 h-16 rounded-sm bg-indigo-600 border border-indigo-800 shadow-md transform origin-bottom transition-transform duration-150 ease-in ${isFallen ? 'rotate-[65deg] translate-x-3' : 'rotate-0'}`}>
                                                 <div className="w-full h-1/2 border-b border-indigo-400 opacity-50"></div>
-                                                <div className="absolute -top-6 w-full text-center text-xs font-bold text-slate-500">{idx+1}</div>
+                                                <div className="absolute -top-6 w-full text-center text-xs font-bold text-slate-500 dark:text-slate-400">{idx+1}</div>
                                             </div>
                                         )}
                                         {idx === missingDomino && (
@@ -163,12 +163,12 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 ))}
                             </div>
 
-                            <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 w-full max-w-md flex flex-col gap-4">
-                                <p className="text-sm font-semibold text-slate-700">Experiment Controls</p>
+                            <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 w-full max-w-md flex flex-col gap-4">
+                                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">Experiment Controls</p>
                                 <div className="flex items-center justify-between">
-                                    <label className="text-sm text-slate-600">Remove a domino (create a gap):</label>
+                                    <label className="text-sm text-slate-600 dark:text-slate-300">Remove a domino (create a gap):</label>
                                     <select 
-                                        className="border border-slate-300 rounded p-1"
+                                        className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1"
                                         value={missingDomino === null ? 'none' : missingDomino}
                                         onChange={e => {
                                             const val = e.target.value;
@@ -186,7 +186,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                     <button onClick={startFall} disabled={isFalling || dominoesState[0]} className="flex-1 bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50">
                                         <Play size={18} /> Push First Domino
                                     </button>
-                                    <button onClick={resetDominoes} className="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                                    <button onClick={resetDominoes} className="flex-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
                                         <RotateCcw size={18} /> Reset
                                     </button>
                                 </div>
@@ -209,7 +209,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                                 key={k}
                                                 onClick={() => setSelectedCell({n, k})}
                                                 className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all shadow-sm border
-                                                    ${selectedCell?.n === n && selectedCell?.k === k ? 'bg-amber-500 text-white border-amber-600 scale-110 z-10' : 'bg-slate-50 text-indigo-900 border-slate-200 hover:bg-indigo-50'}`}
+                                                    ${selectedCell?.n === n && selectedCell?.k === k ? 'bg-amber-500 text-white border-amber-600 scale-110 z-10' : 'bg-slate-50 dark:bg-slate-900 text-indigo-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:bg-indigo-50'}`}
                                             >
                                                 {val}
                                             </button>
@@ -218,11 +218,11 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 ))}
                             </div>
 
-                            <div className="w-full max-w-md bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4 flex flex-col gap-4">
+                            <div className="w-full max-w-md bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-4 flex flex-col gap-4">
                                 <div className="flex items-center justify-between">
-                                    <label className="text-sm font-semibold text-slate-700">Number of Rows:</label>
+                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Number of Rows:</label>
                                     <input type="range" min="3" max="10" value={pascalRows} onChange={e => {setPascalRows(parseInt(e.target.value)); setSelectedCell(null);}} className="w-1/2" />
-                                    <span className="text-sm font-mono bg-slate-100 px-2 rounded">{pascalRows}</span>
+                                    <span className="text-sm font-mono bg-slate-100 dark:bg-slate-800 px-2 rounded">{pascalRows}</span>
                                 </div>
 
                                 {selectedCell && (
@@ -249,26 +249,26 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                 </div>
 
                 {/* Right Column: Assessment */}
-                <div className="p-6 bg-slate-50 border-l border-slate-200 overflow-y-auto">
-                    <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <div className="p-6 bg-slate-50 dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
                          Let's Solve
                     </h2>
 
                     <div className="space-y-6">
                         {mode === 'induction' && (
                             <>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q1. What is the name of the first step in Mathematical Induction, where you prove the statement holds for n=1?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. What is the name of the first step in Mathematical Induction, where you prove the statement holds for n=1?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
                                 </div>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q2. In the Inductive Step, you assume the statement is true for n = k. What do you then need to prove it is true for?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. In the Inductive Step, you assume the statement is true for n = k. What do you then need to prove it is true for?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -278,19 +278,19 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
 
                         {mode === 'pascal' && (
                             <>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q1. What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4$?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4$?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
-                                    <p className="text-xs text-slate-500 mt-2">Hint: Look at Row 4 of Pascal's Triangle.</p>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Hint: Look at Row 4 of Pascal's Triangle.</p>
                                 </div>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q2. Compute the value of $\binom{7}{3}$ (7 choose 3).</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. Compute the value of $\binom{7}{3}$ (7 choose 3).</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>

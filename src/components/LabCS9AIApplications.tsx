@@ -67,17 +67,17 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="AI Applications & Ethics" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
-                    <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                         <Brain className="w-6 h-6 text-indigo-600" />
                         Theory & Context
                     </h2>
-                    <div className="text-sm text-slate-600 space-y-3">
+                    <div className="text-sm text-slate-600 dark:text-slate-300 space-y-3">
                         <p><strong>Artificial Intelligence (AI)</strong> systems are designed to perform tasks that typically require human intelligence, such as visual perception, speech recognition, and decision-making.</p>
                         <p>However, real-world AI applications face significant functional and ethical challenges:</p>
                         <ul className="list-disc pl-5 space-y-1">
@@ -93,14 +93,14 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
-                    <h2 className="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
                         <Network className="w-6 h-6 text-indigo-600" />
                         AI Tech Tree Simulator
                     </h2>
-                    <p className="text-xs text-slate-500 mb-4 text-center">Click locked nodes (gray) to analyze their issues. Solve them to unlock the tech.</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-4 text-center">Click locked nodes (gray) to analyze their issues. Solve them to unlock the tech.</p>
                     
-                    <div className="relative w-full aspect-square max-w-md border-2 border-indigo-50 rounded-xl bg-slate-50 overflow-hidden shadow-inner">
+                    <div className="relative w-full aspect-square max-w-md border-2 border-indigo-50 rounded-xl bg-slate-50 dark:bg-slate-900 overflow-hidden shadow-inner">
                         <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
                             {nodes.map(node => {
                                 if (!node.parentId) return null;
@@ -117,7 +117,7 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                                 );
                             })}
                             {nodes.map(node => (
-                                <g key={node.id} onClick={() => handleNodeClick(node)} className="cursor-pointer transition-transform hover:scale-105" transform={`translate(${node.x}, ${node.y})`}>
+                                <g key={node.id} onClick={() => handleNodeClick(node)} className="cursor-pointer hover:opacity-70" transform={`translate(${node.x}, ${node.y})`}>
                                     <circle 
                                         r="4" 
                                         fill={node.unlocked ? "#4f46e5" : "#e2e8f0"} 
@@ -135,14 +135,14 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                     {selectedNode && selectedNode.id !== 'ai' && (
                         <div className="mt-4 w-full bg-indigo-50 p-4 rounded-lg border border-indigo-200 shadow-sm animate-in fade-in slide-in-from-bottom-2">
                             <h3 className="font-bold text-indigo-900 mb-1">{selectedNode.label} Analysis</h3>
-                            <p className="text-sm mb-3"><span className="font-semibold text-slate-700">Identified Risk:</span> {selectedNode.issue}</p>
+                            <p className="text-sm mb-3"><span className="font-semibold text-slate-700 dark:text-slate-200">Identified Risk:</span> {selectedNode.issue}</p>
                             {selectedNode.unlocked ? (
                                 <div className="flex items-center gap-2 text-sm text-green-700 font-semibold bg-green-50 p-2 rounded border border-green-200">
                                     <CheckCircle2 className="w-4 h-4"/> Solved: {selectedNode.solution}
                                 </div>
                             ) : (
                                 <div className="space-y-2">
-                                    <p className="text-xs font-semibold text-slate-600">Propose Solution:</p>
+                                    <p className="text-xs font-semibold text-slate-600 dark:text-slate-300">Propose Solution:</p>
                                     <button onClick={solveIssue} className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-colors text-sm font-semibold flex items-center justify-center gap-2 shadow-sm">
                                         Deploy: {selectedNode.solution} <ArrowRight className="w-4 h-4"/>
                                     </button>
@@ -153,23 +153,23 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
                         <Activity className="w-6 h-6 text-indigo-600" />
                         Analysis & Assessment
                     </h2>
                     
-                    <div className="flex-1 min-h-[200px] overflow-y-auto bg-slate-50 p-4 rounded-lg border border-slate-200 mb-6 shadow-inner">
-                        <h3 className="font-semibold text-sm text-slate-700 mb-3 border-b pb-1 border-slate-200">Security Log</h3>
+                    <div className="flex-1 min-h-[200px] overflow-y-auto bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-6 shadow-inner">
+                        <h3 className="font-semibold text-sm text-slate-700 dark:text-slate-200 mb-3 border-b pb-1 border-slate-200 dark:border-slate-700 dark:border-slate-500">Security Log</h3>
                         {logs.length === 0 ? (
-                            <p className="text-xs text-slate-500 italic text-center mt-8">No issues resolved yet.<br/>Interact with the tech tree.</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 italic text-center mt-8">No issues resolved yet.<br/>Interact with the tech tree.</p>
                         ) : (
                             <ul className="space-y-2">
                                 {logs.map((log, i) => (
-                                    <li key={i} className="text-xs p-2 bg-slate-50 rounded border border-green-200 flex justify-between items-center shadow-sm animate-in slide-in-from-left-2">
+                                    <li key={i} className="text-xs p-2 bg-slate-50 dark:bg-slate-900 rounded border border-green-200 flex justify-between items-center shadow-sm animate-in slide-in-from-left-2">
                                         <div className="flex flex-col">
-                                            <span className="font-bold text-slate-700">{log.node}</span>
-                                            <span className="text-slate-500">{log.issue}</span>
+                                            <span className="font-bold text-slate-700 dark:text-slate-200">{log.node}</span>
+                                            <span className="text-slate-500 dark:text-slate-400">{log.issue}</span>
                                         </div>
                                         <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
                                     </li>

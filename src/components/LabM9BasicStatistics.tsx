@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, BarChart3, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
+import { CheckCircle, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -56,22 +56,13 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
   const maxVal = Math.max(totalGood, totalFaulty, 10);
   
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-amber-600 text-white p-4 shadow-md flex items-center justify-between z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          <LabHeader onExit={onExit} title="Lab M9.3: Basic Statistics" />
-          <div>
-            <h1 className="text-xl font-bold">Lab M9.3: Basic Statistics</h1>
-            <p className="text-amber-100 text-sm">Quality Control & Probability Simulator</p>
-          </div>
-        </div>
-        <BarChart3 size={28} className="text-amber-200" />
-      </div>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Lab M9.3: Basic Statistics" subtitle="Quality Control & Probability Simulator" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <HelpCircle className="text-amber-600" size={20} />
             Empirical Probability
           </h2>
@@ -93,32 +84,32 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Factory className="text-amber-600" size={20} />
             Factory Inspector
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-end relative bg-slate-50 border border-slate-200 rounded-lg p-6">
+          <div className="flex-1 flex flex-col items-center justify-end relative bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-6">
             <div className="w-full h-48 flex items-end justify-center gap-12">
               {/* Bar 1: Good */}
               <div className="flex flex-col items-center gap-2 w-24">
-                <span className="font-bold text-slate-600">{totalGood}</span>
+                <span className="font-bold text-slate-600 dark:text-slate-300">{totalGood}</span>
                 <div 
                   className="w-full bg-blue-500 rounded-t-md transition-all duration-500"
                   style={{ height: `${(totalGood / maxVal) * 100}%`, minHeight: '4px' }}
                 ></div>
-                <span className="text-xs font-bold text-slate-500">GOOD</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">GOOD</span>
               </div>
               
               {/* Bar 2: Faulty */}
               <div className="flex flex-col items-center gap-2 w-24">
-                <span className="font-bold text-slate-600">{totalFaulty}</span>
+                <span className="font-bold text-slate-600 dark:text-slate-300">{totalFaulty}</span>
                 <div 
                   className="w-full bg-red-500 rounded-t-md transition-all duration-500"
                   style={{ height: `${(totalFaulty / maxVal) * 100}%`, minHeight: '4px' }}
                 ></div>
-                <span className="text-xs font-bold text-slate-500">FAULTY</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">FAULTY</span>
               </div>
             </div>
           </div>
@@ -132,7 +123,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
             </button>
             <button 
               onClick={resetSim} 
-              className="px-4 py-3 bg-slate-200 text-slate-700 font-bold rounded-lg flex items-center justify-center hover:bg-slate-300 transition-colors"
+              className="px-4 py-3 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-lg flex items-center justify-center hover:bg-slate-300 dark:bg-slate-800 transition-colors"
             >
               <RefreshCcw size={18} />
             </button>
@@ -140,8 +131,8 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Calculator className="text-amber-600" size={20} />
             Data Analysis
           </h2>

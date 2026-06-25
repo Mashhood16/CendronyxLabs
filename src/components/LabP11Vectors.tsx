@@ -31,18 +31,18 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Vectors & Dot Product" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Vector Resolution & Work</h2>
-          <div className="prose prose-sm text-slate-600">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Vector Resolution & Work</h2>
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300">
             <p>Work is defined as the dot product of Force and Displacement vectors:</p>
-            <p className="text-center font-mono bg-slate-100 p-2 rounded text-slate-800">W = F · D = |F||D|cos(θ)</p>
+            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-slate-800 dark:text-slate-100">W = F · D = |F||D|cos(θ)</p>
             <p>Alternatively, resolving into components:</p>
-            <p className="text-center font-mono bg-slate-100 p-2 rounded text-slate-800">W = F_x D_x + F_y D_y</p>
+            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-slate-800 dark:text-slate-100">W = F_x D_x + F_y D_y</p>
             <ul className="list-disc pl-4 mt-2 space-y-1">
               <li><strong>Force (F)</strong> represents the push on a trolley.</li>
               <li><strong>Displacement (D)</strong> represents the movement.</li>
@@ -53,25 +53,25 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
           
           <div className="mt-6 space-y-4">
             <div>
-              <label className="text-sm font-medium text-slate-700 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                 <span>Force Magnitude (N)</span> <span>{fMag} N</span>
               </label>
               <input type="range" min="10" max="100" value={fMag} onChange={e => setFMag(Number(e.target.value))} className="w-full accent-orange-500" />
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-700 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                 <span>Force Angle (°)</span> <span>{fAngle}°</span>
               </label>
               <input type="range" min="-90" max="90" value={fAngle} onChange={e => setFAngle(Number(e.target.value))} className="w-full accent-orange-500" />
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-700 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                 <span>Disp. Magnitude (m)</span> <span>{dMag} m</span>
               </label>
               <input type="range" min="5" max="50" value={dMag} onChange={e => setDMag(Number(e.target.value))} className="w-full accent-blue-500" />
             </div>
             <div>
-              <label className="text-sm font-medium text-slate-700 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
                 <span>Disp. Angle (°)</span> <span>{dAngle}°</span>
               </label>
               <input type="range" min="-90" max="90" value={dAngle} onChange={e => setDAngle(Number(e.target.value))} className="w-full accent-blue-500" />
@@ -80,9 +80,9 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Vector Mapping</h2>
-          <svg width="300" height="300" className="bg-slate-100 rounded-lg border border-slate-300 shadow-inner">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Vector Mapping</h2>
+          <svg width="300" height="300" className="bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
             <defs>
               <marker id="arrowForce" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316" />
@@ -127,21 +127,21 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Calculate Work Done
           </h2>
           
-          <div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-2 text-sm text-slate-700">
+          <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg space-y-2 text-sm text-slate-700 dark:text-slate-200">
             <p><strong>F</strong> = {fMag} N at {fAngle}°</p>
             <p><strong>D</strong> = {dMag} m at {dAngle}°</p>
-            <p className="text-xs text-slate-500 mt-2">Hint: Find components of F and D or use the angle difference.</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Hint: Find components of F and D or use the angle difference.</p>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                 Work Done (Joules):
               </label>
               <input
@@ -149,7 +149,7 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
                 value={workGuess}
                 onChange={(e) => setWorkGuess(e.target.value)}
                 placeholder="e.g. 250"
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
             </div>
             

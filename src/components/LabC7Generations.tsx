@@ -20,7 +20,7 @@ export default function LabC7Generations({ onExit }: LabProps) {
   const technologies = [
     { id: 'transistor', name: 'Transistors', color: 'bg-orange-100 border-orange-400 text-orange-800' },
     { id: 'microprocessor', name: 'Microprocessors', color: 'bg-blue-100 border-blue-400 text-blue-800' },
-    { id: 'vacuum', name: 'Vacuum Tubes', color: 'bg-slate-200 border-slate-500 text-slate-800' },
+    { id: 'vacuum', name: 'Vacuum Tubes', color: 'bg-slate-200 dark:bg-slate-800 border-slate-500 dark:border-slate-500 text-slate-800 dark:text-slate-100' },
     { id: 'ic', name: 'Integrated Circuits (IC)', color: 'bg-emerald-100 border-emerald-400 text-emerald-800' }
   ];
 
@@ -34,12 +34,11 @@ export default function LabC7Generations({ onExit }: LabProps) {
   const isComplete = generations.every(gen => matches[gen.id] === gen.correctTech);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Computer Generations" />
 
-        <h1 className="text-3xl font-bold mb-2">Computer Generations</h1>
-        <p className="text-slate-600 mb-8">Drag and drop the core computing technology into its correct generation.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Drag and drop the core computing technology into its correct generation.</p>
 
         {isComplete && (
           <div className="bg-emerald-100 border border-emerald-400 text-emerald-800 p-4 rounded-xl mb-8 flex items-center shadow-sm">
@@ -56,12 +55,12 @@ export default function LabC7Generations({ onExit }: LabProps) {
             return (
               <div 
                 key={gen.id}
-                className={`bg-slate-50 rounded-xl border-2 p-4 min-h-[200px] flex flex-col shadow-sm transition-colors ${draggedTech ? 'border-dashed border-blue-300 bg-blue-50/50' : 'border-slate-200'}`}
+                className={`bg-slate-50 dark:bg-slate-900 rounded-xl border-2 p-4 min-h-[200px] flex flex-col shadow-sm transition-colors ${draggedTech ? 'border-dashed border-blue-300 bg-blue-50/50' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500'}`}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={() => handleDrop(gen.id)}
               >
                 <div className="text-center mb-4 pb-2 border-b border-slate-100">
-                  <h3 className="font-bold text-slate-700">{gen.title}</h3>
+                  <h3 className="font-bold text-slate-700 dark:text-slate-200">{gen.title}</h3>
                   <p className="text-xs text-slate-400">{gen.years}</p>
                 </div>
                 
@@ -83,8 +82,8 @@ export default function LabC7Generations({ onExit }: LabProps) {
           })}
         </div>
 
-        <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
-          <h2 className="font-bold text-slate-700 mb-4">Core Technologies</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+          <h2 className="font-bold text-slate-700 dark:text-slate-200 mb-4">Core Technologies</h2>
           <div className="flex gap-4">
             {technologies.map(tech => {
               // Hide if already placed

@@ -66,30 +66,30 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
     if (name === 'shield') return <Shield size={size} className="text-blue-500" />;
     if (name === 'alert') return <AlertTriangle size={size} className="text-yellow-500" />;
     if (name === 'check') return <CheckCircle size={size} className="text-green-500" />;
-    return <ImageIcon size={size} className="text-slate-500" />;
+    return <ImageIcon size={size} className="text-slate-500 dark:text-slate-400" />;
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="<Shield /> Cyber Safety Lab" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Cyber Safety Lab" subtitle="Design an Anti-Cyberbullying Poster" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
-          <h2 className="text-lg font-bold text-slate-800">1. Poster Builder Tools</h2>
-          <p className="text-sm text-slate-600 mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">1. Poster Builder Tools</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
           
-          <button onClick={addText} className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 p-3 rounded font-medium text-slate-700">
+          <button onClick={addText} className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded font-medium text-slate-700 dark:text-slate-200">
             <Type size={18}/> Add Text Box
           </button>
           
           <div className="border-t pt-4">
             <p className="text-sm font-semibold mb-2">Add Icons:</p>
             <div className="grid grid-cols-3 gap-2">
-              <button onClick={() => addIcon('shield')} className="flex justify-center bg-slate-100 hover:bg-slate-200 p-3 rounded"><Shield className="text-blue-500"/></button>
-              <button onClick={() => addIcon('alert')} className="flex justify-center bg-slate-100 hover:bg-slate-200 p-3 rounded"><AlertTriangle className="text-yellow-500"/></button>
-              <button onClick={() => addIcon('check')} className="flex justify-center bg-slate-100 hover:bg-slate-200 p-3 rounded"><CheckCircle className="text-green-500"/></button>
+              <button onClick={() => addIcon('shield')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><Shield className="text-blue-500"/></button>
+              <button onClick={() => addIcon('alert')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><AlertTriangle className="text-yellow-500"/></button>
+              <button onClick={() => addIcon('check')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><CheckCircle className="text-green-500"/></button>
             </div>
           </div>
 
@@ -101,10 +101,10 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* MIDDLE COLUMN: Canvas */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 overflow-hidden relative">
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden relative">
           <div 
             ref={canvasRef}
-            className="w-full max-w-sm aspect-[3/4] bg-slate-100 border-2 border-dashed border-slate-300 relative shadow-inner overflow-hidden"
+            className="w-full max-w-sm aspect-[3/4] bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 relative shadow-inner overflow-hidden"
           >
             {elements.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">Empty Canvas</div>}
             
@@ -143,8 +143,8 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* RIGHT COLUMN: Gallery & Assessment */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800">3. Gallery Walk & Assessment</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">3. Gallery Walk & Assessment</h2>
           
           {!galleryMode ? (
             <div className="p-4 bg-emerald-50 rounded-lg text-emerald-800 text-sm">
@@ -155,7 +155,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
               <div className="space-y-4">
                 <p className="text-sm font-semibold">Rate Peer Posters:</p>
                 {[1, 2, 3].map((posterNum, i) => (
-                  <div key={posterNum} className="p-3 bg-slate-50 border rounded-lg flex items-center justify-between">
+                  <div key={posterNum} className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg flex items-center justify-between">
                     <span className="font-medium text-sm">Poster #{posterNum}</span>
                     <div className="flex gap-1">
                       {[1,2,3,4,5].map(star => (

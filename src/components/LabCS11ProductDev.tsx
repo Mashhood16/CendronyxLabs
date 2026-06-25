@@ -40,13 +40,13 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
   const foamHeight = (foamDensity / 100) * 60 + 20;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Neuro-Mat Startup Simulator" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">1. Minimum Viable Product</h2>
-          <p className="text-slate-600 mb-4 text-sm leading-relaxed">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">1. Minimum Viable Product</h2>
+          <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm leading-relaxed">
             In software and hardware product development, an MVP (Minimum Viable Product) is the version of a new product that allows a team to collect the maximum amount of validated learning about customers with the least effort.
           </p>
           <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-4">
@@ -57,17 +57,17 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
               <li><strong>Resolution:</strong> More sensors give better data but increase complexity and cost.</li>
             </ul>
           </div>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
             You are the lead engineer for <strong>Neuro-Mat</strong>, an e-health smart mattress pad. Adjust your design parameters to pass all user and investor requirements.
           </p>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center">
             <Layers className="mr-2 text-emerald-500" /> MVP Blueprint
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 rounded-lg border border-slate-200 p-4 mb-6 relative">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 mb-6 relative">
             <svg width="100%" height="200" viewBox="0 0 400 200" className="drop-shadow-md">
               <defs>
                 <linearGradient id="foamGrad" x1="0" y1="0" x2="0" y2="1">
@@ -102,40 +102,40 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-50 p-3 rounded border border-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-slate-500 uppercase flex items-center"><DollarSign size={14} className="mr-1"/> Unit Cost</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center"><DollarSign size={14} className="mr-1"/> Unit Cost</span>
                 <span className={`text-sm font-bold ${metrics.cost <= 90 ? 'text-emerald-600' : 'text-red-500'}`}>${metrics.cost}</span>
               </div>
             </div>
-            <div className="bg-slate-50 p-3 rounded border border-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-slate-500 uppercase flex items-center"><UserCheck size={14} className="mr-1"/> Comfort</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center"><UserCheck size={14} className="mr-1"/> Comfort</span>
                 <span className={`text-sm font-bold ${metrics.comfort >= 7 ? 'text-emerald-600' : 'text-amber-500'}`}>{metrics.comfort}/10</span>
               </div>
             </div>
-            <div className="bg-slate-50 p-3 rounded border border-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-slate-500 uppercase flex items-center"><Activity size={14} className="mr-1"/> Accuracy</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center"><Activity size={14} className="mr-1"/> Accuracy</span>
                 <span className={`text-sm font-bold ${metrics.accuracy >= 8 ? 'text-emerald-600' : 'text-amber-500'}`}>{metrics.accuracy}/10</span>
               </div>
             </div>
-            <div className="bg-slate-50 p-3 rounded border border-slate-200">
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-slate-500 uppercase flex items-center"><Battery size={14} className="mr-1"/> Battery</span>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center"><Battery size={14} className="mr-1"/> Battery</span>
                 <span className={`text-sm font-bold ${metrics.battery >= 24 ? 'text-emerald-600' : 'text-red-500'}`}>{metrics.battery}h</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">3. Prototyping Controls</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">3. Prototyping Controls</h2>
           
           <div className="space-y-6 flex-1">
             <div className="space-y-3">
               <div>
-                <label className="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
                   <span>Foam Density</span>
                   <span className="text-emerald-600">{foamDensity} kg/m³</span>
                 </label>
@@ -143,7 +143,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
               </div>
               
               <div>
-                <label className="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
                   <span>Sensor Grid Count</span>
                   <span className="text-emerald-600">{sensorCount} units</span>
                 </label>
@@ -151,7 +151,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
               </div>
               
               <div>
-                <label className="flex justify-between text-sm font-semibold text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
                   <span>Processor Clock</span>
                   <span className="text-emerald-600">{processorClock} MHz</span>
                 </label>
@@ -159,7 +159,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
               </div>
             </div>
 
-            <div className="bg-slate-100 p-4 rounded-lg text-sm text-slate-700 border border-slate-200">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-sm text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <strong>Target Specifications:</strong>
               <ul className="mt-2 space-y-1 text-xs">
                 <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" /> Cost ≤ $90.00</li>

@@ -112,21 +112,21 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M12.3: Advanced Kinematics" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-purple-700 mb-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="text-lg font-bold">Theoretical Context</h2>
           </div>
           
           {mode === '1d' && (
-            <div className="text-sm text-slate-700 space-y-3">
+            <div className="text-sm text-slate-700 dark:text-slate-200 space-y-3">
               <p><strong>Rectilinear Motion</strong> involves particles moving along a straight line. The equations of kinematics connect acceleration (a), velocity (v), displacement (s), and time (t).</p>
-              <div className="bg-slate-100 p-3 rounded text-center font-mono space-y-2">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono space-y-2">
                 <div>{"$$v = u + at$$"}</div>
                 <div>{"$$s = ut + \\frac{1}{2}at^2$$"}</div>
               </div>
@@ -135,9 +135,9 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
           )}
 
           {mode === '3d' && (
-            <div className="text-sm text-slate-700 space-y-3">
+            <div className="text-sm text-slate-700 dark:text-slate-200 space-y-3">
               <p><strong>Vector-Valued Functions</strong> describe trajectories in 3D space. A position vector {"$$r(t) = \\langle x(t), y(t), z(t) \\rangle$$"} tracks a particle over time.</p>
-              <div className="bg-slate-100 p-3 rounded text-center font-mono text-xs overflow-x-auto space-y-2">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono text-xs overflow-x-auto space-y-2">
                 <div>{"$$v(t) = r'(t) = \\langle x'(t), y'(t), z'(t) \\rangle$$"}</div>
                 <div>{"$$Speed = |v(t)| = \\sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}$$"}</div>
               </div>
@@ -147,30 +147,30 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Visualizer Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
-          <h2 className="text-lg font-bold text-slate-800 self-start absolute top-5 left-5 z-10">Live Simulation</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 self-start absolute top-5 left-5 z-10">Live Simulation</h2>
           
           {mode === '1d' ? (
              <div className="w-full flex flex-col gap-4 mt-8">
-                <div className="w-full h-24 bg-slate-200 border-b-4 border-slate-400 relative overflow-hidden flex items-end rounded-t-lg">
+                <div className="w-full h-24 bg-slate-200 dark:bg-slate-800 border-b-4 border-slate-400 dark:border-slate-500 relative overflow-hidden flex items-end rounded-t-lg">
                    {/* Train body */}
                    <div className="absolute w-16 h-10 bg-purple-600 rounded-t-md flex items-end justify-around pb-1 transition-all duration-75" 
                         style={{ left: `calc(${Math.min((history.length > 0 ? history[history.length-1].s : 0) / 2.5, 90)}% - 2rem)` }}>
-                      <div className="w-4 h-4 bg-slate-800 rounded-full" />
-                      <div className="w-4 h-4 bg-slate-800 rounded-full" />
+                      <div className="w-4 h-4 bg-slate-800 dark:bg-slate-800 rounded-full" />
+                      <div className="w-4 h-4 bg-slate-800 dark:bg-slate-800 rounded-full" />
                    </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 w-full h-40">
                    <div className="flex flex-col items-center">
-                      <span className="text-xs font-semibold text-slate-500 mb-1">Velocity (v) vs Time (t)</span>
-                      <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 border border-slate-200 rounded">
+                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Velocity (v) vs Time (t)</span>
+                      <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded">
                         <polyline fill="none" stroke="#2563eb" strokeWidth="2"
                            points={history.map(h => `${(h.t/10)*100},${100 - (h.v/50)*100}`).join(' ')} />
                       </svg>
                    </div>
                    <div className="flex flex-col items-center">
-                      <span className="text-xs font-semibold text-slate-500 mb-1">Displacement (s) vs Time (t)</span>
-                      <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 border border-slate-200 rounded">
+                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Displacement (s) vs Time (t)</span>
+                      <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded">
                         <polyline fill="none" stroke="#10b981" strokeWidth="2"
                            points={history.map(h => `${(h.t/10)*100},${100 - (h.s/250)*100}`).join(' ')} />
                       </svg>
@@ -180,13 +180,13 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
                    <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded shadow hover:bg-purple-700">
                      {isPlaying ? <Pause size={18} /> : <Play size={18} />} {isPlaying ? 'Pause' : 'Start'}
                    </button>
-                   <button onClick={resetSim} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded shadow hover:bg-slate-300">
+                   <button onClick={resetSim} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-4 py-2 rounded shadow hover:bg-slate-300 dark:bg-slate-800">
                      <RotateCcw size={18} /> Reset
                    </button>
                 </div>
              </div>
           ) : (
-             <svg viewBox="-100 -200 200 250" className="w-full max-w-md aspect-square bg-slate-50 border border-slate-200 rounded-lg shadow-inner mt-8">
+             <svg viewBox="-100 -200 200 250" className="w-full max-w-md aspect-square bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg shadow-inner mt-8">
                 {/* Isometric axes */}
                 <line x1="0" y1="0" x2="86.6" y2="50" stroke="#cbd5e1" strokeWidth="1" /> {/* x-axis */}
                 <line x1="0" y1="0" x2="-86.6" y2="50" stroke="#cbd5e1" strokeWidth="1" /> {/* y-axis */}
@@ -201,28 +201,28 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-purple-700 mb-2 shrink-0">
             <Settings2 className="w-5 h-5" />
             <h2 className="text-lg font-bold">Parameters & Assessment</h2>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-4 shrink-0">
-            <h3 className="font-semibold text-slate-700">Interactive Variables</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4 shrink-0">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200">Interactive Variables</h3>
             {mode === '1d' && (
               <div>
-                <label className="block text-sm text-slate-600 mb-1">Acceleration a(t): {acceleration} m/s²</label>
+                <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Acceleration a(t): {acceleration} m/s²</label>
                 <input type="range" min="1" max="5" step="0.5" value={acceleration} onChange={e => setAcceleration(Number(e.target.value))} className="w-full accent-purple-600" />
               </div>
             )}
             {mode === '3d' && (
               <>
                 <div>
-                  <label className="block text-sm text-slate-600 mb-1">Radius (R): {R}</label>
+                  <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Radius (R): {R}</label>
                   <input type="range" min="1" max="5" step="0.5" value={R} onChange={e => setR(Number(e.target.value))} className="w-full accent-purple-600" />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-600 mb-1">Vertical Velocity (v): {v}</label>
+                  <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Vertical Velocity (v): {v}</label>
                   <input type="range" min="1" max="5" step="0.5" value={v} onChange={e => setV(Number(e.target.value))} className="w-full accent-purple-600" />
                 </div>
               </>
@@ -235,7 +235,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
               <h3 className="font-semibold">Lab Computation Task</h3>
             </div>
             
-            <p className="text-sm text-slate-700 mb-4 flex-1">
+            <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 flex-1">
               {problemText}
             </p>
 
@@ -246,7 +246,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
                   value={userAnswer}
                   onChange={e => setUserAnswer(e.target.value)}
                   placeholder="Enter answer" 
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <button 
                   onClick={checkAnswer}

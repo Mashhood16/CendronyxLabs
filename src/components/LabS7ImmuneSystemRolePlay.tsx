@@ -22,9 +22,9 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 3: Immune System Role Play" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-purple-100 max-w-3xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-purple-100 max-w-3xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-purple-800 mb-4">The Body's Defense Army</h2>
-          <p className="text-slate-600 mb-6">Step through this simulation to see how the skin, T-Cells, and B-Cells act as the lines of defense against invading pathogens (germs).</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Step through this simulation to see how the skin, T-Cells, and B-Cells act as the lines of defense against invading pathogens (germs).</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -36,7 +36,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
             </button>
             <button 
               onClick={reset}
-              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+              className="flex items-center px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium"
             >
               Reset Simulation
             </button>
@@ -47,7 +47,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
         <div className="relative w-full max-w-4xl h-[500px] bg-red-100 rounded-3xl overflow-hidden shadow-inner border-4 border-red-200 flex">
           
           {/* Outside (Pathogens) */}
-          <div className="w-1/4 bg-slate-800 h-full p-4 flex flex-col items-center justify-center relative">
+          <div className="w-1/4 bg-slate-800 dark:bg-slate-800 h-full p-4 flex flex-col items-center justify-center relative">
             <h3 className="text-white font-bold mb-4 z-10 text-center">Outside World<br/>(Pathogens)</h3>
             
             {/* Pathogens */}
@@ -80,7 +80,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
                   <Bug className="text-green-600 w-12 h-12 animate-pulse" />
                   <Bug className="text-green-600 w-12 h-12 animate-pulse" />
                 </div>
-                {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-slate-50 px-2 py-1 rounded shadow">Pathogens invading!</div>}
+                {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-slate-50 dark:bg-slate-900 px-2 py-1 rounded shadow">Pathogens invading!</div>}
               </div>
             )}
 

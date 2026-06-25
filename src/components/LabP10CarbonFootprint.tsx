@@ -78,16 +78,16 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
   const maxPerPax = Math.max(0.5, ...dataLog.map(d => d.perPaxCO2));
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Carbon Footprint of Transport" subtitle="Investigate the environmental impact of commuting and the benefits of carpooling/public transit." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6 overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Theory & Setup</h2>
-            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory & Setup</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
               Combustion of fossil fuels in vehicles releases Carbon Dioxide (CO₂), a greenhouse gas. 
               The total emissions depend on the distance traveled and the vehicle's emission factor. 
               <strong>Per-capita emissions</strong> are found by dividing the total emissions by the number of passengers.
@@ -104,11 +104,11 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
 
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">Transport Mode</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Transport Mode</label>
               <select 
                 value={mode} 
                 onChange={(e) => { setMode(e.target.value); setDriveProgress(0); }}
-                className="w-full p-2 border border-slate-300 rounded-lg bg-slate-50 focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-emerald-500"
               >
                 {Object.entries(modes).map(([key, m]) => (
                   <option key={key} value={key}>{m.name} ({m.factor} kg/km)</option>
@@ -117,7 +117,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 <span>Trip Distance</span>
                 <span className="text-emerald-700">{distance} km</span>
               </label>
@@ -130,7 +130,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
                 <span>Number of Passengers</span>
                 <span className="text-emerald-700">{passengers}</span>
               </label>
@@ -140,13 +140,13 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
                 onChange={(e) => { setPassengers(Number(e.target.value)); setDriveProgress(0); }}
                 className="w-full accent-emerald-600"
               />
-              <p className="text-xs text-slate-500 mt-1">Max capacity for {modes[mode].name} is {modes[mode].maxPax}.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Max capacity for {modes[mode].name} is {modes[mode].maxPax}.</p>
             </div>
           </div>
           
           <div className="mt-auto">
-            <h3 className="text-sm font-bold text-slate-800 mb-2">Assessment</h3>
-            <p className="text-xs text-slate-600 mb-3">
+            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Assessment</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">
               Calculate the per-passenger CO₂ footprint (in kg) for a 15 km trip in an SUV (0.35 kg/km) carrying 3 passengers.
             </p>
             <div className="flex gap-2">
@@ -155,11 +155,11 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
                 placeholder="e.g. 1.25"
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
-                className="flex-1 p-2 border border-slate-300 rounded-lg text-sm"
+                className="flex-1 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm"
               />
               <button 
                 onClick={checkAnswer}
-                className="px-4 py-2 bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700"
+                className="px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-slate-800"
               >
                 Check
               </button>
@@ -170,11 +170,11 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-between">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center justify-between">
           <div className="w-full flex justify-between gap-4 mb-4">
-             <div className="flex-1 text-center bg-slate-100 p-3 rounded-lg border border-slate-200">
-               <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Total Emitted</p>
-               <p className="text-2xl font-mono text-slate-800">{simulatedEmissions.toFixed(2)} <span className="text-sm">kg</span></p>
+             <div className="flex-1 text-center bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+               <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Total Emitted</p>
+               <p className="text-2xl font-mono text-slate-800 dark:text-slate-100">{simulatedEmissions.toFixed(2)} <span className="text-sm">kg</span></p>
              </div>
              <div className="flex-1 text-center bg-emerald-50 p-3 rounded-lg border border-emerald-200">
                <p className="text-xs text-emerald-600 uppercase font-bold tracking-wider">Per Passenger</p>
@@ -189,11 +189,11 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
             <div className="absolute top-5 right-5 text-yellow-400 text-5xl">☀️</div>
             
             {/* Road */}
-            <div className="w-full h-1/3 bg-slate-700 relative">
+            <div className="w-full h-1/3 bg-slate-700 dark:bg-slate-800 relative">
               {/* Road lines */}
               <div className="absolute top-1/2 w-full flex justify-around">
                 {[...Array(10)].map((_, i) => (
-                  <div key={i} className="w-8 h-2 bg-slate-50 opacity-50 rounded-sm"></div>
+                  <div key={i} className="w-8 h-2 bg-slate-50 dark:bg-slate-900 opacity-50 rounded-sm"></div>
                 ))}
               </div>
 
@@ -213,7 +213,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
                 {/* Visual CO2 accumulation representation */}
                 {mode !== 'Bike' && (
                   <div 
-                    className="absolute -top-12 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap opacity-80"
+                    className="absolute -top-12 left-1/2 -translate-x-1/2 bg-slate-800 dark:bg-slate-800 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap opacity-80"
                   >
                     +{(simulatedEmissions).toFixed(1)} kg CO₂
                   </div>
@@ -232,7 +232,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
               onClick={handleDrive}
               disabled={isDriving}
               className={`flex flex-1 items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-all ${
-                isDriving ? 'bg-slate-400' : 'bg-emerald-600 hover:bg-emerald-700'
+                isDriving ? 'bg-slate-400 dark:bg-slate-800' : 'bg-emerald-600 hover:bg-emerald-700'
               } disabled:opacity-50`}
             >
               <Play className="w-5 h-5"/> Drive!
@@ -248,17 +248,17 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Data & Graph */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800">Results & Comparison</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Results & Comparison</h2>
           
-          <div className="h-48 border border-slate-200 rounded-lg overflow-y-auto bg-slate-50">
+          <div className="h-48 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto bg-slate-50 dark:bg-slate-900">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 sticky top-0 shadow-sm z-10">
+              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0 shadow-sm z-10">
                 <tr>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Mode</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Pax</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Total (kg)</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Per Pax (kg)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Mode</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Pax</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Total (kg)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Per Pax (kg)</th>
                 </tr>
               </thead>
               <tbody>
@@ -266,10 +266,10 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
                   <tr><td colSpan={4} className="px-4 py-8 text-center text-slate-400 italic">No scenarios recorded. Drive and record to compare.</td></tr>
                 ) : (
                   dataLog.map((row) => (
-                    <tr key={row.id} className="border-b border-slate-100 hover:bg-slate-100 transition-colors">
+                    <tr key={row.id} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-slate-800 transition-colors">
                       <td className="px-3 py-1.5">{modes[row.mode].emoji} {row.mode}</td>
                       <td className="px-3 py-1.5">{row.pax}</td>
-                      <td className="px-3 py-1.5 font-mono text-slate-600">{row.totalCO2.toFixed(2)}</td>
+                      <td className="px-3 py-1.5 font-mono text-slate-600 dark:text-slate-300">{row.totalCO2.toFixed(2)}</td>
                       <td className="px-3 py-1.5 font-mono text-emerald-600 font-bold">{row.perPaxCO2.toFixed(2)}</td>
                     </tr>
                   ))
@@ -278,19 +278,19 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-4 relative min-h-[200px] flex items-end justify-around pb-8 pt-4">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative min-h-[200px] flex items-end justify-around pb-8 pt-4">
              {dataLog.length === 0 ? (
                <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm italic">Bar Chart: Per-Passenger CO₂</div>
              ) : (
                <>
                  {/* Y Axis line */}
-                 <div className="absolute left-8 top-4 bottom-8 w-px bg-slate-300"></div>
-                 <div className="absolute left-8 bottom-8 right-4 h-px bg-slate-300"></div>
+                 <div className="absolute left-8 top-4 bottom-8 w-px bg-slate-300 dark:bg-slate-800"></div>
+                 <div className="absolute left-8 bottom-8 right-4 h-px bg-slate-300 dark:bg-slate-800"></div>
                  
                  {/* Max Label */}
-                 <div className="absolute left-1 top-4 text-[10px] text-slate-500">{maxPerPax.toFixed(1)}</div>
-                 <div className="absolute left-4 bottom-8 text-[10px] text-slate-500">0</div>
-                 <div className="absolute -left-4 top-1/2 -rotate-90 text-xs text-slate-500 whitespace-nowrap">Per-Pax CO₂ (kg)</div>
+                 <div className="absolute left-1 top-4 text-[10px] text-slate-500 dark:text-slate-400">{maxPerPax.toFixed(1)}</div>
+                 <div className="absolute left-4 bottom-8 text-[10px] text-slate-500 dark:text-slate-400">0</div>
+                 <div className="absolute -left-4 top-1/2 -rotate-90 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">Per-Pax CO₂ (kg)</div>
 
                  {/* Bars */}
                  {dataLog.map((row) => {
@@ -302,7 +302,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
                          style={{ height: `${heightPct}%` }}
                        >
                          {/* Tooltip */}
-                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                         <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 dark:bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                            {row.perPaxCO2.toFixed(2)} kg
                          </div>
                        </div>

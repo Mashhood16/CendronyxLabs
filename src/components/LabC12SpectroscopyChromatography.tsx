@@ -80,36 +80,36 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="Analytical Chemistry: Spectrometry & Chromatography" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
                 {/* Theory */}
-                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                         <BookOpen size={20} className="text-yellow-600" />
                         Analytical Theory
                     </h2>
                     
-                    <div className="prose prose-sm text-slate-600">
-                        <h3 className="text-md font-semibold text-slate-700">IR Spectroscopy</h3>
+                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">IR Spectroscopy</h3>
                         <p>Identifies functional groups. O-H bonds show a broad peak ~3300 cm⁻¹. C=O bonds show a sharp, strong peak ~1715 cm⁻¹. C-H bonds show sharp peaks ~2900 cm⁻¹.</p>
 
-                        <h3 className="text-md font-semibold text-slate-700 mt-2">1H NMR</h3>
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200 mt-2">1H NMR</h3>
                         <p>Identifies hydrogen environments. Splitting (n+1 rule) indicates neighboring protons. Chemical shift (ppm) indicates shielding (e.g., closer to O is more deshielded/higher ppm).</p>
 
-                        <h3 className="text-md font-semibold text-slate-700 mt-2">Mass Spectrometry (MS)</h3>
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200 mt-2">Mass Spectrometry (MS)</h3>
                         <p>Determines molecular weight (M+ peak) and structure via fragmentation. The base peak (tallest) represents the most stable fragment ion.</p>
 
-                        <h3 className="text-md font-semibold text-slate-700 mt-2">Thin Layer Chromatography (TLC)</h3>
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200 mt-2">Thin Layer Chromatography (TLC)</h3>
                         <p>Separates compounds by polarity. A polar stationary phase (silica) holds back polar compounds. Using a more polar solvent increases the Rf (Retention factor) of all compounds.</p>
                     </div>
                 </div>
 
                 {/* Simulation */}
-                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
                     <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                             <Activity size={20} className="text-indigo-600" />
                             Instrument Panel
                         </h2>
@@ -123,11 +123,11 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                         </select>
                     </div>
 
-                    <div className="flex gap-2 bg-slate-100 p-1 rounded-lg">
+                    <div className="flex gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
                         {['IR', 'NMR', 'MS', 'TLC'].map(t => (
                             <button 
                                 key={t}
-                                className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-slate-50 shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-slate-50 dark:bg-slate-900 shadow text-slate-800 dark:text-slate-100' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
                                 onClick={() => setTab(t as any)}
                             >
                                 {t}
@@ -135,7 +135,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                         ))}
                     </div>
 
-                    <div className="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-4 relative min-h-[250px] flex items-center justify-center">
+                    <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative min-h-[250px] flex items-center justify-center">
                         {tab === 'IR' && (
                             <svg viewBox="0 0 350 150" className="w-full h-full">
                                 <line x1="0" y1="10" x2="350" y2="10" stroke="#cbd5e1" strokeDasharray="2" />
@@ -173,7 +173,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                         {tab === 'TLC' && (
                             <div className="w-full h-full flex items-center justify-around">
                                 <div className="flex flex-col items-center gap-2 w-1/2">
-                                    <label className="text-xs font-semibold text-slate-600">Solvent Polarity</label>
+                                    <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Solvent Polarity</label>
                                     <input 
                                         type="range" min="0" max="100" 
                                         value={solventPolarity} 
@@ -183,14 +183,14 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                                     />
                                     <div className="flex gap-2 w-full mt-2">
                                         <button onClick={runTLC} disabled={isRunning} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700 disabled:opacity-50"><Play size={14} className="inline"/> Run</button>
-                                        <button onClick={resetTLC} className="px-2 py-1 bg-slate-300 rounded text-xs hover:bg-slate-400"><RefreshCw size={14}/></button>
+                                        <button onClick={resetTLC} className="px-2 py-1 bg-slate-300 dark:bg-slate-800 rounded text-xs hover:bg-slate-400 dark:bg-slate-800"><RefreshCw size={14}/></button>
                                     </div>
                                 </div>
 
-                                <div className="w-32 h-48 bg-slate-50 border-2 border-slate-300 rounded shadow-inner relative flex justify-around items-end pb-5">
+                                <div className="w-32 h-48 bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded shadow-inner relative flex justify-around items-end pb-5">
                                     {/* Solvent Front */}
                                     <div className="absolute w-full border-t-2 border-indigo-200" style={{bottom: `${20 + 160*(tlcRunTime/100)}px`}}></div>
-                                    <div className="absolute bottom-5 w-full border-t border-slate-300 border-dashed"></div>
+                                    <div className="absolute bottom-5 w-full border-t border-slate-300 dark:border-slate-700 dark:border-slate-500 border-dashed"></div>
                                     
                                     {/* Spots */}
                                     {sample === 'Ethanol' ? (
@@ -205,35 +205,35 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                 </div>
 
                 {/* Assessment */}
-                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
-                    <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                         <Layers size={20} className="text-emerald-600" />
                         Structure Elucidation
                     </h2>
 
                     <div className="flex-1 overflow-y-auto pr-2 space-y-5">
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-700 block">
+                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 block">
                                 1. Based on the IR broad peak at 3300 cm⁻¹ and the MS base peak at m/z=31, identify Sample A. (Ethanol or Acetone?)
                             </label>
                             <input 
                                 type="text" 
                                 value={q1} 
                                 onChange={(e) => setQ1(e.target.value)}
-                                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-emerald-500"
+                                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500"
                                 placeholder="Enter compound name"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-700 block">
+                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 block">
                                 2. For Sample B, the 1H NMR shows a single peak (singlet). What is the m/z value of the base peak in its Mass Spectrum?
                             </label>
                             <input 
                                 type="number" 
                                 value={q2} 
                                 onChange={(e) => setQ2(e.target.value)}
-                                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-emerald-500"
+                                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500"
                                 placeholder="Enter m/z value"
                             />
                         </div>

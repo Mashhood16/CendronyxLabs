@@ -92,10 +92,10 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="Grade 11: Permutations Lab" />
-            <div className="bg-slate-800 text-white p-2 flex justify-end shrink-0">
-                <div className="flex bg-slate-700 rounded-lg p-1">
+            <div className="bg-slate-800 dark:bg-slate-800 text-white p-2 flex justify-end shrink-0">
+                <div className="flex bg-slate-700 dark:bg-slate-800 rounded-lg p-1">
                     <button onClick={() => { setScenario('plates'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} className={`px-4 py-2 rounded-md ${scenario === 'plates' ? 'bg-blue-600 text-white' : 'text-slate-300'}`}>Plates</button>
                     <button onClick={() => { setScenario('passwords'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} className={`px-4 py-2 rounded-md ${scenario === 'passwords' ? 'bg-blue-600 text-white' : 'text-slate-300'}`}>Passwords</button>
                     <button onClick={() => { setScenario('circular'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} className={`px-4 py-2 rounded-md ${scenario === 'circular' ? 'bg-blue-600 text-white' : 'text-slate-300'}`}>Circular</button>
@@ -104,10 +104,10 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
             <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
                 {/* Left Column: Theory */}
-                <div className="p-6 bg-slate-50 border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
+                <div className="p-6 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col gap-6">
                     <div>
-                        <h2 className="text-2xl font-bold text-slate-800 mb-2">Permutations</h2>
-                        <p className="text-slate-600 mb-4">A permutation is an arrangement of objects in a specific order. Order matters!</p>
+                        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Permutations</h2>
+                        <p className="text-slate-600 dark:text-slate-300 mb-4">A permutation is an arrangement of objects in a specific order. Order matters!</p>
                         
                         <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
                             <h3 className="font-semibold text-blue-900 mb-2">Fundamental Counting Principle</h3>
@@ -116,38 +116,38 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                     </div>
 
                     {scenario === 'plates' && (
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <h3 className="font-semibold text-slate-800 mb-2">Vehicle Number Plates</h3>
-                            <p className="text-sm text-slate-600 mb-2">Usually formed by selecting letters (A-Z) followed by digits (0-9). Repetition is typically allowed.</p>
-                            <p className="text-sm text-slate-600 font-mono bg-slate-50 p-2 rounded border mt-2">
+                        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Vehicle Number Plates</h3>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">Usually formed by selecting letters (A-Z) followed by digits (0-9). Repetition is typically allowed.</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 font-mono bg-slate-50 dark:bg-slate-900 p-2 rounded border mt-2">
                                 {"$$ Total = 26^L \\times 10^D $$"}
                             </p>
                         </div>
                     )}
 
                     {scenario === 'passwords' && (
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <h3 className="font-semibold text-slate-800 mb-2">Passwords & PINs</h3>
-                            <p className="text-sm text-slate-600 mb-2">When repetition is allowed: {"$$ n^r $$"}</p>
-                            <p className="text-sm text-slate-600 mb-2">When repetition is NOT allowed: {"$$ ^nP_r = \\frac{n!}{(n-r)!} $$"}</p>
+                        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Passwords & PINs</h3>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">When repetition is allowed: {"$$ n^r $$"}</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">When repetition is NOT allowed: {"$$ ^nP_r = \\frac{n!}{(n-r)!} $$"}</p>
                         </div>
                     )}
 
                     {scenario === 'circular' && (
-                        <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <h3 className="font-semibold text-slate-800 mb-2">Circular Permutations</h3>
-                            <p className="text-sm text-slate-600 mb-2">Arranging objects in a circle is different from a line because there is no fixed start/end.</p>
-                            <p className="text-sm text-slate-600 font-mono bg-slate-50 p-2 rounded border mt-2">
+                        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Circular Permutations</h3>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">Arranging objects in a circle is different from a line because there is no fixed start/end.</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 font-mono bg-slate-50 dark:bg-slate-900 p-2 rounded border mt-2">
                                 Formula: {"$$ (n-1)! $$"}
                             </p>
-                            <p className="text-xs text-slate-500 mt-2">This is because fixing one person establishes a reference point, leaving $(n-1)$ people to arrange.</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">This is because fixing one person establishes a reference point, leaving $(n-1)$ people to arrange.</p>
                         </div>
                     )}
                 </div>
 
                 {/* Middle Column: Interactive Simulator */}
-                <div className="bg-slate-100 relative flex flex-col p-6 overflow-y-auto">
-                    <h2 className="text-xl font-bold text-slate-800 mb-6 text-center">Interactive Visualizer</h2>
+                <div className="bg-slate-100 dark:bg-slate-800 relative flex flex-col p-6 overflow-y-auto">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 text-center">Interactive Visualizer</h2>
                     
                     <div className="flex-1 flex flex-col items-center justify-center gap-8">
                         {scenario === 'plates' && (
@@ -159,17 +159,17 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     </div>
                                     <div className="text-[10px] text-yellow-800 mt-1">THE PERMUTATION STATE</div>
                                 </div>
-                                <button onClick={() => setSamplePlate(generatePlate())} className="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors">
+                                <button onClick={() => setSamplePlate(generatePlate())} className="flex items-center gap-2 bg-slate-800 dark:bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors">
                                     <RefreshCw size={16} /> Generate Random Plate
                                 </button>
                                 
-                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
+                                <div className="w-full bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-4">
                                     <div className="mb-6">
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Letters (A-Z): {numLetters}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Letters (A-Z): {numLetters}</label>
                                         <input type="range" min="1" max="4" value={numLetters} onChange={e => setNumLetters(parseInt(e.target.value))} className="w-full" />
                                     </div>
                                     <div className="mb-6">
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Digits (0-9): {numDigits}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Digits (0-9): {numDigits}</label>
                                         <input type="range" min="1" max="6" value={numDigits} onChange={e => setNumDigits(parseInt(e.target.value))} className="w-full" />
                                     </div>
                                     <div className="bg-blue-50 p-3 rounded-lg flex items-center justify-between border border-blue-100">
@@ -182,12 +182,12 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
                         {scenario === 'passwords' && (
                             <div className="w-full max-w-md flex flex-col items-center gap-6">
-                                <div className="bg-slate-900 p-6 rounded-xl shadow-xl w-full text-center border-t-4 border-blue-500 relative">
-                                    <ShieldCheck className="absolute top-4 right-4 text-slate-600" size={24} />
+                                <div className="bg-slate-900 dark:bg-slate-800 p-6 rounded-xl shadow-xl w-full text-center border-t-4 border-blue-500 relative">
+                                    <ShieldCheck className="absolute top-4 right-4 text-slate-600 dark:text-slate-300" size={24} />
                                     <div className="text-sm font-medium text-slate-400 mb-4">ENTER PASSWORD</div>
                                     <div className="flex justify-center gap-2 mb-4">
                                         {samplePass.split('').map((char, i) => (
-                                            <div key={i} className="w-12 h-16 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-3xl font-mono text-white shadow-inner">
+                                            <div key={i} className="w-12 h-16 bg-slate-800 dark:bg-slate-800 border border-slate-700 dark:border-slate-500 rounded-lg flex items-center justify-center text-3xl font-mono text-white shadow-inner">
                                                 {char}
                                             </div>
                                         ))}
@@ -197,19 +197,19 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     </button>
                                 </div>
 
-                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
+                                <div className="w-full bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-4">
                                     <div className="mb-6">
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Character Pool Size: {poolSize}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Character Pool Size: {poolSize}</label>
                                         <input type="range" min="5" max="10" value={poolSize} onChange={e => setPoolSize(parseInt(e.target.value))} className="w-full" />
-                                        <div className="flex justify-between text-xs text-slate-500 px-1 mt-1"><span>5 digits</span><span>10 digits</span></div>
+                                        <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 px-1 mt-1"><span>5 digits</span><span>10 digits</span></div>
                                     </div>
                                     <div className="mb-6">
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Password Length: {passLength}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Password Length: {passLength}</label>
                                         <input type="range" min="2" max={allowRepeats ? 8 : poolSize} value={passLength} onChange={e => setPassLength(parseInt(e.target.value))} className="w-full" />
                                     </div>
                                     <div className="mb-6 flex items-center gap-3">
                                         <input type="checkbox" id="allowRepeats" checked={allowRepeats} onChange={e => setAllowRepeats(e.target.checked)} className="w-5 h-5 text-blue-600 rounded" />
-                                        <label htmlFor="allowRepeats" className="text-sm font-semibold text-slate-700">Allow Repetition</label>
+                                        <label htmlFor="allowRepeats" className="text-sm font-semibold text-slate-700 dark:text-slate-200">Allow Repetition</label>
                                     </div>
                                     <div className="bg-indigo-50 p-3 rounded-lg flex flex-col gap-2 border border-indigo-100">
                                         <div className="flex items-center justify-between">
@@ -240,9 +240,9 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     })}
                                 </div>
 
-                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-8">
+                                <div className="w-full bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-8">
                                     <div className="mb-6">
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Number of People: {numPeople}</label>
+                                        <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Number of People: {numPeople}</label>
                                         <input type="range" min="3" max="10" value={numPeople} onChange={e => setNumPeople(parseInt(e.target.value))} className="w-full" />
                                     </div>
                                     <div className="bg-emerald-50 p-3 rounded-lg flex flex-col gap-2 border border-emerald-100">
@@ -261,48 +261,48 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                 </div>
 
                 {/* Right Column: Assessment */}
-                <div className="p-6 bg-slate-50 border-l border-slate-200 overflow-y-auto">
-                    <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <div className="p-6 bg-slate-50 dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 flex items-center gap-2">
                         <Calculator className="text-blue-600" /> Let's Solve
                     </h2>
 
                     <div className="space-y-6">
                         {scenario === 'plates' && (
                             <>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q1. A state issues plates with exactly 2 letters followed by 4 digits. Repetition is allowed. How many unique plates are possible?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. A state issues plates with exactly 2 letters followed by 4 digits. Repetition is allowed. How many unique plates are possible?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. 1000" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. 1000" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
                                 </div>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q2. What if the same format is used (2 letters, 4 digits) but NO character or digit can be repeated on the same plate?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. What if the same format is used (2 letters, 4 digits) but NO character or digit can be repeated on the same plate?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
-                                    <p className="text-xs text-slate-500 mt-2">Hint: Use nPr for both letters and numbers, then multiply.</p>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Hint: Use nPr for both letters and numbers, then multiply.</p>
                                 </div>
                             </>
                         )}
 
                         {scenario === 'passwords' && (
                             <>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q1. A 3-digit lock uses numbers from a pool of 10 digits (0-9). If repetition IS allowed, how many combinations exist?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. A 3-digit lock uses numbers from a pool of 10 digits (0-9). If repetition IS allowed, how many combinations exist?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
                                 </div>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q2. What if the same 3-digit lock requires UNIQUE digits (no repetition)?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. What if the same 3-digit lock requires UNIQUE digits (no repetition)?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -312,22 +312,22 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
                         {scenario === 'circular' && (
                             <>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q1. In how many ways can 6 people be seated around a circular table?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. In how many ways can 6 people be seated around a circular table?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
                                 </div>
-                                <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                    <p className="text-sm text-slate-700 mb-4 font-medium">Q2. In how many ways can 6 people be seated around a circular table if two specific people insist on sitting next to each other?</p>
+                                <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. In how many ways can 6 people be seated around a circular table if two specific people insist on sitting next to each other?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
-                                    <p className="text-xs text-slate-500 mt-2">Hint: Treat the two people as one unit, then multiply by 2! for their internal arrangement.</p>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Hint: Treat the two people as one unit, then multiply by 2! for their internal arrangement.</p>
                                 </div>
                             </>
                         )}

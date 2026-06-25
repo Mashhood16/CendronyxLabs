@@ -25,9 +25,9 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 1: Transpiration Observation" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-green-800 mb-4">Water Loss in Plants</h2>
-          <p className="text-slate-600 mb-6">Two branches are covered with clear polythene bags. One branch has leaves, and the other has been stripped bare. Wait to observe condensation forming inside the bags.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Two branches are covered with clear polythene bags. One branch has leaves, and the other has been stripped bare. Wait to observe condensation forming inside the bags.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -40,7 +40,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
             </button>
             <button 
               onClick={() => { setTime(0); setRunning(false); }}
-              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+              className="flex items-center px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium"
             >
               Reset
             </button>
@@ -52,8 +52,8 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
           
           {/* Branch A (With Leaves) */}
           <div className="flex flex-col items-center">
-            <h3 className="font-bold text-slate-700 mb-2">Branch A (With Leaves)</h3>
-            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Branch A (With Leaves)</h3>
+            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               {/* Plant Stem */}
               <div className="w-4 h-40 bg-green-700 relative z-10">
                 {/* Leaves */}
@@ -64,7 +64,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
               </div>
               
               {/* Polythene Bag */}
-              <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 bg-slate-100/30 rounded-t-3xl rounded-b-lg border-dashed flex justify-center items-center z-20">
+              <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-100 dark:bg-slate-800/30 rounded-t-3xl rounded-b-lg border-dashed flex justify-center items-center z-20">
                 {/* Condensation Drops */}
                 <div 
                   className="w-full h-full relative transition-opacity duration-1000"
@@ -82,8 +82,8 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
 
           {/* Branch B (No Leaves) */}
           <div className="flex flex-col items-center">
-            <h3 className="font-bold text-slate-700 mb-2">Branch B (Bare)</h3>
-            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Branch B (Bare)</h3>
+            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               {/* Plant Stem */}
               <div className="w-4 h-40 bg-green-700 relative z-10">
                  {/* Empty knots where leaves were */}
@@ -93,7 +93,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
               </div>
               
               {/* Polythene Bag */}
-              <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 bg-slate-100/30 rounded-t-3xl rounded-b-lg border-dashed z-20">
+              <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-100 dark:bg-slate-800/30 rounded-t-3xl rounded-b-lg border-dashed z-20">
                  {/* No condensation */}
               </div>
             </div>

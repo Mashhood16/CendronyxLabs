@@ -89,18 +89,18 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Biology Lab: Nervous System & Reflex Arc" subtitle="Investigate the speed and pathways of a monosynaptic patellar reflex." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">The Patellar Reflex Arc</h2>
-          <div className="space-y-4 text-slate-600 leading-relaxed">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">The Patellar Reflex Arc</h2>
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
             <p>
               A reflex arc is a neural pathway that controls a reflex. In vertebrates, most sensory neurons do not pass directly into the brain, but synapse in the spinal cord. This allows for faster reflex actions.
             </p>
-            <h3 className="text-lg font-semibold text-slate-800">Key Components</h3>
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Key Components</h3>
             <ul className="list-disc pl-5 space-y-2">
               <li>
                 <strong>Receptor:</strong> The muscle spindle in the patellar tendon detects the stretch from the hammer strike.
@@ -126,19 +126,19 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center relative">
           <div className="flex items-center justify-between w-full mb-4">
-            <h2 className="text-xl font-bold text-slate-800">Interactive Simulation</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Interactive Simulation</h2>
             <button
               onClick={triggerReflex}
               disabled={simState !== 'idle'}
-              className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
+              className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 dark:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
             >
               Strike Knee
             </button>
           </div>
 
-          <div className="bg-slate-800 w-full flex-1 rounded-xl flex items-center justify-center overflow-hidden border-4 border-slate-700 relative">
+          <div className="bg-slate-800 dark:bg-slate-800 w-full flex-1 rounded-xl flex items-center justify-center overflow-hidden border-4 border-slate-700 dark:border-slate-500 relative">
             <svg viewBox="0 0 600 400" className="w-full h-full">
               <defs>
                 <filter id="glow-synapse">
@@ -188,7 +188,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
               </g>
             </svg>
 
-            <div className="absolute top-4 left-4 bg-slate-900/80 text-white px-4 py-3 rounded-xl backdrop-blur-sm shadow-lg w-64 border border-slate-700">
+            <div className="absolute top-4 left-4 bg-slate-900 dark:bg-slate-800/80 text-white px-4 py-3 rounded-xl backdrop-blur-sm shadow-lg w-64 border border-slate-700 dark:border-slate-500">
               <div className="flex items-center text-sm font-semibold mb-2">
                 <Activity className="w-4 h-4 mr-2 text-indigo-400" />
                 Data Logger
@@ -208,18 +208,18 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col">
           <div className="mb-6">
-            <h2 className="text-xl font-bold text-slate-800 mb-4">Laboratory Assessment</h2>
-            <p className="text-slate-600 text-sm mb-4">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Laboratory Assessment</h2>
+            <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
               Observe the simulation data log. The hammer strikes at t=0ms. It takes ~24ms for the signal to reach the spinal cord and another ~26ms for the motor signal to reach the muscle and initiate contraction.
             </p>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 pt-6">
+          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-6">
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">
+                <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">
                   1. If the distance from the knee to the spinal cord is exactly 1.2 meters, and the sensory signal takes 24 ms to arrive, calculate the conduction velocity of the sensory neuron.
                 </label>
                 <div className="flex space-x-2">
@@ -228,9 +228,9 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
                     value={q1Answer}
                     onChange={(e) => setQ1Answer(e.target.value)}
                     placeholder="e.g. 10"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                  <span className="flex items-center text-slate-600 font-medium">m/s</span>
+                  <span className="flex items-center text-slate-600 dark:text-slate-300 font-medium">m/s</span>
                 </div>
                 {q1Correct !== null && (
                   <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q1Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
@@ -247,13 +247,13 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-slate-700 mb-2">
+                <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">
                   2. Which type of neuron carries the electrical signal <i>towards</i> the Central Nervous System?
                 </label>
                 <select
                   value={q2Answer}
                   onChange={(e) => setQ2Answer(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 dark:bg-slate-900"
                 >
                   <option value="">Select a neuron type...</option>
                   <option value="motor">Motor Neuron (Efferent)</option>
@@ -276,7 +276,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
 
               <button
                 onClick={checkAnswers}
-                className="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-sm flex justify-center items-center"
+                className="w-full bg-slate-800 dark:bg-slate-800 hover:bg-slate-900 dark:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-sm flex justify-center items-center"
               >
                 Submit Answers
               </button>

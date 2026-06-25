@@ -106,7 +106,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
     const minMass = maxMass - totalLoss - 1.0;
 
     return (
-      <svg viewBox="-30 -10 250 160" className="w-full h-48 bg-slate-50 rounded-lg shadow-sm border border-slate-200">
+      <svg viewBox="-30 -10 250 160" className="w-full h-48 bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
          {/* Axes */}
          <line x1="0" y1="120" x2="200" y2="120" stroke="#94a3b8" strokeWidth="2" />
          <line x1="0" y1="0" x2="0" y2="120" stroke="#94a3b8" strokeWidth="2" />
@@ -125,34 +125,34 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Preparation of Soluble Salt: Excess Carbonate Method" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 p-4 border-b border-slate-200">
-            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-              <Beaker className="text-slate-600" /> Theory & Setup
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+              <Beaker className="text-slate-600 dark:text-slate-300" /> Theory & Setup
             </h2>
           </div>
           <div className="p-6 flex-1 overflow-y-auto space-y-6">
             <div>
-              <h3 className="font-semibold text-slate-800 mb-2">Reaction Principle</h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Reaction Principle</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                 An acid reacts with a metal carbonate to produce salt, water, and carbon dioxide gas. The mass decreases as CO₂ escapes.
               </p>
-              <div className="bg-slate-800 text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner">
+              <div className="bg-slate-800 dark:bg-slate-800 text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner">
                 CaCO₃(s) + 2HCl(aq) → CaCl₂(aq) + H₂O(l) + CO₂(g)
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-800 mb-4">Set Variables</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Set Variables</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                     Volume of HCl: {hclVol} mL
                   </label>
                   <input 
@@ -162,7 +162,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                     Concentration of HCl: {hclConc.toFixed(1)} M
                   </label>
                   <input 
@@ -172,7 +172,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                     Mass of CaCO₃: {caco3Mass.toFixed(1)} g
                   </label>
                   <input 
@@ -184,16 +184,16 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
               </div>
             </div>
             
-            <button onClick={() => handleAction('reset')} className="w-full py-2 bg-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-300">
+            <button onClick={() => handleAction('reset')} className="w-full py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-lg hover:bg-slate-300 dark:bg-slate-800">
               Reset Experiment
             </button>
           </div>
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
-          <div className="bg-slate-100 p-4 border-b border-slate-200">
-            <h2 className="text-lg font-bold text-slate-800">Virtual Workbench</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Virtual Workbench</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col items-center justify-between">
             
@@ -203,8 +203,8 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
                 <Droplet size={28} className="text-blue-500 mb-2" />
                 <span className="font-semibold text-xs text-center">HCl Bottle</span>
               </button>
-              <button onClick={() => handleAction('caco3')} disabled={step !== 1} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 1 ? 'border-slate-800 bg-slate-50 hover:bg-slate-200 cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
-                <Activity size={28} className="text-slate-800 mb-2" />
+              <button onClick={() => handleAction('caco3')} disabled={step !== 1} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 1 ? 'border-slate-800 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:bg-slate-200 dark:bg-slate-800 cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
+                <Activity size={28} className="text-slate-800 dark:text-slate-100 mb-2" />
                 <span className="font-semibold text-xs text-center">CaCO₃ Solid</span>
               </button>
               <button onClick={() => handleAction('filter')} disabled={step !== 2 || running} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 2 && !running ? 'border-amber-400 bg-amber-50 hover:bg-amber-100 cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
@@ -253,7 +253,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
               
               {/* Balance Screen */}
               {step <= 2 && (
-                <div className="bg-slate-900 w-48 mt-[-10px] z-0 rounded-b-xl border-4 border-slate-700 p-3 shadow-lg flex justify-center">
+                <div className="bg-slate-900 dark:bg-slate-800 w-48 mt-[-10px] z-0 rounded-b-xl border-4 border-slate-700 dark:border-slate-500 p-3 shadow-lg flex justify-center">
                   <div className="bg-[#a3e635] px-4 py-2 rounded text-slate-900 font-mono text-2xl font-bold tracking-widest shadow-inner">
                     {currentMass.toFixed(2)}<span className="text-sm ml-1">g</span>
                   </div>
@@ -262,7 +262,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
             </div>
 
             {/* Dynamic Equation */}
-            <div className="w-full bg-slate-800 text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center mt-2">
+            <div className="w-full bg-slate-800 dark:bg-slate-800 text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center mt-2">
               <span className="text-xs text-slate-400 mb-1 uppercase tracking-wider">Live Reaction</span>
               <span className="text-sm md:text-base">{equation}</span>
             </div>
@@ -270,24 +270,24 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
-          <div className="bg-slate-100 p-4 border-b border-slate-200">
-            <h2 className="text-lg font-bold text-slate-800">Kinetics & Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Kinetics & Analysis</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col">
             
             <div className="mb-6">
-              <h3 className="font-semibold text-slate-800 mb-2">Mass Loss Curve</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Mass Loss Curve</h3>
               {renderGraph() || (
-                <div className="w-full h-48 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-400 text-sm">
+                <div className="w-full h-48 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg flex items-center justify-center text-slate-400 text-sm">
                   Run the experiment to see the graph.
                 </div>
               )}
             </div>
 
-            <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 mt-auto">
-              <h3 className="font-semibold text-slate-800 mb-2">Assessment</h3>
-              <p className="text-sm text-slate-600 mb-4">
+            <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-auto">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Assessment</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                 Calculate the theoretical maximum mass of CO₂ lost (g) for the current setup.
                 <br/><span className="text-xs text-slate-400">CaCO₃=100.09 g/mol, CO₂=44.01 g/mol</span>
               </p>
@@ -297,9 +297,9 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
                   value={assessmentAnswer}
                   onChange={e => setAssessmentAnswer(e.target.value)}
                   placeholder="e.g. 2.2"
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-slate-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm outline-none focus:border-slate-500 dark:border-slate-500"
                 />
-                <button onClick={checkAssessment} className="px-4 py-2 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900 text-sm">
+                <button onClick={checkAssessment} className="px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-900 dark:bg-slate-800 text-sm">
                   Check
                 </button>
               </div>

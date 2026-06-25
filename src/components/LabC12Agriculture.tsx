@@ -72,7 +72,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
       const achAccumulated = time * 10 * ((100 - activity) / 100);
       
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">AChE Enzyme Activity: {activity.toFixed(1)}%</text>
           
           {/* Synapse */}
@@ -94,7 +94,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
     } else if (scenario === 'AcidRain') {
       const leached = time * (10 ** (6 - parameter));
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Ca²⁺ Leached: {leached.toFixed(0)} units</text>
           
           {/* Soil Particle */}
@@ -116,7 +116,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
     } else {
       const survival = Math.max(0, 100 - parameter * time * 2);
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Pest Survival: {survival.toFixed(1)}%</text>
           
           {/* Leaf */}
@@ -150,7 +150,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
   const config = getSliderConfig();
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Interactive Agrochemicals Lab" />
 
@@ -158,32 +158,32 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2 flex items-center gap-2">
-              <ShieldAlert className="text-slate-500" size={20} />
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2 flex items-center gap-2">
+              <ShieldAlert className="text-slate-500 dark:text-slate-400" size={20} />
               Process Dynamics
             </h2>
             {scenario === 'Pesticide' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>Organophosphate Pesticides</strong> irreversibly inhibit Acetylcholinesterase (AChE) in insects. Without AChE, acetylcholine builds up in the synapse, causing continuous nerve impulses, paralysis, and death.
               </p>
             )}
             {scenario === 'AcidRain' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>Acid Rain</strong> contains elevated H⁺ ions. These ions displace essential nutrient cations like Ca²⁺ and Mg²⁺ bound to negatively charged soil clay particles. The nutrients are then leached away, depleting soil fertility.
               </p>
             )}
             {scenario === 'GMCrops' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>GM Crops</strong> are engineered to express Bt toxin from *Bacillus thuringiensis*. The toxin binds to receptors in the insect gut, forming pores that lead to pest mortality while remaining harmless to humans.
               </p>
             )}
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-slate-700 mb-4">Experimental Setup</h3>
-            <label className="block text-sm font-medium text-slate-600 mb-1">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Experimental Setup</h3>
+            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
               {config.label}: {parameter}
             </label>
             <input
@@ -193,22 +193,22 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
               step={config.step}
               value={parameter}
               onChange={(e) => { setParameter(Number(e.target.value)); reset(); }}
-              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-green-600 mb-6"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-green-600 mb-6"
             />
             
-            <div className="bg-slate-100 p-4 rounded-lg flex items-center justify-between border border-slate-200">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg flex items-center justify-between border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex flex-col">
-                <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Elapsed Time</span>
-                <span className="text-2xl font-mono text-slate-800">{time.toFixed(1)} s</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Elapsed Time</span>
+                <span className="text-2xl font-mono text-slate-800 dark:text-slate-100">{time.toFixed(1)} s</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Middle Column: Interactive Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
-          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Bug className="text-slate-500" size={20} />
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative">
+          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <Bug className="text-slate-500 dark:text-slate-400" size={20} />
             Agro-Visualizer
           </h2>
           
@@ -226,7 +226,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
             </button>
             <button
               onClick={reset}
-              className="flex items-center gap-2 px-6 py-3 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors"
             >
               <RotateCcw size={18} />
               Reset
@@ -235,11 +235,11 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2">
             Data Analysis
           </h2>
-          <p className="text-sm text-slate-600 mb-6">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
             Calculate the agrochemical impacts based on the simulation data. Pay close attention to the specific rate equations derived from the visualized phenomena.
           </p>
 
@@ -264,18 +264,18 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
 
           <div className="flex flex-col gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Your Answer</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
               <input
                 type="number"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Enter numerical value"
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
               />
             </div>
             <button
               onClick={checkAnswer}
-              className="w-full py-2 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-900 transition-colors"
+              className="w-full py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-900 dark:bg-slate-800 transition-colors"
             >
               Check Answer
             </button>

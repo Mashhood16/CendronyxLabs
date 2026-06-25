@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Presentation, ThumbsUp, BarChart3, TrendingUp, DollarSign } from 'lucide-react';
+import { Presentation, ThumbsUp, BarChart3, DollarSign } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -56,18 +57,15 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
   const pointsSales = metrics.map((p, i) => `${(i / 20) * 100},${100 - Math.min((p.sales / maxSales) * 100, 100)}`).join(' ');
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-pink-600 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold flex items-center gap-2"><TrendingUp /> Digital Marketing Lab</h1>
-        {onExit && <button onClick={onExit} className="bg-pink-800 px-4 py-2 rounded hover:bg-pink-700 transition">Exit Lab</button>}
-      </div>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Digital Marketing Lab" subtitle="Social Media Campaign Simulation" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
-          <h2 className="text-lg font-bold text-slate-800">1. Campaign Setup</h2>
-          <p className="text-sm text-slate-600 mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">1. Campaign Setup</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
           
           <div>
             <label className="block text-sm font-bold mb-1">Ad Budget ($)</label>
@@ -104,22 +102,22 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
         </div>
 
         {/* MIDDLE COLUMN: Simulation */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 relative">
-          <div className="w-full max-w-sm bg-slate-100 rounded-xl border border-slate-300 overflow-hidden shadow-sm">
-            <div className="p-3 border-b bg-slate-50 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative">
+          <div className="w-full max-w-sm bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-hidden shadow-sm">
+            <div className="p-3 border-b bg-slate-50 dark:bg-slate-900 flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white"><ThumbsUp size={16}/></div>
               <div>
                 <p className="font-bold text-sm">TechGadget Store</p>
-                <p className="text-xs text-slate-500">Sponsored</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Sponsored</p>
               </div>
             </div>
-            <div className="p-3 bg-slate-50 text-sm">
+            <div className="p-3 bg-slate-50 dark:bg-slate-900 text-sm">
               Upgrade your setup with our latest smart accessories! Click to learn more. 🚀
             </div>
-            <div className="h-40 bg-slate-200 flex items-center justify-center border-y">
+            <div className="h-40 bg-slate-200 dark:bg-slate-800 flex items-center justify-center border-y">
                <Presentation size={48} className="text-slate-400" />
             </div>
-            <div className="p-3 bg-slate-50 flex justify-between text-slate-500 text-sm">
+            <div className="p-3 bg-slate-50 dark:bg-slate-900 flex justify-between text-slate-500 dark:text-slate-400 text-sm">
                <span className="font-medium text-blue-600">{finalMetrics.likes} Likes</span>
                <span>{finalMetrics.clicks} Clicks</span>
             </div>
@@ -133,12 +131,12 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
         </div>
 
         {/* RIGHT COLUMN: Analytics */}
-        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800">3. Analytics & ROI</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">3. Analytics & ROI</h2>
           
-          <div className="bg-slate-50 p-4 rounded-lg border">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border">
              <h3 className="font-bold flex items-center gap-2 mb-2"><BarChart3 size={18}/> Performance Graph</h3>
-             <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 rounded border overflow-visible">
+             <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 dark:bg-slate-900 rounded border overflow-visible">
                {/* Likes line */}
                <polyline points={pointsLikes} fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinejoin="round" />
                {/* Sales line */}
@@ -151,8 +149,8 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-center text-sm font-bold">
-             <div className="bg-slate-100 p-2 rounded">Sales: <span className="text-green-600">{finalMetrics.sales}</span></div>
-             <div className="bg-slate-100 p-2 rounded">Revenue: <span className="text-green-600">${finalMetrics.sales * 50}</span></div>
+             <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">Sales: <span className="text-green-600">{finalMetrics.sales}</span></div>
+             <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">Revenue: <span className="text-green-600">${finalMetrics.sales * 50}</span></div>
           </div>
 
           <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 mt-auto">

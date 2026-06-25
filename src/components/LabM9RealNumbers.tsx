@@ -50,28 +50,28 @@ export default function LabM9RealNumbers({ onExit }: Props) {
   const checkQ2 = () => setQ2Status(Number(q2Ans) === q2Expected);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="<MapPin /> Grade 9 Math: Real Numbers & Distance" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Grade 9 Math: Real Numbers & Distance" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory: Absolute Value & Percentages</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Absolute Value & Percentages</h2>
           
           <div className="prose prose-slate">
             <h3 className="text-lg font-semibold text-blue-700">The Number Line</h3>
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-300">
               The number line represents all real numbers. Moving right increases the value, moving left decreases it.
             </p>
             
             <h3 className="text-lg font-semibold text-blue-700 mt-4">Absolute Value</h3>
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-300">
               The absolute value |x| is the distance of a number from zero, regardless of direction. 
               The distance between two points a and b is given by |a - b|. Distance is always positive!
             </p>
 
             <h3 className="text-lg font-semibold text-blue-700 mt-4">Fractions & Percentages</h3>
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-300">
               A percentage is a fraction out of 100. If a truck carries 400 kg out of a maximum 1000 kg, 
               the fraction is 400 / 1000, which equals 40%.
             </p>
@@ -79,21 +79,21 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         </div>
 
         {/* Interactive Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Truck className="text-blue-600" /> Logistics Simulator
           </h2>
           
           {/* Visualizer */}
-          <div className="relative w-full h-40 bg-slate-100 rounded-lg border border-slate-300 overflow-hidden flex items-end pb-8">
+          <div className="relative w-full h-40 bg-slate-100 dark:bg-slate-800 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex items-end pb-8">
             {/* Grid Lines */}
-            <div className="absolute w-full h-px bg-slate-400 bottom-8"></div>
+            <div className="absolute w-full h-px bg-slate-400 dark:bg-slate-800 bottom-8"></div>
             {Array.from({ length: 11 }).map((_, i) => {
               const val = (i - 5) * 20;
               return (
                 <div key={i} className="absolute bottom-6 flex flex-col items-center" style={{ left: `${(i / 10) * 100}%`, transform: 'translateX(-50%)' }}>
-                  <div className="h-2 w-px bg-slate-600"></div>
-                  <span className="text-xs font-semibold text-slate-500 mt-1">{val}</span>
+                  <div className="h-2 w-px bg-slate-600 dark:bg-slate-800"></div>
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">{val}</span>
                 </div>
               );
             })}
@@ -108,9 +108,9 @@ export default function LabM9RealNumbers({ onExit }: Props) {
           </div>
 
           {/* Controls */}
-          <div className="flex flex-col gap-4 bg-slate-50 p-4 rounded-lg border">
+          <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1">Target Position (km): {targetPos}</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">Target Position (km): {targetPos}</label>
               <input 
                 type="range" min="-100" max="100" step="10" 
                 value={targetPos} onChange={(e) => setTargetPos(Number(e.target.value))}
@@ -119,7 +119,7 @@ export default function LabM9RealNumbers({ onExit }: Props) {
             </div>
             
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1 flex items-center gap-1">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1 flex items-center gap-1">
                 <Package size={16} /> Current Load (kg): {loadKg} / 1000
               </label>
               <input 
@@ -139,15 +139,15 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Analysis & Assessment</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Analysis & Assessment</h2>
           
-          <div className="flex-1 overflow-y-auto border rounded-lg bg-slate-50 p-2 min-h-[150px]">
+          <div className="flex-1 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
             {logs.length === 0 ? (
               <div className="text-center text-slate-400 mt-10">No data recorded yet.</div>
             ) : (
               <table className="w-full text-sm text-left">
-                <thead className="text-xs text-slate-500 uppercase border-b">
+                <thead className="text-xs text-slate-500 dark:text-slate-400 uppercase border-b">
                   <tr>
                     <th className="px-2 py-1">Start</th>
                     <th className="px-2 py-1">End</th>

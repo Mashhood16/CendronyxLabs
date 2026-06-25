@@ -73,7 +73,7 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
       }
       
       return (
-        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 rounded-lg">
+        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg">
           {eFieldLines}
           {/* Lightning cloud symbol at top */}
           <ellipse cx="200" cy="0" rx="80" ry="30" fill="#475569" />
@@ -102,7 +102,7 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
       }
 
       return (
-        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 rounded-lg">
+        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg">
           {/* Solenoid tube */}
           <rect x="50" y="50" width="300" height="140" fill="rgba(255,255,255,0.05)" stroke="#475569" strokeWidth={2} />
           {coils}
@@ -122,25 +122,25 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Grade 11 Physics: Electrostatics & Magnetism" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* Theory & Controls */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Zap className="text-yellow-500" /> Theory & Setup
           </h2>
           
-          <div className="flex gap-2 p-1 bg-slate-100 rounded-lg">
+          <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'faraday' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'faraday' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => { setMode('faraday'); setIsPlaying(false); }}
             >
               Faraday Cage
             </button>
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'mri' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'mri' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => { setMode('mri'); setIsPlaying(false); }}
             >
               MRI Ferrofluid
@@ -150,26 +150,26 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
           <div className="flex-grow space-y-4">
             {mode === 'faraday' ? (
               <>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   A Faraday cage is an enclosure used to block electromagnetic fields. The charges in the conductive material redistribute themselves to cancel the external field inside the cage, ensuring $E = 0$.
                 </p>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">External E-Field Strength: {extField}%</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">External E-Field Strength: {extField}%</label>
                   <input type="range" min="0" max="100" value={extField} onChange={(e) => setExtField(Number(e.target.value))} className="w-full accent-yellow-500" />
                 </div>
               </>
             ) : (
               <>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   An MRI machine uses a massive solenoid to create a strong, uniform magnetic field. Ferrofluid (magnetic fluid) forms spikes along the magnetic field lines. 
                   $$B = \mu_0 n I$$
                 </p>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Turns Density ($n$): {turns} turns/m</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Turns Density ($n$): {turns} turns/m</label>
                   <input type="range" min="500" max="4000" step="100" value={turns} onChange={(e) => setTurns(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Current ($I$): {current} A</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Current ($I$): {current} A</label>
                   <input type="range" min="0" max="100" value={current} onChange={(e) => setCurrent(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </>
@@ -178,9 +178,9 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 lg:col-span-1">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
               <Magnet className="text-blue-500" /> Visualizer
             </h2>
             {mode === 'mri' && (
@@ -198,20 +198,20 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Assessment & Data */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800">Analysis & Assessment</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Analysis & Assessment</h2>
           
           <div className="space-y-4">
             <button 
               onClick={mode === 'faraday' ? logFaraday : logMri}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg font-medium transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 dark:bg-slate-800 hover:bg-slate-900 dark:bg-slate-800 text-white rounded-lg font-medium transition-colors"
             >
               <Save size={18} /> Record Measurement
             </button>
             
-            <div className="max-h-40 overflow-y-auto border border-slate-200 rounded-lg">
-              <table className="w-full text-sm text-left text-slate-600">
-                <thead className="bg-slate-50 text-slate-700 sticky top-0">
+            <div className="max-h-40 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+              <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 sticky top-0">
                   {mode === 'faraday' ? (
                     <tr><th className="p-2">E_ext (%)</th><th className="p-2">E_in (V/m)</th></tr>
                   ) : (
@@ -229,13 +229,13 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
             </div>
           </div>
 
-          <div className="mt-auto pt-4 border-t border-slate-200">
-            <h3 className="font-semibold text-slate-800 mb-2">Knowledge Check</h3>
+          <div className="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Knowledge Check</h3>
             {mode === 'faraday' ? (
               <div className="space-y-3">
-                <p className="text-sm text-slate-600">A hollow metal sphere has a radius of 10cm. A point charge of +5µC is placed outside. What is the electric field at the center of the sphere? (V/m)</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">A hollow metal sphere has a radius of 10cm. A point charge of +5µC is placed outside. What is the electric field at the center of the sphere? (V/m)</p>
                 <div className="flex gap-2">
-                  <input type="number" value={faradayAns} onChange={e => {setFaradayAns(e.target.value); setFaradayStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 100" />
+                  <input type="number" value={faradayAns} onChange={e => {setFaradayAns(e.target.value); setFaradayStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 100" />
                   <button onClick={checkFaraday} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
                 </div>
                 {faradayStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct! E-field inside a conductor is zero.</p>}
@@ -243,9 +243,9 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
               </div>
             ) : (
               <div className="space-y-3">
-                <p className="text-sm text-slate-600">An MRI solenoid has 2000 turns/m and a current of 50 A. Calculate the magnetic field in Tesla. (Use {"$\\mu_0 = 1.257 \\times 10^{-6}$"})</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">An MRI solenoid has 2000 turns/m and a current of 50 A. Calculate the magnetic field in Tesla. (Use {"$\\mu_0 = 1.257 \\times 10^{-6}$"})</p>
                 <div className="flex gap-2">
-                  <input type="number" step="0.0001" value={mriAns} onChange={e => {setMriAns(e.target.value); setMriStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 0.1257" />
+                  <input type="number" step="0.0001" value={mriAns} onChange={e => {setMriAns(e.target.value); setMriStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 0.1257" />
                   <button onClick={checkMri} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
                 </div>
                 {mriStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}

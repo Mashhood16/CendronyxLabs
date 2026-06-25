@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, Calculator, Target, BarChart2 } from 'lucide-react';
+import { CheckCircle, Calculator, BarChart2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {
@@ -53,27 +53,20 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      {/* Header */}
-      <header className="bg-blue-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <LabHeader onExit={onExit} title="Lab: Market Research & CAC" />
-        <div className="flex items-center gap-2">
-          <Target size={20} />
-          <span className="font-semibold">Grade 10 Computer Science</span>
-        </div>
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Lab: Market Research & CAC" subtitle="Grade 10 Computer Science" variant="blue" />
 
       {/* Main 3-Column Grid */}
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <BarChart2 className="text-blue-600" /> Theory & Setup
           </h2>
           
-          <div className="prose prose-sm text-slate-600">
-            <h3 className="text-md font-semibold text-slate-700">Customer Acquisition Cost (CAC)</h3>
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+            <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Customer Acquisition Cost (CAC)</h3>
             <p>
               CAC is the total cost of acquiring a new customer. It includes all marketing and sales expenses over a specific period, divided by the number of new customers acquired during that period.
             </p>
@@ -81,7 +74,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
               CAC = (Marketing Spend + Sales Spend) / New Customers
             </div>
             
-            <h3 className="text-md font-semibold text-slate-700 mt-4">Unique Selling Proposition (USP)</h3>
+            <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200 mt-4">Unique Selling Proposition (USP)</h3>
             <p>
               A USP is what makes your product different from competitors. We often visualize this using a Competitive Matrix, plotting competitors on two axes (e.g., Price vs. Quality) to find a "gap" in the market.
             </p>
@@ -89,31 +82,31 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <Calculator className="text-blue-600" /> Interactive Builders
           </h2>
           
           {/* CAC Calculator */}
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <h3 className="font-semibold text-slate-700 mb-4">CAC Calculator</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">CAC Calculator</h3>
             <div className="space-y-4">
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-600 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
                   <span>Marketing Spend ($)</span>
                   <span>${marketingSpend}</span>
                 </label>
                 <input type="range" min="0" max="5000" step="100" value={marketingSpend} onChange={(e) => setMarketingSpend(Number(e.target.value))} className="w-full accent-blue-600" />
               </div>
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-600 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
                   <span>Sales Spend ($)</span>
                   <span>${salesSpend}</span>
                 </label>
                 <input type="range" min="0" max="5000" step="100" value={salesSpend} onChange={(e) => setSalesSpend(Number(e.target.value))} className="w-full accent-blue-600" />
               </div>
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-600 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
                   <span>New Customers</span>
                   <span>{newCustomers}</span>
                 </label>
@@ -130,11 +123,11 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
           </div>
 
           {/* USP Matrix Builder */}
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 flex-1 flex flex-col">
-            <h3 className="font-semibold text-slate-700 mb-2">USP Matrix Builder</h3>
-            <p className="text-xs text-slate-500 mb-4">Click on the grid to position your product based on Price and Quality.</p>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1 flex flex-col">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2">USP Matrix Builder</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Click on the grid to position your product based on Price and Quality.</p>
             <div 
-              className="relative w-full aspect-square bg-slate-50 border-2 border-slate-300 cursor-crosshair rounded-md overflow-hidden"
+              className="relative w-full aspect-square bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 cursor-crosshair rounded-md overflow-hidden"
               onClick={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -144,10 +137,10 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
             >
               {/* Axes lines */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-full h-px bg-slate-300" />
+                <div className="w-full h-px bg-slate-300 dark:bg-slate-800" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="h-full w-px bg-slate-300" />
+                <div className="h-full w-px bg-slate-300 dark:bg-slate-800" />
               </div>
               
               {/* Labels */}
@@ -168,22 +161,22 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
                 <span className="text-[10px] text-white font-bold">You</span>
               </div>
             </div>
-            <div className="mt-2 text-xs text-center text-slate-600">
+            <div className="mt-2 text-xs text-center text-slate-600 dark:text-slate-300">
               Your Product: Price {ownProduct.x.toFixed(0)}%, Quality {(100 - ownProduct.y).toFixed(0)}%
             </div>
           </div>
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-blue-600" /> Data & Assessment
           </h2>
 
           <div className="flex-1 overflow-auto">
-            <h3 className="font-semibold text-slate-700 mb-2 text-sm">Data Log</h3>
-            <table className="w-full text-xs text-left text-slate-600">
-              <thead className="bg-slate-100 text-slate-700 uppercase">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2 text-sm">Data Log</h3>
+            <table className="w-full text-xs text-left text-slate-600 dark:text-slate-300">
+              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase">
                 <tr>
                   <th className="p-2">Trial</th>
                   <th className="p-2">Mkt ($)</th>
@@ -210,19 +203,19 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
             </table>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <h3 className="font-semibold text-slate-700 mb-2">Knowledge Check</h3>
-            <p className="text-sm text-slate-600 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2">Knowledge Check</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               Your startup spent <strong>${assessmentScenario.mkt}</strong> on marketing and <strong>${assessmentScenario.sales}</strong> on sales this month. You acquired <strong>{assessmentScenario.cust}</strong> new customers. What is your CAC?
             </p>
             <div className="flex gap-2">
               <div className="relative flex-1">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400">$</span>
                 <input 
                   type="number" 
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
-                  className="w-full pl-7 pr-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="w-full pl-7 pr-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   placeholder="0.00"
                 />
               </div>

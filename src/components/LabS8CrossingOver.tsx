@@ -14,12 +14,12 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 3.3: Crossing Over" subtitle="Model genetic recombination during meiosis" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Interactive Diagram */}
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center min-h-[500px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center min-h-[500px]">
           
           <div className="relative w-80 h-96 flex justify-center items-center">
             
@@ -46,7 +46,7 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
             {/* Animation Overlays */}
             {step === 2 && (
               <div className="absolute top-16 z-20 animate-bounce">
-                <Scissors className="w-12 h-12 text-slate-700" />
+                <Scissors className="w-12 h-12 text-slate-700 dark:text-slate-200" />
               </div>
             )}
 
@@ -75,7 +75,7 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
 
         {/* Right Column: Educational Text */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-slate-800 rounded-2xl shadow-sm text-white p-6 border border-slate-700 h-full">
+          <div className="bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm text-white p-6 border border-slate-700 dark:border-slate-500 h-full">
             <h3 className="font-bold text-slate-200 mb-6 text-xl">The Process</h3>
             
             <div className="space-y-6">

@@ -44,19 +44,19 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" />
 
       <div className="flex-1 p-6 max-w-5xl mx-auto w-full flex flex-col">
         
         {/* Unsorted Items */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-slate-700 mb-4 text-center">Unsorted Traits (Click to assign)</h2>
+          <h2 className="text-lg font-bold text-slate-700 dark:text-slate-200 mb-4 text-center">Unsorted Traits (Click to assign)</h2>
           <div className="flex flex-wrap gap-3 justify-center">
             {items.map(trait => (
               <div 
                 key={trait.id}
-                className="bg-slate-50 border-2 border-slate-300 shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 flex flex-col gap-2 min-w-[200px]"
+                className="bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 flex flex-col gap-2 min-w-[200px]"
               >
                 <span className="text-center">{trait.name}</span>
                 <div className="flex gap-2">
@@ -99,7 +99,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
             
             <div className="flex-1 flex flex-col gap-3">
               {continuous.map(trait => (
-                <div key={trait.id} className="bg-slate-50 px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 dark:bg-slate-900 px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}
@@ -113,7 +113,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
             
             <div className="flex-1 flex flex-col gap-3">
               {discontinuous.map(trait => (
-                <div key={trait.id} className="bg-slate-50 px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 dark:bg-slate-900 px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}

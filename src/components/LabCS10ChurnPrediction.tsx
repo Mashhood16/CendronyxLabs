@@ -84,16 +84,16 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="Churn Prediction Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <Target className="mr-2 text-orange-500" /> Model Setup
                     </h2>
-                    <div className="prose prose-sm text-slate-600">
+                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
                         <p>
                             <strong>Customer Churn</strong> is when users stop doing business with a company. We can use a simple mathematical model to predict their risk score based on behaviors.
                         </p>
@@ -103,7 +103,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                             
                             <div className="space-y-4">
                                 <div>
-                                    <div className="flex justify-between text-sm mb-1 text-slate-700">
+                                    <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-slate-200">
                                         <label>Base Risk</label>
                                         <span>{baseRisk}</span>
                                     </div>
@@ -115,7 +115,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                                 </div>
                                 
                                 <div>
-                                    <div className="flex justify-between text-sm mb-1 text-slate-700">
+                                    <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-slate-200">
                                         <label>Support Tickets Weight (Positive Risk)</label>
                                         <span>+{ticketWeight} per ticket</span>
                                     </div>
@@ -127,7 +127,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                                 </div>
                                 
                                 <div>
-                                    <div className="flex justify-between text-sm mb-1 text-slate-700">
+                                    <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-slate-200">
                                         <label>Login Days Weight (Negative Risk)</label>
                                         <span>{loginWeight} per day</span>
                                     </div>
@@ -150,15 +150,15 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <TrendingDown className="mr-2 text-orange-500" /> Customer Data
                     </h2>
                     
                     <div className="flex-grow overflow-auto">
                         <table className="w-full text-sm text-left border-collapse">
                             <thead>
-                                <tr className="border-b-2 border-slate-200 text-slate-600">
+                                <tr className="border-b-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300">
                                     <th className="p-2">Customer</th>
                                     <th className="p-2">Logins/30d</th>
                                     <th className="p-2">Tickets</th>
@@ -168,10 +168,10 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                             </thead>
                             <tbody>
                                 {customers.map(c => (
-                                    <tr key={c.id} className="border-b border-slate-100 hover:bg-slate-50">
-                                        <td className="p-2 font-medium text-slate-800">{c.name}</td>
-                                        <td className="p-2 text-slate-600">{c.loginDays}</td>
-                                        <td className="p-2 text-slate-600">{c.supportTickets}</td>
+                                    <tr key={c.id} className="border-b border-slate-100 hover:bg-slate-50 dark:bg-slate-900">
+                                        <td className="p-2 font-medium text-slate-800 dark:text-slate-100">{c.name}</td>
+                                        <td className="p-2 text-slate-600 dark:text-slate-300">{c.loginDays}</td>
+                                        <td className="p-2 text-slate-600 dark:text-slate-300">{c.supportTickets}</td>
                                         <td className="p-2">
                                             {c.status === 'Churned' ? (
                                                 <span className="text-red-600 font-bold flex items-center">CHURNED <UserX size={14} className="ml-1"/></span>
@@ -179,13 +179,13 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                                                 <span className="text-green-600 font-bold flex items-center">SAVED <CheckCircle size={14} className="ml-1"/></span>
                                             ) : (
                                                 <div className="flex items-center">
-                                                    <div className="w-16 h-2 bg-slate-200 rounded-full mr-2 overflow-hidden">
+                                                    <div className="w-16 h-2 bg-slate-200 dark:bg-slate-800 rounded-full mr-2 overflow-hidden">
                                                         <div 
                                                             className={`h-full ${c.churnRisk > 70 ? 'bg-red-500' : c.churnRisk > 40 ? 'bg-yellow-500' : 'bg-green-500'}`} 
                                                             style={{ width: `${c.churnRisk}%` }}
                                                         ></div>
                                                     </div>
-                                                    <span className={`font-bold ${c.churnRisk > 70 ? 'text-red-600' : 'text-slate-700'}`}>{c.churnRisk}%</span>
+                                                    <span className={`font-bold ${c.churnRisk > 70 ? 'text-red-600' : 'text-slate-700 dark:text-slate-200'}`}>{c.churnRisk}%</span>
                                                 </div>
                                             )}
                                         </td>
@@ -214,15 +214,15 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis */}
-                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
                         <Target className="mr-2 text-orange-500" /> Log & Assessment
                     </h2>
                     
                     <div className="mb-6 flex-grow">
-                        <h3 className="text-sm font-semibold text-slate-500 uppercase mb-2">Campaign Log</h3>
-                        <div className="bg-slate-900 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
-                            {logs.length === 0 && <span className="text-slate-500">Waiting for actions...</span>}
+                        <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase mb-2">Campaign Log</h3>
+                        <div className="bg-slate-900 dark:bg-slate-800 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
+                            {logs.length === 0 && <span className="text-slate-500 dark:text-slate-400">Waiting for actions...</span>}
                             {logs.map((log, i) => (
                                 <div key={i}>{`> ${log}`}</div>
                             ))}

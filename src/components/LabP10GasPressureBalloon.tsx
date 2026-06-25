@@ -129,7 +129,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
   const syringeWidthPercent = (syringeVolume / maxV) * 100;
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Unit 11: Charles's Law (Volume and Temperature)" subtitle="Investigate the relationship between gas volume and temperature at constant pressure." />
 
@@ -138,29 +138,29 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
           
           {/* Column 1: Theory & Setup */}
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
             <div>
-              <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Theory</h2>
-              <p className="text-sm text-slate-600 mb-2">
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-3">Theory</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                 <strong>Charles's Law</strong> states that the volume of an ideal gas is directly proportional to its absolute temperature, assuming constant pressure.
               </p>
-              <div className="bg-slate-100 p-3 rounded-lg text-sm font-mono text-slate-700 space-y-1">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-sm font-mono text-slate-700 dark:text-slate-200 space-y-1">
                 <p>V ∝ T</p>
                 <p>V / T = constant</p>
                 <p>V = V₀(1 + αT_celsius)</p>
               </div>
-              <p className="text-sm text-slate-600 mt-2">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
                 By extrapolating the Volume vs Temperature graph to V = 0, we can estimate absolute zero.
               </p>
             </div>
 
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Setup Parameters</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-3">Setup Parameters</h2>
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700">Gas Amount (Moles)</label>
-                    <span className="text-sm font-mono text-slate-500">{gasMoles.toFixed(1)}</span>
+                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Gas Amount (Moles)</label>
+                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{gasMoles.toFixed(1)}</span>
                   </div>
                   <input 
                     type="range" min="0.5" max="2.0" step="0.1" 
@@ -177,8 +177,8 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
 
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700">Bath Temperature</label>
-                    <span className="text-sm font-mono text-slate-500">{targetTemp}°C</span>
+                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Bath Temperature</label>
+                    <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{targetTemp}°C</span>
                   </div>
                   <input 
                     type="range" min="-20" max="100" step="5" 
@@ -201,7 +201,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-slate-900 rounded-2xl shadow-inner border border-slate-700 p-4 flex flex-col relative overflow-hidden h-full min-h-[400px]">
+          <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-700 dark:border-slate-500 p-4 flex flex-col relative overflow-hidden h-full min-h-[400px]">
             <div className="absolute top-4 left-4 z-10 flex gap-2">
               <button 
                 onClick={() => setIsRunning(!isRunning)}
@@ -222,16 +222,16 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
               {/* Syringe Setup */}
               <div className="w-full max-w-sm relative z-20 h-24 mb-10 mt-10">
                 {/* Syringe barrel */}
-                <div className="absolute top-0 left-0 w-full h-16 bg-slate-50/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow-hidden backdrop-blur-sm">
+                <div className="absolute top-0 left-0 w-full h-16 bg-slate-50 dark:bg-slate-900/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow-hidden backdrop-blur-sm">
                   {/* Gas inside */}
                   <div 
-                    className="h-full bg-blue-300/30 transition-all duration-300 ease-out flex items-center justify-end border-r-2 border-slate-800/50"
+                    className="h-full bg-blue-300/30 transition-all duration-300 ease-out flex items-center justify-end border-r-2 border-slate-800 dark:border-slate-500/50"
                     style={{ width: `${Math.min(100, syringeWidthPercent)}%` }}
                   >
                     {/* Gas Particles (visual only) */}
                     <div className="absolute inset-0 overflow-hidden opacity-50">
                       {[...Array(Math.floor(20 * gasMoles))].map((_, i) => (
-                        <div key={i} className="absolute w-1 h-1 bg-slate-50 rounded-full animate-ping"
+                        <div key={i} className="absolute w-1 h-1 bg-slate-50 dark:bg-slate-900 rounded-full animate-ping"
                              style={{ 
                                top: `${10 + Math.random() * 80}%`, 
                                left: `${5 + Math.random() * Math.min(90, syringeWidthPercent - 5)}%`,
@@ -247,7 +247,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
                     className="absolute h-[80%] bg-zinc-800 border-2 border-zinc-900 rounded-sm shadow-md flex items-center justify-center transition-all duration-300 ease-out"
                     style={{ width: '12px', left: `${Math.min(96, syringeWidthPercent)}%`, top: '10%' }}
                   >
-                     <div className="w-full h-full bg-slate-600 rounded-sm shadow-inner" />
+                     <div className="w-full h-full bg-slate-600 dark:bg-slate-800 rounded-sm shadow-inner" />
                   </div>
                   {/* Piston Rod */}
                   <div 
@@ -276,7 +276,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
               }}>
                 {/* Heat/Cold waves */}
                 {bathTemp > 40 && <div className="absolute inset-0 bg-red-500/20 animate-pulse rounded-t-[50%]" />}
-                {bathTemp < 10 && <div className="absolute inset-0 bg-slate-50/20 rounded-t-[50%] border-t-[4px] border-white/50" />}
+                {bathTemp < 10 && <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900/20 rounded-t-[50%] border-t-[4px] border-white/50" />}
                 
                 <div className="text-white/60 font-bold text-xl uppercase tracking-widest">
                   Water Bath ({bathTemp.toFixed(1)}°C)
@@ -287,9 +287,9 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Data & Analysis */}
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
             <div className="flex items-center justify-between border-b pb-2">
-              <h2 className="text-lg font-bold text-slate-800">Data Recording</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Recording</h2>
               <button 
                 onClick={recordData}
                 disabled={Math.abs(gasTemp - bathTemp) > 0.5} // disable if not in thermal eq
@@ -300,12 +300,12 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
               </button>
             </div>
 
-            <div className="max-h-40 overflow-y-auto border border-slate-200 rounded-lg">
+            <div className="max-h-40 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                   <tr>
-                    <th className="px-4 py-2 font-semibold text-slate-700">Temperature (°C)</th>
-                    <th className="px-4 py-2 font-semibold text-slate-700">Volume (mL)</th>
+                    <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">Temperature (°C)</th>
+                    <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">Volume (mL)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -313,7 +313,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
                     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-400">No data recorded. Adjust temp and record.</td></tr>
                   ) : (
                     logs.map((log, i) => (
-                      <tr key={i} className="hover:bg-slate-50">
+                      <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
                         <td className="px-4 py-2">{log.t}</td>
                         <td className="px-4 py-2">{log.v.toFixed(1)}</td>
                       </tr>
@@ -324,9 +324,9 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
             </div>
 
             {/* Graph area: V vs T */}
-            <div className="flex-1 bg-slate-50 rounded-lg border border-slate-200 p-4 relative min-h-[150px]">
-               <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500">Volume (mL)</div>
-               <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500">Temperature (°C)</div>
+            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative min-h-[150px]">
+               <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-slate-400">Volume (mL)</div>
+               <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-slate-400">Temperature (°C)</div>
                
                <svg className="w-full h-[calc(100%-20px)] overflow-visible" viewBox="-300 0 400 100" preserveAspectRatio="none">
                  {/* X Axis Range: -300 to 100 -> total width 400 */}

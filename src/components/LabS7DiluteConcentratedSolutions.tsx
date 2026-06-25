@@ -14,25 +14,25 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
   const getOpactiy = (syrup: number) => Math.min(1, syrup * 0.15 + 0.1);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 7: Dilute and Concentrated Solutions" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-red-800 mb-4">Making Sharbat (Syrup Solutions)</h2>
-          <p className="text-slate-600 mb-6">Compare two solutions. You can adjust the amount of solute (Sharbat syrup spoons) added to the solvent (water). Observe the color intensity and understand concentration.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Compare two solutions. You can adjust the amount of solute (Sharbat syrup spoons) added to the solvent (water). Observe the color intensity and understand concentration.</p>
         </div>
 
         <div className="flex gap-16 justify-center mt-12 w-full max-w-4xl">
           
           {/* Glass A */}
-          <div className="flex flex-col items-center flex-1 bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-700 mb-2">Glass 1</h3>
-            <div className="text-sm font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full mb-8 uppercase tracking-wider">
+          <div className="flex flex-col items-center flex-1 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+            <h3 className="text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">Glass 1</h3>
+            <div className="text-sm font-bold px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-full mb-8 uppercase tracking-wider">
                {syrupA < 3 ? 'Dilute' : syrupA > 5 ? 'Highly Concentrated' : 'Concentrated'}
             </div>
             
-            <div className="relative w-32 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-xl flex items-end justify-center overflow-hidden mb-8 shadow-inner">
+            <div className="relative w-32 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-xl flex items-end justify-center overflow-hidden mb-8 shadow-inner">
                <div 
                  className="absolute bottom-0 w-full h-32 bg-red-600 transition-opacity duration-300 border-t-4 border-red-500/50"
                  style={{ opacity: getOpactiy(syrupA) }}
@@ -40,23 +40,23 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
             </div>
 
             <div className="flex items-center gap-4 w-full">
-              <span className="text-slate-500 font-bold whitespace-nowrap"><Droplet className="inline w-4 h-4 text-red-500" /> Syrup</span>
+              <span className="text-slate-500 dark:text-slate-400 font-bold whitespace-nowrap"><Droplet className="inline w-4 h-4 text-red-500" /> Syrup</span>
               <input 
                 type="range" min="1" max="8" value={syrupA} onChange={e => setSyrupA(parseInt(e.target.value))}
                 className="flex-1 accent-red-500"
               />
-              <span className="font-bold text-slate-700 w-4">{syrupA}</span>
+              <span className="font-bold text-slate-700 dark:text-slate-200 w-4">{syrupA}</span>
             </div>
           </div>
 
           {/* Glass B */}
-          <div className="flex flex-col items-center flex-1 bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-700 mb-2">Glass 2</h3>
-            <div className="text-sm font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full mb-8 uppercase tracking-wider">
+          <div className="flex flex-col items-center flex-1 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+            <h3 className="text-xl font-bold text-slate-700 dark:text-slate-200 mb-2">Glass 2</h3>
+            <div className="text-sm font-bold px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-full mb-8 uppercase tracking-wider">
                {syrupB < 3 ? 'Dilute' : syrupB > 5 ? 'Highly Concentrated' : 'Concentrated'}
             </div>
             
-            <div className="relative w-32 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-xl flex items-end justify-center overflow-hidden mb-8 shadow-inner">
+            <div className="relative w-32 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-xl flex items-end justify-center overflow-hidden mb-8 shadow-inner">
                <div 
                  className="absolute bottom-0 w-full h-32 bg-red-600 transition-opacity duration-300 border-t-4 border-red-500/50"
                  style={{ opacity: getOpactiy(syrupB) }}
@@ -64,12 +64,12 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
             </div>
 
             <div className="flex items-center gap-4 w-full">
-              <span className="text-slate-500 font-bold whitespace-nowrap"><Droplet className="inline w-4 h-4 text-red-500" /> Syrup</span>
+              <span className="text-slate-500 dark:text-slate-400 font-bold whitespace-nowrap"><Droplet className="inline w-4 h-4 text-red-500" /> Syrup</span>
               <input 
                 type="range" min="1" max="8" value={syrupB} onChange={e => setSyrupB(parseInt(e.target.value))}
                 className="flex-1 accent-red-500"
               />
-              <span className="font-bold text-slate-700 w-4">{syrupB}</span>
+              <span className="font-bold text-slate-700 dark:text-slate-200 w-4">{syrupB}</span>
             </div>
           </div>
 

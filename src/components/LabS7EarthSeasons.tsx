@@ -49,11 +49,11 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
   const earthScale = 1 + (earthY / orbitRadiusY) * 0.2;
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen overflow-hidden bg-slate-950 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#020617'}}>
       <LabHeader onExit={onExit} variant="dark" title="Unit 12: Earth's Seasons" />
 
       <div className="flex-1 relative flex flex-col items-center p-8">
-        <div className="bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-slate-800 max-w-2xl w-full text-center z-50 mb-12">
+        <div className="backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-2xl w-full text-center mb-12" style={{backgroundColor: 'rgba(15,23,42,0.8)', borderColor: '#1e293b', borderWidth: '1px', borderStyle: 'solid', position: 'sticky', top: '60px', zIndex: 50}}>
           <h2 className="text-2xl font-bold text-blue-400 mb-4">Axial Tilt and Revolution</h2>
           <p className="text-slate-300 mb-6">The Earth's axis is tilted at 23.5 degrees. As it revolves around the Sun, this constant tilt causes the Northern and Southern Hemispheres to receive varying amounts of direct sunlight, creating the seasons.</p>
           
@@ -75,11 +75,11 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
         <div className="relative flex justify-center items-center w-full h-[600px] perspective-1000">
            
            {/* Orbit Path (Ellipse) */}
-           <div className="absolute w-[600px] h-[200px] border border-slate-700/50 rounded-[100%] shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0"></div>
+           <div className="absolute w-[600px] h-[200px] rounded-[100%] shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0" style={{borderColor: 'rgba(51,65,85,0.5)', borderWidth: '1px', borderStyle: 'solid'}}></div>
 
            {/* The Sun */}
            <div className="absolute w-32 h-32 bg-yellow-500 rounded-full shadow-[0_0_100px_#facc15] z-20 flex justify-center items-center">
-             <div className="w-24 h-24 bg-yellow-300 rounded-full blur-[2px]"></div>
+             <div className="w-24 h-24 rounded-full blur-[2px]" style={{backgroundColor: '#fde047'}}></div>
            </div>
 
            {/* The Earth */}
@@ -98,12 +98,12 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
                  {/* Earth Sphere */}
                  <div className="w-10 h-10 bg-blue-500 rounded-full shadow-[inset_-4px_-4px_10px_rgba(0,0,0,0.5)] overflow-hidden relative">
                     {/* Continents (Simplified) */}
-                    <div className="absolute top-1 left-1 w-6 h-4 bg-green-500 rounded-full blur-[1px]"></div>
-                    <div className="absolute bottom-1 right-1 w-4 h-3 bg-green-600 rounded-full blur-[1px]"></div>
+                    <div className="absolute top-1 left-1 w-6 h-4 rounded-full blur-[1px]" style={{backgroundColor: '#22c55e'}}></div>
+                    <div className="absolute bottom-1 right-1 w-4 h-3 rounded-full blur-[1px]" style={{backgroundColor: '#16a34a'}}></div>
                  </div>
 
                  {/* Northern Hemisphere Indicator */}
-                 <div className="absolute -top-8 -left-4 text-xs font-bold text-white bg-slate-900/50 px-1 rounded shadow drop-shadow-md">North</div>
+                 <div className="absolute -top-8 -left-4 text-xs font-bold text-white bg-slate-900 dark:bg-slate-800/50 px-1 rounded shadow drop-shadow-md">North</div>
               </div>
            </div>
 

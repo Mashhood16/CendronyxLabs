@@ -48,12 +48,12 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
   };
 
   const renderBead = (gamete: string) => {
-    let bg = 'bg-slate-300';
+    let bg = 'bg-slate-300 dark:bg-slate-800';
     if (gamete.includes('Y')) bg = 'bg-yellow-400 text-yellow-900';
     if (gamete.includes('y')) bg = 'bg-green-500 text-green-900';
 
     let borderStyle = 'border-solid border-white';
-    if (gamete.includes('r')) borderStyle = 'border-dashed border-slate-600';
+    if (gamete.includes('r')) borderStyle = 'border-dashed border-slate-600 dark:border-slate-500';
 
     return (
       <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-md border-2 ${borderStyle} ${bg} transition-transform`}>
@@ -127,20 +127,20 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Mendelian Genetics" />
 
       <main className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
               <Beaker className="w-6 h-6" />
             </div>
-            <h2 className="text-xl font-bold text-slate-800">Theory & Context</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Theory & Context</h2>
           </div>
 
-          <div className="space-y-4 text-slate-600">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300">
             <p>
               Mendelian genetics explores how traits are passed from parents to offspring. The fundamental laws are demonstrated using statistical probabilities of fertilization.
             </p>
@@ -162,27 +162,27 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Middle Column: Interactive Simulator */}
-        <div className="lg:col-span-1 bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="lg:col-span-1 bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
           <div className="flex items-center justify-between w-full mb-6">
-            <h2 className="text-xl font-bold text-slate-800">Fertilization Simulator</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Fertilization Simulator</h2>
             <button
               onClick={() => {
                 setTrials([]);
                 setSelectedMale(null);
                 setSelectedFemale(null);
               }}
-              className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+              className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded-full transition-colors"
               title="Reset Data"
             >
-              <RotateCcw className="w-5 h-5 text-slate-600" />
+              <RotateCcw className="w-5 h-5 text-slate-600 dark:text-slate-300" />
             </button>
           </div>
 
-          <div className="flex gap-2 bg-slate-100 p-1 rounded-lg mb-8 w-full">
+          <div className="flex gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg mb-8 w-full">
             <button
               onClick={() => handleModeSwitch('monohybrid')}
               className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${
-                crossType === 'monohybrid' ? 'bg-slate-50 shadow text-blue-700' : 'text-slate-600 hover:bg-slate-200'
+                crossType === 'monohybrid' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'
               }`}
             >
               Monohybrid
@@ -190,14 +190,14 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
             <button
               onClick={() => handleModeSwitch('dihybrid')}
               className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${
-                crossType === 'dihybrid' ? 'bg-slate-50 shadow text-purple-700' : 'text-slate-600 hover:bg-slate-200'
+                crossType === 'dihybrid' ? 'bg-slate-50 dark:bg-slate-900 shadow text-purple-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'
               }`}
             >
               Dihybrid
             </button>
           </div>
 
-          <p className="text-sm text-slate-500 mb-6 text-center">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 text-center">
             Click each bowl to randomly draw an allele from the parent's gamete pool, simulating fertilization.
           </p>
 
@@ -211,7 +211,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
                   <div className="w-12 h-12"></div>
                 )}
               </div>
-              <h3 className="font-bold text-slate-700 mb-2">Paternal Gametes</h3>
+              <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Paternal Gametes</h3>
               <button
                 onClick={handleDrawMale}
                 className="w-32 h-32 bg-blue-100 rounded-b-full border-4 border-blue-300 shadow-inner flex flex-wrap items-center justify-center gap-1 p-3 cursor-pointer hover:bg-blue-200 transition-colors relative group"
@@ -241,7 +241,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
                   <div className="w-12 h-12"></div>
                 )}
               </div>
-              <h3 className="font-bold text-slate-700 mb-2">Maternal Gametes</h3>
+              <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Maternal Gametes</h3>
               <button
                 onClick={handleDrawFemale}
                 className="w-32 h-32 bg-pink-100 rounded-b-full border-4 border-pink-300 shadow-inner flex flex-wrap items-center justify-center gap-1 p-3 cursor-pointer hover:bg-pink-200 transition-colors relative group"
@@ -262,7 +262,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
           <div className="mt-12 flex gap-4 w-full">
             <button
               onClick={() => autoDraw(10)}
-              className="flex-1 px-4 py-2 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition-colors"
+              className="flex-1 px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors"
             >
               Auto Draw 10
             </button>
@@ -276,13 +276,13 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
-          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <CheckCircle className="w-6 h-6 text-green-500" /> Analysis & Assessment
           </h2>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <h3 className="font-bold text-slate-700 mb-4">Observation Log ({trials.length} trials)</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4">Observation Log ({trials.length} trials)</h3>
             {crossType === 'monohybrid' ? (
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div className="flex flex-col p-3 bg-yellow-100 rounded border border-yellow-200 text-yellow-900">
@@ -318,7 +318,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
 
           <div className="flex flex-col gap-4 mt-auto">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
                 1. Based on theory, what is the expected phenotypic ratio?
               </label>
               <input
@@ -326,11 +326,11 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
                 placeholder={crossType === 'monohybrid' ? 'e.g. 3:1' : 'e.g. 9:3:3:1'}
                 value={q1}
                 onChange={(e) => setQ1(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-1">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
                 2. Which exact phenotype outcome is fully recessive?
               </label>
               <input
@@ -338,7 +338,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
                 placeholder={crossType === 'monohybrid' ? 'e.g. Green' : 'e.g. Green Wrinkled'}
                 value={q2}
                 onChange={(e) => setQ2(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-blue-500"
               />
             </div>
             <button

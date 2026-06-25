@@ -59,14 +59,14 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
   const [q3Status, setQ3Status] = useState<boolean | null>(null);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} variant="dark" title="Interactive Memory Management" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Theory & Context</h2>
-          <div className="space-y-4 text-slate-700 overflow-y-auto pr-2 flex-1 text-sm">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200 overflow-y-auto pr-2 flex-1 text-sm">
             <p>
               <strong>Data Structures</strong> organize and store data to enable efficient access and modification.
             </p>
@@ -89,16 +89,16 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Visualizer</h2>
           
           <div className="flex gap-2 mb-4">
-            <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 text-slate-600'}`}>Tree</button>
-            <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 text-slate-600'}`}>Stack</button>
-            <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 text-slate-600'}`}>Queue</button>
+            <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>Tree</button>
+            <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>Stack</button>
+            <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>Queue</button>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 rounded-lg border border-slate-200 p-4 relative overflow-hidden">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative overflow-hidden">
             {activeTab === 'Tree' && (
               <div className="w-full flex flex-col items-center">
                 <svg width="100%" height="220" viewBox="0 0 300 200" className="mt-2">
@@ -126,9 +126,9 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                   })}
                 </svg>
                 <div className="flex gap-2 mt-4">
-                  <button onClick={() => animateTraversal(preOrder)} className="px-3 py-1 bg-slate-800 text-white text-xs rounded hover:bg-slate-700 flex items-center gap-1"><Play size={12}/> Pre-Order</button>
-                  <button onClick={() => animateTraversal(inOrder)} className="px-3 py-1 bg-slate-800 text-white text-xs rounded hover:bg-slate-700 flex items-center gap-1"><Play size={12}/> In-Order</button>
-                  <button onClick={() => animateTraversal(postOrder)} className="px-3 py-1 bg-slate-800 text-white text-xs rounded hover:bg-slate-700 flex items-center gap-1"><Play size={12}/> Post-Order</button>
+                  <button onClick={() => animateTraversal(preOrder)} className="px-3 py-1 bg-slate-800 dark:bg-slate-800 text-white text-xs rounded hover:bg-slate-700 dark:bg-slate-800 flex items-center gap-1"><Play size={12}/> Pre-Order</button>
+                  <button onClick={() => animateTraversal(inOrder)} className="px-3 py-1 bg-slate-800 dark:bg-slate-800 text-white text-xs rounded hover:bg-slate-700 dark:bg-slate-800 flex items-center gap-1"><Play size={12}/> In-Order</button>
+                  <button onClick={() => animateTraversal(postOrder)} className="px-3 py-1 bg-slate-800 dark:bg-slate-800 text-white text-xs rounded hover:bg-slate-700 dark:bg-slate-800 flex items-center gap-1"><Play size={12}/> Post-Order</button>
                 </div>
               </div>
             )}
@@ -139,7 +139,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                   <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700">Push</button>
                   <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50">Pop</button>
                 </div>
-                <div className="w-32 border-x-4 border-b-4 border-slate-700 min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50">
+                <div className="w-32 border-x-4 border-b-4 border-slate-700 dark:border-slate-500 min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50 dark:bg-slate-900">
                   {stack.map((val, idx) => (
                     <div key={idx} className="w-full bg-teal-500 text-white text-center font-bold py-2 mb-1 rounded border border-teal-700 animate-fade-in">
                       {val}
@@ -156,7 +156,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                   <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700">Enqueue</button>
                   <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50">Dequeue</button>
                 </div>
-                <div className="w-full max-w-sm h-20 border-y-4 border-slate-700 flex items-center p-1 bg-slate-50 overflow-x-auto gap-1">
+                <div className="w-full max-w-sm h-20 border-y-4 border-slate-700 dark:border-slate-500 flex items-center p-1 bg-slate-50 dark:bg-slate-900 overflow-x-auto gap-1">
                   {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">Empty Queue</span>}
                   {queue.map((val, idx) => (
                     <div key={idx} className="min-w-[3rem] h-full bg-teal-500 text-white flex items-center justify-center font-bold rounded border border-teal-700">
@@ -164,7 +164,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                     </div>
                   ))}
                 </div>
-                <div className="w-full max-w-sm flex justify-between mt-2 text-xs font-bold text-slate-500">
+                <div className="w-full max-w-sm flex justify-between mt-2 text-xs font-bold text-slate-500 dark:text-slate-400">
                   <span>← Front (Dequeue)</span>
                   <span>Back (Enqueue) ←</span>
                 </div>
@@ -174,12 +174,12 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Analysis & Assessment</h2>
           
           <div className="space-y-4 overflow-y-auto pr-2">
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <label className="block text-sm font-bold text-slate-800 mb-2">Q1: If an empty Stack performs Push(5), Push(10), Pop(), Push(3), what is the top element?</label>
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Q1: If an empty Stack performs Push(5), Push(10), Pop(), Push(3), what is the top element?</label>
               <div className="flex gap-2">
                 <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="Enter number..." />
                 <button onClick={() => setQ1Status(q1.trim() === '3')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm">Check</button>
@@ -188,8 +188,8 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
               {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
             </div>
 
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <label className="block text-sm font-bold text-slate-800 mb-2">Q2: Based on the visualizer Tree, what is the exact Pre-Order traversal sequence? (e.g. A,B,C...)</label>
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Q2: Based on the visualizer Tree, what is the exact Pre-Order traversal sequence? (e.g. A,B,C...)</label>
               <div className="flex gap-2">
                 <input type="text" value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="A,B,D,E,C,F,G" />
                 <button onClick={() => setQ2Status(q2.replace(/\s/g, '').toUpperCase() === 'A,B,D,E,C,F,G')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm">Check</button>
@@ -198,8 +198,8 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
               {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
             </div>
 
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <label className="block text-sm font-bold text-slate-800 mb-2">Q3: Which data structure operates on a FIFO (First-In-First-Out) principle?</label>
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Q3: Which data structure operates on a FIFO (First-In-First-Out) principle?</label>
               <div className="flex gap-2">
                 <input type="text" value={q3} onChange={e => setQ3(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="e.g. Stack or Queue" />
                 <button onClick={() => setQ3Status(q3.trim().toLowerCase() === 'queue')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm">Check</button>
@@ -208,7 +208,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
               {q3Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
             </div>
 
-            <div className="pt-4 border-t border-slate-200 mt-6">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
               <button 
                 onClick={() => {
                   let score = 0;

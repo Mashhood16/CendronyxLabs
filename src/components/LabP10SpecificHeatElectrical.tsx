@@ -137,34 +137,34 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
   }, [recordedData]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Specific Heat Capacity" subtitle="Determine specific heat using the electrical method" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-5 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
-            <p className="text-sm text-slate-600 mb-3">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
               Specific heat capacity ($c$) is the amount of energy required to raise the temperature of 1 kg of a substance by 1°C.
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg text-sm text-center font-mono text-slate-800 font-bold mb-3 border border-slate-200">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-sm text-center font-mono text-slate-800 dark:text-slate-100 font-bold mb-3 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               c = ΔE / (m × ΔT)
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               In this experiment, electrical energy supplied is $E = V \times I \times t$. By recording Temperature and Energy, you can calculate the specific heat of the block.
             </p>
           </div>
 
           <div className="border-t pt-4">
-            <h2 className="text-lg font-bold text-slate-800 mb-4">Setup Parameters</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Setup Parameters</h2>
             
             <div className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Block Material</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Block Material</label>
                 <select 
-                  className="w-full p-2 border rounded-md bg-slate-50 disabled:opacity-50 outline-none focus:border-blue-500"
+                  className="w-full p-2 border rounded-md bg-slate-50 dark:bg-slate-900 disabled:opacity-50 outline-none focus:border-blue-500"
                   value={material}
                   onChange={(e) => setMaterial(e.target.value)}
                   disabled={time > 0}
@@ -178,7 +178,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between mb-1">
-                  <label className="text-sm font-medium text-slate-700">Block Mass</label>
+                  <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Block Mass</label>
                   <span className="text-sm text-blue-600 font-bold">{mass.toFixed(2)} kg</span>
                 </div>
                 <input 
@@ -191,7 +191,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between mb-1">
-                  <label className="text-sm font-medium text-slate-700">Power Supply Voltage</label>
+                  <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Power Supply Voltage</label>
                   <span className="text-sm text-blue-600 font-bold">{voltage.toFixed(1)} V</span>
                 </div>
                 <input 
@@ -203,9 +203,9 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Insulation Level</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Insulation Level</label>
                 <select 
-                  className="w-full p-2 border rounded-md bg-slate-50 disabled:opacity-50 outline-none focus:border-blue-500"
+                  className="w-full p-2 border rounded-md bg-slate-50 dark:bg-slate-900 disabled:opacity-50 outline-none focus:border-blue-500"
                   value={insulation}
                   onChange={(e) => setInsulation(e.target.value)}
                   disabled={time > 0}
@@ -230,7 +230,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
         </div>
 
         {/* Center Column: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-5 flex flex-col relative overflow-hidden min-h-[400px]">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-5 flex flex-col relative overflow-hidden min-h-[400px]">
           <h2 className="text-lg font-bold text-white mb-2 z-10">Live Simulation</h2>
           <p className="text-slate-400 text-xs mb-4 z-10">Watch the thermometer and instruments as the block heats up.</p>
           
@@ -325,11 +325,11 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Data Logging & Analysis */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border flex flex-col overflow-hidden h-[calc(100vh-8rem)] min-h-[500px]">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border flex flex-col overflow-hidden h-[calc(100vh-8rem)] min-h-[500px]">
           
           {/* Data Table Section */}
-          <div className="p-4 border-b bg-slate-50 flex justify-between items-center shrink-0">
-            <h2 className="text-lg font-bold text-slate-800">Data Logging</h2>
+          <div className="p-4 border-b bg-slate-50 dark:bg-slate-900 flex justify-between items-center shrink-0">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logging</h2>
             <button 
               onClick={recordPoint}
               disabled={time === 0 && recordedData.length === 0}
@@ -339,9 +339,9 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
             </button>
           </div>
           
-          <div className="flex-1 overflow-y-auto p-0 bg-slate-50">
+          <div className="flex-1 overflow-y-auto p-0 bg-slate-50 dark:bg-slate-900">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-500 uppercase bg-slate-100 sticky top-0">
+              <thead className="text-xs text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-800 sticky top-0">
                 <tr>
                   <th className="px-4 py-2">Time (s)</th>
                   <th className="px-4 py-2">Energy (J)</th>
@@ -350,7 +350,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
               </thead>
               <tbody>
                 {[...recordedData].reverse().map((d, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-4 py-2 font-mono">{d.time}</td>
                     <td className="px-4 py-2 font-mono">{Math.round(d.energy)}</td>
                     <td className="px-4 py-2 font-mono">{d.temp.toFixed(1)}</td>
@@ -358,7 +358,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
                 ))}
                 {recordedData.length === 0 && (
                   <tr>
-                    <td colSpan={3} className="px-4 py-8 text-center text-slate-500 italic">No data recorded. Start heating and click "Record Point".</td>
+                    <td colSpan={3} className="px-4 py-8 text-center text-slate-500 dark:text-slate-400 italic">No data recorded. Start heating and click "Record Point".</td>
                   </tr>
                 )}
               </tbody>
@@ -366,7 +366,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
           </div>
 
           {/* Graph Section */}
-          <div className="h-48 border-t border-b bg-slate-50 relative p-4 shrink-0">
+          <div className="h-48 border-t border-b bg-slate-50 dark:bg-slate-900 relative p-4 shrink-0">
             {recordedData.length > 0 ? (
               <svg width="100%" height="100%" viewBox="0 0 300 150">
                 <line x1="30" y1="130" x2="290" y2="130" stroke="#94a3b8" strokeWidth="2" />
@@ -398,9 +398,9 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
           </div>
 
           {/* Assessment Section */}
-          <div className="p-4 bg-slate-100 shrink-0">
-            <h3 className="text-sm font-bold text-slate-800 mb-1">Analysis</h3>
-            <p className="text-xs text-slate-600 mb-3">Hint: Pick two data points to find ΔE and ΔT. Then use $c = \Delta E / (m \times \Delta T)$.</p>
+          <div className="p-4 bg-slate-100 dark:bg-slate-800 shrink-0">
+            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-1">Analysis</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">Hint: Pick two data points to find ΔE and ΔT. Then use $c = \Delta E / (m \times \Delta T)$.</p>
             <div className="flex gap-2 mb-2">
               <input 
                 type="number" 
@@ -409,7 +409,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
                 placeholder="Specific Heat (c)"
                 className="flex-1 px-3 py-2 text-sm border rounded-md outline-none focus:border-blue-500"
               />
-              <span className="self-center text-xs text-slate-500 font-medium w-12">J/kg°C</span>
+              <span className="self-center text-xs text-slate-500 dark:text-slate-400 font-medium w-12">J/kg°C</span>
               <button 
                 onClick={checkAnswer}
                 className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-md transition-colors"

@@ -79,7 +79,7 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
       }
       
       return (
-        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 rounded-lg">
+        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg">
           {circles}
           <rect x={50 + vSourcePx * tCycle - 10} y={115} width={20} height={20} fill="#ef4444" rx={4} />
           <circle cx={350} cy={125} r={8} fill="#10b981" />
@@ -94,7 +94,7 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
       const intensity = Math.cos(2 * (L1 - L2)) ** 2; 
 
       return (
-        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 rounded-lg">
+        <svg viewBox="0 0 400 250" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg">
           {/* Laser source */}
           <rect x={20} y={115} width={30} height={20} fill="#f59e0b" />
           {/* Beams */}
@@ -115,25 +115,25 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Grade 11 Physics: Wave Phenomena" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* Theory & Controls */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Radio className="text-blue-500" /> Theory & Setup
           </h2>
           
-          <div className="flex gap-2 p-1 bg-slate-100 rounded-lg">
+          <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'doppler' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'doppler' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => { setMode('doppler'); setIsPlaying(false); }}
             >
               Doppler Effect
             </button>
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'ligo' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'ligo' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => { setMode('ligo'); setIsPlaying(false); }}
             >
               LIGO Interferometer
@@ -143,30 +143,30 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
           <div className="flex-grow space-y-4">
             {mode === 'doppler' ? (
               <>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   The Doppler effect is the change in frequency of a wave in relation to an observer who is moving relative to the wave source. 
                   {"$$f' = f \\left(\\frac{v}{v - v_s}\\right)$$"}
                 </p>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Source Velocity: {sourceVelocity} m/s</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Source Velocity: {sourceVelocity} m/s</label>
                   <input type="range" min="0" max="100" value={sourceVelocity} onChange={(e) => setSourceVelocity(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">Source Frequency: {sourceFrequency} Hz</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Source Frequency: {sourceFrequency} Hz</label>
                   <input type="range" min="300" max="800" step="50" value={sourceFrequency} onChange={(e) => setSourceFrequency(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </>
             ) : (
               <>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   LIGO uses a Michelson interferometer to detect gravitational waves. As a wave passes, space itself stretches and compresses, changing the relative lengths of the 4km arms and shifting the interference pattern.
                 </p>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">GW Strain ($h$): {strain} {"$\\times 10^{-21}$"}</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">GW Strain ($h$): {strain} {"$\\times 10^{-21}$"}</label>
                   <input type="range" min="1" max="20" value={strain} onChange={(e) => setStrain(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-slate-700">GW Frequency: {gwFreq} Hz</label>
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">GW Frequency: {gwFreq} Hz</label>
                   <input type="range" min="10" max="200" step="10" value={gwFreq} onChange={(e) => setGwFreq(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </>
@@ -175,9 +175,9 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 lg:col-span-1">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
               <Waves className="text-blue-500" /> Interactive Simulator
             </h2>
             <button 
@@ -193,22 +193,22 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment & Data */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <Activity className="text-blue-500" /> Analysis & Assessment
           </h2>
           
           <div className="space-y-4">
             <button 
               onClick={mode === 'doppler' ? logDoppler : logLigo}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-lg font-medium transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 dark:bg-slate-800 hover:bg-slate-900 dark:bg-slate-800 text-white rounded-lg font-medium transition-colors"
             >
               <Save size={18} /> Record Data Point
             </button>
             
-            <div className="max-h-40 overflow-y-auto border border-slate-200 rounded-lg">
-              <table className="w-full text-sm text-left text-slate-600">
-                <thead className="bg-slate-50 text-slate-700 sticky top-0">
+            <div className="max-h-40 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+              <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 sticky top-0">
                   {mode === 'doppler' ? (
                     <tr><th className="p-2">v_s (m/s)</th><th className="p-2">f_s (Hz)</th><th className="p-2">f_obs (Hz)</th></tr>
                   ) : (
@@ -226,13 +226,13 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
             </div>
           </div>
 
-          <div className="mt-auto pt-4 border-t border-slate-200">
-            <h3 className="font-semibold text-slate-800 mb-2">Knowledge Check</h3>
+          <div className="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Knowledge Check</h3>
             {mode === 'doppler' ? (
               <div className="space-y-3">
-                <p className="text-sm text-slate-600">A police car moves towards you at 50 m/s emitting a 500 Hz siren. Speed of sound is 343 m/s. What is the observed frequency? (Hz)</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">A police car moves towards you at 50 m/s emitting a 500 Hz siren. Speed of sound is 343 m/s. What is the observed frequency? (Hz)</p>
                 <div className="flex gap-2">
-                  <input type="number" value={dopplerAns} onChange={e => {setDopplerAns(e.target.value); setDopplerStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 585" />
+                  <input type="number" value={dopplerAns} onChange={e => {setDopplerAns(e.target.value); setDopplerStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 585" />
                   <button onClick={checkDoppler} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
                 </div>
                 {dopplerStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}
@@ -240,9 +240,9 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
               </div>
             ) : (
               <div className="space-y-3">
-                <p className="text-sm text-slate-600">A gravitational wave causes a strain of {"$h = 4 \\times 10^{-21}$"}. If the LIGO arms are $L = 4000$ m, what is the change in arm length {"$\\Delta L$"} in meters? (Format: X.X, answer will be in {"$\\times 10^{-17}$"})</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">A gravitational wave causes a strain of {"$h = 4 \\times 10^{-21}$"}. If the LIGO arms are $L = 4000$ m, what is the change in arm length {"$\\Delta L$"} in meters? (Format: X.X, answer will be in {"$\\times 10^{-17}$"})</p>
                 <div className="flex gap-2">
-                  <input type="number" value={ligoAns} onChange={e => {setLigoAns(e.target.value); setLigoStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 1.6" />
+                  <input type="number" value={ligoAns} onChange={e => {setLigoAns(e.target.value); setLigoStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 1.6" />
                   <span className="self-center font-mono text-sm">e-17</span>
                   <button onClick={checkLigo} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
                 </div>

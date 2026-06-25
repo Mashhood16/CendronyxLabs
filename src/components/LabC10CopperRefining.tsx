@@ -87,34 +87,34 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
   const cathodeWidth = 10 + 30 * ((massCathode - initialCathode) / 100);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Electrolytic Refining of Copper" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-orange-600" />
               Theory
             </h2>
-            <p className="text-sm text-slate-600 mb-2">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
               Impure copper from smelting is purified via electrolysis using a CuSO₄ electrolyte.
             </p>
-            <div className="bg-slate-100 p-4 rounded-lg font-mono text-sm mb-2 text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-slate-200">
               <div><strong>Anode (+):</strong> Cu(s) → Cu²⁺(aq) + 2e⁻</div>
               <div><strong>Cathode (-):</strong> Cu²⁺(aq) + 2e⁻ → Cu(s)</div>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               The impure anode dissolves, while pure copper plates onto the cathode. Impurities (like Ag, Au) fall to the bottom as <strong>anode slime</strong>.
             </p>
           </div>
 
           <div className="flex-1">
-            <h2 className="text-lg font-semibold text-slate-800 mb-4">Experiment Setup</h2>
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Experiment Setup</h2>
             <div className="space-y-6">
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-2">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   <span>Operating Voltage</span>
                   <span>{voltage.toFixed(1)} V</span>
                 </label>
@@ -141,7 +141,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
                 </button>
                 <button
                   onClick={reset}
-                  className="p-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"
+                  className="p-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg transition-colors"
                 >
                   <RefreshCw className="w-5 h-5" />
                 </button>
@@ -150,12 +150,12 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
           </div>
         </div>
 
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
-          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800">Cell View</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center relative">
+          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-slate-100">Cell View</h2>
           
           <div className="absolute top-6 right-6 text-right">
             <div className="text-2xl font-mono font-bold text-orange-600">{(time / 3600).toFixed(1)} hr</div>
-            <div className="text-sm text-slate-500">Elapsed Time</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">Elapsed Time</div>
           </div>
 
           <svg width={svgW} height={svgH} className="mt-8" viewBox="0 0 400 500">
@@ -206,19 +206,19 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
           </svg>
           
           <div className="absolute bottom-6 left-6 right-6 flex justify-between px-4">
-            <div className="bg-slate-100 px-3 py-1 rounded text-sm font-semibold text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-slate-200">
               Anode: {massAnode.toFixed(1)} g
             </div>
-            <div className="bg-slate-100 px-3 py-1 rounded text-sm font-semibold text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-slate-200">
               Cathode: {massCathode.toFixed(1)} g
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6 overflow-y-auto">
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-slate-800">Mass Log</h2>
+              <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Mass Log</h2>
               <button
                 onClick={recordData}
                 disabled={!isRunning}
@@ -229,9 +229,9 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
               </button>
             </div>
             
-            <div className="overflow-x-auto border border-slate-200 rounded-lg">
+            <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <tr>
                     <th className="px-4 py-2">Time (hr)</th>
                     <th className="px-4 py-2">Anode (g)</th>

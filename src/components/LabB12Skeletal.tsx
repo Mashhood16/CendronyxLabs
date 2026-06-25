@@ -27,24 +27,18 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <LabHeader onExit={onExit} title="Interactive Orthopedics" />
-        <div>
-          <h1 className="text-2xl font-bold">Interactive Orthopedics</h1>
-          <p className="text-slate-300 text-sm">Arthroplasty & Bone Fracture Repair</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Interactive Orthopedics" subtitle="Arthroplasty & Bone Fracture Repair" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <Bone className="mr-2 text-blue-500" /> Theory & Context
           </h2>
-          <div className="space-y-4 text-slate-600 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
             <div className="p-4 bg-orange-50 rounded-lg border border-orange-100">
               <h3 className="font-semibold text-orange-800 mb-2">The 4 Steps of Fracture Repair</h3>
               <ol className="list-decimal pl-5 space-y-2">
@@ -66,28 +60,28 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col relative overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col relative overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex">
             <Activity className="mr-2 text-indigo-500" /> Clinical Simulators
           </h2>
           
           {/* Fracture Timeline */}
           <div className="mb-8">
-            <h3 className="font-semibold text-slate-700 mb-3 text-center">Fracture Repair Timeline</h3>
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-3 text-center">Fracture Repair Timeline</h3>
             <div className="flex justify-between items-center mb-4">
               {stages.map((st) => (
                 <button
                   key={st.id}
                   onClick={() => setFractureStage(st.id)}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${fractureStage === st.id ? 'bg-orange-500 text-white shadow-md' : 'bg-slate-200 text-slate-500 hover:bg-slate-300'}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${fractureStage === st.id ? 'bg-orange-500 text-white shadow-md' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-300 dark:bg-slate-800'}`}
                 >
                   {st.id}
                 </button>
               ))}
             </div>
-            <div className="p-4 bg-slate-50 border rounded-lg h-32">
+            <div className="p-4 bg-slate-50 dark:bg-slate-900 border rounded-lg h-32">
               <h4 className="font-bold text-orange-700">{stages[fractureStage - 1].name}</h4>
-              <p className="text-sm text-slate-600 mt-2">{stages[fractureStage - 1].desc}</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">{stages[fractureStage - 1].desc}</p>
             </div>
             {/* SVG Illustration of bone */}
             <div className="mt-4 flex justify-center">
@@ -116,24 +110,24 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
             </div>
           </div>
 
-          <hr className="my-4 border-slate-200" />
+          <hr className="my-4 border-slate-200 dark:border-slate-700 dark:border-slate-500" />
 
           {/* Arthroplasty */}
           <div>
-            <h3 className="font-semibold text-slate-700 mb-3 text-center">Hip Arthroplasty (Joint Replacement)</h3>
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-3 text-center">Hip Arthroplasty (Joint Replacement)</h3>
             <div className="flex justify-center space-x-2 mb-4">
                {['healthy', 'damaged', 'prosthetic'].map(state => (
                  <button
                    key={state}
                    onClick={() => setJointState(state as any)}
-                   className={`px-3 py-1 rounded-full text-xs font-bold capitalize transition-colors ${jointState === state ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600 hover:bg-slate-300'}`}
+                   className={`px-3 py-1 rounded-full text-xs font-bold capitalize transition-colors ${jointState === state ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:bg-slate-800'}`}
                  >
                    {state}
                  </button>
                ))}
             </div>
             
-            <div className="flex justify-center items-center p-4 bg-slate-100 rounded-lg relative h-40">
+            <div className="flex justify-center items-center p-4 bg-slate-100 dark:bg-slate-800 rounded-lg relative h-40">
               <svg width="100" height="120" viewBox="0 0 100 120">
                 {/* Pelvis Acetabulum */}
                 <path d="M 20 20 C 50 10, 70 30, 80 50 C 70 70, 50 90, 20 80 C 40 60, 40 40, 20 20 Z" fill="#FDE68A" stroke="#92400E" strokeWidth="2" />
@@ -172,14 +166,14 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <PenTool className="mr-2 text-green-500" /> Computing Task
           </h2>
           
           <div className="flex-grow space-y-6">
-            <div className="p-4 bg-slate-100 rounded-lg text-sm text-slate-700">
-              <h3 className="font-semibold text-slate-800 mb-2">Biomechanical Stress on Prosthetic</h3>
+            <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm text-slate-700 dark:text-slate-200">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Biomechanical Stress on Prosthetic</h3>
               <p className="mb-2">
                 A patient weighing <strong>100 kg</strong> receives a titanium hip implant. When walking, the force on the hip joint can peak at roughly <strong>3 times body weight</strong>.
               </p>
@@ -189,19 +183,19 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
                 <li>Cross-sectional area of prosthetic stem: <strong>0.0049 m²</strong></li>
               </ul>
               <p>Calculate the compressive stress applied to the prosthetic stem in Megapascals (MPa). <em>(Stress = Force / Area)</em></p>
-              <p className="text-xs text-slate-500 mt-2">Note: 1 MPa = 1,000,000 Pa = 1,000,000 N/m².</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Note: 1 MPa = 1,000,000 Pa = 1,000,000 N/m².</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">
                   Compressive Stress (MPa)
                 </label>
                 <div className="flex space-x-2">
                   <input 
                     type="number"
                     step="0.01"
-                    className="flex-grow p-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="flex-grow p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="e.g. 1.5"
                     value={assessmentStress}
                     onChange={(e) => setAssessmentStress(e.target.value)}

@@ -40,17 +40,17 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 7: Exothermic & Endothermic Solutions" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
+        <div className="w-full max-w-5xl bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex gap-8">
           
           {/* Controls */}
           <div className="w-1/2 flex flex-col justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800 mb-4">Temperature Changes during Dissolution</h2>
-              <p className="text-slate-600 mb-8 leading-relaxed">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">Temperature Changes during Dissolution</h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
                 Some substances release heat when they dissolve in water (Exothermic), while others absorb heat, making the solution colder (Endothermic).
               </p>
 
@@ -58,48 +58,48 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
                 <button 
                   onClick={() => runExperiment('NaOH')}
                   disabled={running}
-                  className="w-full p-4 border-2 border-red-200 bg-red-50 hover:bg-red-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50"
+                  className="w-full p-4 border-2 border-red-200 bg-red-50 hover:bg-red-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-red-800 dark:bg-red-950 dark:hover:bg-red-900"
                 >
                   <div className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center shrink-0"><Flame className="w-6 h-6" /></div>
                   <div>
-                    <h3 className="font-bold text-red-900">Dissolve Sodium Hydroxide (NaOH)</h3>
-                    <p className="text-xs text-red-700">Observe what happens to the temperature.</p>
+                    <h3 className="font-bold text-red-900 dark:text-red-200">Dissolve Sodium Hydroxide (NaOH)</h3>
+                    <p className="text-xs text-red-700 dark:text-red-300">Observe what happens to the temperature.</p>
                   </div>
                 </button>
 
                 <button 
                   onClick={() => runExperiment('NH4NO3')}
                   disabled={running}
-                  className="w-full p-4 border-2 border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50"
+                  className="w-full p-4 border-2 border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950 dark:hover:bg-blue-900"
                 >
                   <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shrink-0"><Snowflake className="w-6 h-6" /></div>
                   <div>
-                    <h3 className="font-bold text-blue-900">Dissolve Ammonium Nitrate (NH₄NO₃)</h3>
-                    <p className="text-xs text-blue-700">Observe what happens to the temperature.</p>
+                    <h3 className="font-bold text-blue-900 dark:text-blue-200">Dissolve Ammonium Nitrate (NH₄NO₃)</h3>
+                    <p className="text-xs text-blue-700 dark:text-blue-300">Observe what happens to the temperature.</p>
                   </div>
                 </button>
               </div>
             </div>
 
             {progress === 100 && (
-              <div className="mt-8 p-6 bg-slate-100 border border-slate-200 rounded-xl">
-                 <h3 className="font-bold text-slate-800 mb-2">Conclusion</h3>
+              <div className="mt-8 p-6 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl">
+                 <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Conclusion</h3>
                  {substance === 'NaOH' ? (
-                   <p className="text-sm text-slate-700">The temperature increased. This is an <strong>Exothermic</strong> process because heat energy was released into the solution.</p>
+                   <p className="text-sm text-slate-700 dark:text-slate-200">The temperature increased. This is an <strong>Exothermic</strong> process because heat energy was released into the solution.</p>
                  ) : (
-                   <p className="text-sm text-slate-700">The temperature decreased. This is an <strong>Endothermic</strong> process because heat energy was absorbed from the solution.</p>
+                   <p className="text-sm text-slate-700 dark:text-slate-200">The temperature decreased. This is an <strong>Endothermic</strong> process because heat energy was absorbed from the solution.</p>
                  )}
               </div>
             )}
           </div>
 
           {/* Apparatus */}
-          <div className="w-1/2 bg-slate-100 rounded-xl border border-slate-200 p-8 flex items-center justify-center relative">
+          <div className="w-1/2 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex items-center justify-center relative">
              
              {/* Thermometer */}
-             <div className="absolute right-12 top-12 h-64 w-12 bg-slate-50 border border-slate-300 rounded-full flex flex-col items-center py-2 shadow-sm z-20">
-               <span className="text-xs font-bold text-slate-500 mb-2">°C</span>
-               <div className="flex-1 w-2 bg-slate-200 rounded-full relative flex flex-col-reverse justify-start">
+             <div className="absolute right-12 top-12 h-64 w-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full flex flex-col items-center py-2 shadow-sm z-20">
+               <span className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">°C</span>
+               <div className="flex-1 w-2 bg-slate-200 dark:bg-slate-800 rounded-full relative flex flex-col-reverse justify-start">
                  {/* Thermometer Liquid */}
                  <div 
                    className="w-full rounded-full transition-all duration-300 bg-red-500" 
@@ -110,7 +110,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
              </div>
              
              {/* Temperature Display */}
-             <div className="absolute right-12 bottom-12 bg-slate-50 px-4 py-2 rounded-lg font-black text-2xl text-slate-800 shadow border border-slate-200 min-w-[80px] text-center">
+             <div className="absolute right-12 bottom-12 bg-slate-50 dark:bg-slate-900 px-4 py-2 rounded-lg font-black text-2xl text-slate-800 dark:text-slate-100 shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 min-w-[80px] text-center">
                {temperature.toFixed(1)}°
              </div>
 
@@ -118,10 +118,10 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
              <div className="relative mt-24">
                {/* Pouring animation */}
                {running && progress < 50 && (
-                 <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-4 bg-slate-300/80 animate-pulse" style={{ height: '96px' }}></div>
+                 <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-4 bg-slate-300 dark:bg-slate-800/80 animate-pulse" style={{ height: '96px' }}></div>
                )}
 
-               <div className="w-48 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-3xl relative flex items-end justify-center bg-slate-50 shadow-sm overflow-hidden z-10">
+               <div className="w-48 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-3xl relative flex items-end justify-center bg-slate-50 dark:bg-slate-900 shadow-sm overflow-hidden z-10">
                  {/* Water */}
                  <div className={`w-full absolute bottom-0 transition-all duration-300 ${substance === 'NaOH' && progress > 0 ? 'bg-red-500/20' : substance === 'NH4NO3' && progress > 0 ? 'bg-blue-500/20' : 'bg-blue-300/30'}`} style={{ height: '70%' }}>
                    

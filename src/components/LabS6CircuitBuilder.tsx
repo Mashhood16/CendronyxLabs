@@ -28,26 +28,26 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
   const brightness = getBrightness();
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-900 font-sans text-white">
+    <div className="overflow-y-auto flex flex-col h-screen font-sans text-white" style={{ backgroundColor: '#0f172a' }}>
       <LabHeader onExit={onExit} variant="dark" title="Unit 9: Electricity - Circuit Builder" />
 
       <div className="flex-1 flex p-6 gap-6">
         
         {/* Controls */}
-        <div className="w-80 bg-slate-800 rounded-2xl border border-slate-700 p-6 flex flex-col">
+        <div className="w-80 bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-700 dark:border-slate-500 p-6 flex flex-col">
           <h2 className="text-lg font-bold mb-6 text-yellow-400 flex items-center gap-2"><Zap /> Circuit Properties</h2>
           
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-slate-400 mb-2">Circuit Type</label>
-              <div className="flex bg-slate-900 rounded-lg p-1 border border-slate-700">
+              <div className="flex bg-slate-900 dark:bg-slate-800 rounded-lg p-1 border border-slate-700 dark:border-slate-500">
                 <button 
                   onClick={() => { setCircuitType('series'); setSwitchClosed(false); }}
-                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? 'bg-slate-700 text-white shadow' : 'text-slate-500 hover:text-slate-300'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? 'bg-slate-700 dark:bg-slate-800 text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-300'}`}
                 >Series</button>
                 <button 
                   onClick={() => { setCircuitType('parallel'); setSwitchClosed(false); }}
-                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? 'bg-slate-700 text-white shadow' : 'text-slate-500 hover:text-slate-300'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? 'bg-slate-700 dark:bg-slate-800 text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-300'}`}
                 >Parallel</button>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
               <div className="text-right text-yellow-500 font-bold">{bulbs} Bulbs</div>
             </div>
 
-            <div className="pt-6 border-t border-slate-700">
+            <div className="pt-6 border-t border-slate-700 dark:border-slate-500">
               <button 
                 onClick={() => setSwitchClosed(!switchClosed)}
                 className={`w-full py-4 rounded-xl font-bold text-lg transition-colors ${switchClosed ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-emerald-500 hover:bg-emerald-600 text-white'}`}
@@ -82,7 +82,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="mt-auto p-4 bg-slate-900 rounded-xl border border-slate-700 text-sm text-slate-400">
+          <div className="mt-auto p-4 rounded-xl border border-slate-700 dark:border-slate-500 text-sm text-slate-400" style={{ backgroundColor: '#0f172a' }}>
             <strong>Observations:</strong>
             <ul className="list-disc pl-4 mt-2 space-y-1">
               {circuitType === 'series' ? (
@@ -96,7 +96,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
         </div>
 
         {/* Interactive Canvas */}
-        <div className="flex-1 bg-slate-950 rounded-2xl border border-slate-800 p-8 flex items-center justify-center relative overflow-hidden">
+        <div className="flex-1 rounded-2xl border border-slate-800 dark:border-slate-500 p-8 flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: '#020617' }}>
           
           <div className="relative w-full max-w-2xl h-96 flex flex-col items-center justify-between p-12">
             
@@ -130,7 +130,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
                       ></div>
                     )}
                   </div>
-                  <div className="w-6 h-4 bg-slate-600 mt-1 rounded"></div>
+                  <div className="w-6 h-4 bg-slate-600 dark:bg-slate-800 mt-1 rounded"></div>
                 </div>
               ))}
             </div>
@@ -145,9 +145,9 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
 
                {/* Switch */}
                <div className="bg-slate-950 px-2 flex items-center justify-center w-24">
-                 <div className="w-4 h-4 rounded-full bg-slate-600"></div>
-                 <div className={`w-16 h-2 bg-slate-400 origin-left transition-transform duration-300 ${switchClosed ? 'rotate-0' : '-rotate-30'}`}></div>
-                 <div className="w-4 h-4 rounded-full bg-slate-600"></div>
+                 <div className="w-4 h-4 rounded-full bg-slate-600 dark:bg-slate-800"></div>
+                 <div className={`w-16 h-2 bg-slate-400 dark:bg-slate-800 origin-left transition-transform duration-300 ${switchClosed ? 'rotate-0' : '-rotate-30'}`}></div>
+                 <div className="w-4 h-4 rounded-full bg-slate-600 dark:bg-slate-800"></div>
                </div>
             </div>
 

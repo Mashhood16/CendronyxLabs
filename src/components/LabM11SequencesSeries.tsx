@@ -76,12 +76,12 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Sequences & Series: Geometric Decay" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">
             <p>
@@ -90,13 +90,13 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
             <p>
               In our pendulum example, due to air resistance and friction, each successive swing is a fraction of the previous swing's amplitude. If the first swing has an angle of {"$$a$$"} and the decay ratio is {"$$r$$"}, the sequence of swing amplitudes is:
             </p>
-            <p className="text-center font-mono bg-slate-100 p-2 rounded">
+            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded">
               a, a·r, a·r², a·r³, ...
             </p>
             <p>
               The <strong>Sum of an Infinite Geometric Series</strong> (when |r| &lt; 1) tells us the total distance the pendulum will travel before coming to a complete stop:
             </p>
-            <p className="text-center font-mono bg-slate-100 p-2 rounded">
+            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded">
               {"$$S_{\\infty} = \\frac{a}{1 - r}$$"}
             </p>
             <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
@@ -111,10 +111,10 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Visualizer */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Interactive Pendulum</h2>
           
-          <div className="w-full flex justify-center items-center bg-slate-100 rounded-lg p-4 mb-6 relative h-64 overflow-hidden">
+          <div className="w-full flex justify-center items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-4 mb-6 relative h-64 overflow-hidden">
             <svg width="200" height="200" viewBox="-100 -20 200 220" className="overflow-visible">
               <circle cx="0" cy="0" r="4" fill="#334155" />
               <line x1="0" y1="0" x2="0" y2="180" stroke="#cbd5e1" strokeDasharray="4 4" />
@@ -132,17 +132,17 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
                 strokeDasharray="2 2"
               />
             </svg>
-            <div className="absolute top-2 right-2 bg-slate-50/80 px-3 py-1 rounded shadow text-sm font-mono">
+            <div className="absolute top-2 right-2 bg-slate-50 dark:bg-slate-900/80 px-3 py-1 rounded shadow text-sm font-mono">
               Angle: {Math.abs(currentAngle).toFixed(1)}°
             </div>
-            <div className="absolute top-10 right-2 bg-slate-50/80 px-3 py-1 rounded shadow text-sm font-mono">
+            <div className="absolute top-10 right-2 bg-slate-50 dark:bg-slate-900/80 px-3 py-1 rounded shadow text-sm font-mono">
               Swing: {swingCount}
             </div>
           </div>
 
           <div className="w-full space-y-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                 Initial Angle (a): {initialAngle}°
               </label>
               <input 
@@ -154,7 +154,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
               />
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                 Decay Ratio (r): {decayRatio}
               </label>
               <input 
@@ -178,7 +178,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
               </button>
               <button 
                 onClick={reset}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 text-slate-700 hover:bg-slate-300"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:bg-slate-800"
               >
                 <RotateCcw size={18} /> Reset
               </button>
@@ -187,12 +187,12 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Data Logging & Assessment</h2>
           
           <div className="mb-6">
-            <h3 className="font-semibold text-slate-800 mb-2">Measured Values</h3>
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 font-mono text-sm">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Measured Values</h3>
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-2 font-mono text-sm">
               <div className="flex justify-between">
                 <span>First Swing Amplitude (a):</span>
                 <span className="font-bold text-indigo-600">{initialAngle}°</span>
@@ -209,19 +209,19 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
           </div>
 
           <div className="space-y-4 flex-1">
-            <h3 className="font-semibold text-slate-800">Task: Calculate Total Distance</h3>
-            <p className="text-sm text-slate-600">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100">Task: Calculate Total Distance</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               Using the formula for the sum of an infinite geometric series, calculate the total angular distance the pendulum will travel before coming to a complete stop.
             </p>
             
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-slate-700">Total Angular Distance (°)</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Total Angular Distance (°)</label>
               <input 
                 type="number" 
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
                 placeholder="e.g. 150"
-                className="px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 

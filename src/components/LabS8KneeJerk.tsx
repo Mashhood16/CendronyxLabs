@@ -24,12 +24,12 @@ export default function LabS8KneeJerk({ onExit }: LabS8KneeJerkProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 2.2: Knee Jerk Reflex" subtitle="Observe an involuntary reflex action" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Animation */}
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative min-h-[400px]">
           
           <div className="relative w-64 h-80">
             {/* Chair */}
@@ -68,14 +68,14 @@ export default function LabS8KneeJerk({ onExit }: LabS8KneeJerkProps) {
                 opacity: kickState === 'kicking' ? 0 : 1
               }}
             >
-              <div className="w-16 h-4 bg-slate-300 rounded-full" />
-              <div className="w-6 h-8 bg-slate-800 rounded-md absolute -left-2 -top-2" />
+              <div className="w-16 h-4 bg-slate-300 dark:bg-slate-800 rounded-full" />
+              <div className="w-6 h-8 bg-slate-800 dark:bg-slate-800 rounded-md absolute -left-2 -top-2" />
             </div>
 
           </div>
 
           <div className="mt-8 text-center">
-            {kickState === 'idle' && <p className="text-slate-500 font-medium animate-pulse">Click the TAP target below the knee cap to stimulate the patellar tendon.</p>}
+            {kickState === 'idle' && <p className="text-slate-500 dark:text-slate-400 font-medium animate-pulse">Click the TAP target below the knee cap to stimulate the patellar tendon.</p>}
             {kickState === 'tapping' && <p className="text-amber-600 font-bold">Stimulus applied...</p>}
             {kickState === 'kicking' && <p className="text-green-600 font-bold text-xl">Reflex Action (Involuntary Kick!)</p>}
           </div>
@@ -84,12 +84,12 @@ export default function LabS8KneeJerk({ onExit }: LabS8KneeJerkProps) {
 
         {/* Right Column: Educational Content */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
-            <h3 className="font-bold text-slate-800 mb-2">The Reflex Arc</h3>
-            <p className="text-sm text-slate-600 mb-4">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
+            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">The Reflex Arc</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
               A reflex is a rapid, automatic response to a stimulus that does not require conscious thought from the brain.
             </p>
-            <ol className="text-sm text-slate-600 space-y-2 list-decimal pl-4">
+            <ol className="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-decimal pl-4">
               <li>Tap hits the patellar tendon.</li>
               <li>Sensory neurons send a signal to the spinal cord.</li>
               <li>Spinal cord immediately bounces a signal back via motor neurons (skipping the brain).</li>

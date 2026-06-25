@@ -38,16 +38,15 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
   const isCorrect = isComplete && hardwareItems.every(item => matches[item.id] === item.id);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Hardware Identification Charts" />
 
-        <h1 className="text-3xl font-bold mb-2">Hardware Identification Charts</h1>
-        <p className="text-slate-600 mb-8">Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.</p>
 
         <div className="flex gap-8 flex-1">
           {/* Main Chart Area */}
-          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-6 text-center">Hardware Components</h2>
             
             <div className="grid grid-cols-3 gap-8 flex-1">
@@ -57,8 +56,8 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
                 const matchedLabel = hardwareItems.find(h => h.id === matchedLabelId)?.label;
 
                 return (
-                  <div key={item.id} className="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-xl border-2 border-slate-100">
-                    <Icon className="w-24 h-24 text-slate-700 mb-6" strokeWidth={1.5} />
+                  <div key={item.id} className="flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-slate-900 rounded-xl border-2 border-slate-100">
+                    <Icon className="w-24 h-24 text-slate-700 dark:text-slate-200 mb-6" strokeWidth={1.5} />
                     
                     <button 
                       onClick={() => matchedLabelId ? removeMatch(item.id) : handleSlotClick(item.id)}
@@ -66,8 +65,8 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
                         matchedLabelId 
                           ? 'border-blue-500 bg-blue-50 text-blue-700 hover:bg-blue-100' 
                           : selectedLabel 
-                            ? 'border-blue-300 bg-slate-50 hover:border-blue-500 hover:bg-blue-50 text-slate-400' 
-                            : 'border-slate-300 bg-slate-100 text-slate-400'
+                            ? 'border-blue-300 bg-slate-50 dark:bg-slate-900 hover:border-blue-500 hover:bg-blue-50 text-slate-400' 
+                            : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-100 dark:bg-slate-800 text-slate-400'
                       }`}
                     >
                       {matchedLabel || 'Click to Place Label'}
@@ -93,8 +92,8 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
 
           {/* Word Bank Sidebar */}
           <div className="w-64 flex flex-col gap-4">
-            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="font-bold text-slate-700 mb-4 uppercase text-sm tracking-wider">Word Bank</h3>
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
+              <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4 uppercase text-sm tracking-wider">Word Bank</h3>
               <div className="flex flex-col gap-3">
                 {hardwareItems.map(item => {
                   const isUsed = Object.values(matches).includes(item.id);
@@ -105,10 +104,10 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
                       onClick={() => setSelectedLabel(item.id)}
                       className={`p-3 rounded-lg border-2 font-bold text-sm text-left transition-colors ${
                         isUsed 
-                          ? 'border-slate-200 bg-slate-50 text-slate-300 cursor-not-allowed'
+                          ? 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-300 cursor-not-allowed'
                           : selectedLabel === item.id
                             ? 'border-blue-500 bg-blue-50 text-blue-700'
-                            : 'border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50'
+                            : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900'
                       }`}
                     >
                       {item.label}

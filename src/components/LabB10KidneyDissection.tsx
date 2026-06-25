@@ -91,25 +91,25 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Biology Lab: Kidney Dissection" subtitle="Examine the external and internal macroscopic structures of a mammalian kidney." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Anatomy of the Kidney</h2>
-          <div className="space-y-4 text-slate-600 leading-relaxed">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Anatomy of the Kidney</h2>
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
             <p>
               The kidney is a bean-shaped organ responsible for filtering blood, removing waste, and regulating fluid balance.
             </p>
-            <h3 className="text-lg font-semibold text-slate-800">External Structures</h3>
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">External Structures</h3>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong>Renal Artery:</strong> Supplies oxygenated, unfiltered blood to the kidney.</li>
               <li><strong>Renal Vein:</strong> Transports filtered, deoxygenated blood away from the kidney.</li>
               <li><strong>Ureter:</strong> A tube that carries urine from the kidney down to the bladder.</li>
             </ul>
             
-            <h3 className="text-lg font-semibold text-slate-800 mt-4">Internal Structures</h3>
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mt-4">Internal Structures</h3>
             <p>When sectioned longitudinally, three distinct regions are visible:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li><strong>Renal Cortex:</strong> The lighter outer layer containing the filtering units (nephrons).</li>
@@ -120,27 +120,27 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center relative">
           <div className="flex items-center justify-between w-full mb-4">
-            <h2 className="text-xl font-bold text-slate-800">Dissection Tray</h2>
-            <div className="flex bg-slate-100 p-1 rounded-lg">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Dissection Tray</h2>
+            <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
               <button
                 onClick={() => setActiveTool('pointer')}
-                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'pointer' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'pointer' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
               >
                 <MousePointer2 className="w-4 h-4 mr-2" /> Pointer
               </button>
               <button
                 onClick={() => setActiveTool('scalpel')}
                 disabled={!externalDone || isDissected}
-                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'scalpel' ? 'bg-slate-50 shadow-sm text-red-600' : 'text-slate-500 hover:text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed'}`}
+                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'scalpel' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-red-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed'}`}
               >
                 <Scissors className="w-4 h-4 mr-2" /> Scalpel
               </button>
             </div>
           </div>
 
-          <div className="bg-slate-800 w-full flex-1 rounded-xl flex items-center justify-center overflow-hidden border-4 border-slate-700 relative">
+          <div className="bg-slate-800 dark:bg-slate-800 w-full flex-1 rounded-xl flex items-center justify-center overflow-hidden border-4 border-slate-700 dark:border-slate-500 relative">
             <svg
               ref={svgRef}
               viewBox="0 0 500 500"
@@ -238,7 +238,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
             </svg>
 
             {!externalDone && (
-              <div className="absolute top-4 bg-slate-900/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none">
+              <div className="absolute top-4 bg-slate-900 dark:bg-slate-800/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none">
                 Phase 1: Identify all external structures
               </div>
             )}
@@ -248,7 +248,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
               </div>
             )}
             {isDissected && !internalDone && (
-              <div className="absolute top-4 bg-slate-900/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none">
+              <div className="absolute top-4 bg-slate-900 dark:bg-slate-800/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none">
                 Phase 3: Identify internal structures
               </div>
             )}
@@ -256,9 +256,9 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
         </div>
 
         {/* Right Column: Assessment & Identification */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col">
           <div className="mb-6">
-            <h2 className="text-xl font-bold text-slate-800 mb-4">Identification Log</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Identification Log</h2>
             
             {selectedRegion ? (
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
@@ -269,7 +269,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
                       key={part.id}
                       onClick={() => identifyRegion(part.id)}
                       disabled={identifiedParts.includes(part.id)}
-                      className="px-3 py-2 bg-slate-50 border border-yellow-300 rounded text-sm font-medium text-slate-700 hover:bg-yellow-100 disabled:opacity-50"
+                      className="px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-yellow-300 rounded text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-yellow-100 disabled:opacity-50"
                     >
                       {part.name}
                     </button>
@@ -277,42 +277,42 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
                 </div>
               </div>
             ) : (
-              <p className="text-sm text-slate-500 italic mb-4">Select a region on the kidney diagram to identify it.</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 italic mb-4">Select a region on the kidney diagram to identify it.</p>
             )}
 
             <div className="space-y-2">
-              <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider">External</h3>
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider">External</h3>
               {EXTERNAL_PARTS.map(part => (
-                <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 rounded border border-slate-100">
-                  <span className="text-sm font-medium text-slate-700">{part.name}</span>
+                <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100">
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{part.name}</span>
                   {identifiedParts.includes(part.id) ? (
                     <CheckCircle2 className="w-5 h-5 text-green-500" />
                   ) : (
-                    <div className="w-5 h-5 rounded-full border-2 border-slate-300" />
+                    <div className="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500" />
                   )}
                 </div>
               ))}
 
-              <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider mt-4">Internal</h3>
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mt-4">Internal</h3>
               {INTERNAL_PARTS.map(part => (
-                <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 rounded border border-slate-100">
-                  <span className="text-sm font-medium text-slate-700">{part.name}</span>
+                <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100">
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{part.name}</span>
                   {identifiedParts.includes(part.id) ? (
                     <CheckCircle2 className="w-5 h-5 text-green-500" />
                   ) : (
-                    <div className="w-5 h-5 rounded-full border-2 border-slate-300" />
+                    <div className="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500" />
                   )}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex-1 mt-6 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-800 mb-4">Assessment</h2>
+          <div className="flex-1 mt-6 pt-6 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Assessment</h2>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   1. If the kidney filters 120 mL of fluid per minute, how many liters does it filter in one day (24 hours)?
                 </label>
                 <div className="flex space-x-2">
@@ -321,9 +321,9 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
                     value={q1Answer}
                     onChange={(e) => setQ1Answer(e.target.value)}
                     placeholder="Enter value"
-                    className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                  <span className="flex items-center text-slate-600 font-medium">L</span>
+                  <span className="flex items-center text-slate-600 dark:text-slate-300 font-medium">L</span>
                 </div>
                 {q1Correct !== null && (
                   <p className={`text-sm mt-1 font-medium ${q1Correct ? 'text-green-600' : 'text-red-600'}`}>
@@ -333,13 +333,13 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   2. What is the primary function of the renal pelvis?
                 </label>
                 <select
                   value={q2Answer}
                   onChange={(e) => setQ2Answer(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50 dark:bg-slate-900"
                 >
                   <option value="">Select an option...</option>
                   <option value="filter">Filter toxins from the blood</option>

@@ -20,10 +20,10 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
 
   const predefinedPlanets = [
-    { name: 'Mercury', color: 'bg-stone-500', size: 10, distance: 40, speed: 4 },
-    { name: 'Venus', color: 'bg-orange-300', size: 14, distance: 70, speed: 3 },
-    { name: 'Earth', color: 'bg-blue-500', size: 16, distance: 100, speed: 2 },
-    { name: 'Mars', color: 'bg-red-500', size: 12, distance: 130, speed: 1.5 },
+    { name: 'Mercury', color: 'bg-stone-400', size: 14, distance: 50, speed: 4 },
+    { name: 'Venus', color: 'bg-orange-300', size: 16, distance: 80, speed: 3 },
+    { name: 'Earth', color: 'bg-blue-500', size: 18, distance: 115, speed: 2 },
+    { name: 'Mars', color: 'bg-red-500', size: 14, distance: 150, speed: 1.5 },
     { name: 'Jupiter', color: 'bg-orange-400', size: 30, distance: 180, speed: 0.8 },
     { name: 'Saturn', color: 'bg-amber-200', size: 26, distance: 230, speed: 0.5 },
     { name: 'Uranus', color: 'bg-cyan-200', size: 20, distance: 270, speed: 0.3 },
@@ -42,13 +42,13 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-900 font-sans text-white">
+    <div className="flex flex-col h-screen font-sans text-white" style={{ backgroundColor: '#0f172a' }}>
       <LabHeader onExit={onExit} variant="dark" title="Unit 12: 3-D Solar System Model" />
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Sidebar */}
-        <div className="w-80 bg-slate-800 border-r border-slate-700 p-6 overflow-y-auto flex flex-col">
+        <div className="w-80 bg-slate-800 dark:bg-slate-800 border-r border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col">
           <h2 className="text-lg font-bold mb-4 text-slate-200">Planet Inventory</h2>
           <p className="text-xs text-slate-400 mb-6">Click to add planets to your 3D model. They will automatically be placed at their relative distances from the Sun.</p>
 
@@ -56,13 +56,13 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
             {predefinedPlanets.map(p => {
               const isAdded = planets.some(existing => existing.name === p.name);
               return (
-                <div key={p.name} className={`flex items-center justify-between p-3 rounded-lg border ${isAdded ? 'bg-slate-700/50 border-slate-600' : 'bg-slate-700 border-slate-600 hover:border-blue-400'}`}>
+                <div key={p.name} className={`flex items-center justify-between p-3 rounded-lg border ${isAdded ? 'bg-slate-700 dark:bg-slate-800/50 border-slate-600 dark:border-slate-500' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500 hover:border-blue-400'}`}>
                   <div className="flex items-center gap-3">
                     <div className={`w-6 h-6 rounded-full ${p.color} shadow-sm border border-black/20`}></div>
                     <span className={`font-medium ${isAdded ? 'text-slate-400' : 'text-slate-200'}`}>{p.name}</span>
                   </div>
                   {isAdded ? (
-                    <button onClick={() => removePlanet(p.name)} className="text-slate-500 hover:text-red-400 p-1"><Trash2 className="w-4 h-4" /></button>
+                    <button onClick={() => removePlanet(p.name)} className="text-slate-500 dark:text-slate-400 hover:text-red-400 p-1"><Trash2 className="w-4 h-4" /></button>
                   ) : (
                     <button onClick={() => addPlanet(p)} className="text-blue-400 hover:text-blue-300 p-1"><Plus className="w-5 h-5" /></button>
                   )}
@@ -71,9 +71,9 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
             })}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-slate-700 text-center">
+          <div className="mt-4 pt-4 border-t border-slate-700 dark:border-slate-500 text-center">
              <div className="text-2xl font-bold text-slate-300">{planets.length} / 8</div>
-             <div className="text-xs text-slate-500 uppercase tracking-wider">Planets Added</div>
+             <div className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">Planets Added</div>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
           {/* Orbits and Planets */}
           {planets.map(planet => (
-            <div key={planet.id} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-slate-600/30 rounded-full" style={{ width: `${planet.distance * 2}px`, height: `${planet.distance * 2}px` }}>
+            <div key={planet.id} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-slate-600 dark:border-slate-500/30 rounded-full" style={{ width: `${planet.distance * 2}px`, height: `${planet.distance * 2}px` }}>
               <div 
                 className={`absolute rounded-full shadow-lg ${planet.color} flex items-center justify-center group cursor-pointer transition-transform hover:scale-150 animate-[orbit_linear_infinite]`}
                 style={{ 
@@ -106,7 +106,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
                 {planet.name === 'Saturn' && (
                   <div className="absolute w-[250%] h-[50%] border-[3px] border-amber-300/60 rounded-full transform rotate-12"></div>
                 )}
-                <div className="absolute -top-6 bg-black/80 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-slate-700 pointer-events-none">
+                <div className="absolute -top-6 bg-black/80 px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-slate-700 dark:border-slate-500 pointer-events-none">
                   {planet.name}
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
           {/* Info Panel overlay */}
           {selectedPlanet && (
-            <div className="absolute bottom-8 right-8 bg-slate-800/90 backdrop-blur-md p-6 rounded-xl border border-slate-600 shadow-2xl max-w-sm">
+            <div className="absolute bottom-8 right-8 bg-slate-800 dark:bg-slate-800/90 backdrop-blur-md p-6 rounded-xl border border-slate-600 dark:border-slate-500 shadow-2xl max-w-sm">
                <div className="flex justify-between items-start mb-4">
                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
                    <div className={`w-4 h-4 rounded-full ${planets.find(p=>p.id===selectedPlanet)?.color}`}></div>
@@ -135,13 +135,8 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes orbit {
-          from { transform: rotate(0deg) translateX(${0}px) rotate(0deg); transform-origin: 50% calc(50% + var(--distance)); }
-          to { transform: rotate(360deg) translateX(${0}px) rotate(-360deg); transform-origin: 50% calc(50% + var(--distance)); }
-        }
-        /* A simpler orbit animation for CSS only */
-        @keyframes orbit {
-           0% { transform: rotate(0deg) translateY(0); }
-           100% { transform: rotate(360deg) translateY(0); }
+           0% { transform: rotate(0deg); }
+           100% { transform: rotate(360deg); }
         }
       `}} />
     </div>

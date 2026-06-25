@@ -31,9 +31,9 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 11: Make a Hand Sanitizer" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-emerald-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-emerald-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-emerald-800 mb-4">Homemade Hygiene Product</h2>
-          <p className="text-slate-600 mb-6">Create an effective hand sanitizer by combining the correct ratio of ingredients. You need exactly 60ml (2/3 part) Rubbing Alcohol, 30ml (1/3 part) Aloe Vera Gel, and 10 drops of Essential Oil.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Create an effective hand sanitizer by combining the correct ratio of ingredients. You need exactly 60ml (2/3 part) Rubbing Alcohol, 30ml (1/3 part) Aloe Vera Gel, and 10 drops of Essential Oil.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -46,7 +46,7 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
             </button>
             <button 
               onClick={reset}
-              className="flex items-center px-6 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 font-medium"
+              className="flex items-center px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium"
             >
               Empty Bowl
             </button>
@@ -57,24 +57,24 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
            
            {/* Ingredients Controls */}
            <div className="flex-1 space-y-4">
-             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-blue-600">Rubbing Alcohol (99%)</h4>
-                 <div className="text-sm text-slate-500">Current: {alcohol} ml</div>
+                 <div className="text-sm text-slate-500 dark:text-slate-400">Current: {alcohol} ml</div>
                </div>
                <button onClick={addAlcohol} disabled={mixed} className="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
              </div>
-             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-green-600">Aloe Vera Gel</h4>
-                 <div className="text-sm text-slate-500">Current: {aloe} ml</div>
+                 <div className="text-sm text-slate-500 dark:text-slate-400">Current: {aloe} ml</div>
                </div>
                <button onClick={addAloe} disabled={mixed} className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
              </div>
-             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-yellow-600">Essential Oil</h4>
-                 <div className="text-sm text-slate-500">Current: {essentialOil} drops</div>
+                 <div className="text-sm text-slate-500 dark:text-slate-400">Current: {essentialOil} drops</div>
                </div>
                <button onClick={addOil} disabled={mixed} className="p-2 bg-yellow-100 text-yellow-600 rounded-lg hover:bg-yellow-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
              </div>
@@ -84,14 +84,14 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
            <div className="relative w-80 h-64 flex justify-center items-end">
              {/* Measuring Marks */}
              <div className="absolute right-0 bottom-8 h-48 w-8 flex flex-col justify-end gap-[18px] opacity-30 z-20">
-                <div className="w-full border-t border-slate-600"></div>
-                <div className="w-full border-t border-slate-600"></div>
-                <div className="w-full border-t border-slate-600"></div>
-                <div className="w-full border-t border-slate-600"></div>
-                <div className="w-full border-t border-slate-600 text-xs">90</div>
+                <div className="w-full border-t border-slate-600 dark:border-slate-500"></div>
+                <div className="w-full border-t border-slate-600 dark:border-slate-500"></div>
+                <div className="w-full border-t border-slate-600 dark:border-slate-500"></div>
+                <div className="w-full border-t border-slate-600 dark:border-slate-500"></div>
+                <div className="w-full border-t border-slate-600 dark:border-slate-500 text-xs">90</div>
              </div>
 
-             <div className="w-64 h-48 border-8 border-slate-300 rounded-[20px_20px_80px_80px] bg-slate-50/50 backdrop-blur-md shadow-inner flex flex-col justify-end overflow-hidden relative z-10">
+             <div className="w-64 h-48 border-8 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-[20px_20px_80px_80px] bg-slate-50 dark:bg-slate-900/50 backdrop-blur-md shadow-inner flex flex-col justify-end overflow-hidden relative z-10">
                 
                 {mixed ? (
                   <div className="w-full h-[90px] bg-emerald-300/80 border-t-4 border-emerald-400/50 flex items-center justify-center">
@@ -126,7 +126,7 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
         </div>
 
         {mixed && (
-          <div className="mt-8 p-6 bg-slate-50 shadow-lg text-slate-800 rounded-xl border-l-4 border-emerald-500 max-w-2xl flex items-start">
+          <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-900 shadow-lg text-slate-800 dark:text-slate-100 rounded-xl border-l-4 border-emerald-500 max-w-2xl flex items-start">
              <CheckCircle className="w-8 h-8 text-emerald-500 mr-4 shrink-0" />
              <div>
                <h4 className="font-bold text-lg mb-2">Sanitizer Ready!</h4>

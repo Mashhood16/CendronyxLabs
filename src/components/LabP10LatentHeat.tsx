@@ -176,7 +176,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
   const maxTemp = MATERIALS[material].T_boil + 30;
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." />
 
@@ -185,29 +185,29 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
           
           {/* Column 1: Theory & Setup */}
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
             <div>
-              <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Theory</h2>
-              <p className="text-sm text-slate-600 mb-2">
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-3">Theory</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
                 When heating a substance, its temperature rises until it reaches a phase change. During a phase change, the temperature remains constant as energy goes into breaking bonds.
               </p>
-              <div className="bg-slate-100 p-3 rounded-lg text-sm font-mono text-slate-700 space-y-1">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-sm font-mono text-slate-700 dark:text-slate-200 space-y-1">
                 <p>Heating: Q = mcΔT</p>
                 <p>Phase Change: Q = mL</p>
                 <p>Energy Input: Q = P × t</p>
               </div>
-              <p className="text-sm text-slate-600 mt-2">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
                 To find the specific latent heat of fusion (L_f), measure the time (Δt) it takes to completely melt the solid. Then: L_f = (P × Δt) / m.
               </p>
             </div>
 
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Setup Parameters</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-3">Setup Parameters</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Substance</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Substance</label>
                   <select 
-                    className="w-full border border-slate-300 rounded-md p-2 bg-slate-50"
+                    className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 bg-slate-50 dark:bg-slate-900"
                     value={material}
                     onChange={handleMaterialChange}
                     disabled={isRunning && time > 0}
@@ -217,7 +217,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700">Mass (kg): {mass.toFixed(2)} kg</label>
+                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Mass (kg): {mass.toFixed(2)} kg</label>
                   </div>
                   <input 
                     type="range" min="0.1" max="0.5" step="0.05" 
@@ -232,7 +232,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700">Heater Power (W): {power} W</label>
+                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Heater Power (W): {power} W</label>
                   </div>
                   <input 
                     type="range" min="100" max="2000" step="100" 
@@ -258,7 +258,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-slate-900 rounded-2xl shadow-inner border border-slate-700 p-4 flex flex-col relative overflow-hidden h-full min-h-[400px]">
+          <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-700 dark:border-slate-500 p-4 flex flex-col relative overflow-hidden h-full min-h-[400px]">
             <div className="absolute top-4 left-4 z-20 flex gap-2">
               <button 
                 onClick={() => setIsRunning(!isRunning)}
@@ -276,7 +276,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
             <div className="flex-1 w-full flex items-center justify-center relative p-8">
               
               {/* Beaker System */}
-              <div className="relative w-48 h-64 bg-slate-50/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 overflow-hidden backdrop-blur-sm">
+              <div className="relative w-48 h-64 bg-slate-50 dark:bg-slate-900/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 overflow-hidden backdrop-blur-sm">
                 
                 {/* Liquid Phase */}
                 {fractionLiquid > 0 && (
@@ -288,7 +288,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                     {phase === 'Boiling' && (
                        <div className="absolute inset-0 overflow-hidden">
                          {[...Array(20)].map((_, i) => (
-                           <div key={i} className="absolute w-2 h-2 bg-slate-50/60 rounded-full animate-bounce"
+                           <div key={i} className="absolute w-2 h-2 bg-slate-50 dark:bg-slate-900/60 rounded-full animate-bounce"
                                 style={{
                                   left: `${Math.random() * 90}%`,
                                   bottom: `${Math.random() * 20}%`,
@@ -305,7 +305,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 {fractionLiquid < 1 && (
                   <div className="absolute bottom-2 w-32 h-32 flex flex-wrap gap-1 justify-center items-end opacity-90 transition-opacity" style={{ opacity: 1 - fractionLiquid }}>
                     {[...Array(8)].map((_, i) => (
-                      <div key={i} className="w-12 h-12 bg-slate-50/80 border border-slate-300 rounded-sm transform" style={{ rotate: `${(i * 15) % 45}deg` }} />
+                      <div key={i} className="w-12 h-12 bg-slate-50 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-sm transform" style={{ rotate: `${(i * 15) % 45}deg` }} />
                     ))}
                   </div>
                 )}
@@ -316,7 +316,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 </div>
 
                 {/* Thermometer */}
-                <div className="absolute right-4 bottom-4 w-3 h-48 bg-slate-50/20 border border-white/40 rounded-full flex items-end p-0.5">
+                <div className="absolute right-4 bottom-4 w-3 h-48 bg-slate-50 dark:bg-slate-900/20 border border-white/40 rounded-full flex items-end p-0.5">
                    <div className="w-full bg-red-500 rounded-full transition-all duration-300" 
                         style={{ height: `${Math.max(5, ((temperature - minTemp) / (maxTemp - minTemp)) * 100)}%` }} />
                 </div>
@@ -326,7 +326,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
               {fractionGas > 0 && (
                 <div className="absolute top-10 w-64 h-40 flex items-end justify-center pointer-events-none">
                   {[...Array(10)].map((_, i) => (
-                    <div key={i} className="absolute w-16 h-16 bg-slate-50/30 rounded-full blur-xl animate-ping"
+                    <div key={i} className="absolute w-16 h-16 bg-slate-50 dark:bg-slate-900/30 rounded-full blur-xl animate-ping"
                          style={{
                            left: `${20 + Math.random() * 60}%`,
                            bottom: `${Math.random() * 100}%`,
@@ -341,13 +341,13 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Data & Analysis */}
-          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-hidden">
-            <h2 className="text-lg font-bold text-slate-800 border-b pb-2 shrink-0">Live Data Graph</h2>
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-hidden">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 shrink-0">Live Data Graph</h2>
 
             {/* Graph area: Temp vs Time */}
-            <div className="flex-1 bg-slate-50 rounded-lg border border-slate-200 p-4 relative min-h-[200px] w-full overflow-hidden">
-               <div className="absolute -left-6 top-1/2 -rotate-90 text-xs font-bold text-slate-500">Temp (°C)</div>
-               <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500">Time (s)</div>
+            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative min-h-[200px] w-full overflow-hidden">
+               <div className="absolute -left-6 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-slate-400">Temp (°C)</div>
+               <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-slate-400">Time (s)</div>
                
                <svg className="w-full h-[calc(100%-20px)] overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
                  {/* Grid */}
@@ -383,17 +383,17 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
             </div>
 
             {/* Logs preview */}
-            <div className="h-24 overflow-y-auto border border-slate-200 rounded-lg shrink-0">
+            <div className="h-24 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg shrink-0">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                   <tr>
-                    <th className="px-3 py-1.5 font-semibold text-slate-700">Time (s)</th>
-                    <th className="px-3 py-1.5 font-semibold text-slate-700">Temp (°C)</th>
+                    <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-slate-200">Time (s)</th>
+                    <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-slate-200">Temp (°C)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {logs.slice(-10).reverse().map((log, i) => (
-                    <tr key={i} className="hover:bg-slate-50">
+                    <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
                       <td className="px-3 py-1 font-mono">{log.t}</td>
                       <td className="px-3 py-1 font-mono">{log.temp.toFixed(1)}</td>
                     </tr>

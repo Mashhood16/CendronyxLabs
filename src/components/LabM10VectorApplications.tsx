@@ -56,14 +56,14 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
   const v2y = v1y - mag2 * Math.sin(ang2 * Math.PI / 180) * scale;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Vector Applications Lab" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Formulas</h2>
+          <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
             <p><strong>Vectors</strong> have both magnitude (size) and direction (angle).</p>
             <p>To add two vectors, we resolve them into their horizontal (X) and vertical (Y) components:</p>
             <div className="bg-blue-50 p-3 rounded-lg font-mono text-sm">
@@ -73,7 +73,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
             
             <p><strong>Resultant Vector</strong></p>
             <p>The sum of the vectors is the Resultant Vector, found by adding the individual components:</p>
-            <div className="bg-slate-100 p-3 rounded-lg font-mono text-sm">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg font-mono text-sm">
               Rₓ = X₁ + X₂<br/>
               Rₗ = Y₁ + Y₂
             </div>
@@ -84,38 +84,38 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
               θ = tan⁻¹(Rₗ / Rₓ)
             </div>
             
-            <div className="text-xs text-slate-500 mt-4">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-4">
               * Note: In this lab, standard mathematical degrees are used (0° is East, 90° is North).
             </div>
           </div>
         </div>
 
         {/* Interactive Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex space-x-2 mb-6 text-sm">
             <button 
               onClick={() => setScenario('aviation')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'aviation' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'aviation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
             >
               <Navigation size={16} className="mr-1" /> Aviation
             </button>
             <button 
               onClick={() => setScenario('river')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'river' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'river' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
             >
               <Anchor size={16} className="mr-1" /> River
             </button>
             <button 
               onClick={() => setScenario('tractor')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'tractor' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'tractor' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
             >
               <Compass size={16} className="mr-1" /> Forces
             </button>
           </div>
 
           {/* Visualizer */}
-          <div className="relative h-64 bg-slate-50 rounded-xl mb-6 overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center">
-            <svg viewBox="0 0 400 400" className="w-full h-full bg-slate-50">
+          <div className="relative h-64 bg-slate-50 dark:bg-slate-900 rounded-xl mb-6 overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-inner flex items-center justify-center">
+            <svg viewBox="0 0 400 400" className="w-full h-full bg-slate-50 dark:bg-slate-900">
               {/* Grid lines */}
               <line x1="0" y1="200" x2="400" y2="200" stroke="#cbd5e1" strokeWidth="1" />
               <line x1="200" y1="0" x2="200" y2="400" stroke="#cbd5e1" strokeWidth="1" />
@@ -152,14 +152,14 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-blue-600 border-b pb-1">Vector 1 (Blue)</h3>
               <div>
-                <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Magnitude</span>
                   <span>{mag1}</span>
                 </div>
                 <input type="range" min="0" max={maxMag} step="1" value={mag1} onChange={e => setMag1(Number(e.target.value))} className="w-full accent-blue-600" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Angle (°)</span>
                   <span>{ang1}°</span>
                 </div>
@@ -170,14 +170,14 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-red-500 border-b pb-1">Vector 2 (Red)</h3>
               <div>
-                <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Magnitude</span>
                   <span>{mag2}</span>
                 </div>
                 <input type="range" min="0" max={maxMag} step="1" value={mag2} onChange={e => setMag2(Number(e.target.value))} className="w-full accent-red-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-medium text-slate-700 mb-1">
+                <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Angle (°)</span>
                   <span>{ang2}°</span>
                 </div>
@@ -188,12 +188,12 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Data Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Data Analysis</h2>
           <div className="flex-1 space-y-4">
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <p className="text-slate-700 font-medium mb-2">Given the vectors, what is the magnitude of the resultant vector?</p>
-              <p className="text-xs text-slate-500 mb-3">(Round to 1 decimal place)</p>
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <p className="text-slate-700 dark:text-slate-200 font-medium mb-2">Given the vectors, what is the magnitude of the resultant vector?</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">(Round to 1 decimal place)</p>
               
               <div className="flex items-center space-x-3">
                 <input 
@@ -201,16 +201,16 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
                   step="0.1"
                   value={ansMag}
                   onChange={e => setAnsMag(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 {ansMagStatus === 'correct' && <CheckCircle2 className="text-green-600" />}
                 {ansMagStatus === 'incorrect' && <XCircle className="text-red-500" />}
               </div>
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <p className="text-slate-700 font-medium mb-2">What is the angle (in standard degrees) of the resultant vector?</p>
-              <p className="text-xs text-slate-500 mb-3">(Round to 1 decimal place, between 0 and 360)</p>
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <p className="text-slate-700 dark:text-slate-200 font-medium mb-2">What is the angle (in standard degrees) of the resultant vector?</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">(Round to 1 decimal place, between 0 and 360)</p>
               
               <div className="flex items-center space-x-3">
                 <input 
@@ -218,7 +218,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
                   step="0.1"
                   value={ansAng}
                   onChange={e => setAnsAng(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 {ansAngStatus === 'correct' && <CheckCircle2 className="text-green-600" />}
                 {ansAngStatus === 'incorrect' && <XCircle className="text-red-500" />}
@@ -227,7 +227,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
 
             <button 
               onClick={checkAnswers}
-              className="w-full mt-4 px-4 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors font-medium"
+              className="w-full mt-4 px-4 py-3 bg-slate-800 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors font-medium"
             >
               Check Answers
             </button>

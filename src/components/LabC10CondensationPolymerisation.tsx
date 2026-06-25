@@ -83,13 +83,13 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             <LabHeader onExit={onExit} title="Condensation Polymerisation: PET Synthesis" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-indigo-600"/> Setup & Theory</h2>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-slate-700 dark:text-slate-200">
                         Condensation polymerisation joins monomers by eliminating small molecules like water. 
                         PET is made from terephthalic acid (a dicarboxylic acid) and ethylene glycol (a diol).
                         Each linkage forms an ester bond and releases H₂O.
@@ -113,16 +113,16 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
                             <button onClick={handleReact} disabled={isReacting || progress > 0} className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50 flex justify-center items-center">
                                 <Play className="w-4 h-4 mr-1"/> React
                             </button>
-                            <button onClick={handleReset} className="flex-1 bg-slate-600 text-white py-2 rounded hover:bg-slate-700 flex justify-center items-center">
+                            <button onClick={handleReset} className="flex-1 bg-slate-600 dark:bg-slate-800 text-white py-2 rounded hover:bg-slate-700 dark:bg-slate-800 flex justify-center items-center">
                                 <RotateCcw className="w-4 h-4 mr-1"/> Reset
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Molecular View</h2>
-                    <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-64 mt-12 bg-slate-100 dark:bg-slate-800 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center overflow-hidden">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
                             <g transform="translate(50, 100)">
                                 <rect x="0" y="-15" width="40" height="30" fill="#3b82f6" rx="4" />
@@ -159,7 +159,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-indigo-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={progress < 100} className="w-full bg-indigo-100 text-indigo-700 py-2 rounded font-medium hover:bg-indigo-200 disabled:opacity-50">
@@ -168,7 +168,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
 
                     <div className="flex-1 overflow-y-auto">
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100">
+                            <thead className="bg-slate-100 dark:bg-slate-800">
                                 <tr>
                                     <th className="p-2 border">Acid(mol)</th>
                                     <th className="p-2 border">Diol(mol)</th>
@@ -187,7 +187,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
                         </table>
                     </div>
 
-                    <div className="bg-slate-100 p-3 rounded">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded">
                         <h3 className="font-semibold text-sm mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-600"/> Assessment</h3>
                         <p className="text-xs mb-2">If {unknownMoles} moles of terephthalic acid fully react with excess ethylene glycol, what mass of water (in g) is released? (Assume 2 water molecules per repeating unit, H₂O = 18.015 g/mol)</p>
                         <div className="flex space-x-2">

@@ -87,7 +87,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
   const renderSimulation = () => {
     if (process === 'CementKiln') {
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Clinker Yield: {metricValue.toFixed(1)}%</text>
           
           {/* Rotary Kiln Cylinder */}
@@ -123,7 +123,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     } else if (process === 'CatalyticCracking') {
       const isCracked = metricValue > 50;
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Conversion: {metricValue.toFixed(1)}%</text>
           
           {/* Zeolite Catalyst Bed */}
@@ -154,7 +154,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
       );
     } else {
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Emulsion Stability: {metricValue.toFixed(1)}%</text>
           
           {/* Beaker */}
@@ -192,7 +192,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
   const config = getSliderConfig();
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Interactive Industry Materials Lab" />
 
@@ -200,32 +200,32 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2 flex items-center gap-2">
-              <ShieldAlert className="text-slate-500" size={20} />
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2 flex items-center gap-2">
+              <ShieldAlert className="text-slate-500 dark:text-slate-400" size={20} />
               Process Theory
             </h2>
             {process === 'CementKiln' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>Cement Production</strong> requires heating limestone (CaCO₃) and clay in a rotary kiln up to 1450°C. The intense heat causes calcination and fusion, forming solid clinker nodules (mostly tricalcium silicate).
               </p>
             )}
             {process === 'CatalyticCracking' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>Catalytic Cracking</strong> breaks down large, low-value hydrocarbon molecules into lighter, higher-value products (like gasoline components) using heat and a zeolite catalyst.
               </p>
             )}
             {process === 'Cosmetics' && (
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
                 <strong>Cosmetics Formulation</strong> relies heavily on creating stable emulsions. Emulsifiers (surfactants) reduce the surface tension between oil and water, forming stable micelles that prevent phase separation.
               </p>
             )}
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-slate-700 mb-4">Operating Parameters</h3>
-            <label className="block text-sm font-medium text-slate-600 mb-1">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Operating Parameters</h3>
+            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
               {config.label}: {parameter}
             </label>
             <input
@@ -235,22 +235,22 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
               step={config.step}
               value={parameter}
               onChange={(e) => { setParameter(Number(e.target.value)); reset(); }}
-              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-orange-600 mb-6"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-orange-600 mb-6"
             />
             
-            <div className="bg-slate-100 p-4 rounded-lg flex items-center justify-between border border-slate-200">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg flex items-center justify-between border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <div className="flex flex-col">
-                <span className="text-xs text-slate-500 uppercase font-bold tracking-wider">Elapsed Time</span>
-                <span className="text-2xl font-mono text-slate-800">{time.toFixed(1)} s</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Elapsed Time</span>
+                <span className="text-2xl font-mono text-slate-800 dark:text-slate-100">{time.toFixed(1)} s</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Middle Column: Interactive Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
-          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 flex items-center gap-2">
-            <FlaskConical className="text-slate-500" size={20} />
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative">
+          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <FlaskConical className="text-slate-500 dark:text-slate-400" size={20} />
             Plant Simulator
           </h2>
           
@@ -268,7 +268,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
             </button>
             <button
               onClick={reset}
-              className="flex items-center gap-2 px-6 py-3 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors"
             >
               <RotateCcw size={18} />
               Reset
@@ -277,11 +277,11 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2">
             Production Engineering Analysis
           </h2>
-          <p className="text-sm text-slate-600 mb-6">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
             Compute the industrial yields and rates based on the plant simulator's operational data.
           </p>
 
@@ -306,18 +306,18 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
 
           <div className="flex flex-col gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Your Answer</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
               <input
                 type="number"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Enter numerical value"
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
               />
             </div>
             <button
               onClick={checkAnswer}
-              className="w-full py-2 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-900 transition-colors"
+              className="w-full py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-900 dark:bg-slate-800 transition-colors"
             >
               Check Answer
             </button>

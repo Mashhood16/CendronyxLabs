@@ -107,46 +107,46 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
   const sy = (y: number) => 150 - y * 15;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Coordinate Geometry" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <BookOpen className="mr-2" /> Theory & Context
           </h2>
           
-          <div className="flex bg-slate-100 p-1 rounded-lg mb-6 shrink-0">
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg mb-6 shrink-0">
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'midpoint' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'midpoint' ? 'bg-slate-50 dark:bg-slate-900 shadow text-emerald-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setMode('midpoint')}
             >
               Lamp Post Midpoint
             </button>
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'distance' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'distance' ? 'bg-slate-50 dark:bg-slate-900 shadow text-emerald-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setMode('distance')}
             >
               Running Distance
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700">
+          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
             {mode === 'midpoint' ? (
               <>
-                <h3 className="text-lg font-semibold text-slate-800">Midpoint Formula</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Midpoint Formula</h3>
                 <p>The midpoint divides a line segment connecting two points into two equal halves. It is equidistant from both endpoints.</p>
-                <div className="bg-slate-100 p-3 rounded text-center font-mono my-2 border border-slate-200">
+                <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   M = ( (x₁+x₂)/2 , (y₁+y₂)/2 )
                 </div>
                 <p><strong>Task:</strong> Click on the Cartesian plane to correctly place a lamp post exactly halfway between point A and point B.</p>
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold text-slate-800">Distance Formula</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Distance Formula</h3>
                 <p>The distance between two points on a Cartesian plane is derived from the Pythagorean theorem.</p>
-                <div className="bg-slate-100 p-3 rounded text-center font-mono my-2 border border-slate-200">
+                <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   d = √[ (x₂-x₁)² + (y₂-y₁)² ]
                 </div>
                 <p><strong>Task:</strong> Click to plot an athlete's running route. Calculate the total distance covered across multiple straight segments.</p>
@@ -156,13 +156,13 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <Activity className="mr-2" /> Interactive Cartesian Map
           </h2>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-lg flex-1 flex flex-col mb-4 items-center justify-center relative overflow-hidden">
-            <svg width="300" height="300" viewBox="0 0 300 300" onClick={handleSVGClick} className="bg-slate-50 border border-slate-200 cursor-crosshair">
+          <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg flex-1 flex flex-col mb-4 items-center justify-center relative overflow-hidden">
+            <svg width="300" height="300" viewBox="0 0 300 300" onClick={handleSVGClick} className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 cursor-crosshair">
               {/* Grid lines */}
               {Array.from({length: 21}).map((_, i) => (
                 <line key={`v-${i}`} x1={i*15} y1="0" x2={i*15} y2="300" stroke="#f1f5f9" />
@@ -201,7 +201,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                 </>
               )}
             </svg>
-            <div className="absolute top-2 right-2 bg-slate-50/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
+            <div className="absolute top-2 right-2 bg-slate-50 dark:bg-slate-900/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               1 unit = 1 km
             </div>
           </div>
@@ -210,14 +210,14 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
             {mode === 'midpoint' ? (
               <button 
                 onClick={handleRandomize}
-                className="flex-1 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-md font-medium transition active:scale-95"
+                className="flex-1 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
               >
                 Randomize A & B
               </button>
             ) : (
               <button 
                 onClick={() => setRoute([])}
-                className="flex-1 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-md font-medium transition active:scale-95"
+                className="flex-1 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
               >
                 Clear Route
               </button>
@@ -232,14 +232,14 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <TableIcon className="mr-2" /> Analysis & Data
           </h2>
 
-          <div className="bg-slate-50 rounded-lg border border-slate-200 p-3 mb-6 h-48 overflow-y-auto">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 mb-6 h-48 overflow-y-auto">
             <table className="w-full text-sm text-left">
-              <thead className="sticky top-0 bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
+              <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <tr>
                   <th className="pb-2">Type</th>
                   <th className="pb-2">Inputs</th>
@@ -251,7 +251,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                   <tr><td colSpan={3} className="py-4 text-center text-slate-400">No data recorded</td></tr>
                 ) : (
                   logs.map((log, i) => (
-                    <tr key={i} className="hover:bg-slate-100 transition">
+                    <tr key={i} className="hover:bg-slate-100 dark:bg-slate-800 transition">
                       <td className="py-2">{log.mode}</td>
                       <td className="py-2">{log.input}</td>
                       <td className="py-2 font-semibold text-emerald-600">{log.res}</td>
@@ -262,12 +262,12 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 pt-4">
-            <h3 className="font-semibold text-slate-800 mb-3">Knowledge Check</h3>
+          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
             
             {mode === 'midpoint' ? (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-slate-700 dark:text-slate-200">
                   Find exact midpoint between <br/><strong>({qMidX1}, {qMidY1})</strong> and <strong>({qMidX2}, {qMidY2})</strong>.
                 </p>
                 <div className="flex items-center gap-2">
@@ -276,7 +276,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansMidX} 
                     onChange={(e) => setAnsMidX(e.target.value)}
-                    className="w-16 border border-slate-300 rounded p-1 text-center focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 text-center focus:ring-2 focus:ring-emerald-500 outline-none"
                     placeholder="X"
                   />
                   <span>, </span>
@@ -284,7 +284,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansMidY} 
                     onChange={(e) => setAnsMidY(e.target.value)}
-                    className="w-16 border border-slate-300 rounded p-1 text-center focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 text-center focus:ring-2 focus:ring-emerald-500 outline-none"
                     placeholder="Y"
                   />
                   <span>)</span>
@@ -299,7 +299,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-slate-700 dark:text-slate-200">
                   Find distance between <br/><strong>({qDistX1}, {qDistY1})</strong> and <strong>({qDistX2}, {qDistY2})</strong>.
                 </p>
                 <div className="flex items-center gap-2">
@@ -308,7 +308,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansDist} 
                     onChange={(e) => setAnsDist(e.target.value)}
-                    className="w-20 border border-slate-300 rounded p-1 focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-20 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 focus:ring-2 focus:ring-emerald-500 outline-none"
                     placeholder="0.0"
                   />
                   <span>units</span>

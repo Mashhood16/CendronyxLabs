@@ -63,17 +63,16 @@ export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
   const isComplete = scenarioIndex >= scenarios.length;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Class Discussion on Deviance" />
 
-        <h1 className="text-3xl font-bold mb-2">Class Discussion on Deviance</h1>
-        <p className="text-slate-600 mb-8">Participate in the dialogue by choosing responses that demonstrate empathy, tolerance, and conflict resolution.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Participate in the dialogue by choosing responses that demonstrate empathy, tolerance, and conflict resolution.</p>
 
-        <div className="max-w-3xl mx-auto w-full flex flex-col h-[700px] bg-slate-50 rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+        <div className="max-w-3xl mx-auto w-full flex flex-col h-[700px] bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
           
           {/* Chat Window */}
-          <div className="flex-1 p-6 overflow-y-auto flex flex-col gap-4 bg-slate-50">
+          <div className="flex-1 p-6 overflow-y-auto flex flex-col gap-4 bg-slate-50 dark:bg-slate-900">
             {chatLog.map((msg, i) => (
               <div key={i} className={`flex ${msg.sender === 'student' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-2`}>
                 {msg.sender === 'teacher' && (
@@ -82,7 +81,7 @@ export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
                   </div>
                 )}
                 
-                <div className={`p-4 rounded-2xl max-w-[80%] ${msg.sender === 'student' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-slate-50 border border-slate-200 text-slate-800 rounded-bl-none shadow-sm'}`}>
+                <div className={`p-4 rounded-2xl max-w-[80%] ${msg.sender === 'student' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-bl-none shadow-sm'}`}>
                   {msg.text}
                 </div>
 
@@ -104,13 +103,13 @@ export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
 
           {/* Response Options */}
           {!isComplete && chatLog[chatLog.length - 1].sender === 'teacher' && (
-            <div className="p-6 bg-slate-50 border-t border-slate-200 flex flex-col gap-3">
+            <div className="p-6 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-3">
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Select your response:</h3>
               {scenarios[scenarioIndex].options.map((opt, i) => (
                 <button
                   key={i}
                   onClick={() => handleSelectOption(opt)}
-                  className="p-3 bg-slate-100 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 rounded-lg text-left transition-colors text-slate-700 font-medium text-sm"
+                  className="p-3 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 hover:border-blue-300 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg text-left transition-colors text-slate-700 dark:text-slate-200 font-medium text-sm"
                 >
                   {opt.text}
                 </button>

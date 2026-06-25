@@ -101,16 +101,16 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
   const maxTime = Math.max(50, ...dataPoints.map(d => d.time)) || 50;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab B12.1: Biochemical Tests" subtitle="Enzyme Kinetics & Macromolecule Detection" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4 overflow-y-auto">
+          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
             <Activity className="w-5 h-5 text-blue-600"/> Theory & Context
           </h2>
-          <div className="prose text-slate-700 text-sm flex flex-col gap-3">
+          <div className="prose text-slate-700 dark:text-slate-200 text-sm flex flex-col gap-3">
             <p><strong>Salivary Amylase</strong> is an enzyme that catalyzes the hydrolysis of starch into maltose. Enzyme activity is highly dependent on temperature. The rate of reaction increases with temperature up to an optimum point (typically around 37°C in humans), beyond which the enzyme rapidly denatures and loses catalytic function.</p>
             <p><strong>Iodine Test:</strong> Iodine-potassium iodide (I₂-KI) forms an intense blue-black complex with amylose (a component of starch). When starch is fully digested into maltose, the iodine solution retains its natural yellow-brown color.</p>
             <p><strong>Biuret Test:</strong> Used for detecting the presence of peptide bonds. In the presence of peptides, copper(II) ions (Cu²⁺) in alkaline solution (NaOH) form a violet-colored coordination complex. A negative result yields a light blue color from the unreacted copper(II) sulfate.</p>
@@ -126,20 +126,20 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
-          <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+          <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800 dark:text-slate-100">
             <TestTube className="w-5 h-5 text-blue-600"/> Interactive Simulator
           </h2>
           
           <div className="flex gap-2 w-full mb-6">
-            <button onClick={() => setActiveTab('starch')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'starch' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>Starch Digestion</button>
-            <button onClick={() => setActiveTab('protein')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'protein' ? 'bg-purple-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>Protein Detection</button>
+            <button onClick={() => setActiveTab('starch')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'starch' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}>Starch Digestion</button>
+            <button onClick={() => setActiveTab('protein')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'protein' ? 'bg-purple-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}>Protein Detection</button>
           </div>
 
           {activeTab === 'starch' ? (
             <div className="w-full flex flex-col items-center gap-6">
-              <div className="w-full bg-slate-50 p-4 rounded-lg border border-slate-100">
-                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700">
+              <div className="w-full bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
+                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
                   <span className="flex items-center gap-1"><Thermometer className="w-4 h-4"/> Temperature</span>
                   <span className="text-blue-600">{temperature}°C</span>
                 </label>
@@ -156,9 +156,9 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
                 {isDigesting && (
                   <div className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="flex gap-1">
-                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce"></div>
-                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50 dark:bg-slate-900/50 rounded-full animate-bounce"></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50 dark:bg-slate-900/50 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50 dark:bg-slate-900/50 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                   </div>
                 )}
@@ -169,24 +169,24 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
                   <span className="text-blue-700 font-semibold text-xs uppercase">Digestion</span>
                   <span className="font-mono font-bold text-lg text-blue-900">{digestionLevel.toFixed(1)}%</span>
                 </div>
-                <div className="flex flex-col bg-slate-50 p-2 rounded border border-slate-200">
-                  <span className="text-slate-500 font-semibold text-xs uppercase">Time Elapsed</span>
-                  <span className="font-mono font-bold text-lg text-slate-800">{timeElapsed.toFixed(1)} s</span>
+                <div className="flex flex-col bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold text-xs uppercase">Time Elapsed</span>
+                  <span className="font-mono font-bold text-lg text-slate-800 dark:text-slate-100">{timeElapsed.toFixed(1)} s</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3 w-full mt-2">
                 <button onClick={() => setIsDigesting(true)} disabled={isDigesting || digestionLevel >= 100} className="flex items-center justify-center gap-1 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"><Play className="w-4 h-4"/> Add Amylase</button>
                 <button onClick={() => setIodineAdded(true)} disabled={isDigesting} className="flex items-center justify-center gap-1 bg-yellow-600 text-white p-3 rounded-lg hover:bg-yellow-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"><Droplets className="w-4 h-4"/> Add Iodine</button>
-                <button onClick={resetStarch} className="col-span-2 flex items-center justify-center gap-1 bg-slate-200 text-slate-700 p-3 rounded-lg hover:bg-slate-300 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Tube</button>
+                <button onClick={resetStarch} className="col-span-2 flex items-center justify-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Tube</button>
               </div>
             </div>
           ) : (
             <div className="w-full flex flex-col items-center gap-6">
-               <div className="w-full bg-slate-50 p-4 rounded-lg border border-slate-100">
-                <label className="flex flex-col text-sm font-semibold mb-2 text-slate-700 gap-2">
+               <div className="w-full bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
+                <label className="flex flex-col text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200 gap-2">
                   <span>Select Sample</span>
-                  <select value={proteinSample} onChange={e => setProteinSample(e.target.value as 'egg'|'water')} className="p-2 border border-slate-300 rounded focus:ring-2 focus:ring-purple-600 outline-none" disabled={naohAdded || cuso4Added}>
+                  <select value={proteinSample} onChange={e => setProteinSample(e.target.value as 'egg'|'water')} className="p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-purple-600 outline-none" disabled={naohAdded || cuso4Added}>
                     <option value="egg">Egg White Solution</option>
                     <option value="water">Distilled Water (Control)</option>
                   </select>
@@ -202,30 +202,30 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 w-full mt-2">
-                <button onClick={() => setNaohAdded(true)} disabled={naohAdded} className="flex items-center justify-center gap-1 bg-slate-600 text-white p-3 rounded-lg hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"><Droplets className="w-4 h-4"/> Add NaOH</button>
+                <button onClick={() => setNaohAdded(true)} disabled={naohAdded} className="flex items-center justify-center gap-1 bg-slate-600 dark:bg-slate-800 text-white p-3 rounded-lg hover:bg-slate-700 dark:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"><Droplets className="w-4 h-4"/> Add NaOH</button>
                 <button onClick={() => setCuso4Added(true)} disabled={!naohAdded || cuso4Added} className="flex items-center justify-center gap-1 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"><Droplets className="w-4 h-4"/> Add CuSO₄</button>
-                <button onClick={resetProtein} className="col-span-2 flex items-center justify-center gap-1 bg-slate-200 text-slate-700 p-3 rounded-lg hover:bg-slate-300 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Tube</button>
+                <button onClick={resetProtein} className="col-span-2 flex items-center justify-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Tube</button>
               </div>
             </div>
           )}
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4 overflow-y-auto">
+          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
             <LineChart className="w-5 h-5 text-blue-600"/> Data & Analysis
           </h2>
           
-          <div className="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-200">
-             <span className="text-sm text-slate-600 font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/> Data Logger</span>
+          <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+             <span className="text-sm text-slate-600 dark:text-slate-300 font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/> Data Logger</span>
              <button onClick={recordData} disabled={activeTab !== 'starch' || digestionLevel < 100} className="bg-green-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
                Record Measurement
              </button>
           </div>
 
-          <div className="overflow-x-auto border border-slate-200 rounded-lg max-h-40">
-            <table className="w-full text-sm text-left text-slate-600">
-              <thead className="text-xs text-slate-700 uppercase bg-slate-100 sticky top-0">
+          <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-40">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+              <thead className="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-100 dark:bg-slate-800 sticky top-0">
                 <tr>
                   <th className="px-4 py-2 border-b">Trial</th>
                   <th className="px-4 py-2 border-b">Temp (°C)</th>
@@ -234,7 +234,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
               </thead>
               <tbody>
                 {dataPoints.map((dp, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-4 py-2 font-medium">{i + 1}</td>
                     <td className="px-4 py-2">{dp.temp}</td>
                     <td className="px-4 py-2">{dp.time.toFixed(1)}</td>
@@ -250,8 +250,8 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* SVG Graph */}
-          <div className="w-full h-48 bg-slate-50 rounded-lg relative border border-slate-200 mt-2">
-            <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500">Reaction Time vs Temperature</h3>
+          <div className="w-full h-48 bg-slate-50 dark:bg-slate-900 rounded-lg relative border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-2">
+            <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-slate-400">Reaction Time vs Temperature</h3>
             <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible p-6">
               {/* axes */}
               <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1"/>

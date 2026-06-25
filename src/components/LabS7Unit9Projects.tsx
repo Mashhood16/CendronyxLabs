@@ -7,16 +7,16 @@ interface LabProps {
 
 export default function LabS7Unit9Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 9: Waves and Energy Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 max-w-4xl w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-4xl w-full">
           <div className="flex items-center mb-8">
             <div className="bg-purple-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-purple-600" /></div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-800">Rubber Band Instrument</h2>
-              <p className="text-slate-500">Project Work Submission Guide</p>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100">Rubber Band Instrument</h2>
+              <p className="text-slate-500 dark:text-slate-400">Project Work Submission Guide</p>
             </div>
           </div>
 
@@ -32,9 +32,9 @@ export default function LabS7Unit9Projects({ onExit }: LabProps) {
               <li>Pluck each band and adjust the tension or length (by moving the pins) until you have a clear low, medium, high, and very high pitched note.</li>
             </ol>
 
-            <div className="bg-slate-100 p-6 rounded-xl border border-slate-300 mt-8">
-              <h4 className="text-slate-800 font-bold mt-0">Scientific Principles</h4>
-              <p className="text-slate-700 mb-0">Be prepared to explain to your teacher how the <strong>thickness</strong> and <strong>length</strong> of the rubber bands affect the frequency of vibration and the resulting pitch.</p>
+            <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl border border-slate-300 dark:border-slate-700 dark:border-slate-500 mt-8">
+              <h4 className="text-slate-800 dark:text-slate-100 font-bold mt-0">Scientific Principles</h4>
+              <p className="text-slate-700 dark:text-slate-200 mb-0">Be prepared to explain to your teacher how the <strong>thickness</strong> and <strong>length</strong> of the rubber bands affect the frequency of vibration and the resulting pitch.</p>
             </div>
           </div>
         </div>

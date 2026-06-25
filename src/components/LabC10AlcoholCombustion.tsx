@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Square, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => void }) {
   const [fuel, setFuel] = useState<'Methanol' | 'Ethanol'>('Methanol');
@@ -86,16 +87,13 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-orange-800 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">Virtual Lab: Combustion of Alcohols</h1>
-        {onExit && <button onClick={onExit} className="px-4 py-2 bg-orange-700 hover:bg-orange-600 rounded">Exit Lab</button>}
-      </div>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Virtual Lab: Combustion of Alcohols" subtitle="Measuring Enthalpy of Combustion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-1">
-        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory & Setup</h2>
-          <div className="text-slate-600 space-y-2 text-sm">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory & Setup</h2>
+          <div className="text-slate-600 dark:text-slate-300 space-y-2 text-sm">
             <p><strong>Combustion</strong> of alcohols releases heat energy (exothermic).</p>
             <div className="bg-orange-50 p-3 rounded font-mono text-center text-orange-900 border border-orange-200">
               C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O
@@ -105,7 +103,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
           </div>
           
           <div className="flex-1 overflow-auto">
-            <h3 className="font-bold text-slate-800 mb-2 mt-4">Experiment Controls</h3>
+            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2 mt-4">Experiment Controls</h3>
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-semibold flex justify-between mb-1">
@@ -127,8 +125,8 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col items-center relative">
-          <h2 className="text-xl font-bold text-slate-800 w-full border-b pb-2 mb-4">Simulation</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm border p-4 flex flex-col items-center relative">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 w-full border-b pb-2 mb-4">Simulation</h2>
           
           <div className="flex-1 w-full flex flex-col items-center justify-center relative">
             <svg viewBox="0 0 200 300" className="w-64 h-auto max-h-full drop-shadow-xl">
@@ -152,20 +150,20 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
               <text x="120" y="80" fontSize="14" fontWeight="bold" fill="#333">{waterTemp.toFixed(1)}°C</text>
             </svg>
 
-            <div className="w-full mt-4 text-xs text-slate-600 space-y-1">
+            <div className="w-full mt-4 text-xs text-slate-600 dark:text-slate-300 space-y-1">
               <div className="flex justify-between">
-                <span className="font-bold text-slate-800">Fuel Mass:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">Fuel Mass:</span>
                 <span className="font-mono">{fuelMass.toFixed(2)} g</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-bold text-slate-800">Water Temp:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">Water Temp:</span>
                 <span className="font-mono">{waterTemp.toFixed(1)} °C</span>
               </div>
             </div>
           </div>
 
           <div className="w-full mt-4 flex items-center justify-between gap-4">
-            <div className="flex-1 bg-slate-200 h-2 rounded-full overflow-hidden">
+            <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div className="bg-orange-500 h-full transition-all duration-100" style={{ width: `${(time/60)*100}%` }} />
             </div>
             <div className="text-sm font-mono">{time}s / 60s</div>
@@ -176,12 +174,12 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
-          <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Data & Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Data & Analysis</h2>
           
-          <div className="bg-slate-100 p-3 rounded flex justify-between items-center">
+          <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded flex justify-between items-center">
             <div>
-              <div className="text-xs text-slate-500 uppercase font-bold">Mass Burned</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">Mass Burned</div>
               <div className="text-2xl font-mono text-orange-700">{(initialFuelMass - fuelMass).toFixed(2)}g</div>
             </div>
             <button onClick={handleLog} disabled={time === 0} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm disabled:opacity-50">
@@ -189,9 +187,9 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
             </button>
           </div>
 
-          <div className="flex-1 overflow-auto border rounded bg-slate-50">
+          <div className="flex-1 overflow-auto border rounded bg-slate-50 dark:bg-slate-900">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-200 sticky top-0">
+              <thead className="bg-slate-200 dark:bg-slate-800 sticky top-0">
                 <tr>
                   <th className="p-2">Fuel</th>
                   <th className="p-2">Vol</th>
@@ -202,7 +200,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
               </thead>
               <tbody>
                 {logs.length === 0 ? (
-                  <tr><td colSpan={5} className="p-4 text-center text-slate-500">No data recorded yet.</td></tr>
+                  <tr><td colSpan={5} className="p-4 text-center text-slate-500 dark:text-slate-400">No data recorded yet.</td></tr>
                 ) : (
                   logs.map((log, i) => (
                     <tr key={i} className="border-b">

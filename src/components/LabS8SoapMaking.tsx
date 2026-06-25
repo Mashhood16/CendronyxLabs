@@ -28,19 +28,19 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
   };
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
+    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.2: Soap Making" subtitle="The chemical process of saponification" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
         {/* Progress Bar */}
-        <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl shadow-sm border border-slate-200">
+        <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
            {steps.map((s, i) => (
              <div key={i} className="flex flex-col items-center relative z-10 flex-1">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mb-2 ${i < step ? 'bg-emerald-500 text-white' : i === step ? 'bg-blue-500 text-white ring-4 ring-blue-100' : 'bg-slate-200 text-slate-500'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mb-2 ${i < step ? 'bg-emerald-500 text-white' : i === step ? 'bg-blue-500 text-white ring-4 ring-blue-100' : 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
                   {i < step ? '✓' : i + 1}
                 </div>
-                <div className="text-xs font-bold text-slate-600 text-center max-w-[80px]">{s.title}</div>
+                <div className="text-xs font-bold text-slate-600 dark:text-slate-300 text-center max-w-[80px]">{s.title}</div>
              </div>
            ))}
         </div>
@@ -51,25 +51,25 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="flex-1 bg-slate-50 rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
           
           {/* Step 0: Safety */}
           {step === 0 && (
             <div className="flex flex-col items-center gap-8">
-              <h2 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                 <ShieldCheck className="text-blue-500" /> Prepare for Chemistry
               </h2>
               <div className="flex gap-6">
                 <button 
                   onClick={() => setHasGloves(!hasGloves)}
-                  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGloves ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 hover:border-slate-300 text-slate-500'}`}
+                  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGloves ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-500 dark:text-slate-400'}`}
                 >
                   <div className="text-4xl">🧤</div>
                   <span className="font-bold text-sm">Gloves</span>
                 </button>
                 <button 
                   onClick={() => setHasGoggles(!hasGoggles)}
-                  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGoggles ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 hover:border-slate-300 text-slate-500'}`}
+                  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGoggles ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-500 dark:text-slate-400'}`}
                 >
                   <div className="text-4xl">🥽</div>
                   <span className="font-bold text-sm">Goggles</span>
@@ -92,7 +92,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
                     <div className="text-sm font-bold text-red-600">15g Pure Lye</div>
                  </div>
               </div>
-              <div className="w-48 h-48 bg-slate-100 rounded-b-3xl border-4 border-t-0 border-slate-300 relative flex flex-col justify-end p-2 overflow-hidden">
+              <div className="w-48 h-48 bg-slate-100 dark:bg-slate-800 rounded-b-3xl border-4 border-t-0 border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex flex-col justify-end p-2 overflow-hidden">
                 <div className="w-full h-2/3 bg-blue-100/80 rounded-b-xl border-t-2 border-white/50 backdrop-blur-sm animate-pulse" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-red-800 bg-red-100 px-2 py-1 rounded">CAUTION: Gets Hot!</div>
               </div>
@@ -102,13 +102,13 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
           {/* Step 2: Heat Oils */}
           {step === 2 && (
             <div className="flex flex-col items-center gap-4">
-              <div className="w-64 h-32 bg-slate-800 rounded-xl relative flex justify-center shadow-xl border-b-8 border-slate-900">
+              <div className="w-64 h-32 bg-slate-800 dark:bg-slate-800 rounded-xl relative flex justify-center shadow-xl border-b-8 border-slate-900 dark:border-slate-500">
                  {/* Pan */}
-                 <div className="absolute -top-8 w-48 h-16 bg-slate-400 rounded-b-xl border-x-4 border-b-4 border-slate-500 flex flex-col justify-end overflow-hidden">
+                 <div className="absolute -top-8 w-48 h-16 bg-slate-400 dark:bg-slate-800 rounded-b-xl border-x-4 border-b-4 border-slate-500 dark:border-slate-500 flex flex-col justify-end overflow-hidden">
                     <div className="w-full h-10 bg-amber-200/90" />
                  </div>
                  {/* Handle */}
-                 <div className="absolute top-[-20px] -right-16 w-20 h-4 bg-slate-900 rounded-r-full" />
+                 <div className="absolute top-[-20px] -right-16 w-20 h-4 bg-slate-900 dark:bg-slate-800 rounded-r-full" />
                  
                  {/* Fire */}
                  <div className="absolute top-4 flex gap-2">
@@ -125,8 +125,8 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
           {/* Step 3: Saponification */}
           {step === 3 && (
             <div className="flex flex-col items-center gap-4">
-              <div className="text-lg font-bold text-slate-600 mb-4">Chemical Reaction Occurring...</div>
-              <div className="w-48 h-48 bg-slate-200 rounded-full border-8 border-slate-300 relative flex items-center justify-center animate-spin-slow">
+              <div className="text-lg font-bold text-slate-600 dark:text-slate-300 mb-4">Chemical Reaction Occurring...</div>
+              <div className="w-48 h-48 bg-slate-200 dark:bg-slate-800 rounded-full border-8 border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center animate-spin-slow">
                  <div className="absolute inset-2 bg-amber-100 rounded-full mix-blend-multiply" />
                  <div className="absolute inset-4 bg-blue-100/50 rounded-full" />
                  <div className="w-32 h-32 bg-yellow-50 rounded-full flex items-center justify-center shadow-inner">

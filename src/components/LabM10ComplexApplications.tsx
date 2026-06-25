@@ -60,16 +60,16 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Complex Numbers: AC Circuit Applications" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
             <Activity /> Theory & Context
           </h2>
-          <div className="prose text-slate-700">
+          <div className="prose text-slate-700 dark:text-slate-200">
             <p>
               In Alternating Current (AC) circuits, voltage and current oscillate over time. 
               Because they can be out of phase, engineers use <strong>Complex Numbers</strong> to represent them.
@@ -82,22 +82,22 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
               <li><strong>I (Current):</strong> Complex Current (Phasor)</li>
               <li><strong>Z (Impedance):</strong> Complex resistance</li>
             </ul>
-            <div className="bg-slate-100 p-4 rounded-lg mt-4 border border-slate-200">
-              <h3 className="font-semibold text-slate-800">Impedance (Z)</h3>
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mt-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100">Impedance (Z)</h3>
               <p>Z = R + jX</p>
-              <p className="text-sm text-slate-600">R = Resistance (Real), X = Reactance (Imaginary)</p>
+              <p className="text-sm text-slate-600 dark:text-slate-300">R = Resistance (Real), X = Reactance (Imaginary)</p>
             </div>
-            <p className="mt-4 text-sm text-slate-600">
+            <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
               Note: Electrical engineers use <code>j</code> instead of <code>i</code> for the imaginary unit to avoid confusion with current!
             </p>
           </div>
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
           <h2 className="text-xl font-bold text-indigo-800 mb-4">Oscilloscope & Phasor Simulation</h2>
           
-          <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200">
+          <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
             <div>
               <label className="block text-sm font-semibold mb-1">Resistance (R): {resistance} Ω</label>
               <input type="range" min="0" max="20" value={resistance} onChange={e => setResistance(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -118,7 +118,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="relative w-full h-48 bg-slate-900 rounded-lg overflow-hidden border-2 border-slate-700 shadow-inner">
+          <div className="relative w-full h-48 bg-slate-900 dark:bg-slate-800 rounded-lg overflow-hidden border-2 border-slate-700 dark:border-slate-500 shadow-inner">
             <svg viewBox="0 0 400 200" className="w-full h-full">
               {/* Grid lines */}
               <line x1="0" y1="100" x2="400" y2="100" stroke="#334155" strokeWidth="2" />
@@ -138,15 +138,15 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-indigo-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-6">
             <h3 className="font-semibold text-indigo-900 mb-2">Calculate Complex Voltage</h3>
-            <p className="text-slate-700 mb-4">
+            <p className="text-slate-700 dark:text-slate-200 mb-4">
               Using the simulator values, calculate the resulting Voltage <code>E = I × Z</code> in standard complex form <code>a + bj</code>.
             </p>
-            <div className="bg-slate-50 p-3 rounded border border-slate-200 mb-4 font-mono text-sm">
+            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-4 font-mono text-sm">
               <p>Z = {resistance} {reactance >= 0 ? '+' : '-'} {Math.abs(reactance)}j Ω</p>
               <p>I = {currentReal} {currentImag >= 0 ? '+' : '-'} {Math.abs(currentImag)}j A</p>
             </div>
@@ -157,7 +157,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
                 type="number" 
                 value={ansReal} 
                 onChange={e => setAnsReal(e.target.value)}
-                className="w-20 p-2 border border-slate-300 rounded focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-20 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-indigo-500 outline-none"
                 placeholder="Real"
               />
               <span className="font-semibold">+</span>
@@ -165,7 +165,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
                 type="number" 
                 value={ansImag} 
                 onChange={e => setAnsImag(e.target.value)}
-                className="w-20 p-2 border border-slate-300 rounded focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-20 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-indigo-500 outline-none"
                 placeholder="Imag"
               />
               <span className="font-semibold">j V</span>

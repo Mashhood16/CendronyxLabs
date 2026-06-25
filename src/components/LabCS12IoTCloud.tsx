@@ -82,27 +82,27 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} variant="dark" title="Lab 12.3: Distributed IoT & Blockchain" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 h-full min-h-0">
                 {/* Column 1 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
                         <BookOpen className="text-indigo-500" /> Theory & Context
                     </h2>
-                    <div className="text-sm text-slate-700 space-y-4">
+                    <div className="text-sm text-slate-700 dark:text-slate-200 space-y-4">
                         <p><strong>Internet of Things (IoT)</strong> systems connect physical sensors to the Cloud to monitor real-world metrics like Air Quality (PM2.5).</p>
                         
-                        <h3 className="font-semibold text-slate-800 mt-4">The Trust Problem</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">The Trust Problem</h3>
                         <p>How do we ensure that collected data is never secretly altered (tampered)? We use a <strong>Blockchain Ledger</strong>.</p>
                         
-                        <h3 className="font-semibold text-slate-800 mt-4">Blockchain Mechanics</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Blockchain Mechanics</h3>
                         <p>Each time data is logged, it is packaged into a Block.</p>
                         <ul className="list-disc pl-5 space-y-1">
                             <li>Each block calculates a cryptographic <strong>Hash</strong> based on its data and the previous block's hash.</li>
-                            <li><span className="font-mono bg-slate-100 px-1 rounded text-xs">Hash = f(Data, PrevHash)</span></li>
+                            <li><span className="font-mono bg-slate-100 dark:bg-slate-800 px-1 rounded text-xs">Hash = f(Data, PrevHash)</span></li>
                         </ul>
                         <p>Because each block includes the hash of the block before it, they form an unbreakable chain. If an attacker modifies an old block's data, its Hash changes. This breaks the link to the next block, immediately exposing the tampering.</p>
                         <p>Because the blockchain is distributed across many decentralized nodes, attackers cannot simply recalculate and update the entire chain everywhere simultaneously.</p>
@@ -110,18 +110,18 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
                         <Database className="text-indigo-500" /> IoT Network & Ledger
                     </h2>
 
                     <div className="grid grid-cols-3 gap-4 mb-4 shrink-0">
                         {(['s1', 's2', 's3'] as const).map(s => (
-                            <div key={s} className="bg-slate-50 p-4 rounded border border-slate-200 text-center relative shadow-sm">
+                            <div key={s} className="bg-slate-50 dark:bg-slate-900 p-4 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-center relative shadow-sm">
                                 <Cpu className="mx-auto text-indigo-500 mb-2" size={24} />
-                                <h3 className="font-bold text-slate-700 uppercase">{s}</h3>
-                                <div className="text-xl lg:text-2xl font-black text-slate-800 my-2">
-                                    {sensors[s]} <span className="text-xs text-slate-500 font-normal">PM2.5</span>
+                                <h3 className="font-bold text-slate-700 dark:text-slate-200 uppercase">{s}</h3>
+                                <div className="text-xl lg:text-2xl font-black text-slate-800 dark:text-slate-100 my-2">
+                                    {sensors[s]} <span className="text-xs text-slate-500 dark:text-slate-400 font-normal">PM2.5</span>
                                 </div>
                                 <button 
                                     onClick={() => addBlock(s.toUpperCase(), sensors[s])}
@@ -133,40 +133,40 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                         ))}
                     </div>
 
-                    <div className="flex flex-col gap-4 overflow-y-auto p-2 bg-slate-100 rounded-lg shadow-inner flex-1 border border-slate-200">
+                    <div className="flex flex-col gap-4 overflow-y-auto p-2 bg-slate-100 dark:bg-slate-800 rounded-lg shadow-inner flex-1 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                         {blocks.map((b, i) => {
                             const isPrevValid = i === 0 || b.prevHash === blocks[i-1].hash;
                             return (
-                                <div key={b.index} className={`relative p-4 rounded border-2 shadow-sm transition-colors ${!isPrevValid ? 'border-red-500 bg-red-50' : b.tampered ? 'border-orange-500 bg-orange-50' : 'border-emerald-500 bg-slate-50'}`}>
+                                <div key={b.index} className={`relative p-4 rounded border-2 shadow-sm transition-colors ${!isPrevValid ? 'border-red-500 bg-red-50' : b.tampered ? 'border-orange-500 bg-orange-50' : 'border-emerald-500 bg-slate-50 dark:bg-slate-900'}`}>
                                     {i > 0 && (
-                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 bg-slate-50 rounded-full">
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 bg-slate-50 dark:bg-slate-900 rounded-full">
                                             <LinkIcon className={isPrevValid ? 'text-emerald-500' : 'text-red-500'} size={20} />
                                         </div>
                                     )}
-                                    <div className="flex justify-between items-center border-b border-slate-200 pb-2 mb-2">
-                                        <h4 className="font-bold text-sm text-slate-800">Block {b.index}</h4>
+                                    <div className="flex justify-between items-center border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2 mb-2">
+                                        <h4 className="font-bold text-sm text-slate-800 dark:text-slate-100">Block {b.index}</h4>
                                         {b.tampered && <span className="text-xs font-bold text-orange-600 flex items-center gap-1"><ShieldAlert size={14}/> Tampered Data</span>}
                                         {!isPrevValid && <span className="text-xs font-bold text-red-600 flex items-center gap-1"><ShieldAlert size={14}/> Broken Link</span>}
                                     </div>
                                     <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-xs">
-                                        <div><strong className="text-slate-500 uppercase text-[10px]">Sensor ID</strong><br/><span className="font-medium text-sm">{b.sensor}</span></div>
+                                        <div><strong className="text-slate-500 dark:text-slate-400 uppercase text-[10px]">Sensor ID</strong><br/><span className="font-medium text-sm">{b.sensor}</span></div>
                                         <div>
-                                            <strong className="text-slate-500 uppercase text-[10px]">Data (PM2.5)</strong><br/>
+                                            <strong className="text-slate-500 dark:text-slate-400 uppercase text-[10px]">Data (PM2.5)</strong><br/>
                                             <input 
                                                 type="number" 
-                                                className={`w-20 p-1 border rounded text-sm ${b.tampered ? 'bg-orange-100 border-orange-300' : 'bg-slate-50 border-slate-300'} hover:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all cursor-pointer`} 
+                                                className={`w-20 p-1 border rounded text-sm ${b.tampered ? 'bg-orange-100 border-orange-300' : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500'} hover:border-indigo-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-all cursor-pointer`} 
                                                 value={b.pm25} 
                                                 onChange={(e) => tamperBlock(b.index, parseInt(e.target.value) || 0)}
                                                 title="Click to edit and simulate tampering"
                                             />
                                         </div>
                                         <div className={!isPrevValid ? 'text-red-600' : ''}>
-                                            <strong className="text-slate-500 uppercase text-[10px] block mb-0.5">Previous Hash</strong>
-                                            <span className="font-mono bg-slate-200/50 px-1 py-0.5 rounded">{b.prevHash}</span>
+                                            <strong className="text-slate-500 dark:text-slate-400 uppercase text-[10px] block mb-0.5">Previous Hash</strong>
+                                            <span className="font-mono bg-slate-200 dark:bg-slate-800/50 px-1 py-0.5 rounded">{b.prevHash}</span>
                                         </div>
                                         <div>
-                                            <strong className="text-slate-500 uppercase text-[10px] block mb-0.5">Current Hash</strong>
-                                            <span className="font-mono bg-slate-200/50 px-1 py-0.5 rounded">{b.hash}</span>
+                                            <strong className="text-slate-500 dark:text-slate-400 uppercase text-[10px] block mb-0.5">Current Hash</strong>
+                                            <span className="font-mono bg-slate-200 dark:bg-slate-800/50 px-1 py-0.5 rounded">{b.hash}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -176,30 +176,30 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
                         <CheckCircle className="text-indigo-500" /> Assessment & Analysis
                     </h2>
                     
                     <div className="space-y-4 flex-1 overflow-y-auto text-sm pr-2">
-                        <div className="bg-slate-50 p-3 rounded text-slate-600 border border-slate-200">
+                        <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                             <strong>Lab Formula:</strong> <br/>
                             <code className="text-xs">Hash = (Data &times; 7 + PrevHash &times; 13) % 10000</code>
                         </div>
                         
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">1. Given Data=50, PrevHash=100. Calculate the exact Hash:</label>
-                            <input type="text" value={ansHash} onChange={e => setAnsHash(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">1. Given Data=50, PrevHash=100. Calculate the exact Hash:</label>
+                            <input type="text" value={ansHash} onChange={e => setAnsHash(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
                         
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">2. Log a few blocks. If you tamper with Block 2's data by editing the PM2.5 value, which block index is the FIRST to show a broken PrevHash link? (Enter number)</label>
-                            <input type="text" value={ansBroken} onChange={e => setAnsBroken(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">2. Log a few blocks. If you tamper with Block 2's data by editing the PM2.5 value, which block index is the FIRST to show a broken PrevHash link? (Enter number)</label>
+                            <input type="text" value={ansBroken} onChange={e => setAnsBroken(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
                         
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">3. Is it possible for a hacker to silently tamper a block without breaking the chain if copies of the ledger exist on thousands of decentralized nodes? (Yes/No)</label>
-                            <input type="text" value={ansDecentralized} onChange={e => setAnsDecentralized(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">3. Is it possible for a hacker to silently tamper a block without breaking the chain if copies of the ledger exist on thousands of decentralized nodes? (Yes/No)</label>
+                            <input type="text" value={ansDecentralized} onChange={e => setAnsDecentralized(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
 
                         <button onClick={checkAnswers} className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
@@ -212,7 +212,7 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                             </div>
                         )}
 
-                        <div className="pt-4 border-t border-slate-200 mt-6">
+                        <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
                             <button 
                                 onClick={() => {
                                     let score = 0;

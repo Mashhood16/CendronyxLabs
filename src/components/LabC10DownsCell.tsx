@@ -80,37 +80,37 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
   const maxMass = logs.length > 0 ? Math.max(...logs.map(l => l.massNa), 1) : 1;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Electrolysis of Molten NaCl (Downs Cell)" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-indigo-600" />
               Theory
             </h2>
-            <p className="text-sm text-slate-600 mb-2">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
               The Downs cell is used for the commercial extraction of sodium by the electrolysis of molten sodium chloride (NaCl).
             </p>
-            <div className="bg-slate-100 p-4 rounded-lg font-mono text-sm mb-2 text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-slate-200">
               <div><strong>Cathode (-):</strong> Na⁺ + e⁻ → Na(l)</div>
               <div><strong>Anode (+):</strong> 2Cl⁻ → Cl₂(g) + 2e⁻</div>
-              <div className="mt-2 text-indigo-600 font-bold border-t border-slate-300 pt-2">
+              <div className="mt-2 text-indigo-600 font-bold border-t border-slate-300 dark:border-slate-700 dark:border-slate-500 pt-2">
                 2NaCl(l) → 2Na(l) + Cl₂(g)
               </div>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               Calcium chloride is often added to lower the melting point. Solid NaCl does not conduct electricity as its ions are fixed in a lattice.
             </p>
           </div>
 
           <div className="flex-1">
-            <h2 className="text-lg font-semibold text-slate-800 mb-4">Experiment Setup</h2>
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Experiment Setup</h2>
             <div className="space-y-6">
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-2">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   <span>Power Supply Voltage</span>
                   <span>{voltage.toFixed(1)} V</span>
                 </label>
@@ -124,7 +124,7 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
                   disabled={isRunning}
                   className="w-full accent-indigo-600"
                 />
-                <p className="text-xs text-slate-500 mt-1">Adjusts the potential difference across the electrodes.</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Adjusts the potential difference across the electrodes.</p>
               </div>
 
               <div className="flex gap-4">
@@ -137,7 +137,7 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
                 </button>
                 <button
                   onClick={reset}
-                  className="p-3 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"
+                  className="p-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg transition-colors"
                   title="Reset Experiment"
                 >
                   <RefreshCw className="w-5 h-5" />
@@ -147,14 +147,14 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
-          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800">Simulation View</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center relative">
+          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-slate-100">Simulation View</h2>
           
           <div className="absolute top-6 right-6 text-right">
             <div className="text-2xl font-mono font-bold text-indigo-600">{(time / 60).toFixed(1)} min</div>
-            <div className="text-sm text-slate-500">Elapsed Time</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">Elapsed Time</div>
             <div className="text-lg font-mono font-bold text-emerald-600 mt-2">{current.toFixed(2)} A</div>
-            <div className="text-sm text-slate-500">Current Flow</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400">Current Flow</div>
           </div>
 
           <svg width={svgW} height={svgH} className="mt-8" viewBox="0 0 400 500">
@@ -217,19 +217,19 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
           </svg>
           
           <div className="absolute bottom-6 left-6 right-6 flex justify-between px-4">
-            <div className="bg-slate-100 px-3 py-1 rounded text-sm font-semibold text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-slate-200">
               Na Mass: {massNa.toFixed(2)} g
             </div>
-            <div className="bg-slate-100 px-3 py-1 rounded text-sm font-semibold text-slate-700">
+            <div className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-slate-200">
               Cl₂ Vol: {volCl2.toFixed(0)} mL
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6 overflow-y-auto">
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-slate-800">Data Collection</h2>
+              <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Data Collection</h2>
               <button
                 onClick={recordData}
                 disabled={!isRunning}
@@ -240,9 +240,9 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
               </button>
             </div>
             
-            <div className="overflow-x-auto border border-slate-200 rounded-lg">
+            <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <tr>
                     <th className="px-4 py-2">Time (s)</th>
                     <th className="px-4 py-2">Current (A)</th>
@@ -257,7 +257,7 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
                     </tr>
                   )}
                   {logs.map(log => (
-                    <tr key={log.id} className="border-b border-slate-100 hover:bg-slate-50">
+                    <tr key={log.id} className="border-b border-slate-100 hover:bg-slate-50 dark:bg-slate-900">
                       <td className="px-4 py-2 font-mono">{log.time}</td>
                       <td className="px-4 py-2 font-mono">{log.current.toFixed(2)}</td>
                       <td className="px-4 py-2 font-mono">{log.massNa}</td>
@@ -271,8 +271,8 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
 
           {logs.length > 1 && (
             <div>
-              <h3 className="text-sm font-semibold text-slate-700 mb-2">Graph: Mass of Na vs Time</h3>
-              <div className="w-full h-48 bg-slate-50 border border-slate-200 rounded-lg relative p-2">
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Graph: Mass of Na vs Time</h3>
+              <div className="w-full h-48 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg relative p-2">
                 <svg width="100%" height="100%" viewBox="0 0 300 150" preserveAspectRatio="none">
                   <line x1="20" y1="130" x2="280" y2="130" stroke="#94a3b8" strokeWidth="2" />
                   <line x1="20" y1="20" x2="20" y2="130" stroke="#94a3b8" strokeWidth="2" />

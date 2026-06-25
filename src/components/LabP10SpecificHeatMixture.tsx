@@ -86,18 +86,18 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 10: Specific Heat (Method of Mixtures)" subtitle="Determine specific heat capacity by analyzing thermal equilibrium." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Panel: Controls & Theory */}
         <div className="lg:col-span-1 flex flex-col gap-6">
-          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
-            <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory</h2>
-            <div className="text-sm text-slate-600 space-y-3">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory</h2>
+            <div className="text-sm text-slate-600 dark:text-slate-300 space-y-3">
               <p>When a hot solid is placed in cold water, heat is transferred until thermal equilibrium is reached.</p>
-              <div className="bg-slate-100 p-3 rounded font-mono text-center text-xs text-slate-800">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded font-mono text-center text-xs text-slate-800 dark:text-slate-100">
                 Heat Lost = Heat Gained<br/>
                 m_s c_s (T_i - T_eq) = (m_w c_w + m_c c_c)(T_eq - T_w)
               </div>
@@ -109,18 +109,18 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
-            <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Setup</h2>
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Setup</h2>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Select Solid</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Select Solid</label>
                 <div className="flex gap-2">
                   {MATERIALS.map(m => (
                     <button 
                       key={m.id}
                       onClick={() => { setMaterial(m); reset(); }}
-                      className={`flex-1 py-1.5 rounded text-sm font-medium border ${material.id === m.id ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-50'}`}
+                      className={`flex-1 py-1.5 rounded text-sm font-medium border ${material.id === m.id ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-700 dark:border-slate-500 hover:bg-slate-50 dark:bg-slate-900'}`}
                       disabled={time > 0}
                     >
                       {m.id}
@@ -130,12 +130,12 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Mass of Solid (g): {massSolid}</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Mass of Solid (g): {massSolid}</label>
                 <input type="range" min="20" max="100" step="10" value={massSolid} onChange={e => setMassSolid(Number(e.target.value))} disabled={time > 0} className="w-full" />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Mass of Water (g): {massWater}</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Mass of Water (g): {massWater}</label>
                 <input type="range" min="50" max="200" step="10" value={massWater} onChange={e => setMassWater(Number(e.target.value))} disabled={time > 0} className="w-full" />
               </div>
 
@@ -150,16 +150,16 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
-            <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Analysis</h2>
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Analysis</h2>
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-slate-700">Calculated c_s (J/kg°C):</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">Calculated c_s (J/kg°C):</label>
               <div className="flex gap-2">
                 <input 
                   type="number" 
                   value={answerC}
                   onChange={e => setAnswerC(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded focus:outline-none focus:border-blue-500 font-mono"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-blue-500 font-mono"
                   placeholder="e.g. 400"
                 />
                 <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">Check</button>
@@ -175,9 +175,9 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
 
         {/* Center Panel: Simulation & Graph */}
         <div className="lg:col-span-2 flex flex-col gap-6">
-          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[300px]">
-            <h3 className="absolute top-4 left-4 font-bold text-slate-700">Calorimeter Simulation</h3>
-            <div className="absolute top-4 right-4 bg-slate-100 px-3 py-1 rounded text-sm font-mono border border-slate-200">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative min-h-[300px]">
+            <h3 className="absolute top-4 left-4 font-bold text-slate-700 dark:text-slate-200">Calorimeter Simulation</h3>
+            <div className="absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded text-sm font-mono border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               Time: {time}s
             </div>
             
@@ -185,12 +185,12 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
                {/* Hot Water Bath */}
                <div className={`transition-opacity duration-500 ${time > 0 ? 'opacity-30' : 'opacity-100'} flex flex-col items-center`}>
                  <div className="text-sm font-bold text-red-600 mb-2">Boiling Water</div>
-                 <div className="w-24 h-32 border-4 border-slate-300 rounded-b-xl border-t-0 bg-blue-50/50 flex items-end justify-center pb-2 relative">
+                 <div className="w-24 h-32 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-xl border-t-0 bg-blue-50/50 flex items-end justify-center pb-2 relative">
                    <div className="w-full h-24 bg-red-200/50 absolute bottom-0"></div>
-                   <div className="w-10 h-10 bg-slate-800 rounded shadow-md z-10 flex items-center justify-center text-white text-xs">
+                   <div className="w-10 h-10 bg-slate-800 dark:bg-slate-800 rounded shadow-md z-10 flex items-center justify-center text-white text-xs">
                      {massSolid}g
                    </div>
-                   <div className="absolute -right-16 top-0 w-2 h-24 bg-slate-50 border border-slate-400 rounded-full flex items-end">
+                   <div className="absolute -right-16 top-0 w-2 h-24 bg-slate-50 dark:bg-slate-900 border border-slate-400 dark:border-slate-500 rounded-full flex items-end">
                      <div className="w-full h-[90%] bg-red-500 rounded-full"></div>
                      <span className="absolute -right-10 top-0 text-xs font-mono">100°C</span>
                    </div>
@@ -200,33 +200,33 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
                {/* Calorimeter */}
                <div className="flex flex-col items-center">
                  <div className="text-sm font-bold text-blue-600 mb-2">Calorimeter</div>
-                 <div className="w-32 h-40 bg-slate-300 rounded-xl border-4 border-slate-400 relative flex items-end justify-center pb-2 overflow-hidden shadow-inner">
+                 <div className="w-32 h-40 bg-slate-300 dark:bg-slate-800 rounded-xl border-4 border-slate-400 dark:border-slate-500 relative flex items-end justify-center pb-2 overflow-hidden shadow-inner">
                    <div className="w-full absolute bottom-0 bg-blue-300/80 transition-all duration-300" style={{ height: `${(massWater / 200) * 80}%` }}></div>
                    
-                   <div className="absolute top-2 right-4 w-2 h-32 bg-slate-50/80 border border-slate-400 rounded-full flex items-end z-20">
+                   <div className="absolute top-2 right-4 w-2 h-32 bg-slate-50 dark:bg-slate-900/80 border border-slate-400 dark:border-slate-500 rounded-full flex items-end z-20">
                      <div className="w-full bg-red-500 rounded-full transition-all duration-300" style={{ height: `${(tempWater / 100) * 100}%` }} />
                    </div>
 
                    {time > 0 && (
-                     <div className={`w-10 h-10 bg-slate-800 rounded shadow-md z-10 transition-all duration-1000 flex items-center justify-center text-white text-xs ${time < 5 ? 'absolute top-0 opacity-50' : 'absolute bottom-2 opacity-100'}`}>
+                     <div className={`w-10 h-10 bg-slate-800 dark:bg-slate-800 rounded shadow-md z-10 transition-all duration-1000 flex items-center justify-center text-white text-xs ${time < 5 ? 'absolute top-0 opacity-50' : 'absolute bottom-2 opacity-100'}`}>
                        {massSolid}g
                      </div>
                    )}
                  </div>
-                 <div className="mt-4 font-mono font-bold text-2xl text-slate-800 bg-slate-100 px-4 py-2 rounded-lg border border-slate-300">
+                 <div className="mt-4 font-mono font-bold text-2xl text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500">
                    {tempWater.toFixed(1)} °C
                  </div>
                </div>
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col flex-1 min-h-[250px]">
-            <h3 className="font-bold text-slate-700 mb-2">Cooling Curve / Data Log</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col flex-1 min-h-[250px]">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Cooling Curve / Data Log</h3>
             <div className="flex flex-col md:flex-row gap-4 h-full">
               {/* Data Table */}
-              <div className="w-full md:w-1/3 border border-slate-200 rounded overflow-y-auto max-h-[200px]">
+              <div className="w-full md:w-1/3 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded overflow-y-auto max-h-[200px]">
                 <table className="w-full text-sm text-left">
-                  <thead className="bg-slate-100 text-slate-600 sticky top-0">
+                  <thead className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 sticky top-0">
                     <tr>
                       <th className="py-2 px-3 font-medium">Time (s)</th>
                       <th className="py-2 px-3 font-medium">Temp (°C)</th>
@@ -247,9 +247,9 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
               </div>
 
               {/* Graph */}
-              <div className="w-full md:w-2/3 border border-slate-200 rounded relative bg-slate-50 overflow-hidden">
-                <div className="absolute top-2 left-2 text-xs font-bold text-slate-500 rotate-0">Temp (°C)</div>
-                <div className="absolute bottom-2 right-2 text-xs font-bold text-slate-500">Time (s)</div>
+              <div className="w-full md:w-2/3 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded relative bg-slate-50 dark:bg-slate-900 overflow-hidden">
+                <div className="absolute top-2 left-2 text-xs font-bold text-slate-500 dark:text-slate-400 rotate-0">Temp (°C)</div>
+                <div className="absolute bottom-2 right-2 text-xs font-bold text-slate-500 dark:text-slate-400">Time (s)</div>
                 
                 <div className="absolute left-2 top-10 text-[10px] text-slate-400">100</div>
                 <div className="absolute left-2 bottom-8 text-[10px] text-slate-400">20</div>

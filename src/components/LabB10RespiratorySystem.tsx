@@ -23,26 +23,26 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       {/* Top Header */}
       <LabHeader onExit={onExit} title="Lab B10.3: Respiratory Mechanics" subtitle="Gas Exchange & Boyle's Law Model" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-sky-100 text-sky-600 rounded-lg"><BookOpen className="w-6 h-6" /></div>
-            <h2 className="text-xl font-bold text-slate-800">Theory & Context</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Theory & Context</h2>
           </div>
           <div className="prose prose-slate text-sm flex-grow overflow-y-auto pr-2">
-            <h3 className="font-semibold text-slate-800">1. Testing Exhaled Air</h3>
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100">1. Testing Exhaled Air</h3>
             <p>
               Cellular respiration produces Carbon Dioxide (CO₂) as a waste product, which is expelled from the body via the lungs. 
               We can test for the presence of CO₂ using <strong>limewater</strong> (calcium hydroxide solution). 
               When CO₂ bubbles through limewater, it reacts to form calcium carbonate (CaCO₃), an insoluble white precipitate that turns the clear solution "milky" or cloudy.
             </p>
-            <h3 className="font-semibold text-slate-800 mt-4">2. Mechanics of Breathing</h3>
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">2. Mechanics of Breathing</h3>
             <p>
               Breathing relies on <strong>Boyle's Law</strong>, which states that the pressure of a gas is inversely proportional to its volume (P ∝ 1/V) at a constant temperature.
               When you inhale, the diaphragm muscle contracts and pulls downward. This increases the volume of the thoracic cavity (chest). 
@@ -52,23 +52,23 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col relative overflow-hidden">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Activity className="w-6 h-6" /></div>
-            <h2 className="text-xl font-bold text-slate-800">Interactive Simulator</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Interactive Simulator</h2>
           </div>
           
           <div className="flex flex-col gap-6 flex-grow overflow-y-auto pr-2 pb-8">
             
             {/* Station 1: Limewater */}
-            <div className="bg-slate-50 rounded-xl border border-slate-200 p-4">
-              <h3 className="font-semibold text-slate-800 mb-2">Station 1: CO₂ Indicator</h3>
-              <p className="text-xs text-slate-500 mb-4">Exhale into the tube to bubble gas through clear limewater.</p>
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Station 1: CO₂ Indicator</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Exhale into the tube to bubble gas through clear limewater.</p>
               
               <div className="flex items-center justify-center gap-8">
-                <div className="relative w-24 h-32 bg-slate-50 border-b-4 border-x-4 border-slate-300 rounded-b-xl overflow-hidden flex flex-col justify-end">
+                <div className="relative w-24 h-32 bg-slate-50 dark:bg-slate-900 border-b-4 border-x-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-xl overflow-hidden flex flex-col justify-end">
                   {/* Tube */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-24 bg-slate-300 rounded-b-full z-10" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-24 bg-slate-300 dark:bg-slate-800 rounded-b-full z-10" />
                   
                   {/* Limewater Liquid */}
                   <div 
@@ -83,8 +83,8 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
                     {/* Bubbles */}
                     {exhales > 0 && (
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 animate-bounce">
-                          <div className="w-1.5 h-1.5 rounded-full bg-slate-50 shadow-sm" />
-                          <div className="w-2 h-2 rounded-full bg-slate-50 shadow-sm" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-slate-50 dark:bg-slate-900 shadow-sm" />
+                          <div className="w-2 h-2 rounded-full bg-slate-50 dark:bg-slate-900 shadow-sm" />
                       </div>
                     )}
                   </div>
@@ -94,7 +94,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
                    <button onClick={() => setExhales(prev => prev + 1)} className="px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 text-sm font-medium transition-colors flex items-center justify-center gap-2">
                      <Wind className="w-4 h-4"/> Exhale Gas
                    </button>
-                   <button onClick={() => setExhales(0)} className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 text-sm font-medium transition-colors">
+                   <button onClick={() => setExhales(0)} className="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 text-sm font-medium transition-colors">
                      Replace Limewater
                    </button>
                 </div>
@@ -102,14 +102,14 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
             </div>
 
             {/* Station 2: Bell Jar Model */}
-            <div className="bg-slate-50 rounded-xl border border-slate-200 p-4">
-              <h3 className="font-semibold text-slate-800 mb-2">Station 2: Bell Jar Lung Model</h3>
-              <p className="text-xs text-slate-500 mb-4">Pull the rubber diaphragm down to observe changes in volume and pressure.</p>
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Station 2: Bell Jar Lung Model</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Pull the rubber diaphragm down to observe changes in volume and pressure.</p>
               
               <div className="flex items-start justify-between px-2 gap-4">
                 
                 {/* Stats Panel */}
-                <div className="flex flex-col gap-4 text-xs font-mono bg-slate-800 text-emerald-400 p-3 rounded-lg shadow-inner w-32">
+                <div className="flex flex-col gap-4 text-xs font-mono bg-slate-800 dark:bg-slate-800 text-emerald-400 p-3 rounded-lg shadow-inner w-32">
                   <div>
                     <span className="text-slate-400 block">Thoracic Vol</span>
                     <span className="text-lg">{volume} mL</span>
@@ -123,12 +123,12 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
                 {/* Bell Jar Container */}
                 <div className="relative w-32 h-48 mt-2 mx-auto">
                   {/* Glass Jar */}
-                  <div className="absolute inset-0 bg-blue-50/40 border-4 border-slate-300 rounded-t-[3rem] border-b-0 overflow-hidden" />
+                  <div className="absolute inset-0 bg-blue-50/40 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-t-[3rem] border-b-0 overflow-hidden" />
                   
                   {/* Trachea & Bronchi */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-12 bg-slate-600 rounded-t-sm z-10" />
-                  <div className="absolute top-12 left-1/2 -translate-x-[6px] w-2 h-8 bg-slate-600 -rotate-45 origin-top z-10" />
-                  <div className="absolute top-12 left-1/2 w-2 h-8 bg-slate-600 rotate-45 origin-top z-10" />
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-12 bg-slate-600 dark:bg-slate-800 rounded-t-sm z-10" />
+                  <div className="absolute top-12 left-1/2 -translate-x-[6px] w-2 h-8 bg-slate-600 dark:bg-slate-800 -rotate-45 origin-top z-10" />
+                  <div className="absolute top-12 left-1/2 w-2 h-8 bg-slate-600 dark:bg-slate-800 rotate-45 origin-top z-10" />
 
                   {/* Lungs (Balloons) */}
                   <div 
@@ -168,42 +168,42 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><Edit3 className="w-6 h-6" /></div>
-            <h2 className="text-xl font-bold text-slate-800">Assessment</h2>
+            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">Assessment</h2>
           </div>
           
           <div className="flex-grow flex flex-col gap-6 overflow-y-auto pr-2">
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-slate-700">
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 1. What specific chemical product causes the limewater to turn cloudy, and what does this prove about human exhaled air?
               </label>
               <textarea 
                 value={q1}
                 onChange={e => setQ1(e.target.value)}
                 placeholder="Name the gas and the resulting precipitate..."
-                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none resize-none text-sm"
+                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none resize-none text-sm"
                 rows={4}
               />
             </div>
             
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-slate-700">
+              <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 2. Explain how pulling the diaphragm down causes the balloons to inflate, making sure to reference Boyle's Law.
               </label>
               <textarea 
                 value={q2}
                 onChange={e => setQ2(e.target.value)}
                 placeholder="Relate volume and pressure..."
-                className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-sm"
+                className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-sm"
                 rows={4}
               />
             </div>
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-3 bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-slate-800 dark:bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-700 dark:bg-slate-800 transition-colors flex items-center justify-center gap-2"
             >
               <CheckCircle className="w-5 h-5" /> Check Answers
             </button>

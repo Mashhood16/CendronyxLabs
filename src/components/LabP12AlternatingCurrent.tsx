@@ -55,7 +55,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
     }
     
     return (
-      <svg viewBox="0 0 400 300" className="w-full h-full bg-slate-900 rounded-lg shadow-inner">
+      <svg viewBox="0 0 400 300" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
         {/* Grid lines */}
         <line x1="0" y1="50" x2="400" y2="50" stroke="#333" strokeDasharray="4" />
         <text x="5" y="45" fill="#666" fontSize="10">250V</text>
@@ -82,18 +82,18 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
+    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none overflow-hidden">
       <LabHeader onExit={onExit} title="Lab P12.3: Circuit Engineering (AC to DC)" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-y-auto">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
           <div className="flex items-center mb-4 text-orange-600">
             <Power className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-bold">Theory & Context</h2>
           </div>
-          <div className="text-slate-700 space-y-4 text-sm leading-relaxed overflow-y-auto flex-1 pr-2">
+          <div className="text-slate-700 dark:text-slate-200 space-y-4 text-sm leading-relaxed overflow-y-auto flex-1 pr-2">
             <p>
               Electronic devices (like laptops and phones) require steady <strong>Direct Current (DC)</strong>, 
               but the power grid delivers <strong>Alternating Current (AC)</strong>. Converting AC to DC requires several steps.
@@ -127,7 +127,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center text-orange-600">
               <Settings2 className="w-6 h-6 mr-2" />
@@ -135,43 +135,43 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
             </div>
           </div>
 
-          <div className="h-64 mb-6 rounded-lg overflow-hidden border border-slate-800 relative">
+          <div className="h-64 mb-6 rounded-lg overflow-hidden border border-slate-800 dark:border-slate-500 relative">
             {renderSimulationSVG()}
           </div>
 
           <div className="flex-1 space-y-4">
-            <div className="space-y-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <div className="flex items-center justify-between bg-slate-50 p-2 rounded border border-slate-200 shadow-sm">
-                <span className="text-sm font-bold text-slate-700">Filter Capacitor</span>
+            <div className="space-y-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="flex items-center justify-between bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+                <span className="text-sm font-bold text-slate-700 dark:text-slate-200">Filter Capacitor</span>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="sr-only peer" checked={filterEnabled} onChange={(e) => setFilterEnabled(e.target.checked)} />
-                  <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
+                  <div className="w-11 h-6 bg-slate-200 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 dark:bg-slate-900 after:border-slate-300 dark:border-slate-700 dark:border-slate-500 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
                 </label>
               </div>
 
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>AC Frequency</span>
                   <span className="text-orange-600 font-bold">{frequency} Hz</span>
                 </label>
                 <input type="range" min="10" max="100" step="10" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-orange-600" />
               </div>
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Peak Voltage</span>
                   <span className="text-orange-600 font-bold">{peakVoltage} V</span>
                 </label>
                 <input type="range" min="10" max="200" step="10" value={peakVoltage} onChange={(e) => setPeakVoltage(Number(e.target.value))} className="w-full accent-orange-600" />
               </div>
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Filter Capacitance</span>
                   <span className="text-orange-600 font-bold">{capacitance} μF</span>
                 </label>
                 <input type="range" min="10" max="2000" step="50" value={capacitance} onChange={(e) => setCapacitance(Number(e.target.value))} className="w-full accent-orange-600" disabled={!filterEnabled} />
               </div>
               <div>
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Load Resistance</span>
                   <span className="text-orange-600 font-bold">{loadResistance} Ω</span>
                 </label>
@@ -182,7 +182,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Right Column: Assessment & Data */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
           <div className="flex items-center justify-between mb-4 text-orange-600">
             <div className="flex items-center">
               <Database className="w-6 h-6 mr-2" />
@@ -193,9 +193,9 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
             </button>
           </div>
 
-          <div className="max-h-40 overflow-y-auto mb-6 border border-slate-200 rounded-lg">
-            <table className="w-full text-sm text-left text-slate-600">
-              <thead className="text-xs text-slate-700 uppercase bg-slate-50 sticky top-0">
+          <div className="max-h-40 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+              <thead className="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-3 py-2">Freq (Hz)</th>
                   <th className="px-3 py-2">Vp (V)</th>
@@ -222,15 +222,15 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
             </table>
           </div>
 
-          <div className="flex-1 flex flex-col bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <div className="flex items-center mb-3 text-slate-800">
+          <div className="flex-1 flex flex-col bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <div className="flex items-center mb-3 text-slate-800 dark:text-slate-100">
               <Calculator className="w-5 h-5 mr-2 text-orange-600" />
               <h3 className="font-bold">Knowledge Check</h3>
             </div>
             
             <div className="space-y-4 flex-1">
               <div>
-                <label className="block text-sm text-slate-700 mb-1">
+                <label className="block text-sm text-slate-700 dark:text-slate-200 mb-1">
                   1. In a full-wave rectifier, what is the ripple frequency if the input AC source frequency is 60 Hz?
                 </label>
                 <input 
@@ -238,12 +238,12 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
                   value={ans1} 
                   onChange={e => setAns1(e.target.value)} 
                   placeholder="e.g. 60" 
-                  className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm text-slate-700 mb-1">
+                <label className="block text-sm text-slate-700 dark:text-slate-200 mb-1">
                   2. Calculate the approximate ripple voltage (V_r) given Peak Voltage = 100V, f = 50Hz, R = 1000Ω, and C = 100μF. <em>(Hint: use the formula provided in the theory. Round to 1 decimal place.)</em>
                 </label>
                 <input 
@@ -251,7 +251,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
                   value={ans2} 
                   onChange={e => setAns2(e.target.value)} 
                   placeholder="e.g. 5.5" 
-                  className="w-full border border-slate-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
                 />
               </div>
             </div>

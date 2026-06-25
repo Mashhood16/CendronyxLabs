@@ -47,16 +47,16 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Inequality Applications: Feasible Budgets" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-amber-800 mb-4 flex items-center gap-2">
             <Layers /> Theory & Context
           </h2>
-          <div className="prose text-slate-700">
+          <div className="prose text-slate-700 dark:text-slate-200">
             <p>
               Linear inequalities are used in business to model constraints, such as budgets. 
               The area containing all possible solutions is called the <strong>Feasible Region</strong>.
@@ -71,17 +71,17 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
             <div className="bg-amber-50 p-4 rounded-lg mt-4 border border-amber-200 font-mono text-center">
               P_A(x) + P_B(y) ≤ Budget
             </div>
-            <p className="mt-4 text-sm text-slate-600">
+            <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
               The shaded region under the line represents all combinations of cars the company can afford. Note that x ≥ 0 and y ≥ 0 because you cannot rent negative cars!
             </p>
           </div>
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
           <h2 className="text-xl font-bold text-amber-800 mb-4">Feasible Region Explorer</h2>
           
-          <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm font-semibold">
+          <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-sm font-semibold">
             <div>
               <label className="block mb-1">Car A Price ($): {priceA}</label>
               <input type="range" min="10" max="50" step="5" value={priceA} onChange={e => setPriceA(Number(e.target.value))} className="w-full accent-amber-600" />
@@ -96,7 +96,7 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 rounded-lg overflow-hidden border-2 border-slate-300 shadow-inner">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
             <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} className="w-full h-full">
               {/* Axes Labels */}
               <text x="280" y="295" fontSize="10" fill="#64748b">x</text>
@@ -121,32 +121,32 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
               <circle cx={mapCoord(10)} cy={invMapY(mapCoord(10))} r="3" fill="#64748b" />
               <text x={mapCoord(10) + 5} y={invMapY(mapCoord(10)) - 5} fontSize="10" fill="#64748b">(10,10)</text>
             </svg>
-            <div className="absolute top-2 right-2 text-xs bg-slate-50/90 p-1 border border-slate-200 rounded text-slate-600">
+            <div className="absolute top-2 right-2 text-xs bg-slate-50 dark:bg-slate-900/90 p-1 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded text-slate-600 dark:text-slate-300">
                Graph domain/range: 0 to {MAX_CARS} cars
             </div>
           </div>
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-amber-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 mb-6">
             <h3 className="font-semibold text-amber-900 mb-2">Resource Allocation Check</h3>
-            <p className="text-slate-700 mb-4 text-sm">
+            <p className="text-slate-700 dark:text-slate-200 mb-4 text-sm">
               The company has decided they absolutely must rent exactly <strong>10 units of Car A</strong>. 
             </p>
-            <p className="text-slate-700 mb-4 text-sm font-semibold">
+            <p className="text-slate-700 dark:text-slate-200 mb-4 text-sm font-semibold">
               Based on the current budget of ${budget} and prices (Car A: ${priceA}, Car B: ${priceB}), what is the maximum whole number of Car B's they can afford?
             </p>
             
             <div className="mb-4">
-              <label className="block text-sm font-semibold text-slate-700 mb-1">Max Car B units:</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">Max Car B units:</label>
               <input 
                 type="number" 
                 value={ansMaxB} 
                 onChange={e => setAnsMaxB(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-amber-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-amber-500 outline-none"
                 placeholder="Integer value"
               />
             </div>

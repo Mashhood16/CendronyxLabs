@@ -37,18 +37,18 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 5.6: Thermal Conductivity" subtitle="Observe how heat travels through materials" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
         <div className="w-full md:w-64 flex flex-col gap-2">
-          <h3 className="font-bold text-slate-700 mb-2">Select Rod</h3>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Select Rod</h3>
           {MATERIALS.map(m => (
             <button 
               key={m.id}
               onClick={() => { setSelected(m); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200'}`}
             >
               {m.name}
             </button>
@@ -56,7 +56,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           <div className="relative w-full max-w-lg h-64 flex items-center justify-center">
             
@@ -90,10 +90,10 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
                 return (
                   <div 
                     key={i}
-                    className={`absolute w-4 h-6 bg-slate-200 rounded-sm shadow-md transition-all duration-500 ${isMelted ? 'opacity-0 translate-y-16 scale-y-150 bg-slate-300/50' : ''}`}
+                    className={`absolute w-4 h-6 bg-slate-200 dark:bg-slate-800 rounded-sm shadow-md transition-all duration-500 ${isMelted ? 'opacity-0 translate-y-16 scale-y-150 bg-slate-300 dark:bg-slate-800/50' : ''}`}
                     style={{ left: `${pos}%`, top: isMelted ? '20px' : '-4px' }}
                   >
-                    {!isMelted && <div className="absolute -bottom-2 w-full h-2 bg-slate-200 clip-path-triangle" />}
+                    {!isMelted && <div className="absolute -bottom-2 w-full h-2 bg-slate-200 dark:bg-slate-800 clip-path-triangle" />}
                   </div>
                 );
               })}
@@ -120,7 +120,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
                 🔥 Turn on Burner
               </button>
             ) : (
-              <div className={`px-6 py-4 rounded-xl border border-slate-700 animate-fade-in ${temp >= 95 ? (selected.conducts ? 'bg-red-900/50 text-red-200' : 'bg-slate-800 text-slate-300') : 'bg-slate-800 text-slate-300'}`}>
+              <div className={`px-6 py-4 rounded-xl border border-slate-700 dark:border-slate-500 animate-fade-in ${temp >= 95 ? (selected.conducts ? 'bg-red-900/50 text-red-200' : 'bg-slate-800 dark:bg-slate-800 text-slate-300') : 'bg-slate-800 dark:bg-slate-800 text-slate-300'}`}>
                 <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
                 <p className="text-sm">
                   {selected.conducts 

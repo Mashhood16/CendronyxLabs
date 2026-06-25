@@ -29,11 +29,11 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#0f172a'}}>
       <LabHeader onExit={onExit} variant="dark" title="Unit 8: Force and Motion (Balloon Rocket)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 max-w-2xl w-full text-center mb-8">
+        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
           <h2 className="text-2xl font-bold text-red-400 mb-4">Action and Reaction Forces</h2>
           <p className="text-slate-300 mb-6">A balloon is taped to a straw threaded on a string. Release the pinched neck of the balloon and observe Newton's Third Law of Motion in action.</p>
           
@@ -48,7 +48,7 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
             </button>
             <button 
               onClick={reset}
-              className="flex items-center px-6 py-2 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 font-medium"
+              className="flex items-center px-6 py-2 text-slate-300 rounded-lg font-medium" style={{backgroundColor: '#334155'}}
             >
               Reset
             </button>
@@ -58,11 +58,11 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
         <div className="w-full max-w-5xl mt-16 relative">
            
            {/* The String */}
-           <div className="w-full h-1 bg-slate-600 absolute top-1/2 -mt-[0.5px]"></div>
+           <div className="w-full h-1 absolute top-1/2 -mt-[0.5px]" style={{backgroundColor: '#475569'}}></div>
            
            {/* Supports */}
-           <div className="absolute top-1/2 -mt-16 left-0 w-4 h-32 bg-slate-700 rounded shadow-lg border border-slate-600"></div>
-           <div className="absolute top-1/2 -mt-16 right-0 w-4 h-32 bg-slate-700 rounded shadow-lg border border-slate-600"></div>
+           <div className="absolute top-1/2 -mt-16 left-0 w-4 h-32 rounded shadow-lg" style={{backgroundColor: '#334155', borderColor: '#475569', borderWidth: '1px', borderStyle: 'solid'}}></div>
+           <div className="absolute top-1/2 -mt-16 right-0 w-4 h-32 rounded shadow-lg" style={{backgroundColor: '#334155', borderColor: '#475569', borderWidth: '1px', borderStyle: 'solid'}}></div>
 
            {/* The Rocket Assembly */}
            <div 
@@ -92,8 +92,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
               {/* Straw */}
               <div className="w-24 h-4 bg-yellow-400/80 rounded-sm border border-yellow-500 mb-2 relative z-10">
                  {/* Tape */}
-                 <div className="absolute top-1 left-4 w-4 h-12 bg-slate-50/50 -rotate-12 backdrop-blur-sm z-30"></div>
-                 <div className="absolute top-1 right-4 w-4 h-12 bg-slate-50/50 rotate-12 backdrop-blur-sm z-30"></div>
+                 <div className="absolute top-1 left-4 w-4 h-12 bg-slate-50 dark:bg-slate-900/50 -rotate-12 backdrop-blur-sm z-30"></div>
+                 <div className="absolute top-1 right-4 w-4 h-12 bg-slate-50 dark:bg-slate-900/50 rotate-12 backdrop-blur-sm z-30"></div>
               </div>
 
               {/* Balloon */}
@@ -109,8 +109,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
                  {/* Escaping Air Particles */}
                  {launched && air > 0 && (
                    <div className="absolute left-[-40px] top-1/2 -mt-2 w-12 h-4 overflow-hidden">
-                     <div className="w-2 h-2 bg-slate-50/50 rounded-full animate-[slide_0.2s_linear_infinite]"></div>
-                     <div className="w-3 h-3 bg-slate-50/50 rounded-full animate-[slide_0.3s_linear_infinite_0.1s]"></div>
+                     <div className="w-2 h-2 bg-slate-50 dark:bg-slate-900/50 rounded-full animate-[slide_0.2s_linear_infinite]"></div>
+                     <div className="w-3 h-3 bg-slate-50 dark:bg-slate-900/50 rounded-full animate-[slide_0.3s_linear_infinite_0.1s]"></div>
                    </div>
                  )}
                  <style>{`
@@ -124,7 +124,7 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
         </div>
 
         {position === 100 && (
-          <div className="mt-32 p-6 bg-slate-800 shadow-xl text-slate-200 rounded-xl border-t-4 border-red-500 max-w-2xl text-center">
+          <div className="mt-32 p-6 shadow-xl rounded-xl max-w-2xl text-center" style={{backgroundColor: '#1e293b', color: '#e2e8f0', borderTop: '4px solid #ef4444'}}>
             <h3 className="text-red-400 font-bold text-lg mb-2">Newton's Third Law</h3>
             <p><strong>"For every action, there is an equal and opposite reaction."</strong><br/><br/>The <em>action</em> is the balloon pushing the air out backwards. The <em>reaction</em> is the air pushing the balloon forwards with an equal amount of force!</p>
           </div>

@@ -42,20 +42,20 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Transition Metals & Complexes" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-teal-900 mb-4 flex items-center">
             <Flame className="mr-2" /> Theory
           </h2>
-          <div className="prose text-sm text-slate-700">
+          <div className="prose text-sm text-slate-700 dark:text-slate-200">
             <p><strong>Transition Metals</strong> form complex ions with ligands. The ligands cause the d-orbitals of the central metal ion to split into different energy levels (e.g., e_g and t_2g in octahedral fields).</p>
             
             <h3 className="text-md font-semibold mt-4">Crystal Field Theory & Colors</h3>
             <p>The energy gap (Δ) between split d-orbitals corresponds to the wavelength of light absorbed:</p>
-            <div className="bg-slate-100 p-3 rounded text-center font-mono my-2">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2">
               ΔE = hc / λ
             </div>
             <p>The observed color is the <strong>complementary color</strong> of the absorbed light.</p>
@@ -74,11 +74,11 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-teal-900 mb-4">Ligand Swapping Simulator</h2>
           
           <select 
-            className="w-full max-w-sm p-2 border rounded bg-slate-50 mb-6 font-mono font-bold text-center"
+            className="w-full max-w-sm p-2 border rounded bg-slate-50 dark:bg-slate-900 mb-6 font-mono font-bold text-center"
             value={complexIdx}
             onChange={e => setComplexIdx(parseInt(e.target.value))}
           >
@@ -89,25 +89,25 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
             <div className="w-1/2 flex flex-col items-center">
               <h3 className="text-sm font-semibold mb-2">Solution Color</h3>
               <div 
-                className="w-24 h-32 rounded-b-xl border-x-4 border-b-4 border-slate-300 relative overflow-hidden transition-colors duration-500"
+                className="w-24 h-32 rounded-b-xl border-x-4 border-b-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden transition-colors duration-500"
                 style={{ backgroundColor: activeComplex.color }}
               >
-                <div className="absolute top-0 w-full h-4 bg-slate-50/30"></div>
+                <div className="absolute top-0 w-full h-4 bg-slate-50 dark:bg-slate-900/30"></div>
               </div>
-              <p className="text-xs text-slate-500 mt-2">Absorbs ~{activeComplex.lambda} nm</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Absorbs ~{activeComplex.lambda} nm</p>
             </div>
             
             <div className="w-1/2 flex flex-col items-center">
               <h3 className="text-sm font-semibold mb-2">d-Orbital Splitting</h3>
-              <div className="w-full h-32 bg-slate-100 rounded border border-slate-200 relative flex items-center justify-center p-2">
+              <div className="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center p-2">
                 {/* Render Octahedral Splitting Diagram symbolically */}
                 <div className="flex flex-col items-center w-full h-full justify-around">
                   {/* eg level */}
                   <div className="flex gap-2">
-                    <div className="w-6 h-6 border-b-2 border-slate-800 relative">
+                    <div className="w-6 h-6 border-b-2 border-slate-800 dark:border-slate-500 relative">
                       <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
                     </div>
-                    <div className="w-6 h-6 border-b-2 border-slate-800 relative">
+                    <div className="w-6 h-6 border-b-2 border-slate-800 dark:border-slate-500 relative">
                       {activeComplex.spin === 'High Spin' && <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>}
                     </div>
                   </div>
@@ -119,24 +119,24 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
 
                   {/* t2g level */}
                   <div className="flex gap-2">
-                    <div className="w-6 h-6 border-b-2 border-slate-800 relative">
+                    <div className="w-6 h-6 border-b-2 border-slate-800 dark:border-slate-500 relative">
                       <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑↓</span>
                     </div>
-                    <div className="w-6 h-6 border-b-2 border-slate-800 relative">
+                    <div className="w-6 h-6 border-b-2 border-slate-800 dark:border-slate-500 relative">
                       <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
                     </div>
-                    <div className="w-6 h-6 border-b-2 border-slate-800 relative">
+                    <div className="w-6 h-6 border-b-2 border-slate-800 dark:border-slate-500 relative">
                       <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <p className="text-xs text-slate-500 mt-2">{activeComplex.spin}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">{activeComplex.spin}</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-teal-900 mb-4 flex items-center">
             <Activity className="mr-2" /> Assessment
           </h2>
@@ -148,7 +148,7 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
               <br/><br/>
               Calculate the crystal field splitting energy (Δ) in <strong>kJ/mol</strong>.
               <br/><br/>
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-slate-500 dark:text-slate-400">
                 h = 6.626 × 10⁻³⁴ J·s <br/>
                 c = 3.00 × 10⁸ m/s <br/>
                 N_A = 6.022 × 10²³ mol⁻¹

@@ -79,7 +79,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
   }, [a, b]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M12.1: Advanced Conic Sections" />
       <div className="bg-blue-900 text-white p-2 flex justify-end shrink-0">
         <div className="flex bg-blue-800 rounded-lg p-1">
@@ -87,7 +87,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
             <button
               key={type}
               onClick={() => setConicType(type)}
-              className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-colors ${conicType === type ? 'bg-slate-50 text-blue-900 shadow' : 'text-blue-100 hover:bg-blue-700'}`}
+              className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-colors ${conicType === type ? 'bg-slate-50 dark:bg-slate-900 text-blue-900 shadow' : 'text-blue-100 hover:bg-blue-700'}`}
             >
               {type}
             </button>
@@ -97,16 +97,16 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-blue-700 mb-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="text-lg font-bold">Theoretical Context</h2>
           </div>
           
           {conicType === 'parabola' && (
-            <div className="text-sm text-slate-700 space-y-3">
+            <div className="text-sm text-slate-700 dark:text-slate-200 space-y-3">
               <p>A <strong>Parabola</strong> is the locus of a point equidistant from a focus and a directrix.</p>
-              <div className="bg-slate-100 p-3 rounded text-center font-mono">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono">
                 {"$$x^2 = 4py$$"}
               </div>
               <p><strong>Applications:</strong> Parabolic antennas focus incoming parallel signals perfectly onto the focus point (0, p).</p>
@@ -119,9 +119,9 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
           )}
 
           {conicType === 'ellipse' && (
-            <div className="text-sm text-slate-700 space-y-3">
+            <div className="text-sm text-slate-700 dark:text-slate-200 space-y-3">
               <p>An <strong>Ellipse</strong> is the locus of a point where the sum of distances to two foci is constant.</p>
-              <div className="bg-slate-100 p-3 rounded text-center font-mono">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono">
                 {"$$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$$"}
               </div>
               <p><strong>Applications:</strong> Kepler's First Law states planetary orbits are ellipses with the Sun at one focus.</p>
@@ -134,9 +134,9 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
           )}
 
           {conicType === 'hyperbola' && (
-            <div className="text-sm text-slate-700 space-y-3">
+            <div className="text-sm text-slate-700 dark:text-slate-200 space-y-3">
               <p>A <strong>Hyperbola</strong> is the locus of a point where the difference of distances to two foci is constant.</p>
-              <div className="bg-slate-100 p-3 rounded text-center font-mono">
+              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono">
                 {"$$\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$$"}
               </div>
               <p><strong>Applications:</strong> Nuclear cooling towers use hyperboloid geometries for structural strength and natural updraft cooling efficiency.</p>
@@ -150,10 +150,10 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Visualizer Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
-          <h2 className="text-lg font-bold text-slate-800 self-start absolute top-5 left-5 z-10">Live Simulation</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 self-start absolute top-5 left-5 z-10">Live Simulation</h2>
           
-          <svg viewBox="-60 -60 120 120" className="w-full max-w-md aspect-square bg-slate-50 border border-slate-200 rounded-lg shadow-inner mt-8">
+          <svg viewBox="-60 -60 120 120" className="w-full max-w-md aspect-square bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg shadow-inner mt-8">
             <g transform="scale(1, -1)">
               {/* Axes */}
               <line x1="-60" y1="0" x2="60" y2="0" stroke="#cbd5e1" strokeWidth="0.5" />
@@ -213,28 +213,28 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-blue-700 mb-2 shrink-0">
             <Settings2 className="w-5 h-5" />
             <h2 className="text-lg font-bold">Parameters & Assessment</h2>
           </div>
 
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-4 shrink-0">
-            <h3 className="font-semibold text-slate-700">Interactive Variables</h3>
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4 shrink-0">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200">Interactive Variables</h3>
             {conicType === 'parabola' && (
               <div>
-                <label className="block text-sm text-slate-600 mb-1">Focus distance (p): {p}</label>
+                <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Focus distance (p): {p}</label>
                 <input type="range" min="1" max="20" step="0.5" value={p} onChange={e => setP(Number(e.target.value))} className="w-full accent-blue-600" />
               </div>
             )}
             {conicType !== 'parabola' && (
               <>
                 <div>
-                  <label className="block text-sm text-slate-600 mb-1">Parameter a: {a}</label>
+                  <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Parameter a: {a}</label>
                   <input type="range" min="2" max="30" step="1" value={a} onChange={e => setA(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-600 mb-1">Parameter b: {b}</label>
+                  <label className="block text-sm text-slate-600 dark:text-slate-300 mb-1">Parameter b: {b}</label>
                   <input type="range" min="2" max="30" step="1" value={b} onChange={e => setB(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </>
@@ -247,7 +247,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
               <h3 className="font-semibold">Lab Computation Task</h3>
             </div>
             
-            <p className="text-sm text-slate-700 mb-4 flex-1">
+            <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 flex-1">
               {problemText}
             </p>
 
@@ -258,7 +258,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
                   value={userAnswer}
                   onChange={e => setUserAnswer(e.target.value)}
                   placeholder="Enter answer" 
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button 
                   onClick={checkAnswer}

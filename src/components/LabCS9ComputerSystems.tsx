@@ -118,15 +118,15 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Computer Systems Lab" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2">Theory & Context</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory & Context</h2>
           {activeTab === 'hardware' ? (
-            <div className="text-slate-600 space-y-4 text-sm leading-relaxed">
+            <div className="text-slate-600 dark:text-slate-300 space-y-4 text-sm leading-relaxed">
               <p><strong>CPU (Central Processing Unit):</strong> The brain of the computer, handling instructions and processing data.</p>
               <p><strong>RAM (Random Access Memory):</strong> Short-term volatile memory used for active tasks and applications.</p>
               <p><strong>GPU (Graphics Processing Unit):</strong> Specialized processor for rendering images and video.</p>
@@ -137,7 +137,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
               </div>
             </div>
           ) : (
-            <div className="text-slate-600 space-y-4 text-sm leading-relaxed">
+            <div className="text-slate-600 dark:text-slate-300 space-y-4 text-sm leading-relaxed">
               <p>The <strong>OSI Model</strong> (Open Systems Interconnection) conceptualizes how data is transmitted over a network in 7 distinct layers.</p>
               <ul className="list-disc pl-5 space-y-1">
                 <li><strong>7. Application:</strong> End-user apps.</li>
@@ -155,8 +155,8 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
           )}
         </div>
 
-        <div className="bg-slate-100 p-4 rounded-xl shadow-inner border border-slate-300 overflow-y-auto flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 w-full text-center">Interactive Workspace</h2>
+        <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 w-full text-center">Interactive Workspace</h2>
           
           {activeTab === 'hardware' && (
             <div className="w-full flex flex-col gap-6">
@@ -165,7 +165,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
                   <button 
                     key={c.id} 
                     onClick={() => setSelectedHw(c)}
-                    className={`p-2 rounded-md border-2 text-sm flex items-center gap-2 transition-transform hover:scale-105 ${selectedHw?.id === c.id ? 'border-indigo-500 bg-indigo-100 font-bold' : 'border-slate-300 bg-slate-50'}`}
+                    className={`p-2 rounded-md border-2 text-sm flex items-center gap-2 transition-transform hover:scale-105 ${selectedHw?.id === c.id ? 'border-indigo-500 bg-indigo-100 font-bold' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900'}`}
                   >
                     <Server className="w-4 h-4" /> {c.name}
                   </button>
@@ -181,7 +181,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
                     onClick={() => handleHwSlotClick(s.id)}
                     className={`flex-1 border-2 border-dashed rounded-lg flex items-center justify-center p-2 transition-colors
                       ${selectedHw ? 'hover:bg-green-700 border-yellow-400 cursor-pointer' : ''}
-                      ${s.filledBy ? 'bg-slate-800 border-slate-600 text-white' : 'border-green-600 text-green-300'}`}
+                      ${s.filledBy ? 'bg-slate-800 dark:bg-slate-800 border-slate-600 dark:border-slate-500 text-white' : 'border-green-600 text-green-300'}`}
                   >
                     {s.filledBy ? (
                       <div className="flex flex-col items-center">
@@ -200,12 +200,12 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
           {activeTab === 'osi' && (
             <div className="w-full flex flex-col lg:flex-row gap-6 h-full">
               <div className="flex-1 flex flex-col gap-2">
-                <h3 className="font-bold text-sm text-slate-500 text-center uppercase tracking-wider">Roles</h3>
+                <h3 className="font-bold text-sm text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">Roles</h3>
                 {availableRoles.map(r => (
                   <button
                     key={r.id}
                     onClick={() => setSelectedRole(r)}
-                    className={`p-3 rounded-lg border-2 text-sm text-left transition-all hover:translate-x-1 ${selectedRole?.id === r.id ? 'border-indigo-500 bg-indigo-50 font-bold shadow-md' : 'border-slate-300 bg-slate-50 shadow-sm'}`}
+                    className={`p-3 rounded-lg border-2 text-sm text-left transition-all hover:translate-x-1 ${selectedRole?.id === r.id ? 'border-indigo-500 bg-indigo-50 font-bold shadow-md' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 shadow-sm'}`}
                   >
                     {r.desc}
                   </button>
@@ -214,17 +214,17 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
               </div>
               
               <div className="flex-1 flex flex-col gap-1">
-                <h3 className="font-bold text-sm text-slate-500 text-center uppercase tracking-wider">OSI Layers</h3>
+                <h3 className="font-bold text-sm text-slate-500 dark:text-slate-400 text-center uppercase tracking-wider">OSI Layers</h3>
                 {osiLayers.map(l => (
                   <div key={l.num} className="flex gap-2 items-stretch h-14">
-                    <div className="w-12 bg-slate-800 text-white font-bold flex items-center justify-center rounded-l-lg shrink-0 shadow-sm border border-slate-700">
+                    <div className="w-12 bg-slate-800 dark:bg-slate-800 text-white font-bold flex items-center justify-center rounded-l-lg shrink-0 shadow-sm border border-slate-700 dark:border-slate-500">
                       L{l.num}
                     </div>
                     <button
                       onClick={() => handleOsiSlotClick(l.num)}
                       className={`flex-1 border-2 border-dashed rounded-r-lg flex items-center p-2 text-sm text-left transition-colors
                         ${selectedRole ? 'hover:bg-indigo-50 border-indigo-400 cursor-pointer' : ''}
-                        ${l.filledBy ? 'bg-indigo-600 border-indigo-700 text-white shadow-inner font-medium' : 'border-slate-300 bg-slate-50 text-slate-400'}`}
+                        ${l.filledBy ? 'bg-indigo-600 border-indigo-700 text-white shadow-inner font-medium' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-400'}`}
                     >
                       {l.filledBy ? l.filledBy.desc : <span className="opacity-50">{l.name} - Select a role...</span>}
                     </button>
@@ -236,8 +236,8 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
         </div>
 
-        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Assessment & Logs</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Assessment & Logs</h2>
           
           <div className="mb-6 flex flex-col gap-2">
             <button 
@@ -247,12 +247,12 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
               <CheckCircle className="w-5 h-5" />
               Check {activeTab === 'hardware' ? 'Hardware' : 'OSI Layers'}
             </button>
-            <div className="text-xs text-slate-500 text-center mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400 text-center mt-1">
               Assemble all parts before checking.
             </div>
           </div>
 
-          <div className="flex-1 bg-slate-900 text-green-400 font-mono text-xs p-3 rounded-lg overflow-y-auto shadow-inner border border-slate-700">
+          <div className="flex-1 bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-xs p-3 rounded-lg overflow-y-auto shadow-inner border border-slate-700 dark:border-slate-500">
             <div className="opacity-50 mb-2">--- SYSTEM LOGS ---</div>
             {logs.length === 0 ? (
               <div className="opacity-50 italic">Waiting for activity...</div>

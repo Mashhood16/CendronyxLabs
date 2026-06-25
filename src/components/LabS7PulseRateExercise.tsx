@@ -49,9 +49,9 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 2: Pulse Rate and Exercise" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-red-800 mb-4">Circulation and Physical Demand</h2>
-          <p className="text-slate-600 mb-6">Observe how your pulse rate (heartbeats per minute) changes from a resting state, to active exercise, and finally during the recovery period.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">Observe how your pulse rate (heartbeats per minute) changes from a resting state, to active exercise, and finally during the recovery period.</p>
           
           <div className="flex justify-center gap-4">
             <button 
@@ -68,8 +68,8 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
         <div className="flex gap-12 w-full max-w-4xl">
           
           {/* Animated Heart */}
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 className="font-bold text-slate-500 mb-8 uppercase tracking-wider text-sm">Heart Simulation</h3>
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
+            <h3 className="font-bold text-slate-500 dark:text-slate-400 mb-8 uppercase tracking-wider text-sm">Heart Simulation</h3>
             <div className="relative flex justify-center items-center h-48 w-48">
               {/* The heart pulses faster based on BPM. CSS animation duration = 60 / pulse */}
               <div 
@@ -92,8 +92,8 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
             </div>
             
             <div className="mt-8 text-center flex flex-col items-center">
-              <span className="text-5xl font-black text-slate-800 flex items-center">
-                {pulse} <span className="text-xl text-slate-500 ml-2">BPM</span>
+              <span className="text-5xl font-black text-slate-800 dark:text-slate-100 flex items-center">
+                {pulse} <span className="text-xl text-slate-500 dark:text-slate-400 ml-2">BPM</span>
               </span>
               <span className={`mt-2 px-3 py-1 rounded-full text-sm font-bold ${
                 state === 'rest' ? 'bg-green-100 text-green-700' :
@@ -106,7 +106,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
           </div>
 
           {/* Graph/Monitor */}
-          <div className="flex-[2] bg-slate-900 rounded-3xl p-6 border-4 border-slate-800 relative overflow-hidden flex flex-col">
+          <div className="flex-[2] bg-slate-900 dark:bg-slate-800 rounded-3xl p-6 border-4 border-slate-800 dark:border-slate-500 relative overflow-hidden flex flex-col">
              <div className="flex items-center text-green-400 mb-4">
                <Activity className="w-6 h-6 mr-2" />
                <h3 className="font-mono font-bold tracking-widest">ECG MONITOR</h3>
@@ -117,7 +117,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
                 <div className="absolute inset-0 flex items-center">
                    <svg width="100%" height="100%" preserveAspectRatio="none" className="text-green-500" stroke="currentColor" fill="none" strokeWidth="2">
                      <path 
-                       d={`M 0 50 Q 10 50, 20 ${100 - (pulse/2)} L 30 50 L 40 100 L 50 ${100 - pulse} L 60 50 L 70 ${100 - (pulse/2)} L 80 50 Q 90 50, 100 50`} 
+                       d={`M 0 50 Q 5 50, 10 50 L 15 50 L 20 ${100 - (pulse/2)} L 25 50 L 30 100 L 35 ${100 - pulse} L 40 50 L 45 ${100 - (pulse/2)} L 50 50 Q 55 50, 60 50 L 65 50 L 70 ${100 - (pulse/2)} L 75 50 L 80 100 L 85 ${100 - pulse} L 90 50 L 95 ${100 - (pulse/2)} L 100 50`} 
                        transform={`scale(1, ${pulse/100})`}
                      />
                    </svg>

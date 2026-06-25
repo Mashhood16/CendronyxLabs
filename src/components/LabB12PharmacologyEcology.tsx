@@ -32,35 +32,30 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-teal-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <LabHeader onExit={onExit} title="Lab 12.3: Pharmacology & Ecosystems" />
-          <h1 className="text-xl font-bold">Lab 12.3: Pharmacology & Ecosystems</h1>
-        </div>
-        <div className="flex gap-2">
-          <button 
-            onClick={() => setActiveTab('pharma')}
-            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
-            <Shield className="w-4 h-4" /> Pharma
-          </button>
-          <button 
-            onClick={() => setActiveTab('ecology')}
-            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
-            <Waves className="w-4 h-4" /> Ecology
-          </button>
-        </div>
-      </header>
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+      <LabHeader onExit={onExit} title="Pharmacology & Ecosystems" subtitle="Antibiotic Mechanisms & Ocean Acidification" />
+      <div className="flex gap-2 px-6 py-2 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <button 
+          onClick={() => setActiveTab('pharma')}
+          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 dark:bg-slate-900 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+          <Shield className="w-4 h-4" /> Pharma
+        </button>
+        <button 
+          onClick={() => setActiveTab('ecology')}
+          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-slate-900 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+          <Waves className="w-4 h-4" /> Ecology
+        </button>
+      </div>
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Pharmacology Theory' : 'Ecology Theory'}
           </h2>
           
           {activeTab === 'pharma' ? (
-            <div className="space-y-4 text-sm text-slate-600">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
               <p><strong>Penicillin Mechanism:</strong> Beta-lactam antibiotics irreversibly inhibit the enzyme <em>transpeptidase</em>, which forms cross-links in the bacterial peptidoglycan cell wall.</p>
               <p>Without cross-links, the cell wall weakens. Due to high internal osmotic pressure, water rushes into the bacterium, causing it to lyse (burst).</p>
               <p><strong>Clinical Trials:</strong></p>
@@ -72,9 +67,9 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
               </ul>
             </div>
           ) : (
-            <div className="space-y-4 text-sm text-slate-600">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
               <p><strong>Ocean Acidification:</strong> Increased atmospheric carbon dioxide dissolves into ocean water, forming carbonic acid:</p>
-              <p className="font-mono bg-slate-100 p-2 rounded text-center text-xs border border-slate-200">
+              <p className="font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-center text-xs border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 CO₂ + H₂O ⇌ H₂CO₃ ⇌ HCO₃⁻ + H⁺
               </p>
               <p>This increases the concentration of hydrogen ions [H⁺], lowering the pH.</p>
@@ -84,15 +79,15 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Interactive */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Bacterial Lysis Simulator' : 'Coral Reef Simulator'}
           </h2>
           
           {activeTab === 'pharma' ? (
             <div className="flex-1 flex flex-col items-center">
               <div className="w-full mb-6">
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Penicillin Concentration (mg/L)</span>
                   <span className="font-bold text-teal-600">{penicillinDose}</span>
                 </label>
@@ -103,7 +98,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                 />
               </div>
               
-              <div className="relative w-64 h-64 bg-slate-100 rounded-full flex items-center justify-center border border-slate-300 overflow-hidden shadow-inner">
+              <div className="relative w-64 h-64 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-hidden shadow-inner">
                 <svg viewBox="0 0 200 200" className={`w-full h-full transition-all duration-500 ${isBurst ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}>
                   {/* Cell interior */}
                   <ellipse cx="100" cy="100" rx={60 + (penicillinDose * 0.2)} ry={40 + (penicillinDose * 0.1)} fill="#fecaca" />
@@ -134,7 +129,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
           ) : (
             <div className="flex-1 flex flex-col items-center">
               <div className="w-full mb-6">
-                <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                   <span>Atmospheric pCO₂ (ppm)</span>
                   <span className="font-bold text-blue-600">{pCO2}</span>
                 </label>
@@ -175,7 +170,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                   )}
                 </svg>
                 {isBleached && (
-                  <div className="absolute top-4 bg-slate-50/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
+                  <div className="absolute top-4 bg-slate-50 dark:bg-slate-900/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
                     Bleaching Event
                   </div>
                 )}
@@ -185,17 +180,17 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Comprehensive Assessment</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Comprehensive Assessment</h2>
           
           <div className="space-y-4 text-sm">
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700">
+              <label className="block font-medium text-slate-700 dark:text-slate-200">
                 1. Which specific bacterial enzyme does Penicillin irreversibly inhibit?
               </label>
               <input 
                 type="text" 
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans1}
                 onChange={e => setAns1(e.target.value)}
                 placeholder="e.g. amylase"
@@ -203,24 +198,24 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
             </div>
 
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700">
+              <label className="block font-medium text-slate-700 dark:text-slate-200">
                 2. Which phase of a clinical trial involves a large-scale comparison (1000+ patients) to standard treatments? (Enter 1, 2, 3, or 4)
               </label>
               <input 
                 type="number" min="1" max="4"
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans2}
                 onChange={e => setAns2(e.target.value)}
               />
             </div>
 
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700">
+              <label className="block font-medium text-slate-700 dark:text-slate-200">
                 3. If the concentration of [H⁺] ions in ocean water is measured at 1.0 × 10⁻⁸.¹ M, what is the pH of the water?
               </label>
               <input 
                 type="number" step="0.1"
-                className="w-full p-2 border border-slate-300 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans3}
                 onChange={e => setAns3(e.target.value)}
                 placeholder="e.g. 7.5"
@@ -229,7 +224,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
             <button 
               onClick={checkAnswers}
-              className="w-full bg-slate-800 text-white font-semibold py-2 mt-4 rounded hover:bg-slate-900 transition-colors flex items-center justify-center gap-2">
+              className="w-full bg-slate-800 dark:bg-slate-800 text-white font-semibold py-2 mt-4 rounded hover:bg-slate-900 dark:bg-slate-800 transition-colors flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5" /> Submit Assessment
             </button>
 

@@ -7,16 +7,16 @@ interface LabProps {
 
 export default function LabS7Unit4Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 4: Physical and Chemical Changes Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 max-w-4xl w-full">
+        <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-4xl w-full">
           <div className="flex items-center mb-8">
             <div className="bg-amber-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-amber-600" /></div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-800">Comparative Poster Assignment</h2>
-              <p className="text-slate-500">Project Work Submission Guide</p>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100">Comparative Poster Assignment</h2>
+              <p className="text-slate-500 dark:text-slate-400">Project Work Submission Guide</p>
             </div>
           </div>
 
@@ -25,9 +25,9 @@ export default function LabS7Unit4Projects({ onExit }: LabProps) {
             <p>Make a poster to visually compare physical and chemical changes in everyday life. Divide your chart paper down the middle.</p>
             
             <div className="grid grid-cols-2 gap-8 mt-6">
-              <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <h4 className="mt-0">Physical Changes</h4>
-                <p className="text-sm text-slate-600">No new substance is formed. The change is usually reversible.</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">No new substance is formed. The change is usually reversible.</p>
                 <ul>
                   <li>Melting ice</li>
                   <li>Tearing paper</li>
@@ -35,9 +35,9 @@ export default function LabS7Unit4Projects({ onExit }: LabProps) {
                   <li>Boiling water</li>
                 </ul>
               </div>
-              <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                 <h4 className="mt-0">Chemical Changes</h4>
-                <p className="text-sm text-slate-600">A new substance with different properties is formed. Usually irreversible.</p>
+                <p className="text-sm text-slate-600 dark:text-slate-300">A new substance with different properties is formed. Usually irreversible.</p>
                 <ul>
                   <li>Burning wood</li>
                   <li>Rusting iron</li>

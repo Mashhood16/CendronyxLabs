@@ -11,7 +11,7 @@ interface Material {
 }
 
 const MATERIALS: Material[] = [
-  { id: 'fe', name: 'Iron', type: 'metal', color: 'bg-slate-400' },
+  { id: 'fe', name: 'Iron', type: 'metal', color: 'bg-slate-400 dark:bg-slate-800' },
   { id: 'cu', name: 'Copper', type: 'metal', color: 'bg-orange-400' },
   { id: 'al', name: 'Aluminum', type: 'metal', color: 'bg-gray-300' },
   { id: 'c', name: 'Carbon (Coke)', type: 'non-metal', color: 'bg-zinc-800' },
@@ -27,18 +27,18 @@ export default function LabS8Malleability({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Act 5.3: Malleability" subtitle="Hit materials with a hammer to test malleability" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
         <div className="w-full md:w-64 flex flex-col gap-2">
-          <h3 className="font-bold text-slate-700 mb-2">Select Material</h3>
+          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Select Material</h3>
           {MATERIALS.map(m => (
             <button 
               key={m.id}
               onClick={() => { setSelected(m); setHits(0); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200'}`}
             >
               {m.name}
             </button>
@@ -46,7 +46,7 @@ export default function LabS8Malleability({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           <div className="relative w-64 h-64 flex justify-center items-end border-b-8 border-amber-900 pb-1">
             
@@ -89,7 +89,7 @@ export default function LabS8Malleability({ onExit }: LabProps) {
             {/* Animation Overlay for Hit */}
             {hits > 0 && hits < 4 && (
               <div key={hits} className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 animate-[ping_0.3s_ease-out]">
-                <div className="w-32 h-32 border-4 border-slate-400 rounded-full" />
+                <div className="w-32 h-32 border-4 border-slate-400 dark:border-slate-500 rounded-full" />
               </div>
             )}
 
@@ -99,11 +99,11 @@ export default function LabS8Malleability({ onExit }: LabProps) {
             <button 
               onClick={handleHit}
               disabled={hits >= 3}
-              className="bg-slate-800 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-900 disabled:opacity-50 text-xl shadow-lg flex items-center gap-2 mx-auto transition-transform active:scale-95"
+              className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 text-xl shadow-lg flex items-center gap-2 mx-auto transition-transform active:scale-95"
             >
               🔨 Hit with Hammer
             </button>
-            <p className="mt-4 text-slate-500 font-medium">Hits: {hits}/3</p>
+            <p className="mt-4 text-slate-500 dark:text-slate-400 font-medium">Hits: {hits}/3</p>
           </div>
 
           {hits >= 3 && (

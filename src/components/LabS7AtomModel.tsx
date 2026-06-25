@@ -19,50 +19,50 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
   const isComplete = protons === targetProtons && neutrons === targetNeutrons && electrons === targetElectrons;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#0f172a'}}>
       <LabHeader onExit={onExit} variant="dark" title="Unit 5: 3D Atom Model Builder" />
 
       <div className="flex-1 p-8 flex flex-col xl:flex-row gap-8 items-center justify-center">
         
         {/* Controls */}
-        <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 max-w-sm w-full">
+        <div className="p-6 rounded-2xl shadow-xl max-w-sm w-full" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
           <h2 className="text-2xl font-bold text-blue-400 mb-2">Build a Carbon Atom</h2>
           <p className="text-slate-300 mb-6 text-sm">Carbon has an atomic number of 6 and a mass number of 12. Add the correct number of subatomic particles to build the atom.</p>
           
           <div className="space-y-4">
-            <div className="flex items-center justify-between bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <div className="flex items-center justify-between p-3 rounded-xl" style={{backgroundColor: '#334155', borderColor: '#475569', borderWidth: '1px', borderStyle: 'solid'}}>
               <div className="flex items-center">
                 <div className="w-4 h-4 rounded-full bg-red-500 mr-3"></div>
                 <span className="text-white font-bold">Protons (Nucleus)</span>
               </div>
               <div className="flex items-center gap-3">
-                <button onClick={() => setProtons(Math.max(0, protons - 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">-</button>
+                <button onClick={() => setProtons(Math.max(0, protons - 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>-</button>
                 <span className="w-6 text-center text-white font-mono">{protons}</span>
-                <button onClick={() => setProtons(Math.min(10, protons + 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">+</button>
+                <button onClick={() => setProtons(Math.min(10, protons + 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>+</button>
               </div>
             </div>
 
-            <div className="flex items-center justify-between bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <div className="flex items-center justify-between p-3 rounded-xl" style={{backgroundColor: '#334155', borderColor: '#475569', borderWidth: '1px', borderStyle: 'solid'}}>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-full bg-slate-400 mr-3"></div>
+                <div className="w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-800 mr-3"></div>
                 <span className="text-white font-bold">Neutrons (Nucleus)</span>
               </div>
               <div className="flex items-center gap-3">
-                <button onClick={() => setNeutrons(Math.max(0, neutrons - 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">-</button>
+                <button onClick={() => setNeutrons(Math.max(0, neutrons - 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>-</button>
                 <span className="w-6 text-center text-white font-mono">{neutrons}</span>
-                <button onClick={() => setNeutrons(Math.min(10, neutrons + 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">+</button>
+                <button onClick={() => setNeutrons(Math.min(10, neutrons + 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>+</button>
               </div>
             </div>
 
-            <div className="flex items-center justify-between bg-slate-700 p-3 rounded-xl border border-slate-600">
+            <div className="flex items-center justify-between p-3 rounded-xl" style={{backgroundColor: '#334155', borderColor: '#475569', borderWidth: '1px', borderStyle: 'solid'}}>
               <div className="flex items-center">
                 <div className="w-4 h-4 rounded-full bg-blue-400 mr-3"></div>
                 <span className="text-white font-bold">Electrons (Orbit)</span>
               </div>
               <div className="flex items-center gap-3">
-                <button onClick={() => setElectrons(Math.max(0, electrons - 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">-</button>
+                <button onClick={() => setElectrons(Math.max(0, electrons - 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>-</button>
                 <span className="w-6 text-center text-white font-mono">{electrons}</span>
-                <button onClick={() => setElectrons(Math.min(10, electrons + 1))} className="w-8 h-8 rounded-full bg-slate-600 text-white font-bold hover:bg-slate-500">+</button>
+                <button onClick={() => setElectrons(Math.min(10, electrons + 1))} className="w-8 h-8 rounded-full text-white font-bold" style={{backgroundColor: '#475569'}}>+</button>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
         {/* Atom Visualizer */}
         <div className="relative w-[500px] h-[500px] flex justify-center items-center">
            {/* Shells */}
-           <div className={`absolute border border-slate-500/30 rounded-full flex justify-center items-center ${electrons > 0 ? 'w-48 h-48' : 'hidden'}`}>
+           <div className={`absolute border border-slate-500 dark:border-slate-500/30 rounded-full flex justify-center items-center ${electrons > 0 ? 'w-48 h-48' : 'hidden'}`}>
              {/* Shell 1 Electrons (Max 2) */}
              {Array.from({ length: Math.min(2, electrons) }).map((_, i) => (
                <div 
@@ -93,7 +93,7 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
              ))}
            </div>
 
-           <div className={`absolute border border-slate-500/30 rounded-full flex justify-center items-center ${electrons > 2 ? 'w-80 h-80' : 'hidden'}`}>
+           <div className={`absolute border border-slate-500 dark:border-slate-500/30 rounded-full flex justify-center items-center ${electrons > 2 ? 'w-80 h-80' : 'hidden'}`}>
              {/* Shell 2 Electrons (Remaining) */}
              {Array.from({ length: Math.max(0, electrons - 2) }).map((_, i) => (
                <div 
@@ -116,7 +116,7 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
               ))}
               {/* Neutrons */}
               {Array.from({ length: neutrons }).map((_, i) => (
-                <div key={`n-${i}`} className="w-4 h-4 bg-slate-400 rounded-full shadow-inner absolute" style={{ transform: `translate(${(Math.random()-0.5)*20}px, ${(Math.random()-0.5)*20}px)` }}></div>
+                <div key={`n-${i}`} className="w-4 h-4 bg-slate-400 dark:bg-slate-800 rounded-full shadow-inner absolute" style={{ transform: `translate(${(Math.random()-0.5)*20}px, ${(Math.random()-0.5)*20}px)` }}></div>
               ))}
            </div>
         </div>

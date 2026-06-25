@@ -75,17 +75,15 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
   ];
 
   return (
-    <div className="w-full h-screen bg-slate-900 flex flex-col font-sans">
-      <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
-        <LabHeader onExit={onExit} title="Act 3.1: Pseudocode Interpreter" />
-      </header>
+    <div className="w-full h-screen bg-slate-900 dark:bg-slate-800 flex flex-col font-sans">
+      <LabHeader onExit={onExit} title="Act 3.1: Pseudocode Interpreter" variant="dark" />
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Left Panel: Available Blocks */}
-        <div className="w-80 bg-slate-800 border-r border-slate-700 flex flex-col p-4 z-10 overflow-y-auto">
+        <div className="w-80 bg-slate-800 dark:bg-slate-800 border-r border-slate-700 dark:border-slate-500 flex flex-col p-4 z-10 overflow-y-auto">
            
-           <div className="flex bg-slate-900 rounded-lg p-1 mb-6">
+           <div className="flex bg-slate-900 dark:bg-slate-800 rounded-lg p-1 mb-6">
              <button 
                className={`flex-1 py-2 rounded text-xs font-bold transition-colors ${task === 'task1' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-white'}`}
                onClick={() => { setTask('task1'); clearCode(); }}
@@ -96,14 +94,14 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
              >Task 2: Color Logic</button>
            </div>
 
-           <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Logic Blocks</h3>
+           <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Logic Blocks</h3>
            
            <div className="flex flex-col gap-2 overflow-y-auto">
              {(task === 'task1' ? blocksTask1 : blocksTask2).map((block, i) => (
                 <button 
                   key={i}
                   onClick={() => addBlock(block)}
-                  className="text-left font-mono text-sm p-3 bg-slate-700 hover:bg-sky-800 text-slate-200 border border-slate-600 rounded transition-colors active:scale-95"
+                  className="text-left font-mono text-sm p-3 bg-slate-700 dark:bg-slate-800 hover:bg-sky-800 text-slate-200 border border-slate-600 dark:border-slate-500 rounded transition-colors active:scale-95"
                 >
                   {block}
                 </button>
@@ -120,10 +118,10 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
            </div>
 
            <div className="flex-1 p-6 overflow-y-auto font-mono text-slate-300 text-lg">
-              {codeLines.length === 0 && <span className="text-slate-600 italic">{'// Click blocks from the left to build your algorithm'}</span>}
+              {codeLines.length === 0 && <span className="text-slate-600 dark:text-slate-300 italic">{'// Click blocks from the left to build your algorithm'}</span>}
               {codeLines.map((line, i) => (
                 <div key={i} className="flex gap-4">
-                  <span className="text-slate-600 select-none">{i+1}</span>
+                  <span className="text-slate-600 dark:text-slate-300 select-none">{i+1}</span>
                   <span className={`${line.includes('IF') || line.includes('ELSE') ? 'text-pink-400' : line.includes('OUTPUT') ? 'text-blue-400' : 'text-green-400'}`}>{line}</span>
                 </div>
               ))}
@@ -132,7 +130,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
         </div>
 
         {/* Right Panel: Terminal / Execution */}
-        <div className="w-96 bg-black flex flex-col border-l border-slate-700 shadow-xl z-10 overflow-y-auto">
+        <div className="w-96 bg-black flex flex-col border-l border-slate-700 dark:border-slate-500 shadow-xl z-10 overflow-y-auto">
            
            <div className="h-10 bg-[#2d2d2d] flex items-center px-4 border-b border-black">
               <span className="text-slate-400 font-mono text-sm">Terminal</span>
@@ -148,13 +146,13 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
                     type="number" 
                     value={inputVal}
                     onChange={(e) => setInputVal(e.target.value)}
-                    className="bg-transparent text-white outline-none flex-1 border-b border-slate-700 focus:border-green-500"
+                    className="bg-transparent text-white outline-none flex-1 border-b border-slate-700 dark:border-slate-500 focus:border-green-500"
                     placeholder="e.g. 15"
                   />
                 </div>
               </div>
 
-              <div className="flex-1 bg-slate-900 p-4 rounded border border-slate-800 overflow-y-auto text-slate-300">
+              <div className="flex-1 bg-slate-900 dark:bg-slate-800 p-4 rounded border border-slate-800 dark:border-slate-500 overflow-y-auto text-slate-300">
                  {outputLines.map((line, i) => (
                    <div key={i} className={`mb-1 ${line.startsWith('Error') ? 'text-red-400' : line.startsWith('OUTPUT') ? 'text-yellow-400 font-bold' : ''}`}>
                      {line}
@@ -164,7 +162,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
 
               <button 
                 onClick={runCode}
-                className="mt-4 w-full py-4 bg-green-600 hover:bg-green-500 text-black font-bold font-sans uppercase tracking-widest rounded-xl transition-colors active:scale-95 flex justify-center items-center gap-2"
+                className="mt-4 w-full py-4 bg-green-600 hover:bg-green-500 text-white font-bold font-sans uppercase tracking-widest rounded-xl transition-colors active:scale-95 flex justify-center items-center gap-2"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" /></svg>
                 Execute Code

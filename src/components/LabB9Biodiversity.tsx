@@ -48,16 +48,16 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
   const unsortedOrganisms = ALL_ORGANISMS.filter(o => !placements[o.id]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} variant="emerald" title="Biodiversity & Taxonomy Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <Info className="mr-2 text-emerald-600" /> Taxonomic Classification
           </h2>
-          <div className="space-y-4 text-slate-600 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
             <p>
               Taxonomy is the science of naming, describing, and classifying organisms. The standard hierarchy from broadest to most specific is:
               <strong> Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species</strong>.
@@ -80,17 +80,17 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Taxonomic Sorting Area</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4">Taxonomic Sorting Area</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
             {BUCKETS.map(bucket => (
               <div 
                 key={bucket} 
                 onClick={() => handleBucketClick(bucket)}
-                className={`border-2 rounded-xl p-3 min-h-[120px] transition-colors ${selectedOrg ? 'border-emerald-400 bg-emerald-50 cursor-pointer hover:bg-emerald-100' : 'border-slate-200 bg-slate-50'}`}
+                className={`border-2 rounded-xl p-3 min-h-[120px] transition-colors ${selectedOrg ? 'border-emerald-400 bg-emerald-50 cursor-pointer hover:bg-emerald-100' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900'}`}
               >
-                <h3 className="text-center font-bold text-slate-700 text-sm border-b border-slate-200 pb-1 mb-2">{bucket}</h3>
+                <h3 className="text-center font-bold text-slate-700 dark:text-slate-200 text-sm border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-1 mb-2">{bucket}</h3>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {Object.entries(placements).filter(([, b]) => b === bucket).map(([orgId]) => {
                     const org = ALL_ORGANISMS.find(o => o.id === orgId);
@@ -118,8 +118,8 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
           </div>
 
           <div className="mt-auto">
-            <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Unsorted Organisms</h3>
-            <div className="flex flex-wrap gap-3 bg-slate-100 p-4 rounded-xl min-h-[80px] items-center border border-slate-200">
+            <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Unsorted Organisms</h3>
+            <div className="flex flex-wrap gap-3 bg-slate-100 dark:bg-slate-800 p-4 rounded-xl min-h-[80px] items-center border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               {unsortedOrganisms.length === 0 ? (
                 <p className="text-slate-400 text-sm italic mx-auto">All organisms sorted!</p>
               ) : (
@@ -127,7 +127,7 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
                   <button
                     key={org.id}
                     onClick={() => setSelectedOrg(org.id)}
-                    className={`text-4xl transition-transform hover:scale-110 ${selectedOrg === org.id ? 'scale-125 ring-4 ring-emerald-400 rounded-full bg-slate-50' : ''}`}
+                    className={`text-4xl transition-transform hover:scale-110 ${selectedOrg === org.id ? 'scale-125 ring-4 ring-emerald-400 rounded-full bg-slate-50 dark:bg-slate-900' : ''}`}
                     title={org.name}
                   >
                     {org.emoji}
@@ -144,15 +144,15 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
             <CheckCircle className="mr-2 text-emerald-600" /> Lab Assessment
           </h2>
           
           <div className="space-y-6">
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 className="font-bold text-slate-700 mb-2">Sorting Progress</h3>
-              <p className="text-sm text-slate-600">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Sorting Progress</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-300">
                 Organisms sorted: <span className="font-bold">{Object.keys(placements).length} / 12</span>
               </p>
               {showResults && (
@@ -163,13 +163,13 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
                 1. Which of the sorted organisms is an invertebrate?
               </label>
               <select 
                 value={q1} 
                 onChange={(e) => setQ1(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none"
               >
                 <option value="">Select...</option>
                 <option value="Frog">Frog</option>
@@ -180,13 +180,13 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
                 2. Why is a whale classified as a mammal and not a fish?
               </label>
               <select 
                 value={q2} 
                 onChange={(e) => setQ2(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none"
               >
                 <option value="">Select...</option>
                 <option value="size">It is too large to be a fish</option>

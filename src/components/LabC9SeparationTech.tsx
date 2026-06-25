@@ -96,18 +96,18 @@ export default function LabC9SeparationTech({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Grade 9 Chemistry: Separation Techniques" />
 
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-blue-800">
             <BookOpen size={24} />
             <h2 className="text-xl font-semibold">Theory & Context</h2>
           </div>
           
-          <div className="space-y-4 text-slate-700">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200">
             <p>
               Mixtures contain different substances that are not chemically bonded. We use various physical processes to separate them based on their properties.
             </p>
@@ -124,11 +124,11 @@ export default function LabC9SeparationTech({ onExit }: Props) {
               <p className="text-sm">
                 Used to separate mixtures of soluble substances, such as colored dyes. As a solvent moves up the paper, it carries the dyes at different speeds depending on their solubility.
               </p>
-              <div className="mt-3 bg-slate-50 p-3 rounded border border-purple-200">
+              <div className="mt-3 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-purple-200">
                 <div className="text-sm font-semibold mb-1 text-purple-800">
                   Retention Factor (Rf):
                 </div>
-                <p className="text-sm italic text-slate-600 font-mono">
+                <p className="text-sm italic text-slate-600 dark:text-slate-300 font-mono">
                   Rf = Distance moved by substance ÷ Distance moved by solvent
                 </p>
               </div>
@@ -137,23 +137,23 @@ export default function LabC9SeparationTech({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col h-[600px] lg:h-auto">
           <div className="flex gap-4 mb-4 shrink-0">
             <button 
-              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setActiveTab('distillation')}
             >
               Distillation
             </button>
             <button 
-              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-purple-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
               onClick={() => setActiveTab('chromatography')}
             >
               Chromatography
             </button>
           </div>
 
-          <div className="flex-1 relative flex items-center justify-center bg-slate-50 rounded-xl overflow-hidden border border-slate-200">
+          <div className="flex-1 relative flex items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500">
             {activeTab === 'distillation' && (
               <div className="w-full h-full flex flex-col items-center justify-center p-4">
                 <svg viewBox="0 0 400 300" className="w-full max-w-md h-auto">
@@ -215,7 +215,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
                     <Play size={18} /> Heat Flask
                   </button>
                   <button 
-                    className="flex items-center gap-2 px-6 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
+                    className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors"
                     onClick={resetDistillation}
                   >
                     <RotateCcw size={18} /> Reset
@@ -265,7 +265,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
                     <Play size={18} /> Run Solvent
                   </button>
                   <button 
-                    className="flex items-center gap-2 px-6 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
+                    className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors"
                     onClick={resetChroma}
                   >
                     <RotateCcw size={18} /> Reset
@@ -277,17 +277,17 @@ export default function LabC9SeparationTech({ onExit }: Props) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-green-800">
             <CheckCircle size={24} />
             <h2 className="text-xl font-semibold">Assessment</h2>
           </div>
 
           <div className="space-y-6">
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
-              <h3 className="font-semibold text-slate-800 mb-3">Live Data Collection</h3>
+            <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Live Data Collection</h3>
               {activeTab === 'distillation' ? (
-                <div className="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-200">
+                <div className="text-sm text-slate-700 dark:text-slate-200 space-y-2 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <div className="flex justify-between border-b pb-1">
                     <span>Target Boiling Point:</span>
                     <span className="font-mono font-bold">100.0°C</span>
@@ -302,7 +302,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
                   </div>
                 </div>
               ) : (
-                <div className="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-200">
+                <div className="text-sm text-slate-700 dark:text-slate-200 space-y-2 bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <div className="flex justify-between border-b pb-1">
                     <span>Solvent Front Moved:</span>
                     <span className="font-mono font-bold">{solventHeight.toFixed(0)} mm</span>
@@ -346,8 +346,8 @@ export default function LabC9SeparationTech({ onExit }: Props) {
             </div>
             
             <div className="mt-8 pt-6">
-              <h3 className="font-semibold text-slate-800 mb-3">Critical Thinking</h3>
-              <ul className="list-disc pl-5 text-sm text-slate-600 space-y-3">
+              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Critical Thinking</h3>
+              <ul className="list-disc pl-5 text-sm text-slate-600 dark:text-slate-300 space-y-3">
                 <li>Why is the condenser in a distillation setup angled slightly downwards rather than upwards?</li>
                 <li>In chromatography, why must the baseline be drawn in pencil rather than ink?</li>
                 <li>What does an Rf value of 1.0 indicate about a substance's interaction with the paper vs the solvent?</li>

@@ -40,7 +40,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
     };
 
     const renderControls = () => {
-        if (!selected) return <p className="text-sm text-slate-500 italic p-4 bg-slate-50 rounded">Click a weight (line) or bias (node) in the diagram to edit.</p>;
+        if (!selected) return <p className="text-sm text-slate-500 dark:text-slate-400 italic p-4 bg-slate-50 dark:bg-slate-900 rounded">Click a weight (line) or bias (node) in the diagram to edit.</p>;
         
         let val = 0, setVal: (n: number) => void = () => {}, label = '';
         if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 \u2192 h1'; }
@@ -50,8 +50,8 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
         else if (selected === 'b2') { val = b2; setVal = setB2; label = 'Bias o1'; }
 
         return (
-            <div className="flex flex-col gap-2 p-4 bg-slate-50 rounded border border-slate-200">
-                <label className="font-semibold text-sm text-slate-700">{label}: {val.toFixed(2)}</label>
+            <div className="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <label className="font-semibold text-sm text-slate-700 dark:text-slate-200">{label}: {val.toFixed(2)}</label>
                 <input 
                     type="range" min="-2" max="2" step="0.1" 
                     value={val} 
@@ -66,36 +66,36 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} variant="dark" title="Lab 12.2: Deep Learning Neural Networks" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 h-full min-h-0">
                 {/* Column 1 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
                         <BookOpen className="text-indigo-500" /> Theory & Context
                     </h2>
-                    <div className="text-sm text-slate-700 space-y-4">
+                    <div className="text-sm text-slate-700 dark:text-slate-200 space-y-4">
                         <p>Deep Learning models use Artificial Neural Networks to process complex data.</p>
-                        <h3 className="font-semibold text-slate-800 mt-4">Key Components</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Key Components</h3>
                         <ul className="list-disc pl-5 space-y-1">
                             <li><strong>Neurons (Nodes):</strong> Hold a value based on inputs.</li>
                             <li><strong>Weights (w):</strong> Multipliers that strengthen or weaken signals between neurons.</li>
                             <li><strong>Biases (b):</strong> Constants added to inputs to shift the activation function.</li>
                         </ul>
-                        <h3 className="font-semibold text-slate-800 mt-4">Feedforward Flow</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Feedforward Flow</h3>
                         <p>Data propagates from input to output. For any neuron:</p>
-                        <p className="bg-slate-100 p-2 rounded font-mono text-xs">Z = (i1 \u00d7 w1) + (i2 \u00d7 w2) + b</p>
-                        <h3 className="font-semibold text-slate-800 mt-4">Activation (ReLU)</h3>
+                        <p className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs">Z = (i1 \u00d7 w1) + (i2 \u00d7 w2) + b</p>
+                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Activation (ReLU)</h3>
                         <p>Introduces non-linearity. Rectified Linear Unit (ReLU) outputs the input if positive, else 0:</p>
-                        <p className="bg-slate-100 p-2 rounded font-mono text-xs">Output = max(0, Z)</p>
+                        <p className="bg-slate-100 dark:bg-slate-800 p-2 rounded font-mono text-xs">Output = max(0, Z)</p>
                     </div>
                 </div>
 
                 {/* Column 2 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
                         <Network className="text-indigo-500" /> Architecture Visualizer
                     </h2>
 
@@ -108,7 +108,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
                         </button>
                     </div>
 
-                    <div className="relative w-full h-64 bg-slate-100 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 shrink-0">
+                    <div className="relative w-full h-64 bg-slate-100 dark:bg-slate-800 rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 shrink-0">
                         <svg viewBox="0 0 300 200" className="w-full h-full">
                             <defs>
                                 <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -157,38 +157,38 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
                     </div>
 
                     <div className="mt-auto shrink-0">
-                        <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2 mb-2">
-                            <Sliders size={16} className="text-slate-500" /> Tweak Parameters
+                        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-2">
+                            <Sliders size={16} className="text-slate-500 dark:text-slate-400" /> Tweak Parameters
                         </h3>
                         {renderControls()}
                     </div>
                 </div>
 
                 {/* Column 3 */}
-                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
                         <CheckCircle className="text-indigo-500" /> Assessment & Trace
                     </h2>
                     
                     <div className="space-y-4 flex-1 overflow-y-auto text-sm pr-2">
-                        <p className="text-slate-600 bg-slate-50 p-3 rounded">
+                        <p className="text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900 p-3 rounded">
                             Based on your currently set weights and biases, trace the data flow manually.
                         </p>
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">1. Calc h1 pre-activation (Z): <br/> <span className="text-xs font-normal">Z = i1&times;w11 + i2&times;w21 + b1</span></label>
-                            <input type="number" step="0.01" value={ansH1In} onChange={e => setAnsH1In(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">1. Calc h1 pre-activation (Z): <br/> <span className="text-xs font-normal">Z = i1&times;w11 + i2&times;w21 + b1</span></label>
+                            <input type="number" step="0.01" value={ansH1In} onChange={e => setAnsH1In(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">2. Calc h1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
-                            <input type="number" step="0.01" value={ansH1Out} onChange={e => setAnsH1Out(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">2. Calc h1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
+                            <input type="number" step="0.01" value={ansH1Out} onChange={e => setAnsH1Out(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">3. Calc o1 pre-activation (Z):<br/> <span className="text-xs font-normal">Z = h1_out&times;w31 + b2</span></label>
-                            <input type="number" step="0.01" value={ansO1In} onChange={e => setAnsO1In(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">3. Calc o1 pre-activation (Z):<br/> <span className="text-xs font-normal">Z = h1_out&times;w31 + b2</span></label>
+                            <input type="number" step="0.01" value={ansO1In} onChange={e => setAnsO1In(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
                         <div>
-                            <label className="block text-slate-700 mb-1 font-medium">4. Calc o1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
-                            <input type="number" step="0.01" value={ansO1Out} onChange={e => setAnsO1Out(e.target.value)} className="w-full p-2 border border-slate-300 rounded" />
+                            <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">4. Calc o1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
+                            <input type="number" step="0.01" value={ansO1Out} onChange={e => setAnsO1Out(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
                         </div>
 
                         <button onClick={checkAnswers} className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
@@ -201,7 +201,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
                             </div>
                         )}
 
-                        <div className="pt-4 border-t border-slate-200 mt-6">
+                        <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
                             <button 
                                 onClick={() => {
                                     let score = 0;

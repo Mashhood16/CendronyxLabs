@@ -28,17 +28,16 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Cyber Ethics Chart Builder" />
 
-        <h1 className="text-3xl font-bold mb-2">Cyber Ethics Chart Builder</h1>
-        <p className="text-slate-600 mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
 
         <div className="flex gap-8 flex-1 h-[600px]">
           {/* Rule Bank */}
-          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden p-6">
-            <h3 className="font-bold text-slate-700 uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
+          <div className="w-80 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden p-6">
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
             <div className="flex flex-col gap-3 overflow-y-auto pr-2 pb-2">
               {rules.map((rule, idx) => (
                 <div 
@@ -73,7 +72,7 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
               backgroundAttachment: 'local'
             }}
           >
-            <div className="bg-slate-50 px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
+            <div className="bg-slate-50 dark:bg-slate-900 px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
               Classroom Cyber Ethics
             </div>
 

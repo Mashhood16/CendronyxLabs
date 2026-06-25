@@ -188,33 +188,33 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Everyday Physics Classroom" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-800">
             <Info className="mr-2" /> Concepts at Work
           </h2>
-          <div className="space-y-4 text-slate-700 leading-relaxed text-sm">
+          <div className="space-y-4 text-slate-700 dark:text-slate-200 leading-relaxed text-sm">
             <p>
               Physics isn't just in the lab—it governs everything in our daily environment!
             </p>
             
             <div className="border-l-4 border-red-500 pl-3">
-              <h3 className="font-bold text-slate-800">1. Free Fall (Kinematics)</h3>
-              <p>When an object is dropped, gravity accelerates it downwards at roughly 9.8 m/s². The height and time are related by: <code className="bg-slate-100 px-1 rounded">h = ½gt²</code>.</p>
+              <h3 className="font-bold text-slate-800 dark:text-slate-100">1. Free Fall (Kinematics)</h3>
+              <p>When an object is dropped, gravity accelerates it downwards at roughly 9.8 m/s². The height and time are related by: <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">h = ½gt²</code>.</p>
             </div>
 
             <div className="border-l-4 border-amber-500 pl-3">
-              <h3 className="font-bold text-slate-800">2. Periodic Motion</h3>
-              <p>A pendulum swings back and forth. The time it takes for one full swing (Period, T) depends entirely on its length and gravity: <code className="bg-slate-100 px-1 rounded">T = 2π√(L/g)</code>.</p>
+              <h3 className="font-bold text-slate-800 dark:text-slate-100">2. Periodic Motion</h3>
+              <p>A pendulum swings back and forth. The time it takes for one full swing (Period, T) depends entirely on its length and gravity: <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">T = 2π√(L/g)</code>.</p>
             </div>
 
             <div className="border-l-4 border-emerald-500 pl-3">
-              <h3 className="font-bold text-slate-800">3. Kinetic Friction</h3>
-              <p>A sliding box slows down because the floor exerts a frictional force. The distance it slides before stopping depends on initial velocity and the coefficient of friction (μ): <code className="bg-slate-100 px-1 rounded">d = v₀² / (2μg)</code>.</p>
+              <h3 className="font-bold text-slate-800 dark:text-slate-100">3. Kinetic Friction</h3>
+              <p>A sliding box slows down because the floor exerts a frictional force. The distance it slides before stopping depends on initial velocity and the coefficient of friction (μ): <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">d = v₀² / (2μg)</code>.</p>
             </div>
 
             <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mt-6">
@@ -229,10 +229,10 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-emerald-800 text-center">Interactive Classroom</h2>
           
-          <div className="flex-1 relative flex items-center justify-center bg-sky-50 rounded-xl overflow-hidden border-2 border-slate-300 shadow-inner">
+          <div className="flex-1 relative flex items-center justify-center bg-sky-50 rounded-xl overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
             <svg
               ref={svgRef}
               viewBox="0 0 400 400"
@@ -314,7 +314,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
                  setPendulumState(prev => ({ ...prev, angle: 0, isSwinging: false }));
                  setLogs([]);
               }}
-              className="flex items-center px-4 py-2 bg-slate-200 text-slate-700 rounded-lg font-medium hover:bg-slate-300 transition-colors"
+              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors"
             >
               <RefreshCw className="w-4 h-4 mr-2" />
               Reset Objects
@@ -323,28 +323,28 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-emerald-800">Experiment Data</h2>
           
-          <div className="flex-1 overflow-y-auto mb-4 border border-slate-200 rounded-lg max-h-48">
+          <div className="flex-1 overflow-y-auto mb-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-48">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 sticky top-0">
+              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0">
                 <tr>
-                  <th className="px-3 py-2 border-b font-semibold text-slate-700">Object</th>
-                  <th className="px-3 py-2 border-b font-semibold text-slate-700">Measurement</th>
+                  <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-slate-200">Object</th>
+                  <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-slate-200">Measurement</th>
                 </tr>
               </thead>
               <tbody>
                 {logs.length === 0 ? (
                   <tr>
-                    <td colSpan={2} className="px-4 py-6 text-center text-slate-500 italic">
+                    <td colSpan={2} className="px-4 py-6 text-center text-slate-500 dark:text-slate-400 italic">
                       Interact with objects to log data.
                     </td>
                   </tr>
                 ) : (
                   logs.map((log) => (
-                    <tr key={log.id} className="border-b hover:bg-slate-50">
-                      <td className="px-3 py-2 font-medium text-slate-700">{log.item}</td>
+                    <tr key={log.id} className="border-b hover:bg-slate-50 dark:bg-slate-900">
+                      <td className="px-3 py-2 font-medium text-slate-700 dark:text-slate-200">{log.item}</td>
                       <td className="px-3 py-2 font-mono text-emerald-700 text-xs">{log.event}</td>
                     </tr>
                   ))
@@ -358,7 +358,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
               <h3 className="font-bold text-red-800 mb-2 flex items-center text-sm">
                 <CheckCircle className="w-4 h-4 mr-2" /> Calc Gravity
               </h3>
-              <p className="text-xs text-slate-700 mb-2">Drop the ball. Calculate <strong>g</strong> (m/s²) using <code className="bg-slate-50 px-1">g = 2h / t²</code></p>
+              <p className="text-xs text-slate-700 dark:text-slate-200 mb-2">Drop the ball. Calculate <strong>g</strong> (m/s²) using <code className="bg-slate-50 dark:bg-slate-900 px-1">g = 2h / t²</code></p>
               <div className="flex gap-2">
                 <input type="number" value={ansGravity} onChange={e => setAnsGravity(e.target.value)} className="w-20 px-2 py-1 text-sm border rounded" />
                 <button onClick={checkGravity} className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700">Check</button>
@@ -370,7 +370,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
               <h3 className="font-bold text-emerald-800 mb-2 flex items-center text-sm">
                 <CheckCircle className="w-4 h-4 mr-2" /> Calc Friction
               </h3>
-              <p className="text-xs text-slate-700 mb-2">Push the box. Calculate <strong>μ</strong> using <code className="bg-slate-50 px-1">μ = v₀² / (2gd)</code> (use g=9.8)</p>
+              <p className="text-xs text-slate-700 dark:text-slate-200 mb-2">Push the box. Calculate <strong>μ</strong> using <code className="bg-slate-50 dark:bg-slate-900 px-1">μ = v₀² / (2gd)</code> (use g=9.8)</p>
               <div className="flex gap-2">
                 <input type="number" value={ansFriction} onChange={e => setAnsFriction(e.target.value)} step="0.1" className="w-20 px-2 py-1 text-sm border rounded" />
                 <button onClick={checkFriction} className="px-3 py-1 bg-emerald-600 text-white rounded text-sm hover:bg-emerald-700">Check</button>

@@ -26,16 +26,15 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
   const isSuccess = calculatedProfit === (parsedSelling - parsedCost).toString() && calculatedProfit !== '#ERROR' && calculatedProfit !== '';
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
-      <div className="flex-1 p-8 flex flex-col overflow-y-auto">
+    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
         <LabHeader onExit={onExit} title="Startup Finances" />
 
-        <h1 className="text-3xl font-bold mb-2">Startup Finances</h1>
-        <p className="text-slate-600 mb-8">Use the spreadsheet application to calculate the profit of your product. Hint: Profit = Selling Price - Cost Price.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-8">Use the spreadsheet application to calculate the profit of your product. Hint: Profit = Selling Price - Cost Price.</p>
 
         <div className="flex-1 flex flex-col">
           {/* Mock Excel App */}
-          <div className="bg-slate-50 rounded-xl shadow-xl border border-slate-200 flex flex-col overflow-hidden max-w-5xl mx-auto w-full">
+          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden max-w-5xl mx-auto w-full">
             
             {/* Ribbon */}
             <div className="bg-green-700 text-white p-2 flex items-center gap-3">
@@ -43,9 +42,9 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
               <span className="font-medium text-sm">Spreadsheet Application - Startup Finances.xlsx</span>
             </div>
             
-            <div className="bg-slate-100 border-b border-slate-300 p-2 flex items-center gap-4 text-sm shadow-inner">
-              <div className="flex items-center gap-2 border-r border-slate-300 pr-4">
-                <div className="bg-slate-50 border border-slate-300 px-2 py-1 w-16 text-center font-bold font-mono text-slate-600">
+            <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 flex items-center gap-4 text-sm shadow-inner">
+              <div className="flex items-center gap-2 border-r border-slate-300 dark:border-slate-700 dark:border-slate-500 pr-4">
+                <div className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 px-2 py-1 w-16 text-center font-bold font-mono text-slate-600 dark:text-slate-300">
                   {activeCell || ''}
                 </div>
               </div>
@@ -60,63 +59,63 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
                     if (activeCell === 'C2') setFormula(e.target.value);
                   }}
                   disabled={!activeCell || activeCell === 'A1' || activeCell === 'B1' || activeCell === 'C1'}
-                  className="flex-1 bg-slate-50 border border-slate-300 px-3 py-1 font-mono outline-none focus:border-green-500"
+                  className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 px-3 py-1 font-mono outline-none focus:border-green-500"
                 />
               </div>
             </div>
 
             {/* Grid */}
-            <div className="overflow-auto bg-slate-50 relative select-none">
+            <div className="overflow-auto bg-slate-50 dark:bg-slate-900 relative select-none">
               <table className="w-full border-collapse font-sans text-sm" style={{ tableLayout: 'fixed' }}>
                 <thead>
                   <tr>
-                    <th className="w-12 bg-slate-200 border border-slate-300 p-1 font-normal text-slate-500"></th>
-                    <th className="w-1/3 bg-slate-200 border border-slate-300 p-1 font-normal text-slate-500">A</th>
-                    <th className="w-1/3 bg-slate-200 border border-slate-300 p-1 font-normal text-slate-500">B</th>
-                    <th className="w-1/3 bg-slate-200 border border-slate-300 p-1 font-normal text-slate-500">C</th>
+                    <th className="w-12 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-1 font-normal text-slate-500 dark:text-slate-400"></th>
+                    <th className="w-1/3 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-1 font-normal text-slate-500 dark:text-slate-400">A</th>
+                    <th className="w-1/3 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-1 font-normal text-slate-500 dark:text-slate-400">B</th>
+                    <th className="w-1/3 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-1 font-normal text-slate-500 dark:text-slate-400">C</th>
                   </tr>
                 </thead>
                 <tbody>
                   {/* Row 1 - Headers */}
                   <tr>
-                    <td className="bg-slate-200 border border-slate-300 text-center font-normal text-slate-500">1</td>
+                    <td className="bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-center font-normal text-slate-500 dark:text-slate-400">1</td>
                     <td 
                       onClick={() => setActiveCell('A1')}
-                      className={`border border-slate-300 p-2 font-bold bg-slate-100 ${activeCell === 'A1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-bold bg-slate-100 dark:bg-slate-800 ${activeCell === 'A1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
                     >
                       Selling Price (Rs)
                     </td>
                     <td 
                       onClick={() => setActiveCell('B1')}
-                      className={`border border-slate-300 p-2 font-bold bg-slate-100 ${activeCell === 'B1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-bold bg-slate-100 dark:bg-slate-800 ${activeCell === 'B1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
                     >
                       Cost Price (Rs)
                     </td>
                     <td 
                       onClick={() => setActiveCell('C1')}
-                      className={`border border-slate-300 p-2 font-bold bg-slate-100 text-green-800 ${activeCell === 'C1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-bold bg-slate-100 dark:bg-slate-800 text-green-800 ${activeCell === 'C1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
                     >
                       Profit (Rs)
                     </td>
                   </tr>
                   {/* Row 2 - Data */}
                   <tr>
-                    <td className="bg-slate-200 border border-slate-300 text-center font-normal text-slate-500">2</td>
+                    <td className="bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-center font-normal text-slate-500 dark:text-slate-400">2</td>
                     <td 
                       onClick={() => setActiveCell('A2')}
-                      className={`border border-slate-300 p-2 font-mono text-right ${activeCell === 'A2' ? 'ring-2 ring-green-500 ring-inset relative z-10 bg-slate-50' : 'bg-slate-50'}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-mono text-right ${activeCell === 'A2' ? 'ring-2 ring-green-500 ring-inset relative z-10 bg-slate-50 dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-900'}`}
                     >
                       {activeCell === 'A2' ? sellingPrice : parsedSelling.toString()}
                     </td>
                     <td 
                       onClick={() => setActiveCell('B2')}
-                      className={`border border-slate-300 p-2 font-mono text-right ${activeCell === 'B2' ? 'ring-2 ring-green-500 ring-inset relative z-10 bg-slate-50' : 'bg-slate-50'}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-mono text-right ${activeCell === 'B2' ? 'ring-2 ring-green-500 ring-inset relative z-10 bg-slate-50 dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-900'}`}
                     >
                       {activeCell === 'B2' ? costPrice : parsedCost.toString()}
                     </td>
                     <td 
                       onClick={() => setActiveCell('C2')}
-                      className={`border border-slate-300 p-2 font-mono text-right bg-green-50/50 ${activeCell === 'C2' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''} ${calculatedProfit === '#ERROR' ? 'text-red-500' : 'font-bold text-green-700'}`}
+                      className={`border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 font-mono text-right bg-green-50/50 ${activeCell === 'C2' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''} ${calculatedProfit === '#ERROR' ? 'text-red-500' : 'font-bold text-green-700'}`}
                     >
                       {activeCell === 'C2' && formula.startsWith('=') ? formula : calculatedProfit}
                     </td>
@@ -124,18 +123,18 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
                   {/* Empty Rows */}
                   {[3, 4, 5, 6].map(row => (
                     <tr key={row}>
-                      <td className="bg-slate-200 border border-slate-300 text-center font-normal text-slate-500">{row}</td>
-                      <td className="border border-slate-300 bg-slate-50"></td>
-                      <td className="border border-slate-300 bg-slate-50"></td>
-                      <td className="border border-slate-300 bg-slate-50"></td>
+                      <td className="bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-center font-normal text-slate-500 dark:text-slate-400">{row}</td>
+                      <td className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900"></td>
+                      <td className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900"></td>
+                      <td className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900"></td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <div className="bg-slate-100 p-4 border-t border-slate-300 flex justify-between items-center">
-               <div className="text-sm text-slate-500 flex items-center gap-2">
+            <div className="bg-slate-100 dark:bg-slate-800 p-4 border-t border-slate-300 dark:border-slate-700 dark:border-slate-500 flex justify-between items-center">
+               <div className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
                  <Calculator className="w-4 h-4" /> Ready
                </div>
                

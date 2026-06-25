@@ -47,17 +47,17 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 10: Leslie Cube Experiment" subtitle="Measure infrared radiation emitted from 4 different surfaces." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <BookOpen className="w-5 h-5 text-rose-600" />
-            <h2 className="text-lg font-bold text-slate-800">Theory & Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Theory & Setup</h2>
           </div>
-          <div className="space-y-4 text-slate-600 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
             <p>
               A <strong>Leslie Cube</strong> is a hollow metal cube with 4 different outer surfaces, filled with boiling water (100°C). It is used to demonstrate how the nature of a surface affects the emission of thermal (infrared) radiation.
             </p>
@@ -70,7 +70,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
               <p className="font-mono text-xs">Intensity (I) ∝ 1 / d²</p>
               <p className="text-xs mt-2 text-rose-700">As the sensor moves away, the measured intensity drops rapidly.</p>
             </div>
-            <div className="flex items-start gap-2 bg-slate-100 text-slate-700 p-3 rounded-md">
+            <div className="flex items-start gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-md">
               <Info className="w-5 h-5 shrink-0 mt-0.5" />
               <p className="text-xs">
                 Select a surface and vary the distance of the IR sensor. Record the intensity to build your dataset.
@@ -80,13 +80,13 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <Box className="w-5 h-5 text-indigo-600" />
-            <h2 className="text-lg font-bold text-slate-800">Simulation</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Simulation</h2>
           </div>
 
-          <div className="flex-1 relative bg-slate-50 border-2 border-slate-200 rounded-xl flex items-center justify-center p-4 h-80 overflow-hidden">
+          <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl flex items-center justify-center p-4 h-80 overflow-hidden">
             
             {/* Sensor */}
             <div 
@@ -113,9 +113,9 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
             </div>
 
             {/* Distance Track */}
-            <div className="absolute bottom-10 left-8 right-8 h-0.5 bg-slate-300">
-               <div className="absolute right-[10rem] top-2 text-xs text-slate-500 font-mono">0 cm</div>
-               <div className="absolute left-0 top-2 text-xs text-slate-500 font-mono">40 cm</div>
+            <div className="absolute bottom-10 left-8 right-8 h-0.5 bg-slate-300 dark:bg-slate-800">
+               <div className="absolute right-[10rem] top-2 text-xs text-slate-500 dark:text-slate-400 font-mono">0 cm</div>
+               <div className="absolute left-0 top-2 text-xs text-slate-500 dark:text-slate-400 font-mono">40 cm</div>
             </div>
             
             {/* Heat Waves visualization */}
@@ -128,13 +128,13 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">Target Surface</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Target Surface</label>
               <div className="grid grid-cols-2 gap-2">
                 {SURFACES.map(s => (
                   <button 
                     key={s} 
                     onClick={() => setSurface(s)}
-                    className={`px-3 py-2 text-sm font-medium rounded border transition-colors ${surface === s ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'bg-slate-50 border-slate-300 text-slate-600 hover:bg-slate-50'}`}
+                    className={`px-3 py-2 text-sm font-medium rounded border transition-colors ${surface === s ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900'}`}
                   >
                     {s}
                   </button>
@@ -143,7 +143,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 mb-1">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                 <span>Sensor Distance (cm)</span>
                 <span className="text-indigo-600">{distance} cm</span>
               </label>
@@ -157,14 +157,14 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <LineChart className="w-5 h-5 text-indigo-600" />
-            <h2 className="text-lg font-bold text-slate-800">Data & Analysis</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
           </div>
 
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600">Current Reading: {intensity.toFixed(1)} W/m²</span>
+            <span className="text-sm text-slate-600 dark:text-slate-300">Current Reading: {intensity.toFixed(1)} W/m²</span>
             <button 
               onClick={recordData}
               className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200 px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
@@ -173,13 +173,13 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="max-h-32 overflow-y-auto border border-slate-200 rounded-md">
+          <div className="max-h-32 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-md">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 sticky top-0 shadow-sm z-10">
+              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0 shadow-sm z-10">
                 <tr>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Surface</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Dist (cm)</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700">Int. (W/m²)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Surface</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Dist (cm)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Int. (W/m²)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -187,7 +187,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
                   <tr><td colSpan={3} className="px-3 py-4 text-center text-slate-400">No data recorded yet.</td></tr>
                 )}
                 {data.map((d, i) => (
-                  <tr key={i} className="hover:bg-slate-50">
+                  <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-3 py-1.5">{d.surface.replace('Matt', 'M.').replace('Shiny', 'S.')}</td>
                     <td className="px-3 py-1.5">{d.distance}</td>
                     <td className="px-3 py-1.5 text-indigo-600 font-medium">{d.intensity.toFixed(1)}</td>
@@ -198,9 +198,9 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
           </div>
 
           {/* Graph */}
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 flex flex-col items-center">
-            <span className="text-xs font-bold text-slate-600 mb-2">Intensity vs Distance</span>
-            <svg width="250" height="150" className="bg-slate-50 border border-slate-300 rounded shadow-sm">
+          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+            <span className="text-xs font-bold text-slate-600 dark:text-slate-300 mb-2">Intensity vs Distance</span>
+            <svg width="250" height="150" className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded shadow-sm">
               <line x1="30" y1="130" x2="240" y2="130" stroke="#cbd5e1" strokeWidth="2" />
               <line x1="30" y1="10" x2="30" y2="130" stroke="#cbd5e1" strokeWidth="2" />
               <text x="110" y="145" fontSize="10" fill="#64748b">Distance (cm)</text>

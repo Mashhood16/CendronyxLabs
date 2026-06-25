@@ -117,12 +117,12 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Plant Physiology" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
             <h2 className="text-xl font-bold text-gray-800 flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
@@ -147,7 +147,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
                 </div>
                 <div className="space-y-2 pt-4">
                   <label className="flex justify-between text-sm font-medium text-gray-700">
-                    <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500" /> Wind Speed</span>
+                    <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-slate-400" /> Wind Speed</span>
                     <span>{wind}</span>
                   </label>
                   <input type="range" min="0" max="10" value={wind} onChange={(e) => setWind(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -172,7 +172,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
                   <button onClick={() => setIsLight(true)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${isLight ? 'bg-yellow-100 text-yellow-700 border-2 border-yellow-400' : 'bg-gray-100 text-gray-600'}`}>
                     <Sun className="w-4 h-4 mr-2" /> Light
                   </button>
-                  <button onClick={() => setIsLight(false)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${!isLight ? 'bg-slate-700 text-white border-2 border-slate-900' : 'bg-gray-100 text-gray-600'}`}>
+                  <button onClick={() => setIsLight(false)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${!isLight ? 'bg-slate-700 dark:bg-slate-800 text-white border-2 border-slate-900 dark:border-slate-500' : 'bg-gray-100 text-gray-600'}`}>
                     <Moon className="w-4 h-4 mr-2" /> Dark
                   </button>
                 </div>
@@ -183,14 +183,14 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex space-x-2 mb-4">
             <button onClick={() => {setActiveTab('Potometer'); setBubblePos(0); setPotometerRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Potometer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Droplet className="w-4 h-4 inline mr-1" /> Potometer</button>
             <button onClick={() => {setActiveTab('Hydrilla'); setGasVolume(0); setHydrillaRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Hydrilla' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Sun className="w-4 h-4 inline mr-1" /> Hydrilla</button>
             <button onClick={() => {setActiveTab('Indicator'); setIndicatorTime(0); setIndicatorRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Indicator' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Activity className="w-4 h-4 inline mr-1" /> Indicator</button>
           </div>
 
-          <div className="relative bg-slate-100 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 flex-1 flex flex-col items-center justify-center p-4">
+          <div className="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1 flex flex-col items-center justify-center p-4">
             {activeTab === 'Potometer' && (
               <svg viewBox="0 0 400 300" className="w-full h-full">
                  <path d="M 50 180 L 50 280 L 150 280 L 150 180" fill="none" stroke="#94a3b8" strokeWidth="4" />
@@ -328,7 +328,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Data & Assessment */}
-        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
           <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Data Logging & Analysis

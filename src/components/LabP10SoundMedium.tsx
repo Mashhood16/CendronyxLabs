@@ -70,7 +70,7 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       {/* Header */}
       <LabHeader onExit={onExit} title="Medium for Propagation" subtitle="Investigate sound transmission in a vacuum using a bell jar" />
 
@@ -78,12 +78,12 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory and Setup */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 border-b border-slate-200 p-4">
-            <h2 className="font-semibold text-slate-800">Theory & Setup</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Theory & Setup</h2>
           </div>
           <div className="p-5 flex-1 overflow-y-auto space-y-6">
-            <div className="space-y-2 text-sm text-slate-600">
+            <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
               <p>
                 Sound waves are mechanical waves that require a material medium (like solid, liquid, or gas) to propagate. They transfer energy via collisions between particles.
               </p>
@@ -97,7 +97,7 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
 
             <div className="border-t border-slate-100 pt-4 space-y-6">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
                   Electric Bell Power
                 </label>
                 <button
@@ -114,7 +114,7 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <label className="flex justify-between text-sm font-medium text-slate-700">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
                   <span>Air Pressure (atm)</span>
                   <span className="font-mono text-blue-700">{pressure.toFixed(2)}</span>
                 </label>
@@ -137,26 +137,26 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden lg:col-span-1">
-          <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800">Simulation View</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden lg:col-span-1">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Simulation View</h2>
           </div>
-          <div className="p-4 flex-1 flex flex-col items-center justify-center bg-slate-900 relative overflow-hidden">
+          <div className="p-4 flex-1 flex flex-col items-center justify-center bg-slate-900 dark:bg-slate-800 relative overflow-hidden">
             
             <div className="relative w-64 h-80 flex flex-col items-center z-10 scale-90 sm:scale-100">
               {/* Battery / Wires top */}
               <div className="w-16 h-8 bg-zinc-800 rounded-t-lg z-20 flex justify-center gap-2 pt-2 shadow-lg">
                 <div className="w-2 h-12 bg-rose-600" />
-                <div className="w-2 h-12 bg-slate-900" />
+                <div className="w-2 h-12 bg-slate-900 dark:bg-slate-800" />
               </div>
 
               {/* Bell Jar */}
-              <div className="w-56 h-64 border-4 border-slate-400/50 rounded-t-[112px] relative flex flex-col items-center justify-center shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] transition-all duration-1000 overflow-hidden bg-slate-50/5">
+              <div className="w-56 h-64 border-4 border-slate-400 dark:border-slate-500/50 rounded-t-[112px] relative flex flex-col items-center justify-center shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] transition-all duration-1000 overflow-hidden bg-slate-50 dark:bg-slate-900/5">
                 
                 {/* Air particles */}
                 <div className="absolute inset-0 pointer-events-none rounded-t-[108px] opacity-100 transition-opacity duration-300" style={{ opacity: pressure }}>
                   {[...Array(60)].map((_,i) => (
-                    <div key={i} className="absolute w-1 h-1 bg-slate-300 rounded-full animate-pulse" style={{
+                    <div key={i} className="absolute w-1 h-1 bg-slate-300 dark:bg-slate-800 rounded-full animate-pulse" style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animationDelay: `${Math.random() * 2}s`
@@ -207,9 +207,9 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
             `}</style>
 
             {/* Readout */}
-            <div className="mt-12 w-full max-w-xs bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-between px-6 shadow-lg">
+            <div className="mt-12 w-full max-w-xs bg-slate-800 dark:bg-slate-800 p-4 rounded-xl border border-slate-700 dark:border-slate-500 flex items-center justify-between px-6 shadow-lg">
               <span className="text-slate-400 text-sm font-medium uppercase tracking-wider">Sound Level</span>
-              <span className={`text-3xl font-mono ${bellOn ? 'text-rose-400' : 'text-slate-600'}`}>
+              <span className={`text-3xl font-mono ${bellOn ? 'text-rose-400' : 'text-slate-600 dark:text-slate-300'}`}>
                 {bellOn ? `${currentDb.toFixed(1)} dB` : 'OFF'}
               </span>
             </div>
@@ -218,20 +218,20 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800">Data & Analysis</h2>
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
             <div className="flex gap-2">
               <button
                 onClick={handleRecordData}
                 disabled={!bellOn}
-                className="flex items-center gap-1 bg-amber-600 text-white px-3 py-1.5 rounded-md hover:bg-amber-700 disabled:bg-slate-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 bg-amber-600 text-white px-3 py-1.5 rounded-md hover:bg-amber-700 disabled:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
               >
                 <Plus className="w-4 h-4" /> Record
               </button>
               <button
                 onClick={handleClearData}
-                className="flex items-center gap-1 bg-slate-200 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-300 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
               >
                 <Trash2 className="w-4 h-4" /> Clear
               </button>
@@ -241,9 +241,9 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
           <div className="p-4 flex-1 overflow-y-auto space-y-6">
             
             {/* Data Table */}
-            <div className="border border-slate-200 rounded-lg overflow-hidden">
+            <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 text-slate-600 font-medium border-b border-slate-200">
+                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-medium border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
                   <tr>
                     <th className="px-3 py-2 text-center">Pressure (atm)</th>
                     <th className="px-3 py-2 text-center">Intensity Level (dB)</th>
@@ -258,7 +258,7 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
                     </tr>
                   ) : (
                     data.map((point) => (
-                      <tr key={point.id} className="hover:bg-slate-50">
+                      <tr key={point.id} className="hover:bg-slate-50 dark:bg-slate-900">
                         <td className="px-3 py-2 text-center font-mono">{point.pressure.toFixed(2)}</td>
                         <td className="px-3 py-2 text-center font-semibold text-rose-600">{point.db.toFixed(1)}</td>
                       </tr>
@@ -269,9 +269,9 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
             </div>
 
             {/* Graph */}
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <h3 className="text-sm font-bold text-slate-700 mb-2 text-center">Pressure vs Sound Level</h3>
-              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 border-l-2 border-b-2 border-slate-600">
+            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-2 text-center">Pressure vs Sound Level</h3>
+              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-slate-900 border-l-2 border-b-2 border-slate-600 dark:border-slate-500">
                 {/* Grid lines */}
                 {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
                   <div key={`grid-${val}`}>
@@ -281,9 +281,9 @@ export default function LabP10SoundMedium({ onExit }: LabProps) {
                 ))}
                 
                 {/* Axis Labels */}
-                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 font-medium">Pressure (atm)</div>
+                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-slate-400 font-medium">Pressure (atm)</div>
                 <div className="absolute top-0 bottom-0 -left-6 flex items-center">
-                  <div className="transform -rotate-90 text-[10px] text-slate-500 font-medium whitespace-nowrap">Sound (dB)</div>
+                  <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">Sound (dB)</div>
                 </div>
 
                 {/* Data Points */}

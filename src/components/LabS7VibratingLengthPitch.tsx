@@ -25,12 +25,12 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
       <LabHeader onExit={onExit} title="Unit 9: Waves and Energy" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-purple-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-purple-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-purple-800 mb-4">Pitch and Vibrating Length</h2>
-          <p className="text-slate-600 mb-6">A rubber band is stretched over a hollow box, supported by two pens. Adjust the distance between the pens to change the length of the vibrating segment, then pluck the band.</p>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">A rubber band is stretched over a hollow box, supported by two pens. Adjust the distance between the pens to change the length of the vibrating segment, then pluck the band.</p>
           
           <div className="flex items-center gap-4 px-12">
-            <span className="font-bold text-slate-500 whitespace-nowrap">Distance:</span>
+            <span className="font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">Distance:</span>
             <input 
               type="range" min="20" max="100" value={distance} onChange={e => setDistance(parseInt(e.target.value))}
               className="flex-1 accent-purple-600"
@@ -99,12 +99,12 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
         </div>
 
         {/* Audio Visualizer (Fake) */}
-        <div className="mt-12 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm w-full max-w-2xl">
+        <div className="mt-12 bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm w-full max-w-2xl">
            <div className="flex justify-between items-center mb-4">
-             <h3 className="font-bold text-slate-700">Audio Waveform</h3>
+             <h3 className="font-bold text-slate-700 dark:text-slate-200">Audio Waveform</h3>
              <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-bold text-sm uppercase tracking-wider">{pitchLabel}</span>
            </div>
-           <div className="h-24 bg-slate-900 rounded-lg overflow-hidden relative flex items-center justify-center">
+           <div className="h-24 bg-slate-900 dark:bg-slate-800 rounded-lg overflow-hidden relative flex items-center justify-center">
               {playing ? (
                 <svg width="100%" height="100%" preserveAspectRatio="none">
                   <path 
@@ -118,7 +118,7 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
                 <div className="w-full h-0.5 bg-purple-900"></div>
               )}
            </div>
-           <p className="mt-4 text-slate-500 text-sm text-center">
+           <p className="mt-4 text-slate-500 dark:text-slate-400 text-sm text-center">
              Shorter lengths vibrate faster (higher frequency), producing a higher pitch. Longer lengths vibrate slower (lower frequency), producing a lower pitch.
            </p>
         </div>

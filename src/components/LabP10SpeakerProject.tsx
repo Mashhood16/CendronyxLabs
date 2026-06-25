@@ -77,19 +77,19 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 13: Making a Speaker (Motor Effect)" subtitle="Investigate the electromagnetic forces that drive a DIY speaker." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Setup</h2>
-          <div className="prose prose-sm text-slate-600 mb-6">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Setup</h2>
+          <div className="prose prose-sm text-slate-600 dark:text-slate-300 mb-6">
             <p>
               A speaker works using the <strong>Motor Effect</strong>. When an alternating current <span className="font-mono">I</span> flows through a coil of wire in a magnetic field <span className="font-mono">B</span>, a force is exerted on the wire.
             </p>
-            <div className="bg-slate-100 p-3 rounded-lg text-center font-mono font-bold text-lg">
+            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono font-bold text-lg">
               F = B · I · L
             </div>
             <p className="mt-2">
@@ -99,13 +99,13 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
           <div className="space-y-6 flex-1">
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>Magnet Type</span>
               </label>
               <select 
                 value={magnetId} 
                 onChange={(e) => setMagnetId(e.target.value)}
-                className="w-full p-2 border border-slate-300 rounded-md bg-slate-50"
+                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md bg-slate-50 dark:bg-slate-900"
               >
                 {MAGNETS.map(m => (
                   <option key={m.id} value={m.id}>{m.name}</option>
@@ -114,7 +114,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>Coil Turns (N)</span>
                 <span className="text-orange-600 font-bold">{turns} turns</span>
               </label>
@@ -127,7 +127,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between font-medium text-sm text-slate-700 mb-1">
+              <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-slate-200 mb-1">
                 <span>Peak Current (I)</span>
                 <span className="text-blue-600 font-bold">{current.toFixed(2)} A</span>
               </label>
@@ -142,7 +142,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-700 p-6 flex flex-col items-center relative overflow-hidden">
+        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center relative overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
           
           <div className="flex-1 w-full flex flex-col items-center justify-center relative">
@@ -157,9 +157,9 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
                )}
 
                {/* The Cup */}
-               <div className={`w-40 h-32 border-4 border-white/20 bg-slate-50/10 rounded-b-3xl relative flex flex-col justify-end items-center pb-4 backdrop-blur-sm z-10 transition-transform ${isPlaying ? 'animate-[vibrate_0.1s_infinite]' : ''}`}>
+               <div className={`w-40 h-32 border-4 border-white/20 bg-slate-50 dark:bg-slate-900/10 rounded-b-3xl relative flex flex-col justify-end items-center pb-4 backdrop-blur-sm z-10 transition-transform ${isPlaying ? 'animate-[vibrate_0.1s_infinite]' : ''}`}>
                  {/* Magnet inside */}
-                 <div className={`w-12 h-6 bg-slate-400 border-2 border-slate-500 rounded-sm mb-2 z-0 shadow-lg relative flex items-center justify-center ${selectedMagnet.id === 'mystery' ? 'bg-purple-900' : ''}`}>
+                 <div className={`w-12 h-6 bg-slate-400 dark:bg-slate-800 border-2 border-slate-500 dark:border-slate-500 rounded-sm mb-2 z-0 shadow-lg relative flex items-center justify-center ${selectedMagnet.id === 'mystery' ? 'bg-purple-900' : ''}`}>
                    <span className="text-[10px] text-white font-bold">{selectedMagnet.id === 'mystery' ? '?' : 'N  S'}</span>
                  </div>
                </div>
@@ -197,21 +197,21 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Assessment */}
-        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-slate-800">Data Logger</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logger</h2>
             <button 
               onClick={recordData}
               disabled={measuredForce === null}
-              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-300 text-white rounded text-sm font-medium transition-colors"
+              className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-300 dark:bg-slate-800 text-white rounded text-sm font-medium transition-colors"
             >
               <Save className="w-4 h-4" /> Record Data
             </button>
           </div>
 
-          <div className="overflow-auto max-h-40 border border-slate-200 rounded-lg mb-4">
+          <div className="overflow-auto max-h-40 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg mb-4">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>
                   <th className="px-3 py-2 border-b">N</th>
                   <th className="px-3 py-2 border-b">I (A)</th>
@@ -226,7 +226,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
                   </tr>
                 )}
                 {data.map(d => (
-                  <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50">
+                  <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-3 py-2">{d.turns}</td>
                     <td className="px-3 py-2">{d.current}</td>
                     <td className="px-3 py-2">{Number.isNaN(d.B) ? '?' : d.B}</td>
@@ -237,8 +237,8 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-4 relative mb-4">
-            <h3 className="text-xs font-bold text-slate-500 uppercase absolute top-2 left-3">Force vs Current (I)</h3>
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative mb-4">
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase absolute top-2 left-3">Force vs Current (I)</h3>
             <div className="w-full h-full pt-6">
                <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                  <line x1="10" y1="90" x2="100" y2="90" stroke="#cbd5e1" strokeWidth="1" />
