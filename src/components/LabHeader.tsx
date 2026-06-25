@@ -15,7 +15,7 @@ interface LabHeaderProps {
 
 const variantStyles: Record<LabHeaderVariant, { container: string; button: string; title: string; subtitle: string }> = {
   light: {
-    container: 'bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:bg-slate-900 dark:border-slate-700 dark:border-slate-500',
+    container: 'bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm',
     button: 'p-2 rounded-full transition-colors text-slate-600 dark:text-slate-300 hover:bg-slate-100/50 dark:hover:bg-white/10',
     title: 'text-slate-800 dark:text-white',
     subtitle: 'text-slate-500 dark:text-slate-400',

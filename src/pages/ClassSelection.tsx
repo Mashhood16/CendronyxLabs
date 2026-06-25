@@ -3,8 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES } from '../data/labModules';
 import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, BookOpen } from 'lucide-react';
 
-const CLASSES = ['6', '7', '8', '9', '10', '11', '12'];
+const CLASS_CONFIG: Record<string, { gradient: string; icon: typeof FlaskConical; iconBg: string; ring: string; hoverGradient: string; label: string }> = {
+  '6':  { gradient: 'from-emerald-500 to-teal-600',   icon: FlaskConical, iconBg: 'bg-emerald-400', ring: 'ring-emerald-300', hoverGradient: 'from-emerald-400 to-teal-500',   label: 'Foundation Year' },
+  '7':  { gradient: 'from-sky-500 to-blue-600',       icon: Atom,         iconBg: 'bg-sky-400',   ring: 'ring-sky-300',   hoverGradient: 'from-sky-400 to-blue-500',       label: 'Exploration' },
+  '8':  { gradient: 'from-violet-500 to-purple-600',   icon: Cpu,          iconBg: 'bg-violet-400', ring: 'ring-violet-300', hoverGradient: 'from-violet-400 to-purple-500',  label: 'Discovery' },
+  '9':  { gradient: 'from-rose-500 to-pink-600',       icon: Dna,          iconBg: 'bg-rose-400',  ring: 'ring-rose-300',  hoverGradient: 'from-rose-400 to-pink-500',      label: 'Pre-Board' },
+  '10': { gradient: 'from-orange-500 to-amber-600',    icon: Microscope,   iconBg: 'bg-orange-400', ring: 'ring-orange-300', hoverGradient: 'from-orange-400 to-amber-500',  label: 'Board Prep' },
+  '11': { gradient: 'from-indigo-500 to-blue-700',     icon: Calculator,   iconBg: 'bg-indigo-400', ring: 'ring-indigo-300', hoverGradient: 'from-indigo-400 to-blue-600',   label: 'Senior Science' },
+  '12': { gradient: 'from-red-500 to-rose-700',        icon: BookOpen,     iconBg: 'bg-red-400',   ring: 'ring-red-300',   hoverGradient: 'from-red-400 to-rose-600',      label: 'Final Year' },
+};
 
 export default function ClassSelection() {
   const navigate = useNavigate();
@@ -16,36 +25,52 @@ export default function ClassSelection() {
         <Breadcrumbs />
 
         {/* Hero Section */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 p-10 mb-12 shadow-2xl">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-40 h-40 bg-slate-50 opacity-10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-40 h-40 bg-slate-50 opacity-10 rounded-full blur-2xl"></div>
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 p-10 mb-12 shadow-2xl">
+          <div className="absolute top-0 right-0 -mt-6 -mr-6 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-48 h-48 bg-purple-300 opacity-10 rounded-full blur-2xl"></div>
           <div className="relative z-10 flex flex-col items-center text-center">
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-outfit tracking-tight">
-              Welcome to Virtual<span className="text-blue-300">Lab</span>
+              Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">VirtualLab</span>
             </h1>
             <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-8 font-medium">
-              Explore our massive library of <span className="font-bold text-white bg-blue-500/30 px-2 py-0.5 rounded">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics, and Computer Science.
+              Explore our library of <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg backdrop-blur-sm">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics & Computer Science.
             </p>
           </div>
         </div>
+
         <div>
           <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Select Class</h2>
           <p className="text-slate-500 mt-1 mb-6">Choose your grade level to browse available experiments.</p>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {CLASSES.map(cls => (
-              <button
-                key={cls}
-                onClick={() => navigate(`/class/${cls}`)}
-                className="glass p-8 rounded-3xl hover:border-blue-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-600 flex items-center justify-center text-3xl font-extrabold shadow-inner group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white group-hover:rotate-6 transition-all duration-300 font-outfit">
-                  {cls}
-                </div>
-                <span className="text-xl font-bold text-slate-700 group-hover:text-blue-700 font-outfit transition-colors">Class {cls}</span>
-              </button>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {Object.entries(CLASS_CONFIG).map(([cls, config]) => {
+              const Icon = config.icon;
+              return (
+                <button
+                  key={cls}
+                  onClick={() => navigate(`/class/${cls}`)}
+                  className="relative group p-6 rounded-2xl border-2 border-transparent bg-white hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                >
+                  {/* Gradient accent bar at top */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
+                  
+                  {/* Hover glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${config.hoverGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>
+
+                  <div className="flex items-center gap-4">
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
+                      style={{ boxShadow: `0 8px 20px -4px rgb(0 0 0 / 0.2)` }}
+                    >
+                      <Icon className="w-7 h-7" strokeWidth={2} />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-2xl font-extrabold text-slate-800 font-outfit">Class {cls}</span>
+                      <span className="text-sm font-medium text-slate-500">{config.label}</span>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

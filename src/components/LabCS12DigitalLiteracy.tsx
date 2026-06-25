@@ -1,6 +1,5 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import { Search, Table, EyeOff, CheckCircle, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 const INITIAL_DATA = [
@@ -12,8 +11,7 @@ const INITIAL_DATA = [
 ];
 
 export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
+
   const [searchQuery, setSearchQuery] = useState('');
   
   const [maskName, setMaskName] = useState(false);
@@ -234,27 +232,6 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
               <button 
                 onClick={() => {
-                  let score = 0;
-                  const q1 = q1Answer.trim().toLowerCase();
-                  if (q1.includes('country:usa') && q1.includes('condition:diabetes')) score += 50;
-                  if (maskName && hashEmail && removeIp && generalizeAge) score += 50;
-
-                  addRecord({
-                    labId: 'cs12_digitalliteracy',
-                    title: 'Digital Literacy: Data Querying & GDPR',
-                    subject: 'Computer Science',
-                    score,
-                    maxScore: 100,
-                    timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                    experimentData: {
-                      'Final Search Query': searchQuery || 'None',
-                      'Mask Name Active': maskName ? 'Yes' : 'No',
-                      'Hash Email Active': hashEmail ? 'Yes' : 'No',
-                      'Generalize Age Active': generalizeAge ? 'Yes' : 'No',
-                      'Remove IP Active': removeIp ? 'Yes' : 'No',
-                      'Records Displayed': processedData.length
-                    }
-                  });
                   if (onExit) onExit();
                 }}
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

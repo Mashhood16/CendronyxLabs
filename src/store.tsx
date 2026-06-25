@@ -3,6 +3,7 @@ import type { StudentAccount } from './services/studentService';
 import { studentService } from './services/studentService';
 import { historyDB } from './services/dbService';
 import type { LabRecord } from './services/dbService';
+import { getAnonymousId } from './utils/sessionId';
 
 // --- Types ---
 export interface User {
@@ -104,7 +105,8 @@ export const useAuth = () => {
 // --- History Context ---
 interface HistoryContextType {
   history: LabRecord[];
-  addRecord: (record: Omit<LabRecord, 'timestamp'>) => void;
+  addRecord: (record: Omit<LabRecord, 'timestamp'>) => Promise<void>;
+  refreshHistory: () => Promise<void>;
 }
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
@@ -113,28 +115,35 @@ export function HistoryProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [history, setHistory] = useState<LabRecord[]>([]);
 
-  // Load history scoped to current user from IndexedDB
+  // Load history scoped to current user (or anonymous session) from IndexedDB
   useEffect(() => {
-    if (!user) {
-      setHistory([]);
-      return;
-    }
-    historyDB.getRecords(user.id).then(setHistory).catch(() => setHistory([]));
+    const userId = user?.id || getAnonymousId();
+    historyDB.getRecords(userId).then(setHistory).catch(() => setHistory([]));
   }, [user?.id]);
 
   const addRecord = useCallback(async (record: Omit<LabRecord, 'timestamp'>) => {
-    if (!user) return;
+    const userId = user?.id || getAnonymousId();
     try {
-      await historyDB.addRecord(user.id, record);
-      const updated = await historyDB.getRecords(user.id);
+      await historyDB.addRecord(userId, record);
+      const updated = await historyDB.getRecords(userId);
       setHistory(updated);
     } catch (err) {
       console.error('Failed to save history record', err);
     }
   }, [user?.id, user]);
 
+  const refreshHistory = useCallback(async () => {
+    const userId = user?.id || getAnonymousId();
+    try {
+      const records = await historyDB.getRecords(userId);
+      setHistory(records);
+    } catch {
+      setHistory([]);
+    }
+  }, [user?.id]);
+
   return (
-    <HistoryContext.Provider value={{ history, addRecord }}>
+    <HistoryContext.Provider value={{ history, addRecord, refreshHistory }}>
       {children}
     </HistoryContext.Provider>
   );

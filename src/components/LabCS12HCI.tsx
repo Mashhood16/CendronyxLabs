@@ -1,11 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Monitor, Shield, Activity, Eye, CheckCircle, XCircle, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
+
   const [design, setDesign] = useState<'A' | 'B'>('A');
   const [contrast, setContrast] = useState<'Normal' | 'High'>('Normal');
   const [fontSize, setFontSize] = useState<'Normal' | 'Large'>('Normal');
@@ -36,21 +34,6 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
   };
 
   const handleComplete = () => {
-    const score = (q1Answer ? 50 : 0) + (q2Answer ? 50 : 0);
-    addRecord({
-      labId: 'cs12_hci',
-      title: 'Human-Computer Interaction (HCI)',
-      subject: 'Computer Science',
-      score,
-      maxScore: 100,
-      timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-      experimentData: {
-        'Final Accessibility': accessibility,
-        'Final Security': security,
-        'Final Usability': usability,
-        'Final Conversion': conversion + '%',
-      }
-    });
     if (onExit) onExit();
   };
 

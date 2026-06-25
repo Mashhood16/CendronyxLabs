@@ -17,6 +17,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const mobileSearchRef = useRef<HTMLInputElement>(null);
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -71,13 +72,14 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   };
 
   return (
-    <header className="glass px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50">
+    <header className={`${isDark ? 'bg-gradient-to-r from-[#0f172a] via-[#141b30] to-[#0f172a]' : 'bg-white border-b border-slate-200'} px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50 relative`}>
+      {/* Subtle glow in dark mode */}
+      {isDark && <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-blue-600/5 to-transparent pointer-events-none"></div>}
       {/* Left: Hamburger + Logo */}
       <div className="flex items-center gap-4 flex-1 min-w-0">
-        {/* Hamburger - visible on mobile only */}
         <button
           onClick={onToggleSidebar}
-          className="md:hidden p-2 -ml-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors"
+          className={`md:hidden p-2 -ml-2 rounded-xl transition-colors ${isDark ? 'text-slate-400 hover:text-blue-400 hover:bg-white/5' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           aria-label="Toggle navigation menu"
         >
           <Menu className="w-6 h-6" />
@@ -86,49 +88,51 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
         <div className="md:hidden w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/30 shrink-0">
           V
         </div>
-        <h1 className="text-2xl font-bold font-outfit text-slate-800 hidden md:block shrink-0">Dashboard</h1>
+        <h1 className="text-2xl font-bold font-outfit hidden md:block shrink-0">
+          <span className={`${isDark ? 'bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300' : 'text-slate-800'}`}>Dashboard</span>
+        </h1>
 
         {/* Desktop Search Bar */}
         <div ref={searchRef} className="hidden lg:block relative w-96">
-          <div className="flex items-center bg-slate-100/80 border border-slate-200 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-blue-500/50 focus-within:bg-slate-50 transition-all shadow-inner">
-            <Search className="w-4 h-4 text-slate-400 mr-2 shrink-0" />
+          <div className={`flex items-center rounded-full px-4 py-2 transition-all ${isDark ? 'bg-white/5 border border-white/10 focus-within:ring-2 focus-within:ring-blue-500/30 focus-within:border-blue-400/30 focus-within:bg-white/10' : 'bg-slate-100 border border-slate-200 focus-within:ring-2 focus-within:ring-blue-500/30 focus-within:border-blue-300 focus-within:bg-white shadow-sm'}`}>
+            <Search className={`w-4 h-4 mr-2 shrink-0 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
             <input
               type="text"
               value={query}
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
               placeholder="Search for a lab..."
-              className="bg-transparent border-none outline-none text-sm text-slate-700 w-full placeholder:text-slate-400"
+              className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-slate-200 placeholder:text-slate-500' : 'text-slate-700 placeholder:text-slate-400'}`}
             />
-            <div className="flex items-center justify-center bg-slate-50 border border-slate-200 rounded text-[10px] font-bold text-slate-500 px-1.5 py-0.5 shadow-sm shrink-0 ml-2">
+            <div className={`flex items-center justify-center rounded text-[10px] font-bold px-1.5 py-0.5 shrink-0 ml-2 ${isDark ? 'bg-white/10 border border-white/10 text-slate-400' : 'bg-white border border-slate-200 text-slate-500 shadow-sm'}`}>
               ⌘K
             </div>
           </div>
 
           {/* Desktop Dropdown */}
           {isOpen && query.trim() !== '' && (
-            <div className="absolute top-full mt-2 w-full bg-slate-50 rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50">
+            <div className={`absolute top-full mt-2 w-full rounded-2xl shadow-xl overflow-hidden z-50 ${isDark ? 'bg-[#1a1f3a] border border-slate-700/50' : 'bg-white border border-slate-200'}`}>
               {results.length > 0 ? (
                 <ul className="max-h-80 overflow-y-auto py-2">
                   {results.map((lab) => (
                     <li key={lab.id}>
                       <button
                         onClick={() => handleSelect(lab)}
-                        className="w-full text-left px-5 py-3 hover:bg-slate-50 transition-colors flex flex-col gap-1 border-b border-slate-50 last:border-0"
+                        className={`w-full text-left px-5 py-3 transition-colors flex flex-col gap-1 border-b last:border-0 ${isDark ? 'hover:bg-white/5 border-slate-700/30' : 'hover:bg-slate-50 border-slate-50'}`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-semibold text-slate-800 text-sm">{lab.title}</span>
-                          <span className="text-[11px] font-medium px-2 py-0.5 bg-slate-100 text-slate-600 rounded whitespace-nowrap ml-2">
+                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>{lab.title}</span>
+                          <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ml-2 ${isDark ? 'bg-white/10 text-slate-300' : 'bg-slate-100 text-slate-600'}`}>
                             Class {lab.classLevel} · {formatSubject(lab.subject)}
                           </span>
                         </div>
-                        <span className="text-xs text-slate-500 line-clamp-1">{lab.desc}</span>
+                        <span className={`text-xs line-clamp-1 ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>{lab.desc}</span>
                       </button>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <div className="p-6 text-center text-slate-500 text-sm">
+                <div className={`p-6 text-center text-sm ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
                   No labs found matching "{query}"
                 </div>
               )}
@@ -139,43 +143,39 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
       {/* Right: Actions */}
       <div className="flex items-center gap-2 md:gap-5 shrink-0">
-        {/* Mobile search icon */}
         <button
           onClick={() => setMobileSearchOpen(true)}
-          className="lg:hidden p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+          className={`lg:hidden p-2 rounded-full transition-colors ${isDark ? 'text-slate-400 hover:text-blue-400 hover:bg-white/5' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           aria-label="Search labs"
         >
           <Search className="w-5 h-5" />
         </button>
 
-        {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+          className={`p-2 rounded-full transition-colors ${isDark ? 'text-slate-400 hover:text-blue-400 hover:bg-white/5' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
 
-        {/* Notifications */}
-        <button className="relative p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors hidden sm:block">
+        <button className={`relative p-2 rounded-full transition-colors hidden sm:block ${isDark ? 'text-slate-400 hover:text-blue-400 hover:bg-white/5' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}>
           <Bell className="w-5 h-5" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border-2 border-slate-50"></span>
+          <span className={`absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full border-2 ${isDark ? 'border-[#0f172a]' : 'border-white'}`}></span>
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full animate-ping opacity-75"></span>
         </button>
 
-        {/* User Profile */}
         {user ? (
           <div className="flex items-center gap-2 group relative">
-            <button className="flex items-center gap-2 p-1 pr-3 bg-slate-50 border border-slate-200 rounded-full hover:shadow-md transition-all">
+            <button className={`flex items-center gap-2 p-1 pr-3 rounded-full transition-all ${isDark ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20' : 'bg-slate-50 border border-slate-200 hover:shadow-md hover:border-slate-300'}`}>
               <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
                 {user.name.charAt(0).toUpperCase()}
               </div>
-              <span className="text-sm font-semibold text-slate-700 hidden sm:block">{user.name}</span>
+              <span className={`text-sm font-semibold hidden sm:block ${isDark ? 'text-slate-200' : 'text-slate-700'}`}>{user.name}</span>
             </button>
             <button
               onClick={() => { logout(); navigate('/login'); }}
-              className="absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all bg-slate-50 border border-slate-200 shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 text-rose-600 hover:bg-rose-50 font-semibold text-sm w-full"
+              className={`absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 font-semibold text-sm w-full ${isDark ? 'bg-[#1a1f3a] border border-slate-700 text-rose-400 hover:bg-rose-500/10' : 'bg-white border border-slate-200 text-rose-600 hover:bg-rose-50'}`}
             >
               <LogOut className="w-4 h-4" />
               Sign Out
@@ -184,7 +184,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
         ) : (
           <button
             onClick={() => navigate('/login')}
-            className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all hover:shadow-lg shadow-blue-500/30"
+            className="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-indigo-700 transition-all hover:shadow-lg hover:shadow-blue-500/30"
           >
             <LogIn className="w-4 h-4" />
             <span className="hidden sm:block">Log In</span>
@@ -194,31 +194,31 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
       {/* Mobile search overlay */}
       {mobileSearchOpen && (
-        <div className="fixed inset-0 z-[100] bg-white flex flex-col">
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+        <div className={`fixed inset-0 z-[100] flex flex-col ${isDark ? 'bg-[#0f172a]' : 'bg-white'}`}>
+          <div className={`flex items-center gap-3 px-4 py-3 ${isDark ? 'border-b border-slate-800' : 'border-b border-slate-200'}`}>
             <button
               onClick={() => { setMobileSearchOpen(false); setQuery(''); }}
-              className="p-2 -ml-2 text-slate-500 hover:text-slate-700 transition-colors shrink-0"
+              className={`p-2 -ml-2 transition-colors shrink-0 ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700'}`}
               aria-label="Close search"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <div className="flex items-center flex-1 bg-slate-100 rounded-xl px-4 py-2.5">
-              <Search className="w-4 h-4 text-slate-400 mr-3 shrink-0" />
+            <div className={`flex items-center flex-1 rounded-xl px-4 py-2.5 ${isDark ? 'bg-white/10' : 'bg-slate-100'}`}>
+              <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-slate-400' : 'text-slate-400'}`} />
               <input
                 ref={mobileSearchRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search labs..."
-                className="bg-transparent border-none outline-none text-sm text-slate-700 w-full placeholder:text-slate-400"
+                className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-white placeholder:text-slate-500' : 'text-slate-700 placeholder:text-slate-400'}`}
               />
               {query.trim() !== '' && (
                 <button
                   onClick={() => setQuery('')}
-                  className="ml-2 p-1 text-slate-400 hover:text-slate-600 transition-colors shrink-0"
+                  className={`ml-2 p-1 transition-colors shrink-0 ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -235,27 +235,27 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                     <li key={lab.id}>
                       <button
                         onClick={() => handleSelect(lab)}
-                        className="w-full text-left px-5 py-3 hover:bg-slate-50 active:bg-slate-100 transition-colors flex flex-col gap-1 border-b border-slate-50 last:border-0"
+                        className={`w-full text-left px-5 py-3 transition-colors flex flex-col gap-1 border-b last:border-0 ${isDark ? 'hover:bg-white/5 active:bg-white/10 border-slate-800' : 'hover:bg-slate-50 active:bg-slate-100 border-slate-50'}`}
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className="font-semibold text-slate-800 text-sm">{lab.title}</span>
-                          <span className="text-[11px] font-medium px-2 py-0.5 bg-slate-100 text-slate-600 rounded whitespace-nowrap">
+                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>{lab.title}</span>
+                          <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ${isDark ? 'bg-white/10 text-slate-300' : 'bg-slate-100 text-slate-600'}`}>
                             Class {lab.classLevel} · {formatSubject(lab.subject)}
                           </span>
                         </div>
-                        <span className="text-xs text-slate-500 line-clamp-1">{lab.desc}</span>
+                        <span className={`text-xs line-clamp-1 ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>{lab.desc}</span>
                       </button>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <div className="p-10 text-center text-slate-500 text-sm">
+                <div className={`p-10 text-center text-sm ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
                   No labs found matching "{query}"
                 </div>
               )
             ) : (
-              <div className="p-10 text-center text-slate-400 text-sm">
-                <Search className="w-8 h-8 mx-auto mb-3 opacity-40" />
+              <div className={`p-10 text-center text-sm ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
+                <Search className={`w-8 h-8 mx-auto mb-3 ${isDark ? 'opacity-30' : 'opacity-40'}`} />
                 <p>Type to search across all labs...</p>
               </div>
             )}

@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Shield, Lock, Server, Activity, FileWarning, Key, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
+
   const [activeTab, setActiveTab] = useState<'network' | 'crypto'>('network');
   
   const [attack, setAttack] = useState<'none' | 'ddos' | 'ransomware'>('none');
@@ -277,26 +275,6 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
               <button 
                 onClick={() => {
-                  let score = 0;
-                  if (q1Answer.toLowerCase().trim() === 'waf') score += 50;
-                  if (q2Answer.toUpperCase().trim() === 'HELLO') score += 50;
-
-                  addRecord({
-                    labId: 'cs12_cybersecurity',
-                    title: 'InfoSec: Cyber Defense & Cryptography',
-                    subject: 'Computer Science',
-                    score,
-                    maxScore: 100,
-                    timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                    experimentData: {
-                      'Final Server Health': serverHealth + '%',
-                      'Active Attack': attack,
-                      'Active Mitigation': mitigation,
-                      'Cipher Used': cipherType,
-                      'Q1 Attempt': q1Answer,
-                      'Q2 Attempt': q2Answer
-                    }
-                  });
                   if (onExit) onExit();
                 }}
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

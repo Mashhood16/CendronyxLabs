@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import {CheckCircle, XCircle, Play, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 export default function LabCS12DataStructures({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
+
   const [activeTab, setActiveTab] = useState<'Stack' | 'Queue' | 'Tree'>('Tree');
   
   // Stack State
@@ -211,27 +209,6 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
               <button 
                 onClick={() => {
-                  let score = 0;
-                  if (q1Status) score += 33;
-                  if (q2Status) score += 33;
-                  if (q3Status) score += 34;
-
-                  addRecord({
-                    labId: 'cs12_datastructures',
-                    title: 'Interactive Memory Management',
-                    subject: 'Computer Science',
-                    score,
-                    maxScore: 100,
-                    timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                    experimentData: {
-                      'Final Stack Size': stack.length,
-                      'Final Queue Size': queue.length,
-                      'Last Viewed Tab': activeTab,
-                      'Q1 Correct': q1Status ? 'Yes' : 'No',
-                      'Q2 Correct': q2Status ? 'Yes' : 'No',
-                      'Q3 Correct': q3Status ? 'Yes' : 'No'
-                    }
-                  });
                   if (onExit) onExit();
                 }}
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

@@ -1,11 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Database, CheckCircle, XCircle, Bug, StepForward, RotateCcw, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 export default function LabCS12Programming({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
+
   const [activeTab, setActiveTab] = useState<'Debugger' | 'Database'>('Debugger');
 
   // Debugger State
@@ -198,25 +196,6 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
               <button 
                 onClick={() => {
-                  let score = 0;
-                  if (q1Status) score += 50;
-                  if (q2Status) score += 50;
-
-                  addRecord({
-                    labId: 'cs12_programming',
-                    title: 'Interactive Core Dev',
-                    subject: 'Computer Science',
-                    score,
-                    maxScore: 100,
-                    timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                    experimentData: {
-                      'Last Active Line': activeLine,
-                      'Final NF Level': nfLevel + 'NF',
-                      'Last Viewed Tab': activeTab,
-                      'Q1 Correct': q1Status ? 'Yes' : 'No',
-                      'Q2 Correct': q2Status ? 'Yes' : 'No'
-                    }
-                  });
                   if (onExit) onExit();
                 }}
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

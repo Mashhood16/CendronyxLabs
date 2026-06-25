@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { RefreshCw, BarChart2, BookOpen, CheckCircle, Target, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 interface Point {
@@ -13,8 +12,7 @@ interface Point {
 }
 
 export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void }) {
-    const { addRecord } = useHistory();
-    const startTime = useRef(Date.now());
+
     const [splitRatio, setSplitRatio] = useState<number>(0.8);
     const [rawPoints, setRawPoints] = useState<{id:number, x:number, y:number, actual:boolean}[]>([]);
     const [points, setPoints] = useState<Point[]>([]);
@@ -86,30 +84,6 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
     };
 
     const handleComplete = () => {
-        let score = 0;
-        const acc = testPoints.length > 0 ? (tp + tn) / testPoints.length : 0;
-        const prec = (tp + fp) > 0 ? tp / (tp + fp) : 0;
-        const rec = (tp + fn) > 0 ? tp / (tp + fn) : 0;
-
-        if (Math.abs(parseFloat(ansAcc) - acc) < 0.05) score++;
-        if (Math.abs(parseFloat(ansPrec) - prec) < 0.05) score++;
-        if (Math.abs(parseFloat(ansRec) - rec) < 0.05) score++;
-        if (ansPVal.toLowerCase().trim() === 'yes') score++;
-
-        addRecord({
-            labId: 'cs12_ml',
-            title: 'Machine Learning & Statistical Testing',
-            subject: 'Computer Science',
-            score: score * 25,
-            maxScore: 100,
-            timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-            experimentData: {
-                'Final Accuracy': acc.toFixed(2),
-                'Final Precision': prec.toFixed(2),
-                'Final Recall': rec.toFixed(2),
-                'Test Set Size': testPoints.length
-            }
-        });
         if (onExit) onExit();
     };
 

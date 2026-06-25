@@ -1,11 +1,8 @@
-import { useState, useRef } from 'react';
-import {Target, Users,  BarChart3, Lightbulb, Play, Save } from 'lucide-react';
-import { useHistory } from '../store';
+import { useState } from 'react';
+import {Target, Users, BarChart3, Lightbulb, Play, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => void }) {
-  const { addRecord } = useHistory();
-  const startTime = useRef(Date.now());
   const [phase, setPhase] = useState<'build' | 'analyze'>('build');
   const [funds] = useState(50000);
   
@@ -285,23 +282,6 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                   if (q1.includes('learning') || q1.includes('feedback') || q1.includes('test')) score += 50;
                   if (q2.includes('ai') || q2.includes('ai chat')) score += 50;
 
-                  addRecord({
-                    labId: 'cs12_entrepreneurship',
-                    title: 'Entrepreneurship: Lean Startup MVP',
-                    subject: 'Computer Science',
-                    score,
-                    maxScore: 100,
-                    timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                    experimentData: {
-                      'Final Phase': phase,
-                      'Final Users': users,
-                      'Final Satisfaction': satisfaction + '%',
-                      'Remaining Funds': `$${phase === 'build' ? funds - getCost() : funds - spentCost}`,
-                      'Auth Built': features.auth ? 'Yes' : 'No',
-                      'AI Chat Built': features.aiChat ? 'Yes' : 'No',
-                      'Multiplayer Built': features.multiplayer ? 'Yes' : 'No'
-                    }
-                  });
                   if (onExit) onExit();
                 }}
                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

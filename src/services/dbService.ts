@@ -49,7 +49,7 @@ interface VirtualLabDB extends DBSchema {
 }
 
 const DB_NAME = 'VirtualLabDB';
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
@@ -77,7 +77,7 @@ export const initDB = () => {
           }
           await tx.done;
         }
-        if (oldVersion < 3) {
+        if (oldVersion < 3 || !db.objectStoreNames.contains('history')) {
           // Add history object store for per-user lab history
           if (!db.objectStoreNames.contains('history')) {
             const historyStore = db.createObjectStore('history', {
@@ -88,6 +88,10 @@ export const initDB = () => {
           }
         }
       },
+    }).catch((err) => {
+      console.error('Failed to open IndexedDB, retrying...', err);
+      dbPromise = null; // Reset so next call retries
+      throw err;
     });
   }
   return dbPromise;

@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Database, ShieldAlert, Cpu, Link as LinkIcon, CheckCircle, BookOpen, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 interface Block {
@@ -13,8 +12,7 @@ interface Block {
 }
 
 export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
-    const { addRecord } = useHistory();
-    const startTime = useRef(Date.now());
+
     const calcHash = (pm25: number, prevHash: number) => {
         return (pm25 * 7 + prevHash * 13) % 10000;
     };
@@ -215,26 +213,6 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                         <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
                             <button 
                                 onClick={() => {
-                                    let score = 0;
-                                    if (ansHash.trim() === '1650') score += 33;
-                                    if (ansBroken.trim() === '3') score += 33;
-                                    if (ansDecentralized.toLowerCase().trim() === 'no') score += 34;
-
-                                    addRecord({
-                                        labId: 'cs12_iotcloud',
-                                        title: 'Distributed IoT & Blockchain',
-                                        subject: 'Computer Science',
-                                        score,
-                                        maxScore: 100,
-                                        timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                                        experimentData: {
-                                            'Blocks Minted': blocks.length,
-                                            'Tampered Blocks': blocks.filter(b => b.tampered).length,
-                                            'Final S1 (PM2.5)': sensors.s1,
-                                            'Final S2 (PM2.5)': sensors.s2,
-                                            'Final S3 (PM2.5)': sensors.s3
-                                        }
-                                    });
                                     if (onExit) onExit();
                                 }}
                                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

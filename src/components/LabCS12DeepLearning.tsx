@@ -1,11 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Play, CheckCircle, Sliders, BookOpen, Network, Save } from 'lucide-react';
-import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 
 export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void }) {
-    const { addRecord } = useHistory();
-    const startTime = useRef(Date.now());
+
     const [w11, setW11] = useState(0.5);
     const [w21, setW21] = useState(-0.5);
     const [w31, setW31] = useState(1.0);
@@ -204,28 +202,6 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
                         <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
                             <button 
                                 onClick={() => {
-                                    let score = 0;
-                                    if (Math.abs(parseFloat(ansH1In) - h1_in) < 0.05) score++;
-                                    if (Math.abs(parseFloat(ansH1Out) - h1_out) < 0.05) score++;
-                                    if (Math.abs(parseFloat(ansO1In) - o1_in) < 0.05) score++;
-                                    if (Math.abs(parseFloat(ansO1Out) - o1_out) < 0.05) score++;
-
-                                    addRecord({
-                                        labId: 'cs12_deeplearning',
-                                        title: 'Deep Learning Neural Networks',
-                                        subject: 'Computer Science',
-                                        score: score * 25,
-                                        maxScore: 100,
-                                        timeSpentSeconds: Math.floor((Date.now() - startTime.current) / 1000),
-                                        experimentData: {
-                                            'w11 Configured': w11.toFixed(2),
-                                            'w21 Configured': w21.toFixed(2),
-                                            'w31 Configured': w31.toFixed(2),
-                                            'b1 Configured': b1.toFixed(2),
-                                            'b2 Configured': b2.toFixed(2),
-                                            'Ran Feedforward': isForwarded ? 'Yes' : 'No'
-                                        }
-                                    });
                                     if (onExit) onExit();
                                 }}
                                 className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"

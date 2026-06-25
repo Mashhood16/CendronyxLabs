@@ -3,6 +3,7 @@ import { Microscope, Atom, Calculator, Laptop, Activity, BookOpen, Dna } from 'l
 import { formatSubject } from '../data/labModules';
 import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { LAB_MODULES } from '../data/labModules';
 
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
@@ -13,16 +14,13 @@ const getSubjectsForClass = (classLevel: string) => {
   }
 };
 
-const getSubjectIcon = (subject: string) => {
-  switch (subject.toLowerCase()) {
-    case 'physics': return <Atom className="w-7 h-7" />;
-    case 'chemistry': return <Microscope className="w-7 h-7" />;
-    case 'biology': return <Dna className="w-7 h-7" />;
-    case 'mathematics': case 'math': return <Calculator className="w-7 h-7" />;
-    case 'computer': return <Laptop className="w-7 h-7" />;
-    case 'science': return <Activity className="w-7 h-7" />;
-    default: return <BookOpen className="w-7 h-7" />;
-  }
+const SUBJECT_CONFIG: Record<string, { gradient: string; icon: typeof Atom; description: string; moduleKey: string }> = {
+  physics:    { gradient: 'from-blue-500 to-indigo-600',   icon: Atom,        description: 'Forces, Energy, Waves & Electromagnetism', moduleKey: 'physics' },
+  chemistry:  { gradient: 'from-emerald-500 to-teal-600',  icon: Microscope,  description: 'Reactions, Bonding, Organic & Inorganic', moduleKey: 'chemistry' },
+  biology:    { gradient: 'from-rose-500 to-pink-600',     icon: Dna,         description: 'Cells, Genetics, Ecology & Human Body', moduleKey: 'biology' },
+  math:       { gradient: 'from-violet-500 to-purple-600',  icon: Calculator,  description: 'Algebra, Geometry, Statistics & Calculus', moduleKey: 'math' },
+  computer:   { gradient: 'from-sky-500 to-cyan-600',      icon: Laptop,      description: 'Programming, Networks, AI & Cyber Safety', moduleKey: 'computer' },
+  science:    { gradient: 'from-amber-500 to-orange-600',   icon: Activity,    description: 'Integrated Science Curriculum', moduleKey: 'science' },
 };
 
 export default function SubjectSelection() {
@@ -39,23 +37,42 @@ export default function SubjectSelection() {
           <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Select Subject</h2>
           <p className="text-slate-500 mt-1 mb-6">Class {classId} Curriculum</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {subjects.map(subject => (
-              <button
-                key={subject}
-                onClick={() => navigate(`/class/${classId}/${subject}`)}
-                className="glass p-6 rounded-2xl hover:border-indigo-400 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex items-center gap-4 text-left relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-100 to-blue-50 text-indigo-600 flex items-center justify-center shadow-inner group-hover:bg-gradient-to-br group-hover:from-indigo-600 group-hover:to-blue-600 group-hover:text-white transition-all duration-300">
-                  {getSubjectIcon(subject)}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors font-outfit">{formatSubject(subject)}</h3>
-                  <span className="text-sm font-medium text-slate-400 group-hover:text-indigo-500 transition-colors">Explore Interactive Modules</span>
-                </div>
-              </button>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {subjects.map(subject => {
+              const config = SUBJECT_CONFIG[subject] || { gradient: 'from-slate-500 to-slate-600', icon: BookOpen, description: 'Explore modules', moduleKey: subject };
+              const Icon = config.icon;
+              const count = LAB_MODULES.filter(m => m.classLevel === classId && m.subject === config.moduleKey && m.built).length;
+              return (
+                <button
+                  key={subject}
+                  onClick={() => navigate(`/class/${classId}/${subject}`)}
+                  className="relative group p-6 rounded-2xl bg-white border-2 border-transparent hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                >
+                  {/* Top accent bar */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
+                  
+                  {/* Hover glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>
+
+                  <div className="flex items-start gap-4 relative z-10">
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0`}
+                      style={{ boxShadow: `0 8px 20px -4px rgb(0 0 0 / 0.2)` }}
+                    >
+                      <Icon className="w-7 h-7" strokeWidth={2} />
+                    </div>
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <h3 className="text-xl font-bold text-slate-800 font-outfit mb-1">{formatSubject(subject)}</h3>
+                      <p className="text-sm font-medium text-slate-500 leading-snug mb-3">{config.description}</p>
+                      <div className="flex items-center gap-2 mt-auto">
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${config.gradient}`}>
+                          {count} modules
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
