@@ -34,7 +34,7 @@ export default function SubjectSelection() {
       <div className="flex flex-col">
         <Breadcrumbs />
         <div>
-          <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Select Subject</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Select Subject</h2>
           <p className="text-slate-500 mt-1 mb-6">Class {classId} Curriculum</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -46,7 +46,7 @@ export default function SubjectSelection() {
                 <button
                   key={subject}
                   onClick={() => navigate(`/class/${classId}/${subject}`)}
-                  className="relative group p-6 rounded-2xl bg-white border-2 border-transparent hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                  className="relative group p-4 md:p-6 rounded-2xl bg-white border-2 border-transparent hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
                 >
                   {/* Top accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
@@ -55,13 +55,13 @@ export default function SubjectSelection() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>
 
                   <div className="flex items-start gap-4 relative z-10">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0`}
+                    <div className={`w-11 h-11 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex-shrink-0`}
                       style={{ boxShadow: `0 8px 20px -4px rgb(0 0 0 / 0.2)` }}
                     >
-                      <Icon className="w-7 h-7" strokeWidth={2} />
+                      <Icon className="w-5 h-5 md:w-7 md:h-7" strokeWidth={2} />
                     </div>
                     <div className="flex flex-col flex-1 min-w-0">
-                      <h3 className="text-xl font-bold text-slate-800 font-outfit mb-1">{formatSubject(subject)}</h3>
+                      <h3 className="text-lg md:text-xl font-bold text-slate-800 font-outfit mb-1">{formatSubject(subject)}</h3>
                       <p className="text-sm font-medium text-slate-500 leading-snug mb-3">{config.description}</p>
                       <div className="flex items-center gap-2 mt-auto">
                         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${config.gradient}`}>

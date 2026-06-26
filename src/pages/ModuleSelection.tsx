@@ -35,7 +35,7 @@ export default function ModuleSelection() {
           </div>
         ) : (
           <div>
-            <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Curriculum Modules</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Curriculum Modules</h2>
             <p className="text-slate-500 mt-1 mb-6">High-End Interactive Experiments &mdash; Class {classId} {subjectId && formatSubject(subjectId)}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

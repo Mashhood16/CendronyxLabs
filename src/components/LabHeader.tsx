@@ -50,8 +50,8 @@ export default function LabHeader({ onExit, title, subtitle, icon, rightContent,
   const styles = variantStyles[variant];
   const { theme, toggleTheme } = useTheme();
   return (
-    <div className={`${styles.container} px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm shrink-0`}>
-      <div className="flex items-center gap-4 min-w-0">
+    <div className={`${styles.container} px-4 py-3 md:px-6 md:py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm shrink-0`}>
+      <div className="flex items-center gap-3 md:gap-4 min-w-0">
         {onExit && (
           <button
             onClick={onExit}
@@ -61,16 +61,16 @@ export default function LabHeader({ onExit, title, subtitle, icon, rightContent,
           </button>
         )}
         <div className="min-w-0">
-          <h1 className={`text-xl font-bold ${styles.title} flex items-center gap-2 truncate`}>
+          <h1 className={`text-base md:text-xl font-bold ${styles.title} flex items-center gap-2 truncate`}>
             {icon}
             {title}
           </h1>
           {subtitle && (
-            <p className={`text-sm ${styles.subtitle} truncate`}>{subtitle}</p>
+            <p className={`text-xs md:text-sm ${styles.subtitle} truncate`}>{subtitle}</p>
           )}
         </div>
       </div>
-      <div className="flex items-center gap-3 shrink-0 ml-4">
+      <div className="flex items-center gap-2 md:gap-3 shrink-0 ml-2 md:ml-4">
         {rightContent}
         <button
           onClick={toggleTheme}

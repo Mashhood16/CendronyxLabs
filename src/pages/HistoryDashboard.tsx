@@ -22,14 +22,14 @@ export default function HistoryDashboard() {
 
   return (
     <Layout>
-      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-8 p-8 md:p-12">
-        <div className="flex items-center gap-4 mb-10 border-b border-slate-100 pb-6">
-          <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
-            <Clock className="w-7 h-7 text-white" />
+      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-4 md:mt-8 p-4 sm:p-8 md:p-12">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 md:mb-10 border-b border-slate-100 pb-6">
+          <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+            <Clock className="w-6 h-6 md:w-7 md:h-7 text-white" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-slate-800 font-outfit tracking-tight">Lab History</h2>
-            <p className="text-slate-500">Verified telemetry and performance metrics from your completed labs.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 font-outfit tracking-tight">Lab History</h2>
+            <p className="text-slate-500 text-sm md:text-base">Verified telemetry and performance metrics from your completed labs.</p>
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export default function HistoryDashboard() {
               const subjectGradient = SUBJECT_COLORS[record.subject.toLowerCase()] || 'from-slate-500 to-slate-600';
               const passed = record.score >= (record.maxScore * 0.8);
               return (
-                <div key={i} className="bg-white border-2 border-slate-100 rounded-2xl p-6 hover:border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div key={i} className="bg-white border-2 border-slate-100 rounded-2xl p-4 md:p-6 hover:border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                   {/* Subject badge + date */}
                   <div className="flex justify-between items-start mb-4">
                     <span className={`bg-gradient-to-r ${subjectGradient} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm`}>{record.subject}</span>

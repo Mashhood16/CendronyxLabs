@@ -80,7 +80,7 @@ export default function Login() {
       <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-purple-400/15 rounded-full blur-[80px] pointer-events-none"></div>
       <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-emerald-400/15 rounded-full blur-[60px] pointer-events-none"></div>
 
-      <div className="w-full max-w-md relative z-10">
+      <div className="w-full max-w-md relative z-10 px-2">
         {/* Back Button */}
         <button
           onClick={() => navigate('/')}
@@ -90,13 +90,13 @@ export default function Login() {
           Back to Home
         </button>
 
-        <div className="glass rounded-3xl p-8 shadow-2xl backdrop-blur-xl">
+        <div className="glass rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
           {/* Logo & Header */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl shadow-blue-500/30 mx-auto mb-5 transform -rotate-6">
               V
             </div>
-            <h1 className="text-3xl font-bold font-outfit text-slate-800 dark:text-slate-900 tracking-tight mb-1">
+            <h1 className="text-2xl sm:text-3xl font-bold font-outfit text-slate-800 dark:text-slate-900 tracking-tight mb-1">
               {tab === 'login' ? 'Welcome Back' : 'Create Account'}
             </h1>
             <p className="text-slate-500 dark:text-slate-500 text-sm">

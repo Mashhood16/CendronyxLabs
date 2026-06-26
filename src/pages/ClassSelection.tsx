@@ -25,21 +25,21 @@ export default function ClassSelection() {
         <Breadcrumbs />
 
         {/* Hero Section */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 p-10 mb-12 shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 p-6 sm:p-8 md:p-10 mb-8 md:mb-12 shadow-2xl">
           <div className="absolute top-0 right-0 -mt-6 -mr-6 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-48 h-48 bg-purple-300 opacity-10 rounded-full blur-2xl"></div>
           <div className="relative z-10 flex flex-col items-center text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-outfit tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 md:mb-4 font-outfit tracking-tight">
               Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">VirtualLab</span>
             </h1>
-            <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-8 font-medium">
+            <p className="text-blue-100 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8 font-medium px-2">
               Explore our library of <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg backdrop-blur-sm">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics & Computer Science.
             </p>
           </div>
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Select Class</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Select Class</h2>
           <p className="text-slate-500 mt-1 mb-6">Choose your grade level to browse available experiments.</p>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -49,7 +49,7 @@ export default function ClassSelection() {
                 <button
                   key={cls}
                   onClick={() => navigate(`/class/${cls}`)}
-                  className="relative group p-6 rounded-2xl border-2 border-transparent bg-white hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                  className="relative group p-4 md:p-6 rounded-2xl border-2 border-transparent bg-white hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
                 >
                   {/* Gradient accent bar at top */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
@@ -58,14 +58,14 @@ export default function ClassSelection() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${config.hoverGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>
 
                   <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
+                    <div className={`w-11 h-11 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shrink-0`}
                       style={{ boxShadow: `0 8px 20px -4px rgb(0 0 0 / 0.2)` }}
                     >
-                      <Icon className="w-7 h-7" strokeWidth={2} />
+                      <Icon className="w-5 h-5 md:w-7 md:h-7" strokeWidth={2} />
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-2xl font-extrabold text-slate-800 font-outfit">Class {cls}</span>
-                      <span className="text-sm font-medium text-slate-500">{config.label}</span>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xl md:text-2xl font-extrabold text-slate-800 font-outfit">Class {cls}</span>
+                      <span className="text-xs md:text-sm font-medium text-slate-500">{config.label}</span>
                     </div>
                   </div>
                 </button>
