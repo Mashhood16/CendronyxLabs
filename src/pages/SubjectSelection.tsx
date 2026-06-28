@@ -8,9 +8,9 @@ import { LAB_MODULES } from '../data/labModules';
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
   if (num >= 6 && num <= 8) {
-    return ['science', 'computer'];
+    return ['science', 'math', 'computer', 'english'];
   } else {
-    return ['physics', 'chemistry', 'biology', 'math', 'computer'];
+    return ['physics', 'chemistry', 'biology', 'math', 'computer', 'english'];
   }
 };
 
@@ -21,6 +21,7 @@ const SUBJECT_CONFIG: Record<string, { gradient: string; icon: typeof Atom; desc
   math:       { gradient: 'from-violet-500 to-purple-600',  icon: Calculator,  description: 'Algebra, Geometry, Statistics & Calculus', moduleKey: 'math' },
   computer:   { gradient: 'from-sky-500 to-cyan-600',      icon: Laptop,      description: 'Programming, Networks, AI & Cyber Safety', moduleKey: 'computer' },
   science:    { gradient: 'from-amber-500 to-orange-600',   icon: Activity,    description: 'Integrated Science Curriculum', moduleKey: 'science' },
+  english:    { gradient: 'from-fuchsia-500 to-pink-600',   icon: BookOpen,    description: 'Grammar, Vocabulary, & Writing Mechanics', moduleKey: 'english' },
 };
 
 export default function SubjectSelection() {

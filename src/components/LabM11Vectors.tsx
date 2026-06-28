@@ -57,7 +57,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Vector Aviation & Operations" variant="dark" subtitle="Mathematics Class 11" />
 
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+      <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-teal-500">
           <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center gap-2"><Navigation size={20} /> Vector Components</h2>
@@ -159,7 +159,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
             <div className="flex items-center gap-2">
               <input 
                 type="number" 
-                className="flex-1 p-2 border rounded text-sm" 
+                className="flex-1 min-w-0 p-2 border rounded text-sm" 
                 placeholder="Speed (km/h)..."
                 value={ansSpeed}
                 onChange={(e) => { setAnsSpeed(e.target.value); setAnsSpeedStatus("idle"); }}
@@ -180,7 +180,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
             <div className="flex items-center gap-2">
               <input 
                 type="number" 
-                className="flex-1 p-2 border rounded text-sm" 
+                className="flex-1 min-w-0 p-2 border rounded text-sm" 
                 placeholder="Dot product..."
                 value={ansDot}
                 onChange={(e) => { setAnsDot(e.target.value); setAnsDotStatus("idle"); }}

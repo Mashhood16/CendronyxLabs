@@ -76,7 +76,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
             {/* Header */}
             <LabHeader onExit={onExit} title="Grade 12: Functions Visualizer" />
 
-            <div className="flex-1 p-6">
+            <div className="flex-1 min-w-0 p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
                     
                     {/* Column 1: Theory */}
@@ -141,7 +141,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                             </button>
                         </div>
 
-                        <div className="flex-1 flex flex-col items-center justify-center">
+                        <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
                             {activeTab === 'market' && (
                                 <div className="w-full flex flex-col items-center">
                                     <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
@@ -247,7 +247,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Analysis & Assessment</h2>
 
                         {activeTab === 'market' && (
-                            <div className="flex-1 flex flex-col">
+                            <div className="flex-1 min-w-0 flex flex-col">
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Given the current market conditions set in the simulator:</p>
                                 <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     S(q) = {ms}q + {cs}
@@ -300,7 +300,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                         )}
 
                         {activeTab === 'growth' && (
-                            <div className="flex-1 flex flex-col">
+                            <div className="flex-1 min-w-0 flex flex-col">
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">A population starts and grows continuously based on your parameters:</p>
                                 <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     P_0 = {p0}

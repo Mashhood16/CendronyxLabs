@@ -59,11 +59,11 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Vector Applications Lab" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
             <p><strong>Vectors</strong> have both magnitude (size) and direction (angle).</p>
             <p>To add two vectors, we resolve them into their horizontal (X) and vertical (Y) components:</p>
             <div className="bg-blue-50 p-3 rounded-lg font-mono text-sm">
@@ -190,7 +190,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
         {/* Assessment Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Data Analysis</h2>
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 min-w-0 space-y-4">
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <p className="text-slate-700 dark:text-slate-200 font-medium mb-2">Given the vectors, what is the magnitude of the resultant vector?</p>
               <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">(Round to 1 decimal place)</p>
@@ -201,7 +201,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
                   step="0.1"
                   value={ansMag}
                   onChange={e => setAnsMag(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 {ansMagStatus === 'correct' && <CheckCircle2 className="text-green-600" />}
                 {ansMagStatus === 'incorrect' && <XCircle className="text-red-500" />}
@@ -218,7 +218,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
                   step="0.1"
                   value={ansAng}
                   onChange={e => setAnsAng(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 {ansAngStatus === 'correct' && <CheckCircle2 className="text-green-600" />}
                 {ansAngStatus === 'incorrect' && <XCircle className="text-red-500" />}

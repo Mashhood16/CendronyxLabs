@@ -183,10 +183,10 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                     </select>
                                 </div>
                                 <div className="flex gap-4 mt-4">
-                                    <button onClick={startFall} disabled={isFalling || dominoesState[0]} className="flex-1 bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50">
+                                    <button onClick={startFall} disabled={isFalling || dominoesState[0]} className="flex-1 min-w-0 bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50">
                                         <Play size={18} /> Push First Domino
                                     </button>
-                                    <button onClick={resetDominoes} className="flex-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+                                    <button onClick={resetDominoes} className="flex-1 min-w-0 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
                                         <RotateCcw size={18} /> Reset
                                     </button>
                                 </div>
@@ -260,7 +260,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. What is the name of the first step in Mathematical Induction, where you prove the statement holds for n=1?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -268,7 +268,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. In the Inductive Step, you assume the statement is true for n = k. What do you then need to prove it is true for?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -281,7 +281,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4$?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -290,7 +290,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. Compute the value of $\binom{7}{3}$ (7 choose 3).</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>

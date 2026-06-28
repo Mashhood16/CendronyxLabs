@@ -110,7 +110,7 @@ export default function LabM10Vectors({ onExit }: LabProps) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M10: Vectors & Scalars" />
 
-      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
+      <div className="flex-1 min-w-0 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Left Column: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">

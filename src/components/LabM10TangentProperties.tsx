@@ -97,7 +97,7 @@ export default function LabM10TangentProperties({ onExit }: Props) {
         <LabHeader onExit={onExit} title="Lab: Tangent & Circle Properties" />
       </div>
 
-      <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="flex-1 min-w-0 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <div>
@@ -264,13 +264,13 @@ export default function LabM10TangentProperties({ onExit }: Props) {
               }
             </p>
             
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" 
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 placeholder="Enter answer (cm)"
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button 
                 onClick={checkAnswer}

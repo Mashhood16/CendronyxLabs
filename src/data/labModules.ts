@@ -166,6 +166,35 @@ export const LAB_MODULES = [
   { id: 'c6c_5_2', classLevel: '6', subject: 'computer', title: 'Act 5.2: Cyber Scout', desc: 'Explore how to become a Cyber Scout.', built: true, bg: 'from-yellow-600 to-amber-800' },
   { id: 'c6c_5_3', classLevel: '6', subject: 'computer', title: 'Act 5.3: Poster Comp', desc: 'Prepare posters for Cyber ethics themes.', built: true, bg: 'from-amber-600 to-orange-800' },
   { id: 'c6c_6_1', classLevel: '6', subject: 'computer', title: 'Act 6.1: Hobby Monetization', desc: 'Prepare a startup pitch for a hobby.', built: true, bg: 'from-orange-600 to-red-800' },
+  // Class 6 Mathematics
+  { id: 'm6_1', classLevel: '6', subject: 'math', title: 'Unit 1: Factors & Multiples', desc: 'Sync lighthouses with LCM and cut pipes with HCF.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm6_2', classLevel: '6', subject: 'math', title: 'Unit 2: Exploring Integers', desc: 'Measure lunar temps and submarine depths.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'm6_3', classLevel: '6', subject: 'math', title: 'Unit 3: Proportions', desc: 'Distribute profit ratios and track efficiency.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm6_4', classLevel: '6', subject: 'math', title: 'Unit 4: Set Theory', desc: 'Organize biological groups in Venn diagrams.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm6_5', classLevel: '6', subject: 'math', title: 'Unit 5 & 6: Algebra', desc: 'Predict patterns and solve balance scale equations.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm6_6', classLevel: '6', subject: 'math', title: 'Unit 7 & 8: Geometry', desc: 'Draft angles and visualize rotational symmetry.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm6_7', classLevel: '6', subject: 'math', title: 'Unit 9: Mensuration', desc: 'Calculate area costs and 3D volume capacity.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm6_8', classLevel: '6', subject: 'math', title: 'Unit 10: Data & Probability', desc: 'Tally surveys and graph weather probability.', built: true, bg: 'from-teal-500 to-emerald-700' },
+  // Class 7 Mathematics
+  { id: 'm7_1', classLevel: '7', subject: 'math', title: 'Unit 1 & 2: Rational Numbers & Squares', desc: 'Track temperature drops and organize formations.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm7_2', classLevel: '7', subject: 'math', title: 'Unit 3: Proportions & Kinematics', desc: 'Scale recipes and calculate travel speed.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'm7_3', classLevel: '7', subject: 'math', title: 'Unit 4: Financial Arithmetic', desc: 'Calculate taxes, profit, Zakat, and Ushr.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm7_4', classLevel: '7', subject: 'math', title: 'Unit 5 & 6: Sets & Algebra', desc: 'Organize Venn diagrams and deduce pattern rules.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm7_5', classLevel: '7', subject: 'math', title: 'Unit 7: Transformations', desc: 'Slide shapes on grids and find symmetry lines.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm7_6', classLevel: '7', subject: 'math', title: 'Unit 8: Linear Equations', desc: 'Balance scales and rearrange literal formulas.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm7_7', classLevel: '7', subject: 'math', title: 'Unit 9 & 10: Geometry Drafting', desc: 'Trace arcs and construct triangles with compasses.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm7_8', classLevel: '7', subject: 'math', title: 'Unit 11 & 12: Mensuration & Data', desc: 'Calculate prism volumes and tally survey data.', built: true, bg: 'from-teal-500 to-emerald-700' },
+
+  // Class 8 Mathematics
+  { id: 'm8_1', classLevel: '8', subject: 'math', title: 'Unit 1 & 2: Real Numbers & Estimation', desc: 'Budget paychecks and calculate measurement bounds.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm8_2', classLevel: '8', subject: 'math', title: 'Unit 3 & 4: Finance & Roots', desc: 'Distribute inheritance and calculate 3D volumes.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'm8_3', classLevel: '8', subject: 'math', title: 'Unit 5 & 6: Sets & Sequences', desc: 'Analyze Venn surveys and predict algebraic patterns.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm8_4', classLevel: '8', subject: 'math', title: 'Unit 7: Equations & Inequalities', desc: 'Optimize business costs visually with linear graphs.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm8_5', classLevel: '8', subject: 'math', title: 'Unit 8: Transformations', desc: 'Simulate mechanical gears and mirror reflections.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm8_6', classLevel: '8', subject: 'math', title: 'Unit 9 & 10: Geometry & Drafting', desc: 'Navigate optical distances and draft quadrilaterals.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm8_7', classLevel: '8', subject: 'math', title: 'Unit 11: Mensuration', desc: 'Apply Pythagorean theorem and build Pyramids.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm8_8', classLevel: '8', subject: 'math', title: 'Unit 12 & 13: Data & Probability', desc: 'Calculate standard deviation and spin probability wheels.', built: true, bg: 'from-teal-500 to-emerald-700' },
+  
   // Class 10 Physics
   { id: 'p10_10_1', classLevel: '10', subject: 'physics', title: 'Unit 10: Carbon Footprint', desc: 'Calculate daily CO2 emissions from transportation to school.', built: true, bg: 'from-emerald-500 to-teal-600' },
   { id: 'p10_10_2', classLevel: '10', subject: 'physics', title: 'Unit 10: Specific Heat (Mixtures)', desc: 'Calculate specific heat by transferring a hot solid into a cold liquid.', built: true, bg: 'from-blue-500 to-indigo-600' },
@@ -448,6 +477,61 @@ export const LAB_MODULES = [
   { id: 'cs12_6', classLevel: '12', subject: 'computer', title: 'Unit 5: IoT & Cloud', desc: 'Deploy an IoT sensor array and track Blockchain ledger hashes.', built: true, bg: 'from-cyan-800 to-blue-900' },
   { id: 'cs12_7', classLevel: '12', subject: 'computer', title: 'Unit 6: Cybersecurity', desc: 'Defend against DDoS and encode data via Asymmetric Cryptography.', built: true, bg: 'from-indigo-800 to-violet-900' },
   { id: 'cs12_8', classLevel: '12', subject: 'computer', title: 'Unit 7: Digital Literacy', desc: 'Master advanced database searches and GDPR Data Anonymization.', built: true, bg: 'from-teal-800 to-emerald-900' },
-  { id: 'cs12_9', classLevel: '12', subject: 'computer', title: 'Unit 8: Entrepreneurship', desc: 'Simulate launching an MVP and analyzing Beta Testing metrics.', built: true, bg: 'from-slate-800 to-gray-900' }
+  { id: 'cs12_9', classLevel: '12', subject: 'computer', title: 'Unit 8: Entrepreneurship', desc: 'Simulate launching an MVP and analyzing Beta Testing metrics.', built: true, bg: 'from-slate-800 to-gray-900' },
+  // Class 6 English
+  { id: 'e6_1', classLevel: '6', subject: 'english', title: 'Unit 1: Nouns & Articles', desc: 'Categorize Nouns and toggle proper Articles.', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'e6_2', classLevel: '6', subject: 'english', title: 'Unit 2: Sentences & Affixes', desc: 'Attach word prefixes and construct sentences.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'e6_3', classLevel: '6', subject: 'english', title: 'Unit 3: Verbs & Adverbs', desc: 'Scale Modals and alter actions with Adverbs.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'e6_4', classLevel: '6', subject: 'english', title: 'Unit 4: Prepositions & Structure', desc: 'Navigate mazes via prepositions and parse structures.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'e6_5', classLevel: '6', subject: 'english', title: 'Unit 5: Clauses & Conjunctions', desc: 'Weld sentences together with Conjunctions.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'e6_6', classLevel: '6', subject: 'english', title: 'Unit 6: Tenses & Punctuation', desc: 'Navigate a Time Machine to conjugate verb tenses.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'e6_7', classLevel: '6', subject: 'english', title: 'Unit 7: Figures of Speech', desc: 'Decode rhetorical figures like Metaphors and Similes.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'e6_8', classLevel: '6', subject: 'english', title: 'Unit 8: Writing Mechanics', desc: 'Navigate internet tech verbs and phrasal actions.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  // Class 7 English
+  { id: 'e7_1', classLevel: '7', subject: 'english', title: 'Unit 1: Articles & Adjectives', desc: 'Categorize Adjectives and assign Articles.', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'e7_2', classLevel: '7', subject: 'english', title: 'Unit 2: Figures of Speech', desc: 'Analyze poetry for Metaphors and Similes.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'e7_3', classLevel: '7', subject: 'english', title: 'Unit 3: Prepositions & Modals', desc: 'Apply Prepositions and Modals to resolve scenarios.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'e7_4', classLevel: '7', subject: 'english', title: 'Unit 4: Verbs & Collocations', desc: 'Sort Transitive/Intransitive verbs and build Collocations.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'e7_5', classLevel: '7', subject: 'english', title: 'Unit 5: Tenses', desc: 'Conjugate Future and Past Tenses on a timeline.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'e7_6', classLevel: '7', subject: 'english', title: 'Unit 6: Conjunctions', desc: 'Bridge independent clauses with logical Conjunctions.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'e7_7', classLevel: '7', subject: 'english', title: 'Unit 7: Pronouns & Clauses', desc: 'Differentiate Phrases and Clauses, and identify Pronouns.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'e7_8', classLevel: '7', subject: 'english', title: 'Unit 8: Punctuation & Vocab', desc: 'Fix missing Colons and swap incorrect Homophones.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  // Class 8 English
+  { id: 'e8_1', classLevel: '8', subject: 'english', title: 'Unit 1: Nouns & Phonetics', desc: 'Classify Concrete/Abstract nouns and trace Syllables.', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'e8_2', classLevel: '8', subject: 'english', title: 'Unit 2: Pronouns & Morphology', desc: 'Snap Root Words with Affixes and map Pronouns.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'e8_3', classLevel: '8', subject: 'english', title: 'Unit 3: Adjectives & Poetry', desc: 'Scale Adjectives and map Rhyme Schemes/Alliteration.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'e8_4', classLevel: '8', subject: 'english', title: 'Unit 4: Verbs & Modals', desc: 'Identify Transitive Verbs and gauge Modal probability.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'e8_5', classLevel: '8', subject: 'english', title: 'Unit 5: Adverbs & Prepositions', desc: 'Apply Adverbial Phrases and plot Prepositions on a stage.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'e8_6', classLevel: '8', subject: 'english', title: 'Unit 6: Conjunctions & Clauses', desc: 'Weld Independent and Dependent Clauses together.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'e8_7', classLevel: '8', subject: 'english', title: 'Unit 7: Tenses & Voice', desc: 'Conjugate complex Tenses and flip Active/Passive voice.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'e8_8', classLevel: '8', subject: 'english', title: 'Unit 8: Narration & Conditionals', desc: 'Convert Speech (Direct/Indirect) and simulate Conditionals.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  // Class 9 English
+  { id: 'c9e_1', classLevel: '9', subject: 'english', title: 'Unit 1: Word Forge', desc: 'Identify parts of speech and form adjectives with suffixes.', built: true, bg: 'from-blue-600 to-indigo-700' },
+  { id: 'c9e_2', classLevel: '9', subject: 'english', title: 'Unit 2: Verbal Conveyor', desc: 'Sort Gerunds, Infinitives, and Participles by their function.', built: true, bg: 'from-teal-600 to-emerald-700' },
+  { id: 'c9e_3', classLevel: '9', subject: 'english', title: 'Unit 3: Timeline Fixer', desc: 'Repair sentences with correct tense and subject-verb agreement.', built: true, bg: 'from-amber-600 to-orange-700' },
+  { id: 'c9e_4', classLevel: '9', subject: 'english', title: 'Unit 4: Phrase Dissector', desc: 'Identify Adjectival, Adverbial, and Prepositional phrases.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'c9e_5', classLevel: '9', subject: 'english', title: 'Unit 5: Bridge Builder', desc: 'Use compound prepositions and conjunctions to link ideas.', built: true, bg: 'from-orange-500 to-red-600' },
+  { id: 'c9e_6', classLevel: '9', subject: 'english', title: 'Unit 6: Clause Collider', desc: 'Merge independent and dependent clauses using conditional logic.', built: true, bg: 'from-purple-600 to-fuchsia-700' },
+  { id: 'c9e_7', classLevel: '9', subject: 'english', title: 'Unit 7: Reporters Notepad', desc: 'Convert direct quotes into indirect reported speech.', built: true, bg: 'from-stone-600 to-stone-800' },
+  { id: 'c9e_8', classLevel: '9', subject: 'english', title: 'Unit 8: Editors Desk', desc: 'Practice hyphen conventions, euphemisms, and proofreading.', built: true, bg: 'from-rose-500 to-pink-700' },
+  
+  // Class 10 English
+  { id: 'c10e_1', classLevel: '10', subject: 'english', title: 'Unit 1: The Identity Matrix', desc: 'Master noun formations and explore advanced pronoun types.', built: true, bg: 'from-blue-600 to-indigo-700' },
+  { id: 'c10e_2', classLevel: '10', subject: 'english', title: 'Unit 2: Action & Description', desc: 'Master active/passive voice and the order of adjectives.', built: true, bg: 'from-emerald-500 to-teal-700' },
+  { id: 'c10e_3', classLevel: '10', subject: 'english', title: 'Unit 3: Contextual Vectors', desc: 'Map out adverbs and visualize prepositional relationships.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'c10e_4', classLevel: '10', subject: 'english', title: 'Unit 4: Chronology & Connections', desc: 'Shift sentence tenses and master complex conjunctions.', built: true, bg: 'from-rose-500 to-red-700' },
+  { id: 'c10e_5', classLevel: '10', subject: 'english', title: 'Unit 5: Possibility Engine', desc: 'Build logical chains using modals and conditional sentences.', built: true, bg: 'from-purple-500 to-fuchsia-700' },
+  { id: 'c10e_6', classLevel: '10', subject: 'english', title: 'Unit 6: Syntactic Blueprints', desc: 'Dissect sentences into their constituent phrases and clauses.', built: true, bg: 'from-cyan-500 to-blue-700' },
+  { id: 'c10e_7', classLevel: '10', subject: 'english', title: 'Unit 7: The Reporter\'s Desk', desc: 'Narrative transformation and direct/indirect speech.', built: true, bg: 'from-slate-600 to-zinc-800' },
+  { id: 'c10e_8', classLevel: '10', subject: 'english', title: 'Unit 8: The Stylist\'s Workshop', desc: 'Stylistic devices, punctuation, and vocabulary.', built: true, bg: 'from-pink-600 to-rose-800' },
+  
+  // Class 11 English
+  { id: 'c11e_1', classLevel: '11', subject: 'english', title: 'Unit 1: Nouns & Pronouns', desc: 'Noun kinds, suffix formation, and pronoun-antecedent agreement.', built: true, bg: 'from-indigo-600 to-blue-800' },
+  { id: 'c11e_2', classLevel: '11', subject: 'english', title: 'Unit 2: Adjectives & Adverbs', desc: 'Adjective types, adverb types, positioning, and sequence.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'c11e_3', classLevel: '11', subject: 'english', title: 'Unit 3: Prepositions & Conjunctions', desc: 'Prepositions, FANBOYS, subordinating, and correlative conjunctions.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'c11e_4', classLevel: '11', subject: 'english', title: 'Unit 4: Verbs & Modals', desc: 'Transitive/Intransitive verbs and modal logic.', built: true, bg: 'from-rose-600 to-red-800' },
+  { id: 'c11e_5', classLevel: '11', subject: 'english', title: 'Unit 5: Tenses & Verbals', desc: '12 Tenses, tense consistency, and verbals (participles, gerunds).', built: true, bg: 'from-violet-600 to-purple-800' },
+  { id: 'c11e_6', classLevel: '11', subject: 'english', title: 'Unit 6: Phrases & Clauses', desc: 'Identify phrases and independent/dependent clauses.', built: true, bg: 'from-cyan-600 to-sky-800' },
+  { id: 'c11e_7', classLevel: '11', subject: 'english', title: 'Unit 7: Sentence Structure', desc: 'Sentence types and identifying misplaced modifiers.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
+  { id: 'c11e_8', classLevel: '11', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Dictionary skills, connotation, idioms, and figures of speech.', built: true, bg: 'from-slate-700 to-zinc-900' }
 ];
-

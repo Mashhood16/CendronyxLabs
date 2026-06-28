@@ -436,6 +436,77 @@ const labComponents: Record<string, React.LazyExoticComponent<React.ComponentTyp
   LabS6PlantGrowth: lazy(() => import('../components/LabS6PlantGrowth')),
   LabS6SolarSystemBuilder: lazy(() => import('../components/LabS6SolarSystemBuilder')),
   LabS6EverydayTech: lazy(() => import('../components/LabS6EverydayTech')),
+
+  // Class 8 Math
+  LabM8RealEstimation: lazy(() => import('../components/LabM8RealEstimation')),
+  LabM8RootsFinance: lazy(() => import('../components/LabM8RootsFinance')),
+  LabM8SetsAlgebra: lazy(() => import('../components/LabM8SetsAlgebra')),
+  LabM8EquationsInequalities: lazy(() => import('../components/LabM8EquationsInequalities')),
+  LabM8Transformations: lazy(() => import('../components/LabM8Transformations')),
+  LabM8GeometryTriangles: lazy(() => import('../components/LabM8GeometryTriangles')),
+  LabM8Mensuration: lazy(() => import('../components/LabM8Mensuration')),
+  LabM8DataProbability: lazy(() => import('../components/LabM8DataProbability')),
+
+  // Class 6 English
+  LabE6NounsPronouns: lazy(() => import('../components/LabE6NounsPronouns')),
+  LabE6SentencesAffixes: lazy(() => import('../components/LabE6SentencesAffixes')),
+  LabE6VerbsAdverbs: lazy(() => import('../components/LabE6VerbsAdverbs')),
+  LabE6PrepositionsStructure: lazy(() => import('../components/LabE6PrepositionsStructure')),
+  LabE6ClausesConjunctions: lazy(() => import('../components/LabE6ClausesConjunctions')),
+  LabE6TensesPunctuation: lazy(() => import('../components/LabE6TensesPunctuation')),
+  LabE6FiguresOfSpeech: lazy(() => import('../components/LabE6FiguresOfSpeech')),
+  LabE6WritingMechanics: lazy(() => import('../components/LabE6WritingMechanics')),
+
+  // Class 7 English
+  LabE7ArticlesAdjectives: lazy(() => import('../components/LabE7ArticlesAdjectives')),
+  LabE7FiguresOfSpeech: lazy(() => import('../components/LabE7FiguresOfSpeech')),
+  LabE7PrepositionsModals: lazy(() => import('../components/LabE7PrepositionsModals')),
+  LabE7VerbsCollocations: lazy(() => import('../components/LabE7VerbsCollocations')),
+  LabE7Tenses: lazy(() => import('../components/LabE7Tenses')),
+  LabE7Conjunctions: lazy(() => import('../components/LabE7Conjunctions')),
+  LabE7PronounsClauses: lazy(() => import('../components/LabE7PronounsClauses')),
+  LabE7VocabPunctuation: lazy(() => import('../components/LabE7VocabPunctuation')),
+
+  // Class 8 English
+  LabE8NounsPhonetics: lazy(() => import('../components/LabE8NounsPhonetics')),
+  LabE8PronounsMorphology: lazy(() => import('../components/LabE8PronounsMorphology')),
+  LabE8AdjectivesPoetry: lazy(() => import('../components/LabE8AdjectivesPoetry')),
+  LabE8VerbsModals: lazy(() => import('../components/LabE8VerbsModals')),
+  LabE8AdverbsPrepositions: lazy(() => import('../components/LabE8AdverbsPrepositions')),
+  LabE8ConjunctionsClauses: lazy(() => import('../components/LabE8ConjunctionsClauses')),
+  LabE8TensesVoice: lazy(() => import('../components/LabE8TensesVoice')),
+  LabE8NarrationConditionals: lazy(() => import('../components/LabE8NarrationConditionals')),
+
+
+  // Class 9 English
+  LabE9PartsOfSpeech: lazy(() => import('../components/LabE9PartsOfSpeech')),
+  LabE9Verbals: lazy(() => import('../components/LabE9Verbals')),
+  LabE9TensesAgreement: lazy(() => import('../components/LabE9TensesAgreement')),
+  LabE9Phrases: lazy(() => import('../components/LabE9Phrases')),
+  LabE9PrepositionsConjunctions: lazy(() => import('../components/LabE9PrepositionsConjunctions')),
+  LabE9SentenceStructure: lazy(() => import('../components/LabE9SentenceStructure')),
+  LabE9Narration: lazy(() => import('../components/LabE9Narration')),
+  LabE9PunctuationVocabulary: lazy(() => import('../components/LabE9PunctuationVocabulary')),
+
+  // Class 10 English
+  LabE10NounsPronouns: lazy(() => import('../components/LabE10NounsPronouns')),
+  LabE10VerbsAdjectives: lazy(() => import('../components/LabE10VerbsAdjectives')),
+  LabE10AdverbsPrepositions: lazy(() => import('../components/LabE10AdverbsPrepositions')),
+  LabE10ConjunctionsTenses: lazy(() => import('../components/LabE10ConjunctionsTenses')),
+  LabE10ModalsConditionals: lazy(() => import('../components/LabE10ModalsConditionals')),
+  LabE10PhrasesClauses: lazy(() => import('../components/LabE10PhrasesClauses')),
+  LabE10SentenceNarration: lazy(() => import('../components/LabE10SentenceNarration')),
+  LabE10VocabularyStylistics: lazy(() => import('../components/LabE10VocabularyStylistics')),
+  
+  // Class 11 English
+  LabE11NounsPronouns: lazy(() => import('../components/LabE11NounsPronouns')),
+  LabE11AdjectivesAdverbs: lazy(() => import('../components/LabE11AdjectivesAdverbs')),
+  LabE11PrepositionsConjunctions: lazy(() => import('../components/LabE11PrepositionsConjunctions')),
+  LabE11VerbsModals: lazy(() => import('../components/LabE11VerbsModals')),
+  LabE11TensesVerbals: lazy(() => import('../components/LabE11TensesVerbals')),
+  LabE11PhrasesClauses: lazy(() => import('../components/LabE11PhrasesClauses')),
+  LabE11SentenceStructure: lazy(() => import('../components/LabE11SentenceStructure')),
+  LabE11VocabularyStylistics: lazy(() => import('../components/LabE11VocabularyStylistics')),
 };
 
 // Module ID to component name mapping
@@ -1041,6 +1112,77 @@ const moduleIdToComponent: Record<string, string> = {
   'cs12_7': 'LabCS12Cybersecurity',
   'cs12_8': 'LabCS12DigitalLiteracy',
   'cs12_9': 'LabCS12Entrepreneurship',
+
+  // Class 8 Math
+  'm8_1': 'LabM8RealEstimation',
+  'm8_2': 'LabM8RootsFinance',
+  'm8_3': 'LabM8SetsAlgebra',
+  'm8_4': 'LabM8EquationsInequalities',
+  'm8_5': 'LabM8Transformations',
+  'm8_6': 'LabM8GeometryTriangles',
+  'm8_7': 'LabM8Mensuration',
+  'm8_8': 'LabM8DataProbability',
+
+  // Class 6 English
+  'e6_1': 'LabE6NounsPronouns',
+  'e6_2': 'LabE6SentencesAffixes',
+  'e6_3': 'LabE6VerbsAdverbs',
+  'e6_4': 'LabE6PrepositionsStructure',
+  'e6_5': 'LabE6ClausesConjunctions',
+  'e6_6': 'LabE6TensesPunctuation',
+  'e6_7': 'LabE6FiguresOfSpeech',
+  'e6_8': 'LabE6WritingMechanics',
+
+  // Class 7 English
+  'e7_1': 'LabE7ArticlesAdjectives',
+  'e7_2': 'LabE7FiguresOfSpeech',
+  'e7_3': 'LabE7PrepositionsModals',
+  'e7_4': 'LabE7VerbsCollocations',
+  'e7_5': 'LabE7Tenses',
+  'e7_6': 'LabE7Conjunctions',
+  'e7_7': 'LabE7PronounsClauses',
+  'e7_8': 'LabE7VocabPunctuation',
+
+
+  // Class 8 English
+  'e8_1': 'LabE8NounsPhonetics',
+  'e8_2': 'LabE8PronounsMorphology',
+  'e8_3': 'LabE8AdjectivesPoetry',
+  'e8_4': 'LabE8VerbsModals',
+  'e8_5': 'LabE8AdverbsPrepositions',
+  'e8_6': 'LabE8ConjunctionsClauses',
+  'e8_7': 'LabE8TensesVoice',
+  'e8_8': 'LabE8NarrationConditionals',
+
+  // Class 9 English
+  'c9e_1': 'LabE9PartsOfSpeech',
+  'c9e_2': 'LabE9Verbals',
+  'c9e_3': 'LabE9TensesAgreement',
+  'c9e_4': 'LabE9Phrases',
+  'c9e_5': 'LabE9PrepositionsConjunctions',
+  'c9e_6': 'LabE9SentenceStructure',
+  'c9e_7': 'LabE9Narration',
+  'c9e_8': 'LabE9PunctuationVocabulary',
+  
+  // Class 10 English
+  'c10e_1': 'LabE10NounsPronouns',
+  'c10e_2': 'LabE10VerbsAdjectives',
+  'c10e_3': 'LabE10AdverbsPrepositions',
+  'c10e_4': 'LabE10ConjunctionsTenses',
+  'c10e_5': 'LabE10ModalsConditionals',
+  'c10e_6': 'LabE10PhrasesClauses',
+  'c10e_7': 'LabE10SentenceNarration',
+  'c10e_8': 'LabE10VocabularyStylistics',
+  
+  // Class 11 English
+  'c11e_1': 'LabE11NounsPronouns',
+  'c11e_2': 'LabE11AdjectivesAdverbs',
+  'c11e_3': 'LabE11PrepositionsConjunctions',
+  'c11e_4': 'LabE11VerbsModals',
+  'c11e_5': 'LabE11TensesVerbals',
+  'c11e_6': 'LabE11PhrasesClauses',
+  'c11e_7': 'LabE11SentenceStructure',
+  'c11e_8': 'LabE11VocabularyStylistics',
 };
 
 // Get component by module ID
@@ -1048,7 +1190,4 @@ export const getLabComponent = (moduleId: string): React.LazyExoticComponent<Rea
   const componentName = moduleIdToComponent[moduleId];
   if (!componentName) return null;
   return labComponents[componentName] || null;
-};
-
-
-
+}

@@ -107,7 +107,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
             <LabHeader onExit={onExit} title="Statistics & Scatter Plots" />
 
             {/* Main Content Grid */}
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
+            <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-orange-500">
                     <div className="flex items-center mb-4 text-orange-800 shrink-0">
@@ -144,8 +144,8 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
-                        <div className="flex-1 relative w-full h-full p-2">
+                    <div className="flex-1 min-w-0 relative bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
+                        <div className="flex-1 min-w-0 relative w-full h-full p-2">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Axes */}
                                 <line x1="50" y1="250" x2="350" y2="250" stroke="#334155" strokeWidth="2" />
@@ -240,7 +240,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                         <h2 className="text-xl font-semibold">Data Analysis</h2>
                     </div>
                     
-                    <div className="flex-1 flex flex-col space-y-5">
+                    <div className="flex-1 min-w-0 flex flex-col space-y-5">
                         <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 text-slate-800 dark:text-slate-100">
                             <p className="mb-2">
                                 Observe the generated scatter plot mapping daily <strong>Active Minutes</strong> (x) to a <strong>Fitness Score</strong> (y).
@@ -285,7 +285,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                         {feedback && (
                             <div className={`p-4 rounded-lg flex items-start space-x-3 shadow-inner ${feedback.includes('Correct!') ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'}`}>
                                 {feedback.includes('Correct!') ? <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-0.5" /> : <XCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />}
-                                <p className="flex-1 font-medium text-sm">{feedback}</p>
+                                <p className="flex-1 min-w-0 font-medium text-sm">{feedback}</p>
                             </div>
                         )}
 

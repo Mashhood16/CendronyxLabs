@@ -81,7 +81,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
         <LabHeader onExit={onExit} title="Virtual Lab: Algebraic Manipulation" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
@@ -103,7 +103,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
             {mode === 'poly' ? (
               <>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Area Model for Binomials</h3>
@@ -142,7 +142,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
 
           <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 flex-1 flex flex-col mb-4 min-h-[300px]">
             {mode === 'poly' ? (
-              <div className="flex-1 flex flex-col items-center justify-center">
+              <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
                 <svg width="250" height="250" viewBox="0 0 250 250" className="drop-shadow-md">
                   <rect x="10" y="10" width={xVal*10} height={xVal*10} fill="#3b82f6" opacity="0.8" stroke="#1e40af" strokeWidth="2" />
                   <text x={10 + xVal*5} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">x²</text>
@@ -158,7 +158,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                 </svg>
               </div>
             ) : (
-              <div className="flex-1 flex flex-col items-center justify-center relative">
+              <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
                 <svg width="100%" height="200" viewBox="0 0 300 200" className="bg-blue-50/50 rounded-lg border border-blue-100">
                   <line x1="0" y1="100" x2="300" y2="100" stroke="#94a3b8" strokeDasharray="4" />
                   <ellipse cx="150" cy="100" rx="5" ry="50" fill="#38bdf8" opacity="0.5" stroke="#0284c7" />
@@ -191,17 +191,17 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
               <>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Base x:</label>
-                  <input type="range" min="3" max="10" value={xVal} onChange={(e) => setXVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
+                  <input type="range" min="3" max="10" value={xVal} onChange={(e) => setXVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{xVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Value a:</label>
-                  <input type="range" min="1" max="5" value={aVal} onChange={(e) => setAVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
+                  <input type="range" min="1" max="5" value={aVal} onChange={(e) => setAVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{aVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Value b:</label>
-                  <input type="range" min="1" max="5" value={bVal} onChange={(e) => setBVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
+                  <input type="range" min="1" max="5" value={bVal} onChange={(e) => setBVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
                   <span className="w-8 text-right font-mono">{bVal}</span>
                 </div>
               </>
@@ -209,12 +209,12 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
               <>
                 <div className="flex items-center gap-4">
                   <label className="w-32 text-sm font-medium text-slate-700 dark:text-slate-200">Obj dist (u):</label>
-                  <input type="range" min="10" max="40" value={uVal} onChange={(e) => setUVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
+                  <input type="range" min="10" max="40" value={uVal} onChange={(e) => setUVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
                   <span className="w-12 text-right font-mono">{uVal}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <label className="w-32 text-sm font-medium text-slate-700 dark:text-slate-200">Img dist (v):</label>
-                  <input type="range" min="10" max="40" value={vVal} onChange={(e) => setVVal(Number(e.target.value))} className="flex-1 accent-indigo-600" />
+                  <input type="range" min="10" max="40" value={vVal} onChange={(e) => setVVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
                   <span className="w-12 text-right font-mono">{vVal}</span>
                 </div>
               </>
@@ -259,7 +259,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+          <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
             <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
             
             {mode === 'poly' ? (

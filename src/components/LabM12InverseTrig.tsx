@@ -82,7 +82,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
             {/* Header */}
             <LabHeader onExit={onExit} title="Grade 12: Inverse Trigonometry Simulator" />
 
-            <div className="flex-1 p-6">
+            <div className="flex-1 min-w-0 p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
                     
                     {/* Column 1: Theory */}
@@ -145,7 +145,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                             </button>
                         </div>
 
-                        <div className="flex-1 flex flex-col items-center justify-center">
+                        <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
                             {activeTab === 'survey' && (
                                 <div className="w-full flex flex-col items-center">
                                     <svg viewBox="0 0 400 350" className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
@@ -231,7 +231,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Analysis & Assessment</h2>
 
                         {activeTab === 'survey' && (
-                            <div className="flex-1 flex flex-col">
+                            <div className="flex-1 min-w-0 flex flex-col">
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">A surveyor looks at a building under the conditions shown in the simulation:</p>
                                 <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     Distance (d) = {distance} m
@@ -274,7 +274,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                         )}
 
                         {activeTab === 'optics' && (
-                            <div className="flex-1 flex flex-col">
+                            <div className="flex-1 min-w-0 flex flex-col">
                                 <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">An object needs to be perfectly framed by a 3D camera with these parameters:</p>
                                 <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     Width (w) = {widthObj}

@@ -54,7 +54,7 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         <LabHeader onExit={onExit} title="Grade 9 Math: Real Numbers & Distance" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Absolute Value & Percentages</h2>
@@ -143,7 +143,7 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Analysis & Assessment</h2>
           
-          <div className="flex-1 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
+          <div className="flex-1 min-w-0 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
             {logs.length === 0 ? (
               <div className="text-center text-slate-400 mt-10">No data recorded yet.</div>
             ) : (
@@ -173,10 +173,10 @@ export default function LabM9RealNumbers({ onExit }: Props) {
           <div className="flex flex-col gap-4">
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
               <p className="text-sm font-semibold mb-2">{q1}</p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <input 
                   type="number" value={q1Ans} onChange={(e) => setQ1Ans(e.target.value)}
-                  className="flex-1 border rounded px-2 py-1 outline-none focus:border-blue-400"
+                  className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-blue-400"
                   placeholder="Distance..."
                 />
                 <button onClick={checkQ1} className="px-3 bg-blue-600 text-white rounded font-bold hover:bg-blue-700">Check</button>
@@ -191,10 +191,10 @@ export default function LabM9RealNumbers({ onExit }: Props) {
 
             <div className="bg-green-50 p-4 rounded-lg border border-green-100">
               <p className="text-sm font-semibold mb-2">{q2}</p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <input 
                   type="number" value={q2Ans} onChange={(e) => setQ2Ans(e.target.value)}
-                  className="flex-1 border rounded px-2 py-1 outline-none focus:border-green-400"
+                  className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-green-400"
                   placeholder="Percentage..."
                 />
                 <button onClick={checkQ2} className="px-3 bg-green-600 text-white rounded font-bold hover:bg-green-700">Check</button>

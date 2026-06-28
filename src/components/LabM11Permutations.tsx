@@ -149,7 +149,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                 <div className="bg-slate-100 dark:bg-slate-800 relative flex flex-col p-6 overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 text-center">Interactive Visualizer</h2>
                     
-                    <div className="flex-1 flex flex-col items-center justify-center gap-8">
+                    <div className="flex-1 min-w-0 flex flex-col items-center justify-center gap-8">
                         {scenario === 'plates' && (
                             <div className="w-full max-w-md flex flex-col items-center gap-6">
                                 <div className="bg-yellow-400 p-4 rounded-lg shadow-lg border-4 border-yellow-500 w-full text-center relative overflow-hidden">
@@ -272,7 +272,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. A state issues plates with exactly 2 letters followed by 4 digits. Repetition is allowed. How many unique plates are possible?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. 1000" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. 1000" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -280,7 +280,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. What if the same format is used (2 letters, 4 digits) but NO character or digit can be repeated on the same plate?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -294,7 +294,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. A 3-digit lock uses numbers from a pool of 10 digits (0-9). If repetition IS allowed, how many combinations exist?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -302,7 +302,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. What if the same 3-digit lock requires UNIQUE digits (no repetition)?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -315,7 +315,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q1. In how many ways can 6 people be seated around a circular table?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>
@@ -323,7 +323,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                 <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
                                     <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 font-medium">Q2. In how many ways can 6 people be seated around a circular table if two specific people insist on sitting next to each other?</p>
                                     <div className="flex items-center gap-3">
-                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
+                                        <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 text-sm" />
                                         {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
                                         {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
                                     </div>

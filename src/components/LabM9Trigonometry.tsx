@@ -77,7 +77,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
         <LabHeader onExit={onExit} title="Virtual Lab: Trigonometry & Bearings" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
@@ -99,7 +99,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
             {mode === 'ladder' ? (
               <>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">SOH CAH TOA</h3>
@@ -177,12 +177,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
               <>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Angle (°):</label>
-                  <input type="range" min="30" max="80" value={lAng} onChange={(e) => setLAng(Number(e.target.value))} className="flex-1 accent-blue-600" />
+                  <input type="range" min="30" max="80" value={lAng} onChange={(e) => setLAng(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{lAng}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Length (m):</label>
-                  <input type="range" min="5" max="15" value={lLen} onChange={(e) => setLLen(Number(e.target.value))} className="flex-1 accent-blue-600" />
+                  <input type="range" min="5" max="15" value={lLen} onChange={(e) => setLLen(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{lLen}</span>
                 </div>
               </>
@@ -190,12 +190,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
               <>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Bearing (°):</label>
-                  <input type="range" min="0" max="360" value={brg} onChange={(e) => setBrg(Number(e.target.value))} className="flex-1 accent-blue-600" />
+                  <input type="range" min="0" max="360" value={brg} onChange={(e) => setBrg(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{brg}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Dist (km):</label>
-                  <input type="range" min="10" max="100" value={dist} onChange={(e) => setDist(Number(e.target.value))} className="flex-1 accent-blue-600" />
+                  <input type="range" min="10" max="100" value={dist} onChange={(e) => setDist(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{dist}</span>
                 </div>
               </>
@@ -240,7 +240,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+          <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
             <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
             
             {mode === 'ladder' ? (

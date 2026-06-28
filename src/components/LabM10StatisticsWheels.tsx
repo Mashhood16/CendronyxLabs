@@ -139,7 +139,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Experimental Probability & Statistics" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup & Data */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-teal-800">
@@ -164,7 +164,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
             <button 
               onClick={spinWheel}
               disabled={isSpinning}
-              className="flex-1 py-2 px-4 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-300 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="flex-1 min-w-0 py-2 px-4 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-300 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               <Play className="w-4 h-4" /> {isSpinning ? 'Spinning...' : 'Spin Wheel'}
             </button>
@@ -177,7 +177,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[300px]">
+          <div className="flex-1 min-w-0 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[300px]">
             <table className="w-full text-sm text-left">
               <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                 <tr>

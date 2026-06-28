@@ -6,6 +6,7 @@ import { useAuth } from '../store';
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
 
+
 interface LabRunnerInnerProps {
   moduleId: string | undefined;
   onExit: () => void;

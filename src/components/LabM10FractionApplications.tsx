@@ -84,11 +84,11 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Rational & Fraction Applications Lab" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
             {mode === 'travel' ? (
               <>
                 <p><strong>Distance, Speed, and Time</strong> are related by rational equations.</p>
@@ -151,7 +151,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
             ) : (
               <div className="w-full h-full flex flex-col">
                 <div className="text-center font-bold text-slate-600 dark:text-slate-300 mb-2">Wall Progress (60 Bricks)</div>
-                <div className="flex-1 grid grid-cols-10 gap-1 content-start">
+                <div className="flex-1 min-w-0 grid grid-cols-10 gap-1 content-start">
                   {Array.from({ length: bricksTotal }).map((_, i) => {
                     let bgColor = 'bg-slate-200 dark:bg-slate-800';
                     if (i < bricksA) bgColor = 'bg-blue-500';
@@ -240,7 +240,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
         {/* Assessment Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Data Analysis</h2>
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 min-w-0 space-y-6">
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <p className="text-slate-700 dark:text-slate-200 font-medium mb-3">
                 {mode === 'travel' 
@@ -256,7 +256,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
                   value={ans}
                   onChange={e => setAns(e.target.value)}
                   placeholder="e.g. 1.25"
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <button 
                   onClick={checkAns}

@@ -87,7 +87,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
             Interactive Graph Plotter
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center relative">
+          <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
             <svg width={SVG_SIZE} height={SVG_SIZE} className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden">
               {/* Grid Lines */}
               {Array.from({ length: 11 }).map((_, i) => (
@@ -161,7 +161,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
             Data Log & Assessment
           </h2>
           
-          <div className="flex-1 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto">
+          <div className="flex-1 min-w-0 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto">
             <table className="w-full text-sm text-left">
               <thead className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 sticky top-0">
                 <tr>
@@ -196,13 +196,13 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
             <p className="text-sm text-indigo-800 mb-3">
               Given the current rate of <strong>${rate}/km</strong> and a base fare of <strong>${base}</strong>, calculate the total cost for a <strong>{targetDist} km</strong> trip.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" 
                 placeholder="Total Cost ($)" 
                 value={userAns}
                 onChange={(e) => setUserAns(e.target.value)}
-                className="flex-1 px-3 py-2 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 min-w-0 px-3 py-2 border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button 
                 onClick={checkAns}

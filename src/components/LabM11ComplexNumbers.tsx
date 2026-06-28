@@ -90,7 +90,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
       {/* Header */}
       <LabHeader onExit={onExit} title="Complex Numbers & Phasors Lab" />
 
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+      <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
           <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200">Theory: Euler's Formula</h2>
@@ -126,7 +126,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
             <div className="flex gap-2 pt-2">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
+                className="flex-1 min-w-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
               >
                 {isPlaying ? <><Pause size={18} /> Pause</> : <><Play size={18} /> Play</>}
               </button>
@@ -203,7 +203,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
             <div className="flex items-center gap-2">
               <input 
                 type="number" 
-                className="flex-1 p-2 border rounded text-sm" 
+                className="flex-1 min-w-0 p-2 border rounded text-sm" 
                 placeholder="Enter value..."
                 value={q1Answer}
                 onChange={(e) => { setQ1Answer(e.target.value); setQ1Status("idle"); }}
@@ -223,7 +223,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
             <div className="flex items-center gap-2">
               <input 
                 type="number" 
-                className="flex-1 p-2 border rounded text-sm" 
+                className="flex-1 min-w-0 p-2 border rounded text-sm" 
                 placeholder="Enter period T..."
                 value={q2Answer}
                 onChange={(e) => { setQ2Answer(e.target.value); setQ2Status("idle"); }}

@@ -76,7 +76,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
         <LabHeader onExit={onExit} title="Grade 9 Math: Sets & Venn Diagrams" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Overlapping Sets</h2>
@@ -196,7 +196,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Analysis & Assessment</h2>
           
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border rounded-lg p-4 flex flex-col justify-center items-center text-center">
+          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-900 border rounded-lg p-4 flex flex-col justify-center items-center text-center">
             {isAllCorrect ? (
               <div className="text-green-600 flex flex-col items-center gap-2">
                 <CheckCircle size={48} />
@@ -216,10 +216,10 @@ export default function LabM9SetsRelations({ onExit }: Props) {
               In a class survey, n(Math) = {nA} and n(Science) = {nB}. 
               If n(Math ∩ Science) = {nIntersect}, how many students like <b>at least one</b> of the subjects (n(Math ∪ Science))?
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" value={qAns} onChange={(e) => setQAns(e.target.value)}
-                className="flex-1 border rounded px-2 py-1 outline-none focus:border-purple-400"
+                className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-purple-400"
                 placeholder="Total union..."
               />
               <button onClick={checkAnswer} className="px-3 bg-purple-600 text-white rounded font-bold hover:bg-purple-700">Check</button>

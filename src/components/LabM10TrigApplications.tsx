@@ -53,7 +53,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
             <LabHeader onExit={onExit} title="Trigonometry Applications" />
 
             {/* Main Content Grid */}
-            <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
+            <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-indigo-500">
                     <div className="flex items-center mb-4 text-indigo-800 shrink-0">
@@ -91,8 +91,8 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 relative bg-sky-50 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
-                        <div className="flex-1 relative w-full h-full">
+                    <div className="flex-1 min-w-0 relative bg-sky-50 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
+                        <div className="flex-1 min-w-0 relative w-full h-full">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Sky & Ground */}
                                 <rect x="0" y="0" width="400" height="250" fill="#e0f2fe" />
@@ -171,7 +171,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                     </div>
                     
                     {problem && (
-                        <div className="flex-1 flex flex-col space-y-5">
+                        <div className="flex-1 min-w-0 flex flex-col space-y-5">
                             <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200">
                                 <p className="text-slate-800 dark:text-slate-100 mb-3 leading-relaxed">
                                     You are surveying a skyscraper to verify its height. You stand exactly <strong>{problem.distance} meters</strong> away from its base. 
@@ -205,7 +205,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                             {feedback && (
                                 <div className={`p-4 rounded-lg flex items-start space-x-3 shadow-inner ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'}`}>
                                     {feedback.includes('Correct') ? <CheckCircle2 className="w-6 h-6 flex-shrink-0 mt-0.5" /> : <XCircle className="w-6 h-6 flex-shrink-0 mt-0.5" />}
-                                    <p className="flex-1 font-medium">{feedback}</p>
+                                    <p className="flex-1 min-w-0 font-medium">{feedback}</p>
                                 </div>
                             )}
 

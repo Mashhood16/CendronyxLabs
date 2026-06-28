@@ -79,7 +79,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Sequences & Series: Geometric Decay" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Theory & Context</h2>

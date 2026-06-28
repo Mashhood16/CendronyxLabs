@@ -70,7 +70,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Common Tangents Construction" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-indigo-800">

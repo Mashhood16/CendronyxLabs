@@ -86,7 +86,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Trigonometry: Sinusoidal Ferris Wheel" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-xl font-bold text-teal-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">

@@ -79,11 +79,11 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Mathematical Function Applications Lab" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
             {mode === 'virus' ? (
               <>
                 <p><strong>Exponential Growth</strong> functions describe scenarios where a quantity increases by a constant factor over equal time intervals.</p>
@@ -223,7 +223,7 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
         {/* Assessment Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Data Analysis</h2>
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 min-w-0 space-y-6">
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
               <p className="text-slate-700 dark:text-slate-200 font-medium mb-3">
                 {mode === 'virus' 
@@ -238,7 +238,7 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
                   value={ans}
                   onChange={e => setAns(e.target.value)}
                   placeholder="e.g. 5"
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <button 
                   onClick={checkAns}

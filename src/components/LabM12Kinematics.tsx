@@ -115,7 +115,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M12.3: Advanced Kinematics" />
 
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
+      <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-purple-700 mb-2">
@@ -240,13 +240,13 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
             </p>
 
             <div className="space-y-3 shrink-0">
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <input 
                   type="number" 
                   value={userAnswer}
                   onChange={e => setUserAnswer(e.target.value)}
                   placeholder="Enter answer" 
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <button 
                   onClick={checkAnswer}

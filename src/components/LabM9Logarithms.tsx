@@ -57,7 +57,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
         <LabHeader onExit={onExit} title="Grade 9 Math: Logarithms & Richter Scale" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Logarithms & Scientific Notation</h2>
@@ -126,7 +126,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Data Logs & Assessment</h2>
           
-          <div className="flex-1 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
+          <div className="flex-1 min-w-0 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
             {logs.length === 0 ? (
               <div className="text-center text-slate-400 mt-10">Trigger an event to record data.</div>
             ) : (
@@ -155,10 +155,10 @@ export default function LabM9Logarithms({ onExit }: Props) {
             <p className="text-sm font-semibold mb-2">
               An earthquake of Magnitude {m2.toFixed(1)} releases how many times more energy than a Magnitude {m1.toFixed(1)} earthquake?
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" value={qAns} onChange={(e) => setQAns(e.target.value)}
-                className="flex-1 border rounded px-2 py-1 outline-none focus:border-red-400"
+                className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-red-400"
                 placeholder="Factor..."
               />
               <button onClick={checkAnswer} className="px-3 bg-red-600 text-white rounded font-bold hover:bg-red-700">Check</button>

@@ -111,7 +111,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
         <LabHeader onExit={onExit} title="Virtual Lab: Coordinate Geometry" />
       
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
@@ -133,7 +133,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
             {mode === 'midpoint' ? (
               <>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Midpoint Formula</h3>
@@ -211,21 +211,21 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
             {mode === 'midpoint' ? (
               <button 
                 onClick={handleRandomize}
-                className="flex-1 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
+                className="flex-1 min-w-0 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
               >
                 Randomize A & B
               </button>
             ) : (
               <button 
                 onClick={() => setRoute([])}
-                className="flex-1 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
+                className="flex-1 min-w-0 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md font-medium transition active:scale-95"
               >
                 Clear Route
               </button>
             )}
             <button 
               onClick={handleRecord}
-              className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium transition active:scale-95"
+              className="flex-1 min-w-0 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium transition active:scale-95"
             >
               Record Data
             </button>
@@ -263,7 +263,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+          <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
             <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
             
             {mode === 'midpoint' ? (

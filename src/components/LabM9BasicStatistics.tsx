@@ -91,7 +91,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
             Factory Inspector
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-end relative bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-6">
+          <div className="flex-1 min-w-0 flex flex-col items-center justify-end relative bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-6">
             <div className="w-full h-48 flex items-end justify-center gap-12">
               {/* Bar 1: Good */}
               <div className="flex flex-col items-center gap-2 w-24">
@@ -115,10 +115,10 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button 
               onClick={inspectBatch} 
-              className="flex-1 py-3 bg-amber-500 text-white font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-amber-600 transition-colors shadow-sm"
+              className="flex-1 min-w-0 py-3 bg-amber-500 text-white font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-amber-600 transition-colors shadow-sm"
             >
               <Factory size={18} /> Inspect 50 Items
             </button>
@@ -138,7 +138,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
             Data Analysis
           </h2>
           
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 min-w-0 space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 text-center">
                 <span className="block text-blue-800 text-sm font-bold mb-1">Total Inspected</span>
@@ -157,14 +157,14 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
               <p className="text-sm text-amber-800 mb-4">
                 Based on your current empirical probability, if the factory produces <strong>{targetProd.toLocaleString()}</strong> items this week, exactly how many do you expect to be faulty? (Round to nearest integer).
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <input 
                   type="number" 
                   placeholder="Expected Faulty" 
                   value={userAns}
                   onChange={(e) => setUserAns(e.target.value)}
                   disabled={totalItems === 0}
-                  className="flex-1 px-3 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:opacity-50"
+                  className="flex-1 min-w-0 px-3 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:opacity-50"
                 />
                 <button 
                   onClick={checkAns}

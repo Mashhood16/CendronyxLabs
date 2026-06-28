@@ -73,7 +73,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
       <LabHeader onExit={onExit} title="Matrix Transformations & Cryptography" variant="dark" subtitle="Mathematics Class 11" />
 
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+      <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-purple-500">
           <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center gap-2"><Grid size={20} /> Matrix Operations</h2>
@@ -171,7 +171,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
             <div className="flex items-center gap-2">
               <input 
                 type="number" 
-                className="flex-1 p-2 border rounded text-sm" 
+                className="flex-1 min-w-0 p-2 border rounded text-sm" 
                 placeholder="det(A)"
                 value={detAnswer}
                 onChange={(e) => { setDetAnswer(e.target.value); setDetStatus("idle"); }}
@@ -187,7 +187,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
             <p className="text-xs text-gray-600 mb-3">
               Given the message vector <span className="font-mono">[3, 5]^T</span>, multiply it by Matrix A to find the encrypted vector <span className="font-mono">[x', y']^T</span>.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" 
                 className="w-1/2 p-2 border rounded text-sm" 

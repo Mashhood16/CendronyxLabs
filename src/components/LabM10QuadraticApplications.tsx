@@ -167,10 +167,10 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
           </div>
           
           <div className="flex gap-4 mt-4 w-full max-w-md">
-             <button onClick={fireCannon} disabled={isFiring} className="flex-1 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors">
+             <button onClick={fireCannon} disabled={isFiring} className="flex-1 min-w-0 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors">
                Fire Cannon
              </button>
-             <button onClick={resetCannon} className="flex-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded transition-colors">
+             <button onClick={resetCannon} className="flex-1 min-w-0 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded transition-colors">
                Reset
              </button>
           </div>

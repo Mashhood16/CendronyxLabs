@@ -98,7 +98,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
             Interactive Yard Map
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center relative">
+          <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
             <svg 
               width={SVG_SIZE} 
               height={SVG_SIZE} 
@@ -160,7 +160,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
             Data Log & Cost Estimator
           </h2>
           
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 space-y-4">
+          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 space-y-4">
             <div>
               <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Geometric Data</h3>
               <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-sm">
@@ -193,14 +193,14 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
             <p className="text-sm text-emerald-800 mb-3">
               Calculate the total cost to landscape the yard you plotted. (Round final answer to nearest dollar, or enter exact to 2 decimals).
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <input 
                 type="number" 
                 placeholder="Total Cost ($)" 
                 value={userAns}
                 onChange={(e) => setUserAns(e.target.value)}
                 disabled={points.length < 3}
-                className="flex-1 px-3 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
+                className="flex-1 min-w-0 px-3 py-2 border border-emerald-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
               />
               <button 
                 onClick={checkAns}

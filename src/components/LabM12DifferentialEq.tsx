@@ -170,10 +170,10 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
                                 <text x="50" y="164" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">{Math.round(currTemp)}°C</text>
                             </svg>
                             <div className="flex space-x-2 mb-4">
-                                <button onClick={() => setRunC(!runC)} className="flex-1 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
+                                <button onClick={() => setRunC(!runC)} className="flex-1 min-w-0 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
                                     {runC ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runC ? 'Pause' : 'Start'}
                                 </button>
-                                <button onClick={() => { setRunC(false); setTimeC(0); }} className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
+                                <button onClick={() => { setRunC(false); setTimeC(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
                                     <RotateCcw className="w-4 h-4 mr-2" /> Reset
                                 </button>
                             </div>
@@ -195,10 +195,10 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
                                 <circle cx={mapBx(currBx)} cy={mapBy(currBy > 0 ? currBy : 0)} r="6" fill="#1e293b" />
                             </svg>
                             <div className="flex space-x-2 mb-4">
-                                <button onClick={() => setRunB(!runB)} className="flex-1 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
+                                <button onClick={() => setRunB(!runB)} className="flex-1 min-w-0 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
                                     {runB ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runB ? 'Pause' : 'Fire'}
                                 </button>
-                                <button onClick={() => { setRunB(false); setTimeB(0); }} className="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
+                                <button onClick={() => { setRunB(false); setTimeB(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
                                     <RotateCcw className="w-4 h-4 mr-2" /> Reset
                                 </button>
                             </div>
