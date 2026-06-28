@@ -60,8 +60,8 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button
           onClick={onExit}
           className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
@@ -77,7 +77,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 lg:overflow-hidden">
         {/* Left Controls */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
           {activeTab === 'sets' && (
             <div className="space-y-6 animate-in fade-in duration-300">
               <h2 className="text-lg font-semibold flex items-center">
@@ -90,9 +90,9 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
                 <p className="font-mono mb-1">A = {'{1, 2, 3, 4}'}</p>
                 <p className="font-mono mb-1">B = {'{3, 4, 5, 6}'}</p>
               </div>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Drag the elements into the correct regions on the Venn diagram.</p>
+              <p className="text-sm text-slate-600 dark:text-[#71717a]">Drag the elements into the correct regions on the Venn diagram.</p>
               
-              <div className="min-h-[80px] p-4 bg-slate-100 dark:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-slate-600"
+              <div className="min-h-[80px] p-4 bg-slate-100 dark:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"
                    onDrop={(e) => handleDrop(e, 'unassigned')}
                    onDragOver={handleDragOver}>
                 {elements.filter(e => e.region === 'unassigned').map(el => (
@@ -102,13 +102,13 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
                   </div>
                 ))}
                 {elements.filter(e => e.region === 'unassigned').length === 0 && (
-                  <span className="text-slate-400 dark:text-slate-500 italic text-sm self-center">All elements placed!</span>
+                  <span className="text-slate-400 dark:text-[#71717a] italic text-sm self-center">All elements placed!</span>
                 )}
               </div>
 
               <button 
                 onClick={() => alert(checkSets() ? 'Perfect! You placed all elements correctly.' : 'Not quite. Check your placement and try again.')}
-                className="w-full py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+                className="w-full py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check Answer
               </button>
@@ -121,7 +121,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
                 <Shapes className="w-5 h-5 mr-2 text-amber-500" />
                 Algebraic Patterns
               </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Observe the sequence of matchstick squares on the right.</p>
+              <p className="text-sm text-slate-600 dark:text-[#71717a]">Observe the sequence of matchstick squares on the right.</p>
               
               <div>
                 <label className="block text-sm font-medium mb-1">Number of Squares (n): {term}</label>
@@ -132,8 +132,8 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
                 <h3 className="font-semibold mb-2 text-amber-900 dark:text-amber-100">Deduce the Pattern</h3>
                 <p className="text-sm mb-4">Let <span className="font-mono font-bold">n</span> be the number of squares. Write an algebraic expression for the total number of matchsticks required.</p>
                 <div className="flex space-x-2">
-                  <input type="text" value={userPattern} onChange={(e) => setUserPattern(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g., 2n + 1" />
-                  <button onClick={checkAlgebra} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors shadow-sm">Check</button>
+                  <input type="text" value={userPattern} onChange={(e) => setUserPattern(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g., 2n + 1" />
+                  <button onClick={checkAlgebra} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors shadow-sm dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">Check</button>
                 </div>
                 {algebraFeedback && <p className={`mt-3 text-sm font-medium ${algebraFeedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{algebraFeedback}</p>}
               </div>
@@ -142,11 +142,11 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Stage */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col relative overflow-hidden items-center justify-center">
+        <div className="bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col relative overflow-hidden items-center justify-center">
           
           {activeTab === 'sets' && (
             <div 
-              className="w-full h-full min-h-[400px] border-4 border-dashed border-slate-200 dark:border-slate-700 rounded-xl relative p-4 bg-slate-50 dark:bg-slate-800 animate-in zoom-in duration-300"
+              className="w-full h-full min-h-[400px] border-4 border-dashed border-slate-200 dark:border-[#1c1b1b] rounded-xl relative p-4 bg-slate-50 dark:bg-[#121212] animate-in zoom-in duration-300"
               onDrop={(e) => handleDrop(e, 'Universal')}
               onDragOver={handleDragOver}
             >
@@ -224,7 +224,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
               <div className="text-xl">
                 Total Matchsticks = <span className="font-bold text-2xl text-amber-600 dark:text-amber-400">{term * 3 + 1}</span>
               </div>
-              <div className="text-sm text-slate-500 dark:text-slate-400 max-w-sm text-center bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="text-sm text-slate-500 dark:text-[#71717a] max-w-sm text-center bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                 💡 <strong>Hint:</strong> The first square requires 4 sticks. Each additional square shares one side with the previous square, so it only requires 3 more sticks!
               </div>
             </div>

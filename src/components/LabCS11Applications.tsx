@@ -66,30 +66,30 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Advanced Tech Applications" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden min-h-0">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden min-h-0">
         {/* Left Col */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 shrink-0">Concepts & Theory</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 shrink-0">Concepts & Theory</h2>
           
-          <div className="flex gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg shrink-0">
+          <div className="flex gap-2 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg shrink-0">
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'iot' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'iot' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => { setActiveTab('iot'); setFeedback(null); setAssessmentAns(''); }}
             >
               IoT Systems
             </button>
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-slate-50 dark:bg-slate-900 shadow text-purple-600' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-slate-50 dark:bg-[#121212] shadow text-purple-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => { setActiveTab('blockchain'); setFeedback(null); setAssessmentAns(''); }}
             >
               Blockchain
             </button>
           </div>
 
-          <div className="text-slate-600 dark:text-slate-300 space-y-4 text-sm mt-2">
+          <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4 text-sm mt-2">
             {activeTab === 'iot' ? (
               <>
                 <p><strong>Internet of Things (IoT)</strong> refers to interconnected physical devices equipped with sensors, processing ability, and software.</p>
@@ -99,7 +99,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                   <li><strong>Pressure Pad:</strong> Detects physical weight (analog value 0-100).</li>
                   <li><strong>Logic Controller:</strong> Combines inputs using boolean logic to control an actuator (the Alarm system).</li>
                 </ul>
-                <div className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-md font-mono text-xs text-blue-800 mt-4">
+                <div className="p-3 bg-slate-50 dark:bg-[#121212] border rounded-md font-mono text-xs text-blue-800 mt-4 dark:text-[#ffffff]">
                   if (motion == true && pressure &gt; threshold) {"{\n  triggerAlarm();\n}"}
                 </div>
               </>
@@ -118,39 +118,39 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Middle Col */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4 shrink-0">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4 shrink-0">
             {activeTab === 'iot' ? 'IoT Testbench Simulator' : 'Distributed Ledger Simulator'}
           </h2>
 
           {activeTab === 'iot' ? (
-            <div className="flex-1 flex flex-col items-center justify-center gap-8 border rounded-lg bg-slate-50 dark:bg-slate-900 p-6 min-h-[400px]">
+            <div className="flex-1 flex flex-col items-center justify-center gap-8 border rounded-lg bg-slate-50 dark:bg-[#121212] p-6 min-h-[400px]">
               <div className="flex flex-wrap gap-8 items-center w-full justify-center">
-                <div className="flex flex-col items-center gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border shadow-sm w-48">
-                  <div className="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                <div className="flex flex-col items-center gap-4 bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl border shadow-sm w-48">
+                  <div className="font-semibold text-slate-700 dark:text-[#ffffff] flex items-center gap-2">
                     <Radio size={18} className="text-blue-500" /> PIR Sensor
                   </div>
                   <button 
                     onClick={() => setMotion(!motion)}
-                    className={`w-16 h-16 rounded-full flex items-center justify-center border-4 font-bold transition-all duration-300 ${motion ? 'border-green-500 bg-green-100 text-green-600 shadow-[0_0_15px_rgba(34,197,94,0.4)]' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-100 dark:bg-slate-800 text-slate-400'}`}
+                    className={`w-16 h-16 rounded-full flex items-center justify-center border-4 font-bold transition-all duration-300 ${motion ? 'border-green-500 bg-green-100 text-green-600 shadow-[0_0_15px_rgba(34,197,94,0.4)]' : 'border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212] text-slate-400'}`}
                   >
                     {motion ? 'ON' : 'OFF'}
                   </button>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">Toggle Motion</span>
+                  <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Toggle Motion</span>
                 </div>
 
-                <div className="flex flex-col items-center gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border shadow-sm w-48">
-                  <div className="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                <div className="flex flex-col items-center gap-4 bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl border shadow-sm w-48">
+                  <div className="font-semibold text-slate-700 dark:text-[#ffffff] flex items-center gap-2">
                     <Cpu size={18} className="text-orange-500" /> Pressure Pad
                   </div>
-                  <div className="text-2xl font-bold font-mono text-slate-800 dark:text-slate-100">{pressure} kg</div>
+                  <div className="text-2xl font-bold font-mono text-slate-800 dark:text-[#ffffff]">{pressure} kg</div>
                   <input 
                     type="range" min="0" max="100" value={pressure} 
                     onChange={(e) => setPressure(parseInt(e.target.value))} 
                     className="w-full accent-orange-500"
                   />
                   <div className="w-full px-2 mt-2">
-                    <label className="text-xs text-slate-500 dark:text-slate-400 flex justify-between items-center font-bold">
+                    <label className="text-xs text-slate-500 dark:text-[#71717a] flex justify-between items-center font-bold">
                       THRESHOLD: 
                       <input 
                         type="number" className="w-14 border rounded px-1 py-1 text-center font-mono text-sm outline-none focus:border-orange-400"
@@ -161,25 +161,25 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                 </div>
               </div>
 
-              <div className="w-1 h-12 bg-slate-300 dark:bg-slate-800 relative">
-                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 dark:bg-slate-800 px-3 py-1 text-xs font-bold text-white rounded-md shadow">AND Logic</div>
+              <div className="w-1 h-12 bg-slate-300 dark:bg-[#121212] relative">
+                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#121212] dark:bg-[#121212] px-3 py-1 text-xs font-bold text-white rounded-md shadow">AND Logic</div>
               </div>
 
-              <div className={`p-6 rounded-2xl border-4 flex items-center justify-center gap-4 w-64 transition-all duration-300 ${alarmOn ? 'bg-red-100 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.5)]' : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>
+              <div className={`p-6 rounded-2xl border-4 flex items-center justify-center gap-4 w-64 transition-all duration-300 ${alarmOn ? 'bg-red-100 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.5)]' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b]'}`}>
                 <AlertTriangle size={36} className={alarmOn ? 'text-red-600 animate-pulse' : 'text-slate-400'} />
-                <span className={`text-2xl font-bold ${alarmOn ? 'text-red-700' : 'text-slate-500 dark:text-slate-400'}`}>
+                <span className={`text-2xl font-bold ${alarmOn ? 'text-red-700' : 'text-slate-500 dark:text-[#a1a1aa]'}`}>
                   ALARM {alarmOn ? 'TRIGGERED' : 'OFF'}
                 </span>
               </div>
             </div>
           ) : (
-            <div className="flex-1 flex flex-col gap-4 border rounded-lg bg-slate-50 dark:bg-slate-900 p-4 overflow-y-auto">
+            <div className="flex-1 flex flex-col gap-4 border rounded-lg bg-slate-50 dark:bg-[#121212] p-4 lg:overflow-y-auto">
               {blocks.map((block, i) => {
                 const isValid = block.hash < 1000;
                 return (
                   <div key={block.id} className={`p-4 rounded-xl border-2 transition-colors ${isValid ? 'border-green-400 bg-green-50/50' : 'border-red-400 bg-red-50/50'}`}>
                     <div className="flex justify-between items-center mb-3">
-                      <h3 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                      <h3 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                         <Shield size={16} className={isValid ? 'text-green-600' : 'text-red-600'} /> 
                         Block #{block.id}
                       </h3>
@@ -190,33 +190,33 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
 
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <label className="text-xs font-bold text-slate-500 dark:text-slate-400 block mb-1">Payload Data</label>
+                        <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] block mb-1">Payload Data</label>
                         <input 
                           type="text" value={block.data} 
                           onChange={(e) => updateBlock(i, 'data', e.target.value)}
-                          className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-2 py-1.5 focus:border-purple-400 outline-none transition-colors"
+                          className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-purple-400 outline-none transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="text-xs font-bold text-slate-500 dark:text-slate-400 block mb-1">Nonce (Mining Guess)</label>
+                        <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] block mb-1">Nonce (Mining Guess)</label>
                         <div className="flex gap-1">
                           <input 
                             type="number" value={block.nonce} 
                             onChange={(e) => updateBlock(i, 'nonce', parseInt(e.target.value) || 0)}
-                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-2 py-1.5 focus:border-purple-400 outline-none font-mono"
+                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-purple-400 outline-none font-mono"
                           />
                           <button 
                             onClick={() => updateBlock(i, 'nonce', block.nonce + 1)}
-                            className="px-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 rounded font-bold text-slate-700 dark:text-slate-200 transition-colors"
+                            className="px-3 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded font-bold text-slate-700 dark:text-[#ffffff] transition-colors"
                           >
                             +
                           </button>
                         </div>
                       </div>
-                      <div className="col-span-2 flex justify-between bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border shadow-sm mt-1">
+                      <div className="col-span-2 flex justify-between bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border shadow-sm mt-1">
                         <div className="flex flex-col w-1/2 pr-3 border-r text-xs">
                           <span className="text-slate-400 font-bold uppercase mb-1">Previous Hash</span>
-                          <span className="font-mono text-slate-600 dark:text-slate-300 text-lg tracking-widest">{block.prevHash.toString().padStart(4, '0')}</span>
+                          <span className="font-mono text-slate-600 dark:text-[#a1a1aa] text-lg tracking-widest">{block.prevHash.toString().padStart(4, '0')}</span>
                         </div>
                         <div className="flex flex-col w-1/2 pl-3 text-xs">
                           <span className="text-slate-400 font-bold uppercase mb-1">Block Hash</span>
@@ -232,14 +232,14 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Col */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4 shrink-0">Assessment & Validation</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4 shrink-0">Assessment & Validation</h2>
           
           <div className="space-y-6 flex-1 pr-2">
             {activeTab === 'iot' ? (
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <h3 className="font-semibold text-blue-800 mb-2">Q: IoT Logic Configuration</h3>
-                <p className="text-sm text-blue-900 mb-4 leading-relaxed">
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900">
+                <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">Q: IoT Logic Configuration</h3>
+                <p className="text-sm text-blue-900 mb-4 leading-relaxed dark:text-[#ffffff]">
                   In order for the alarm to trigger, motion must be ON and the pressure must exceed a specific limit.
                   What is the exact <strong>Threshold</strong> value currently configured in your simulated Logic Controller?
                 </p>
@@ -251,13 +251,13 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                     className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
                     placeholder="Enter threshold..."
                   />
-                  <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md text-sm transition-colors">Submit</button>
+                  <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Submit</button>
                 </div>
               </div>
             ) : (
-              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                <h3 className="font-semibold text-purple-800 mb-2">Q: Proof of Work (Mining)</h3>
-                <p className="text-sm text-purple-900 mb-4 leading-relaxed">
+              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h3 className="font-semibold text-purple-800 mb-2 dark:text-[#ffffff]">Q: Proof of Work (Mining)</h3>
+                <p className="text-sm text-purple-900 mb-4 leading-relaxed dark:text-[#ffffff]">
                   A block is only cryptographically valid if its Hash is strictly less than 1000.
                   Find a valid Nonce for <strong>Block 2</strong> by adjusting it until the block turns green. What nonce did you find?
                 </p>
@@ -269,7 +269,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                     className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono"
                     placeholder="Enter valid nonce..."
                   />
-                  <button onClick={checkAnswer} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-md text-sm transition-colors">Submit</button>
+                  <button onClick={checkAnswer} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Submit</button>
                 </div>
               </div>
             )}

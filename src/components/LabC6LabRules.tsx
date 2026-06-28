@@ -47,19 +47,19 @@ export default function LabC6LabRules({ onExit }: LabProps) {
   const isCorrect = isComplete && dos.every(r => r.type === 'do') && donts.every(r => r.type === 'dont');
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="ICT Lab Rules Chart" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
         
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Click a rule from the list, then click either the "Do" or "Don't" button to sort it onto the chart.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Click a rule from the list, then click either the "Do" or "Don't" button to sort it onto the chart.</p>
 
         <div className="flex gap-8 flex-1 min-h-[500px]">
           {/* Rules Pool */}
           <div className="w-1/3 flex flex-col gap-4">
-            <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex-1 flex flex-col">
-              <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4 uppercase text-sm tracking-wider">Unsorted Rules ({unassigned.length})</h3>
-              <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-2">
+            <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-1 flex flex-col">
+              <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">Unsorted Rules ({unassigned.length})</h3>
+              <div className="flex flex-col gap-3 flex-1 lg:lg:overflow-y-auto pr-2">
                 {unassigned.map(rule => (
                   <button
                     key={rule.id}
@@ -67,7 +67,7 @@ export default function LabC6LabRules({ onExit }: LabProps) {
                     className={`p-4 rounded-lg border-2 text-left transition-colors font-medium text-sm leading-snug ${
                       selectedRule?.id === rule.id 
                         ? 'border-blue-500 bg-blue-50 text-blue-800' 
-                        : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900'
+                        : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'
                     }`}
                   >
                     {rule.text}
@@ -103,15 +103,15 @@ export default function LabC6LabRules({ onExit }: LabProps) {
 
           {/* Chart Columns */}
           <div className="flex-1 flex gap-6">
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
+            <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
               <div className="bg-emerald-500 text-white p-4 text-center">
                 <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
                   <CheckCircle className="w-6 h-6" /> Do's
                 </h2>
               </div>
-              <div className="p-6 flex-1 flex flex-col gap-3 overflow-y-auto bg-emerald-50/30">
+              <div className="p-6 flex-1 flex flex-col gap-3 lg:overflow-y-auto bg-emerald-50/30">
                 {dos.map(rule => (
-                  <div key={rule.id} className="p-4 bg-slate-50 dark:bg-slate-900 border border-emerald-100 rounded-lg shadow-sm font-medium text-emerald-900 flex items-start gap-3">
+                  <div key={rule.id} className="p-4 bg-slate-50 dark:!bg-[#121212] border border-emerald-100 rounded-lg shadow-sm font-medium text-emerald-900 flex items-start gap-3">
                     <Check className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                     {rule.text}
                   </div>
@@ -119,15 +119,15 @@ export default function LabC6LabRules({ onExit }: LabProps) {
               </div>
             </div>
 
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
-              <div className="bg-rose-500 text-white p-4 text-center">
+            <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
+              <div className="bg-rose-500 text-white p-4 text-center dark:bg-[#121212] dark:border-[#1c1b1b]">
                 <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
                   <ShieldAlert className="w-6 h-6" /> Don'ts
                 </h2>
               </div>
-              <div className="p-6 flex-1 flex flex-col gap-3 overflow-y-auto bg-rose-50/30">
+              <div className="p-6 flex-1 flex flex-col gap-3 lg:overflow-y-auto bg-rose-50/30 dark:bg-[#121212] dark:border-[#1c1b1b]">
                 {donts.map(rule => (
-                  <div key={rule.id} className="p-4 bg-slate-50 dark:bg-slate-900 border border-rose-100 rounded-lg shadow-sm font-medium text-rose-900 flex items-start gap-3">
+                  <div key={rule.id} className="p-4 bg-slate-50 dark:!bg-[#121212] border border-rose-100 rounded-lg shadow-sm font-medium text-rose-900 flex items-start gap-3">
                     <X className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
                     {rule.text}
                   </div>

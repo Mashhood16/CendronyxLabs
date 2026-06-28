@@ -33,7 +33,7 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
   }, [launched, height]);
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Act 8.3: Water Pressure Rocket" subtitle="Pump air to build pressure and launch" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-3xl mx-auto w-full">
@@ -41,8 +41,8 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
         <div className="flex-1 bg-sky-100 rounded-2xl shadow-sm border border-sky-200 p-6 flex flex-col items-center justify-end relative overflow-hidden min-h-[600px]">
           
           {/* Clouds */}
-          <div className="absolute top-20 left-10 w-32 h-12 bg-slate-50 dark:bg-slate-900/80 rounded-full blur-sm" />
-          <div className="absolute top-40 right-20 w-48 h-16 bg-slate-50 dark:bg-slate-900/80 rounded-full blur-sm" />
+          <div className="absolute top-20 left-10 w-32 h-12 bg-slate-50 dark:bg-[#121212]/80 rounded-full blur-sm" />
+          <div className="absolute top-40 right-20 w-48 h-16 bg-slate-50 dark:bg-[#121212]/80 rounded-full blur-sm" />
 
           {/* The Rocket */}
           <div 
@@ -52,9 +52,9 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
             {/* Cone */}
             <div className="w-0 h-0 border-l-[24px] border-r-[24px] border-b-[40px] border-l-transparent border-r-transparent border-b-red-500" />
             {/* Bottle Body */}
-            <div className="w-12 h-32 bg-slate-50 dark:bg-slate-900/80 backdrop-blur-sm border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-sm relative overflow-hidden flex flex-col justify-end">
+            <div className="w-12 h-32 bg-slate-50 dark:bg-[#121212]/80 backdrop-blur-sm border-2 border-slate-300 dark:border-[#1c1b1b] rounded-sm relative overflow-hidden flex flex-col justify-end">
                {/* Water inside */}
-               <div className="w-full bg-blue-500/80 transition-all" style={{ height: launched ? '0%' : '30%' }} />
+               <div className="w-full bg-blue-500/80 transition-all dark:bg-teal-950/20 dark:border-teal-900" style={{ height: launched ? '0%' : '30%' }} />
                {/* Pressure indicator red tint */}
                <div className="absolute inset-0 bg-red-500 transition-opacity" style={{ opacity: pressure / 200 }} />
             </div>
@@ -74,24 +74,24 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
 
           {/* Pump Mechanism */}
           <div className="absolute bottom-6 right-12 z-40 flex flex-col items-center">
-             <div className="w-16 h-8 bg-slate-800 dark:bg-slate-800 rounded-t-lg" />
-             <div className="w-2 h-16 bg-slate-300 dark:bg-slate-800" />
-             <div className="w-12 h-4 bg-slate-700 dark:bg-slate-800 rounded-full" />
+             <div className="w-16 h-8 bg-[#121212] dark:bg-[#121212] rounded-t-lg" />
+             <div className="w-2 h-16 bg-slate-300 dark:bg-[#121212]" />
+             <div className="w-12 h-4 bg-slate-700 dark:bg-[#121212] rounded-full" />
              {/* Tube to rocket */}
-             {!launched && <div className="absolute bottom-2 -left-32 w-32 h-2 bg-slate-800 dark:bg-slate-800 border border-slate-900 dark:border-slate-500 rounded-full transform -rotate-6" />}
+             {!launched && <div className="absolute bottom-2 -left-32 w-32 h-2 bg-[#121212] dark:bg-[#121212] border border-slate-900 dark:border-[#1c1b1b] rounded-full transform -rotate-6" />}
           </div>
 
           {/* UI Controls */}
-          <div className="absolute top-6 left-6 z-40 bg-slate-50 dark:bg-slate-900/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 w-64 text-center">
-            <div className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Air Pressure</div>
-            <div className="w-full h-4 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-4 border border-slate-300 dark:border-slate-700 dark:border-slate-500">
+          <div className="absolute top-6 left-6 z-40 bg-slate-50 dark:bg-[#121212]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] w-64 text-center">
+            <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">Air Pressure</div>
+            <div className="w-full h-4 bg-slate-200 dark:bg-[#121212] rounded-full overflow-hidden mb-4 border border-slate-300 dark:border-[#1c1b1b]">
                <div className="h-full bg-red-500 transition-all duration-300" style={{ width: `${pressure}%` }} />
             </div>
             
             <button 
               onClick={pump}
               disabled={launched}
-              className="w-full bg-emerald-500 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-600 text-xl shadow-md transition-transform active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full bg-emerald-500 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-600 text-xl shadow-md transition-transform active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
             >
               <Rocket className="w-6 h-6" /> PUMP AIR
             </button>

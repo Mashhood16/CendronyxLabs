@@ -49,17 +49,17 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 10: Absorbers and Reflectors" subtitle="Compare heating rates of a matt black can vs a shiny silver can." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <BookOpen className="w-5 h-5 text-orange-600" />
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Theory & Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
           </div>
-          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
             <p>
               Different surfaces absorb thermal radiation at different rates. To test this, a radiant heater is placed exactly halfway between two metal cans: one painted <strong>matt black</strong> and one <strong>shiny silver</strong>.
             </p>
@@ -71,7 +71,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
               <p className="font-mono text-xs">T(t) = T_max - (T_max - T_0)e^(-kt)</p>
               <p className="text-xs mt-2 text-orange-700">The rate of temperature rise decreases as the can loses heat to the surroundings, eventually reaching thermal equilibrium.</p>
             </div>
-            <div className="flex items-start gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-md">
+            <div className="flex items-start gap-2 bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] p-3 rounded-md">
               <Info className="w-5 h-5 shrink-0 mt-0.5" />
               <p className="text-xs">
                 Set the heater power, then scrub the time slider to see how temperatures change over 30 minutes.
@@ -81,20 +81,20 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <Thermometer className="w-5 h-5 text-orange-600" />
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Simulation</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Simulation</h2>
           </div>
 
-          <div className="flex-1 relative bg-slate-800 dark:bg-slate-800 border-2 border-slate-700 dark:border-slate-500 rounded-xl flex items-center justify-between px-8 py-4 h-80 overflow-hidden shadow-inner">
+          <div className="flex-1 relative bg-[#121212] dark:bg-[#121212] border-2 border-[#1c1b1b] dark:border-[#1c1b1b] rounded-xl flex items-center justify-between px-8 py-4 h-80 overflow-hidden shadow-inner">
             
             {/* Matt Black Can */}
             <div className="flex flex-col items-center gap-3 z-10">
               <div className="w-24 h-32 bg-zinc-900 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.8)] border border-zinc-800 relative flex items-center justify-center">
                  <div className="absolute -top-10 text-2xl font-mono text-red-400 font-bold bg-black/50 px-2 rounded">{tBlack.toFixed(1)}°C</div>
-                 <div className="w-2 h-20 bg-slate-50 dark:bg-slate-900/10 rounded-full flex items-end">
-                    <div className="w-full bg-red-500 rounded-full transition-all duration-300" style={{ height: `${Math.min(100, (tBlack / 120) * 100)}%` }} />
+                 <div className="w-2 h-20 bg-slate-50 dark:bg-[#121212]/10 rounded-full flex items-end">
+                    <div className="w-full bg-red-500 rounded-full transition-all duration-300 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ height: `${Math.min(100, (tBlack / 120) * 100)}%` }} />
                  </div>
               </div>
               <div className="text-white font-bold text-sm">Matt Black</div>
@@ -115,10 +115,10 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
 
             {/* Shiny Silver Can */}
             <div className="flex flex-col items-center gap-3 z-10">
-              <div className="w-24 h-32 bg-slate-200 dark:bg-slate-800 rounded-lg shadow-xl border-l-4 border-white/70 relative flex items-center justify-center bg-gradient-to-r from-slate-300 via-white to-slate-400">
+              <div className="w-24 h-32 bg-slate-200 dark:!bg-[#121212] rounded-lg shadow-xl border-l-4 border-white/70 relative flex items-center justify-center bg-gradient-to-r from-slate-300 via-white to-slate-400">
                  <div className="absolute -top-10 text-2xl font-mono text-orange-400 font-bold bg-black/50 px-2 rounded">{tSilver.toFixed(1)}°C</div>
                  <div className="w-2 h-20 bg-black/20 rounded-full flex items-end">
-                    <div className="w-full bg-red-500 rounded-full transition-all duration-300" style={{ height: `${Math.min(100, (tSilver / 120) * 100)}%` }} />
+                    <div className="w-full bg-red-500 rounded-full transition-all duration-300 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ height: `${Math.min(100, (tSilver / 120) * 100)}%` }} />
                  </div>
               </div>
               <div className="text-white font-bold text-sm">Shiny Silver</div>
@@ -128,7 +128,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
 
           <div className="space-y-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 <span>Heater Power (W)</span>
                 <span className="text-orange-600">{power} W</span>
               </label>
@@ -142,9 +142,9 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 <span>Time (Minutes)</span>
-                <span className="text-slate-900 dark:text-slate-200 font-mono">{time} min</span>
+                <span className="text-slate-900 dark:text-[#ffffff] font-mono">{time} min</span>
               </label>
               <input 
                 type="range" min="0" max="30" step="1" 
@@ -156,14 +156,14 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <LineChart className="w-5 h-5 text-orange-600" />
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
           </div>
 
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-600 dark:text-slate-300">Scrub time & record.</span>
+            <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">Scrub time & record.</span>
             <button 
               onClick={recordData}
               className="bg-orange-100 text-orange-700 hover:bg-orange-200 px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
@@ -172,14 +172,14 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="max-h-32 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-md">
+          <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0 shadow-sm z-10">
+              <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0 shadow-sm z-10">
                 <tr>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">t (min)</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Power</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">T_Black</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">T_Silver</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">t (min)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Power</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">T_Black</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">T_Silver</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -187,10 +187,10 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
                   <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400">No data recorded yet.</td></tr>
                 )}
                 {data.map((d, i) => (
-                  <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
                     <td className="px-3 py-1.5">{d.time}</td>
                     <td className="px-3 py-1.5">{d.power}W</td>
-                    <td className="px-3 py-1.5 font-medium text-slate-900 dark:text-slate-200">{d.tBlack.toFixed(1)}</td>
+                    <td className="px-3 py-1.5 font-medium text-slate-900 dark:text-[#ffffff]">{d.tBlack.toFixed(1)}</td>
                     <td className="px-3 py-1.5 font-medium text-slate-400">{d.tSilver.toFixed(1)}</td>
                   </tr>
                 ))}
@@ -199,9 +199,9 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
           </div>
 
           {/* Graph */}
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-            <span className="text-xs font-bold text-slate-600 dark:text-slate-300 mb-2">Temp vs Time</span>
-            <svg width="250" height="150" className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded shadow-sm">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+            <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-2">Temp vs Time</span>
+            <svg width="250" height="150" className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-sm">
               <line x1="30" y1="130" x2="240" y2="130" stroke="#cbd5e1" strokeWidth="2" />
               <line x1="30" y1="10" x2="30" y2="130" stroke="#cbd5e1" strokeWidth="2" />
               <text x="110" y="145" fontSize="10" fill="#64748b">Time (min)</text>
@@ -241,7 +241,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
                 placeholder="e.g. 100"
                 className="flex-1 px-3 py-1.5 rounded-md border border-orange-300 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
-              <button onClick={checkAssessment} className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-md text-sm font-bold transition-colors">
+              <button onClick={checkAssessment} className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1.5 rounded-md text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">
                 Check
               </button>
             </div>

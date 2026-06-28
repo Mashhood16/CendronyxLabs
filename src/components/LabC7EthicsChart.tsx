@@ -33,18 +33,18 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Digital Ethics Poster" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Design a classroom display chart about Ethical Use, Online Safety, or Cybercrimes.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Design a classroom display chart about Ethical Use, Online Safety, or Cybercrimes.</p>
 
         <div className="flex gap-8 flex-1 w-full max-w-6xl mx-auto">
           {/* Library */}
-          <div className="w-80 bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4">
-            <h2 className="font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider text-sm flex items-center mb-2"><Layout className="w-4 h-4 mr-2"/> Components</h2>
+          <div className="w-80 bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4">
+            <h2 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm flex items-center mb-2"><Layout className="w-4 h-4 mr-2"/> Components</h2>
             
-            <div className="space-y-3 overflow-y-auto pr-2 pb-4">
+            <div className="space-y-3 lg:overflow-y-auto pr-2 pb-4">
               {library.map((item, i) => (
                 <div
                   key={i}
@@ -65,7 +65,7 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
               ))}
             </div>
 
-            <div className="mt-auto border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
+            <div className="mt-auto border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
               <button className="w-full py-3 bg-blue-100 text-blue-700 font-bold rounded flex items-center justify-center hover:bg-blue-200 transition-colors">
                 <Save className="w-5 h-5 mr-2" /> Save Poster
               </button>
@@ -74,7 +74,7 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
 
           {/* Canvas */}
           <div 
-            className="flex-1 bg-slate-50 dark:bg-slate-900 border-4 border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-xl rounded-xl relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]"
+            className="flex-1 bg-slate-50 dark:!bg-[#121212] border-4 border-slate-200 dark:border-[#1c1b1b] shadow-xl rounded-xl relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]"
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleDrop}
           >
@@ -101,7 +101,7 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
 
                 <button 
                   onClick={() => setElements(elements.filter(e => e.id !== el.id))}
-                  className="absolute -top-3 -right-3 w-6 h-6 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity text-xs"
+                  className="absolute -top-3 -right-3 w-6 h-6 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity text-xs dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                 >
                   ×
                 </button>

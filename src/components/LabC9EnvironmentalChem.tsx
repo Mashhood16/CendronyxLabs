@@ -20,7 +20,7 @@ const REAGENTS: Reagent[] = [
   { id: 'hcl', name: 'Hydrochloric Acid', formula: 'HCl', type: 'acid', color: 'bg-blue-200' },
   { id: 'h2so4', name: 'Sulfuric Acid', formula: 'H2SO4', type: 'acid', color: 'bg-yellow-100' },
   { id: 'mg', name: 'Magnesium', formula: 'Mg', type: 'metal', color: 'bg-gray-400' },
-  { id: 'caco3', name: 'Calcium Carbonate', formula: 'CaCO3', type: 'carbonate', color: 'bg-slate-200 dark:bg-slate-800' }
+  { id: 'caco3', name: 'Calcium Carbonate', formula: 'CaCO3', type: 'carbonate', color: 'bg-slate-200 dark:bg-[#121212]' }
 ];
 
 export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
@@ -114,7 +114,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
   const meltingPoint = 0 - (impurityLevel * 0.5);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Grade 9 Chemistry: Environmental Chemistry" />
 
@@ -122,49 +122,49 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <Beaker className="w-5 h-5 text-emerald-600" /> Theory & Context
           </h2>
           
-          <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
+          <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
             <div className="bg-emerald-50 p-3 rounded-lg">
               <h3 className="font-bold text-emerald-800 mb-1">1. Acid Reactions</h3>
               <p>Acids react with metals to produce a salt and <b>Hydrogen gas (H₂)</b>.</p>
               <p>Acids react with metal carbonates to produce a salt, water, and <b>Carbon Dioxide gas (CO₂)</b>.</p>
-              <p className="font-mono text-xs mt-2 bg-slate-50 dark:bg-slate-900 p-1 rounded">Acid + Metal → Salt + Hydrogen</p>
+              <p className="font-mono text-xs mt-2 bg-slate-50 dark:bg-[#121212] p-1 rounded">Acid + Metal → Salt + Hydrogen</p>
             </div>
 
-            <div className="bg-blue-50 p-3 rounded-lg">
-              <h3 className="font-bold text-blue-800 mb-1">2. Water Purity</h3>
+            <div className="bg-blue-50 p-3 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
+              <h3 className="font-bold text-blue-800 mb-1 dark:text-[#ffffff]">2. Water Purity</h3>
               <p>Pure water boils exactly at 100°C and melts at 0°C. Impurities elevate the boiling point and depress the melting point.</p>
             </div>
 
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
-              <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-1">3. Catalytic Converters</h3>
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+              <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-1">3. Catalytic Converters</h3>
               <p>Found in car exhausts, they use catalysts (like Pt, Pd, Rh) and high temperatures to convert harmful gases like Nitrogen Monoxide (NO) and Carbon Monoxide (CO) into harmless Nitrogen (N₂) and Carbon Dioxide (CO₂).</p>
             </div>
           </div>
         </div>
 
         {/* Column 2: Interactive Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
           <div className="flex gap-2 mb-4 border-b pb-2">
             <button 
               onClick={() => setActiveMode('reactions')}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'reactions' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-slate-100 dark:bg-slate-800'}`}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'reactions' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
             >
               Reaction Mixer
             </button>
             <button 
               onClick={() => setActiveMode('water')}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'water' ? 'bg-blue-100 text-blue-700' : 'hover:bg-slate-100 dark:bg-slate-800'}`}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'water' ? 'bg-blue-100 text-blue-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
             >
               Water Purity Test
             </button>
             <button 
               onClick={() => setActiveMode('converter')}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'converter' ? 'bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100' : 'hover:bg-slate-100 dark:bg-slate-800'}`}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'converter' ? 'bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-slate-100' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
             >
               Catalytic Converter
             </button>
@@ -183,12 +183,12 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                         onClick={() => handleBottleClick(reagent)}
                         className={`flex flex-col items-center gap-1 transition-transform ${isSelected ? 'scale-90 opacity-50' : 'hover:-translate-y-1'}`}
                       >
-                        <div className={`w-12 h-16 rounded-t-xl rounded-b-md border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden flex items-end ${reagent.color}`}>
-                          <div className="absolute top-0 w-full h-3 bg-slate-50 dark:bg-slate-900/40 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500"></div>
+                        <div className={`w-12 h-16 rounded-t-xl rounded-b-md border-2 border-slate-300 dark:border-[#1c1b1b] relative overflow-hidden flex items-end ${reagent.color}`}>
+                          <div className="absolute top-0 w-full h-3 bg-slate-50 dark:bg-[#121212]/40 border-b border-slate-300 dark:border-[#1c1b1b]"></div>
                           {reagent.type === 'metal' || reagent.type === 'carbonate' ? (
-                            <div className="w-full h-1/2 bg-slate-600 dark:bg-slate-800/20" />
+                            <div className="w-full h-1/2 bg-slate-600 dark:bg-[#121212]/20" />
                           ) : (
-                            <div className="w-full h-3/4 bg-slate-50 dark:bg-slate-900/20" />
+                            <div className="w-full h-3/4 bg-slate-50 dark:bg-[#121212]/20" />
                           )}
                         </div>
                         <span className="text-xs font-bold font-mono">{reagent.formula}</span>
@@ -211,11 +211,11 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                 </div>
 
                 {/* Equation Display */}
-                <div className="w-full bg-slate-900 dark:bg-slate-800 text-emerald-400 font-mono p-4 rounded-lg text-center min-h-[60px] flex items-center justify-center text-lg">
+                <div className="w-full bg-[#000000] dark:bg-[#121212] text-emerald-400 font-mono p-4 rounded-lg text-center min-h-[60px] flex items-center justify-center text-lg">
                   {equation || "Select reagents to build equation..."}
                 </div>
 
-                <button onClick={resetReactions} className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100">Clear Flask</button>
+                <button onClick={resetReactions} className="text-sm text-slate-500 dark:text-[#71717a] hover:text-slate-800 dark:text-[#ffffff]">Clear Flask</button>
               </div>
             )}
 
@@ -225,10 +225,10 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                   <div className="flex flex-col items-center">
                     <Thermometer className="w-12 h-12 text-red-500 mb-2" />
                     <div className="text-2xl font-bold">{boilingPoint.toFixed(1)}°C</div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400">Boiling Point</div>
+                    <div className="text-xs text-slate-500 dark:text-[#71717a]">Boiling Point</div>
                   </div>
                   
-                  <div className="w-32 h-32 rounded-full border-4 border-blue-200 flex items-center justify-center relative overflow-hidden bg-blue-50">
+                  <div className="w-32 h-32 rounded-full border-4 border-blue-200 flex items-center justify-center relative overflow-hidden bg-blue-50 dark:bg-teal-950/20 dark:border-teal-900">
                     <Droplets className="w-10 h-10 text-blue-400 opacity-50" />
                     {impurityLevel > 0 && (
                       <div className="absolute inset-0 flex items-center justify-center flex-wrap gap-1 p-4 opacity-30">
@@ -242,7 +242,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                   <div className="flex flex-col items-center">
                     <Thermometer className="w-12 h-12 text-blue-500 mb-2" />
                     <div className="text-2xl font-bold">{meltingPoint.toFixed(1)}°C</div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400">Melting Point</div>
+                    <div className="text-xs text-slate-500 dark:text-[#71717a]">Melting Point</div>
                   </div>
                 </div>
 
@@ -270,9 +270,9 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                   
                   <ArrowRight className="text-slate-400" />
                   
-                  <div className="relative w-32 h-20 bg-slate-700 dark:bg-slate-800 rounded-xl flex items-center justify-center shadow-inner overflow-hidden">
+                  <div className="relative w-32 h-20 bg-slate-700 dark:bg-[#121212] rounded-xl flex items-center justify-center shadow-inner overflow-hidden">
                     <div className="absolute inset-0 grid grid-cols-4 gap-1 p-2 opacity-30">
-                      {Array.from({length: 8}).map((_, i) => <div key={i} className="bg-slate-400 dark:bg-slate-800 rounded-sm" />)}
+                      {Array.from({length: 8}).map((_, i) => <div key={i} className="bg-slate-400 dark:bg-[#121212] rounded-sm" />)}
                     </div>
                     {converterTemp >= 400 && (
                       <div className="absolute inset-0 bg-orange-500/20 animate-pulse" />
@@ -285,7 +285,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                   <div className="flex flex-col gap-2 font-mono text-sm">
                     {converterTemp >= 400 ? (
                       <>
-                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded transition-all">N₂</span>
+                        <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded transition-all dark:text-[#ffffff]">N₂</span>
                         <span className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded transition-all">2CO₂</span>
                       </>
                     ) : (
@@ -304,7 +304,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                     onChange={(e) => setConverterTemp(Number(e.target.value))}
                     className="w-full"
                   />
-                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                  <div className="text-xs text-slate-500 dark:text-[#71717a] mt-2">
                     {converterTemp >= 400 ? "Optimal operating temperature reached." : "Too cold for catalytic conversion!"}
                   </div>
                 </div>
@@ -314,14 +314,14 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 text-emerald-600" /> Assessment
           </h2>
 
-          <div className="flex-1 space-y-6 overflow-y-auto pr-2">
+          <div className="flex-1 space-y-6 lg:overflow-y-auto pr-2">
             <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-700 dark:text-slate-200">
+              <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
                 1. What gas is produced when Calcium Carbonate (CaCO₃) reacts with Hydrochloric Acid (HCl)?
               </label>
               <input 
@@ -329,12 +329,12 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                 value={answer1}
                 onChange={(e) => setAnswer1(e.target.value)}
                 placeholder="Name or formula..."
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-700 dark:text-slate-200">
+              <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
                 2. If a water sample is contaminated with 4g of salt, what is its expected boiling point (°C)? (Hint: check simulator)
               </label>
               <input 
@@ -342,13 +342,13 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                 value={answer2}
                 onChange={(e) => setAnswer2(e.target.value)}
                 placeholder="e.g. 100"
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
               />
             </div>
 
             <button 
               onClick={checkAssessment}
-              className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors"
+              className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
             >
               Check Answers
             </button>

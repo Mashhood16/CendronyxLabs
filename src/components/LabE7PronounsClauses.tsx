@@ -104,11 +104,11 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
             {/* Header */}
             <div className="flex items-center justify-between p-4 bg-indigo-600 text-white shadow-md">
                 <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
+                    <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
                         <ArrowLeft className="w-6 h-6" />
                     </button>
                     <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
                 </div>
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -135,31 +135,31 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 min-h-0">
                 
                 {/* Left Column: Controls & Workspace */}
-                <div className="flex flex-col gap-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 overflow-y-auto border border-slate-200 dark:border-slate-700">
-                    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+                <div className="flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
                         <Zap className="w-5 h-5 text-indigo-500" />
                         Mission Control
                     </h2>
                     
                     <div className="flex gap-2 mb-4 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
                         <button 
-                            className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'pronouns' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
+                            className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'pronouns' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
                             onClick={() => setMode('pronouns')}
                         >
                             Pronoun Scanner
                         </button>
                         <button 
-                            className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'syntax' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
+                            className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'syntax' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
                             onClick={() => setMode('syntax')}
                         >
                             Clause Identifier
                         </button>
                     </div>
 
-                    <div className="prose dark:prose-invert text-sm mb-6 text-slate-700 dark:text-slate-300">
+                    <div className="prose dark:prose-invert text-sm mb-6 text-slate-700 dark:text-[#a1a1aa]">
                         {mode === 'pronouns' ? (
                             <>
-                                <h3 className="text-slate-800 dark:text-slate-100">Target Profile: Pronouns</h3>
+                                <h3 className="text-slate-800 dark:text-[#ffffff]">Target Profile: Pronouns</h3>
                                 <p>Scan the sentence and identify all pronouns. Select a word in the scanner, then classify it here.</p>
                                 <ul className="grid grid-cols-2 gap-2 list-none p-0 mt-4">
                                     {PRONOUN_TYPES.map(type => (
@@ -177,7 +177,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
                             </>
                         ) : (
                             <>
-                                <h3 className="text-slate-800 dark:text-slate-100">Target Profile: Clauses & Phrases</h3>
+                                <h3 className="text-slate-800 dark:text-[#ffffff]">Target Profile: Clauses & Phrases</h3>
                                 <p>Analyze the highlighted segment. Does it contain BOTH a subject and a working verb? If so, it's a clause!</p>
                                 <div className="flex gap-4 mt-6">
                                     <button 
@@ -206,10 +206,10 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
                 </div>
 
                 {/* Right Column: Simulation Canvas */}
-                <div className="bg-slate-900 rounded-2xl shadow-sm p-2 flex flex-col relative overflow-hidden border border-slate-700 h-full min-h-[400px]">
+                <div className="bg-[#000000] rounded-2xl shadow-sm p-2 flex flex-col relative overflow-hidden border border-[#1c1b1b] h-full min-h-[400px]">
                     <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-10 opacity-20"></div>
                     
-                    <div className="bg-black/50 p-3 rounded-t-xl border-b border-slate-800 flex items-center justify-between z-20">
+                    <div className="bg-black/50 p-3 rounded-t-xl border-b border-[#1c1b1b] flex items-center justify-between z-20">
                         <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
                             <span className="text-emerald-500 font-mono text-sm tracking-wider">SCANNER_ACTIVE</span>
@@ -225,14 +225,14 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
                                     const answeredType = userAnswers[idx];
                                     const isCorrectAnswer = currentPronounTask.answers[idx as keyof typeof currentPronounTask.answers] === answeredType;
                                     
-                                    let badgeColor = "bg-slate-800 text-slate-400";
+                                    let badgeColor = "bg-[#121212] text-slate-400";
                                     if (answeredType) {
                                         badgeColor = isCorrectAnswer ? "bg-emerald-900/80 text-emerald-400 border border-emerald-500/50" : "bg-red-900/80 text-red-400 border border-red-500/50";
                                     }
 
                                     return (
                                         <div key={idx} className="relative group cursor-pointer flex flex-col items-center" onClick={() => handleWordClick(idx)}>
-                                            <span className={`px-2 py-1 rounded transition-all duration-200 ${isSelected ? 'bg-indigo-600/50 text-indigo-200 outline outline-2 outline-indigo-500' : 'hover:text-white hover:bg-slate-800'}`}>
+                                            <span className={`px-2 py-1 rounded transition-all duration-200 ${isSelected ? 'bg-indigo-600/50 text-indigo-200 outline outline-2 outline-indigo-500' : 'hover:text-white hover:bg-[#121212]'}`}>
                                                 {word}
                                             </span>
                                             {answeredType && (

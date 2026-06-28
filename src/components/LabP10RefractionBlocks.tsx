@@ -7,7 +7,7 @@ interface LabProps { onExit?: () => void; }
 const MATERIALS = [
   { id: 'Glass', n: 1.50, color: 'bg-cyan-400/20 border-cyan-300' },
   { id: 'Water', n: 1.33, color: 'bg-blue-400/20 border-blue-300' },
-  { id: 'Diamond', n: 2.42, color: 'bg-slate-50 dark:bg-slate-900/30 border-white' },
+  { id: 'Diamond', n: 2.42, color: 'bg-slate-50 dark:bg-[#121212]/30 border-white' },
   { id: 'Unknown', n: 1.75, color: 'bg-purple-400/20 border-purple-300' }, // Sapphire approx
 ];
 
@@ -64,38 +64,38 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 14: Refraction & Snell's Law" subtitle="Determine the refractive index by measuring incident and refracted angles." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Panel: Theory & Controls */}
         <div className="lg:col-span-1 flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory: Snell's Law</h2>
-            <div className="text-sm text-slate-600 dark:text-slate-300 space-y-3">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory: Snell's Law</h2>
+            <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
               <p>When light travels from air (less dense) into a block (more dense), it bends towards the normal.</p>
-              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded font-mono text-center text-lg text-slate-800 dark:text-slate-100 font-bold">
+              <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded font-mono text-center text-lg text-slate-800 dark:text-[#ffffff] font-bold">
                 n₁ sin(i) = n₂ sin(r)
               </div>
               <p>Since air has a refractive index $n_1 \approx 1.0$, the equation simplifies. The refractive index ($n$) of the block is:</p>
-              <div className="bg-blue-50 p-2 rounded text-center text-blue-800 font-bold font-mono">
+              <div className="bg-blue-50 p-2 rounded text-center text-blue-800 font-bold font-mono dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
                 n = sin(i) / sin(r)
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Setup</h2>
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Setup</h2>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Select Material</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Select Material</label>
                 <div className="grid grid-cols-2 gap-2">
                   {MATERIALS.map(m => (
                     <button 
                       key={m.id}
                       onClick={() => { setMaterial(m); reset(); }}
-                      className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-slate-800 dark:bg-slate-800 text-white border-slate-800 dark:border-slate-500' : 'bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-700 dark:border-slate-500 hover:bg-slate-50 dark:bg-slate-900'}`}
+                      className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-[#121212] dark:bg-[#121212] text-white border-[#1c1b1b] dark:border-slate-500' : 'bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212]'}`}
                     >
                       {m.id}
                     </button>
@@ -104,7 +104,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2 flex justify-between">
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 flex justify-between">
                   <span>Angle of Incidence (i)</span>
                   <span className="text-red-600 font-bold">{angle}°</span>
                 </label>
@@ -113,34 +113,34 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
                   min="0" max="85" step="1" 
                   value={angle} 
                   onChange={e => setAngle(Number(e.target.value))} 
-                  className="w-full accent-red-500 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer" 
+                  className="w-full accent-red-500 h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer" 
                 />
               </div>
 
               <button 
                 onClick={recordData}
                 disabled={dataPoints.some(p => p.i === angle)}
-                className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white py-3 rounded-lg font-bold transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white py-3 rounded-lg font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 <Activity className="w-5 h-5" /> Record Angles
               </button>
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Analysis</h2>
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Analysis</h2>
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">Calculate Refractive Index (n):</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">Calculate Refractive Index (n):</label>
               <div className="flex gap-2">
                 <input 
                   type="number" 
                   step="0.01"
                   value={answerN}
                   onChange={e => setAnswerN(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-blue-500 font-mono"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-blue-500 font-mono"
                   placeholder="e.g. 1.50"
                 />
-                <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700">Check</button>
+                <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Check</button>
               </div>
               {feedback && (
                 <div className={`p-3 rounded text-sm ${feedback.includes('Correct') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
@@ -154,7 +154,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
         {/* Center Panel: Laser Simulation & Data */}
         <div className="lg:col-span-2 flex flex-col gap-6">
           
-          <div className="bg-slate-900 dark:bg-slate-800 rounded-xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative min-h-[400px] overflow-hidden">
+          <div className="bg-[#000000] dark:!bg-[#121212] rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative min-h-[400px] overflow-hidden">
             <h3 className="absolute top-4 left-4 font-bold text-slate-300">Laser Ray Box Simulation</h3>
             
             <div className="relative w-full max-w-lg h-[300px] flex items-center justify-center mt-6">
@@ -198,11 +198,11 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col flex-1 min-h-[250px]">
-            <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4">Experimental Data (Snell's Law Table)</h3>
-            <div className="flex-1 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col flex-1 min-h-[250px]">
+            <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">Experimental Data (Snell's Law Table)</h3>
+            <div className="flex-1 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto">
               <table className="w-full text-sm text-center">
-                <thead className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 sticky top-0">
+                <thead className="bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] sticky top-0">
                   <tr>
                     <th className="py-3 px-3 font-medium">Angle of Incidence (i°)</th>
                     <th className="py-3 px-3 font-medium">Angle of Refraction (r°)</th>
@@ -215,7 +215,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
                   {dataPoints.map((pt, i) => {
                     const nCalc = pt.sinI === 0 ? 0 : pt.sinI / pt.sinR;
                     return (
-                      <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 dark:bg-slate-900">
+                      <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 dark:bg-[#121212]">
                         <td className="py-2 px-3 font-mono">{pt.i}</td>
                         <td className="py-2 px-3 font-mono">{pt.r.toFixed(1)}</td>
                         <td className="py-2 px-3 font-mono text-blue-600">{pt.sinI.toFixed(4)}</td>
@@ -232,7 +232,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
                 </tbody>
               </table>
             </div>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 text-center">
+            <p className="text-sm text-slate-500 dark:text-[#71717a] mt-4 text-center">
               Notice that the ratio of <strong>sin(i) / sin(r)</strong> remains constant regardless of the angle! This constant is the refractive index (n).
             </p>
           </div>

@@ -84,13 +84,13 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-200">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10 border-b border-slate-200 dark:border-slate-700">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
         <div className="flex items-center gap-3">
           {onExit && (
             <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
-              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
             </button>
           )}
           <h1 className="text-lg md:text-xl font-bold text-indigo-700 dark:text-indigo-400">Lab E11: Sentence Structure & Modifiers</h1>
@@ -101,9 +101,9 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
       <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Column: Controls / Workspace */}
-        <div className="w-1/3 min-w-[320px] max-w-sm border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 flex flex-col gap-6 overflow-y-auto shadow-inner">
+        <div className="w-1/3 min-w-[320px] max-w-sm border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] p-6 flex flex-col gap-6 lg:overflow-y-auto shadow-inner">
           <div>
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
               <BookOpen className="w-5 h-5 text-indigo-500" /> Lesson Modules
             </h2>
             <div className="flex flex-col gap-3">
@@ -112,11 +112,11 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                 className={`p-4 rounded-xl border-2 text-left transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   topic === 'types' 
                     ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/40 shadow-sm' 
-                    : 'border-slate-200 dark:border-slate-700 hover:border-indigo-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                    : 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
-                <div className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Sentence Types</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 whitespace-normal">Identify Declarative, Interrogative, Exclamatory, Imperative, and Optative sentences.</div>
+                <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1">Sentence Types</div>
+                <div className="text-xs text-slate-500 dark:text-[#71717a] whitespace-normal">Identify Declarative, Interrogative, Exclamatory, Imperative, and Optative sentences.</div>
               </button>
               
               <button
@@ -124,11 +124,11 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                 className={`p-4 rounded-xl border-2 text-left transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   topic === 'modifiers' 
                     ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/40 shadow-sm' 
-                    : 'border-slate-200 dark:border-slate-700 hover:border-indigo-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                    : 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
-                <div className="font-semibold text-slate-800 dark:text-slate-100 mb-1">Misplaced Modifiers</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 whitespace-normal">Rewrite sentences to fix dangling or misplaced descriptive phrases.</div>
+                <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1">Misplaced Modifiers</div>
+                <div className="text-xs text-slate-500 dark:text-[#71717a] whitespace-normal">Rewrite sentences to fix dangling or misplaced descriptive phrases.</div>
               </button>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
             <h3 className="font-semibold flex items-center gap-2 mb-3 text-indigo-700 dark:text-indigo-300">
               <Info className="w-4 h-4" /> Instructions
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
               {topic === 'types' 
                 ? "Examine the sentence presented on the simulation stage. Analyze its tone, punctuation, and structure to determine its primary function. Click the corresponding button to lock in your answer."
                 : "The sentence shown contains a misplaced or dangling modifier, causing it to mean something illogical or humorous. Analyze the intended meaning and rewrite the sentence in the text box below so the modifier is clearly attached to the correct word."
@@ -147,9 +147,9 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-8 flex flex-col items-center justify-center relative overflow-y-auto">
+        <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col items-center justify-center relative lg:overflow-y-auto">
            
-           <div className="w-full max-w-2xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-700 transition-all">
+           <div className="w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-[#1c1b1b] transition-all">
               
               {topic === 'types' && (
                 <div className="flex flex-col items-center animate-in fade-in zoom-in duration-300">
@@ -157,12 +157,12 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                     <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-semibold uppercase tracking-wider">
                       Module 1: Analysis
                     </span>
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                    <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
                       Sentence {currentSentenceIndex + 1} of {sentenceTypesQuestions.length}
                     </span>
                   </div>
                   
-                  <div className="text-3xl font-serif text-center mb-12 text-slate-800 dark:text-slate-100 leading-relaxed min-h-[100px] flex items-center justify-center">
+                  <div className="text-3xl font-serif text-center mb-12 text-slate-800 dark:text-[#ffffff] leading-relaxed min-h-[100px] flex items-center justify-center">
                     "{sentenceTypesQuestions[currentSentenceIndex].text}"
                   </div>
 
@@ -172,7 +172,7 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                          key={type}
                          onClick={() => checkSentenceType(type)}
                          disabled={feedback !== null}
-                         className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-indigo-50 hover:border-indigo-300 dark:hover:bg-slate-700 dark:hover:border-slate-500 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 dark:text-slate-200 shadow-sm whitespace-nowrap flex-shrink-0"
+                         className="px-4 py-3 rounded-xl border border-slate-200 dark:border-[#1c1b1b] hover:bg-indigo-50 hover:border-indigo-300 dark:hover:bg-slate-700 dark:hover:border-slate-500 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 dark:text-[#ffffff] shadow-sm whitespace-nowrap flex-shrink-0 dark:!bg-[#121212] dark:border-[#1c1b1b]"
                        >
                          {type}
                        </button>
@@ -187,7 +187,7 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                     <span className="px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200 rounded-full text-xs font-semibold uppercase tracking-wider">
                       Module 2: Correction
                     </span>
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                    <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
                       Sentence {currentSentenceIndex + 1} of {modifierQuestions.length}
                     </span>
                   </div>
@@ -196,13 +196,13 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                     <div className="absolute -top-3 left-6 bg-rose-100 dark:bg-rose-900 text-rose-800 dark:text-rose-200 text-xs px-2 py-1 rounded font-bold tracking-wide">
                       FLAWED SENTENCE
                     </div>
-                    <div className="text-2xl font-serif text-center text-slate-800 dark:text-slate-100 min-h-[80px] flex items-center justify-center">
+                    <div className="text-2xl font-serif text-center text-slate-800 dark:text-[#ffffff] min-h-[80px] flex items-center justify-center">
                       "{modifierQuestions[currentSentenceIndex].wrong}"
                     </div>
                   </div>
 
                   <div className="w-full">
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-2">
                       Rewrite correctly:
                     </label>
                     <div className="flex gap-3">
@@ -211,14 +211,14 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                         value={userAnswer}
                         onChange={(e) => setUserAnswer(e.target.value)}
                         disabled={feedback !== null && feedback.isCorrect}
-                        className="flex-1 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-5 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none shadow-sm transition-all"
+                        className="flex-1 rounded-xl border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-slate-700 px-5 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none shadow-sm transition-all"
                         placeholder="Type your corrected sentence here..."
                         onKeyDown={(e) => { if(e.key === 'Enter') checkModifierAnswer() }}
                       />
                       <button
                         onClick={checkModifierAnswer}
                         disabled={!userAnswer || (feedback !== null && feedback.isCorrect)}
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-medium transition-colors disabled:opacity-50 shadow-sm whitespace-nowrap flex-shrink-0"
+                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-medium transition-colors disabled:opacity-50 shadow-sm whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                       >
                         Check
                       </button>
@@ -237,7 +237,7 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
                     
                     <button
                       onClick={handleNext}
-                      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-black/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
+                      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-[#121212]/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
                     >
                       {feedback.isCorrect ? 'Continue to Next' : (topic === 'types' ? 'Skip to Next' : 'Try Another')} <RefreshCcw className="w-4 h-4" />
                     </button>

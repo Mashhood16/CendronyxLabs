@@ -122,14 +122,14 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
     const currBy = getBallisticsY(timeB, drag, v0, angle);
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="M12 Differential Eq Lab" />
 
             <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-grow">
                 {/* Theory Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
-                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-slate-300">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
+                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-[#a1a1aa]">
                         {tab === 'cooling' && (
                             <>
                                 <p><strong>Newton's Law of Cooling:</strong></p>
@@ -152,12 +152,12 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
                 </div>
 
                 {/* Interactive Simulator Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
                     
                     {tab === 'cooling' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <line x1="100" y1="280" x2="380" y2="280" stroke="#94a3b8" />
                                 <line x1="100" y1="20" x2="100" y2="280" stroke="#94a3b8" />
                                 {slopeFields}
@@ -173,22 +173,22 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
                                 <button onClick={() => setRunC(!runC)} className="flex-1 min-w-0 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
                                     {runC ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runC ? 'Pause' : 'Start'}
                                 </button>
-                                <button onClick={() => { setRunC(false); setTimeC(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
+                                <button onClick={() => { setRunC(false); setTimeC(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-[#121212]">
                                     <RotateCcw className="w-4 h-4 mr-2" /> Reset
                                 </button>
                             </div>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Cooling Constant ($k$): {kCool.toFixed(3)}</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Cooling Constant ($k$): {kCool.toFixed(3)}</label>
                             <input type="range" min="0.01" max="0.1" step="0.01" value={kCool} onChange={(e) => setKCool(Number(e.target.value))} className="mb-2" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Initial Temp ($T_0$): {t0}°C</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Initial Temp ($T_0$): {t0}°C</label>
                             <input type="range" min="50" max="200" step="10" value={t0} onChange={(e) => setT0(Number(e.target.value))} className="mb-2" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Ambient Temp ({"$T_{env}$"}): {tEnv}°C</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Ambient Temp ({"$T_{env}$"}): {tEnv}°C</label>
                             <input type="range" min="0" max="40" step="1" value={tEnv} onChange={(e) => setTEnv(Number(e.target.value))} />
                         </div>
                     )}
 
                     {tab === 'ballistics' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <line x1="40" y1="260" x2="360" y2="260" stroke="#94a3b8" />
                                 <line x1="40" y1="40" x2="40" y2="260" stroke="#94a3b8" />
                                 {bPts.length > 0 && <path d={`M ${bPts.join(' L ')}`} fill="none" stroke="#3b82f6" strokeWidth="2" strokeDasharray="4" />}
@@ -198,40 +198,40 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
                                 <button onClick={() => setRunB(!runB)} className="flex-1 min-w-0 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
                                     {runB ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runB ? 'Pause' : 'Fire'}
                                 </button>
-                                <button onClick={() => { setRunB(false); setTimeB(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-slate-800">
+                                <button onClick={() => { setRunB(false); setTimeB(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-[#121212]">
                                     <RotateCcw className="w-4 h-4 mr-2" /> Reset
                                 </button>
                             </div>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Drag Coefficient ($k$): {drag.toFixed(2)} kg/s</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Drag Coefficient ($k$): {drag.toFixed(2)} kg/s</label>
                             <input type="range" min="0" max="0.5" step="0.05" value={drag} onChange={(e) => { setDrag(Number(e.target.value)); setTimeB(0); setRunB(false); }} className="mb-2" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Launch Angle: {angle}°</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Launch Angle: {angle}°</label>
                             <input type="range" min="15" max="85" step="5" value={angle} onChange={(e) => { setAngle(Number(e.target.value)); setTimeB(0); setRunB(false); }} />
                         </div>
                     )}
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
-                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
+                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
                         {tab === 'cooling' && <p>An object starts at $T_0 = {t0}$°C in an environment of {"$T_{env}$"} = {tEnv}°C. With $k = {kCool}$, how many seconds will it take to cool down to exactly {"$T_{target}$"} = {targetTemp}°C?</p>}
                         {tab === 'ballistics' && <p>Calculate the vertical terminal velocity $v_T$ (in m/s) for a projectile of mass $m=1$ kg and drag coefficient $k = {drag}$ kg/s. (Assume $g = 9.8$ m/s²).</p>}
                     </div>
                     
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
                             <input 
                                 type="text" 
                                 value={userAns} 
                                 onChange={(e) => setUserAns(e.target.value)}
-                                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Enter numerical value..."
                             />
                         </div>
                         <button 
                             onClick={checkAnswer}
-                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                         >
                             Check Answer
                         </button>

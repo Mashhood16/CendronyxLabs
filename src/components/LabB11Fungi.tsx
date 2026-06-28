@@ -77,27 +77,27 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} variant="amber" title="Fungi: Yeast Fermentation" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-3">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 mb-3">
               <BookOpen className="text-amber-600" /> Theory & Variables
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4 leading-relaxed">
               Yeast (<i>Saccharomyces cerevisiae</i>) perform anaerobic respiration (fermentation) converting glucose into ethanol and carbon dioxide gas (CO₂).
               Enzyme activity regulates this reaction, heavily influenced by temperature.
             </p>
           </div>
 
-          <div className="space-y-5 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200">Environmental Controls</h3>
+          <div className="space-y-5 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Environmental Controls</h3>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
                 <span>Incubator Temperature</span>
                 <span className="text-amber-600 font-mono font-bold">{temperature}°C</span>
               </label>
@@ -110,7 +110,7 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 flex justify-between">
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
                 <span>Glucose Concentration</span>
                 <span className="text-amber-600 font-mono font-bold">{glucose} M</span>
               </label>
@@ -122,23 +122,23 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
               />
             </div>
 
-            <div className="pt-4 flex gap-2 justify-center border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <div className="pt-4 flex gap-2 justify-center border-t border-slate-200 dark:border-[#1c1b1b]">
               {!running && time === 0 && (
-                <button onClick={() => setRunning(true)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors">
+                <button onClick={() => setRunning(true)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                   <Play size={16} /> Start
                 </button>
               )}
               {!running && time > 0 && time < 60 && (
-                <button onClick={() => setRunning(true)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors">
+                <button onClick={() => setRunning(true)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                   <Play size={16} /> Resume
                 </button>
               )}
               {running && (
-                <button onClick={() => setRunning(false)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors">
+                <button onClick={() => setRunning(false)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                   <Pause size={16} /> Pause
                 </button>
               )}
-              <button onClick={handleReset} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-md hover:bg-slate-300 dark:bg-slate-800 font-semibold text-sm shadow-sm transition-colors">
+              <button onClick={handleReset} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-slate-200 dark:!bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:!bg-[#121212] font-semibold text-sm shadow-sm transition-colors">
                 <RotateCcw size={16} /> Reset
               </button>
             </div>
@@ -146,15 +146,15 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center relative">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col items-center relative">
           <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <Activity className="text-amber-600" /> Respirometer
             </h2>
-            <div className="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-bold px-2 py-1 rounded">Interactive Model</div>
+            <div className="bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] text-xs font-bold px-2 py-1 rounded">Interactive Model</div>
           </div>
           
-          <div className="w-full max-w-sm aspect-square relative bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-inner mt-12 overflow-hidden flex items-center justify-center">
+          <div className="w-full max-w-sm aspect-square relative bg-slate-50 dark:bg-[#121212] rounded-2xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mt-12 overflow-hidden flex items-center justify-center">
             <svg viewBox="0 0 200 200" className="w-full h-full">
               {/* Delivery Tube */}
               <path d="M 100 90 L 100 40 L 160 40 L 160 90" fill="none" stroke="#94a3b8" strokeWidth="4" />
@@ -189,19 +189,19 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
               ))}
             </svg>
             
-            <div className="absolute top-4 left-4 bg-slate-50 dark:bg-slate-900/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 dark:border-slate-500 backdrop-blur">
+            <div className="absolute top-4 left-4 bg-slate-50 dark:bg-[#121212]/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 dark:text-[#ffffff] border border-slate-200 dark:border-[#1c1b1b] backdrop-blur">
               Vol: {volume.toFixed(1)} mL
             </div>
-            <div className="absolute top-4 right-4 bg-slate-50 dark:bg-slate-900/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-amber-700 border border-slate-200 dark:border-slate-700 dark:border-slate-500 backdrop-blur">
+            <div className="absolute top-4 right-4 bg-slate-50 dark:bg-[#121212]/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-amber-700 border border-slate-200 dark:border-[#1c1b1b] backdrop-blur">
               {time} min
             </div>
           </div>
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <LineChart className="text-amber-600" /> Data Logging
             </h2>
             <button 
@@ -212,9 +212,9 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
             </button>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden h-40 overflow-y-auto">
-            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
-              <thead className="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-100 dark:bg-slate-800 sticky top-0">
+          <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden h-40 lg:overflow-y-auto">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
+              <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-100 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-4 py-2">Temp (°C)</th>
                   <th className="px-4 py-2">Glucose (M)</th>
@@ -239,11 +239,11 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
             </table>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1 flex flex-col">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 flex items-center gap-2 mb-3">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-1 flex flex-col">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] flex items-center gap-2 mb-3">
               <Target size={18} /> Analysis
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               Determine the optimal temperature for yeast fermentation based on your logged CO₂ data points.
             </p>
             <div className="flex gap-2 mb-4">
@@ -251,11 +251,11 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
                 type="number"
                 placeholder="Optimal Temp (°C)" 
                 value={answer} onChange={(e) => setAnswer(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-sm focus:outline-amber-500"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-amber-500"
               />
               <button 
                 onClick={checkAnswer}
-                className="bg-slate-800 dark:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-slate-700 dark:bg-slate-800 transition-colors shadow-sm"
+                className="bg-[#121212] dark:bg-[#121212] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-slate-700 dark:bg-[#121212] transition-colors shadow-sm"
               >
                 Check
               </button>

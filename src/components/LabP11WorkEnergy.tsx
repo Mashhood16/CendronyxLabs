@@ -78,57 +78,57 @@ export default function LabP11WorkEnergy({ onExit }: { onExit?: () => void }) {
   const cloudOffset = (simState.h * 10) % 400;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Work & Energy: Skydiver Parachute Simulator" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Info className="text-blue-500" />
             <h2 className="text-lg font-semibold">Theory & Setup</h2>
           </div>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Work-Energy Theorem:</strong> The work done by non-conservative forces (like air resistance) changes the total mechanical energy of the system.</p>
-            <p><strong>Terminal Velocity:</strong> Reached when the downward force of gravity equals the upward drag force. <br/> <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">Fg = Fd</code> ➔ <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">mg = ½ρCdAv²</code></p>
+            <p><strong>Terminal Velocity:</strong> Reached when the downward force of gravity equals the upward drag force. <br/> <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">Fg = Fd</code> ➔ <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">mg = ½ρCdAv²</code></p>
           </div>
           
           <div className="space-y-4 mt-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 <span>Skydiver Mass (kg)</span>
                 <span>{mass} kg</span>
               </label>
               <input type="range" min="50" max="120" step="1" value={mass} onChange={(e) => setMass(Number(e.target.value))} className="w-full mt-1" disabled={isRunning} />
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 <span>Parachute Area (m²)</span>
                 <span>{area} m²</span>
               </label>
               <input type="range" min="10" max="40" step="1" value={area} onChange={(e) => setArea(Number(e.target.value))} className="w-full mt-1" disabled={isRunning} />
             </div>
             <div className="flex gap-2">
-              <button onClick={() => setIsRunning(!isRunning)} className="flex-1 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+              <button onClick={() => setIsRunning(!isRunning)} className="flex-1 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                 {isRunning ? 'Pause' : 'Start Fall'}
               </button>
-              <button onClick={handleReset} className="py-2 px-4 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors">
+              <button onClick={handleReset} className="py-2 px-4 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors">
                 Reset
               </button>
             </div>
-            <button onClick={() => setDeployed(true)} disabled={deployed || !isRunning} className="w-full py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 disabled:opacity-50 transition-colors">
+            <button onClick={() => setDeployed(true)} disabled={deployed || !isRunning} className="w-full py-2 bg-red-500 text-white rounded-lg font-medium hover:bg-red-600 disabled:opacity-50 transition-colors dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
               Deploy Parachute
             </button>
           </div>
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="text-green-500" />
             <h2 className="text-lg font-semibold">Interactive Simulator</h2>
           </div>
-          <div className="relative flex-1 bg-sky-300 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 min-h-[300px]">
+          <div className="relative flex-1 bg-sky-300 rounded-lg overflow-hidden border border-slate-200 dark:border-[#1c1b1b] min-h-[300px]">
             <svg viewBox="0 0 400 400" className="w-full h-full absolute inset-0">
               <g transform={`translate(0, ${cloudOffset})`}>
                  <circle cx="100" cy="50" r="30" fill="white" opacity="0.8" />
@@ -157,21 +157,21 @@ export default function LabP11WorkEnergy({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
             <Target className="text-purple-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>
           </div>
           
-          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors">
+          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
             <Save size={18} /> Record Data Point
           </button>
           
           {dataPoints.length > 0 && (
-            <div className="mt-2 text-sm max-h-40 overflow-y-auto">
+            <div className="mt-2 text-sm max-h-40 lg:overflow-y-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-slate-100 dark:bg-slate-800">
+                  <tr className="bg-slate-100 dark:bg-[#121212]">
                     <th className="border p-1">Mass (kg)</th>
                     <th className="border p-1">Area (m²)</th>
                     <th className="border p-1">V_term (m/s)</th>
@@ -190,9 +190,9 @@ export default function LabP11WorkEnergy({ onExit }: { onExit?: () => void }) {
             </div>
           )}
 
-          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100">
-            <h3 className="font-semibold text-purple-900 mb-2">Analysis Question</h3>
-            <p className="text-sm text-purple-800 mb-3">
+          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
+            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
               Calculate the drag coefficient (Cd) of an unknown parachute when Mass = 85 kg, Area = 22 m², and Terminal Velocity = 6.0 m/s. Assume ρ = 1.225 kg/m³ and g = 9.81 m/s².
             </p>
             <div className="flex gap-2 items-center">
@@ -203,7 +203,7 @@ export default function LabP11WorkEnergy({ onExit }: { onExit?: () => void }) {
                 className="flex-1 p-2 border border-purple-200 rounded outline-none focus:border-purple-500"
                 placeholder="Enter Cd..."
               />
-              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700">
+              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                 Check
               </button>
             </div>

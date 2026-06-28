@@ -78,7 +78,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Unit 16: Resistors in Parallel" subtitle="Investigate voltage, current, and equivalent resistance in parallel branches." />
 
@@ -86,34 +86,34 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6 lg:overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm mb-3">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3">
               In a parallel circuit, the voltage across each branch is identical. The total current splits among the branches.
             </p>
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-serif text-slate-800 dark:text-slate-100 mb-2 text-sm">
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-serif text-slate-800 dark:text-[#ffffff] mb-2 text-sm">
               <div className="mb-1">1/R_eq = 1/R₁ + 1/R₂ + ...</div>
               <div>I_total = I₁ + I₂ + ...</div>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-[#71717a]">
               Adding branches <em>decreases</em> total resistance. Notice how real batteries have internal resistance (r_int), causing the terminal voltage to drop when total current increases.
             </p>
           </div>
 
-          <div className="h-px bg-slate-200 dark:bg-slate-800" />
+          <div className="h-px bg-slate-200 dark:bg-[#121212]" />
 
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Experiment Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
             
             <div className="mb-4">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200 block mb-2">Number of Parallel Branches</label>
-              <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] block mb-2">Number of Parallel Branches</label>
+              <div className="flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg">
                 {[1, 2, 3].map((n) => (
                   <button 
                     key={n}
                     onClick={() => setNumBranches(n)}
-                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numBranches === n ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
+                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numBranches === n ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
                   >
                     {n} Branch{n > 1 ? 'es' : ''}
                   </button>
@@ -123,7 +123,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
             <div className="mb-5">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">EMF Voltage (V)</label>
+                <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">EMF Voltage (V)</label>
                 <span className="text-sm font-mono text-emerald-600">{voltage} V</span>
               </div>
               <input 
@@ -135,8 +135,8 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
             <div className="mb-4">
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Internal Resistance (r_int)</label>
-                <span className="text-sm font-mono text-slate-500 dark:text-slate-400">{rInt} Ω</span>
+                <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Internal Resistance (r_int)</label>
+                <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Ω</span>
               </div>
               <input 
                 type="range" min="0" max="10" step="0.5" value={rInt}
@@ -149,7 +149,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
               {[ { r: r1, setR: setR1, id: 1 }, { r: r2, setR: setR2, id: 2 }, { r: r3, setR: setR3, id: 3 } ].map((item, idx) => (
                 <div key={item.id} className={idx < numBranches ? 'opacity-100' : 'opacity-40 pointer-events-none'}>
                   <div className="flex justify-between mb-1">
-                    <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Branch {item.id} Resistance</label>
+                    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Branch {item.id} Resistance</label>
                     <span className="text-sm font-mono text-amber-600">{item.r} Ω</span>
                   </div>
                   <input 
@@ -165,7 +165,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 flex flex-col relative overflow-hidden">
+        <div className="bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col relative overflow-hidden">
           <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">Circuit Simulation</h2>
           
           <div className="flex-1 flex flex-col items-center justify-center relative pt-10">
@@ -196,7 +196,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
                        <div className="absolute top-1/2 -translate-y-1/2 -mt-7 w-6 h-6 bg-zinc-400 rounded-t-md z-10" />
                        
                        {/* The Bulb Glow */}
-                       <div className="absolute top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-yellow-400 pointer-events-none transition-opacity duration-500 mix-blend-screen" style={{ 
+                       <div className="absolute top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-yellow-400 pointer-events-none transition-opacity duration-500 mix-blend-screen dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40" style={{ 
                          opacity: brightness,
                          boxShadow: `0 0 ${40 * brightness}px ${20 * brightness}px #facc15`
                        }} />
@@ -224,13 +224,13 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
             {/* Meters Dashboard */}
             <div className="mt-8 flex gap-4 w-full justify-center">
-              <div className="bg-black p-3 rounded-xl border border-slate-700 dark:border-slate-500 flex flex-col items-center w-36 shadow-lg">
+              <div className="bg-black p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col items-center w-36 shadow-lg">
                 <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Total Current</span>
                 <div className="font-mono text-xl font-bold text-emerald-400 tracking-wider">
                   {(currentTotalMeasured * 1000).toFixed(0)} <span className="text-xs">mA</span>
                 </div>
               </div>
-              <div className="bg-black p-3 rounded-xl border border-slate-700 dark:border-slate-500 flex flex-col items-center w-36 shadow-lg">
+              <div className="bg-black p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col items-center w-36 shadow-lg">
                 <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Terminal Volts</span>
                 <div className="font-mono text-xl font-bold text-blue-400 tracking-wider">
                   {vTerminalMeasured.toFixed(2)} <span className="text-xs">V</span>
@@ -242,20 +242,20 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col h-full overflow-hidden">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data Logging</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logging</h2>
             <button 
               onClick={recordData}
-              className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors"
+              className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Plus className="w-4 h-4" /> Record
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[200px]">
+          <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[200px]">
             <table className="w-full text-sm text-left">
-              <thead className="text-[10px] text-slate-600 dark:text-slate-300 uppercase bg-slate-50 dark:bg-slate-900 sticky top-0">
+              <thead className="text-[10px] text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-3 py-2">N</th>
                   <th className="px-3 py-2">V_term (V)</th>
@@ -266,11 +266,11 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
               <tbody>
                 {dataPoints.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-slate-400 italic">No data recorded yet.</td>
+                    <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded yet.</td>
                   </tr>
                 ) : (
                   dataPoints.map((dp) => (
-                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
+                    <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
                       <td className="px-3 py-2 font-mono">{dp.n}</td>
                       <td className="px-3 py-2 font-mono">{dp.vt.toFixed(2)}</td>
                       <td className="px-3 py-2 font-mono">{dp.iTotal.toFixed(0)}</td>
@@ -282,13 +282,13 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="h-px bg-slate-200 dark:bg-slate-800 mb-6" />
+          <div className="h-px bg-slate-200 dark:bg-[#121212] mb-6" />
 
           {/* Assessment Section */}
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis Check</h2>
-            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
-              <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Check</h2>
+            <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
+              <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
                 <strong>Problem:</strong> Assume r_int = 0. A 12V battery is connected to two identical 30 Ω resistors in parallel. 
                 What is the total current flowing out of the battery (in mA)?
               </p>
@@ -298,12 +298,12 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
                   placeholder="e.g. 500"
                   value={assessmentAnswer}
                   onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
-                  className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <span className="text-sm font-medium text-slate-600 dark:text-slate-300 mr-2">mA</span>
+                <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mr-2">mA</span>
                 <button 
                   onClick={checkAnswer}
-                  className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                 >
                   Check Answer
                 </button>

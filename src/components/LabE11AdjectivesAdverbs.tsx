@@ -120,7 +120,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
         }).join(' ');
 
         return (
-            <div className="mt-6 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div className="mt-6 bg-white dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
                     <Activity className="w-4 h-4 text-emerald-500" />
                     Accuracy Over Time
@@ -136,7 +136,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                         return (
                             <g key={i}>
                                 <circle cx={x} cy={y} r="4" fill="#10b981" />
-                                <text x={x} y={y - 10} fontSize="10" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-slate-400">
+                                <text x={x} y={y - 10} fontSize="10" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-[#71717a]">
                                     {Math.round((a.score / a.max) * 100)}%
                                 </text>
                             </g>
@@ -159,14 +159,14 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                             {w.text}
                         </span>
                     ))}
-                    {adjPart.length === 0 && <span className="inline-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-slate-600"></span>}
+                    {adjPart.length === 0 && <span className="inline-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"></span>}
                     <span>{currentLevel.templateParts[1]}</span>
                     {advPart.map(w => (
                         <span key={w.id} onClick={() => handleSentenceClick(w)} className="cursor-pointer px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-900 dark:text-sky-100 rounded-lg shadow-sm border border-sky-200 dark:border-sky-700 hover:bg-sky-200 dark:hover:bg-sky-800 transition-colors">
                             {w.text}
                         </span>
                     ))}
-                    {advPart.length === 0 && <span className="inline-block w-32 h-1 border-b-2 border-dashed border-slate-300 dark:border-slate-600"></span>}
+                    {advPart.length === 0 && <span className="inline-block w-32 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"></span>}
                 </div>
             );
         }
@@ -175,7 +175,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
             <div className="flex flex-wrap items-center gap-2 text-xl font-serif">
                 <span>{currentLevel.templateParts[0]}</span>
                 {sentence.length === 0 ? (
-                    <span className="inline-block w-64 h-1 border-b-2 border-dashed border-slate-300 dark:border-slate-600"></span>
+                    <span className="inline-block w-64 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"></span>
                 ) : (
                     sentence.map((w) => (
                         <span 
@@ -193,8 +193,8 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
-            <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
+            <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
                 <div className="flex items-center gap-4">
                     <button 
                         onClick={onExit}
@@ -208,14 +208,14 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
             </header>
 
             <div className="flex flex-col lg:flex-row flex-1 min-h-0">
-                <div className="w-full lg:w-[40%] bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
+                <div className="w-full lg:w-[40%] bg-white dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
                     
                     <div className="mb-6">
                         <h2 className="text-lg font-semibold flex items-center gap-2 mb-3">
                             <BookOpen className="w-5 h-5 text-emerald-500" />
                             Lab Configuration
                         </h2>
-                        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                             <label className="text-sm font-semibold mb-2 block">Grammar Complexity: {complexity}</label>
                             <input 
                                 type="range" 
@@ -245,14 +245,14 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                         <div className="flex flex-wrap gap-2">
                             <button
                                 onClick={checkAnswers}
-                                className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
+                                className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                             >
                                 <CheckCircle className="w-4 h-4" />
                                 Check Sequence
                             </button>
                             <button
                                 onClick={resetActivity}
-                                className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-700 dark:text-slate-200 rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
+                                className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-700 dark:text-[#ffffff] rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
                             >
                                 <RefreshCw className="w-4 h-4" />
                                 Reset
@@ -262,9 +262,9 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
                     <div className="mb-6 flex-shrink-0">
                         <h3 className="font-semibold mb-3 text-sm text-slate-500 uppercase tracking-wider">Word Categories (Data Table)</h3>
-                        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <div className="bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
                             <table className="w-full text-sm text-left">
-                                <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 text-xs uppercase text-slate-500">
+                                <thead className="bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] text-xs uppercase text-slate-500">
                                     <tr>
                                         <th className="px-4 py-2">Word</th>
                                         <th className="px-4 py-2">Category</th>
@@ -277,7 +277,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                                         </tr>
                                     ) : (
                                         sentence.map((w, i) => (
-                                            <tr key={i} className="border-b border-slate-100 dark:border-slate-700/50 last:border-0">
+                                            <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]/50 last:border-0">
                                                 <td className="px-4 py-2 font-medium">{w.text}</td>
                                                 <td className="px-4 py-2 font-medium text-emerald-600 dark:text-emerald-400">{w.category}</td>
                                             </tr>
@@ -301,11 +301,11 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                                 value={assessmentAnswer}
                                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                                 placeholder="Enter acronym..."
-                                className="flex-1 px-3 py-2 rounded-lg border border-emerald-200 dark:border-emerald-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                className="flex-1 px-3 py-2 rounded-lg border border-emerald-200 dark:border-emerald-700 bg-white dark:bg-[#121212] text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                             />
                             <button 
                                 onClick={checkAssessment}
-                                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0"
+                                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                             >
                                 Submit
                             </button>
@@ -317,11 +317,11 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
                 </div>
 
-                <div className="w-full lg:w-[60%] p-8 flex flex-col items-center justify-start bg-slate-50 dark:bg-slate-900">
+                <div className="w-full lg:w-[60%] p-8 flex flex-col items-center justify-start bg-slate-50 dark:bg-[#121212]">
                     
                     <div className="w-full max-w-3xl mb-8">
                         <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Word Bank</h3>
-                        <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm min-h-[120px] flex flex-wrap gap-3 items-start content-start">
+                        <div className="bg-white dark:!bg-[#121212] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm min-h-[120px] flex flex-wrap gap-3 items-start content-start">
                             {bank.length === 0 ? (
                                 <p className="text-slate-400 italic text-sm w-full text-center mt-4">All words used!</p>
                             ) : (
@@ -329,10 +329,10 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                                     <button
                                         key={w.id}
                                         onClick={() => handleBankClick(w)}
-                                        className="group relative px-4 py-2 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 rounded-lg shadow-sm hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all whitespace-nowrap flex-shrink-0"
+                                        className="group relative px-4 py-2 bg-white dark:!bg-[#121212] border-2 border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-sm hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-md transition-all whitespace-nowrap flex-shrink-0"
                                     >
                                         <span className="font-serif text-lg">{w.text}</span>
-                                        <span className="absolute -top-2 -right-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200 dark:border-slate-600 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                        <span className="absolute -top-2 -right-2 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-[#a1a1aa] text-[10px] font-bold px-2 py-0.5 rounded border border-slate-200 dark:border-[#1c1b1b] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                                             {w.category}
                                         </span>
                                     </button>
@@ -341,16 +341,16 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
                         </div>
                     </div>
 
-                    <div className="w-full max-w-3xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-10 border border-slate-200 dark:border-slate-700">
-                        <h2 className="text-2xl font-serif text-slate-800 dark:text-slate-100 mb-8 border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <div className="w-full max-w-3xl bg-white dark:!bg-[#121212] rounded-2xl shadow-xl p-10 border border-slate-200 dark:border-[#1c1b1b]">
+                        <h2 className="text-2xl font-serif text-slate-800 dark:text-[#ffffff] mb-8 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
                             Interactive Stage: Sentence Builder
                         </h2>
                         
-                        <div className="min-h-[100px] flex items-center justify-center p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
+                        <div className="min-h-[100px] flex items-center justify-center p-6 bg-slate-50 dark:bg-[#121212]/50 rounded-xl border border-slate-100 dark:border-[#1c1b1b]/50">
                             {renderSentenceUI()}
                         </div>
                         
-                        <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+                        <p className="mt-6 text-center text-sm text-slate-500 dark:text-[#71717a]">
                             Tip: Click words in the sentence to return them to the bank.
                         </p>
                     </div>

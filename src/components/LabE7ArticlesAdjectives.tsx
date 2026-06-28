@@ -122,9 +122,9 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
   const categories = Object.keys(categoryCounts);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
           <ArrowLeft size={20} />
         </button>
@@ -132,7 +132,7 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -142,7 +142,7 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
       {/* Main layout */}
       <div className="flex-1 flex flex-col md:flex-row lg:overflow-hidden">
         {/* Left Column: Controls */}
-        <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]">
           
           {/* Current Task */}
           <div className="bg-indigo-50 dark:bg-indigo-900/30 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800">
@@ -150,20 +150,20 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
               <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Current Challenge {currentQuestionIdx + 1}/3</h2>
               {showSuccess && <span className="flex items-center text-green-600 dark:text-green-400 text-sm font-bold"><CheckCircle2 size={16} className="mr-1"/> Correct!</span>}
             </div>
-            <p className="text-lg font-medium text-slate-800 dark:text-slate-100 mb-4">
+            <p className="text-lg font-medium text-slate-800 dark:text-[#ffffff] mb-4">
               {QUESTIONS[currentQuestionIdx].instruction}
             </p>
             <div className="flex gap-2">
               <button 
                 onClick={handleCheckAnswer}
-                className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 transition-colors"
+                className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <Sparkles size={18} /> Check Phrase
               </button>
               {showSuccess && currentQuestionIdx < QUESTIONS.length - 1 && (
                 <button 
                   onClick={handleNextQuestion}
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold whitespace-nowrap flex-shrink-0 transition-colors"
+                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   Next
                 </button>
@@ -188,13 +188,13 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
             <div className="space-y-6">
               {Object.entries(wordsByCategory).map(([category, words]) => (
                 <div key={category}>
-                  <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">{category}</h4>
+                  <h4 className="text-xs font-bold text-slate-400 dark:text-[#71717a] uppercase tracking-wider mb-2">{category}</h4>
                   <div className="flex flex-wrap gap-2">
                     {words.map(w => (
                        <button
                          key={w.id}
                          onClick={() => handleWordClick(w)}
-                         className="px-3 py-1.5 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 rounded-md hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-900 dark:hover:text-indigo-200 border border-slate-200 dark:border-slate-600 whitespace-nowrap flex-shrink-0 transition-colors"
+                         className="px-3 py-1.5 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] rounded-md hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-900 dark:hover:text-indigo-200 border border-slate-200 dark:border-[#1c1b1b] whitespace-nowrap flex-shrink-0 transition-colors"
                        >
                          {w.text}
                        </button>
@@ -206,9 +206,9 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
           </div>
 
           {/* Assessment Section */}
-          <div className="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 mt-auto">
+          <div className="p-4 bg-slate-100 dark:bg-[#121212]/80 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
             <h3 className="font-semibold mb-2 flex items-center gap-2"><Sparkles size={16}/> Assessment: Sentence Builder</h3>
-            <p className="text-sm mb-3 text-slate-600 dark:text-slate-400">
+            <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">
               Type a custom phrase using exactly one article and one noun.
             </p>
             <div className="flex gap-2">
@@ -217,11 +217,11 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
                 value={assessmentInput}
                 onChange={(e) => setAssessmentInput(e.target.value)}
                 placeholder="e.g. the cat..."
-                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button 
                 onClick={handleCheckAssessment}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors font-medium"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check Answer
               </button>
@@ -235,23 +235,23 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Canvas */}
-        <div className="w-full md:w-1/2 lg:w-7/12 p-8 flex flex-col relative bg-slate-50 dark:bg-slate-900 overflow-y-auto">
+        <div className="w-full md:w-1/2 lg:w-7/12 p-8 flex flex-col relative bg-slate-50 dark:bg-[#121212] lg:overflow-y-auto">
           
           <div className="flex flex-col items-center justify-center space-y-12 w-full max-w-2xl mx-auto mb-8">
              <div className="text-center">
-                <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">Phrase Visualizer</h2>
-                <p className="text-slate-500 dark:text-slate-400">Click words in your phrase to remove them.</p>
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">Phrase Visualizer</h2>
+                <p className="text-slate-500 dark:text-[#71717a]">Click words in your phrase to remove them.</p>
              </div>
              
              {/* Visualizer output */}
-             <div className="min-h-[200px] w-full flex flex-col items-center justify-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+             <div className="min-h-[200px] w-full flex flex-col items-center justify-center p-8 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 {selectedWords.length === 0 ? (
-                   <p className="text-slate-400 dark:text-slate-500 text-lg">Your phrase will appear here...</p>
+                   <p className="text-slate-400 dark:text-[#71717a] text-lg">Your phrase will appear here...</p>
                 ) : (
                    <div className="flex flex-wrap gap-4 items-end justify-center">
                       {selectedWords.map((word, idx) => (
                          <div key={idx} onClick={() => handleRemoveWord(idx)} className="flex flex-col items-center cursor-pointer group hover:-translate-y-1 transition-transform">
-                            <span className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-slate-100 mb-2">{word.text}</span>
+                            <span className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">{word.text}</span>
                             <span className="text-xs px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200 rounded-full group-hover:bg-red-100 group-hover:text-red-800 dark:group-hover:bg-red-900 dark:group-hover:text-red-200 transition-colors">
                               {word.category}
                             </span>
@@ -278,7 +278,7 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
 
           {/* Data Logging & Graph */}
           <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-auto">
-             <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+             <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-semibold mb-2">Word Data Table</h3>
                 <div className="overflow-x-auto">
                    <table className="w-full text-sm text-left">
@@ -294,7 +294,7 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
                             <tr><td colSpan={3} className="px-3 py-2 text-center text-slate-500">No data logged yet</td></tr>
                          ) : (
                             selectedWords.map((w, i) => (
-                               <tr key={i} className="border-b border-slate-100 dark:border-slate-700">
+                               <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]">
                                   <td className="px-3 py-2 font-medium">{w.text}</td>
                                   <td className="px-3 py-2">{w.category}</td>
                                   <td className="px-3 py-2">{w.type}</td>
@@ -306,9 +306,9 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
                 </div>
              </div>
 
-             <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+             <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-semibold mb-2">Category Graph</h3>
-                <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-slate-900 rounded-lg">
+                <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-[#121212] rounded-lg">
                    {categories.length === 0 ? (
                       <text x="100" y="75" textAnchor="middle" fill="#94a3b8" fontSize="12">Add words to see graph</text>
                    ) : (

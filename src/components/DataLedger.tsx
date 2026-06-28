@@ -8,8 +8,8 @@ interface DataLedgerProps {
 
 export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
   return (
-    <div className="overflow-y-auto h-screen bg-slate-900/80 backdrop-blur-md rounded-xl border border-slate-700 overflow-hidden flex flex-col h-full shadow-xl">
-      <div className="px-4 py-3 border-b border-slate-700 flex justify-between items-center bg-slate-800/50">
+    <div className="overflow-y-auto h-screen bg-[#000000]/80 backdrop-blur-md rounded-xl border border-[#1c1b1b] overflow-hidden flex flex-col h-full shadow-xl">
+      <div className="px-4 py-3 border-b border-[#1c1b1b] flex justify-between items-center bg-[#121212]/50">
         <h3 className="text-white font-semibold flex items-center gap-2">
           <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -18,14 +18,14 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
         </h3>
         <button
           onClick={onRecordData}
-          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
         >
           Record Point
         </button>
       </div>
       
       <div className="flex-1 overflow-auto p-4 flex flex-col gap-6">
-        <div className="h-48 bg-slate-800/30 p-2 rounded-xl border border-slate-700/50">
+        <div className="h-48 bg-[#121212]/30 p-2 rounded-xl border border-[#1c1b1b]/50">
           <h4 className="text-[10px] text-slate-400 font-semibold mb-2 uppercase tracking-wider text-center">Gravity vs Altitude (km)</h4>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
@@ -41,9 +41,9 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
           </ResponsiveContainer>
         </div>
 
-        <div className="overflow-x-auto rounded-lg border border-slate-700 shadow-inner">
+        <div className="overflow-x-auto rounded-lg border border-[#1c1b1b] shadow-inner">
           <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-800/80 text-slate-400 sticky top-0 backdrop-blur-md">
+            <thead className="bg-[#121212]/80 text-slate-400 sticky top-0 backdrop-blur-md">
               <tr>
                 <th className="px-3 py-2 font-medium">Time (m)</th>
                 <th className="px-3 py-2 font-medium">Alt (km)</th>
@@ -58,7 +58,7 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
                 </tr>
               ) : (
                 data.map((pt, i) => (
-                  <tr key={i} className="hover:bg-slate-800/50 transition-colors">
+                  <tr key={i} className="hover:bg-[#121212]/50 transition-colors">
                     <td className="px-3 py-2">{pt.time}</td>
                     <td className="px-3 py-2">{pt.altitude}</td>
                     <td className="px-3 py-2">{pt.velocity}</td>

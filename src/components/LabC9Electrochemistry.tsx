@@ -7,16 +7,16 @@ interface Props {
 }
 
 const ChemicalBottle = ({ label, color, onClick }: { label: string, color: string, onClick: () => void }) => (
-  <button onClick={onClick} className="flex flex-col items-center p-2 bg-slate-50 dark:bg-slate-900 border rounded shadow hover:bg-slate-50 dark:bg-slate-900 transition-colors">
+  <button onClick={onClick} className="flex flex-col items-center p-2 bg-slate-50 dark:bg-[#121212] border rounded shadow hover:bg-slate-50 dark:bg-[#121212] transition-colors">
     <div className="relative w-10 h-16 border-2 border-gray-400 rounded-b-lg rounded-t-sm overflow-hidden flex items-end">
       <div className="w-full" style={{ height: '60%', backgroundColor: color }}></div>
     </div>
-    <span className="text-xs font-bold mt-1 text-gray-700 dark:text-slate-200">{label}</span>
+    <span className="text-xs font-bold mt-1 text-gray-700 dark:text-[#ffffff]">{label}</span>
   </button>
 );
 
 const EquationDisplay = ({ equation }: { equation: string[] }) => (
-  <div className="min-h-[4rem] flex flex-wrap items-center justify-center bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-sm md:text-lg rounded p-4 shadow-inner mb-4 overflow-hidden gap-y-2 text-center">
+  <div className="min-h-[4rem] flex flex-wrap items-center justify-center bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-sm md:text-lg rounded p-4 shadow-inner mb-4 overflow-hidden gap-y-2 text-center">
     {equation.length === 0 ? <span className="text-gray-500">Awaiting reaction...</span> : 
       equation.map((part, i) => part === 'NEWLINE' ? <div key={i} className="w-full h-1"></div> : <span key={i} className="mx-1 animate-pulse">{part}</span>)
     }
@@ -41,7 +41,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 
   return (
     <div className="w-full overflow-x-auto">
-      <svg width={width} height={height} className="bg-slate-50 dark:bg-slate-900 rounded shadow-sm border border-gray-200">
+      <svg width={width} height={height} className="bg-slate-50 dark:bg-[#121212] rounded shadow-sm border border-gray-200">
         <line x1={40} y1={height - 30} x2={width - 20} y2={height - 30} stroke="black" strokeWidth="2" />
         <line x1={40} y1={20} x2={40} y2={height - 30} stroke="black" strokeWidth="2" />
         <polyline points={points} fill="none" stroke="red" strokeWidth="2" />
@@ -136,21 +136,21 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Electrochemistry & Redox" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><ClipboardList className="mr-2" /> Theory & Setup</h2>
           {activeTab === 'redox' ? (
-            <div className="space-y-4 text-slate-700 dark:text-slate-200">
+            <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
               <p><strong>Redox Reactions:</strong> A reaction involving the transfer of electrons. Potassium Permanganate (KMnO₄) is a strong oxidizing agent that is deep purple, but turns colorless (Mn²⁺) when reduced by Fe²⁺.</p>
               <p><strong>Thermochemistry:</strong> This redox reaction is exothermic. By tracking temperature changes as we add titrant, we can locate the equivalence point where temperature peaks.</p>
               <p><strong>Experiment:</strong> Add 10mL increments of KMnO₄ to the FeSO₄ beaker. Record volume and temperature, then find the equivalence point.</p>
             </div>
           ) : (
-            <div className="space-y-4 text-slate-700 dark:text-slate-200">
+            <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
               <p><strong>Corrosion of Iron (Rusting):</strong> Rusting is an electrochemical redox process. Iron oxidizes to form hydrated iron(III) oxide.</p>
               <p><strong>Conditions for Rusting:</strong> Both water (H₂O) and oxygen (O₂) must be present. Electrolytes like salt (NaCl) accelerate the rate of corrosion.</p>
               <p><strong>Experiment:</strong> Subject an iron nail to different conditions and observe the rate of rust formation over simulated days.</p>
@@ -159,7 +159,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
           <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800 w-full"><Flame className="mr-2" /> Interactive Simulator</h2>
           
           <EquationDisplay equation={equation} />
@@ -174,11 +174,11 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
                 <div className="w-full transition-all duration-1000" style={{ height: `${40 + volAdded/2}%`, backgroundColor: beakerColor }}></div>
                 
                 {/* SVG Thermometer */}
-                <div className="absolute right-4 top-10 w-6 h-32 bg-slate-50 dark:bg-slate-900 border-2 border-gray-400 rounded-full flex flex-col justify-end items-center pb-1 z-10">
+                <div className="absolute right-4 top-10 w-6 h-32 bg-slate-50 dark:bg-[#121212] border-2 border-gray-400 rounded-full flex flex-col justify-end items-center pb-1 z-10">
                   <div className="w-2 rounded-t-full bg-red-500 transition-all duration-500" style={{ height: `${(temp - 20) * 8}px` }}></div>
                   <div className="w-4 h-4 bg-red-500 rounded-full absolute bottom-1"></div>
                 </div>
-                <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-slate-900/80 px-1 rounded">{temp.toFixed(1)}°C</div>
+                <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}°C</div>
               </div>
               <div className="text-sm font-bold text-gray-600">Total Volume Added: {volAdded} mL</div>
             </div>
@@ -192,17 +192,17 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
 
               <div className="relative w-64 h-32 border-b-4 border-gray-400 flex items-center justify-center bg-sky-50 overflow-hidden">
                 {/* Iron Nail */}
-                <div className="relative w-48 h-6 bg-slate-400 dark:bg-slate-800 rounded flex items-center justify-end shadow-inner border border-slate-500 dark:border-slate-500">
-                   <div className="w-4 h-8 bg-slate-500 dark:bg-slate-800 rounded-r-sm mr-[-4px]"></div>
+                <div className="relative w-48 h-6 bg-slate-400 dark:bg-[#121212] rounded flex items-center justify-end shadow-inner border border-slate-500 dark:border-[#1c1b1b]">
+                   <div className="w-4 h-8 bg-slate-500 dark:bg-[#121212] rounded-r-sm mr-[-4px]"></div>
                    {/* Rust Overlay */}
                    <div className="absolute inset-0 bg-orange-800 mix-blend-color-burn" style={{ opacity: rustLevel / 100 }}></div>
                 </div>
                 {/* Water overlay */}
-                {hasWater && <div className="absolute bottom-0 w-full h-16 bg-blue-500/30"></div>}
+                {hasWater && <div className="absolute bottom-0 w-full h-16 bg-blue-500/30 dark:bg-teal-950/20 dark:border-teal-900"></div>}
               </div>
               
               <div className="mt-4 text-center">
-                <div className="text-xl font-mono text-gray-700 dark:text-slate-200">Day: {timeDays}</div>
+                <div className="text-xl font-mono text-gray-700 dark:text-[#ffffff]">Day: {timeDays}</div>
                 <div className="text-sm text-orange-800 font-bold">Rust Level: {rustLevel.toFixed(0)}%</div>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><CheckCircle className="mr-2" /> Data & Analysis</h2>
           
           {activeTab === 'redox' && (
@@ -219,7 +219,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
                 <Play className="mr-2" size={16} /> Record Measurement
               </button>
 
-              <div className="flex-grow overflow-y-auto mb-4 border rounded">
+              <div className="flex-grow lg:overflow-y-auto mb-4 border rounded">
                 <table className="w-full text-sm text-left">
                   <thead className="bg-gray-50 sticky top-0">
                     <tr><th className="p-2">KMnO₄ Added (mL)</th><th className="p-2">Temp (°C)</th></tr>
@@ -240,14 +240,14 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
 
           <div className={`bg-orange-50 p-4 rounded border border-orange-100 ${activeTab === 'rust' ? 'mt-auto' : ''}`}>
             <h3 className="font-bold text-orange-900 mb-2">Assessment</h3>
-            <p className="text-sm text-slate-700 dark:text-slate-200 mb-2">
+            <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
               {activeTab === 'redox' 
                 ? "Based on the thermometric data graph, what volume of KMnO₄ corresponds to the equivalence point?" 
                 : "Which of the toggled chemicals acts as an electrolyte to rapidly accelerate the rusting reaction?"}
             </p>
             <div className="flex gap-2">
               <input type="text" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder={activeTab === 'redox' ? "Enter volume..." : "Enter chemical..."} className="flex-grow p-2 border rounded" />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-orange-600 text-white rounded font-bold hover:bg-orange-700">Check</button>
+              <button onClick={checkAnswer} className="px-4 py-2 bg-orange-600 text-white rounded font-bold hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">Check</button>
             </div>
             {feedback && <div className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>}
           </div>

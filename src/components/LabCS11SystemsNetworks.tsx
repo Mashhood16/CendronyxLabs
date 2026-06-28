@@ -25,16 +25,16 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="CS11: Logic Gates & Systems" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <ShieldAlert className="text-indigo-500" />
             Systems Theory
           </h2>
-          <div className="prose prose-sm text-slate-600 dark:text-slate-300 flex-1 overflow-y-auto">
+          <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto">
             <p>
               In computer systems, <strong>logic gates</strong> are the fundamental building blocks of digital circuits. 
               They process binary inputs (0 and 1) to produce a single binary output based on a boolean function.
@@ -52,8 +52,8 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Zap className="text-amber-500" />
             Logic Breadboard Simulator
           </h2>
@@ -63,24 +63,24 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
               <button
                 key={gate}
                 onClick={() => setGateType(gate)}
-                className={`px-4 py-2 rounded-md font-semibold transition-colors ${gateType === gate ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:bg-slate-800'}`}
+                className={`px-4 py-2 rounded-md font-semibold transition-colors ${gateType === gate ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               >
                 {gate}
               </button>
             ))}
           </div>
 
-          <div className="relative w-full max-w-md aspect-video bg-slate-900 dark:bg-slate-800 rounded-xl shadow-inner p-4 flex items-center justify-between border-4 border-slate-700 dark:border-slate-500">
+          <div className="relative w-full max-w-md aspect-video bg-[#000000] dark:bg-[#121212] rounded-xl shadow-inner p-4 flex items-center justify-between border-4 border-[#1c1b1b] dark:border-[#1c1b1b]">
             <div className="flex flex-col gap-12 z-10">
               <button 
                 onClick={() => setInputA(!inputA)}
-                className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all ${inputA ? 'bg-green-500 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.6)]' : 'bg-slate-600 dark:bg-slate-800 border-slate-500 dark:border-slate-500'}`}
+                className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all ${inputA ? 'bg-green-500 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.6)]' : 'bg-slate-600 dark:bg-[#121212] border-slate-500 dark:border-slate-500'}`}
               >
                 <Power size={20} className={inputA ? 'text-white' : 'text-slate-400'} />
               </button>
               <button 
                 onClick={() => setInputB(!inputB)}
-                className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all ${inputB ? 'bg-green-500 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.6)]' : 'bg-slate-600 dark:bg-slate-800 border-slate-500 dark:border-slate-500'}`}
+                className={`w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all ${inputB ? 'bg-green-500 border-green-300 shadow-[0_0_15px_rgba(34,197,94,0.6)]' : 'bg-slate-600 dark:bg-[#121212] border-slate-500 dark:border-slate-500'}`}
               >
                 <Power size={20} className={inputB ? 'text-white' : 'text-slate-400'} />
               </button>
@@ -97,29 +97,29 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
             </svg>
 
             <div className="z-10">
-              <div className={`w-16 h-16 rounded-full border-4 transition-all flex items-center justify-center ${output ? 'bg-red-500 border-red-300 shadow-[0_0_30px_rgba(239,68,68,0.8)]' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500'}`}>
-                <span className={`font-bold text-xl ${output ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>{output ? '1' : '0'}</span>
+              <div className={`w-16 h-16 rounded-full border-4 transition-all flex items-center justify-center ${output ? 'bg-red-500 border-red-300 shadow-[0_0_30px_rgba(239,68,68,0.8)]' : 'bg-slate-700 dark:bg-[#121212] border-slate-600 dark:border-slate-500'}`}>
+                <span className={`font-bold text-xl ${output ? 'text-white' : 'text-slate-500 dark:text-[#a1a1aa]'}`}>{output ? '1' : '0'}</span>
               </div>
             </div>
           </div>
           
-          <div className="mt-8 text-center text-slate-600 dark:text-slate-300">
+          <div className="mt-8 text-center text-slate-600 dark:text-[#a1a1aa]">
             <p>Toggle the inputs to see the truth table in action!</p>
             <div className="flex justify-center gap-4 mt-2">
-              <span className="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded text-sm">Input A: {inputA ? '1' : '0'}</span>
-              <span className="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded text-sm">Input B: {inputB ? '1' : '0'}</span>
-              <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded font-bold text-sm">Output: {output ? '1' : '0'}</span>
+              <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">Input A: {inputA ? '1' : '0'}</span>
+              <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">Input B: {inputB ? '1' : '0'}</span>
+              <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded font-bold text-sm dark:text-[#ffffff]">Output: {output ? '1' : '0'}</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <CheckCircle className="text-green-500" />
             System Analysis Task
           </h2>
           <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300 mb-4">
+            <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">
               A security system uses a two-factor authentication logic. 
               The vault opens (Output = 1) <strong>only if</strong> the user provides a Pin (Input A) 
               or a Biometric scan (Input B), but <strong>not both</strong> (to prevent system override attacks).
@@ -127,50 +127,50 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
             
             <table className="w-full text-left border-collapse mb-6">
               <thead>
-                <tr className="bg-slate-100 dark:bg-slate-800">
-                  <th className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">A</th>
-                  <th className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">B</th>
-                  <th className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">Output</th>
+                <tr className="bg-slate-100 dark:bg-[#121212]">
+                  <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">A</th>
+                  <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">B</th>
+                  <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">Output</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">1</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-indigo-600 font-bold">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b] text-indigo-600 font-bold">1</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">1</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-indigo-600 font-bold">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b] text-indigo-600 font-bold">1</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">1</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">1</td>
-                  <td className="p-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">0</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">1</td>
+                  <td className="p-2 border border-slate-200 dark:border-[#1c1b1b]">0</td>
                 </tr>
               </tbody>
             </table>
 
             <div className="mb-4">
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Which logic gate does this system use?</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Which logic gate does this system use?</label>
               <input
                 type="text"
                 value={assessmentAns}
                 onChange={e => setAssessmentAns(e.target.value)}
                 placeholder="Enter gate name (e.g., AND)"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
               />
             </div>
             
             <button
               onClick={handleCheck}
-              className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors"
+              className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Check Answer
             </button>

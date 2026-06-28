@@ -45,10 +45,10 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   if (!LabComponent || !moduleId) {
     return (
       <Layout>
-        <div className="flex flex-col items-center justify-center min-h-[60vh] bg-slate-50 rounded-2xl border border-slate-200">
+        <div className="flex flex-col items-center justify-center min-h-[60vh] bg-slate-50 rounded-2xl border border-slate-200 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-2xl font-bold text-slate-800 mb-2">Module Not Found</h2>
           <p className="text-slate-500 mb-6">The module "{moduleId}" does not exist or is still under construction.</p>
-          <button onClick={handleExit} className="px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors">
+          <button onClick={handleExit} className="px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
             Return to Dashboard
           </button>
         </div>
@@ -57,7 +57,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   }
 
   return (
-    <div className="text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 min-h-screen">
+    <div className="text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen">
       <LabComponent onExit={handleExit} />
     </div>
   );

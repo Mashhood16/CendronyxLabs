@@ -69,10 +69,10 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
 
     if (obs.includes('Decolorizes')) return 'bg-sky-50'; // colorless
     if (activeReagent === 'Bromine Water' && obs.includes('No reaction')) return 'bg-orange-300';
-    if (obs.includes('Silver mirror')) return 'bg-slate-300 dark:bg-slate-800 border-4 border-slate-400 dark:border-slate-500';
+    if (obs.includes('Silver mirror')) return 'bg-slate-300 dark:bg-[#121212] border-4 border-slate-400 dark:border-slate-500';
     if (obs.includes('Orange precipitate')) return 'bg-orange-500';
     if (obs.includes('Yellow precipitate')) return 'bg-yellow-300';
-    if (obs.includes('Cloudiness')) return 'bg-slate-200 dark:bg-slate-800 opacity-80';
+    if (obs.includes('Cloudiness')) return 'bg-slate-200 dark:bg-[#121212] opacity-80';
     
     return 'bg-sky-100';
   };
@@ -96,7 +96,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Organic Qualitative Analysis" />
 
@@ -104,16 +104,16 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Info className="w-5 h-5 text-purple-600" /> Test Reagents
           </h2>
           
-          <div className="space-y-3 text-sm text-slate-700 dark:text-slate-200">
+          <div className="space-y-3 text-sm text-slate-700 dark:text-[#ffffff]">
             <div className="p-3 border-l-4 border-orange-500 bg-orange-50">
               <span className="font-bold">Bromine Water:</span> Tests for unsaturation (C=C). Brown/orange color decolorizes.
             </div>
-            <div className="p-3 border-l-4 border-slate-400 dark:border-slate-500 bg-slate-50 dark:bg-slate-900">
+            <div className="p-3 border-l-4 border-slate-400 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212]">
               <span className="font-bold">Tollens' Reagent:</span> Ammoniacal silver nitrate. Aldehydes reduce Ag+ to Ag(s), forming a silver mirror.
             </div>
             <div className="p-3 border-l-4 border-orange-600 bg-orange-50">
@@ -129,25 +129,25 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 w-full text-center">Interactive Test Rack</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 text-center">Select a reagent to add to Unknown {currentCompound.id}</p>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col items-center lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 w-full text-center">Interactive Test Rack</h2>
+          <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6 text-center">Select a reagent to add to Unknown {currentCompound.id}</p>
 
           {/* Test Tube Graphic */}
           <div className="relative w-32 h-64 mb-8 shrink-0">
-            <div className="absolute inset-0 border-4 border-t-0 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-full bg-slate-50 dark:bg-slate-900 overflow-hidden flex items-end">
+            <div className="absolute inset-0 border-4 border-t-0 border-slate-300 dark:border-[#1c1b1b] rounded-b-full bg-slate-50 dark:bg-[#121212] overflow-hidden flex items-end">
               <div className={`w-full h-2/3 ${getTubeColor()} transition-colors duration-1000 relative`}>
                 {/* Bubble animations if reacting */}
                 {activeReagent !== 'None' && getTubeColor() !== 'bg-sky-100' && (
                   <div className="absolute inset-0 flex justify-center items-end opacity-50">
-                    <div className="w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full animate-ping mb-2 mx-1"></div>
-                    <div className="w-1.5 h-1.5 bg-slate-50 dark:bg-slate-900 rounded-full animate-bounce mb-4 mx-1 delay-75"></div>
-                    <div className="w-2.5 h-2.5 bg-slate-50 dark:bg-slate-900 rounded-full animate-pulse mb-1 mx-1 delay-150"></div>
+                    <div className="w-2 h-2 bg-slate-50 dark:bg-[#121212] rounded-full animate-ping mb-2 mx-1"></div>
+                    <div className="w-1.5 h-1.5 bg-slate-50 dark:bg-[#121212] rounded-full animate-bounce mb-4 mx-1 delay-75"></div>
+                    <div className="w-2.5 h-2.5 bg-slate-50 dark:bg-[#121212] rounded-full animate-pulse mb-1 mx-1 delay-150"></div>
                   </div>
                 )}
               </div>
             </div>
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-36 h-4 bg-slate-200 dark:bg-slate-800 rounded-full opacity-50 blur-sm"></div>
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-36 h-4 bg-slate-200 dark:bg-[#121212] rounded-full opacity-50 blur-sm"></div>
           </div>
 
           {/* Reagent Buttons */}
@@ -156,7 +156,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
               <button
                 key={reagent}
                 onClick={() => handleTest(reagent)}
-                className={`flex flex-col items-center justify-center p-2 rounded border text-xs font-medium transition-colors ${activeReagent === reagent ? 'bg-purple-100 border-purple-500 text-purple-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800'}`}
+                className={`flex flex-col items-center justify-center p-2 rounded border text-xs font-medium transition-colors ${activeReagent === reagent ? 'bg-purple-100 border-purple-500 text-purple-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]'}`}
               >
                 <FlaskConical className="w-5 h-5 mb-1" />
                 {reagent}
@@ -164,21 +164,21 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
             ))}
           </div>
           
-          <button onClick={() => setActiveReagent('None')} className="mt-4 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200 flex items-center gap-1 shrink-0">
+          <button onClick={() => setActiveReagent('None')} className="mt-4 text-xs text-slate-500 dark:text-[#71717a] hover:text-slate-700 dark:text-[#ffffff] flex items-center gap-1 shrink-0">
             <RefreshCw className="w-3 h-3" /> Wash Tube
           </button>
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Beaker className="w-5 h-5 text-purple-600" /> Data Logging
           </h2>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 mb-4 min-h-[150px] overflow-y-auto">
+          <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-4 min-h-[150px] lg:overflow-y-auto">
             <table className="w-full text-sm text-left">
               <thead>
-                <tr className="border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300">
+                <tr className="border-b border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa]">
                   <th className="py-1">Reagent Added</th>
                   <th className="py-1">Observation</th>
                 </tr>
@@ -198,14 +198,14 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
             </table>
           </div>
 
-          <div className="mt-auto pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 shrink-0">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Identify the Unknown</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">Based on your observations, what functional group class is present?</p>
+          <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b] shrink-0">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Identify the Unknown</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">Based on your observations, what functional group class is present?</p>
             
             <select 
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full p-2 mb-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full p-2 mb-3 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option value="">Select class...</option>
               {Array.from(new Set(compounds.map(c => c.type))).map(t => (
@@ -216,7 +216,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
             <button 
               onClick={checkAnswer}
               disabled={!selectedType || logs.length === 0}
-              className="w-full bg-purple-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-purple-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-purple-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-purple-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
             >
               <CheckCircle className="w-4 h-4" /> Submit Identification
             </button>

@@ -104,7 +104,7 @@ export default function SettingsPanel() {
         </div>
 
         {/* Profile & Account */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
@@ -128,7 +128,7 @@ export default function SettingsPanel() {
                         autoFocus
                         onKeyDown={(e) => e.key === 'Enter' && handleSaveName()}
                       />
-                      <button onClick={handleSaveName} className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors">Save</button>
+                      <button onClick={handleSaveName} className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">Save</button>
                       <button onClick={() => setIsEditing(false)} className="px-4 py-2 bg-slate-100 text-slate-600 text-sm font-semibold rounded-xl hover:bg-slate-200 transition-colors">Cancel</button>
                     </div>
                   ) : (
@@ -140,7 +140,7 @@ export default function SettingsPanel() {
                   <p className="text-xs text-slate-400 mt-1">{user.email}</p>
                 </div>
               </div>
-              <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 dark:bg-[#000000] dark:border-[#1c1b1b]">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Class</span>
@@ -154,7 +154,7 @@ export default function SettingsPanel() {
               </div>
               <button
                 onClick={() => { logout(); navigate('/login'); }}
-                className="w-full px-4 py-3 bg-rose-50 text-rose-600 font-semibold rounded-xl hover:bg-rose-100 transition-colors text-sm flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-rose-50 text-rose-600 font-semibold rounded-xl hover:bg-rose-100 transition-colors text-sm flex items-center justify-center gap-2 dark:bg-[#000000] dark:border-[#1c1b1b]"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
                 Sign Out
@@ -163,13 +163,13 @@ export default function SettingsPanel() {
           ) : (
             <div className="text-center py-4">
               <p className="text-slate-500 mb-3">You are not signed in.</p>
-              <button onClick={() => navigate('/login')} className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors text-sm">Log In</button>
+              <button onClick={() => navigate('/login')} className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors text-sm dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">Log In</button>
             </div>
           )}
         </div>
 
         {/* Appearance */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-violet-600 rounded-lg flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
@@ -192,7 +192,7 @@ export default function SettingsPanel() {
         </div>
 
         {/* Storage & Cache */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
@@ -201,7 +201,7 @@ export default function SettingsPanel() {
           </h2>
           <div className="space-y-4">
             {storageInfo && (
-              <div className="bg-slate-50 rounded-xl p-4">
+              <div className="bg-slate-50 rounded-xl p-4 dark:bg-[#000000] dark:border-[#1c1b1b]">
                 <div className="flex justify-between text-sm mb-2">
                   <span className="text-slate-600">Local Storage Used</span>
                   <span className="font-semibold text-slate-800">{storageInfo.used} / {storageInfo.total}</span>
@@ -213,14 +213,14 @@ export default function SettingsPanel() {
             )}
             <button
               onClick={handleClearCache}
-              className="w-full px-4 py-3 bg-amber-50 text-amber-700 font-semibold rounded-xl hover:bg-amber-100 transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full px-4 py-3 bg-amber-50 text-amber-700 font-semibold rounded-xl hover:bg-amber-100 transition-colors text-sm flex items-center justify-center gap-2 dark:bg-[#000000] dark:border-[#1c1b1b]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
               Clear Cached Labs
             </button>
             <button
               onClick={handleClearAllData}
-              className="w-full px-4 py-3 bg-rose-50 text-rose-600 font-semibold rounded-xl hover:bg-rose-100 transition-colors text-sm flex items-center justify-center gap-2"
+              className="w-full px-4 py-3 bg-rose-50 text-rose-600 font-semibold rounded-xl hover:bg-rose-100 transition-colors text-sm flex items-center justify-center gap-2 dark:bg-[#000000] dark:border-[#1c1b1b]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" /></svg>
               Clear All Data & Reset
@@ -229,7 +229,7 @@ export default function SettingsPanel() {
         </div>
 
         {/* Sync Status */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
@@ -237,7 +237,7 @@ export default function SettingsPanel() {
             Sync Status
           </h2>
           <div className="space-y-3">
-            <div className="flex items-center justify-between bg-slate-50 rounded-xl p-4">
+            <div className="flex items-center justify-between bg-slate-50 rounded-xl p-4 dark:bg-[#000000] dark:border-[#1c1b1b]">
               <div>
                 <p className="text-sm font-semibold text-slate-800">Pending Records</p>
                 <p className="text-xs text-slate-500">{unsyncedCount} experiment{unsyncedCount !== 1 ? 's' : ''} waiting to sync</p>
@@ -260,7 +260,7 @@ export default function SettingsPanel() {
         </div>
 
         {/* Accessibility */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 dark:bg-[#000000] dark:border-[#1c1b1b]">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center shadow-sm">
               <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>

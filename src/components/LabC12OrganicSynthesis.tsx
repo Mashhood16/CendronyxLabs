@@ -77,19 +77,19 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Organic Synthesis & Asymmetric Catalysis" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
                 {/* Theory Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                         <BookOpen size={20} className="text-blue-600" />
                         Reaction Theory
                     </h2>
                     
-                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
-                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Azo Dye Synthesis</h3>
+                    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">Azo Dye Synthesis</h3>
                         <p>
                             Azo dyes are manufactured via a two-step process: <strong>Diazotization</strong> and <strong>Coupling</strong>. 
                             First, a primary aromatic amine (e.g., Aniline) is reacted with nitrous acid (NaNO2 + HCl) at cold temperatures (0-5°C) to form a diazonium salt. 
@@ -97,7 +97,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                             Coupling with a phenol like 2-Naphthol then yields the brightly colored Azo Dye.
                         </p>
 
-                        <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200 mt-4">Asymmetric Synthesis (Thalidomide)</h3>
+                        <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-4">Asymmetric Synthesis (Thalidomide)</h3>
                         <p>
                             Thalidomide possesses a chiral center, existing as (R) and (S) enantiomers. Historically, it was administered as a racemic mixture, leading to tragic teratogenic effects caused by the (S)-isomer, while the (R)-isomer was therapeutic. 
                             Modern asymmetric synthesis employs chiral catalysts to direct the formation of a single desired enantiomer, achieving a high <strong>enantiomeric excess (ee)</strong>.
@@ -106,14 +106,14 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Simulation Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                         <Beaker size={20} className="text-purple-600" />
                         Synthesis Workspace
                     </h2>
 
-                    <div className="flex-1 bg-slate-100 dark:bg-slate-800 rounded-lg p-4 flex flex-col items-center justify-center relative border border-slate-300 dark:border-slate-700 dark:border-slate-500">
-                        <div className="absolute top-4 right-4 bg-slate-50 dark:bg-slate-900 px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                    <div className="flex-1 bg-slate-100 dark:bg-[#121212] rounded-lg p-4 flex flex-col items-center justify-center relative border border-slate-300 dark:border-[#1c1b1b]">
+                        <div className="absolute top-4 right-4 bg-slate-50 dark:!bg-[#121212] px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                             Temp: {temperature}°C
                         </div>
                         
@@ -139,7 +139,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                             <ellipse cx="50" cy="10" rx="10" ry="2" fill="none" stroke="#64748b" strokeWidth="2" />
                         </svg>
 
-                        <div className="mt-4 text-center font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm w-full max-w-xs truncate">
+                        <div className="mt-4 text-center font-semibold text-slate-700 dark:text-[#ffffff] bg-slate-50 dark:bg-[#121212] px-4 py-2 rounded-full border border-slate-200 dark:border-[#1c1b1b] shadow-sm w-full max-w-xs truncate">
                             {reactionStatus}
                         </div>
                     </div>
@@ -162,7 +162,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                                     key={r}
                                     onClick={() => addReagent(r)}
                                     disabled={flaskContents.includes(r)}
-                                    className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded border border-blue-200 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded border border-blue-200 hover:bg-blue-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:bg-teal-950/20 dark:border-teal-900"
                                 >
                                     + {r}
                                 </button>
@@ -171,7 +171,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
 
                         <button 
                             onClick={resetFlask}
-                            className="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
+                            className="mt-2 flex items-center justify-center gap-2 w-full py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm font-medium"
                         >
                             <RefreshCw size={16} /> Wash Flask
                         </button>
@@ -179,36 +179,36 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                         <Layers size={20} className="text-emerald-600" />
                         Data Analysis
                     </h2>
 
-                    <div className="flex-1 overflow-y-auto pr-2 space-y-5">
+                    <div className="flex-1 lg:lg:overflow-y-auto pr-2 space-y-5">
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 block">
+                            <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
                                 1. What is the maximum safe temperature (°C) to maintain the diazonium intermediate before it decomposes?
                             </label>
                             <input 
                                 type="number" 
                                 value={q1} 
                                 onChange={(e) => setQ1(e.target.value)}
-                                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
                                 placeholder="Enter value in °C"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 block">
+                            <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
                                 2. In an asymmetric synthesis, you obtain a mixture of 90% (S)-Thalidomide and 10% (R)-Thalidomide. Calculate the Enantiomeric Excess (% ee).
                             </label>
-                            <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">Hint: %ee = |%R - %S|</div>
+                            <div className="text-xs text-slate-500 dark:text-[#71717a] mb-1">Hint: %ee = |%R - %S|</div>
                             <input 
                                 type="number" 
                                 value={q2} 
                                 onChange={(e) => setQ2(e.target.value)}
-                                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
                                 placeholder="Enter % ee"
                             />
                         </div>
@@ -217,7 +217,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                     <div className="pt-4 border-t border-slate-100">
                         <button 
                             onClick={checkAnswers}
-                            className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2"
+                            className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                         >
                             <CheckCircle size={18} /> Verify Results
                         </button>

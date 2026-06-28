@@ -88,23 +88,23 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
   }, [needsPct, wantsPct, savingsPct]);
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10 shrink-0 border-b border-slate-200 dark:border-slate-700">
+      <div className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10 shrink-0 border-b border-slate-200 dark:border-[#1c1b1b]">
         <div className="flex items-center gap-4">
           <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title="Go Back">
             <ArrowLeft className="w-6 h-6" />
           </button>
           <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Unit 3: Proportions Engine</h1>
         </div>
-        <div className="flex gap-2 bg-slate-100 dark:bg-slate-900 p-1 rounded-lg border border-slate-200 dark:border-slate-700">
-          <button onClick={() => setActiveTab('rate')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'rate' ? 'bg-white dark:bg-slate-800 shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
+        <div className="flex gap-2 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+          <button onClick={() => setActiveTab('rate')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'rate' ? 'bg-white dark:bg-[#121212] shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
             <Car className="w-4 h-4" /> Rate
           </button>
-          <button onClick={() => setActiveTab('ratio')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'ratio' ? 'bg-white dark:bg-slate-800 shadow text-purple-600 dark:text-purple-400' : 'hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          <button onClick={() => setActiveTab('ratio')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'ratio' ? 'bg-white dark:bg-[#121212] shadow text-purple-600 dark:text-purple-400' : 'hover:text-purple-600 dark:hover:text-purple-400'}`}>
             <Briefcase className="w-4 h-4" /> Ratio
           </button>
-          <button onClick={() => setActiveTab('percentage')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'percentage' ? 'bg-white dark:bg-slate-800 shadow text-emerald-600 dark:text-emerald-400' : 'hover:text-emerald-600 dark:hover:text-emerald-400'}`}>
+          <button onClick={() => setActiveTab('percentage')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'percentage' ? 'bg-white dark:bg-[#121212] shadow text-emerald-600 dark:text-emerald-400' : 'hover:text-emerald-600 dark:hover:text-emerald-400'}`}>
             <PieChart className="w-4 h-4" /> Percent
           </button>
         </div>
@@ -112,7 +112,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left Column: Controls & Questions */}
-        <div className="w-full max-w-md p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col gap-6 shrink-0 shadow-lg z-0 relative">
+        <div className="w-full max-w-md p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col gap-6 shrink-0 shadow-lg z-0 relative">
           
           {activeTab === 'rate' && (
             <div className="animate-in fade-in slide-in-from-left-4 duration-500 flex flex-col gap-6">
@@ -123,17 +123,17 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 <p className="text-sm">Rate is a ratio that compares two different quantities. Fuel efficiency is the distance a vehicle can travel per unit of fuel.</p>
               </div>
 
-              <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/50">
-                <h3 className="font-bold text-slate-700 dark:text-slate-300">Mission Setup</h3>
-                <div className="flex justify-between items-center text-sm bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
-                  <span className="text-slate-500 dark:text-slate-400">Distance Traveled:</span>
-                  <span className="font-bold text-lg text-slate-700 dark:text-slate-200">{distance} km</span>
+              <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212]/50 p-5 rounded-2xl border border-slate-100 dark:border-[#1c1b1b]/50">
+                <h3 className="font-bold text-slate-700 dark:text-[#a1a1aa]">Mission Setup</h3>
+                <div className="flex justify-between items-center text-sm bg-white dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+                  <span className="text-slate-500 dark:text-[#71717a]">Distance Traveled:</span>
+                  <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">{distance} km</span>
                 </div>
-                <div className="flex justify-between items-center text-sm bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
-                  <span className="text-slate-500 dark:text-slate-400">Fuel Consumed:</span>
-                  <span className="font-bold text-lg text-slate-700 dark:text-slate-200">{fuel} L</span>
+                <div className="flex justify-between items-center text-sm bg-white dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+                  <span className="text-slate-500 dark:text-[#71717a]">Fuel Consumed:</span>
+                  <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">{fuel} L</span>
                 </div>
-                <button onClick={generateRateProblem} className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl transition-colors font-semibold">
+                <button onClick={generateRateProblem} className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-[#ffffff] rounded-xl transition-colors font-semibold">
                   <RefreshCw className="w-4 h-4" /> Generate New Trip
                 </button>
               </div>
@@ -147,11 +147,11 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                     value={rateAnswer}
                     onChange={(e) => setRateAnswer(e.target.value)}
                     placeholder="e.g. 15"
-                    className="flex-1 min-w-0 px-4 py-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 bg-white dark:bg-slate-900 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-slate-100"
+                    className="flex-1 min-w-0 px-4 py-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]"
                   />
                   <span className="font-bold text-indigo-600 dark:text-indigo-400">km/L</span>
                 </div>
-                <button onClick={checkRate} className="w-full py-3 mt-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98]">
+                <button onClick={checkRate} className="w-full py-3 mt-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98] dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                   Check Answer
                 </button>
                 {rateFeedback !== null && (
@@ -173,17 +173,17 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 <p className="text-sm">A ratio shows the relative sizes of two or more values. In business, profits are often distributed according to the ratio of investments.</p>
               </div>
 
-              <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/50">
-                <h3 className="font-bold text-slate-700 dark:text-slate-300">Business Scenario</h3>
-                <div className="flex justify-between items-center text-sm bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
-                  <span className="text-slate-500 dark:text-slate-400">Total Profit:</span>
+              <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212]/50 p-5 rounded-2xl border border-slate-100 dark:border-[#1c1b1b]/50">
+                <h3 className="font-bold text-slate-700 dark:text-[#a1a1aa]">Business Scenario</h3>
+                <div className="flex justify-between items-center text-sm bg-white dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+                  <span className="text-slate-500 dark:text-[#71717a]">Total Profit:</span>
                   <span className="font-bold text-lg text-emerald-600 dark:text-emerald-400">${profit}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
-                  <span className="text-slate-500 dark:text-slate-400">Investment Ratio (A : B):</span>
+                <div className="flex justify-between items-center text-sm bg-white dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+                  <span className="text-slate-500 dark:text-[#71717a]">Investment Ratio (A : B):</span>
                   <span className="font-bold text-lg text-purple-600 dark:text-purple-400">{ratioA} : {ratioB}</span>
                 </div>
-                <button onClick={generateRatioProblem} className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl transition-colors font-semibold">
+                <button onClick={generateRatioProblem} className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-[#ffffff] rounded-xl transition-colors font-semibold">
                   <RefreshCw className="w-4 h-4" /> Generate New Scenario
                 </button>
               </div>
@@ -194,22 +194,22 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 
                 <div className="flex flex-col gap-3 mt-2">
                   <div className="flex gap-3 items-center">
-                    <span className="font-bold text-sm w-20 text-slate-700 dark:text-slate-300">Partner A:</span>
+                    <span className="font-bold text-sm w-20 text-slate-700 dark:text-[#a1a1aa]">Partner A:</span>
                     <div className="relative flex-1">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                      <input type="number" value={shareA} onChange={(e) => setShareA(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:bg-slate-900 focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-slate-100" />
+                      <input type="number" value={shareA} onChange={(e) => setShareA(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
                     </div>
                   </div>
                   <div className="flex gap-3 items-center">
-                    <span className="font-bold text-sm w-20 text-slate-700 dark:text-slate-300">Partner B:</span>
+                    <span className="font-bold text-sm w-20 text-slate-700 dark:text-[#a1a1aa]">Partner B:</span>
                     <div className="relative flex-1">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                      <input type="number" value={shareB} onChange={(e) => setShareB(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:bg-slate-900 focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-slate-100" />
+                      <input type="number" value={shareB} onChange={(e) => setShareB(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
                     </div>
                   </div>
                 </div>
 
-                <button onClick={checkRatio} className="w-full py-3 mt-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98]">
+                <button onClick={checkRatio} className="w-full py-3 mt-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98] dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                   Check Distribution
                 </button>
                 
@@ -232,29 +232,29 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 <p className="text-sm">A percentage is a ratio expressed as a fraction of 100. Let's allocate a monthly budget.</p>
               </div>
 
-              <div className="flex flex-col gap-5 bg-slate-50 dark:bg-slate-900/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/50">
-                <div className="flex justify-between items-center bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                  <h3 className="font-bold text-slate-700 dark:text-slate-300">Total Budget:</h3>
+              <div className="flex flex-col gap-5 bg-slate-50 dark:bg-[#121212]/50 p-5 rounded-2xl border border-slate-100 dark:border-[#1c1b1b]/50">
+                <div className="flex justify-between items-center bg-white dark:!bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
+                  <h3 className="font-bold text-slate-700 dark:text-[#a1a1aa]">Total Budget:</h3>
                   <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">${budget}</span>
                 </div>
                 
                 <div className="flex flex-col gap-4 mt-2">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-slate-300">
+                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-[#a1a1aa]">
                       <span>Needs ({needsPct}%)</span>
                     </label>
                     <input type="range" min="0" max="100" value={needsPct} onChange={(e) => setNeedsPct(parseInt(e.target.value))} className="w-full accent-emerald-500 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" />
                   </div>
                   
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-slate-300">
+                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-[#a1a1aa]">
                       <span>Wants ({wantsPct}%)</span>
                     </label>
                     <input type="range" min="0" max={100 - needsPct} value={wantsPct} onChange={(e) => setWantsPct(parseInt(e.target.value))} className="w-full accent-emerald-400 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" />
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-slate-300">
+                    <label className="text-sm font-bold flex justify-between text-slate-700 dark:text-[#a1a1aa]">
                       <span>Savings ({savingsPct}%)</span>
                     </label>
                     <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden flex">
@@ -263,7 +263,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                   </div>
                 </div>
 
-                <button onClick={generatePercentageProblem} className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl transition-colors font-semibold">
+                <button onClick={generatePercentageProblem} className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-[#ffffff] rounded-xl transition-colors font-semibold">
                   <RefreshCw className="w-4 h-4" /> Generate New Budget
                 </button>
               </div>
@@ -278,10 +278,10 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 </p>
                 <div className="relative flex-1 mt-2">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                  <input type="number" value={percAnswer} onChange={(e) => setPercAnswer(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-emerald-200 dark:border-emerald-700 bg-white dark:bg-slate-900 focus:outline-none focus:border-emerald-500 dark:focus:border-emerald-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-slate-100" />
+                  <input type="number" value={percAnswer} onChange={(e) => setPercAnswer(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-emerald-200 dark:border-emerald-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-emerald-500 dark:focus:border-emerald-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
                 </div>
                 
-                <button onClick={checkPercentage} className="w-full py-3 mt-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98]">
+                <button onClick={checkPercentage} className="w-full py-3 mt-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98] dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                   Check Amount
                 </button>
                 
@@ -298,20 +298,20 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 min-w-0 p-8 bg-slate-100/50 dark:bg-slate-950 flex flex-col items-center justify-center relative overflow-y-auto">
+        <div className="flex-1 min-w-0 p-8 bg-slate-100/50 dark:bg-slate-950 flex flex-col items-center justify-center relative lg:overflow-y-auto">
           
           {activeTab === 'rate' && (
-            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center relative overflow-hidden">
+            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-neutral-900 flex flex-col items-center relative overflow-hidden">
               <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-500 to-indigo-500" />
-              <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-slate-100">Trip Visualizer</h3>
+              <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-[#ffffff]">Trip Visualizer</h3>
               
-              <div className="relative w-full h-32 bg-slate-50 dark:bg-slate-800/50 rounded-2xl mb-16 flex items-center p-4 border-2 border-slate-100 dark:border-slate-700/50">
+              <div className="relative w-full h-32 bg-slate-50 dark:bg-[#121212]/50 rounded-2xl mb-16 flex items-center p-4 border-2 border-slate-100 dark:border-[#1c1b1b]/50">
                  <div className="absolute left-6 right-6 h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden shadow-inner">
-                    <div className="h-full bg-slate-300 dark:bg-slate-600 border-b border-dashed border-slate-400 dark:border-slate-500" style={{backgroundSize: '20px 20px'}} />
+                    <div className="h-full bg-slate-300 dark:bg-slate-600 border-b border-dashed border-slate-400 dark:border-[#1c1b1b]" style={{backgroundSize: '20px 20px'}} />
                  </div>
                  
                  <div className="absolute transition-all duration-1000 ease-out z-10" style={{ left: `${Math.min(90, Math.max(10, (distance / 400) * 100))}%`, transform: 'translateX(-50%)' }}>
-                   <div className="bg-indigo-600 text-white p-4 rounded-2xl shadow-xl relative border border-indigo-500">
+                   <div className="bg-indigo-600 text-white p-4 rounded-2xl shadow-xl relative border border-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                       <Car className="w-8 h-8" />
                       <div className="absolute -bottom-3 left-1/2 w-6 h-6 bg-indigo-600 transform -translate-x-1/2 rotate-45 border-r border-b border-indigo-500" />
                    </div>
@@ -321,9 +321,9 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                  </div>
               </div>
 
-              <div className="flex justify-between w-full max-w-md items-center bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50">
+              <div className="flex justify-between w-full max-w-md items-center bg-slate-50 dark:bg-[#121212]/50 p-6 rounded-2xl border border-slate-100 dark:border-[#1c1b1b]/50">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-32 bg-white dark:bg-slate-900 rounded-xl relative overflow-hidden border-4 border-slate-200 dark:border-slate-700 shadow-inner">
+                  <div className="w-16 h-32 bg-white dark:bg-[#121212] rounded-xl relative overflow-hidden border-4 border-slate-200 dark:border-[#1c1b1b] shadow-inner">
                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-600 to-blue-400 transition-all duration-1000 ease-in-out" style={{ height: `${(fuel / 40) * 100}%` }} />
                      {/* Measurement lines */}
                      {[25, 50, 75].map(pct => (
@@ -335,11 +335,11 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                   </div>
                 </div>
                 
-                <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
-                   <div className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1 tracking-wider uppercase">Efficiency</div>
+                <div className="flex flex-col items-center justify-center p-6 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                   <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mb-1 tracking-wider uppercase">Efficiency</div>
                    <div className="text-5xl font-black text-indigo-600 dark:text-indigo-400 flex items-baseline gap-1">
                      {rateFeedback ? (distance / fuel).toFixed(1) : '?'}
-                     <span className="text-lg font-bold text-slate-400 dark:text-slate-500">km/L</span>
+                     <span className="text-lg font-bold text-slate-400 dark:text-[#71717a]">km/L</span>
                    </div>
                 </div>
               </div>
@@ -347,11 +347,11 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
           )}
 
           {activeTab === 'ratio' && (
-            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center relative overflow-hidden">
+            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-neutral-900 flex flex-col items-center relative overflow-hidden">
               <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-purple-500 to-pink-500" />
-              <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-slate-100">Profit Split</h3>
+              <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-[#ffffff]">Profit Split</h3>
               
-              <div className="flex items-end justify-between gap-8 w-full max-w-lg h-72 border-b-4 border-slate-200 dark:border-slate-700 pb-6 relative">
+              <div className="flex items-end justify-between gap-8 w-full max-w-lg h-72 border-b-4 border-slate-200 dark:border-[#1c1b1b] pb-6 relative">
                 
                 {/* Total Profit Float */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center bg-emerald-50 dark:bg-emerald-900/20 border-2 border-emerald-200 dark:border-emerald-800 px-6 py-3 rounded-2xl shadow-sm">
@@ -363,18 +363,18 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                   <span className="font-black text-xl text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-4 py-1.5 rounded-lg whitespace-nowrap">Partner A</span>
                   <div className="flex flex-wrap gap-1.5 justify-center content-end h-40">
                     {Array.from({ length: ratioA }).map((_, i) => (
-                      <div key={`a-${i}`} className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-slate-800 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
+                      <div key={`a-${i}`} className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-neutral-900 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
                         <Briefcase className="w-4 h-4 text-white opacity-80" />
                       </div>
                     ))}
                   </div>
-                  <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-3 rounded-xl font-black text-xl text-slate-800 dark:text-slate-100 shadow-inner min-w-[120px] text-center">
+                  <div className="bg-slate-100 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] px-5 py-3 rounded-xl font-black text-xl text-slate-800 dark:text-[#ffffff] shadow-inner min-w-[120px] text-center">
                     {ratioFeedback ? `$${(profit / (ratioA + ratioB) * ratioA).toFixed(0)}` : `${ratioA} parts`}
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center justify-end h-full pb-8">
-                  <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-3xl font-black text-slate-400 dark:text-slate-500 shadow-sm">
+                  <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-[#121212] border-2 border-slate-200 dark:border-[#1c1b1b] flex items-center justify-center text-3xl font-black text-slate-400 dark:text-[#71717a] shadow-sm">
                     :
                   </div>
                 </div>
@@ -383,12 +383,12 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                   <span className="font-black text-xl text-pink-700 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 px-4 py-1.5 rounded-lg whitespace-nowrap">Partner B</span>
                   <div className="flex flex-wrap gap-1.5 justify-center content-end h-40">
                     {Array.from({ length: ratioB }).map((_, i) => (
-                      <div key={`b-${i}`} className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-slate-800 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
+                      <div key={`b-${i}`} className="w-10 h-10 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-neutral-900 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
                         <Briefcase className="w-4 h-4 text-white opacity-80" />
                       </div>
                     ))}
                   </div>
-                  <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-3 rounded-xl font-black text-xl text-slate-800 dark:text-slate-100 shadow-inner min-w-[120px] text-center">
+                  <div className="bg-slate-100 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] px-5 py-3 rounded-xl font-black text-xl text-slate-800 dark:text-[#ffffff] shadow-inner min-w-[120px] text-center">
                     {ratioFeedback ? `$${(profit / (ratioA + ratioB) * ratioB).toFixed(0)}` : `${ratioB} parts`}
                   </div>
                 </div>
@@ -398,11 +398,11 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
           )}
 
           {activeTab === 'percentage' && (
-            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center relative overflow-hidden">
+            <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-neutral-900 flex flex-col items-center relative overflow-hidden">
                <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-emerald-400 to-teal-500" />
-               <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-slate-100">Budget Chart</h3>
+               <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-[#ffffff]">Budget Chart</h3>
                
-               <div className="relative w-72 h-72 rounded-full flex items-center justify-center shadow-2xl overflow-hidden border-[8px] border-white dark:border-slate-800 ring-4 ring-slate-100 dark:ring-slate-700 transition-all duration-700"
+               <div className="relative w-72 h-72 rounded-full flex items-center justify-center shadow-2xl overflow-hidden border-[8px] border-white dark:border-neutral-900 ring-4 ring-slate-100 dark:ring-slate-700 transition-all duration-700"
                     style={{
                       background: `conic-gradient(
                         #10b981 0% ${needsPct}%, 
@@ -411,20 +411,20 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                       )`
                     }}
                >
-                 <div className="w-56 h-56 bg-white dark:bg-slate-900 rounded-full flex flex-col items-center justify-center shadow-inner z-10 border-4 border-slate-50 dark:border-slate-800/50">
-                    <span className="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">Total</span>
-                    <span className="text-4xl font-black text-slate-800 dark:text-slate-100">${budget}</span>
+                 <div className="w-56 h-56 bg-white dark:bg-[#121212] rounded-full flex flex-col items-center justify-center shadow-inner z-10 border-4 border-slate-50 dark:border-neutral-900/50">
+                    <span className="text-sm font-bold text-slate-400 dark:text-[#71717a] uppercase tracking-widest mb-1">Total</span>
+                    <span className="text-4xl font-black text-slate-800 dark:text-[#ffffff]">${budget}</span>
                  </div>
                  
                  {/* Decorative overlay for 3D effect */}
                  <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
                </div>
 
-               <div className="flex gap-6 mt-12 w-full justify-center bg-slate-50 dark:bg-slate-800/50 py-4 px-6 rounded-2xl border border-slate-100 dark:border-slate-700/50">
+               <div className="flex gap-6 mt-12 w-full justify-center bg-slate-50 dark:bg-[#121212]/50 py-4 px-6 rounded-2xl border border-slate-100 dark:border-[#1c1b1b]/50">
                  <div className="flex flex-col items-center gap-2">
                    <div className="flex items-center gap-2">
                      <div className="w-4 h-4 bg-emerald-500 rounded-md shadow-sm border border-emerald-600" />
-                     <span className="font-bold text-slate-700 dark:text-slate-300">Needs</span>
+                     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">Needs</span>
                    </div>
                    <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">{needsPct}%</span>
                    <span className="text-xs font-bold text-slate-400">${(budget * needsPct / 100).toFixed(0)}</span>
@@ -435,7 +435,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                  <div className="flex flex-col items-center gap-2">
                    <div className="flex items-center gap-2">
                      <div className="w-4 h-4 bg-emerald-400 rounded-md shadow-sm border border-emerald-500" />
-                     <span className="font-bold text-slate-700 dark:text-slate-300">Wants</span>
+                     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">Wants</span>
                    </div>
                    <span className="text-sm font-black text-emerald-500 dark:text-emerald-300">{wantsPct}%</span>
                    <span className="text-xs font-bold text-slate-400">${(budget * wantsPct / 100).toFixed(0)}</span>
@@ -446,7 +446,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                  <div className="flex flex-col items-center gap-2">
                    <div className="flex items-center gap-2">
                      <div className="w-4 h-4 bg-emerald-300 rounded-md shadow-sm border border-emerald-400" />
-                     <span className="font-bold text-slate-700 dark:text-slate-300">Savings</span>
+                     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">Savings</span>
                    </div>
                    <span className="text-sm font-black text-emerald-400 dark:text-emerald-200">{savingsPct}%</span>
                    <span className="text-xs font-bold text-slate-400">${(budget * savingsPct / 100).toFixed(0)}</span>

@@ -117,7 +117,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
         <div className="relative z-10 flex items-center justify-between px-4 sm:px-12 w-full h-full">
           {/* Island A */}
           <div className="w-1/3 flex flex-col items-center">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 dark:bg-emerald-600 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">Clause A</span>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
           {/* Bridge Area */}
           <div className="w-1/3 flex flex-col items-center justify-center relative h-full">
             {bridgeStatus === 'broken' && selectedConjunction && feedback !== 'incorrect' && (
-              <div className="text-slate-400 dark:text-slate-500 font-medium mb-2 animate-pulse text-sm">
+              <div className="text-slate-400 dark:text-[#71717a] font-medium mb-2 animate-pulse text-sm">
                 Ready to build...
               </div>
             )}
@@ -147,7 +147,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
 
               {/* Conjunction Block */}
               {selectedConjunction && (
-                <div className={`z-10 px-4 py-2 bg-white dark:bg-slate-800 rounded shadow-md border-2 text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-500 ${
+                <div className={`z-10 px-4 py-2 bg-white dark:bg-[#121212] rounded shadow-md border-2 text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-500 ${
                   feedback === 'correct' ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400 scale-110' :
                   feedback === 'incorrect' ? 'border-red-500 text-red-600 dark:text-red-400 translate-y-8 opacity-0' :
                   'border-amber-500 text-amber-700 dark:text-amber-400'
@@ -166,7 +166,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
 
           {/* Island B */}
           <div className="w-1/3 flex flex-col items-center">
-             <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 dark:bg-emerald-600 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105">
+             <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">Clause B</span>
             </div>
           </div>
@@ -176,22 +176,22 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 overflow-hidden">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700 z-10">
+      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] z-10">
         <div className="flex items-center gap-4">
           <button
             onClick={onExit}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
             aria-label="Go back"
           >
-            <ArrowLeft className="w-6 h-6 text-slate-600 dark:text-slate-300" />
+            <ArrowLeft className="w-6 h-6 text-slate-600 dark:text-[#a1a1aa]" />
           </button>
           <div>
-            <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100">
+            <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-[#ffffff]">
               Clause Bridge Builder
             </h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-[#71717a]">
               Class 7 English: Conjunctions & Connectives
             </p>
           </div>
@@ -204,7 +204,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -212,15 +212,15 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
       </header>
 
       {/* Main 2-column layout */}
-      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
         {/* Left Column: Interactive Controls */}
-        <section className="w-full lg:w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col">
+        <section className="w-full lg:w-1/2 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col">
           <div className="mb-6">
             <h2 className="text-lg font-bold mb-2 flex items-center gap-2 text-amber-700 dark:text-amber-500">
               <Anchor className="w-5 h-5" />
               Engineering Bay
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm">
               Connect the two sentence clauses by selecting the correct conjunction block to build a sturdy bridge.
             </p>
           </div>
@@ -228,13 +228,13 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
           <div className="flex-1 flex flex-col justify-between">
             <div>
               {/* Type Badge */}
-              <div className="inline-block mb-4 px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+              <div className="inline-block mb-4 px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#1c1b1b]">
                 Type: {currentQ.conjunctionType}
               </div>
 
               {/* The Sentence */}
-              <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border-2 border-slate-200 dark:border-slate-700 shadow-sm mb-8">
-                <p className="text-lg font-medium leading-loose text-center text-slate-700 dark:text-slate-200">
+              <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] shadow-sm mb-8">
+                <p className="text-lg font-medium leading-loose text-center text-slate-700 dark:text-[#ffffff]">
                   {currentQ.islandA && <span className="bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-800/50 mr-2">{currentQ.islandA}</span>}
                   
                   <span className={`inline-flex min-w-[80px] justify-center mx-2 px-3 py-1 border-b-2 font-bold ${
@@ -259,7 +259,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
                     className={`p-3 sm:p-4 rounded-xl border-2 font-semibold transition-all whitespace-nowrap flex-shrink-0 ${
                       selectedConjunction === opt
                         ? 'bg-amber-100 dark:bg-amber-900/50 border-amber-500 text-amber-800 dark:text-amber-300 shadow-md'
-                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300'
+                        : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-amber-300 hover:bg-amber-50 dark:hover:bg-slate-700 text-slate-700 dark:text-[#ffffff]'
                     } disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     {opt}
@@ -291,7 +291,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
                 <button
                   onClick={handleBuild}
                   disabled={!selectedConjunction || bridgeStatus !== 'broken' || feedback === 'correct'}
-                  className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white font-bold rounded-xl shadow-md transition-all active:scale-95"
+                  className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white font-bold rounded-xl shadow-md transition-all active:scale-95 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
                 >
                   Build Bridge
                 </button>
@@ -299,7 +299,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
                 {feedback === 'correct' && (
                   <button
                     onClick={handleNext}
-                    className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95"
+                    className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                   >
                     Next Challenge
                     <RefreshCw className="w-5 h-5" />
@@ -311,26 +311,26 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
         </section>
 
         {/* Right Column: Simulation Canvas */}
-        <section className="w-full lg:w-1/2 p-6 bg-slate-100 dark:bg-slate-900/50 overflow-y-auto flex flex-col">
-          <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-slate-100">Live Simulation</h2>
+        <section className="w-full lg:w-1/2 p-6 bg-slate-100 dark:bg-[#121212]/50 lg:overflow-y-auto flex flex-col">
+          <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Live Simulation</h2>
           
           <div className="flex-1 flex flex-col justify-center">
             {renderSimulation()}
 
-            <div className="mt-8 bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-              <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2">Bridge Types (Conjunctions)</h3>
+            <div className="mt-8 bg-white dark:!bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
+              <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Bridge Types (Conjunctions)</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded">
+                <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
                   <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">Coordinating</strong>
-                  <span className="text-slate-600 dark:text-slate-400">Connects equal parts (FANBOYS: for, and, nor, but, or, yet, so)</span>
+                  <span className="text-slate-600 dark:text-[#71717a]">Connects equal parts (FANBOYS: for, and, nor, but, or, yet, so)</span>
                 </div>
-                <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded">
+                <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
                   <strong className="block text-purple-600 dark:text-purple-400 mb-1">Subordinating</strong>
-                  <span className="text-slate-600 dark:text-slate-400">Connects a dependent clause to an independent one (because, although, if)</span>
+                  <span className="text-slate-600 dark:text-[#71717a]">Connects a dependent clause to an independent one (because, although, if)</span>
                 </div>
-                <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded">
+                <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
                   <strong className="block text-rose-600 dark:text-rose-400 mb-1">Connective</strong>
-                  <span className="text-slate-600 dark:text-slate-400">Transitions between ideas in separate sentences (however, therefore)</span>
+                  <span className="text-slate-600 dark:text-[#71717a]">Transitions between ideas in separate sentences (however, therefore)</span>
                 </div>
               </div>
             </div>

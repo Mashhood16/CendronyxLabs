@@ -65,30 +65,30 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans">
       <LabHeader onExit={onExit} title="Act 2.3: Reflex Action Time" subtitle="Measure human reaction time" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Interactive */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
+        <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
           
           <div className="w-full flex justify-between items-center mb-6">
             <button 
               onClick={startDrop} 
               disabled={gameState === 'falling'}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               Start Trial
             </button>
             <div className="text-right">
-              <p className="text-sm text-slate-500 dark:text-slate-400">Status</p>
+              <p className="text-sm text-slate-500 dark:text-[#71717a]">Status</p>
               <p className={`font-bold ${gameState === 'caught' ? 'text-green-600' : gameState === 'missed' ? 'text-red-600' : 'text-slate-800 dark:text-slate-100'}`}>
                 {gameState.toUpperCase()}
               </p>
             </div>
           </div>
 
-          <div className="relative w-32 h-[500px] border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl overflow-hidden flex justify-center mt-4" style={{backgroundColor: 'rgb(var(--slate-50))'}}>
+          <div className="relative w-32 h-[500px] border border-slate-200 dark:border-[#1c1b1b] rounded-xl overflow-hidden flex justify-center mt-4" style={{backgroundColor: 'rgb(var(--slate-50))'}}>
             
             {/* The Ruler */}
             <div 
@@ -125,7 +125,7 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
 
         {/* Right Column */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm text-white p-6">
+          <div className="bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm text-white p-6">
             <h3 className="font-bold mb-4 text-slate-300">Results</h3>
             
             <div className="mb-4">
@@ -143,14 +143,14 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
             </div>
           </div>
 
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
               <Info className="w-5 h-5" /> The Math
             </h3>
-            <p className="text-sm text-blue-800 mb-2">
+            <p className="text-sm text-blue-800 mb-2 dark:text-[#ffffff]">
               Unlike a knee-jerk reflex, catching a ruler is a voluntary action processed by the brain. It takes time for the eye to see it drop, the brain to process it, and a signal to reach the hand muscles.
             </p>
-            <p className="text-xs text-blue-700 bg-slate-50 dark:bg-slate-900 p-2 rounded border border-blue-200 font-mono text-center">
+            <p className="text-xs text-blue-700 bg-slate-50 dark:bg-[#121212] p-2 rounded border border-blue-200 font-mono text-center">
               t = √(2d / g)
             </p>
           </div>

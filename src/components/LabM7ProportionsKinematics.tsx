@@ -136,11 +136,11 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-20 shrink-0">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-20 shrink-0">
         {onExit && (
-          <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-slate-300">
+          <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-[#a1a1aa]">
             <ArrowLeft className="w-6 h-6" />
           </button>
         )}
@@ -150,17 +150,17 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
       {/* Main Content */}
       <main className="flex-1 min-w-0 flex lg:overflow-hidden">
         {/* Left Column: Controls & Workspace */}
-        <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
+        <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] p-6 lg:overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
           {/* Tabs */}
           <div className="flex bg-slate-200 dark:bg-slate-700 rounded-lg p-1 mb-6 shrink-0">
             <button 
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'proportions' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'proportions' ? 'bg-white dark:bg-[#121212] text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
               onClick={() => setActiveTab('proportions')}
             >
               Proportions
             </button>
             <button 
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'kinematics' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'kinematics' ? 'bg-white dark:bg-[#121212] text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
               onClick={() => setActiveTab('kinematics')}
             >
               Kinematics
@@ -169,16 +169,16 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
 
           {activeTab === 'proportions' && (
             <div className="space-y-6 flex-1 pr-2">
-              <div className="flex gap-2 mb-4 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="flex gap-2 mb-4 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                 <button 
                   onClick={() => setPropMode('recipe')} 
-                  className={`flex-1 py-1 px-3 text-sm font-bold rounded-md transition-colors ${propMode === 'recipe' ? 'bg-blue-600 text-white shadow' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
+                  className={`flex-1 py-1 px-3 text-sm font-bold rounded-md transition-colors ${propMode === 'recipe' ? 'bg-blue-600 text-white shadow' : 'text-slate-500 hover:text-slate-700 dark:text-[#a1a1aa] dark:hover:text-slate-200'}`}
                 >
                   Recipe (Direct)
                 </button>
                 <button 
                   onClick={() => setPropMode('taps')} 
-                  className={`flex-1 py-1 px-3 text-sm font-bold rounded-md transition-colors ${propMode === 'taps' ? 'bg-blue-600 text-white shadow' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
+                  className={`flex-1 py-1 px-3 text-sm font-bold rounded-md transition-colors ${propMode === 'taps' ? 'bg-blue-600 text-white shadow' : 'text-slate-500 hover:text-slate-700 dark:text-[#a1a1aa] dark:hover:text-slate-200'}`}
                 >
                   Tank (Inverse)
                 </button>
@@ -186,12 +186,12 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
 
               {propMode === 'recipe' && (
                 <>
-                  <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                     <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                       <Utensils className="w-5 h-5 text-orange-500" /> Target Servings
                     </h3>
                     <input type="range" min="1" max="20" value={recipeServings} onChange={(e) => setRecipeServings(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                    <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                    <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                       <span>1</span>
                       <span className="text-orange-600 dark:text-orange-400 font-bold">{recipeServings} Servings</span>
                       <span>20</span>
@@ -202,7 +202,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                     <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
                       <Calculator className="w-5 h-5" /> Calculate
                     </h3>
-                    <p className="text-slate-700 dark:text-slate-300 mb-4 font-medium leading-relaxed">
+                    <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
                       A recipe for 4 servings requires 200g of flour. How much flour is needed for <strong className="text-slate-900 dark:text-white">{recipeQ.targetServings}</strong> servings?
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -210,10 +210,10 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                         type="number" 
                         value={recipeInput} 
                         onChange={(e) => setRecipeInput(e.target.value)}
-                        className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 min-w-0 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Your answer (g)..."
                       />
-                      <button onClick={checkRecipeAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                      <button onClick={checkRecipeAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                         <Check className="w-5 h-5" /> Check
                       </button>
                     </div>
@@ -233,7 +233,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
 
               {propMode === 'taps' && (
                 <>
-                  <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                     <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                       <Droplets className="w-5 h-5 text-blue-500" /> Active Taps
                     </h3>
@@ -243,12 +243,12 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                       setTankLevel(0);
                       setVirtualTime(0);
                     }} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                    <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                    <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                       <span>1</span>
                       <span className="text-blue-600 dark:text-blue-400 font-bold">{taps} Taps</span>
                       <span>10</span>
                     </div>
-                    <button onClick={handleStartTank} className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors">
+                    <button onClick={handleStartTank} className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                       <Play className="w-5 h-5" /> Fill Tank
                     </button>
                   </div>
@@ -257,7 +257,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                     <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
                       <Calculator className="w-5 h-5" /> Calculate
                     </h3>
-                    <p className="text-slate-700 dark:text-slate-300 mb-4 font-medium leading-relaxed">
+                    <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
                       If 1 tap takes 60 minutes to fill a tank, how long will <strong className="text-slate-900 dark:text-white">{tapsQ.targetTaps}</strong> taps take?
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -265,10 +265,10 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                         type="number" 
                         value={tapsInput} 
                         onChange={(e) => setTapsInput(e.target.value)}
-                        className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 min-w-0 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Your answer (mins)..."
                       />
-                      <button onClick={checkTapsAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                      <button onClick={checkTapsAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                         <Check className="w-5 h-5" /> Check
                       </button>
                     </div>
@@ -290,7 +290,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
 
           {activeTab === 'kinematics' && (
             <div className="space-y-6 flex-1 pr-2">
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                   <Car className="w-5 h-5 text-emerald-500" /> Route Distance
                 </h3>
@@ -300,14 +300,14 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                   setKinProgress(0);
                   setKinTime(0);
                 }} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                   <span>10 km</span>
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">{distance} km</span>
                   <span>500 km</span>
                 </div>
               </div>
 
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                   <Calculator className="w-5 h-5 text-indigo-500" /> Journey Time
                 </h3>
@@ -317,12 +317,12 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                   setKinProgress(0);
                   setKinTime(0);
                 }} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                   <span>1 hour</span>
                   <span className="text-indigo-600 dark:text-indigo-400 font-bold">{time} hours</span>
                   <span>10 hours</span>
                 </div>
-                <button onClick={handleStartCar} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors">
+                <button onClick={handleStartCar} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                   <Play className="w-5 h-5" /> Start Journey
                 </button>
               </div>
@@ -332,7 +332,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                 <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
                   <Calculator className="w-5 h-5" /> Calculate Speed
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4 font-medium leading-relaxed">
+                <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
                   Calculate the average speed of a car that travels <strong className="text-slate-900 dark:text-white">{kinQ.dist} km</strong> in <strong className="text-slate-900 dark:text-white">{kinQ.time} hours</strong>.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -340,10 +340,10 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                     type="number" 
                     value={kinInput} 
                     onChange={(e) => setKinInput(e.target.value)}
-                    className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 min-w-0 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your answer (km/h)..."
                   />
-                  <button onClick={checkKinAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                  <button onClick={checkKinAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                     <Check className="w-5 h-5" /> Check
                   </button>
                 </div>
@@ -363,35 +363,35 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
         </div>
         
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 min-w-0 flex items-center justify-center bg-slate-100 dark:bg-slate-900/50 p-6 overflow-y-auto relative">
+        <div className="flex-1 min-w-0 flex items-center justify-center bg-slate-100 dark:bg-[#121212]/50 p-6 lg:overflow-y-auto relative">
           
           {activeTab === 'proportions' && propMode === 'recipe' && (
             <div className="flex flex-col items-center justify-center w-full h-full">
-              <h2 className="text-2xl font-bold mb-12 text-slate-700 dark:text-slate-300">
+              <h2 className="text-2xl font-bold mb-12 text-slate-700 dark:text-[#a1a1aa]">
                 Ingredients Required
               </h2>
-              <div className="flex gap-12 items-end h-64 border-b-4 border-slate-300 dark:border-slate-600 pb-2 px-12">
+              <div className="flex gap-12 items-end h-64 border-b-4 border-slate-300 dark:border-[#1c1b1b] pb-2 px-12">
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-24 bg-orange-50 dark:bg-orange-900/20 border-x-4 border-b-4 border-orange-200 dark:border-orange-800 rounded-b-xl relative overflow-hidden shadow-inner" style={{ height: '200px' }}>
                     <div className="absolute bottom-0 w-full bg-orange-300 dark:bg-orange-600 transition-all duration-500" style={{ height: `${(recipeServings * 10)}px`, maxHeight: '200px' }}></div>
                   </div>
-                  <span className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest text-sm">Flour</span>
+                  <span className="font-bold text-slate-700 dark:text-[#a1a1aa] uppercase tracking-widest text-sm">Flour</span>
                   <span className="text-orange-600 dark:text-orange-400 font-black text-xl">{(baseRecipe.flour / 4) * recipeServings}g</span>
                 </div>
                 
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-24 bg-slate-50 dark:bg-slate-800/50 border-x-4 border-b-4 border-slate-200 dark:border-slate-700 rounded-b-xl relative overflow-hidden shadow-inner" style={{ height: '200px' }}>
+                  <div className="w-24 bg-slate-50 dark:bg-[#121212]/50 border-x-4 border-b-4 border-slate-200 dark:border-[#1c1b1b] rounded-b-xl relative overflow-hidden shadow-inner" style={{ height: '200px' }}>
                     <div className="absolute bottom-0 w-full bg-slate-200 dark:bg-slate-400 transition-all duration-500" style={{ height: `${(recipeServings * 5)}px`, maxHeight: '200px' }}></div>
                   </div>
-                  <span className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest text-sm">Sugar</span>
-                  <span className="text-slate-600 dark:text-slate-400 font-black text-xl">{(baseRecipe.sugar / 4) * recipeServings}g</span>
+                  <span className="font-bold text-slate-700 dark:text-[#a1a1aa] uppercase tracking-widest text-sm">Sugar</span>
+                  <span className="text-slate-600 dark:text-[#71717a] font-black text-xl">{(baseRecipe.sugar / 4) * recipeServings}g</span>
                 </div>
 
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-24 bg-blue-50 dark:bg-blue-900/20 border-x-4 border-b-4 border-blue-200 dark:border-blue-800 rounded-b-xl relative overflow-hidden shadow-inner" style={{ height: '200px' }}>
                     <div className="absolute bottom-0 w-full bg-blue-300 dark:bg-blue-600 transition-all duration-500" style={{ height: `${(recipeServings * 7.5)}px`, maxHeight: '200px' }}></div>
                   </div>
-                  <span className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest text-sm">Milk</span>
+                  <span className="font-bold text-slate-700 dark:text-[#a1a1aa] uppercase tracking-widest text-sm">Milk</span>
                   <span className="text-blue-600 dark:text-blue-400 font-black text-xl">{(baseRecipe.milk / 4) * recipeServings}ml</span>
                 </div>
               </div>
@@ -413,20 +413,20 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                 </div>
                 
                 {/* Tank */}
-                <div className="w-80 h-56 border-8 border-slate-300 dark:border-slate-600 rounded-b-3xl relative overflow-hidden bg-white/40 dark:bg-slate-800/40 backdrop-blur shadow-2xl">
+                <div className="w-80 h-56 border-8 border-slate-300 dark:border-[#1c1b1b] rounded-b-3xl relative overflow-hidden bg-white/40 dark:bg-[#121212]/40 backdrop-blur shadow-2xl">
                   {/* Water level */}
                   <div 
                     className="absolute bottom-0 w-full bg-blue-500/80 dark:bg-blue-600/80 transition-all duration-[50ms]" 
                     style={{ height: `${tankLevel}%` }}
                   >
                     {/* Surface reflection */}
-                    <div className="w-full h-2 bg-white/30"></div>
+                    <div className="w-full h-2 bg-white/30 dark:bg-[#121212]"></div>
                   </div>
                 </div>
                 
                 {/* Time Display */}
-                <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 w-48 text-center">
-                  <div className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase mb-2 tracking-widest">Time Taken</div>
+                <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] w-48 text-center">
+                  <div className="text-sm text-slate-500 dark:text-[#71717a] font-bold uppercase mb-2 tracking-widest">Time Taken</div>
                   <div className="text-4xl font-black text-blue-600 dark:text-blue-400 font-mono">
                     {Math.round(virtualTime)} <span className="text-xl">min</span>
                   </div>
@@ -439,13 +439,13 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
             <div className="flex flex-col items-center justify-center w-full h-full p-8">
               <div className="w-full max-w-4xl flex flex-col items-center">
                 {/* Environment */}
-                <div className="w-full h-40 bg-sky-200 dark:bg-sky-900/50 rounded-t-3xl relative overflow-hidden flex items-end border-t border-x border-slate-200 dark:border-slate-700">
+                <div className="w-full h-40 bg-sky-200 dark:bg-sky-900/50 rounded-t-3xl relative overflow-hidden flex items-end border-t border-x border-slate-200 dark:border-[#1c1b1b]">
                   {/* Decorative sun */}
                   <div className="absolute top-8 right-12 w-16 h-16 bg-yellow-300 rounded-full opacity-80 blur-[2px]"></div>
                 </div>
                 
                 {/* Road */}
-                <div className="w-full h-32 bg-slate-600 dark:bg-slate-800 relative overflow-hidden flex items-center shadow-inner border-x border-slate-200 dark:border-slate-700">
+                <div className="w-full h-32 bg-slate-600 dark:bg-[#121212] relative overflow-hidden flex items-center shadow-inner border-x border-slate-200 dark:border-[#1c1b1b]">
                   <div className="w-full h-2 border-y-4 border-dashed border-white/40 dark:border-white/20"></div>
                   
                   {/* Car */}
@@ -458,22 +458,22 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
                 </div>
                 
                 {/* Road Labels */}
-                <div className="w-full flex justify-between px-6 mt-4 text-slate-500 dark:text-slate-400 font-bold text-lg">
+                <div className="w-full flex justify-between px-6 mt-4 text-slate-500 dark:text-[#71717a] font-bold text-lg">
                   <span>0 km</span>
                   <span>{distance} km</span>
                 </div>
 
                 {/* Dashboard */}
-                <div className="mt-12 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 flex gap-16 text-center">
+                <div className="mt-12 bg-white dark:!bg-[#121212] p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] flex gap-16 text-center">
                   <div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase mb-2 tracking-widest">Distance</div>
+                    <div className="text-sm text-slate-500 dark:text-[#71717a] font-bold uppercase mb-2 tracking-widest">Distance</div>
                     <div className="text-4xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
                       {Math.round((kinProgress / 100) * distance)} <span className="text-xl">km</span>
                     </div>
                   </div>
                   <div className="w-px bg-slate-200 dark:bg-slate-700"></div>
                   <div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase mb-2 tracking-widest">Time Elapsed</div>
+                    <div className="text-sm text-slate-500 dark:text-[#71717a] font-bold uppercase mb-2 tracking-widest">Time Elapsed</div>
                     <div className="text-4xl font-black text-indigo-600 dark:text-indigo-400 font-mono">
                       {kinTime.toFixed(1)} <span className="text-xl">h</span>
                     </div>

@@ -134,37 +134,37 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
     const svgArcPath = `M ${200 + radius * scale} 150 A ${radius * scale} ${radius * scale} 0 ${largeArcFlag} 0 ${endX} ${endY}`;
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} title="Circle Applications" />
 
             {/* Main Content Grid */}
             <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-purple-500">
-                    <div className="flex items-center mb-4 text-purple-800 shrink-0">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-purple-500">
+                    <div className="flex items-center mb-4 text-purple-800 shrink-0 dark:text-[#ffffff]">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
                     </div>
-                    <div className="prose prose-purple flex-1 text-slate-700 dark:text-slate-200">
+                    <div className="prose prose-purple flex-1 text-slate-700 dark:text-[#ffffff]">
                         <p>
                             Circles appear everywhere in nature and engineering: from the orbit of a GPS satellite to the arch of a bridge and a stone whirling on a string.
                         </p>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Arc Length</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Arc Length</h3>
                         <p>
                             The <strong>arc length</strong> is the distance along the curved edge of the circle. It is a fraction of the circle's total circumference (2πr).
                         </p>
-                        <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                        <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b]">
                             Arc Length (s) = (θ / 360°) × 2πr
                         </div>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Sector Area</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Sector Area</h3>
                         <p>
                             A sector is a "slice of pie" of the circle. Its area is a fraction of the total area (πr²).
                         </p>
-                        <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                        <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b]">
                             Sector Area (A) = (θ / 360°) × πr²
                         </div>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Tangents</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Tangents</h3>
                         <p>
                             A <strong>tangent</strong> is a line that touches the circle at exactly one point. It is always <strong>perpendicular (90°)</strong> to the radius at that point. If a whirling string breaks, the object flies off in a straight line along the tangent.
                         </p>
@@ -172,13 +172,13 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-fuchsia-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-fuchsia-500">
                     <div className="flex items-center mb-4 text-fuchsia-800 shrink-0">
                         <Orbit className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 min-w-0 relative bg-slate-900 dark:bg-slate-800 rounded-lg overflow-hidden border border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
+                    <div className="flex-1 min-w-0 relative bg-[#000000] dark:bg-[#121212] rounded-lg overflow-hidden border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col min-h-[300px]">
                         <div className="flex-1 min-w-0 relative w-full h-full">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Grid lines */}
@@ -241,7 +241,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                             </svg>
                         </div>
 
-                        <div className="p-4 bg-slate-800 dark:bg-slate-800 border-t border-slate-700 dark:border-slate-500 space-y-4 shrink-0 shadow-inner">
+                        <div className="p-4 bg-[#121212] dark:bg-[#121212] border-t border-[#1c1b1b] dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner">
                             <div>
                                 <div className="flex justify-between text-sm font-medium mb-1 text-slate-300">
                                     <span>Radius (m)</span>
@@ -275,14 +275,14 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                             <div className="flex space-x-2">
                                 <button
                                     onClick={toggleWhirling}
-                                    className="flex-1 min-w-0 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors"
+                                    className="flex-1 min-w-0 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                                 >
                                     {isWhirling ? <><Square size={16}/><span>Stop</span></> : <><Play size={16}/><span>Whirl</span></>}
                                 </button>
                                 <button
                                     onClick={breakString}
                                     disabled={!isWhirling || broken}
-                                    className="flex-1 min-w-0 py-2 bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-600 dark:bg-slate-800 disabled:text-slate-400 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors"
+                                    className="flex-1 min-w-0 py-2 bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-600 disabled:text-slate-400 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors dark:text-white dark:text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
                                 >
                                     <Scissors size={16}/><span>Break String</span>
                                 </button>
@@ -292,7 +292,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-rose-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-rose-500">
                     <div className="flex items-center mb-4 text-rose-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Math Assessment</h2>
@@ -300,41 +300,41 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                     
                     {problem && (
                         <div className="flex-1 min-w-0 flex flex-col space-y-4">
-                            <div className="bg-rose-50 p-4 rounded-lg border border-rose-200">
-                                <p className="text-slate-800 dark:text-slate-100 mb-2 leading-relaxed">
+                            <div className="bg-rose-50 p-4 rounded-lg border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                                <p className="text-slate-800 dark:text-[#ffffff] mb-2 leading-relaxed">
                                     An engineer is designing a circular track with a radius of <strong>{problem.radius} meters</strong>. 
                                     They need to pave a section (sector) of the track spanning an angle of <strong>{problem.angle}°</strong>.
                                 </p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">1. What is the Arc Length (m)?</label>
+                                <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">1. What is the Arc Length (m)?</label>
                                 <input
                                     type="number"
                                     step="0.01"
                                     value={userArcLength}
                                     onChange={(e) => setUserArcLength(e.target.value)}
-                                    className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-rose-500 outline-none transition-shadow font-mono"
+                                    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-rose-500 outline-none transition-shadow font-mono"
                                     placeholder="e.g. 15.5"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">2. What is the Sector Area (m²)?</label>
+                                <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">2. What is the Sector Area (m²)?</label>
                                 <input
                                     type="number"
                                     step="0.01"
                                     value={userSectorArea}
                                     onChange={(e) => setUserSectorArea(e.target.value)}
-                                    className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-rose-500 outline-none transition-shadow font-mono"
+                                    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-rose-500 outline-none transition-shadow font-mono"
                                     placeholder="e.g. 120.5"
                                 />
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">(Round both answers to 2 decimal places)</p>
+                                <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">(Round both answers to 2 decimal places)</p>
                             </div>
 
                             <button
                                 onClick={checkAnswer}
-                                className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition-colors shadow-sm mt-2"
+                                className="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg transition-colors shadow-sm mt-2 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                             >
                                 Check Answers
                             </button>
@@ -349,7 +349,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                             <div className="mt-auto pt-4">
                                 <button
                                     onClick={generateProblem}
-                                    className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-lg transition-colors border border-slate-300 dark:border-slate-700 dark:border-slate-500"
+                                    className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg transition-colors border border-slate-300 dark:border-[#1c1b1b]"
                                 >
                                     <RotateCcw size={20} />
                                     <span>Generate New Problem</span>

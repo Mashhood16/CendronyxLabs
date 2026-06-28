@@ -117,14 +117,14 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Plant Physiology" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-2">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
               Theory & Context
             </h2>
@@ -134,20 +134,20 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="space-y-4 flex-1">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Lab Setup: {activeTab}</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Lab Setup: {activeTab}</h3>
             
             {activeTab === 'Potometer' && (
               <>
                 <div className="space-y-2 pt-4">
-                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
+                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
                     <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> Temperature (°C)</span>
                     <span>{temp}°C</span>
                   </label>
                   <input type="range" min="10" max="40" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
                 <div className="space-y-2 pt-4">
-                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
-                    <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-slate-400" /> Wind Speed</span>
+                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
+                    <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-[#71717a]" /> Wind Speed</span>
                     <span>{wind}</span>
                   </label>
                   <input type="range" min="0" max="10" value={wind} onChange={(e) => setWind(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -157,7 +157,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
             {activeTab === 'Hydrilla' && (
               <div className="space-y-2 pt-4">
-                <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
+                <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
                   <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" /> Light Intensity (%)</span>
                   <span>{lightIntensity}%</span>
                 </label>
@@ -167,12 +167,12 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
             {activeTab === 'Indicator' && (
               <div className="space-y-2 pt-4">
-                <label className="text-sm font-medium text-gray-700 dark:text-slate-200 block mb-2">Environment State</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff] block mb-2">Environment State</label>
                 <div className="flex space-x-2">
                   <button onClick={() => setIsLight(true)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${isLight ? 'bg-yellow-100 text-yellow-700 border-2 border-yellow-400' : 'bg-gray-100 text-gray-600'}`}>
                     <Sun className="w-4 h-4 mr-2" /> Light
                   </button>
-                  <button onClick={() => setIsLight(false)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${!isLight ? 'bg-slate-700 dark:bg-slate-800 text-white border-2 border-slate-900 dark:border-slate-500' : 'bg-gray-100 text-gray-600'}`}>
+                  <button onClick={() => setIsLight(false)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${!isLight ? 'bg-slate-700 dark:bg-[#121212] text-white border-2 border-slate-900 dark:border-slate-500' : 'bg-gray-100 text-gray-600'}`}>
                     <Moon className="w-4 h-4 mr-2" /> Dark
                   </button>
                 </div>
@@ -183,14 +183,14 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex space-x-2 mb-4">
             <button onClick={() => {setActiveTab('Potometer'); setBubblePos(0); setPotometerRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Potometer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Droplet className="w-4 h-4 inline mr-1" /> Potometer</button>
             <button onClick={() => {setActiveTab('Hydrilla'); setGasVolume(0); setHydrillaRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Hydrilla' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Sun className="w-4 h-4 inline mr-1" /> Hydrilla</button>
             <button onClick={() => {setActiveTab('Indicator'); setIndicatorTime(0); setIndicatorRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Indicator' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Activity className="w-4 h-4 inline mr-1" /> Indicator</button>
           </div>
 
-          <div className="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1 flex flex-col items-center justify-center p-4">
+          <div className="relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-[#1c1b1b] flex-1 flex flex-col items-center justify-center p-4">
             {activeTab === 'Potometer' && (
               <svg viewBox="0 0 400 300" className="w-full h-full">
                  <path d="M 50 180 L 50 280 L 150 280 L 150 180" fill="none" stroke="#94a3b8" strokeWidth="4" />
@@ -328,17 +328,17 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Data Logging & Analysis
           </h2>
           
-          <button onClick={recordData} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center">
+          <button onClick={recordData} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
             <CheckCircle className="w-4 h-4 mr-2" /> Record Data
           </button>
 
-          <div className="overflow-y-auto max-h-40 mb-6 border rounded-lg">
+          <div className="lg:overflow-y-auto max-h-40 mb-6 border rounded-lg">
             <table className="w-full text-xs text-left">
               <thead className="bg-gray-50 sticky top-0">
                 <tr>
@@ -367,7 +367,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="flex-1 space-y-4">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Assessment</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Assessment</h3>
             <div className="space-y-3">
               <div>
                 <label className="text-sm text-gray-600 block mb-1">1. How does increasing wind affect the transpiration rate?</label>
@@ -382,7 +382,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
                 <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="Process name..." />
               </div>
             </div>
-            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2">
+            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               Check Answers
             </button>
             {feedback && (

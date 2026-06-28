@@ -72,19 +72,19 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
   const color = currentPh > 8.2 ? (currentPh > 10 ? '#f472b6' : '#fbcfe8') : '#f8fafc';
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Equilibrium & Acid-Base" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center dark:text-[#ffffff]">
             <Droplets className="mr-2" /> Theory
           </h2>
-          <div className="prose text-sm text-slate-700 dark:text-slate-200">
+          <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
             <p><strong>Titrations</strong> determine the concentration of an unknown solution by reacting it with a standard solution.</p>
             <h3 className="text-md font-semibold mt-4">Henderson-Hasselbalch Equation</h3>
             <p>Used for buffer regions (like blood plasma buffers):</p>
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded text-center font-mono my-2">
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2">
               pH = pKa + log([A⁻]/[HA])
             </div>
             <p>At the <strong>half-equivalence point</strong>, [A⁻] = [HA], so <strong>pH = pKa</strong>.</p>
@@ -101,17 +101,17 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-purple-900 mb-4">Titration Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-purple-900 mb-4 dark:text-[#ffffff]">Titration Simulator</h2>
           
           <div className="flex flex-col items-center w-full max-w-sm mb-4">
-            <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg font-mono text-lg font-bold border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-800 dark:text-slate-100 mb-4 w-full text-center shadow-inner">
+            <div className="bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg font-mono text-lg font-bold border border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-[#ffffff] mb-4 w-full text-center shadow-inner">
               pH Meter: {currentPh.toFixed(2)}
             </div>
 
-            <div className="relative w-full aspect-square bg-slate-50 dark:bg-slate-900 border rounded-xl overflow-hidden flex flex-col items-center justify-end pb-8">
+            <div className="relative w-full aspect-square bg-slate-50 dark:bg-[#121212] border rounded-xl overflow-hidden flex flex-col items-center justify-end pb-8">
               {/* Burette tip */}
-              <div className="w-4 h-16 bg-slate-200 dark:bg-slate-800 absolute top-0 border-x-2 border-b-2 border-slate-400 dark:border-slate-500 rounded-b-sm"></div>
+              <div className="w-4 h-16 bg-slate-200 dark:bg-[#121212] absolute top-0 border-x-2 border-b-2 border-slate-400 dark:border-[#1c1b1b] rounded-b-sm"></div>
               {/* Drop animation (static representation) */}
               <div className="w-2 h-2 rounded-full bg-blue-300 absolute top-16 animate-bounce"></div>
               
@@ -125,24 +125,24 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
           </div>
           
           <div className="w-full flex flex-col space-y-3">
-            <div className="flex justify-between items-center text-sm font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded">
+            <div className="flex justify-between items-center text-sm font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded">
               <span>Base Added:</span>
               <span className="font-bold text-purple-700">{baseVol.toFixed(1)} mL</span>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => handleAddDrop(1)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded">+ 1 mL</button>
-              <button onClick={() => handleAddDrop(5)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded">+ 5 mL</button>
-              <button onClick={resetTitration} className="flex-1 bg-slate-300 dark:bg-slate-800 hover:bg-slate-400 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold py-2 rounded">Reset</button>
+              <button onClick={() => handleAddDrop(1)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">+ 1 mL</button>
+              <button onClick={() => handleAddDrop(5)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">+ 5 mL</button>
+              <button onClick={resetTitration} className="flex-1 bg-slate-300 dark:bg-[#121212] hover:bg-slate-400 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold py-2 rounded">Reset</button>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center dark:text-[#ffffff]">
             <Activity className="mr-2" /> Data Plot & Analysis
           </h2>
           
-          <div className="relative w-full flex-1 min-h-[200px] mb-4 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2">
+          <div className="relative w-full flex-1 min-h-[200px] mb-4 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2">
             <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
               {/* Gridlines */}
               <line x1="0" y1="50" x2="100" y2="50" stroke="#e2e8f0" strokeWidth="0.5" />
@@ -161,9 +161,9 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
             </svg>
           </div>
           
-          <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
-            <h3 className="font-semibold text-purple-900 mb-2">Unknown Identification</h3>
-            <p className="text-sm text-purple-800 mb-3">
+          <div className="bg-purple-50 p-4 rounded-xl border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Unknown Identification</h3>
+            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
               Observe the pH curve. Estimate the pKa of the weak acid from the graph at the half-equivalence point.
             </p>
             <input 
@@ -175,7 +175,7 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
             />
             <button 
               onClick={checkAnswer}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
             >
               <CheckCircle className="mr-2" size={18} /> Check Answer
             </button>

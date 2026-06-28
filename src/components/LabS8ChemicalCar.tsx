@@ -19,7 +19,7 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
   };
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Act 11.8: Chemical Car" subtitle="Vinegar + Baking Soda propulsion" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
@@ -29,31 +29,31 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
           <button 
             onClick={() => setVinegarAdded(true)}
             disabled={vinegarAdded || carPos > 0}
-            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${vinegarAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-sky-300 text-slate-600 dark:text-slate-300'}`}
+            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${vinegarAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-sky-300 text-slate-600 dark:text-[#ffffff]'}`}
           >
             1. Pour Vinegar
           </button>
           <button 
             onClick={() => setBakingSodaAdded(true)}
             disabled={bakingSodaAdded || !vinegarAdded || carPos > 0}
-            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${bakingSodaAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-sky-300 text-slate-600 dark:text-slate-300'}`}
+            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${bakingSodaAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-sky-300 text-slate-600 dark:text-[#ffffff]'}`}
           >
             2. Add Baking Soda
           </button>
           <button 
             onClick={() => setSealed(true)}
             disabled={sealed || !bakingSodaAdded || carPos > 0}
-            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${sealed ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-emerald-300 text-slate-600 dark:text-slate-300'}`}
+            className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${sealed ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300 text-slate-600 dark:text-[#ffffff]'}`}
           >
             3. Seal Cap (with hole)
           </button>
         </div>
 
         {/* The Track */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-3xl shadow-xl border-4 border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col justify-end relative overflow-hidden h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-3xl shadow-xl border-4 border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col justify-end relative overflow-hidden h-[400px]">
           
           {/* Ground */}
-          <div className="absolute bottom-0 left-0 w-full h-24 bg-slate-800 dark:bg-slate-800" />
+          <div className="absolute bottom-0 left-0 w-full h-24 bg-[#121212] dark:bg-[#121212]" />
           <div className="absolute bottom-20 left-0 w-full border-b-4 border-dashed border-yellow-400" />
 
           {/* The Car */}
@@ -68,9 +68,9 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
              {/* CO2 Gas trail */}
              {carPos > 0 && (
                <div className="absolute top-1/2 -left-32 w-32 h-16 flex items-center opacity-80 pointer-events-none">
-                 <div className="w-4 h-4 bg-slate-50 dark:bg-slate-900/80 rounded-full animate-ping mr-2" />
-                 <div className="w-8 h-8 bg-slate-50 dark:bg-slate-900/60 rounded-full animate-ping delay-75 mr-2" />
-                 <div className="w-12 h-12 bg-slate-50 dark:bg-slate-900/40 rounded-full animate-ping delay-150" />
+                 <div className="w-4 h-4 bg-slate-50 dark:bg-[#121212]/80 rounded-full animate-ping mr-2" />
+                 <div className="w-8 h-8 bg-slate-50 dark:bg-[#121212]/60 rounded-full animate-ping delay-75 mr-2" />
+                 <div className="w-12 h-12 bg-slate-50 dark:bg-[#121212]/40 rounded-full animate-ping delay-150" />
                </div>
              )}
 
@@ -111,7 +111,7 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                <button 
                  onClick={launch}
-                 className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-black text-2xl tracking-widest uppercase rounded-2xl shadow-[0_10px_0_rgb(153,27,27)] active:shadow-[0_0px_0_rgb(153,27,27)] active:translate-y-2 transition-all flex items-center gap-2"
+                 className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-black text-2xl tracking-widest uppercase rounded-2xl shadow-[0_10px_0_rgb(153,27,27)] active:shadow-[0_0px_0_rgb(153,27,27)] active:translate-y-2 transition-all flex items-center gap-2 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
                >
                  <FlaskConical className="w-8 h-8" /> Shake & Launch
                </button>

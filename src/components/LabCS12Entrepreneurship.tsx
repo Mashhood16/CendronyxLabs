@@ -90,11 +90,11 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none overflow-hidden">
-      <div className="flex items-center justify-between bg-slate-800 dark:bg-slate-800 text-white p-4 shadow-md">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden">
+      <div className="flex items-center justify-between bg-[#121212] dark:bg-[#121212] text-white p-4 shadow-md">
         <LabHeader onExit={onExit} title="Grade 12 Entrepreneurship: Lean Startup MVP" />
         <div className="flex gap-4">
-          <div className="text-sm font-mono bg-slate-900 dark:bg-slate-800 px-3 py-1 rounded-md text-emerald-400">
+          <div className="text-sm font-mono bg-[#000000] dark:bg-[#121212] px-3 py-1 rounded-md text-emerald-400">
             FUNDS: ${phase === 'build' ? funds - getCost() : funds - spentCost}
           </div>
         </div>
@@ -102,16 +102,16 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 lg:overflow-hidden">
         
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
-          <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-slate-900/50">
-            <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-y-auto">
+          <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-[#121212]/50">
+            <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
               <Lightbulb size={18} className="text-amber-500" />
               Lean Startup Theory
             </h2>
           </div>
-          <div className="p-4 space-y-6 text-slate-600 dark:text-slate-300 text-sm">
+          <div className="p-4 space-y-6 text-slate-600 dark:text-[#a1a1aa] text-sm">
             <section>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">The MVP (Minimum Viable Product)</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">The MVP (Minimum Viable Product)</h3>
               <p className="mb-2">An MVP is a version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort.</p>
               <ul className="list-disc pl-4 space-y-2">
                 <li><strong>Core Features First:</strong> Only build what is absolutely necessary to solve the user's primary problem.</li>
@@ -120,12 +120,12 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
             </section>
             
             <section>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Build-Measure-Learn Loop</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Build-Measure-Learn Loop</h3>
               <p className="mb-2">The fundamental activity of a startup is to turn ideas into products, measure how customers respond, and then learn whether to pivot or persevere.</p>
             </section>
             
             <section>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Metrics</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Metrics</h3>
               <ul className="list-disc pl-4 space-y-2">
                 <li><strong>Acquisition:</strong> How many users sign up.</li>
                 <li><strong>Retention / Churn:</strong> How many users stay vs leave. High bug rates increase churn.</li>
@@ -135,20 +135,20 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="flex border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'build' ? 'border-blue-500 text-blue-600 bg-blue-50/30' : 'border-transparent text-slate-500 dark:text-slate-400'}`}>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="flex border-b border-slate-200 dark:border-[#1c1b1b]">
+            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'build' ? 'border-blue-500 text-blue-600 bg-blue-50/30' : 'border-transparent text-slate-500 dark:text-[#a1a1aa]'}`}>
               1. Build Phase
             </div>
-            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'analyze' ? 'border-purple-500 text-purple-600 bg-purple-50/30' : 'border-transparent text-slate-500 dark:text-slate-400'}`}>
+            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'analyze' ? 'border-purple-500 text-purple-600 bg-purple-50/30' : 'border-transparent text-slate-500 dark:text-[#a1a1aa]'}`}>
               2. Analyze Phase
             </div>
           </div>
           
-          <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-900 relative p-4">
+          <div className="flex-1 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] relative p-4">
             {phase === 'build' ? (
               <div className="space-y-4">
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Select features for your MVP sprint. Be mindful of your $50,000 budget!</p>
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">Select features for your MVP sprint. Be mindful of your $50,000 budget!</p>
                 
                 <div className="grid gap-3">
                   {[
@@ -161,13 +161,13 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                     <div 
                       key={f.key} 
                       onClick={() => toggleFeature(f.key as keyof typeof features)}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-blue-300'}`}
+                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-blue-300'}`}
                     >
                       <div>
-                        <div className="font-bold text-slate-800 dark:text-slate-100">{f.name}</div>
-                        <div className="text-xs text-slate-500 dark:text-slate-400">{f.type}</div>
+                        <div className="font-bold text-slate-800 dark:text-[#ffffff]">{f.name}</div>
+                        <div className="text-xs text-slate-500 dark:text-[#71717a]">{f.type}</div>
                       </div>
-                      <div className="font-mono text-sm font-semibold text-slate-700 dark:text-slate-200">${f.cost.toLocaleString()}</div>
+                      <div className="font-mono text-sm font-semibold text-slate-700 dark:text-[#ffffff]">${f.cost.toLocaleString()}</div>
                     </div>
                   ))}
                 </div>
@@ -175,7 +175,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                 <div className="pt-4 flex justify-center">
                   <button 
                     onClick={handleLaunch}
-                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg transition-transform hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg transition-transform hover:scale-105 active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     <Play fill="currentColor" size={18} /> Launch MVP
                   </button>
@@ -184,13 +184,13 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
             ) : (
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-center">
+                  <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] text-center">
                     <div className="text-xs font-bold text-slate-400 mb-1 uppercase">Active Users</div>
                     <div className="text-3xl font-bold text-blue-600 flex items-center justify-center gap-2">
                       <Users size={24} /> {users}
                     </div>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 text-center">
+                  <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] text-center">
                     <div className="text-xs font-bold text-slate-400 mb-1 uppercase">User Satisfaction</div>
                     <div className={`text-3xl font-bold flex items-center justify-center gap-2 ${satisfaction >= 70 ? 'text-emerald-500' : satisfaction >= 40 ? 'text-amber-500' : 'text-red-500'}`}>
                       <BarChart3 size={24} /> {satisfaction}%
@@ -198,8 +198,8 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                   </div>
                 </div>
 
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
-                  <div className="bg-slate-100 dark:bg-slate-800 p-3 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
+                  <div className="bg-slate-100 dark:bg-[#121212] p-3 border-b border-slate-200 dark:border-[#1c1b1b] text-sm font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2">
                     <Target size={16} /> Beta Tester Feedback
                   </div>
                   <div className="p-4 space-y-3">
@@ -214,7 +214,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                 <div className="flex justify-center">
                   <button 
                     onClick={resetSim}
-                    className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:text-slate-100 underline"
+                    className="text-sm font-medium text-slate-500 dark:text-[#71717a] hover:text-slate-800 dark:text-[#ffffff] underline"
                   >
                     Pivot & Restart Build
                   </button>
@@ -224,9 +224,9 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
-          <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-slate-900/50">
-            <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-y-auto">
+          <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-[#121212]/50">
+            <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
               <BarChart3 size={18} className="text-blue-500" />
               Startup Assessment
             </h2>
@@ -234,7 +234,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
           <div className="p-4 space-y-6 flex-1">
             
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 leading-relaxed">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] leading-relaxed">
                 1. Based on Lean Startup principles, what is the primary goal of an MVP? (Hint: To maximize validated ______)
               </label>
               <input
@@ -242,12 +242,12 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                 value={q1Answer}
                 onChange={(e) => setQ1Answer(e.target.value)}
                 placeholder="Enter word..."
-                className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 dark:bg-slate-900"
+                className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 dark:bg-[#121212]"
               />
             </div>
 
             <div className="space-y-3">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 leading-relaxed">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] leading-relaxed">
                 2. Test the simulator. Which expensive feature causes the biggest drop in satisfaction due to bugs and slow performance?
               </label>
               <input
@@ -255,13 +255,13 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                 value={q2Answer}
                 onChange={(e) => setQ2Answer(e.target.value)}
                 placeholder="Enter feature name..."
-                className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 dark:bg-slate-900"
+                className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-slate-50 dark:bg-[#121212]"
               />
             </div>
 
             <button
               onClick={checkAnswers}
-              className="w-full bg-slate-800 dark:bg-slate-800 text-white font-medium py-3 rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors shadow-sm"
+              className="w-full bg-[#121212] dark:!bg-[#121212] text-white font-medium py-3 rounded-lg hover:bg-slate-700 dark:!bg-[#121212] transition-colors shadow-sm"
             >
               Verify Solutions
             </button>
@@ -272,7 +272,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
               </div>
             )}
 
-            <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
+            <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] mt-6">
               <button 
                 onClick={() => {
                   let score = 0;
@@ -284,7 +284,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
 
                   if (onExit) onExit();
                 }}
-                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"
+                className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
               >
                 <Save size={20} />
                 Submit Results & Exit

@@ -8,13 +8,13 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
   const [step, setStep] = useState(0);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans">
       <LabHeader onExit={onExit} title="Act 4.1: Making of Yogurt" subtitle="Observe bacterial fermentation of milk" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center">
+        <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center">
           
-          <div className="relative w-64 h-64 flex justify-center items-end border-b-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 pb-2">
+          <div className="relative w-64 h-64 flex justify-center items-end border-b-4 border-slate-300 dark:border-[#1c1b1b] pb-2">
             
             {/* Stove/Heat */}
             {step === 1 && (
@@ -24,11 +24,11 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
             )}
 
             {/* Pot */}
-            <div className="w-48 h-32 border-4 border-slate-400 dark:border-slate-500 rounded-b-3xl rounded-t-sm relative overflow-hidden bg-slate-100 dark:bg-slate-800 flex flex-col justify-end z-10">
+            <div className="w-48 h-32 border-4 border-slate-400 dark:border-[#1c1b1b] rounded-b-3xl rounded-t-sm relative overflow-hidden bg-slate-100 dark:bg-[#121212] flex flex-col justify-end z-10">
               
               {/* Liquid Level */}
               <div 
-                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-slate-50 dark:bg-slate-900 h-[80%]'}`}
+                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-slate-50 dark:bg-[#121212] h-[80%]'}`}
               >
                 {step === 1 && (
                   <div className="w-full h-full flex items-center justify-center animate-pulse opacity-50">
@@ -43,7 +43,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
 
             {/* Spoon adding yogurt starter */}
             {step === 2 && (
-              <div className="absolute top-10 right-10 animate-bounce text-slate-600 dark:text-slate-300 text-4xl">
+              <div className="absolute top-10 right-10 animate-bounce text-slate-600 dark:text-[#a1a1aa] text-4xl">
                 🥄
               </div>
             )}
@@ -59,7 +59,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
             <button 
               onClick={() => setStep(s => Math.min(4, s + 1))}
               disabled={step === 4}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 disabled:opacity-50"
+              className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               {step === 0 && "1. Boil Milk (Sterilize)"}
               {step === 1 && "2. Cool & Add Yogurt Starter"}
@@ -72,17 +72,17 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
         </div>
 
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
               <Info className="w-5 h-5" /> The Biology
             </h3>
-            <p className="text-sm text-blue-800 mb-2">
+            <p className="text-sm text-blue-800 mb-2 dark:text-[#ffffff]">
               <strong>Boiling:</strong> Kills off unwanted, naturally occurring bacteria in the milk.
             </p>
-            <p className="text-sm text-blue-800 mb-2">
+            <p className="text-sm text-blue-800 mb-2 dark:text-[#ffffff]">
               <strong>Starter:</strong> We add existing yogurt because it contains living <em>Lactobacillus</em> bacteria.
             </p>
-            <p className="text-sm text-blue-800">
+            <p className="text-sm text-blue-800 dark:text-[#ffffff]">
               <strong>Fermentation:</strong> The bacteria eat the milk sugars (lactose) and excrete lactic acid. This acid makes the milk curdle and thicken into yogurt!
             </p>
           </div>

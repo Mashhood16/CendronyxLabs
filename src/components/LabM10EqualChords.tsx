@@ -100,22 +100,22 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M10: Equal Chords" />
 
       <div className="flex-1 min-w-0 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-blue-600" />
             Theory & Concepts
           </h2>
-          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
             <p>
               In geometry, chords of a circle have fascinating properties relating their length, their distance from the center, and the angle they subtend at the center.
             </p>
-            <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
-              <h3 className="font-semibold text-amber-800 mb-2">Key Properties of Equal Chords</h3>
+            <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-amber-800 mb-2 dark:text-[#ffffff]">Key Properties of Equal Chords</h3>
               <ul className="list-disc pl-5 space-y-2 text-amber-700">
                 <li>
                   <strong>Equidistant:</strong> Equal chords of a circle are equidistant from the center. (And conversely, chords that are equidistant from the center are equal in length).
@@ -132,10 +132,10 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Interactive Lab */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden relative flex flex-col h-[500px]">
-          <div className="p-4 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-semibold text-slate-800 dark:text-slate-100 text-center">Interactive Canvas</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 text-center">Drag points A, B, C, D to change the chords.</p>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden relative flex flex-col h-[500px]">
+          <div className="p-4 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-center">Interactive Canvas</h3>
+            <p className="text-xs text-slate-500 dark:text-[#71717a] text-center">Drag points A, B, C, D to change the chords.</p>
           </div>
           <div className="flex-1 min-w-0 relative">
             <svg 
@@ -181,22 +181,22 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
             </svg>
 
             {/* Floating Info Panels */}
-            <div className="absolute top-4 left-4 bg-slate-50 dark:bg-slate-900/90 p-3 rounded-lg border border-blue-200 shadow-sm pointer-events-none text-xs w-48">
+            <div className="absolute top-4 left-4 bg-slate-50 dark:bg-[#121212]/90 p-3 rounded-lg border border-blue-200 shadow-sm pointer-events-none text-xs w-48">
               <div className="font-bold text-blue-700 mb-1 border-b border-blue-100 pb-1">Chord AB</div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Length:</span> <span className="font-semibold">{lenAB.toFixed(0)} px</span></div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Distance to Center:</span> <span className="font-semibold">{distAB.toFixed(0)} px</span></div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Central Angle:</span> <span className="font-semibold">{angAB.toFixed(0)}°</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Length:</span> <span className="font-semibold">{lenAB.toFixed(0)} px</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Distance to Center:</span> <span className="font-semibold">{distAB.toFixed(0)} px</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Central Angle:</span> <span className="font-semibold">{angAB.toFixed(0)}°</span></div>
             </div>
 
-            <div className="absolute top-4 right-4 bg-slate-50 dark:bg-slate-900/90 p-3 rounded-lg border border-red-200 shadow-sm pointer-events-none text-xs w-48">
+            <div className="absolute top-4 right-4 bg-slate-50 dark:bg-[#121212]/90 p-3 rounded-lg border border-red-200 shadow-sm pointer-events-none text-xs w-48">
               <div className="font-bold text-red-700 mb-1 border-b border-red-100 pb-1">Chord CD</div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Length:</span> <span className="font-semibold">{lenCD.toFixed(0)} px</span></div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Distance to Center:</span> <span className="font-semibold">{distCD.toFixed(0)} px</span></div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300"><span>Central Angle:</span> <span className="font-semibold">{angCD.toFixed(0)}°</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Length:</span> <span className="font-semibold">{lenCD.toFixed(0)} px</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Distance to Center:</span> <span className="font-semibold">{distCD.toFixed(0)} px</span></div>
+              <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Central Angle:</span> <span className="font-semibold">{angCD.toFixed(0)}°</span></div>
             </div>
             
             {Math.abs(lenAB - lenCD) < 2 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-100 text-green-800 px-4 py-2 rounded-full font-bold text-sm shadow-md border border-green-300 whitespace-nowrap">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-100 text-green-800 px-4 py-2 rounded-full font-bold text-sm shadow-md border border-green-300 whitespace-nowrap dark:text-[#ffffff]">
                 🎉 Chords are Equal! Notice the distances and angles.
               </div>
             )}
@@ -204,20 +204,20 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />
               Assessment
             </h2>
-            <button onClick={nextQuestion} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded-full transition-colors" title="Next Question">
-              <RefreshCw className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+            <button onClick={nextQuestion} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title="Next Question">
+              <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
             </button>
           </div>
           
           <div className="space-y-4">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
-              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-4 leading-relaxed">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
+              <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-4 leading-relaxed">
                 {questions[quizIdx].q}
               </p>
               <div className="flex items-center gap-2">
@@ -225,13 +225,13 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
                   type="number" 
                   value={ans}
                   onChange={(e) => setAns(e.target.value)}
-                  className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Value..."
                 />
               </div>
               <button 
                 onClick={handleCheckQuiz}
-                className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm"
+                className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check Answer
               </button>

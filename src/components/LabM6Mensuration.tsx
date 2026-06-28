@@ -39,9 +39,9 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div ref={containerRef} className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div ref={containerRef} className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
           <ArrowLeft size={24} />
         </button>
@@ -51,17 +51,17 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
       {/* Main Content */}
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
         {/* Left: Controls */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 flex flex-col gap-6 overflow-y-auto">
-          <div className="flex gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto">
+          <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
             <button
               onClick={() => { setMode('2D'); setQuestionType('area'); }}
-              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '2D' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}
+              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '2D' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
             >
               <Ruler size={20} /> 2D Area & Perimeter
             </button>
             <button
               onClick={() => { setMode('3D'); setQuestionType('volume'); }}
-              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}
+              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
             >
               <Box size={20} /> 3D Volume
             </button>
@@ -108,7 +108,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
               </div>
             ) : null}
 
-            <p className="text-sm dark:text-slate-300">
+            <p className="text-sm dark:text-[#a1a1aa]">
               {mode === '2D' && questionType === 'area' && `Calculate the total cost to carpet a room of ${length}m by ${width}m at $${costPerUnit} per sq. meter.`}
               {mode === '2D' && questionType === 'perimeter' && `Calculate the total cost to fence a field of ${length}m by ${width}m at $${costPerUnit} per meter.`}
               {mode === '3D' && `Calculate the capacity of a water tank of ${length}m × ${width}m × ${height}m in liters. (Hint: 1 m³ = 1000 liters)`}
@@ -120,11 +120,11 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
                 placeholder="Enter your answer..."
-                className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
                 onClick={checkAnswer}
-                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check
               </button>
@@ -140,7 +140,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right: Simulation Stage */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 flex flex-col items-center justify-center min-h-[400px]">
+        <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col items-center justify-center min-h-[400px]">
           <h2 className="text-xl font-semibold mb-6 self-start">Simulation Stage</h2>
           <div className="flex-1 min-w-0 w-full flex items-center justify-center relative">
             <svg viewBox="-50 -50 400 400" className="w-full h-full max-h-[500px]">

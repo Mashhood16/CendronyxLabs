@@ -50,14 +50,14 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Structural Biophysics & Stats" subtitle="X-Ray Crystallography & DNA Conformations" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Theory & Context</h2>
-          <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Theory & Context</h2>
+          <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
             <p>
               <strong>X-Ray Crystallography:</strong> Used by Rosalind Franklin to deduce the helical structure of DNA (Photo 51). The "X" pattern indicates a helix, while the distance between layer lines reveals the helical pitch.
             </p>
@@ -68,7 +68,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
                 <li><strong>A-form:</strong> Low hydration, more compact, pitch ~2.8 nm (11 bp/turn).</li>
               </ul>
             </p>
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg mt-4">
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg mt-4">
               <strong>Biostatistics: Standard Deviation</strong>
               <p className="mt-2">Formula for sample SD (<em>s</em>):</p>
               <div className="text-center font-serif text-lg mt-2 mb-2">
@@ -84,12 +84,12 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Interactive */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Diffraction Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Diffraction Simulator</h2>
           
           <div className="flex-1 flex flex-col items-center">
             <div className="mb-4 w-full">
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 <span>Fiber Hydration: {humidity}%</span>
                 <span>{isBForm ? 'B-Form DNA' : 'A-Form DNA'}</span>
               </label>
@@ -100,7 +100,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
               />
             </div>
 
-            <div className="relative w-64 h-64 bg-slate-900 dark:bg-slate-800 rounded-lg flex items-center justify-center shadow-inner overflow-hidden border-4 border-slate-700 dark:border-slate-500">
+            <div className="relative w-64 h-64 bg-[#000000] dark:bg-[#121212] rounded-lg flex items-center justify-center shadow-inner overflow-hidden border-4 border-[#1c1b1b] dark:border-[#1c1b1b]">
               {/* X-ray pattern */}
               <svg viewBox="-100 -100 200 200" className="w-full h-full opacity-80 blur-[1px]">
                 {/* Central spot */}
@@ -128,23 +128,23 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
             <button 
               onClick={takeMeasurements}
-              className="mt-6 flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 font-semibold transition-colors">
+              className="mt-6 flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 font-semibold transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
               <Database className="w-5 h-5" /> Collect Experimental Data
             </button>
           </div>
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Data Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Data Analysis</h2>
           
           <div className="space-y-6">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-2">Raw Measurements (Pitch in nm)</h3>
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">Raw Measurements (Pitch in nm)</h3>
               {measurements.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {measurements.map((m, i) => (
-                    <span key={i} className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 px-3 py-1 rounded font-mono text-sm shadow-sm text-purple-700 font-bold">
+                    <span key={i} className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded font-mono text-sm shadow-sm text-purple-700 font-bold">
                       {m.toFixed(2)}
                     </span>
                   ))}
@@ -156,12 +156,12 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   Calculate the Mean (x̄):
                 </label>
                 <input 
                   type="number" step="0.01"
-                  className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
                   value={meanAns}
                   onChange={e => setMeanAns(e.target.value)}
                   disabled={measurements.length === 0}
@@ -169,12 +169,12 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   Calculate the Sample Standard Deviation (s):
                 </label>
                 <input 
                   type="number" step="0.01"
-                  className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
                   value={sdAns}
                   onChange={e => setSdAns(e.target.value)}
                   disabled={measurements.length === 0}
@@ -185,7 +185,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
             <button 
               onClick={checkAnswers}
               disabled={measurements.length === 0}
-              className="w-full bg-slate-800 dark:bg-slate-800 text-white font-semibold py-2 rounded hover:bg-slate-900 dark:bg-slate-800 transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
+              className="w-full bg-[#121212] dark:bg-[#121212] text-white font-semibold py-2 rounded hover:bg-[#000000] dark:bg-[#121212] transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
               <CheckCircle className="w-5 h-5" /> Verify Calculations
             </button>
 

@@ -80,16 +80,16 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Data Dashboard Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <FileText className="mr-2 text-fuchsia-500" /> Theory & Setup
                     </h2>
-                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+                    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
                         <p>
                             Real-world datasets are often messy. Before visualizing data or feeding it into a machine learning model, you must <strong>clean</strong> it.
                         </p>
@@ -97,7 +97,7 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                             <li>Remove missing values (null/NaN)</li>
                             <li>Filter out extreme outliers</li>
                         </ul>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Central Tendency</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Central Tendency</h3>
                         <p>
                             <strong>Mean:</strong> The average of all values.<br/>
                             <strong>Median:</strong> The middle value when sorted.<br/>
@@ -106,29 +106,29 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                         
                         <div className="mt-6">
                             <h4 className="font-semibold text-fuchsia-800 mb-2">Raw Dataset (First 5 rows)</h4>
-                            <table className="w-full text-sm text-left border-collapse border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                                <thead className="bg-slate-100 dark:bg-slate-800">
+                            <table className="w-full text-sm text-left border-collapse border border-slate-200 dark:border-[#1c1b1b]">
+                                <thead className="bg-slate-100 dark:bg-[#121212]">
                                     <tr>
-                                        <th className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2">ID</th>
-                                        <th className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2">Pet</th>
-                                        <th className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2">Age</th>
+                                        <th className="border border-slate-200 dark:border-[#1c1b1b] p-2">ID</th>
+                                        <th className="border border-slate-200 dark:border-[#1c1b1b] p-2">Pet</th>
+                                        <th className="border border-slate-200 dark:border-[#1c1b1b] p-2">Age</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {rawData.slice(0, 5).map(r => (
                                         <tr key={r.id}>
-                                            <td className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2">{r.id}</td>
-                                            <td className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-red-500 font-medium">{r.pet === null ? 'NULL' : r.pet}</td>
-                                            <td className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-red-500 font-medium">{r.age === null ? 'NULL' : r.age}</td>
+                                            <td className="border border-slate-200 dark:border-[#1c1b1b] p-2">{r.id}</td>
+                                            <td className="border border-slate-200 dark:border-[#1c1b1b] p-2 text-red-500 font-medium">{r.pet === null ? 'NULL' : r.pet}</td>
+                                            <td className="border border-slate-200 dark:border-[#1c1b1b] p-2 text-red-500 font-medium">{r.age === null ? 'NULL' : r.age}</td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                             <div className="mt-4 flex gap-2">
-                                <button onClick={cleanData} className="px-4 py-2 bg-fuchsia-600 text-white rounded-md hover:bg-fuchsia-700 text-sm font-medium">
+                                <button onClick={cleanData} className="px-4 py-2 bg-fuchsia-600 text-white rounded-md hover:bg-fuchsia-700 text-sm font-medium dark:text-white dark:text-white dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-fuchsia-500/40">
                                     Clean Data
                                 </button>
-                                <button onClick={calcStats} className="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-md hover:bg-slate-300 dark:bg-slate-800 text-sm font-medium">
+                                <button onClick={calcStats} className="px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:bg-[#121212] text-sm font-medium">
                                     Calculate Stats
                                 </button>
                             </div>
@@ -137,8 +137,8 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <BarChart2 className="mr-2 text-fuchsia-500" /> Visualization
                     </h2>
                     
@@ -150,16 +150,16 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                             </div>
                         ) : (
                             <div className="w-full">
-                                <h3 className="text-center font-bold text-slate-700 dark:text-slate-200 mb-4">Pet Preferences Chart</h3>
-                                <div className="flex items-end justify-center gap-6 h-48 border-b-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 pb-2">
+                                <h3 className="text-center font-bold text-slate-700 dark:text-[#ffffff] mb-4">Pet Preferences Chart</h3>
+                                <div className="flex items-end justify-center gap-6 h-48 border-b-2 border-slate-300 dark:border-[#1c1b1b] pb-2">
                                     {Object.entries(petCounts).map(([pet, count]) => (
                                         <div key={pet} className="flex flex-col items-center group">
-                                            <span className="text-sm font-bold text-slate-600 dark:text-slate-300 mb-1 opacity-0 group-hover:opacity-100 transition-opacity">{count}</span>
+                                            <span className="text-sm font-bold text-slate-600 dark:text-[#a1a1aa] mb-1 opacity-0 group-hover:opacity-100 transition-opacity">{count}</span>
                                             <div 
                                                 className="w-16 bg-fuchsia-400 rounded-t-sm hover:bg-fuchsia-500 transition-all"
                                                 style={{ height: `${(count / cleaned.length) * 200}px` }}
                                             ></div>
-                                            <span className="mt-2 text-sm font-medium text-slate-700 dark:text-slate-200">{pet}</span>
+                                            <span className="mt-2 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{pet}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -167,15 +167,15 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                                 <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                                     <div className="p-3 bg-fuchsia-50 rounded-lg">
                                         <div className="text-xs text-fuchsia-600 font-bold uppercase tracking-wider">Mean Age</div>
-                                        <div className="text-xl font-black text-slate-800 dark:text-slate-100">{mean?.toFixed(1) || '--'}</div>
+                                        <div className="text-xl font-black text-slate-800 dark:text-[#ffffff]">{mean?.toFixed(1) || '--'}</div>
                                     </div>
                                     <div className="p-3 bg-fuchsia-50 rounded-lg">
                                         <div className="text-xs text-fuchsia-600 font-bold uppercase tracking-wider">Median Age</div>
-                                        <div className="text-xl font-black text-slate-800 dark:text-slate-100">{median || '--'}</div>
+                                        <div className="text-xl font-black text-slate-800 dark:text-[#ffffff]">{median || '--'}</div>
                                     </div>
                                     <div className="p-3 bg-fuchsia-50 rounded-lg">
                                         <div className="text-xs text-fuchsia-600 font-bold uppercase tracking-wider">Mode Age</div>
-                                        <div className="text-xl font-black text-slate-800 dark:text-slate-100">{mode || '--'}</div>
+                                        <div className="text-xl font-black text-slate-800 dark:text-[#ffffff]">{mode || '--'}</div>
                                     </div>
                                 </div>
                             </div>
@@ -184,15 +184,15 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <Activity className="mr-2 text-fuchsia-500" /> Data Log & Assessment
                     </h2>
                     
                     <div className="mb-6 flex-grow">
-                        <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase mb-2">Process Log</h3>
-                        <div className="bg-slate-900 dark:bg-slate-800 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
-                            {logs.length === 0 && <span className="text-slate-500 dark:text-slate-400">Awaiting data pipeline...</span>}
+                        <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">Process Log</h3>
+                        <div className="bg-[#000000] dark:bg-[#121212] rounded-lg p-3 h-48 lg:overflow-y-auto font-mono text-xs text-green-400">
+                            {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">Awaiting data pipeline...</span>}
                             {logs.map((log, i) => (
                                 <div key={i}>{`> ${log}`}</div>
                             ))}
@@ -214,7 +214,7 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                             />
                             <button 
                                 onClick={checkAssessment}
-                                className="px-4 py-2 bg-fuchsia-600 text-white rounded-md hover:bg-fuchsia-700"
+                                className="px-4 py-2 bg-fuchsia-600 text-white rounded-md hover:bg-fuchsia-700 dark:text-white dark:text-white dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-fuchsia-500/40"
                             >
                                 Check
                             </button>

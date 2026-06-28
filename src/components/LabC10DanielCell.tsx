@@ -47,7 +47,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
     const pts = data.map(d => `${(d.t / maxT) * 100},${100 - ((d.v - 1.0) / 0.2) * 100}`).join(' ');
 
     return (
-      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-slate-900 border rounded-lg p-2 overflow-visible">
+      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
         <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
@@ -61,22 +61,22 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none p-4">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4">
 <LabHeader onExit={onExit} title="Galvanic Daniel Cell" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Theory & Setup</h2>
-          <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Theory & Setup</h2>
+          <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
             The Daniel cell consists of a Zinc anode and a Copper cathode. Electrons flow through the external circuit, generating a voltage. The Nernst equation determines the cell potential under non-standard conditions.
           </p>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
             E = E° - (0.0592 / 2) * log₁₀([Zn²⁺]/[Cu²⁺])
           </div>
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Anode [Zn²⁺]: {znConc.toFixed(2)} M</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Anode [Zn²⁺]: {znConc.toFixed(2)} M</label>
               <input 
                 type="range" min="0.01" max="2.0" step="0.01" 
                 value={znConc} onChange={(e) => setZnConc(parseFloat(e.target.value))}
@@ -84,7 +84,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Cathode [Cu²⁺]: {cuConc.toFixed(2)} M</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Cathode [Cu²⁺]: {cuConc.toFixed(2)} M</label>
               <input 
                 type="range" min="0.01" max="2.0" step="0.01" 
                 value={cuConc} onChange={(e) => setCuConc(parseFloat(e.target.value))}
@@ -94,20 +94,20 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 self-start">Simulation Viewer</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">Simulation Viewer</h2>
           
           <div className="w-full flex justify-center space-x-4 mb-6">
-            <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
               {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
               {isPlaying ? 'Disconnect' : 'Connect'}
             </button>
-            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800">
+            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212]">
               <RotateCcw className="w-4 h-4 mr-2" /> Reset
             </button>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
             <svg viewBox="0 0 200 200" className="w-full h-full">
               {/* Beakers */}
               <path d="M 20 100 L 20 180 Q 20 190 30 190 L 80 190 Q 90 190 90 180 L 90 100" fill="none" stroke="#94a3b8" strokeWidth="4" />
@@ -144,19 +144,19 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
-            <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+            <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
               <Save className="w-4 h-4 mr-1" /> Record
             </button>
           </div>
 
           {renderGraph()}
 
-          <div className="mt-4 flex-1 overflow-y-auto min-h-[100px] border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+          <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-3 py-2 border-b">[Zn²⁺] M</th>
                   <th className="px-3 py-2 border-b">[Cu²⁺] M</th>
@@ -165,7 +165,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
               </thead>
               <tbody>
                 {data.map((d, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
                     <td className="px-3 py-2">{d.zn}</td>
                     <td className="px-3 py-2">{d.cu}</td>
                     <td className="px-3 py-2 font-mono text-blue-600">{d.v}</td>
@@ -175,9 +175,9 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
             </table>
           </div>
 
-          <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
-            <h3 className="text-sm font-bold text-blue-900 mb-2">Assessment</h3>
-            <p className="text-sm text-blue-800 mb-3">
+          <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+            <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
               Given E° = 1.10V, calculate the expected cell potential when [Zn²⁺] = {assQ.zn} M and [Cu²⁺] = {assQ.cu} M. (Provide answer to 2 decimal places).
             </p>
             <div className="flex items-center space-x-2">
@@ -188,7 +188,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
                 placeholder="Voltage (V)" 
                 className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
               />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+              <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                 Check
               </button>
             </div>

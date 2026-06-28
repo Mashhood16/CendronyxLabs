@@ -43,16 +43,16 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Industrial Equilibrium" subtitle="Le Chatelier's Principle & Process Optimization" />
 
-      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
+      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:overflow-y-auto">
         {/* Column 1 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-blue-500" /> Theory & Setup
           </h2>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Le Chatelier's Principle</strong> states that if a dynamic equilibrium is disturbed, the position of equilibrium shifts to counteract the change.</p>
             {processType === 'haber' ? (
               <p>The <strong>Haber Process</strong> synthesizes Ammonia: <br/><code>N₂ + 3H₂ ⇌ 2NH₃ (ΔH = -92 kJ/mol)</code>.</p>
@@ -66,7 +66,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
             <div>
               <label className="block text-sm font-semibold mb-1">Industrial Process</label>
               <select 
-                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-[#121212]"
                 value={processType} 
                 onChange={(e) => {
                   setProcessType(e.target.value as 'haber' | 'contact');
@@ -79,8 +79,8 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
               </select>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border space-y-4">
-              <h3 className="font-semibold flex items-center gap-2 text-slate-700 dark:text-slate-200">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border space-y-4">
+              <h3 className="font-semibold flex items-center gap-2 text-slate-700 dark:text-[#ffffff]">
                 <Settings size={18} /> Control Panel
               </h3>
               <div>
@@ -105,12 +105,12 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
         </div>
 
         {/* Column 2 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-blue-500" /> Industrial Reactor
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border p-4 relative">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border p-4 relative">
             <svg viewBox="0 0 300 300" className="w-full h-64 drop-shadow-md">
               <rect x="80" y="50" width="140" height="200" rx="20" fill="#f1f5f9" stroke="#64748b" strokeWidth="6" />
               <rect 
@@ -140,22 +140,22 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
           </div>
 
           <div className="flex justify-center gap-3 mt-2">
-            <button onClick={logData} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+            <button onClick={logData} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
               <Save size={18} /> Log Attempt
             </button>
           </div>
         </div>
 
         {/* Column 3 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-blue-500" /> Data & Analysis
           </h2>
           
-          <div className="h-48 overflow-y-auto border rounded bg-slate-50 dark:bg-slate-900 p-2 text-sm font-mono flex-shrink-0">
+          <div className="h-48 lg:overflow-y-auto border rounded bg-slate-50 dark:bg-[#121212] p-2 text-sm font-mono flex-shrink-0">
             <table className="w-full text-center">
               <thead>
-                <tr className="border-b text-slate-500 dark:text-slate-400">
+                <tr className="border-b text-slate-500 dark:text-[#71717a]">
                   <th className="pb-1">Temp (°C)</th>
                   <th className="pb-1">Pres (atm)</th>
                   <th className="pb-1">Yield (%)</th>
@@ -164,7 +164,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
               <tbody>
                 {logs.length === 0 && <tr><td colSpan={3} className="py-4 text-slate-400">No attempts logged</td></tr>}
                 {logs.map((log, i) => (
-                  <tr key={i} className="border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 last:border-0 hover:bg-slate-100 dark:bg-slate-800">
+                  <tr key={i} className="border-b border-slate-200 dark:border-[#1c1b1b] last:border-0 hover:bg-slate-100 dark:bg-[#121212]">
                     <td className="py-2">{log.t}</td>
                     <td>{log.p}</td>
                     <td className={log.y > 80 ? 'text-green-600 font-bold' : ''}>{log.y}%</td>
@@ -174,17 +174,17 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
             </table>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto">
-            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
               <Gauge size={16}/> Goal Assessment
             </h3>
-            <p className="text-xs text-blue-800 mb-3">
+            <p className="text-xs text-blue-800 mb-3 dark:text-[#ffffff]">
               Your objective is to find a set of conditions that produces a yield of <strong>&gt; 80%</strong>. Manipulate the valves and check if you have met the goal.
             </p>
             <div className="flex gap-2">
               <button 
                 onClick={checkGoal}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Evaluate Current Setup
               </button>

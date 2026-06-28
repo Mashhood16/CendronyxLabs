@@ -66,14 +66,14 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Enzyme Kinetics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-2">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
               Theory & Context
             </h2>
@@ -86,10 +86,10 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="space-y-4 flex-1">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Lab Setup</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Lab Setup</h3>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-slate-200">Select Enzyme</label>
+              <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff]">Select Enzyme</label>
               <div className="flex space-x-2">
                 <button 
                   onClick={() => { setEnzyme('Amylase'); setProgress(0); setIsRunning(false); }}
@@ -107,7 +107,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
             </div>
 
             <div className="space-y-2 pt-4">
-              <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
                 <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> Temperature (°C)</span>
                 <span>{temp}°C</span>
               </label>
@@ -115,7 +115,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
             </div>
 
             <div className="space-y-2 pt-4">
-              <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
                 <span className="flex items-center"><Droplet className="w-4 h-4 mr-1 text-blue-500" /> pH Level</span>
                 <span>{ph}</span>
               </label>
@@ -126,13 +126,13 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
             <Beaker className="w-5 h-5 mr-2 text-emerald-600" />
             Interactive Simulation
           </h2>
           
-          <div className="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1">
+          <div className="relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-[#1c1b1b] flex-1">
             <svg viewBox="0 0 400 300" className="w-full h-full">
               {/* Background gradient for temperature */}
               <rect x="0" y="0" width="400" height="300" fill={temp > 60 ? '#fef2f2' : temp < 10 ? '#f0fdfa' : '#f8fafc'} />
@@ -207,17 +207,17 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Data Logging & Analysis
           </h2>
           
-          <button onClick={handleRecord} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center">
+          <button onClick={handleRecord} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
             <CheckCircle className="w-4 h-4 mr-2" /> Record Current State
           </button>
 
-          <div className="overflow-y-auto max-h-40 mb-6 border rounded-lg">
+          <div className="lg:overflow-y-auto max-h-40 mb-6 border rounded-lg">
             <table className="w-full text-sm text-left">
               <thead className="bg-gray-50 sticky top-0">
                 <tr>
@@ -246,7 +246,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="flex-1 space-y-4">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Assessment</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Assessment</h3>
             <div className="space-y-3">
               <div>
                 <label className="text-sm text-gray-600 block mb-1">1. What is the optimal temperature (°C) for Amylase?</label>
@@ -261,7 +261,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
                 <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="Term..." />
               </div>
             </div>
-            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2">
+            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               Check Answers
             </button>
             {feedback && (

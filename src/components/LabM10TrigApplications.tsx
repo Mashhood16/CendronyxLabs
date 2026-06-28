@@ -48,50 +48,50 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
     const calculatedHeight = eyeHeight + distance * Math.tan((angle * Math.PI) / 180);
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} title="Trigonometry Applications" />
 
             {/* Main Content Grid */}
             <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-indigo-500">
-                    <div className="flex items-center mb-4 text-indigo-800 shrink-0">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-indigo-500">
+                    <div className="flex items-center mb-4 text-indigo-800 shrink-0 dark:text-[#ffffff]">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
                     </div>
-                    <div className="prose prose-indigo flex-1 text-slate-700 dark:text-slate-200">
+                    <div className="prose prose-indigo flex-1 text-slate-700 dark:text-[#ffffff]">
                         <p>
                             Trigonometry allows us to calculate distances and heights that are difficult or impossible to measure directly, such as the height of the <strong>Burj Khalifa</strong> or an aviation sightline.
                         </p>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Angle of Elevation</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Angle of Elevation</h3>
                         <p>
                             The angle of elevation is the angle formed by the line of sight looking upward and the horizontal line. It is measured using an instrument called a <strong>Theodolite</strong> or a Clinometer.
                         </p>
-                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-slate-100">Using Tangent (SOH CAH TOA)</h3>
+                        <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Using Tangent (SOH CAH TOA)</h3>
                         <p>
                             For a right-angled triangle, the tangent function relates the opposite side (height) to the adjacent side (distance):
                         </p>
-                        <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                        <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b]">
                             tan(θ) = Opposite / Adjacent
                         </div>
                         <p>
                             To find the total height of a building, we must also add the height of the observer's eye level from the ground:
                         </p>
-                        <div className="bg-indigo-50 p-3 rounded-lg font-mono text-sm text-indigo-900 border border-indigo-200">
+                        <div className="bg-indigo-50 p-3 rounded-lg font-mono text-sm text-indigo-900 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
                             Height = (Distance × tan(θ)) + Observer Height
                         </div>
                     </div>
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500">
                     <div className="flex items-center mb-4 text-sky-800 shrink-0">
                         <Ruler className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 min-w-0 relative bg-sky-50 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col min-h-[300px]">
+                    <div className="flex-1 min-w-0 relative bg-sky-50 rounded-lg overflow-hidden border border-slate-200 dark:border-[#1c1b1b] flex flex-col min-h-[300px]">
                         <div className="flex-1 min-w-0 relative w-full h-full">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Sky & Ground */}
@@ -127,9 +127,9 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                             </svg>
                         </div>
 
-                        <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4 shrink-0 shadow-inner">
+                        <div className="p-4 bg-slate-50 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner">
                             <div>
-                                <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-slate-200">
+                                <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-[#ffffff]">
                                     <span>Distance to Base (m)</span>
                                     <span className="text-sky-600">{distance} m</span>
                                 </div>
@@ -143,7 +143,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                                 />
                             </div>
                             <div>
-                                <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-slate-200">
+                                <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-[#ffffff]">
                                     <span>Angle of Elevation (°)</span>
                                     <span className="text-red-600">{angle}°</span>
                                 </div>
@@ -156,7 +156,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                                     className="w-full accent-red-500"
                                 />
                             </div>
-                            <div className="text-center text-sm font-bold text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 py-2 rounded">
+                            <div className="text-center text-sm font-bold text-slate-800 dark:text-[#ffffff] bg-slate-100 dark:bg-[#121212] py-2 rounded">
                                 Simulated Height: {calculatedHeight.toFixed(1)} m
                             </div>
                         </div>
@@ -164,7 +164,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-emerald-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-emerald-500">
                     <div className="flex items-center mb-4 text-emerald-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Math Assessment</h2>
@@ -173,31 +173,31 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                     {problem && (
                         <div className="flex-1 min-w-0 flex flex-col space-y-5">
                             <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200">
-                                <p className="text-slate-800 dark:text-slate-100 mb-3 leading-relaxed">
+                                <p className="text-slate-800 dark:text-[#ffffff] mb-3 leading-relaxed">
                                     You are surveying a skyscraper to verify its height. You stand exactly <strong>{problem.distance} meters</strong> away from its base. 
                                     Looking up with your theodolite, you measure an angle of elevation of <strong>{problem.angle}°</strong> to the very top.
                                 </p>
-                                <p className="text-slate-800 dark:text-slate-100 font-semibold">
+                                <p className="text-slate-800 dark:text-[#ffffff] font-semibold">
                                     If your instrument is situated at eye level, which is {problem.eyeHeight} m above the ground, what is the total height of the building?
                                 </p>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">(Round your answer to 1 decimal place)</p>
+                                <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 font-mono">(Round your answer to 1 decimal place)</p>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">Calculated Height (m):</label>
+                                <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Calculated Height (m):</label>
                                 <input
                                     type="number"
                                     step="0.1"
                                     value={userAnswer}
                                     onChange={(e) => setUserAnswer(e.target.value)}
-                                    className="w-full p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition-shadow text-lg font-mono"
+                                    className="w-full p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition-shadow text-lg font-mono"
                                     placeholder="e.g. 150.5"
                                 />
                             </div>
 
                             <button
                                 onClick={checkAnswer}
-                                className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-sm"
+                                className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-sm dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                             >
                                 Check Answer
                             </button>
@@ -212,7 +212,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                             <div className="mt-auto pt-4">
                                 <button
                                     onClick={generateProblem}
-                                    className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-lg transition-colors border border-slate-300 dark:border-slate-700 dark:border-slate-500"
+                                    className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg transition-colors border border-slate-300 dark:border-[#1c1b1b]"
                                 >
                                     <RotateCcw size={20} />
                                     <span>Generate New Problem</span>

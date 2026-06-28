@@ -84,7 +84,7 @@ export default function Login() {
         {/* Back Button */}
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-600 transition-colors mb-6 ml-1 font-medium"
+          className="flex items-center gap-2 text-sm text-slate-500 dark:text-[#71717a] hover:text-blue-600 dark:hover:text-blue-600 transition-colors mb-6 ml-1 font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -99,7 +99,7 @@ export default function Login() {
             <h1 className="text-2xl sm:text-3xl font-bold font-outfit text-slate-800 dark:text-slate-900 tracking-tight mb-1">
               {tab === 'login' ? 'Welcome Back' : 'Create Account'}
             </h1>
-            <p className="text-slate-500 dark:text-slate-500 text-sm">
+            <p className="text-slate-500 dark:text-[#71717a] text-sm">
               {tab === 'login' ? 'Sign in to save your lab progress' : 'Register to track your experiments'}
             </p>
           </div>
@@ -178,7 +178,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={isSubmitting || !loginEmail.trim() || !loginPassword}
-                className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 mt-2"
+                className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 mt-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
               >
                 {isSubmitting ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -296,7 +296,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 mt-2"
+                className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 mt-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
               >
                 {isSubmitting ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -309,7 +309,7 @@ export default function Login() {
 
           {/* Footer */}
           <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-300/60 text-center">
-            <p className="text-xs text-slate-400 dark:text-slate-500">VirtualLab Engine v2.0</p>
+            <p className="text-xs text-slate-400 dark:text-[#71717a]">VirtualLab Engine v2.0</p>
           </div>
         </div>
       </div>

@@ -119,7 +119,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
             key={`blank-${b.id}`}
             value={selections[b.id] || ""}
             onChange={(e) => handleSelect(b.id, e.target.value)}
-            className={`inline-block mx-1 px-2 py-1 bg-white dark:bg-slate-800 border-2 rounded-md text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-0 flex-1
+            className={`inline-block mx-1 px-2 py-1 bg-white dark:bg-[#121212] border-2 rounded-md text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-0 flex-1
               ${isWrong ? 'border-red-500 text-red-600 dark:text-red-400' : `border-${typeClass} text-${typeClass}`}
               ${status === 'published' ? 'pointer-events-none opacity-80' : ''}`}
           >
@@ -136,14 +136,14 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
 
   if (status === "finished") {
     return (
-      <div className="flex flex-col h-screen items-center justify-center bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none p-6">
+      <div className="flex flex-col h-screen items-center justify-center bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none p-6">
         <CheckCircle2 className="w-24 h-24 text-green-500 mb-6" />
         <h1 className="text-4xl font-bold mb-4">Well Done, Advisor!</h1>
         <p className="text-xl mb-8">You successfully helped all readers using proper prepositions and modals.</p>
         <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-8">Final Score: {score}</div>
         <button
           onClick={onExit}
-          className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0"
+          className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
         >
           Return to Dashboard
         </button>
@@ -152,9 +152,9 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700 shrink-0">
+      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
         <div className="flex items-center space-x-4">
           <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
             <ArrowLeft className="w-5 h-5" />
@@ -169,16 +169,16 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
       </header>
 
-      <main className="flex flex-1 overflow-hidden flex-col lg:flex-row">
+      <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">
         {/* Left Column: Interactive Controls / Workspace */}
-        <section className="w-full lg:w-1/2 flex flex-col p-4 sm:p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 relative">
+        <section className="w-full lg:w-1/2 flex flex-col p-4 sm:p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] relative">
           <div className="max-w-2xl w-full mx-auto space-y-6 pb-20 lg:pb-0">
             <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
               <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 flex items-center mb-2">
@@ -191,13 +191,13 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
             </div>
 
             {/* Reader's Letter */}
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 relative">
+            <div className="bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 relative">
               <div className="absolute top-4 right-4 text-4xl opacity-50">{scenario.avatar}</div>
-              <h3 className="font-bold text-slate-500 dark:text-slate-400 flex items-center mb-4 uppercase text-sm tracking-wider">
+              <h3 className="font-bold text-slate-500 dark:text-[#71717a] flex items-center mb-4 uppercase text-sm tracking-wider">
                 <Mail className="w-4 h-4 mr-2" />
                 Incoming Letter
               </h3>
-              <div className="text-lg leading-loose text-slate-700 dark:text-slate-200">
+              <div className="text-lg leading-loose text-slate-700 dark:text-[#ffffff]">
                 {renderTextWithBlanks(scenario.letterParts, scenario.blanks, 'slate-400')}
               </div>
             </div>
@@ -208,13 +208,13 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
                 <User className="w-4 h-4 mr-2" />
                 Your Advice Draft
               </h3>
-              <div className="text-lg leading-loose text-slate-700 dark:text-slate-200">
+              <div className="text-lg leading-loose text-slate-700 dark:text-[#ffffff]">
                 {renderTextWithBlanks(scenario.adviceParts, scenario.adviceBlanks, 'blue-500')}
               </div>
             </div>
 
             {/* Action Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between mt-6 p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row items-center justify-between mt-6 p-4 bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
               <div className="flex-1 mb-4 sm:mb-0">
                 {status === "error" && showErrors && (
                   <div className="flex items-center text-red-600 dark:text-red-400 text-sm font-semibold">
@@ -233,7 +233,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
               {status !== "published" ? (
                 <button
                   onClick={handlePublish}
-                  className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center"
+                  className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Publish Advice
@@ -241,7 +241,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
               ) : (
                 <button
                   onClick={handleNext}
-                  className="w-full sm:w-auto px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center animate-pulse"
+                  className="w-full sm:w-auto px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center animate-pulse dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   Next Case
                   <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
@@ -255,7 +255,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
         <section className="hidden lg:flex w-1/2 bg-slate-200 dark:bg-slate-950 flex-col items-center justify-center p-8 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
           
-          <div className="bg-white text-black w-full max-w-lg aspect-[3/4] shadow-2xl rotate-1 transform transition-transform hover:rotate-0 flex flex-col p-8 relative">
+          <div className="bg-white text-black w-full max-w-lg aspect-[3/4] shadow-2xl rotate-1 transform transition-transform hover:rotate-0 flex flex-col p-8 relative dark:bg-[#121212]">
             {/* Newspaper Header */}
             <div className="border-b-4 border-black pb-4 mb-6 text-center">
               <h1 className="text-4xl font-serif font-black tracking-tighter uppercase flex items-center justify-center">
@@ -303,7 +303,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
             {/* Published Stamp */}
             {status === "published" && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <div className="transform -rotate-12 border-4 border-red-500 text-red-500 font-black text-5xl uppercase tracking-widest p-4 rounded-lg opacity-80 mix-blend-multiply drop-shadow-md bg-white/50">
+                <div className="transform -rotate-12 border-4 border-red-500 text-red-500 font-black text-5xl uppercase tracking-widest p-4 rounded-lg opacity-80 mix-blend-multiply drop-shadow-md bg-white/50 dark:bg-[#121212]">
                   PUBLISHED
                 </div>
               </div>

@@ -94,9 +94,9 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
   }, [currentBatch, trueValue]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none dark:bg-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff]">
       {/* HEADER */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
         <div className="flex items-center gap-3">
           {onExit && (
             <button
@@ -117,13 +117,13 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex-1 items-start">
         
         {/* COLUMN 1: THEORY & SETUP */}
-        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-6">
+        <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
               <Settings className="w-5 h-5 text-blue-500" />
               Sensor Environment
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+            <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
               Simulate taking weather temperature readings. All sensors have inherent thermal noise (Variance). Adjust parameters to see the effect on experimental data.
             </p>
 
@@ -180,7 +180,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
           
           <button
             onClick={takeMeasurements}
-            className="mt-2 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0"
+            className="mt-2 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
           >
             <Play className="w-4 h-4 fill-current" />
             Simulate Readings
@@ -192,13 +192,13 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
         </div>
 
         {/* COLUMN 2: SIMULATION STAGE */}
-        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col items-center min-h-[400px] relative">
+        <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center min-h-[400px] relative">
           <h2 className="text-lg font-semibold text-slate-800 dark:text-white mb-2 flex items-center gap-2 self-start">
             <Target className="w-5 h-5 text-indigo-500" />
             Frequency Distribution vs Theoretical Probability
           </h2>
           
-          <div className="w-full h-64 mt-4 relative border-b-2 border-l-2 border-slate-300 dark:border-slate-600">
+          <div className="w-full h-64 mt-4 relative border-b-2 border-l-2 border-slate-300 dark:border-[#1c1b1b]">
             {currentBatch.length > 0 ? (
               <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                 {/* Histogram Bars */}
@@ -249,7 +249,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
             )}
           </div>
 
-          <div className="w-full flex justify-between mt-2 text-xs text-slate-500 dark:text-slate-400 font-mono px-2">
+          <div className="w-full flex justify-between mt-2 text-xs text-slate-500 dark:text-[#71717a] font-mono px-2">
             <span>{currentBatch.length > 0 ? minVal.toFixed(1) : '15.0'} °C</span>
             <span>{currentBatch.length > 0 ? trueValue.toFixed(1) : '25.0'} °C</span>
             <span>{currentBatch.length > 0 ? maxVal.toFixed(1) : '35.0'} °C</span>
@@ -271,11 +271,11 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
         <div className="flex flex-col gap-4">
           
           {/* Data Table */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[300px] flex flex-col">
+          <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
             <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">Batch Analytics</h2>
-            <div className="overflow-y-auto flex-1">
+            <div className="lg:overflow-y-auto flex-1">
               <table className="w-full text-sm text-left">
-                <thead className="sticky top-0 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                <thead className="sticky top-0 bg-white dark:bg-[#121212] text-slate-500 dark:text-[#71717a]">
                   <tr>
                     <th className="py-2">Batch</th>
                     <th className="py-2">n</th>
@@ -285,7 +285,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
                 </thead>
                 <tbody>
                   {history.map(h => (
-                    <tr key={h.id} className="border-t border-slate-100 dark:border-slate-700">
+                    <tr key={h.id} className="border-t border-slate-100 dark:border-[#1c1b1b]">
                       <td className="py-2">#{h.id}</td>
                       <td className="py-2">{h.n}</td>
                       <td className="py-2 font-mono text-emerald-600 dark:text-emerald-400">{h.mean.toFixed(2)}</td>
@@ -303,12 +303,12 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
           </div>
 
           {/* Assessment */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
               <Activity className="w-5 h-5 text-amber-500" />
               QC Assessment
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+            <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
               During quality control, a technician pulls 5 sensor readings: <br/>
               <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">24.5, 25.1, 24.8, 25.5, 25.1</span><br/>
               Calculate the sample variance (s²).
@@ -320,11 +320,11 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
                 value={assessmentAnswer}
                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                 placeholder="e.g. 0.25"
-                className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
               />
               <button
                 onClick={checkAssessment}
-                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0"
+                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
               >
                 Check Answer
               </button>

@@ -51,7 +51,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Atomic Structure & Mass Spectrometry" />
 
@@ -59,35 +59,35 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
               <Activity className="w-5 h-5 text-indigo-500" />
               Theory
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
               A mass spectrometer separates isotopes based on their mass-to-charge ratio. Ions are accelerated by an electric field and then deflected by a magnetic field. 
               The radius of curvature \( r \) of their path is proportional to the square root of their mass \( m \):
             </p>
-            <div className="bg-indigo-50 p-4 rounded-lg text-center font-mono text-indigo-800 text-sm mb-4">
+            <div className="bg-indigo-50 p-4 rounded-lg text-center font-mono text-indigo-800 text-sm mb-4 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               r ∝ √(m · V) / B
             </div>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
               Adjust the <strong>Accelerating Voltage (V)</strong> and <strong>Magnetic Field (B)</strong> to see how Neon isotopes (Ne-20, Ne-21, Ne-22) separate!
             </p>
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Instrument Controls</h3>
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Instrument Controls</h3>
             
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Magnetic Field: {bField.toFixed(2)} T</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Magnetic Field: {bField.toFixed(2)} T</label>
             <input 
               type="range" min="0.5" max="2.0" step="0.1" 
               value={bField} onChange={(e) => setBField(parseFloat(e.target.value))}
               className="w-full mb-4 accent-indigo-600"
             />
 
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Accelerating Voltage: {voltage} V</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Accelerating Voltage: {voltage} V</label>
             <input 
               type="range" min="500" max="2000" step="100" 
               value={voltage} onChange={(e) => setVoltage(parseFloat(e.target.value))}
@@ -96,7 +96,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
 
             <button 
               onClick={handleRunMassSpec}
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors"
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Play className="w-4 h-4" /> Fire Ion Gun
             </button>
@@ -104,10 +104,10 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 2: Simulation Visualizer */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 w-full mb-4">Mass Spectrometer Tube</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] w-full mb-4">Mass Spectrometer Tube</h2>
           
-          <svg viewBox="0 0 400 300" className="w-full h-80 bg-slate-100 dark:bg-slate-800 rounded-lg shadow-inner overflow-hidden">
+          <svg viewBox="0 0 400 300" className="w-full h-80 bg-slate-100 dark:bg-[#121212] rounded-lg shadow-inner overflow-hidden">
             <rect x="100" y="0" width="250" height="300" fill="#e2e8f0" opacity="0.5" />
             <text x="225" y="20" className="text-xs fill-slate-500 text-center font-semibold" textAnchor="middle">Magnetic Field (B) Region</text>
 
@@ -142,15 +142,15 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Data Logging & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div className="flex-1">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />
               Data Log
             </h2>
-            <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+            <div className="overflow-x-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200">
+                <thead className="bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff]">
                   <tr>
                     <th className="px-3 py-2">B (T)</th>
                     <th className="px-3 py-2">V (V)</th>
@@ -160,7 +160,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
                 </thead>
                 <tbody>
                   {logs.length === 0 ? (
-                    <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-500 dark:text-slate-400 italic">No data recorded.</td></tr>
+                    <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded.</td></tr>
                   ) : (
                     logs.map((l, i) => (
                       <tr key={i} className="border-b border-slate-100">
@@ -176,12 +176,12 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
               <Calculator className="w-5 h-5 text-amber-500" />
               Analysis
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               An unknown isotope of element X has a mass of <strong>{unknownIsotopeMass} amu</strong>. 
               Based on the instrument settings (V={voltage} V, B={bField} T), calculate its expected <strong>radius of curvature</strong> on the detector.
             </p>
@@ -189,9 +189,9 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
               <input 
                 type="number" step="0.1" placeholder="Radius..." 
                 value={answerRadius} onChange={(e) => setAnswerRadius(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
               />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+              <button onClick={checkAnswer} className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                 <Target className="w-4 h-4" /> Check
               </button>
             </div>

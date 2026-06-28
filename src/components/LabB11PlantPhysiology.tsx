@@ -110,15 +110,15 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} variant="amber" title="Plant Physiology Virtual Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-r lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
@@ -159,8 +159,8 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-100 dark:bg-slate-800 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-slate-50 dark:bg-slate-900 rounded-lg p-1 shadow-sm mb-6 shrink-0">
+        <div className="bg-slate-100 dark:bg-[#121212] p-6 flex flex-col lg:overflow-y-auto">
+          <div className="flex bg-slate-50 dark:!bg-[#121212] rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'water' ? 'bg-emerald-100 text-emerald-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => setActiveTab('water')}
@@ -177,10 +177,10 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
           {activeTab === 'water' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-gray-800 dark:text-slate-200">Potato Core Plasmolysis</h3>
-                  <div className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">
+                  <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">Potato Core Plasmolysis</h3>
+                  <div className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium dark:bg-teal-950/20 dark:border-teal-900">
                     Initial Mass: 5.00g
                   </div>
                 </div>
@@ -206,14 +206,14 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                   </svg>
                   <div className="mt-4 text-center">
                     <p className="text-sm font-medium text-gray-600">Current Mass</p>
-                    <p className="text-3xl font-bold text-gray-800 dark:text-slate-200">{currentMass.toFixed(2)}g</p>
+                    <p className="text-3xl font-bold text-gray-800 dark:text-[#ffffff]">{currentMass.toFixed(2)}g</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700 dark:text-slate-200">Sucrose Molarity</label>
+                      <label className="font-medium text-gray-700 dark:text-[#ffffff]">Sucrose Molarity</label>
                       <span className="text-emerald-700 font-bold">{sucroseMolarity.toFixed(1)} M</span>
                     </div>
                     <input 
@@ -229,14 +229,14 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                     <button 
                       onClick={handleTestPotato}
                       disabled={isSimulatingWP}
-                      className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors disabled:opacity-50"
+                      className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                     >
                       {isSimulatingWP ? 'Incubating...' : 'Submerge Potato (1 Hr)'}
                     </button>
                     <button 
                       onClick={clearData}
                       disabled={isSimulatingWP || dataPoints.length === 0}
-                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-medium transition-colors disabled:opacity-50"
+                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors disabled:opacity-50"
                     >
                       Clear Data
                     </button>
@@ -248,10 +248,10 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
           {activeTab === 'xylem' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-gray-800 dark:text-slate-200">Celery Transpiration</h3>
-                  <div className="text-sm bg-amber-50 text-amber-700 px-3 py-1 rounded-full font-medium">
+                  <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">Celery Transpiration</h3>
+                  <div className="text-sm bg-amber-50 text-amber-700 px-3 py-1 rounded-full font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
                     Time: {timePassed.toFixed(0)} min
                   </div>
                 </div>
@@ -277,7 +277,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700 dark:text-slate-200 flex items-center gap-1"><Activity size={14}/> Temperature (°C)</label>
+                      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Activity size={14}/> Temperature (°C)</label>
                       <span className="text-emerald-700 font-bold">{temperature}°C</span>
                     </div>
                     <input 
@@ -289,7 +289,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700 dark:text-slate-200 flex items-center gap-1"><Droplets size={14}/> Humidity (%)</label>
+                      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Droplets size={14}/> Humidity (%)</label>
                       <span className="text-emerald-700 font-bold">{humidity}%</span>
                     </div>
                     <input 
@@ -302,7 +302,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                   <button 
                     onClick={startXylem}
                     disabled={isSimulatingXylem}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors disabled:opacity-50"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                   >
                     {isSimulatingXylem ? 'Simulating...' : 'Start Experiment'}
                   </button>
@@ -313,13 +313,13 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Assessment & Data */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Data Analysis</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-l flex flex-col lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Data Analysis</h2>
           
           {activeTab === 'water' && (
             <>
-              <div className="bg-slate-50 dark:bg-slate-900 border rounded-xl p-4 mb-6">
-                <h3 className="font-semibold text-sm text-gray-700 dark:text-slate-200 mb-2">Recorded Measurements</h3>
+              <div className="bg-slate-50 dark:bg-[#121212] border rounded-xl p-4 mb-6">
+                <h3 className="font-semibold text-sm text-gray-700 dark:text-[#ffffff] mb-2">Recorded Measurements</h3>
                 {dataPoints.length === 0 ? (
                   <p className="text-sm text-gray-400 italic text-center py-4">No data collected yet. Run the simulation.</p>
                 ) : (
@@ -333,7 +333,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                       </thead>
                       <tbody>
                         {dataPoints.map((dp, i) => (
-                          <tr key={i} className="border-b last:border-0 border-gray-200 bg-slate-50 dark:bg-slate-900">
+                          <tr key={i} className="border-b last:border-0 border-gray-200 bg-slate-50 dark:bg-[#121212]">
                             <td className="px-3 py-2 font-medium">{dp.m.toFixed(1)}</td>
                             <td className={`px-3 py-2 font-bold ${dp.change > 0 ? 'text-blue-600' : dp.change < 0 ? 'text-red-600' : 'text-gray-600'}`}>
                               {dp.change > 0 ? '+' : ''}{dp.change}%
@@ -392,7 +392,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
             
             <div className="space-y-4 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">
                   1. Based on your data, what is the isotonic sucrose concentration? (M)
                 </label>
                 <input 
@@ -406,7 +406,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">
                   2. Calculate the solute potential (Ψs) of the potato cells at 20°C in bars.
                 </label>
                 <input 
@@ -424,13 +424,13 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
               <button 
                 onClick={checkAnswers}
                 disabled={assessmentStatus === 'checking'}
-                className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70 dark:text-white dark:text-white dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
               >
                 {assessmentStatus === 'checking' ? 'Evaluating...' : 'Check Answers'}
               </button>
 
               {assessmentStatus === 'passed' && (
-                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium">
+                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium dark:text-[#ffffff]">
                   <CheckCircle size={18} /> Correct! The isotonic point is ~0.3M and Ψs is -7.3 bars.
                 </div>
               )}

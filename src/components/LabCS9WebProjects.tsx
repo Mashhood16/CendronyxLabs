@@ -101,14 +101,14 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
-      <div className="flex items-center justify-between bg-emerald-600 text-white p-4 shadow-md">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
+      <div className="flex items-center justify-between bg-emerald-600 text-white p-4 shadow-md dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
         <LabHeader onExit={onExit} title="Web Development Projects IDE" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory & Projects */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4">
           <h2 className="text-xl font-bold flex items-center gap-2 text-emerald-700">
             <BookOpen size={24} /> Select a Project
           </h2>
@@ -117,18 +117,18 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
               <button
                 key={proj.id}
                 onClick={() => handleProjectSwitch(idx)}
-                className={`p-3 text-left rounded-lg border-2 transition-all ${activeProjectIdx === idx ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-800' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-emerald-300'}`}
+                className={`p-3 text-left rounded-lg border-2 transition-all ${activeProjectIdx === idx ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-800' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300'}`}
               >
                 {proj.title}
               </button>
             ))}
           </div>
           
-          <div className="mt-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1 flex flex-col">
+          <div className="mt-4 p-4 bg-slate-100 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-1 flex flex-col">
             <h3 className="font-bold text-lg mb-2">{activeProject.title}</h3>
-            <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm leading-relaxed">{activeProject.description}</p>
+            <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 text-sm leading-relaxed">{activeProject.description}</p>
             
-            <h4 className="font-bold text-sm text-slate-700 dark:text-slate-200 mb-2 flex items-center gap-1">
+            <h4 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-2 flex items-center gap-1">
               <CheckSquare size={16} /> Requirements Checklist
             </h4>
             <div className="space-y-2 flex-1">
@@ -136,10 +136,10 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
                 const isMet = req.validator(debouncedCode);
                 return (
                   <div key={req.id} className="flex items-start gap-2 text-sm">
-                    <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isMet ? 'bg-green-500 text-white' : 'bg-slate-300 dark:bg-slate-800'}`}>
+                    <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${isMet ? 'bg-green-500 text-white' : 'bg-slate-300 dark:bg-[#121212]'}`}>
                       {isMet && <CheckSquare size={12} />}
                     </div>
-                    <span className={isMet ? 'text-green-700 line-through opacity-70' : 'text-slate-600 dark:text-slate-300'}>
+                    <span className={isMet ? 'text-green-700 line-through opacity-70' : 'text-slate-600 dark:text-[#ffffff]'}>
                       {req.text}
                     </span>
                   </div>
@@ -147,20 +147,20 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
               })}
             </div>
             
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-               <h4 className="font-bold text-blue-800 mb-1 text-sm">Tip:</h4>
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
+               <h4 className="font-bold text-blue-800 mb-1 text-sm dark:text-[#ffffff]">Tip:</h4>
                <p className="text-blue-700 text-xs">Write your HTML in the middle column. The preview on the right will update automatically after half a second.</p>
             </div>
           </div>
         </div>
 
         {/* Middle Column: IDE */}
-        <div className="bg-[#1e1e1e] p-4 rounded-xl shadow-sm border border-slate-800 dark:border-slate-500 flex flex-col text-slate-100">
+        <div className="bg-[#1e1e1e] p-4 rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col text-slate-100">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-blue-400">
             <Code size={24} /> HTML Editor
           </h2>
           <textarea
-            className="flex-1 w-full bg-[#1e1e1e] text-[#d4d4d4] p-2 font-mono text-sm focus:outline-none resize-none border border-slate-700 dark:border-slate-500 rounded-lg"
+            className="flex-1 w-full bg-[#1e1e1e] text-[#d4d4d4] p-2 font-mono text-sm focus:outline-none resize-none border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg"
             value={code}
             onChange={(e) => setCode(e.target.value)}
             spellCheck={false}
@@ -168,15 +168,15 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
         </div>
 
         {/* Right Column: Live Preview */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-700">
             <Layout size={24} /> Live Preview
           </h2>
-          <div className="flex-1 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900">
+          <div className="flex-1 border border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-slate-50 dark:bg-[#121212]">
             <iframe
               title="preview"
               srcDoc={debouncedCode}
-              className="w-full h-full bg-slate-50 dark:bg-slate-900"
+              className="w-full h-full bg-slate-50 dark:bg-[#121212]"
               sandbox="allow-scripts"
             />
           </div>

@@ -44,31 +44,31 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans">
       <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" />
 
       <div className="flex-1 p-6 max-w-5xl mx-auto w-full flex flex-col">
         
         {/* Unsorted Items */}
         <div className="mb-8">
-          <h2 className="text-lg font-bold text-slate-700 dark:text-slate-200 mb-4 text-center">Unsorted Traits (Click to assign)</h2>
+          <h2 className="text-lg font-bold text-slate-700 dark:text-[#ffffff] mb-4 text-center">Unsorted Traits (Click to assign)</h2>
           <div className="flex flex-wrap gap-3 justify-center">
             {items.map(trait => (
               <div 
                 key={trait.id}
-                className="bg-slate-50 dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 flex flex-col gap-2 min-w-[200px]"
+                className="bg-slate-50 dark:!bg-[#121212] border-2 border-slate-300 dark:border-[#1c1b1b] shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 dark:text-[#ffffff] flex flex-col gap-2 min-w-[200px]"
               >
                 <span className="text-center">{trait.name}</span>
                 <div className="flex gap-2">
                   <button 
                     onClick={() => handleDrop(trait, 'continuous')}
-                    className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 py-1 rounded text-xs font-bold transition-colors"
+                    className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 py-1 rounded text-xs font-bold transition-colors dark:bg-teal-950/20 dark:border-teal-900"
                   >
                     Continuous
                   </button>
                   <button 
                     onClick={() => handleDrop(trait, 'discontinuous')}
-                    className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 py-1 rounded text-xs font-bold transition-colors"
+                    className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 py-1 rounded text-xs font-bold transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
                   >
                     Discontinuous
                   </button>
@@ -76,7 +76,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
               </div>
             ))}
             {items.length === 0 && (
-              <div className="text-green-600 font-bold text-lg flex items-center gap-2 bg-green-50 px-6 py-3 rounded-full border border-green-200">
+              <div className="text-green-600 font-bold text-lg flex items-center gap-2 bg-green-50 px-6 py-3 rounded-full border border-green-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
                 <CheckCircle2 className="w-6 h-6" /> All traits sorted correctly!
               </div>
             )}
@@ -93,13 +93,13 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
         <div className="flex flex-col md:flex-row gap-6 flex-1">
           
           {/* Continuous */}
-          <div className="flex-1 bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 flex flex-col shadow-inner">
-            <h3 className="font-bold text-blue-900 text-xl mb-2 text-center border-b border-blue-200 pb-2">Continuous Variation</h3>
+          <div className="flex-1 bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-bold text-blue-900 text-xl mb-2 text-center border-b border-blue-200 pb-2 dark:text-[#ffffff]">Continuous Variation</h3>
             <p className="text-sm text-blue-700 text-center mb-6">Traits that change gradually over a range of values (can be measured).</p>
             
             <div className="flex-1 flex flex-col gap-3">
               {continuous.map(trait => (
-                <div key={trait.id} className="bg-slate-50 dark:bg-slate-900 px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 dark:!bg-[#121212] px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between dark:text-[#ffffff]">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}
@@ -107,13 +107,13 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
           </div>
 
           {/* Discontinuous */}
-          <div className="flex-1 bg-purple-50 border-2 border-purple-200 rounded-2xl p-6 flex flex-col shadow-inner">
-            <h3 className="font-bold text-purple-900 text-xl mb-2 text-center border-b border-purple-200 pb-2">Discontinuous Variation</h3>
+          <div className="flex-1 bg-purple-50 border-2 border-purple-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-purple-900 text-xl mb-2 text-center border-b border-purple-200 pb-2 dark:text-[#ffffff]">Discontinuous Variation</h3>
             <p className="text-sm text-purple-700 text-center mb-6">Traits that fall into distinct categories (you either have it or you don't).</p>
             
             <div className="flex-1 flex flex-col gap-3">
               {discontinuous.map(trait => (
-                <div key={trait.id} className="bg-slate-50 dark:bg-slate-900 px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 dark:!bg-[#121212] px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between dark:text-[#ffffff]">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}

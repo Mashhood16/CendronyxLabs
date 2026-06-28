@@ -107,27 +107,27 @@ export default function LabM10Vectors({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab M10: Vectors & Scalars" />
 
       <div className="flex-1 min-w-0 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-blue-600" />
             Theory & Concepts
           </h2>
-          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
             <p>
-              <strong className="text-slate-800 dark:text-slate-100">Scalars</strong> are physical quantities that have only a magnitude (size). 
+              <strong className="text-slate-800 dark:text-[#ffffff]">Scalars</strong> are physical quantities that have only a magnitude (size). 
               Examples include mass, time, temperature, and energy.
             </p>
             <p>
-              <strong className="text-slate-800 dark:text-slate-100">Vectors</strong> are physical quantities that have both a magnitude and a direction. 
+              <strong className="text-slate-800 dark:text-[#ffffff]">Vectors</strong> are physical quantities that have both a magnitude and a direction. 
               Examples include velocity, acceleration, force, and displacement.
             </p>
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-              <h3 className="font-semibold text-blue-800 mb-2">Vector Addition</h3>
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+              <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">Vector Addition</h3>
               <p className="text-blue-700">
                 When adding two vectors, you can use the parallelogram method. Place both vectors starting from the same origin. 
                 The resultant vector (their sum) is the diagonal of the parallelogram formed by the two vectors.
@@ -138,7 +138,7 @@ export default function LabM10Vectors({ onExit }: LabProps) {
 
         {/* Middle Column: Interactive Lab */}
         <div className="flex flex-col gap-4">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden relative h-[400px]">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden relative h-[400px]">
             <svg 
               ref={svgRef} 
               className="w-full h-full touch-none" 
@@ -173,26 +173,26 @@ export default function LabM10Vectors({ onExit }: LabProps) {
               <circle cx={uSvg.x} cy={uSvg.y} r={8} fill="#3b82f6" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('U')} />
               <circle cx={vSvg.x} cy={vSvg.y} r={8} fill="#ef4444" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('V')} />
             </svg>
-            <div className="absolute top-2 left-2 bg-slate-50 dark:bg-slate-900/90 p-2 rounded text-xs border border-slate-200 dark:border-slate-700 dark:border-slate-500 pointer-events-none">
+            <div className="absolute top-2 left-2 bg-slate-50 dark:bg-[#121212]/90 p-2 rounded text-xs border border-slate-200 dark:border-[#1c1b1b] pointer-events-none">
               <div className="text-blue-600 font-bold">Vector U (Blue): {uMag} units</div>
               <div className="text-red-600 font-bold">Vector V (Red): {vMag} units</div>
               <div className="text-green-600 font-bold">Resultant U+V: {sumMag} units</div>
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
-            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Classify Quantities</h3>
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4">
+            <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Classify Quantities</h3>
             <div className="flex gap-2 flex-wrap mb-4 min-h-[30px]">
               {items.filter(i => i.status === 'pool').map(item => (
-                <button key={item.id} onClick={() => setSelectedItem(item.id)} className={`px-3 py-1 text-sm rounded-full border ${selectedItem === item.id ? 'bg-blue-100 border-blue-400' : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}>
+                <button key={item.id} onClick={() => setSelectedItem(item.id)} className={`px-3 py-1 text-sm rounded-full border ${selectedItem === item.id ? 'bg-blue-100 border-blue-400' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b]'}`}>
                   {item.text}
                 </button>
               ))}
               {items.filter(i => i.status === 'pool').length === 0 && <span className="text-sm text-slate-400 italic">All items classified</span>}
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-slate-900 transition-colors" onClick={() => moveItem('scalar')}>
-                <div className="font-bold text-center text-slate-500 dark:text-slate-400 mb-2">Scalars</div>
+              <div className="border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors" onClick={() => moveItem('scalar')}>
+                <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">Scalars</div>
                 <div className="flex flex-col gap-1">
                   {items.filter(i => i.status === 'scalar').map(item => (
                     <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-blue-400' : ''}`}>
@@ -201,8 +201,8 @@ export default function LabM10Vectors({ onExit }: LabProps) {
                   ))}
                 </div>
               </div>
-              <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-slate-900 transition-colors" onClick={() => moveItem('vector')}>
-                <div className="font-bold text-center text-slate-500 dark:text-slate-400 mb-2">Vectors</div>
+              <div className="border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors" onClick={() => moveItem('vector')}>
+                <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">Vectors</div>
                 <div className="flex flex-col gap-1">
                   {items.filter(i => i.status === 'vector').map(item => (
                     <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-red-50 text-red-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-red-400' : ''}`}>
@@ -222,23 +222,23 @@ export default function LabM10Vectors({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />
               Assessment
             </h2>
-            <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded-full transition-colors" title="New Question">
-              <RefreshCw className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+            <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title="New Question">
+              <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
             </button>
           </div>
           
           <div className="space-y-4">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
-              <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
-                A drone flies exactly <strong className="text-slate-900 dark:text-slate-200">{qX} km North</strong>, and then turns and flies <strong className="text-slate-900 dark:text-slate-200">{qY} km East</strong>.
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
+              <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
+                A drone flies exactly <strong className="text-slate-900 dark:text-[#ffffff]">{qX} km North</strong>, and then turns and flies <strong className="text-slate-900 dark:text-[#ffffff]">{qY} km East</strong>.
               </p>
-              <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">
+              <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-2">
                 What is the magnitude of its total displacement from the starting point?
               </p>
               <div className="flex items-center gap-2">
@@ -246,14 +246,14 @@ export default function LabM10Vectors({ onExit }: LabProps) {
                   type="number" 
                   value={ans}
                   onChange={(e) => setAns(e.target.value)}
-                  className="border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="e.g. 5"
                 />
-                <span className="text-sm text-slate-500 dark:text-slate-400">km</span>
+                <span className="text-sm text-slate-500 dark:text-[#71717a]">km</span>
               </div>
               <button 
                 onClick={handleCheckQuiz}
-                className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm"
+                className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check Answer
               </button>

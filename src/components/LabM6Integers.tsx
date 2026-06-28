@@ -31,20 +31,20 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm z-10">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
         <div className="flex items-center gap-4">
           <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title="Go Back">
             <ArrowLeft className="w-6 h-6" />
           </button>
           <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Integers</h1>
         </div>
-        <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1">
+        <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
           <button
             onClick={() => setActiveTab('TEMP')}
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
-              activeTab === 'TEMP' ? 'bg-white dark:bg-slate-800 shadow-sm text-red-600 dark:text-red-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+              activeTab === 'TEMP' ? 'bg-white dark:bg-[#121212] shadow-sm text-red-600 dark:text-red-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
             Temperature
@@ -52,7 +52,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
           <button
             onClick={() => setActiveTab('DEPTH')}
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
-              activeTab === 'DEPTH' ? 'bg-white dark:bg-slate-800 shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+              activeTab === 'DEPTH' ? 'bg-white dark:bg-[#121212] shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
             Depth Gauge
@@ -64,7 +64,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
       <div className="flex flex-1 overflow-hidden">
         
         {/* Left Column: Controls & Workspace */}
-        <div className="w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col gap-6">
+        <div className="w-1/2 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col gap-6">
           {activeTab === 'TEMP' ? (
             <>
               <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl border border-orange-100 dark:border-orange-800/50">
@@ -85,7 +85,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                     onChange={(e) => setTempValue(parseInt(e.target.value))}
                     className="w-full accent-red-500"
                   />
-                  <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex justify-between text-xs text-slate-500 dark:text-[#71717a]">
                     <span>-150°C</span>
                     <span>0°C</span>
                     <span>150°C</span>
@@ -98,7 +98,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mt-auto">
+              <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
                 <h3 className="font-semibold text-lg mb-3">Solve</h3>
                 <p className="text-sm mb-4">What is the difference in temperature between a Moon Day (120°C) and a Moon Night (-130°C)?</p>
                 <div className="flex gap-3">
@@ -107,11 +107,11 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                     value={tempAns}
                     onChange={(e) => setTempAns(e.target.value)}
                     placeholder="Difference in °C"
-                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-red-500 outline-none"
+                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:ring-2 focus:ring-red-500 outline-none"
                   />
                   <button 
                     onClick={handleTempCheck}
-                    className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
                   >
                     Check
                   </button>
@@ -147,7 +147,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                     onChange={(e) => setDepthValue(parseInt(e.target.value))}
                     className="w-full accent-blue-600"
                   />
-                  <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex justify-between text-xs text-slate-500 dark:text-[#71717a]">
                     <span>-100m</span>
                     <span>0m</span>
                     <span>+100m</span>
@@ -160,7 +160,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mt-auto">
+              <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
                 <h3 className="font-semibold text-lg mb-3">Solve</h3>
                 <p className="text-sm mb-4">A submarine is initially at <strong>-40m</strong>. It ascends (moves up) by <strong>15m</strong>. What is its new position?</p>
                 <div className="flex gap-3">
@@ -169,11 +169,11 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                     value={depthAns}
                     onChange={(e) => setDepthAns(e.target.value)}
                     placeholder="New depth in m"
-                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <button 
                     onClick={handleDepthCheck}
-                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     Check
                   </button>
@@ -193,7 +193,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-1/2 relative overflow-hidden flex flex-col bg-slate-900">
+        <div className="w-1/2 relative overflow-hidden flex flex-col bg-[#000000]">
           {activeTab === 'TEMP' ? (
             <div className={`w-full h-full flex items-center justify-center transition-colors duration-700 ${
               tempValue > 50 ? 'bg-gradient-to-b from-orange-400 to-red-700' : 
@@ -217,10 +217,10 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                 </div>
                 
                 {/* Thermometer Body */}
-                <div className="w-12 h-96 bg-white/20 backdrop-blur-md rounded-t-full rounded-b-full border-4 border-white/50 p-1 relative flex flex-col justify-end shadow-2xl z-10 overflow-hidden">
+                <div className="w-12 h-96 bg-white/20 backdrop-blur-md rounded-t-full rounded-b-full border-4 border-white/50 p-1 relative flex flex-col justify-end shadow-2xl z-10 overflow-hidden dark:!bg-[#121212]">
                   {/* Liquid */}
                   <div 
-                    className="w-full bg-red-500 rounded-t-full rounded-b-full transition-all duration-500 ease-out origin-bottom"
+                    className="w-full bg-red-500 rounded-t-full rounded-b-full transition-all duration-500 ease-out origin-bottom dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
                     style={{ height: `${((tempValue + 150) / 300) * 100}%` }}
                   ></div>
                 </div>
@@ -234,7 +234,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
               
               {/* Environment effects */}
               {tempValue <= -100 && (
-                <div className="absolute bottom-0 w-full h-48 bg-slate-800 rounded-t-[100px] opacity-80 backdrop-blur-sm shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                <div className="absolute bottom-0 w-full h-48 bg-[#121212] rounded-t-[100px] opacity-80 backdrop-blur-sm shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex items-center justify-center">
                   <span className="text-slate-400 font-bold tracking-widest uppercase">Moon Surface (Night)</span>
                 </div>
               )}
@@ -251,7 +251,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
               
               {/* Sea Level Line */}
               <div className="absolute top-1/2 w-full border-t-2 border-dashed border-white/50 flex items-center justify-start px-4 z-10">
-                <span className="text-white font-bold bg-blue-600/80 px-2 py-1 rounded shadow-md text-xs -mt-8">Sea Level (0m)</span>
+                <span className="text-white font-bold bg-blue-600/80 px-2 py-1 rounded shadow-md text-xs -mt-8 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Sea Level (0m)</span>
               </div>
               
               {/* Ruler Ticks */}
@@ -271,22 +271,22 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
                 {depthValue > 0 ? (
                   // Drone SVG
                   <div className="flex flex-col items-center">
-                    <div className="w-16 h-4 bg-slate-800 dark:bg-slate-200 rounded-full flex justify-between px-1 items-center">
+                    <div className="w-16 h-4 bg-[#121212] dark:bg-slate-200 rounded-full flex justify-between px-1 items-center">
                       <div className="w-4 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse"></div>
                       <div className="w-4 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse"></div>
                     </div>
                     <div className="w-8 h-6 bg-slate-700 dark:bg-slate-300 rounded-b-xl flex items-center justify-center">
                       <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
                     </div>
-                    <span className="mt-2 text-white font-bold bg-slate-900/80 px-2 py-0.5 rounded shadow-lg">{depthValue}m</span>
+                    <span className="mt-2 text-white font-bold bg-[#000000]/80 px-2 py-0.5 rounded shadow-lg">{depthValue}m</span>
                   </div>
                 ) : (
                   // Submarine SVG
                   <div className="flex flex-col items-center">
                     <div className="w-24 h-10 bg-yellow-400 dark:bg-yellow-500 rounded-full relative shadow-lg">
                       {/* Periscope */}
-                      <div className="absolute top-[-12px] left-6 w-4 h-6 bg-yellow-500 dark:bg-yellow-600 rounded-t-sm">
-                        <div className="w-6 h-2 bg-yellow-600 dark:bg-yellow-700 rounded-full absolute top-0 -left-1"></div>
+                      <div className="absolute top-[-12px] left-6 w-4 h-6 bg-yellow-500 rounded-t-sm dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
+                        <div className="w-6 h-2 bg-yellow-600 rounded-full absolute top-0 -left-1 dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40"></div>
                       </div>
                       {/* Window */}
                       <div className="absolute top-2 right-4 w-5 h-5 bg-cyan-300 rounded-full border-2 border-yellow-600 dark:border-yellow-700 shadow-inner"></div>

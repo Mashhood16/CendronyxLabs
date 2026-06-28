@@ -50,9 +50,9 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button
           onClick={onExit}
           className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
@@ -70,7 +70,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
       {/* 2-column Layout */}
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 lg:overflow-hidden">
         {/* Left Column: Controls & Questions */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
           <h2 className="text-lg font-semibold mb-4 flex items-center">
             <Calculator className="w-5 h-5 mr-2 text-indigo-500" />
             Interactive Workspace
@@ -78,7 +78,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
 
           {activeTab === 'business' && (
             <div className="space-y-4 flex-1">
-              <p className="text-sm text-slate-600 dark:text-slate-400">Calculate profit/loss and taxes for factory goods.</p>
+              <p className="text-sm text-slate-600 dark:text-[#71717a]">Calculate profit/loss and taxes for factory goods.</p>
               <div>
                 <label className="block text-sm font-medium mb-1">Cost Price (Rs): {costPrice}</label>
                 <input type="range" min="100" max="5000" step="100" value={costPrice} onChange={(e) => setCostPrice(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -95,8 +95,8 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
                 <h3 className="font-semibold mb-2 text-indigo-900 dark:text-indigo-100">Solve it!</h3>
                 <p className="text-sm mb-4">What is the net amount received after tax?</p>
                 <div className="flex space-x-2">
-                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter amount..." />
-                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors">Check</button>
+                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter amount..." />
+                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
                 </div>
                 {feedback && <p className={`mt-2 text-sm font-medium ${feedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{feedback}</p>}
               </div>
@@ -105,7 +105,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
 
           {activeTab === 'zakat' && (
             <div className="space-y-4 flex-1">
-              <p className="text-sm text-slate-600 dark:text-slate-400">Zakat is calculated at 2.5% on wealth/gold held for a year.</p>
+              <p className="text-sm text-slate-600 dark:text-[#71717a]">Zakat is calculated at 2.5% on wealth/gold held for a year.</p>
               <div>
                 <label className="block text-sm font-medium mb-1">Wealth Amount (Rs): {wealthAmount.toLocaleString()}</label>
                 <input type="range" min="10000" max="1000000" step="10000" value={wealthAmount} onChange={(e) => setWealthAmount(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -114,8 +114,8 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
                 <h3 className="font-semibold mb-2 text-emerald-900 dark:text-emerald-100">Solve it!</h3>
                 <p className="text-sm mb-4">Calculate the Zakat payable on this wealth.</p>
                 <div className="flex space-x-2">
-                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter Zakat..." />
-                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition-colors">Check</button>
+                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Enter Zakat..." />
+                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Check</button>
                 </div>
                 {feedback && <p className={`mt-2 text-sm font-medium ${feedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{feedback}</p>}
               </div>
@@ -124,7 +124,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
 
           {activeTab === 'ushr' && (
             <div className="space-y-4 flex-1">
-              <p className="text-sm text-slate-600 dark:text-slate-400">Ushr is 10% for natural irrigation and 5% for artificial irrigation.</p>
+              <p className="text-sm text-slate-600 dark:text-[#71717a]">Ushr is 10% for natural irrigation and 5% for artificial irrigation.</p>
               <div>
                 <label className="block text-sm font-medium mb-1">Produce Value (Rs): {produceValue.toLocaleString()}</label>
                 <input type="range" min="5000" max="500000" step="5000" value={produceValue} onChange={(e) => setProduceValue(Number(e.target.value))} className="w-full accent-amber-600" />
@@ -146,8 +146,8 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
                 <h3 className="font-semibold mb-2 text-amber-900 dark:text-amber-100">Solve it!</h3>
                 <p className="text-sm mb-4">Calculate the Ushr payable on this produce.</p>
                 <div className="flex space-x-2">
-                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Enter Ushr..." />
-                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors">Check</button>
+                  <input type="number" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Enter Ushr..." />
+                  <button onClick={checkAnswer} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">Check</button>
                 </div>
                 {feedback && <p className={`mt-2 text-sm font-medium ${feedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{feedback}</p>}
               </div>
@@ -156,7 +156,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col relative overflow-hidden items-center justify-center">
+        <div className="bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col relative overflow-hidden items-center justify-center">
           
           {activeTab === 'business' && (
             <div className="w-full max-w-md space-y-6 animate-in fade-in zoom-in duration-300">
@@ -179,7 +179,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
                 <span className="font-mono font-bold text-xl">Rs {calculateBusiness().netAmount.toFixed(2)}</span>
               </div>
 
-              <div className="mt-6 flex justify-between text-sm text-slate-500 dark:text-slate-400 px-4">
+              <div className="mt-6 flex justify-between text-sm text-slate-500 dark:text-[#71717a] px-4">
                 <span>Cost: Rs {costPrice}</span>
                 <span className={calculateBusiness().profitOrLoss >= 0 ? 'text-green-600 dark:text-green-400 font-medium' : 'text-red-600 dark:text-red-400 font-medium'}>
                   {calculateBusiness().profitOrLoss >= 0 ? 'Gross Profit: ' : 'Gross Loss: '}
@@ -208,7 +208,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
                   2.5%
                 </div>
                 <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
-                  <span className="text-3xl font-bold bg-white/80 dark:bg-slate-800/80 px-4 py-2 rounded-lg backdrop-blur-sm shadow-sm">
+                  <span className="text-3xl font-bold bg-white/80 dark:bg-[#121212]/80 px-4 py-2 rounded-lg backdrop-blur-sm shadow-sm">
                     Rs {wealthAmount.toLocaleString()}
                   </span>
                 </div>
@@ -229,14 +229,14 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
               </div>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'natural' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-slate-700 opacity-60'}`}>
+                <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'natural' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-[#1c1b1b] opacity-60'}`}>
                   <div className="text-4xl mb-2">🌧️</div>
-                  <div className="font-semibold text-slate-800 dark:text-slate-200">Natural</div>
+                  <div className="font-semibold text-slate-800 dark:text-[#ffffff]">Natural</div>
                   <div className="text-amber-600 dark:text-amber-400 font-bold mt-1">10%</div>
                 </div>
-                <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'artificial' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-slate-700 opacity-60'}`}>
+                <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'artificial' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-[#1c1b1b] opacity-60'}`}>
                   <div className="text-4xl mb-2">🚰</div>
-                  <div className="font-semibold text-slate-800 dark:text-slate-200">Artificial</div>
+                  <div className="font-semibold text-slate-800 dark:text-[#ffffff]">Artificial</div>
                   <div className="text-amber-600 dark:text-amber-400 font-bold mt-1">5%</div>
                 </div>
               </div>

@@ -100,17 +100,17 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Springs in Series Lab" subtitle="Observe forces and extensions when springs are connected sequentially." />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 {/* Column 1: Setup */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
                     <div className="flex items-center gap-2 mb-4">
                         <Info className="w-5 h-5 text-emerald-600" />
-                        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">1. Setup & Theory</h2>
+                        <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                         When ideal (massless) spring balances are connected <strong>in series</strong>, the tension is the same throughout the chain. Thus, every spring reads the same force.
                         <br/><br/>
                         However, the total extension of the system is the <strong>sum</strong> of the extensions of each individual spring.
@@ -118,21 +118,21 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Number of Springs: {numSprings}</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Number of Springs: {numSprings}</label>
                             <div className="flex gap-2">
                                 <button 
                                     onClick={() => setNumSprings(Math.max(1, numSprings - 1))}
-                                    className="p-2 bg-slate-100 dark:bg-slate-800 rounded hover:bg-slate-200 dark:bg-slate-800"
+                                    className="p-2 bg-slate-100 dark:bg-[#121212] rounded hover:bg-slate-200 dark:bg-[#121212]"
                                 ><Minus className="w-4 h-4" /></button>
                                 <button 
                                     onClick={() => setNumSprings(Math.min(3, numSprings + 1))}
-                                    className="p-2 bg-slate-100 dark:bg-slate-800 rounded hover:bg-slate-200 dark:bg-slate-800"
+                                    className="p-2 bg-slate-100 dark:bg-[#121212] rounded hover:bg-slate-200 dark:bg-[#121212]"
                                 ><Plus className="w-4 h-4" /></button>
                             </div>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Hanging Mass: {mass} g</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Hanging Mass: {mass} g</label>
                             <input
                                 type="range"
                                 min="100" max="500" step="100"
@@ -145,12 +145,12 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2: Simulation */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 w-full">2. Interactive Simulation</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+                    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">2. Interactive Simulation</h2>
                     <svg 
                         ref={svgRef} 
                         viewBox="0 0 400 500" 
-                        className="w-full max-w-sm h-auto bg-[#f8fafc] rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500"
+                        className="w-full max-w-sm h-auto bg-[#f8fafc] rounded border border-slate-200 dark:border-[#1c1b1b]"
                         onPointerMove={handlePointerMove} 
                         onPointerUp={handlePointerUp} 
                         onPointerLeave={handlePointerUp}
@@ -184,8 +184,8 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">3. Data Logging & Assessment</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">3. Data Logging & Assessment</h2>
                     
                     <div className="mb-6">
                         <div className="grid grid-cols-2 gap-2 mb-3">
@@ -194,11 +194,11 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                             <input type="number" placeholder="Top Reading (N)" value={inputTopReading} onChange={(e) => setInputTopReading(e.target.value)} className="p-2 border rounded text-sm"/>
                             <input type="number" placeholder="Total Ext (cm)" value={inputTotalExt} onChange={(e) => setInputTotalExt(e.target.value)} className="p-2 border rounded text-sm"/>
                         </div>
-                        <button onClick={handleAddLog} className="w-full bg-emerald-600 text-white px-3 py-2 rounded text-sm hover:bg-emerald-700 mb-3">Record Trial</button>
+                        <button onClick={handleAddLog} className="w-full bg-emerald-600 text-white px-3 py-2 rounded text-sm hover:bg-emerald-700 mb-3 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Record Trial</button>
                         
                         <div className="overflow-x-auto">
                             <table className="w-full text-sm text-left border-collapse">
-                                <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
                                     <tr>
                                         <th className="p-2 border">Springs</th>
                                         <th className="p-2 border">Mass(g)</th>
@@ -208,7 +208,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                                 </thead>
                                 <tbody>
                                     {logs.length === 0 ? (
-                                        <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-slate-400">No data recorded.</td></tr>
+                                        <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded.</td></tr>
                                     ) : (
                                         logs.map((log, i) => (
                                             <tr key={i}>
@@ -224,24 +224,24 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                         </div>
                     </div>
 
-                    <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 mt-auto">
-                        <h3 className="font-semibold text-amber-900 mb-2">Knowledge Check</h3>
+                    <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 mt-auto dark:bg-[#121212] dark:border-[#1c1b1b]">
+                        <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">Knowledge Check</h3>
                         
                         <div className="mb-4">
-                            <label className="block text-sm text-amber-800 mb-1">1. If 4 identical ideal springs hold a 200g mass, what does the top spring read (in N)?</label>
+                            <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">1. If 4 identical ideal springs hold a 200g mass, what does the top spring read (in N)?</label>
                             <input type="number" value={userForce} onChange={(e) => setUserForce(e.target.value)} className="w-full p-2 border rounded-md" />
                             {assessmentResult1 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/> Correct</span>}
                             {assessmentResult1 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/> Incorrect</span>}
                         </div>
 
                         <div className="mb-4">
-                            <label className="block text-sm text-amber-800 mb-1">2. What is the equivalent spring constant (N/m) of 2 springs in series if a single spring has k=100 N/m?</label>
+                            <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">2. What is the equivalent spring constant (N/m) of 2 springs in series if a single spring has k=100 N/m?</label>
                             <input type="number" value={userK} onChange={(e) => setUserK(e.target.value)} className="w-full p-2 border rounded-md" />
                             {assessmentResult2 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/> Correct</span>}
                             {assessmentResult2 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/> Incorrect</span>}
                         </div>
 
-                        <button onClick={checkAnswers} className="w-full bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors">
+                        <button onClick={checkAnswers} className="w-full bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                             Submit Answers
                         </button>
                     </div>

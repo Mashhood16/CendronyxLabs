@@ -75,8 +75,8 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10 border-b border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
         <button 
           onClick={onExit} 
           className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
@@ -90,14 +90,14 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
         </h1>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
-        <aside className="w-full lg:w-1/3 bg-white dark:bg-slate-800 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 shadow-inner">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
+        <aside className="w-full lg:w-1/3 bg-white dark:bg-[#121212] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] shadow-inner">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <AlertCircle size={20} className="text-indigo-500" />
             Grammar Guide
           </h2>
           
-          <div className="flex border-b border-slate-200 dark:border-slate-700 mb-6 overflow-x-auto no-scrollbar">
+          <div className="flex border-b border-slate-200 dark:border-[#1c1b1b] mb-6 overflow-x-auto no-scrollbar">
             {['prepositions', 'conjunctions', 'interjections'].map(tab => (
               <button
                 key={tab}
@@ -109,7 +109,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
             ))}
           </div>
 
-          <div className="space-y-6 text-sm md:text-base text-slate-700 dark:text-slate-300">
+          <div className="space-y-6 text-sm md:text-base text-slate-700 dark:text-[#a1a1aa]">
             {activeTab === 'prepositions' && (
               <div className="space-y-4 transition-opacity duration-300">
                 <p><strong>Prepositions</strong> show relationships between nouns/pronouns and other words in a sentence, often indicating time, place, or direction.</p>
@@ -126,15 +126,15 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
               <div className="space-y-4 transition-opacity duration-300">
                 <p><strong>Conjunctions</strong> connect words, phrases, or clauses together.</p>
                 <div className="space-y-3">
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Coordinating (FANBOYS)</strong>
                     <p>Connect equal parts: For, And, Nor, But, Or, Yet, So.</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Subordinating</strong>
                     <p>Connect dependent to independent clauses: Because, although, if, since, when, unless.</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Correlative</strong>
                     <p>Work in pairs: Both...and, either...or, neither...nor, not only...but also.</p>
                   </div>
@@ -156,19 +156,19 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
           </div>
         </aside>
 
-        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 lg:overflow-y-auto relative">
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 max-w-3xl w-full border border-slate-200 dark:border-slate-700">
+        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-[#121212] lg:overflow-y-auto relative">
+          <div className="bg-white dark:!bg-[#121212] rounded-3xl shadow-xl p-8 max-w-3xl w-full border border-slate-200 dark:border-[#1c1b1b]">
             <div className="flex justify-between items-center mb-8">
               <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider text-sm">
                 <Puzzle size={18} />
                 {puzzle.topic}
               </div>
-              <span className="text-sm font-medium px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full">
+              <span className="text-sm font-medium px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-[#a1a1aa] rounded-full">
                 Puzzle {currentPuzzleIndex + 1} / {PUZZLES.length}
               </span>
             </div>
 
-            <div className="text-2xl md:text-3xl lg:text-4xl font-medium mb-12 text-center leading-relaxed text-slate-800 dark:text-slate-100 py-8 px-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl shadow-inner border border-slate-100 dark:border-slate-800">
+            <div className="text-2xl md:text-3xl lg:text-4xl font-medium mb-12 text-center leading-relaxed text-slate-800 dark:text-[#ffffff] py-8 px-4 bg-slate-50 dark:bg-[#121212]/50 rounded-2xl shadow-inner border border-slate-100 dark:border-neutral-900">
               {puzzle.text.split('{gap}').map((part, idx) => (
                 <span key={idx}>
                   {part}
@@ -177,7 +177,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
                       className={`inline-flex items-center justify-center min-w-[140px] mx-2 px-4 py-2 border-b-4 rounded-lg transition-all duration-300 ${
                         selectedOption 
                           ? 'bg-indigo-100 border-indigo-500 text-indigo-700 dark:bg-indigo-900/40 dark:border-indigo-400 dark:text-indigo-300 shadow-sm' 
-                          : 'bg-white border-slate-300 text-slate-400 dark:bg-slate-800 dark:border-slate-600 shadow-inner'
+                          : 'bg-white border-slate-300 text-slate-400 dark:bg-[#121212] dark:border-slate-600 shadow-inner'
                       }`}
                     >
                       {selectedOption || "___"}
@@ -201,7 +201,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
                   className={`px-4 py-4 rounded-xl font-semibold text-lg transition-all shadow-sm whitespace-nowrap flex-shrink-0 ${
                     selectedOption === opt 
                       ? 'bg-indigo-500 text-white shadow-md scale-105 ring-4 ring-indigo-200 dark:ring-indigo-900' 
-                      : 'bg-white text-slate-700 border-2 border-slate-200 hover:bg-slate-50 hover:border-indigo-300 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-700 dark:hover:border-indigo-500'
+                      : 'bg-white text-slate-700 border-2 border-slate-200 hover:bg-slate-50 hover:border-indigo-300 dark:bg-[#121212] dark:text-[#ffffff] dark:border-[#1c1b1b] dark:hover:bg-slate-700 dark:hover:border-indigo-500'
                   } ${isCorrect === true ? 'opacity-50 cursor-not-allowed transform-none' : ''}`}
                 >
                   {opt}
@@ -217,7 +217,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
                   className={`px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
                     selectedOption 
                       ? 'bg-emerald-500 hover:bg-emerald-600 text-white hover:shadow-xl transform hover:-translate-y-1' 
-                      : 'bg-slate-300 text-slate-500 cursor-not-allowed dark:bg-slate-700 dark:text-slate-400'
+                      : 'bg-slate-300 text-slate-500 cursor-not-allowed dark:bg-slate-700 dark:text-[#a1a1aa]'
                   }`}
                 >
                   <Check size={24} /> Check Answer
@@ -232,10 +232,10 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
                     </div>
                     Correct!
                   </div>
-                  <p className="text-slate-600 dark:text-slate-400 text-center mb-4 max-w-md">{puzzle.feedback}</p>
+                  <p className="text-slate-600 dark:text-[#71717a] text-center mb-4 max-w-md">{puzzle.feedback}</p>
                   <button 
                     onClick={handleNext}
-                    className="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full font-bold shadow-lg transition-all whitespace-nowrap flex-shrink-0 hover:-translate-y-1"
+                    className="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-full font-bold shadow-lg transition-all whitespace-nowrap flex-shrink-0 hover:-translate-y-1 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Next Puzzle
                   </button>

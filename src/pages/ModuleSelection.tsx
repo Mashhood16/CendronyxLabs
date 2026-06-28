@@ -11,6 +11,7 @@ const SUBJECT_ACCENT: Record<string, string> = {
   math: 'from-violet-500 to-purple-600',
   computer: 'from-sky-500 to-cyan-600',
   science: 'from-amber-500 to-orange-600',
+  english: 'from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 dark:from-cyan-400 dark:to-cyan-400 dark:hover:from-cyan-300 dark:hover:to-cyan-300 dark:!text-black shadow-lg shadow-blue-500/30 dark:shadow-none',
 };
 
 export default function ModuleSelection() {
@@ -26,7 +27,7 @@ export default function ModuleSelection() {
         <Breadcrumbs />
 
         {filteredModules.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 glass rounded-2xl border border-dashed border-slate-200/50 dark:border-slate-800/50">
+          <div className="flex flex-col items-center justify-center py-20 glass rounded-2xl border border-dashed border-slate-200/50 dark:border-neutral-900/50">
             <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${accent} flex items-center justify-center mb-4 opacity-50`}>
               <Lock className="w-10 h-10 text-white" />
             </div>
@@ -47,8 +48,8 @@ export default function ModuleSelection() {
                     onClick={() => isBuilt && navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
                     className={`relative group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
                       isBuilt
-                        ? 'glass border border-slate-200/50 dark:border-slate-800/50 hover:-translate-y-2 hover:shadow-xl cursor-pointer'
-                        : 'glass border border-dashed border-slate-200/50 dark:border-slate-800/50 opacity-70'
+                        ? 'glass border border-slate-200/50 dark:border-[#1c1b1b]/50 hover:-translate-y-2 hover:shadow-xl cursor-pointer'
+                        : 'glass border border-dashed border-slate-200/50 dark:border-[#1c1b1b]/50 opacity-70'
                     }`}
                   >
                     {/* Gradient header strip */}

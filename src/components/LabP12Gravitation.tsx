@@ -75,23 +75,23 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
   }, [trajectoryPoints, height]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Orbital Mechanics & Gravitation" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Newton's Cannonball</h2>
-          <div className="text-slate-600 dark:text-slate-300 space-y-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Newton's Cannonball</h2>
+          <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
             <p>
               Imagine a cannon on top of a very high mountain. If the cannonball is fired with low velocity, it falls back to Earth.
             </p>
             <p>
               As the firing velocity increases, the projectile travels further before hitting the ground. At a specific <strong>orbital velocity</strong>, the curve of the projectile's path matches the curvature of the Earth—it continuously falls but never hits the ground!
             </p>
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-              <h3 className="font-semibold text-blue-900 mb-2">Orbital Velocity Formula</h3>
-              <p className="text-center font-mono text-lg text-blue-800">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+              <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Orbital Velocity Formula</h3>
+              <p className="text-center font-mono text-lg text-blue-800 dark:text-[#ffffff]">
                 v = √(GM / r)
               </p>
               <ul className="text-sm mt-2 space-y-1 text-blue-700">
@@ -108,13 +108,13 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 w-full">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 w-full">
             <Globe className="text-indigo-500" />
             Interactive Orbit Visualizer
           </h2>
           
-          <div className="w-full aspect-square max-w-md bg-slate-900 dark:bg-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center border-4 border-slate-800 dark:border-slate-500 shadow-inner">
+          <div className="w-full aspect-square max-w-md bg-[#000000] dark:bg-[#121212] rounded-xl relative overflow-hidden flex items-center justify-center border-4 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-inner">
             <svg viewBox={`-${maxR} -${maxR} ${maxR * 2} ${maxR * 2}`} className="w-full h-full">
               {/* Grid */}
               <circle cx="0" cy="0" r={35786 + Re} fill="none" stroke="#334155" strokeWidth="100" strokeDasharray="1000 1000" />
@@ -156,7 +156,7 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
             </svg>
             
             {/* Status Overlay */}
-            <div className="absolute top-4 left-4 bg-slate-800 dark:bg-slate-800/80 text-white text-xs p-2 rounded backdrop-blur border border-slate-700 dark:border-slate-500">
+            <div className="absolute top-4 left-4 bg-[#121212] dark:bg-[#121212]/80 text-white text-xs p-2 rounded backdrop-blur border border-[#1c1b1b] dark:border-[#1c1b1b]">
               {trajectoryPoints[trajectoryPoints.length - 1] && Math.sqrt(Math.pow(trajectoryPoints[trajectoryPoints.length - 1].x, 2) + Math.pow(trajectoryPoints[trajectoryPoints.length - 1].y, 2)) <= Re * 1.01 ? (
                 <span className="text-red-400 font-bold">CRASHED</span>
               ) : trajectoryPoints.length >= 15000 / 50 || (trajectoryPoints[trajectoryPoints.length - 1]?.x ?? 0) < 0 ? (
@@ -170,7 +170,7 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
           <div className="w-full mt-6 space-y-4">
             <div>
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Launch Velocity (v)</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Launch Velocity (v)</label>
                 <span className="text-sm font-mono text-indigo-600">{velocity.toFixed(2)} km/s</span>
               </div>
               <input 
@@ -178,12 +178,12 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
                 min="0" max="12" step="0.01" 
                 value={velocity} 
                 onChange={(e) => setVelocity(parseFloat(e.target.value))}
-                className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-indigo-600"
               />
             </div>
             <div>
               <div className="flex justify-between mb-1">
-                <label className="text-sm font-semibold text-slate-700 dark:text-slate-200">Launch Altitude (h)</label>
+                <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Launch Altitude (h)</label>
                 <span className="text-sm font-mono text-indigo-600">{height} km</span>
               </div>
               <input 
@@ -191,23 +191,23 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
                 min="0" max="40000" step="100" 
                 value={height} 
                 onChange={(e) => setHeight(parseFloat(e.target.value))}
-                className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-indigo-600"
               />
             </div>
           </div>
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6 lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Engineering Tasks
           </h2>
 
           <div className="space-y-6">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Task 1: LEO Velocity</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Task 1: LEO Velocity</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 Calculate the required orbital velocity for a Low Earth Orbit (LEO) satellite at an altitude of <strong>400 km</strong>.
                 Use Re = 6371 km, GM = 3.986×10¹⁴ m³/s². (Convert to km/s).
               </p>
@@ -217,11 +217,11 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
                   value={leoAnswer}
                   onChange={(e) => setLeoAnswer(e.target.value)}
                   placeholder="e.g. 7.67"
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 />
                 <button 
                   onClick={checkLeo}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                 >
                   Check
                 </button>
@@ -230,9 +230,9 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
               {leoStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Check units (km vs m).</p>}
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Task 2: Geostationary Altitude</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Task 2: Geostationary Altitude</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 A Geostationary satellite completes one orbit in 24 hours (86400 seconds). Calculate the required <strong>altitude (h)</strong> in km above Earth's surface. 
                 Hint: Use Kepler's Third Law: T² = (4π²/GM)r³.
               </p>
@@ -242,11 +242,11 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
                   value={geoAnswer}
                   onChange={(e) => setGeoAnswer(e.target.value)}
                   placeholder="e.g. 35786"
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 />
                 <button 
                   onClick={checkGeo}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                 >
                   Check
                 </button>

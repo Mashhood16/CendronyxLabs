@@ -52,15 +52,15 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Web Basics Lab" subtitle="HTML & CSS Fundamentals" variant="amber" rightContent={<button onClick={runValidations} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md font-semibold transition-colors flex items-center gap-2 shadow"><CheckCircle className="w-4 h-4" /> Validate Tasks</button>} />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+      <LabHeader onExit={onExit} title="Web Basics Lab" subtitle="HTML & CSS Fundamentals" variant="amber" rightContent={<button onClick={runValidations} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md font-semibold transition-colors flex items-center gap-2 shadow dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"><CheckCircle className="w-4 h-4" /> Validate Tasks</button>} />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Concepts & Tasks</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Concepts & Tasks</h2>
           
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-3 leading-relaxed">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3 leading-relaxed">
             <p><strong>HTML</strong> (HyperText Markup Language) provides the structure of a webpage. Tags define elements like headings <code>&lt;h1&gt;</code>, paragraphs <code>&lt;p&gt;</code>, and lists <code>&lt;ul&gt;</code>.</p>
             <p><strong>CSS</strong> (Cascading Style Sheets) provides the visual styling. It uses selectors (like <code>h1</code>) and declarations (like <code>color: red;</code>).</p>
           </div>
@@ -71,11 +71,11 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
             </h3>
             <ul className="space-y-3">
               {tasks.map(t => (
-                <li key={t.id} className="flex gap-3 text-sm text-slate-700 dark:text-slate-200 items-start">
+                <li key={t.id} className="flex gap-3 text-sm text-slate-700 dark:text-[#ffffff] items-start">
                   {taskStatus[t.id] ? (
                     <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   ) : (
-                    <div className="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shrink-0 mt-0.5" />
+                    <div className="w-5 h-5 rounded-full border-2 border-slate-300 dark:border-[#1c1b1b] shrink-0 mt-0.5" />
                   )}
                   <span>{t.desc}</span>
                 </li>
@@ -84,7 +84,7 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-900 dark:bg-slate-800 p-4 rounded-xl shadow-inner border border-slate-700 dark:border-slate-500 flex flex-col gap-4">
+        <div className="bg-[#000000] dark:bg-[#121212] p-4 rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col gap-4">
           <h2 className="text-lg font-bold text-white mb-2 flex items-center gap-2 shrink-0">
             <Code className="w-5 h-5 text-orange-400" /> Code Editor
           </h2>
@@ -94,7 +94,7 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">index.html</span>
             </div>
             <textarea
-              className="w-full flex-1 bg-slate-800 dark:bg-slate-800 text-orange-200 p-3 rounded-lg font-mono text-sm border border-slate-600 dark:border-slate-500 focus:outline-none focus:border-orange-500 resize-none shadow-inner"
+              className="w-full flex-1 bg-[#121212] dark:bg-[#121212] text-orange-200 p-3 rounded-lg font-mono text-sm border border-slate-600 dark:border-[#1c1b1b] focus:outline-none focus:border-orange-500 resize-none shadow-inner"
               value={htmlCode}
               onChange={(e) => setHtmlCode(e.target.value)}
               spellCheck={false}
@@ -106,7 +106,7 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">styles.css</span>
             </div>
             <textarea
-              className="w-full flex-1 bg-slate-800 dark:bg-slate-800 text-blue-300 p-3 rounded-lg font-mono text-sm border border-slate-600 dark:border-slate-500 focus:outline-none focus:border-blue-500 resize-none shadow-inner"
+              className="w-full flex-1 bg-[#121212] dark:bg-[#121212] text-blue-300 p-3 rounded-lg font-mono text-sm border border-slate-600 dark:border-[#1c1b1b] focus:outline-none focus:border-blue-500 resize-none shadow-inner"
               value={cssCode}
               onChange={(e) => setCssCode(e.target.value)}
               spellCheck={false}
@@ -114,18 +114,18 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex flex-col">
           <div className="flex justify-between items-center border-b pb-2 mb-4 shrink-0">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <Layout className="w-5 h-5 text-indigo-500" /> Live Browser Preview
             </h2>
             <RefreshCw className="w-4 h-4 text-slate-400" />
           </div>
           
-          <div className="flex-1 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-900 shadow-inner relative">
+          <div className="flex-1 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-slate-50 dark:bg-[#121212] shadow-inner relative">
             <iframe 
               srcDoc={srcDoc} 
-              className="absolute inset-0 w-full h-full border-none bg-slate-50 dark:bg-slate-900"
+              className="absolute inset-0 w-full h-full border-none bg-slate-50 dark:bg-[#121212]"
               title="Live Preview"
               sandbox="allow-scripts"
             />

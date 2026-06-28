@@ -130,13 +130,13 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-200">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10 border-b border-slate-200 dark:border-slate-700">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
         <div className="flex items-center gap-3">
           {onExit && (
             <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
-              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
             </button>
           )}
           <h1 className="text-lg md:text-xl font-bold text-emerald-700 dark:text-emerald-400">Lab E11: Vocabulary & Stylistics</h1>
@@ -147,9 +147,9 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
       <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Column: Workspace Controls */}
-        <div className="w-1/3 min-w-[320px] max-w-sm border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 flex flex-col gap-6 overflow-y-auto shadow-inner">
+        <div className="w-1/3 min-w-[320px] max-w-sm border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] p-6 flex flex-col gap-6 lg:overflow-y-auto shadow-inner">
           <div>
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
               <Target className="w-5 h-5 text-emerald-500" /> Lab Modes
             </h2>
             <div className="flex flex-col gap-3">
@@ -158,13 +158,13 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                 className={`p-4 rounded-xl border-2 text-left transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   mode === 'vocab' 
                     ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/40 shadow-sm' 
-                    : 'border-slate-200 dark:border-slate-700 hover:border-emerald-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                    : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
-                <div className="font-semibold text-slate-800 dark:text-slate-100 mb-1 flex items-center gap-2">
+                <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1 flex items-center gap-2">
                   <BookOpen className="w-4 h-4" /> Comprehensive Vocabulary
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 whitespace-normal">Test dictionary skills, connotation vs denotation, idioms, and transitions.</div>
+                <div className="text-xs text-slate-500 dark:text-[#71717a] whitespace-normal">Test dictionary skills, connotation vs denotation, idioms, and transitions.</div>
               </button>
               
               <button
@@ -172,13 +172,13 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                 className={`p-4 rounded-xl border-2 text-left transition-all duration-200 whitespace-nowrap flex-shrink-0 ${
                   mode === 'stylistics' 
                     ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/40 shadow-sm' 
-                    : 'border-slate-200 dark:border-slate-700 hover:border-emerald-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                    : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                 }`}
               >
-                <div className="font-semibold text-slate-800 dark:text-slate-100 mb-1 flex items-center gap-2">
+                <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1 flex items-center gap-2">
                   <Feather className="w-4 h-4" /> Literary Devices Categorizer
                 </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 whitespace-normal">Map poetic and rhetorical devices to famous literary quotes.</div>
+                <div className="text-xs text-slate-500 dark:text-[#71717a] whitespace-normal">Map poetic and rhetorical devices to famous literary quotes.</div>
               </button>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
             <h3 className="font-semibold flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300">
               <Info className="w-4 h-4" /> Lab Instructions
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
               {mode === 'vocab' 
                 ? "Read the vocabulary question carefully. It may test your knowledge of silent letters, idiomatic expressions, nuanced connotations, or sentence flow using transitional devices. Select the best option."
                 : "Analyze the provided literary quote. Determine which primary Figure of Speech or rhetorical device is being employed by the author to create stylistic effect, then select it from the grid."
@@ -197,9 +197,9 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-8 flex flex-col items-center justify-center relative overflow-y-auto">
+        <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col items-center justify-center relative lg:overflow-y-auto">
            
-           <div className="w-full max-w-3xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-700 transition-all">
+           <div className="w-full max-w-3xl bg-white dark:!bg-[#121212] rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-[#1c1b1b] transition-all">
               
               {/* Vocab Mode */}
               {mode === 'vocab' && (
@@ -208,12 +208,12 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                     <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 rounded-full text-xs font-semibold uppercase tracking-wider">
                       Vocabulary Drill: {VOCAB_QUESTIONS[vocabIndex].type}
                     </span>
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                    <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
                       Question {vocabIndex + 1} of {VOCAB_QUESTIONS.length}
                     </span>
                   </div>
                   
-                  <div className="text-2xl font-medium text-center mb-10 text-slate-800 dark:text-slate-100 min-h-[80px] flex items-center justify-center">
+                  <div className="text-2xl font-medium text-center mb-10 text-slate-800 dark:text-[#ffffff] min-h-[80px] flex items-center justify-center">
                     {VOCAB_QUESTIONS[vocabIndex].question}
                   </div>
 
@@ -223,7 +223,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                          key={opt}
                          onClick={() => handleVocabAnswer(opt)}
                          disabled={vocabFeedback !== null}
-                         className="px-6 py-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 hover:border-emerald-300 dark:hover:bg-slate-700 dark:hover:border-slate-500 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 dark:text-slate-200 shadow-sm text-left flex items-center"
+                         className="px-6 py-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] hover:bg-emerald-50 hover:border-emerald-300 dark:hover:bg-slate-700 dark:hover:border-slate-500 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed text-slate-700 dark:text-[#ffffff] shadow-sm text-left flex items-center"
                        >
                          {opt}
                        </button>
@@ -238,7 +238,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                         <p className="opacity-90">{vocabFeedback.message}</p>
                         <button
                           onClick={nextVocab}
-                          className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-black/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
+                          className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-[#121212]/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
                         >
                           Next Question <RefreshCcw className="w-4 h-4" />
                         </button>
@@ -255,22 +255,22 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                     <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 rounded-full text-xs font-semibold uppercase tracking-wider">
                       Literary Devices Categorizer
                     </span>
-                    <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                    <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
                       Quote {quoteIndex + 1} of {LITERARY_QUOTES.length}
                     </span>
                   </div>
                   
-                  <div className="w-full bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 rounded-2xl p-8 mb-8 relative shadow-inner">
-                    <div className="text-2xl font-serif text-center text-slate-800 dark:text-slate-100 mb-4 italic">
+                  <div className="w-full bg-slate-50 dark:bg-[#121212]/50 border border-slate-200 dark:border-[#1c1b1b]/50 rounded-2xl p-8 mb-8 relative shadow-inner">
+                    <div className="text-2xl font-serif text-center text-slate-800 dark:text-[#ffffff] mb-4 italic">
                       "{LITERARY_QUOTES[quoteIndex].quote}"
                     </div>
-                    <div className="text-center text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                    <div className="text-center text-sm font-medium text-slate-500 dark:text-[#71717a] uppercase tracking-widest">
                       — {LITERARY_QUOTES[quoteIndex].author}
                     </div>
                   </div>
 
                   <div className="w-full">
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-4 text-center">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-4 text-center">
                       Identify the primary literary device used:
                     </label>
                     <div className="flex flex-wrap justify-center gap-3">
@@ -279,7 +279,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                           key={device}
                           onClick={() => handleStylisticsAnswer(device)}
                           disabled={stylisticsFeedback !== null}
-                          className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 dark:hover:border-purple-400 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm whitespace-nowrap flex-shrink-0"
+                          className="bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 dark:hover:border-purple-400 text-slate-700 dark:text-[#a1a1aa] px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm whitespace-nowrap flex-shrink-0"
                         >
                           {device}
                         </button>
@@ -295,7 +295,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                         <p className="opacity-90">{stylisticsFeedback.message}</p>
                         <button
                           onClick={nextQuote}
-                          className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-black/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
+                          className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-[#121212]/20 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-black/40 transition-colors whitespace-nowrap flex-shrink-0"
                         >
                           {stylisticsFeedback.isCorrect ? 'Analyze Next Quote' : 'Skip to Next'} <RefreshCcw className="w-4 h-4" />
                         </button>

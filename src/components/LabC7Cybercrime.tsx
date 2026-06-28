@@ -43,7 +43,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
           <div className="relative z-10 text-center w-full">
             <h1 className="text-6xl font-black mb-12 drop-shadow-lg">{current.title || 'Untitled Slide'}</h1>
             {movieData && (
-              <div className="mb-12 inline-block bg-slate-50 dark:bg-slate-900/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
+              <div className="mb-12 inline-block bg-slate-50 dark:bg-[#121212]/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
                 <img src={movieData.img} alt={movieData.name} className="w-96 aspect-video object-cover rounded-lg shadow-2xl mb-4" />
                 <p className="text-2xl font-bold">{movieData.name}</p>
               </div>
@@ -73,25 +73,25 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Cybercrime Presentation" subtitle="Prepare a presentation based on a movie or story about cybercrime" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Prepare a presentation based on a movie or story about cybercrime.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Prepare a presentation based on a movie or story about cybercrime.</p>
 
         <div className="flex gap-8 max-w-6xl w-full h-[600px]">
           {/* Slides List */}
-          <div className="w-64 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-            <div className="p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 font-bold text-slate-700 dark:text-slate-200 flex justify-between items-center">
+          <div className="w-64 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+            <div className="p-4 border-b border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] font-bold text-slate-700 dark:text-[#ffffff] flex justify-between items-center">
               Slides
               <button onClick={addSlide} className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 font-black text-xl">+</button>
             </div>
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+            <div className="flex-1 lg:overflow-y-auto p-4 flex flex-col gap-4">
               {slides.map((s, i) => (
                 <div 
                   key={i}
                   onClick={() => setActiveSlide(i)}
-                  className={`aspect-video rounded-lg border-2 flex items-center justify-center p-2 text-center text-xs font-bold cursor-pointer transition-colors ${activeSlide === i ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}
+                  className={`aspect-video rounded-lg border-2 flex items-center justify-center p-2 text-center text-xs font-bold cursor-pointer transition-colors ${activeSlide === i ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b]'}`}
                 >
                   {s.title || `Slide ${i+1}`}
                 </div>
@@ -100,31 +100,31 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
           </div>
 
           {/* Editor */}
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
-            <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 flex items-center">
-              <span className="font-bold text-slate-600 dark:text-slate-300 text-sm">Slide Editor</span>
+          <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
+            <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-3 flex items-center">
+              <span className="font-bold text-slate-600 dark:text-[#a1a1aa] text-sm">Slide Editor</span>
             </div>
 
-            <div className="flex-1 p-12 overflow-y-auto flex flex-col gap-6 max-w-3xl mx-auto w-full">
+            <div className="flex-1 p-12 lg:overflow-y-auto flex flex-col gap-6 max-w-3xl mx-auto w-full">
               <input 
                 type="text" 
                 placeholder="Click to add title..."
-                className="w-full text-4xl font-bold outline-none border-b border-transparent hover:border-slate-200 dark:border-slate-700 dark:border-slate-500 focus:border-blue-500 pb-2 text-center"
+                className="w-full text-4xl font-bold outline-none border-b border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 pb-2 text-center"
                 value={slides[activeSlide].title}
                 onChange={(e) => updateSlide('title', e.target.value)}
               />
 
-              <div className="mt-8 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl p-8 bg-slate-50 dark:bg-slate-900">
-                <h3 className="font-bold text-slate-600 dark:text-slate-300 mb-4 flex items-center justify-center"><ImageIcon className="w-5 h-5 mr-2"/> Select Movie Reference</h3>
+              <div className="mt-8 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-xl p-8 bg-slate-50 dark:bg-[#121212]">
+                <h3 className="font-bold text-slate-600 dark:text-[#a1a1aa] mb-4 flex items-center justify-center"><ImageIcon className="w-5 h-5 mr-2"/> Select Movie Reference</h3>
                 <div className="grid grid-cols-3 gap-4">
                   {movies.map(m => (
                     <div 
                       key={m.id}
                       onClick={() => updateSlide('movie', m.id)}
-                      className={`cursor-pointer rounded-lg border-2 overflow-hidden transition-all ${slides[activeSlide].movie === m.id ? 'border-blue-500 ring-2 ring-blue-200 scale-105 shadow-md' : 'border-transparent hover:border-slate-300 dark:border-slate-700 dark:border-slate-500'}`}
+                      className={`cursor-pointer rounded-lg border-2 overflow-hidden transition-all ${slides[activeSlide].movie === m.id ? 'border-blue-500 ring-2 ring-blue-200 scale-105 shadow-md' : 'border-transparent hover:border-slate-300 dark:border-[#1c1b1b]'}`}
                     >
                       <img src={m.img} alt={m.name} className="w-full aspect-video object-cover" />
-                      <div className="p-2 text-xs font-bold text-center bg-slate-50 dark:bg-slate-900">{m.name}</div>
+                      <div className="p-2 text-xs font-bold text-center bg-slate-50 dark:bg-[#121212]">{m.name}</div>
                     </div>
                   ))}
                 </div>
@@ -132,7 +132,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
 
               <textarea 
                 placeholder="Click to add summary points, ethical takeaways, or story details..."
-                className="w-full flex-1 min-h-[150px] outline-none border-b border-transparent hover:border-slate-200 dark:border-slate-700 dark:border-slate-500 focus:border-blue-500 text-lg text-slate-600 dark:text-slate-300 resize-none mt-4 p-4"
+                className="w-full flex-1 min-h-[150px] outline-none border-b border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 text-lg text-slate-600 dark:text-[#a1a1aa] resize-none mt-4 p-4"
                 value={slides[activeSlide].content}
                 onChange={(e) => updateSlide('content', e.target.value)}
               />

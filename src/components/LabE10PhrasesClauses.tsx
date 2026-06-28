@@ -97,26 +97,26 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
   const currentData = DISSECTION_SENTENCES[currentSentence];
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-900 dark:text-[#ffffff]">
       <LabHeader title="Unit 6: Syntactic Blueprints (Phrases & Clauses)" variant="dark" onExit={onExit} />
       
       <div className="flex-1 lg:overflow-hidden">
         <div className="h-full grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
           
           {/* Column 1: Theory */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col h-full overflow-hidden">
+          <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 flex flex-col h-full overflow-hidden">
             <div className="p-6 bg-cyan-50 dark:bg-cyan-900/30 border-b border-cyan-100 dark:border-cyan-800/50 flex items-center gap-3">
               <BookOpen className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">Phrases vs Clauses</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Phrases vs Clauses</h2>
             </div>
-            <div className="p-6 overflow-y-auto flex-1 space-y-6 text-slate-700 dark:text-slate-300">
+            <div className="p-6 lg:overflow-y-auto flex-1 space-y-6 text-slate-700 dark:text-[#a1a1aa]">
               <section>
-                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mb-6">
+                <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mb-6">
                   <h4 className="font-bold text-cyan-600 dark:text-cyan-400 mb-2">The Golden Rule</h4>
                   <p className="text-sm">A <strong>Clause</strong> has a subject and a verb. A <strong>Phrase</strong> does NOT have a subject and a verb.</p>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Types of Phrases</h3>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">Types of Phrases</h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li><strong>Noun Phrase:</strong> Acts as a noun. (e.g., <em>The big red dog</em>)</li>
                   <li><strong>Gerund Phrase:</strong> Starts with an -ing verb acting as a noun. (e.g., <em>Running in the park</em>)</li>
@@ -125,11 +125,11 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Types of Clauses</h3>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">Types of Clauses</h3>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li><strong>Independent:</strong> Can stand alone as a sentence. (e.g., <em>She went home.</em>)</li>
                   <li><strong>Subordinate (Dependent):</strong> Cannot stand alone. It must attach to an independent clause.
-                    <ul className="list-circle pl-5 mt-1 text-slate-600 dark:text-slate-400">
+                    <ul className="list-circle pl-5 mt-1 text-slate-600 dark:text-[#71717a]">
                       <li><strong>Noun Clause:</strong> (e.g., <em>I know <strong>that you are tired</strong>.</em>)</li>
                       <li><strong>Adjective Clause:</strong> (e.g., <em>The boy <strong>who cried wolf</strong>.</em>)</li>
                       <li><strong>Adverb Clause:</strong> (e.g., <em><strong>Because it rained</strong>, we stayed inside.</em>)</li>
@@ -141,20 +141,20 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
           </div>
 
           {/* Column 2: Sentence Dissection Engine */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 flex flex-col h-full overflow-hidden">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 p-6 flex flex-col h-full overflow-hidden">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-neutral-900">
               <div className="p-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 rounded-lg">
                 <Scissors className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">Dissection Engine</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Dissection Engine</h2>
             </div>
             
             <div className="flex-1 flex flex-col">
-              <p className="text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">
+              <p className="text-sm font-medium text-slate-600 dark:text-[#71717a] mb-2">
                 Click on the segment that functions as a <strong>{currentData.targetType}</strong>:
               </p>
               
-              <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 text-center my-6 flex flex-wrap justify-center gap-2 shadow-inner">
+              <div className="bg-slate-100 dark:bg-[#121212] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] text-center my-6 flex flex-wrap justify-center gap-2 shadow-inner">
                 {currentData.segments.map((seg, idx) => {
                   
                   let bgClass = "bg-white dark:bg-slate-700 hover:bg-cyan-50 dark:hover:bg-cyan-900/30 border-slate-200 dark:border-slate-600";
@@ -165,7 +165,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                     } else if (idx === selectedSegment) {
                       bgClass = "bg-rose-100 dark:bg-rose-900/50 border-rose-500 text-rose-700 dark:text-rose-300";
                     } else {
-                      bgClass = "bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 opacity-40";
+                      bgClass = "bg-slate-100 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] opacity-40";
                     }
                   }
 
@@ -211,7 +211,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                 <div className="mt-auto flex justify-end pt-4">
                   <button
                     onClick={nextSentence}
-                    className="flex items-center gap-2 px-6 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold transition-colors"
+                    className="flex items-center gap-2 px-6 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-bold transition-colors dark:text-white dark:text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
                   >
                     Next Sentence <ChevronRight className="w-5 h-5" />
                   </button>
@@ -221,20 +221,20 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
           </div>
 
           {/* Column 3: Assessment */}
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 flex-1 flex flex-col h-full overflow-hidden">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 p-6 flex-1 flex flex-col h-full overflow-hidden">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-neutral-900">
               <div className="p-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 rounded-lg">
                 <Target className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">Knowledge Check</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Knowledge Check</h2>
             </div>
 
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 lg:overflow-y-auto">
               {!assessmentSubmitted ? (
                 <div className="space-y-6">
                   {questions.map((q, qIdx) => (
                     <div key={qIdx} className="space-y-3">
-                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+                      <p className="text-sm font-medium text-slate-800 dark:text-[#ffffff]">
                         {qIdx + 1}. {q.q}
                       </p>
                       <div className="space-y-2">
@@ -243,11 +243,11 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                             <input
                               type="radio"
                               name={`question-${qIdx}`}
-                              className="mt-1 w-4 h-4 text-cyan-600 dark:text-cyan-400 bg-slate-100 dark:bg-slate-900/50 border-slate-300 dark:border-slate-600"
+                              className="mt-1 w-4 h-4 text-cyan-600 dark:text-cyan-400 bg-slate-100 dark:bg-[#121212]/50 border-slate-300 dark:border-[#1c1b1b]"
                               checked={assessmentAnswers[qIdx] === oIdx}
                               onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
                             />
-                            <span className="text-sm text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100">
+                            <span className="text-sm text-slate-700 dark:text-[#a1a1aa] group-hover:text-slate-900 dark:group-hover:text-slate-100">
                               {opt}
                             </span>
                           </label>
@@ -258,7 +258,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                   <button
                     onClick={() => setAssessmentSubmitted(true)}
                     disabled={Object.keys(assessmentAnswers).length < questions.length}
-                    className="w-full mt-4 py-2 px-4 bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-300 dark:bg-slate-900 disabled:dark:bg-slate-700 text-white rounded-lg font-medium transition-colors"
+                    className="w-full mt-4 py-2 px-4 bg-cyan-600 hover:bg-cyan-700 disabled:bg-slate-300 disabled: text-white rounded-lg font-medium transition-colors dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
                   >
                     Submit Evaluation
                   </button>
@@ -268,8 +268,8 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                   <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 mb-4">
                     <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-slate-300 mb-2">Assessment Complete</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>
+                  <p className="text-slate-600 dark:text-[#71717a] mb-6">
                     {calculateScore() === questions.length 
                       ? "Perfect score! You can easily identify phrases and clauses." 
                       : "Good effort! Remember that a clause must have a subject and a verb."}
@@ -279,7 +279,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
                       setAssessmentSubmitted(false);
                       setAssessmentAnswers({});
                     }}
-                    className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-[#a1a1aa] rounded-lg font-medium transition-colors"
                   >
                     Retry Lab
                   </button>

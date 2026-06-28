@@ -56,18 +56,18 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
   const minIneqXY = -5;
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
       {/* Header */}
-      <div className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
+      <div className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-[#1c1b1b]">
         <button onClick={onExit} className="p-2 mr-4 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex-shrink-0 whitespace-nowrap transition-colors">
           <ArrowLeft size={20} />
         </button>
         <h1 className="text-lg md:text-xl font-bold flex-1 truncate">Unit 7: Equations & Inequalities</h1>
         <div className="flex space-x-2">
-          <button onClick={() => setMode('equations')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'equations' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600'}`}>
+          <button onClick={() => setMode('equations')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'equations' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
             <TrendingUp size={18} className="mr-2" /> Systems of Equations
           </button>
-          <button onClick={() => setMode('inequalities')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'inequalities' ? 'bg-rose-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600'}`}>
+          <button onClick={() => setMode('inequalities')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'inequalities' ? 'bg-rose-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
             <LocateFixed size={18} className="mr-2" /> Business Constraints
           </button>
         </div>
@@ -76,12 +76,12 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
       {/* Main content: 2-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Col: Controls */}
-        <div className="w-full lg:w-1/3 min-w-[320px] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg z-10 flex flex-col">
+        <div className="w-full lg:w-1/3 min-w-[320px] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] shadow-lg z-10 flex flex-col">
           {mode === 'equations' ? (
             <div className="space-y-6 flex-1 flex flex-col">
               <div>
                 <h2 className="text-2xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-2">ISP Pricing Model</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Compare two Internet Service Providers. Find the intersection point to determine the break-even minutes.</p>
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Compare two Internet Service Providers. Find the intersection point to determine the break-even minutes.</p>
               </div>
               
               <div className="space-y-5 bg-indigo-50/50 dark:bg-indigo-900/10 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
@@ -128,12 +128,12 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
                     type="number" 
                     value={eqAns} 
                     onChange={e => setEqAns(e.target.value)}
-                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-[#121212] dark:border-[#1c1b1b] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                     placeholder="Break-even minutes..."
                   />
                   <button 
                     onClick={checkEquations}
-                    className="flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm"
+                    className="flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     <Check size={18} className="mr-1.5" /> Check
                   </button>
@@ -149,19 +149,19 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
             <div className="space-y-6 flex-1 flex flex-col">
               <div>
                 <h2 className="text-2xl font-extrabold text-rose-700 dark:text-rose-400 mb-2">Visual Constraints</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Model business limits (e.g. max budget) as a linear inequality. Shade the feasible region.</p>
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Model business limits (e.g. max budget) as a linear inequality. Shade the feasible region.</p>
               </div>
 
-              <div className="space-y-5 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+              <div className="space-y-5 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-xl border border-slate-100 dark:border-[#1c1b1b]">
                 <div className="flex space-x-4 items-end">
                   <div className="flex-1">
                     <label className="block text-sm font-semibold mb-2">Constraint Form</label>
-                    <div className="flex items-center space-x-2 font-mono bg-white dark:bg-slate-800 p-2.5 border border-slate-300 dark:border-slate-600 rounded-lg">
+                    <div className="flex items-center space-x-2 font-mono bg-white dark:bg-[#121212] p-2.5 border border-slate-300 dark:border-[#1c1b1b] rounded-lg">
                       <span>y</span>
                       <select 
                         value={operator} 
                         onChange={e => setOperator(e.target.value as any)} 
-                        className="p-1 border rounded bg-slate-100 dark:bg-slate-700 dark:border-slate-500 outline-none focus:ring-2 focus:ring-rose-500 font-bold"
+                        className="p-1 border rounded bg-slate-100 dark:bg-slate-700 dark:border-[#1c1b1b] outline-none focus:ring-2 focus:ring-rose-500 font-bold"
                       >
                         <option value="<">&lt;</option>
                         <option value="<=">&le;</option>
@@ -189,7 +189,7 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
                 </div>
               </div>
 
-              <div className="space-y-5 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+              <div className="space-y-5 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-xl border border-slate-100 dark:border-[#1c1b1b]">
                 <h3 className="font-bold">Test a Point</h3>
                 <div className="flex space-x-4">
                   <div className="flex-1">
@@ -208,7 +208,7 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
                 <p className="text-sm mb-4">Does your selected point ({ineqPointX}, {ineqPointY}) satisfy the business rule?</p>
                 <button 
                   onClick={checkInequality}
-                  className="w-full flex items-center justify-center px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg whitespace-nowrap transition-colors font-medium shadow-sm"
+                  className="w-full flex items-center justify-center px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg whitespace-nowrap transition-colors font-medium shadow-sm dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                 >
                   <Check size={18} className="mr-1.5" /> Check Point
                 </button>
@@ -225,17 +225,17 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
         {/* Right Col: Simulation Stage */}
         <div className="w-full lg:w-2/3 p-4 md:p-8 flex flex-col items-center justify-center bg-slate-100/50 dark:bg-slate-950/50 relative overflow-hidden">
           {mode === 'equations' ? (
-            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col p-6 overflow-hidden relative">
-              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-slate-200">Cost Comparison Graph</h3>
+            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col p-6 overflow-hidden relative">
+              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-[#ffffff]">Cost Comparison Graph</h3>
               
               <div className="flex-1 min-w-0 w-full relative">
-                <svg viewBox="0 0 600 400" className="w-full h-full bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                <svg viewBox="0 0 600 400" className="w-full h-full bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                   {/* Grid */}
                   {[1, 2, 3, 4].map(i => (
-                    <line key={`x-${i}`} x1={i*150} y1="0" x2={i*150} y2="400" stroke="currentColor" strokeWidth="1" opacity="0.1" className="text-slate-900 dark:text-slate-100" />
+                    <line key={`x-${i}`} x1={i*150} y1="0" x2={i*150} y2="400" stroke="currentColor" strokeWidth="1" opacity="0.1" className="text-slate-900 dark:text-[#ffffff]" />
                   ))}
                   {[1, 2, 3, 4, 5, 6, 7].map(i => (
-                    <line key={`y-${i}`} x1="0" y1={i*50} x2="600" y2={i*50} stroke="currentColor" strokeWidth="1" opacity="0.1" className="text-slate-900 dark:text-slate-100" />
+                    <line key={`y-${i}`} x1="0" y1={i*50} x2="600" y2={i*50} stroke="currentColor" strokeWidth="1" opacity="0.1" className="text-slate-900 dark:text-[#ffffff]" />
                   ))}
                   
                   {/* Axes */}
@@ -293,11 +293,11 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
               </div>
             </div>
           ) : (
-            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col p-6 overflow-hidden relative">
-              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-slate-200">Feasible Region</h3>
+            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col p-6 overflow-hidden relative">
+              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-[#ffffff]">Feasible Region</h3>
               
               <div className="flex-1 min-w-0 w-full relative">
-                <svg viewBox="0 0 600 400" className="w-full h-full bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <svg viewBox="0 0 600 400" className="w-full h-full bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
                   <defs>
                     <pattern id="diagonalHatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
                       <line x1="0" y1="0" x2="0" y2="10" stroke="#fb7185" strokeWidth="2" opacity="0.5" />
@@ -305,8 +305,8 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
                   </defs>
                   
                   {/* Cartesian Axes */}
-                  <line x1="120" y1="0" x2="120" y2="400" stroke="currentColor" strokeWidth="2" opacity="0.3" className="text-slate-900 dark:text-slate-100" />
-                  <line x1="0" y1="320" x2="600" y2="320" stroke="currentColor" strokeWidth="2" opacity="0.3" className="text-slate-900 dark:text-slate-100" />
+                  <line x1="120" y1="0" x2="120" y2="400" stroke="currentColor" strokeWidth="2" opacity="0.3" className="text-slate-900 dark:text-[#ffffff]" />
+                  <line x1="0" y1="320" x2="600" y2="320" stroke="currentColor" strokeWidth="2" opacity="0.3" className="text-slate-900 dark:text-[#ffffff]" />
                   <text x="130" y="20" fontSize="12" fill="currentColor" opacity="0.6">Y axis</text>
                   <text x="560" y="310" fontSize="12" fill="currentColor" opacity="0.6">X axis</text>
 

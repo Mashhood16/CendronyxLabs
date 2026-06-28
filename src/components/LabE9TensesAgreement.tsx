@@ -150,29 +150,29 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 dark:bg-slate-950 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#000000] dark:bg-slate-950 flex flex-col font-sans">
       <LabHeader title="Tenses & Subject-Verb Agreement" onExit={onExit} />
       
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Column 1: Theory */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 lg:overflow-y-auto max-h-[calc(100vh-8rem)]">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Theory Matrix</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Theory Matrix</h2>
             </div>
             
-            <div className="space-y-6 text-slate-600 dark:text-slate-400 dark:text-slate-300">
+            <div className="space-y-6 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">
               <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
                   <Clock className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                   The Tense Timeline
                 </h3>
                 <p className="text-sm mb-3">Tenses establish when an action occurs. They consist of a <strong>Timeframe</strong> (Past, Present, Future) and an <strong>Aspect</strong> (Simple, Continuous, Perfect, Perfect Continuous).</p>
-                <ul className="space-y-2 text-sm bg-slate-50 dark:bg-slate-900 dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+                <ul className="space-y-2 text-sm bg-slate-50 dark:bg-[#121212] dark:bg-[#121212] p-4 rounded-xl border border-slate-100 dark:border-neutral-900">
                   <li><strong>Simple:</strong> General facts or habitual actions <em>(She writes code)</em>.</li>
                   <li><strong>Continuous (Progressive):</strong> Ongoing actions <em>(She is writing code)</em>.</li>
                   <li><strong>Perfect:</strong> Actions completed before a certain point <em>(She has written code)</em>.</li>
@@ -181,7 +181,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
               </section>
 
               <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
                   <GitCommit className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
                   Subject-Verb Agreement
                 </h3>
@@ -190,7 +190,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                   <div className="bg-emerald-50 dark:bg-emerald-900 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
                     <h4 className="font-medium text-emerald-800 dark:text-emerald-200 dark:text-emerald-300 text-sm mb-1">1. The Proximity Rule</h4>
                     <p className="text-xs">When subjects are joined by <em>or</em>, <em>nor</em>, <em>either...or</em>, or <em>neither...nor</em>, the verb agrees with the subject closest to it.</p>
-                    <p className="text-xs font-mono mt-2 bg-white dark:bg-slate-800 dark:bg-slate-900 p-2 rounded text-slate-600 dark:text-slate-400 dark:text-slate-400">Neither the captain nor the <span className="text-emerald-600 dark:text-emerald-400 font-bold">officers are</span> present.</p>
+                    <p className="text-xs font-mono mt-2 bg-white dark:bg-[#121212] dark:bg-[#121212] p-2 rounded text-slate-600 dark:text-[#71717a] dark:text-[#71717a]">Neither the captain nor the <span className="text-emerald-600 dark:text-emerald-400 font-bold">officers are</span> present.</p>
                   </div>
                   
                   <div className="bg-indigo-50 dark:bg-indigo-900 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900/30">
@@ -208,15 +208,15 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 flex flex-col">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-lg">
                   <Settings className="w-6 h-6" />
                 </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Timeline Fixer</h2>
+                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Timeline Fixer</h2>
               </div>
-              <div className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 px-3 py-1 rounded-full">
+              <div className="text-sm font-medium text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] px-3 py-1 rounded-full">
                 Anomaly {currentAnomalyIdx + 1} of {anomalies.length}
               </div>
             </div>
@@ -224,14 +224,14 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
             <div className="flex-1 flex flex-col justify-center space-y-8">
               {currentAnomalyIdx < anomalies.length ? (
                 <>
-                  <div className="bg-slate-900 dark:bg-black rounded-xl p-6 border border-slate-800 shadow-inner relative overflow-hidden">
+                  <div className="bg-[#000000] dark:bg-[#121212] rounded-xl p-6 border border-[#1c1b1b] shadow-inner relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 opacity-50 animate-pulse"></div>
                     <h3 className="text-red-400 text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
                       <AlertTriangle className="w-4 h-4" /> Temporal Anomaly Detected
                     </h3>
                     <p className="text-lg text-slate-300 font-mono leading-relaxed">
                       {currentAnomaly.sentenceStart}
-                      <span className="inline-block px-2 py-1 bg-slate-800 text-slate-400 border border-slate-700 rounded mx-1">
+                      <span className="inline-block px-2 py-1 bg-[#121212] text-slate-400 border border-[#1c1b1b] rounded mx-1">
                         [{currentAnomaly.baseVerb}]
                       </span>
                       {currentAnomaly.sentenceEnd}
@@ -251,16 +251,16 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
 
                   <div className="space-y-5">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subject Number</label>
-                      <div className="flex bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 p-1 rounded-lg">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-2">Subject Number</label>
+                      <div className="flex bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] p-1 rounded-lg">
                         {['Singular', 'Plural'].map(num => (
                           <button
                             key={num}
                             onClick={() => setSubjectNumber(num)}
                             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                               subjectNumber === num 
-                                ? 'bg-white dark:bg-slate-800 dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' 
-                                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-200'
+                                ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' 
+                                : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-[#ffffff] dark:hover:text-slate-200'
                             }`}
                           >
                             {num}
@@ -270,16 +270,16 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Timeframe</label>
-                      <div className="flex bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 p-1 rounded-lg">
+                      <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-2">Timeframe</label>
+                      <div className="flex bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] p-1 rounded-lg">
                         {['Past', 'Present', 'Future'].map(tf => (
                           <button
                             key={tf}
                             onClick={() => setTimeframe(tf)}
                             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                               timeframe === tf 
-                                ? 'bg-white dark:bg-slate-800 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' 
-                                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-200'
+                                ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' 
+                                : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-[#ffffff] dark:hover:text-slate-200'
                             }`}
                           >
                             {tf}
@@ -289,7 +289,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Aspect</label>
+                      <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-2">Aspect</label>
                       <div className="grid grid-cols-2 gap-2">
                         {['Simple', 'Continuous', 'Perfect', 'Perfect Continuous'].map(asp => (
                           <button
@@ -298,7 +298,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                             className={`py-2 px-3 rounded-lg text-sm font-medium border transition-colors ${
                               aspect === asp 
                                 ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 dark:text-indigo-300' 
-                                : 'border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:border-slate-600 dark:hover:border-slate-600'
+                                : 'border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] hover:border-slate-300 dark:border-slate-600 dark:hover:border-slate-600'
                             }`}
                           >
                             {asp}
@@ -327,15 +327,15 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
               ) : (
                 <div className="text-center p-8 bg-emerald-50 dark:bg-emerald-900 rounded-2xl border border-emerald-100 dark:border-emerald-900/50">
                   <ShieldCheck className="w-16 h-16 text-emerald-500 dark:text-emerald-400 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2">All Timelines Stable</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6">You have successfully corrected all temporal anomalies.</p>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">All Timelines Stable</h3>
+                  <p className="text-slate-600 dark:text-[#71717a] mb-6">You have successfully corrected all temporal anomalies.</p>
                   <button 
                     onClick={() => {
                       setCurrentAnomalyIdx(0);
                       setSimulationStatus('idle');
                       setLogs([]);
                     }}
-                    className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                   >
                     Restart Simulation
                   </button>
@@ -347,18 +347,18 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
           {/* Column 3: Assessment & Logging */}
           <div className="flex flex-col gap-6">
             {/* System Logs */}
-            <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-6 flex-1 max-h-[300px] flex flex-col">
+            <div className="bg-[#000000] rounded-2xl shadow-sm border border-[#1c1b1b] p-6 flex-1 max-h-[300px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Activity className="w-5 h-5 text-blue-400" />
                 <h2 className="text-lg font-bold text-slate-100">Repair Logs</h2>
               </div>
-              <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+              <div className="flex-1 lg:overflow-y-auto space-y-3 pr-2">
                 {logs.length === 0 && (
-                  <p className="text-slate-500 dark:text-slate-400 text-sm italic">No repair actions recorded yet...</p>
+                  <p className="text-slate-500 dark:text-[#71717a] text-sm italic">No repair actions recorded yet...</p>
                 )}
                 {logs.map(log => (
                   <div key={log.id} className="flex gap-3 text-sm">
-                    <span className="text-slate-500 dark:text-slate-400 font-mono shrink-0">[{log.timestamp}]</span>
+                    <span className="text-slate-500 dark:text-[#71717a] font-mono shrink-0">[{log.timestamp}]</span>
                     <span className={log.type === 'success' ? 'text-emerald-400' : 'text-red-400'}>
                       {log.message}
                     </span>
@@ -368,19 +368,19 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
             </div>
 
             {/* Assessment */}
-            <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 flex-1 overflow-y-auto">
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+            <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex-1 lg:overflow-y-auto">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
                 <div className="p-2 bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 rounded-lg">
                   <Target className="w-6 h-6" />
                 </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Assessment</h2>
+                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Assessment</h2>
               </div>
 
               {!assessmentSubmitted ? (
                 <div className="space-y-6">
                   {questions.map((q, qIdx) => (
                     <div key={qIdx} className="space-y-3">
-                      <p className="text-sm font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300">
+                      <p className="text-sm font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
                         {qIdx + 1}. {q.q}
                       </p>
                       <div className="space-y-2">
@@ -389,11 +389,11 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                             <input
                               type="radio"
                               name={`question-${qIdx}`}
-                              className="mt-1 w-4 h-4 text-rose-600 dark:text-rose-400 bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:border-slate-700"
+                              className="mt-1 w-4 h-4 text-rose-600 dark:text-rose-400 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] dark:bg-[#121212] dark:border-[#1c1b1b]"
                               checked={assessmentAnswers[qIdx] === oIdx}
                               onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
                             />
-                            <span className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:text-slate-300 dark:group-hover:text-slate-200">
+                            <span className="text-sm text-slate-600 dark:text-[#71717a] group-hover:text-slate-900 dark:text-[#a1a1aa] dark:group-hover:text-slate-200">
                               {opt}
                             </span>
                           </label>
@@ -404,7 +404,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                   <button
                     onClick={() => setAssessmentSubmitted(true)}
                     disabled={Object.keys(assessmentAnswers).length < questions.length}
-                    className="w-full py-2 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:bg-slate-900 dark:disabled:bg-slate-800 disabled:cursor-not-allowed text-white rounded-xl font-medium transition-colors"
+                    className="w-full py-2 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:disabled:bg-[#121212] disabled:cursor-not-allowed text-white rounded-xl font-medium transition-colors dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                   >
                     Submit Evaluation
                   </button>
@@ -414,8 +414,8 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                   <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 mb-4">
                     <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2">Assessment Complete</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>
+                  <p className="text-slate-600 dark:text-[#71717a] mb-6">
                     {calculateScore() === questions.length ? 'Perfect mastery of the temporal matrix!' : 'Review the theory matrix and try again.'}
                   </p>
                   <button

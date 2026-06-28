@@ -15,16 +15,16 @@ interface LabHeaderProps {
 
 const variantStyles: Record<LabHeaderVariant, { container: string; button: string; title: string; subtitle: string }> = {
   light: {
-    container: 'bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm',
-    button: 'p-2 rounded-full transition-colors text-slate-600 dark:text-slate-300 hover:bg-slate-100/50 dark:hover:bg-white/10',
+    container: 'bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm',
+    button: 'p-2 rounded-full transition-colors text-slate-600 dark:text-[#ffffff] hover:bg-slate-100/50 dark:hover:bg-white/10',
     title: 'text-slate-800 dark:text-white',
-    subtitle: 'text-slate-500 dark:text-slate-400',
+    subtitle: 'text-slate-500 dark:text-[#a1a1aa]',
   },
   dark: {
-    container: 'bg-slate-800 dark:bg-slate-800 border-b border-slate-700 dark:border-slate-500 text-white',
-    button: 'p-2 rounded-full transition-colors text-slate-300 hover:bg-white/10',
-    title: 'text-white',
-    subtitle: 'text-slate-300',
+    container: 'bg-[#121212] dark:bg-[#121212] border-b border-[#1c1b1b] dark:border-[#1c1b1b] text-white',
+    button: 'p-2 rounded-full transition-colors text-slate-300 hover:bg-white/10 dark:text-[#ffffff]',
+    title: 'text-white dark:text-white',
+    subtitle: 'text-slate-300 dark:text-[#a1a1aa]',
   },
   emerald: {
     container: 'bg-emerald-700 text-white dark:bg-emerald-900',

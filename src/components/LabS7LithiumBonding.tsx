@@ -10,7 +10,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
   const [isIon, setIsIon] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Unit 6: Chemical Bonds (Atoms vs. Ions)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -21,7 +21,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
           <div className="flex justify-center gap-4">
             <button 
               onClick={() => setIsIon(!isIon)}
-              className="flex items-center px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-bold transition-colors"
+              className="flex items-center px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-bold transition-colors dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
             >
               <RefreshCw className="w-5 h-5 mr-2" />
               Toggle: {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Li⁺)'}
@@ -35,8 +35,8 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
           <div className="relative w-96 h-96 flex justify-center items-center">
              
              {/* Shell 1 */}
-             <div className="absolute border border-slate-500 dark:border-slate-500/50 rounded-full w-40 h-40 flex justify-center items-center">
-               <div className="absolute -top-3 w-6 h-6 bg-blue-400 rounded-full shadow-[0_0_15px_#60a5fa]"></div>
+             <div className="absolute border border-slate-500 dark:border-[#1c1b1b]/50 rounded-full w-40 h-40 flex justify-center items-center">
+               <div className="absolute -top-3 w-6 h-6 bg-blue-400 rounded-full shadow-[0_0_15px_#60a5fa] dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
                <div className="absolute -bottom-3 w-6 h-6 bg-blue-400 rounded-full shadow-[0_0_15px_#60a5fa]"></div>
              </div>
 
@@ -51,7 +51,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
              </div>
 
              {/* Charge Badge */}
-             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-slate-800 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
+             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-[#1c1b1b] dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-900 dark:text-[#ffffff]">
                {isIon ? '+1' : '0'}
              </div>
           </div>
@@ -63,19 +63,19 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
              </h3>
              
              <div className="space-y-4">
-               <div className="flex justify-between border-b border-slate-700 dark:border-slate-500 pb-2">
+               <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
                  <span className="text-slate-400">Protons (Positive)</span>
                  <span className="text-white font-bold text-lg">3</span>
                </div>
-               <div className="flex justify-between border-b border-slate-700 dark:border-slate-500 pb-2">
+               <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
                  <span className="text-slate-400">Electrons (Negative)</span>
                  <span className="text-white font-bold text-lg">{isIon ? '2' : '3'}</span>
                </div>
-               <div className="flex justify-between border-b border-slate-700 dark:border-slate-500 pb-2">
+               <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
                  <span className="text-slate-400">Net Charge</span>
                  <span className={`font-bold text-lg ${isIon ? 'text-red-400' : 'text-slate-300'}`}>{isIon ? '+1' : '0'}</span>
                </div>
-               <div className="flex justify-between border-b border-slate-700 dark:border-slate-500 pb-2">
+               <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
                  <span className="text-slate-400">Valence Shell</span>
                  <span className="text-white font-bold text-lg">{isIon ? 'Empty (Lost e⁻)' : '1 Electron'}</span>
                </div>

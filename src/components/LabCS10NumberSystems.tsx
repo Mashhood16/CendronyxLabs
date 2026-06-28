@@ -130,7 +130,7 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Number Systems Virtual Lab" />
 
@@ -139,13 +139,13 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
           
           {/* Column 1: Theory */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full overflow-y-auto">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full lg:overflow-y-auto">
             <div className="flex items-center gap-2 mb-4 text-indigo-600">
               <BookOpen className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Theory & Concepts</h2>
             </div>
             
-            <div className="prose prose-sm text-slate-600 dark:text-slate-300 space-y-4">
+            <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
               <p>
                 <strong>Number Systems</strong> are ways to represent quantities. The most common systems are:
               </p>
@@ -166,7 +166,7 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-emerald-600">
               <Settings className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Interactive Tools</h2>
@@ -175,19 +175,19 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
             <div className="flex gap-2 mb-4 border-b pb-2">
               <button 
                 onClick={() => setActiveTab('convert')}
-                className={`px-3 py-1 rounded ${activeTab === 'convert' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-800'}`}
+                className={`px-3 py-1 rounded ${activeTab === 'convert' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
               >
                 Conversion
               </button>
               <button 
                 onClick={() => setActiveTab('arithmetic')}
-                className={`px-3 py-1 rounded ${activeTab === 'arithmetic' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-800'}`}
+                className={`px-3 py-1 rounded ${activeTab === 'arithmetic' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
               >
                 Arithmetic
               </button>
               <button 
                 onClick={() => setActiveTab('complements')}
-                className={`px-3 py-1 rounded ${activeTab === 'complements' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:bg-slate-800'}`}
+                className={`px-3 py-1 rounded ${activeTab === 'complements' ? 'bg-emerald-100 text-emerald-800 font-medium' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
               >
                 Complements
               </button>
@@ -195,7 +195,7 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
 
             <div className="flex-1 flex flex-col gap-4">
               {activeTab === 'convert' && (
-                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg">
                   <div>
                     <label className="block text-sm font-medium mb-1">Input Value</label>
                     <input type="text" value={convInput} onChange={e => setConvInput(e.target.value)} className="border rounded p-2 w-full" />
@@ -220,16 +220,16 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
                       </select>
                     </div>
                   </div>
-                  <button onClick={handleConvert} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition">Convert</button>
-                  <div className="mt-2 p-3 bg-slate-50 dark:bg-slate-900 border rounded text-center">
-                    <span className="text-sm text-slate-500 dark:text-slate-400">Result:</span>
-                    <div className="text-2xl font-mono font-bold mt-1 text-slate-800 dark:text-slate-100">{convResult}</div>
+                  <button onClick={handleConvert} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Convert</button>
+                  <div className="mt-2 p-3 bg-slate-50 dark:bg-[#121212] border rounded text-center">
+                    <span className="text-sm text-slate-500 dark:text-[#71717a]">Result:</span>
+                    <div className="text-2xl font-mono font-bold mt-1 text-slate-800 dark:text-[#ffffff]">{convResult}</div>
                   </div>
                 </div>
               )}
 
               {activeTab === 'arithmetic' && (
-                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg">
                   <div>
                     <label className="block text-sm font-medium mb-1">Binary A</label>
                     <input type="text" value={arithA} onChange={e => setArithA(e.target.value.replace(/[^01]/g, ''))} className="border rounded p-2 w-full font-mono" />
@@ -245,29 +245,29 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
                     <label className="block text-sm font-medium mb-1">Binary B</label>
                     <input type="text" value={arithB} onChange={e => setArithB(e.target.value.replace(/[^01]/g, ''))} className="border rounded p-2 w-full font-mono" />
                   </div>
-                  <button onClick={handleArithmetic} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition">Calculate</button>
-                  <div className="mt-2 p-3 bg-slate-50 dark:bg-slate-900 border rounded text-center">
-                    <span className="text-sm text-slate-500 dark:text-slate-400">Result:</span>
-                    <div className="text-2xl font-mono font-bold mt-1 text-slate-800 dark:text-slate-100">{arithResult}</div>
+                  <button onClick={handleArithmetic} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Calculate</button>
+                  <div className="mt-2 p-3 bg-slate-50 dark:bg-[#121212] border rounded text-center">
+                    <span className="text-sm text-slate-500 dark:text-[#71717a]">Result:</span>
+                    <div className="text-2xl font-mono font-bold mt-1 text-slate-800 dark:text-[#ffffff]">{arithResult}</div>
                   </div>
                 </div>
               )}
 
               {activeTab === 'complements' && (
-                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg">
+                <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg">
                   <div>
                     <label className="block text-sm font-medium mb-1">Input Binary</label>
                     <input type="text" value={compInput} onChange={e => setCompInput(e.target.value.replace(/[^01]/g, ''))} className="border rounded p-2 w-full font-mono" />
                   </div>
-                  <button onClick={handleComplements} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition">Calculate Complements</button>
-                  <div className="mt-2 p-3 bg-slate-50 dark:bg-slate-900 border rounded">
+                  <button onClick={handleComplements} className="bg-emerald-600 text-white py-2 rounded hover:bg-emerald-700 transition dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Calculate Complements</button>
+                  <div className="mt-2 p-3 bg-slate-50 dark:bg-[#121212] border rounded">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-slate-500 dark:text-slate-400">1's Complement:</span>
-                      <span className="text-lg font-mono font-bold text-slate-800 dark:text-slate-100">{comp1}</span>
+                      <span className="text-sm text-slate-500 dark:text-[#71717a]">1's Complement:</span>
+                      <span className="text-lg font-mono font-bold text-slate-800 dark:text-[#ffffff]">{comp1}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-500 dark:text-slate-400">2's Complement:</span>
-                      <span className="text-lg font-mono font-bold text-slate-800 dark:text-slate-100">{comp2}</span>
+                      <span className="text-sm text-slate-500 dark:text-[#71717a]">2's Complement:</span>
+                      <span className="text-lg font-mono font-bold text-slate-800 dark:text-[#ffffff]">{comp2}</span>
                     </div>
                   </div>
                 </div>
@@ -276,18 +276,18 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Analysis/Assessment */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-blue-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
-              <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6 dark:bg-teal-950/20 dark:border-teal-900">
+              <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
                 <Calculator className="w-4 h-4" />
                 Practice Challenge
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 Convert <strong className="font-mono text-base">{questionVal.toString(questionBaseIn).toUpperCase()}</strong> (Base {questionBaseIn}) to Base {questionBaseOut}.
               </p>
               <div className="flex gap-2">
@@ -300,7 +300,7 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
                 />
                 <button
                   onClick={checkAnswer}
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                 >
                   Check
                 </button>
@@ -319,8 +319,8 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
             </div>
 
             <div className="flex-1 flex flex-col">
-              <h3 className="font-medium text-slate-700 dark:text-slate-200 mb-2">Activity Log</h3>
-              <div className="flex-1 bg-slate-50 dark:bg-slate-900 border rounded p-3 overflow-y-auto text-sm font-mono text-slate-600 dark:text-slate-300">
+              <h3 className="font-medium text-slate-700 dark:text-[#ffffff] mb-2">Activity Log</h3>
+              <div className="flex-1 bg-slate-50 dark:bg-[#121212] border rounded p-3 lg:overflow-y-auto text-sm font-mono text-slate-600 dark:text-[#a1a1aa]">
                 {logs.length === 0 && <span className="text-slate-400">No activity yet.</span>}
                 {logs.map((log, i) => (
                   <div key={i} className="mb-1 border-b border-slate-100 pb-1">

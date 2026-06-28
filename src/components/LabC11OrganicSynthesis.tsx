@@ -48,7 +48,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Petrochemical & Synthesis Lab" />
 
@@ -56,49 +56,49 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Info className="w-5 h-5 text-rose-600" /> Theory & Context
           </h2>
           
-          <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
-            <div className="p-3 bg-rose-50 rounded-lg border border-rose-100">
+          <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
+            <div className="p-3 bg-rose-50 rounded-lg border border-rose-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
               <h3 className="font-semibold text-rose-800 mb-2">Fractional Distillation</h3>
               <p>Crude oil is separated into fractions based on boiling points. Lighter molecules (fewer carbons) boil at lower temperatures and rise higher in the column.</p>
             </div>
 
-            <div className="p-3 bg-amber-50 rounded-lg border border-amber-100">
-              <h3 className="font-semibold text-amber-800 mb-2">Catalytic Cracking</h3>
+            <div className="p-3 bg-amber-50 rounded-lg border border-amber-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-amber-800 mb-2 dark:text-[#ffffff]">Catalytic Cracking</h3>
               <p>Longer, less valuable alkanes are broken into shorter alkanes and alkenes using heat and a zeolite catalyst.</p>
-              <p className="font-mono bg-slate-50 dark:bg-slate-900 p-1 mt-2 rounded text-xs border border-amber-200 text-center">
+              <p className="font-mono bg-slate-50 dark:bg-[#121212] p-1 mt-2 rounded text-xs border border-amber-200 text-center">
                 Long Alkane → Shorter Alkane + Alkene
               </p>
             </div>
 
-            <div className="p-3 bg-indigo-50 rounded-lg border border-indigo-100">
-              <h3 className="font-semibold text-indigo-800 mb-2">Retrosynthetic Analysis</h3>
+            <div className="p-3 bg-indigo-50 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Retrosynthetic Analysis</h3>
               <p>Working backwards from a target molecule to simpler precursor molecules. The "⇒" arrow means "is made from".</p>
             </div>
           </div>
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
             <Settings className="w-5 h-5 text-rose-600" /> Tower Simulator
           </h2>
 
           <div className="flex-1 flex items-center justify-center relative mb-4 min-h-[300px]">
             {/* Distillation Tower */}
-            <div className="w-24 h-64 bg-slate-300 dark:bg-slate-800 border-4 border-slate-700 dark:border-slate-500 rounded-t-full relative flex flex-col justify-between p-2 pb-0 z-10 shrink-0">
+            <div className="w-24 h-64 bg-slate-300 dark:bg-[#121212] border-4 border-[#1c1b1b] dark:border-[#1c1b1b] rounded-t-full relative flex flex-col justify-between p-2 pb-0 z-10 shrink-0">
               {/* Trays */}
-              <div className={`w-full h-1 bg-slate-400 dark:bg-slate-800 my-2 transition-shadow ${temperature >= 40 && temperature < 150 ? 'shadow-[0_0_10px_2px_rgba(59,130,246,0.8)]' : ''}`}></div>
-              <div className={`w-full h-1 bg-slate-400 dark:bg-slate-800 my-2 transition-shadow ${temperature >= 150 && temperature < 250 ? 'shadow-[0_0_10px_2px_rgba(234,179,8,0.8)]' : ''}`}></div>
-              <div className={`w-full h-1 bg-slate-400 dark:bg-slate-800 my-2 transition-shadow ${temperature >= 250 && temperature < 350 ? 'shadow-[0_0_10px_2px_rgba(239,68,68,0.8)]' : ''}`}></div>
-              <div className={`w-full h-1 bg-slate-400 dark:bg-slate-800 my-2 transition-shadow ${temperature >= 350 ? 'shadow-[0_0_10px_2px_rgba(0,0,0,0.5)]' : ''}`}></div>
+              <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 40 && temperature < 150 ? 'shadow-[0_0_10px_2px_rgba(59,130,246,0.8)]' : ''}`}></div>
+              <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 150 && temperature < 250 ? 'shadow-[0_0_10px_2px_rgba(234,179,8,0.8)]' : ''}`}></div>
+              <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 250 && temperature < 350 ? 'shadow-[0_0_10px_2px_rgba(239,68,68,0.8)]' : ''}`}></div>
+              <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 350 ? 'shadow-[0_0_10px_2px_rgba(0,0,0,0.5)]' : ''}`}></div>
               
               {/* Heat source */}
-              <div className="w-full h-8 bg-slate-800 dark:bg-slate-800 mt-2 rounded-t flex justify-center items-end pb-1 relative">
+              <div className="w-full h-8 bg-[#121212] dark:bg-[#121212] mt-2 rounded-t flex justify-center items-end pb-1 relative">
                  {temperature > 30 && <Flame className="w-6 h-6 text-orange-500 animate-pulse absolute bottom-1 transition-transform" style={{transform: `scale(${temperature/150})`}} />}
               </div>
             </div>
@@ -108,12 +108,12 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
                <div className={`transition-colors ${temperature >= 40 && temperature < 150 ? 'text-blue-600 text-sm' : ''}`}>Gasoline (40-150°C)</div>
                <div className={`transition-colors ${temperature >= 150 && temperature < 250 ? 'text-yellow-600 text-sm' : ''}`}>Kerosene (150-250°C)</div>
                <div className={`transition-colors ${temperature >= 250 && temperature < 350 ? 'text-red-600 text-sm' : ''}`}>Diesel (250-350°C)</div>
-               <div className={`transition-colors ${temperature >= 350 ? 'text-slate-900 dark:text-slate-200 text-sm' : ''}`}>Bitumen (&gt;350°C)</div>
+               <div className={`transition-colors ${temperature >= 350 ? 'text-slate-900 dark:text-[#ffffff] text-sm' : ''}`}>Bitumen (&gt;350°C)</div>
             </div>
           </div>
 
           <div className="mt-auto shrink-0">
-            <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+            <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
               <span>Furnace Temperature</span>
               <span className="font-mono text-rose-600">{temperature}°C</span>
             </label>
@@ -125,21 +125,21 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
               onChange={(e) => setTemperature(Number(e.target.value))}
               className="w-full accent-rose-600"
             />
-            <div className="mt-4 p-3 bg-slate-100 dark:bg-slate-800 rounded text-center text-sm font-medium border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <div className="mt-4 p-3 bg-slate-100 dark:bg-[#121212] rounded text-center text-sm font-medium border border-slate-200 dark:border-[#1c1b1b]">
               Active Fraction: <span className="text-rose-700">{getActiveFraction()}</span>
             </div>
           </div>
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
           
           <div className="mb-6 shrink-0">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
               <Wrench className="w-5 h-5 text-rose-600" /> Retrosynthesis Puzzle
             </h2>
-            <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-lg flex flex-col items-center">
-              <div className="font-bold text-indigo-900 mb-2 border-2 border-indigo-300 p-2 rounded bg-slate-50 dark:bg-slate-900">
+            <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-lg flex flex-col items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <div className="font-bold text-indigo-900 mb-2 border-2 border-indigo-300 p-2 rounded bg-slate-50 dark:bg-[#121212] dark:text-[#ffffff]">
                 {targetMolecule}
               </div>
               <ArrowDown className="w-6 h-6 text-indigo-400 my-1" />
@@ -159,7 +159,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
                 <option value="KMnO4 / H+">KMnO4 / H+ (Oxidation)</option>
               </select>
 
-              <button onClick={checkRetrosynthesis} className="bg-indigo-600 text-white px-4 py-2 rounded text-sm w-full font-medium hover:bg-indigo-700 transition-colors">
+              <button onClick={checkRetrosynthesis} className="bg-indigo-600 text-white px-4 py-2 rounded text-sm w-full font-medium hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                 Check Synthesis Path
               </button>
               
@@ -171,24 +171,24 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="mt-auto border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4 shrink-0">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Catalytic Cracking Equation</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+          <div className="mt-auto border-t border-slate-200 dark:border-[#1c1b1b] pt-4 shrink-0">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Catalytic Cracking Equation</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
               Balance the cracking of Decane (C10H22) to produce Octane (C8H18) and an alkene:
             </p>
-            <div className="flex items-center gap-2 font-mono text-sm mb-3 justify-center bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <div className="flex items-center gap-2 font-mono text-sm mb-3 justify-center bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b]">
               <span>C10H22</span>
               <ArrowLeft className="w-4 h-4 mx-1 transform rotate-180 text-slate-400" />
               <span>C8H18</span>
               <span>+</span>
               <div className="flex items-center">
                 <span>C</span>
-                <input type="text" value={carbonCount} onChange={e => setCarbonCount(e.target.value)} className="w-8 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded text-center mx-1 focus:outline-none focus:ring-1 focus:ring-amber-500" />
+                <input type="text" value={carbonCount} onChange={e => setCarbonCount(e.target.value)} className="w-8 border border-slate-300 dark:border-[#1c1b1b] rounded text-center mx-1 focus:outline-none focus:ring-1 focus:ring-amber-500" />
                 <span>H4</span>
               </div>
             </div>
             
-            <button onClick={checkCracking} className="w-full bg-amber-500 text-white px-4 py-2 rounded text-sm font-medium hover:bg-amber-600 flex justify-center items-center gap-2 transition-colors">
+            <button onClick={checkCracking} className="w-full bg-amber-500 text-white px-4 py-2 rounded text-sm font-medium hover:bg-amber-600 flex justify-center items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
               <Play className="w-4 h-4 fill-white" /> Check Equation
             </button>
             

@@ -122,18 +122,18 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-700 shrink-0">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
         <h1 className="text-lg md:text-xl font-bold">Class 8 English: Narration & Conditionals</h1>
         {onExit && (
-          <button onClick={onExit} className="whitespace-nowrap flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-700 hover:bg-slate-200 dark:bg-slate-900/50 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors">
+          <button onClick={onExit} className="whitespace-nowrap flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors">
             <Undo className="w-4 h-4" /> Go Back
           </button>
         )}
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white dark:bg-slate-800/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white dark:bg-[#121212]/20 transition-colors shrink-0 ml-4"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -145,54 +145,54 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
           {/* Left Panel */}
           <div className="flex flex-col gap-4">
             {/* Tabs */}
-            <div className="flex gap-2 p-1 bg-slate-200 dark:bg-slate-900/50 dark:bg-slate-800 rounded-xl">
+            <div className="flex gap-2 p-1 bg-slate-200 dark:bg-[#121212]/50 dark:bg-[#121212] rounded-xl">
               <button 
                 onClick={() => setActiveTab('notepad')}
-                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'notepad' ? 'bg-white dark:bg-slate-800 dark:bg-slate-700 shadow-sm text-yellow-600 dark:text-yellow-400 dark:text-yellow-500' : 'text-slate-600 dark:text-slate-400 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:hover:bg-slate-700/50'}`}
+                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'notepad' ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 shadow-sm text-yellow-600 dark:text-yellow-400 dark:text-yellow-500' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
               >
                 Reporter's Notepad
               </button>
               <button 
                 onClick={() => setActiveTab('conditionals')}
-                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'conditionals' ? 'bg-white dark:bg-slate-800 dark:bg-slate-700 shadow-sm text-purple-600 dark:text-purple-400 dark:text-purple-400' : 'text-slate-600 dark:text-slate-400 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:hover:bg-slate-700/50'}`}
+                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'conditionals' ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 shadow-sm text-purple-600 dark:text-purple-400 dark:text-purple-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
               >
                 Conditional Loops
               </button>
             </div>
 
             {activeTab === 'notepad' ? (
-              <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-700 flex-1">
+              <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-1">
                  <div className="flex items-center gap-2 mb-4">
                    <Edit3 className="w-6 h-6 text-yellow-500 dark:text-yellow-400" />
-                   <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">Reporter's Notepad</h2>
+                   <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Reporter's Notepad</h2>
                  </div>
-                 <p className="text-slate-600 dark:text-slate-400 dark:text-slate-300 mb-6 text-sm">
+                 <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
                     Convert the direct quote into reported (indirect) speech.
                  </p>
 
-                 <div className="bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-700 p-4 rounded-xl mb-6 flex flex-col items-start gap-3">
-                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 dark:text-slate-300 block">
+                 <div className="bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] dark:bg-slate-700 p-4 rounded-xl mb-6 flex flex-col items-start gap-3">
+                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] block">
                        Direct Speech
                      </span>
                      <div className="flex gap-3 items-center">
                         <div className="bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 p-3 rounded-full shrink-0">
                           <User className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
                         </div>
-                        <p className="text-lg font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 italic">
+                        <p className="text-lg font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] italic">
                           {nQ.direct}
                         </p>
                      </div>
                  </div>
 
                  <div className="mb-4">
-                     <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 mb-2">
+                     <label className="block text-sm font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">
                        Reported Speech:
                      </label>
                      <textarea 
                         value={nInput}
                         onChange={(e) => { setNInput(e.target.value); setNFeedback(null); }}
                         placeholder="e.g. He said that..."
-                        className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 focus:outline-none focus:border-yellow-500 resize-none h-24 font-medium"
+                        className="w-full px-4 py-3 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-yellow-500 resize-none h-24 font-medium"
                      />
                  </div>
 
@@ -207,10 +207,10 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                  </div>
 
                  <div className="flex gap-4">
-                     <button onClick={handleNCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                     <button onClick={handleNCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
                        Check Notes
                      </button>
-                     <button onClick={handleNNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-slate-900/50 hover:bg-slate-300 dark:bg-slate-900/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                     <button onClick={handleNNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
                        Next <ArrowRight className="w-5 h-5"/>
                      </button>
                  </div>
@@ -229,12 +229,12 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                  )}
               </div>
             ) : (
-              <div className="bg-white dark:bg-slate-800 dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-700 flex-1">
+              <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-1">
                  <div className="flex items-center gap-2 mb-4">
                    <RefreshCw className="w-6 h-6 text-purple-500 dark:text-purple-400" />
-                   <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">Conditional Loops</h2>
+                   <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Conditional Loops</h2>
                  </div>
-                 <p className="text-slate-600 dark:text-slate-400 dark:text-slate-300 mb-6 text-sm">
+                 <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
                     Fill in the correct verb forms to complete the conditional logic loop.
                  </p>
 
@@ -249,31 +249,31 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
 
                  <div className="mb-8">
                      <div className="flex items-center gap-2 flex-wrap text-lg">
-                         <span className="font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">{cQ.promptPart1}</span>
+                         <span className="font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{cQ.promptPart1}</span>
                          <input 
                             type="text"
                             value={cInput1}
                             onChange={(e) => { setCInput1(e.target.value); setCFeedback(null); }}
                             placeholder={cQ.verb1Hint}
-                            className="w-28 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-slate-600 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
+                            className="w-28 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
                          />
-                         <span className="font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">{cQ.promptPart2}</span>
+                         <span className="font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{cQ.promptPart2}</span>
                          <input 
                             type="text"
                             value={cInput2}
                             onChange={(e) => { setCInput2(e.target.value); setCFeedback(null); }}
                             placeholder={cQ.verb2Hint}
-                            className="w-32 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-slate-600 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
+                            className="w-32 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
                          />
-                         <span className="font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">{cQ.endText}</span>
+                         <span className="font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{cQ.endText}</span>
                      </div>
                  </div>
 
                  <div className="flex gap-4">
-                     <button onClick={handleCCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                     <button onClick={handleCCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                        Run Logic Loop
                      </button>
-                     <button onClick={handleCNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-slate-900/50 hover:bg-slate-300 dark:bg-slate-900/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
+                     <button onClick={handleCNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
                        Next <ArrowRight className="w-5 h-5"/>
                      </button>
                  </div>
@@ -295,25 +295,25 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
           </div>
 
           {/* Right Panel */}
-          <div className="bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 dark:border-slate-700 overflow-hidden flex flex-col p-6 min-h-[400px]">
+          <div className="bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212] rounded-2xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex flex-col p-6 min-h-[400px]">
             {activeTab === 'notepad' ? (
               <div className="flex flex-col items-center justify-center h-full space-y-12 relative">
                  {/* Direct Quote Bubble */}
                  <div className="relative flex flex-col items-center">
-                    <div className="bg-white dark:bg-slate-800 dark:bg-slate-700 p-6 rounded-2xl shadow-md border-2 border-slate-200 dark:border-slate-700 dark:border-slate-600 relative z-10 max-w-sm text-center">
-                       <p className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">"{nQ.quote}"</p>
-                       <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white dark:bg-slate-800 dark:bg-slate-700 border-b-2 border-r-2 border-slate-200 dark:border-slate-700 dark:border-slate-600 rotate-45 z-0"></div>
+                    <div className="bg-white dark:!bg-[#121212] dark:bg-slate-700 p-6 rounded-2xl shadow-md border-2 border-slate-200 dark:border-[#1c1b1b] relative z-10 max-w-sm text-center">
+                       <p className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">"{nQ.quote}"</p>
+                       <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-white dark:bg-[#121212] dark:bg-slate-700 border-b-2 border-r-2 border-slate-200 dark:border-[#1c1b1b] rotate-45 z-0"></div>
                     </div>
                     <div className="mt-6 flex flex-col items-center">
-                       <div className="bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 p-4 rounded-full border-4 border-white dark:border-slate-800 shadow-sm z-10">
+                       <div className="bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 p-4 rounded-full border-4 border-white dark:border-neutral-900 shadow-sm z-10">
                           <User className="w-10 h-10 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
                        </div>
-                       <span className="mt-2 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 uppercase tracking-wider text-sm">{nQ.speaker}</span>
+                       <span className="mt-2 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] uppercase tracking-wider text-sm">{nQ.speaker}</span>
                     </div>
                  </div>
 
                  {/* Transition arrow */}
-                 <ArrowRight className="w-8 h-8 text-slate-500 dark:text-slate-400 dark:text-slate-300 rotate-90 lg:rotate-0" />
+                 <ArrowRight className="w-8 h-8 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] rotate-90 lg:rotate-0" />
 
                  {/* Reported Notepad */}
                  <div className={`transition-all duration-500 flex flex-col items-center ${nFeedback === 'correct' ? 'opacity-100 scale-100' : 'opacity-40 scale-95 grayscale'}`}>
@@ -336,16 +336,16 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                        <>
                           <div className="flex flex-col items-center w-32">
                              <Thermometer className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-blue-500 dark:text-blue-400' : 'text-red-500 dark:text-red-400'} transition-colors duration-700`} />
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">{cFeedback === 'correct' ? '0°C (Cooled)' : '20°C (Room Temp)'}</span>
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? '0°C (Cooled)' : '20°C (Room Temp)'}</span>
                           </div>
-                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-slate-300'} rotate-90 md:rotate-0`} />
+                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
                           <div className="flex flex-col items-center w-32">
                              {cFeedback === 'correct' ? (
                                 <Snowflake className="w-20 h-20 text-blue-400 animate-pulse" />
                              ) : (
                                 <Droplet className="w-20 h-20 text-blue-500 dark:text-blue-400" />
                              )}
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">{cFeedback === 'correct' ? 'Solid Ice' : 'Liquid Water'}</span>
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? 'Solid Ice' : 'Liquid Water'}</span>
                           </div>
                        </>
                     )}
@@ -353,13 +353,13 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                     {cQ.iconSet === 'exam' && (
                        <>
                           <div className="flex flex-col items-center w-32">
-                             <BookOpen className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-slate-400 dark:text-slate-300'} transition-colors duration-700`} />
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">Studying Hard</span>
+                             <BookOpen className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-colors duration-700`} />
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">Studying Hard</span>
                           </div>
-                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-slate-300'} rotate-90 md:rotate-0`} />
+                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
                           <div className="flex flex-col items-center w-32">
-                             <Award className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-yellow-500 dark:text-yellow-400 scale-110' : 'text-slate-500 dark:text-slate-400 dark:text-slate-300'} transition-all duration-700`} />
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">{cFeedback === 'correct' ? 'A+ Grade!' : 'Exam Result'}</span>
+                             <Award className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-yellow-500 dark:text-yellow-400 scale-110' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-all duration-700`} />
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? 'A+ Grade!' : 'Exam Result'}</span>
                           </div>
                        </>
                     )}
@@ -367,21 +367,21 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                     {cQ.iconSet === 'lottery' && (
                        <>
                           <div className="flex flex-col items-center w-32">
-                             <Ticket className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-slate-400 dark:text-slate-300'} transition-colors duration-700`} />
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">Winning Ticket</span>
+                             <Ticket className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-colors duration-700`} />
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">Winning Ticket</span>
                           </div>
-                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-slate-300'} rotate-90 md:rotate-0`} />
+                          <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
                           <div className="flex flex-col items-center w-32">
-                             <Home className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-purple-500 dark:text-purple-400 scale-110' : 'text-slate-500 dark:text-slate-400 dark:text-slate-300'} transition-all duration-700`} />
-                             <span className="mt-4 font-bold text-slate-600 dark:text-slate-400 dark:text-slate-300 text-center">{cFeedback === 'correct' ? 'Mansion Acquired' : 'Dream House'}</span>
+                             <Home className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-purple-500 dark:text-purple-400 scale-110' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-all duration-700`} />
+                             <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? 'Mansion Acquired' : 'Dream House'}</span>
                           </div>
                        </>
                     )}
                  </div>
                  
                  {/* Logic Loop text overlay */}
-                 <div className="bg-white dark:bg-slate-800/80 dark:bg-slate-900/80 backdrop-blur px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 dark:border-slate-700 shadow-sm transition-all w-full max-w-sm text-center">
-                    <p className="font-mono text-sm text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 flex items-center justify-center gap-2">
+                 <div className="bg-white dark:bg-[#121212]/80 dark:bg-[#121212]/80 backdrop-blur px-6 py-3 rounded-full border border-slate-200 dark:border-[#1c1b1b] shadow-sm transition-all w-full max-w-sm text-center">
+                    <p className="font-mono text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] flex items-center justify-center gap-2">
                        <RefreshCw className={`w-4 h-4 shrink-0 ${cFeedback === 'correct' ? 'animate-spin text-green-500 dark:text-green-400' : ''}`} />
                        <span className="truncate">IF ( {cInput1 || '...'} ) THEN ( {cInput2 || '...'} )</span>
                     </p>

@@ -35,7 +35,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
   if (isPlaying) {
     return (
       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center" onClick={handleExitPlay}>
-        <div className="w-full max-w-5xl aspect-[16/9] bg-white relative overflow-hidden shadow-2xl">
+        <div className="w-full max-w-5xl aspect-[16/9] bg-white relative overflow-hidden shadow-2xl dark:bg-[#121212]">
           {shapes.map(shape => {
             let animStyle = '';
             if (shape.anim === 'spin') animStyle = 'animate-spin';
@@ -59,31 +59,31 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Geometry Presentation" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-        <p className="text-slate-600 dark:text-slate-300 mb-6">Insert geometrical figures onto the slide, apply animations to them, and set a slide transition.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Insert geometrical figures onto the slide, apply animations to them, and set a slide transition.</p>
 
         {/* Ribbon Toolbar */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-t-xl border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-2 flex gap-6 w-full max-w-4xl mx-auto shadow-sm">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-t-xl border border-slate-300 dark:border-[#1c1b1b] p-2 flex gap-6 w-full max-w-4xl mx-auto shadow-sm">
           {/* Insert Shapes */}
-          <div className="flex flex-col border-r border-slate-200 dark:border-slate-700 dark:border-slate-500 pr-6">
+          <div className="flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] pr-6">
             <span className="text-[10px] uppercase font-bold text-slate-400 mb-1">Insert Shapes</span>
             <div className="flex gap-2">
-              <button onClick={() => addShape('square')} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded border border-transparent hover:border-slate-300 dark:border-slate-700 dark:border-slate-500"><Square className="w-5 h-5 text-blue-600" fill="currentColor"/></button>
-              <button onClick={() => addShape('circle')} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded border border-transparent hover:border-slate-300 dark:border-slate-700 dark:border-slate-500"><Circle className="w-5 h-5 text-rose-600" fill="currentColor"/></button>
-              <button onClick={() => addShape('triangle')} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded border border-transparent hover:border-slate-300 dark:border-slate-700 dark:border-slate-500"><Triangle className="w-5 h-5 text-emerald-600" fill="currentColor"/></button>
-              <button onClick={() => addShape('parallelogram')} className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded border border-transparent hover:border-slate-300 dark:border-slate-700 dark:border-slate-500">
+              <button onClick={() => addShape('square')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]"><Square className="w-5 h-5 text-blue-600" fill="currentColor"/></button>
+              <button onClick={() => addShape('circle')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]"><Circle className="w-5 h-5 text-rose-600" fill="currentColor"/></button>
+              <button onClick={() => addShape('triangle')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]"><Triangle className="w-5 h-5 text-emerald-600" fill="currentColor"/></button>
+              <button onClick={() => addShape('parallelogram')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]">
                 <div className="w-5 h-5 bg-purple-600 skew-x-[-20deg]" />
               </button>
             </div>
           </div>
 
           {/* Transitions */}
-          <div className="flex flex-col border-r border-slate-200 dark:border-slate-700 dark:border-slate-500 pr-6">
+          <div className="flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] pr-6">
             <span className="text-[10px] uppercase font-bold text-slate-400 mb-1">Slide Transition</span>
-            <select value={transition} onChange={e => setTransition(e.target.value)} className="p-1 text-sm border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded outline-none">
+            <select value={transition} onChange={e => setTransition(e.target.value)} className="p-1 text-sm border border-slate-300 dark:border-[#1c1b1b] rounded outline-none">
               <option value="none">None</option>
               <option value="fade">Fade</option>
               <option value="slide">Slide</option>
@@ -97,7 +97,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
               disabled={!selectedShape} 
               onChange={e => setAnimation(e.target.value)} 
               value={selectedShape ? shapes.find(s=>s.id === selectedShape)?.anim : 'none'}
-              className="p-1 text-sm border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded outline-none disabled:opacity-50"
+              className="p-1 text-sm border border-slate-300 dark:border-[#1c1b1b] rounded outline-none disabled:opacity-50"
             >
               <option value="none">None</option>
               <option value="spin">Spin</option>
@@ -108,7 +108,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
 
           <button 
             onClick={handlePlay}
-            className="ml-auto bg-orange-500 hover:bg-orange-600 text-white px-6 rounded-lg font-bold flex items-center transition-colors"
+            className="ml-auto bg-orange-500 hover:bg-orange-600 text-white px-6 rounded-lg font-bold flex items-center transition-colors dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
           >
             <Play className="w-4 h-4 mr-2" />
             Slide Show
@@ -117,7 +117,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
 
         {/* Slide Canvas */}
         <div className="w-full max-w-4xl mx-auto flex-1 flex items-center justify-center relative p-8">
-          <div className="w-full aspect-[16/9] bg-slate-50 dark:bg-slate-900 shadow-2xl border-4 border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden">
+          <div className="w-full aspect-[16/9] bg-slate-50 dark:bg-[#121212] shadow-2xl border-4 border-slate-200 dark:border-[#1c1b1b] relative overflow-hidden">
             
             {/* Shapes */}
             {shapes.map(shape => {

@@ -17,8 +17,8 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
   const balanceAngle = Math.max(-20, Math.min(20, (userX + leftFruits - rightFruits) * -5));
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -27,7 +27,7 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
 
       <div className="flex-1 min-w-0 flex flex-col lg:flex-row lg:overflow-hidden">
         {/* Left Column: Interactive Controls/Workspace */}
-        <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]">
           
           <section className="mb-8 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-blue-700 dark:text-blue-300">
@@ -46,8 +46,8 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
                 <label className="block text-sm mb-1 font-medium">Predict Day: {predictDay}</label>
                 <input type="range" min="1" max="30" value={predictDay} onChange={(e) => setPredictDay(Number(e.target.value))} className="w-full accent-blue-600" />
               </div>
-              <div className="p-3 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
-                <p className="text-sm text-slate-500 dark:text-slate-400">Formula: Amount = {startAmount} + ({dailySaving} × Day)</p>
+              <div className="p-3 bg-white dark:!bg-[#121212] rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                <p className="text-sm text-slate-500 dark:text-[#71717a]">Formula: Amount = {startAmount} + ({dailySaving} × Day)</p>
                 <p className="text-lg font-bold mt-1 text-blue-800 dark:text-blue-300">Total on Day {predictDay}: ${startAmount + dailySaving * predictDay}</p>
               </div>
             </div>
@@ -57,9 +57,9 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
               <Scale className="w-5 h-5" /> Fruit Equation Solver
             </h2>
-            <p className="text-sm mb-4 text-slate-600 dark:text-slate-300">Find the unknown number of fruits in the bag (x) to balance the scale!</p>
+            <p className="text-sm mb-4 text-slate-600 dark:text-[#a1a1aa]">Find the unknown number of fruits in the bag (x) to balance the scale!</p>
             <div className="space-y-4">
-              <div className="flex justify-between items-center bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="flex justify-between items-center bg-white dark:!bg-[#121212] p-3 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <span className="font-medium text-sm">Set Target Right Side:</span>
                 <div className="flex items-center gap-2">
                   <button onClick={() => setRightFruits(Math.max(leftFruits + 1, rightFruits - 1))} className="p-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded"><Minus className="w-4 h-4"/></button>
@@ -67,7 +67,7 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
                   <button onClick={() => setRightFruits(Math.min(15, rightFruits + 1))} className="p-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded"><Plus className="w-4 h-4"/></button>
                 </div>
               </div>
-              <div className="flex justify-between items-center bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="flex justify-between items-center bg-white dark:!bg-[#121212] p-3 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <span className="font-medium text-sm">Fruits Outside Bag:</span>
                 <div className="flex items-center gap-2">
                   <button onClick={() => setLeftFruits(Math.max(0, leftFruits - 1))} className="p-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded"><Minus className="w-4 h-4"/></button>
@@ -95,11 +95,11 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-slate-100/50 dark:bg-slate-900/50 relative">
+        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-slate-100/50 dark:bg-[#121212]/50 relative">
           
-          <div className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col min-h-[300px]">
-            <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-slate-200">Savings Timeline</h3>
-            <div className="flex-1 min-w-0 relative w-full border-l-2 border-b-2 border-slate-300 dark:border-slate-600 pt-4 pb-2 pr-2">
+          <div className="flex-1 min-w-0 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col min-h-[300px]">
+            <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Savings Timeline</h3>
+            <div className="flex-1 min-w-0 relative w-full border-l-2 border-b-2 border-slate-300 dark:border-[#1c1b1b] pt-4 pb-2 pr-2">
                {/* Plotting points */}
                <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
                  {Array.from({ length: Math.min(predictDay + 1, 15) }).map((_, i) => {
@@ -128,8 +128,8 @@ export default function LabM6Algebra({ onExit }: { onExit?: () => void }) {
             </div>
           </div>
 
-          <div className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col items-center justify-center min-h-[350px]">
-            <h3 className="text-lg font-bold mb-4 w-full text-left text-slate-800 dark:text-slate-200">
+          <div className="flex-1 min-w-0 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center min-h-[350px]">
+            <h3 className="text-lg font-bold mb-4 w-full text-left text-slate-800 dark:text-[#ffffff]">
               Equation Balance: <span className="font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1 rounded">x + {leftFruits} = {rightFruits}</span>
             </h3>
             

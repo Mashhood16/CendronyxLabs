@@ -88,43 +88,43 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             {/* Header */}
             <LabHeader onExit={onExit} title="Lab 12.1: Machine Learning & Statistical Testing" />
 
             {/* Main 3-column Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 h-full min-h-0">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+                <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
                         <BookOpen className="text-indigo-500" /> Theory & Context
                     </h2>
-                    <div className="text-sm text-slate-700 dark:text-slate-200 space-y-4">
+                    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-4">
                         <p>In Machine Learning, we evaluate models by splitting our dataset into <strong>Training</strong> and <strong>Testing</strong> subsets to prevent overfitting.</p>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Confusion Matrix</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Confusion Matrix</h3>
                         <ul className="list-disc pl-5 space-y-1">
                             <li><strong>TP</strong> (True Positives): Actual Positive, Predicted Positive</li>
                             <li><strong>TN</strong> (True Negatives): Actual Negative, Predicted Negative</li>
                             <li><strong>FP</strong> (False Positives): Actual Negative, Predicted Positive</li>
                             <li><strong>FN</strong> (False Negatives): Actual Positive, Predicted Negative</li>
                         </ul>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Key Metrics</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Key Metrics</h3>
                         <p><strong>Accuracy</strong> = (TP + TN) / Total Test</p>
                         <p><strong>Precision</strong> = TP / (TP + FP)</p>
                         <p><strong>Recall</strong> = TP / (TP + FN)</p>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Statistical Hypothesis Testing</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Statistical Hypothesis Testing</h3>
                         <p>We use p-values to determine if a model's improvement over a baseline is statistically significant. A p-value &lt; alpha (e.g., 0.05) means the result is significant, so we reject the null hypothesis.</p>
                     </div>
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-y-auto">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
                         <BarChart2 className="text-indigo-500" /> Interactive Data Science
                     </h2>
                     
                     <div className="mb-4 shrink-0">
-                        <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 block mb-1">
+                        <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block mb-1">
                             Train/Test Split: {Math.round(splitRatio * 100)}% Train / {100 - Math.round(splitRatio * 100)}% Test
                         </label>
                         <input 
@@ -136,15 +136,15 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                     </div>
 
                     <div className="flex gap-2 mb-4 shrink-0">
-                        <button onClick={initData} className="flex-1 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 py-2 rounded flex justify-center items-center gap-2 text-sm font-medium transition-colors">
+                        <button onClick={initData} className="flex-1 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] py-2 rounded flex justify-center items-center gap-2 text-sm font-medium transition-colors">
                             <RefreshCw size={16} /> Reshuffle Data
                         </button>
-                        <button onClick={evaluateModel} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded flex justify-center items-center gap-2 text-sm font-medium transition-colors">
+                        <button onClick={evaluateModel} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded flex justify-center items-center gap-2 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                             <Target size={16} /> Evaluate on Test Set
                         </button>
                     </div>
 
-                    <svg viewBox="0 0 100 100" className="w-full h-64 bg-slate-100 dark:bg-slate-800 rounded-lg shadow-inner mb-4 shrink-0">
+                    <svg viewBox="0 0 100 100" className="w-full h-64 bg-slate-100 dark:bg-[#121212] rounded-lg shadow-inner mb-4 shrink-0">
                         {isEvaluated && <line x1="0" y1="100" x2="100" y2="0" stroke="#64748b" strokeWidth="1" strokeDasharray="2" />}
                         {points.map(p => (
                             <circle 
@@ -159,14 +159,14 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                     </svg>
 
                     {isEvaluated && (
-                        <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 shrink-0 mt-auto">
-                            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Test Set Results (Confusion Matrix)</h3>
-                            <div className="grid grid-cols-2 gap-2 text-sm text-slate-700 dark:text-slate-200">
+                        <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] shrink-0 mt-auto">
+                            <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Test Set Results (Confusion Matrix)</h3>
+                            <div className="grid grid-cols-2 gap-2 text-sm text-slate-700 dark:text-[#ffffff]">
                                 <div><strong>True Positives (TP):</strong> {tp}</div>
                                 <div><strong>False Positives (FP):</strong> {fp}</div>
                                 <div><strong>True Negatives (TN):</strong> {tn}</div>
                                 <div><strong>False Negatives (FN):</strong> {fn}</div>
-                                <div className="col-span-2 pt-2 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                                <div className="col-span-2 pt-2 border-t border-slate-200 dark:border-[#1c1b1b]">
                                     <strong>Total Test Points:</strong> {testPoints.length}
                                 </div>
                             </div>
@@ -175,35 +175,35 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2 shrink-0">
+                <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
                         <CheckCircle className="text-indigo-500" /> Assessment & Analysis
                     </h2>
                     
                     {!isEvaluated ? (
-                        <div className="text-sm text-slate-500 dark:text-slate-400 italic p-4 bg-slate-50 dark:bg-slate-900 rounded">
+                        <div className="text-sm text-slate-500 dark:text-[#71717a] italic p-4 bg-slate-50 dark:bg-[#121212] rounded">
                             Please evaluate the model in the simulator first to generate test results.
                         </div>
                     ) : (
-                        <div className="space-y-4 flex-1 overflow-y-auto text-sm pr-2">
+                        <div className="space-y-4 flex-1 lg:overflow-y-auto text-sm pr-2">
                             <div>
-                                <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">1. Calculate Model Accuracy (decimal form, e.g., 0.85):</label>
-                                <input type="number" step="0.01" value={ansAcc} onChange={e => setAnsAcc(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
+                                <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">1. Calculate Model Accuracy (decimal form, e.g., 0.85):</label>
+                                <input type="number" step="0.01" value={ansAcc} onChange={e => setAnsAcc(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
                             </div>
                             <div>
-                                <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">2. Calculate Precision (decimal form):</label>
-                                <input type="number" step="0.01" value={ansPrec} onChange={e => setAnsPrec(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
+                                <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">2. Calculate Precision (decimal form):</label>
+                                <input type="number" step="0.01" value={ansPrec} onChange={e => setAnsPrec(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
                             </div>
                             <div>
-                                <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">3. Calculate Recall (decimal form):</label>
-                                <input type="number" step="0.01" value={ansRec} onChange={e => setAnsRec(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
+                                <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">3. Calculate Recall (decimal form):</label>
+                                <input type="number" step="0.01" value={ansRec} onChange={e => setAnsRec(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
                             </div>
-                            <div className="pt-2 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                                <label className="block text-slate-700 dark:text-slate-200 mb-1 font-medium">4. If a t-test compares our model to a baseline and yields p = 0.03 (alpha = 0.05), is our model significantly different? (Yes/No):</label>
-                                <input type="text" value={ansPVal} onChange={e => setAnsPVal(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded" />
+                            <div className="pt-2 border-t border-slate-200 dark:border-[#1c1b1b]">
+                                <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">4. If a t-test compares our model to a baseline and yields p = 0.03 (alpha = 0.05), is our model significantly different? (Yes/No):</label>
+                                <input type="text" value={ansPVal} onChange={e => setAnsPVal(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
                             </div>
 
-                            <button onClick={checkAnswers} className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors">
+                            <button onClick={checkAnswers} className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                                 Check Answers
                             </button>
 
@@ -213,10 +213,10 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                                 </div>
                             )}
 
-                            <div className="pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-6">
+                            <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] mt-6">
                                 <button 
                                     onClick={handleComplete}
-                                    className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"
+                                    className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                                 >
                                     <Save size={20} />
                                     Submit Results & Exit

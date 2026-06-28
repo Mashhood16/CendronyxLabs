@@ -83,7 +83,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
         return (
           <div 
             key={item.id} 
-            className="absolute rounded-full border-2 border-dashed border-slate-600 dark:border-slate-500"
+            className="absolute rounded-full border-2 border-dashed border-slate-600 dark:border-[#1c1b1b]"
             style={{ 
               left: item.x - (item.size! / 2), 
               top: item.y - (item.size! / 2), 
@@ -106,23 +106,23 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Solar System 3D Creator" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
         
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Draw planets using 3D shapes, fill them with colors, draw orbits, and label them.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Draw planets using 3D shapes, fill them with colors, draw orbits, and label them.</p>
 
         <div className="flex gap-6 flex-1 h-[600px]">
           {/* Toolbar */}
-          <div className="w-72 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex flex-col gap-6 overflow-y-auto">
+          <div className="w-72 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex flex-col gap-6 lg:overflow-y-auto">
             <div>
               <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">Tools</h3>
               <div className="flex flex-col gap-2">
                 <button
                   onClick={() => setSelectedTool('planet')}
                   className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${
-                    selectedTool === 'planet' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300'
+                    selectedTool === 'planet' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]'
                   }`}
                 >
                   <Circle className="w-5 h-5 fill-current" /> 3D Planet Shape
@@ -130,7 +130,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
                 <button
                   onClick={() => setSelectedTool('orbit')}
                   className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${
-                    selectedTool === 'orbit' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300'
+                    selectedTool === 'orbit' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]'
                   }`}
                 >
                   <Circle className="w-5 h-5" strokeDasharray="4 4" /> Draw Orbit
@@ -138,7 +138,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
                 <button
                   onClick={() => setSelectedTool('label')}
                   className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${
-                    selectedTool === 'label' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300'
+                    selectedTool === 'label' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]'
                   }`}
                 >
                   <Type className="w-5 h-5" /> Text Label
@@ -155,7 +155,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
                   <button
                     key={c}
                     onClick={() => setCurrentColor(c)}
-                    className={`w-8 h-8 rounded-full shadow-sm border-2 transition-transform ${currentColor === c ? 'border-slate-800 dark:border-slate-500 scale-110' : 'border-transparent hover:scale-105'}`}
+                    className={`w-8 h-8 rounded-full shadow-sm border-2 transition-transform ${currentColor === c ? 'border-[#1c1b1b] dark:border-slate-500 scale-110' : 'border-transparent hover:scale-105'}`}
                     style={{ backgroundColor: c }}
                   />
                 ))}
@@ -176,11 +176,11 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
             </div>
 
             <div className="mt-auto flex gap-2 pt-4 border-t border-slate-100">
-              <button onClick={undo} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900 disabled:opacity-50">
+              <button onClick={undo} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-50 dark:bg-[#121212] disabled:opacity-50">
                 <Undo className="w-5 h-5 mb-1" />
                 <span className="text-xs font-bold">Undo</span>
               </button>
-              <button onClick={clear} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-red-600 hover:bg-red-50 disabled:opacity-50">
+              <button onClick={clear} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-red-600 hover:bg-red-50 disabled:opacity-50">
                 <Trash2 className="w-5 h-5 mb-1" />
                 <span className="text-xs font-bold">Clear</span>
               </button>
@@ -190,7 +190,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
           {/* Canvas */}
           <div 
             onClick={handleCanvasClick}
-            className={`flex-1 bg-slate-900 dark:bg-slate-800 rounded-xl shadow-inner border border-slate-800 dark:border-slate-500 relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-500' : 'cursor-default'}`}
+            className={`flex-1 bg-[#000000] dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-slate-500 relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-500' : 'cursor-default'}`}
             style={{
               backgroundImage: 'radial-gradient(circle at center, #1e293b 0%, #0f172a 100%)'
             }}
@@ -200,7 +200,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
             
             {items.length === 0 && !selectedTool && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-slate-400 flex flex-col items-center gap-4 bg-slate-800 dark:bg-slate-800/80 p-8 rounded-2xl border border-slate-700 dark:border-slate-500">
+                <div className="text-slate-400 flex flex-col items-center gap-4 bg-[#121212] dark:bg-[#121212]/80 p-8 rounded-2xl border border-[#1c1b1b] dark:border-[#1c1b1b]">
                   <Palette className="w-12 h-12" />
                   <p className="font-bold">Select a tool to start drawing the Solar System</p>
                 </div>

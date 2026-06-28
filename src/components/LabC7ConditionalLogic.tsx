@@ -57,11 +57,11 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
   const isAllComplete = completed.every(c => c);
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Conditional Logic Translation" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
 
         {isAllComplete && (
           <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
@@ -72,10 +72,10 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
 
         <div className="rounded-xl shadow-lg border p-8 max-w-4xl mx-auto w-full" style={{backgroundColor: 'rgb(var(--slate-50))', borderColor: 'rgb(var(--slate-200))'}}>
           <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-            <h2 className="text-xl font-bold text-slate-700 dark:text-slate-200">Scenario {selectedScenario + 1} of 3</h2>
+            <h2 className="text-xl font-bold text-slate-700 dark:text-[#ffffff]">Scenario {selectedScenario + 1} of 3</h2>
             <div className="flex gap-2">
               {[0, 1, 2].map(idx => (
-                <div key={idx} className={`w-3 h-3 rounded-full ${completed[idx] ? 'bg-emerald-500' : selectedScenario === idx ? 'bg-blue-500' : 'bg-slate-200 dark:bg-slate-800'}`} />
+                <div key={idx} className={`w-3 h-3 rounded-full ${completed[idx] ? 'bg-emerald-500' : selectedScenario === idx ? 'bg-blue-500' : 'bg-slate-200 dark:bg-[#121212]'}`} />
               ))}
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
             </div>
 
             {/* Workspace */}
-            <div className="flex-1 rounded-xl p-6 shadow-inner relative border-4 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700">
+            <div className="flex-1 rounded-xl p-6 shadow-inner relative border-4 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b]">
               <h3 className="font-bold text-sm uppercase text-slate-400 tracking-wider mb-4 text-center">Translation Workspace</h3>
               
               <div className="flex flex-wrap gap-2 mb-6 min-h-[100px] content-start">
@@ -126,20 +126,20 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
                   )
                 })}
                 {workspace.length === 0 && (
-                  <div className="w-full text-center text-slate-500 dark:text-slate-400 font-medium italic mt-8">Click logic blocks to add them here</div>
+                  <div className="w-full text-center text-slate-500 dark:text-[#71717a] font-medium italic mt-8">Click logic blocks to add them here</div>
                 )}
               </div>
 
               {!completed[selectedScenario] ? (
                 <div className="flex gap-4">
-                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg transition-colors border bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600">Clear</button>
-                  <button onClick={checkSolution} className="flex-1 py-3 font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">Check Code</button>
+                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg transition-colors border bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600">Clear</button>
+                  <button onClick={checkSolution} className="flex-1 py-3 font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Check Code</button>
                 </div>
               ) : (
                 <div className="text-center">
                   <div className="text-emerald-400 font-bold mb-4 flex justify-center items-center"><CheckCircle className="w-5 h-5 mr-2" /> Correct Logic Structure!</div>
                   {selectedScenario < 2 && (
-                    <button onClick={nextScenario} className="w-full py-3 font-bold rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors">Next Scenario &rarr;</button>
+                    <button onClick={nextScenario} className="w-full py-3 font-bold rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Next Scenario &rarr;</button>
                   )}
                 </div>
               )}

@@ -90,36 +90,36 @@ export default function LabScratchMaze({ onExit }: LabProps) {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-100 dark:bg-slate-800 flex flex-col font-sans">
+    <div className="w-full h-screen bg-slate-100 dark:!bg-[#000000] flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 4.1: Scratch Maze Navigation" variant="amber" />
 
       <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Panel: Block Palette */}
-        <div className="w-80 bg-slate-200 dark:bg-slate-800 border-r border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col p-4 z-10 overflow-y-auto">
-           <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Motion Blocks</h3>
+        <div className="w-80 bg-slate-200 dark:bg-[#121212] border-r border-slate-300 dark:border-[#1c1b1b] flex flex-col p-4 z-10 lg:overflow-y-auto">
+           <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Motion Blocks</h3>
            
            <div className="flex flex-col gap-2">
               <button 
                 onClick={() => setBlocks([...blocks, 'MOVE_FORWARD'])}
                 disabled={isExecuting}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
-                <div className="w-4 h-4 bg-slate-50 dark:bg-slate-900/30 rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50 dark:bg-[#121212]/30 rounded-full"></div>
                 Move Forward 1 Step
               </button>
               <button 
                 onClick={() => setBlocks([...blocks, 'JUMP'])}
                 disabled={isExecuting}
-                className="bg-purple-500 hover:bg-purple-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                className="bg-purple-500 hover:bg-purple-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
               >
-                <div className="w-4 h-4 bg-slate-50 dark:bg-slate-900/30 rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50 dark:bg-[#121212]/30 rounded-full"></div>
                 Jump Forward 2 Steps
               </button>
               <button 
                 onClick={() => setBlocks([...blocks, 'TURN_RIGHT'])}
                 disabled={isExecuting}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 Turn Right 90°
@@ -127,7 +127,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
               <button 
                 onClick={() => setBlocks([...blocks, 'TURN_LEFT'])}
                 disabled={isExecuting}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                 Turn Left 90°
@@ -136,19 +136,19 @@ export default function LabScratchMaze({ onExit }: LabProps) {
         </div>
 
         {/* Center Panel: Code Area */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 flex flex-col relative border-r border-slate-300 dark:border-slate-700 dark:border-slate-500">
+        <div className="flex-1 bg-slate-50 dark:bg-[#121212] flex flex-col relative border-r border-slate-300 dark:border-[#1c1b1b]">
            
-           <div className="h-12 bg-slate-100 dark:bg-slate-800 flex items-center px-4 justify-between border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <span className="text-slate-600 dark:text-slate-300 font-bold flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+           <div className="h-12 bg-slate-100 dark:bg-[#121212] flex items-center px-4 justify-between border-b border-slate-200 dark:border-[#1c1b1b]">
+              <span className="text-slate-600 dark:text-[#a1a1aa] font-bold flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full dark:bg-[#121212] dark:border-[#1c1b1b]"></div>
                 When Flag Clicked
               </span>
-              <button onClick={() => {setBlocks([]); reset();}} disabled={isExecuting} className="text-sm text-slate-500 dark:text-slate-400 hover:text-red-500 disabled:opacity-50">Clear Script</button>
+              <button onClick={() => {setBlocks([]); reset();}} disabled={isExecuting} className="text-sm text-slate-500 dark:text-[#71717a] hover:text-red-500 disabled:opacity-50">Clear Script</button>
            </div>
 
-           <div className="flex-1 px-8 pb-8 overflow-y-auto flex flex-col items-start bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]">
+           <div className="flex-1 px-8 pb-8 lg:overflow-y-auto flex flex-col items-start bg-[url('https://www.transparenttextures.com/patterns/grid-me.png')]">
               
-              <div className="bg-yellow-400 text-yellow-900 font-bold px-6 py-3 rounded-t-xl rounded-br-xl shadow-md mb-1 relative z-10">
+              <div className="bg-yellow-400 text-yellow-900 font-bold px-6 py-3 rounded-t-xl rounded-br-xl shadow-md mb-1 relative z-10 dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
                 when 🟢 clicked
               </div>
 
@@ -175,9 +175,9 @@ export default function LabScratchMaze({ onExit }: LabProps) {
               <button 
                 onClick={executeBlocks}
                 disabled={isExecuting || blocks.length === 0}
-                className="mt-8 px-8 py-3 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 dark:bg-slate-800 text-white font-bold rounded-full shadow-lg transition-transform active:scale-95 text-lg flex items-center gap-2"
+                className="mt-8 px-8 py-3 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 text-white font-bold rounded-full shadow-lg transition-transform active:scale-95 text-lg flex items-center gap-2 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
               >
-                <div className="w-4 h-4 bg-slate-50 dark:bg-slate-900 rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50 dark:bg-[#121212] rounded-full"></div>
                 Run Program
               </button>
            </div>
@@ -185,11 +185,11 @@ export default function LabScratchMaze({ onExit }: LabProps) {
         </div>
 
         {/* Right Panel: The Stage */}
-        <div className="w-[500px] bg-slate-50 dark:bg-slate-900 flex flex-col z-10">
+        <div className="w-[500px] bg-slate-50 dark:bg-[#121212] flex flex-col z-10">
            
-           <div className="h-12 bg-slate-200 dark:bg-slate-800 flex items-center px-4 justify-between border-b border-slate-300 dark:border-slate-700 dark:border-slate-500">
-              <span className="text-slate-600 dark:text-slate-300 font-bold">Stage</span>
-              <button onClick={reset} disabled={isExecuting} className="text-sm text-slate-500 dark:text-slate-400 hover:text-blue-500">Reset Sprite</button>
+           <div className="h-12 bg-slate-200 dark:bg-[#121212] flex items-center px-4 justify-between border-b border-slate-300 dark:border-[#1c1b1b]">
+              <span className="text-slate-600 dark:text-[#a1a1aa] font-bold">Stage</span>
+              <button onClick={reset} disabled={isExecuting} className="text-sm text-slate-500 dark:text-[#71717a] hover:text-blue-500">Reset Sprite</button>
            </div>
 
            <div className="flex-1 p-4 flex items-center justify-center">
@@ -208,9 +208,9 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                         ${tile === 'water' ? 'bg-blue-400' : ''}
                         ${tile === 'finish' ? 'bg-yellow-300' : ''}
                       `}>
-                        {tile === 'stone' && <div className="w-12 h-12 bg-slate-400 dark:bg-slate-800 rounded-full border-b-4 border-slate-500 dark:border-slate-500"></div>}
+                        {tile === 'stone' && <div className="w-12 h-12 bg-slate-400 dark:bg-[#121212] rounded-full border-b-4 border-slate-500 dark:border-[#1c1b1b]"></div>}
                         {tile === 'water' && <div className="absolute w-full h-full bg-[url('https://www.transparenttextures.com/patterns/water.png')] opacity-50 mix-blend-overlay"></div>}
-                        {x === 0 && y === 4 && <div className="text-green-800 font-bold text-xs uppercase opacity-50">START</div>}
+                        {x === 0 && y === 4 && <div className="text-green-800 font-bold text-xs uppercase opacity-50 dark:text-[#ffffff]">START</div>}
                         {x === 4 && y === 0 && <div className="text-yellow-800 font-bold text-xs uppercase">FINISH</div>}
                       </div>
                     );
@@ -234,8 +234,8 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                        <div className="absolute -top-2 left-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-orange-500"></div>
                        <div className="absolute -top-2 right-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-orange-500"></div>
                        {/* Cat eyes */}
-                       <div className="absolute top-2 left-2 w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
-                       <div className="absolute top-2 right-2 w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
+                       <div className="absolute top-2 left-2 w-2 h-2 bg-slate-50 dark:bg-[#121212] rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
+                       <div className="absolute top-2 right-2 w-2 h-2 bg-slate-50 dark:bg-[#121212] rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
                     </div>
                  </div>
 
@@ -246,7 +246,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
            {/* Status Overlay */}
            {status === 'success' && (
               <div className="m-4 bg-green-100 border border-green-400 p-4 rounded-xl text-center animate-fade-in">
-                <h3 className="font-bold text-green-800 text-xl">Level Complete!</h3>
+                <h3 className="font-bold text-green-800 text-xl dark:text-[#ffffff]">Level Complete!</h3>
                 <p className="text-green-600 text-sm">The sprite successfully navigated the maze.</p>
               </div>
            )}

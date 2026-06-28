@@ -160,15 +160,15 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-white dark:bg-slate-900 shadow-sm border-b border-slate-200 dark:border-slate-800 z-10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-neutral-900 z-10">
         <div className="flex items-center space-x-3">
           <button
             onClick={onExit}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-800 transition-colors"
           >
-            <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+            <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#71717a]" />
           </button>
           <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             Nouns, Pronouns & Articles
@@ -176,12 +176,12 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
         </div>
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
-        <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+        <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
           <button
             onClick={() => setActiveTab('nouns')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
@@ -206,10 +206,10 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
+      <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
         
         {/* Left Column - Controls & Instructions */}
-        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)] z-0">
+        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-neutral-900 bg-white dark:bg-[#121212] shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)] z-0">
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-bold mb-2 flex items-center">
@@ -219,7 +219,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                   <><BookOpen className="w-6 h-6 mr-2 text-indigo-500" /> Article Fill</>
                 )}
               </h2>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-600 dark:text-[#71717a]">
                 {activeTab === 'nouns' 
                   ? "Drag words into their correct grammatical buckets. If you're on a mobile device, you can click a word to select it, then click a bucket to drop it."
                   : "Choose the correct article (a, an, the) for each blank in the sentences below."}
@@ -247,18 +247,18 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
               )}
             </div>
 
-            <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
+            <div className="pt-6 border-t border-slate-200 dark:border-neutral-900 space-y-4">
               {activeTab === 'nouns' ? (
                 <>
                   <button
                     onClick={checkNouns}
-                    className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     <ShieldCheck className="w-5 h-5 mr-2" /> Check Categories
                   </button>
                   <button
                     onClick={resetNouns}
-                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
                   >
                     <RefreshCw className="w-5 h-5 mr-2" /> Reset
                   </button>
@@ -276,13 +276,13 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                 <>
                   <button
                     onClick={checkArticles}
-                    className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     <ShieldCheck className="w-5 h-5 mr-2" /> Check Articles
                   </button>
                   <button
                     onClick={resetArticles}
-                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
                   >
                     <RefreshCw className="w-5 h-5 mr-2" /> Reset
                   </button>
@@ -308,12 +308,12 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
             <div className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
               {/* Unassigned Words Pool */}
               <div 
-                className="mb-8 p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 min-h-[150px]"
+                className="mb-8 p-6 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 min-h-[150px]"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleDrop(e, 'unassigned')}
                 onClick={() => handleBinClick('unassigned')}
               >
-                <h3 className="text-lg font-semibold mb-4 flex items-center text-slate-700 dark:text-slate-300">
+                <h3 className="text-lg font-semibold mb-4 flex items-center text-slate-700 dark:text-[#a1a1aa]">
                   <Type className="w-5 h-5 mr-2" /> Word Pool (Drag from here)
                 </h3>
                 <div className="flex flex-wrap gap-3">
@@ -323,15 +323,15 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                       draggable
                       onDragStart={(e) => handleDragStart(e, w, 'unassigned')}
                       onClick={(e) => { e.stopPropagation(); handleWordClick(w, 'unassigned'); }}
-                      className={`px-4 py-2 bg-white dark:bg-slate-800 border-2 rounded-lg shadow-sm cursor-grab active:cursor-grabbing font-medium hover:scale-105 transition-transform ${
-                        selectedWord?.id === w.id ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900' : 'border-slate-200 dark:border-slate-700'
+                      className={`px-4 py-2 bg-white dark:bg-[#121212] border-2 rounded-lg shadow-sm cursor-grab active:cursor-grabbing font-medium hover:scale-105 transition-transform ${
+                        selectedWord?.id === w.id ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900' : 'border-slate-200 dark:border-[#1c1b1b]'
                       }`}
                     >
                       {w.word}
                     </div>
                   ))}
                   {unassignedWords.length === 0 && (
-                    <div className="text-slate-400 dark:text-slate-500 italic py-2">All words categorized!</div>
+                    <div className="text-slate-400 dark:text-[#71717a] italic py-2">All words categorized!</div>
                   )}
                 </div>
               </div>
@@ -345,7 +345,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                     onDrop={(e) => handleDrop(e, cat.id)}
                     onClick={() => handleBinClick(cat.id)}
                     className={`flex flex-col rounded-2xl border-2 p-4 transition-colors duration-200 min-h-[200px] ${
-                      selectedWord ? 'hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer border-dashed border-blue-400' : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
+                      selectedWord ? 'hover:bg-slate-50 dark:hover:bg-[#121212]/50 cursor-pointer border-dashed border-blue-400' : 'border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]'
                     }`}
                   >
                     <div className={`px-3 py-1 rounded-full text-sm font-semibold border inline-block self-start mb-4 ${cat.color}`}>
@@ -362,9 +362,9 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                             draggable
                             onDragStart={(e) => handleDragStart(e, w, cat.id)}
                             onClick={(e) => { e.stopPropagation(); handleWordClick(w, cat.id); }}
-                            className={`px-3 py-1 bg-white dark:bg-slate-800 border-2 rounded-md shadow-sm cursor-grab active:cursor-grabbing text-sm font-medium hover:scale-105 transition-transform ${
+                            className={`px-3 py-1 bg-white dark:bg-[#121212] border-2 rounded-md shadow-sm cursor-grab active:cursor-grabbing text-sm font-medium hover:scale-105 transition-transform ${
                               isError ? 'border-red-500 text-red-600 dark:text-red-400' : 
-                              selectedWord?.id === w.id ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900' : 'border-slate-200 dark:border-slate-700'
+                              selectedWord?.id === w.id ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900' : 'border-slate-200 dark:border-[#1c1b1b]'
                             }`}
                           >
                             {w.word}
@@ -379,7 +379,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
           ) : (
             <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full items-center justify-center space-y-8">
               {ARTICLE_QUESTIONS.map((q, qIndex) => (
-                <div key={q.id} className="w-full bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 text-lg md:text-xl leading-loose">
+                <div key={q.id} className="w-full bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 text-lg md:text-xl leading-loose">
                   <div className="flex items-center flex-wrap">
                     <span className="font-bold text-slate-400 mr-4">{qIndex + 1}.</span>
                     {q.textParts.map((part, i) => (
@@ -390,7 +390,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
                             <select
                               value={userAnswers[q.id]?.[i] || ''}
                               onChange={(e) => handleArticleSelect(q.id, i, e.target.value)}
-                              className={`appearance-none bg-slate-100 dark:bg-slate-800 border-b-2 border-slate-300 dark:border-slate-600 px-3 py-1 font-semibold text-blue-600 dark:text-blue-400 focus:outline-none focus:border-blue-500 cursor-pointer ${
+                              className={`appearance-none bg-slate-100 dark:bg-[#121212] border-b-2 border-slate-300 dark:border-slate-600 px-3 py-1 font-semibold text-blue-600 dark:text-blue-400 focus:outline-none focus:border-blue-500 cursor-pointer ${
                                 articleScore !== null
                                   ? userAnswers[q.id]?.[i] === q.answers[i]
                                     ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20'

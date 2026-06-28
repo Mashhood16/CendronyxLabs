@@ -76,24 +76,24 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
   const subY = (simState.depth / 200) * 300 + 50;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Fluid Mechanics: Submarine Buoyancy Simulator" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Info className="text-blue-500" />
             <h2 className="text-lg font-semibold">Theory & Setup</h2>
           </div>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Archimedes Principle:</strong> The upward buoyant force exerted on a body immersed in a fluid is equal to the weight of the fluid displaced.</p>
-            <p><strong>Neutral Buoyancy:</strong> Reached when the total weight of the submarine (including ballast) exactly equals the buoyant force. <br/> <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">Fg = Fb</code> ➔ <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">(m_sub + m_ballast)g = ρVg</code></p>
+            <p><strong>Neutral Buoyancy:</strong> Reached when the total weight of the submarine (including ballast) exactly equals the buoyant force. <br/> <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">Fg = Fb</code> ➔ <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">(m_sub + m_ballast)g = ρVg</code></p>
           </div>
           
           <div className="space-y-4 mt-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 <span>Ballast Mass (kg)</span>
                 <span>{ballast.toLocaleString()} kg</span>
               </label>
@@ -101,10 +101,10 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
             </div>
             
             <div className="flex gap-2">
-              <button onClick={() => setIsRunning(!isRunning)} className="flex-1 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+              <button onClick={() => setIsRunning(!isRunning)} className="flex-1 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                 {isRunning ? 'Pause' : 'Release Submarine'}
               </button>
-              <button onClick={handleReset} className="py-2 px-4 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors">
+              <button onClick={handleReset} className="py-2 px-4 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors">
                 Reset
               </button>
             </div>
@@ -112,12 +112,12 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="text-green-500" />
             <h2 className="text-lg font-semibold">Interactive Simulator</h2>
           </div>
-          <div className="relative flex-1 bg-blue-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 min-h-[300px]">
+          <div className="relative flex-1 bg-blue-900 rounded-lg overflow-hidden border border-slate-200 dark:border-[#1c1b1b] min-h-[300px]">
             <svg viewBox="0 0 400 400" className="w-full h-full absolute inset-0">
               <rect x="0" y="0" width="400" height="50" fill="#38bdf8" /> {/* Sky */}
               <rect x="0" y="350" width="400" height="50" fill="#78350f" /> {/* Sea floor */}
@@ -138,21 +138,21 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
             <Target className="text-purple-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>
           </div>
           
-          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors">
+          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
             <Save size={18} /> Record Data Point
           </button>
           
           {dataPoints.length > 0 && (
-            <div className="mt-2 text-sm max-h-40 overflow-y-auto">
+            <div className="mt-2 text-sm max-h-40 lg:overflow-y-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-slate-100 dark:bg-slate-800">
+                  <tr className="bg-slate-100 dark:bg-[#121212]">
                     <th className="border p-1">Ballast (kg)</th>
                     <th className="border p-1">V_term (m/s)</th>
                   </tr>
@@ -169,9 +169,9 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
             </div>
           )}
 
-          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100">
-            <h3 className="font-semibold text-purple-900 mb-2">Analysis Question</h3>
-            <p className="text-sm text-purple-800 mb-3">
+          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
+            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
               A submarine in fresh water (ρ=1000 kg/m³) achieves neutral buoyancy (terminal velocity = 0) when total mass is 500,000 kg. Calculate its volume in m³.
             </p>
             <div className="flex gap-2 items-center">
@@ -182,7 +182,7 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
                 className="flex-1 p-2 border border-purple-200 rounded outline-none focus:border-purple-500"
                 placeholder="Enter Volume..."
               />
-              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700">
+              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                 Check
               </button>
             </div>

@@ -67,20 +67,20 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
   const t2y_B = cy - R2 * Math.sin(angleC2_B);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Common Tangents Construction" />
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="flex items-center gap-2 mb-4 text-indigo-800">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="flex items-center gap-2 mb-4 text-indigo-800 dark:text-[#ffffff]">
             <Settings className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Parameters</h2>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 Circle 1 Radius (R1): {r1} cm
               </label>
               <input 
@@ -90,7 +90,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 Circle 2 Radius (R2): {r2} cm
               </label>
               <input 
@@ -100,7 +100,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 Distance (D): {dist} cm
               </label>
               <input 
@@ -113,19 +113,19 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
             <div className="flex gap-2 mt-4">
               <button 
                 onClick={() => { setTangentType('DCT'); setStep(0); }}
-                className={`flex-1 py-2 rounded-lg font-medium transition-colors ${tangentType === 'DCT' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:bg-slate-800'}`}
+                className={`flex-1 py-2 rounded-lg font-medium transition-colors ${tangentType === 'DCT' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               >
                 DCT
               </button>
               <button 
                 onClick={() => { setTangentType('TCT'); setStep(0); }}
-                className={`flex-1 py-2 rounded-lg font-medium transition-colors ${tangentType === 'TCT' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:bg-slate-800'}`}
+                className={`flex-1 py-2 rounded-lg font-medium transition-colors ${tangentType === 'TCT' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               >
                 TCT
               </button>
             </div>
 
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 text-sm text-indigo-800 mt-4">
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 text-sm text-indigo-800 mt-4 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <p className="font-semibold mb-2">Construction Steps:</p>
               <input 
                 type="range" min="0" max="6" step="1" 
@@ -146,9 +146,9 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center min-h-[400px]">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Construction Board</h2>
-          <svg width="450" height="400" className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg shadow-inner">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px]">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Construction Board</h2>
+          <svg width="450" height="400" className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-inner">
             {/* Grid */}
             <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
               <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="1"/>
@@ -223,28 +223,28 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-purple-700">
             <Calculator className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Length Calculations</h2>
           </div>
           
           <div className="space-y-6">
-            <div className="bg-purple-50 p-3 rounded-lg text-sm text-purple-800">
+            <div className="bg-purple-50 p-3 rounded-lg text-sm text-purple-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               Formulas:<br/>
               DCT Length = √(D² - (R1 - R2)²)<br/>
               TCT Length = √(D² - (R1 + R2)²)
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 1. Calculate the Direct Common Tangent length (cm):
               </label>
               <div className="flex items-center gap-2">
                 <input 
                   type="number" step="0.1"
                   value={ansDCT} onChange={(e) => setAnsDCT(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="e.g. 14.5"
                 />
                 {feedback.dct === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -253,7 +253,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 2. Calculate the Transverse Common Tangent length (cm):
               </label>
               <div className="flex items-center gap-2">
@@ -261,7 +261,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
                   type="number" step="0.1"
                   value={ansTCT} onChange={(e) => setAnsTCT(e.target.value)}
                   disabled={dist <= r1 + r2}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:bg-slate-100 dark:bg-slate-800"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:bg-slate-100 dark:bg-[#121212]"
                   placeholder={dist <= r1 + r2 ? "Not possible" : "e.g. 10.2"}
                 />
                 {feedback.tct === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -274,7 +274,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+              className="w-full py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
             >
               Check Answers
             </button>

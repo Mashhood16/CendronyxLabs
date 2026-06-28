@@ -47,20 +47,20 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
   const t2y = cy - rScale * Math.sin(-alphaRad);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Tangents to a Circle from an External Point" />
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="flex items-center gap-2 mb-4 text-blue-800">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="flex items-center gap-2 mb-4 text-blue-800 dark:text-[#ffffff]">
             <Settings className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Construction Setup</h2>
           </div>
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 Circle Radius (r): {radius} cm
               </label>
               <input 
@@ -70,7 +70,7 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                 Distance to P (d): {distance} cm
               </label>
               <input 
@@ -82,12 +82,12 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
             
             <button 
               onClick={() => setShowTangents(!showTangents)}
-              className="w-full py-2 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-medium rounded-lg transition-colors border border-slate-300 dark:border-slate-700 dark:border-slate-500"
+              className="w-full py-2 px-4 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-medium rounded-lg transition-colors border border-slate-300 dark:border-[#1c1b1b]"
             >
               {showTangents ? "Hide Tangents" : "Construct Tangents"}
             </button>
             
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-800 mt-4">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-800 mt-4 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
               <p><strong>Theory:</strong></p>
               <ul className="list-disc ml-5 mt-2 space-y-1">
                 <li>The tangent to a circle is perpendicular to the radius at the point of contact.</li>
@@ -99,9 +99,9 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center min-h-[400px]">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Interactive Canvas</h2>
-          <svg width="450" height="400" className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg shadow-inner">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px]">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Interactive Canvas</h2>
+          <svg width="450" height="400" className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-inner">
             {/* Grid */}
             <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
               <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="1"/>
@@ -142,26 +142,26 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-emerald-700">
             <Calculator className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Calculations</h2>
           </div>
           
           <div className="space-y-6">
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
               Based on the parameters set in the setup, solve the following questions.
             </p>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 1. What is the length of the tangent segment PT (in cm)? (1 decimal place)
               </label>
               <div className="flex items-center gap-2">
                 <input 
                   type="number" step="0.1"
                   value={ansLength} onChange={(e) => setAnsLength(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   placeholder="e.g. 12.0"
                 />
                 {feedback.length === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -170,14 +170,14 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 2. What is the angle between the two tangents (in degrees)? (1 decimal place)
               </label>
               <div className="flex items-center gap-2">
                 <input 
                   type="number" step="0.1"
                   value={ansAngle} onChange={(e) => setAnsAngle(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   placeholder="e.g. 45.0"
                 />
                 {feedback.angle === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -187,7 +187,7 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors"
+              className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
             >
               Check Answers
             </button>

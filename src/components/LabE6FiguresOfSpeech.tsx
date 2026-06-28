@@ -107,7 +107,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] transition-colors duration-300">
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scan {
           0% { top: 0; }
@@ -120,12 +120,12 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
       `}} />
       
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <div className="flex items-center gap-4">
           {onExit && (
             <button
               onClick={onExit}
-              className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
+              className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
             >
               <ArrowLeft className="w-5 h-5" />
               Go Back
@@ -141,7 +141,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -149,15 +149,15 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
       </header>
       
       {/* Main content */}
-      <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+      <div className="flex-1 lg:overflow-hidden grid grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Interactive Controls */}
-        <div className="flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 space-y-6">
+        <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-6">
           <div>
             <h2 className="text-2xl font-bold mb-2">Rhetorical Analyzer</h2>
-            <p className="text-slate-600 dark:text-slate-400">Decode the non-literal language to find its true meaning.</p>
+            <p className="text-slate-600 dark:text-[#71717a]">Decode the non-literal language to find its true meaning.</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-3 flex items-center justify-between">
                 <span>1. Identify the Figure of Speech</span>
@@ -172,7 +172,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
                     className={`p-3 rounded-lg text-sm font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${
                       selectedType === type
                         ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300'
-                        : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50'
+                        : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50'
                     }`}
                   >
                     {type}
@@ -192,7 +192,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
                     className={`w-full text-left p-3 rounded-lg text-sm font-medium transition-colors border ${
                       selectedLiteral === opt
                         ? 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-500 text-emerald-800 dark:text-emerald-200'
-                        : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50'
+                        : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50'
                     }`}
                   >
                     {opt}
@@ -205,7 +205,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
               <button
                 onClick={handleCheck}
                 disabled={analyzerState === 'analyzing' || analyzerState === 'success'}
-                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 text-white rounded-xl font-semibold transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 text-white rounded-xl font-semibold transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <Activity className={`w-5 h-5 ${analyzerState === 'analyzing' ? 'animate-spin' : ''}`} />
                 {analyzerState === 'analyzing' ? 'Analyzing...' : 'Analyze Input'}
@@ -225,7 +225,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
         
         {/* Right Column: Simulation Canvas */}
         <div className="flex flex-col p-6 overflow-hidden bg-slate-200 dark:bg-slate-950 items-center justify-center relative">
-          <div className="relative w-full max-w-lg aspect-square bg-slate-800 rounded-3xl shadow-2xl border-4 border-slate-700 flex flex-col items-center justify-center p-6 overflow-hidden">
+          <div className="relative w-full max-w-lg aspect-square bg-[#121212] rounded-3xl shadow-2xl border-4 border-[#1c1b1b] flex flex-col items-center justify-center p-6 overflow-hidden">
             {/* Screen */}
             <div className="w-full flex-1 bg-cyan-950 border-2 border-cyan-800 rounded-xl relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
               {/* Scanning line animation */}

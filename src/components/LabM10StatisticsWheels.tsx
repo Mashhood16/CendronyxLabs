@@ -136,19 +136,19 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Experimental Probability & Statistics" />
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup & Data */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-teal-800">
             <BarChart3 className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Data Logging</h2>
           </div>
           
           <div className="mb-4">
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
               Number of Sectors: {sectorsConfig}
             </label>
             <input 
@@ -157,40 +157,40 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
               disabled={isSpinning || outcomes.length > 0}
               className="w-full accent-teal-600 disabled:opacity-50"
             />
-            {outcomes.length > 0 && <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Clear data to change wheel config.</p>}
+            {outcomes.length > 0 && <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">Clear data to change wheel config.</p>}
           </div>
 
           <div className="flex gap-2 mb-4">
             <button 
               onClick={spinWheel}
               disabled={isSpinning}
-              className="flex-1 min-w-0 py-2 px-4 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-300 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="flex-1 min-w-0 py-2 px-4 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-300 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
             >
               <Play className="w-4 h-4" /> {isSpinning ? 'Spinning...' : 'Spin Wheel'}
             </button>
             <button 
               onClick={() => { setOutcomes([]); setFeedback({median: null, q1: null, prob: null}); }}
               disabled={isSpinning}
-              className="py-2 px-4 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 disabled:opacity-50 text-slate-800 dark:text-slate-100 font-medium rounded-lg transition-colors"
+              className="py-2 px-4 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] disabled:opacity-50 text-slate-800 dark:text-[#ffffff] font-medium rounded-lg transition-colors"
             >
               Clear
             </button>
           </div>
 
-          <div className="flex-1 min-w-0 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-[300px]">
+          <div className="flex-1 min-w-0 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[300px]">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                 <tr>
-                  <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-slate-300">Spin #</th>
-                  <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-slate-300">Outcome</th>
+                  <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">Spin #</th>
+                  <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">Outcome</th>
                 </tr>
               </thead>
               <tbody>
                 {outcomes.length === 0 ? (
-                  <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-500 dark:text-slate-400">No data recorded yet. Spin the wheel!</td></tr>
+                  <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet. Spin the wheel!</td></tr>
                 ) : (
                   outcomes.map((val, i) => (
-                    <tr key={i} className="border-b last:border-b-0 hover:bg-slate-50 dark:bg-slate-900">
+                    <tr key={i} className="border-b last:border-b-0 hover:bg-slate-50 dark:bg-[#121212]">
                       <td className="px-4 py-2">{i + 1}</td>
                       <td className="px-4 py-2 font-semibold text-teal-700">{val}</td>
                     </tr>
@@ -199,14 +199,14 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
               </tbody>
             </table>
           </div>
-          <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+          <div className="mt-2 text-sm text-slate-600 dark:text-[#a1a1aa]">
             Total Spins: <strong>{outcomes.length}</strong>
           </div>
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center min-h-[400px]">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Physics Wheel Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px]">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Physics Wheel Simulator</h2>
           
           <div className="relative" style={{ width: 400, height: 400 }}>
             {/* Flapper (Pointer) */}
@@ -232,19 +232,19 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-rose-700">
             <Calculator className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Data Analysis</h2>
           </div>
           
           <div className="space-y-6">
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
               Spin the wheel at least 5 times to generate a meaningful dataset. Then calculate the statistics for your <strong>{outcomes.length}</strong> recorded outcomes.
             </p>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 1. What is the Median of your dataset?
               </label>
               <div className="flex items-center gap-2">
@@ -252,7 +252,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
                   type="number" step="0.1"
                   value={ansMedian} onChange={(e) => setAnsMedian(e.target.value)}
                   disabled={outcomes.length === 0}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-slate-800"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-[#121212]"
                 />
                 {feedback.median === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
                 {feedback.median === false && <XCircle className="text-red-500 w-6 h-6" />}
@@ -260,7 +260,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 2. What is the First Quartile (Q1)?
               </label>
               <div className="flex items-center gap-2">
@@ -268,7 +268,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
                   type="number" step="0.1"
                   value={ansQ1} onChange={(e) => setAnsQ1(e.target.value)}
                   disabled={outcomes.length === 0}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-slate-800"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-[#121212]"
                 />
                 {feedback.q1 === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
                 {feedback.q1 === false && <XCircle className="text-red-500 w-6 h-6" />}
@@ -276,7 +276,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
                 3. What is the Experimental Probability of landing on {probTarget}? (Decimal 0.0 - 1.0)
               </label>
               <div className="flex items-center gap-2">
@@ -284,7 +284,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
                   type="number" step="0.01"
                   value={ansProb} onChange={(e) => setAnsProb(e.target.value)}
                   disabled={outcomes.length === 0}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-slate-800"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-rose-500 disabled:bg-slate-100 dark:bg-[#121212]"
                 />
                 {feedback.prob === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
                 {feedback.prob === false && <XCircle className="text-red-500 w-6 h-6" />}
@@ -294,7 +294,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
             <button 
               onClick={checkAnswers}
               disabled={outcomes.length === 0}
-              className="w-full py-2 px-4 bg-rose-600 hover:bg-rose-700 disabled:bg-rose-300 text-white font-medium rounded-lg transition-colors"
+              className="w-full py-2 px-4 bg-rose-600 hover:bg-rose-700 disabled:bg-rose-300 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
             >
               Check Analysis
             </button>

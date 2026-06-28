@@ -62,30 +62,30 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Grade 11: Enzyme Immobilization & Diagnostics" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
         
         {/* Column 1: Theory */}
-        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col gap-4">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory & Principles</h2>
+        <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col gap-4">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Principles</h2>
           
-          <div className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
+          <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
             <div>
-              <h3 className="font-bold text-purple-800 text-lg">Immobilized Enzymes</h3>
+              <h3 className="font-bold text-purple-800 text-lg dark:text-[#ffffff]">Immobilized Enzymes</h3>
               <p className="mt-1">
                 Enzymes (like Lactase) can be trapped in an inert matrix, such as alginate beads.
                 This provides structural stability, prevents contamination of the product, and allows the enzyme to be <strong>reused</strong>.
               </p>
             </div>
 
-            <div className="bg-purple-50 p-3 rounded-lg border border-purple-100">
+            <div className="bg-purple-50 p-3 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
               <p className="font-mono text-xs">Sodium Alginate + Lactase + CaCl₂ ➔ Insoluble Calcium Alginate Beads (Trapping Lactase)</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-purple-800 text-lg">Enzymes in Diagnostics</h3>
+              <h3 className="font-bold text-purple-800 text-lg dark:text-[#ffffff]">Enzymes in Diagnostics</h3>
               <p className="mt-1">Specific enzymes leak into the blood when certain tissues are damaged. Blood tests measure these biomarkers:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Amylase / Lipase:</strong> Pancreas (Pancreatitis)</li>
@@ -97,7 +97,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
         </section>
 
         {/* Column 2: Interactive Simulator */}
-        <section className="bg-slate-800 dark:bg-slate-800 rounded-xl shadow-inner border border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center relative overflow-hidden">
+        <section className="bg-[#121212] dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-hidden">
           <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
             <Activity className="text-purple-400" /> Bioreactor Simulation
           </h3>
@@ -106,15 +106,15 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
             
             {/* Milk Pouring Animation */}
             {isPouringMilk && (
-              <div className="absolute top-0 w-8 h-32 bg-slate-50 dark:bg-slate-900/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-slate-700 dark:border-slate-500"></div>
+              <div className="absolute top-0 w-8 h-32 bg-slate-50 dark:bg-[#121212]/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-[#1c1b1b]"></div>
             )}
 
             {/* The Column / Beaker */}
-            <div className="w-40 h-64 border-x-4 border-b-4 border-white/40 rounded-b-xl relative flex flex-col-reverse items-center justify-start p-2 gap-1 overflow-hidden bg-slate-900 dark:bg-slate-800/50">
+            <div className="w-40 h-64 border-x-4 border-b-4 border-white/40 rounded-b-xl relative flex flex-col-reverse items-center justify-start p-2 gap-1 overflow-hidden bg-[#000000] dark:bg-[#121212]/50">
               
               {/* Milk Liquid inside beaker */}
               <div 
-                className="absolute bottom-0 w-full bg-slate-50 dark:bg-slate-900/20 transition-all duration-500 ease-linear"
+                className="absolute bottom-0 w-full bg-slate-50 dark:bg-[#121212]/20 transition-all duration-500 ease-linear"
                 style={{ height: `${glucoseLevel}%` }}
               ></div>
 
@@ -129,7 +129,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
             </div>
 
             {/* Glucose Output Graph / Meter */}
-            <div className="absolute right-0 top-0 w-8 h-64 bg-slate-700 dark:bg-slate-800 rounded border border-slate-600 dark:border-slate-500 flex flex-col-reverse overflow-hidden">
+            <div className="absolute right-0 top-0 w-8 h-64 bg-slate-700 dark:bg-[#121212] rounded border border-slate-600 dark:border-[#1c1b1b] flex flex-col-reverse overflow-hidden">
               <div 
                 className="w-full bg-gradient-to-t from-orange-400 to-yellow-300 transition-all duration-500"
                 style={{ height: `${glucoseLevel}%` }}
@@ -145,7 +145,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
             <button 
               onClick={handleDropBead}
               disabled={beadCount >= 20 || isPouringMilk}
-              className="py-2 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white font-bold rounded flex items-center justify-center gap-2"
+              className="py-2 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white font-bold rounded flex items-center justify-center gap-2 dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
             >
               <Beaker size={18} /> Drop Alginate Bead (+1)
             </button>
@@ -153,14 +153,14 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={toggleMilkPour}
                 disabled={beadCount === 0 || glucoseLevel >= 100}
-                className={`flex-1 py-2 font-bold rounded flex items-center justify-center gap-2 transition-colors ${isPouringMilk ? 'bg-red-500 hover:bg-red-400 text-white' : 'bg-slate-50 dark:bg-slate-900 hover:bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 disabled:opacity-50'}`}
+                className={`flex-1 py-2 font-bold rounded flex items-center justify-center gap-2 transition-colors ${isPouringMilk ? 'bg-red-500 hover:bg-red-400 text-white' : 'bg-slate-50 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-slate-100 disabled:opacity-50'}`}
               >
                 {isPouringMilk ? <Pause size={18} /> : <Play size={18} />}
                 {isPouringMilk ? 'Stop Milk Flow' : 'Pour Milk (Lactose)'}
               </button>
               <button 
                 onClick={handleReset}
-                className="px-4 py-2 bg-slate-600 dark:bg-slate-800 hover:bg-slate-500 dark:bg-slate-800 text-white font-bold rounded"
+                className="px-4 py-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-500 dark:bg-[#121212] text-white font-bold rounded dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
               >
                 Reset
               </button>
@@ -169,16 +169,16 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
         </section>
 
         {/* Column 3: Assessment */}
-        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col gap-4">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col gap-4">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <ClipboardList className="text-purple-600" /> Clinical Assessment
           </h2>
           
           <div className="space-y-6 mt-2">
             
-            <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg space-y-3">
-              <h4 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2"><Activity size={16} className="text-red-500"/> Patient A</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300">Blood panel reveals severely elevated levels of <strong>Amylase</strong> and <strong>Lipase</strong>. Patient complains of upper abdominal pain.</p>
+            <div className="p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg space-y-3">
+              <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-red-500"/> Patient A</h4>
+              <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">Blood panel reveals severely elevated levels of <strong>Amylase</strong> and <strong>Lipase</strong>. Patient complains of upper abdominal pain.</p>
               <input 
                 type="text" 
                 value={diag1}
@@ -188,9 +188,9 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
               />
             </div>
 
-            <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg space-y-3">
-              <h4 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2"><Activity size={16} className="text-orange-500"/> Patient B</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-300">Routine physical shows elevated <strong>ALT</strong> (Alanine transaminase) and <strong>AST</strong>. Patient exhibits mild jaundice.</p>
+            <div className="p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg space-y-3">
+              <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-orange-500"/> Patient B</h4>
+              <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">Routine physical shows elevated <strong>ALT</strong> (Alanine transaminase) and <strong>AST</strong>. Patient exhibits mild jaundice.</p>
               <input 
                 type="text" 
                 value={diag2}
@@ -200,9 +200,9 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
               />
             </div>
 
-            <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg space-y-3">
-              <h4 className="font-bold text-purple-800">Bioreactor Analytics</h4>
-              <p className="text-xs text-slate-700 dark:text-slate-200">If your column of 10 lactase beads converts 100 mmol of lactose into glucose in 200 seconds, what is the rate of reaction in <strong>mmol/s</strong>?</p>
+            <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg space-y-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h4 className="font-bold text-purple-800 dark:text-[#ffffff]">Bioreactor Analytics</h4>
+              <p className="text-xs text-slate-700 dark:text-[#ffffff]">If your column of 10 lactase beads converts 100 mmol of lactose into glucose in 200 seconds, what is the rate of reaction in <strong>mmol/s</strong>?</p>
               <div className="flex items-center gap-2">
                 <input 
                   type="text" 
@@ -211,13 +211,13 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
                   placeholder="e.g. 1.5"
                   className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-purple-400"
                 />
-                <span className="text-sm font-bold text-slate-500 dark:text-slate-400">mmol/s</span>
+                <span className="text-sm font-bold text-slate-500 dark:text-[#71717a]">mmol/s</span>
               </div>
             </div>
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
             >
               <CheckCircle size={20} /> Submit Evaluation
             </button>

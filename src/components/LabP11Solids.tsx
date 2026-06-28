@@ -40,33 +40,33 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Solids: Young's Modulus Material Tester" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Info className="text-blue-500" />
             <h2 className="text-lg font-semibold">Theory & Setup</h2>
           </div>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Young's Modulus (E):</strong> A measure of mechanical property of linear elastic solid materials. It defines the relationship between stress and strain.</p>
-            <p><strong>Formula:</strong> <br/> <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">E = (F * L) / (A * e)</code></p>
+            <p><strong>Formula:</strong> <br/> <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">E = (F * L) / (A * e)</code></p>
             <p>Where <strong>e</strong> is the extension of the wire.</p>
           </div>
           
           <div className="space-y-4 mt-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Wire Material (Length: 2.0m, Diam: 1.0mm)</label>
-              <select value={material} onChange={(e) => setMaterial(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Wire Material (Length: 2.0m, Diam: 1.0mm)</label>
+              <select value={material} onChange={(e) => setMaterial(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212]">
                 <option value="Steel">Steel</option>
                 <option value="Copper">Copper</option>
                 <option value="Aluminum">Aluminum</option>
               </select>
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 <span>Applied Mass (kg)</span>
                 <span>{mass} kg</span>
               </label>
@@ -76,12 +76,12 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="text-green-500" />
             <h2 className="text-lg font-semibold">Interactive Simulator</h2>
           </div>
-          <div className="relative flex-1 bg-gray-100 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 min-h-[300px]">
+          <div className="relative flex-1 bg-gray-100 rounded-lg overflow-hidden border border-slate-200 dark:border-[#1c1b1b] min-h-[300px]">
             <svg viewBox="0 0 400 400" className="w-full h-full absolute inset-0">
               {/* Clamp */}
               <rect x="180" y="0" width="40" height="20" fill="#475569" />
@@ -102,21 +102,21 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
             <Target className="text-purple-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>
           </div>
           
-          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors">
+          <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
             <Save size={18} /> Record Data Point
           </button>
           
           {dataPoints.length > 0 && (
-            <div className="mt-2 text-sm max-h-40 overflow-y-auto">
+            <div className="mt-2 text-sm max-h-40 lg:overflow-y-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-slate-100 dark:bg-slate-800">
+                  <tr className="bg-slate-100 dark:bg-[#121212]">
                     <th className="border p-1">Material</th>
                     <th className="border p-1">Force (N)</th>
                     <th className="border p-1">Ext (mm)</th>
@@ -135,9 +135,9 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
             </div>
           )}
 
-          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100">
-            <h3 className="font-semibold text-purple-900 mb-2">Analysis Question</h3>
-            <p className="text-sm text-purple-800 mb-3">
+          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
+            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
               A wire of length 2.0m and cross-sectional area 0.8 mm² stretches by 2.5 mm under a 10 kg load (g=9.8). Calculate the Young's Modulus in GPa.
             </p>
             <div className="flex gap-2 items-center">
@@ -148,7 +148,7 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
                 className="flex-1 p-2 border border-purple-200 rounded outline-none focus:border-purple-500"
                 placeholder="Enter E in GPa..."
               />
-              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700">
+              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                 Check
               </button>
             </div>

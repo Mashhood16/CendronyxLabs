@@ -85,17 +85,17 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Friction Lab" subtitle="Investigate Static, Kinetic, and Rolling Friction" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 {/* Column 1: Setup */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
                     <div className="flex items-center gap-2 mb-4">
                         <Info className="w-5 h-5 text-blue-600" />
-                        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">1. Setup & Theory</h2>
+                        <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                         Friction is the force resisting the relative motion of solid surfaces. 
                         <strong> Static friction</strong> must be overcome to start moving. Once moving, a lower <strong>kinetic friction</strong> applies. 
                         <strong> Rolling friction</strong> is generally much less than sliding friction.
@@ -103,7 +103,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Block Mass: {mass} kg</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Block Mass: {mass} kg</label>
                             <input
                                 type="range"
                                 min="1" max="5" step="0.5"
@@ -115,11 +115,11 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Surface Mode</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Surface Mode</label>
                             <select
                                 value={mode}
                                 onChange={(e) => { setMode(e.target.value as any); handleReset(); }}
-                                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-blue-500"
                                 disabled={pulling}
                             >
                                 <option value="sliding">Wood on Wood (Sliding)</option>
@@ -132,13 +132,13 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                             <button
                                 onClick={() => setPulling(true)}
                                 disabled={pulling || time > 0}
-                                className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2"
+                                className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                             >
                                 <Play className="w-4 h-4" /> Start Pulling
                             </button>
                             <button
                                 onClick={handleReset}
-                                className="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-md hover:bg-slate-300 dark:bg-slate-800 flex items-center justify-center"
+                                className="px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:bg-[#121212] flex items-center justify-center"
                             >
                                 <RotateCcw className="w-4 h-4" />
                             </button>
@@ -154,9 +154,9 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2: Simulation */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">2. Interactive Simulation</h2>
-                    <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-slate-900 relative flex flex-col justify-between lg:overflow-hidden">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">2. Interactive Simulation</h2>
+                    <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-[#121212] relative flex flex-col justify-between lg:overflow-hidden">
                         <svg viewBox="0 0 400 450" className="w-full h-full">
                             {/* Table */}
                             <rect x="0" y="150" width="400" height="50" fill="#d97706" />
@@ -212,12 +212,12 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">3. Data & Analysis</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">3. Data & Analysis</h2>
                     
                     <div className="overflow-x-auto mb-6">
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                            <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
                                 <tr>
                                     <th className="p-2 border">Mode</th>
                                     <th className="p-2 border">Mass (kg)</th>
@@ -227,10 +227,10 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                             </thead>
                             <tbody>
                                 {logs.length === 0 ? (
-                                    <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-slate-400">No data recorded yet.</td></tr>
+                                    <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet.</td></tr>
                                 ) : (
                                     logs.map((log, i) => (
-                                        <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
+                                        <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
                                             <td className="p-2 border capitalize">{log.mode}</td>
                                             <td className="p-2 border">{log.mass}</td>
                                             <td className="p-2 border">{log.peak}</td>
@@ -242,9 +242,9 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                         </table>
                     </div>
 
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <h3 className="font-semibold text-blue-900 mb-2">Assessment</h3>
-                        <p className="text-sm text-blue-800 mb-4">
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+                        <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+                        <p className="text-sm text-blue-800 mb-4 dark:text-[#ffffff]">
                             Select the "Unknown Material" mode, run the simulation, and record the Peak Force. 
                             Calculate its coefficient of static friction (<span className="italic">μ<sub>s</sub></span>). 
                             <br/><span className="text-xs">(Assume g = 9.8 m/s²)</span>
@@ -260,7 +260,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                             />
                             <button 
                                 onClick={checkMu}
-                                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                             >
                                 Check
                             </button>

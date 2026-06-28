@@ -111,7 +111,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
         style={{ opacity: isCorrect ? 1 : 0.3 }}
       >
         <div className={`w-4 h-4 rounded-full border-2 ${isCorrect ? 'bg-green-500 border-green-600' : 'bg-slate-300 border-slate-400 dark:bg-slate-700 dark:border-slate-600'}`}></div>
-        <div className="mt-2 text-xs font-medium text-slate-700 dark:text-slate-300 text-center w-24">
+        <div className="mt-2 text-xs font-medium text-slate-700 dark:text-[#a1a1aa] text-center w-24">
           {part.label}
           {isCorrect && <div className="text-[10px] text-green-600 dark:text-green-400 font-bold mt-1">{answers[part.id]}</div>}
         </div>
@@ -120,9 +120,9 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <div className="w-full bg-white dark:bg-slate-800 shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0">
+      <div className="w-full bg-white dark:bg-[#121212] shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0">
         <div className="flex items-center gap-4">
           <button
             onClick={onExit}
@@ -150,24 +150,24 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
 
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
         {/* Left Column: Interactive Controls/Workspace */}
-        <div className="w-full lg:w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col">
+        <div className="w-full lg:w-1/2 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col">
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <Clock className="w-5 h-5 text-blue-500" />
               Narrative Timeline Editor
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
+            <p className="text-sm text-slate-600 dark:text-[#71717a]">
               Fix the tense inconsistencies and select the correct verbal forms in the story below. Ensure temporal logic makes sense!
             </p>
           </div>
 
-          <div className="flex-1 text-lg leading-loose space-x-1 p-6 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="flex-1 text-lg leading-loose space-x-1 p-6 bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
             {STORY_PARTS.map((part) => (
               <span key={part.id}>
                 <span>{part.text}</span>
                 <span className="inline-block relative">
                   <select
-                    className={`appearance-none bg-white dark:bg-slate-800 border-b-2 font-semibold text-blue-600 dark:text-blue-400 px-2 py-1 mx-1 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer
+                    className={`appearance-none bg-white dark:bg-[#121212] border-b-2 font-semibold text-blue-600 dark:text-blue-400 px-2 py-1 mx-1 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer
                       ${feedback[part.id] === true ? 'border-green-500 text-green-600 dark:text-green-400' : ''}
                       ${feedback[part.id] === false ? 'border-red-500 text-red-600 dark:text-red-400' : 'border-blue-300 dark:border-blue-700'}
                     `}
@@ -180,10 +180,10 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
                     ))}
                   </select>
                   {feedback[part.id] === true && (
-                    <CheckCircle className="w-4 h-4 text-green-500 absolute -top-3 -right-2 bg-white dark:bg-slate-800 rounded-full" />
+                    <CheckCircle className="w-4 h-4 text-green-500 absolute -top-3 -right-2 bg-white dark:bg-[#121212] rounded-full" />
                   )}
                   {feedback[part.id] === false && (
-                    <XCircle className="w-4 h-4 text-red-500 absolute -top-3 -right-2 bg-white dark:bg-slate-800 rounded-full" />
+                    <XCircle className="w-4 h-4 text-red-500 absolute -top-3 -right-2 bg-white dark:bg-[#121212] rounded-full" />
                   )}
                 </span>
                 {feedback[part.id] === false && (
@@ -198,7 +198,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
           <div className="mt-6 flex justify-end">
             <button
               onClick={checkAnswers}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 shadow-sm"
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 shadow-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               <Check className="w-5 h-5" /> Check Story
             </button>
@@ -206,15 +206,15 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-full lg:w-1/2 p-6 flex flex-col bg-slate-100 dark:bg-slate-900 overflow-y-auto">
+        <div className="w-full lg:w-1/2 p-6 flex flex-col bg-slate-100 dark:bg-[#121212] lg:overflow-y-auto">
           <div className="mb-4">
             <h2 className="text-lg font-semibold mb-2">Temporal Visualization</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
+            <p className="text-sm text-slate-600 dark:text-[#71717a]">
               As you correct the tenses, the events will snap to their proper place on the timeline.
             </p>
           </div>
           
-          <div className="flex-1 relative min-h-[400px] bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center p-8 shadow-inner">
+          <div className="flex-1 relative min-h-[400px] bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex items-center p-8 shadow-inner">
             
             {/* Timeline Axis */}
             <div className="absolute left-8 right-8 h-1 bg-slate-300 dark:bg-slate-600 top-1/2 -translate-y-1/2 rounded-full"></div>

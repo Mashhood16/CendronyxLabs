@@ -32,30 +32,30 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Pharmacology & Ecosystems" subtitle="Antibiotic Mechanisms & Ocean Acidification" />
-      <div className="flex gap-2 px-6 py-2 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+      <div className="flex gap-2 px-6 py-2 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
         <button 
           onClick={() => setActiveTab('pharma')}
-          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 dark:bg-slate-900 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
           <Shield className="w-4 h-4" /> Pharma
         </button>
         <button 
           onClick={() => setActiveTab('ecology')}
-          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-slate-900 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+          className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
           <Waves className="w-4 h-4" /> Ecology
         </button>
       </div>
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Pharmacology Theory' : 'Ecology Theory'}
           </h2>
           
           {activeTab === 'pharma' ? (
-            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
               <p><strong>Penicillin Mechanism:</strong> Beta-lactam antibiotics irreversibly inhibit the enzyme <em>transpeptidase</em>, which forms cross-links in the bacterial peptidoglycan cell wall.</p>
               <p>Without cross-links, the cell wall weakens. Due to high internal osmotic pressure, water rushes into the bacterium, causing it to lyse (burst).</p>
               <p><strong>Clinical Trials:</strong></p>
@@ -67,9 +67,9 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
               </ul>
             </div>
           ) : (
-            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
               <p><strong>Ocean Acidification:</strong> Increased atmospheric carbon dioxide dissolves into ocean water, forming carbonic acid:</p>
-              <p className="font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-center text-xs border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <p className="font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-center text-xs border border-slate-200 dark:border-[#1c1b1b]">
                 CO₂ + H₂O ⇌ H₂CO₃ ⇌ HCO₃⁻ + H⁺
               </p>
               <p>This increases the concentration of hydrogen ions [H⁺], lowering the pH.</p>
@@ -79,15 +79,15 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Interactive */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Bacterial Lysis Simulator' : 'Coral Reef Simulator'}
           </h2>
           
           {activeTab === 'pharma' ? (
             <div className="flex-1 flex flex-col items-center">
               <div className="w-full mb-6">
-                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                   <span>Penicillin Concentration (mg/L)</span>
                   <span className="font-bold text-teal-600">{penicillinDose}</span>
                 </label>
@@ -98,7 +98,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                 />
               </div>
               
-              <div className="relative w-64 h-64 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-hidden shadow-inner">
+              <div className="relative w-64 h-64 bg-slate-100 dark:bg-[#121212] rounded-full flex items-center justify-center border border-slate-300 dark:border-[#1c1b1b] overflow-hidden shadow-inner">
                 <svg viewBox="0 0 200 200" className={`w-full h-full transition-all duration-500 ${isBurst ? 'scale-150 opacity-0' : 'scale-100 opacity-100'}`}>
                   {/* Cell interior */}
                   <ellipse cx="100" cy="100" rx={60 + (penicillinDose * 0.2)} ry={40 + (penicillinDose * 0.1)} fill="#fecaca" />
@@ -129,7 +129,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
           ) : (
             <div className="flex-1 flex flex-col items-center">
               <div className="w-full mb-6">
-                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                   <span>Atmospheric pCO₂ (ppm)</span>
                   <span className="font-bold text-blue-600">{pCO2}</span>
                 </label>
@@ -138,7 +138,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                   onChange={(e) => setPCO2(Number(e.target.value))}
                   className="w-full accent-blue-600"
                 />
-                <div className="text-center text-xs mt-2 font-mono bg-blue-50 p-1 rounded border border-blue-200">Ocean pH: {currentPH}</div>
+                <div className="text-center text-xs mt-2 font-mono bg-blue-50 p-1 rounded border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900">Ocean pH: {currentPH}</div>
               </div>
 
               <div className="relative w-64 h-64 bg-cyan-900 rounded-lg flex items-center justify-center border-4 border-cyan-800 overflow-hidden shadow-inner">
@@ -170,7 +170,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                   )}
                 </svg>
                 {isBleached && (
-                  <div className="absolute top-4 bg-slate-50 dark:bg-slate-900/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
+                  <div className="absolute top-4 bg-slate-50 dark:bg-[#121212]/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
                     Bleaching Event
                   </div>
                 )}
@@ -180,17 +180,17 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Comprehensive Assessment</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Comprehensive Assessment</h2>
           
           <div className="space-y-4 text-sm">
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700 dark:text-slate-200">
+              <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
                 1. Which specific bacterial enzyme does Penicillin irreversibly inhibit?
               </label>
               <input 
                 type="text" 
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans1}
                 onChange={e => setAns1(e.target.value)}
                 placeholder="e.g. amylase"
@@ -198,24 +198,24 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
             </div>
 
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700 dark:text-slate-200">
+              <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
                 2. Which phase of a clinical trial involves a large-scale comparison (1000+ patients) to standard treatments? (Enter 1, 2, 3, or 4)
               </label>
               <input 
                 type="number" min="1" max="4"
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans2}
                 onChange={e => setAns2(e.target.value)}
               />
             </div>
 
             <div className="space-y-1">
-              <label className="block font-medium text-slate-700 dark:text-slate-200">
+              <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
                 3. If the concentration of [H⁺] ions in ocean water is measured at 1.0 × 10⁻⁸.¹ M, what is the pH of the water?
               </label>
               <input 
                 type="number" step="0.1"
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
                 value={ans3}
                 onChange={e => setAns3(e.target.value)}
                 placeholder="e.g. 7.5"
@@ -224,7 +224,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
             <button 
               onClick={checkAnswers}
-              className="w-full bg-slate-800 dark:bg-slate-800 text-white font-semibold py-2 mt-4 rounded hover:bg-slate-900 dark:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+              className="w-full bg-[#121212] dark:bg-[#121212] text-white font-semibold py-2 mt-4 rounded hover:bg-[#000000] dark:bg-[#121212] transition-colors flex items-center justify-center gap-2">
               <CheckCircle className="w-5 h-5" /> Submit Assessment
             </button>
 

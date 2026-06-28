@@ -204,15 +204,15 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-white dark:bg-slate-900 shadow-sm border-b border-slate-200 dark:border-slate-800 z-10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-neutral-900 z-10">
         <div className="flex items-center space-x-3">
           <button
             onClick={onExit}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-800 transition-colors flex-shrink-0"
           >
-            <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+            <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#71717a]" />
           </button>
           <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 truncate">
             Sentences & Word Parts
@@ -220,12 +220,12 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
         </div>
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
-        <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1 flex-shrink-0">
+        <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1 flex-shrink-0">
           <button
             onClick={() => setActiveTab('affixes')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
@@ -250,10 +250,10 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
+      <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
         
         {/* Left Column - Controls & Instructions */}
-        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)] z-0">
+        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-neutral-900 bg-white dark:bg-[#121212] shadow-[2px_0_8px_-4px_rgba(0,0,0,0.1)] z-0">
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-bold mb-2 flex items-center">
@@ -263,7 +263,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                   <><Quote className="w-6 h-6 mr-2 text-pink-500" /> Transformer</>
                 )}
               </h2>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-600 dark:text-[#71717a]">
                 {activeTab === 'affixes' 
                   ? "Attach prefixes (front) and suffixes (back) to the base word to create new words and alter their meanings."
                   : "Convert the declarative sentence into the requested format by rearranging words and changing punctuation."}
@@ -284,7 +284,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                           selectedBaseWord.word === bw.word 
                             ? 'bg-purple-600 text-white' 
-                            : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-600'
+                            : 'bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] hover:border-purple-300 dark:hover:border-purple-600'
                         }`}
                       >
                         {bw.word}
@@ -296,13 +296,13 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 <div className="space-y-2">
                   <button
                     onClick={checkAffixCombo}
-                    className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                   >
                     <Check className="w-5 h-5 mr-2" /> Check Word
                   </button>
                   <button
                     onClick={resetAffixes}
-                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
                   >
                     <RefreshCw className="w-5 h-5 mr-2" /> Clear Affixes
                   </button>
@@ -314,7 +314,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                   <h3 className="font-semibold text-pink-800 dark:text-pink-300 mb-2 flex items-center">
                     <Target className="w-4 h-4 mr-2" /> Current Mission
                   </h3>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+                  <p className="text-sm text-slate-700 dark:text-[#a1a1aa] mb-2">
                     Original: <span className="italic text-slate-500">"{currentTask.base}"</span>
                   </p>
                   <p className="text-md font-bold text-pink-700 dark:text-pink-400">
@@ -325,13 +325,13 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 <div className="space-y-2">
                   <button
                     onClick={checkPunctuation}
-                    className="w-full py-3 px-4 bg-pink-600 hover:bg-pink-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-pink-600 hover:bg-pink-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
                   >
                     <Check className="w-5 h-5 mr-2" /> Verify Sentence
                   </button>
                   <button
                     onClick={nextTask}
-                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                    className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
                   >
                     <MoveRight className="w-5 h-5 mr-2" /> Next Challenge
                   </button>
@@ -345,14 +345,14 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
         <div className="w-full lg:w-2/3 p-4 sm:p-8 lg:overflow-y-auto bg-slate-50 dark:bg-slate-950 flex flex-col relative items-center justify-center">
           
           {activeTab === 'affixes' ? (
-            <div className="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+            <div className="w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-neutral-900 text-center flex flex-col items-center">
               
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12 w-full">
                 {/* Prefix Slot */}
                 <div className="flex flex-col items-center w-full md:w-1/3">
                   <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Prefix</div>
                   <div className={`h-20 w-full flex items-center justify-center rounded-2xl border-4 border-dashed transition-all ${
-                    activePrefix ? 'bg-blue-100 border-blue-400 text-blue-700 dark:bg-blue-900/50 dark:border-blue-500 dark:text-blue-200 text-3xl font-bold' : 'border-slate-200 dark:border-slate-800'
+                    activePrefix ? 'bg-blue-100 border-blue-400 text-blue-700 dark:bg-blue-900/50 dark:border-blue-500 dark:text-blue-200 text-3xl font-bold' : 'border-slate-200 dark:border-[#1c1b1b]'
                   }`}>
                     {activePrefix || <span className="text-slate-300 dark:text-slate-600 font-mono text-xl">____</span>}
                   </div>
@@ -362,7 +362,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                         key={p}
                         onClick={() => handlePrefixToggle(p)}
                         className={`px-3 py-1 rounded-full text-sm font-medium border ${
-                          activePrefix === p ? 'bg-blue-500 text-white border-blue-500' : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300'
+                          activePrefix === p ? 'bg-blue-500 text-white border-blue-500' : 'bg-white dark:bg-[#121212] border-slate-300 dark:border-slate-600 text-slate-600 dark:text-[#ffffff]'
                         }`}
                       >
                         {p}
@@ -374,10 +374,10 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 {/* Base Word */}
                 <div className="flex flex-col items-center w-full md:w-1/3 z-10 scale-110">
                   <div className="text-sm font-semibold text-purple-400 mb-2 uppercase tracking-wider">Base</div>
-                  <div className="h-20 px-6 flex items-center justify-center rounded-2xl bg-purple-600 text-white text-3xl font-bold shadow-lg">
+                  <div className="h-20 px-6 flex items-center justify-center rounded-2xl bg-purple-600 text-white text-3xl font-bold shadow-lg dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                     {selectedBaseWord.word}
                   </div>
-                  <div className="mt-4 text-xs text-slate-500 dark:text-slate-400 italic text-center px-4">
+                  <div className="mt-4 text-xs text-slate-500 dark:text-[#71717a] italic text-center px-4">
                     {selectedBaseWord.meaning}
                   </div>
                 </div>
@@ -386,17 +386,17 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 <div className="flex flex-col items-center w-full md:w-1/3">
                   <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Suffix</div>
                   <div className={`h-20 w-full flex items-center justify-center rounded-2xl border-4 border-dashed transition-all ${
-                    activeSuffix ? 'bg-green-100 border-green-400 text-green-700 dark:bg-green-900/50 dark:border-green-500 dark:text-green-200 text-3xl font-bold' : 'border-slate-200 dark:border-slate-800'
+                    activeSuffix ? 'bg-green-100 border-green-400 text-green-700 dark:bg-green-900/50 dark:border-green-500 dark:text-green-200 text-3xl font-bold' : 'border-slate-200 dark:border-[#1c1b1b]'
                   }`}>
                     {activeSuffix || <span className="text-slate-300 dark:text-slate-600 font-mono text-xl">____</span>}
                   </div>
-                  <div className="mt-4 flex flex-wrap justify-center gap-2 max-h-32 overflow-y-auto p-1">
+                  <div className="mt-4 flex flex-wrap justify-center gap-2 max-h-32 lg:overflow-y-auto p-1">
                     {SUFFIXES.map(s => (
                       <button
                         key={s}
                         onClick={() => handleSuffixToggle(s)}
                         className={`px-3 py-1 rounded-full text-sm font-medium border ${
-                          activeSuffix === s ? 'bg-green-500 text-white border-green-500' : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300'
+                          activeSuffix === s ? 'bg-green-500 text-white border-green-500' : 'bg-white dark:bg-[#121212] border-slate-300 dark:border-slate-600 text-slate-600 dark:text-[#ffffff]'
                         }`}
                       >
                         {s}
@@ -421,9 +421,9 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
 
             </div>
           ) : (
-            <div className="w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col items-center">
+            <div className="w-full max-w-3xl bg-white dark:!bg-[#121212] rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-neutral-900 flex flex-col items-center">
               
-              <div className="text-lg text-slate-500 dark:text-slate-400 mb-8 text-center">
+              <div className="text-lg text-slate-500 dark:text-[#71717a] mb-8 text-center">
                 Use the arrows to reorder the words. Click the punctuation mark to change it.
               </div>
 
@@ -431,10 +431,10 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 {userWords.map((word, idx) => (
                   <div key={`${word}-${idx}`} className="flex flex-col items-center">
                     <div className="flex space-x-1 mb-2 opacity-50 hover:opacity-100 transition-opacity">
-                      <button onClick={() => moveWordLeft(idx)} disabled={idx === 0} className="p-1 bg-slate-100 dark:bg-slate-800 rounded disabled:opacity-30">
+                      <button onClick={() => moveWordLeft(idx)} disabled={idx === 0} className="p-1 bg-slate-100 dark:bg-[#121212] rounded disabled:opacity-30">
                         <ArrowLeft className="w-4 h-4" />
                       </button>
-                      <button onClick={() => moveWordRight(idx)} disabled={idx === userWords.length - 1} className="p-1 bg-slate-100 dark:bg-slate-800 rounded disabled:opacity-30">
+                      <button onClick={() => moveWordRight(idx)} disabled={idx === userWords.length - 1} className="p-1 bg-slate-100 dark:bg-[#121212] rounded disabled:opacity-30">
                         <MoveRight className="w-4 h-4" />
                       </button>
                     </div>

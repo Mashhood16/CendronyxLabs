@@ -139,24 +139,24 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 dark:bg-slate-950 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#000000] dark:bg-slate-950 flex flex-col font-sans">
       <LabHeader title="Phrase Dynamics: Adjectival & Adverbial" onExit={onExit} />
       
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Column 1: Theory */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 overflow-y-auto max-h-[calc(100vh-8rem)]">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 lg:overflow-y-auto max-h-[calc(100vh-8rem)]">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Theory Guide</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Theory Guide</h2>
             </div>
             
-            <div className="space-y-6 text-slate-600 dark:text-slate-400 dark:text-slate-300">
+            <div className="space-y-6 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">
               <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
                   <Layers className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                   What is a Phrase?
                 </h3>
@@ -164,14 +164,14 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
               </section>
 
               <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
                   <Tag className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
                   Adjectival Phrases
                 </h3>
                 <p className="text-sm mb-3">An adjectival phrase acts like an adjective. It modifies or describes a noun or a pronoun.</p>
                 <div className="bg-emerald-50 dark:bg-emerald-900 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
                   <p className="text-sm font-medium text-emerald-800 dark:text-emerald-200 dark:text-emerald-300 mb-1">Example:</p>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 dark:text-slate-400">
+                  <p className="text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#71717a]">
                     The boy <span className="font-bold text-emerald-600 dark:text-emerald-400 dark:text-emerald-400">in the red shirt</span> is my brother.
                   </p>
                   <p className="text-xs mt-2 italic text-emerald-700 dark:text-emerald-300 dark:text-emerald-300/80 dark:text-emerald-400/80">"in the red shirt" describes the noun "boy".</p>
@@ -179,14 +179,14 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
               </section>
 
               <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
                   <Eye className="w-5 h-5 text-amber-500 dark:text-amber-400" />
                   Adverbial Phrases
                 </h3>
                 <p className="text-sm mb-3">An adverbial phrase acts like an adverb. It modifies a verb, an adjective, or another adverb by telling <em>when, where, how,</em> or <em>why</em>.</p>
                 <div className="bg-amber-50 dark:bg-amber-900 p-3 rounded-lg border border-amber-100 dark:border-amber-900/30">
                   <p className="text-sm font-medium text-amber-800 dark:text-amber-200 dark:text-amber-300 mb-1">Example:</p>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 dark:text-slate-400">
+                  <p className="text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#71717a]">
                     She painted the canvas <span className="font-bold text-amber-600 dark:text-amber-400 dark:text-amber-400">with great care</span>.
                   </p>
                   <p className="text-xs mt-2 italic text-amber-700 dark:text-amber-300 dark:text-amber-300/80 dark:text-amber-400/80">"with great care" tells how she painted (modifies the verb).</p>
@@ -206,21 +206,21 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 flex flex-col">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-lg">
                   <Search className="w-6 h-6" />
                 </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Dissection Engine</h2>
+                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Dissection Engine</h2>
               </div>
-              <div className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 px-3 py-1 rounded-full">
+              <div className="text-sm font-medium text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] px-3 py-1 rounded-full">
                 Sentence {currentSentenceIdx + 1} of {sentences.length}
               </div>
             </div>
 
             <div className="flex-1 flex flex-col">
-              <div className="mb-6 p-6 bg-slate-50 dark:bg-slate-900 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 text-lg leading-relaxed text-slate-800 dark:text-slate-300 shadow-sm">
+              <div className="mb-6 p-6 bg-slate-50 dark:!bg-[#121212] dark:!bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] text-lg leading-relaxed text-slate-800 dark:text-[#a1a1aa] shadow-sm">
                 {currentSentence.parts.map((part, i) => {
                   if (part.type === 'text') {
                     return <span key={i}>{part.content}</span>;
@@ -236,7 +236,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                             ? 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 border-emerald-400 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-600 cursor-default' 
                             : isActive
                               ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 border-purple-400 dark:bg-purple-900 dark:text-purple-300 dark:border-purple-500 animate-pulse'
-                              : 'bg-slate-200 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-400 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-500 hover:bg-slate-300 dark:bg-slate-900 dark:hover:bg-slate-600 cursor-pointer'
+                              : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-400 dark:bg-slate-700 dark:text-[#ffffff] dark:border-slate-500 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-600 cursor-pointer'
                           }
                         `}
                       >
@@ -260,7 +260,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                       <button
                         key={type}
                         onClick={() => handleClassify(type)}
-                        className="py-3 px-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:border-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:border-purple-500 transition-colors text-left"
+                        className="py-3 px-4 bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] rounded-lg text-sm font-medium text-slate-700 dark:text-[#a1a1aa] hover:border-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:border-purple-500 transition-colors text-left"
                       >
                         {type}
                       </button>
@@ -275,11 +275,11 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
               ) : sentenceCompleted ? (
                 <div className="text-center p-8 bg-emerald-50 dark:bg-emerald-900 rounded-xl border border-emerald-100 dark:border-emerald-900/50 animate-in zoom-in-95">
                   <CheckCircle className="w-12 h-12 text-emerald-500 dark:text-emerald-400 mx-auto mb-3" />
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-4">Sentence Analyzed</h3>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4">Sentence Analyzed</h3>
                   {currentSentenceIdx < sentences.length - 1 ? (
                     <button
                       onClick={advanceSentence}
-                      className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 mx-auto"
+                      className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 mx-auto dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                     >
                       Next Sentence <ChevronRight className="w-4 h-4" />
                     </button>
@@ -288,7 +288,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                   )}
                 </div>
               ) : (
-                <div className="flex-1 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
+                <div className="flex-1 flex flex-col items-center justify-center text-slate-400 dark:text-[#71717a]">
                   <Search className="w-12 h-12 mb-3 opacity-20" />
                   <p>Click on a highlighted phrase to classify it.</p>
                 </div>
@@ -299,18 +299,18 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
           {/* Column 3: Assessment & Logging */}
           <div className="flex flex-col gap-6">
             {/* Logs */}
-            <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-6 flex-1 max-h-[300px] flex flex-col">
+            <div className="bg-[#000000] rounded-2xl shadow-sm border border-[#1c1b1b] p-6 flex-1 max-h-[300px] flex flex-col">
               <div className="flex items-center gap-2 mb-4">
                 <Activity className="w-5 h-5 text-blue-400" />
                 <h2 className="text-lg font-bold text-slate-100">Dissection Logs</h2>
               </div>
-              <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+              <div className="flex-1 lg:overflow-y-auto space-y-3 pr-2">
                 {logs.length === 0 && (
-                  <p className="text-slate-500 dark:text-slate-400 text-sm italic">No dissection actions recorded...</p>
+                  <p className="text-slate-500 dark:text-[#71717a] text-sm italic">No dissection actions recorded...</p>
                 )}
                 {logs.map(log => (
                   <div key={log.id} className="flex gap-3 text-sm">
-                    <span className="text-slate-500 dark:text-slate-400 font-mono shrink-0">[{log.timestamp}]</span>
+                    <span className="text-slate-500 dark:text-[#71717a] font-mono shrink-0">[{log.timestamp}]</span>
                     <span className={log.type === 'success' ? 'text-emerald-400' : 'text-red-400'}>
                       {log.message}
                     </span>
@@ -320,19 +320,19 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
             </div>
 
             {/* Assessment */}
-            <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 p-6 flex-1 overflow-y-auto">
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800">
+            <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex-1 lg:overflow-y-auto">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
                 <div className="p-2 bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 rounded-lg">
                   <Target className="w-6 h-6" />
                 </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300">Assessment</h2>
+                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Assessment</h2>
               </div>
 
               {!assessmentSubmitted ? (
                 <div className="space-y-6">
                   {questions.map((q, qIdx) => (
                     <div key={qIdx} className="space-y-3">
-                      <p className="text-sm font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300">
+                      <p className="text-sm font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
                         {qIdx + 1}. {q.q}
                       </p>
                       <div className="space-y-2">
@@ -341,11 +341,11 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                             <input
                               type="radio"
                               name={`phrase-q-${qIdx}`}
-                              className="mt-1 w-4 h-4 text-rose-600 dark:text-rose-400 bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:border-slate-700"
+                              className="mt-1 w-4 h-4 text-rose-600 dark:text-rose-400 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] dark:bg-[#121212] dark:border-[#1c1b1b]"
                               checked={assessmentAnswers[qIdx] === oIdx}
                               onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
                             />
-                            <span className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:text-slate-300 dark:group-hover:text-slate-200">
+                            <span className="text-sm text-slate-600 dark:text-[#71717a] group-hover:text-slate-900 dark:text-[#a1a1aa] dark:group-hover:text-slate-200">
                               {opt}
                             </span>
                           </label>
@@ -356,7 +356,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                   <button
                     onClick={() => setAssessmentSubmitted(true)}
                     disabled={Object.keys(assessmentAnswers).length < questions.length}
-                    className="w-full py-2 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:bg-slate-900 dark:disabled:bg-slate-800 disabled:cursor-not-allowed text-white rounded-xl font-medium transition-colors"
+                    className="w-full py-2 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:disabled:bg-[#121212] disabled:cursor-not-allowed text-white rounded-xl font-medium transition-colors dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                   >
                     Submit Evaluation
                   </button>
@@ -366,8 +366,8 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                   <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 mb-4">
                     <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-300 dark:text-slate-300 mb-2">Assessment Complete</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6">
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>
+                  <p className="text-slate-600 dark:text-[#71717a] mb-6">
                     {calculateScore() === questions.length ? 'Masterful syntactic dissection!' : 'Review the theory and try again.'}
                   </p>
                   <button

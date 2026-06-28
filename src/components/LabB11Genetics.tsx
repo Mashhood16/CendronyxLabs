@@ -73,18 +73,18 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Molecular Genetics Lab" variant="dark" subtitle="Meselson-Stahl & Hershey-Chase" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-r lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
-              <h3 className="text-lg font-semibold text-indigo-800 flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-semibold text-indigo-800 flex items-center gap-2 mb-2 dark:text-[#ffffff]">
                 <Dna size={18} /> Meselson-Stahl Experiment
               </h3>
               <p className="text-sm mb-2">
@@ -96,7 +96,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
             </section>
 
             <section>
-              <h3 className="text-lg font-semibold text-indigo-800 flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-semibold text-indigo-800 flex items-center gap-2 mb-2 dark:text-[#ffffff]">
                 <Bug size={18} /> Hershey-Chase Experiment
               </h3>
               <p className="text-sm mb-2">
@@ -114,8 +114,8 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-100 dark:bg-slate-800 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-slate-50 dark:bg-slate-900 rounded-lg p-1 shadow-sm mb-6 shrink-0">
+        <div className="bg-slate-100 dark:bg-[#121212] p-6 flex flex-col lg:overflow-y-auto">
+          <div className="flex bg-slate-50 dark:!bg-[#121212] rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'meselson' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => setActiveTab('meselson')}
@@ -132,8 +132,8 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'meselson' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
-                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-2">Density Gradient Centrifugation</h3>
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
+                <h3 className="font-bold text-gray-800 dark:text-[#ffffff] mb-2">Density Gradient Centrifugation</h3>
                 <p className="text-sm text-gray-500 mb-6">Current Medium: <span className="font-bold text-blue-600">14N (Light)</span></p>
                 
                 <div className="flex-1 flex items-center justify-center relative w-full">
@@ -181,7 +181,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 <div className="w-full mt-6 space-y-3">
-                  <div className="flex justify-between items-center text-sm font-bold text-gray-700 dark:text-slate-200 bg-gray-100 p-3 rounded-lg">
+                  <div className="flex justify-between items-center text-sm font-bold text-gray-700 dark:text-[#ffffff] bg-gray-100 p-3 rounded-lg">
                     <span>Generation: {generation}</span>
                     <span>{generation === 0 ? '100% 15N' : generation === 1 ? '100% Hybrid' : generation === 2 ? '50% Light / 50% Hybrid' : '75% Light / 25% Hybrid'}</span>
                   </div>
@@ -189,14 +189,14 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                     <button 
                       onClick={handleNextGeneration}
                       disabled={isSpinning || generation >= 3}
-                      className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold transition-colors disabled:opacity-50"
+                      className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold transition-colors disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                     >
                       Grow & Centrifuge (Gen {generation + 1})
                     </button>
                     <button 
                       onClick={handleResetMS}
                       disabled={isSpinning}
-                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-bold transition-colors disabled:opacity-50"
+                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-[#ffffff] rounded-lg font-bold transition-colors disabled:opacity-50"
                     >
                       Reset
                     </button>
@@ -208,8 +208,8 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'hershey' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Hershey-Chase Viral Infection</h3>
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+                <h3 className="font-bold text-gray-800 dark:text-[#ffffff] mb-4">Hershey-Chase Viral Infection</h3>
                 
                 <div className="flex bg-gray-100 rounded-lg p-1 mb-6">
                   <button 
@@ -228,7 +228,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                   </button>
                 </div>
 
-                <div className="flex-1 flex flex-col justify-center items-center relative bg-slate-50 dark:bg-slate-900 border rounded-xl p-4 mb-4">
+                <div className="flex-1 flex flex-col justify-center items-center relative bg-slate-50 dark:bg-[#121212] border rounded-xl p-4 mb-4">
                   {hcStep === 0 && <p className="text-gray-400 font-medium text-center">Select label type and click next to infect bacteria.</p>}
                   
                   {/* Infection SVG */}
@@ -246,7 +246,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                         <rect x="20" y="60" width="60" height="30" rx="15" fill="#86efac" opacity="0.5" />
                         <path d="M50,60 L50,80" stroke={phageLabel === '32P' ? '#a855f7' : '#ef4444'} strokeWidth="2" className="animate-pulse" /> {/* Injecting DNA */}
                       </svg>
-                      <p className="text-sm font-bold mt-2 text-indigo-800">1. Infection phase</p>
+                      <p className="text-sm font-bold mt-2 text-indigo-800 dark:text-[#ffffff]">1. Infection phase</p>
                     </div>
                   )}
 
@@ -262,7 +262,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                         <rect x="20" y="50" width="60" height="30" rx="15" fill="#86efac" />
                         <path d="M40,65 Q50,55 60,65 T40,65" stroke={phageLabel === '32P' ? '#a855f7' : '#ef4444'} strokeWidth="2" fill="none" />
                       </svg>
-                      <p className="text-sm font-bold mt-2 text-indigo-800">2. Agitation (Blending)</p>
+                      <p className="text-sm font-bold mt-2 text-indigo-800 dark:text-[#ffffff]">2. Agitation (Blending)</p>
                     </div>
                   )}
 
@@ -301,14 +301,14 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                   <button 
                     onClick={handleNextStepHC}
                     disabled={hcStep === 3 || isSpinning}
-                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold transition-colors disabled:opacity-50"
+                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     {hcStep === 0 ? 'Infect Bacteria' : hcStep === 1 ? 'Blend Mixture' : hcStep === 2 ? 'Centrifuge' : 'Experiment Complete'}
                   </button>
                   <button 
                     onClick={handleResetHC}
                     disabled={isSpinning || hcStep === 0}
-                    className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-bold transition-colors disabled:opacity-50"
+                    className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-[#ffffff] rounded-lg font-bold transition-colors disabled:opacity-50"
                   >
                     Reset
                   </button>
@@ -319,15 +319,15 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Assessment</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-l flex flex-col lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Assessment</h2>
           
-          <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex-1 flex flex-col">
-            <h3 className="font-bold text-indigo-900 mb-4">Knowledge Check</h3>
+          <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex-1 flex flex-col dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">Knowledge Check</h3>
             
             <div className="space-y-6 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   1. In the Meselson-Stahl experiment, after 2 generations in 14N, what percentage of the DNA is fully light (14N/14N)?
                 </label>
                 <div className="flex items-center gap-2">
@@ -343,7 +343,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   2. Which radioactive isotope was used to label DNA in the Hershey-Chase experiment?
                 </label>
                 <input 
@@ -356,7 +356,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   3. The Meselson-Stahl experiment proved that DNA replication is:
                 </label>
                 <input 
@@ -373,13 +373,13 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={checkAnswers}
                 disabled={assessmentStatus === 'checking'}
-                className="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70 dark:text-white dark:text-white dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 {assessmentStatus === 'checking' ? 'Evaluating...' : 'Check Answers'}
               </button>
 
               {assessmentStatus === 'passed' && (
-                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium">
+                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium dark:text-[#ffffff]">
                   <CheckCircle size={18} /> Correct! 50% light DNA, 32P labels DNA, and replication is semi-conservative.
                 </div>
               )}

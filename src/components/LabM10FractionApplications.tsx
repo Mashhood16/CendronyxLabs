@@ -81,34 +81,34 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
   const bricksB = Math.min(bricksTotal - bricksA, Math.floor(rateB * time * bricksTotal));
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Rational & Fraction Applications Lab" />
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 min-w-0 overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-slate-200">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Formulas</h2>
+          <div className="flex-1 min-w-0 lg:overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-[#ffffff]">
             {mode === 'travel' ? (
               <>
                 <p><strong>Distance, Speed, and Time</strong> are related by rational equations.</p>
-                <div className="bg-blue-50 p-4 rounded-lg text-center font-mono font-bold text-blue-800">
+                <div className="bg-blue-50 p-4 rounded-lg text-center font-mono font-bold text-blue-800 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
                   Time = Distance / Speed
                 </div>
                 <p>When comparing two vehicles covering the same distance, the difference in their travel times can be expressed as:</p>
-                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-center font-mono font-bold">
+                <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg text-center font-mono font-bold">
                   Δt = |(d / v₁) - (d / v₂)|
                 </div>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mt-4">In this simulator, observe how varying the speeds affects the completion time for a fixed distance.</p>
+                <p className="text-sm text-slate-500 dark:text-[#71717a] mt-4">In this simulator, observe how varying the speeds affects the completion time for a fixed distance.</p>
               </>
             ) : (
               <>
                 <p><strong>Work Rate Problems</strong> involve adding fractions. If someone can complete a job in <em>t</em> hours, their rate is <em>1/t</em> jobs per hour.</p>
-                <div className="bg-green-50 p-4 rounded-lg text-center font-mono font-bold text-green-800">
+                <div className="bg-green-50 p-4 rounded-lg text-center font-mono font-bold text-green-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
                   Rate = 1 / Time
                 </div>
                 <p>When two workers collaborate, their combined rate is the sum of their individual rates:</p>
-                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-center font-mono font-bold">
+                <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg text-center font-mono font-bold">
                   Combined Rate = (1/t₁) + (1/t₂)
                 </div>
                 <p>The total time to complete the job together is the reciprocal of the combined rate.</p>
@@ -118,42 +118,42 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
         </div>
 
         {/* Interactive Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex space-x-2 mb-6">
             <button 
               onClick={() => handleModeChange('travel')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'travel' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'travel' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
             >
               <Car size={18} className="mr-2" /> Travel Race
             </button>
             <button 
               onClick={() => handleModeChange('work')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'work' ? 'bg-green-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'work' ? 'bg-green-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
             >
               <Hammer size={18} className="mr-2" /> Work Rates
             </button>
           </div>
 
           {/* Visualizer */}
-          <div className="relative h-64 bg-slate-100 dark:bg-slate-800 rounded-xl mb-6 overflow-hidden border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col justify-center p-4">
+          <div className="relative h-64 bg-slate-100 dark:bg-[#121212] rounded-xl mb-6 overflow-hidden border border-slate-200 dark:border-[#1c1b1b] flex flex-col justify-center p-4">
             {mode === 'travel' ? (
               <div className="space-y-8 w-full relative">
-                <div className="relative h-12 w-full border-b-2 border-dashed border-slate-400 dark:border-slate-500">
-                  <div className="absolute bottom-0 text-slate-500 dark:text-slate-400 text-xs font-bold font-mono">Car (v={carSpeed})</div>
+                <div className="relative h-12 w-full border-b-2 border-dashed border-slate-400 dark:border-[#1c1b1b]">
+                  <div className="absolute bottom-0 text-slate-500 dark:text-[#71717a] text-xs font-bold font-mono">Car (v={carSpeed})</div>
                   <Car className="absolute bottom-1 text-blue-500 transition-all duration-75" size={32} style={{ left: `calc(${carProgress}% - 32px)` }} />
                 </div>
-                <div className="relative h-12 w-full border-b-2 border-slate-800 dark:border-slate-500">
-                  <div className="absolute bottom-0 text-slate-500 dark:text-slate-400 text-xs font-bold font-mono">Train (v={trainSpeed})</div>
+                <div className="relative h-12 w-full border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b]">
+                  <div className="absolute bottom-0 text-slate-500 dark:text-[#71717a] text-xs font-bold font-mono">Train (v={trainSpeed})</div>
                   <Train className="absolute bottom-1 text-red-500 transition-all duration-75" size={32} style={{ left: `calc(${trainProgress}% - 32px)` }} />
                 </div>
                 <div className="absolute right-0 top-0 h-full border-r-4 border-green-500 opacity-50"></div>
               </div>
             ) : (
               <div className="w-full h-full flex flex-col">
-                <div className="text-center font-bold text-slate-600 dark:text-slate-300 mb-2">Wall Progress (60 Bricks)</div>
+                <div className="text-center font-bold text-slate-600 dark:text-[#a1a1aa] mb-2">Wall Progress (60 Bricks)</div>
                 <div className="flex-1 min-w-0 grid grid-cols-10 gap-1 content-start">
                   {Array.from({ length: bricksTotal }).map((_, i) => {
-                    let bgColor = 'bg-slate-200 dark:bg-slate-800';
+                    let bgColor = 'bg-slate-200 dark:bg-[#121212]';
                     if (i < bricksA) bgColor = 'bg-blue-500';
                     else if (i < bricksA + bricksB) bgColor = 'bg-green-500';
                     return <div key={i} className={`h-4 rounded-sm ${bgColor} transition-colors duration-100`} />
@@ -166,7 +166,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
               </div>
             )}
             
-            <div className="absolute top-2 right-4 font-mono font-bold text-slate-700 dark:text-slate-200 flex items-center bg-slate-50 dark:bg-slate-900/80 px-2 py-1 rounded">
+            <div className="absolute top-2 right-4 font-mono font-bold text-slate-700 dark:text-[#ffffff] flex items-center bg-slate-50 dark:bg-[#121212]/80 px-2 py-1 rounded">
               <Clock size={16} className="mr-2" />
               {time.toFixed(1)} h
             </div>
@@ -176,14 +176,14 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
           <div className="flex justify-center space-x-4 mb-6">
             <button 
               onClick={() => setIsPlaying(!isPlaying)}
-              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               {isPlaying ? <Pause size={20} className="mr-2"/> : <Play size={20} className="mr-2"/>}
               {isPlaying ? 'Pause' : 'Start'}
             </button>
             <button 
               onClick={reset}
-              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800 transition-colors"
+              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors"
             >
               <RotateCcw size={20} className="mr-2"/>
               Reset
@@ -195,21 +195,21 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
             {mode === 'travel' ? (
               <>
                 <div>
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Distance (km)</span>
                     <span>{distance} km</span>
                   </div>
                   <input type="range" min="10" max="300" step="10" value={distance} onChange={e => {setDistance(Number(e.target.value)); reset()}} className="w-full" />
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Car Speed (km/h)</span>
                     <span>{carSpeed} km/h</span>
                   </div>
                   <input type="range" min="10" max="150" step="5" value={carSpeed} onChange={e => {setCarSpeed(Number(e.target.value)); reset()}} className="w-full" />
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Train Speed (km/h)</span>
                     <span>{trainSpeed} km/h</span>
                   </div>
@@ -238,16 +238,16 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 border-b pb-2">Data Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Data Analysis</h2>
           <div className="flex-1 min-w-0 space-y-6">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <p className="text-slate-700 dark:text-slate-200 font-medium mb-3">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-3">
                 {mode === 'travel' 
                   ? `Given the distance of ${distance}km, how many more hours does the slower vehicle take compared to the faster vehicle?` 
                   : `If Worker A takes ${timeA}h and Worker B takes ${timeB}h, how many hours does it take them to build the wall together?`}
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">(Round to 2 decimal places if needed)</p>
+              <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">(Round to 2 decimal places if needed)</p>
               
               <div className="flex items-center space-x-3">
                 <input 
@@ -256,18 +256,18 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
                   value={ans}
                   onChange={e => setAns(e.target.value)}
                   placeholder="e.g. 1.25"
-                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <button 
                   onClick={checkAns}
-                  className="px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors"
+                  className="px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors"
                 >
                   Check
                 </button>
               </div>
 
               {status === 'correct' && (
-                <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg flex items-center">
+                <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg flex items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
                   <CheckCircle2 size={20} className="mr-2 shrink-0" />
                   <span className="font-medium">Correct! Great calculation.</span>
                 </div>

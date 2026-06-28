@@ -134,7 +134,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
     }).join(' ');
 
     return (
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-slate-900 border rounded mt-4">
+      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-[#121212] border rounded mt-4">
          {/* Grid lines */}
          <line x1="0" y1={height/2} x2={width} y2={height/2} stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4"/>
          
@@ -151,16 +151,16 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
   const flaskColor = pH > 8.2 ? '#fbcfe8' : '#e0f2fe';
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Acids & Bases Titration" />
 
-      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
+      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:overflow-y-auto">
         {/* Column 1 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-pink-500" /> Theory & Setup
           </h2>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Titration</strong> is used to determine the concentration of an unknown acid or base.</p>
             <p>We are adding a Strong Base (NaOH) to an acid. The <strong>Equivalence Point</strong> occurs when moles of base added equals moles of acid initially present: <code>M₁V₁ = M₂V₂</code>.</p>
           </div>
@@ -170,7 +170,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
               <label className="block text-sm font-semibold mb-1">Acid Type (Analyte)</label>
               <select 
                 disabled={volAdded > 0}
-                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-[#121212]"
                 value={isWeakAcid ? 'weak' : 'strong'} 
                 onChange={(e) => setIsWeakAcid(e.target.value === 'weak')}
               >
@@ -179,7 +179,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
               </select>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border">
               <ul className="text-sm space-y-2">
                 <li><strong>Analyte Volume:</strong> 25.0 mL</li>
                 <li><strong>Titrant (NaOH):</strong> 0.1 M</li>
@@ -189,7 +189,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
             
             <button 
               onClick={resetExperiment} 
-              className="w-full flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 px-4 py-2 rounded-lg font-semibold transition-colors"
+              className="w-full flex items-center justify-center gap-2 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] px-4 py-2 rounded-lg font-semibold transition-colors"
             >
               <RefreshCw size={18} /> New Unknown Sample
             </button>
@@ -197,12 +197,12 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-pink-500" /> Burette Simulator
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border p-4 relative">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border p-4 relative">
             <svg viewBox="0 0 200 400" className="w-full h-80 drop-shadow-md">
               <rect x="90" y="20" width="20" height="200" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" />
               <rect x="92" y={20 + (volAdded * 3.6)} width="16" height={200 - (volAdded * 3.6)} fill="#bae6fd" />
@@ -221,7 +221,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
                 onMouseLeave={() => setIsAdding(false)}
                 onTouchStart={() => setIsAdding(true)}
                 onTouchEnd={() => setIsAdding(false)}
-                className="w-full flex justify-center items-center gap-2 bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white px-4 py-3 rounded-lg font-semibold transition-colors cursor-pointer select-none"
+                className="w-full flex justify-center items-center gap-2 bg-pink-600 hover:bg-pink-700 active:bg-pink-800 text-white px-4 py-3 rounded-lg font-semibold transition-colors cursor-pointer select-none dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
               >
                 <FlaskConical size={18} /> Hold to Open Valve
               </button>
@@ -229,15 +229,15 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3 */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-pink-500" /> Data & Analysis
           </h2>
           
-          <div className="h-32 overflow-y-auto border rounded bg-slate-50 dark:bg-slate-900 p-2 text-sm font-mono flex-shrink-0">
+          <div className="h-32 lg:overflow-y-auto border rounded bg-slate-50 dark:bg-[#121212] p-2 text-sm font-mono flex-shrink-0">
             <table className="w-full text-center">
               <thead>
-                <tr className="border-b text-slate-500 dark:text-slate-400">
+                <tr className="border-b text-slate-500 dark:text-[#71717a]">
                   <th className="pb-1">Vol Added (mL)</th>
                   <th className="pb-1">pH</th>
                 </tr>
@@ -245,7 +245,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
               <tbody>
                 {logs.length === 0 && <tr><td colSpan={2} className="py-2 text-slate-400">No data logged</td></tr>}
                 {logs.map((log, i) => (
-                  <tr key={i} className="border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 last:border-0">
+                  <tr key={i} className="border-b border-slate-200 dark:border-[#1c1b1b] last:border-0">
                     <td className="py-1">{log.v}</td>
                     <td>{log.pH.toFixed(2)}</td>
                   </tr>
@@ -271,7 +271,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
               />
               <button 
                 onClick={checkAnswer}
-                className="bg-pink-600 hover:bg-pink-700 text-white px-3 py-2 rounded font-semibold transition-colors"
+                className="bg-pink-600 hover:bg-pink-700 text-white px-3 py-2 rounded font-semibold transition-colors dark:text-white dark:text-white dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
               >
                 Check
               </button>

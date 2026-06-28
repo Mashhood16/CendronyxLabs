@@ -10,24 +10,24 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
   const [mixed, setMixed] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Unit 4: Chemical Change" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-white dark:!bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-2xl font-bold text-amber-600 dark:text-amber-400 mb-4">Baking Soda and Vinegar</h2>
-          <p className="text-slate-600 dark:text-slate-300 mb-6">A balloon containing Baking Soda (NaHCO₃) is stretched over a flask of Vinegar (Acetic Acid). Click to tip the balloon and mix the chemicals to observe a chemical reaction.</p>
+          <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">A balloon containing Baking Soda (NaHCO₃) is stretched over a flask of Vinegar (Acetic Acid). Click to tip the balloon and mix the chemicals to observe a chemical reaction.</p>
           
           <div className="flex justify-center gap-4">
             <button 
               onClick={() => setMixed(true)}
               disabled={mixed}
-              className="flex items-center px-6 py-2 bg-amber-500 text-slate-900 dark:text-slate-200 rounded-lg hover:bg-amber-400 disabled:opacity-50 font-bold"
+              className="flex items-center px-6 py-2 bg-amber-500 text-slate-900 dark:text-white rounded-lg hover:bg-amber-400 disabled:opacity-50 font-bold dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
             >
               Tip Balloon (Mix)
             </button>              <button 
               onClick={() => setMixed(false)}
-              className="flex items-center px-6 py-2 text-slate-600 dark:text-slate-300 rounded-lg font-medium bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600"
+              className="flex items-center px-6 py-2 text-slate-600 dark:text-[#a1a1aa] rounded-lg font-medium bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600"
             >
               Reset Setup
             </button>
@@ -38,20 +38,20 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
         <div className="relative w-[500px] h-[500px] flex justify-center items-end pb-8">
           
           {/* Flask */}
-          <div className="relative w-40 h-48 border-4 border-slate-400 dark:border-slate-500/50 bg-slate-50 dark:bg-slate-900/5 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] flex justify-center items-end overflow-hidden z-20 backdrop-blur-sm">
+          <div className="relative w-40 h-48 border-4 border-slate-400 dark:border-[#1c1b1b]/50 bg-slate-50 dark:bg-[#121212]/5 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] flex justify-center items-end overflow-hidden z-20 backdrop-blur-sm">
              {/* Neck of flask */}
-             <div className="absolute top-0 w-12 h-16 border-l-4 border-r-4 border-slate-400 dark:border-slate-500/50 bg-slate-50 dark:bg-slate-900"></div>
+             <div className="absolute top-0 w-12 h-16 border-l-4 border-r-4 border-slate-400 dark:border-[#1c1b1b]/50 bg-slate-50 dark:bg-[#121212]"></div>
 
              {/* Vinegar / Reaction Liquid */}
-             <div className={`w-full absolute bottom-0 transition-all duration-1000 ${mixed ? 'h-32 bg-amber-500/40' : 'h-24 bg-slate-50 dark:bg-slate-900/20'}`}>
+             <div className={`w-full absolute bottom-0 transition-all duration-1000 ${mixed ? 'h-32 bg-amber-500/40' : 'h-24 bg-slate-50 dark:bg-[#121212]/20'}`}>
                 {/* Bubbles / Effervescence */}
                 {mixed && (
                   <div className="absolute inset-0 flex flex-wrap gap-2 p-2 justify-center content-end overflow-hidden">
-                    <div className="w-3 h-3 rounded-full bg-slate-50 dark:bg-slate-900/60 animate-[bounce_1s_ease-in_infinite]"></div>
-                    <div className="w-2 h-2 rounded-full bg-slate-50 dark:bg-slate-900/60 animate-[bounce_0.8s_ease-in_infinite_0.2s]"></div>
-                    <div className="w-4 h-4 rounded-full bg-slate-50 dark:bg-slate-900/60 animate-[bounce_1.2s_ease-in_infinite_0.1s]"></div>
-                    <div className="w-3 h-3 rounded-full bg-slate-50 dark:bg-slate-900/60 animate-[bounce_0.9s_ease-in_infinite_0.4s]"></div>
-                    <div className="w-2 h-2 rounded-full bg-slate-50 dark:bg-slate-900/60 animate-[bounce_1.1s_ease-in_infinite_0.3s]"></div>
+                    <div className="w-3 h-3 rounded-full bg-slate-50 dark:bg-[#121212]/60 animate-[bounce_1s_ease-in_infinite]"></div>
+                    <div className="w-2 h-2 rounded-full bg-slate-50 dark:bg-[#121212]/60 animate-[bounce_0.8s_ease-in_infinite_0.2s]"></div>
+                    <div className="w-4 h-4 rounded-full bg-slate-50 dark:bg-[#121212]/60 animate-[bounce_1.2s_ease-in_infinite_0.1s]"></div>
+                    <div className="w-3 h-3 rounded-full bg-slate-50 dark:bg-[#121212]/60 animate-[bounce_0.9s_ease-in_infinite_0.4s]"></div>
+                    <div className="w-2 h-2 rounded-full bg-slate-50 dark:bg-[#121212]/60 animate-[bounce_1.1s_ease-in_infinite_0.3s]"></div>
                   </div>
                 )}
              </div>
@@ -68,7 +68,7 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
              }`}>
                 {/* Baking Soda Powder (Before mixing) */}
                 {!mixed && (
-                  <div className="absolute bottom-2 left-2 w-8 h-8 bg-slate-50 dark:bg-slate-900/80 rounded-full blur-[2px]"></div>
+                  <div className="absolute bottom-2 left-2 w-8 h-8 bg-slate-50 dark:bg-[#121212]/80 rounded-full blur-[2px]"></div>
                 )}
                 {/* Gas indicator (After mixing) */}
                 {mixed && (
@@ -82,7 +82,7 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
         </div>
 
         {mixed && (
-          <div className="mt-8 p-6 rounded-xl max-w-xl text-center bg-amber-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-amber-300 dark:border-amber-500/50">
+          <div className="mt-8 p-6 rounded-xl max-w-xl text-center bg-amber-50 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] border border-amber-300 dark:border-amber-500/50">
             <h3 className="text-amber-700 dark:text-amber-400 font-bold text-lg mb-2">Chemical Change Observed!</h3>
             <p>The baking soda and vinegar reacted to create a completely new substance: <strong>Carbon Dioxide (CO₂) gas</strong>. The production of this gas rapidly expanded, filling and inflating the balloon. This creation of a new substance with different properties proves it is a chemical change, not a physical one.</p>
           </div>

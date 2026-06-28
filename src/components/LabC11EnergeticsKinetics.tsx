@@ -132,7 +132,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
     }).join(' ');
 
     return (
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-slate-900 border rounded mt-4">
+      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-[#121212] border rounded mt-4">
          <polyline points={points} fill="none" stroke="#3b82f6" strokeWidth="2" />
          {logs.map((log, i) => {
            const x = (log.time / maxTime) * width;
@@ -144,15 +144,15 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Energetics & Kinetics" />
 
-      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+      <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-blue-500" /> Theory & Setup
           </h2>
-          <div className="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+          <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
             <p><strong>Calorimetry</strong> measures the heat transferred during a chemical reaction. The heat <em>q</em> is calculated using <code>q = mcΔT</code>.</p>
             <p>If the temperature rises, the reaction is <strong>Exothermic</strong> (ΔH is negative). If it falls, it is <strong>Endothermic</strong> (ΔH is positive).</p>
           </div>
@@ -162,7 +162,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
               <label className="block text-sm font-semibold mb-1">Reaction Type</label>
               <select 
                 disabled={isRunning || time > 0}
-                className="w-full p-2 border rounded bg-slate-50 dark:bg-slate-900"
+                className="w-full p-2 border rounded bg-slate-50 dark:bg-[#121212]"
                 value={reactionType} 
                 onChange={(e) => setReactionType(e.target.value as 'exo' | 'endo')}
               >
@@ -193,13 +193,13 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-blue-500" /> Coffee-cup Calorimeter
           </h2>
           
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border p-4 relative">
-            <div className="absolute top-2 left-2 text-xs font-mono bg-slate-50 dark:bg-slate-900 px-2 py-1 border rounded shadow-sm">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border p-4 relative">
+            <div className="absolute top-2 left-2 text-xs font-mono bg-slate-50 dark:bg-[#121212] px-2 py-1 border rounded shadow-sm">
               Time: {time}s
             </div>
             
@@ -218,32 +218,32 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
 
           <div className="flex justify-center gap-3 mt-2">
             {!isRunning && time === 0 && (
-              <button onClick={startExperiment} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+              <button onClick={startExperiment} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                 <Play size={18} /> Start
               </button>
             )}
             {isRunning && (
-              <button onClick={stopExperiment} className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+              <button onClick={stopExperiment} className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
                 <Square size={18} /> Stop
               </button>
             )}
             {(time > 0 && !isRunning) && (
-              <button onClick={resetExperiment} className="flex items-center gap-2 bg-slate-600 dark:bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+              <button onClick={resetExperiment} className="flex items-center gap-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
                 <RefreshCw size={18} /> Reset
               </button>
             )}
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-blue-500" /> Data & Analysis
           </h2>
           
-          <div className="h-32 overflow-y-auto border rounded bg-slate-50 dark:bg-slate-900 p-2 text-sm font-mono flex-shrink-0">
+          <div className="h-32 lg:overflow-y-auto border rounded bg-slate-50 dark:bg-[#121212] p-2 text-sm font-mono flex-shrink-0">
             <table className="w-full text-center">
               <thead>
-                <tr className="border-b text-slate-500 dark:text-slate-400">
+                <tr className="border-b text-slate-500 dark:text-[#71717a]">
                   <th className="pb-1">Time (s)</th>
                   <th className="pb-1">Temp (°C)</th>
                 </tr>
@@ -251,7 +251,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
               <tbody>
                 {logs.length === 0 && <tr><td colSpan={2} className="py-2 text-slate-400">No data logged yet</td></tr>}
                 {logs.map((log, i) => (
-                  <tr key={i} className="border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 last:border-0">
+                  <tr key={i} className="border-b border-slate-200 dark:border-[#1c1b1b] last:border-0">
                     <td className="py-1">{log.time}</td>
                     <td>{log.temp.toFixed(1)}</td>
                   </tr>
@@ -262,9 +262,9 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
 
           {renderGraph()}
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto">
-            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2"><Beaker size={16}/> Calculate ΔH</h3>
-            <p className="text-xs text-blue-800 mb-3">
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]"><Beaker size={16}/> Calculate ΔH</h3>
+            <p className="text-xs text-blue-800 mb-3 dark:text-[#ffffff]">
               Using the maximum temperature change and your inputs, calculate the enthalpy change (ΔH) in <strong>kJ/mol</strong>. Assume c = 4.18 J/(g·°C). Provide your answer as a number.
             </p>
             <div className="flex gap-2">
@@ -277,7 +277,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
               />
               <button 
                 onClick={checkAnswer}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check
               </button>

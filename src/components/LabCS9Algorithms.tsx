@@ -112,7 +112,7 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
       case 'InputOutput': return '-skew-x-12 bg-blue-100 border-blue-400 text-blue-900 px-8';
       case 'Process': return 'rounded-sm bg-green-100 border-green-400 text-green-900 px-6';
       case 'Decision': return 'rotate-45 bg-yellow-100 border-yellow-400 text-yellow-900 w-24 h-24 flex items-center justify-center';
-      default: return 'bg-slate-100 dark:bg-slate-800 border-slate-400 dark:border-slate-500 px-6';
+      default: return 'bg-slate-100 dark:bg-[#121212] border-slate-400 dark:border-slate-500 px-6';
     }
   };
 
@@ -127,20 +127,20 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Algorithms Lab" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Task Details</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Task Details</h2>
           <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 mb-2">
             <h3 className="font-bold text-teal-900 mb-1">{task.title}</h3>
             <p className="text-sm text-teal-800">{task.description}</p>
           </div>
 
-          <h3 className="font-bold text-slate-700 dark:text-slate-200 mt-2">Flowchart Symbols</h3>
-          <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-slate-300">
+          <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mt-2">Flowchart Symbols</h3>
+          <div className="flex flex-col gap-3 text-sm text-slate-600 dark:text-[#a1a1aa]">
             <div className="flex items-center gap-3">
               <div className="w-12 h-6 rounded-full border-2 border-red-400 bg-red-100 shrink-0"></div>
               <span><strong>Terminal:</strong> Start or End of a program.</span>
@@ -160,10 +160,10 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-200 dark:bg-slate-800 p-4 rounded-xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-y-auto flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 w-full text-center">Algorithm Canvas</h2>
+        <div className="bg-slate-200 dark:bg-[#121212] p-4 rounded-xl shadow-inner border border-slate-300 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 w-full text-center">Algorithm Canvas</h2>
           
-          <div className="w-full bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border shadow-sm mb-4">
+          <div className="w-full bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border shadow-sm mb-4">
             <h3 className="text-xs font-bold text-slate-400 uppercase mb-3 text-center">Available Blocks (Click to add)</h3>
             <div className="flex flex-wrap gap-4 justify-center">
               {availableBlocks.map(b => (
@@ -183,7 +183,7 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
           <div className="w-full max-w-sm flex flex-col items-center gap-2 pb-8">
             <h3 className="text-xs font-bold text-slate-400 uppercase mb-2 text-center">Your Sequence (Click to remove)</h3>
             {sequence.length === 0 ? (
-              <div className="text-sm text-slate-400 italic border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 w-full text-center py-8 rounded-lg">Canvas is empty</div>
+              <div className="text-sm text-slate-400 italic border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] w-full text-center py-8 rounded-lg">Canvas is empty</div>
             ) : (
               sequence.map((b, i) => (
                 <div key={b.id + i} className="flex flex-col items-center">
@@ -201,17 +201,17 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4">Analysis & Validation</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Analysis & Validation</h2>
           
           <button 
             onClick={checkSequence}
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mb-4 shadow-sm"
+            className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mb-4 shadow-sm dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
           >
             <Play className="w-5 h-5" /> Execute / Check Logic
           </button>
 
-          <div className="flex-1 bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-xs p-3 rounded-lg overflow-y-auto shadow-inner border border-slate-700 dark:border-slate-500">
+          <div className="flex-1 bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-xs p-3 rounded-lg lg:overflow-y-auto shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b]">
             <div className="opacity-50 mb-2">--- TRACE LOGS ---</div>
             {logs.map((log, i) => <div key={i} className="mb-1 leading-tight">{log}</div>)}
             <div ref={logsEndRef} />

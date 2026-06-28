@@ -48,8 +48,8 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
   const [angle, setAngle] = useState(0);
   
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none overflow-hidden">
-      <div className="flex items-center p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm z-10">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
+      <div className="flex items-center p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
         <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -58,7 +58,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left Column */}
-        <div className="w-1/3 p-6 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 overflow-y-auto flex flex-col gap-6">
+        <div className="w-1/3 p-6 bg-white dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6">
           <div className="flex space-x-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
             <button 
               className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'coordinates' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
@@ -83,7 +83,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
           {activeTab === 'coordinates' && (
             <div className="space-y-4">
               <h2 className="text-xl font-bold">City Map Coordinates</h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
                 Click on the grid to locate the following place:
               </p>
               <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
@@ -101,7 +101,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
 
               <button 
                 onClick={generateNewTarget}
-                className="flex items-center justify-center gap-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium"
+                className="flex items-center justify-center gap-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <RefreshCcw className="w-4 h-4" /> New Target
               </button>
@@ -111,7 +111,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
           {activeTab === 'translation' && (
             <div className="space-y-4">
               <h2 className="text-xl font-bold">Sliding Shapes</h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
                 Translate the triangle by changing the x and y offsets. Notice how the shape slides without rotating or changing size.
               </p>
               
@@ -145,7 +145,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
           {activeTab === 'rotation' && (
             <div className="space-y-4">
               <h2 className="text-xl font-bold">Rotational Symmetry</h2>
-              <p className="text-sm text-slate-600 dark:text-slate-300">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
                 Rotate the windmill to see its order of rotational symmetry. How many times does it look exactly the same in one full turn (360°)?
               </p>
               
@@ -161,7 +161,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
                 />
               </div>
 
-              <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-lg">
+              <div className="bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] p-4 rounded-lg">
                 <p className="text-sm font-medium">Matches original shape at:</p>
                 <div className="flex gap-2 mt-3">
                   {[90, 180, 270, 360].map(a => (
@@ -170,7 +170,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
                     </span>
                   ))}
                 </div>
-                <p className="text-xs mt-4 text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Order of symmetry: 4</p>
+                <p className="text-xs mt-4 text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">Order of symmetry: 4</p>
               </div>
             </div>
           )}
@@ -181,7 +181,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
         <div className="w-2/3 p-6 bg-slate-200 dark:bg-slate-950 flex items-center justify-center relative">
           <svg 
             width="400" height="400" 
-            className={`bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-300 dark:border-slate-600 ${activeTab === 'coordinates' ? 'cursor-crosshair' : ''}`}
+            className={`bg-white dark:bg-[#121212] rounded-lg shadow-xl border border-slate-300 dark:border-slate-600 ${activeTab === 'coordinates' ? 'cursor-crosshair' : ''}`}
             onClick={activeTab === 'coordinates' ? handleGridClick : undefined}
           >
             {/* Grid Lines */}
@@ -195,8 +195,8 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
             </g>
             
             {/* Axes */}
-            <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-slate-500" />
-            <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-slate-500" />
+            <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-[#71717a]" />
+            <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-[#71717a]" />
             
             {/* Axis Labels */}
             <text x="385" y="195" className="text-[10px] fill-slate-500 font-bold">x</text>

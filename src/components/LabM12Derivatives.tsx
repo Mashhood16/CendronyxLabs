@@ -81,14 +81,14 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
     }
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="M12 Derivatives Lab" />
 
             <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-grow">
                 {/* Theory Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
-                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-slate-300">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
+                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-[#a1a1aa]">
                         {tab === 'box' && (
                             <>
                                 <p><strong>ArchitecturalOptimization:</strong></p>
@@ -126,12 +126,12 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Interactive Simulator Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
                     
                     {tab === 'box' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 300 400" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 300 400" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 {/* Graph Top Half */}
                                 <line x1="0" y1="200" x2="300" y2="200" stroke="#94a3b8" />
                                 <line x1="0" y1="0" x2="0" y2="200" stroke="#94a3b8" />
@@ -144,16 +144,16 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                                 <polygon points={`${v3.px},${v3.py} ${v2.px},${v2.py} ${v6.px},${v6.py} ${v7.px},${v7.py}`} fill="#3b82f6" stroke="#2563eb" strokeWidth="1" />
                                 <text x="10" y="380" fontSize="12" fill="#64748b">Volume = {volume} cm³</text>
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Target Volume ($V$): {volume}</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Target Volume ($V$): {volume}</label>
                             <input type="range" min="500" max="2000" step="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="mb-4" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Base Side ($x$): {x.toFixed(1)} cm</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Base Side ($x$): {x.toFixed(1)} cm</label>
                             <input type="range" min="5" max="25" step="0.1" value={x} onChange={(e) => setX(Number(e.target.value))} />
                         </div>
                     )}
 
                     {tab === 'kinematics' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 300 200" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 300 200" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <line x1="0" y1="150" x2="300" y2="150" stroke="#94a3b8" /> {/* Zero axis adjusted for shift */}
                                 <path d={`M ${sPts.join(' L ')}`} fill="none" stroke="#3b82f6" strokeWidth="2" />
                                 <path d={`M ${vPts.join(' L ')}`} fill="none" stroke="#ef4444" strokeWidth="2" strokeDasharray="4" />
@@ -162,9 +162,9 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                                 <text x="10" y="20" fontSize="10" fill="#3b82f6">Position s(t)</text>
                                 <text x="10" y="35" fontSize="10" fill="#ef4444">Velocity v(t)</text>
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Time ($t$): {timeK.toFixed(1)} s</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Time ($t$): {timeK.toFixed(1)} s</label>
                             <input type="range" min="0" max="10" step="0.1" value={timeK} onChange={(e) => setTimeK(Number(e.target.value))} />
-                            <div className="mt-4 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-3 rounded">
+                            <div className="mt-4 text-sm text-slate-600 dark:text-[#a1a1aa] bg-slate-100 dark:bg-[#121212] p-3 rounded">
                                 <p>Position: {sKin.toFixed(2)} m</p>
                                 <p>Velocity: {vKin.toFixed(2)} m/s</p>
                             </div>
@@ -173,7 +173,7 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
 
                     {tab === 'business' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 300 200" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 300 200" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <line x1="0" y1="166" x2="300" y2="166" stroke="#94a3b8" /> {/* Zero axis */}
                                 <path d={`M ${cPts.join(' L ')}`} fill="none" stroke="#ef4444" strokeWidth="2" />
                                 <path d={`M ${rPts.join(' L ')}`} fill="none" stroke="#22c55e" strokeWidth="2" />
@@ -183,9 +183,9 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                                 <text x="10" y="35" fontSize="10" fill="#ef4444">Cost C(q)</text>
                                 <text x="10" y="50" fontSize="10" fill="#3b82f6">Profit P(q)</text>
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Quantity ($q$): {qBus}</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Quantity ($q$): {qBus}</label>
                             <input type="range" min="0" max="100" step="1" value={qBus} onChange={(e) => setQBus(Number(e.target.value))} />
-                            <div className="mt-4 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-3 rounded">
+                            <div className="mt-4 text-sm text-slate-600 dark:text-[#a1a1aa] bg-slate-100 dark:bg-[#121212] p-3 rounded">
                                 <p>Profit: ${pBus.toFixed(2)}</p>
                                 <p>Marginal Profit: {(-0.6*qBus + 40).toFixed(2)}</p>
                             </div>
@@ -194,9 +194,9 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
-                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
+                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
                         {tab === 'box' && <p>Given the Volume $V = {volume}$ cm³, calculate the exact base side length $x$ that minimizes the surface area. (Round to 2 decimal places).</p>}
                         {tab === 'kinematics' && <p>Calculate the exact instantaneous velocity $v$ at time $t = {timeK}$ seconds.</p>}
                         {tab === 'business' && <p>Calculate the exact production quantity $q$ that maximizes the overall profit by setting $MR = MC$.</p>}
@@ -204,18 +204,18 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                     
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
                             <input 
                                 type="text" 
                                 value={userAns} 
                                 onChange={(e) => setUserAns(e.target.value)}
-                                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Enter numerical value..."
                             />
                         </div>
                         <button 
                             onClick={checkAnswer}
-                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                         >
                             Check Answer
                         </button>

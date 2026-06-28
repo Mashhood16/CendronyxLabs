@@ -115,25 +115,25 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 dark:bg-slate-950 font-sans text-slate-900 dark:text-slate-300 dark:text-slate-300">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] dark:bg-slate-950 font-sans text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
       <LabHeader title="Reporter's Notepad: Narration" variant="dark" onExit={onExit} />
       
       <div className="flex-1 lg:overflow-hidden">
         <div className="h-full grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
           
           {/* Column 1: Theory */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex flex-col h-full overflow-hidden">
-            <div className="p-6 bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex items-center gap-3">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex flex-col h-full overflow-hidden">
+            <div className="p-6 bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex items-center gap-3">
               <BookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400 dark:text-indigo-400" />
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">Narration Rules</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Narration Rules</h2>
             </div>
-            <div className="p-6 overflow-y-auto flex-1 space-y-6 text-slate-700 dark:text-slate-300 dark:text-slate-300">
+            <div className="p-6 lg:overflow-y-auto flex-1 space-y-6 text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
               <p>
                 <strong>Direct Speech</strong> quotes the exact words spoken. <strong>Indirect (Reported) Speech</strong> conveys the meaning of what was said without using the exact words.
               </p>
 
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-slate-300 dark:text-white border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 pb-2">Tense Step-Backs</h3>
+                <h3 className="font-bold text-slate-900 dark:text-[#a1a1aa] dark:text-white border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] pb-2">Tense Step-Backs</h3>
                 <p className="text-sm">When the reporting verb is in the past tense (e.g., <em>said</em>), tenses inside the quotation marks usually "step back" one tense into the past:</p>
                 <ul className="list-disc pl-5 text-sm space-y-2">
                   <li><strong>Simple Present</strong> &rarr; Simple Past</li>
@@ -142,13 +142,13 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                   <li><strong>Simple Past</strong> &rarr; Past Perfect</li>
                   <li><strong>Will / Can / May</strong> &rarr; Would / Could / Might</li>
                 </ul>
-                <div className="bg-amber-50 dark:bg-amber-900 border-l-4 border-amber-500 p-3 text-sm rounded-r-md text-slate-800 dark:text-slate-300 dark:text-slate-300">
+                <div className="bg-amber-50 dark:bg-amber-900 border-l-4 border-amber-500 p-3 text-sm rounded-r-md text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
                   <strong>Exception:</strong> Universal truths or habitual facts do not change tense. (e.g., "The sun rises in the east.")
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-slate-300 dark:text-white border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 pb-2">Pronoun Shifts (SON Rule)</h3>
+                <h3 className="font-bold text-slate-900 dark:text-[#a1a1aa] dark:text-white border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] pb-2">Pronoun Shifts (SON Rule)</h3>
                 <p className="text-sm">Pronouns change according to the <strong>SON</strong> rule:</p>
                 <ul className="list-disc pl-5 text-sm space-y-2">
                   <li><strong>First Person (I, We):</strong> Changes according to the <strong>Subject</strong> of the reporting verb.</li>
@@ -158,7 +158,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-slate-300 dark:text-white border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 pb-2">Time and Place Words</h3>
+                <h3 className="font-bold text-slate-900 dark:text-[#a1a1aa] dark:text-white border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] pb-2">Time and Place Words</h3>
                 <ul className="list-disc pl-5 text-sm space-y-2">
                   <li>Now &rarr; Then</li>
                   <li>Here &rarr; There</li>
@@ -171,13 +171,13 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex flex-col h-full overflow-hidden">
-             <div className="p-6 bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex items-center gap-3">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex flex-col h-full overflow-hidden">
+             <div className="p-6 bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex items-center gap-3">
               <NotebookPen className="w-6 h-6 text-rose-600 dark:text-rose-400 dark:text-rose-400" />
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">The Reporter's Notepad</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">The Reporter's Notepad</h2>
             </div>
             
-            <div className="flex-1 overflow-y-auto relative bg-[#faf9f6] dark:bg-slate-900">
+            <div className="flex-1 lg:overflow-y-auto relative bg-[#faf9f6] dark:bg-[#121212]">
               {/* Notepad styling lines */}
               <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #94a3b8 31px, #94a3b8 32px)', backgroundPositionY: '32px' }}></div>
               <div className="absolute top-0 bottom-0 left-12 w-px bg-red-400 opacity-40 pointer-events-none"></div>
@@ -186,24 +186,24 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <Mic className="w-5 h-5 text-rose-500 dark:text-rose-400" />
-                    <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Live Quote</span>
+                    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Live Quote</span>
                   </div>
-                  <div className="text-2xl font-serif font-medium text-slate-800 dark:text-slate-300 italic bg-slate-200 dark:bg-slate-900/50/50 dark:bg-slate-800 p-6 rounded-r-xl border-l-4 border-rose-400 shadow-sm">
+                  <div className="text-2xl font-serif font-medium text-slate-800 dark:text-[#a1a1aa] italic bg-slate-200 dark:bg-[#121212]/50/50 dark:!bg-[#121212] p-6 rounded-r-xl border-l-4 border-rose-400 shadow-sm">
                     {currentData.direct}
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <FileText className="w-5 h-5 text-slate-500 dark:text-slate-400" />
-                    <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Reported Draft</span>
+                    <FileText className="w-5 h-5 text-slate-500 dark:text-[#71717a]" />
+                    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Reported Draft</span>
                   </div>
-                  <div className="flex flex-wrap items-baseline gap-2 text-xl font-serif text-slate-800 dark:text-slate-300 dark:text-slate-300">
+                  <div className="flex flex-wrap items-baseline gap-2 text-xl font-serif text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
                     <span>{currentData.indirectStart}</span>
                     <div className={`flex-1 min-w-[200px] border-b-2 border-dashed pb-1 transition-colors ${
                       selectedOption 
                         ? result === 'success' ? 'border-emerald-500 text-emerald-700 dark:text-emerald-300 dark:text-emerald-400' : 'border-rose-500 text-rose-700 dark:text-rose-300 dark:text-rose-400'
-                        : 'border-slate-400 text-slate-500 dark:text-slate-400'
+                        : 'border-slate-400 text-slate-500 dark:text-[#a1a1aa]'
                     }`}>
                       {selectedOption || '...'}
                     </div>
@@ -221,7 +221,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                           ? result === 'success'
                             ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900 shadow-md text-emerald-900 dark:text-emerald-100 dark:text-emerald-100'
                             : 'border-rose-500 bg-rose-50 dark:bg-rose-900 shadow-md text-rose-900 dark:text-rose-100 dark:text-rose-100'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 dark:text-slate-300 hover:shadow-md'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 dark:text-[#ffffff] hover:shadow-md'
                       } disabled:opacity-75`}
                     >
                       {opt}
@@ -247,7 +247,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                       </div>
                     </div>
                     {result === 'success' && (
-                      <button onClick={nextQuote} className="mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-slate-200 dark:bg-slate-900 transition-colors">
+                      <button onClick={nextQuote} className="mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#000000] dark:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-lg hover:bg-[#121212] dark:hover:bg-slate-200 dark:bg-[#121212] transition-colors">
                         Next Interview <ArrowRight className="w-4 h-4" />
                       </button>
                     )}
@@ -258,23 +258,23 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Column 3: Logs & Assessment */}
-          <div className="bg-white dark:bg-slate-800 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex flex-col h-full overflow-hidden">
-            <div className="p-6 bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 flex items-center gap-3">
+          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex flex-col h-full overflow-hidden">
+            <div className="p-6 bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 flex items-center gap-3">
               <History className="w-6 h-6 text-emerald-600 dark:text-emerald-400 dark:text-emerald-400" />
-              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-300">Editorial Log</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Editorial Log</h2>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-6 space-y-8">
+            <div className="flex-1 lg:overflow-y-auto p-6 space-y-8">
               
               <div className="space-y-4">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 pb-2">Recent Drafts</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 pb-2">Recent Drafts</h3>
                 {logs.length === 0 ? (
-                  <p className="text-sm text-slate-500 dark:text-slate-400 italic">No drafts submitted yet.</p>
+                  <p className="text-sm text-slate-500 dark:text-[#71717a] italic">No drafts submitted yet.</p>
                 ) : (
                   <div className="space-y-3">
                     {logs.map(log => (
-                      <div key={log.id} className="text-sm p-3 rounded-lg border border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 dark:bg-slate-800/50">
-                        <div className="text-slate-500 dark:text-slate-400 mb-1 line-clamp-1">{log.direct}</div>
+                      <div key={log.id} className="text-sm p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 bg-slate-50 dark:bg-[#121212] dark:bg-[#121212]/50">
+                        <div className="text-slate-500 dark:text-[#71717a] mb-1 line-clamp-1">{log.direct}</div>
                         <div className={`font-medium flex items-center gap-2 ${log.status === 'success' ? 'text-emerald-600 dark:text-emerald-400 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400 dark:text-rose-400'}`}>
                           {log.status === 'success' ? <CheckCircle2 className="w-4 h-4 shrink-0" /> : <XCircle className="w-4 h-4 shrink-0" />}
                           <span className="line-clamp-2">{log.indirect}</span>
@@ -286,11 +286,11 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div className="space-y-4 pt-4">
-                <h3 className="font-semibold text-slate-900 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700/50 dark:border-slate-700 dark:border-slate-800 pb-2">Knowledge Check</h3>
+                <h3 className="font-semibold text-slate-900 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 pb-2">Knowledge Check</h3>
                 
                 {assessmentQuestions.map((q, i) => (
                   <div key={q.id} className="space-y-2">
-                    <p className="text-sm font-medium text-slate-800 dark:text-slate-300 dark:text-slate-300">{i + 1}. {q.q}</p>
+                    <p className="text-sm font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{i + 1}. {q.q}</p>
                     <div className="space-y-2 pl-2">
                       {q.options.map(opt => {
                         const isSelected = assessmentAnswers[q.id] === opt;
@@ -302,8 +302,8 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                           <label key={opt} className={`flex items-start gap-2 text-sm p-2 rounded-md border cursor-pointer transition-colors ${
                             showCorrect ? 'bg-emerald-50 dark:bg-emerald-900 border-emerald-200 dark:border-emerald-700/50 text-emerald-800 dark:text-emerald-200 dark:text-emerald-200' :
                             showWrong ? 'bg-rose-50 dark:bg-rose-900 border-rose-200 dark:border-rose-700/50 text-rose-800 dark:text-rose-200 dark:text-rose-200' :
-                            isSelected ? 'bg-slate-100 dark:bg-slate-900 dark:bg-slate-800 border-slate-300 dark:border-slate-600 dark:border-slate-600' :
-                            'border-transparent hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800/50'
+                            isSelected ? 'bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] border-slate-300 dark:border-slate-600 dark:border-slate-600' :
+                            'border-transparent hover:bg-slate-50 dark:bg-[#121212] dark:hover:bg-[#121212]/50'
                           }`}>
                             <input
                               type="radio"
@@ -314,7 +314,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                               onChange={() => setAssessmentAnswers(prev => ({ ...prev, [q.id]: opt }))}
                               className="w-4 h-4 mt-0.5 text-indigo-600 dark:text-indigo-400 focus:ring-indigo-500"
                             />
-                            <span className="flex-1 text-slate-700 dark:text-slate-300">{opt}</span>
+                            <span className="flex-1 text-slate-700 dark:text-[#a1a1aa]">{opt}</span>
                           </label>
                         );
                       })}
@@ -325,7 +325,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
                 <button
                   onClick={() => setAssessmentSubmitted(true)}
                   disabled={assessmentSubmitted || Object.keys(assessmentAnswers).length < assessmentQuestions.length}
-                  className="w-full mt-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 dark:bg-slate-900 disabled:dark:bg-slate-700 text-white rounded-lg font-medium transition-colors"
+                  className="w-full mt-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled: text-white rounded-lg font-medium transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   {assessmentSubmitted ? `Score: ${calculateScore()} / ${assessmentQuestions.length}` : 'Submit Assessment'}
                 </button>

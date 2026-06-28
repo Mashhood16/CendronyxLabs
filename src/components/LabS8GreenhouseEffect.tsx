@@ -39,20 +39,20 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
   }, [timePassed]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans">
       <LabHeader onExit={onExit} title="Act 1.1: Greenhouse Effect" subtitle="Observe how a closed environment traps thermal energy" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Visual */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
           
           <div className="absolute top-8 left-8">
             <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />
-            <div className="text-sm text-center text-slate-500 dark:text-slate-400 font-medium mt-2">Sunlight</div>
+            <div className="text-sm text-center text-slate-500 dark:text-[#71717a] font-medium mt-2">Sunlight</div>
           </div>
           
           <div className="absolute top-10 right-10">
-            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full font-bold">
+            <div className="flex items-center gap-2 text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-full font-bold">
               Time: {timePassed} minutes
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
             
             {/* Thermometer 1 (Outside) */}
             <div className="flex flex-col items-center">
-              <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center">
-                <div className="w-4 h-full bg-slate-200 dark:bg-slate-800 rounded-full relative overflow-hidden border border-slate-300 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center">
+                <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
                   <div 
                     className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
                     style={{ height: `${(outsideTemp / 50) * 100}%` }}
@@ -71,20 +71,20 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
                 {/* Wind icon to show air circulation */}
                 <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
               </div>
-              <div className="font-bold text-slate-700 dark:text-slate-200 text-lg">{outsideTemp.toFixed(1)}°C</div>
-              <div className="text-slate-500 dark:text-slate-400 text-sm">Open Air</div>
+              <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
+              <div className="text-slate-500 dark:text-[#71717a] text-sm">Open Air</div>
             </div>
 
             {/* Thermometer 2 (Inside Jar) */}
             <div className="flex flex-col items-center relative z-10">
               {/* Glass Jar Outline */}
-              <div className="absolute -top-6 -bottom-6 -left-8 -right-8 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-t-3xl rounded-b-xl bg-blue-50/20 backdrop-blur-[2px] shadow-lg pointer-events-none z-20 flex flex-col items-center">
+              <div className="absolute -top-6 -bottom-6 -left-8 -right-8 border-4 border-slate-300 dark:border-[#1c1b1b] rounded-t-3xl rounded-b-xl bg-blue-50/20 backdrop-blur-[2px] shadow-lg pointer-events-none z-20 flex flex-col items-center dark:bg-teal-950/20 dark:border-teal-900">
                 {/* Jar Lid */}
-                <div className="w-16 h-4 bg-slate-400 dark:bg-slate-800 rounded-t-sm -mt-4 border border-slate-500 dark:border-slate-500" />
+                <div className="w-16 h-4 bg-slate-400 dark:bg-[#121212] rounded-t-sm -mt-4 border border-slate-500 dark:border-[#1c1b1b]" />
               </div>
               
-              <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center z-10">
-                <div className="w-4 h-full bg-slate-200 dark:bg-slate-800 rounded-full relative overflow-hidden border border-slate-300 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center z-10">
+                <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
                   <div 
                     className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
                     style={{ height: `${(insideTemp / 50) * 100}%` }}
@@ -97,8 +97,8 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
                   </div>
                 )}
               </div>
-              <div className="font-bold text-slate-700 dark:text-slate-200 text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
-              <div className="text-slate-500 dark:text-slate-400 text-sm relative z-30">Inside Closed Jar</div>
+              <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
+              <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">Inside Closed Jar</div>
             </div>
 
           </div>
@@ -106,18 +106,18 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
 
         {/* Right Column: Information */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Observation</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Observation</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
               As time passes, solar energy enters both environments. The open air thermometer cools naturally through convection (wind/air flow).
             </p>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
               The glass jar allows light energy in, but prevents the warmed air from escaping. This traps thermal energy, causing the temperature to rise rapidly.
             </p>
           </div>
 
-          <div className="bg-blue-50 rounded-2xl shadow-sm border border-blue-100 p-6">
-            <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2">
+          <div className="bg-blue-50 rounded-2xl shadow-sm border border-blue-100 p-6 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
               <Thermometer className="w-5 h-5" />
               Real World Link
             </h3>

@@ -100,9 +100,9 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none overflow-hidden">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
       {/* Header */}
-      <div className="flex items-center p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm z-10">
+      <div className="flex items-center p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
         <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -112,7 +112,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Column: Controls */}
-        <div className="w-1/3 p-6 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 overflow-y-auto flex flex-col gap-6">
+        <div className="w-1/3 p-6 bg-white dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6">
           <div className="flex space-x-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
             <button 
               className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'balance' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
@@ -132,7 +132,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
             <div className="space-y-6">
               <div>
                 <h2 className="text-xl font-bold">Solve for x</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
                   Keep the equation balanced! Do the same operation to both sides until you isolate <span className="font-bold">x</span>.
                 </p>
               </div>
@@ -151,10 +151,10 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
               ) : (
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
-                    <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-slate-600 transition-colors">+ Add 1</button>
-                    <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-slate-600 transition-colors">- Subtract 1</button>
-                    <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-slate-600 transition-colors">+ Add x</button>
-                    <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-slate-600 transition-colors">- Subtract x</button>
+                    <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">+ Add 1</button>
+                    <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">- Subtract 1</button>
+                    <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">+ Add x</button>
+                    <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">- Subtract x</button>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3">
@@ -168,7 +168,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
 
               <button 
                 onClick={resetBalance}
-                className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
               >
                 <RefreshCcw className="w-4 h-4" /> Reset Equation
               </button>
@@ -179,12 +179,12 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
             <div className="space-y-6">
               <div>
                 <h2 className="text-xl font-bold">Literal Formulas</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
                   Rearrange the temperature conversion formula to make <b>F</b> the subject.
                 </p>
               </div>
 
-              <div className="bg-slate-100 dark:bg-slate-700 p-6 rounded-lg text-center shadow-inner border border-slate-200 dark:border-slate-600">
+              <div className="bg-slate-100 dark:bg-slate-700 p-6 rounded-lg text-center shadow-inner border border-slate-200 dark:border-[#1c1b1b]">
                 <div className="text-xl font-mono font-bold text-indigo-700 dark:text-indigo-300">
                   {formulaSteps[fStep].text}
                 </div>
@@ -197,16 +197,16 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
               {fStep < 3 ? (
                 <div className="space-y-3">
                   <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Choose an operation:</h3>
-                  <button onClick={() => handleFormulaAction('mult9')} className="w-full py-2 px-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+                  <button onClick={() => handleFormulaAction('mult9')} className="w-full py-2 px-4 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
                     Multiply both sides by 9
                   </button>
-                  <button onClick={() => handleFormulaAction('div5')} className="w-full py-2 px-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+                  <button onClick={() => handleFormulaAction('div5')} className="w-full py-2 px-4 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
                     Divide both sides by 5
                   </button>
-                  <button onClick={() => handleFormulaAction('add32')} className="w-full py-2 px-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+                  <button onClick={() => handleFormulaAction('add32')} className="w-full py-2 px-4 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
                     Add 32 to both sides
                   </button>
-                  <button onClick={() => handleFormulaAction('mult5')} className="w-full py-2 px-4 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+                  <button onClick={() => handleFormulaAction('mult5')} className="w-full py-2 px-4 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
                     Multiply both sides by 5
                   </button>
                 </div>
@@ -219,7 +219,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
               
               <button 
                 onClick={() => setFStep(0)}
-                className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
               >
                 <RefreshCcw className="w-4 h-4" /> Start Over
               </button>
@@ -230,7 +230,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
         {/* Right Column: Stage */}
         <div className="w-2/3 p-6 bg-slate-200 dark:bg-slate-950 flex items-center justify-center">
           {activeTab === 'balance' && (
-            <svg width="400" height="400" className="overflow-visible bg-white dark:bg-slate-800 rounded-xl shadow-lg">
+            <svg width="400" height="400" className="overflow-visible bg-white dark:!bg-[#121212] rounded-xl shadow-lg">
               <g transform="translate(0, 20)">
                 {/* Fulcrum Base */}
                 <polygon points="200,300 160,360 240,360" className="fill-slate-700 dark:fill-slate-400" />
@@ -254,10 +254,10 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
           )}
 
           {activeTab === 'formula' && (
-            <div className="text-center w-full max-w-lg bg-white dark:bg-slate-800 p-12 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700">
+            <div className="text-center w-full max-w-lg bg-white dark:!bg-[#121212] p-12 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b]">
               <div className="text-[100px] mb-6">🌡️</div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-100">Celsius to Fahrenheit</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Celsius to Fahrenheit</h3>
+              <p className="text-slate-600 dark:text-[#71717a] leading-relaxed">
                 Rearranging formulas is just like solving equations! We do the same operations on both sides of the equal sign to isolate the variable we want.
               </p>
             </div>

@@ -72,7 +72,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
     const scaleY_G = (p_val: number) => height - padding - (p_val / maxP) * (height - 2 * padding);
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
             {/* Header */}
             <LabHeader onExit={onExit} title="Grade 12: Functions Visualizer" />
 
@@ -80,26 +80,26 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
                     
                     {/* Column 1: Theory */}
-                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col overflow-y-auto border border-slate-100">
+                    <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col lg:overflow-y-auto border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Theoretical Concepts</h2>
                         
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold text-blue-700 mb-2 flex items-center">
                                 <LineChart className="w-5 h-5 mr-2" /> Market Equilibrium
                             </h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                                 In economics, the market equilibrium is the point where the supply of a good matches demand.
                             </p>
-                            <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-inside">
+                            <ul className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2 list-disc list-inside">
                                 <li><strong>Supply Function S(q)</strong>: An upward sloping line reflecting higher prices encouraging more production.</li>
                                 <li><strong>Demand Function D(q)</strong>: A downward sloping line reflecting higher prices reducing consumer demand.</li>
                             </ul>
-                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg mt-3 text-center">
+                            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg mt-3 text-center">
                                 { "$$ S(q) = m_s q + c_s $$" }
                                 <br/>
                                 { "$$ D(q) = m_d q + c_d $$" }
                             </div>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
+                            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
                                 At equilibrium, { "$$ S(q) = D(q) $$" }.
                             </p>
                         </div>
@@ -108,13 +108,13 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                             <h3 className="text-lg font-semibold text-emerald-700 mb-2 flex items-center">
                                 <TrendingUp className="w-5 h-5 mr-2" /> Continuous Exponential Growth
                             </h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                                 Population demographics or continuous compound interest is modeled by:
                             </p>
-                            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg mt-3 text-center">
+                            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg mt-3 text-center">
                                 { "$$ P(t) = P_0 e^{rt} $$" }
                             </div>
-                            <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-2 mt-3 list-disc list-inside">
+                            <ul className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2 mt-3 list-disc list-inside">
                                 <li>{ "$$ P_0 $$" } is the initial quantity.</li>
                                 <li>{ "$$ r $$" } is the continuous growth rate.</li>
                                 <li>{ "$$ t $$" } is time.</li>
@@ -123,17 +123,17 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                     </div>
 
                     {/* Column 2: Simulation */}
-                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
-                        <div className="flex space-x-2 mb-6 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg shrink-0">
+                    <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                        <div className="flex space-x-2 mb-6 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg shrink-0">
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'market' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'market' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
                                 onClick={() => setActiveTab('market')}
                             >
                                 <LineChart className="w-4 h-4 mr-2" />
                                 Market Equilibrium
                             </button>
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'growth' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-emerald-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'growth' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-emerald-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
                                 onClick={() => setActiveTab('growth')}
                             >
                                 <TrendingUp className="w-4 h-4 mr-2" />
@@ -144,7 +144,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                         <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
                             {activeTab === 'market' && (
                                 <div className="w-full flex flex-col items-center">
-                                    <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
+                                    <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner mb-6">
                                         {/* Axes */}
                                         <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#94a3b8" strokeWidth="2" />
                                         <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#94a3b8" strokeWidth="2" />
@@ -177,13 +177,13 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                                         )}
                                     </svg>
                                     
-                                    <div className="w-full grid grid-cols-2 gap-4 bg-blue-50 p-4 rounded-lg">
+                                    <div className="w-full grid grid-cols-2 gap-4 bg-blue-50 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
                                         <div>
-                                            <label className="block text-xs font-semibold text-blue-800 mb-1">Supply Slope (m_s): {ms}</label>
+                                            <label className="block text-xs font-semibold text-blue-800 mb-1 dark:text-[#ffffff]">Supply Slope (m_s): {ms}</label>
                                             <input type="range" min="1" max="5" step="0.5" value={ms} onChange={(e) => setMs(parseFloat(e.target.value))} className="w-full accent-blue-600" />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold text-blue-800 mb-1">Supply Intercept (c_s): {cs}</label>
+                                            <label className="block text-xs font-semibold text-blue-800 mb-1 dark:text-[#ffffff]">Supply Intercept (c_s): {cs}</label>
                                             <input type="range" min="0" max="40" step="5" value={cs} onChange={(e) => setCs(parseFloat(e.target.value))} className="w-full accent-blue-600" />
                                         </div>
                                         <div>
@@ -200,7 +200,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
 
                             {activeTab === 'growth' && (
                                 <div className="w-full flex flex-col items-center">
-                                    <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner mb-6">
+                                    <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner mb-6">
                                         {/* Axes */}
                                         <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#94a3b8" strokeWidth="2" />
                                         <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#94a3b8" strokeWidth="2" />
@@ -243,37 +243,37 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                     </div>
 
                     {/* Column 3: Assessment */}
-                    <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                    <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Analysis & Assessment</h2>
 
                         {activeTab === 'market' && (
                             <div className="flex-1 min-w-0 flex flex-col">
-                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Given the current market conditions set in the simulator:</p>
-                                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
+                                <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">Given the current market conditions set in the simulator:</p>
+                                <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     S(q) = {ms}q + {cs}
                                     <br />
                                     D(q) = {md}q + {cd}
                                 </div>
-                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-slate-100">Calculate the equilibrium quantity (q*) and price (p*):</p>
+                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-[#ffffff]">Calculate the equilibrium quantity (q*) and price (p*):</p>
                                 
                                 <div className="space-y-4 mb-6">
                                     <div>
-                                        <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Equilibrium Quantity (q*)</label>
+                                        <label className="block text-xs font-medium text-slate-500 dark:text-[#71717a] mb-1">Equilibrium Quantity (q*)</label>
                                         <input 
                                             type="number" 
                                             value={ansQ} 
                                             onChange={(e) => setAnsQ(e.target.value)} 
-                                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Enter q..."
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Equilibrium Price (p*)</label>
+                                        <label className="block text-xs font-medium text-slate-500 dark:text-[#71717a] mb-1">Equilibrium Price (p*)</label>
                                         <input 
                                             type="number" 
                                             value={ansP} 
                                             onChange={(e) => setAnsP(e.target.value)} 
-                                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Enter p..."
                                         />
                                     </div>
@@ -281,7 +281,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
 
                                 <button 
                                     onClick={checkMarket}
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors"
+                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                                 >
                                     Check Answer
                                 </button>
@@ -301,24 +301,24 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
 
                         {activeTab === 'growth' && (
                             <div className="flex-1 min-w-0 flex flex-col">
-                                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">A population starts and grows continuously based on your parameters:</p>
-                                <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 font-mono text-center text-sm">
+                                <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">A population starts and grows continuously based on your parameters:</p>
+                                <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg mb-6 font-mono text-center text-sm">
                                     P_0 = {p0}
                                     <br />
                                     r = {r}
                                     <br />
                                     t = {t}
                                 </div>
-                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-slate-100">Calculate the population P(t) at the given time. (Round to nearest whole number):</p>
+                                <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-[#ffffff]">Calculate the population P(t) at the given time. (Round to nearest whole number):</p>
                                 
                                 <div className="space-y-4 mb-6">
                                     <div>
-                                        <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Population at time t</label>
+                                        <label className="block text-xs font-medium text-slate-500 dark:text-[#71717a] mb-1">Population at time t</label>
                                         <input 
                                             type="number" 
                                             value={ansPop} 
                                             onChange={(e) => setAnsPop(e.target.value)} 
-                                            className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                                             placeholder="Enter P(t)..."
                                         />
                                     </div>
@@ -326,7 +326,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
 
                                 <button 
                                     onClick={checkGrowth}
-                                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition-colors"
+                                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                                 >
                                     Check Answer
                                 </button>

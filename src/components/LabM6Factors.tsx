@@ -52,9 +52,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm z-10">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
         <div className="flex items-center gap-4">
           <button
             onClick={onExit}
@@ -65,11 +65,11 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
           </button>
           <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Factors & Multiples</h1>
         </div>
-        <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1">
+        <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
           <button
             onClick={() => setActiveTab('LCM')}
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
-              activeTab === 'LCM' ? 'bg-white dark:bg-slate-800 shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+              activeTab === 'LCM' ? 'bg-white dark:bg-[#121212] shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
             LCM (Lighthouses)
@@ -77,7 +77,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
           <button
             onClick={() => setActiveTab('HCF')}
             className={`px-4 py-2 rounded-md font-medium transition-colors ${
-              activeTab === 'HCF' ? 'bg-white dark:bg-slate-800 shadow-sm text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+              activeTab === 'HCF' ? 'bg-white dark:bg-[#121212] shadow-sm text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
             HCF (Pipe Cutting)
@@ -89,7 +89,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
       <div className="flex flex-1 overflow-hidden">
         
         {/* Left Column: Controls & Workspace */}
-        <div className="w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col gap-6">
+        <div className="w-1/2 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col gap-6">
           {activeTab === 'LCM' ? (
             <>
               <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800/50">
@@ -123,7 +123,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mt-auto">
+              <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
                 <h3 className="font-semibold text-lg mb-3">Solve</h3>
                 <p className="text-sm mb-4">When will both lighthouses flash at the exactly same time next?</p>
                 
@@ -133,11 +133,11 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                     value={lcmInput}
                     onChange={(e) => setLcmInput(e.target.value)}
                     placeholder="Enter time in sec"
-                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <button 
                     onClick={handleLcmCheck}
-                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     Check
                   </button>
@@ -186,7 +186,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 mt-auto">
+              <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
                 <h3 className="font-semibold text-lg mb-3">Solve</h3>
                 <p className="text-sm mb-4">What is the maximum equal length you can cut both pipes into?</p>
                 
@@ -196,11 +196,11 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                     value={hcfInput}
                     onChange={(e) => setHcfInput(e.target.value)}
                     placeholder="Enter length in m"
-                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-green-500 outline-none"
+                    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:ring-2 focus:ring-green-500 outline-none"
                   />
                   <button 
                     onClick={handleHcfCheck}
-                    className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+                    className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                   >
                     Check
                   </button>
@@ -220,21 +220,21 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-1/2 bg-slate-100 dark:bg-slate-800 p-6 flex flex-col relative overflow-hidden">
+        <div className="w-1/2 bg-slate-100 dark:bg-[#121212] p-6 flex flex-col relative overflow-hidden">
           {activeTab === 'LCM' ? (
             <div className="flex flex-col h-full">
               {/* Controls */}
               <div className="flex justify-center gap-4 mb-8">
                 <button 
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors shadow-sm"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#121212] dark:bg-slate-200 text-white dark:text-slate-900 rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors shadow-sm"
                 >
                   {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                   {isPlaying ? 'Pause' : 'Start Timeline'}
                 </button>
                 <button 
                   onClick={() => {setTime(0); setIsPlaying(false);}}
-                  className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors border border-slate-200 dark:border-slate-600 shadow-sm"
+                  className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors border border-slate-200 dark:border-[#1c1b1b] shadow-sm"
                 >
                   <RotateCcw className="w-5 h-5" /> Reset
                 </button>
@@ -242,7 +242,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
 
               {/* Timer */}
               <div className="text-center mb-12">
-                <div className="inline-block bg-slate-800 dark:bg-slate-900 text-white font-mono text-3xl px-6 py-3 rounded-xl border-4 border-slate-700 shadow-inner">
+                <div className="inline-block bg-[#121212] dark:bg-[#121212] text-white font-mono text-3xl px-6 py-3 rounded-xl border-4 border-[#1c1b1b] shadow-inner">
                   T = {time}s
                 </div>
               </div>
@@ -250,13 +250,13 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
               {/* Lighthouses SVG */}
               <div className="flex-1 min-w-0 relative flex justify-center items-end pb-12">
                 {/* Ground */}
-                <div className="absolute bottom-0 w-full h-12 bg-slate-800 dark:bg-slate-950 rounded-t-full opacity-50 blur-sm"></div>
-                <div className="absolute bottom-0 w-full h-8 bg-slate-700 dark:bg-slate-900 border-t border-slate-600"></div>
+                <div className="absolute bottom-0 w-full h-12 bg-[#121212] dark:bg-slate-950 rounded-t-full opacity-50 blur-sm"></div>
+                <div className="absolute bottom-0 w-full h-8 bg-slate-700 dark:bg-[#121212] border-t border-slate-600"></div>
 
                 <div className="flex justify-around w-full max-w-lg relative z-10">
                   {/* Lighthouse A */}
                   <div className="flex flex-col items-center">
-                    <div className="relative w-16 h-48 bg-gradient-to-t from-slate-300 to-white dark:from-slate-600 dark:to-slate-400 rounded-t-full shadow-lg overflow-hidden border-2 border-slate-400 dark:border-slate-500">
+                    <div className="relative w-16 h-48 bg-gradient-to-t from-slate-300 to-white dark:from-slate-600 dark:to-slate-400 rounded-t-full shadow-lg overflow-hidden border-2 border-slate-400 dark:border-[#1c1b1b]">
                       {/* Stripes */}
                       <div className="w-full h-8 bg-blue-500 dark:bg-blue-700 mt-8 shadow-sm"></div>
                       <div className="w-full h-8 bg-blue-500 dark:bg-blue-700 mt-8 shadow-sm"></div>
@@ -271,12 +271,12 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                     }`}>
                       <div className={`w-4 h-4 rounded-full ${time > 0 && time % lh1 === 0 ? 'bg-yellow-400' : 'bg-slate-400'}`}></div>
                     </div>
-                    <span className="mt-4 font-bold text-blue-700 dark:text-blue-400 bg-blue-100/50 dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm">Every {lh1}s</span>
+                    <span className="mt-4 font-bold text-blue-700 dark:text-blue-400 bg-blue-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">Every {lh1}s</span>
                   </div>
 
                   {/* Lighthouse B */}
                   <div className="flex flex-col items-center">
-                    <div className="relative w-16 h-48 bg-gradient-to-t from-slate-300 to-white dark:from-slate-600 dark:to-slate-400 rounded-t-full shadow-lg overflow-hidden border-2 border-slate-400 dark:border-slate-500">
+                    <div className="relative w-16 h-48 bg-gradient-to-t from-slate-300 to-white dark:from-slate-600 dark:to-slate-400 rounded-t-full shadow-lg overflow-hidden border-2 border-slate-400 dark:border-[#1c1b1b]">
                       {/* Stripes */}
                       <div className="w-full h-8 bg-red-500 dark:bg-red-700 mt-8 shadow-sm"></div>
                       <div className="w-full h-8 bg-red-500 dark:bg-red-700 mt-8 shadow-sm"></div>
@@ -291,23 +291,23 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                     }`}>
                       <div className={`w-4 h-4 rounded-full ${time > 0 && time % lh2 === 0 ? 'bg-yellow-400' : 'bg-slate-400'}`}></div>
                     </div>
-                    <span className="mt-4 font-bold text-red-700 dark:text-red-400 bg-red-100/50 dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm">Every {lh2}s</span>
+                    <span className="mt-4 font-bold text-red-700 dark:text-red-400 bg-red-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">Every {lh2}s</span>
                   </div>
                 </div>
               </div>
 
               {/* Timeline Ticks */}
               <div className="h-16 w-full flex items-end">
-                <div className="w-full flex justify-between px-8 border-t-2 border-slate-300 dark:border-slate-600 pt-2 relative">
+                <div className="w-full flex justify-between px-8 border-t-2 border-slate-300 dark:border-[#1c1b1b] pt-2 relative">
                   {[...Array(11)].map((_, i) => (
                     <div key={i} className="flex flex-col items-center">
                       <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-500 mb-1"></div>
-                      <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{i * 6}</span>
+                      <span className="text-xs font-medium text-slate-500 dark:text-[#71717a]">{i * 6}</span>
                     </div>
                   ))}
                   {/* Progress marker */}
                   <div 
-                    className="absolute top-0 w-4 h-4 bg-indigo-500 border-2 border-white rounded-full -translate-y-2 shadow-md transition-all duration-300 ease-linear"
+                    className="absolute top-0 w-4 h-4 bg-indigo-500 border-2 border-white rounded-full -translate-y-2 shadow-md transition-all duration-300 ease-linear dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                     style={{ left: `calc(2rem + ((100% - 4rem) * ${Math.min(time, 60) / 60}))` }}
                   />
                 </div>
@@ -332,7 +332,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                       {hcfFeedback.status === 'correct' && hcfInput && (
                         <div className="w-full h-full flex">
                           {[...Array(pipe1 / parseInt(hcfInput))].map((_, i) => (
-                            <div key={i} className="h-full border-r-2 border-green-800/40 dark:border-green-900/60 flex-1 flex items-center justify-center bg-white/10">
+                            <div key={i} className="h-full border-r-2 border-green-800/40 dark:border-green-900/60 flex-1 flex items-center justify-center bg-white/10 dark:bg-[#121212]">
                               <span className="text-sm font-bold text-white drop-shadow-md">{hcfInput}</span>
                             </div>
                           ))}
@@ -357,7 +357,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                       {hcfFeedback.status === 'correct' && hcfInput && (
                         <div className="w-full h-full flex">
                           {[...Array(pipe2 / parseInt(hcfInput))].map((_, i) => (
-                            <div key={i} className="h-full border-r-2 border-emerald-800/40 dark:border-emerald-900/60 flex-1 flex items-center justify-center bg-white/10">
+                            <div key={i} className="h-full border-r-2 border-emerald-800/40 dark:border-emerald-900/60 flex-1 flex items-center justify-center bg-white/10 dark:bg-[#121212]">
                               <span className="text-sm font-bold text-white drop-shadow-md">{hcfInput}</span>
                             </div>
                           ))}
@@ -368,13 +368,13 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Ruler for reference */}
-                <div className="w-full mt-8 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                <div className="w-full mt-8 bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                   <div className="flex justify-between w-full relative pt-2">
-                    <div className="absolute top-0 w-full border-t-2 border-slate-300 dark:border-slate-600"></div>
+                    <div className="absolute top-0 w-full border-t-2 border-slate-300 dark:border-[#1c1b1b]"></div>
                     {[...Array(10)].map((_, i) => (
                       <div key={i} className="flex flex-col items-center -mt-2">
                         <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-500 mb-2"></div>
-                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">{i * 4}</span>
+                        <span className="text-xs font-bold text-slate-500 dark:text-[#71717a]">{i * 4}</span>
                       </div>
                     ))}
                   </div>

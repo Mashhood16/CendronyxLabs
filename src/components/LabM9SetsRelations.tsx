@@ -72,54 +72,54 @@ export default function LabM9SetsRelations({ onExit }: Props) {
   const isAllCorrect = students.every(s => s.region === getCorrectRegion(s)) && students.every(s => s.region !== 'unassigned');
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
         <LabHeader onExit={onExit} title="Grade 9 Math: Sets & Venn Diagrams" />
       
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Overlapping Sets</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory: Overlapping Sets</h2>
           
           <div className="prose prose-slate">
             <h3 className="text-lg font-semibold text-purple-700">What is a Set?</h3>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-600 dark:text-[#a1a1aa]">
               A set is a collection of distinct objects. In a Venn Diagram, sets are represented by overlapping circles.
             </p>
             
             <h3 className="text-lg font-semibold text-purple-700 mt-4">Key Operations</h3>
-            <ul className="text-slate-600 dark:text-slate-300 list-disc pl-5">
+            <ul className="text-slate-600 dark:text-[#a1a1aa] list-disc pl-5">
               <li><strong>Intersection (A ∩ B):</strong> Elements that belong to BOTH sets. The overlapping middle section.</li>
               <li><strong>Union (A ∪ B):</strong> Elements that belong to set A, set B, or both.</li>
               <li><strong>Complement (A'):</strong> Elements outside of set A.</li>
             </ul>
 
             <h3 className="text-lg font-semibold text-purple-700 mt-4">The Union Formula</h3>
-            <p className="text-slate-600 dark:text-slate-300 font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-sm text-center">
+            <p className="text-slate-600 dark:text-[#a1a1aa] font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-sm text-center">
               n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
             </p>
-            <p className="text-slate-600 dark:text-slate-300 text-sm mt-2">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mt-2">
               We subtract the intersection once because it was counted twice (once in A and once in B).
             </p>
           </div>
         </div>
 
         {/* Interactive Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <Users className="text-purple-600" /> Survey Categorizer
           </h2>
           
           {/* Unassigned Area */}
-          <div className="min-h-[80px] bg-slate-100 dark:bg-slate-800 rounded-lg p-3 border border-slate-300 dark:border-slate-700 dark:border-slate-500">
-            <div className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase">Drag Students to Categorize</div>
+          <div className="min-h-[80px] bg-slate-100 dark:bg-[#121212] rounded-lg p-3 border border-slate-300 dark:border-[#1c1b1b]">
+            <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase">Drag Students to Categorize</div>
             <div className="flex flex-wrap gap-2">
               {students.filter(s => s.region === 'unassigned').map(s => (
                 <div
                   key={s.id}
                   draggable
                   onDragStart={(e) => handleDragStart(e, s.id)}
-                  className="px-3 py-1.5 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-sm rounded-md cursor-grab active:cursor-grabbing text-sm font-medium hover:bg-slate-50 dark:bg-slate-900 transition-colors"
+                  className="px-3 py-1.5 bg-slate-50 dark:!bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] shadow-sm rounded-md cursor-grab active:cursor-grabbing text-sm font-medium hover:bg-slate-50 dark:!bg-[#121212] transition-colors"
                 >
                   {s.name} ({s.likesMath ? 'M' : ''}{s.likesMath && s.likesScience ? ', ' : ''}{s.likesScience ? 'S' : ''}{!s.likesMath && !s.likesScience ? 'None' : ''})
                 </div>
@@ -131,7 +131,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
           </div>
 
           {/* Venn Diagram Area */}
-          <div className="relative w-full h-80 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-80 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-center overflow-hidden">
             
             {/* Left Circle - Math */}
             <div 
@@ -139,10 +139,10 @@ export default function LabM9SetsRelations({ onExit }: Props) {
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, 'math')}
             >
-              <span className="text-sm font-bold text-blue-800 absolute top-6 left-6">Math Only</span>
+              <span className="text-sm font-bold text-blue-800 absolute top-6 left-6 dark:text-[#ffffff]">Math Only</span>
               <div className="flex flex-col gap-1 w-full mt-4 items-start">
                 {students.filter(s => s.region === 'math').map(s => (
-                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-slate-900/90 border border-blue-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
+                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-blue-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
                 ))}
               </div>
             </div>
@@ -153,10 +153,10 @@ export default function LabM9SetsRelations({ onExit }: Props) {
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, 'science')}
             >
-              <span className="text-sm font-bold text-green-800 absolute top-6 right-6">Science Only</span>
+              <span className="text-sm font-bold text-green-800 absolute top-6 right-6 dark:text-[#ffffff]">Science Only</span>
               <div className="flex flex-col gap-1 w-full mt-4 items-end">
                 {students.filter(s => s.region === 'science').map(s => (
-                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-slate-900/90 border border-green-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
+                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-green-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
                 ))}
               </div>
             </div>
@@ -167,24 +167,24 @@ export default function LabM9SetsRelations({ onExit }: Props) {
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, 'both')}
             >
-              <span className="text-sm font-bold text-purple-900 absolute top-2">Both</span>
+              <span className="text-sm font-bold text-purple-900 absolute top-2 dark:text-[#ffffff]">Both</span>
               <div className="flex flex-col gap-1 w-full mt-6 items-center">
                 {students.filter(s => s.region === 'both').map(s => (
-                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-slate-900/90 border border-purple-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
+                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-purple-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
                 ))}
               </div>
             </div>
 
             {/* Neither Container */}
             <div 
-              className="absolute bottom-3 right-3 w-32 h-32 border-2 border-dashed border-slate-400 dark:border-slate-500 bg-slate-100 dark:bg-slate-800/80 flex flex-col items-center p-3 rounded-lg transition-colors hover:bg-slate-200 dark:bg-slate-800"
+              className="absolute bottom-3 right-3 w-32 h-32 border-2 border-dashed border-slate-400 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212]/80 flex flex-col items-center p-3 rounded-lg transition-colors hover:bg-slate-200 dark:bg-[#121212]"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, 'neither')}
             >
-              <span className="text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Neither</span>
-              <div className="flex flex-wrap justify-center gap-1 overflow-y-auto">
+              <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-1">Neither</span>
+              <div className="flex flex-wrap justify-center gap-1 lg:overflow-y-auto">
                 {students.filter(s => s.region === 'neither').map(s => (
-                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
+                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
                 ))}
               </div>
             </div>
@@ -193,10 +193,10 @@ export default function LabM9SetsRelations({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Analysis & Assessment</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Analysis & Assessment</h2>
           
-          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-900 border rounded-lg p-4 flex flex-col justify-center items-center text-center">
+          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-[#121212] border rounded-lg p-4 flex flex-col justify-center items-center text-center">
             {isAllCorrect ? (
               <div className="text-green-600 flex flex-col items-center gap-2">
                 <CheckCircle size={48} />
@@ -204,15 +204,15 @@ export default function LabM9SetsRelations({ onExit }: Props) {
                 <p className="text-sm">You have correctly categorized all students.</p>
               </div>
             ) : (
-              <div className="text-slate-500 dark:text-slate-400">
+              <div className="text-slate-500 dark:text-[#71717a]">
                 Categorize all students correctly to complete the diagram.
               </div>
             )}
           </div>
 
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
-            <h3 className="font-bold text-purple-800 mb-2">Word Problem</h3>
-            <p className="text-sm text-slate-700 dark:text-slate-200 mb-4">
+          <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-purple-800 mb-2 dark:text-[#ffffff]">Word Problem</h3>
+            <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4">
               In a class survey, n(Math) = {nA} and n(Science) = {nB}. 
               If n(Math ∩ Science) = {nIntersect}, how many students like <b>at least one</b> of the subjects (n(Math ∪ Science))?
             </p>
@@ -222,7 +222,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
                 className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-purple-400"
                 placeholder="Total union..."
               />
-              <button onClick={checkAnswer} className="px-3 bg-purple-600 text-white rounded font-bold hover:bg-purple-700">Check</button>
+              <button onClick={checkAnswer} className="px-3 bg-purple-600 text-white rounded font-bold hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Check</button>
             </div>
             {qStatus !== null && (
               <div className={`mt-2 flex items-center gap-1 text-sm font-bold ${qStatus ? 'text-green-600' : 'text-red-500'}`}>

@@ -91,40 +91,40 @@ export default function LabM10TangentProperties({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
-      <div className="bg-slate-50 dark:bg-slate-900 shadow-sm px-6 py-4 flex items-center justify-between z-10">
+      <div className="bg-slate-50 dark:bg-[#121212] shadow-sm px-6 py-4 flex items-center justify-between z-10">
         <LabHeader onExit={onExit} title="Lab: Tangent & Circle Properties" />
       </div>
 
       <div className="flex-1 min-w-0 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-500" /> Theory
             </h2>
             <div className="prose prose-slate text-sm">
               <p><strong>1. Tangent Perpendicularity:</strong> A tangent to a circle is perpendicular to the radius at the point of tangency. This creates a right-angled triangle between the radius, tangent, and any secant line to the center.</p>
-              <p><strong>2. Touching Circles:</strong> If two circles touch externally, the distance between their centers is <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">R₁ + R₂</code>. If they touch internally, the distance is <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">|R₁ - R₂|</code>.</p>
+              <p><strong>2. Touching Circles:</strong> If two circles touch externally, the distance between their centers is <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">R₁ + R₂</code>. If they touch internally, the distance is <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">|R₁ - R₂|</code>.</p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
               <Settings2 className="w-5 h-5 text-blue-500" /> Simulation Controls
             </h2>
             
-            <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg mb-6">
+            <div className="flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-6">
               <button 
                 onClick={() => setMode('tangent')}
-                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:text-slate-100'}`}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
               >
                 Tangent to Radius
               </button>
               <button 
                 onClick={() => setMode('touching')}
-                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:text-slate-100'}`}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
               >
                 Touching Circles
               </button>
@@ -133,31 +133,31 @@ export default function LabM10TangentProperties({ onExit }: Props) {
             {mode === 'touching' && (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Circle 1 Radius ({r1})</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Circle 1 Radius ({r1})</label>
                   <input type="range" min="30" max="120" value={r1} onChange={e => setR1(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Circle 2 Radius ({r2})</label>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Circle 2 Radius ({r2})</label>
                   <input type="range" min="30" max="120" value={r2} onChange={e => setR2(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
               </div>
             )}
             {mode === 'tangent' && (
-              <p className="text-sm text-slate-600 dark:text-slate-300 italic">Drag the red point on the circle circumference to see the tangent adjust dynamically.</p>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">Drag the red point on the circle circumference to see the tangent adjust dynamically.</p>
             )}
           </div>
         </div>
 
         {/* Middle Column: Interactive Canvas */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
-          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2 z-10">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+          <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
             <Crosshair className="w-5 h-5 text-indigo-500" /> Interactive Simulation
           </h2>
 
           <svg 
             ref={svgRef}
             viewBox="0 0 400 400" 
-            className="w-full max-w-[400px] aspect-square border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 touch-none"
+            className="w-full max-w-[400px] aspect-square border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] touch-none"
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
@@ -246,13 +246,13 @@ export default function LabM10TangentProperties({ onExit }: Props) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <Calculator className="w-5 h-5 text-green-500" /> Assessment
           </h2>
           
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
-            <p className="text-sm text-slate-800 dark:text-slate-100 font-medium mb-4">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
+            <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
               {questionParams.type === 'pythagoras' && 
                 `A point P is ${questionParams.d} cm away from the center of a circle. If the radius is ${questionParams.r} cm, find the length of the tangent from P to the circle.`
               }
@@ -270,18 +270,18 @@ export default function LabM10TangentProperties({ onExit }: Props) {
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
                 placeholder="Enter answer (cm)"
-                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button 
                 onClick={checkAnswer}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check
               </button>
             </div>
             
             {feedback === 'correct' && (
-              <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium">
+              <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
                 <CheckCircle2 className="w-4 h-4" /> Correct! Great job.
               </div>
             )}
@@ -294,7 +294,7 @@ export default function LabM10TangentProperties({ onExit }: Props) {
 
           <button 
             onClick={generateQuestion}
-            className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors"
+            className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
           >
             <RefreshCw className="w-4 h-4" /> Next Question
           </button>

@@ -146,9 +146,9 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
   const getDistance = (p1: Point, p2: Point) => (Math.hypot(p2.x - p1.x, p2.y - p1.y) / SCALE).toFixed(1);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-200">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <div className="flex items-center p-4 bg-rose-600 text-white shadow-md z-10">
-        <button onClick={onExit} className="mr-4 hover:bg-rose-700 p-2 rounded-full transition-colors">
+        <button onClick={onExit} className="mr-4 hover:bg-rose-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-rose-600 dark:hover:bg-rose-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">
           <ArrowLeft className="w-5 h-5" />
         </button>
         <h1 className="text-lg md:text-xl font-bold">Class 7 Maths: Practical Geometry</h1>
@@ -156,9 +156,9 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left Column Controls */}
-        <div className="w-1/3 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <div className="w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]">
           <div className="mb-6">
-            <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">Select Drafting Tool</label>
+            <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Select Drafting Tool</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => {
@@ -168,7 +168,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                 className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${
                   tool === 'point'
                     ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                    : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >
                 <MapPin className="w-6 h-6 mb-1" />
@@ -182,7 +182,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                 className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${
                   tool === 'line'
                     ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                    : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >
                 <Ruler className="w-6 h-6 mb-1" />
@@ -196,7 +196,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                 className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${
                   tool === 'compass'
                     ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                    : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >
                 <Circle className="w-6 h-6 mb-1" />
@@ -207,8 +207,8 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
 
           <div className="h-28 mb-6">
             {tool === 'compass' && (
-              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-700">
-                <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">
+              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+                <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">
                   <span>Compass Radius</span>
                   <span className="text-rose-600 dark:text-rose-400">{compassRadius.toFixed(1)} cm</span>
                 </label>
@@ -221,27 +221,27 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                   onChange={(e) => setCompassRadius(parseFloat(e.target.value))}
                   className="w-full accent-rose-600"
                 />
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Click an existing point on the canvas to draw an arc.</p>
+                <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Click an existing point on the canvas to draw an arc.</p>
               </div>
             )}
             {tool === 'line' && (
-              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-700 h-full flex items-center">
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Click two points to connect them with a line segment.</p>
+              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b] h-full flex items-center">
+                <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">Click two points to connect them with a line segment.</p>
               </div>
             )}
             {tool === 'point' && (
-              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-700 h-full flex items-center">
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">Click anywhere on the canvas or an intersection to place a point.</p>
+              <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b] h-full flex items-center">
+                <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">Click anywhere on the canvas or an intersection to place a point.</p>
               </div>
             )}
           </div>
 
           <div className="mb-6">
-            <h3 className="font-bold text-slate-800 dark:text-slate-200 mb-2">Measured Segments</h3>
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Measured Segments</h3>
             {lines.length === 0 ? (
               <p className="text-sm text-slate-500 italic">No lines drawn yet.</p>
             ) : (
-              <ul className="text-sm space-y-1 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+              <ul className="text-sm space-y-1 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                 {lines.map((l) => {
                   const p1 = points.find((p) => p.id === l.p1);
                   const p2 = points.find((p) => p.id === l.p2);
@@ -259,12 +259,12 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
 
           <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-800">
             <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Assessment Task</h3>
-            <p className="text-sm text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-[#a1a1aa] mb-4 leading-relaxed">
               Construct a triangle ABC with sides <b>5cm, 4cm, and 3cm</b>.<br />
               <span className="text-xs opacity-80">(Hint: Draw a 5cm line AB. Draw a 4cm circle from A, and a 3cm circle from B. Mark intersection C.)</span>
             </p>
             <div className="mb-4">
-              <p className="font-medium text-sm text-slate-800 dark:text-slate-200 mb-2">Based on your construction, what type of triangle is it?</p>
+              <p className="font-medium text-sm text-slate-800 dark:text-[#ffffff] mb-2">Based on your construction, what type of triangle is it?</p>
               <div className="flex flex-col space-y-2 text-sm">
                 {['Equilateral', 'Isosceles', 'Right-angled Scalene'].map((opt) => (
                   <label key={opt} className="flex items-center space-x-2 cursor-pointer">
@@ -284,7 +284,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
             <button
               onClick={checkAnswer}
               disabled={!selectedAnswer}
-              className="whitespace-nowrap flex-shrink-0 w-full bg-indigo-600 disabled:bg-slate-400 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors"
+              className="whitespace-nowrap flex-shrink-0 w-full bg-indigo-600 disabled:bg-slate-400 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Check Answer
             </button>
@@ -309,10 +309,10 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Right Column Stage */}
-        <div className="w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900">
+        <div className="w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-[#121212]">
           <svg
             ref={svgRef}
-            className={`w-full h-full bg-white dark:bg-slate-800 rounded-xl shadow-inner border border-slate-300 dark:border-slate-600 ${
+            className={`w-full h-full bg-white dark:bg-[#121212] rounded-xl shadow-inner border border-slate-300 dark:border-slate-600 ${
               tool === 'point' ? 'cursor-crosshair' : 'cursor-default'
             }`}
             onMouseMove={handleMouseMove}
@@ -324,10 +324,10 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
           >
             <defs>
               <pattern id="grid" width={SCALE} height={SCALE} patternUnits="userSpaceOnUse">
-                <path d={`M ${SCALE} 0 L 0 0 0 ${SCALE}`} fill="none" stroke="currentColor" className="text-slate-900 dark:text-slate-100" strokeOpacity={0.1} strokeWidth="1" />
+                <path d={`M ${SCALE} 0 L 0 0 0 ${SCALE}`} fill="none" stroke="currentColor" className="text-slate-900 dark:text-[#ffffff]" strokeOpacity={0.1} strokeWidth="1" />
               </pattern>
               <pattern id="subgrid" width={SCALE / 4} height={SCALE / 4} patternUnits="userSpaceOnUse">
-                <path d={`M ${SCALE / 4} 0 L 0 0 0 ${SCALE / 4}`} fill="none" stroke="currentColor" className="text-slate-900 dark:text-slate-100" strokeOpacity={0.04} strokeWidth="0.5" />
+                <path d={`M ${SCALE / 4} 0 L 0 0 0 ${SCALE / 4}`} fill="none" stroke="currentColor" className="text-slate-900 dark:text-[#ffffff]" strokeOpacity={0.04} strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#subgrid)" />
@@ -358,7 +358,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
               if (!p1 || !p2) return null;
               return (
                 <g key={l.id} className="pointer-events-none">
-                  <line x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke="currentColor" className="text-slate-800 dark:text-slate-200" strokeWidth="2.5" />
+                  <line x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} stroke="currentColor" className="text-slate-800 dark:text-[#ffffff]" strokeWidth="2.5" />
                   <rect x={(p1.x + p2.x) / 2 - 15} y={(p1.y + p2.y) / 2 - 18} width="30" height="16" fill="white" className="dark:fill-slate-800 opacity-80" rx="4" />
                   <text x={(p1.x + p2.x) / 2} y={(p1.y + p2.y) / 2 - 6} textAnchor="middle" fill="currentColor" className="text-[10px] font-bold text-rose-600 dark:text-rose-400">
                     {getDistance(p1, p2)}
@@ -376,7 +376,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                   const dist = (Math.hypot(previewLineTarget.x - p1.x, previewLineTarget.y - p1.y) / SCALE).toFixed(1);
                   return (
                     <>
-                      <line x1={p1.x} y1={p1.y} x2={previewLineTarget.x} y2={previewLineTarget.y} stroke="currentColor" className="text-slate-800 dark:text-slate-200" strokeWidth="2" strokeDasharray="4 4" />
+                      <line x1={p1.x} y1={p1.y} x2={previewLineTarget.x} y2={previewLineTarget.y} stroke="currentColor" className="text-slate-800 dark:text-[#ffffff]" strokeWidth="2" strokeDasharray="4 4" />
                       <text x={(p1.x + previewLineTarget.x) / 2} y={(p1.y + previewLineTarget.y) / 2 - 10} textAnchor="middle" fill="currentColor" className="text-xs text-slate-500">
                         {dist} cm
                       </text>
@@ -403,7 +403,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
                     x={p.x + 12}
                     y={p.y - 12}
                     fill="currentColor"
-                    className="text-sm font-bold text-slate-800 dark:text-slate-200 select-none pointer-events-none"
+                    className="text-sm font-bold text-slate-800 dark:text-[#ffffff] select-none pointer-events-none"
                   >
                     {p.id}
                   </text>

@@ -49,7 +49,7 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
     const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.vol / MAX_VOL) * 100}`).join(' ');
 
     return (
-      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-slate-900 border rounded-lg p-2 overflow-visible">
+      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
         <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
@@ -63,26 +63,26 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none p-4">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4">
 <LabHeader onExit={onExit} title="Reaction Kinetics: Surface Area" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">Theory & Setup</h2>
-          <p className="text-slate-600 dark:text-slate-300 text-sm mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Theory & Setup</h2>
+          <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
             Increasing the surface area of a solid reactant exposes more particles to collisions, increasing the rate of reaction. Here, we react Zinc with Hydrochloric acid to produce Hydrogen gas.
           </p>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
             Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)
           </div>
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Zinc Form</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Zinc Form</label>
               <select 
                 value={form} 
                 onChange={(e) => { setForm(e.target.value as 'chunk' | 'powder'); handleReset(); }}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md"
               >
                 <option value="chunk">Solid Chunk</option>
                 <option value="powder">Powdered</option>
@@ -91,20 +91,20 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4 self-start">Simulation Viewer</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">Simulation Viewer</h2>
           
           <div className="w-full flex justify-center space-x-4 mb-6">
-            <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
               {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
               {isPlaying ? 'Pause' : 'Start'}
             </button>
-            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:bg-slate-800">
+            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212]">
               <RotateCcw className="w-4 h-4 mr-2" /> Reset
             </button>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
             <svg viewBox="0 0 200 200" className="w-full h-full">
               {/* Flask */}
               <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
@@ -142,30 +142,30 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
           </div>
 
           <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center">
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">Time</div>
-              <div className="text-xl font-mono text-slate-800 dark:text-slate-100">{time} s</div>
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Time</div>
+              <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{time} s</div>
             </div>
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">Gas Volume</div>
-              <div className="text-xl font-mono text-slate-800 dark:text-slate-100">{currentVol.toFixed(1)} mL</div>
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+              <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Gas Volume</div>
+              <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{currentVol.toFixed(1)} mL</div>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
-            <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700">
+            <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+            <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
               <Save className="w-4 h-4 mr-1" /> Record
             </button>
           </div>
 
           {renderGraph()}
 
-          <div className="mt-4 flex-1 overflow-y-auto min-h-[100px] border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+          <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+              <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-3 py-2 border-b">Time (s)</th>
                   <th className="px-3 py-2 border-b">Form</th>
@@ -174,7 +174,7 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
               </thead>
               <tbody>
                 {data.map((d, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
                     <td className="px-3 py-2">{d.t}</td>
                     <td className="px-3 py-2 capitalize">{d.form}</td>
                     <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>
@@ -184,9 +184,9 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
             </table>
           </div>
 
-          <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
-            <h3 className="text-sm font-bold text-blue-900 mb-2">Assessment</h3>
-            <p className="text-sm text-blue-800 mb-3">
+          <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+            <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
               Calculate the average rate of reaction (mL/s) over the first 10 seconds if the recorded volume at t=10s is {assQ.v10} mL and V=0 at t=0. (Provide answer to 1 decimal place).
             </p>
             <div className="flex items-center space-x-2">
@@ -197,7 +197,7 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
                 placeholder="Rate (mL/s)" 
                 className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
               />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+              <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                 Check
               </button>
             </div>

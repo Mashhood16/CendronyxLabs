@@ -48,14 +48,14 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Virtual Lab: Plant Reproduction" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-2">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
               Theory & Context
             </h2>
@@ -68,7 +68,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
           </div>
 
           <div className="space-y-4 flex-1">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Lab Setup</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Lab Setup</h3>
             
             <div className="flex space-x-2 mb-4">
               <button onClick={() => setActiveTab('Germination')} className={`px-4 py-2 flex-1 rounded-lg text-sm font-semibold transition ${activeTab === 'Germination' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}>
@@ -81,7 +81,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
 
             {activeTab === 'Germination' && (
               <div className="space-y-2 pt-4">
-                <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
+                <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
                   <span className="flex items-center"><Calendar className="w-4 h-4 mr-1 text-blue-500" /> Timeline (Days)</span>
                   <span>Day {day}</span>
                 </label>
@@ -92,7 +92,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
 
             {activeTab === 'Dissection' && (
               <div className="space-y-2 pt-4">
-                <label className="text-sm font-medium text-gray-700 dark:text-slate-200 block mb-2">Select Tool</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff] block mb-2">Select Tool</label>
                 <div className="flex space-x-2">
                   <button onClick={() => setActiveTool('hand')} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${activeTool === 'hand' ? 'bg-blue-100 text-blue-700 border-2 border-blue-400' : 'bg-gray-100 text-gray-600'}`}>
                     Hand (View)
@@ -109,13 +109,13 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
             {activeTab === 'Germination' ? <Sprout className="w-5 h-5 mr-2 text-emerald-600" /> : <Flower2 className="w-5 h-5 mr-2 text-emerald-600" />}
             Interactive Visualizer
           </h2>
           
-          <div className="relative bg-slate-100 dark:bg-slate-800 rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 flex-1">
+          <div className="relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow-hidden border-2 border-slate-200 dark:border-[#1c1b1b] flex-1">
             {activeTab === 'Germination' && (
               <svg viewBox="0 0 400 300" className="w-full h-full">
                 {/* Soil & Sky */}
@@ -233,8 +233,8 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
         </div>
 
         {/* Right Column: Observation & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Observations Log
           </h2>
@@ -248,26 +248,26 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
               className="flex-1 border rounded-l-md px-3 py-2 text-sm outline-none focus:border-emerald-500"
               onKeyDown={(e) => e.key === 'Enter' && addObservation()}
             />
-            <button onClick={addObservation} className="px-4 bg-emerald-600 text-white font-semibold rounded-r-md hover:bg-emerald-700 transition-colors">
+            <button onClick={addObservation} className="px-4 bg-emerald-600 text-white font-semibold rounded-r-md hover:bg-emerald-700 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               Add
             </button>
           </div>
 
-          <div className="overflow-y-auto max-h-40 mb-6 bg-slate-50 dark:bg-slate-900 border rounded-lg p-3 space-y-2 flex-1">
+          <div className="lg:overflow-y-auto max-h-40 mb-6 bg-slate-50 dark:bg-[#121212] border rounded-lg p-3 space-y-2 flex-1">
             {observations.length === 0 ? (
               <p className="text-sm text-gray-400 text-center mt-4">No observations recorded.</p>
             ) : (
               observations.map(obs => (
-                <div key={obs.id} className="text-sm bg-slate-50 dark:bg-slate-900 p-2 rounded border shadow-sm flex items-start">
+                <div key={obs.id} className="text-sm bg-slate-50 dark:bg-[#121212] p-2 rounded border shadow-sm flex items-start">
                   <span className="text-emerald-600 mr-2 font-bold">•</span>
-                  <span className="text-gray-700 dark:text-slate-200">{obs.text}</span>
+                  <span className="text-gray-700 dark:text-[#ffffff]">{obs.text}</span>
                 </div>
               ))
             )}
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-bold text-gray-700 dark:text-slate-200">Assessment</h3>
+            <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Assessment</h3>
             <div className="space-y-3">
               <div>
                 <label className="text-sm text-gray-600 block mb-1">1. Which part of the germinating seed emerges first and develops into the root?</label>
@@ -278,7 +278,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
                 <input type="text" value={q2} onChange={(e) => setQ2(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="e.g. Pistil" />
               </div>
             </div>
-            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2">
+            <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               Check Answers
             </button>
             {feedback && (

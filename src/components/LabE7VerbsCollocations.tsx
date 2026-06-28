@@ -103,9 +103,9 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
   }, [selectedPuzzleVerb, selectedPuzzleMatch]);
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700 shrink-0">
+      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
         <div className="flex items-center space-x-4">
           <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
             <ArrowLeft className="w-5 h-5" />
@@ -115,14 +115,14 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
         <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
           <button
             onClick={() => setActiveTab("stage")}
-            className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "stage" ? "bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+            className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "stage" ? "bg-white dark:bg-[#121212] shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
           >
             <LayoutGrid className="w-4 h-4 mr-2" />
             Action Stage
           </button>
           <button
             onClick={() => setActiveTab("puzzle")}
-            className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "puzzle" ? "bg-white dark:bg-slate-800 shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+            className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "puzzle" ? "bg-white dark:bg-[#121212] shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
           >
             <Puzzle className="w-4 h-4 mr-2" />
             Collocation Puzzle
@@ -134,16 +134,16 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
       </header>
 
-      <main className="flex flex-1 overflow-hidden flex-col lg:flex-row">
+      <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">
         {/* Left Column: Controls */}
-        <section className="w-full lg:w-1/2 flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700">
+        <section className="w-full lg:w-1/2 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b]">
           
           {activeTab === "stage" && (
             <div className="max-w-xl mx-auto w-full space-y-8">
@@ -155,7 +155,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
               </div>
 
               <div>
-                <h3 className="font-bold text-slate-500 dark:text-slate-400 uppercase text-sm tracking-wider mb-3">1. Select Verb</h3>
+                <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">1. Select Verb</h3>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {[...TRANSITIVE_VERBS, ...INTRANSITIVE_VERBS].sort().map(verb => (
                     <button
@@ -164,7 +164,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                       className={`py-2 px-3 rounded-lg font-bold border-2 transition-all whitespace-nowrap flex-shrink-0 ${
                         selectedVerb === verb
                           ? 'bg-indigo-600 border-indigo-600 text-white shadow-md transform scale-105'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-300'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:border-indigo-300'
                       }`}
                     >
                       {verb}
@@ -174,14 +174,14 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
               </div>
 
               <div>
-                <h3 className="font-bold text-slate-500 dark:text-slate-400 uppercase text-sm tracking-wider mb-3">2. Select Object (Optional)</h3>
+                <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">2. Select Object (Optional)</h3>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                   <button
                     onClick={() => setSelectedObject(null)}
                     className={`py-2 px-3 rounded-lg font-bold border-2 transition-all flex flex-col items-center justify-center whitespace-nowrap flex-shrink-0 ${
                       selectedObject === null
                         ? 'bg-blue-600 border-blue-600 text-white shadow-md transform scale-105'
-                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-blue-300'
+                        : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:border-blue-300'
                     }`}
                   >
                     <span className="text-xl mb-1">🎭</span>
@@ -194,7 +194,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                       className={`py-2 px-3 rounded-lg font-bold border-2 transition-all flex flex-col items-center justify-center whitespace-nowrap flex-shrink-0 ${
                         selectedObject === obj.id
                           ? 'bg-blue-600 border-blue-600 text-white shadow-md transform scale-105'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-blue-300'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:border-blue-300'
                       }`}
                     >
                       <obj.icon className="w-5 h-5 mb-1" />
@@ -204,10 +204,10 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
                 <button
                   onClick={handleAction}
-                  className="w-full py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-black text-xl shadow-lg transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
+                  className="w-full py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-black text-xl shadow-lg transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   <Play className="w-6 h-6 mr-2 fill-current" />
                   ACTION!
@@ -249,7 +249,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
 
               <div className="flex gap-4">
                 <div className="flex-1 space-y-3">
-                  <h3 className="font-bold text-slate-500 dark:text-slate-400 text-center uppercase text-sm tracking-wider">Verbs</h3>
+                  <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">Verbs</h3>
                   {availableVerbs.map(v => (
                     <button
                       key={v}
@@ -257,14 +257,14 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                       className={`w-full py-3 px-4 rounded-lg font-bold border-2 transition-all text-left whitespace-nowrap flex-shrink-0 ${
                         selectedPuzzleVerb === v
                           ? 'bg-purple-600 border-purple-600 text-white shadow-md scale-105 z-10 relative'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-purple-300 text-slate-700 dark:text-slate-200'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-purple-300 text-slate-700 dark:text-[#ffffff]'
                       }`}
                     >
                       {v}
                     </button>
                   ))}
                   {availableVerbs.length === 0 && (
-                    <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg">Empty</div>
+                    <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">Empty</div>
                   )}
                 </div>
 
@@ -273,7 +273,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                 </div>
 
                 <div className="flex-1 space-y-3">
-                  <h3 className="font-bold text-slate-500 dark:text-slate-400 text-center uppercase text-sm tracking-wider">Matches</h3>
+                  <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">Matches</h3>
                   {availableMatches.map(m => (
                     <button
                       key={m}
@@ -281,14 +281,14 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                       className={`w-full py-3 px-4 rounded-lg font-bold border-2 transition-all text-right whitespace-nowrap flex-shrink-0 ${
                         selectedPuzzleMatch === m
                           ? 'bg-pink-600 border-pink-600 text-white shadow-md scale-105 z-10 relative'
-                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-pink-300 text-slate-700 dark:text-slate-200'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-pink-300 text-slate-700 dark:text-[#ffffff]'
                       }`}
                     >
                       {m}
                     </button>
                   ))}
                   {availableMatches.length === 0 && (
-                    <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg">Empty</div>
+                    <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">Empty</div>
                   )}
                 </div>
               </div>
@@ -301,7 +301,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
         <section className="hidden lg:flex w-1/2 bg-slate-200 dark:bg-slate-950 flex-col items-center justify-center p-8 relative overflow-hidden">
           
           {activeTab === "stage" && (
-            <div className="w-full max-w-lg aspect-video bg-white dark:bg-slate-800 rounded-2xl shadow-2xl relative overflow-hidden border-8 border-slate-800 dark:border-slate-950 flex items-end justify-center pb-8">
+            <div className="w-full max-w-lg aspect-video bg-white dark:!bg-[#121212] rounded-2xl shadow-2xl relative overflow-hidden border-8 border-[#1c1b1b] dark:border-slate-950 flex items-end justify-center pb-8">
               {/* Curtains */}
               <div className="absolute inset-x-0 top-0 h-16 bg-red-600 shadow-md z-20 flex">
                 <div className="flex-1 bg-red-700 rounded-b-full shadow-inner mx-1"></div>
@@ -325,7 +325,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                 )}
 
                 {stageLog && stageLog.isError && (
-                  <div className="absolute -top-16 bg-red-500 text-white px-4 py-2 rounded-xl font-black text-xl shadow-xl whitespace-nowrap">
+                  <div className="absolute -top-16 bg-red-500 text-white px-4 py-2 rounded-xl font-black text-xl shadow-xl whitespace-nowrap dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
                     ???
                     <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rotate-45"></div>
                   </div>
@@ -361,31 +361,31 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
 
           {activeTab === "puzzle" && (
             <div className="w-full max-w-xl h-full flex flex-col">
-              <h2 className="text-2xl font-black text-slate-800 dark:text-slate-200 mb-6 flex items-center">
+              <h2 className="text-2xl font-black text-slate-800 dark:text-[#ffffff] mb-6 flex items-center">
                 <CheckCircle2 className="w-8 h-8 mr-3 text-green-500" />
                 Completed Pairs
               </h2>
               
-              <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+              <div className="flex-1 lg:overflow-y-auto space-y-3 pr-2">
                 {completedPairs.length === 0 ? (
-                  <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 border-4 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-8 text-center">
+                  <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 border-4 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-2xl p-8 text-center">
                     <Puzzle className="w-16 h-16 mb-4 opacity-50" />
                     <p className="text-xl font-bold">No pairs completed yet.</p>
                     <p className="mt-2">Match verbs and phrases on the left to build your collection!</p>
                   </div>
                 ) : (
                   completedPairs.map((pair, i) => (
-                    <div key={i} className="flex bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden transform transition-all hover:-translate-y-1 hover:shadow-md animate-in fade-in slide-in-from-bottom-4">
+                    <div key={i} className="flex bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden transform transition-all hover:-translate-y-1 hover:shadow-md animate-in fade-in slide-in-from-bottom-4">
                       <div className="flex-1 bg-purple-100 dark:bg-purple-900/30 p-4 font-black text-xl text-purple-800 dark:text-purple-300 text-right border-r-2 border-dashed border-purple-300 dark:border-purple-700">
                         {pair.verb}
                       </div>
                       <div className="flex-1 bg-pink-100 dark:bg-pink-900/30 p-4 font-black text-xl text-pink-800 dark:text-pink-300 text-left">
                         {pair.match}
                       </div>
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-slate-800 rounded-full p-1 shadow-sm border border-slate-200 dark:border-slate-700">
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-[#121212] rounded-full p-1 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                         <Puzzle className="w-4 h-4 text-slate-400" />
                       </div>
-                      <div className="absolute right-2 top-2 text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">
+                      <div className="absolute right-2 top-2 text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-100 dark:bg-[#121212] px-2 py-1 rounded">
                         {pair.type}
                       </div>
                     </div>

@@ -32,8 +32,8 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
   }, [swing]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -42,7 +42,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
 
       <div className="flex-1 min-w-0 flex flex-col lg:flex-row lg:overflow-hidden">
         {/* Left Column */}
-        <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 gap-6">
+        <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] gap-6">
           
           <section className="p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-purple-700 dark:text-purple-300">
@@ -57,7 +57,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
                 <label className="block text-sm mb-1 font-medium">Rotation Angle: {rotation}°</label>
                 <input type="range" min="0" max="360" value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="w-full accent-purple-600" />
               </div>
-              <p className="text-sm bg-white dark:bg-slate-800 p-2 rounded border border-purple-100 dark:border-purple-800/50">
+              <p className="text-sm bg-white dark:bg-[#121212] p-2 rounded border border-purple-100 dark:border-purple-800/50">
                 Angle between cabins: {(360 / symmetryLines).toFixed(1)}°
               </p>
             </div>
@@ -67,15 +67,15 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-rose-700 dark:text-rose-300">
               <Navigation className="w-5 h-5" /> Plumb Bob
             </h2>
-            <p className="text-sm mb-3 text-slate-600 dark:text-slate-400">A plumb bob points perfectly vertical down due to gravity, establishing a reference line.</p>
+            <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">A plumb bob points perfectly vertical down due to gravity, establishing a reference line.</p>
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => setSwing(!swing)}
-                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-colors font-medium text-sm shadow-sm"
+                className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition-colors font-medium text-sm shadow-sm dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
               >
                 {swing ? "Stop Swinging" : "Start Swinging"}
               </button>
-              <div className="text-sm font-mono bg-white dark:bg-slate-800 px-3 py-1 rounded border border-rose-200 dark:border-rose-800">
+              <div className="text-sm font-mono bg-white dark:bg-[#121212] px-3 py-1 rounded border border-rose-200 dark:border-rose-800">
                 Angle: {bobAngle.toFixed(1)}°
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
               <select 
                 value={targetAngle}
                 onChange={(e) => { setTargetAngle(Number(e.target.value)); setCompassStep(0); }}
-                className="w-full p-2 rounded-lg border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full p-2 rounded-lg border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none"
               >
                 <option value={60}>Construct 60° Angle</option>
                 <option value={120}>Construct 120° Angle</option>
@@ -97,17 +97,17 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
               </select>
               
               <div className="flex flex-col gap-2">
-                <button onClick={() => setCompassStep(0)} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 0 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700'}`}>1. Draw base line & set origin A</button>
-                <button onClick={() => setCompassStep(1)} disabled={compassStep < 0} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 1 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>2. Draw arc from A cutting line at B</button>
-                <button onClick={() => setCompassStep(2)} disabled={compassStep < 1} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 2 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>3. Keep radius same, draw arc from B to intersect at C (60°)</button>
+                <button onClick={() => setCompassStep(0)} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 0 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-[#121212] hover:bg-slate-100 dark:hover:bg-slate-700'}`}>1. Draw base line & set origin A</button>
+                <button onClick={() => setCompassStep(1)} disabled={compassStep < 0} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 1 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-[#121212] hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>2. Draw arc from A cutting line at B</button>
+                <button onClick={() => setCompassStep(2)} disabled={compassStep < 1} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 2 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-[#121212] hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>3. Keep radius same, draw arc from B to intersect at C (60°)</button>
                 
                 {targetAngle !== 60 && (
-                   <button onClick={() => setCompassStep(2.5)} disabled={compassStep < 2} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 2.5 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>
+                   <button onClick={() => setCompassStep(2.5)} disabled={compassStep < 2} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 2.5 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-[#121212] hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>
                      {targetAngle === 120 ? "3b. Draw arc from C to intersect at D (120°)" : "3b. Find 120°, then bisect 60° and 120° for 90°"}
                    </button>
                 )}
                 
-                <button onClick={() => setCompassStep(3)} disabled={compassStep < (targetAngle === 60 ? 2 : 2.5)} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 3 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>4. Draw line from A through intersection</button>
+                <button onClick={() => setCompassStep(3)} disabled={compassStep < (targetAngle === 60 ? 2 : 2.5)} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 3 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : 'bg-white dark:bg-[#121212] hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>4. Draw line from A through intersection</button>
               </div>
             </div>
           </section>
@@ -115,12 +115,12 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column */}
-        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-slate-100/50 dark:bg-slate-900/50">
+        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-slate-100/50 dark:bg-[#121212]/50">
           
           <div className="flex flex-col lg:flex-row gap-6 min-h-[300px]">
             {/* Ferris Wheel */}
-            <div className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[250px]">
-              <h3 className="absolute top-4 left-4 text-sm font-bold text-slate-800 dark:text-slate-200">Rotational Symmetry</h3>
+            <div className="flex-1 min-w-0 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[250px]">
+              <h3 className="absolute top-4 left-4 text-sm font-bold text-slate-800 dark:text-[#ffffff]">Rotational Symmetry</h3>
               <svg width="200" height="200" viewBox="-100 -100 200 200" className="overflow-visible mt-4">
                 <g transform={`rotate(${rotation})`} className="transition-transform duration-300">
                   <circle cx="0" cy="0" r="80" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-300 dark:text-slate-600" />
@@ -145,10 +145,10 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
             </div>
 
             {/* Plumb Bob */}
-            <div className="lg:w-1/3 w-full bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col items-center min-h-[250px] relative">
-              <h3 className="absolute top-4 left-4 text-sm font-bold text-slate-800 dark:text-slate-200">Vertical Axis</h3>
+            <div className="lg:w-1/3 w-full bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center min-h-[250px] relative">
+              <h3 className="absolute top-4 left-4 text-sm font-bold text-slate-800 dark:text-[#ffffff]">Vertical Axis</h3>
               <svg width="100" height="200" viewBox="-50 0 100 200" className="overflow-visible mt-6">
-                <line x1="-40" y1="10" x2="40" y2="10" stroke="currentColor" strokeWidth="4" className="text-slate-700 dark:text-slate-300" />
+                <line x1="-40" y1="10" x2="40" y2="10" stroke="currentColor" strokeWidth="4" className="text-slate-700 dark:text-[#a1a1aa]" />
                 <g transform={`translate(0, 10) rotate(${bobAngle})`}>
                   <line x1="0" y1="0" x2="0" y2="120" stroke="currentColor" strokeWidth="1.5" className="text-slate-500" />
                   <path d="M -10 120 L 10 120 L 0 150 Z" className="fill-rose-500" />
@@ -160,19 +160,19 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Compass Construction Canvas */}
-          <div className="flex-1 min-w-0 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 relative flex flex-col min-h-[300px]">
-             <h3 className="text-sm font-bold absolute top-4 left-4 text-slate-800 dark:text-slate-200">Construction Board ({targetAngle}°)</h3>
+          <div className="flex-1 min-w-0 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 relative flex flex-col min-h-[300px]">
+             <h3 className="text-sm font-bold absolute top-4 left-4 text-slate-800 dark:text-[#ffffff]">Construction Board ({targetAngle}°)</h3>
              <div className="flex-1 min-w-0 flex items-center justify-center mt-6">
                <svg width="100%" height="250" viewBox="-50 -200 400 250" className="overflow-visible">
                   {/* Step 0: Base line */}
-                  <line x1="0" y1="0" x2="250" y2="0" stroke="currentColor" strokeWidth="2" className="text-slate-800 dark:text-slate-200" />
+                  <line x1="0" y1="0" x2="250" y2="0" stroke="currentColor" strokeWidth="2" className="text-slate-800 dark:text-[#ffffff]" />
                   <circle cx="0" cy="0" r="3" className="fill-indigo-600" />
                   <text x="-15" y="5" className="text-xs fill-slate-700 dark:fill-slate-300 font-bold">A</text>
 
                   {/* Step 1: Arc from A to B */}
                   {compassStep >= 1 && (
                     <>
-                      <path d="M 120 0 A 120 120 0 0 0 20 -118" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-400 dark:text-slate-500" strokeDasharray="4 4" />
+                      <path d="M 120 0 A 120 120 0 0 0 20 -118" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-slate-400 dark:text-[#71717a]" strokeDasharray="4 4" />
                       <circle cx="120" cy="0" r="3" className="fill-indigo-600" />
                       <text x="125" y="15" className="text-xs fill-slate-700 dark:fill-slate-300 font-bold">B</text>
                     </>

@@ -86,16 +86,16 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
     const dynamicMaxDL = Math.max(25, ...dataLog.map(d => d.dL));
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Thermal Expansion of Solids" subtitle="Measure how much metal rods expand when heated, and observe the massive forces generated." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6 lg:overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory & Setup</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
               When a solid is heated, its atoms vibrate more vigorously, causing the material to expand. 
               The change in length (ΔL) is proportional to the initial length (L₀) and the change in temperature (ΔT).
             </p>
@@ -111,11 +111,11 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
 
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Metal Type</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Metal Type</label>
               <select 
                 value={material} 
                 onChange={(e) => { setMaterial(e.target.value); setTargetTemp(20); setBoltSnapped(false); }}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-orange-500"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-orange-500"
               >
                 {Object.entries(materials).map(([key, m]) => (
                   <option key={key} value={key}>{m.name}</option>
@@ -124,7 +124,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
                 <span>Initial Length (L₀)</span>
                 <span className="text-orange-700">{length} m</span>
               </label>
@@ -137,7 +137,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
                 <span>Target Temperature (T)</span>
                 <span className="text-red-600">{targetTemp} °C</span>
               </label>
@@ -149,7 +149,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
               />
             </div>
 
-            <label className="flex items-center gap-3 p-3 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 transition-colors">
+            <label className="flex items-center gap-3 p-3 border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] cursor-pointer hover:bg-slate-100 dark:bg-[#121212] transition-colors">
               <input 
                 type="checkbox" 
                 checked={isLocked} 
@@ -157,15 +157,15 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
                 className="w-5 h-5 accent-slate-800"
               />
               <div className="flex-1">
-                <div className="font-semibold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1"><Lock className="w-4 h-4"/> Restrain Expansion</div>
-                <div className="text-xs text-slate-500 dark:text-slate-400">Lock the free end with a cast-iron bolt.</div>
+                <div className="font-semibold text-sm text-slate-800 dark:text-[#ffffff] flex items-center gap-1"><Lock className="w-4 h-4"/> Restrain Expansion</div>
+                <div className="text-xs text-slate-500 dark:text-[#71717a]">Lock the free end with a cast-iron bolt.</div>
               </div>
             </label>
           </div>
           
           <div className="mt-auto">
-            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis Task</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">
+            <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Task</h3>
+            <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
               Heat the <strong>Mystery Metal</strong> to various temperatures and record the expansion. 
               Use your data to calculate its coefficient of linear expansion, <strong>α</strong>.
             </p>
@@ -175,12 +175,12 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
                 placeholder="e.g. 15.0"
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
-                className="flex-1 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm"
+                className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-sm"
               />
-              <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center">× 10⁻⁶ /°C</span>
+              <span className="text-xs text-slate-500 dark:text-[#71717a] flex items-center">× 10⁻⁶ /°C</span>
               <button 
                 onClick={checkAnswer}
-                className="px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-slate-800"
+                className="px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-[#121212]"
               >
                 Check
               </button>
@@ -191,21 +191,21 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center justify-between">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col items-center justify-between">
           <div className="w-full flex justify-between gap-4 mb-4">
-             <div className="flex-1 text-center bg-slate-100 dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-               <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Current Temp</p>
+             <div className="flex-1 text-center bg-slate-100 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+               <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Current Temp</p>
                <p className={`text-2xl font-mono ${currentTemp > 50 ? 'text-red-600' : 'text-slate-800 dark:text-slate-100'}`}>
                  {currentTemp.toFixed(1)} <span className="text-sm">°C</span>
                </p>
              </div>
-             <div className="flex-1 text-center bg-blue-50 p-3 rounded-lg border border-blue-200">
+             <div className="flex-1 text-center bg-blue-50 p-3 rounded-lg border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900">
                <p className="text-xs text-blue-600 uppercase font-bold tracking-wider">Measured ΔL</p>
                <p className="text-2xl font-mono text-blue-700">{measuredDL.toFixed(2)} <span className="text-sm">mm</span></p>
              </div>
           </div>
 
-          <div className="relative flex-1 w-full bg-slate-900 dark:bg-slate-800 rounded-xl overflow-hidden shadow-inner flex flex-col items-center justify-center min-h-[300px]">
+          <div className="relative flex-1 w-full bg-[#000000] dark:bg-[#121212] rounded-xl overflow-hidden shadow-inner flex flex-col items-center justify-center min-h-[300px]">
              <svg viewBox="0 0 400 200" className="w-full h-full drop-shadow-xl overflow-visible">
                 <defs>
                   <linearGradient id="glow" x1="0" x2="0" y1="0" y2="1">
@@ -309,7 +309,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
 
              {boltSnapped && (
                <div className="absolute inset-0 bg-red-900/40 flex items-center justify-center pointer-events-none">
-                 <div className="bg-slate-900 dark:bg-slate-800 border-2 border-red-500 p-4 rounded-xl text-center shadow-2xl">
+                 <div className="bg-[#000000] dark:!bg-[#121212] border-2 border-red-500 p-4 rounded-xl text-center shadow-2xl">
                    <p className="font-bold text-red-400 text-lg mb-1">Catastrophic Failure</p>
                    <p className="text-sm text-slate-300 max-w-xs">The thermal expansion generated thousands of Newtons of force, exceeding the shear strength of the cast iron bolt!</p>
                  </div>
@@ -329,17 +329,17 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Data & Graph */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Results & Graph</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Results & Graph</h2>
           
-          <div className="h-48 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto bg-slate-50 dark:bg-slate-900">
+          <div className="h-48 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0 shadow-sm z-10">
+              <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0 shadow-sm z-10">
                 <tr>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">Material</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">L₀ (m)</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">ΔT (°C)</th>
-                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-slate-200">ΔL (mm)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Material</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">L₀ (m)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">ΔT (°C)</th>
+                  <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">ΔL (mm)</th>
                 </tr>
               </thead>
               <tbody>
@@ -347,7 +347,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
                   <tr><td colSpan={4} className="px-4 py-8 text-center text-slate-400 italic">No data recorded. Adjust temp and record points.</td></tr>
                 ) : (
                   dataLog.map((row) => (
-                    <tr key={row.id} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-slate-800 transition-colors">
+                    <tr key={row.id} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-[#121212] transition-colors">
                       <td className="px-3 py-1.5">{row.mat}</td>
                       <td className="px-3 py-1.5">{row.L0}</td>
                       <td className="px-3 py-1.5 font-mono text-red-600">{row.dT}</td>
@@ -359,7 +359,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative min-h-[200px]">
+          <div className="flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative min-h-[200px]">
              <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" preserveAspectRatio="none">
                {/* Grid */}
                {[0, 25, 50, 75, 100].map(pct => (

@@ -89,33 +89,33 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
   });
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 19: Optical Fibers & Total Internal Reflection" subtitle="Quantitative analysis of critical angles and macrobending loss." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* LEFT: Theory & Setup */}
         <div className="flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-blue-600"/> Theory</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-blue-600"/> Theory</h2>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               Total Internal Reflection (TIR) occurs when light travels from a denser to a less dense medium (n₁ {'>'} n₂) and the angle of incidence exceeds the <strong>critical angle</strong> (θ_c):
             </p>
-            <div className="bg-blue-50 p-3 rounded-lg text-center font-mono text-blue-900 mb-4 font-bold border border-blue-100">
+            <div className="bg-blue-50 p-3 rounded-lg text-center font-mono text-blue-900 mb-4 font-bold border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
               sin(θ_c) = n₂ / n₁
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
               If an optical fiber is bent too sharply, light rays hit the boundary at angles smaller than θ_c, causing light to leak out (macrobending loss).
             </p>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-indigo-600"/> Setup</h2>
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-indigo-600"/> Setup</h2>
             
             <div className="space-y-5">
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
-                  <span className="text-slate-700 dark:text-slate-200">Core Index (n₁)</span>
+                  <span className="text-slate-700 dark:text-[#ffffff]">Core Index (n₁)</span>
                   <span className="text-indigo-600 font-mono">{nCore.toFixed(2)}</span>
                 </div>
                 <input type="range" min="1.40" max="1.60" step="0.01" value={nCore} onChange={(e) => setNCore(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -123,7 +123,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
-                  <span className="text-slate-700 dark:text-slate-200">Cladding Index (n₂)</span>
+                  <span className="text-slate-700 dark:text-[#ffffff]">Cladding Index (n₂)</span>
                   <span className="text-indigo-600 font-mono">{nClad.toFixed(2)}</span>
                 </div>
                 <input type="range" min="1.30" max="1.55" step="0.01" value={nClad} onChange={(e) => setNClad(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -131,7 +131,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
-                  <span className="text-slate-700 dark:text-slate-200">Bend Radius (mm)</span>
+                  <span className="text-slate-700 dark:text-[#ffffff]">Bend Radius (mm)</span>
                   <span className="text-indigo-600 font-mono">{bendRadius}</span>
                 </div>
                 <input type="range" min="20" max="100" step="1" value={bendRadius} onChange={(e) => setBendRadius(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -139,15 +139,15 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
-                  <span className="text-slate-700 dark:text-slate-200">Input Laser Power (mW)</span>
+                  <span className="text-slate-700 dark:text-[#ffffff]">Input Laser Power (mW)</span>
                   <span className="text-indigo-600 font-mono">{laserPower.toFixed(1)}</span>
                 </div>
                 <input type="range" min="1.0" max="10.0" step="0.5" value={laserPower} onChange={(e) => setLaserPower(Number(e.target.value))} className="w-full accent-indigo-600" />
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">Calculated Critical Angle:</div>
+            <div className="mt-6 p-4 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <div className="text-sm text-slate-500 dark:text-[#71717a] mb-1">Calculated Critical Angle:</div>
               <div className={`text-xl font-mono font-bold ${isNaN(criticalAngle) ? 'text-red-500' : 'text-slate-800 dark:text-slate-100'}`}>
                 {isNaN(criticalAngle) ? 'No TIR (n₁ ≤ n₂)' : `${criticalAngle.toFixed(1)}°`}
               </div>
@@ -155,7 +155,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
             <button 
               onClick={() => setIsLaserOn(!isLaserOn)}
-              className={`mt-4 w-full py-3 rounded-xl font-bold text-white transition-colors ${isLaserOn ? 'bg-red-600 hover:bg-red-700' : 'bg-slate-700 dark:bg-slate-800 hover:bg-slate-800 dark:bg-slate-800'}`}
+              className={`mt-4 w-full py-3 rounded-xl font-bold text-white transition-colors ${isLaserOn ? 'bg-red-600 hover:bg-red-700' : 'bg-slate-700 dark:bg-[#121212] hover:bg-[#121212] dark:bg-[#121212]'}`}
             >
               {isLaserOn ? 'Turn Laser OFF' : 'Turn Laser ON'}
             </button>
@@ -163,7 +163,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 flex flex-col relative overflow-hidden h-full min-h-[500px]">
+        <div className="bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col relative overflow-hidden h-full min-h-[500px]">
           <div className="absolute top-4 left-4 text-white font-medium text-sm flex items-center gap-2 z-10">
             <Info className="w-4 h-4 text-blue-400" /> Virtual Fiber Optic Bench
           </div>
@@ -216,7 +216,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
             </svg>
           </div>
 
-          <div className="bg-slate-800 dark:bg-slate-800 p-4 border-t border-slate-700 dark:border-slate-500 flex justify-between items-center text-white">
+          <div className="bg-[#121212] dark:bg-[#121212] p-4 border-t border-[#1c1b1b] dark:border-[#1c1b1b] flex justify-between items-center text-white">
             <div className="text-sm text-slate-400">Power Meter</div>
             <div className="font-mono text-2xl font-bold text-emerald-400">
               {measuredPower.toFixed(2)} <span className="text-sm text-emerald-600">mW</span>
@@ -226,9 +226,9 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
         {/* RIGHT: Data & Assessment */}
         <div className="flex flex-col gap-6">
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col h-[400px]">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col h-[400px]">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2"><Table2 className="w-5 h-5 text-emerald-600"/> Data Log</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Table2 className="w-5 h-5 text-emerald-600"/> Data Log</h2>
               <button 
                 onClick={recordData}
                 disabled={!isLaserOn}
@@ -238,27 +238,27 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg mb-4">
+            <div className="flex-1 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg mb-4">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                   <tr>
-                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">R (mm)</th>
-                    <th className="p-3 font-semibold text-slate-700 dark:text-slate-200">Power (mW)</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-[#ffffff]">R (mm)</th>
+                    <th className="p-3 font-semibold text-slate-700 dark:text-[#ffffff]">Power (mW)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {loggedData.length === 0 && <tr><td colSpan={2} className="p-4 text-center text-slate-400 italic">No data recorded</td></tr>}
                   {loggedData.map((d, i) => (
-                    <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
-                      <td className="p-3 font-mono text-slate-600 dark:text-slate-300">{d.bendRadius}</td>
-                      <td className="p-3 font-mono text-slate-600 dark:text-slate-300">{d.measuredPower.toFixed(2)}</td>
+                    <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
+                      <td className="p-3 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.bendRadius}</td>
+                      <td className="p-3 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.measuredPower.toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <div className="h-32 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 relative bg-slate-50 dark:bg-slate-900">
+            <div className="h-32 border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-2 relative bg-slate-50 dark:bg-[#121212]">
               <div className="absolute top-2 left-2 text-[10px] text-slate-400 font-bold">Power vs Radius</div>
               <svg className="w-full h-full" viewBox="0 0 300 200" preserveAspectRatio="none">
                 {/* Axes */}
@@ -276,7 +276,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-6 text-white flex-1">
+          <div className="bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 text-white flex-1">
             <h2 className="text-lg font-bold mb-3 text-amber-400">Analysis Assessment</h2>
             <p className="text-sm text-slate-300 mb-4 leading-relaxed">
               A faulty optical fiber starts leaking light heavily when it bends. Experimental data reveals its critical angle is <strong>82.0°</strong>, and you know the core index is <strong>1.52</strong>. Calculate the refractive index of the cladding.
@@ -287,9 +287,9 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
                 placeholder="e.g. 1.45"
                 value={assessmentAns}
                 onChange={e => setAssessmentAns(e.target.value)}
-                className="flex-1 bg-slate-700 dark:bg-slate-800 border border-slate-600 dark:border-slate-500 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-400"
+                className="flex-1 bg-slate-700 dark:bg-[#121212] border border-slate-600 dark:border-[#1c1b1b] rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-400"
               />
-              <button onClick={checkAssessment} className="bg-amber-600 hover:bg-amber-500 px-4 py-2 rounded-lg font-bold text-sm">
+              <button onClick={checkAssessment} className="bg-amber-600 hover:bg-amber-500 px-4 py-2 rounded-lg font-bold text-sm dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
                 Check
               </button>
             </div>

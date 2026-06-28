@@ -7,16 +7,16 @@ interface LabProps {
 
 export default function LabS7Unit1Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Unit 1: Plant Systems Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-4xl w-full">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-4xl w-full">
           <div className="flex items-center mb-8">
             <div className="bg-green-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-green-600" /></div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100">Photosynthesis & Respiration Poster</h2>
-              <p className="text-slate-500 dark:text-slate-400">Project Work Submission Guide</p>
+              <h2 className="text-3xl font-bold text-slate-800 dark:text-[#ffffff]">Photosynthesis & Respiration Poster</h2>
+              <p className="text-slate-500 dark:text-[#71717a]">Project Work Submission Guide</p>
             </div>
           </div>
 
@@ -32,8 +32,8 @@ export default function LabS7Unit1Projects({ onExit }: LabProps) {
               <li><strong>Equations:</strong> Include the simple word equations for both processes.</li>
             </ul>
 
-            <div className="bg-amber-50 p-6 rounded-xl border border-amber-200 mt-8">
-              <h4 className="text-amber-800 font-bold mt-0">Instructor Notes</h4>
+            <div className="bg-amber-50 p-6 rounded-xl border border-amber-200 mt-8 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h4 className="text-amber-800 font-bold mt-0 dark:text-[#ffffff]">Instructor Notes</h4>
               <p className="text-amber-700 mb-0">Ensure students understand that photosynthesis only occurs in the presence of light, while respiration occurs day and night.</p>
             </div>
           </div>

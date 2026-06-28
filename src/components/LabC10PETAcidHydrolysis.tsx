@@ -87,13 +87,13 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Chemical Recycling: PET Acid Hydrolysis" subtitle="Depolymerisation of PET" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-[#1c1b1b]">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-orange-600"/> Setup & Theory</h2>
-                    <p className="text-sm text-slate-700 dark:text-slate-200">
+                    <p className="text-sm text-slate-700 dark:text-[#ffffff]">
                         Chemical recycling of PET involves breaking the ester bonds via acid hydrolysis at high temperatures.
                         This depolymerises the plastic back into its original monomers: terephthalic acid (TPA) and ethylene glycol (EG).
                     </p>
@@ -113,19 +113,19 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                         </div>
                         
                         <div className="flex space-x-2 pt-4">
-                            <button onClick={handleReact} disabled={isReacting || progress > 0} className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50 flex justify-center items-center">
+                            <button onClick={handleReact} disabled={isReacting || progress > 0} className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 disabled:opacity-50 flex justify-center items-center dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                                 <Play className="w-4 h-4 mr-1"/> Hydrolyse
                             </button>
-                            <button onClick={handleReset} className="flex-1 bg-slate-600 dark:bg-slate-800 text-white py-2 rounded hover:bg-slate-700 dark:bg-slate-800 flex justify-center items-center">
+                            <button onClick={handleReset} className="flex-1 bg-slate-600 dark:bg-[#121212] text-white py-2 rounded hover:bg-slate-700 dark:bg-[#121212] flex justify-center items-center dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
                                 <RotateCcw className="w-4 h-4 mr-1"/> Reset
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-[#1c1b1b] relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Reactor Vessel</h2>
-                    <div className="w-full h-64 mt-12 bg-slate-100 dark:bg-slate-800 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 relative flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-64 mt-12 bg-slate-100 dark:bg-[#121212] rounded border border-slate-300 dark:border-[#1c1b1b] relative flex items-center justify-center overflow-hidden">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
                             <rect x="0" y={100 + (100 - progress)} width="500" height="100" fill="#fca5a5" opacity="0.3" />
                             
@@ -155,16 +155,16 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200 dark:border-[#1c1b1b]">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-orange-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={!isReacting && progress === 0} className="w-full bg-orange-100 text-orange-700 py-2 rounded font-medium hover:bg-orange-200 disabled:opacity-50">
                         Log Concentration
                     </button>
 
-                    <div className="flex-1 overflow-y-auto">
+                    <div className="flex-1 lg:overflow-y-auto">
                         <table className="w-full text-sm text-left border-collapse">
-                            <thead className="bg-slate-100 dark:bg-slate-800">
+                            <thead className="bg-slate-100 dark:bg-[#121212]">
                                 <tr>
                                     <th className="p-2 border">Time (s)</th>
                                     <th className="p-2 border">PET (g)</th>
@@ -183,12 +183,12 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                         </table>
                     </div>
 
-                    <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded">
+                    <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded">
                         <h3 className="font-semibold text-sm mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-600"/> Assessment</h3>
                         <p className="text-xs mb-2">Assuming 100% yield, what mass of Terephthalic acid (TPA) is recovered from {unknownMass} g of PET waste? (PET unit = 192.17 g/mol, TPA = 166.13 g/mol)</p>
                         <div className="flex space-x-2">
                             <input type="number" value={assessmentAns} onChange={(e) => setAssessmentAns(e.target.value)} placeholder="Mass (g)" className="flex-1 px-2 py-1 border rounded text-sm"/>
-                            <button onClick={checkAnswer} className="bg-orange-600 text-white px-3 py-1 rounded text-sm hover:bg-orange-700">Check</button>
+                            <button onClick={checkAnswer} className="bg-orange-600 text-white px-3 py-1 rounded text-sm hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">Check</button>
                         </div>
                         {isCorrect !== null && (
                             <p className={`text-xs mt-2 font-medium ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>

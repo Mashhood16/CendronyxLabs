@@ -135,11 +135,11 @@
   /* #334155 */
 
   /* Redefine old variables in dark mode to map to high-tech console */
-  --slate-50: 15 23 42;
-  /* background: #0f172a */
-  --slate-100: 30 41 59;
-  /* surface-container: #1e293b */
-  --slate-200: 51 65 85;
+  --slate-50: 18 18 18;
+  /* background: #121212 */
+  --slate-100: 18 18 18;
+  /* surface-container: #000000 */
+  --slate-200: 28 27 27;
   /* border/surface-container-high */
   --slate-300: 71 85 105;
   --slate-400: 100 116 139;
@@ -160,7 +160,8 @@
   }
 
   .dark body {
-    color: rgb(var(--slate-200));
+    color: #a1a1aa;
+    background-color: #000000;
   }
 
   ::-webkit-scrollbar {
@@ -202,11 +203,9 @@
   }
 
   .dark .glass {
-    background-color: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    background-color: #121212 !important;
+    border: 1px solid rgba(28, 27, 27, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   }
 
   .text-gradient {
@@ -238,9 +237,9 @@
   }
 
   .dark .btn-secondary {
-    background-color: rgba(15, 23, 42, 0.4);
-    border: 1px solid #c3c0ff;
-    color: #c3c0ff;
+    background-color: rgba(10, 10, 10, 0.4);
+    border: 1px solid #1c1b1b;
+    color: #ffffff;
   }
 
   .btn-secondary:hover {
@@ -334,31 +333,31 @@
 
 /* --- Slate palette (Tailwind utilities need !important to override hardcoded values) --- */
 .dark .bg-slate-50 {
-  background-color: rgb(30 41 59) !important;
+  background-color: rgb(18 18 18) !important;
 }
 
 .dark .bg-slate-100 {
-  background-color: rgb(51 65 85) !important;
+  background-color: rgb(18 18 18) !important;
 }
 
 .dark .bg-slate-200 {
-  background-color: rgb(71 85 105) !important;
+  background-color: rgb(28 27 27) !important;
 }
 
 .dark .bg-slate-300 {
-  background-color: rgb(100 116 139) !important;
+  background-color: rgb(40 40 40) !important;
 }
 
 .dark .bg-slate-700 {
-  background-color: rgb(51 65 85) !important;
+  background-color: rgb(28 27 27) !important;
 }
 
 .dark .bg-slate-800 {
-  background-color: rgb(30 41 59) !important;
+  background-color: rgb(18 18 18) !important;
 }
 
 .dark .bg-slate-900 {
-  background-color: rgb(15 23 42) !important;
+  background-color: rgb(18 18 18) !important;
 }
 
 .dark .text-slate-50 {
@@ -406,15 +405,15 @@
 }
 
 .dark .border-slate-200 {
-  border-color: rgb(71 85 105) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-slate-300 {
-  border-color: rgb(100 116 139) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-slate-700 {
-  border-color: rgb(51 65 85) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .hover\:bg-slate-50:hover {
@@ -431,20 +430,20 @@
 
 /* --- White backgrounds --- */
 .dark .bg-white {
-  background-color: rgb(30 41 59) !important;
+  background-color: rgb(18 18 18) !important;
 }
 
 .dark .bg-white\/80 {
-  background-color: rgb(30 41 59 / 0.8) !important;
+  background-color: rgb(0 0 0 / 0.8) !important;
 }
 
 /* --- Form elements --- */
-.dark input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+.dark input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not(.bg-transparent):not(.\!bg-transparent),
 .dark textarea,
 .dark select {
   background-color: rgb(30 41 59) !important;
   color: rgb(226 232 240) !important;
-  border-color: rgb(71 85 105) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark input[type="range"] {
@@ -462,7 +461,7 @@
 }
 
 .dark table tr {
-  border-color: rgb(75 85 99) !important;
+  border-color: #1c1b1b !important;
 }
 
 /* --- Table row fix: rows use dark:bg-slate-900 (literal class in DOM), not bg-slate-900 --- */
@@ -495,13 +494,13 @@
    ============================================================= */
 
 /* --- Slate palette: dark: variant backgrounds --- */
-.dark [class~="dark:bg-slate-50"] { background-color: rgb(30 41 59) !important; }
-.dark [class~="dark:bg-slate-100"] { background-color: rgb(51 65 85) !important; }
-.dark [class~="dark:bg-slate-200"] { background-color: rgb(71 85 105) !important; }
-.dark [class~="dark:bg-slate-300"] { background-color: rgb(100 116 139) !important; }
-.dark [class~="dark:bg-slate-700"] { background-color: rgb(51 65 85) !important; }
-.dark [class~="dark:bg-slate-800"] { background-color: rgb(30 41 59) !important; }
-.dark [class~="dark:bg-slate-900"] { background-color: rgb(15 23 42) !important; }
+.dark [class~="dark:bg-slate-50"] { background-color: rgb(18 18 18) !important; }
+.dark [class~="dark:bg-slate-100"] { background-color: rgb(18 18 18) !important; }
+.dark [class~="dark:bg-slate-200"] { background-color: rgb(28 27 27) !important; }
+.dark [class~="dark:bg-slate-300"] { background-color: rgb(40 40 40) !important; }
+.dark [class~="dark:bg-slate-700"] { background-color: rgb(28 27 27) !important; }
+.dark [class~="dark:bg-slate-800"] { background-color: rgb(18 18 18) !important; }
+.dark [class~="dark:bg-slate-900"] { background-color: rgb(18 18 18) !important; }
 
 /* --- Slate palette: dark: variant text --- */
 .dark [class~="dark:text-slate-50"] { color: rgb(248 250 252) !important; }
@@ -517,10 +516,10 @@
 .dark [class~="dark:text-slate-950"] { color: rgb(255 255 255) !important; }
 
 /* --- Slate palette: dark: variant borders --- */
-.dark [class~="dark:border-slate-200"] { border-color: rgb(71 85 105) !important; }
-.dark [class~="dark:border-slate-300"] { border-color: rgb(100 116 139) !important; }
-.dark [class~="dark:border-slate-700"] { border-color: rgb(51 65 85) !important; }
-.dark [class~="dark:border-slate-500"] { border-color: rgb(148 163 184) !important; }
+.dark [class~="dark:border-slate-200"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-slate-300"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-slate-700"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-slate-500"] { border-color: #1c1b1b !important; }
 
 /* --- White backgrounds: dark: variant --- */
 .dark [class~="dark:bg-white"] { background-color: rgb(30 41 59) !important; }
@@ -544,11 +543,11 @@
 .dark [class~="dark:text-gray-800"] { color: rgb(229 231 235) !important; }
 
 /* --- Gray palette: dark: variant borders --- */
-.dark [class~="dark:border-gray-100"] { border-color: rgb(55 65 81) !important; }
-.dark [class~="dark:border-gray-200"] { border-color: rgb(75 85 99) !important; }
-.dark [class~="dark:border-gray-300"] { border-color: rgb(107 114 128) !important; }
-.dark [class~="dark:border-gray-400"] { border-color: rgb(156 163 175) !important; }
-.dark [class~="dark:border-gray-900"] { border-color: rgb(17 24 39) !important; }
+.dark [class~="dark:border-gray-100"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-gray-200"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-gray-300"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-gray-400"] { border-color: #1c1b1b !important; }
+.dark [class~="dark:border-gray-900"] { border-color: #1c1b1b !important; }
 
 /* --- Accent colors: dark: variant backgrounds --- */
 .dark [class~="dark:bg-amber-50"],
@@ -783,23 +782,23 @@
 }
 
 .dark .border-gray-100 {
-  border-color: rgb(55 65 81) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-gray-200 {
-  border-color: rgb(75 85 99) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-gray-300 {
-  border-color: rgb(107 114 128) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-gray-400 {
-  border-color: rgb(156 163 175) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .border-gray-900 {
-  border-color: rgb(17 24 39) !important;
+  border-color: #1c1b1b !important;
 }
 
 .dark .hover\:bg-gray-50:hover {

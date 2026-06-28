@@ -49,8 +49,8 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
   const displayModal = ["might", "can", "should", "will", "must"];
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none overflow-hidden">
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <div className="flex items-center gap-4">
           <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
             <ArrowLeft className="w-5 h-5" />
@@ -60,7 +60,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -69,9 +69,9 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-2 lg:overflow-hidden">
         {/* Left Column: Controls & Workspace */}
-        <div className="flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 space-y-8">
+        <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8">
           
-          <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+          <section className="bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
               <Zap className="w-5 h-5 text-yellow-500" />
               Modal Verbs Strength Meter
@@ -93,7 +93,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                 <span className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
                   {modalWords[modalLevel - 1]}
                 </span>
-                <p className="text-sm mt-2 text-slate-600 dark:text-slate-300">
+                <p className="text-sm mt-2 text-slate-600 dark:text-[#a1a1aa]">
                   {modalLevel === 1 && "It is possible but not certain."}
                   {modalLevel === 2 && "Subject has the ability to do it."}
                   {modalLevel === 3 && "It is a good idea or recommendation."}
@@ -104,14 +104,14 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
             </div>
           </section>
 
-          <section className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+          <section className="bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
               <Play className="w-5 h-5 text-blue-500" />
               Adverbs Controller
             </h2>
             <div className="grid gap-4">
               <div>
-                <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
+                <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
                   <Activity className="w-4 h-4" /> Manner (How?)
                 </label>
                 <div className="flex gap-2">
@@ -119,7 +119,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                     <button 
                       key={adv}
                       onClick={() => setAdvManner(adv)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advManner === adv ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advManner === adv ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
                     >
                       {adv}
                     </button>
@@ -127,7 +127,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
               <div>
-                <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
+                <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
                   <MapPin className="w-4 h-4" /> Place (Where?)
                 </label>
                 <div className="flex gap-2">
@@ -135,7 +135,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                     <button 
                       key={adv}
                       onClick={() => setAdvPlace(adv)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advPlace === adv ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advPlace === adv ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
                     >
                       {adv}
                     </button>
@@ -143,7 +143,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
               <div>
-                <label className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2">
+                <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
                   <Clock className="w-4 h-4" /> Time (When?)
                 </label>
                 <div className="flex gap-2">
@@ -151,7 +151,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                     <button 
                       key={adv}
                       onClick={() => setAdvTime(adv)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-purple-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-purple-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
                     >
                       {adv}
                     </button>
@@ -161,7 +161,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
             </div>
           </section>
 
-          <section className="bg-blue-50 dark:bg-slate-800/80 rounded-2xl p-6 border border-blue-100 dark:border-slate-700 flex-1 flex flex-col">
+          <section className="bg-blue-50 dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#1c1b1b] flex-1 flex flex-col">
             <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300">Knowledge Check</h2>
             <div className="flex-1 flex flex-col justify-center space-y-4">
               <p className="font-medium text-lg">{questions[questionIndex].q}</p>
@@ -170,7 +170,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                   <button
                     key={opt}
                     onClick={() => { setUserAnswer(opt); setFeedback(null); }}
-                    className={`py-3 px-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap flex-shrink-0 ${userAnswer === opt ? 'bg-blue-600 text-white shadow-md' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600 border border-slate-200 dark:border-slate-600'}`}
+                    className={`py-3 px-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap flex-shrink-0 ${userAnswer === opt ? 'bg-blue-600 text-white shadow-md' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-50 dark:hover:bg-slate-600 border border-slate-200 dark:border-slate-600'}`}
                   >
                     {opt}
                   </button>
@@ -180,7 +180,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                 <button
                   onClick={handleCheck}
                   disabled={!userAnswer}
-                  className="px-6 py-2.5 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 disabled:dark:bg-slate-700 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+                  className="px-6 py-2.5 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 disabled: disabled:cursor-not-allowed text-white font-bold rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   <Check className="w-5 h-5" /> Check Answer
                 </button>
@@ -203,12 +203,12 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Simulation Canvas */}
-        <div className="bg-slate-200 dark:bg-slate-900/50 p-6 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="bg-slate-200 dark:bg-[#121212]/50 p-6 flex flex-col items-center justify-center relative overflow-hidden">
           
           {/* Sentence Builder Display */}
-          <div className="absolute top-8 left-8 right-8 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 text-center z-10">
+          <div className="absolute top-8 left-8 right-8 bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] text-center z-10">
             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Live Sentence</h3>
-            <p className="text-xl lg:text-2xl font-serif text-slate-800 dark:text-slate-100">
+            <p className="text-xl lg:text-2xl font-serif text-slate-800 dark:text-[#ffffff]">
               The robot <span className="text-yellow-500 font-bold">{displayModal[modalLevel - 1]}</span> work{' '}
               <span className="text-blue-500 font-bold">{advManner}</span>{' '}
               <span className="text-green-500 font-bold">{advPlace}</span>{' '}
@@ -217,7 +217,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Visualization Scene */}
-          <div className="relative w-full max-w-md aspect-square bg-white dark:bg-slate-800 rounded-full shadow-2xl border-8 border-slate-50 dark:border-slate-700 overflow-hidden flex items-center justify-center mt-12">
+          <div className="relative w-full max-w-md aspect-square bg-white dark:bg-[#121212] rounded-full shadow-2xl border-8 border-slate-50 dark:border-[#1c1b1b] overflow-hidden flex items-center justify-center mt-12">
             
             {/* Background (Place/Time) */}
             <div className={`absolute inset-0 transition-all duration-1000 ${advTime === 'now' ? 'opacity-100' : advTime === 'later' ? 'opacity-80 brightness-75' : 'opacity-90 blur-[1px] saturate-50'}`}>
@@ -257,16 +257,16 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                 <rect x="40" y="10" width="40" height="35" rx="8" className="fill-slate-300 dark:fill-slate-600" />
                 <circle cx="50" cy="25" r="5" className="fill-blue-500" />
                 <circle cx="70" cy="25" r="5" className="fill-blue-500" />
-                <path d="M50 35 Q 60 40 70 35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-500 dark:text-slate-400" />
+                <path d="M50 35 Q 60 40 70 35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-slate-500 dark:text-[#71717a]" />
                 {/* Antenna */}
                 <line x1="60" y1="10" x2="60" y2="0" stroke="currentColor" strokeWidth="2" className="text-slate-400" />
                 <circle cx="60" cy="0" r="3" className="fill-red-500" />
                 {/* Arms */}
-                <line x1="30" y1="60" x2="10" y2="80" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-slate-500" />
-                <line x1="90" y1="60" x2="110" y2="80" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-slate-500" />
+                <line x1="30" y1="60" x2="10" y2="80" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-[#71717a]" />
+                <line x1="90" y1="60" x2="110" y2="80" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-[#71717a]" />
                 {/* Legs */}
-                <line x1="45" y1="120" x2="45" y2="140" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-slate-500" />
-                <line x1="75" y1="120" x2="75" y2="140" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-slate-500" />
+                <line x1="45" y1="120" x2="45" y2="140" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-[#71717a]" />
+                <line x1="75" y1="120" x2="75" y2="140" stroke="currentColor" strokeWidth="6" strokeLinecap="round" className="text-slate-400 dark:text-[#71717a]" />
               </svg>
 
               {/* Obligation / Modal Strength Visual */}
@@ -287,7 +287,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
 
             {/* Time / Mode Overlay Text */}
             <div className="absolute bottom-8 text-center w-full z-10">
-              <span className="bg-white/80 dark:bg-slate-800/80 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-slate-200 backdrop-blur-sm shadow-sm">
+              <span className="bg-white/80 dark:bg-[#121212]/80 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-[#ffffff] backdrop-blur-sm shadow-sm">
                 Status: {advManner} {advTime}
               </span>
             </div>

@@ -134,18 +134,18 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Grade 9 Chemistry: Qualitative Analysis" subtitle="Gas Tests & Flame Tests" variant="emerald" />
 
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-emerald-800">
             <BookOpen size={24} />
             <h2 className="text-xl font-semibold">Theory & Context</h2>
           </div>
           
-          <div className="space-y-4 text-slate-700 dark:text-slate-200">
+          <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
             <p>
               Qualitative analysis is used to identify unknown ions or gases in a substance, rather than measuring how much is present.
             </p>
@@ -174,50 +174,50 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col h-[600px] lg:h-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col h-[600px] lg:h-auto">
           <div className="flex gap-4 mb-4 shrink-0">
             <button 
-              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'gas' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'gas' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => setActiveTab('gas')}
             >
               Gas Tests
             </button>
             <button 
-              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'flame' ? 'bg-orange-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'flame' ? 'bg-orange-500 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => setActiveTab('flame')}
             >
               Flame Tests
             </button>
           </div>
 
-          <div className="flex-1 relative flex flex-col bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 overflow-y-auto">
+          <div className="flex-1 relative flex flex-col bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 lg:overflow-y-auto">
             {activeTab === 'gas' && (
               <>
-                <p className="text-center text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wider">Chemical Shelf</p>
+                <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">Chemical Shelf</p>
                 <div className="flex flex-wrap justify-center gap-3 mb-6">
                   {GAS_BOTTLES.map(b => (
                     <button 
                       key={b.id} 
-                      className={`flex flex-col items-center cursor-pointer transform transition-transform p-2 rounded-lg border-2 ${flaskContents.includes(b.id) ? 'border-emerald-500 bg-emerald-50 opacity-50 scale-95' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:-translate-y-1 shadow-sm'}`}
+                      className={`flex flex-col items-center cursor-pointer transform transition-transform p-2 rounded-lg border-2 ${flaskContents.includes(b.id) ? 'border-emerald-500 bg-emerald-50 opacity-50 scale-95' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:-translate-y-1 shadow-sm'}`}
                       onClick={() => addToFlask(b.id)}
                       disabled={flaskContents.includes(b.id) || flaskContents.length >= 3}
                     >
-                      <div className={`w-10 h-12 rounded-t-lg rounded-b-sm border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden ${b.type === 'liquid' ? 'bg-blue-50' : 'bg-slate-50 dark:bg-slate-900'}`}>
-                        <div className="absolute top-0 w-full h-2 bg-slate-200 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500"></div>
+                      <div className={`w-10 h-12 rounded-t-lg rounded-b-sm border-2 border-slate-300 dark:border-[#1c1b1b] relative overflow-hidden ${b.type === 'liquid' ? 'bg-blue-50' : 'bg-slate-50 dark:bg-[#121212]'}`}>
+                        <div className="absolute top-0 w-full h-2 bg-slate-200 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b]"></div>
                         {b.type === 'solid' && <div className="absolute bottom-0 w-full h-3" style={{ backgroundColor: b.color }}></div>}
                         {b.type === 'liquid' && <div className="absolute bottom-0 w-full h-5" style={{ backgroundColor: b.color, opacity: 0.7 }}></div>}
                       </div>
-                      <div className="mt-1 text-[10px] font-bold text-center w-16 leading-tight text-slate-700 dark:text-slate-200">{b.label}</div>
+                      <div className="mt-1 text-[10px] font-bold text-center w-16 leading-tight text-slate-700 dark:text-[#ffffff]">{b.label}</div>
                     </button>
                   ))}
                 </div>
 
                 {/* Real-time Equation Display */}
-                <div className="bg-slate-900 dark:bg-slate-800 text-green-400 font-mono p-3 rounded-lg min-h-[60px] flex items-center justify-center text-center mb-6 shadow-inner">
+                <div className="bg-[#000000] dark:bg-[#121212] text-green-400 font-mono p-3 rounded-lg min-h-[60px] flex items-center justify-center text-center mb-6 shadow-inner">
                   {reactionEquation ? (
                     <span className="text-sm md:text-base font-bold tracking-wider">{reactionEquation}</span>
                   ) : (
-                    <span className="text-slate-500 dark:text-slate-400 italic text-sm">Mix chemicals to build an equation...</span>
+                    <span className="text-slate-500 dark:text-[#71717a] italic text-sm">Mix chemicals to build an equation...</span>
                   )}
                 </div>
 
@@ -254,7 +254,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                   <div className="flex flex-wrap justify-center gap-2 mt-4">
                     <button onClick={() => performGasTest('lit_splint')} className="px-3 py-1.5 bg-red-100 text-red-800 text-xs font-semibold rounded-md border border-red-200 hover:bg-red-200 transition-colors">🔥 Lit Splint</button>
                     <button onClick={() => performGasTest('glowing_splint')} className="px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-semibold rounded-md border border-orange-200 hover:bg-orange-200 transition-colors">✨ Glowing Splint</button>
-                    <button onClick={() => performGasTest('limewater')} className="px-3 py-1.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-md border border-blue-200 hover:bg-blue-200 transition-colors">💧 Limewater</button>
+                    <button onClick={() => performGasTest('limewater')} className="px-3 py-1.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-md border border-blue-200 hover:bg-blue-200 transition-colors dark:text-[#ffffff]">💧 Limewater</button>
                   </div>
 
                   {testResult && (
@@ -264,7 +264,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                   )}
 
                   <button 
-                    className="flex items-center gap-2 px-4 py-2 mt-4 bg-slate-600 dark:bg-slate-800 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-800 transition-colors text-sm"
+                    className="flex items-center gap-2 px-4 py-2 mt-4 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors text-sm dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
                     onClick={resetFlask}
                   >
                     <RotateCcw size={16} /> Empty Flask
@@ -275,25 +275,25 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
 
             {activeTab === 'flame' && (
               <div className="w-full h-full flex flex-col items-center p-2">
-                <p className="text-center text-sm font-semibold text-slate-500 dark:text-slate-400 mb-4 uppercase tracking-wider">Salt Samples</p>
+                <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">Salt Samples</p>
                 <div className="flex justify-center gap-6 mb-8">
                   {FLAME_BOTTLES.map(b => (
                     <button 
                       key={b.id} 
-                      className={`flex flex-col items-center cursor-pointer p-2 rounded-lg border-2 transition-colors ${wireLoop === b.id ? 'border-orange-500 bg-orange-50' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500'}`} 
+                      className={`flex flex-col items-center cursor-pointer p-2 rounded-lg border-2 transition-colors ${wireLoop === b.id ? 'border-orange-500 bg-orange-50' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b]'}`} 
                       onClick={() => dipWire(b.id)}
                     >
-                      <div className="w-12 h-12 rounded-full border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 flex items-center justify-center mb-2 shadow-inner">
+                      <div className="w-12 h-12 rounded-full border-2 border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] flex items-center justify-center mb-2 shadow-inner">
                         <div className="w-8 h-8 rounded-full" style={{ backgroundColor: b.color, opacity: 0.8 }}></div>
                       </div>
-                      <div className="text-xs font-bold text-slate-700 dark:text-slate-200 text-center w-20">{b.label}</div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{b.formula}</div>
+                      <div className="text-xs font-bold text-slate-700 dark:text-[#ffffff] text-center w-20">{b.label}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-[#71717a] font-mono">{b.formula}</div>
                     </button>
                   ))}
                 </div>
                 
                 <div className="flex-1 flex flex-col items-center justify-center relative w-full">
-                   <p className="text-sm text-slate-500 dark:text-slate-400 italic mb-4">Click the flame to insert the wire loop</p>
+                   <p className="text-sm text-slate-500 dark:text-[#71717a] italic mb-4">Click the flame to insert the wire loop</p>
                    {/* Bunsen Burner SVG */}
                    <svg viewBox="0 0 100 150" className="w-24 h-36 cursor-pointer hover:scale-105 transition-transform" onClick={putInFlame}>
                      {/* burner base */}
@@ -309,9 +309,9 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                    {/* Wire loop indicator */}
                    {wireLoop && (
                      <div className="absolute top-1/3 right-10 flex items-center pointer-events-none">
-                       <div className="w-16 h-1 bg-slate-400 dark:bg-slate-800"></div>
+                       <div className="w-16 h-1 bg-slate-400 dark:bg-[#121212]"></div>
                        <div 
-                         className="w-5 h-5 rounded-full border-4 border-slate-400 dark:border-slate-500 bg-transparent" 
+                         className="w-5 h-5 rounded-full border-4 border-slate-400 dark:border-[#1c1b1b] bg-transparent" 
                          style={{ borderColor: FLAME_BOTTLES.find(b=>b.id===wireLoop)?.color || '#94a3b8' }}
                        ></div>
                      </div>
@@ -320,7 +320,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                 
                 <button 
                   onClick={cleanWire} 
-                  className="mt-6 px-5 py-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold rounded-lg hover:bg-slate-300 dark:bg-slate-800 transition-colors text-sm"
+                  className="mt-6 px-5 py-2 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm"
                 >
                   Clean Wire
                 </button>
@@ -330,39 +330,39 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-emerald-800">
             <CheckCircle size={24} />
             <h2 className="text-xl font-semibold">Assessment</h2>
           </div>
 
           <div className="space-y-6">
-            <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Unknown Sample Analysis</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <div className="p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Unknown Sample Analysis</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                 You are given an unknown solid. When reacted with Hydrochloric Acid (HCl), it bubbles rapidly. The gas turns limewater cloudy. When the solid undergoes a flame test, a blue-green flame is observed.
               </p>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
                     1. What gas was produced?
                   </label>
                   <input 
                     type="text"
-                    className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                    className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
                     placeholder="Enter gas name or formula"
                     value={gasAnswer}
                     onChange={e => setGasAnswer(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
                     2. What metal ion is present?
                   </label>
                   <input 
                     type="text"
-                    className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                    className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
                     placeholder="Enter metal name or formula"
                     value={flameAnswer}
                     onChange={e => setFlameAnswer(e.target.value)}
@@ -371,14 +371,14 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                 
                 <button 
                   onClick={checkAnswers}
-                  className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-md hover:bg-emerald-700 transition-colors"
+                  className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-md hover:bg-emerald-700 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                 >
                   Verify Findings
                 </button>
               </div>
               
               {feedback && (
-                <div className="mt-4 p-3 rounded-md text-sm font-medium whitespace-pre-wrap bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-800 dark:text-slate-100">
+                <div className="mt-4 p-3 rounded-md text-sm font-medium whitespace-pre-wrap bg-slate-100 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-[#ffffff]">
                   {feedback}
                 </div>
               )}

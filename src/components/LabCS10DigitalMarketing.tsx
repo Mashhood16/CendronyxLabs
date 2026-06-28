@@ -57,15 +57,15 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
   const pointsSales = metrics.map((p, i) => `${(i / 20) * 100},${100 - Math.min((p.sales / maxSales) * 100, 100)}`).join(' ');
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Digital Marketing Lab" subtitle="Social Media Campaign Simulation" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">1. Campaign Setup</h2>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Campaign Setup</h2>
+          <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
           
           <div>
             <label className="block text-sm font-bold mb-1">Ad Budget ($)</label>
@@ -95,29 +95,29 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
           <button 
             onClick={() => { resetSim(); setSimRunning(true); }}
             disabled={simRunning}
-            className="mt-4 w-full bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 disabled:opacity-50"
+            className="mt-4 w-full bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 disabled:opacity-50 dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
           >
             {simRunning ? 'Simulation Running...' : 'Launch Campaign'}
           </button>
         </div>
 
         {/* MIDDLE COLUMN: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative">
-          <div className="w-full max-w-sm bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 dark:border-slate-500 overflow-hidden shadow-sm">
-            <div className="p-3 border-b bg-slate-50 dark:bg-slate-900 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-[#1c1b1b] relative">
+          <div className="w-full max-w-sm bg-slate-100 dark:!bg-[#121212] rounded-xl border border-slate-300 dark:border-[#1c1b1b] overflow-hidden shadow-sm">
+            <div className="p-3 border-b bg-slate-50 dark:bg-[#121212] flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white"><ThumbsUp size={16}/></div>
               <div>
                 <p className="font-bold text-sm">TechGadget Store</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Sponsored</p>
+                <p className="text-xs text-slate-500 dark:text-[#71717a]">Sponsored</p>
               </div>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-900 text-sm">
+            <div className="p-3 bg-slate-50 dark:bg-[#121212] text-sm">
               Upgrade your setup with our latest smart accessories! Click to learn more. 🚀
             </div>
-            <div className="h-40 bg-slate-200 dark:bg-slate-800 flex items-center justify-center border-y">
+            <div className="h-40 bg-slate-200 dark:bg-[#121212] flex items-center justify-center border-y">
                <Presentation size={48} className="text-slate-400" />
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-900 flex justify-between text-slate-500 dark:text-slate-400 text-sm">
+            <div className="p-3 bg-slate-50 dark:bg-[#121212] flex justify-between text-slate-500 dark:text-[#71717a] text-sm">
                <span className="font-medium text-blue-600">{finalMetrics.likes} Likes</span>
                <span>{finalMetrics.clicks} Clicks</span>
             </div>
@@ -131,33 +131,33 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
         </div>
 
         {/* RIGHT COLUMN: Analytics */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">3. Analytics & ROI</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">3. Analytics & ROI</h2>
           
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border">
              <h3 className="font-bold flex items-center gap-2 mb-2"><BarChart3 size={18}/> Performance Graph</h3>
-             <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 dark:bg-slate-900 rounded border overflow-visible">
+             <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 dark:bg-[#121212] rounded border overflow-visible">
                {/* Likes line */}
                <polyline points={pointsLikes} fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinejoin="round" />
                {/* Sales line */}
                <polyline points={pointsSales} fill="none" stroke="#10b981" strokeWidth="2" strokeLinejoin="round" />
              </svg>
              <div className="flex gap-4 text-xs mt-2 justify-center">
-               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Likes</span>
-               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-full"></div> Sales</span>
+               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-blue-500 rounded-full dark:bg-teal-950/20 dark:border-teal-900"></div> Likes</span>
+               <span className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-full dark:bg-[#121212] dark:border-[#1c1b1b]"></div> Sales</span>
              </div>
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-center text-sm font-bold">
-             <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">Sales: <span className="text-green-600">{finalMetrics.sales}</span></div>
-             <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">Revenue: <span className="text-green-600">${finalMetrics.sales * 50}</span></div>
+             <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded">Sales: <span className="text-green-600">{finalMetrics.sales}</span></div>
+             <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded">Revenue: <span className="text-green-600">${finalMetrics.sales * 50}</span></div>
           </div>
 
           <div className="bg-pink-50 p-4 rounded-lg border border-pink-100 mt-auto">
              <h3 className="font-bold mb-2 flex items-center gap-2"><DollarSign size={18}/> Calculate ROI</h3>
              <p className="text-xs mb-2">Revenue = Sales * $50. Calculate Profit (Revenue - Budget). Is it positive or negative?</p>
              <input type="number" value={roiAns} onChange={e => setRoiAns(e.target.value)} className="w-full p-2 border rounded mb-2 text-sm" placeholder="Enter calculated profit ($)" />
-             <button className="w-full bg-pink-600 text-white py-2 rounded font-bold" onClick={() => {
+             <button className="w-full bg-pink-600 text-white py-2 rounded font-bold dark:text-white dark:text-white dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40" onClick={() => {
                const profit = (finalMetrics.sales * 50) - budget;
                if (Number(roiAns) === profit) alert("Correct! Excellent analysis.");
                else alert(`Incorrect. Formula is: (${finalMetrics.sales} * $50) - $${budget} = $${profit}.`);

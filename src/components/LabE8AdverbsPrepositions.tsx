@@ -99,11 +99,11 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
       <header className="flex items-center p-4 bg-indigo-600 dark:bg-indigo-800 text-white shadow-md flex-shrink-0">
         <button 
           onClick={onExit} 
-          className="flex items-center gap-2 hover:bg-white dark:bg-slate-800/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
+          className="flex items-center gap-2 hover:bg-white dark:bg-[#121212]/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
         >
           <ArrowLeft size={18} />
           Go Back
@@ -112,7 +112,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white dark:bg-slate-800/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white dark:bg-[#121212]/20 transition-colors shrink-0 ml-4"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -120,7 +120,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
       </header>
 
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
-        <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 overflow-y-auto bg-white dark:bg-slate-800 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 dark:border-slate-700">
+        <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-white dark:bg-[#121212] dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b]">
           
           <div className="bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
             <h2 className="text-sm font-bold text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 uppercase tracking-wider mb-2">Director's Goal</h2>
@@ -129,7 +129,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
           <div className="flex flex-col gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-400 dark:text-slate-300 mb-1">Adverb of Manner (How?)</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Adverb of Manner (How?)</label>
               <div className="grid grid-cols-3 gap-2">
                 {question.mannerOpts.map(opt => (
                   <button
@@ -138,7 +138,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
                     className={`px-3 py-2 rounded-lg border-2 text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
                       manner === opt 
                         ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 dark:text-indigo-200' 
-                        : 'border-slate-200 dark:border-slate-700 dark:border-slate-600 hover:border-indigo-300 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300'
+                        : 'border-slate-200 dark:border-[#1c1b1b] dark:border-slate-600 hover:border-indigo-300 bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff] dark:text-[#ffffff]'
                     }`}
                   >
                     {opt}
@@ -148,7 +148,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-400 dark:text-slate-300 mb-1">Prepositional Phrase (Where?)</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Prepositional Phrase (Where?)</label>
               <div className="grid grid-cols-1 gap-2">
                 {question.placeOpts.map(opt => (
                   <button
@@ -157,7 +157,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
                     className={`px-3 py-2 rounded-lg border-2 text-sm font-medium transition-all text-left whitespace-nowrap flex-shrink-0 ${
                       place === opt 
                         ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/50 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 dark:text-emerald-200' 
-                        : 'border-slate-200 dark:border-slate-700 dark:border-slate-600 hover:border-emerald-300 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300'
+                        : 'border-slate-200 dark:border-[#1c1b1b] dark:border-slate-600 hover:border-emerald-300 bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff] dark:text-[#ffffff]'
                     }`}
                   >
                     {opt}
@@ -167,7 +167,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-600 dark:text-slate-400 dark:text-slate-300 mb-1">Adverb/Phrase of Time (When?)</label>
+              <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Adverb/Phrase of Time (When?)</label>
               <div className="grid grid-cols-3 gap-2">
                 {question.timeOpts.map(opt => (
                   <button
@@ -176,7 +176,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
                     className={`px-3 py-2 rounded-lg border-2 text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
                       time === opt 
                         ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/50 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 dark:text-amber-200' 
-                        : 'border-slate-200 dark:border-slate-700 dark:border-slate-600 hover:border-amber-300 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300'
+                        : 'border-slate-200 dark:border-[#1c1b1b] dark:border-slate-600 hover:border-amber-300 bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff] dark:text-[#ffffff]'
                     }`}
                   >
                     {opt}
@@ -190,7 +190,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
             <button
               onClick={handleAction}
               disabled={!manner || !place || !time}
-              className="flex-1 py-3 px-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 min-w-0"
+              className="flex-1 py-3 px-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 min-w-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Play size={20} />
               Action!
@@ -209,7 +209,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
               {currentQIdx < QUESTIONS.length - 1 ? (
                 <button
                   onClick={nextQuestion}
-                  className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium w-full transition-colors whitespace-nowrap flex-shrink-0"
+                  className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium w-full transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   Next Scene
                 </button>
@@ -230,10 +230,10 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
         </div>
 
-        <div className="w-full lg:w-1/2 p-6 bg-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
-          <h2 className="absolute top-6 left-6 text-slate-500 dark:text-slate-400 dark:text-slate-300 font-bold tracking-widest uppercase text-sm">The Stage</h2>
+        <div className="w-full lg:w-1/2 p-6 bg-[#000000] flex flex-col items-center justify-center relative overflow-hidden">
+          <h2 className="absolute top-6 left-6 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] font-bold tracking-widest uppercase text-sm">The Stage</h2>
           
-          <div className="relative w-full max-w-md aspect-video bg-slate-800 rounded-xl overflow-hidden shadow-2xl border-4 border-slate-700">
+          <div className="relative w-full max-w-md aspect-video bg-[#121212] rounded-xl overflow-hidden shadow-2xl border-4 border-[#1c1b1b]">
             <div className="absolute bottom-0 w-full h-1/3 bg-amber-900/40 rounded-t-[100%] shadow-[inset_0_10px_20px_rgba(0,0,0,0.5)]"></div>
             
             <div className="absolute top-0 left-0 w-16 h-full bg-red-900 border-r-4 border-red-950 shadow-xl z-10 rounded-br-2xl"></div>
@@ -242,7 +242,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
             {question.id === 1 && (
               <div className="absolute bottom-16 left-1/4 w-24 h-32 bg-slate-600 rounded-lg shadow-lg border-2 border-slate-500 z-0">
-                <div className="text-xs text-center mt-12 text-slate-500 dark:text-slate-400 dark:text-slate-300">STAGE PROPS</div>
+                <div className="text-xs text-center mt-12 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa]">STAGE PROPS</div>
               </div>
             )}
             {question.id === 3 && (
@@ -268,7 +268,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
               <div className={`w-8 h-8 rounded-full bg-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.6)] ${animating && manner === 'abruptly' ? 'animate-bounce' : ''}`}></div>
               <div className={`w-6 h-12 bg-blue-500 rounded-sm mt-1 ${animating && manner === 'abruptly' ? 'animate-bounce' : ''}`}></div>
               {status === 'success' && animating && (
-                <div className="absolute -top-10 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-white text-xs px-2 py-1 rounded-full whitespace-nowrap shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-600 animate-pulse">
+                <div className="absolute -top-10 bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-white text-xs px-2 py-1 rounded-full whitespace-nowrap shadow-lg border border-slate-200 dark:border-[#1c1b1b] animate-pulse">
                   {manner} {place} {time}!
                 </div>
               )}
@@ -278,7 +278,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
           </div>
 
-          <div className="mt-8 text-center text-slate-500 dark:text-slate-400 dark:text-slate-300 max-w-sm">
+          <div className="mt-8 text-center text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] max-w-sm">
             <p className="text-sm font-medium">Observe the stage to see your directions come to life when correctly assembled.</p>
           </div>
 

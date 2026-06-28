@@ -45,19 +45,19 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-red-50 font-sans dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-red-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Unit 2: Pulse Rate and Exercise" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-red-800 mb-4">Circulation and Physical Demand</h2>
-          <p className="text-slate-600 dark:text-slate-300 mb-6">Observe how your pulse rate (heartbeats per minute) changes from a resting state, to active exercise, and finally during the recovery period.</p>
+          <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Observe how your pulse rate (heartbeats per minute) changes from a resting state, to active exercise, and finally during the recovery period.</p>
           
           <div className="flex justify-center gap-4">
             <button 
               onClick={startExercise}
               disabled={state !== 'rest'}
-              className="flex items-center px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 font-medium"
+              className="flex items-center px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 font-medium dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
             >
               <Play className="w-5 h-5 mr-2" />
               Start 2-Minute Jumping Jacks
@@ -68,8 +68,8 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
         <div className="flex gap-12 w-full max-w-4xl">
           
           {/* Animated Heart */}
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 shadow-sm">
-            <h3 className="font-bold text-slate-500 dark:text-slate-400 mb-8 uppercase tracking-wider text-sm">Heart Simulation</h3>
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:!bg-[#121212] p-8 rounded-3xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
+            <h3 className="font-bold text-slate-500 dark:text-[#71717a] mb-8 uppercase tracking-wider text-sm">Heart Simulation</h3>
             <div className="relative flex justify-center items-center h-48 w-48">
               {/* The heart pulses faster based on BPM. CSS animation duration = 60 / pulse */}
               <div 
@@ -92,8 +92,8 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
             </div>
             
             <div className="mt-8 text-center flex flex-col items-center">
-              <span className="text-5xl font-black text-slate-800 dark:text-slate-100 flex items-center">
-                {pulse} <span className="text-xl text-slate-500 dark:text-slate-400 ml-2">BPM</span>
+              <span className="text-5xl font-black text-slate-800 dark:text-[#ffffff] flex items-center">
+                {pulse} <span className="text-xl text-slate-500 dark:text-[#71717a] ml-2">BPM</span>
               </span>
               <span className={`mt-2 px-3 py-1 rounded-full text-sm font-bold ${
                 state === 'rest' ? 'bg-green-100 text-green-700' :
@@ -106,7 +106,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
           </div>
 
           {/* Graph/Monitor */}
-          <div className="flex-[2] bg-slate-900 dark:bg-slate-800 rounded-3xl p-6 border-4 border-slate-800 dark:border-slate-500 relative overflow-hidden flex flex-col">
+          <div className="flex-[2] bg-[#000000] dark:bg-[#121212] rounded-3xl p-6 border-4 border-[#1c1b1b] dark:border-[#1c1b1b] relative overflow-hidden flex flex-col">
              <div className="flex items-center text-green-400 mb-4">
                <Activity className="w-6 h-6 mr-2" />
                <h3 className="font-mono font-bold tracking-widest">ECG MONITOR</h3>

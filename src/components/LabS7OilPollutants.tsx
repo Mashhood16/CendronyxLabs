@@ -24,11 +24,11 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Unit 7: Removing Oil Pollutants" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-slate-50 dark:!bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-2xl font-bold text-emerald-400 mb-4">Cleaning Oil Spills</h2>
           <p className="text-slate-300 mb-6">Oil is less dense than water, so it floats on top forming a slick. Select different tools to try and clean up the oil spill from the water's surface.</p>
           
@@ -53,14 +53,14 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
             </button>
             <button 
               onClick={reset}
-              className="flex items-center px-4 py-2 bg-red-600/20 text-red-400 border border-red-500/50 rounded-lg hover:bg-red-600/40 font-medium ml-4"
+              className="flex items-center px-4 py-2 bg-red-600/20 text-red-400 border border-red-500/50 rounded-lg hover:bg-red-600/40 font-medium ml-4 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
             >
               Reset Spill
             </button>
           </div>
         </div>
 
-        <div className="relative w-full max-w-4xl h-80 flex justify-center items-center bg-slate-900 dark:bg-slate-800 rounded-3xl border-8 border-slate-700 dark:border-slate-500 overflow-hidden shadow-2xl">
+        <div className="relative w-full max-w-4xl h-80 flex justify-center items-center bg-[#000000] dark:!bg-[#121212] rounded-3xl border-8 border-[#1c1b1b] dark:border-[#1c1b1b] overflow-hidden shadow-2xl">
           
           {/* Water */}
           <div className="absolute inset-0 bg-blue-600/30 flex items-center justify-center">

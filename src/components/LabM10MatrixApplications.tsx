@@ -53,16 +53,16 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
   const mapY = (yVal: number) => 300 - (yVal + 10) * (300 / 20);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Matrix Applications: Chemical Mixing & Cramer's Rule" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4 flex items-center gap-2">
             <Box /> Theory & Context
           </h2>
-          <div className="prose text-slate-700 dark:text-slate-200">
+          <div className="prose text-slate-700 dark:text-[#ffffff]">
             <p>
               Linear systems often model real-world scenarios, such as mixing two chemical solutions (Solution X and Solution Y) to achieve a target concentration and volume.
             </p>
@@ -85,10 +85,10 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4">System Visualizer</h2>
           
-          <div className="w-full max-w-md bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-4 font-mono">
+          <div className="w-full max-w-md bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-4 font-mono">
             <div className="flex gap-2 items-center mb-2">
                <input type="number" value={a} onChange={e=>setA(Number(e.target.value))} className="w-16 p-1 border rounded" />
                <span>x +</span>
@@ -106,7 +106,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
           </div>
 
           {/* Graphing Area */}
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-slate-900 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b]">
             <svg viewBox="0 0 300 300" className="w-full h-full">
               {/* Grid */}
               {[...Array(21)].map((_, i) => (
@@ -145,7 +145,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
             </svg>
             
             {delta !== 0 && (
-              <div className="absolute top-2 left-2 bg-slate-50 dark:bg-slate-900/90 p-1 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 text-xs font-mono shadow">
+              <div className="absolute top-2 left-2 bg-slate-50 dark:bg-[#121212]/90 p-1 rounded border border-slate-300 dark:border-[#1c1b1b] text-xs font-mono shadow">
                 Solution: ({actualX.toFixed(2)}, {actualY.toFixed(2)})
               </div>
             )}
@@ -153,16 +153,16 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100 mb-6">
             <h3 className="font-semibold text-fuchsia-900 mb-2">Calculate the Solution</h3>
-            <p className="text-slate-700 dark:text-slate-200 mb-4 text-sm">
+            <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm">
               Use Cramer's rule to find the precise values of x and y for the system currently displayed in the simulator.
             </p>
             
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-4 flex justify-between text-sm">
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 flex justify-between text-sm">
                <div>Δ = {delta}</div>
                <div>Δx = {deltaX}</div>
                <div>Δy = {deltaY}</div>
@@ -170,22 +170,22 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
             
             <div className="flex items-center gap-4 mb-4">
               <div className="flex-1">
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">x value:</label>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">x value:</label>
                 <input 
                   type="number" 
                   value={ansX} 
                   onChange={e => setAnsX(e.target.value)}
-                  className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
                   placeholder="e.g. 2.5"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">y value:</label>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">y value:</label>
                 <input 
                   type="number" 
                   value={ansY} 
                   onChange={e => setAnsY(e.target.value)}
-                  className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
                   placeholder="e.g. -1"
                 />
               </div>
@@ -193,7 +193,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
 
             <button 
               onClick={checkAnswer}
-              className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-fuchsia-500/40"
             >
               Verify Calculations
             </button>

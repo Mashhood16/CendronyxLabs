@@ -47,7 +47,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
   const renderSpectrum = () => {
     const lines = [410, 434, 486, 656]; 
     return (
-      <svg width="100%" height="60" className="bg-slate-900 dark:bg-slate-800 rounded-lg mt-2">
+      <svg width="100%" height="60" className="bg-[#000000] dark:bg-[#121212] rounded-lg mt-2">
         <defs>
           <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="purple" />
@@ -80,42 +80,42 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab 12.2: Astrophysics & Climate Dynamics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 border-b pb-2">Theory</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">Theory</h2>
           
-          <div className="space-y-4 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
+          <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
             <section>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2">
+              <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
                 <Star size={16} className="text-amber-500"/> Wien's Displacement Law
               </h3>
               <p className="mt-1">
                 A black body's temperature is inversely proportional to its peak emission wavelength.
                 <br/><br/>
-                <code className="bg-slate-100 dark:bg-slate-800 p-1 rounded">λ_max = b / T</code>
+                <code className="bg-slate-100 dark:bg-[#121212] p-1 rounded">λ_max = b / T</code>
                 <br/><br/>
                 where b = 2.898 × 10⁻³ m·K. Hotter stars appear blue; cooler stars appear red.
               </p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
                 <Orbit size={16} className="text-blue-500"/> Doppler Red-Shift
               </h3>
               <p className="mt-1">
                 As galaxies move away from us, their light waves are stretched (red-shifted). The relativistic Doppler formula is:
                 <br/><br/>
-                <code className="bg-slate-100 dark:bg-slate-800 p-1 rounded">λ_obs = λ_rest × √((1 + v/c) / (1 - v/c))</code>
+                <code className="bg-slate-100 dark:bg-[#121212] p-1 rounded">λ_obs = λ_rest × √((1 + v/c) / (1 - v/c))</code>
                 <br/><br/>
                 where v is positive for recession.
               </p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
                 <Waves size={16} className="text-teal-500"/> Thermohaline Circulation
               </h3>
               <p className="mt-1">
@@ -125,10 +125,10 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6 overflow-y-auto">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Stellar Thermometer</h3>
-            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase block mb-1">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6 lg:overflow-y-auto">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Stellar Thermometer</h3>
+            <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
               Surface Temperature: {starTemp} K
             </label>
             <input 
@@ -136,7 +136,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
               onChange={(e) => setStarTemp(Number(e.target.value))}
               className="w-full mb-4 accent-amber-500"
             />
-            <div className="flex gap-4 items-center bg-slate-900 dark:bg-slate-800 p-4 rounded-lg overflow-hidden">
+            <div className="flex gap-4 items-center bg-[#000000] dark:bg-[#121212] p-4 rounded-lg overflow-hidden">
                <div 
                  className="w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)] flex-shrink-0"
                  style={{ backgroundColor: getStarColor(starTemp), boxShadow: `0 0 ${starTemp/200}px ${getStarColor(starTemp)}` }}
@@ -149,9 +149,9 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
             </div>
           </div>
 
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Spectrometer (Doppler Shift)</h3>
-            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase block mb-1">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Spectrometer (Doppler Shift)</h3>
+            <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
               Relative Velocity (v/c): {velocityC.toFixed(2)}c {velocityC > 0 ? '(Receding)' : velocityC < 0 ? '(Approaching)' : ''}
             </label>
             <input 
@@ -160,18 +160,18 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
               className="w-full mb-2 accent-blue-500"
             />
             {renderSpectrum()}
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center">Black lines = observed absorption lines. White dashed = rest frame.</p>
+            <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 text-center">Black lines = observed absorption lines. White dashed = rest frame.</p>
           </div>
 
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Thermohaline Downwelling</h3>
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Thermohaline Downwelling</h3>
             <div className="flex gap-4 mb-2">
               <div className="flex-1">
-                <label className="text-xs text-slate-600 dark:text-slate-300 block">Temp (°C): {oceanTemp}</label>
+                <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">Temp (°C): {oceanTemp}</label>
                 <input type="range" min="-2" max="30" value={oceanTemp} onChange={e=>setOceanTemp(Number(e.target.value))} className="w-full accent-teal-500" />
               </div>
               <div className="flex-1">
-                <label className="text-xs text-slate-600 dark:text-slate-300 block">Salinity (PSU): {salinity}</label>
+                <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">Salinity (PSU): {salinity}</label>
                 <input type="range" min="30" max="40" value={salinity} onChange={e=>setSalinity(Number(e.target.value))} className="w-full accent-teal-500" />
               </div>
             </div>
@@ -181,13 +181,13 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-3 border-b pb-2">Assessments</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">Assessments</h2>
           
           <div className="space-y-6">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Q1: Red Dwarf Star</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Q1: Red Dwarf Star</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 Calculate the peak wavelength emitted by a red dwarf star with a surface temperature of 3000 K.
               </p>
               <div className="flex gap-2 items-center">
@@ -196,17 +196,17 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
                   placeholder="e.g. 500" 
                   className="flex-1 border rounded px-3 py-1.5 text-sm"
                 />
-                <span className="text-sm text-slate-600 dark:text-slate-300">nm</span>
-                <button onClick={checkWien} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700">
+                <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">nm</span>
+                <button onClick={checkWien} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                   Check
                 </button>
               </div>
               {wienFeedback && <p className={`mt-2 text-sm font-medium ${wienFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{wienFeedback}</p>}
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Q2: Distant Galaxy</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Q2: Distant Galaxy</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 A galaxy is receding at 10% the speed of light (v = 0.1c). What is the observed wavelength of the Hydrogen Alpha line (λ_rest = 656 nm)?
               </p>
               <div className="flex gap-2 items-center">
@@ -215,8 +215,8 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
                   placeholder="e.g. 700" 
                   className="flex-1 border rounded px-3 py-1.5 text-sm"
                 />
-                <span className="text-sm text-slate-600 dark:text-slate-300">nm</span>
-                <button onClick={checkDoppler} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700">
+                <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">nm</span>
+                <button onClick={checkDoppler} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                   Check
                 </button>
               </div>

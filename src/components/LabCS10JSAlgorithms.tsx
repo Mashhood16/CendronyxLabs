@@ -104,37 +104,37 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="Algorithms Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory Column */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <FileText className="mr-2 text-indigo-500" /> Theory & Setup
                     </h2>
-                    <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+                    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
                         <p>
                             In computer science, searching algorithms are used to find a specific element within a data structure.
                         </p>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Linear Search</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Linear Search</h3>
                         <p>
                             Checks each element in the array sequentially until the target is found.
                             Time complexity: <strong>O(n)</strong>.
                         </p>
-                        <h3 className="font-semibold text-slate-800 dark:text-slate-100 mt-4">Binary Search</h3>
+                        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Binary Search</h3>
                         <p>
                             Works only on <strong>sorted</strong> arrays. It repeatedly divides the search interval in half.
                             Time complexity: <strong>O(log n)</strong>.
                         </p>
                         
-                        <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
-                            <h4 className="font-semibold text-indigo-800 mb-2">Lab Setup</h4>
+                        <div className="mt-6 p-4 bg-indigo-50 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b]">
+                            <h4 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Lab Setup</h4>
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Search Type</label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Search Type</label>
                                     <select 
-                                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500"
                                         value={searchType}
                                         onChange={(e) => setSearchType(e.target.value as 'linear' | 'binary')}
                                     >
@@ -143,10 +143,10 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Target Value</label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Target Value</label>
                                     <input 
                                         type="number"
-                                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500"
                                         value={target}
                                         onChange={(e) => setTarget(parseInt(e.target.value) || 0)}
                                     />
@@ -157,17 +157,17 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation Column */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <Search className="mr-2 text-indigo-500" /> Simulation
                     </h2>
                     
                     <div className="flex-grow flex flex-col items-center justify-center min-h-[300px]">
                         <div className="flex flex-wrap justify-center gap-2 mb-8">
                             {array.map((val, idx) => {
-                                let bgColor = 'bg-slate-100 dark:bg-slate-800';
-                                let borderColor = 'border-slate-300 dark:border-slate-700 dark:border-slate-500';
-                                let textColor = 'text-slate-700 dark:text-slate-200';
+                                let bgColor = 'bg-slate-100 dark:bg-[#121212]';
+                                let borderColor = 'border-slate-300 dark:border-[#1c1b1b]';
+                                let textColor = 'text-slate-700 dark:text-[#ffffff]';
 
                                 if (searchType === 'linear') {
                                     if (idx === currentIndex) {
@@ -186,8 +186,8 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                                         bgColor = 'bg-blue-50';
                                         borderColor = 'border-blue-300';
                                     } else if (step > 0) {
-                                        bgColor = 'bg-slate-50 dark:bg-slate-900';
-                                        borderColor = 'border-slate-200 dark:border-slate-700 dark:border-slate-500';
+                                        bgColor = 'bg-slate-50 dark:bg-[#121212]';
+                                        borderColor = 'border-slate-200 dark:border-[#1c1b1b]';
                                         textColor = 'text-slate-400';
                                     }
                                 }
@@ -207,14 +207,14 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                             <button 
                                 onClick={nextStep}
                                 disabled={found !== null}
-                                className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                                className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                             >
                                 <Play size={18} className="mr-2" />
                                 Step
                             </button>
                             <button 
                                 onClick={reset}
-                                className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-md hover:bg-slate-300 dark:bg-slate-800 transition-colors"
+                                className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:bg-[#121212] transition-colors"
                             >
                                 <RotateCcw size={18} className="mr-2" />
                                 Reset
@@ -231,24 +231,24 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis Column */}
-                <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+                <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
                         <FileText className="mr-2 text-indigo-500" /> Data & Assessment
                     </h2>
                     
                     <div className="mb-6 flex-grow">
-                        <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase mb-2">Execution Log</h3>
-                        <div className="bg-slate-900 dark:bg-slate-800 rounded-lg p-3 h-48 overflow-y-auto font-mono text-xs text-green-400">
-                            {logs.length === 0 && <span className="text-slate-500 dark:text-slate-400">Awaiting execution...</span>}
+                        <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">Execution Log</h3>
+                        <div className="bg-[#000000] dark:bg-[#121212] rounded-lg p-3 h-48 lg:overflow-y-auto font-mono text-xs text-green-400">
+                            {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">Awaiting execution...</span>}
                             {logs.map((log, i) => (
                                 <div key={i}>{`> ${log}`}</div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-indigo-50 rounded-lg p-4">
-                        <h3 className="font-bold text-indigo-900 mb-2">Knowledge Check</h3>
-                        <p className="text-sm text-indigo-800 mb-4">
+                    <div className="bg-indigo-50 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                        <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">Knowledge Check</h3>
+                        <p className="text-sm text-indigo-800 mb-4 dark:text-[#ffffff]">
                             How many steps would a <strong>Binary Search</strong> take to find the value <strong>{assessmentTarget}</strong> in the default array?
                         </p>
                         <div className="flex gap-2">
@@ -261,7 +261,7 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
                             />
                             <button 
                                 onClick={checkAssessment}
-                                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                             >
                                 Check
                             </button>

@@ -88,11 +88,11 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
       <header className="flex items-center p-4 bg-orange-600 dark:bg-orange-800 text-white shadow-md flex-shrink-0">
         <button 
           onClick={onExit} 
-          className="flex items-center gap-2 hover:bg-white dark:bg-slate-800/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
+          className="flex items-center gap-2 hover:bg-white dark:bg-[#121212]/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
         >
           <ArrowLeft size={18} />
           Go Back
@@ -101,7 +101,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white dark:bg-slate-800/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white dark:bg-[#121212]/20 transition-colors shrink-0 ml-4"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -109,7 +109,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
       </header>
 
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
-        <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 overflow-y-auto bg-white dark:bg-slate-800 dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 dark:border-slate-700">
+        <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-white dark:bg-[#121212] dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b]">
           
           <div className="bg-orange-50 dark:bg-orange-900/50 dark:bg-orange-900/30 p-4 rounded-xl border border-orange-200 dark:border-orange-800">
             <h2 className="text-sm font-bold text-orange-800 dark:text-orange-200 dark:text-orange-300 uppercase tracking-wider mb-2">Blueprint Goal</h2>
@@ -117,7 +117,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
           </div>
 
           <div className="flex flex-col gap-4 flex-1">
-            <div className="p-6 bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-700 rounded-xl text-center text-xl font-mono text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300 shadow-inner">
+            <div className="p-6 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded-xl text-center text-xl font-mono text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] shadow-inner">
               {formatSentence(question.sentence, selectedWord)}
             </div>
 
@@ -130,7 +130,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
                   className={`px-4 py-3 rounded-lg border-2 text-md font-bold transition-all whitespace-nowrap flex-shrink-0 ${
                     selectedWord === opt 
                       ? 'border-orange-500 bg-orange-100 dark:bg-orange-900/50 dark:bg-orange-900/60 dark:bg-orange-900/50 text-orange-700 dark:text-orange-300 dark:text-orange-200' 
-                      : 'border-slate-300 dark:border-slate-600 dark:border-slate-600 hover:border-orange-300 bg-white dark:bg-slate-800 dark:bg-slate-800 text-slate-700 dark:text-slate-300 dark:text-slate-300 dark:text-slate-300'
+                      : 'border-slate-300 dark:border-slate-600 dark:border-slate-600 hover:border-orange-300 bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff] dark:text-[#ffffff]'
                   } disabled:opacity-50`}
                 >
                   {opt}
@@ -141,7 +141,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
             <button
               onClick={handleWeld}
               disabled={!selectedWord || weldState === 'welding' || weldState === 'success'}
-              className="mt-6 py-4 px-6 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-3 text-lg whitespace-nowrap flex-shrink-0 min-w-0"
+              className="mt-6 py-4 px-6 bg-orange-600 hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-3 text-lg whitespace-nowrap flex-shrink-0 min-w-0 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
             >
               {weldState === 'welding' ? (
                 <span className="flex items-center gap-2 animate-pulse">
@@ -167,7 +167,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
               {currentQIdx < WELD_QUESTIONS.length - 1 ? (
                 <button
                   onClick={nextQuestion}
-                  className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium w-full transition-colors whitespace-nowrap flex-shrink-0"
+                  className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium w-full transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
                 >
                   Next Blueprint
                 </button>
@@ -188,8 +188,8 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
 
         </div>
 
-        <div className="w-full lg:w-1/2 p-6 bg-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
-          <h2 className="absolute top-6 left-6 text-slate-500 dark:text-slate-400 dark:text-slate-300 font-bold tracking-widest uppercase text-sm flex items-center gap-2">
+        <div className="w-full lg:w-1/2 p-6 bg-[#000000] flex flex-col items-center justify-center relative overflow-hidden">
+          <h2 className="absolute top-6 left-6 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] font-bold tracking-widest uppercase text-sm flex items-center gap-2">
             <Zap size={16} className="text-yellow-400" /> Welder Bay
           </h2>
           
@@ -200,9 +200,9 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
                 weldState === 'welding' ? 'translate-x-4' : weldState === 'success' ? 'translate-x-[4%]' : 'translate-x-0'
               }`}
             >
-              <div className="absolute right-[-10px] w-6 h-full bg-slate-500 clip-jagged-right opacity-80"></div>
-              <div className="w-4 h-4 rounded-full bg-slate-800 absolute left-4 top-4 shadow-inner"></div>
-              <div className="w-4 h-4 rounded-full bg-slate-800 absolute left-4 bottom-4 shadow-inner"></div>
+              <div className="absolute right-[-10px] w-6 h-full bg-slate-500 clip-jagged-right opacity-80 dark:bg-[#121212] dark:border-[#1c1b1b]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#121212] absolute left-4 top-4 shadow-inner"></div>
+              <div className="w-4 h-4 rounded-full bg-[#121212] absolute left-4 bottom-4 shadow-inner"></div>
               <span className="text-slate-100 font-bold tracking-wider opacity-60 font-mono">CLAUSE A</span>
             </div>
 
@@ -211,9 +211,9 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
                 weldState === 'welding' ? '-translate-x-4' : weldState === 'success' ? '-translate-x-[4%]' : 'translate-x-0'
               }`}
             >
-              <div className="absolute left-[-10px] w-6 h-full bg-slate-500 clip-jagged-left opacity-80"></div>
-              <div className="w-4 h-4 rounded-full bg-slate-800 absolute right-4 top-4 shadow-inner"></div>
-              <div className="w-4 h-4 rounded-full bg-slate-800 absolute right-4 bottom-4 shadow-inner"></div>
+              <div className="absolute left-[-10px] w-6 h-full bg-slate-500 clip-jagged-left opacity-80 dark:bg-[#121212] dark:border-[#1c1b1b]"></div>
+              <div className="w-4 h-4 rounded-full bg-[#121212] absolute right-4 top-4 shadow-inner"></div>
+              <div className="w-4 h-4 rounded-full bg-[#121212] absolute right-4 bottom-4 shadow-inner"></div>
               <span className="text-slate-100 font-bold tracking-wider opacity-60 font-mono">CLAUSE B</span>
             </div>
 
@@ -259,7 +259,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
 
           </div>
 
-          <div className="mt-12 text-center text-slate-500 dark:text-slate-400 dark:text-slate-300 max-w-sm">
+          <div className="mt-12 text-center text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] max-w-sm">
             <p className="text-sm font-medium">Select the correct logical connector to weld the clauses together successfully.</p>
           </div>
 

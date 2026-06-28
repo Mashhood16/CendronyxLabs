@@ -65,14 +65,14 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
         <LabHeader onExit={onExit} title="Lab M9.2: Geometry & Polygons" />
       
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <HelpCircle className="text-emerald-600" size={20} />
             Area, Perimeter & Centroid
           </h2>
@@ -81,9 +81,9 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
               In landscaping, geometric properties help estimate material costs. 
             </p>
             <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li><strong>Perimeter:</strong> Total distance around the boundary. Used to estimate fencing. <br/><span className="font-mono text-xs text-slate-500 dark:text-slate-400">P = d(A,B) + d(B,C) + d(C,A)</span></li>
-              <li><strong>Area:</strong> The 2D space enclosed. Used to estimate grass or soil.<br/><span className="font-mono text-xs text-slate-500 dark:text-slate-400">Shoelace Formula: ½ |x₁(y₂-y₃) + ...|</span></li>
-              <li><strong>Centroid:</strong> The geometric center. Ideal for placing sprinklers.<br/><span className="font-mono text-xs text-slate-500 dark:text-slate-400">C = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)</span></li>
+              <li><strong>Perimeter:</strong> Total distance around the boundary. Used to estimate fencing. <br/><span className="font-mono text-xs text-slate-500 dark:text-[#71717a]">P = d(A,B) + d(B,C) + d(C,A)</span></li>
+              <li><strong>Area:</strong> The 2D space enclosed. Used to estimate grass or soil.<br/><span className="font-mono text-xs text-slate-500 dark:text-[#71717a]">Shoelace Formula: ½ |x₁(y₂-y₃) + ...|</span></li>
+              <li><strong>Centroid:</strong> The geometric center. Ideal for placing sprinklers.<br/><span className="font-mono text-xs text-slate-500 dark:text-[#71717a]">C = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)</span></li>
             </ul>
             <p className="mt-4">
               <strong>Instructions:</strong> Click anywhere on the 20x20 grid to plot 3 vertices of a triangular yard. The system will automatically compute geometric properties.
@@ -92,8 +92,8 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <Ruler className="text-emerald-600" size={20} />
             Interactive Yard Map
           </h2>
@@ -102,7 +102,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
             <svg 
               width={SVG_SIZE} 
               height={SVG_SIZE} 
-              className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden cursor-crosshair"
+              className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden cursor-crosshair"
               onClick={handleSvgClick}
             >
               {Array.from({ length: GRID_SIZE + 1 }).map((_, i) => (
@@ -140,47 +140,47 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
               )}
             </svg>
             
-            <div className="absolute bottom-2 right-2 text-xs text-slate-400 font-mono bg-slate-50 dark:bg-slate-900/80 px-1 rounded">
+            <div className="absolute bottom-2 right-2 text-xs text-slate-400 font-mono bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">
               Grid: 20x20 meters
             </div>
           </div>
 
           <button 
             onClick={resetPoints} 
-            className="w-full py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg flex items-center justify-center gap-2 hover:bg-slate-700 dark:bg-slate-800 transition-colors"
+            className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg flex items-center justify-center gap-2 hover:bg-slate-700 dark:bg-[#121212] transition-colors"
           >
             <RefreshCcw size={18} /> Reset Canvas
           </button>
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <Calculator className="text-emerald-600" size={20} />
             Data Log & Cost Estimator
           </h2>
           
-          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 space-y-4">
+          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 space-y-4">
             <div>
-              <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Geometric Data</h3>
+              <h3 className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Geometric Data</h3>
               <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-sm">
-                <div className="bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b]">
                   <span className="text-slate-400 block text-xs">Perimeter</span>
                   {points.length === 3 ? `${perimeter.toFixed(2)} m` : '-'}
                 </div>
-                <div className="bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b]">
                   <span className="text-slate-400 block text-xs">Area</span>
                   {points.length === 3 ? `${area.toFixed(2)} m²` : '-'}
                 </div>
-                <div className="bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 col-span-2">
+                <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b] col-span-2">
                   <span className="text-slate-400 block text-xs">Centroid (Sprinkler)</span>
                   {points.length === 3 ? `(${cx.toFixed(2)}, ${cy.toFixed(2)})` : '-'}
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
-              <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Cost Rates</h3>
+            <div className="border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
+              <h3 className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Cost Rates</h3>
               <ul className="text-sm mt-2 space-y-1">
                 <li>Grass (Area): <strong>${grassRate} / m²</strong></li>
                 <li>Fencing (Perimeter): <strong>${fenceRate} / m</strong></li>
@@ -205,7 +205,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
               <button 
                 onClick={checkAns}
                 disabled={points.length < 3}
-                className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center disabled:opacity-50"
+                className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center disabled:opacity-50 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
               >
                 Check
               </button>

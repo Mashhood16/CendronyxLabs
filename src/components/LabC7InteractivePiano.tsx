@@ -52,20 +52,20 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen font-sans text-slate-100" style={{backgroundColor: '#0f172a'}}>
       <LabHeader onExit={onExit} title="Interactive Piano" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto items-center">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto items-center">
 
         <p className="text-slate-400 mb-12">Click the keys to trigger different sounds, simulating a programmed Scratch digital piano.</p>
 
         <div className="p-8 rounded-2xl shadow-2xl max-w-4xl w-full" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
           
           <div className="flex justify-center mb-8">
-            <div className="bg-slate-900 dark:bg-slate-800 px-6 py-3 rounded-full border border-slate-700 dark:border-slate-500 flex items-center text-emerald-400 font-mono shadow-inner">
+            <div className="bg-[#000000] dark:bg-[#121212] px-6 py-3 rounded-full border border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center text-emerald-400 font-mono shadow-inner">
               <Music className="w-5 h-5 mr-3" />
               {activeKey ? `PLAYING NOTE: ${keys.find(k=>k.id===activeKey)?.note}` : 'READY TO PLAY'}
             </div>
           </div>
 
-          <div className="flex justify-center h-64 bg-slate-900 dark:bg-slate-800 p-4 rounded-xl shadow-inner border border-slate-700 dark:border-slate-500 relative">
+          <div className="flex justify-center h-64 bg-[#000000] dark:bg-[#121212] p-4 rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b] relative">
             {keys.map((key) => (
               <div 
                 key={key.id}
@@ -73,17 +73,17 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
                 className={`
                   w-16 mx-1 border-2 border-b-8 rounded-b-lg cursor-pointer transition-all flex items-end justify-center pb-4
                   ${activeKey === key.id 
-                    ? 'bg-slate-200 dark:bg-slate-800 border-slate-400 dark:border-slate-500 border-b-4 translate-y-2' 
-                    : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-[0_4px_10px_rgba(0,0,0,0.5)] hover:bg-slate-50 dark:bg-slate-900'
+                    ? 'bg-slate-200 dark:bg-[#121212] border-slate-400 dark:border-slate-500 border-b-4 translate-y-2' 
+                    : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] shadow-[0_4px_10px_rgba(0,0,0,0.5)] hover:bg-slate-50 dark:bg-[#121212]'
                   }
                 `}
               >
-                <span className="font-bold text-slate-800 dark:text-slate-100 text-xl pointer-events-none">{key.note}</span>
+                <span className="font-bold text-slate-800 dark:text-[#ffffff] text-xl pointer-events-none">{key.note}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 text-center text-slate-500 dark:text-slate-400 text-sm font-medium">
+          <div className="mt-8 text-center text-slate-500 dark:text-[#71717a] text-sm font-medium">
             Programming Concept: Event Listeners (When Sprite Clicked -{'>'} Play Sound)
           </div>
         </div>

@@ -112,14 +112,14 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
 
   const getToolStyles = (type: ChunkType) => {
     const category = CATEGORIES.find(c => c.id === type);
-    if (!category) return 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-600';
+    if (!category) return 'bg-slate-100 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] border-slate-300 dark:border-slate-600';
     return `${category.bg} ${category.color} ${category.border} border-2 font-bold`;
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <div className="w-full bg-white dark:bg-slate-800 shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0 border-b border-slate-200 dark:border-slate-700">
+      <div className="w-full bg-white dark:bg-[#121212] shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0 border-b border-slate-200 dark:border-[#1c1b1b]">
         <div className="flex items-center gap-4">
           <button
             onClick={onExit}
@@ -147,13 +147,13 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
         {/* Left Column: Interactive Controls */}
-        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col shadow-sm z-0">
+        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] flex flex-col shadow-sm z-0">
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <Layers className="w-5 h-5 text-indigo-500" />
               Syntactic Tools
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
+            <p className="text-sm text-slate-600 dark:text-[#71717a]">
               Select a syntactic category below, then click on the corresponding chunks in the Simulation Stage to highlight them.
             </p>
           </div>
@@ -166,7 +166,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
                 className={`text-left px-4 py-4 rounded-xl border-2 transition-all duration-200 shadow-sm ${
                   activeTool === category.id
                     ? `${category.bg} ${category.border} ${category.color} ring-2 ring-offset-2 ring-offset-white dark:ring-offset-slate-800 ring-${category.border.split('-')[1]}-400 scale-[1.02]`
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                    : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}
               >
                 <div className="font-bold text-md">{category.label}</div>
@@ -174,10 +174,10 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
             ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-[#1c1b1b]">
             <button
               onClick={checkAnswers}
-              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-lg transition-colors whitespace-nowrap flex-shrink-0 shadow-md"
+              className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-lg transition-colors whitespace-nowrap flex-shrink-0 shadow-md dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Check className="w-6 h-6" /> Evaluate Analysis
             </button>
@@ -185,17 +185,17 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col bg-slate-100 dark:bg-slate-900 lg:overflow-y-auto">
+        <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col bg-slate-100 dark:bg-[#121212] lg:overflow-y-auto">
           <div className="mb-8 max-w-3xl mx-auto w-full">
             <h2 className="text-2xl font-bold mb-2">Sentence Analysis Stage</h2>
-            <p className="text-slate-600 dark:text-slate-400">
+            <p className="text-slate-600 dark:text-[#71717a]">
               Apply your selected syntactic tools to classify the highlighted chunks.
             </p>
           </div>
           
           <div className="flex-1 flex flex-col gap-8 max-w-3xl mx-auto w-full">
             {SENTENCES.map(sentence => (
-              <div key={sentence.id} className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 leading-loose text-lg">
+              <div key={sentence.id} className="bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b] leading-loose text-lg">
                 <div className="flex flex-wrap items-center gap-y-4">
                   {sentence.chunks.map(chunk => {
                     const assignedType = chunkAssignments[chunk.id];
@@ -204,7 +204,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
                     const isCorrect = feedback[chunk.id] === true;
                     
                     if (chunk.correctType === 'none') {
-                      return <span key={chunk.id} className="text-slate-800 dark:text-slate-200">{chunk.text}</span>;
+                      return <span key={chunk.id} className="text-slate-800 dark:text-[#ffffff]">{chunk.text}</span>;
                     }
 
                     return (
@@ -225,7 +225,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
                         {assignedType && !isEvaluated && (
                           <button
                             onClick={(e) => clearChunk(e, chunk.id)}
-                            className="absolute -top-3 -right-3 bg-white dark:bg-slate-800 rounded-full text-slate-400 hover:text-red-500 shadow-sm border border-slate-200 dark:border-slate-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute -top-3 -right-3 bg-white dark:bg-[#121212] rounded-full text-slate-400 hover:text-red-500 shadow-sm border border-slate-200 dark:border-[#1c1b1b] opacity-0 group-hover:opacity-100 transition-opacity"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                           </button>
@@ -233,14 +233,14 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
                         
                         {/* Label Badge */}
                         {assignedType && (
-                          <span className={`absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-white dark:bg-slate-800 border ${category?.border}`}>
+                          <span className={`absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap shadow-sm opacity-0 group-hover:opacity-100 transition-opacity z-10 bg-white dark:bg-[#121212] border ${category?.border}`}>
                             {category?.label}
                           </span>
                         )}
 
                         {/* Result Icon */}
                         {isEvaluated && (
-                          <span className="absolute -bottom-4 right-0 transform translate-y-1/2 z-20 bg-white dark:bg-slate-800 rounded-full p-0.5 shadow-sm">
+                          <span className="absolute -bottom-4 right-0 transform translate-y-1/2 z-20 bg-white dark:bg-[#121212] rounded-full p-0.5 shadow-sm">
                             {isCorrect ? (
                               <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />

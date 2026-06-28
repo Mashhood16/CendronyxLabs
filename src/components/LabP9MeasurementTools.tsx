@@ -56,13 +56,13 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Physics Grade 9: Vernier Caliper" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2">Theory: Measurement</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory: Measurement</h2>
           <div className="prose prose-sm">
             <p>
               A <strong>Vernier Caliper</strong> is an instrument used to measure internal and external dimensions accurately.
@@ -71,7 +71,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
               <li><strong>Main Scale:</strong> Reads in millimeters (mm). Read the mark just to the left of the zero on the Vernier scale.</li>
               <li><strong>Vernier Scale:</strong> Provides precision up to 0.1 mm. Find the Vernier mark that perfectly aligns with any mark on the Main scale.</li>
             </ul>
-            <div className="bg-blue-50 p-3 rounded-lg border border-blue-100 mt-4 text-blue-900">
+            <div className="bg-blue-50 p-3 rounded-lg border border-blue-100 mt-4 text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
               <strong>Formula:</strong><br />
               Total Reading = Main Scale Reading + (Vernier Division &times; Least Count)<br />
               <em>Here, Least Count = 0.1 mm</em>
@@ -87,8 +87,8 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2 w-full mb-4">Interactive Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">Interactive Simulator</h2>
           
           <div className="flex gap-4 mb-6">
             <button
@@ -97,20 +97,20 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
                 if (jawX < objectWidth) setJawX(objectWidth);
               }}
               disabled={objectPlaced}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               <Target size={18} /> Place Object
             </button>
             <button
               onClick={generateNewObject}
-              className="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-lg hover:bg-slate-300 dark:bg-slate-800 transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors flex items-center gap-2"
             >
               <RotateCcw size={18} /> New Object
             </button>
           </div>
 
-          <div className="relative w-full max-w-lg bg-slate-100 dark:bg-slate-800 rounded-lg p-4 border overflow-hidden flex justify-center mb-6">
-            <svg width="100%" viewBox="0 0 600 300" className="bg-slate-50 dark:bg-slate-900 border shadow-inner rounded">
+          <div className="relative w-full max-w-lg bg-slate-100 dark:bg-[#121212] rounded-lg p-4 border overflow-hidden flex justify-center mb-6">
+            <svg width="100%" viewBox="0 0 600 300" className="bg-slate-50 dark:bg-[#121212] border shadow-inner rounded">
               {/* Main Scale Beam */}
               <rect x="20" y="100" width="560" height="60" fill="#e2e8f0" stroke="#94a3b8" />
               {mainTicks.map(tick => (
@@ -156,7 +156,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
           </div>
 
           <div className="w-full max-w-lg space-y-2">
-            <label className="text-sm font-semibold text-slate-600 dark:text-slate-300 flex justify-between">
+            <label className="text-sm font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
               <span>Adjust Jaw Position</span>
               <span>{jawX.toFixed(1)} mm</span>
             </label>
@@ -173,12 +173,12 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2">Analysis & Record</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Analysis & Record</h2>
           
-          <div className="bg-slate-50 dark:bg-slate-900 border rounded-lg p-4 space-y-4">
+          <div className="bg-slate-50 dark:bg-[#121212] border rounded-lg p-4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Enter Reading (mm)</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Enter Reading (mm)</label>
               <input 
                 type="number" 
                 step="0.1"
@@ -192,7 +192,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
             <button 
               onClick={checkAnswer}
               disabled={!readingInput || !objectPlaced || jawX !== objectWidth}
-              className="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors"
+              className="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
             >
               Check Answer
             </button>
@@ -204,7 +204,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
             )}
 
             {feedback === 'correct' && (
-              <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 border border-green-200">
+              <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 border border-green-200 dark:text-[#ffffff]">
                 <CheckCircle size={20} />
                 <span>Correct! The object is exactly {objectWidth.toFixed(1)} mm wide.</span>
               </div>

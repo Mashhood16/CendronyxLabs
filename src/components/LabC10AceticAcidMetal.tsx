@@ -85,28 +85,28 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
   const maxVol = Math.max(600, ...logs.map((l) => l.volume));
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Acid-Metal Reaction: Acetic Acid & Sodium" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Section */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
             <Info className="w-5 h-5 text-blue-500" /> Theory & Setup
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+          <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
             Acids react with reactive metals to produce a salt and hydrogen gas. 
             Acetic acid (CH₃COOH) is a weak acid, but it still reacts vigorously with a highly reactive metal like Sodium (Na).
           </p>
-          <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-slate-200">
+          <div className="p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff]">
             2CH₃COOH + 2Na → 2CH₃COONa + H₂
           </div>
-          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mt-2">
+          <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mt-2">
             The volume of Hydrogen gas produced is directly proportional to the mass of Sodium added, assuming Acetic acid is in excess.
           </p>
           
-          <div className="bg-blue-50 p-4 rounded-lg mt-4 border border-blue-100">
-            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
+          <div className="bg-blue-50 p-4 rounded-lg mt-4 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+            <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
               Chunk Size of Sodium (g): {naMass.toFixed(1)} g
             </label>
             <input 
@@ -121,27 +121,27 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
         </div>
 
         {/* Simulation Section */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center">
-          <div className="flex justify-around w-full mb-6 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg">
-            <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-blue-50 disabled:opacity-50 transition-colors">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col items-center">
+          <div className="flex justify-around w-full mb-6 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg">
+            <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-blue-50 disabled:opacity-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900">
               <Beaker className="text-blue-500 w-8 h-8 mb-1" />
               <span className="text-xs font-semibold">Add Acid (Excess)</span>
             </button>
-            <button onClick={addNa} disabled={!acidAdded || isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-slate-200 dark:bg-slate-800 disabled:opacity-50 transition-colors">
-              <Cylinder className="text-slate-600 dark:text-slate-300 w-8 h-8 mb-1" />
+            <button onClick={addNa} disabled={!acidAdded || isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50 transition-colors">
+              <Cylinder className="text-slate-600 dark:text-[#a1a1aa] w-8 h-8 mb-1" />
               <span className="text-xs font-semibold">+ {naMass.toFixed(1)}g Na</span>
             </button>
             <button onClick={resetFlask} disabled={isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-red-50 disabled:opacity-50 transition-colors">
-              <RefreshCw className="text-slate-500 dark:text-slate-400 w-8 h-8 mb-1" />
+              <RefreshCw className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
               <span className="text-xs font-semibold">Reset</span>
             </button>
           </div>
 
-          <div className="relative w-full max-w-[300px] h-64 flex flex-col items-center justify-end bg-slate-50 dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <div className="relative w-full max-w-[300px] h-64 flex flex-col items-center justify-end bg-slate-50 dark:bg-[#121212] rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b]">
             {/* Gas Syringe */}
-            <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-slate-500 rounded-sm flex bg-slate-50 dark:bg-slate-900 overflow-hidden">
+            <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-[#1c1b1b] rounded-sm flex bg-slate-50 dark:bg-[#121212] overflow-hidden">
                <div className="h-full bg-blue-100 transition-all" style={{ width: `${(gasVolume / 600) * 100}%` }}></div>
-               <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-200">
+               <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-[#ffffff]">
                  {gasVolume.toFixed(1)} mL H₂
                </div>
             </div>
@@ -180,14 +180,14 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
             </svg>
           </div>
 
-          <div className="w-full mt-6 bg-slate-800 dark:bg-slate-800 text-green-400 font-mono text-sm p-4 rounded-lg min-h-[60px] flex items-center justify-center text-center">
+          <div className="w-full mt-6 bg-[#121212] dark:bg-[#121212] text-green-400 font-mono text-sm p-4 rounded-lg min-h-[60px] flex items-center justify-center text-center">
             {equation}
           </div>
           
           <button 
             onClick={recordData} 
             disabled={!acidAdded || totalNaAdded === 0 || isReacting}
-            className="mt-4 flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:bg-slate-300 dark:bg-slate-800 disabled:cursor-not-allowed transition-colors font-semibold"
+            className="mt-4 flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors font-semibold dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
           >
             <Plus className="w-5 h-5" />
             Record Data Point
@@ -195,14 +195,14 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
         </div>
 
         {/* Data Section */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
             <Activity className="w-5 h-5 text-green-500" /> Data & Analysis
           </h2>
           
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+              <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
                 <tr>
                   <th className="px-3 py-2 rounded-tl-lg">Total Na (g)</th>
                   <th className="px-3 py-2 rounded-tr-lg">Vol H₂ (mL)</th>
@@ -220,8 +220,8 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
             </table>
           </div>
 
-          <div className="h-48 w-full border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-2 bg-slate-50 dark:bg-slate-900 relative mt-2">
-            <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-slate-400">Vol H₂ vs Mass Na</div>
+          <div className="h-48 w-full border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-2 bg-slate-50 dark:bg-[#121212] relative mt-2">
+            <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">Vol H₂ vs Mass Na</div>
             <svg viewBox="0 0 100 100" className="w-full h-full transform scale-y-[-1] overflow-visible pb-6 pl-8">
                <line x1="0" y1="0" x2="100" y2="0" stroke="#94a3b8" strokeWidth="1" />
                <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
@@ -244,9 +244,9 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
             </svg>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg mt-auto border border-blue-100">
-            <h3 className="font-bold text-sm text-slate-800 dark:text-slate-100 mb-2">Assessment</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">
+          <div className="bg-blue-50 p-4 rounded-lg mt-auto border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-bold text-sm text-slate-800 dark:text-[#ffffff] mb-2">Assessment</h3>
+            <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
               Calculate the theoretical volume of H₂ produced (at RTP, 24000 mL/mol) if {targetMass} g of Sodium completely reacts. (Na = 23g/mol).
             </p>
             <div className="flex gap-2">
@@ -259,7 +259,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
               />
               <button 
                 onClick={checkAns}
-                className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700 transition-colors"
+                className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 Check
               </button>

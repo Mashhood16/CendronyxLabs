@@ -109,11 +109,11 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-20 shrink-0">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-20 shrink-0">
         {onExit && (
-          <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-slate-300">
+          <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-[#a1a1aa]">
             <ArrowLeft className="w-6 h-6" />
           </button>
         )}
@@ -123,17 +123,17 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
       {/* Main Content */}
       <main className="flex-1 min-w-0 flex lg:overflow-hidden">
         {/* Left Column: Controls & Workspace */}
-        <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
+        <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] p-6 lg:overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
           {/* Tabs */}
           <div className="flex bg-slate-200 dark:bg-slate-700 rounded-lg p-1 mb-6 shrink-0">
             <button 
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'rational' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'rational' ? 'bg-white dark:bg-[#121212] text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
               onClick={() => setActiveTab('rational')}
             >
               Rational Numbers
             </button>
             <button 
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'squares' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white'}`}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'squares' ? 'bg-white dark:bg-[#121212] text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
               onClick={() => setActiveTab('squares')}
             >
               Perfect Squares
@@ -142,24 +142,24 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
 
           {activeTab === 'rational' && (
             <div className="space-y-6 flex-1 pr-2">
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                   <Thermometer className="w-5 h-5 text-red-500" /> Temperature Control
                 </h3>
                 <input type="range" min="-50" max="50" value={temperature} onChange={(e) => setTemperature(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                   <span>-50°C</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">{temperature}°C</span>
                   <span>50°C</span>
                 </div>
               </div>
 
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                   <Mountain className="w-5 h-5 text-emerald-500" /> Altitude Control
                 </h3>
                 <input type="range" min="-500" max="5000" step="100" value={altitude} onChange={(e) => setAltitude(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                   <span>-500m</span>
                   <span className="text-emerald-600 dark:text-emerald-400 font-bold">{altitude}m</span>
                   <span>5000m</span>
@@ -171,7 +171,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                 <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
                   <Calculator className="w-5 h-5" /> Calculate
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4 font-medium leading-relaxed">
+                <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
                   {ratQ.type === 'temp' ? 
                     `The temperature is ${ratQ.start}°C. It ${ratQ.change > 0 ? 'rises' : 'drops'} by ${Math.abs(ratQ.change)}°C. What is the new temperature?` : 
                     `An object is at ${ratQ.start}m altitude. It moves ${ratQ.change > 0 ? 'up' : 'down'} by ${Math.abs(ratQ.change)}m. What is its new altitude?`
@@ -182,10 +182,10 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                     type="number" 
                     value={ratInput} 
                     onChange={(e) => setRatInput(e.target.value)}
-                    className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 min-w-0 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your answer..."
                   />
-                  <button onClick={checkRatAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                  <button onClick={checkRatAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                     <Check className="w-5 h-5" /> Check
                   </button>
                 </div>
@@ -205,12 +205,12 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
 
           {activeTab === 'squares' && (
             <div className="space-y-6 flex-1 pr-2">
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                   <Users className="w-5 h-5 text-blue-500" /> Soldier Formation
                 </h3>
                 <input type="range" min="1" max="100" value={soldiers} onChange={(e) => setSoldiers(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
-                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
                   <span>1</span>
                   <span className="text-blue-600 dark:text-blue-400 font-bold">{soldiers} soldiers</span>
                   <span>100</span>
@@ -222,7 +222,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                 <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
                   <Calculator className="w-5 h-5" /> Calculate
                 </h3>
-                <p className="text-slate-700 dark:text-slate-300 mb-4 font-medium leading-relaxed">
+                <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
                   A general wants to form a perfect square with <strong className="text-slate-900 dark:text-white">{sqQ.total}</strong> soldiers. How many soldiers will be left out of the largest possible square?
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -230,10 +230,10 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                     type="number" 
                     value={sqInput} 
                     onChange={(e) => setSqInput(e.target.value)}
-                    className="flex-1 min-w-0 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 min-w-0 bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Your answer..."
                   />
-                  <button onClick={checkSqAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors">
+                  <button onClick={checkSqAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                     <Check className="w-5 h-5" /> Check
                   </button>
                 </div>
@@ -253,15 +253,15 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
         </div>
         
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 min-w-0 flex items-center justify-center bg-slate-100 dark:bg-slate-900/50 p-6 overflow-y-auto relative">
+        <div className="flex-1 min-w-0 flex items-center justify-center bg-slate-100 dark:bg-[#121212]/50 p-6 lg:overflow-y-auto relative">
           
           {activeTab === 'rational' && (
             <div className="flex w-full max-w-4xl h-full justify-around items-center py-10 gap-8">
               
               {/* Thermometer Display */}
               <div className="flex flex-col items-center h-full max-h-[500px]">
-                <h3 className="font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Thermometer</h3>
-                <svg viewBox="0 0 100 400" className="h-full w-24 drop-shadow-lg bg-white/50 dark:bg-slate-800/50 rounded-full border border-slate-200 dark:border-slate-700">
+                <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Thermometer</h3>
+                <svg viewBox="0 0 100 400" className="h-full w-24 drop-shadow-lg bg-white/50 dark:bg-[#121212]/50 rounded-full border border-slate-200 dark:border-[#1c1b1b]">
                   <rect x="35" y="20" width="30" height="340" rx="15" className="fill-slate-200 dark:fill-slate-700" />
                   <rect 
                     x="40" 
@@ -275,7 +275,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                   <circle cx="50" cy="360" r="25" className={temperature > 0 ? "fill-red-500" : "fill-blue-500"} style={{ transition: 'fill 0.3s ease' }} />
                   {[50, 25, 0, -25, -50].map(tick => (
                     <g key={tick}>
-                      <line x1="25" y1={180 - (tick * 3.2)} x2="35" y2={180 - (tick * 3.2)} stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-slate-500" />
+                      <line x1="25" y1={180 - (tick * 3.2)} x2="35" y2={180 - (tick * 3.2)} stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-[#71717a]" />
                       <text x="20" y={180 - (tick * 3.2) + 4} fontSize="12" textAnchor="end" className="fill-slate-600 dark:fill-slate-400 font-bold">{tick}°</text>
                     </g>
                   ))}
@@ -284,8 +284,8 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
 
               {/* Altitude Display */}
               <div className="flex flex-col items-center h-full max-h-[500px] flex-1">
-                <h3 className="font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Altitude</h3>
-                <svg viewBox="0 0 300 400" className="h-full w-full drop-shadow-md rounded-2xl bg-sky-100 dark:bg-sky-900/40 overflow-hidden relative border border-slate-200 dark:border-slate-700">
+                <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Altitude</h3>
+                <svg viewBox="0 0 300 400" className="h-full w-full drop-shadow-md rounded-2xl bg-sky-100 dark:bg-sky-900/40 overflow-hidden relative border border-slate-200 dark:border-[#1c1b1b]">
                   <path d="M -50 300 L 150 50 L 350 300 Z" className="fill-slate-400 dark:fill-slate-600" />
                   <rect x="0" y="300" width="300" height="100" className="fill-blue-500/80 dark:fill-blue-700/80" />
                   <line x1="0" y1="300" x2="300" y2="300" stroke="white" strokeWidth="2" strokeDasharray="5,5" className="opacity-50" />
@@ -320,10 +320,10 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
 
           {activeTab === 'squares' && (
             <div className="flex flex-col items-center justify-center w-full h-full">
-               <h2 className="text-2xl font-bold mb-8 text-slate-700 dark:text-slate-300">
+               <h2 className="text-2xl font-bold mb-8 text-slate-700 dark:text-[#a1a1aa]">
                  Formation Preview
                </h2>
-               <div className="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 inline-block">
+               <div className="bg-white dark:!bg-[#121212] p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] inline-block">
                  <svg width="400" height="400" className="overflow-visible">
                    {renderSoldiers()}
                  </svg>
@@ -331,11 +331,11 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
                <div className="mt-8 flex gap-8">
                  <div className="flex items-center gap-3">
                    <div className="w-4 h-4 rounded-full bg-blue-600 dark:bg-blue-400 shadow"></div>
-                   <span className="font-bold text-slate-700 dark:text-slate-300">In Perfect Square</span>
+                   <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">In Perfect Square</span>
                  </div>
                  <div className="flex items-center gap-3">
                    <div className="w-4 h-4 rounded-full bg-orange-500 dark:bg-orange-400 shadow"></div>
-                   <span className="font-bold text-slate-700 dark:text-slate-300">Left Out</span>
+                   <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">Left Out</span>
                  </div>
                </div>
             </div>

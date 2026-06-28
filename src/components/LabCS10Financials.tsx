@@ -75,20 +75,20 @@ export default function LabCS10Financials({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Financial Projections" subtitle="Grade 10 Computer Science" variant="emerald" />
 
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <DollarSign className="text-emerald-600" /> Financial Concepts
           </h2>
           
-          <div className="prose prose-sm text-slate-600 dark:text-slate-300 space-y-4">
+          <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
             <div>
-              <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Revenue & Expenses</h3>
+              <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">Revenue & Expenses</h3>
               <p><strong>Revenue</strong> is the total amount of money brought in by sales. <strong>Expenses</strong> are the costs required to operate.</p>
               <div className="bg-emerald-50 p-2 rounded-md text-emerald-800 font-mono text-xs mt-1">
                 Profit = Revenue - Total Expenses
@@ -96,12 +96,12 @@ export default function LabCS10Financials({ onExit }: Props) {
             </div>
             
             <div>
-              <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Fixed vs Variable Costs</h3>
+              <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">Fixed vs Variable Costs</h3>
               <p><strong>Fixed Costs</strong> (e.g., rent, salaries) don't change based on how many items you sell. <strong>Variable Costs</strong> (e.g., raw materials) increase with each unit sold.</p>
             </div>
 
             <div>
-              <h3 className="text-md font-semibold text-slate-700 dark:text-slate-200">Break-even Point</h3>
+              <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">Break-even Point</h3>
               <p>The point where total revenue equals total costs. You are neither making a profit nor a loss.</p>
               <div className="bg-emerald-50 p-2 rounded-md text-emerald-800 font-mono text-xs mt-1">
                 Break-even Units = Fixed Costs / (Price - Variable Cost)
@@ -111,26 +111,26 @@ export default function LabCS10Financials({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <LineChart className="text-emerald-600" /> Interactive Spreadsheet
           </h2>
           
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Price per Unit ($)</label>
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <label className="block text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] mb-1">Price per Unit ($)</label>
               <input type="number" min="0" value={pricePerUnit} onChange={(e) => setPricePerUnit(Number(e.target.value) || 0)} className="w-full px-2 py-1 border rounded" />
             </div>
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Variable Cost/Unit ($)</label>
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <label className="block text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] mb-1">Variable Cost/Unit ($)</label>
               <input type="number" min="0" value={variableCostPerUnit} onChange={(e) => setVariableCostPerUnit(Number(e.target.value) || 0)} className="w-full px-2 py-1 border rounded" />
             </div>
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Fixed Costs/Month ($)</label>
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <label className="block text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] mb-1">Fixed Costs/Month ($)</label>
               <input type="number" min="0" step="100" value={fixedCosts} onChange={(e) => setFixedCosts(Number(e.target.value) || 0)} className="w-full px-2 py-1 border rounded" />
             </div>
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Start Units Sold/Month</label>
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <label className="block text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] mb-1">Start Units Sold/Month</label>
               <input type="number" min="0" value={unitsSoldPerMonth} onChange={(e) => setUnitsSoldPerMonth(Number(e.target.value) || 0)} className="w-full px-2 py-1 border rounded" />
             </div>
           </div>
@@ -146,8 +146,8 @@ export default function LabCS10Financials({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 relative">
-            <h3 className="text-xs font-bold text-center text-slate-500 dark:text-slate-400 mb-2">12-Month Projection (5% Monthly Growth)</h3>
+          <div className="flex-1 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-2 relative">
+            <h3 className="text-xs font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">12-Month Projection (5% Monthly Growth)</h3>
             <svg width="100%" height="100%" viewBox="0 0 120 100" preserveAspectRatio="none" className="overflow-visible px-2">
               {/* Zero line */}
               <line x1="0" y1={(maxVal / graphRange) * 100} x2="120" y2={(maxVal / graphRange) * 100} stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2" />
@@ -176,21 +176,21 @@ export default function LabCS10Financials({ onExit }: Props) {
               })}
             </svg>
           </div>
-          <button onClick={handleRecordData} className="w-full bg-emerald-600 text-white py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold">
+          <button onClick={handleRecordData} className="w-full bg-emerald-600 text-white py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
             Log Projection
           </button>
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-emerald-600" /> Data Logs & Assessment
           </h2>
 
           <div className="flex-1 overflow-auto">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2 text-sm">Saved Scenarios</h3>
-            <table className="w-full text-xs text-left text-slate-600 dark:text-slate-300">
-              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 uppercase">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2 text-sm">Saved Scenarios</h3>
+            <table className="w-full text-xs text-left text-slate-600 dark:text-[#a1a1aa]">
+              <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] uppercase">
                 <tr>
                   <th className="p-2">#</th>
                   <th className="p-2">Price</th>
@@ -219,9 +219,9 @@ export default function LabCS10Financials({ onExit }: Props) {
             </table>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-2">Break-Even Challenge</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Break-Even Challenge</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               Your fixed costs are <strong>${assessmentScenario.fc}</strong>. You sell a product for <strong>${assessmentScenario.p}</strong>, and the variable cost per unit is <strong>${assessmentScenario.vc}</strong>. How many units do you need to sell to break even?
             </p>
             <div className="flex gap-2">
@@ -229,12 +229,12 @@ export default function LabCS10Financials({ onExit }: Props) {
                 type="number" 
                 value={userAnswer}
                 onChange={(e) => setUserAnswer(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
                 placeholder="Units..."
               />
               <button 
                 onClick={checkAnswer}
-                className="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold"
+                className="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
               >
                 Check
               </button>

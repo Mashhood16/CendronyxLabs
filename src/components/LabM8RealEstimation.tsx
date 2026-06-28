@@ -70,9 +70,9 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
   const scale = 80 / maxPossibleL;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shrink-0 overflow-x-auto">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0 overflow-x-auto">
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
           <ArrowLeft className="w-6 h-6" />
         </button>
@@ -80,14 +80,14 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
         <div className="flex flex-wrap gap-2">
           <button 
             onClick={() => setActiveTab('finance')}
-            className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'finance' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-600'}`}
+            className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'finance' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
           >
             <PieChart className="w-4 h-4 inline-block mr-2" />
             Budgeting (Fractions)
           </button>
           <button 
             onClick={() => setActiveTab('bounds')}
-            className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'bounds' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-600'}`}
+            className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'bounds' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
           >
             <Ruler className="w-4 h-4 inline-block mr-2" />
             Error Bounds
@@ -96,14 +96,14 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
       </header>
 
       {/* Main 2-Column Layout */}
-      <main className="flex flex-1 overflow-hidden flex-col lg:flex-row">
+      <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">
         
         {/* Left Column: Controls & Assessment */}
-        <div className="flex-1 min-w-0 lg:w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 flex flex-col gap-6">
+        <div className="flex-1 min-w-0 lg:w-1/2 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           
           {activeTab === 'finance' && (
             <>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <Calculator className="w-5 h-5 text-blue-500" />
                   Personal Finance Setup
@@ -124,25 +124,25 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                     <div>
                       <label className="block text-sm font-medium mb-1 text-blue-600 dark:text-blue-400">Rent Fraction</label>
                       <div className="flex items-center justify-center gap-1">
-                        <input type="number" min="0" max="10" value={rentN} onChange={e => setRentN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="0" max="10" value={rentN} onChange={e => setRentN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                         <span>/</span>
-                        <input type="number" min="1" max="10" value={rentD} onChange={e => setRentD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="1" max="10" value={rentD} onChange={e => setRentD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-1 text-orange-600 dark:text-orange-400">Utilities Frac</label>
                       <div className="flex items-center justify-center gap-1">
-                        <input type="number" min="0" max="10" value={utilN} onChange={e => setUtilN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="0" max="10" value={utilN} onChange={e => setUtilN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                         <span>/</span>
-                        <input type="number" min="1" max="10" value={utilD} onChange={e => setUtilD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="1" max="10" value={utilD} onChange={e => setUtilD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-1 text-green-600 dark:text-green-400">Savings Frac</label>
                       <div className="flex items-center justify-center gap-1">
-                        <input type="number" min="0" max="10" value={saveN} onChange={e => setSaveN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="0" max="10" value={saveN} onChange={e => setSaveN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                         <span>/</span>
-                        <input type="number" min="1" max="10" value={saveD} onChange={e => setSaveD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-slate-900 dark:border-slate-600 text-center" />
+                        <input type="number" min="1" max="10" value={saveD} onChange={e => setSaveD(parseInt(e.target.value)||1)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
                       </div>
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h2 className="text-lg font-bold mb-4">Assessment</h2>
                 <p className="mb-4 text-sm">
                   The remaining fraction of the paycheck is allocated to <strong>Food</strong> (Purple). 
@@ -167,9 +167,9 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                     value={financeAns} 
                     onChange={e => setFinanceAns(e.target.value)}
                     placeholder="e.g. 1500"
-                    className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-slate-600 rounded-lg dark:bg-slate-900"
+                    className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
                   />
-                  <button onClick={checkFinance} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors">
+                  <button onClick={checkFinance} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                     Check Answer
                   </button>
                 </div>
@@ -185,12 +185,12 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
 
           {activeTab === 'bounds' && (
             <>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <Ruler className="w-5 h-5 text-indigo-500" />
                   Construction Error Bounds
                 </h2>
-                <p className="text-sm mb-6 text-slate-600 dark:text-slate-400">
+                <p className="text-sm mb-6 text-slate-600 dark:text-[#71717a]">
                   A room is measured to 1 decimal place. This implies an absolute error of ±0.05m for each dimension due to rounding.
                 </p>
                 <div className="space-y-6">
@@ -215,7 +215,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h2 className="text-lg font-bold mb-4">Assessment</h2>
                 <p className="mb-4 text-sm">
                   Based on the measurements (±0.05m bounds), calculate the <strong>maximum possible area</strong> of the room in square meters (m²).
@@ -226,9 +226,9 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                     value={boundsAns} 
                     onChange={e => setBoundsAns(e.target.value)}
                     placeholder="Max Area (m²)"
-                    className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-slate-600 rounded-lg dark:bg-slate-900"
+                    className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
                   />
-                  <button onClick={checkBounds} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors">
+                  <button onClick={checkBounds} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                     Check Answer
                   </button>
                 </div>
@@ -245,7 +245,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="flex-1 min-w-0 lg:w-1/2 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-950 relative overflow-y-auto">
+        <div className="flex-1 min-w-0 lg:w-1/2 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-950 relative lg:overflow-y-auto">
           
           {activeTab === 'finance' && (
             <div className="flex flex-col items-center w-full max-w-sm">
@@ -270,18 +270,18 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                   </div>
                 )}
                 {!isOverBudget && (
-                  <div className="absolute inset-0 flex items-center justify-center flex-col bg-white dark:bg-slate-800 rounded-full w-24 h-24 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-lg border-2 border-slate-100 dark:border-slate-700">
-                    <span className="text-xs text-slate-500 dark:text-slate-400">Total</span>
-                    <span className="font-bold text-slate-800 dark:text-slate-100">${paycheck}</span>
+                  <div className="absolute inset-0 flex items-center justify-center flex-col bg-white dark:bg-[#121212] rounded-full w-24 h-24 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-lg border-2 border-slate-100 dark:border-[#1c1b1b]">
+                    <span className="text-xs text-slate-500 dark:text-[#71717a]">Total</span>
+                    <span className="font-bold text-slate-800 dark:text-[#ffffff]">${paycheck}</span>
                   </div>
                 )}
               </div>
               
-              <div className="mt-8 grid grid-cols-2 gap-4 text-sm w-full bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-500 rounded-full shrink-0"></div> <span className="truncate">Rent ({rentN}/{rentD})</span></div>
+              <div className="mt-8 grid grid-cols-2 gap-4 text-sm w-full bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-500 rounded-full shrink-0 dark:bg-teal-950/20 dark:border-teal-900"></div> <span className="truncate">Rent ({rentN}/{rentD})</span></div>
                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-orange-500 rounded-full shrink-0"></div> <span className="truncate">Utilities ({utilN}/{utilD})</span></div>
-                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-full shrink-0"></div> <span className="truncate">Savings ({saveN}/{saveD})</span></div>
-                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-500 rounded-full shrink-0"></div> <span className="truncate text-purple-600 dark:text-purple-400 font-bold">Food (Rem.)</span></div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate">Savings ({saveN}/{saveD})</span></div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate text-purple-600 dark:text-purple-400 font-bold">Food (Rem.)</span></div>
               </div>
             </div>
           )}
@@ -290,7 +290,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
             <div className="flex flex-col items-center w-full max-w-lg">
               <h3 className="text-xl font-bold mb-4 text-center">Area Visualization (Max/Min Bounds)</h3>
               
-              <div className="w-full aspect-square relative bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-4 sm:p-8 flex items-center justify-center">
+              <div className="w-full aspect-square relative bg-white dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] p-4 sm:p-8 flex items-center justify-center">
                 <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
                   {/* Max Bound Rectangle */}
                   <rect 
@@ -318,16 +318,16 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                   />
                   
                   {/* Labels */}
-                  <text x="50" y={50 - (width * scale)/2 - 3} fontSize="3.5" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-slate-300 font-mono">
+                  <text x="50" y={50 - (width * scale)/2 - 3} fontSize="3.5" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-[#a1a1aa] font-mono">
                     L = {length.toFixed(1)} ± 0.05
                   </text>
-                  <text x={50 + (length * scale)/2 + 3} y="50" fontSize="3.5" textAnchor="middle" fill="currentColor" transform={`rotate(90, ${50 + (length * scale)/2 + 3}, 50)`} className="text-slate-600 dark:text-slate-300 font-mono">
+                  <text x={50 + (length * scale)/2 + 3} y="50" fontSize="3.5" textAnchor="middle" fill="currentColor" transform={`rotate(90, ${50 + (length * scale)/2 + 3}, 50)`} className="text-slate-600 dark:text-[#a1a1aa] font-mono">
                     W = {width.toFixed(1)} ± 0.05
                   </text>
                 </svg>
               </div>
 
-              <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700">
+              <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm bg-white dark:!bg-[#121212] p-3 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-50 dark:bg-indigo-900 border border-indigo-500 border-dashed"></div> Max Bounds</div>
                 <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-200 dark:bg-indigo-800 border border-indigo-600"></div> Nominal Area</div>
                 <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-300 dark:bg-indigo-700 border border-indigo-700 border-dotted"></div> Min Bounds</div>

@@ -71,21 +71,21 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Microscopy & Cell Biology Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
             <Info className="mr-2 text-indigo-600" /> Microscope Basics
           </h2>
-          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
+          <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
             <p>
               Light microscopes allow us to see cellular structures that are invisible to the naked eye.
             </p>
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
-              <h3 className="font-bold text-indigo-800 mb-2">Key Plant vs Animal Differences</h3>
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Key Plant vs Animal Differences</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li><strong>Plant Cells (Onion):</strong> Have a rigid cell wall providing a rectangular shape, and a large central vacuole.</li>
                 <li><strong>Animal Cells (Cheek):</strong> Only have a flexible cell membrane, resulting in irregular shapes.</li>
@@ -104,17 +104,17 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 w-full text-left">Microscope Viewport</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 w-full text-left">Microscope Viewport</h2>
           
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-[12px] border-slate-800 dark:border-slate-500 bg-black overflow-hidden shadow-2xl flex items-center justify-center mb-6">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-[12px] border-[#1c1b1b] dark:border-[#1c1b1b] bg-black overflow-hidden shadow-2xl flex items-center justify-center mb-6">
             <div 
               style={{ 
                 transform: `scale(${scale}) translate(${panX}px, ${panY}px)`, 
                 filter: `blur(${blurAmount}px)`, 
                 transition: 'transform 0.2s, filter 0.2s' 
               }}
-              className="w-full h-full flex items-center justify-center bg-slate-50 dark:bg-slate-900"
+              className="w-full h-full flex items-center justify-center bg-slate-50 dark:bg-[#121212]"
             >
               {renderSlideSVG()}
             </div>
@@ -128,7 +128,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
 
           <div className="w-full space-y-4 mt-auto">
             <div>
-              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex justify-between">
+              <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex justify-between">
                 <span><Eye className="inline w-4 h-4 mr-1"/> Coarse/Fine Focus</span>
                 <span>{focus === 5 ? 'Perfect' : 'Blurry'}</span>
               </label>
@@ -141,15 +141,15 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
             
             <div className="flex gap-4">
               <div className="flex-1">
-                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center mb-1">
+                <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center mb-1">
                   <ZoomIn className="inline w-4 h-4 mr-1"/> Magnification
                 </label>
-                <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+                <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
                   {[10, 40, 100].map(m => (
                     <button 
                       key={m}
                       onClick={() => setMag(m)}
-                      className={`flex-1 text-sm py-1 rounded-md font-bold transition-colors ${mag === m ? 'bg-indigo-600 text-white shadow' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+                      className={`flex-1 text-sm py-1 rounded-md font-bold transition-colors ${mag === m ? 'bg-indigo-600 text-white shadow' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
                     >
                       {m}x
                     </button>
@@ -157,7 +157,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
                 </div>
               </div>
               <div className="flex-1">
-                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center mb-1">
+                <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center mb-1">
                   <Move className="inline w-4 h-4 mr-1"/> Pan X/Y
                 </label>
                 <div className="flex gap-2">
@@ -168,13 +168,13 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mb-1 block">Slide Selector</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase mb-1 block">Slide Selector</label>
               <div className="grid grid-cols-3 gap-2">
                 {slides.map(s => (
                   <button 
                     key={s.id}
                     onClick={() => { setSelectedSlide(s.id); setFocus(0); setPanX(0); setPanY(0); }}
-                    className={`text-xs p-2 border rounded-md font-bold transition-colors ${selectedSlide === s.id ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800'}`}
+                    className={`text-xs p-2 border rounded-md font-bold transition-colors ${selectedSlide === s.id ? 'border-indigo-600 bg-indigo-50 text-indigo-700' : 'border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]'}`}
                   >
                     {s.name}
                   </button>
@@ -185,20 +185,20 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
             <CheckCircle className="mr-2 text-indigo-600" /> Observations & Analysis
           </h2>
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
                 1. What structure gives the onion skin cells their distinct, grid-like rectangular shape?
               </label>
               <select 
                 value={q1} 
                 onChange={(e) => setQ1(e.target.value)}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
               >
                 <option value="">Select...</option>
                 <option value="membrane">Cell Membrane</option>
@@ -208,13 +208,13 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
                 2. In the Onion Root Tip slide, finding cells with chromosomes aligned in the middle means they are in:
               </label>
               <select 
                 value={q2} 
                 onChange={(e) => setQ2(e.target.value)}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
               >
                 <option value="">Select phase...</option>
                 <option value="prophase">Prophase</option>
@@ -225,14 +225,14 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
 
             <button 
               onClick={() => setShowResults(true)}
-              className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors mt-auto"
+              className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors mt-auto dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Check Analysis
             </button>
 
             {showResults && (
-              <div className="p-4 rounded-lg bg-indigo-50 border border-indigo-200">
-                <p className="font-bold text-indigo-800">Feedback:</p>
+              <div className="p-4 rounded-lg bg-indigo-50 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <p className="font-bold text-indigo-800 dark:text-[#ffffff]">Feedback:</p>
                 <ul className="text-sm space-y-2 mt-2">
                   <li>Question 1: {q1 === 'wall' ? '✅ Correct (Plant cells have rigid cell walls)' : '❌ Incorrect'}</li>
                   <li>Question 2: {q2 === 'metaphase' ? '✅ Correct (Metaphase = Middle)' : '❌ Incorrect'}</li>

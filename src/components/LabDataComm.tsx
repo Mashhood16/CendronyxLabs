@@ -36,20 +36,20 @@ export default function LabDataComm({ onExit }: LabProps) {
   const isComplete = slots.every(s => nodes.find(n => n.slot === s.id && n.id === s.correctId));
 
   return (
-    <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 flex flex-col font-sans">
+    <div className="w-full h-screen bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 1.1: Data Communication Model" subtitle="Assemble the components of the communication cycle." variant="dark" />
 
       <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Lab Area */}
-        <div className="flex-1 bg-slate-100 dark:bg-slate-800 p-12 flex flex-col relative border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner bg-[url('https://www.transparenttextures.com/patterns/connected.png')]">
+        <div className="flex-1 bg-slate-100 dark:bg-[#121212] p-12 flex flex-col relative border-r-4 border-slate-300 dark:border-[#1c1b1b] shadow-inner bg-[url('https://www.transparenttextures.com/patterns/connected.png')]">
           
-          <h2 className="text-2xl font-bold text-slate-700 dark:text-slate-200 mb-8 text-center bg-slate-50 dark:bg-slate-900 py-2 rounded-xl shadow-sm">Build the Network Model</h2>
+          <h2 className="text-2xl font-bold text-slate-700 dark:text-[#ffffff] mb-8 text-center bg-slate-50 dark:!bg-[#121212] py-2 rounded-xl shadow-sm">Build the Network Model</h2>
 
           <div className="flex-1 relative flex items-center justify-center">
              
              {/* The Diagram Background */}
-             <div className="absolute w-[800px] h-[400px] border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 border-dashed rounded-3xl z-0 opacity-50"></div>
+             <div className="absolute w-[800px] h-[400px] border-4 border-slate-300 dark:border-[#1c1b1b] border-dashed rounded-3xl z-0 opacity-50"></div>
              
              {/* Connections */}
              {isComplete && (
@@ -69,7 +69,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                 {/* Top Row: Rules */}
                 <div className="flex justify-center -mt-8">
                    <div 
-                     className="w-40 h-24 bg-slate-50 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-500 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 2)}
                    >
@@ -90,7 +90,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                    
                    {/* Sender */}
                    <div 
-                     className="w-40 h-24 bg-slate-50 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-500 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 0)}
                    >
@@ -108,7 +108,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                    {/* Message */}
                    <div className="flex flex-col gap-4">
                      <div 
-                       className="w-40 h-24 bg-slate-50 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-500 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                       className="w-40 h-24 bg-slate-50 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                        onDragOver={e => e.preventDefault()}
                        onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 1)}
                      >
@@ -125,7 +125,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                      
                      {/* Medium */}
                      <div 
-                       className="w-40 h-24 bg-slate-50 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-500 border-dashed rounded-xl flex flex-col items-center justify-center p-2 mt-8"
+                       className="w-40 h-24 bg-slate-50 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] border-dashed rounded-xl flex flex-col items-center justify-center p-2 mt-8"
                        onDragOver={e => e.preventDefault()}
                        onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 3)}
                      >
@@ -143,7 +143,7 @@ export default function LabDataComm({ onExit }: LabProps) {
 
                    {/* Receiver */}
                    <div 
-                     className="w-40 h-24 bg-slate-50 dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-500 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 4)}
                    >
@@ -165,10 +165,10 @@ export default function LabDataComm({ onExit }: LabProps) {
         </div>
 
         {/* Control Panel */}
-        <div className="w-96 bg-slate-50 dark:bg-slate-900 p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 overflow-y-auto">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b-2 pb-2">Components Rack</h2>
+        <div className="w-96 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 border-b-2 pb-2">Components Rack</h2>
           
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">Drag components from the rack into their correct logical positions in the communication cycle diagram.</p>
+          <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6">Drag components from the rack into their correct logical positions in the communication cycle diagram.</p>
 
           <div className="grid grid-cols-2 gap-4 mb-8">
              {nodes.filter(n => n.slot === null).map(node => (
@@ -176,7 +176,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                  key={node.id}
                  draggable
                  onDragStart={e => e.dataTransfer.setData('nodeId', node.id)}
-                 className="bg-blue-600 text-white font-bold py-4 rounded-xl shadow-md cursor-grab active:cursor-grabbing text-center hover:bg-blue-700 transition-colors"
+                 className="bg-blue-600 text-white font-bold py-4 rounded-xl shadow-md cursor-grab active:cursor-grabbing text-center hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                >
                  {node.label}
                </div>
@@ -184,8 +184,8 @@ export default function LabDataComm({ onExit }: LabProps) {
           </div>
 
           {isComplete && (
-             <div className="mt-auto bg-green-50 p-6 rounded-xl border border-green-200 animate-fade-in">
-               <h3 className="font-bold text-green-800 mb-2 uppercase tracking-wider text-sm flex items-center gap-2">
+             <div className="mt-auto bg-green-50 p-6 rounded-xl border border-green-200 animate-fade-in dark:bg-[#121212] dark:border-[#1c1b1b]">
+               <h3 className="font-bold text-green-800 mb-2 uppercase tracking-wider text-sm flex items-center gap-2 dark:text-[#ffffff]">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   Network Online!
                </h3>

@@ -53,31 +53,31 @@ export default function LabM9Logarithms({ onExit }: Props) {
   }).join(' ');
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
         <LabHeader onExit={onExit} title="Grade 9 Math: Logarithms & Richter Scale" />
       
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Theory: Logarithms & Scientific Notation</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory: Logarithms & Scientific Notation</h2>
           
           <div className="prose prose-slate">
             <h3 className="text-lg font-semibold text-red-700">The Richter Scale</h3>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-600 dark:text-[#a1a1aa]">
               The Richter scale is a base-10 logarithmic scale used to measure earthquakes. 
               Because earthquake energies vary drastically, a logarithmic scale helps represent them with simple numbers.
             </p>
             
             <h3 className="text-lg font-semibold text-red-700 mt-4">Energy Formula</h3>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-600 dark:text-[#a1a1aa]">
               The energy E (in Joules) relates to magnitude M by the equation:<br />
               <strong>E = 10^(1.5M + 4.8)</strong><br/>
               An increase of 1.0 in magnitude means exactly 10^(1.5) ≈ 31.6 times more energy released!
             </p>
 
             <h3 className="text-lg font-semibold text-red-700 mt-4">Scientific Notation</h3>
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-600 dark:text-[#a1a1aa]">
               Very large numbers are written as a × 10^n. 
               For example, 1,500,000 becomes 1.5 × 10^6.
             </p>
@@ -85,13 +85,13 @@ export default function LabM9Logarithms({ onExit }: Props) {
         </div>
 
         {/* Interactive Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
             <Activity className="text-red-600" /> Seismograph Simulator
           </h2>
           
           {/* Visualizer */}
-          <div className="relative w-full h-40 bg-slate-900 dark:bg-slate-800 rounded-lg border border-slate-700 dark:border-slate-500 overflow-hidden flex items-center justify-center">
+          <div className="relative w-full h-40 bg-[#000000] dark:bg-[#121212] rounded-lg border border-[#1c1b1b] dark:border-[#1c1b1b] overflow-hidden flex items-center justify-center">
             <svg className="w-full h-full" viewBox="0 0 400 100">
               <path d={seismographPoints} stroke="#10b981" strokeWidth="2" fill="none" className="transition-all duration-75" />
             </svg>
@@ -99,9 +99,9 @@ export default function LabM9Logarithms({ onExit }: Props) {
           </div>
 
           {/* Controls */}
-          <div className="flex flex-col gap-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border">
+          <div className="flex flex-col gap-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1 flex justify-between">
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1 flex justify-between">
                 <span>Magnitude (M): {magnitude.toFixed(1)}</span>
                 <span className="text-red-600 text-xs">{magnitude > 7 ? 'Severe' : magnitude > 5 ? 'Moderate' : 'Minor'}</span>
               </label>
@@ -115,7 +115,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
             <button 
               onClick={triggerEarthquake}
               disabled={isQuaking}
-              className={`w-full py-3 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 ${isQuaking ? 'bg-slate-400 dark:bg-slate-800' : 'bg-red-600 hover:bg-red-700'}`}
+              className={`w-full py-3 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 ${isQuaking ? 'bg-slate-400 dark:bg-[#121212]' : 'bg-red-600 hover:bg-red-700'}`}
             >
               <Globe size={20} /> {isQuaking ? 'Recording...' : 'Trigger Earthquake'}
             </button>
@@ -123,15 +123,15 @@ export default function LabM9Logarithms({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2">Data Logs & Assessment</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Data Logs & Assessment</h2>
           
-          <div className="flex-1 min-w-0 overflow-y-auto border rounded-lg bg-slate-50 dark:bg-slate-900 p-2 min-h-[150px]">
+          <div className="flex-1 min-w-0 lg:overflow-y-auto border rounded-lg bg-slate-50 dark:bg-[#121212] p-2 min-h-[150px]">
             {logs.length === 0 ? (
               <div className="text-center text-slate-400 mt-10">Trigger an event to record data.</div>
             ) : (
               <table className="w-full text-sm text-left">
-                <thead className="text-xs text-slate-500 dark:text-slate-400 uppercase border-b">
+                <thead className="text-xs text-slate-500 dark:text-[#71717a] uppercase border-b">
                   <tr>
                     <th className="px-2 py-1">Event</th>
                     <th className="px-2 py-1">Mag (M)</th>
@@ -143,7 +143,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
                     <tr key={l.id} className="border-b">
                       <td className="px-2 py-1">#{l.id}</td>
                       <td className="px-2 py-1 font-bold text-red-600">{l.mag.toFixed(1)}</td>
-                      <td className="px-2 py-1 font-mono text-slate-700 dark:text-slate-200">{l.energyStr}</td>
+                      <td className="px-2 py-1 font-mono text-slate-700 dark:text-[#ffffff]">{l.energyStr}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -161,7 +161,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
                 className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-red-400"
                 placeholder="Factor..."
               />
-              <button onClick={checkAnswer} className="px-3 bg-red-600 text-white rounded font-bold hover:bg-red-700">Check</button>
+              <button onClick={checkAnswer} className="px-3 bg-red-600 text-white rounded font-bold hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">Check</button>
             </div>
             {qStatus !== null && (
               <div className={`mt-2 flex items-center gap-1 text-sm font-bold ${qStatus ? 'text-green-600' : 'text-red-500'}`}>

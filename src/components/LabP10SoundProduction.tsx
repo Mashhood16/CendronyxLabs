@@ -79,7 +79,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       {/* Header */}
       <LabHeader onExit={onExit} title="Production of Sound" subtitle="Visualize mechanical vibrations of a tuning fork in fluids" />
 
@@ -87,12 +87,12 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory and Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4">
-            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Theory & Setup</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4">
+            <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
           </div>
-          <div className="p-5 flex-1 overflow-y-auto space-y-6">
-            <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <div className="p-5 flex-1 lg:overflow-y-auto space-y-6">
+            <div className="space-y-2 text-sm text-slate-600 dark:text-[#a1a1aa]">
               <p>
                 Sound is produced by the mechanical vibration of objects. When a tuning fork is struck, its prongs vibrate rapidly back and forth.
               </p>
@@ -106,7 +106,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
             <div className="border-t border-slate-100 pt-4 space-y-4">
               <div className="space-y-2">
-                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <span>Strike Force (N)</span>
                   <span>{force}</span>
                 </label>
@@ -123,7 +123,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   Tuning Fork Frequency (Hz)
                 </label>
                 <div className="flex gap-2">
@@ -132,7 +132,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                       key={freq}
                       onClick={() => setFrequency(freq)}
                       disabled={isStriking}
-                      className={`flex-1 py-2 text-sm font-medium rounded-md border ${frequency === freq ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'bg-slate-50 dark:bg-slate-900 border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900'}`}
+                      className={`flex-1 py-2 text-sm font-medium rounded-md border ${frequency === freq ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
                     >
                       {freq}
                     </button>
@@ -141,14 +141,14 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+                <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   Fluid Medium
                 </label>
                 <select
                   value={fluid}
                   onChange={(e) => setFluid(e.target.value)}
                   disabled={isStriking}
-                  className="w-full p-2 rounded-lg border border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="w-full p-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 >
                   {Object.entries(fluids).map(([key, mat]) => (
                     <option key={key} value={key}>
@@ -162,7 +162,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
             <button
               onClick={handleStrike}
               disabled={isStriking}
-              className="w-full py-3 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 dark:bg-slate-800 text-white font-bold rounded-lg transition-colors"
+              className="w-full py-3 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Play className="w-5 h-5 fill-current" />
               {isStriking ? 'Striking & Dipping...' : 'Strike & Dip Fork'}
@@ -171,21 +171,21 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden lg:col-span-1">
-          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Simulation View</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden lg:col-span-1">
+          <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Simulation View</h2>
           </div>
-          <div className="p-4 flex-1 flex flex-col items-center justify-end bg-slate-900 dark:bg-slate-800 relative overflow-hidden">
+          <div className="p-4 flex-1 flex flex-col items-center justify-end bg-[#000000] dark:bg-[#121212] relative overflow-hidden">
             
             {/* The Setup */}
             <div className="relative w-full h-[400px] flex flex-col items-center justify-end">
               
               {/* Splash Height Marker / Ruler */}
-              <div className="absolute left-8 bottom-10 top-10 w-8 border-r-2 border-slate-600 dark:border-slate-500 flex flex-col justify-between items-end pr-2 py-4">
+              <div className="absolute left-8 bottom-10 top-10 w-8 border-r-2 border-slate-600 dark:border-[#1c1b1b] flex flex-col justify-between items-end pr-2 py-4">
                 {[30, 25, 20, 15, 10, 5, 0].map(val => (
                   <div key={val} className="flex items-center gap-1">
                     <span className="text-[10px] text-slate-400">{val}</span>
-                    <div className="w-2 h-px bg-slate-500 dark:bg-slate-800"></div>
+                    <div className="w-2 h-px bg-slate-500 dark:bg-[#121212]"></div>
                   </div>
                 ))}
               </div>
@@ -226,29 +226,29 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                 className={`absolute z-20 flex flex-col items-center transition-all ${isStriking ? 'duration-1000 bottom-[60px]' : 'duration-500 bottom-[200px]'}`}
               >
                  <div className="relative w-12 h-24">
-                   <div className="absolute bottom-0 w-full h-4 bg-slate-300 dark:bg-slate-800 rounded-b-md" />
+                   <div className="absolute bottom-0 w-full h-4 bg-slate-300 dark:bg-[#121212] rounded-b-md" />
                    {/* Left Prong */}
                    <div 
-                     className="absolute left-0 bottom-4 w-3 h-full bg-slate-300 dark:bg-slate-800 rounded-t-xl origin-bottom"
+                     className="absolute left-0 bottom-4 w-3 h-full bg-slate-300 dark:bg-[#121212] rounded-t-xl origin-bottom"
                      style={{
                        animation: isStriking || splashHeight !== null ? `vibrate ${(1/frequency)*10}s linear infinite alternate` : 'none'
                      }}
                    />
                    {/* Right Prong */}
                    <div 
-                     className="absolute right-0 bottom-4 w-3 h-full bg-slate-300 dark:bg-slate-800 rounded-t-xl origin-bottom"
+                     className="absolute right-0 bottom-4 w-3 h-full bg-slate-300 dark:bg-[#121212] rounded-t-xl origin-bottom"
                      style={{
                        animation: isStriking || splashHeight !== null ? `vibrate ${(1/frequency)*10}s linear infinite alternate-reverse` : 'none'
                      }}
                    />
                  </div>
-                 <div className="w-3 h-16 bg-slate-400 dark:bg-slate-800 rounded-b-xl" />
+                 <div className="w-3 h-16 bg-slate-400 dark:bg-[#121212] rounded-b-xl" />
                  
                  {/* Vibration Rings (Sound Waves in Air) */}
                  {(isStriking || splashHeight !== null) && (
                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 pointer-events-none">
-                     <div className="absolute inset-0 border-2 border-slate-400 dark:border-slate-500/30 rounded-full animate-ping" style={{ animationDuration: '1s' }}/>
-                     <div className="absolute inset-2 border-2 border-slate-400 dark:border-slate-500/20 rounded-full animate-ping" style={{ animationDuration: '1s', animationDelay: '0.3s' }}/>
+                     <div className="absolute inset-0 border-2 border-slate-400 dark:border-[#1c1b1b]/30 rounded-full animate-ping" style={{ animationDuration: '1s' }}/>
+                     <div className="absolute inset-2 border-2 border-slate-400 dark:border-[#1c1b1b]/20 rounded-full animate-ping" style={{ animationDuration: '1s', animationDelay: '0.3s' }}/>
                    </div>
                  )}
               </div>
@@ -272,7 +272,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
             </div>
 
             {/* Readout */}
-            <div className="mt-4 w-full bg-slate-800 dark:bg-slate-800 p-3 rounded-xl border border-slate-700 dark:border-slate-500 flex items-center justify-between px-6">
+            <div className="mt-4 w-full bg-[#121212] dark:bg-[#121212] p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center justify-between px-6">
               <span className="text-slate-400 text-sm font-medium">Splash Height:</span>
               <span className="text-2xl font-mono text-emerald-400">
                 {splashHeight !== null ? `${splashHeight.toFixed(1)} cm` : '--'}
@@ -283,32 +283,32 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex justify-between items-center">
-            <h2 className="font-semibold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 flex justify-between items-center">
+            <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
             <div className="flex gap-2">
               <button
                 onClick={handleRecordData}
                 disabled={splashHeight === null || isStriking}
-                className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded-md hover:bg-indigo-700 disabled:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded-md hover:bg-indigo-700 disabled:bg-slate-300 transition-colors text-sm font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <Plus className="w-4 h-4" /> Record
               </button>
               <button
                 onClick={handleClearData}
-                className="flex items-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-slate-800 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm font-medium"
               >
                 <Trash2 className="w-4 h-4" /> Clear
               </button>
             </div>
           </div>
           
-          <div className="p-4 flex-1 overflow-y-auto space-y-6">
+          <div className="p-4 flex-1 lg:overflow-y-auto space-y-6">
             
             {/* Data Table */}
-            <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden">
+            <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-medium border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-medium border-b border-slate-200 dark:border-[#1c1b1b]">
                   <tr>
                     <th className="px-3 py-2 text-center">Force (N)</th>
                     <th className="px-3 py-2 text-center">Freq (Hz)</th>
@@ -324,7 +324,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                     </tr>
                   ) : (
                     data.map((point) => (
-                      <tr key={point.id} className="hover:bg-slate-50 dark:bg-slate-900">
+                      <tr key={point.id} className="hover:bg-slate-50 dark:bg-[#121212]">
                         <td className="px-3 py-2 text-center">{point.force}</td>
                         <td className="px-3 py-2 text-center">{point.freq}</td>
                         <td className="px-3 py-2 text-center font-semibold text-emerald-600">{point.splash}</td>
@@ -336,9 +336,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
             </div>
 
             {/* Graph */}
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200 mb-2 text-center">Graph of Force vs Splash Height</h3>
-              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-slate-900 border-l-2 border-b-2 border-slate-600 dark:border-slate-500">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">Graph of Force vs Splash Height</h3>
+              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-[#121212] border-l-2 border-b-2 border-slate-600 dark:border-[#1c1b1b]">
                 {/* Grid lines */}
                 {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
                   <div key={`grid-${val}`}>
@@ -348,9 +348,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                 ))}
                 
                 {/* Axis Labels */}
-                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-slate-400 font-medium">Force (N)</div>
+                <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-[#71717a] font-medium">Force (N)</div>
                 <div className="absolute top-0 bottom-0 -left-6 flex items-center">
-                  <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">Height (cm)</div>
+                  <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a] font-medium whitespace-nowrap">Height (cm)</div>
                 </div>
 
                 {/* Data Points */}
@@ -368,9 +368,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
             </div>
 
             {/* Assessment */}
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
-              <h3 className="font-semibold text-indigo-900 mb-2">Analysis</h3>
-              <p className="text-sm text-indigo-800 mb-3">
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Analysis</h3>
+              <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
                 Based on your measurements with the <strong>Unknown Fluid</strong>, compare its splash height to Water (ρ=1.0) for the same force and frequency. What is its approximate density (g/cm³)?
               </p>
               <div className="flex gap-2 items-center">
@@ -384,7 +384,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                 />
                 <button
                   onClick={checkAssessment}
-                  className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-700 transition-colors whitespace-nowrap"
+                  className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-700 transition-colors whitespace-nowrap dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   Check
                 </button>
@@ -397,7 +397,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
                 </div>
               )}
               {assessmentResult === 'incorrect' && (
-                <div className="mt-3 flex items-center gap-2 text-rose-600 bg-rose-50 p-2 rounded border border-rose-200">
+                <div className="mt-3 flex items-center gap-2 text-rose-600 bg-rose-50 p-2 rounded border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
                   <XCircle className="w-5 h-5" />
                   <span className="text-sm font-medium">Incorrect. Remember, higher density means a smaller splash for the same energy.</span>
                 </div>

@@ -28,18 +28,18 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Cyber Ethics Chart Builder" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
         
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
 
         <div className="flex gap-8 flex-1 h-[600px]">
           {/* Rule Bank */}
-          <div className="w-80 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden p-6">
-            <h3 className="font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
-            <div className="flex flex-col gap-3 overflow-y-auto pr-2 pb-2">
+          <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden p-6">
+            <h3 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
+            <div className="flex flex-col gap-3 lg:overflow-y-auto pr-2 pb-2">
               {rules.map((rule, idx) => (
                 <div 
                   key={idx}
@@ -62,7 +62,7 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
 
           {/* Canvas */}
           <div 
-            className="flex-1 bg-amber-50 rounded-xl shadow-md border-8 border-amber-800/20 relative overflow-hidden flex flex-col items-center"
+            className="flex-1 bg-amber-50 rounded-xl shadow-md border-8 border-amber-800/20 relative overflow-hidden flex flex-col items-center dark:!bg-[#121212] dark:border-[#1c1b1b]"
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => {
               const rule = JSON.parse(e.dataTransfer.getData('text/plain'));
@@ -73,14 +73,14 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
               backgroundAttachment: 'local'
             }}
           >
-            <div className="bg-slate-50 dark:bg-slate-900 px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
+            <div className="bg-slate-50 dark:bg-[#121212] px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
               Classroom Cyber Ethics
             </div>
 
             {stickers.length === 0 && (
               <div className="absolute inset-0 flex flex-col items-center justify-center opacity-50 pointer-events-none">
-                <Type className="w-16 h-16 text-amber-900 mb-4" />
-                <p className="font-bold text-amber-900 text-xl">Drag rules here to build the chart</p>
+                <Type className="w-16 h-16 text-amber-900 mb-4 dark:text-[#ffffff]" />
+                <p className="font-bold text-amber-900 text-xl dark:text-[#ffffff]">Drag rules here to build the chart</p>
               </div>
             )}
 
@@ -104,7 +104,7 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
         </div>
 
         {stickers.length >= 4 && (
-          <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg">
+          <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg dark:text-[#ffffff]">
             <CheckCircle className="w-6 h-6" /> 
             Chart is looking great! This covers enough rules to be displayed in the lab.
           </div>

@@ -47,7 +47,7 @@ export default function SubjectSelection() {
                 <button
                   key={subject}
                   onClick={() => navigate(`/class/${classId}/${subject}`)}
-                  className="relative group p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/50 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                  className="relative group p-6 rounded-2xl bg-white dark:bg-[#121212] border border-slate-200/50 dark:border-[#1c1b1b] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
                 >
                   {/* Top accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
@@ -62,8 +62,8 @@ export default function SubjectSelection() {
                       <Icon className="w-5 h-5 md:w-7 md:h-7" strokeWidth={2} />
                     </div>
                     <div className="flex flex-col flex-1 min-w-0">
-                      <h3 className="text-lg md:text-xl font-bold text-slate-800 font-outfit mb-1">{formatSubject(subject)}</h3>
-                      <p className="text-sm font-medium text-slate-500 leading-snug mb-3">{config.description}</p>
+                      <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-[#ffffff] font-outfit mb-1">{formatSubject(subject)}</h3>
+                      <p className="text-sm font-medium text-slate-500 dark:text-[#a1a1aa] leading-snug mb-3">{config.description}</p>
                       <div className="flex items-center gap-2 mt-auto">
                         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${config.gradient}`}>
                           {count} modules

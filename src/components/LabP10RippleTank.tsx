@@ -103,7 +103,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
     }));
 
     return (
-      <svg viewBox="0 0 200 200" className="w-full h-48 bg-slate-50 dark:bg-slate-900 border rounded-md shadow-inner mt-4">
+      <svg viewBox="0 0 200 200" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-md shadow-inner mt-4">
         <line x1="30" y1="170" x2="180" y2="170" stroke="#94a3b8" strokeWidth="2" />
         <line x1="30" y1="170" x2="30" y2="20" stroke="#94a3b8" strokeWidth="2" />
         <text x="90" y="195" fontSize="10" fill="#64748b" fontWeight="bold">sin(θ_r)</text>
@@ -123,26 +123,26 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 12: Ripple Tank" subtitle="Investigate wave refraction and Snell's Law quantitatively." />
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory & Setup</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               When water waves travel from deep to shallow water, they slow down and their path bends. This is <strong>refraction</strong>.
             </p>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               According to Snell's Law:
-              <br/><span className="font-mono bg-slate-100 dark:bg-slate-800 p-1 rounded mt-1 inline-block">sin(θ_i) / sin(θ_r) = v₁ / v₂ = n</span>
+              <br/><span className="font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block">sin(θ_i) / sin(θ_r) = v₁ / v₂ = n</span>
             </p>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">Incident Angle (θ_i): {angleI}°</label>
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Incident Angle (θ_i): {angleI}°</label>
               <input
                 type="range" min="10" max="80" step="1"
                 value={angleI}
@@ -152,11 +152,11 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">Medium 2 (Bottom Region)</label>
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Medium 2 (Bottom Region)</label>
               <select
                 value={medium}
                 onChange={(e) => setMedium(e.target.value)}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-cyan-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-cyan-500 outline-none"
               >
                 <option value="Shallow">Shallow Water (v₂ = 15 cm/s)</option>
                 <option value="VeryShallow">Very Shallow Water (v₂ = 10 cm/s)</option>
@@ -171,7 +171,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-4 flex flex-col relative overflow-hidden h-[500px] lg:h-auto">
+        <div className="bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-4 flex flex-col relative overflow-hidden h-[500px] lg:h-auto">
           <div className="flex justify-center gap-4 mb-2 z-10 relative">
             <button
               onClick={() => setIsPaused(!isPaused)}
@@ -184,7 +184,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="flex-1 w-full relative border border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden bg-cyan-950">
+          <div className="flex-1 w-full relative border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-cyan-950">
             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
               <defs>
                 <clipPath id="topHalf"><rect x="0" y="0" width="400" height="150" /></clipPath>
@@ -225,9 +225,9 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6 lg:overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Data Logging</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Data Logging</h2>
             
             <button
               onClick={handleRecord}
@@ -236,14 +236,14 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
               <Plus className="w-4 h-4" /> Record (θ_i, θ_r)
             </button>
             
-            <div className="max-h-32 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-md mb-2">
+            <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md mb-2">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                   <tr>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">θ_i (°)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">θ_r (°)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">sin(θ_i)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">sin(θ_r)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">θ_i (°)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">θ_r (°)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">sin(θ_i)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">sin(θ_r)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -251,11 +251,11 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
                     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">No data recorded</td></tr>
                   ) : (
                     data.map((d, i) => (
-                      <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{d.i}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{d.r}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{Math.sin(d.i * Math.PI / 180).toFixed(3)}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{Math.sin(d.r * Math.PI / 180).toFixed(3)}</td>
+                      <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.i}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.r}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{Math.sin(d.i * Math.PI / 180).toFixed(3)}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{Math.sin(d.r * Math.PI / 180).toFixed(3)}</td>
                       </tr>
                     ))
                   )}
@@ -266,9 +266,9 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
             {renderGraph()}
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
               Calculate the speed <span className="italic">v₂</span> of the <strong>Mystery Liquid</strong> using Snell's Law and your graph slope.
             </p>
             <div className="flex gap-2">
@@ -277,11 +277,11 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
                 placeholder="v₂ (cm/s)..."
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md outline-none focus:ring-2 focus:ring-cyan-500 font-mono"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-cyan-500 font-mono"
               />
               <button
                 onClick={checkAnswer}
-                className="bg-slate-800 dark:bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 text-white px-4 py-2 rounded-md font-bold transition-colors"
+                className="bg-[#121212] dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-md font-bold transition-colors"
               >
                 Check
               </button>

@@ -59,18 +59,18 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
   let cumulativePercent = 0;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <div className="flex items-center justify-between bg-cyan-700 text-white p-4 shadow-md">
         <LabHeader onExit={onExit} title="Data Visualization Dashboard" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4">
           <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-700">
             <FileBarChart size={24} /> Enterprise Survey Analysis
           </h2>
-          <div className="prose prose-sm text-slate-700 dark:text-slate-200">
+          <div className="prose prose-sm text-slate-700 dark:text-[#ffffff]">
             <p>
               Data visualization helps in understanding complex data sets by representing them graphically.
             </p>
@@ -95,17 +95,17 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Data Table */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-cyan-700">
             <Database size={24} /> Data Entry
           </h2>
-          <div className="flex-1 overflow-y-auto pr-2">
+          <div className="flex-1 lg:lg:overflow-y-auto pr-2">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr>
-                  <th className="border-b-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-slate-600 dark:text-slate-300">Category</th>
-                  <th className="border-b-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-slate-600 dark:text-slate-300">Value</th>
-                  <th className="border-b-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 p-2 text-slate-600 dark:text-slate-300 w-10"></th>
+                  <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">Category</th>
+                  <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">Value</th>
+                  <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa] w-10"></th>
                 </tr>
               </thead>
               <tbody>
@@ -116,7 +116,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
                         type="text"
                         value={row.label}
                         onChange={(e) => updateRow(row.id, 'label', e.target.value)}
-                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-cyan-500"
+                        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-cyan-500"
                       />
                     </td>
                     <td className="p-2 border-b border-slate-100">
@@ -125,7 +125,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
                         min="0"
                         value={row.value.toString()}
                         onChange={(e) => updateRow(row.id, 'value', Number(e.target.value) || 0)}
-                        className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:outline-none focus:border-cyan-500"
+                        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-cyan-500"
                       />
                     </td>
                     <td className="p-2 border-b border-slate-100 text-center">
@@ -144,30 +144,30 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
               <Plus size={20} /> Add Category
             </button>
           </div>
-          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 flex justify-between font-bold text-slate-700 dark:text-slate-200">
+          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-[#1c1b1b] flex justify-between font-bold text-slate-700 dark:text-[#ffffff]">
             <span>Total Value:</span>
             <span>{totalValue}</span>
           </div>
         </div>
 
         {/* Right Column: Visualization & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg">
             <button
               onClick={() => setActiveTab('bar')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'bar' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-cyan-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'bar' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-cyan-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
             >
               <BarChart3 size={20} /> Bar Chart
             </button>
             <button
               onClick={() => setActiveTab('pie')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'pie' ? 'bg-slate-50 dark:bg-slate-900 shadow-sm text-cyan-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-200'}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'pie' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-cyan-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
             >
               <PieChart size={20} /> Pie Chart
             </button>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl p-4 bg-slate-50 dark:bg-slate-900 min-h-[250px]">
+          <div className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 dark:border-[#1c1b1b] rounded-xl p-4 bg-slate-50 dark:bg-[#121212] min-h-[250px]">
             {data.length === 0 || totalValue === 0 ? (
               <p className="text-slate-400">No data to display</p>
             ) : activeTab === 'bar' ? (
@@ -215,7 +215,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
                 </svg>
                 <div className="flex flex-wrap gap-3 justify-center mt-2">
                   {data.map((row, i) => (
-                    <div key={row.id} className="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300 font-medium">
+                    <div key={row.id} className="flex items-center gap-1 text-xs text-slate-600 dark:text-[#a1a1aa] font-medium">
                       <div className="w-3 h-3 rounded-sm" style={{ backgroundColor: colors[i % colors.length] }}></div>
                       <span>{row.label} ({Math.round((row.value / totalValue) * 100)}%)</span>
                     </div>
@@ -238,7 +238,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
               />
               <button
                 onClick={checkAssessment}
-                className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded font-bold transition-colors"
+                className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded font-bold transition-colors dark:text-white dark:text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
               >
                 Check
               </button>

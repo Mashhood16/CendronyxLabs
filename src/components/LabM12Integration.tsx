@@ -103,14 +103,14 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
     spPath += `L ${spEnd} 150`;
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
             <LabHeader onExit={onExit} title="M12 Integration Lab" />
 
             <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-grow">
                 {/* Theory Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
-                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-slate-300">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
+                    <div className="prose prose-slate prose-sm text-slate-600 dark:text-[#a1a1aa]">
                         {tab === 'solid' && (
                             <>
                                 <p><strong>Solids of Revolution (Disc Method):</strong></p>
@@ -142,30 +142,30 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Interactive Simulator Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Visualizer</h2>
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Visualizer</h2>
                     
                     {tab === 'solid' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 400 200" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-2">
+                            <svg viewBox="0 0 400 200" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-2">
                                 <line x1="40" y1="180" x2="360" y2="180" stroke="#94a3b8" />
                                 <line x1="40" y1="20" x2="40" y2="180" stroke="#94a3b8" />
                                 {rects2D}
                                 <path d={`M 40,180 L ${curvePts.join(' L ')}`} fill="none" stroke="#2563eb" strokeWidth="2" />
                             </svg>
-                            <svg viewBox="0 0 400 200" className="w-full bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 400 200" className="w-full bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 {disks3D}
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Scale Factor ($k$): {kSolid.toFixed(1)}</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Scale Factor ($k$): {kSolid.toFixed(1)}</label>
                             <input type="range" min="0.5" max="2" step="0.1" value={kSolid} onChange={(e) => setKSolid(Number(e.target.value))} className="mb-2" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Number of Disks ($N$): {nDisks}</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Number of Disks ($N$): {nDisks}</label>
                             <input type="range" min="2" max="50" step="1" value={nDisks} onChange={(e) => setNDisks(Number(e.target.value))} />
                         </div>
                     )}
 
                     {tab === 'dam' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <defs>
                                     <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
                                         <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a8a" />
@@ -176,32 +176,32 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
                                 <line x1="100" y1="250" x2="320" y2="250" stroke="#475569" strokeWidth="2" /> {/* Bottom */}
                                 {arrows}
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Water Depth ($h$): {damH} m</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Water Depth ($h$): {damH} m</label>
                             <input type="range" min="10" max="50" step="1" value={damH} onChange={(e) => setDamH(Number(e.target.value))} />
                         </div>
                     )}
 
                     {tab === 'spring' && (
                         <div className="flex-grow flex flex-col">
-                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-slate-900 rounded-lg shadow-inner border mb-4">
+                            <svg viewBox="0 0 400 300" className="w-full bg-slate-50 dark:bg-[#121212] rounded-lg shadow-inner border mb-4">
                                 <rect x="30" y="100" width="20" height="100" fill="#64748b" /> {/* Wall */}
                                 <line x1="50" y1="180" x2="380" y2="180" stroke="#94a3b8" /> {/* Floor */}
                                 <path d={spPath} fill="none" stroke="#64748b" strokeWidth="4" strokeLinejoin="round" />
                                 <rect x={spEnd} y="130" width="40" height="50" fill="#ef4444" rx="4" /> {/* Block */}
                                 <text x={spEnd + 20} y="160" fill="white" fontSize="12" textAnchor="middle" fontWeight="bold">{springK} N/m</text>
                             </svg>
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Spring Constant ($k$): {springK} N/m</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Spring Constant ($k$): {springK} N/m</label>
                             <input type="range" min="10" max="100" step="10" value={springK} onChange={(e) => setSpringK(Number(e.target.value))} className="mb-2" />
-                            <label className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Stretch Distance ($x$): {springX.toFixed(1)} m</label>
+                            <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Stretch Distance ($x$): {springX.toFixed(1)} m</label>
                             <input type="range" min="0" max="5" step="0.1" value={springX} onChange={(e) => setSpringX(Number(e.target.value))} />
                         </div>
                     )}
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
-                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900">
+                <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
+                    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
                         {tab === 'solid' && <p>Calculate the exact volume of the solid of revolution for $k = {kSolid}$. (Use $\pi \approx 3.14159$).</p>}
                         {tab === 'dam' && <p>Calculate the total hydrostatic force in kiloNewtons (kN) for water depth $h = {damH}$ m. Width $W = 100$ m.</p>}
                         {tab === 'spring' && <p>Calculate the exact work done (in Joules) to stretch the spring to $x = {springX.toFixed(1)}$ m with $k = {springK}$ N/m.</p>}
@@ -209,18 +209,18 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
                     
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
                             <input 
                                 type="text" 
                                 value={userAns} 
                                 onChange={(e) => setUserAns(e.target.value)}
-                                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Enter numerical value..."
                             />
                         </div>
                         <button 
                             onClick={checkAnswer}
-                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                            className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                         >
                             Check Answer
                         </button>

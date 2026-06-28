@@ -46,14 +46,14 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
   const scaleY = SVG_SIZE / MAX_Y;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
         <LabHeader onExit={onExit} title="Lab M9.1: Linear Graphs in Real Contexts" subtitle="Modeling Taxi Fares using y = mx + c" />
       
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <HelpCircle className="text-indigo-600" size={20} />
             Linear Equations Theory
           </h2>
@@ -68,8 +68,8 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
               <li><strong>m (Slope / Gradient):</strong> Rate per km.</li>
               <li><strong>c (y-intercept):</strong> Base fare (cost at 0 km).</li>
             </ul>
-            <div className="mt-4 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
-              <p className="font-mono text-indigo-900 text-center text-lg">
+            <div className="mt-4 p-4 bg-indigo-50 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <p className="font-mono text-indigo-900 text-center text-lg dark:text-[#ffffff]">
                 Cost = ({rate} × Distance) + {base}
               </p>
             </div>
@@ -81,14 +81,14 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <TrendingUp className="text-indigo-600" size={20} />
             Interactive Graph Plotter
           </h2>
           
           <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
-            <svg width={SVG_SIZE} height={SVG_SIZE} className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden">
+            <svg width={SVG_SIZE} height={SVG_SIZE} className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
               {/* Grid Lines */}
               {Array.from({ length: 11 }).map((_, i) => (
                 <g key={`grid-${i}`}>
@@ -136,34 +136,34 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
 
           <div className="grid grid-cols-2 gap-4 mt-2">
             <div>
-              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 block">Base Fare (c): ${base}</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 block">Base Fare (c): ${base}</label>
               <input type="range" min="0" max="50" step="5" value={base} onChange={(e) => setBase(Number(e.target.value))} className="w-full accent-indigo-600" />
             </div>
             <div>
-              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 block">Rate/km (m): ${rate}</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 block">Rate/km (m): ${rate}</label>
               <input type="range" min="0.5" max="5" step="0.5" value={rate} onChange={(e) => setRate(Number(e.target.value))} className="w-full accent-indigo-600" />
             </div>
             <div className="col-span-2">
-              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-1 block">Test Distance (x): {distance} km</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 block">Test Distance (x): {distance} km</label>
               <input type="range" min="0" max="40" step="1" value={distance} onChange={(e) => setDistance(Number(e.target.value))} className="w-full accent-red-500" />
             </div>
           </div>
           
-          <button onClick={logData} className="w-full py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg flex items-center justify-center gap-2 hover:bg-slate-700 dark:bg-slate-800 transition-colors">
+          <button onClick={logData} className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg flex items-center justify-center gap-2 hover:bg-slate-700 dark:bg-[#121212] transition-colors">
             <MapPin size={18} /> Record Point ({distance}, {currentCost})
           </button>
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
             <Calculator className="text-indigo-600" size={20} />
             Data Log & Assessment
           </h2>
           
-          <div className="flex-1 min-w-0 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto">
+          <div className="flex-1 min-w-0 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 sticky top-0">
+              <thead className="bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] sticky top-0">
                 <tr>
                   <th className="p-3">Distance (x)</th>
                   <th className="p-3">Cost (y)</th>
@@ -191,9 +191,9 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
             </button>
           )}
 
-          <div className="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-100">
-            <h3 className="font-bold text-indigo-900 mb-2">Knowledge Check</h3>
-            <p className="text-sm text-indigo-800 mb-3">
+          <div className="mt-4 bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">Knowledge Check</h3>
+            <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
               Given the current rate of <strong>${rate}/km</strong> and a base fare of <strong>${base}</strong>, calculate the total cost for a <strong>{targetDist} km</strong> trip.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -206,7 +206,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
               />
               <button 
                 onClick={checkAns}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check
               </button>

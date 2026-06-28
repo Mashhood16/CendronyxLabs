@@ -83,15 +83,15 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Data Science & Analytics" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden min-h-0">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden min-h-0">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 shrink-0">Theory & Setup</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 shrink-0">Theory & Setup</h2>
           
-          <div className="text-slate-600 dark:text-slate-300 space-y-4 text-sm">
+          <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4 text-sm">
             <p><strong>K-Means Clustering</strong> is an unsupervised machine learning algorithm that groups data into <em>k</em> distinct clusters.</p>
             <ol className="list-decimal pl-5 space-y-2">
               <li><strong>Initialization:</strong> Choose <em>k</em> random centroids.</li>
@@ -100,8 +100,8 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
               <li><strong>Repeat:</strong> Continue Assignment and Update until centroids stop moving (convergence).</li>
             </ol>
             
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-              <h3 className="font-semibold text-blue-800 mb-2">Distance Formula (Euclidean)</h3>
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+              <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">Distance Formula (Euclidean)</h3>
               <p className="font-mono text-xs">d = √((x₂ - x₁)² + (y₂ - y₁)²)</p>
             </div>
             
@@ -110,31 +110,31 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col relative overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4 shrink-0">Interactive Visualizer</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col relative lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4 shrink-0">Interactive Visualizer</h2>
           
           <div className="flex gap-4 mb-4 shrink-0">
-            <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+            <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff]">
               Clusters (k):
               <input type="range" min="2" max="4" value={k} onChange={(e) => setK(parseInt(e.target.value))} className="w-24" />
               {k}
             </label>
-            <button onClick={generateData} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 rounded text-sm font-medium flex items-center gap-1 text-slate-700 dark:text-slate-200 transition-colors">
+            <button onClick={generateData} className="px-3 py-1.5 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] rounded text-sm font-medium flex items-center gap-1 text-slate-700 dark:text-[#ffffff] transition-colors">
               <RefreshCw size={16} /> New Data
             </button>
           </div>
 
           <div className="flex gap-2 mb-4 shrink-0">
-            <button onClick={initCentroids} className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm transition-colors">
+            <button onClick={initCentroids} className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
               1. Init Centroids
             </button>
-            <button onClick={doStep} disabled={centroids.length === 0} className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg font-medium text-sm flex items-center justify-center gap-1 transition-colors">
+            <button onClick={doStep} disabled={centroids.length === 0} className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-lg font-medium text-sm flex items-center justify-center gap-1 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               <Play size={16} /> {step % 2 === 1 ? '2. Assign Points' : '3. Update Centroids'}
             </button>
           </div>
 
-          <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center overflow-hidden min-h-[300px]">
-            <svg viewBox="0 0 400 400" className="w-full h-full max-h-80 object-contain bg-slate-50 dark:bg-slate-900">
+          <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-[#121212] flex flex-col items-center justify-center overflow-hidden min-h-[300px]">
+            <svg viewBox="0 0 400 400" className="w-full h-full max-h-80 object-contain bg-slate-50 dark:bg-[#121212]">
               <rect width="400" height="400" fill="#f8fafc" />
               {/* Grid */}
               <path d="M0,100 H400 M0,200 H400 M0,300 H400 M100,0 V400 M200,0 V400 M300,0 V400" stroke="#e2e8f0" strokeWidth="1" />
@@ -165,8 +165,8 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
               ))}
             </svg>
             
-            <div className="w-full bg-slate-100 dark:bg-slate-800 p-2 flex flex-wrap gap-4 justify-center text-xs border-t">
-              {centroids.length === 0 && <span className="text-slate-500 dark:text-slate-400 italic">Centroids not initialized.</span>}
+            <div className="w-full bg-slate-100 dark:bg-[#121212] p-2 flex flex-wrap gap-4 justify-center text-xs border-t">
+              {centroids.length === 0 && <span className="text-slate-500 dark:text-[#71717a] italic">Centroids not initialized.</span>}
               {centroids.map((_, i) => (
                 <div key={i} className="flex items-center gap-1 font-bold" style={{ color: COLORS[i] }}>
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[i] }}></div>
@@ -176,19 +176,19 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
             </div>
           </div>
           
-          <div className="mt-4 text-center text-sm text-slate-500 dark:text-slate-400 font-medium shrink-0">
+          <div className="mt-4 text-center text-sm text-slate-500 dark:text-[#71717a] font-medium shrink-0">
             Current Stage: {step === 0 ? 'Data Generated' : (step % 2 === 1 ? 'Needs Assignment' : 'Needs Update')} | Step Count: {step}
           </div>
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 border-b pb-2 mb-4 shrink-0">Assessment & Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4 shrink-0">Assessment & Analysis</h2>
           
           <div className="space-y-6 flex-1 pr-2">
-            <div className="p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Q1: Cluster Population Analysis</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+            <div className="p-4 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Q1: Cluster Population Analysis</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
                 1. Initialize the centroids.<br/>
                 2. Alternate clicking the green Step button until the clusters stop changing.<br/>
                 3. Look at the stats panel. How many data points ended up assigned to the <strong>Red Cluster (Cluster 0)</strong>?
@@ -204,7 +204,7 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
                 />
                 <button
                   onClick={checkAnswer}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium text-sm transition-colors"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium text-sm transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                 >
                   Check
                 </button>
@@ -218,11 +218,11 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
               )}
             </div>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-               <h3 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+               <h3 className="font-semibold text-amber-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
                  Observation Task
                </h3>
-               <p className="text-sm text-amber-900 leading-relaxed">
+               <p className="text-sm text-amber-900 leading-relaxed dark:text-[#ffffff]">
                  Notice how the centroids iteratively move towards the <strong>center of mass</strong> of their assigned points. 
                  Try regenerating new data and observe how the initial random placement of centroids can drastically alter the final cluster boundaries!
                </p>

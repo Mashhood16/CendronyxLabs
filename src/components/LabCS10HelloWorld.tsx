@@ -93,20 +93,20 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Hello World! Virtual Web Dev" />
 
       <div className="flex-1 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
           
           {/* Column 1: Theory */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full overflow-y-auto">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full lg:overflow-y-auto">
             <div className="flex items-center gap-2 mb-4 text-orange-600">
               <BookOpen className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Web Basics Theory</h2>
             </div>
             
-            <div className="prose prose-sm text-slate-600 dark:text-slate-300 space-y-4">
+            <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
               <p>
                 A web page is typically built using three core languages:
               </p>
@@ -122,13 +122,13 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation/Builder */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2 text-indigo-600">
                 <Code className="w-5 h-5" />
                 <h2 className="text-lg font-semibold">Code Editor & Preview</h2>
               </div>
-              <button onClick={handleRefresh} className="flex items-center gap-1 text-sm bg-indigo-50 text-indigo-700 px-3 py-1 rounded hover:bg-indigo-100 transition">
+              <button onClick={handleRefresh} className="flex items-center gap-1 text-sm bg-indigo-50 text-indigo-700 px-3 py-1 rounded hover:bg-indigo-100 transition dark:bg-[#121212] dark:border-[#1c1b1b]">
                 <RefreshCw className="w-4 h-4" /> Run Code
               </button>
             </div>
@@ -137,28 +137,28 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
               {/* Editors */}
               <div className="flex flex-col gap-2 h-1/2">
                 <div className="flex-1 flex flex-col">
-                  <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">HTML</label>
+                  <label className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">HTML</label>
                   <textarea 
                     value={htmlCode} 
                     onChange={e => setHtmlCode(e.target.value)} 
-                    className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-slate-900 resize-none outline-none focus:border-indigo-400"
+                    className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-[#121212] resize-none outline-none focus:border-indigo-400"
                   />
                 </div>
                 <div className="flex gap-2 flex-1">
                   <div className="flex-1 flex flex-col">
-                    <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">CSS</label>
+                    <label className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">CSS</label>
                     <textarea 
                       value={cssCode} 
                       onChange={e => setCssCode(e.target.value)} 
-                      className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-slate-900 resize-none outline-none focus:border-indigo-400"
+                      className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-[#121212] resize-none outline-none focus:border-indigo-400"
                     />
                   </div>
                   <div className="flex-1 flex flex-col">
-                    <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">JavaScript</label>
+                    <label className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">JavaScript</label>
                     <textarea 
                       value={jsCode} 
                       onChange={e => setJsCode(e.target.value)} 
-                      className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-slate-900 resize-none outline-none focus:border-indigo-400"
+                      className="flex-1 w-full p-2 border rounded font-mono text-xs bg-slate-50 dark:bg-[#121212] resize-none outline-none focus:border-indigo-400"
                     />
                   </div>
                 </div>
@@ -166,13 +166,13 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
 
               {/* Preview */}
               <div className="flex-1 flex flex-col border rounded overflow-hidden relative">
-                <div className="bg-slate-200 dark:bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-600 dark:text-slate-300 border-b flex justify-between">
+                <div className="bg-slate-200 dark:bg-[#121212] px-3 py-1 text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] border-b flex justify-between">
                   <span>Live Preview</span>
                 </div>
                 <iframe 
                   ref={iframeRef} 
                   title="preview" 
-                  className="w-full flex-1 bg-slate-50 dark:bg-slate-900"
+                  className="w-full flex-1 bg-slate-50 dark:bg-[#121212]"
                   sandbox="allow-scripts allow-same-origin"
                 />
               </div>
@@ -180,18 +180,18 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Analysis/Assessment */}
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-purple-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>
             </div>
 
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 mb-6">
-              <h3 className="font-medium text-purple-800 mb-2 flex items-center gap-2">
+            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-medium text-purple-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
                 <Terminal className="w-4 h-4" />
                 Knowledge Check ({questionIndex + 1}/{questions.length})
               </h3>
-              <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
+              <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
                 {questions[questionIndex].q}
               </p>
               <div className="flex gap-2">
@@ -204,7 +204,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
                 />
                 <button
                   onClick={checkAnswer}
-                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
+                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                 >
                   Check
                 </button>
@@ -223,8 +223,8 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
             </div>
 
             <div className="flex-1 flex flex-col">
-              <h3 className="font-medium text-slate-700 dark:text-slate-200 mb-2">Editor Logs</h3>
-              <div className="flex-1 bg-slate-50 dark:bg-slate-900 border rounded p-3 overflow-y-auto text-sm font-mono text-slate-600 dark:text-slate-300">
+              <h3 className="font-medium text-slate-700 dark:text-[#ffffff] mb-2">Editor Logs</h3>
+              <div className="flex-1 bg-slate-50 dark:bg-[#121212] border rounded p-3 lg:overflow-y-auto text-sm font-mono text-slate-600 dark:text-[#a1a1aa]">
                 {logs.length === 0 && <span className="text-slate-400">No events logged.</span>}
                 {logs.map((log, i) => (
                   <div key={i} className="mb-1 border-b border-slate-100 pb-1">

@@ -22,7 +22,7 @@ export default function HistoryDashboard() {
 
   return (
     <Layout>
-      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-4 md:mt-8 p-4 sm:p-8 md:p-12">
+      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-4 md:mt-8 p-4 sm:p-8 md:p-12 dark:bg-[#000000]">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 md:mb-10 border-b border-slate-100 pb-6">
           <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
             <Clock className="w-6 h-6 md:w-7 md:h-7 text-white" />
@@ -47,7 +47,7 @@ export default function HistoryDashboard() {
               const subjectGradient = SUBJECT_COLORS[record.subject.toLowerCase()] || 'from-slate-500 to-slate-600';
               const passed = record.score >= (record.maxScore * 0.8);
               return (
-                <div key={i} className="bg-white border-2 border-slate-100 rounded-2xl p-4 md:p-6 hover:border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div key={i} className="bg-white border-2 border-slate-100 rounded-2xl p-4 md:p-6 hover:border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group dark:bg-[#000000]">
                   {/* Subject badge + date */}
                   <div className="flex justify-between items-start mb-4">
                     <span className={`bg-gradient-to-r ${subjectGradient} text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm`}>{record.subject}</span>
@@ -56,7 +56,7 @@ export default function HistoryDashboard() {
                   <h3 className="text-lg font-bold text-slate-800 mb-3 line-clamp-2 leading-tight font-outfit">{record.title}</h3>
 
                   {record.experimentData && Object.keys(record.experimentData).length > 0 && (
-                    <div className="mb-4 bg-slate-50 rounded-xl p-3 border border-slate-100">
+                    <div className="mb-4 bg-slate-50 rounded-xl p-3 border border-slate-100 dark:bg-[#000000] dark:border-[#1c1b1b]">
                       <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Experiment Data</h4>
                       <div className="grid grid-cols-2 gap-2">
                         {Object.entries(record.experimentData).map(([key, value]) => (

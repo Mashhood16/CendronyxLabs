@@ -151,16 +151,16 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab B12.3: Excretory System & Surgical Tech" subtitle="Haemodialysis Membranes & Extracorporeal Shockwave Lithotripsy" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
             <Droplet className="w-5 h-5 text-teal-600"/> Theory & Context
           </h2>
-          <div className="prose text-slate-700 dark:text-slate-200 text-sm flex flex-col gap-3">
+          <div className="prose text-slate-700 dark:text-[#ffffff] text-sm flex flex-col gap-3">
             <p><strong>Haemodialysis:</strong> An artificial process of removing metabolic wastes (like urea) from the blood when the kidneys fail. It relies on diffusion across a semi-permeable membrane. The rate of clearance depends heavily on the membrane's pore size relative to the molecular weight of the solutes.</p>
             <p><strong>Membrane Selectivity:</strong> Ideal dialyzer membranes allow small toxic molecules (urea size ~60 Da) to pass freely into the dialysate, while retaining larger essential components like Red Blood Cells and proteins within the bloodstream.</p>
             <p><strong>Lithotripsy (ESWL):</strong> A non-invasive treatment for kidney stones. Acoustic shock waves are focused precisely on the stone to fragment it into passable grains. Incorrect intensity can lead to severe renal tissue trauma.</p>
@@ -176,20 +176,20 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
-          <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
+          <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800 dark:text-[#ffffff]">
             <Activity className="w-5 h-5 text-teal-600"/> Interactive Simulator
           </h2>
           
           <div className="flex gap-2 w-full mb-6">
-            <button onClick={() => { setActiveTab('dialysis'); setIsDialyzing(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'dialysis' ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}>Haemodialysis</button>
-            <button onClick={() => { setActiveTab('eswl'); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'eswl' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}>ESWL Procedure</button>
+            <button onClick={() => { setActiveTab('dialysis'); setIsDialyzing(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'dialysis' ? 'bg-teal-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>Haemodialysis</button>
+            <button onClick={() => { setActiveTab('eswl'); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'eswl' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>ESWL Procedure</button>
           </div>
 
           {activeTab === 'dialysis' ? (
             <div className="w-full flex flex-col items-center gap-4">
-              <div className="w-full bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100 mb-2">
-                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
+              <div className="w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 mb-2">
+                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff]">
                   <span className="flex items-center gap-1"><Target className="w-4 h-4"/> Membrane Pore Size</span>
                   <span className="text-teal-600 text-xs font-mono">{poreSize} µm</span>
                 </label>
@@ -197,7 +197,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               </div>
 
               {/* Dialysis Visualization */}
-              <div className="relative w-full h-56 bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden flex shadow-inner">
+              <div className="relative w-full h-56 bg-slate-100 dark:bg-[#121212] border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden flex shadow-inner">
                 {/* Blood Side Background */}
                 <div className="absolute left-0 top-0 bottom-0 w-1/2 bg-red-50 opacity-50 z-0 border-r-2 border-dashed border-teal-500"></div>
                 <svg viewBox="0 0 300 200" className="w-full h-full relative z-10">
@@ -206,7 +206,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
                   ))}
                 </svg>
                 {equilibriumReached && (
-                   <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-slate-900/60 backdrop-blur-sm z-20">
+                   <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-[#121212]/60 backdrop-blur-sm z-20">
                      <span className="text-sm font-bold text-teal-700 bg-teal-100 px-3 py-1 rounded-full border border-teal-300">Equilibrium Reached</span>
                    </div>
                 )}
@@ -217,21 +217,21 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
                   <span className="text-red-700 font-semibold text-xs uppercase">Blood Urea Level</span>
                   <span className="font-mono font-bold text-lg text-red-900">{leftUrea}</span>
                 </div>
-                <div className="flex flex-col bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                  <span className="text-slate-500 dark:text-slate-400 font-semibold text-xs uppercase">Clearance Time</span>
-                  <span className="font-mono font-bold text-lg text-slate-800 dark:text-slate-100">{timeElapsed.toFixed(1)} s</span>
+                <div className="flex flex-col bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b]">
+                  <span className="text-slate-500 dark:text-[#71717a] font-semibold text-xs uppercase">Clearance Time</span>
+                  <span className="font-mono font-bold text-lg text-slate-800 dark:text-[#ffffff]">{timeElapsed.toFixed(1)} s</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3 w-full mt-2">
-                <button onClick={() => setIsDialyzing(true)} disabled={isDialyzing || equilibriumReached} className="flex items-center justify-center gap-1 bg-teal-600 text-white p-3 rounded-lg hover:bg-teal-700 disabled:opacity-50 font-medium transition-colors"><Play className="w-4 h-4"/> Start Flow</button>
-                <button onClick={initDialysis} className="flex items-center justify-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Machine</button>
+                <button onClick={() => setIsDialyzing(true)} disabled={isDialyzing || equilibriumReached} className="flex items-center justify-center gap-1 bg-teal-600 text-white p-3 rounded-lg hover:bg-teal-700 disabled:opacity-50 font-medium transition-colors dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"><Play className="w-4 h-4"/> Start Flow</button>
+                <button onClick={initDialysis} className="flex items-center justify-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] p-3 rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Machine</button>
               </div>
             </div>
           ) : (
             <div className="w-full flex flex-col items-center gap-4">
-               <div className="w-full bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100 mb-2">
-                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-slate-200">
+               <div className="w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 mb-2">
+                <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff]">
                   <span className="flex items-center gap-1"><Zap className="w-4 h-4"/> Shockwave Intensity</span>
                   <span className="text-indigo-600 text-xs font-mono">{intensity}%</span>
                 </label>
@@ -239,7 +239,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               </div>
 
               {/* ESWL Visualization */}
-              <div className="relative w-full h-56 bg-slate-100 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden flex items-center justify-center shadow-inner">
+              <div className="relative w-full h-56 bg-slate-100 dark:bg-[#121212] border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden flex items-center justify-center shadow-inner">
                 <svg viewBox="0 0 200 200" className="w-3/4 h-3/4">
                   {/* Kidney */}
                   <path d="M 130 30 C 190 30 190 170 130 170 C 80 170 80 120 100 100 C 80 80 80 30 130 30 Z" fill={kidneyHealth > 50 ? "#fca5a5" : "#f87171"} stroke={kidneyHealth > 50 ? "#ef4444" : "#b91c1c"} strokeWidth="4" className="transition-colors duration-500" />
@@ -262,9 +262,9 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div className="w-full grid grid-cols-2 gap-3 text-sm mt-2">
-                <div className="flex flex-col bg-indigo-50 p-2 rounded border border-indigo-100">
+                <div className="flex flex-col bg-indigo-50 p-2 rounded border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
                   <span className="text-indigo-700 font-semibold text-xs uppercase">Stone Integrity</span>
-                  <span className="font-mono font-bold text-lg text-indigo-900">{Math.max(0, 100 - stonePieces * 5)}%</span>
+                  <span className="font-mono font-bold text-lg text-indigo-900 dark:text-[#ffffff]">{Math.max(0, 100 - stonePieces * 5)}%</span>
                 </div>
                 <div className="flex flex-col bg-red-50 p-2 rounded border border-red-100">
                   <span className="text-red-700 font-semibold text-xs uppercase">Kidney Health</span>
@@ -273,29 +273,29 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 w-full mt-2">
-                <button onClick={fireShockwave} className="flex items-center justify-center gap-1 bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 font-bold active:scale-95 transition-all"><Zap className="w-4 h-4"/> FIRE SHOCKWAVE</button>
-                <button onClick={resetEswl} className="flex items-center justify-center gap-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-3 rounded-lg hover:bg-slate-300 dark:bg-slate-800 font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Patient</button>
+                <button onClick={fireShockwave} className="flex items-center justify-center gap-1 bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 font-bold active:scale-95 transition-all dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><Zap className="w-4 h-4"/> FIRE SHOCKWAVE</button>
+                <button onClick={resetEswl} className="flex items-center justify-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] p-3 rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium transition-colors"><RotateCcw className="w-4 h-4"/> Reset Patient</button>
               </div>
             </div>
           )}
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-4 overflow-y-auto">
-          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-slate-100">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4 lg:overflow-y-auto">
+          <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
             <LineChart className="w-5 h-5 text-teal-600"/> Data & Analysis
           </h2>
           
-          <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-             <span className="text-sm text-slate-600 dark:text-slate-300 font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/> Dialysis Logs</span>
-             <button onClick={recordData} disabled={activeTab !== 'dialysis' || !equilibriumReached} className="bg-green-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <div className="flex justify-between items-center bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+             <span className="text-sm text-slate-600 dark:text-[#a1a1aa] font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/> Dialysis Logs</span>
+             <button onClick={recordData} disabled={activeTab !== 'dialysis' || !equilibriumReached} className="bg-green-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
                Log Result
              </button>
           </div>
 
-          <div className="overflow-x-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-40">
-            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
-              <thead className="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-100 dark:bg-slate-800 sticky top-0">
+          <div className="overflow-x-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-40">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
+              <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-100 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-4 py-2 border-b">Trial</th>
                   <th className="px-4 py-2 border-b">Pore Size</th>
@@ -304,7 +304,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               </thead>
               <tbody>
                 {dataPoints.map((dp, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-slate-900">
+                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
                     <td className="px-4 py-2 font-medium">{i + 1}</td>
                     <td className="px-4 py-2">{dp.poreSize} µm</td>
                     <td className="px-4 py-2">{dp.clearanceTime.toFixed(1)}</td>
@@ -320,8 +320,8 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* SVG Graph */}
-          <div className="w-full h-48 bg-slate-50 dark:bg-slate-900 rounded-lg relative border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-2">
-            <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-slate-400">Clearance Time vs Pore Size</h3>
+          <div className="w-full h-48 bg-slate-50 dark:bg-[#121212] rounded-lg relative border border-slate-200 dark:border-[#1c1b1b] mt-2">
+            <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">Clearance Time vs Pore Size</h3>
             <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible p-6">
               <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1"/>
               <line x1="0" y1="100" x2="0" y2="0" stroke="#94a3b8" strokeWidth="1"/>
@@ -363,7 +363,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
               />
               <button 
                 onClick={checkClearance} 
-                className="bg-teal-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-teal-700 transition-colors"
+                className="bg-teal-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-teal-700 transition-colors dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
               >
                 Verify
               </button>

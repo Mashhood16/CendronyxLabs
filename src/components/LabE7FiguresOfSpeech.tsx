@@ -51,7 +51,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
       <style>{`
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
@@ -65,7 +65,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       `}</style>
       
       {/* Header */}
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
           <ArrowLeft size={20} />
         </button>
@@ -73,7 +73,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -83,7 +83,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       {/* Main layout */}
       <div className="flex-1 flex flex-col md:flex-row lg:overflow-hidden">
         {/* Left Column: Controls */}
-        <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]">
           
           <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
             <h2 className="text-lg font-bold text-indigo-900 dark:text-indigo-100 mb-2">Instructions</h2>
@@ -108,8 +108,8 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
                          isActive 
                            ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900 dark:border-indigo-400' 
                            : isCompleted
-                             ? 'opacity-50 grayscale border-slate-200 dark:border-slate-700 cursor-not-allowed'
-                             : 'border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600'
+                             ? 'opacity-50 grayscale border-slate-200 dark:border-[#1c1b1b] cursor-not-allowed'
+                             : 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600'
                        }`}
                     >
                        <div className={`p-2 rounded-md ${device.color.split(' ')[1]} ${device.color.split(' ')[0]}`}>
@@ -123,7 +123,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
             </div>
           </div>
 
-          <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="p-4 bg-slate-50 dark:bg-[#121212]/50 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
              <div className="flex justify-between items-center mb-2">
                 <h3 className="font-semibold">Progress</h3>
                 <span className="font-bold text-indigo-600 dark:text-indigo-400">{Object.keys(solvedLines).length} / 5</span>
@@ -139,20 +139,20 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
              )}
           </div>
 
-          <div className="mt-auto p-4 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="mt-auto p-4 bg-slate-100 dark:bg-[#121212]/80 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
             <h3 className="font-semibold mb-2 flex items-center gap-2"><Wand2 size={16}/> Assessment Challenge</h3>
-            <p className="text-sm mb-3 text-slate-600 dark:text-slate-400">Write your own Simile (must contain 'like' or 'as').</p>
+            <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">Write your own Simile (must contain 'like' or 'as').</p>
             <div className="flex gap-2">
               <input 
                 type="text" 
                 value={assessmentInput}
                 onChange={(e) => setAssessmentInput(e.target.value)}
                 placeholder="e.g., As brave as a lion..."
-                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button 
                 onClick={handleCheckAssessment}
-                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors"
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check Answer
               </button>
@@ -166,14 +166,14 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Canvas */}
-        <div className="w-full md:w-1/2 lg:w-7/12 p-8 flex flex-col relative bg-slate-50 dark:bg-slate-900 items-center overflow-y-auto">
+        <div className="w-full md:w-1/2 lg:w-7/12 p-8 flex flex-col relative bg-slate-50 dark:bg-[#121212] items-center lg:overflow-y-auto">
           
           <div className="text-center mb-8">
-             <h2 className="text-3xl font-serif font-bold text-slate-800 dark:text-slate-100 mb-2">Midnight Musings</h2>
-             <p className="text-slate-500 dark:text-slate-400 italic">An interactive poem</p>
+             <h2 className="text-3xl font-serif font-bold text-slate-800 dark:text-[#ffffff] mb-2">Midnight Musings</h2>
+             <p className="text-slate-500 dark:text-[#71717a] italic">An interactive poem</p>
           </div>
           
-          <div className="max-w-2xl w-full mx-auto p-8 bg-[#fdfbf7] dark:bg-slate-800 rounded-xl shadow-lg border border-amber-100 dark:border-slate-700 font-serif space-y-6">
+          <div className="max-w-2xl w-full mx-auto p-8 bg-[#fdfbf7] dark:!bg-[#121212] rounded-xl shadow-lg border border-amber-100 dark:border-[#1c1b1b] font-serif space-y-6">
             {POEM_LINES.map(line => {
                const isSolved = !!solvedLines[line.id];
                const solvedDevice = DEVICES.find(d => d.id === solvedLines[line.id]);
@@ -205,7 +205,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
 
           {/* Data Table and Graph */}
           <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-x-auto">
+            <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-x-auto">
                <h3 className="font-semibold mb-2">Identified Devices Table</h3>
                <table className="w-full text-sm text-left">
                   <thead className="bg-slate-100 dark:bg-slate-700">
@@ -218,7 +218,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
                      {DEVICES.map((d, i) => {
                         const isFound = Object.values(solvedLines).includes(d.id);
                         return (
-                           <tr key={i} className="border-b border-slate-100 dark:border-slate-700">
+                           <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]">
                               <td className="px-3 py-2 font-medium">{d.label}</td>
                               <td className="px-3 py-2">{isFound ? '✅ Found' : '❌ Pending'}</td>
                            </tr>
@@ -228,9 +228,9 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
                </table>
             </div>
 
-            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                <h3 className="font-semibold mb-2">Discovery Graph</h3>
-               <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-slate-900 rounded-lg">
+               <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-[#121212] rounded-lg">
                   {(() => {
                      const found = Object.keys(solvedLines).length;
                      const pending = 5 - found;

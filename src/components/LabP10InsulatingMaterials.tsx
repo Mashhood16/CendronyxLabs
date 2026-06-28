@@ -103,7 +103,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Insulating Materials & Cooling Curves" subtitle="Investigate how different materials and thicknesses affect the rate of heat transfer." />
 
@@ -111,17 +111,17 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6 lg:overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory & Setup</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
               Heat transfers from hotter objects to colder environments until thermal equilibrium is reached. 
               According to Newton's Law of Cooling, the rate of heat loss is proportional to the temperature difference. 
               Good insulators reduce the rate of thermal energy transfer.
             </p>
-            <div className="bg-blue-50 p-3 rounded-lg flex items-start gap-2 border border-blue-100">
+            <div className="bg-blue-50 p-3 rounded-lg flex items-start gap-2 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
               <Info className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
-              <p className="text-xs text-blue-800">
+              <p className="text-xs text-blue-800 dark:text-[#ffffff]">
                 <strong>Experiment:</strong> Select an insulating material and thickness. Measure the temperature of the water over 60 minutes. Compare cooling curves.
               </p>
             </div>
@@ -129,12 +129,12 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
 
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Insulating Material</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Insulating Material</label>
               <select 
                 value={material} 
                 onChange={(e) => { setMaterial(e.target.value); reset(); }}
                 disabled={isRunning || time > 0}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-blue-500"
               >
                 {Object.entries(materials).map(([key, mat]) => (
                   <option key={key} value={key}>{mat.name}</option>
@@ -143,7 +143,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
                 <span>Insulation Thickness</span>
                 <span className="text-blue-600">{thickness} cm</span>
               </label>
@@ -157,7 +157,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">
+              <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
                 <span>Initial Water Temperature</span>
                 <span className="text-blue-600">{initialTemp} °C</span>
               </label>
@@ -172,8 +172,8 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
           </div>
           
           <div className="mt-auto">
-            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis Task</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">
+            <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Task</h3>
+            <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
               Run the experiment and record data. Calculate the <strong>average rate of cooling</strong> (°C/min) during the first 10 minutes.
             </p>
             <div className="flex gap-2">
@@ -182,11 +182,11 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
                 placeholder="e.g. 1.5"
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
-                className="flex-1 p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm"
+                className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-sm"
               />
               <button 
                 onClick={checkAnswer}
-                className="px-4 py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-slate-800"
+                className="px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-[#121212]"
               >
                 Check
               </button>
@@ -197,14 +197,14 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col items-center justify-between">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col items-center justify-between">
           <div className="w-full flex justify-between items-center mb-4">
-             <div className="text-center bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-               <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Clock Time</p>
-               <p className="text-2xl font-mono text-slate-800 dark:text-slate-100">{time.toString().padStart(2, '0')}:00</p>
+             <div className="text-center bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+               <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Clock Time</p>
+               <p className="text-2xl font-mono text-slate-800 dark:text-[#ffffff]">{time.toString().padStart(2, '0')}:00</p>
              </div>
-             <div className="text-center bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-               <p className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Thermometer</p>
+             <div className="text-center bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+               <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Thermometer</p>
                <p className="text-2xl font-mono text-blue-600">{temperature.toFixed(1)} °C</p>
              </div>
           </div>
@@ -300,15 +300,15 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Graph */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col gap-4">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Results & Graph</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Results & Graph</h2>
           
-          <div className="h-48 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-y-auto bg-slate-50 dark:bg-slate-900">
+          <div className="h-48 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0 shadow-sm">
+              <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0 shadow-sm">
                 <tr>
-                  <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">Time (min)</th>
-                  <th className="px-4 py-2 font-semibold text-slate-700 dark:text-slate-200">Temperature (°C)</th>
+                  <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Time (min)</th>
+                  <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Temperature (°C)</th>
                 </tr>
               </thead>
               <tbody>
@@ -316,8 +316,8 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
                   <tr><td colSpan={2} className="px-4 py-8 text-center text-slate-400 italic">No data recorded yet. Record points to plot graph.</td></tr>
                 ) : (
                   dataLog.map((row, i) => (
-                    <tr key={i} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-slate-800 transition-colors">
-                      <td className="px-4 py-1.5 font-mono text-slate-600 dark:text-slate-300">{row.t}</td>
+                    <tr key={i} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-[#121212] transition-colors">
+                      <td className="px-4 py-1.5 font-mono text-slate-600 dark:text-[#a1a1aa]">{row.t}</td>
                       <td className="px-4 py-1.5 font-mono text-blue-600">{row.T.toFixed(1)}</td>
                     </tr>
                   ))
@@ -326,7 +326,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 relative min-h-[250px]">
+          <div className="flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative min-h-[250px]">
              {/* Graph SVG */}
              <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible" preserveAspectRatio="none">
                {/* Grid */}

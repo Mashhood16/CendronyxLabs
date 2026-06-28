@@ -68,14 +68,14 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] transition-colors duration-300">
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <div className="flex items-center gap-4">
           {onExit && (
             <button
               onClick={onExit}
-              className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
+              className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
             >
               <ArrowLeft className="w-5 h-5" />
               Go Back
@@ -91,7 +91,7 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
       
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -99,19 +99,19 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
       </header>
 
       {/* Main content */}
-      <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+      <div className="flex-1 lg:overflow-hidden grid grid-cols-1 lg:grid-cols-2">
         {/* Left Column: Interactive Controls */}
-        <div className="flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 space-y-6">
+        <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-6">
           <div>
             <h2 className="text-2xl font-bold mb-2">Web Browser Simulator</h2>
-            <p className="text-slate-600 dark:text-slate-400">Choose the correct internet verb to navigate the digital world.</p>
+            <p className="text-slate-600 dark:text-[#71717a]">Choose the correct internet verb to navigate the digital world.</p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
             <h3 className="text-lg font-semibold mb-4 text-indigo-700 dark:text-indigo-400">
               Task {currentIndex + 1} of {tasks.length}
             </h3>
-            <p className="text-lg font-medium mb-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+            <p className="text-lg font-medium mb-6 bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
               "{currentTask.prompt}"
             </p>
 
@@ -124,7 +124,7 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
                   className={`p-4 rounded-xl text-base font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${
                     selectedAction === opt
                       ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-md'
-                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50 shadow-sm'
+                      : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50 shadow-sm'
                   }`}
                 >
                   {opt}
@@ -136,7 +136,7 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
               <button
                 onClick={handleExecute}
                 disabled={browserAction === currentTask.answer}
-                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 text-white rounded-xl font-semibold transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0"
+                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-400 text-white rounded-xl font-semibold transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Execute Action
               </button>
@@ -155,22 +155,22 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
 
         {/* Right Column: Simulation Canvas */}
         <div className="flex flex-col p-6 overflow-hidden bg-slate-200 dark:bg-slate-950 items-center justify-center relative">
-          <div className="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-300 dark:border-slate-700 overflow-hidden flex flex-col h-[500px]">
+          <div className="w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-xl shadow-2xl border border-slate-300 dark:border-[#1c1b1b] overflow-hidden flex flex-col h-[500px]">
             {/* Browser Chrome */}
-            <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 p-3 flex items-center gap-2 z-20">
+            <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] p-3 flex items-center gap-2 z-20">
               <div className="flex gap-1.5 px-2">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500 dark:bg-[#121212] dark:border-[#1c1b1b]" />
               </div>
               <div className="flex items-center gap-2 flex-1 ml-4">
-                <button className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700"><ArrowLeft className="w-4 h-4 text-slate-600 dark:text-slate-400"/></button>
-                <button className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700"><ArrowRight className="w-4 h-4 text-slate-600 dark:text-slate-400"/></button>
+                <button className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700"><ArrowLeft className="w-4 h-4 text-slate-600 dark:text-[#71717a]"/></button>
+                <button className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700"><ArrowRight className="w-4 h-4 text-slate-600 dark:text-[#71717a]"/></button>
                 <button className={`p-1.5 rounded transition-colors ${browserAction === 'Refresh' ? 'bg-indigo-200 dark:bg-indigo-900/50 text-indigo-700' : 'hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
-                  <RotateCw className={`w-4 h-4 ${browserAction === 'Refresh' ? 'animate-spin' : 'text-slate-600 dark:text-slate-400'}`} />
+                  <RotateCw className={`w-4 h-4 ${browserAction === 'Refresh' ? 'animate-spin' : 'text-slate-600 dark:text-[#a1a1aa]'}`} />
                 </button>
                 
-                <div className="flex-1 bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-600 rounded-full px-4 py-1.5 flex items-center text-sm font-mono text-slate-500 dark:text-slate-400 shadow-inner">
+                <div className="flex-1 bg-white dark:bg-slate-950 border border-slate-300 dark:border-[#1c1b1b] rounded-full px-4 py-1.5 flex items-center text-sm font-mono text-slate-500 dark:text-[#71717a] shadow-inner">
                    <Globe className="w-3.5 h-3.5 mr-2 opacity-70" />
                    https://www.space-explorer.edu
                 </div>
@@ -189,15 +189,15 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
                   <div className="max-w-xl mx-auto space-y-8">
                      {/* Top section */}
                      <div className="flex justify-between items-center mb-8">
-                        <h1 className="text-3xl font-bold text-slate-800 dark:text-slate-100">Mars Explorer</h1>
+                        <h1 className="text-3xl font-bold text-slate-800 dark:text-[#ffffff]">Mars Explorer</h1>
                         <div className="flex gap-4">
-                           <button className={`px-5 py-2 rounded-lg font-bold transition-all ${browserAction === 'Log In' ? 'bg-indigo-600 text-white shadow-lg scale-105' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'}`}>
+                           <button className={`px-5 py-2 rounded-lg font-bold transition-all ${browserAction === 'Log In' ? 'bg-indigo-600 text-white shadow-lg scale-105' : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]'}`}>
                               Log In
                            </button>
                         </div>
                      </div>
 
-                     <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl flex items-center justify-center relative overflow-hidden group border border-slate-300 dark:border-slate-700">
+                     <div className="aspect-video bg-slate-200 dark:bg-[#121212] rounded-xl flex items-center justify-center relative overflow-hidden group border border-slate-300 dark:border-[#1c1b1b]">
                         <ImageIcon className="w-16 h-16 text-slate-400 dark:text-slate-600" />
                         {/* Download overlay */}
                         <div className={`absolute inset-0 bg-indigo-900/80 flex items-center justify-center transition-opacity duration-300 ${browserAction === 'Download' ? 'opacity-100' : 'opacity-0'}`}>
@@ -209,21 +209,21 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
                      </div>
 
                      <div className="space-y-4">
-                        <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-full"></div>
-                        <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
-                        <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-4/6"></div>
-                        <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-[90%]"></div>
-                        <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-full"></div>
+                        <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-full"></div>
+                        <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-5/6"></div>
+                        <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-4/6"></div>
+                        <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-[90%]"></div>
+                        <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-full"></div>
                      </div>
                      
                      {/* Bottom section (visible on scroll) */}
                      <div className="pt-24 space-y-6">
-                        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Mission Details (Hidden Footer Data)</h2>
+                        <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff]">Mission Details (Hidden Footer Data)</h2>
                         <div className="space-y-4">
-                          <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-full"></div>
-                          <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-5/6"></div>
-                          <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-full"></div>
-                          <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+                          <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-full"></div>
+                          <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-5/6"></div>
+                          <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-full"></div>
+                          <div className="h-4 bg-slate-200 dark:bg-[#121212] rounded w-3/4"></div>
                         </div>
                      </div>
                   </div>

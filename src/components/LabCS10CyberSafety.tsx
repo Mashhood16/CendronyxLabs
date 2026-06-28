@@ -66,45 +66,45 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
     if (name === 'shield') return <Shield size={size} className="text-blue-500" />;
     if (name === 'alert') return <AlertTriangle size={size} className="text-yellow-500" />;
     if (name === 'check') return <CheckCircle size={size} className="text-green-500" />;
-    return <ImageIcon size={size} className="text-slate-500 dark:text-slate-400" />;
+    return <ImageIcon size={size} className="text-slate-500 dark:text-[#71717a]" />;
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Cyber Safety Lab" subtitle="Design an Anti-Cyberbullying Poster" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">1. Poster Builder Tools</h2>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b]">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Poster Builder Tools</h2>
+          <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
           
-          <button onClick={addText} className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded font-medium text-slate-700 dark:text-slate-200">
+          <button onClick={addText} className="flex items-center gap-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded font-medium text-slate-700 dark:text-[#ffffff]">
             <Type size={18}/> Add Text Box
           </button>
           
           <div className="border-t pt-4">
             <p className="text-sm font-semibold mb-2">Add Icons:</p>
             <div className="grid grid-cols-3 gap-2">
-              <button onClick={() => addIcon('shield')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><Shield className="text-blue-500"/></button>
-              <button onClick={() => addIcon('alert')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><AlertTriangle className="text-yellow-500"/></button>
-              <button onClick={() => addIcon('check')} className="flex justify-center bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-800 p-3 rounded"><CheckCircle className="text-green-500"/></button>
+              <button onClick={() => addIcon('shield')} className="flex justify-center bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded"><Shield className="text-blue-500"/></button>
+              <button onClick={() => addIcon('alert')} className="flex justify-center bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded"><AlertTriangle className="text-yellow-500"/></button>
+              <button onClick={() => addIcon('check')} className="flex justify-center bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded"><CheckCircle className="text-green-500"/></button>
             </div>
           </div>
 
           <div className="mt-auto border-t pt-4">
-             <button onClick={() => setGalleryMode(true)} className="w-full flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded font-bold">
+             <button onClick={() => setGalleryMode(true)} className="w-full flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded font-bold dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                <Send size={18}/> Submit to Gallery Walk
              </button>
           </div>
         </div>
 
         {/* MIDDLE COLUMN: Canvas */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden relative">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 dark:border-[#1c1b1b] overflow-hidden relative">
           <div 
             ref={canvasRef}
-            className="w-full max-w-sm aspect-[3/4] bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 relative shadow-inner overflow-hidden"
+            className="w-full max-w-sm aspect-[3/4] bg-slate-100 dark:bg-[#121212] border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] relative shadow-inner overflow-hidden"
           >
             {elements.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">Empty Canvas</div>}
             
@@ -133,7 +133,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
                 )}
                 <button 
                   onClick={() => removeElement(el.id)}
-                  className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
                 >
                   <Trash2 size={12}/>
                 </button>
@@ -143,8 +143,8 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* RIGHT COLUMN: Gallery & Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">3. Gallery Walk & Assessment</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">3. Gallery Walk & Assessment</h2>
           
           {!galleryMode ? (
             <div className="p-4 bg-emerald-50 rounded-lg text-emerald-800 text-sm">
@@ -155,7 +155,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
               <div className="space-y-4">
                 <p className="text-sm font-semibold">Rate Peer Posters:</p>
                 {[1, 2, 3].map((posterNum, i) => (
-                  <div key={posterNum} className="p-3 bg-slate-50 dark:bg-slate-900 border rounded-lg flex items-center justify-between">
+                  <div key={posterNum} className="p-3 bg-slate-50 dark:bg-[#121212] border rounded-lg flex items-center justify-between">
                     <span className="font-medium text-sm">Poster #{posterNum}</span>
                     <div className="flex gap-1">
                       {[1,2,3,4,5].map(star => (
@@ -181,7 +181,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
                    <option value="B">Take screenshots, block, and report</option>
                    <option value="C">Ignore it and delete your account</option>
                  </select>
-                 <button className="w-full bg-emerald-600 text-white py-2 rounded font-bold" onClick={() => alert(mcqAns === 'B' ? 'Correct! Documenting evidence and reporting is the safest action.' : 'Incorrect. Think about safety and evidence.')}>Check Answer</button>
+                 <button className="w-full bg-emerald-600 text-white py-2 rounded font-bold dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40" onClick={() => alert(mcqAns === 'B' ? 'Correct! Documenting evidence and reporting is the safest action.' : 'Incorrect. Think about safety and evidence.')}>Check Answer</button>
               </div>
             </>
           )}

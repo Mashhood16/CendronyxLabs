@@ -79,14 +79,14 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Genetics & Inheritance Lab" variant="dark" subtitle="Blood Types & Hemolytic Disease" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-r lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
@@ -122,8 +122,8 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-100 dark:bg-slate-800 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-slate-50 dark:bg-slate-900 rounded-lg p-1 shadow-sm mb-6 shrink-0">
+        <div className="bg-slate-100 dark:bg-[#121212] p-6 flex flex-col lg:overflow-y-auto">
+          <div className="flex bg-slate-50 dark:!bg-[#121212] rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'transfusion' ? 'bg-rose-100 text-rose-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => { setActiveTab('transfusion'); setTransfusionResult('idle'); }}
@@ -140,8 +140,8 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'transfusion' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Cross-Match Simulator</h3>
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+                <h3 className="font-bold text-gray-800 dark:text-[#ffffff] mb-4">Cross-Match Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="p-4 bg-gray-50 rounded-lg border">
@@ -176,7 +176,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center flex-1 relative mb-6 min-h-[200px] bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden">
+                <div className="flex flex-col items-center justify-center flex-1 relative mb-6 min-h-[200px] bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
                   {transfusionResult === 'idle' && (
                     <div className="text-gray-400 text-sm flex flex-col items-center">
                       <Activity size={32} className="mb-2 opacity-50" />
@@ -189,7 +189,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                     </div>
                   )}
                   {transfusionResult === 'success' && (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-green-50">
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-green-50 dark:bg-[#121212] dark:border-[#1c1b1b]">
                       <svg width="100" height="100" viewBox="0 0 100 100">
                         {/* Healthy flowing RBCs */}
                         <circle cx="20" cy="50" r="12" fill="#ef4444" className="animate-bounce" />
@@ -219,7 +219,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                 <button 
                   onClick={handleTransfuse}
                   disabled={transfusionResult === 'simulating'}
-                  className="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 rounded-lg font-bold shadow-md transition-colors disabled:opacity-50"
+                  className="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 rounded-lg font-bold shadow-md transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
                 >
                   Initiate Transfusion
                 </button>
@@ -229,8 +229,8 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'hdn' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Pregnancy & HDN Simulator</h3>
+              <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+                <h3 className="font-bold text-gray-800 dark:text-[#ffffff] mb-4">Pregnancy & HDN Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
@@ -249,18 +249,18 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                   </div>
                 </div>
 
-                <div className="mb-6 bg-blue-50 p-3 rounded-lg border border-blue-100 flex items-center justify-between">
+                <div className="mb-6 bg-blue-50 p-3 rounded-lg border border-blue-100 flex items-center justify-between dark:bg-teal-950/20 dark:border-teal-900">
                   <div>
-                    <h4 className="font-bold text-blue-900 text-sm">Administer RhoGAM?</h4>
+                    <h4 className="font-bold text-blue-900 text-sm dark:text-[#ffffff]">Administer RhoGAM?</h4>
                     <p className="text-xs text-blue-700">Given at 28 weeks & post-partum</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" checked={rhogamGiven} onChange={(e) => {setRhogamGiven(e.target.checked); setHdnResult('idle');}} />
-                    <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 dark:bg-slate-900 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 dark:bg-[#121212] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
 
-                <div className="flex flex-col items-center justify-center flex-1 relative mb-6 min-h-[150px] bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden p-4">
+                <div className="flex flex-col items-center justify-center flex-1 relative mb-6 min-h-[150px] bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden p-4">
                   {hdnResult === 'idle' && <p className="text-gray-400 text-sm text-center">Set the Rh factors and simulate the 2nd pregnancy to see if Hemolytic Disease occurs.</p>}
                   {hdnResult === 'simulating' && <p className="text-rose-600 font-bold animate-pulse">Simulating 2nd Pregnancy...</p>}
                   {hdnResult === 'safe' && (
@@ -268,7 +268,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                       <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-2">
                         <CheckCircle size={32} />
                       </div>
-                      <h4 className="font-bold text-green-800">Healthy Baby</h4>
+                      <h4 className="font-bold text-green-800 dark:text-[#ffffff]">Healthy Baby</h4>
                       <p className="text-xs text-green-600">No antibody attack occurred.</p>
                     </div>
                   )}
@@ -286,7 +286,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                 <button 
                   onClick={handlePregnancy}
                   disabled={hdnResult === 'simulating'}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold shadow-md transition-colors disabled:opacity-50"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold shadow-md transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   Simulate Pregnancy
                 </button>
@@ -296,15 +296,15 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Assessment</h2>
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 border-l flex flex-col lg:overflow-y-auto">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Assessment</h2>
           
-          <div className="bg-rose-50 rounded-xl p-5 border border-rose-100 flex-1 flex flex-col">
+          <div className="bg-rose-50 rounded-xl p-5 border border-rose-100 flex-1 flex flex-col dark:bg-[#121212] dark:border-[#1c1b1b]">
             <h3 className="font-bold text-rose-900 mb-4">Clinical Scenarios</h3>
             
             <div className="space-y-6 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   1. A patient with B- blood needs a transfusion. What blood types can they receive safely?
                 </label>
                 <input 
@@ -318,7 +318,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   2. An A- mother gives birth to an O+ baby. Does she need to be given RhoGAM? (Yes/No)
                 </label>
                 <input 
@@ -331,7 +331,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-[#ffffff] mb-1">
                   3. What surface antigens are present on the red blood cells of a person with AB+ blood?
                 </label>
                 <input 
@@ -349,13 +349,13 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={checkAnswers}
                 disabled={assessmentStatus === 'checking'}
-                className="w-full bg-rose-700 hover:bg-rose-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full bg-rose-700 hover:bg-rose-800 text-white font-medium py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70 dark:text-white dark:text-white dark:bg-rose-600 dark:hover:bg-rose-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
               >
                 {assessmentStatus === 'checking' ? 'Evaluating...' : 'Check Answers'}
               </button>
 
               {assessmentStatus === 'passed' && (
-                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium">
+                <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium dark:text-[#ffffff]">
                   <CheckCircle size={18} /> Correct! B- receives O- and B-. Mother needs RhoGAM. AB+ has A, B, and Rh antigens.
                 </div>
               )}

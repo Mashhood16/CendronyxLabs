@@ -68,35 +68,35 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Preparation of Soluble Salt: Excess Base Method" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <Beaker className="text-blue-600" /> Theory & Setup
             </h2>
           </div>
-          <div className="p-6 flex-1 overflow-y-auto space-y-6">
+          <div className="p-6 flex-1 lg:overflow-y-auto space-y-6">
             <div>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Reaction Principle</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Reaction Principle</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
                 A soluble salt can be prepared by reacting an acid with an insoluble base (metal oxide).
               </p>
-              <div className="bg-slate-800 dark:bg-slate-800 text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner">
+              <div className="bg-[#121212] dark:bg-[#121212] text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner">
                 CuO(s) + H₂SO₄(aq) → CuSO₄(aq) + H₂O(l)
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Set Variables</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Set Variables</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     Volume of 1.0M H₂SO₄: {h2so4Vol} mL
                   </label>
                   <input 
@@ -107,7 +107,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     Mass of CuO powder: {cuoMass.toFixed(1)} g
                   </label>
                   <input 
@@ -120,9 +120,9 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
               </div>
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <h4 className="font-semibold text-blue-800 text-sm mb-2">Procedure:</h4>
-              <ol className="text-sm text-blue-900 space-y-1 list-decimal list-inside">
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+              <h4 className="font-semibold text-blue-800 text-sm mb-2 dark:text-[#ffffff]">Procedure:</h4>
+              <ol className="text-sm text-blue-900 space-y-1 list-decimal list-inside dark:text-[#ffffff]">
                 <li>Add Acid to beaker.</li>
                 <li>Add base until in excess.</li>
                 <li>Heat gently to speed up reaction.</li>
@@ -134,9 +134,9 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Virtual Workbench</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Virtual Workbench</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col items-center justify-between">
             
@@ -146,8 +146,8 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
                 <Droplet size={28} className="text-blue-500 mb-2" />
                 <span className="font-semibold text-xs text-center">H₂SO₄ Bottle</span>
               </button>
-              <button onClick={() => handleAction('cuo')} disabled={step !== 1} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 1 ? 'border-slate-800 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:bg-slate-200 dark:bg-slate-800 cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
-                <Beaker size={28} className="text-slate-800 dark:text-slate-100 mb-2" />
+              <button onClick={() => handleAction('cuo')} disabled={step !== 1} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 1 ? 'border-[#1c1b1b] dark:border-slate-500 bg-slate-50 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
+                <Beaker size={28} className="text-slate-800 dark:text-[#ffffff] mb-2" />
                 <span className="font-semibold text-xs text-center">CuO Bottle</span>
               </button>
               <button onClick={() => handleAction('heat')} disabled={step !== 2} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all w-24 ${step === 2 ? 'border-red-400 bg-red-50 hover:bg-red-100 cursor-pointer shadow-md' : 'border-slate-100 opacity-40 cursor-not-allowed'}`}>
@@ -212,7 +212,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
             </div>
 
             {/* Dynamic Equation */}
-            <div className="w-full bg-slate-800 dark:bg-slate-800 text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center">
+            <div className="w-full bg-[#121212] dark:bg-[#121212] text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center">
               <span className="text-xs text-slate-400 mb-1 uppercase tracking-wider">Live Reaction</span>
               <span className="text-lg">{equation}</span>
             </div>
@@ -220,34 +220,34 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Data & Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col">
             
-            <div className="flex-1 overflow-y-auto mb-6">
+            <div className="flex-1 lg:overflow-y-auto mb-6">
               <table className="w-full text-sm text-left border-collapse">
-                <thead className="bg-slate-50 dark:bg-slate-900 border-y border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <thead className="bg-slate-50 dark:bg-[#121212] border-y border-slate-200 dark:border-[#1c1b1b]">
                   <tr>
-                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-slate-200">H₂SO₄ (mL)</th>
-                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-slate-200">CuO (g)</th>
-                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-slate-200">Yield (g)</th>
+                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-[#ffffff]">H₂SO₄ (mL)</th>
+                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-[#ffffff]">CuO (g)</th>
+                    <th className="py-3 px-2 font-semibold text-slate-700 dark:text-[#ffffff]">Yield (g)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {logs.length === 0 && (
-                    <tr><td colSpan={3} className="py-4 text-center text-slate-500 dark:text-slate-400 italic">No data recorded yet.</td></tr>
+                    <tr><td colSpan={3} className="py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded yet.</td></tr>
                   )}
                   {logs.map((log, i) => (
-                    <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900 transition-colors">
+                    <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212] transition-colors">
                       <td className="py-3 px-2">{log.vol}</td>
                       <td className="py-3 px-2">{log.mass.toFixed(1)}</td>
                       <td className="py-3 px-2 font-semibold text-blue-600">{log.yield}</td>
                     </tr>
                   ))}
                   {step === 5 && (
-                    <tr className="bg-blue-50 animate-pulse">
+                    <tr className="bg-blue-50 animate-pulse dark:bg-teal-950/20 dark:border-teal-900">
                       <td className="py-3 px-2">{h2so4Vol}</td>
                       <td className="py-3 px-2">{cuoMass.toFixed(1)}</td>
                       <td className="py-3 px-2 font-semibold text-blue-600">{currentYield.toFixed(2)}</td>
@@ -260,14 +260,14 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
             <button 
               onClick={handleLogData}
               disabled={step !== 5}
-              className="w-full py-3 bg-slate-800 dark:bg-slate-800 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-900 dark:bg-slate-800 transition-colors mb-6"
+              className="w-full py-3 bg-[#121212] dark:bg-[#121212] text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#000000] dark:bg-[#121212] transition-colors mb-6"
             >
               Record Data & Reset
             </button>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Assessment</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Assessment</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                 Calculate the theoretical yield of CuSO₄·5H₂O crystals (g) based on your current setup variables. 
                 <br/><span className="text-xs text-slate-400">Molar masses: CuO=79.55, CuSO₄·5H₂O=249.68</span>
               </p>
@@ -277,9 +277,9 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
                   value={assessmentAnswer}
                   onChange={e => setAssessmentAnswer(e.target.value)}
                   placeholder="e.g. 15.5"
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm outline-none focus:border-blue-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-sm outline-none focus:border-blue-500"
                 />
-                <button onClick={checkAssessment} className="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 text-sm">
+                <button onClick={checkAssessment} className="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
                   Check
                 </button>
               </div>

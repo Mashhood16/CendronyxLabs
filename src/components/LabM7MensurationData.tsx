@@ -109,9 +109,9 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
             stroke="currentColor"
             fill="none"
             strokeWidth="2"
-            className="text-slate-700 dark:text-slate-300"
+            className="text-slate-700 dark:text-[#a1a1aa]"
           />
-          <ellipse cx={cx} cy={topY} rx={rx} ry={ry} stroke="currentColor" fill="rgba(255,255,255,0.05)" strokeWidth="2" className="text-slate-700 dark:text-slate-300" />
+          <ellipse cx={cx} cy={topY} rx={rx} ry={ry} stroke="currentColor" fill="rgba(255,255,255,0.05)" strokeWidth="2" className="text-slate-700 dark:text-[#a1a1aa]" />
           
           {/* Dimension Lines & Labels */}
           <line x1={cx} y1={topY} x2={cx + rx} y2={topY} stroke="currentColor" className="text-rose-500" strokeWidth="2" />
@@ -163,9 +163,9 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
             </g>
           )}
 
-          <polygon points={`${v1.x},${v1.y} ${v2.x},${v2.y} ${v3.x},${v3.y} ${v4.x},${v4.y}`} fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-slate-300" />
-          <polygon points={`${v1.x},${v1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${v2.x},${v2.y}`} fill="rgba(255,255,255,0.05)" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-slate-300" />
-          <polygon points={`${v2.x},${v2.y} ${b2.x},${b2.y} ${b3.x},${b3.y} ${v3.x},${v3.y}`} fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-slate-300" />
+          <polygon points={`${v1.x},${v1.y} ${v2.x},${v2.y} ${v3.x},${v3.y} ${v4.x},${v4.y}`} fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-[#a1a1aa]" />
+          <polygon points={`${v1.x},${v1.y} ${b1.x},${b1.y} ${b2.x},${b2.y} ${v2.x},${v2.y}`} fill="rgba(255,255,255,0.05)" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-[#a1a1aa]" />
+          <polygon points={`${v2.x},${v2.y} ${b2.x},${b2.y} ${b3.x},${b3.y} ${v3.x},${v3.y}`} fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-700 dark:text-[#a1a1aa]" />
 
           {/* Labels */}
           <text x={(v4.x + v3.x) / 2} y={v4.y + 20} fill="currentColor" className="text-rose-600 dark:text-rose-400 font-bold" textAnchor="middle">
@@ -201,8 +201,8 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
     return (
       <svg className="w-full h-full" viewBox={`0 0 ${width} ${height}`}>
         {/* Axes */}
-        <line x1={pad} y1={height - pad} x2={width - pad} y2={height - pad} stroke="currentColor" className="text-slate-800 dark:text-slate-200" strokeWidth="2" />
-        <line x1={pad} y1={pad} x2={pad} y2={height - pad} stroke="currentColor" className="text-slate-800 dark:text-slate-200" strokeWidth="2" />
+        <line x1={pad} y1={height - pad} x2={width - pad} y2={height - pad} stroke="currentColor" className="text-slate-800 dark:text-[#ffffff]" strokeWidth="2" />
+        <line x1={pad} y1={pad} x2={pad} y2={height - pad} stroke="currentColor" className="text-slate-800 dark:text-[#ffffff]" strokeWidth="2" />
 
         {/* Y-axis labels */}
         {Array.from({ length: maxFreq + 2 }).map((_, i) => (
@@ -283,7 +283,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
             <g key={v}>
               <path d={pathData} fill={color} stroke="currentColor" className="text-white dark:text-slate-800 drop-shadow-sm hover:opacity-90 transition-opacity" strokeWidth="2" />
               {sliceAngle > 5 && (
-                <text x={lx} y={ly} textAnchor="middle" alignmentBaseline="middle" fill="currentColor" className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                <text x={lx} y={ly} textAnchor="middle" alignmentBaseline="middle" fill="currentColor" className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa]">
                   {v} ({freq})
                 </text>
               )}
@@ -295,9 +295,9 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-200">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <div className="flex items-center p-4 bg-indigo-600 text-white shadow-md z-10">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors">
+        <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
           <ArrowLeft className="w-5 h-5" />
         </button>
         <h1 className="text-lg md:text-xl font-bold">Class 7 Maths: Mensuration & Data Handling</h1>
@@ -305,13 +305,13 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-1 overflow-hidden">
         {/* Left Column Controls */}
-        <div className="w-1/3 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+        <div className="w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212]">
           {/* Tabs */}
           <div className="flex bg-slate-100 dark:bg-slate-700 p-1 rounded-lg mb-6 shadow-inner">
             <button
               onClick={() => setTab('volume')}
               className={`flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center transition-colors ${
-                tab === 'volume' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                tab === 'volume' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               <Box className="w-4 h-4 mr-2" /> Volume
@@ -319,7 +319,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
             <button
               onClick={() => setTab('data')}
               className={`flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center transition-colors ${
-                tab === 'data' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                tab === 'data' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               <BarChart3 className="w-4 h-4 mr-2" /> Data Handling
@@ -329,14 +329,14 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
           {tab === 'volume' && (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">Select 3D Shape</label>
+                <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Select 3D Shape</label>
                 <div className="flex space-x-3">
                   <button
                     onClick={() => setShape('cylinder')}
                     className={`flex-1 flex flex-col items-center py-3 px-4 rounded-xl border transition-colors ${
                       shape === 'cylinder'
                         ? 'bg-indigo-100 border-indigo-500 text-indigo-700 dark:bg-indigo-900/50 dark:border-indigo-400 dark:text-indigo-300'
-                        : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                        : 'border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                     }`}
                   >
                     <Database className="w-6 h-6 mb-1" />
@@ -347,7 +347,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
                     className={`flex-1 flex flex-col items-center py-3 px-4 rounded-xl border transition-colors ${
                       shape === 'prism'
                         ? 'bg-indigo-100 border-indigo-500 text-indigo-700 dark:bg-indigo-900/50 dark:border-indigo-400 dark:text-indigo-300'
-                        : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                        : 'border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700'
                     }`}
                   >
                     <Box className="w-6 h-6 mb-1" />
@@ -356,7 +356,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
                 </div>
               </div>
 
-              <div className="bg-slate-100 dark:bg-slate-700/50 p-5 rounded-xl border border-slate-200 dark:border-slate-700 space-y-5">
+              <div className="bg-slate-100 dark:bg-slate-700/50 p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-5">
                 {shape === 'cylinder' ? (
                   <>
                     <div>
@@ -410,12 +410,12 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
               </div>
 
               <div className="pt-4">
-                <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">
+                <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">
                   <span>Fill with Liquid</span>
                   <span className="text-blue-600 dark:text-blue-400">{fillPercent}%</span>
                 </label>
                 <input type="range" min="0" max="100" value={fillPercent} onChange={(e) => setFillPercent(Number(e.target.value))} className="w-full accent-blue-500" />
-                <p className="text-sm font-medium mt-3 text-slate-600 dark:text-slate-400">
+                <p className="text-sm font-medium mt-3 text-slate-600 dark:text-[#71717a]">
                   Current Liquid Volume:{' '}
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{shape === 'cylinder' ? cylLiq : prismLiq} m³</span>
                 </p>
@@ -426,14 +426,14 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
           {tab === 'data' && (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-bold mb-3 text-slate-700 dark:text-slate-300">Survey Dataset (comma separated)</label>
+                <label className="block text-sm font-bold mb-3 text-slate-700 dark:text-[#a1a1aa]">Survey Dataset (comma separated)</label>
                 <textarea
                   value={dataStr}
                   onChange={(e) => setDataStr(e.target.value)}
-                  className="w-full p-4 font-mono text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-shadow"
+                  className="w-full p-4 font-mono text-sm border border-slate-300 dark:border-[#1c1b1b] rounded-xl bg-slate-50 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-shadow"
                   rows={3}
                 />
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-2">Example: 1, 2, 3, 2, 4</p>
+                <p className="text-xs font-medium text-slate-500 dark:text-[#71717a] mt-2">Example: 1, 2, 3, 2, 4</p>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
@@ -453,7 +453,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
               <div className="bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800 mt-6">
                 <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Assessment</h3>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-4">
+                <p className="text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-4">
                   If you add the number <b>20</b> to this dataset, what will the new Mode be?
                 </p>
                 <div className="flex space-x-2">
@@ -461,12 +461,12 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
                     type="number"
                     value={dataAnswer}
                     onChange={(e) => setDataAnswer(e.target.value)}
-                    className="flex-1 min-w-0 p-2 font-mono text-sm border border-slate-300 rounded-lg dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="flex-1 min-w-0 p-2 font-mono text-sm border border-slate-300 rounded-lg dark:bg-slate-700 dark:border-[#1c1b1b] focus:ring-2 focus:ring-indigo-500 outline-none"
                     placeholder="Enter mode"
                   />
                   <button
                     onClick={checkDataAnswer}
-                    className="whitespace-nowrap flex-shrink-0 bg-indigo-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                    className="whitespace-nowrap flex-shrink-0 bg-indigo-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Check
                   </button>
@@ -487,8 +487,8 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column Stage */}
-        <div className="w-2/3 p-8 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 relative">
-          <div className="w-full max-w-2xl bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-8 flex flex-col items-center justify-center aspect-video relative">
+        <div className="w-2/3 p-8 flex flex-col items-center justify-center bg-slate-100 dark:bg-[#121212] relative">
+          <div className="w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-2xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center justify-center aspect-video relative">
             {tab === 'volume' ? renderVolumeSvg() : chartType === 'bar' ? renderBarGraph() : renderPieChart()}
 
             {tab === 'data' && (

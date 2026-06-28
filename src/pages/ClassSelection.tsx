@@ -1,77 +1,135 @@
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES } from '../data/labModules';
 import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
-import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, BookOpen } from 'lucide-react';
+import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, LayoutGrid, List, Rocket } from 'lucide-react';
+import { useTheme } from '../store';
 
-const CLASS_CONFIG: Record<string, { gradient: string; icon: typeof FlaskConical; iconBg: string; ring: string; hoverGradient: string; label: string }> = {
-  '6':  { gradient: 'from-emerald-500 to-teal-600',   icon: FlaskConical, iconBg: 'bg-emerald-400', ring: 'ring-emerald-300', hoverGradient: 'from-emerald-400 to-teal-500',   label: 'Foundation Year' },
-  '7':  { gradient: 'from-sky-500 to-blue-600',       icon: Atom,         iconBg: 'bg-sky-400',   ring: 'ring-sky-300',   hoverGradient: 'from-sky-400 to-blue-500',       label: 'Exploration' },
-  '8':  { gradient: 'from-violet-500 to-purple-600',   icon: Cpu,          iconBg: 'bg-violet-400', ring: 'ring-violet-300', hoverGradient: 'from-violet-400 to-purple-500',  label: 'Discovery' },
-  '9':  { gradient: 'from-rose-500 to-pink-600',       icon: Dna,          iconBg: 'bg-rose-400',  ring: 'ring-rose-300',  hoverGradient: 'from-rose-400 to-pink-500',      label: 'Pre-Board' },
-  '10': { gradient: 'from-orange-500 to-amber-600',    icon: Microscope,   iconBg: 'bg-orange-400', ring: 'ring-orange-300', hoverGradient: 'from-orange-400 to-amber-500',  label: 'Board Prep' },
-  '11': { gradient: 'from-indigo-500 to-blue-700',     icon: Calculator,   iconBg: 'bg-indigo-400', ring: 'ring-indigo-300', hoverGradient: 'from-indigo-400 to-blue-600',   label: 'Senior Science' },
-  '12': { gradient: 'from-red-500 to-rose-700',        icon: BookOpen,     iconBg: 'bg-red-400',   ring: 'ring-red-300',   hoverGradient: 'from-red-400 to-rose-600',      label: 'Final Year' },
+const CLASS_CONFIG: Record<string, { color: string; icon: typeof FlaskConical; iconBg: string; textColor: string; label: string; desc: string }> = {
+  '6':  { color: '#f97316', icon: FlaskConical, iconBg: 'bg-orange-500/20', textColor: 'text-orange-500', label: 'Science', desc: 'Foundations of Science. Introduction to basic concepts and principles.' },
+  '7':  { color: '#3b82f6', icon: Atom,         iconBg: 'bg-blue-500/20',   textColor: 'text-blue-500',   label: 'Physics', desc: 'Exploring physical and chemical changes, acids, bases and salts.' },
+  '8':  { color: '#8b5cf6', icon: Cpu,          iconBg: 'bg-violet-500/20', textColor: 'text-violet-500', label: 'Tech', desc: 'Forces, pressure, sound, and the universe. Intermediate science.' },
+  '9':  { color: '#ec4899', icon: Dna,          iconBg: 'bg-pink-500/20',   textColor: 'text-pink-500',   label: 'Biology', desc: 'Matter, atoms, motion, and fundamental units of life.' },
+  '10': { color: '#eab308', icon: Microscope,   iconBg: 'bg-yellow-500/20', textColor: 'text-yellow-500', label: 'Chem', desc: 'Chemical reactions, life processes, light, and electricity.' },
+  '11': { color: '#6366f1', icon: Calculator,   iconBg: 'bg-indigo-500/20', textColor: 'text-indigo-500', label: 'Math', desc: 'Advanced physics, chemistry, and biology. Preparation for higher studies.' },
+  '12': { color: '#10b981', icon: Rocket,       iconBg: 'bg-emerald-500/20', textColor: 'text-emerald-500', label: 'Advanced', desc: 'Capstone simulations in advanced subjects and engineering principles.' },
 };
 
 export default function ClassSelection() {
   const navigate = useNavigate();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  
   const moduleCount = useMemo(() => LAB_MODULES.filter(m => m.built).length, []);
 
   return (
     <Layout>
-      <div className="flex flex-col relative">
-        <Breadcrumbs />
+      <div className="flex flex-col relative max-w-5xl mx-auto pb-12">
+        {/* Welcome Banner */}
+        <div className={`relative overflow-hidden rounded-2xl ${isDark ? 'bg-gradient-to-r from-[#6366f1] to-[#a855f7] saturate-[0.85] opacity-[0.95]' : 'bg-gradient-to-r from-blue-600 to-indigo-600'} p-8 md:p-12 mb-10 shadow-xl flex flex-col items-center text-center`}>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl pointer-events-none mix-blend-overlay"></div>
+          
 
-        {/* Hero Section */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3525cd] via-[#4f46e5] to-[#712ae2] p-6 sm:p-8 md:p-10 mb-8 md:mb-12 shadow-2xl">
-          <div className="absolute top-0 right-0 -mt-6 -mr-6 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-48 h-48 bg-purple-300 opacity-10 rounded-full blur-2xl pointer-events-none"></div>
-          <div className="relative z-10 flex flex-col items-center text-center" style={{ WebkitFontSmoothing: 'antialiased', WebkitTextSizeAdjust: '100%' }}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 md:mb-4 font-outfit tracking-tight">
-              Welcome to <span className="text-indigo-200">VirtualLab</span>
-            </h1>
-            <p className="text-slate-100 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8 font-medium px-2">
-              Explore our library of <span className="font-bold text-white bg-white/15 px-2 py-0.5 rounded-lg">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics & Computer Science.
-            </p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 font-outfit tracking-tight">
+            Next-Generation Virtual Laboratory
+          </h1>
+          
+          <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mb-2 font-medium leading-relaxed mx-auto">
+            Step inside and explore a growing library of <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg shadow-sm">{moduleCount} immersive simulations</span> Master complex scientific and technical concepts through interactive, hands-on experimentation.
+          </p>
+        </div>
+
+        {/* Section Header */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className={`text-2xl md:text-3xl font-bold tracking-tight ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
+            Select Class
+          </h2>
+          <div className="flex items-center gap-2">
+            <button 
+              onClick={() => setViewMode('grid')}
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? (isDark ? 'bg-[#121212] border border-[#1c1b1b] text-[#ffffff]' : 'bg-slate-100 border border-slate-200 text-slate-800') : (isDark ? 'bg-[#121212]/50 border border-[#1c1b1b]/50 text-[#71717a] hover:text-[#a1a1aa]' : 'bg-white border border-slate-100 text-slate-400 hover:text-slate-600')}`}
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => setViewMode('list')}
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? (isDark ? 'bg-[#121212] border border-[#1c1b1b] text-[#ffffff]' : 'bg-slate-100 border border-slate-200 text-slate-800') : (isDark ? 'bg-[#121212]/50 border border-[#1c1b1b]/50 text-[#71717a] hover:text-[#a1a1aa]' : 'bg-white border border-slate-100 text-slate-400 hover:text-slate-600')}`}
+            >
+              <List className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Select Class</h2>
-          <p className="text-slate-500 mt-1 mb-6">Choose your grade level to browse available experiments.</p>
+        {/* Cards Grid / List */}
+        <div className={viewMode === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" : "flex flex-col gap-4"}>
+          {Object.entries(CLASS_CONFIG).map(([cls, config]) => {
+            const Icon = config.icon;
+            const classModuleCount = LAB_MODULES.filter(m => m.built && m.classLevel === cls).length;
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(CLASS_CONFIG).map(([cls, config]) => {
-              const Icon = config.icon;
-              return (
-                <button
-                  key={cls}
-                  onClick={() => navigate(`/class/${cls}`)}
-                  className="relative group p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 glass hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
-                >
-                  {/* Gradient accent bar at top */}
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} opacity-60 saturate-[0.85] rounded-t-2xl group-hover:h-2 group-hover:opacity-80 group-hover:saturate-100 transition-all duration-300`}></div>
-                  
-                  {/* Hover glow */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${config.hoverGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>
+            return (
+              <button
+                key={cls}
+                onClick={() => navigate(`/class/${cls}`)}
+                className={`group p-6 rounded-2xl border transition-all duration-300 text-left overflow-hidden relative ${
+                  isDark ? 'bg-[#121212] border-[#1c1b1b] hover:border-[#2a2a2a]' : 'bg-white border-slate-200 hover:shadow-xl'
+                } ${viewMode === 'list' ? 'flex items-center gap-5 sm:gap-8' : 'flex flex-col'}`}
+              >
+                {/* Colored Top or Left Border */}
+                <div 
+                  className={`absolute ${viewMode === 'list' ? 'top-0 bottom-0 left-0 w-1' : 'top-0 left-0 right-0 h-1'}`} 
+                  style={{ backgroundColor: config.color }}
+                />
 
-                  <div className="flex items-center gap-4">
-                    <div className={`w-11 h-11 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${config.gradient} text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shrink-0`}
-                      style={{ boxShadow: `0 8px 20px -4px rgb(0 0 0 / 0.2)` }}
-                    >
-                      <Icon className="w-5 h-5 md:w-7 md:h-7" strokeWidth={2} />
+                {viewMode === 'grid' ? (
+                  <>
+                    <div className="flex items-start justify-between mb-4 mt-2">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${config.iconBg} ${config.textColor}`}>
+                        <Icon className="w-5 h-5" strokeWidth={2.5} />
+                      </div>
+                      <div className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                        {classModuleCount} Modules
+                      </div>
                     </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-xl md:text-2xl font-extrabold text-slate-800 font-outfit">Class {cls}</span>
-                      <span className="text-xs md:text-sm font-medium text-slate-500">{config.label}</span>
+
+                    <h3 className={`text-xl font-bold font-outfit mb-2 ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
+                      Class {cls}
+                    </h3>
+                    
+                    <p className={`text-sm mb-6 flex-1 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>
+                      {config.desc}
+                    </p>
+
+                    <div className={`text-sm font-bold flex items-center gap-1 ${config.textColor} transition-transform group-hover:translate-x-1`}>
+                      Enter curriculum <span>→</span>
                     </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+                  </>
+                ) : (
+                  <>
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center shrink-0 ${config.iconBg} ${config.textColor}`}>
+                      <Icon className="w-6 h-6" strokeWidth={2.5} />
+                    </div>
+                    <div className="flex-1 min-w-0 flex flex-col justify-center py-1">
+                      <div className="flex items-center gap-3 mb-1">
+                        <h3 className={`text-xl font-bold font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>Class {cls}</h3>
+                        <div className={`text-[10px] font-semibold px-2 py-0.5 rounded-full sm:hidden ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                          {classModuleCount} Mod
+                        </div>
+                      </div>
+                      <p className={`text-sm truncate ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>{config.desc}</p>
+                    </div>
+                    <div className={`text-xs font-semibold px-3 py-1.5 rounded-full shrink-0 hidden sm:block ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                      {classModuleCount} Modules
+                    </div>
+                    <div className={`text-sm font-bold flex items-center gap-1 ${config.textColor} transition-transform group-hover:translate-x-1 shrink-0 ml-2 hidden md:flex`}>
+                      Enter curriculum <span>→</span>
+                    </div>
+                  </>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
     </Layout>

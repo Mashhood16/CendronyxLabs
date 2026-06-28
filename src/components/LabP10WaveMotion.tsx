@@ -81,7 +81,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     const maxY = Math.max(500, ...pts.map(p => p.y), 100);
 
     return (
-      <svg viewBox="0 0 300 200" className="w-full h-48 bg-slate-50 dark:bg-slate-900 border rounded-md shadow-inner mt-4">
+      <svg viewBox="0 0 300 200" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-md shadow-inner mt-4">
         <line x1="40" y1="160" x2="280" y2="160" stroke="#94a3b8" strokeWidth="2" />
         <line x1="40" y1="160" x2="40" y2="20" stroke="#94a3b8" strokeWidth="2" />
         <text x="130" y="190" fontSize="12" fill="#64748b" fontWeight="bold">Tension T (N)</text>
@@ -101,30 +101,30 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 12: Wave Motion" subtitle="Investigate the relationship between wave speed, tension, and linear density." />
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Theory & Setup</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               The speed <span className="italic">v</span> of a transverse wave on a string depends on the tension <span className="italic">T</span> and the linear mass density <span className="italic">μ</span> (kg/m):
-              <br/><span className="font-mono bg-slate-100 dark:bg-slate-800 p-1 rounded mt-1 inline-block">v = √(T / μ)</span>
+              <br/><span className="font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block">v = √(T / μ)</span>
             </p>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
-              Using the wave equation <span className="font-mono bg-slate-100 dark:bg-slate-800 p-1 rounded">v = f · λ</span>, you can determine <span className="italic">μ</span> experimentally by measuring the wavelength λ for different frequencies or tensions.
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
+              Using the wave equation <span className="font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded">v = f · λ</span>, you can determine <span className="italic">μ</span> experimentally by measuring the wavelength λ for different frequencies or tensions.
             </p>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">String Material</label>
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">String Material</label>
               <select
                 value={stringType}
                 onChange={(e) => setStringType(e.target.value)}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-blue-500 outline-none"
               >
                 <option value="Cotton">Cotton (μ = 0.05 kg/m)</option>
                 <option value="Nylon">Nylon (μ = 0.02 kg/m)</option>
@@ -133,7 +133,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
             </div>
             
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
                 Tension (T): {tension.toFixed(1)} N
               </label>
               <input
@@ -145,7 +145,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-slate-700 dark:text-slate-200 mb-1">
+              <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
                 Oscillator Frequency (f): {frequency.toFixed(1)} Hz
               </label>
               <input
@@ -159,7 +159,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-4 flex flex-col relative overflow-hidden h-[500px] lg:h-auto">
+        <div className="bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-4 flex flex-col relative overflow-hidden h-[500px] lg:h-auto">
           <div className="flex justify-center gap-4 mb-2 z-10 relative">
             <button
               onClick={() => setIsPaused(!isPaused)}
@@ -173,7 +173,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
           </div>
           <p className="text-center text-slate-400 text-xs mb-2">Pause to measure λ. Hover over grid to see precise position.</p>
 
-          <div className="flex-1 w-full relative border border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden bg-slate-950">
+          <div className="flex-1 w-full relative border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-slate-950">
             <svg 
               viewBox="0 0 400 300" 
               className="w-full h-full absolute inset-0 cursor-crosshair"
@@ -212,9 +212,9 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6 lg:overflow-y-auto">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Data Logging</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Data Logging</h2>
             
             <div className="flex gap-2 mb-4">
               <input
@@ -223,7 +223,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
                 placeholder="Measured λ (m)..."
                 value={measuredL}
                 onChange={(e) => setMeasuredL(e.target.value)}
-                className="w-1/2 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono text-sm"
+                className="w-1/2 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono text-sm"
               />
               <button
                 onClick={handleRecord}
@@ -233,14 +233,14 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
               </button>
             </div>
             
-            <div className="max-h-32 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-md mb-2">
+            <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md mb-2">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
                   <tr>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">T (N)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">f (Hz)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">λ (m)</th>
-                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-slate-200">v² (m²/s²)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">T (N)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">f (Hz)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">λ (m)</th>
+                    <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">v² (m²/s²)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -248,11 +248,11 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
                     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">Measure & log λ data points</td></tr>
                   ) : (
                     data.map((d, i) => (
-                      <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{d.T.toFixed(1)}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{d.f.toFixed(1)}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{d.L.toFixed(2)}</td>
-                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-slate-300">{Math.pow(d.f * d.L, 2).toFixed(1)}</td>
+                      <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.T.toFixed(1)}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.f.toFixed(1)}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.L.toFixed(2)}</td>
+                        <td className="px-2 py-1 font-mono text-slate-600 dark:text-[#a1a1aa]">{Math.pow(d.f * d.L, 2).toFixed(1)}</td>
                       </tr>
                     ))
                   )}
@@ -263,9 +263,9 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
             {renderGraph()}
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-800 dark:text-slate-100 mb-2">Analysis: Mystery String</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis: Mystery String</h3>
+            <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
               Calculate the linear mass density <span className="italic">μ</span> of the Mystery String in kg/m.
             </p>
             <div className="flex gap-2">
@@ -274,11 +274,11 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
                 placeholder="Calculated μ..."
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono"
               />
               <button
                 onClick={checkAnswer}
-                className="bg-slate-800 dark:bg-slate-800 hover:bg-slate-700 dark:bg-slate-800 text-white px-4 py-2 rounded-md font-bold transition-colors"
+                className="bg-[#121212] dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-md font-bold transition-colors"
               >
                 Check
               </button>

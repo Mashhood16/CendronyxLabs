@@ -73,36 +73,36 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
   const shipE = dist * Math.sin(brg * Math.PI / 180);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
         <LabHeader onExit={onExit} title="Virtual Lab: Trigonometry & Bearings" />
       
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
             <BookOpen className="mr-2" /> Theory & Context
           </h2>
           
-          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg mb-6 shrink-0">
+          <div className="flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0">
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ladder' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ladder' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => setMode('ladder')}
             >
               Right Triangles
             </button>
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ship' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-700' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:bg-slate-800'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ship' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => setMode('ship')}
             >
               Ship Navigation
             </button>
           </div>
 
-          <div className="flex-1 min-w-0 overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-slate-200">
+          <div className="flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff]">
             {mode === 'ladder' ? (
               <>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">SOH CAH TOA</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">SOH CAH TOA</h3>
                 <p>Trigonometric ratios relate angles to the lengths of sides in a right-angled triangle.</p>
                 <ul className="list-disc pl-5 space-y-1">
                   <li><strong>sin(θ) = Opposite / Hypotenuse</strong></li>
@@ -113,7 +113,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">Bearings in Navigation</h3>
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Bearings in Navigation</h3>
                 <p>Bearings are angles measured clockwise from North, usually given as three digits (e.g., 045°, 120°).</p>
                 <p>To convert a bearing and distance into North (N) and East (E) coordinates:</p>
                 <ul className="list-disc pl-5 space-y-1">
@@ -127,12 +127,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
             <Activity className="mr-2" /> Interactive Simulator
           </h2>
 
-          <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 flex-1 flex flex-col mb-4 min-h-[300px] justify-center items-center">
+          <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-1 flex flex-col mb-4 min-h-[300px] justify-center items-center">
             <svg width="100%" height="250" viewBox="0 0 300 250" className="bg-sky-50/50 rounded border border-sky-100">
               {mode === 'ladder' ? (
                 <g>
@@ -176,12 +176,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             {mode === 'ladder' ? (
               <>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Angle (°):</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">Angle (°):</label>
                   <input type="range" min="30" max="80" value={lAng} onChange={(e) => setLAng(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{lAng}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Length (m):</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">Length (m):</label>
                   <input type="range" min="5" max="15" value={lLen} onChange={(e) => setLLen(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{lLen}</span>
                 </div>
@@ -189,12 +189,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             ) : (
               <>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Bearing (°):</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">Bearing (°):</label>
                   <input type="range" min="0" max="360" value={brg} onChange={(e) => setBrg(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{brg}</span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-slate-200">Dist (km):</label>
+                  <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">Dist (km):</label>
                   <input type="range" min="10" max="100" value={dist} onChange={(e) => setDist(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
                   <span className="w-8 text-right font-mono">{dist}</span>
                 </div>
@@ -202,7 +202,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             )}
             <button 
               onClick={handleRecord}
-              className="w-full mt-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition active:scale-95"
+              className="w-full mt-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               Record Data
             </button>
@@ -210,14 +210,14 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
             <TableIcon className="mr-2" /> Analysis & Data
           </h2>
 
-          <div className="bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 mb-6 h-48 overflow-y-auto">
+          <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
             <table className="w-full text-sm text-left">
-              <thead className="sticky top-0 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
                 <tr>
                   <th className="pb-2">Type</th>
                   <th className="pb-2">Inputs</th>
@@ -229,7 +229,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
                   <tr><td colSpan={3} className="py-4 text-center text-slate-400">No data recorded</td></tr>
                 ) : (
                   logs.map((log, i) => (
-                    <tr key={i} className="hover:bg-slate-100 dark:bg-slate-800 transition">
+                    <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
                       <td className="py-2">{log.mode}</td>
                       <td className="py-2">{log.input}</td>
                       <td className="py-2 font-semibold text-blue-600">{log.res}</td>
@@ -240,12 +240,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
             </table>
           </div>
 
-          <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500 pt-4">
-            <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-3">Knowledge Check</h3>
+          <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
+            <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">Knowledge Check</h3>
             
             {mode === 'ladder' ? (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700 dark:text-slate-200">
+                <p className="text-sm text-slate-700 dark:text-[#ffffff]">
                   A ladder of length <strong>{qLadderL}m</strong> leans against a wall at an angle of <strong>{qLadderA}°</strong> to the horizontal. <br/>Calculate the height of the wall (to 1 decimal place).
                 </p>
                 <div className="flex items-center gap-2">
@@ -254,13 +254,13 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansLadderH} 
                     onChange={(e) => setAnsLadderH(e.target.value)}
-                    className="w-20 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-20 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="0.0"
                   />
                   <span>m</span>
                 </div>
                 <div className="flex items-center gap-4 mt-4">
-                  <button onClick={checkLadder} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95">
+                  <button onClick={checkLadder} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                     Verify
                   </button>
                   {statusLadder === true && <CheckCircle2 className="text-emerald-500" />}
@@ -269,7 +269,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
               </div>
             ) : (
               <div className="space-y-4">
-                <p className="text-sm text-slate-700 dark:text-slate-200">
+                <p className="text-sm text-slate-700 dark:text-[#ffffff]">
                   A ship travels until it is exactly <strong>{qShipE}km East</strong> and <strong>{qShipN}km North</strong> of its starting point. Calculate its Distance and Bearing.
                 </p>
                 <div className="flex items-center gap-2 text-sm">
@@ -278,7 +278,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansShipD} 
                     onChange={(e) => setAnsShipD(e.target.value)}
-                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <span>km</span>
                   <span className="ml-2">Brg = </span>
@@ -286,12 +286,12 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
                     type="number" 
                     value={ansShipB} 
                     onChange={(e) => setAnsShipB(e.target.value)}
-                    className="w-16 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
                   />
                   <span>°</span>
                 </div>
                 <div className="flex items-center gap-4 mt-4">
-                  <button onClick={checkShip} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95">
+                  <button onClick={checkShip} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                     Verify
                   </button>
                   {statusShip === true && <CheckCircle2 className="text-emerald-500" />}

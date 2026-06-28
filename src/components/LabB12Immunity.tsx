@@ -49,19 +49,19 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Interactive Immunology" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
             <Shield className="mr-2 text-blue-500" /> Theory & Mechanisms
           </h2>
-          <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm">
-            <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-100">
-              <h3 className="font-semibold text-indigo-800 mb-2">Monoclonal Antibodies (mAbs)</h3>
+          <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
+            <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Monoclonal Antibodies (mAbs)</h3>
               <p>
                 mAbs are laboratory-produced molecules engineered to serve as substitute antibodies that can restore, enhance, or mimic the immune system's attack on cells. 
                 They are crucial in diagnostics, such as <strong>ELISA</strong> (Enzyme-Linked Immunosorbent Assay).
@@ -79,19 +79,19 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center relative overflow-hidden">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex w-full">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center relative overflow-hidden">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex w-full">
             <FlaskConical className="mr-2 text-purple-500" /> ELISA Simulator
           </h2>
           
           <div className="flex-grow flex flex-col items-center justify-center w-full space-y-6">
             <div className="text-center h-16">
               <h3 className="font-bold text-purple-700 text-lg">{elisaStages[elisaStep].name}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 max-w-xs">{elisaStages[elisaStep].desc}</p>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] max-w-xs">{elisaStages[elisaStep].desc}</p>
             </div>
 
             {/* SVG ELISA Well */}
-            <div className="relative w-48 h-48 bg-slate-50 dark:bg-slate-900 border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-b-3xl shadow-inner overflow-hidden flex flex-col justify-end">
+            <div className="relative w-48 h-48 bg-slate-50 dark:bg-[#121212] border-4 border-slate-300 dark:border-[#1c1b1b] rounded-b-3xl shadow-inner overflow-hidden flex flex-col justify-end">
               
               {/* Colored liquid */}
               <div 
@@ -139,13 +139,13 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={handleNextStep}
                 disabled={elisaStep === 4}
-                className="px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50"
+                className="px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
               >
                 Next Step
               </button>
               <button 
                 onClick={handleReset}
-                className="px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-semibold hover:bg-slate-300 dark:bg-slate-800"
+                className="px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-semibold hover:bg-slate-300 dark:bg-[#121212]"
               >
                 Reset
               </button>
@@ -160,18 +160,18 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
             <Stethoscope className="mr-2 text-rose-500" /> Clinical Assessment
           </h2>
           
           <div className="flex-grow space-y-6">
-            <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm text-slate-700 dark:text-slate-200">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Determine Antigen Concentration</h3>
+            <div className="p-4 bg-slate-100 dark:bg-[#121212] rounded-lg text-sm text-slate-700 dark:text-[#ffffff]">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Determine Antigen Concentration</h3>
               <p className="mb-2">
                 A standard curve was generated using known concentrations of the transplant rejection biomarker. The linear regression equation is:
               </p>
-              <div className="bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-300 dark:border-slate-700 dark:border-slate-500 font-mono text-center my-2 text-indigo-700">
+              <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-300 dark:border-[#1c1b1b] font-mono text-center my-2 text-indigo-700">
                 Absorbance (A) = 0.15 × C + 0.05
               </div>
               <p>Where <strong>C</strong> is the concentration of the biomarker in ng/mL.</p>
@@ -181,7 +181,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
                   Given the patient's absorbance reading of {absorbance} AU, calculate C.
                 </p>
               ) : (
-                <p className="mt-3 text-slate-500 dark:text-slate-400 italic">
+                <p className="mt-3 text-slate-500 dark:text-[#71717a] italic">
                   Complete the ELISA simulation to get the patient's absorbance reading.
                 </p>
               )}
@@ -189,14 +189,14 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-1">
+                <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wide mb-1">
                   Concentration (ng/mL)
                 </label>
                 <div className="flex space-x-2">
                   <input 
                     type="number"
                     step="0.01"
-                    className="flex-grow p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="e.g. 5.2"
                     value={assessmentConc}
                     onChange={(e) => setAssessmentConc(e.target.value)}
@@ -205,7 +205,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
                   <button 
                     onClick={handleCheckAnswer}
                     disabled={elisaStep < 4 || !assessmentConc}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50"
+                    className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                   >
                     Check
                   </button>

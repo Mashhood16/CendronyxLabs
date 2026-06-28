@@ -5,7 +5,7 @@ import LabHeader from './LabHeader';
 interface LabProps { onExit?: () => void; }
 
 const MATERIALS = [
-  { id: 'al', name: 'Aluminum Wire', type: 'metal', color: 'bg-slate-300 dark:bg-slate-800', flexible: true },
+  { id: 'al', name: 'Aluminum Wire', type: 'metal', color: 'bg-slate-300 dark:bg-[#121212]', flexible: true },
   { id: 'c', name: 'Carbon Rod (Graphite)', type: 'non-metal', color: 'bg-zinc-800', flexible: false },
   { id: 'cu', name: 'Copper Wire', type: 'metal', color: 'bg-orange-400', flexible: true },
   { id: 's', name: 'Sulphur Stick', type: 'non-metal', color: 'bg-yellow-400', flexible: false },
@@ -48,7 +48,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
 
   return (
     <div 
-      className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none"
+      className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none"
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
@@ -57,12 +57,12 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
         <div className="w-full md:w-64 flex flex-col gap-2">
-          <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-2">Select Material</h3>
+          <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Material</h3>
           {MATERIALS.map(m => (
             <button 
               key={m.id}
               onClick={() => { setSelected(m); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff]'}`}
             >
               {m.name}
             </button>
@@ -70,9 +70,9 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
-          <p className="text-slate-500 dark:text-slate-400 mb-8 text-center flex items-center gap-2">
+          <p className="text-slate-500 dark:text-[#71717a] mb-8 text-center flex items-center gap-2">
             <Hand className="w-5 h-5 text-indigo-500" />
             Press and drag down on the right side to bend
           </p>
@@ -83,8 +83,8 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
             onPointerMove={handlePointerMove}
           >
             {/* Left Clamp (Fixed) */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-16 bg-slate-700 dark:bg-slate-800 rounded-r-md z-20 shadow-md" />
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-20 bg-slate-800 dark:bg-slate-800 z-20" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-16 bg-slate-700 dark:!bg-[#121212] rounded-r-md z-20 shadow-md" />
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-20 bg-[#121212] dark:bg-[#121212] z-20" />
 
             {/* The Material Wire/Rod */}
             <div className="absolute left-6 right-8 top-1/2 -translate-y-1/2 flex items-center h-4 perspective-[500px]">

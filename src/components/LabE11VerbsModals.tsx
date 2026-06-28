@@ -81,8 +81,8 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10 border-b border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
         <button 
           onClick={onExit} 
           className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
@@ -95,14 +95,14 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
         </h1>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
-        <aside className="w-full lg:w-1/3 bg-white dark:bg-slate-800 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 shadow-inner">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
+        <aside className="w-full lg:w-1/3 bg-white dark:bg-[#121212] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] shadow-inner">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <BookOpen size={20} className="text-indigo-500" />
             Study Notes
           </h2>
           
-          <div className="flex border-b border-slate-200 dark:border-slate-700 mb-6">
+          <div className="flex border-b border-slate-200 dark:border-[#1c1b1b] mb-6">
             {['verbs', 'modals'].map(tab => (
               <button
                 key={tab}
@@ -114,27 +114,27 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
             ))}
           </div>
 
-          <div className="space-y-6 text-sm md:text-base text-slate-700 dark:text-slate-300">
+          <div className="space-y-6 text-sm md:text-base text-slate-700 dark:text-[#a1a1aa]">
             {activeTab === 'verbs' && (
               <div className="space-y-4">
                 <p>Verbs describe an action, state, or occurrence.</p>
                 <div className="space-y-3">
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Action vs Linking</strong>
                     <p><strong>Action verbs</strong> express physical or mental actions (run, think).</p>
                     <p><strong>Linking verbs</strong> connect the subject to a complement that describes it (is, seems, tastes).</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Transitive vs Intransitive</strong>
                     <p><strong>Transitive verbs</strong> require a direct object (She <em>wrote</em> a letter).</p>
                     <p><strong>Intransitive verbs</strong> do not take an object (He <em>slept</em> peacefully).</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Finite vs Non-finite</strong>
                     <p><strong>Finite verbs</strong> show tense, person, and number (I <em>walk</em>).</p>
                     <p><strong>Non-finite verbs</strong> (infinitives, participles, gerunds) do not (I want <em>to walk</em>).</p>
                   </div>
-                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-slate-600">
+                  <div className="bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                     <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">Regular vs Irregular</strong>
                     <p><strong>Regular verbs</strong> form past tense with -ed (play → played).</p>
                     <p><strong>Irregular verbs</strong> have unique past tense forms (catch → caught).</p>
@@ -158,12 +158,12 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
           </div>
         </aside>
 
-        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 lg:overflow-y-auto relative">
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-[#121212] lg:overflow-y-auto relative">
+          <div className="bg-white dark:!bg-[#121212] rounded-3xl shadow-xl max-w-3xl w-full border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex flex-col">
             
-            <div className="bg-indigo-600 p-6 text-white flex justify-between items-center">
+            <div className="bg-indigo-600 p-6 text-white flex justify-between items-center dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
               <div className="flex items-center gap-3">
-                <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+                <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm dark:bg-[#121212]">
                   <List size={24} />
                 </div>
                 <div>
@@ -177,12 +177,12 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
             </div>
 
             <div className="p-8">
-              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-6 mb-8 border border-slate-100 dark:border-slate-800 shadow-inner">
-                <p className="text-lg text-slate-600 dark:text-slate-400 mb-2 font-medium">Situation:</p>
-                <p className="text-xl md:text-2xl font-semibold text-slate-800 dark:text-slate-100 mb-6 italic border-l-4 border-indigo-500 pl-4">"{scenario.situation}"</p>
+              <div className="bg-slate-50 dark:bg-[#121212]/50 rounded-2xl p-6 mb-8 border border-slate-100 dark:border-neutral-900 shadow-inner">
+                <p className="text-lg text-slate-600 dark:text-[#71717a] mb-2 font-medium">Situation:</p>
+                <p className="text-xl md:text-2xl font-semibold text-slate-800 dark:text-[#ffffff] mb-6 italic border-l-4 border-indigo-500 pl-4">"{scenario.situation}"</p>
                 <div className="flex items-start gap-3">
                   <HelpCircle className="text-indigo-500 mt-1 flex-shrink-0" size={24} />
-                  <p className="text-xl font-medium text-slate-800 dark:text-slate-200">{scenario.question}</p>
+                  <p className="text-xl font-medium text-slate-800 dark:text-[#ffffff]">{scenario.question}</p>
                 </div>
               </div>
 
@@ -200,18 +200,18 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
                     className={`p-4 rounded-xl font-semibold text-lg text-left transition-all border-2 flex items-center justify-between group ${
                       selectedOption === opt 
                         ? 'bg-indigo-50 border-indigo-500 text-indigo-700 dark:bg-indigo-900/40 dark:border-indigo-400 dark:text-indigo-300' 
-                        : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-slate-50 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-700'
+                        : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-slate-50 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff] dark:hover:bg-slate-700'
                     } ${isCorrect === true ? 'opacity-60 cursor-not-allowed' : ''}`}
                   >
                     <span>{opt}</span>
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${selectedOption === opt ? 'border-indigo-500' : 'border-slate-300 dark:border-slate-600 group-hover:border-indigo-300'}`}>
-                      {selectedOption === opt && <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full" />}
+                      {selectedOption === opt && <div className="w-2.5 h-2.5 bg-indigo-500 rounded-full dark:bg-[#121212] dark:border-[#1c1b1b]" />}
                     </div>
                   </button>
                 ))}
               </div>
 
-              <div className="flex justify-between items-center h-20 bg-slate-50 dark:bg-slate-900/30 -mx-8 -mb-8 px-8 py-4 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex justify-between items-center h-20 bg-slate-50 dark:bg-[#121212]/30 -mx-8 -mb-8 px-8 py-4 border-t border-slate-100 dark:border-neutral-900">
                 {isCorrect === null || isCorrect === false ? (
                   <div className="flex-1 flex justify-between items-center">
                     <span className="text-rose-500 font-medium flex items-center gap-2">
@@ -223,7 +223,7 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
                       className={`px-8 py-3 rounded-full font-bold shadow-md transition-all whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
                         selectedOption 
                           ? 'bg-emerald-500 hover:bg-emerald-600 text-white' 
-                          : 'bg-slate-200 text-slate-400 cursor-not-allowed dark:bg-slate-700 dark:text-slate-500'
+                          : 'bg-slate-200 text-slate-400 cursor-not-allowed dark:bg-slate-700 dark:text-[#71717a]'
                       }`}
                     >
                       Verify Answer <Check size={20} />
@@ -235,11 +235,11 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
                       <div className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 mb-1">
                         <Check size={20} /> Correct!
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400 leading-tight">{scenario.feedback}</p>
+                      <p className="text-sm text-slate-600 dark:text-[#71717a] leading-tight">{scenario.feedback}</p>
                     </div>
                     <button 
                       onClick={handleNext}
-                      className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold shadow-md transition-all whitespace-nowrap flex-shrink-0 ml-4"
+                      className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold shadow-md transition-all whitespace-nowrap flex-shrink-0 ml-4 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                     >
                       Next Scenario
                     </button>

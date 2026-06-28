@@ -94,7 +94,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
        );
     }
     return (
-      <svg viewBox="0 0 400 300" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+      <svg viewBox="0 0 400 300" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
         {isShocking && (
            <circle cx="200" cy="150" r="100" fill="#fef08a" opacity="0.2" className="animate-ping" />
         )}
@@ -120,7 +120,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
     const bulbBrightness = vCap / 300; // max brightness at 300V
     
     return (
-      <svg viewBox="0 0 400 300" className="w-full h-full bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+      <svg viewBox="0 0 400 300" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
         <text x="10" y="30" fill="white" fontSize="14" fontWeight="bold">Voltage Across Capacitor (V vs Time)</text>
         
         {/* Graph background/grid */}
@@ -151,18 +151,18 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none overflow-hidden">
+    <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden">
       <LabHeader onExit={onExit} title="Lab P12.2: Capacitors & Bioelectricity" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-y-auto">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-y-auto">
         
         {/* Left Column: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
           <div className="flex items-center mb-4 text-emerald-700">
             <Activity className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-bold">Theory & Context</h2>
           </div>
-          <div className="text-slate-700 dark:text-slate-200 space-y-4 text-sm leading-relaxed overflow-y-auto flex-1 pr-2">
+          <div className="text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2">
             <p>
               A <strong>Capacitor</strong> is a device that stores electrical energy in an electric field. 
               The amount of charge <em>Q</em> it stores depends on its capacitance <em>C</em> and voltage <em>V</em>:
@@ -193,71 +193,71 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center text-emerald-700">
               <Settings2 className="w-6 h-6 mr-2" />
               <h2 className="text-lg font-bold">Interactive Simulator</h2>
             </div>
-            <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+            <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
               <button 
                 onClick={() => setMode('eel')}
-                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-slate-50 dark:bg-slate-900 shadow text-emerald-700' : 'text-slate-500 dark:text-slate-400'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-500 dark:text-[#a1a1aa]'}`}
               >
                 <Zap className="w-4 h-4 mr-1" /> Eel
               </button>
               <button 
                 onClick={() => setMode('rc')}
-                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'rc' ? 'bg-slate-50 dark:bg-slate-900 shadow text-emerald-700' : 'text-slate-500 dark:text-slate-400'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'rc' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-500 dark:text-[#a1a1aa]'}`}
               >
                 <Camera className="w-4 h-4 mr-1" /> RC Flash
               </button>
             </div>
           </div>
 
-          <div className="h-64 mb-6 rounded-lg overflow-hidden border border-slate-800 dark:border-slate-500 relative">
+          <div className="h-64 mb-6 rounded-lg overflow-hidden border border-[#1c1b1b] dark:border-[#1c1b1b] relative">
             {mode === 'eel' ? renderEelSVG() : renderRCSVG()}
           </div>
 
           <div className="flex-1 space-y-4">
             {mode === 'eel' ? (
-              <div className="space-y-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="space-y-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                 <div>
-                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Number of Electrocytes</span>
                     <span className="text-emerald-600 font-bold">{electrocytes}</span>
                   </label>
                   <input type="range" min="1000" max="10000" step="100" value={electrocytes} onChange={(e) => setElectrocytes(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
                 <div>
-                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Voltage per Cell</span>
                     <span className="text-emerald-600 font-bold">{voltPerCell.toFixed(2)} V</span>
                   </label>
                   <input type="range" min="0.10" max="0.20" step="0.01" value={voltPerCell} onChange={(e) => setVoltPerCell(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
-                <button onClick={handleShock} className="w-full bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold py-2 rounded shadow-sm transition-colors flex justify-center items-center">
+                <button onClick={handleShock} className="w-full bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold py-2 rounded shadow-sm transition-colors flex justify-center items-center dark:text-white dark:text-white dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
                   <Zap className="w-5 h-5 mr-2" /> Trigger Shock!
                 </button>
               </div>
             ) : (
-              <div className="space-y-4 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="space-y-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                 <div>
-                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Capacitance (C)</span>
                     <span className="text-emerald-600 font-bold">{capacitance} μF</span>
                   </label>
                   <input type="range" min="10" max="1000" step="10" value={capacitance} onChange={(e) => setCapacitance(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
                 <div>
-                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Resistance (R)</span>
                     <span className="text-emerald-600 font-bold">{resistance} Ω</span>
                   </label>
                   <input type="range" min="10" max="2000" step="50" value={resistance} onChange={(e) => setResistance(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
                 <div>
-                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     <span>Supply Voltage</span>
                     <span className="text-emerald-600 font-bold">{supplyVoltage} V</span>
                   </label>
@@ -268,7 +268,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
                     onMouseDown={() => setIsCharging(true)} 
                     onMouseUp={() => setIsCharging(false)}
                     onMouseLeave={() => setIsCharging(false)}
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-sm transition-colors select-none"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-sm transition-colors select-none dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
                   >
                     Hold to Charge
                   </button>
@@ -279,7 +279,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Assessment & Data */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-5 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col">
           <div className="flex items-center justify-between mb-4 text-emerald-700">
             <div className="flex items-center">
               <Database className="w-6 h-6 mr-2" />
@@ -290,9 +290,9 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
             </button>
           </div>
 
-          <div className="max-h-40 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
-            <table className="w-full text-sm text-left text-slate-600 dark:text-slate-300">
-              <thead className="text-xs text-slate-700 dark:text-slate-200 uppercase bg-slate-50 dark:bg-slate-900 sticky top-0">
+          <div className="max-h-40 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+            <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
+              <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
                 <tr>
                   <th className="px-3 py-2">System</th>
                   <th className="px-3 py-2">Parameters</th>
@@ -317,15 +317,15 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
             </table>
           </div>
 
-          <div className="flex-1 flex flex-col bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <div className="flex items-center mb-3 text-slate-800 dark:text-slate-100">
+          <div className="flex-1 flex flex-col bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+            <div className="flex items-center mb-3 text-slate-800 dark:text-[#ffffff]">
               <Calculator className="w-5 h-5 mr-2 text-emerald-600" />
               <h3 className="font-bold">Knowledge Check</h3>
             </div>
             
             <div className="space-y-4 flex-1">
               <div>
-                <label className="block text-sm text-slate-700 dark:text-slate-200 mb-1">
+                <label className="block text-sm text-slate-700 dark:text-[#ffffff] mb-1">
                   1. An eel has exactly 5000 electrocytes connected in series, each producing 0.15V. What is the total voltage output (in V)?
                 </label>
                 <input 
@@ -333,12 +333,12 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
                   value={ans1} 
                   onChange={e => setAns1(e.target.value)} 
                   placeholder="e.g. 500" 
-                  className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm text-slate-700 dark:text-slate-200 mb-1">
+                <label className="block text-sm text-slate-700 dark:text-[#ffffff] mb-1">
                   2. In an RC circuit, if C = 200 μF and R = 500 Ω, calculate the time constant τ in seconds.
                 </label>
                 <input 
@@ -346,7 +346,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
                   value={ans2} 
                   onChange={e => setAns2(e.target.value)} 
                   placeholder="e.g. 0.5" 
-                  className="w-full border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -358,7 +358,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
               </div>
             )}
 
-            <button onClick={checkAnswers} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors">
+            <button onClick={checkAnswers} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
               Check Answers
             </button>
           </div>

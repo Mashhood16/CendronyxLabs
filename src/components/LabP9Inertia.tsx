@@ -71,13 +71,13 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Physics Grade 9: Inertia" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-4">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2">Theory: Newton's First Law</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory: Newton's First Law</h2>
           <div className="prose prose-sm space-y-4">
             <p>
               <strong>Newton's First Law of Motion (Law of Inertia):</strong> An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.
@@ -85,7 +85,7 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
             <p>
               <strong>Inertia</strong> is the tendency of an object to resist changes in its state of motion. The more mass an object has, the more inertia it has.
             </p>
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900 mt-4">
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900 mt-4 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
               <h3 className="font-semibold mb-2 flex items-center gap-2"><MousePointerClick size={16}/> The Coin Drop Experiment</h3>
               <ul className="list-disc pl-4 space-y-1">
                 <li>A coin rests on a cardboard card over a glass.</li>
@@ -97,12 +97,12 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2 w-full mb-6">Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-6">Simulator</h2>
 
-          <div className="relative w-64 h-80 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden mb-8 shadow-inner">
+          <div className="relative w-64 h-80 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] overflow-hidden mb-8 shadow-inner">
             {/* Glass */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-40 border-x-4 border-b-4 border-blue-200 bg-blue-50/50 rounded-b-xl shadow-sm backdrop-blur-sm"></div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-40 border-x-4 border-b-4 border-blue-200 bg-blue-50/50 rounded-b-xl shadow-sm backdrop-blur-sm dark:bg-teal-950/20 dark:border-teal-900"></div>
             
             {/* Card */}
             <div 
@@ -121,7 +121,7 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
 
           <div className="w-full max-w-sm space-y-4">
             <div>
-              <label className="text-sm font-semibold text-slate-700 dark:text-slate-200 flex justify-between mb-1">
+              <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] flex justify-between mb-1">
                 <span>Flick Force</span>
                 <span>{flickForce} N</span>
               </label>
@@ -140,13 +140,13 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={flick}
                 disabled={animationState !== 'idle'}
-                className="flex-1 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-md active:scale-95"
+                className="flex-1 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-md active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
               >
                 FLICK!
               </button>
               <button 
                 onClick={resetSim}
-                className="px-4 py-3 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold rounded-lg hover:bg-slate-300 dark:bg-slate-800 transition-colors"
+                className="px-4 py-3 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors"
               >
                 <RefreshCw size={20} />
               </button>
@@ -155,40 +155,40 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
-          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-2">Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
+          <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Analysis</h2>
 
           <div className="space-y-4">
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded border">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
               <p className="text-sm font-semibold mb-2">1. Why did the coin drop into the glass when flicked hard?</p>
               <div className="space-y-2 text-sm">
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q1" checked={q1==='a'} onChange={()=>setQ1('a')} className="mt-1" />
                   <span>The card transferred its kinetic energy to the coin.</span>
                 </label>
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q1" checked={q1==='b'} onChange={()=>setQ1('b')} className="mt-1" />
                   <span>The coin's inertia resisted sideways motion while gravity pulled it down.</span>
                 </label>
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q1" checked={q1==='c'} onChange={()=>setQ1('c')} className="mt-1" />
                   <span>The flicking force pushed the coin directly downward.</span>
                 </label>
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded border">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
               <p className="text-sm font-semibold mb-2">2. If you slowly pull the card instead of flicking it, what happens?</p>
               <div className="space-y-2 text-sm">
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q2" checked={q2==='a'} onChange={()=>setQ2('a')} className="mt-1" />
                   <span>Static friction is not broken; the coin moves with the card.</span>
                 </label>
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q2" checked={q2==='b'} onChange={()=>setQ2('b')} className="mt-1" />
                   <span>The coin will float in the air.</span>
                 </label>
-                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-slate-800 p-1 rounded">
+                <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
                   <input type="radio" name="q2" checked={q2==='c'} onChange={()=>setQ2('c')} className="mt-1" />
                   <span>The coin drops into the glass immediately.</span>
                 </label>
@@ -198,13 +198,13 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
             <button 
               onClick={checkAnalysis}
               disabled={!q1 || !q2}
-              className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               Submit Answers
             </button>
 
             {feedback === 'correct' && (
-              <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-start gap-2">
+              <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-start gap-2 dark:text-[#ffffff]">
                 <CheckCircle size={20} className="shrink-0 mt-0.5" />
                 <span>Great job! The rapid force overcomes static friction quickly, allowing the coin's inertia to keep it over the glass until it falls.</span>
               </div>

@@ -103,8 +103,8 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div ref={containerRef} className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10">
+    <div ref={containerRef} className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10">
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
           <ArrowLeft size={24} />
         </button>
@@ -113,34 +113,34 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
         {/* Left: Controls */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 flex flex-col gap-6 overflow-y-auto">
-          <div className="flex gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto">
+          <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
             <button
               onClick={() => setSource('coin')}
-              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'coin' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}
+              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'coin' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
             >
               <Coins size={20} /> Coin Flipper
             </button>
             <button
               onClick={() => setSource('dice')}
-              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'dice' ? 'bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}`}
+              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'dice' ? 'bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
             >
               <Dices size={20} /> Dice Roller
             </button>
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <button onClick={() => roll(1)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors">Generate 1</button>
-            <button onClick={() => roll(10)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors">Generate 10</button>
-            <button onClick={() => roll(100)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors">Generate 100</button>
-            <button onClick={clearData} className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 rounded-lg transition-colors ml-auto">Clear</button>
+            <button onClick={() => roll(1)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Generate 1</button>
+            <button onClick={() => roll(10)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Generate 10</button>
+            <button onClick={() => roll(100)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Generate 100</button>
+            <button onClick={clearData} className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#ffffff] rounded-lg transition-colors ml-auto">Clear</button>
           </div>
 
           <div className="mt-2">
             <h3 className="font-semibold mb-2">Tally Table (Total: {total})</h3>
-            <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+            <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-xl overflow-hidden">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700">
+                <thead className="bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
                   <tr>
                     <th className="px-4 py-2">Outcome</th>
                     <th className="px-4 py-2">Tally Marks</th>
@@ -149,9 +149,9 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                   {labels.map((label, i) => (
-                    <tr key={label} className="bg-white dark:bg-slate-800">
+                    <tr key={label} className="bg-white dark:bg-[#121212]">
                       <td className="px-4 py-2 font-medium">{label}</td>
-                      <td className="px-4 py-2 text-lg text-slate-500 dark:text-slate-400">
+                      <td className="px-4 py-2 text-lg text-slate-500 dark:text-[#71717a]">
                         {renderTally(frequencies[i])}
                       </td>
                       <td className="px-4 py-2 text-right font-semibold">{frequencies[i]}</td>
@@ -165,9 +165,9 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
           <div className="bg-slate-100 dark:bg-slate-700 p-4 rounded-xl space-y-4 mt-auto">
             <h2 className="text-xl font-semibold">Assessment</h2>
             <div className="flex flex-col gap-2">
-              <label className="text-sm dark:text-slate-300 flex items-center flex-wrap">
+              <label className="text-sm dark:text-[#a1a1aa] flex items-center flex-wrap">
                 What is the exact frequency of getting
-                <select value={questionVal} onChange={e => setQuestionVal(e.target.value)} className="mx-2 p-1 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none">
+                <select value={questionVal} onChange={e => setQuestionVal(e.target.value)} className="mx-2 p-1 rounded bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] outline-none">
                   {labels.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>?
               </label>
@@ -178,11 +178,11 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
                 value={studentAnswer}
                 onChange={(e) => setStudentAnswer(e.target.value)}
                 placeholder="Enter frequency..."
-                className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button
                 onClick={checkAnswer}
-                className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
+                className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check
               </button>
@@ -198,14 +198,14 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right: Simulation Stage */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 flex flex-col items-center min-h-[400px]">
+        <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col items-center min-h-[400px]">
           <div className="flex justify-between w-full items-center mb-6">
             <h2 className="text-xl font-semibold">Live Graph</h2>
             <div className="flex gap-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
-              <button onClick={() => setChartType('bar')} className={`p-2 rounded-md transition-colors ${chartType === 'bar' ? 'bg-white dark:bg-slate-800 shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
+              <button onClick={() => setChartType('bar')} className={`p-2 rounded-md transition-colors ${chartType === 'bar' ? 'bg-white dark:bg-[#121212] shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
                 <BarChart3 size={20} />
               </button>
-              <button onClick={() => setChartType('pie')} className={`p-2 rounded-md transition-colors ${chartType === 'pie' ? 'bg-white dark:bg-slate-800 shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
+              <button onClick={() => setChartType('pie')} className={`p-2 rounded-md transition-colors ${chartType === 'pie' ? 'bg-white dark:bg-[#121212] shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
                 <PieChart size={20} />
               </button>
             </div>
@@ -213,7 +213,7 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
 
           <div className="flex-1 min-w-0 w-full flex items-center justify-center relative">
             {total === 0 ? (
-              <div className="text-slate-400 dark:text-slate-500 flex flex-col items-center">
+              <div className="text-slate-400 dark:text-[#71717a] flex flex-col items-center">
                 <BarChart3 size={48} className="mb-4 opacity-50" />
                 <p>No data yet. Generate some rolls!</p>
               </div>

@@ -64,36 +64,36 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
   const mapY = (val: number) => 90 - (val / Math.max(2, maxTan)) * 70;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 17: Lorentz Force & DC Motor Principle" subtitle="Measure the magnetic force on a current-carrying wire in a uniform magnetic field." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-amber-500 p-4 text-slate-900 dark:text-slate-200 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-amber-500 p-4 text-slate-900 dark:text-[#ffffff] flex items-center gap-2 dark:bg-[#121212] dark:border-[#1c1b1b]">
             <BookOpen className="w-5 h-5" />
             <h2 className="font-bold text-lg">Theory & Setup</h2>
           </div>
-          <div className="p-6 flex-1 flex flex-col gap-6 overflow-y-auto">
-            <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+          <div className="p-6 flex-1 flex flex-col gap-6 lg:overflow-y-auto">
+            <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
               <p>A wire of length <strong>L</strong> carrying current <strong>I</strong> in a magnetic field <strong>B</strong> experiences a magnetic force <strong>F<sub>m</sub></strong>:</p>
-              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
                 F<sub>m</sub> = B · I · L
               </div>
               <p>When the wire hangs like a pendulum of mass <strong>m</strong>, gravity pulls it down. At equilibrium, the angle <strong>θ</strong> is given by:</p>
-              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
                 tan(θ) = (B · I · L) / (m · g)
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                 <Activity className="w-4 h-4 text-amber-600" /> Controls
               </h3>
               
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Current (I)</label>
                   <span>{I.toFixed(1)} A</span>
                 </div>
@@ -105,7 +105,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Magnetic Field (B)</label>
                   <span>{B.toFixed(2)} T</span>
                 </div>
@@ -117,7 +117,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Wire Length (L)</label>
                   <span>{L.toFixed(2)} m</span>
                 </div>
@@ -130,7 +130,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
               {!isMystery && (
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                     <label>Wire Mass (m)</label>
                     <span>{m.toFixed(3)} kg</span>
                   </div>
@@ -151,7 +151,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
                 </button>
               )}
               {isMystery && (
-                <div className="mt-4 p-3 bg-purple-600 text-white rounded-lg text-sm font-medium text-center shadow-inner">
+                <div className="mt-4 p-3 bg-purple-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                   Mystery Mode! Find mass 'm'.
                 </div>
               )}
@@ -160,7 +160,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-700 dark:border-slate-500 flex flex-col relative overflow-hidden">
+        <div className="bg-[#000000] dark:bg-[#121212] rounded-2xl shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col relative overflow-hidden">
           <div className="absolute top-4 left-4 text-slate-300 font-medium text-sm flex items-center gap-2 z-10">
             <Activity className="w-4 h-4 text-amber-400" /> Front View
           </div>
@@ -176,7 +176,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
             </div>
             
             {/* Pivot support */}
-            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-32 h-4 bg-slate-600 dark:bg-slate-800 rounded-full border-2 border-slate-500 dark:border-slate-500 shadow-xl z-20" />
+            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-32 h-4 bg-slate-600 dark:bg-[#121212] rounded-full border-2 border-slate-500 dark:border-[#1c1b1b] shadow-xl z-20" />
 
             {/* Pendulum Wire */}
             <div 
@@ -187,9 +187,9 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
               <div className="absolute left-[-40px] w-2 h-full bg-amber-400 border border-amber-600" />
               <div className="absolute right-[-40px] w-2 h-full bg-amber-400 border border-amber-600" />
               {/* Horizontal current-carrying bar */}
-              <div className="absolute bottom-0 left-[-45px] h-4 bg-amber-500 border border-amber-700 rounded-full flex items-center justify-center overflow-hidden" style={{ width: '90px' }}>
+              <div className="absolute bottom-0 left-[-45px] h-4 bg-amber-500 border border-amber-700 rounded-full flex items-center justify-center overflow-hidden dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ width: '90px' }}>
                 {I !== 0 && (
-                  <div className={`w-2 h-2 bg-slate-50 dark:bg-slate-900 rounded-full shadow-[0_0_8px_white] ${I > 0 ? 'animate-[flowRight_0.5s_linear_infinite]' : 'animate-[flowLeft_0.5s_linear_infinite]'}`} />
+                  <div className={`w-2 h-2 bg-slate-50 dark:bg-[#121212] rounded-full shadow-[0_0_8px_white] ${I > 0 ? 'animate-[flowRight_0.5s_linear_infinite]' : 'animate-[flowLeft_0.5s_linear_infinite]'}`} />
                 )}
               </div>
             </div>
@@ -200,22 +200,22 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
             `}</style>
 
             {/* Protractor / Angle Measure */}
-            <div className="absolute top-12 left-1/2 -translate-x-1/2 w-48 h-48 border-b-2 border-dashed border-slate-500 dark:border-slate-500 rounded-full pointer-events-none opacity-50 flex items-end justify-center pb-2">
-               <div className="w-px h-full bg-slate-500 dark:bg-slate-800" />
+            <div className="absolute top-12 left-1/2 -translate-x-1/2 w-48 h-48 border-b-2 border-dashed border-slate-500 dark:border-[#1c1b1b] rounded-full pointer-events-none opacity-50 flex items-end justify-center pb-2">
+               <div className="w-px h-full bg-slate-500 dark:bg-[#121212]" />
             </div>
 
             {/* Measurement HUD */}
-            <div className="absolute top-16 right-4 bg-slate-800 dark:bg-slate-800/80 backdrop-blur p-3 rounded-lg border border-slate-700 dark:border-slate-500 text-slate-300 font-mono text-sm z-20 shadow-lg">
+            <div className="absolute top-16 right-4 bg-[#121212] dark:bg-[#121212]/80 backdrop-blur p-3 rounded-lg border border-[#1c1b1b] dark:border-[#1c1b1b] text-slate-300 font-mono text-sm z-20 shadow-lg">
                <div>θ: {measuredTheta.toFixed(1)}°</div>
             </div>
 
           </div>
           
           {/* Action Area */}
-          <div className="bg-slate-800 dark:bg-slate-800 p-4 border-t border-slate-700 dark:border-slate-500 flex justify-center">
+          <div className="bg-[#121212] dark:bg-[#121212] p-4 border-t border-[#1c1b1b] dark:border-[#1c1b1b] flex justify-center">
             <button 
               onClick={handleRecord}
-              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 dark:text-slate-200 font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2"
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
             >
               <Activity className="w-5 h-5" /> Record Deflection
             </button>
@@ -223,17 +223,17 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-blue-600 p-4 text-white flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-blue-600 p-4 text-white flex items-center gap-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
             <Calculator className="w-5 h-5" />
             <h2 className="font-bold text-lg">Data & Analysis</h2>
           </div>
           
-          <div className="p-4 flex-1 flex flex-col gap-4 overflow-y-auto">
+          <div className="p-4 flex-1 flex flex-col gap-4 lg:overflow-y-auto">
             {/* Table */}
-            <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden shrink-0">
+            <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden shrink-0">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <thead className="bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
                   <tr>
                     <th className="px-2 py-2">I (A)</th>
                     <th className="px-2 py-2">B (T)</th>
@@ -246,7 +246,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
                     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">No data recorded.</td></tr>
                   ) : (
                     data.map((row, i) => (
-                      <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
+                      <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
                         <td className="px-2 py-2">{row.I}</td>
                         <td className="px-2 py-2">{row.B}</td>
                         <td className="px-2 py-2">{row.theta}</td>
@@ -259,10 +259,10 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
             </div>
 
             {/* SVG Graph */}
-            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 flex flex-col items-center shrink-0">
-              <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">I vs tan(θ)</h4>
+            <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex flex-col items-center shrink-0">
+              <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">I vs tan(θ)</h4>
               <div className="relative w-full aspect-[3/2] max-w-[300px]">
-                <svg viewBox="0 0 320 180" className="w-full h-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded shadow-inner">
+                <svg viewBox="0 0 320 180" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner">
                   {/* Axes */}
                   <line x1="40" y1="90" x2="300" y2="90" stroke="#94a3b8" strokeWidth="1" /> {/* X Axis center */}
                   <line x1="160" y1="20" x2="160" y2="160" stroke="#94a3b8" strokeWidth="1" /> {/* Y Axis center */}
@@ -281,8 +281,8 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
             {/* Assessment */}
             {isMystery && (
-              <div className="mt-auto bg-purple-50 p-4 rounded-xl border border-purple-200 shrink-0">
-                <h4 className="font-bold text-purple-800 mb-2 text-sm">Analysis: Find 'm'</h4>
+              <div className="mt-auto bg-purple-50 p-4 rounded-xl border border-purple-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h4 className="font-bold text-purple-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find 'm'</h4>
                 <p className="text-xs text-purple-700 mb-3">
                   Calculate the unknown mass <strong>m</strong>. Slope of I vs tan(θ) = (B·L)/(m·g). Use g = 9.81 m/s².
                 </p>
@@ -294,7 +294,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
                   />
                   <button 
                     onClick={handleCheck}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded text-sm transition-colors"
+                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                   >
                     Check
                   </button>

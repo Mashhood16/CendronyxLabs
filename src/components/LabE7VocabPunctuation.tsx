@@ -158,11 +158,11 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
             {/* Header */}
             <div className="flex items-center justify-between p-4 bg-teal-600 text-white shadow-md">
                 <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
+                    <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
                         <ArrowLeft className="w-6 h-6" />
                     </button>
                     <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
@@ -172,7 +172,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                 </div>
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4"
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -189,31 +189,31 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 
                 {/* Left Column: Editor Instructions */}
-                <div className="lg:col-span-1 flex flex-col gap-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm p-6 overflow-y-auto border border-slate-200 dark:border-slate-700">
-                    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-slate-100">
+                <div className="lg:col-span-1 flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
+                    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
                         <Zap className="w-5 h-5 text-teal-500" />
                         Editor's Brief
                     </h2>
                     
-                    <div className="prose dark:prose-invert text-sm text-slate-700 dark:text-slate-300">
+                    <div className="prose dark:prose-invert text-sm text-slate-700 dark:text-[#a1a1aa]">
                         <p>We have a messy manuscript that needs your keen eye!</p>
                         <ul className="space-y-3">
                             <li className="flex items-start gap-2">
                                 <span className="font-bold text-teal-600 dark:text-teal-400 mt-0.5">•</span>
                                 <div>
-                                    <strong className="text-slate-800 dark:text-slate-200">Colons:</strong> Find where a colon should introduce a list or explanation. Click the space between words to insert a colon.
+                                    <strong className="text-slate-800 dark:text-[#ffffff]">Colons:</strong> Find where a colon should introduce a list or explanation. Click the space between words to insert a colon.
                                 </div>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="font-bold text-blue-600 dark:text-blue-400 mt-0.5">•</span>
                                 <div>
-                                    <strong className="text-slate-800 dark:text-slate-200">Homophones:</strong> Some <i>there/their/they're</i> mix-ups occurred. Click the blue words to swap them out.
+                                    <strong className="text-slate-800 dark:text-[#ffffff]">Homophones:</strong> Some <i>there/their/they're</i> mix-ups occurred. Click the blue words to swap them out.
                                 </div>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="font-bold text-purple-600 dark:text-purple-400 mt-0.5">•</span>
                                 <div>
-                                    <strong className="text-slate-800 dark:text-slate-200">Modal Adverbs:</strong> The tone is off. Adjust the modal adverbs to match the required certainty level (hint provided on hover).
+                                    <strong className="text-slate-800 dark:text-[#ffffff]">Modal Adverbs:</strong> The tone is off. Adjust the modal adverbs to match the required certainty level (hint provided on hover).
                                 </div>
                             </li>
                         </ul>
@@ -221,7 +221,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
 
                     <button 
                         onClick={checkAnswers}
-                        className="mt-6 w-full py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2"
+                        className="mt-6 w-full py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
                     >
                         <CheckCircle className="w-5 h-5" />
                         Submit Proofread
@@ -236,9 +236,9 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                 </div>
 
                 {/* Right Column: Manuscript Canvas */}
-                <div className="lg:col-span-2 bg-slate-200 dark:bg-slate-800 rounded-2xl shadow-sm p-4 md:p-8 flex flex-col relative overflow-y-auto border border-slate-300 dark:border-slate-700 items-center">
+                <div className="lg:col-span-2 bg-slate-200 dark:!bg-[#121212] rounded-2xl shadow-sm p-4 md:p-8 flex flex-col relative lg:overflow-y-auto border border-slate-300 dark:border-[#1c1b1b] items-center">
                     
-                    <div className="bg-[#fdfbf7] dark:bg-[#252525] rounded-sm shadow-xl p-8 max-w-2xl w-full min-h-[60vh] font-serif text-lg text-slate-800 dark:text-slate-200 relative border border-slate-300 dark:border-slate-600">
+                    <div className="bg-[#fdfbf7] dark:bg-[#252525] rounded-sm shadow-xl p-8 max-w-2xl w-full min-h-[60vh] font-serif text-lg text-slate-800 dark:text-[#ffffff] relative border border-slate-300 dark:border-[#1c1b1b]">
                         {/* decorative paper lines */}
                         <div className="absolute left-8 top-0 bottom-0 w-px bg-red-400/30 dark:bg-red-900/30"></div>
                         <div className="absolute left-9 top-0 bottom-0 w-px bg-red-400/30 dark:bg-red-900/30"></div>
@@ -262,7 +262,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                                         {/* Token Content */}
                                         {token.isHomophoneTarget ? (
                                             <button 
-                                                className="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-dashed border-blue-400 dark:border-blue-700 mx-1 px-1 whitespace-nowrap flex-shrink-0 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded transition-colors" 
+                                                className="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-dashed border-blue-400 dark:border-blue-700 mx-1 px-1 whitespace-nowrap flex-shrink-0 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded transition-colors dark:bg-teal-950/20 dark:border-teal-900" 
                                                 onClick={() => cycleHomophone(token)}
                                             >
                                                 {tokenText}
@@ -276,9 +276,9 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                                                 >
                                                     {token.modalOptions?.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                                                 </select>
-                                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-3 py-1.5 rounded opacity-0 group-hover/modal:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg z-10 font-sans">
+                                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#121212] text-white text-xs px-3 py-1.5 rounded opacity-0 group-hover/modal:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg z-10 font-sans">
                                                     Target: {token.modalHint}
-                                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-800 rotate-45"></div>
+                                                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#121212] rotate-45"></div>
                                                 </div>
                                             </div>
                                         ) : (
@@ -295,7 +295,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                                             title="Click to insert colon"
                                         >
                                             {/* invisible hover zone */}
-                                            <div className="w-1 h-full bg-teal-400/0 group-hover/token:bg-teal-400/20 rounded-full"></div>
+                                            <div className="w-1 h-full bg-teal-400/0 group-hover/token:bg-teal-400/20 rounded-full dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"></div>
                                         </div>
                                     </div>
                                 );

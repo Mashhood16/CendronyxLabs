@@ -163,7 +163,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
         }).join(' ');
 
         return (
-            <div className="mt-6 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div className="mt-6 bg-white dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                 <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
                     <Activity className="w-4 h-4 text-indigo-500" />
                     Accuracy Over Time
@@ -179,7 +179,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                         return (
                             <g key={i}>
                                 <circle cx={x} cy={y} r="4" fill="#6366f1" />
-                                <text x={x} y={y - 10} fontSize="10" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-slate-400">
+                                <text x={x} y={y - 10} fontSize="10" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-[#71717a]">
                                     {Math.round((a.score / a.max) * 100)}%
                                 </text>
                             </g>
@@ -191,9 +191,9 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
     };
 
     return (
-        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
             {/* Header */}
-            <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
                 <div className="flex items-center gap-4">
                     <button 
                         onClick={onExit}
@@ -208,14 +208,14 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
 
             <div className="flex flex-col lg:flex-row flex-1 min-h-0">
                 {/* Left Column: Interactive Controls */}
-                <div className="w-full lg:w-[40%] bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
+                <div className="w-full lg:w-[40%] bg-white dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto">
                     
                     <div className="mb-6">
                         <h2 className="text-lg font-semibold flex items-center gap-2 mb-3">
                             <BookOpen className="w-5 h-5 text-indigo-500" />
                             Lab Configuration
                         </h2>
-                        <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
                             <label className="text-sm font-semibold mb-2 block">Sentence Complexity: {complexity}</label>
                             <input 
                                 type="range" 
@@ -245,14 +245,14 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                         <div className="flex flex-wrap gap-2">
                             <button
                                 onClick={checkAnswers}
-                                className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
+                                className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                             >
                                 <CheckCircle className="w-4 h-4" />
                                 Check Links
                             </button>
                             <button
                                 onClick={resetActivity}
-                                className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-700 dark:text-slate-200 rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
+                                className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-700 dark:text-[#ffffff] rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium"
                             >
                                 <RefreshCw className="w-4 h-4" />
                                 Reset
@@ -262,9 +262,9 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
 
                     <div className="mb-6 flex-shrink-0">
                         <h3 className="font-semibold mb-3 text-sm text-slate-500 uppercase tracking-wider">Current Links (Data Table)</h3>
-                        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <div className="bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
                             <table className="w-full text-sm text-left">
-                                <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 text-xs uppercase text-slate-500">
+                                <thead className="bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] text-xs uppercase text-slate-500">
                                     <tr>
                                         <th className="px-4 py-2">Pronoun</th>
                                         <th className="px-4 py-2">Antecedent</th>
@@ -280,7 +280,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                                             const p = currentData.tokens.find(t => t.id === c.pronounId);
                                             const a = currentData.tokens.find(t => t.id === c.antecedentId);
                                             return (
-                                                <tr key={i} className="border-b border-slate-100 dark:border-slate-700/50 last:border-0">
+                                                <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]/50 last:border-0">
                                                     <td className="px-4 py-2 font-medium flex items-center gap-2">
                                                         <span className={`w-2 h-2 rounded-full ${getConnectionColor(c.pronounId)}`}></span>
                                                         {p?.text}
@@ -308,11 +308,11 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                                 value={assessmentAnswer}
                                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                                 placeholder="Enter reference type..."
-                                className="flex-1 px-3 py-2 rounded-lg border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                className="flex-1 px-3 py-2 rounded-lg border border-indigo-200 dark:border-indigo-700 bg-white dark:bg-[#121212] text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                             />
                             <button 
                                 onClick={checkAssessment}
-                                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0"
+                                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                             >
                                 Submit
                             </button>
@@ -325,10 +325,10 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                 </div>
 
                 {/* Right Column: Simulation Stage */}
-                <div className="w-full lg:w-[60%] p-8 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900">
+                <div className="w-full lg:w-[60%] p-8 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212]">
                     
-                    <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-10 max-w-3xl w-full border border-slate-200 dark:border-slate-700">
-                        <h2 className="text-2xl font-serif text-slate-800 dark:text-slate-100 mb-8 border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-xl p-10 max-w-3xl w-full border border-slate-200 dark:border-[#1c1b1b]">
+                        <h2 className="text-2xl font-serif text-slate-800 dark:text-[#ffffff] mb-8 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
                             Interactive Stage: Complexity {complexity}
                         </h2>
                         
@@ -368,12 +368,12 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                                         
                                         {/* Connection Badges */}
                                         {isPronoun && connectionAsPronoun && (
-                                            <span className={`absolute -top-3 -right-1 w-3 h-3 rounded-full ${getConnectionColor(connectionAsPronoun.pronounId)} shadow-sm border border-white dark:border-slate-800`} />
+                                            <span className={`absolute -top-3 -right-1 w-3 h-3 rounded-full ${getConnectionColor(connectionAsPronoun.pronounId)} shadow-sm border border-white dark:border-[#1c1b1b]`} />
                                         )}
                                         {isNoun && connectionsAsAntecedent.length > 0 && (
                                             <div className="absolute -top-4 right-0 flex gap-0.5">
                                                 {connectionsAsAntecedent.map(c => (
-                                                    <span key={c.pronounId} className={`w-3 h-3 rounded-full ${getConnectionColor(c.pronounId)} shadow-sm border border-white dark:border-slate-800`} />
+                                                    <span key={c.pronounId} className={`w-3 h-3 rounded-full ${getConnectionColor(c.pronounId)} shadow-sm border border-white dark:border-[#1c1b1b]`} />
                                                 ))}
                                             </div>
                                         )}
@@ -384,7 +384,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
                             })}
                         </div>
 
-                        <div className="mt-12 flex items-center justify-center gap-6 text-sm text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg">
+                        <div className="mt-12 flex items-center justify-center gap-6 text-sm text-slate-500 dark:text-[#71717a] bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-lg">
                             <div className="flex items-center gap-2">
                                 <span className="w-6 h-1 bg-indigo-400 rounded-full"></span>
                                 <span>Pronouns (Click first)</span>

@@ -78,37 +78,37 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
   const mapY = (val: number) => 160 - (val / maxEmf) * 140;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Unit 17: Faraday's Law of Induction" subtitle="Investigate the induced EMF when a magnet moves through a coil." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
           <div className="bg-red-600 p-4 text-white flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="font-bold text-lg">Theory & Setup</h2>
           </div>
-          <div className="p-6 flex-1 flex flex-col gap-6 overflow-y-auto">
-            <div className="prose prose-sm text-slate-600 dark:text-slate-300">
+          <div className="p-6 flex-1 flex flex-col gap-6 lg:overflow-y-auto">
+            <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
               <p>According to Faraday's Law, the induced EMF <strong>ε</strong> is proportional to the rate of change of magnetic flux:</p>
-              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
                 ε = -N · (ΔΦ / Δt)
               </div>
               <p>For our mechanical setup, peak EMF is proportional to Turns (<strong>N</strong>), Field (<strong>B</strong>), Area (<strong>A</strong>), and Velocity (<strong>v</strong>):</p>
-              <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+              <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
                 ε<sub>peak</sub> = c · N · B · A · v
               </div>
               <p className="text-xs text-slate-400">Where <em>c = 0.1</em> is our apparatus coupling constant.</p>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 space-y-4">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
                 <Activity className="w-4 h-4 text-red-600" /> Controls
               </h3>
               
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Coil Turns (N)</label>
                   <span>{N}</span>
                 </div>
@@ -120,7 +120,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Magnet Strength (B)</label>
                   <span>{B.toFixed(2)} T</span>
                 </div>
@@ -132,7 +132,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                   <label>Insertion Speed (v)</label>
                   <span>{v.toFixed(1)} m/s</span>
                 </div>
@@ -145,7 +145,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
               {!isMystery && (
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                     <label>Coil Area (A)</label>
                     <span>{A.toFixed(3)} m²</span>
                   </div>
@@ -166,7 +166,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
                 </button>
               )}
               {isMystery && (
-                <div className="mt-4 p-3 bg-purple-600 text-white rounded-lg text-sm font-medium text-center shadow-inner">
+                <div className="mt-4 p-3 bg-purple-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
                   Mystery Mode! Find Coil Area 'A'.
                 </div>
               )}
@@ -175,21 +175,21 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-slate-100 dark:bg-slate-800 rounded-2xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-100 dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#1c1b1b] flex flex-col relative overflow-hidden">
           
           <div className="flex-1 relative w-full flex flex-col items-center mt-6">
             
             {/* Voltmeter */}
-            <div className="w-48 h-32 bg-slate-50 dark:bg-slate-900 border-4 border-slate-400 dark:border-slate-500 rounded-t-full relative flex justify-center items-end pb-4 shadow-md z-10">
+            <div className="w-48 h-32 bg-slate-50 dark:!bg-[#121212] border-4 border-slate-400 dark:border-[#1c1b1b] rounded-t-full relative flex justify-center items-end pb-4 shadow-md z-10">
                {/* Scale */}
-               <div className="absolute top-4 w-32 h-16 border-t-2 border-dashed border-slate-400 dark:border-slate-500 rounded-t-full" />
-               <div className="absolute top-2 font-bold text-slate-500 dark:text-slate-400 text-xs">0</div>
+               <div className="absolute top-4 w-32 h-16 border-t-2 border-dashed border-slate-400 dark:border-[#1c1b1b] rounded-t-full" />
+               <div className="absolute top-2 font-bold text-slate-500 dark:text-[#71717a] text-xs">0</div>
                <div className="absolute top-10 left-4 font-bold text-red-500 text-xs">-</div>
                <div className="absolute top-10 right-4 font-bold text-green-500 text-xs">+</div>
-               <div className="absolute bottom-2 font-bold text-slate-800 dark:text-slate-100 tracking-widest text-[10px]">VOLTMETER</div>
+               <div className="absolute bottom-2 font-bold text-slate-800 dark:text-[#ffffff] tracking-widest text-[10px]">VOLTMETER</div>
                
                {/* Digital Readout */}
-               <div className="absolute bottom-6 bg-slate-800 dark:bg-slate-800 text-green-400 font-mono text-xs px-2 py-0.5 rounded">
+               <div className="absolute bottom-6 bg-[#121212] dark:bg-[#121212] text-green-400 font-mono text-xs px-2 py-0.5 rounded">
                  {displayEmf.toFixed(2)} V
                </div>
 
@@ -209,8 +209,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
             {/* Coil Assembly */}
             <div className="relative mt-20 w-64 h-32 flex items-center justify-center z-20">
                {/* Core tube */}
-               <div className="absolute w-full h-20 bg-slate-200 dark:bg-slate-800 border border-slate-400 dark:border-slate-500 rounded shadow-inner overflow-hidden flex items-center justify-center">
-                 <div className="w-[95%] h-16 bg-slate-800 dark:bg-slate-800 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)]" />
+               <div className="absolute w-full h-20 bg-slate-200 dark:bg-[#121212] border border-slate-400 dark:border-[#1c1b1b] rounded shadow-inner overflow-hidden flex items-center justify-center">
+                 <div className="w-[95%] h-16 bg-[#121212] dark:bg-[#121212] shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)]" />
                </div>
                
                {/* Wraps */}
@@ -222,8 +222,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
             </div>
 
             {/* Magnet on Rail */}
-            <div className="absolute bottom-10 w-full h-4 bg-slate-300 dark:bg-slate-800 border-y border-slate-400 dark:border-slate-500 flex items-center shadow-inner">
-               <div className="w-full h-px bg-slate-400 dark:bg-slate-800" />
+            <div className="absolute bottom-10 w-full h-4 bg-slate-300 dark:bg-[#121212] border-y border-slate-400 dark:border-[#1c1b1b] flex items-center shadow-inner">
+               <div className="w-full h-px bg-slate-400 dark:bg-[#121212]" />
             </div>
 
             <div 
@@ -237,7 +237,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
                 transitionTimingFunction: 'linear'
               }}
             >
-               <div className="w-1/2 h-full bg-blue-600 flex items-center justify-start pl-2 text-white font-bold text-lg rounded-l border border-blue-800">S</div>
+               <div className="w-1/2 h-full bg-blue-600 flex items-center justify-start pl-2 text-white font-bold text-lg rounded-l border border-blue-800 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">S</div>
                <div className="w-1/2 h-full bg-red-600 flex items-center justify-end pr-2 text-white font-bold text-lg rounded-r border border-red-800">N</div>
                
                {/* Field Lines representation */}
@@ -248,11 +248,11 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
           </div>
           
           {/* Action Area */}
-          <div className="bg-slate-200 dark:bg-slate-800 p-4 border-t border-slate-300 dark:border-slate-700 dark:border-slate-500 flex justify-center z-40">
+          <div className="bg-slate-200 dark:bg-[#121212] p-4 border-t border-slate-300 dark:border-[#1c1b1b] flex justify-center z-40">
             <button 
               onClick={runAndRecord}
               disabled={animStatus !== 'idle'}
-              className="px-6 py-3 bg-red-600 hover:bg-red-500 disabled:bg-slate-400 dark:bg-slate-800 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2"
+              className="px-6 py-3 bg-red-600 hover:bg-red-500 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
             >
               <Play className="w-5 h-5" fill="currentColor" /> Run & Record Data
             </button>
@@ -260,17 +260,17 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-blue-600 p-4 text-white flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-blue-600 p-4 text-white flex items-center gap-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
             <Calculator className="w-5 h-5" />
             <h2 className="font-bold text-lg">Data & Analysis</h2>
           </div>
           
-          <div className="p-4 flex-1 flex flex-col gap-4 overflow-y-auto">
+          <div className="p-4 flex-1 flex flex-col gap-4 lg:overflow-y-auto">
             {/* Table */}
-            <div className="border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden shrink-0">
+            <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden shrink-0">
               <table className="w-full text-xs text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
+                <thead className="bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
                   <tr>
                     <th className="px-2 py-2">N</th>
                     <th className="px-2 py-2">B (T)</th>
@@ -283,7 +283,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
                     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">No data recorded.</td></tr>
                   ) : (
                     data.map((row, i) => (
-                      <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
+                      <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
                         <td className="px-2 py-2">{row.N}</td>
                         <td className="px-2 py-2">{row.B}</td>
                         <td className="px-2 py-2">{row.v}</td>
@@ -296,10 +296,10 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
             </div>
 
             {/* SVG Graph */}
-            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg p-4 flex flex-col items-center shrink-0">
-              <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">v vs ε (Peak EMF)</h4>
+            <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex flex-col items-center shrink-0">
+              <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">v vs ε (Peak EMF)</h4>
               <div className="relative w-full aspect-[3/2] max-w-[300px]">
-                <svg viewBox="0 0 300 200" className="w-full h-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded shadow-inner">
+                <svg viewBox="0 0 300 200" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner">
                   {/* Axes */}
                   <line x1="40" y1="160" x2="280" y2="160" stroke="#94a3b8" strokeWidth="2" />
                   <line x1="40" y1="20" x2="40" y2="160" stroke="#94a3b8" strokeWidth="2" />
@@ -328,8 +328,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
             {/* Assessment */}
             {isMystery && (
-              <div className="mt-auto bg-purple-50 p-4 rounded-xl border border-purple-200 shrink-0">
-                <h4 className="font-bold text-purple-800 mb-2 text-sm">Analysis: Find Area 'A'</h4>
+              <div className="mt-auto bg-purple-50 p-4 rounded-xl border border-purple-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h4 className="font-bold text-purple-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find Area 'A'</h4>
                 <p className="text-xs text-purple-700 mb-3">
                   Calculate the unknown coil area <strong>A</strong> using your data. <br/> ε = 0.1 · N · B · A · v.
                 </p>
@@ -341,7 +341,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
                   />
                   <button 
                     onClick={handleCheck}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded text-sm transition-colors"
+                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
                   >
                     Check
                   </button>

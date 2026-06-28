@@ -47,15 +47,15 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
   };
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-green-50 font-sans">
+    <div className="lg:overflow-y-auto flex flex-col h-screen bg-green-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b]">
       <LabHeader onExit={onExit} title="Unit 11: Effect of Fertilizers on Plant Growth" />
 
       <div className="flex-1 flex flex-col p-8 items-center">
         
-        <div className="w-full max-w-4xl bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-8 flex items-center justify-between">
+        <div className="w-full max-w-4xl bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mb-8 flex items-center justify-between">
           <div>
-             <h2 className="text-2xl font-bold text-green-800">Time-Lapse Simulator</h2>
-             <p className="text-slate-600 dark:text-slate-300">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
+             <h2 className="text-2xl font-bold text-green-800 dark:text-[#ffffff]">Time-Lapse Simulator</h2>
+             <p className="text-slate-600 dark:text-[#a1a1aa]">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
           </div>
           <div className="flex items-center gap-6">
             <div className="text-center">
@@ -65,19 +65,19 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
             <button 
               onClick={handleStart}
               disabled={running}
-              className="px-6 py-3 bg-green-600 text-white font-bold rounded-xl shadow-sm flex items-center gap-2 hover:bg-green-700 disabled:opacity-50"
+              className="px-6 py-3 bg-green-600 text-white font-bold rounded-xl shadow-sm flex items-center gap-2 hover:bg-green-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
             >
               <FastForward className="w-5 h-5" /> {day >= 28 ? 'Restart Simulation' : 'Start Simulation'}
             </button>
           </div>
         </div>
 
-        <div className="flex gap-12 items-end justify-center h-96 w-full max-w-4xl border-b-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 pb-2 relative">
+        <div className="flex gap-12 items-end justify-center h-96 w-full max-w-4xl border-b-4 border-slate-300 dark:border-[#1c1b1b] pb-2 relative">
           
           {/* Pot A */}
           <div className="flex flex-col items-center">
             <div className="w-24 h-64 relative flex items-end justify-center mb-2">
-              <div className="w-2 bg-green-500 rounded-t-full transition-all duration-300 relative flex flex-col-reverse items-center" style={{ height: `${getGrowth('A', day)}%` }}>
+              <div className="w-2 bg-green-500 rounded-t-full transition-all duration-300 relative flex flex-col-reverse items-center dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ height: `${getGrowth('A', day)}%` }}>
                  {/* Generate leaves based on height */}
                  {[...Array(getLeaves(getGrowth('A', day)))].map((_, i) => (
                    <div key={i} className={`absolute w-6 h-3 bg-green-500 rounded-full ${i % 2 === 0 ? 'left-2 rotate-12 origin-left' : 'right-2 -rotate-12 origin-right'}`} style={{ bottom: `${i * 10 + 5}px` }}></div>
@@ -132,9 +132,9 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
         </div>
 
         {day >= 28 && (
-          <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-900 border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
-            <h3 className="font-bold text-lg text-green-800 mb-2">Experiment Conclusion</h3>
-            <p className="text-slate-600 dark:text-slate-300">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
+          <div className="mt-8 p-6 bg-slate-50 dark:!bg-[#121212] border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
+            <h3 className="font-bold text-lg text-green-800 mb-2 dark:text-[#ffffff]">Experiment Conclusion</h3>
+            <p className="text-slate-600 dark:text-[#a1a1aa]">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
           </div>
         )}
 

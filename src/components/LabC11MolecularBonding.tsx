@@ -50,44 +50,44 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="VSEPR Theory & Molecular Bonding" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
               <Box className="w-5 h-5 text-fuchsia-500" />
               VSEPR Theory Setup
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
               Valence Shell Electron Pair Repulsion (VSEPR) theory assumes that electron pairs in the valence shell of a central atom will adopt an arrangement that minimizes repulsions between these pairs.
             </p>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+            <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
               By controlling the number of bonding pairs (peripheral atoms) and non-bonding pairs (lone pairs), you can predict the 3D molecular geometry.
             </p>
           </div>
 
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Molecular Builder</h3>
+          <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Molecular Builder</h3>
             
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Central Atom Symbol</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Central Atom Symbol</label>
             <input 
               type="text" maxLength={2} 
               value={centralAtom} onChange={(e) => setCentralAtom(e.target.value)}
-              className="w-full mb-4 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg uppercase"
+              className="w-full mb-4 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg uppercase"
             />
 
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Peripheral Atoms: {peripheralCount}</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Peripheral Atoms: {peripheralCount}</label>
             <input 
               type="range" min="1" max="6" step="1" 
               value={peripheralCount} onChange={(e) => setPeripheralCount(parseInt(e.target.value))}
               className="w-full mb-4 accent-fuchsia-600"
             />
 
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Lone Pairs: {lonePairs}</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Lone Pairs: {lonePairs}</label>
             <input 
               type="range" min="0" max="3" step="1" 
               value={lonePairs} onChange={(e) => setLonePairs(parseInt(e.target.value))}
@@ -102,10 +102,10 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
         </div>
 
         {/* Column 2: 3D Visualizer Simulator */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center justify-center">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 w-full mb-4">3D Molecular Projection</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] w-full mb-4">3D Molecular Projection</h2>
           
-          <svg viewBox="0 0 400 400" className="w-full h-80 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+          <svg viewBox="0 0 400 400" className="w-full h-80 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
             <circle cx="200" cy="200" r="30" fill="#f43f5e" />
             <text x="200" y="205" className="text-sm fill-white font-bold" textAnchor="middle">{centralAtom || '?'}</text>
 
@@ -146,15 +146,15 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div className="flex-1">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />
               Molecule Library
             </h2>
-            <div className="overflow-y-auto max-h-48 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg">
+            <div className="lg:overflow-y-auto max-h-48 border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-200 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] sticky top-0">
                   <tr>
                     <th className="px-3 py-2">Configuration</th>
                     <th className="px-3 py-2">Geometry</th>
@@ -162,7 +162,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
                 </thead>
                 <tbody>
                   {logs.length === 0 ? (
-                    <tr><td colSpan={2} className="px-3 py-4 text-center text-slate-500 dark:text-slate-400 italic">No molecules saved.</td></tr>
+                    <tr><td colSpan={2} className="px-3 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No molecules saved.</td></tr>
                   ) : (
                     logs.map((l, i) => (
                       <tr key={i} className="border-b border-slate-100">
@@ -176,13 +176,13 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2 flex items-center gap-2">
+          <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
               <Calculator className="w-5 h-5 text-rose-500" />
               Geometry Assessment
             </h2>
             {targetMolecule && (
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                 What is the VSEPR geometry of <strong>{targetMolecule.name}</strong>? 
                 Use the builder to figure out its lone pairs and peripheral atoms.
               </p>
@@ -190,7 +190,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
             <div className="flex gap-2">
               <select 
                 value={answerShape} onChange={(e) => setAnswerShape(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 bg-slate-50 dark:bg-slate-900"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 bg-slate-50 dark:bg-[#121212]"
               >
                 <option value="">Select Shape...</option>
                 <option value="Linear">Linear</option>
@@ -199,7 +199,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
                 <option value="Trigonal Pyramidal">Trigonal Pyramidal</option>
                 <option value="Tetrahedral">Tetrahedral</option>
               </select>
-              <button onClick={checkAnswer} className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+              <button onClick={checkAnswer} className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">
                 <Target className="w-4 h-4" /> Verify
               </button>
             </div>

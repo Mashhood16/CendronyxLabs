@@ -111,7 +111,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
     const maxT = 60;
     const maxY = 100;
     return (
-      <svg viewBox="-30 -10 250 160" className="w-full h-64 bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+      <svg viewBox="-30 -10 250 160" className="w-full h-64 bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
          {/* Axes */}
          <line x1="0" y1="120" x2="200" y2="120" stroke="#94a3b8" strokeWidth="2" />
          <line x1="0" y1="0" x2="0" y2="120" stroke="#94a3b8" strokeWidth="2" />
@@ -146,34 +146,34 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Metal Reactivity Series: Rate of Reaction" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
               <Activity className="text-teal-600" /> Theory & Setup
             </h2>
           </div>
-          <div className="p-6 flex-1 overflow-y-auto space-y-6">
+          <div className="p-6 flex-1 lg:overflow-y-auto space-y-6">
             <div>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Reaction Principle</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Reaction Principle</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
                 Different metals react with dilute acids at different rates, producing hydrogen gas. The reactivity series orders metals by their reactivity.
               </p>
-              <div className="bg-slate-800 dark:bg-slate-800 text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner text-center">
+              <div className="bg-[#121212] dark:bg-[#121212] text-green-400 p-3 rounded-lg font-mono text-sm shadow-inner text-center">
                 Metal + Acid → Salt + Hydrogen
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-4">Set Variables</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Set Variables</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     Concentration of HCl: {hclConc.toFixed(1)} M
                   </label>
                   <input 
@@ -183,7 +183,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+                  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
                     Mass of each metal added: {metalMass.toFixed(2)} g
                   </label>
                   <input 
@@ -199,13 +199,13 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
               <button 
                 onClick={startExperiment} 
                 disabled={running || time > 0} 
-                className="flex-1 py-3 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
               >
                 <Play size={20} /> Add Metals & Start
               </button>
               <button 
                 onClick={resetExperiment} 
-                className="py-3 px-4 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:bg-slate-300 dark:bg-slate-800 flex items-center justify-center"
+                className="py-3 px-4 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-semibold rounded-xl hover:bg-slate-300 dark:bg-[#121212] flex items-center justify-center"
               >
                 <RotateCcw size={20} />
               </button>
@@ -214,9 +214,9 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Virtual Workbench</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Virtual Workbench</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col items-center justify-between">
             
@@ -274,7 +274,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
             </div>
 
             {/* Dynamic Equation */}
-            <div className="w-full bg-slate-800 dark:bg-slate-800 text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center mt-8">
+            <div className="w-full bg-[#121212] dark:bg-[#121212] text-green-400 p-4 rounded-xl font-mono text-center shadow-inner min-h-[4rem] flex flex-col justify-center items-center mt-8">
               <span className="text-xs text-slate-400 mb-1 uppercase tracking-wider">Reaction Viewer</span>
               <span className="text-sm md:text-base">{getEquation()}</span>
             </div>
@@ -282,19 +282,19 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Results & Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Results & Analysis</h2>
           </div>
           <div className="p-6 flex-1 flex flex-col">
             
             <div className="mb-6">
               <div className="flex justify-between items-end mb-2">
-                <h3 className="font-semibold text-slate-800 dark:text-slate-100">H₂ Volume vs Time</h3>
-                <span className="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-600 dark:text-slate-300">t = {(time/2).toFixed(1)} s</span>
+                <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">H₂ Volume vs Time</h3>
+                <span className="text-xs font-mono bg-slate-100 dark:bg-[#121212] px-2 py-1 rounded text-slate-600 dark:text-[#a1a1aa]">t = {(time/2).toFixed(1)} s</span>
               </div>
               {renderGraph() || (
-                <div className="w-full h-64 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg flex items-center justify-center text-slate-400 text-sm">
+                <div className="w-full h-64 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg flex items-center justify-center text-slate-400 text-sm">
                   Start the experiment to record data.
                 </div>
               )}
@@ -309,9 +309,9 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 mt-auto">
-              <h3 className="font-semibold text-slate-800 dark:text-slate-100 mb-2">Assessment</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Assessment</h3>
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
                 Based on your graph, which metal has the highest initial rate of reaction?
               </p>
               <div className="flex gap-2 mb-2">
@@ -320,9 +320,9 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
                   value={assessmentAnswer}
                   onChange={e => setAssessmentAnswer(e.target.value)}
                   placeholder="Enter element symbol or name..."
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg text-sm outline-none focus:border-teal-500"
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-sm outline-none focus:border-teal-500"
                 />
-                <button onClick={checkAssessment} className="px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 text-sm">
+                <button onClick={checkAssessment} className="px-4 py-2 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 text-sm dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">
                   Check
                 </button>
               </div>

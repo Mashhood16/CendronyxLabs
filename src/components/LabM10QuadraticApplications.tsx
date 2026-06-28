@@ -94,16 +94,16 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
   const currentY = 300 - (height + v0y * time - 0.5 * g * time * time) * 5;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Quadratic Applications: Projectile Motion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
             <Target /> Theory & Context
           </h2>
-          <div className="prose text-slate-700 dark:text-slate-200">
+          <div className="prose text-slate-700 dark:text-[#ffffff]">
             <p>
               Projectile motion traces a <strong>parabola</strong>, which is the graph of a quadratic function.
               The height of a projectile over time is modeled by the equation:
@@ -125,10 +125,10 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
           <h2 className="text-xl font-bold text-emerald-800 mb-4">Physics Cannon Simulator</h2>
           
-          <div className="w-full max-w-md grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+          <div className="w-full max-w-md grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
             <div>
               <label className="block text-xs font-semibold mb-1">Velocity: {velocity} m/s</label>
               <input type="range" min="10" max="40" value={velocity} onChange={e => {setVelocity(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
@@ -143,7 +143,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="relative w-full h-80 bg-sky-100 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
+          <div className="relative w-full h-80 bg-sky-100 rounded-lg overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
             <svg viewBox="0 0 600 300" className="w-full h-full" preserveAspectRatio="xMinYMax meet">
               {/* Ground */}
               <rect x="0" y="300" width="600" height="20" fill="#22c55e" />
@@ -159,7 +159,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
             </svg>
 
             {/* Telemetry overlay */}
-            <div className="absolute top-2 left-2 bg-slate-50 dark:bg-slate-900/80 p-2 rounded text-xs font-mono border border-slate-300 dark:border-slate-700 dark:border-slate-500">
+            <div className="absolute top-2 left-2 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded text-xs font-mono border border-slate-300 dark:border-[#1c1b1b]">
               <div>Time: {time.toFixed(2)} s</div>
               <div>Height: {Math.max(0, height + v0y * time - 0.5 * g * time * time).toFixed(1)} m</div>
               <div>Distance: {(v0x * time).toFixed(1)} m</div>
@@ -167,25 +167,25 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
           </div>
           
           <div className="flex gap-4 mt-4 w-full max-w-md">
-             <button onClick={fireCannon} disabled={isFiring} className="flex-1 min-w-0 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors">
+             <button onClick={fireCannon} disabled={isFiring} className="flex-1 min-w-0 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
                Fire Cannon
              </button>
-             <button onClick={resetCannon} className="flex-1 min-w-0 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold py-2 px-4 rounded transition-colors">
+             <button onClick={resetCannon} className="flex-1 min-w-0 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold py-2 px-4 rounded transition-colors">
                Reset
              </button>
           </div>
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold text-emerald-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-6">
             <h3 className="font-semibold text-emerald-900 mb-2">Calculate Maximum Height</h3>
-            <p className="text-slate-700 dark:text-slate-200 mb-4 text-sm">
+            <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm">
               Using the current simulator parameters, write the quadratic equation and determine the peak altitude of the projectile.
             </p>
-            <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded border border-slate-200 dark:border-slate-700 dark:border-slate-500 mb-4 font-mono text-xs">
+            <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 font-mono text-xs">
               <p>v₀ = {velocity} m/s, θ = {angle}°</p>
               <p>v₀_y = {velocity} × sin({angle}°) ≈ {v0y.toFixed(2)} m/s</p>
               <p>h₀ = {height} m</p>
@@ -193,19 +193,19 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
             </div>
             
             <div className="mb-4">
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-1">Max Height (m):</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">Max Height (m):</label>
               <input 
                 type="number" 
                 value={ansMaxHeight} 
                 onChange={e => setAnsMaxHeight(e.target.value)}
-                className="w-full p-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded focus:ring-2 focus:ring-emerald-500 outline-none"
+                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-emerald-500 outline-none"
                 placeholder="e.g. 25.5"
               />
             </div>
 
             <button 
               onClick={checkAnswer}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors"
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
             >
               Verify Calculation
             </button>

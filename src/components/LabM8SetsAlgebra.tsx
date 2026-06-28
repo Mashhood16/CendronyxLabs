@@ -61,18 +61,18 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
   }, [seqType, firstTerm, ratio]);
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100 select-none">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
       {/* Header */}
-      <div className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
+      <div className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm border-b border-slate-200 dark:border-[#1c1b1b]">
         <button onClick={onExit} className="p-2 mr-4 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex-shrink-0 whitespace-nowrap transition-colors">
           <ArrowLeft size={20} />
         </button>
         <h1 className="text-lg md:text-xl font-bold flex-1 truncate">Unit 5 & 6: Sets and Sequences</h1>
         <div className="flex space-x-2">
-          <button onClick={() => setMode('sets')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sets' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600'}`}>
+          <button onClick={() => setMode('sets')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sets' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
             <PieChart size={18} className="mr-2" /> Sets Analysis
           </button>
-          <button onClick={() => setMode('sequences')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sequences' ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600'}`}>
+          <button onClick={() => setMode('sequences')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sequences' ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
             <TrendingUp size={18} className="mr-2" /> Sequences
           </button>
         </div>
@@ -81,15 +81,15 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
       {/* Main content: 2-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Col: Controls */}
-        <div className="w-full lg:w-1/3 min-w-[320px] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg z-10 flex flex-col">
+        <div className="w-full lg:w-1/3 min-w-[320px] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] shadow-lg z-10 flex flex-col">
           {mode === 'sets' ? (
             <div className="space-y-6 flex-1 flex flex-col">
               <div>
                 <h2 className="text-2xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-2">Demographic Survey</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Adjust the survey results to see the Venn diagram update. Analyze intersecting groups of biology and computer science students.</p>
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Adjust the survey results to see the Venn diagram update. Analyze intersecting groups of biology and computer science students.</p>
               </div>
               
-              <div className="space-y-5 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+              <div className="space-y-5 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-xl border border-slate-100 dark:border-[#1c1b1b]">
                 <div>
                   <div className="flex justify-between mb-1">
                     <label className="text-sm font-semibold">Total Students</label>
@@ -128,12 +128,12 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                     type="number" 
                     value={setsAns} 
                     onChange={e => setSetsAns(e.target.value)}
-                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-[#121212] dark:border-[#1c1b1b] focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                     placeholder="Enter value..."
                   />
                   <button 
                     onClick={checkSets}
-                    className="flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm"
+                    className="flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     <Check size={18} className="mr-1.5" /> Check
                   </button>
@@ -149,16 +149,16 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
             <div className="space-y-6 flex-1 flex flex-col">
               <div>
                 <h2 className="text-2xl font-extrabold text-emerald-700 dark:text-emerald-400 mb-2">Sequence Growth</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300">Model career progressions using arithmetic or geometric sequences to predict future values.</p>
+                <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Model career progressions using arithmetic or geometric sequences to predict future values.</p>
               </div>
 
-              <div className="space-y-5 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+              <div className="space-y-5 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-xl border border-slate-100 dark:border-[#1c1b1b]">
                 <div>
                   <label className="block text-sm font-semibold mb-2">Sequence Type</label>
                   <select 
                     value={seqType} 
                     onChange={e => setSeqType(e.target.value as any)} 
-                    className="w-full p-2.5 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-600 outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-2.5 border rounded-lg bg-white dark:bg-[#121212] dark:border-[#1c1b1b] outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="arithmetic">Arithmetic (Constant Addition)</option>
                     <option value="geometric">Geometric (Constant Multiplication)</option>
@@ -197,12 +197,12 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                     type="number" 
                     value={seqAns} 
                     onChange={e => setSeqAns(e.target.value)}
-                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-slate-800 dark:border-slate-600 focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
+                    className="flex-1 min-w-0 p-2.5 border rounded-lg bg-white dark:bg-[#121212] dark:border-[#1c1b1b] focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
                     placeholder="Enter predicted value..."
                   />
                   <button 
                     onClick={checkSeq}
-                    className="flex items-center justify-center px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm"
+                    className="flex items-center justify-center px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg whitespace-nowrap flex-shrink-0 transition-colors font-medium shadow-sm dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
                   >
                     <Check size={18} className="mr-1.5" /> Check
                   </button>
@@ -220,8 +220,8 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
         {/* Right Col: Simulation Stage */}
         <div className="w-full lg:w-2/3 p-4 md:p-8 flex flex-col items-center justify-center bg-slate-100/50 dark:bg-slate-950/50 relative overflow-hidden">
           {mode === 'sets' ? (
-            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col p-6 overflow-hidden">
-              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-slate-200">Venn Diagram Visualization</h3>
+            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col p-6 overflow-hidden">
+              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-[#ffffff]">Venn Diagram Visualization</h3>
               <div className="flex-1 min-w-0 w-full relative">
                 <svg viewBox="0 0 500 400" className="w-full h-full drop-shadow-sm">
                   <defs>
@@ -236,11 +236,11 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                   
                   {/* Universe Box */}
                   <rect x="20" y="20" width="460" height="360" rx="16" fill="var(--color-bg, transparent)" stroke="currentColor" strokeWidth="2" strokeDasharray="8 4" className="text-slate-300 dark:text-slate-600" />
-                  <text x="35" y="45" fontSize="16" fontWeight="bold" fill="currentColor" className="text-slate-500 dark:text-slate-400">Total Surveyed (U) = {totalStudents}</text>
+                  <text x="35" y="45" fontSize="16" fontWeight="bold" fill="currentColor" className="text-slate-500 dark:text-[#71717a]">Total Surveyed (U) = {totalStudents}</text>
                   
                   {/* Neither Section Text */}
                   <rect x="350" y="340" width="115" height="28" rx="6" fill="currentColor" className="text-slate-100 dark:text-slate-800" />
-                  <text x="407" y="359" fontSize="14" fontWeight="bold" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-slate-300">Neither = {neither}</text>
+                  <text x="407" y="359" fontSize="14" fontWeight="bold" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-[#a1a1aa]">Neither = {neither}</text>
                   
                   {/* Sets grouped for centering */}
                   <g transform="translate(25, 25)">
@@ -265,8 +265,8 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
               </div>
             </div>
           ) : (
-            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 flex flex-col p-6 overflow-hidden">
-              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-slate-200">Value Progression Chart</h3>
+            <div className="w-full h-full max-w-4xl max-h-[600px] bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col p-6 overflow-hidden">
+              <h3 className="text-xl font-bold text-center mb-6 text-slate-700 dark:text-[#ffffff]">Value Progression Chart</h3>
               <div className="flex-1 min-w-0 w-full relative">
                 <svg viewBox="0 0 800 400" className="w-full h-full drop-shadow-sm">
                   {/* Grid Lines */}
@@ -275,11 +275,11 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                   ))}
                   
                   {/* Axes */}
-                  <line x1="60" y1="320" x2="760" y2="320" stroke="currentColor" strokeWidth="3" className="text-slate-400 dark:text-slate-500" />
-                  <line x1="60" y1="20" x2="60" y2="320" stroke="currentColor" strokeWidth="3" className="text-slate-400 dark:text-slate-500" />
+                  <line x1="60" y1="320" x2="760" y2="320" stroke="currentColor" strokeWidth="3" className="text-slate-400 dark:text-[#71717a]" />
+                  <line x1="60" y1="20" x2="60" y2="320" stroke="currentColor" strokeWidth="3" className="text-slate-400 dark:text-[#71717a]" />
                   
-                  <text x="30" y="180" transform="rotate(-90 30 180)" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-500 dark:text-slate-400">Value</text>
-                  <text x="410" y="370" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-500 dark:text-slate-400">Time (Years)</text>
+                  <text x="30" y="180" transform="rotate(-90 30 180)" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-500 dark:text-[#71717a]">Value</text>
+                  <text x="410" y="370" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-500 dark:text-[#71717a]">Time (Years)</text>
                   
                   {/* Data visualization */}
                   {(() => {
@@ -303,7 +303,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                             rx="4"
                             className="transition-all duration-500 ease-in-out"
                           />
-                          <text x={x} y="340" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-slate-400">Y{i+1}</text>
+                          <text x={x} y="340" fontSize="14" fontWeight="bold" fill="currentColor" textAnchor="middle" className="text-slate-600 dark:text-[#71717a]">Y{i+1}</text>
                           {/* Value label */}
                           <text 
                             x={x} 
@@ -312,7 +312,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                             fontWeight="bold" 
                             fill={isTarget ? "#d97706" : "currentColor"} 
                             textAnchor="middle" 
-                            className={isTarget ? "" : "text-slate-500 dark:text-slate-400"}
+                            className={isTarget ? "" : "text-slate-500 dark:text-[#a1a1aa]"}
                           >
                             {val >= 1000 ? (val/1000).toFixed(1)+'k' : val.toFixed(0)}
                           </text>

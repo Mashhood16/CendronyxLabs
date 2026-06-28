@@ -118,16 +118,16 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="Lab: Magnetic Induction" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-y-auto">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800">
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+          <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]">
             <Info className="mr-2" /> Theory & Context
           </h2>
-          <div className="space-y-4 text-slate-700 dark:text-slate-200 leading-relaxed">
+          <div className="space-y-4 text-slate-700 dark:text-[#ffffff] leading-relaxed">
             <p>
               A piece of unmagnetized steel contains tiny <strong>magnetic domains</strong> (groups of atoms) that are randomly oriented. Because they point in all directions, their magnetic fields cancel out.
             </p>
@@ -140,8 +140,8 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
                 <strong>Hammering:</strong> Striking the metal vibrates the domains, allowing them to align with an external magnetic field (like Earth's). If struck while facing East-West, the vibration can randomize the domains and destroy magnetization.
               </li>
             </ul>
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-6">
-              <h3 className="font-semibold text-indigo-800 mb-2">Instructions:</h3>
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Instructions:</h3>
               <ol className="list-decimal pl-5 space-y-2 text-sm">
                 <li><strong>Drag the magnet</strong> repeatedly over the steel bar from one end to the other to observe the domains aligning.</li>
                 <li><strong>Change the bar's orientation</strong> and press <em>Hammer Bar</em> to see the effects of vibration on domain alignment.</li>
@@ -151,21 +151,21 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-indigo-800 text-center">Interactive Simulator</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-xl font-bold mb-4 text-indigo-800 text-center dark:text-[#ffffff]">Interactive Simulator</h2>
           
-          <div className="flex gap-4 mb-4 justify-center bg-slate-50 dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500">
-             <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200 cursor-pointer">
+          <div className="flex gap-4 mb-4 justify-center bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+             <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
                 <input type="radio" name="align" checked={barAlignment === 'EW'} onChange={() => setBarAlignment('EW')} className="w-4 h-4 text-indigo-600" />
                 Bar Aligned East-West
              </label>
-             <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200 cursor-pointer">
+             <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
                 <input type="radio" name="align" checked={barAlignment === 'NS'} onChange={() => setBarAlignment('NS')} className="w-4 h-4 text-indigo-600" />
                 Bar Aligned North-South
              </label>
           </div>
 
-          <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner">
+          <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-[#121212] rounded-xl overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
             <svg
               ref={svgRef}
               viewBox="0 0 400 400"
@@ -202,7 +202,7 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <button
               onClick={hammerBar}
-              className="flex items-center px-5 py-2 bg-slate-700 dark:bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-800 dark:bg-slate-800 transition-colors shadow-sm"
+              className="flex items-center px-5 py-2 bg-slate-700 dark:!bg-[#121212] text-white rounded-lg font-medium hover:bg-[#121212] dark:!bg-[#121212] transition-colors shadow-sm"
             >
               Hammer Bar
             </button>
@@ -220,32 +220,32 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-indigo-800">Data Logging & Analysis</h2>
+        <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+          <h2 className="text-xl font-bold mb-4 text-indigo-800 dark:text-[#ffffff]">Data Logging & Analysis</h2>
           
-          <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-lg max-h-64">
+          <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-64">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-100 dark:bg-slate-800 sticky top-0">
+              <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
                 <tr>
-                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-slate-200">Action</th>
-                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-slate-200">Net Magnetization</th>
+                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Action</th>
+                  <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Net Magnetization</th>
                 </tr>
               </thead>
               <tbody>
                 {logs.length === 0 ? (
                   <tr>
-                    <td colSpan={2} className="px-4 py-8 text-center text-slate-500 dark:text-slate-400 italic">
+                    <td colSpan={2} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">
                       Interact with the simulator to record data.
                     </td>
                   </tr>
                 ) : (
                   logs.map((log) => (
-                    <tr key={log.id} className="border-b hover:bg-slate-50 dark:bg-slate-900 transition-colors">
-                      <td className="px-4 py-2 text-slate-600 dark:text-slate-300">{log.action}</td>
+                    <tr key={log.id} className="border-b hover:bg-slate-50 dark:bg-[#121212] transition-colors">
+                      <td className="px-4 py-2 text-slate-600 dark:text-[#a1a1aa]">{log.action}</td>
                       <td className="px-4 py-2 font-mono font-medium">
                         <div className="flex items-center">
-                          <div className="w-16 h-2 bg-slate-200 dark:bg-slate-800 rounded-full mr-2 overflow-hidden">
-                             <div className="h-full bg-indigo-500" style={{width: `${log.strength}%`}}></div>
+                          <div className="w-16 h-2 bg-slate-200 dark:bg-[#121212] rounded-full mr-2 overflow-hidden">
+                             <div className="h-full bg-indigo-500 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{width: `${log.strength}%`}}></div>
                           </div>
                           {log.strength.toFixed(1)}%
                         </div>
@@ -257,12 +257,12 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
             </table>
           </div>
 
-          <div className="bg-indigo-50 p-5 rounded-xl border border-indigo-100 shadow-sm">
-            <h3 className="font-bold text-indigo-800 mb-2 flex items-center">
+          <div className="bg-indigo-50 p-5 rounded-xl border border-indigo-100 shadow-sm dark:!bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-800 mb-2 flex items-center dark:text-[#ffffff]">
               <CheckCircle className="w-5 h-5 mr-2" />
               Assessment
             </h3>
-            <p className="text-sm text-slate-700 dark:text-slate-200 mb-4 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 leading-relaxed">
               If you stroke the unmagnetized steel bar from Left to Right with the <strong>North</strong> pole of the magnet, which end of the bar becomes the North pole (Left or Right)?
             </p>
             <div className="flex gap-2">
@@ -271,11 +271,11 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
                 value={assessmentAnswer}
                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                 placeholder="Type 'Left' or 'Right'"
-                className="flex-1 px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex-1 px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button
                 onClick={checkAssessment}
-                className="px-5 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                className="px-5 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
               >
                 Check
               </button>

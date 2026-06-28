@@ -83,16 +83,16 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       <LabHeader onExit={onExit} title="CS11: Algorithm Visualization" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <BarChart2 className="text-indigo-500" />
             Bubble Sort Theory
           </h2>
-          <div className="prose prose-sm text-slate-600 dark:text-slate-300 flex-1 overflow-y-auto">
+          <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto">
             <p>
               <strong>Bubble Sort</strong> is a simple sorting algorithm that repeatedly steps through the input list element by element.
             </p>
@@ -104,7 +104,7 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
             <p className="mt-4">
               During each pass, the largest remaining element "bubbles" up to its correct position at the end of the array.
             </p>
-            <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-md mt-4 text-xs font-mono">
+            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-md mt-4 text-xs font-mono">
               <p>For i from 0 to N-1:</p>
               <p className="ml-4">For j from 0 to N-i-1:</p>
               <p className="ml-8 text-indigo-600">if arr[j] &gt; arr[j+1]:</p>
@@ -113,8 +113,8 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Play className="text-amber-500" />
             Sorting Array Simulator
           </h2>
@@ -147,7 +147,7 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
               <button
                 onClick={togglePlay}
                 disabled={sim.isSorted}
-                className="flex items-center gap-2 px-6 py-2 bg-indigo-600 text-white rounded-md font-semibold hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                className="flex items-center gap-2 px-6 py-2 bg-indigo-600 text-white rounded-md font-semibold hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} />}
                 {isPlaying ? 'Pause' : 'Play'}
@@ -155,7 +155,7 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
               <button
                 onClick={performStep}
                 disabled={sim.isSorted || isPlaying}
-                className="flex items-center gap-2 px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-md font-semibold hover:bg-slate-300 dark:bg-slate-800 disabled:opacity-50 transition-colors"
+                className="flex items-center gap-2 px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md font-semibold hover:bg-slate-300 dark:bg-[#121212] disabled:opacity-50 transition-colors"
               >
                 Step Forward
               </button>
@@ -168,40 +168,40 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
               </button>
             </div>
             
-            <div className="flex gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
-              <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-md">Pass: <span className="text-indigo-600">{sim.i}</span></div>
-              <div className="bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-md">Comparisons/Swaps: <span className="text-amber-600">{sim.swaps}</span></div>
+            <div className="flex gap-8 text-sm font-semibold text-slate-600 dark:text-[#a1a1aa]">
+              <div className="bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-md">Pass: <span className="text-indigo-600">{sim.i}</span></div>
+              <div className="bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-md">Comparisons/Swaps: <span className="text-amber-600">{sim.swaps}</span></div>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <CheckCircle className="text-green-500" />
             Memory Swap Analysis
           </h2>
           <div className="flex-1">
-            <p className="text-slate-600 dark:text-slate-300 mb-4">
+            <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">
               Consider the initial array state in the simulator: <strong>[45, 12, 38, 8, 25]</strong>.
             </p>
-            <p className="text-slate-600 dark:text-slate-300 mb-6">
+            <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">
               Track the memory swaps manually. After the <strong>first full pass</strong> (i=0 completes, all adjacent elements compared once), what is the exact state of the array?
             </p>
 
             <div className="mb-4">
-              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2">Enter the array elements separated by commas:</label>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Enter the array elements separated by commas:</label>
               <input
                 type="text"
                 value={ansCode}
                 onChange={e => setAnsCode(e.target.value)}
                 placeholder="e.g. 10, 20, 30, 40, 50"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none font-mono"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none font-mono"
               />
             </div>
             
             <button
               onClick={checkAnswer}
-              className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors"
+              className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Check Answer
             </button>

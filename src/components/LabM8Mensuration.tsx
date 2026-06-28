@@ -64,9 +64,9 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
   const maxMass = Math.max(10, ...measurements.map(m => m.mass));
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none dark:bg-slate-900 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff]">
       {/* HEADER */}
-      <header className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
+      <header className="flex items-center justify-between p-4 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
         <div className="flex items-center gap-3">
           {onExit && (
             <button
@@ -87,13 +87,13 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex-1 items-start">
         
         {/* COLUMN 1: THEORY & SETUP */}
-        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col gap-6">
+        <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
               <Activity className="w-5 h-5 text-blue-500" />
               Object Parameters
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+            <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
               Select a solid shape to compute its theoretical surface area and volume. Set material density to determine physical mass.
             </p>
 
@@ -103,7 +103,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
                 <select
                   value={shape}
                   onChange={(e) => setShape(e.target.value as any)}
-                  className="p-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                  className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
                 >
                   <option value="Cone">Solid Cone</option>
                   <option value="Sphere">Solid Sphere</option>
@@ -152,7 +152,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
                 <select
                   value={density}
                   onChange={(e) => setDensity(parseInt(e.target.value))}
-                  className="p-2 border rounded-md dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                  className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
                 >
                   <option value={7800}>Iron (7800 kg/m³)</option>
                   <option value={2700}>Aluminum (2700 kg/m³)</option>
@@ -165,7 +165,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
           
           <button
             onClick={logData}
-            className="mt-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0"
+            className="mt-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
           >
             <Database className="w-4 h-4" />
             Log Measurement
@@ -173,7 +173,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* COLUMN 2: SIMULATION STAGE */}
-        <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center min-h-[400px] relative">
+        <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px] relative">
           <h2 className="absolute top-4 left-4 text-lg font-semibold text-slate-800 dark:text-white">
             Cross-Section Visualizer
           </h2>
@@ -231,16 +231,16 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="w-full bg-slate-100 dark:bg-slate-700 p-3 rounded-lg mt-4 grid grid-cols-2 gap-2 text-sm">
-            <div className="flex justify-between border-b border-slate-300 dark:border-slate-600 pb-1">
-              <span className="text-slate-600 dark:text-slate-400">Exact Volume:</span>
+            <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
+              <span className="text-slate-600 dark:text-[#71717a]">Exact Volume:</span>
               <span className="font-mono font-medium">{volume.toFixed(1)} cm³</span>
             </div>
-            <div className="flex justify-between border-b border-slate-300 dark:border-slate-600 pb-1">
-              <span className="text-slate-600 dark:text-slate-400">Surface Area:</span>
+            <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
+              <span className="text-slate-600 dark:text-[#71717a]">Surface Area:</span>
               <span className="font-mono font-medium">{surfaceArea.toFixed(1)} cm²</span>
             </div>
             <div className="flex justify-between col-span-2 pt-1">
-              <span className="text-slate-600 dark:text-slate-400 flex items-center gap-1">
+              <span className="text-slate-600 dark:text-[#71717a] flex items-center gap-1">
                 Measured Mass <span className="text-xs text-indigo-500">(w/ ±1.5% tool error)</span>:
               </span>
               <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">{mass.toFixed(3)} kg</span>
@@ -252,11 +252,11 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
         <div className="flex flex-col gap-4">
           
           {/* Data Table */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 max-h-[300px] flex flex-col">
+          <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
             <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">Logged Data</h2>
-            <div className="overflow-y-auto flex-1">
+            <div className="lg:overflow-y-auto flex-1">
               <table className="w-full text-sm text-left">
-                <thead className="sticky top-0 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                <thead className="sticky top-0 bg-white dark:bg-[#121212] text-slate-500 dark:text-[#71717a]">
                   <tr>
                     <th className="py-2">Shape</th>
                     <th className="py-2">r/b</th>
@@ -266,7 +266,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
                 </thead>
                 <tbody>
                   {measurements.map(m => (
-                    <tr key={m.id} className="border-t border-slate-100 dark:border-slate-700">
+                    <tr key={m.id} className="border-t border-slate-100 dark:border-[#1c1b1b]">
                       <td className="py-2">{m.shape}</td>
                       <td className="py-2">{m.r}</td>
                       <td className="py-2">{m.h}</td>
@@ -284,9 +284,9 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Simple Graph */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
             <h2 className="text-sm font-semibold mb-2 text-slate-800 dark:text-white">Mass Trend</h2>
-            <div className="h-32 w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded relative">
+            <div className="h-32 w-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
               {measurements.length > 1 ? (
                 <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                   <polyline
@@ -313,12 +313,12 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
           </div>
 
           {/* Assessment */}
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
               <CheckCircle className="w-5 h-5 text-green-500" />
               Assessment
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+            <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
               A solid gold sphere has a radius of 10 cm. The density of gold is 19300 kg/m³. Calculate its theoretical mass in kg.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -327,11 +327,11 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
                 value={assessmentAnswer}
                 onChange={(e) => setAssessmentAnswer(e.target.value)}
                 placeholder="e.g. 50.5"
-                className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+                className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
               />
               <button
                 onClick={checkAssessment}
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0"
+                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
               >
                 Check Answer
               </button>

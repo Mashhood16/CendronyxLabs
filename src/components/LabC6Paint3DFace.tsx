@@ -105,16 +105,16 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Paint 3D Face Design" />
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
+      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
         
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.</p>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.</p>
 
         <div className="flex gap-6 flex-1 h-[600px]">
           {/* Toolbar */}
-          <div className="w-64 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex flex-col gap-6">
+          <div className="w-64 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex flex-col gap-6">
             <div>
               <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">3D Tools</h3>
               <div className="flex flex-col gap-2">
@@ -127,7 +127,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
                       className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${
                         selectedTool === tool.id
                           ? 'border-blue-500 bg-blue-50 text-blue-700'
-                          : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300'
+                          : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]'
                       }`}
                     >
                       <Icon className="w-5 h-5" />
@@ -142,7 +142,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
               <button 
                 onClick={undo}
                 disabled={shapes.length === 0}
-                className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:bg-slate-900 disabled:opacity-50"
+                className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-50 dark:bg-[#121212] disabled:opacity-50"
               >
                 <Undo className="w-5 h-5 mb-1" />
                 <span className="text-xs font-bold">Undo</span>
@@ -150,7 +150,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
               <button 
                 onClick={clear}
                 disabled={shapes.length === 0}
-                className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 text-red-600 hover:bg-red-50 disabled:opacity-50"
+                className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-red-600 hover:bg-red-50 disabled:opacity-50"
               >
                 <Trash2 className="w-5 h-5 mb-1" />
                 <span className="text-xs font-bold">Clear</span>
@@ -161,7 +161,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
           {/* Canvas */}
           <div 
             onClick={handleCanvasClick}
-            className={`flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-inner border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-400' : 'cursor-default'}`}
+            className={`flex-1 bg-slate-50 dark:bg-[#121212] rounded-xl shadow-inner border-2 border-slate-200 dark:border-[#1c1b1b] relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-400' : 'cursor-default'}`}
             style={{ 
               backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
               backgroundSize: '20px 20px'
@@ -169,7 +169,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
           >
             {shapes.length === 0 && !selectedTool && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-slate-400 flex flex-col items-center gap-4 bg-slate-50 dark:bg-slate-900/80 p-8 rounded-2xl">
+                <div className="text-slate-400 flex flex-col items-center gap-4 bg-slate-50 dark:bg-[#121212]/80 p-8 rounded-2xl">
                   <Brush className="w-12 h-12" />
                   <p className="font-bold">Select a tool to start drawing</p>
                 </div>

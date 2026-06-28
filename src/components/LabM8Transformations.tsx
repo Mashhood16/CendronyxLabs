@@ -35,12 +35,12 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
       case 'rotation':
         return (
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold dark:text-slate-100">Gear Rotation</h3>
-            <p className="text-slate-700 dark:text-slate-300">
+            <h3 className="text-xl font-semibold dark:text-[#ffffff]">Gear Rotation</h3>
+            <p className="text-slate-700 dark:text-[#a1a1aa]">
               Rotate the turbine gear by {targetAngle}° clockwise to align with the generator shaft.
             </p>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium dark:text-slate-200">Angle: {angle}°</label>
+              <label className="text-sm font-medium dark:text-[#ffffff]">Angle: {angle}°</label>
               <input 
                 type="range" 
                 min="0" 
@@ -56,12 +56,12 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
       case 'reflection':
         return (
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold dark:text-slate-100">Mirror Reflection</h3>
-            <p className="text-slate-700 dark:text-slate-300">
+            <h3 className="text-xl font-semibold dark:text-[#ffffff]">Mirror Reflection</h3>
+            <p className="text-slate-700 dark:text-[#a1a1aa]">
               Move the mirror line to x = {targetMirrorX} to reflect the laser beam perfectly onto the target sensor.
             </p>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium dark:text-slate-200">Mirror Position (x): {mirrorX}</label>
+              <label className="text-sm font-medium dark:text-[#ffffff]">Mirror Position (x): {mirrorX}</label>
               <input 
                 type="range" 
                 min="-100" 
@@ -77,12 +77,12 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
       case 'dilation':
         return (
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold dark:text-slate-100">Photography Dilation</h3>
-            <p className="text-slate-700 dark:text-slate-300">
+            <h3 className="text-xl font-semibold dark:text-[#ffffff]">Photography Dilation</h3>
+            <p className="text-slate-700 dark:text-[#a1a1aa]">
               Set the scale factor to {targetScale} to enlarge the digital photograph to fit the print frame perfectly.
             </p>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium dark:text-slate-200">Scale Factor: {scale.toFixed(1)}x</label>
+              <label className="text-sm font-medium dark:text-[#ffffff]">Scale Factor: {scale.toFixed(1)}x</label>
               <input 
                 type="range" 
                 min="0.5" 
@@ -134,7 +134,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
             
             {/* Original Shape */}
             <path d="M -80 -20 L -40 -20 L -40 -60 Z" fill="#10b981" fillOpacity="0.8" stroke="#047857" strokeWidth="2" />
-            <text x="-65" y="-10" fontSize="10" fill="currentColor" className="dark:text-slate-300">Original</text>
+            <text x="-65" y="-10" fontSize="10" fill="currentColor" className="dark:text-[#a1a1aa]">Original</text>
 
             {/* Mirror Line */}
             <line x1={mirrorX} y1="-100" x2={mirrorX} y2="100" stroke="#ef4444" strokeWidth="3" strokeDasharray="6" className="transition-all duration-300" />
@@ -143,7 +143,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
             <g transform={`translate(${mirrorX * 2}, 0) scale(-1, 1)`} className="transition-all duration-300 ease-out">
               <path d="M -80 -20 L -40 -20 L -40 -60 Z" fill="#34d399" fillOpacity="0.5" stroke="#047857" strokeWidth="2" strokeDasharray="4" />
             </g>
-            <text x={mirrorX + (mirrorX - (-60))} y="-10" fontSize="10" fill="currentColor" className="dark:text-slate-300 transition-all duration-300">Reflected</text>
+            <text x={mirrorX + (mirrorX - (-60))} y="-10" fontSize="10" fill="currentColor" className="dark:text-[#a1a1aa] transition-all duration-300">Reflected</text>
           </svg>
         );
       case 'dilation':
@@ -175,8 +175,8 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
-      <header className="flex items-center p-4 bg-white dark:bg-slate-800 shadow-sm z-10 border-b border-slate-200 dark:border-slate-700">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+      <header className="flex items-center p-4 bg-white dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
         <button
           onClick={onExit}
           className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
@@ -190,16 +190,16 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         {/* Left Column: Interactive Controls */}
-        <div className="w-full lg:w-1/3 p-6 bg-white dark:bg-slate-800 shadow-lg lg:overflow-y-auto flex flex-col gap-8 border-r border-slate-200 dark:border-slate-700">
+        <div className="w-full lg:w-1/3 p-6 bg-white dark:bg-[#121212] shadow-lg lg:overflow-y-auto flex flex-col gap-8 border-r border-slate-200 dark:border-[#1c1b1b]">
           <div className="space-y-4">
-            <h2 className="text-lg font-semibold dark:text-slate-200">Select Mode</h2>
+            <h2 className="text-lg font-semibold dark:text-[#ffffff]">Select Mode</h2>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setMode('rotation')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${
                   mode === 'rotation'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'
                 }`}
               >
                 <RotateCw size={18} /> Rotation
@@ -209,7 +209,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
                 className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${
                   mode === 'reflection'
                     ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'
                 }`}
               >
                 <FlipHorizontal size={18} /> Reflection
@@ -219,7 +219,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
                 className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${
                   mode === 'dilation'
                     ? 'bg-amber-600 text-white'
-                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'
                 }`}
               >
                 <Maximize size={18} /> Dilation
@@ -227,14 +227,14 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
             </div>
           </div>
 
-          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-700/50 p-5 rounded-xl border border-slate-200 dark:border-slate-600">
+          <div className="flex-1 min-w-0 bg-slate-50 dark:bg-slate-700/50 p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
             {renderControls()}
           </div>
 
           <div className="space-y-4">
             <button
               onClick={handleCheck}
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex justify-center items-center gap-2"
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex justify-center items-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <CheckCircle size={20} />
               Check Answer
@@ -254,11 +254,11 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-full lg:w-2/3 p-6 bg-slate-100 dark:bg-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
-          <div className="absolute top-4 left-4 text-slate-500 dark:text-slate-400 font-mono text-sm bg-white/80 dark:bg-slate-800/80 px-3 py-1 rounded shadow-sm backdrop-blur">
+        <div className="w-full lg:w-2/3 p-6 bg-slate-100 dark:bg-[#121212] flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="absolute top-4 left-4 text-slate-500 dark:text-[#71717a] font-mono text-sm bg-white/80 dark:bg-[#121212]/80 px-3 py-1 rounded shadow-sm backdrop-blur">
             Simulation Stage: {mode.charAt(0).toUpperCase() + mode.slice(1)}
           </div>
-          <div className="w-full max-w-2xl aspect-square bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-4 flex items-center justify-center overflow-hidden">
+          <div className="w-full max-w-2xl aspect-square bg-white dark:!bg-[#121212] rounded-2xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] p-4 flex items-center justify-center overflow-hidden">
             {renderSimulation()}
           </div>
         </div>

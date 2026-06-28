@@ -73,7 +73,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     if (drug === 'Cisplatin') {
       const crosslinks = Math.floor(effectValue / 10);
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Tumor DNA Cross-linking: {effectValue.toFixed(1)}%</text>
           {/* DNA Backbone */}
           <path d="M 50 100 Q 100 50, 150 100 T 250 100 T 350 100" fill="none" stroke="#4ade80" strokeWidth="4" />
@@ -101,7 +101,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
       const acetylPositionX = 50 + (effectValue / 100) * 150;
       const acetylPositionY = 150 + (effectValue / 100) * 20;
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">COX Enzyme Inhibition: {effectValue.toFixed(1)}%</text>
           {/* Enzyme */}
           <path d="M 200 100 C 250 50, 350 80, 320 180 C 300 250, 200 280, 180 200 C 160 120, 250 150, 200 100" fill="#3b82f6" opacity="0.8"/>
@@ -120,7 +120,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     } else {
       const integrity = 100 - effectValue;
       return (
-        <svg viewBox="0 0 400 300" className="w-full h-64 bg-slate-900 dark:bg-slate-800 rounded-lg shadow-inner">
+        <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
           <text x="20" y="30" fill="white" className="text-sm">Cell Wall Integrity: {integrity.toFixed(1)}%</text>
           
           {/* Peptidoglycan Grid */}
@@ -139,7 +139,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
       {/* Header */}
       <LabHeader onExit={onExit} title="Interactive Pharmacology Lab" />
 
@@ -147,32 +147,32 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2 flex items-center gap-2">
-              <ShieldAlert className="text-slate-500 dark:text-slate-400" size={20} />
+            <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2 flex items-center gap-2">
+              <ShieldAlert className="text-slate-500 dark:text-[#71717a]" size={20} />
               Mechanism of Action
             </h2>
             {drug === 'Cisplatin' && (
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
                 <strong>Cisplatin</strong> [Pt(NH₃)₂Cl₂] is a chemotherapy medication. It cross-links DNA in tumor cells, primarily at guanine bases. This disrupts DNA replication and transcription, ultimately leading to apoptosis.
               </p>
             )}
             {drug === 'Aspirin' && (
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
                 <strong>Aspirin</strong> (acetylsalicylic acid) irreversibly inhibits Cyclooxygenase (COX) enzymes. It transfers its acetyl group to a serine residue in the active site, blocking arachidonic acid and stopping prostaglandin synthesis.
               </p>
             )}
             {drug === 'Penicillin' && (
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
                 <strong>Penicillin</strong> contains a beta-lactam ring that binds to and competitively inhibits the transpeptidase enzyme (PBP). This prevents the cross-linking of peptidoglycan in bacterial cell walls, leading to osmotic lysis.
               </p>
             )}
           </div>
 
           <div className="flex-1">
-            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Experimental Setup</h3>
-            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">
+            <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Experimental Setup</h3>
+            <label className="block text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mb-1">
               Dosage: {dosage} mg
             </label>
             <input
@@ -182,16 +182,16 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
               step="10"
               value={dosage}
               onChange={(e) => { setDosage(Number(e.target.value)); reset(); }}
-              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600 mb-6"
+              className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-blue-600 mb-6"
             />
             
-            <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg flex items-center justify-between border border-slate-200 dark:border-slate-700 dark:border-slate-500">
+            <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg flex items-center justify-between border border-slate-200 dark:border-[#1c1b1b]">
               <div className="flex flex-col">
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Elapsed Time</span>
-                <span className="text-2xl font-mono text-slate-800 dark:text-slate-100">{time.toFixed(1)} s</span>
+                <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Elapsed Time</span>
+                <span className="text-2xl font-mono text-slate-800 dark:text-[#ffffff]">{time.toFixed(1)} s</span>
               </div>
               <div className="flex flex-col text-right">
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase font-bold tracking-wider">Effect %</span>
+                <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Effect %</span>
                 <span className="text-2xl font-mono text-blue-600">{effectValue.toFixed(1)}%</span>
               </div>
             </div>
@@ -199,9 +199,9 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Interactive Simulation */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative">
-          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-            <Bug className="text-slate-500 dark:text-slate-400" size={20} />
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative">
+          <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+            <Bug className="text-slate-500 dark:text-[#71717a]" size={20} />
             Molecular Visualizer
           </h2>
           
@@ -212,14 +212,14 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
           <div className="mt-8 flex gap-4">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm"
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-sm dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
             >
               <Play size={18} />
               {isPlaying ? 'Pause' : 'Start Process'}
             </button>
             <button
               onClick={reset}
-              className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:bg-slate-300 dark:bg-slate-800 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors"
             >
               <RotateCcw size={18} />
               Reset
@@ -228,28 +228,28 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2 border-b pb-2">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2">
             Data Analysis
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
-            Use the simulation data to calculate pharmacological parameters. Assume the relationship follows zero-order kinetics in this model: <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">Effect = k × dosage × time</code> (where k = 0.1).
+          <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
+            Use the simulation data to calculate pharmacological parameters. Assume the relationship follows zero-order kinetics in this model: <code className="bg-slate-100 dark:bg-[#121212] px-1 py-0.5 rounded">Effect = k × dosage × time</code> (where k = 0.1).
           </p>
 
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
-            <h3 className="font-semibold text-blue-900 mb-2">Assignment Question</h3>
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6 dark:bg-teal-950/20 dark:border-teal-900">
+            <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Assignment Question</h3>
             {drug === 'Cisplatin' && (
-              <p className="text-sm text-blue-800">
+              <p className="text-sm text-blue-800 dark:text-[#ffffff]">
                 At a <strong>40 mg</strong> dosage, what will be the percentage of DNA crosslinking at exactly <strong>t = 5.0 s</strong>?
               </p>
             )}
             {drug === 'Aspirin' && (
-              <p className="text-sm text-blue-800">
+              <p className="text-sm text-blue-800 dark:text-[#ffffff]">
                 Calculate the constant rate of inhibition (%/s) when the dosage is set to <strong>60 mg</strong>.
               </p>
             )}
             {drug === 'Penicillin' && (
-              <p className="text-sm text-blue-800">
+              <p className="text-sm text-blue-800 dark:text-[#ffffff]">
                 At what exact time (in seconds) will the cell wall integrity drop to <strong>0%</strong> if the dosage is <strong>100 mg</strong>?
               </p>
             )}
@@ -257,18 +257,18 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
 
           <div className="flex flex-col gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">Your Answer</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
               <input
                 type="number"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Enter numerical value"
-                className="w-full px-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
               />
             </div>
             <button
               onClick={checkAnswer}
-              className="w-full py-2 bg-slate-800 dark:bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-900 dark:bg-slate-800 transition-colors"
+              className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg font-medium hover:bg-[#000000] dark:bg-[#121212] transition-colors"
             >
               Check Answer
             </button>

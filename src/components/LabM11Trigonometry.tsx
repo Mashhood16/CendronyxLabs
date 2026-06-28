@@ -83,11 +83,11 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
   }
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
       <LabHeader onExit={onExit} title="Trigonometry: Sinusoidal Ferris Wheel" />
 
       <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <h2 className="text-xl font-bold text-teal-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">
             <p>
@@ -96,7 +96,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
             <p>
               The general equation for a sinusoidal function is:
             </p>
-            <p className="text-center font-mono bg-slate-100 dark:bg-slate-800 p-2 rounded text-teal-800">
+            <p className="text-center font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-teal-800">
               h(t) = A · sin(B(t - C)) + D
             </p>
             <ul className="text-sm mt-2 space-y-2">
@@ -114,10 +114,10 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col items-center">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
           <h2 className="text-xl font-bold text-teal-700 mb-4">Ferris Wheel Simulator</h2>
           
-          <div className="w-full flex justify-center items-center bg-slate-900 dark:bg-slate-800 rounded-lg p-4 mb-6 relative h-64 overflow-hidden shadow-inner">
+          <div className="w-full flex justify-center items-center bg-[#000000] dark:bg-[#121212] rounded-lg p-4 mb-6 relative h-64 overflow-hidden shadow-inner">
             <svg width="350" height="200" viewBox="0 -10 350 200" className="overflow-visible">
               <line x1="0" y1="150" x2="350" y2="150" stroke="#334155" strokeWidth="2" />
               
@@ -140,17 +140,17 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
               <circle cx={carX} cy={carY} r="6" fill="#f43f5e" />
             </svg>
             
-            <div className="absolute top-2 right-2 bg-slate-800 dark:bg-slate-800/80 px-3 py-1 rounded shadow text-xs font-mono text-teal-400">
+            <div className="absolute top-2 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-teal-400">
               t = {time.toFixed(1)}s
             </div>
-            <div className="absolute top-8 right-2 bg-slate-800 dark:bg-slate-800/80 px-3 py-1 rounded shadow text-xs font-mono text-rose-400">
+            <div className="absolute top-8 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-rose-400">
               h = {(150 - carY).toFixed(1)}m
             </div>
           </div>
 
           <div className="w-full space-y-4">
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 Wheel Radius: {radius} m
               </label>
               <input 
@@ -162,7 +162,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
               />
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 Center Height: {centerHeight} m
               </label>
               <input 
@@ -174,7 +174,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
               />
             </div>
             <div>
-              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200">
+              <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
                 Period (1 Rotation): {period} s
               </label>
               <input 
@@ -198,7 +198,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
               </button>
               <button 
                 onClick={reset}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:bg-slate-800"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]"
               >
                 <RotateCcw size={18} /> Reset
               </button>
@@ -206,56 +206,56 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
           </div>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
+        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
           <h2 className="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
             <Activity size={24} /> Equation Builder
           </h2>
           
-          <div className="mb-6 text-sm text-slate-600 dark:text-slate-300">
+          <div className="mb-6 text-sm text-slate-600 dark:text-[#a1a1aa]">
             Based on the settings in the simulator, build the sinusoidal equation that models the rider's height over time.
             <br/><br/>
             <strong>Equation format:</strong> <br/>
-            <code className="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-teal-700 text-base">h(t) = A · sin(B(t)) + D</code>
+            <code className="bg-slate-100 dark:bg-[#121212] px-2 py-1 rounded text-teal-700 text-base">h(t) = A · sin(B(t)) + D</code>
           </div>
 
           <div className="space-y-4 flex-1">
             
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Amplitude (A)</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Amplitude (A)</label>
               <input 
                 type="number" 
                 value={ansAmplitude}
                 onChange={(e) => setAnsAmplitude(e.target.value)}
                 placeholder="Radius of the wheel"
-                className="px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Vertical Shift (D)</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Vertical Shift (D)</label>
               <input 
                 type="number" 
                 value={ansShift}
                 onChange={(e) => setAnsShift(e.target.value)}
                 placeholder="Center height"
-                className="px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Period (T)</label>
+              <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Period (T)</label>
               <input 
                 type="number" 
                 value={ansPeriod}
                 onChange={(e) => setAnsPeriod(e.target.value)}
                 placeholder="Time for one revolution"
-                className="px-3 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>
 
             <button 
               onClick={checkAnswers}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors mt-4"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors mt-4 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
             >
               <CheckCircle size={18} /> Verify Equation
             </button>
