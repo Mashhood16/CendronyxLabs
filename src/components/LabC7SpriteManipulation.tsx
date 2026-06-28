@@ -71,7 +71,7 @@ export default function LabC7SpriteManipulation({ onExit }: LabProps) {
           </div>
 
           {/* Stage Area */}
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-xl border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 p-4 relative flex items-center justify-center overflow-hidden">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-xl border-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 p-4 relative flex items-center justify-center lg:overflow-hidden">
             {/* Grid overlay */}
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 opacity-20 pointer-events-none">
               <div className="border-r-2 border-b-2 border-blue-500"></div>

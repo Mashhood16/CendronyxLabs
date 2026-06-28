@@ -190,7 +190,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         {/* Left Column: Interactive Controls */}
-        <div className="w-full lg:w-1/3 p-6 bg-white dark:bg-slate-800 shadow-lg overflow-y-auto flex flex-col gap-8 border-r border-slate-200 dark:border-slate-700">
+        <div className="w-full lg:w-1/3 p-6 bg-white dark:bg-slate-800 shadow-lg lg:overflow-y-auto flex flex-col gap-8 border-r border-slate-200 dark:border-slate-700">
           <div className="space-y-4">
             <h2 className="text-lg font-semibold dark:text-slate-200">Select Mode</h2>
             <div className="flex flex-wrap gap-2">

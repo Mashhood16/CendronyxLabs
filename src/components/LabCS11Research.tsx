@@ -141,7 +141,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
               </div>
             </div>
           ) : (
-            <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 relative overflow-hidden">
+            <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 relative lg:overflow-hidden">
               <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 w-full text-left mb-6 flex items-center">
                 <BarChart3 className="mr-2 text-indigo-500" /> Responses: Question 1
               </h3>

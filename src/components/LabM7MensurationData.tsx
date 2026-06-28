@@ -300,7 +300,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
         <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors">
           <ArrowLeft className="w-5 h-5" />
         </button>
-        <h1 className="text-xl font-bold">Class 7 Maths: Mensuration & Data Handling</h1>
+        <h1 className="text-lg md:text-xl font-bold">Class 7 Maths: Mensuration & Data Handling</h1>
       </div>
 
       <div className="flex flex-1 overflow-hidden">

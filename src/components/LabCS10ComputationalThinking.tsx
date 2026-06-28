@@ -175,7 +175,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
                   </div>
                   <div className="flex items-center gap-4 text-sm font-medium">
                     Abstraction Level: 
-                    <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="flex-1 h-3 bg-slate-200 dark:bg-slate-800 rounded-full lg:overflow-hidden">
                       <div className="h-full bg-cyan-500 transition-all" style={{ width: `${abstractionLevel}%` }}></div>
                     </div>
                     {abstractionLevel}%

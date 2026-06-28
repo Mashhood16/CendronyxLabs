@@ -69,7 +69,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
     <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none overflow-hidden">
       <LabHeader onExit={onExit} variant="dark" title="Grade 12 InfoSec: Cyber Defense & Cryptography" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 lg:overflow-hidden">
         
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-slate-900/50">
@@ -122,7 +122,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
             </button>
           </div>
           
-          <div className="flex-1 p-4 flex flex-col bg-slate-900 dark:bg-slate-800 text-slate-200 relative overflow-hidden">
+          <div className="flex-1 p-4 flex flex-col bg-slate-900 dark:bg-slate-800 text-slate-200 relative lg:overflow-hidden">
             {activeTab === 'network' ? (
               <div className="flex flex-col h-full gap-4">
                 <div className="flex justify-between flex-wrap gap-2">

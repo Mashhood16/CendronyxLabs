@@ -159,7 +159,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
           <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold hidden sm:block">Advice Columnist Simulator</h1>
+          <h1 className="text-lg md:text-xl font-bold hidden sm:block">Advice Columnist Simulator</h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="font-semibold px-4 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full shadow-inner">

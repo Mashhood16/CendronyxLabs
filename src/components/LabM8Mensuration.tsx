@@ -76,7 +76,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
               <ArrowLeft className="w-5 h-5" />
             </button>
           )}
-          <h1 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
             <Ruler className="w-6 h-6 text-indigo-500" />
             Advanced Mensuration & Solid Properties
           </h1>

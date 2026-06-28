@@ -44,7 +44,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Visual */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
           
           <div className="absolute top-8 left-8">
             <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />

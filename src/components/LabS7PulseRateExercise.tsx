@@ -112,7 +112,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
                <h3 className="font-mono font-bold tracking-widest">ECG MONITOR</h3>
              </div>
              
-             <div className="flex-1 relative border-b border-l border-green-900 flex items-end overflow-hidden">
+             <div className="flex-1 relative border-b border-l border-green-900 flex items-end lg:overflow-hidden">
                 {/* Continuous Scrolling Graph Line */}
                 <div 
                   className="absolute inset-0 w-[200%] flex items-center"

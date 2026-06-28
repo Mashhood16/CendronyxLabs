@@ -52,7 +52,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         data-sidebar
         className={`
           ${isDark ? 'bg-gradient-to-b from-[#0f172a] via-[#1a1f3a] to-[#0f172a] border-r border-slate-800/50' : 'bg-gradient-to-b from-slate-50 via-white to-slate-50 border-r border-slate-200'}
-          overflow-y-auto h-screen w-72 flex-col z-50
+          overflow-y-auto h-screen w-72 flex flex-col z-50
           fixed top-0 left-0
           md:static
           transition-transform duration-300 ease-in-out md:transition-none

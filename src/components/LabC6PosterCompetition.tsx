@@ -96,7 +96,7 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
           </div>
 
           {/* Canvas Area */}
-          <div className="flex-1 bg-slate-200 dark:bg-slate-800 rounded-xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-8 flex items-center justify-center relative overflow-hidden">
+          <div className="flex-1 bg-slate-200 dark:bg-slate-800 rounded-xl shadow-inner border border-slate-300 dark:border-slate-700 dark:border-slate-500 p-8 flex items-center justify-center relative lg:overflow-hidden">
             {/* The Poster */}
             <div className={`w-full max-w-lg aspect-[3/4] shadow-2xl flex flex-col relative transition-all duration-500 ${colorClasses[colorScheme]}`}>
               

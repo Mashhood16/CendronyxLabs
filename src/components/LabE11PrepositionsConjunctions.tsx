@@ -90,8 +90,8 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
         </h1>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-        <aside className="w-full lg:w-1/3 bg-white dark:bg-slate-800 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 shadow-inner">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
+        <aside className="w-full lg:w-1/3 bg-white dark:bg-slate-800 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 shadow-inner">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
             <AlertCircle size={20} className="text-indigo-500" />
             Grammar Guide
@@ -156,7 +156,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
           </div>
         </aside>
 
-        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 overflow-y-auto relative">
+        <section className="w-full lg:w-2/3 p-6 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900 lg:overflow-y-auto relative">
           <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl p-8 max-w-3xl w-full border border-slate-200 dark:border-slate-700">
             <div className="flex justify-between items-center mb-8">
               <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider text-sm">

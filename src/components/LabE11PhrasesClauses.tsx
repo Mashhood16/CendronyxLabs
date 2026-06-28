@@ -128,7 +128,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
-          <h1 className="text-xl font-bold">Lab: Phrases & Clauses Highlighter</h1>
+          <h1 className="text-lg md:text-xl font-bold">Lab: Phrases & Clauses Highlighter</h1>
         </div>
         <div className="flex items-center gap-2">
           {score !== null && (
@@ -147,7 +147,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
 
       <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
         {/* Left Column: Interactive Controls */}
-        <div className="w-full lg:w-1/3 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col shadow-sm z-0">
+        <div className="w-full lg:w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col shadow-sm z-0">
           <div className="mb-6">
             <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <Layers className="w-5 h-5 text-indigo-500" />
@@ -185,7 +185,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Right Column: Simulation Stage */}
-        <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col bg-slate-100 dark:bg-slate-900 overflow-y-auto">
+        <div className="w-full lg:w-2/3 p-6 lg:p-12 flex flex-col bg-slate-100 dark:bg-slate-900 lg:overflow-y-auto">
           <div className="mb-8 max-w-3xl mx-auto w-full">
             <h2 className="text-2xl font-bold mb-2">Sentence Analysis Stage</h2>
             <p className="text-slate-600 dark:text-slate-400">

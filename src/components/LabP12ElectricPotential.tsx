@@ -199,7 +199,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
               <Settings2 className="w-6 h-6 mr-2" />
               <h2 className="text-lg font-bold">Interactive Simulator</h2>
             </div>
-            <div className="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+            <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
               <button 
                 onClick={() => setMode('eel')}
                 className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-slate-50 dark:bg-slate-900 shadow text-emerald-700' : 'text-slate-500 dark:text-slate-400'}`}

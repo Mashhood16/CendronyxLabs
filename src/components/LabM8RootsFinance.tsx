@@ -92,7 +92,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold flex-1 whitespace-nowrap mr-4">Class 8: Roots & Finance Labs</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">Class 8: Roots & Finance Labs</h1>
         <div className="flex flex-wrap gap-2">
           <button 
             onClick={() => setActiveTab('volume')}

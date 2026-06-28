@@ -117,7 +117,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100">
-      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shrink-0">
+      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shrink-0">
         <div className="flex items-center gap-4">
           <button 
             onClick={onExit}
@@ -125,7 +125,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
             <Clock className="w-6 h-6 text-blue-500" />
             Tenses & Punctuation Lab
           </h1>
@@ -140,9 +140,9 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
         </button>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
         {/* Left Column: Interactive Controls */}
-        <section className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-y-auto p-6">
+        <section className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 lg:overflow-y-auto p-6">
           
           <div className="flex bg-slate-200 dark:bg-slate-700 p-1 rounded-lg mb-8 shrink-0">
             <button 
@@ -310,7 +310,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
         </section>
 
         {/* Right Column: Simulation Canvas */}
-        <section className="w-full lg:w-2/3 bg-slate-100 dark:bg-slate-900 p-6 flex flex-col items-center justify-center relative overflow-y-auto">
+        <section className="w-full lg:w-2/3 bg-slate-100 dark:bg-slate-900 p-6 flex flex-col items-center justify-center relative lg:overflow-y-auto">
           
           {activeTab === 'tenses' ? (
             <div className="relative w-full max-w-2xl aspect-square sm:aspect-video bg-slate-950 rounded-2xl overflow-hidden shadow-2xl flex flex-col items-center justify-center border-4 border-slate-800">

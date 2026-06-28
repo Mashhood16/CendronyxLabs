@@ -68,7 +68,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-900 dark:text-slate-100 selection:bg-indigo-200 dark:selection:bg-indigo-900">
-      <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shrink-0">
+      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-4 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shrink-0">
         <div className="flex items-center gap-4">
           <button 
             onClick={onExit}
@@ -77,7 +77,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
             <Settings className="w-6 h-6 text-indigo-500" />
             Sentence Welder (Clauses & Conjunctions)
           </h1>
@@ -92,9 +92,9 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
         </button>
       </header>
 
-      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
         {/* Left Column */}
-        <section className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-y-auto">
+        <section className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 lg:overflow-y-auto">
           <div className="p-6 space-y-8">
             <div>
               <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
         </section>
 
         {/* Right Column */}
-        <section className="w-full lg:w-2/3 bg-slate-100 dark:bg-slate-900 p-6 flex flex-col relative overflow-y-auto">
+        <section className="w-full lg:w-2/3 bg-slate-100 dark:bg-slate-900 p-6 flex flex-col relative lg:overflow-y-auto">
           <div className="flex-1 flex flex-col items-center justify-center min-h-[500px]">
             
             <div className="relative w-full max-w-2xl aspect-video bg-slate-800 rounded-xl overflow-hidden shadow-2xl border-4 border-slate-700 flex items-center justify-center mb-8">

@@ -163,7 +163,7 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="w-full mt-4 flex items-center justify-between gap-4">
-            <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full lg:overflow-hidden">
               <div className="bg-blue-500 h-full transition-all duration-100" style={{ width: `${(time/60)*100}%` }} />
             </div>
             <div className="text-sm font-mono">{time}s / 60s</div>

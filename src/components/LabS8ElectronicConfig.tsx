@@ -54,7 +54,7 @@ export default function LabS8ElectronicConfig({ onExit }: LabProps) {
         </div>
 
         {/* Atom Visualizer */}
-        <div className="flex-1 bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="flex-1 bg-slate-900 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-800 dark:border-slate-500 p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
           
           <div className="absolute top-6 left-6 text-slate-400 font-mono text-sm">
             Total Electrons: {selected.electrons.reduce((a, b) => a + b, 0)}<br/>

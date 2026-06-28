@@ -62,7 +62,7 @@ export default function LabDigitalMarketing({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-100 dark:bg-slate-800 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 6.2: Digital Marketing Strategy" variant="emerald" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Strategy Panel */}
         <div className="w-1/2 bg-slate-50 dark:bg-slate-900 p-12 overflow-y-auto border-r border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-[10px_0_20px_rgba(0,0,0,0.05)] z-10">

@@ -49,7 +49,7 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
           <button onClick={onExit} className="mr-4 whitespace-nowrap flex-shrink-0 p-2 rounded-full hover:bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:hover:bg-slate-700 transition-colors">
               <ArrowLeft size={24} />
           </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
             <Activity className="text-indigo-500 dark:text-indigo-400" />
             Verb Action Stage & Modal Machine
           </h1>
@@ -63,9 +63,9 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
         </button>
       </header>
 
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden overflow-y-auto">
          {/* Left Column - Controls */}
-         <div className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 dark:border-slate-700 bg-white dark:bg-slate-800 dark:bg-slate-800 overflow-y-auto">
+         <div className="w-full lg:w-1/3 flex flex-col border-r border-slate-200 dark:border-slate-700 dark:border-slate-700 bg-white dark:bg-slate-800 dark:bg-slate-800 lg:overflow-y-auto">
              <div className="flex border-b border-slate-200 dark:border-slate-700 dark:border-slate-700 p-2 gap-2">
                 <button
                   onClick={() => setActiveTab('verbs')}
@@ -179,7 +179,7 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
          </div>
 
          {/* Right Column - Canvas */}
-         <div className="w-full lg:w-2/3 flex flex-col bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-900 p-8 overflow-y-auto items-center justify-center relative">
+         <div className="w-full lg:w-2/3 flex flex-col bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-900 p-8 lg:overflow-y-auto items-center justify-center relative">
             {activeTab === 'verbs' ? (
                 <div className="w-full max-w-lg bg-white dark:bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-xl border-4 border-indigo-200 dark:border-indigo-900/50 overflow-hidden">
                     <div className="bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900/50 p-4 text-center font-bold text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 uppercase tracking-widest border-b-4 border-indigo-200 dark:border-indigo-900/50 flex items-center justify-center gap-2">

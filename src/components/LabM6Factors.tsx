@@ -63,7 +63,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
-          <h1 className="text-xl font-bold">Class 6 Math: Factors & Multiples</h1>
+          <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Factors & Multiples</h1>
         </div>
         <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1">
           <button

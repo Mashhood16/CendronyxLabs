@@ -52,7 +52,7 @@ export default function ClassSelection() {
                   className="relative group p-6 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 glass hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
                 >
                   {/* Gradient accent bar at top */}
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} opacity-60 saturate-[0.85] rounded-t-2xl group-hover:h-2 group-hover:opacity-80 group-hover:saturate-100 transition-all duration-300`}></div>
                   
                   {/* Hover glow */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${config.hoverGradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none rounded-2xl`}></div>

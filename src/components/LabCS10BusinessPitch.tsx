@@ -164,7 +164,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
           </div>
 
           {/* Sticky Note Board */}
-          <div className="flex-1 bg-amber-50 rounded-lg border-2 border-dashed border-amber-200 p-2 relative min-h-[200px] overflow-hidden">
+          <div className="flex-1 bg-amber-50 rounded-lg border-2 border-dashed border-amber-200 p-2 relative min-h-[200px] lg:overflow-hidden">
             <h3 className="text-xs font-bold text-amber-800/50 absolute top-2 left-2 uppercase tracking-widest">Ideation Board</h3>
             
             {notes.map(note => (

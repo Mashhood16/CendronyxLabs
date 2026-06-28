@@ -110,7 +110,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
           <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold hidden sm:block">Verb Types & Collocations</h1>
+          <h1 className="text-lg md:text-xl font-bold hidden sm:block">Verb Types & Collocations</h1>
         </div>
         <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
           <button

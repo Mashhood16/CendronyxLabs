@@ -106,7 +106,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
               <ArrowLeft className="w-5 h-5" />
             </button>
           )}
-          <h1 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
             <BarChart2 className="w-6 h-6 text-emerald-500" />
             Weather Sensor Quality Control (Probability & Data)
           </h1>

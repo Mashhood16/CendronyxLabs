@@ -345,7 +345,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
             <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 border-b pb-2 shrink-0">Live Data Graph</h2>
 
             {/* Graph area: Temp vs Time */}
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative min-h-[200px] w-full overflow-hidden">
+            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative min-h-[200px] w-full lg:overflow-hidden">
                <div className="absolute -left-6 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-slate-400">Temp (°C)</div>
                <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-slate-400">Time (s)</div>
                

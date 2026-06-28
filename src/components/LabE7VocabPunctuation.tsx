@@ -165,7 +165,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                     <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
                         <ArrowLeft className="w-6 h-6" />
                     </button>
-                    <h1 className="text-xl font-bold flex items-center gap-2">
+                    <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
                         <Edit3 className="w-6 h-6" />
                         Editor's Desk: Punctuation & Vocab
                     </h1>

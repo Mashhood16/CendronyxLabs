@@ -31,7 +31,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] lg:overflow-hidden">
           
           <p className="absolute top-6 text-slate-500 dark:text-slate-400 flex items-center gap-2 font-bold animate-pulse">
             <Hand className="w-5 h-5 text-blue-500" />

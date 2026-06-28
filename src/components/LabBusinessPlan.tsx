@@ -37,7 +37,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 6.1: Business Plan Drafting" subtitle="Draft your startup pitch deck and present it to partners." variant="dark" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Editor Area */}
         <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-12 overflow-y-auto">

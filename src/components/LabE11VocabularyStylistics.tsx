@@ -139,12 +139,12 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
               <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-300" />
             </button>
           )}
-          <h1 className="text-xl font-bold text-emerald-700 dark:text-emerald-400">Lab E11: Vocabulary & Stylistics</h1>
+          <h1 className="text-lg md:text-xl font-bold text-emerald-700 dark:text-emerald-400">Lab E11: Vocabulary & Stylistics</h1>
         </div>
       </header>
 
       {/* Main Layout */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Column: Workspace Controls */}
         <div className="w-1/3 min-w-[320px] max-w-sm border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 flex flex-col gap-6 overflow-y-auto shadow-inner">

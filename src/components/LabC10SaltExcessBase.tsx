@@ -72,7 +72,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
       {/* Header */}
       <LabHeader onExit={onExit} title="Preparation of Soluble Salt: Excess Base Method" />
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">

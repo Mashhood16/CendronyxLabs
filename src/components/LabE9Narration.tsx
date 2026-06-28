@@ -118,7 +118,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen bg-slate-50 dark:bg-slate-900 dark:bg-slate-950 font-sans text-slate-900 dark:text-slate-300 dark:text-slate-300">
       <LabHeader title="Reporter's Notepad: Narration" variant="dark" onExit={onExit} />
       
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 lg:overflow-hidden">
         <div className="h-full grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
           
           {/* Column 1: Theory */}

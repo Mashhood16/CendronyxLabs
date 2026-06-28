@@ -104,9 +104,6 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               placeholder="Search for a lab..."
               className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-slate-200 placeholder:text-slate-500' : 'text-slate-700 dark:text-slate-200 placeholder:text-slate-400'}`}
             />
-            <div className={`flex items-center justify-center rounded text-[10px] font-bold px-1.5 py-0.5 shrink-0 ml-2 ${isDark ? 'bg-white/10 border border-white/10 text-slate-400' : 'bg-white border border-slate-200 text-slate-500 shadow-sm'}`}>
-              ⌘K
-            </div>
           </div>
 
           {/* Desktop Dropdown */}

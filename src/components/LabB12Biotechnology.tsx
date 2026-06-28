@@ -128,7 +128,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
                   className="flex items-center gap-1 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 disabled:opacity-50">
                   <Play className="w-4 h-4" /> Run Cycle
                 </button>
-                <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div className="flex-1 bg-slate-200 dark:bg-slate-800 h-2 rounded-full lg:overflow-hidden">
                   <div className="bg-blue-500 h-full transition-all duration-300" style={{ width: `${(pcrTemp / 100) * 100}%` }}></div>
                 </div>
                 <div className="text-right">

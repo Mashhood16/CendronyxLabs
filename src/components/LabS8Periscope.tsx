@@ -14,7 +14,7 @@ export default function LabS8Periscope({ onExit }: LabProps) {
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col items-center relative lg:overflow-hidden">
           
           <div className="flex gap-4 items-center mb-8 bg-slate-100 dark:bg-slate-800 p-4 rounded-xl shadow-inner w-full max-w-md">
             <span className="font-bold text-slate-600 dark:text-slate-300">Object Position:</span>

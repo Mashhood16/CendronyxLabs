@@ -144,7 +144,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
                 <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center mb-1">
                   <ZoomIn className="inline w-4 h-4 mr-1"/> Magnification
                 </label>
-                <div className="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+                <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
                   {[10, 40, 100].map(m => (
                     <button 
                       key={m}

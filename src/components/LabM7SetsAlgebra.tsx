@@ -68,14 +68,14 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold flex-1">Unit 5 & 6: Sets & Algebra Lab</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1">Unit 5 & 6: Sets & Algebra Lab</h1>
         <div className="flex space-x-2">
           <button onClick={() => setActiveTab('sets')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'sets' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Sets</button>
           <button onClick={() => setActiveTab('algebra')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'algebra' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Algebra</button>
         </div>
       </header>
 
-      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 overflow-hidden">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 lg:overflow-hidden">
         {/* Left Controls */}
         <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
           {activeTab === 'sets' && (

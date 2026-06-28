@@ -38,7 +38,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
           <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title="Go Back">
             <ArrowLeft className="w-6 h-6" />
           </button>
-          <h1 className="text-xl font-bold">Class 6 Math: Integers</h1>
+          <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Integers</h1>
         </div>
         <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1">
           <button

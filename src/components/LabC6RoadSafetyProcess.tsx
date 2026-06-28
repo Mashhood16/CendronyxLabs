@@ -61,7 +61,7 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
           </div>
 
           {/* Details Panel */}
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-12 flex flex-col justify-center items-center text-center relative overflow-hidden">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-12 flex flex-col justify-center items-center text-center relative lg:overflow-hidden">
             {currentStep < steps.length ? (
               <div className="animate-in fade-in slide-in-from-right-8 duration-300">
                 <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl font-bold text-blue-600 shadow-inner">

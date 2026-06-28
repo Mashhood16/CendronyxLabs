@@ -89,7 +89,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
           {/* Simulated File Explorer Header */}
           <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 p-3 flex items-center justify-between">
             <div className="flex items-center gap-4">

@@ -53,7 +53,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
             <LabHeader onExit={onExit} title="Trigonometry Applications" />
 
             {/* Main Content Grid */}
-            <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
+            <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
                 {/* Column 1: Theory */}
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-indigo-500">
                     <div className="flex items-center mb-4 text-indigo-800 shrink-0">

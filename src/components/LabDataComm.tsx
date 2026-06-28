@@ -39,7 +39,7 @@ export default function LabDataComm({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 1.1: Data Communication Model" subtitle="Assemble the components of the communication cycle." variant="dark" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Lab Area */}
         <div className="flex-1 bg-slate-100 dark:bg-slate-800 p-12 flex flex-col relative border-r-4 border-slate-300 dark:border-slate-700 dark:border-slate-500 shadow-inner bg-[url('https://www.transparenttextures.com/patterns/connected.png')]">

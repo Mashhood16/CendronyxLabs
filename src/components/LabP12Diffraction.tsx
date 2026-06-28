@@ -201,7 +201,7 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
               <Settings2 className="w-6 h-6 mr-2" />
               <h2 className="text-lg font-bold">Interactive Simulator</h2>
             </div>
-            <div className="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+            <div className="flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
               <button 
                 onClick={() => setMode('diffraction')}
                 className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${mode === 'diffraction' ? 'bg-slate-50 dark:bg-slate-900 shadow text-blue-700' : 'text-slate-500 dark:text-slate-400'}`}

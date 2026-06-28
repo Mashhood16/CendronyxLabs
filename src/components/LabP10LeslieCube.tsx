@@ -86,7 +86,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
             <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Simulation</h2>
           </div>
 
-          <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl flex items-center justify-center p-4 h-80 overflow-hidden">
+          <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl flex items-center justify-center p-4 h-80 lg:overflow-hidden">
             
             {/* Sensor */}
             <div 

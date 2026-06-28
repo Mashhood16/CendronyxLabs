@@ -100,7 +100,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
         </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 lg:overflow-hidden">
         
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50 dark:bg-slate-900/50">

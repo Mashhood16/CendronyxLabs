@@ -78,7 +78,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 3.1: Pseudocode Interpreter" variant="dark" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Panel: Available Blocks */}
         <div className="w-80 bg-slate-800 dark:bg-slate-800 border-r border-slate-700 dark:border-slate-500 flex flex-col p-4 z-10 overflow-y-auto">

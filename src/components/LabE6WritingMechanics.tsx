@@ -81,7 +81,7 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
               Go Back
             </button>
           )}
-          <h1 className="text-xl font-bold">Class 6: Writing Mechanics (Internet Verbs)</h1>
+          <h1 className="text-lg md:text-xl font-bold">Class 6: Writing Mechanics (Internet Verbs)</h1>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-sm font-medium bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-full">

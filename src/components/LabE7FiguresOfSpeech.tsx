@@ -69,7 +69,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
         <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
           <ArrowLeft size={20} />
         </button>
-        <h1 className="text-xl font-bold">Poetry Visualizer: Figures of Speech</h1>
+        <h1 className="text-lg md:text-xl font-bold">Poetry Visualizer: Figures of Speech</h1>
       
         <button
           onClick={toggleTheme}
@@ -81,7 +81,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       </header>
 
       {/* Main layout */}
-      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row lg:overflow-hidden">
         {/* Left Column: Controls */}
         <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
           

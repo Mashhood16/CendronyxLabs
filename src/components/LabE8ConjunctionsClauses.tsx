@@ -97,7 +97,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
           <ArrowLeft size={18} />
           Go Back
         </button>
-        <h1 className="text-xl font-bold ml-6 flex-1 text-center">Syntax Welder: Conjunctions & Clauses</h1>
+        <h1 className="text-lg md:text-xl font-bold ml-6 flex-1 text-center">Syntax Welder: Conjunctions & Clauses</h1>
       
         <button
           onClick={toggleTheme}

@@ -144,11 +144,11 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
             <ArrowLeft className="w-6 h-6" />
           </button>
         )}
-        <h1 className="text-xl font-bold text-slate-800 dark:text-white">Class 7 Labs: Proportions & Kinematics</h1>
+        <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">Class 7 Labs: Proportions & Kinematics</h1>
       </header>
       
       {/* Main Content */}
-      <main className="flex-1 min-w-0 flex overflow-hidden">
+      <main className="flex-1 min-w-0 flex lg:overflow-hidden">
         {/* Left Column: Controls & Workspace */}
         <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
           {/* Tabs */}

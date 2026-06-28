@@ -37,12 +37,12 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
         <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold">Class 6 Geometry: Symmetry & Construction</h1>
+        <h1 className="text-lg md:text-xl font-bold">Class 6 Geometry: Symmetry & Construction</h1>
       </header>
 
-      <div className="flex-1 min-w-0 flex flex-col lg:flex-row overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col lg:flex-row lg:overflow-hidden">
         {/* Left Column */}
-        <div className="w-full lg:w-1/3 flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 gap-6">
+        <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 gap-6">
           
           <section className="p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800">
             <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-purple-700 dark:text-purple-300">
@@ -115,7 +115,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column */}
-        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 overflow-y-auto bg-slate-100/50 dark:bg-slate-900/50">
+        <div className="w-full lg:w-2/3 p-6 flex flex-col gap-6 lg:overflow-y-auto bg-slate-100/50 dark:bg-slate-900/50">
           
           <div className="flex flex-col lg:flex-row gap-6 min-h-[300px]">
             {/* Ferris Wheel */}

@@ -139,7 +139,7 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
             <ArrowLeft className="w-6 h-6 text-slate-600 dark:text-slate-300" />
           </button>
           <div>
-            <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100">
+            <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-slate-100">
               Timeline Conjugator
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -163,7 +163,7 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
       </header>
 
       {/* Main 2-column layout */}
-      <main className="flex-1 flex flex-col md:flex-row overflow-hidden">
+      <main className="flex-1 flex flex-col md:flex-row lg:overflow-hidden">
         {/* Left Column: Interactive Controls */}
         <section className="w-full md:w-1/2 p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-col">
           <div className="mb-6">

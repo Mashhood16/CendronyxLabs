@@ -34,10 +34,10 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
     <div className="w-full h-screen bg-[#1d6f42] text-slate-800 dark:text-slate-100 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 2.1: Cricket Score Calculations" subtitle="Use Excel functions to calculate scores for the Pak vs NZ series." variant="emerald" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Lab Area - The Spreadsheet */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-6 flex flex-col relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-6 flex flex-col relative lg:overflow-hidden">
           
           {/* Mock Excel Ribbon */}
           <div className="w-full h-16 bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 flex items-center px-4 gap-4 mb-4">

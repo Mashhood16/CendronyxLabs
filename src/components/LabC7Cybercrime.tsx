@@ -100,7 +100,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
           </div>
 
           {/* Editor */}
-          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+          <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
             <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-3 flex items-center">
               <span className="font-bold text-slate-600 dark:text-slate-300 text-sm">Slide Editor</span>
             </div>

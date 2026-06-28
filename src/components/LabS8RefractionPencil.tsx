@@ -35,7 +35,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
           ))}
         </div>
 
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] lg:overflow-hidden">
           
           <div className="relative w-64 h-80 flex flex-col items-center justify-end mb-8">
             

@@ -59,7 +59,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold flex-1">Unit 4: Financial Arithmetic Lab</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1">Unit 4: Financial Arithmetic Lab</h1>
         <div className="flex space-x-2">
           <button onClick={() => {setActiveTab('business'); setUserAnswer(''); setFeedback('');}} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'business' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Business</button>
           <button onClick={() => {setActiveTab('zakat'); setUserAnswer(''); setFeedback('');}} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'zakat' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Zakat</button>
@@ -68,7 +68,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
       </header>
 
       {/* 2-column Layout */}
-      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 overflow-hidden">
+      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 lg:overflow-hidden">
         {/* Left Column: Controls & Questions */}
         <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-semibold mb-4 flex items-center">

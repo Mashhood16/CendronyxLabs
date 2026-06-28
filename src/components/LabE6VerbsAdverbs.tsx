@@ -55,7 +55,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
           <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-xl font-bold">Verbs & Adverbs Lab</h1>
+          <h1 className="text-lg md:text-xl font-bold">Verbs & Adverbs Lab</h1>
         </div>
       
         <button
@@ -67,7 +67,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
         </button>
       </header>
 
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+      <main className="flex-1 grid grid-cols-1 lg:grid-cols-2 lg:overflow-hidden">
         {/* Left Column: Controls & Workspace */}
         <div className="flex flex-col p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 space-y-8">
           

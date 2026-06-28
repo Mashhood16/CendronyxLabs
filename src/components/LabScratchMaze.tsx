@@ -93,7 +93,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-100 dark:bg-slate-800 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 4.1: Scratch Maze Navigation" variant="amber" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Left Panel: Block Palette */}
         <div className="w-80 bg-slate-200 dark:bg-slate-800 border-r border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col p-4 z-10 overflow-y-auto">

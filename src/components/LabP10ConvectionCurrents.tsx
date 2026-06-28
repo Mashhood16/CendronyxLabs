@@ -112,7 +112,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
             <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">Simulation</h2>
           </div>
 
-          <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl flex justify-center items-end p-4 h-80 overflow-hidden">
+          <div className="flex-1 relative bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl flex justify-center items-end p-4 h-80 lg:overflow-hidden">
             {/* Beaker */}
             <div className="w-32 h-64 border-4 border-t-0 border-white/80 bg-blue-100/50 relative overflow-hidden rounded-b-xl shadow-inner z-10 backdrop-blur-[1px]">
               <div className="absolute bottom-0 w-full h-[95%] bg-blue-300/30" />

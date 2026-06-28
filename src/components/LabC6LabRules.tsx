@@ -103,7 +103,7 @@ export default function LabC6LabRules({ onExit }: LabProps) {
 
           {/* Chart Columns */}
           <div className="flex-1 flex gap-6">
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
               <div className="bg-emerald-500 text-white p-4 text-center">
                 <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
                   <CheckCircle className="w-6 h-6" /> Do's
@@ -119,7 +119,7 @@ export default function LabC6LabRules({ onExit }: LabProps) {
               </div>
             </div>
 
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
+            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col lg:overflow-hidden">
               <div className="bg-rose-500 text-white p-4 text-center">
                 <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
                   <ShieldAlert className="w-6 h-6" /> Don'ts

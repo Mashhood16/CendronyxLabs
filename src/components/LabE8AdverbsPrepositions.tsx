@@ -108,7 +108,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
           <ArrowLeft size={18} />
           Go Back
         </button>
-        <h1 className="text-xl font-bold ml-6 flex-1 text-center">Scene Director: Adverbs & Prepositions</h1>
+        <h1 className="text-lg md:text-xl font-bold ml-6 flex-1 text-center">Scene Director: Adverbs & Prepositions</h1>
       
         <button
           onClick={toggleTheme}

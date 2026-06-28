@@ -87,7 +87,7 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
       <LabHeader onExit={onExit} title="Grade 11: Advanced Cytology & Stem Cells" />
 
       {/* Main Grid */}
-      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
+      <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
         
         {/* Column 1: Theory */}
         <section className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col gap-4">

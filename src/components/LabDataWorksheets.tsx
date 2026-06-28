@@ -46,7 +46,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
     <div className="overflow-y-auto w-full h-screen bg-slate-50 dark:bg-slate-900 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 2.2: Worksheet and Chart Creation" subtitle="Prepare data and draw corresponding charts for 3 scenarios." variant="emerald" />
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex lg:overflow-hidden">
         
         {/* Scenarios Panel */}
         <div className="w-64 bg-slate-100 dark:bg-slate-800 border-r border-slate-300 dark:border-slate-700 dark:border-slate-500 flex flex-col p-4 gap-2">
@@ -73,7 +73,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
         </div>
 
         {/* Spreadsheet Input */}
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-8 flex flex-col relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 p-8 flex flex-col relative lg:overflow-hidden">
            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6">Data Worksheet</h2>
            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg overflow-hidden shadow-sm">
               <table className="w-full text-left font-mono">

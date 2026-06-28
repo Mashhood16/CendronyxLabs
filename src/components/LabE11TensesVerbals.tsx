@@ -131,7 +131,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
-          <h1 className="text-xl font-bold">Lab: Tenses & Verbals</h1>
+          <h1 className="text-lg md:text-xl font-bold">Lab: Tenses & Verbals</h1>
         </div>
         <div className="flex items-center gap-2">
           {score !== null && (

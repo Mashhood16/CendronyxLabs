@@ -95,7 +95,7 @@ export default function LabE8NounsPhonetics({ onExit }: { onExit?: () => void })
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold flex-1 min-w-0 truncate">Nouns & Phonetics: Lexicon Lab</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">Nouns & Phonetics: Lexicon Lab</h1>
         <div className="flex gap-2">
            <button onClick={handlePrev} className="px-4 py-2 bg-slate-200 dark:bg-slate-900/50 dark:bg-slate-700 rounded-lg hover:bg-slate-300 dark:bg-slate-900/50 dark:hover:bg-slate-600 transition-colors whitespace-nowrap flex-shrink-0">Prev</button>
            <button onClick={handleNext} className="px-4 py-2 bg-slate-200 dark:bg-slate-900/50 dark:bg-slate-700 rounded-lg hover:bg-slate-300 dark:bg-slate-900/50 dark:hover:bg-slate-600 transition-colors whitespace-nowrap flex-shrink-0">Next</button>

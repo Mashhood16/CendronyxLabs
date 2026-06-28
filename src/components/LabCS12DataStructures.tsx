@@ -96,7 +96,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
             <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>Queue</button>
           </div>
 
-          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative overflow-hidden">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 relative lg:overflow-hidden">
             {activeTab === 'Tree' && (
               <div className="w-full flex flex-col items-center">
                 <svg width="100%" height="220" viewBox="0 0 300 200" className="mt-2">

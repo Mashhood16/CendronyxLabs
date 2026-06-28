@@ -156,7 +156,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                 {/* Column 2: Simulation */}
                 <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
                     <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">2. Interactive Simulation</h2>
-                    <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-slate-900 relative flex flex-col justify-between overflow-hidden">
+                    <div className="flex-1 border rounded-lg bg-slate-50 dark:bg-slate-900 relative flex flex-col justify-between lg:overflow-hidden">
                         <svg viewBox="0 0 400 450" className="w-full h-full">
                             {/* Table */}
                             <rect x="0" y="150" width="400" height="50" fill="#d97706" />

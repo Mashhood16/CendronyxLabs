@@ -67,7 +67,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
         <button onClick={onExit} className="p-2 mr-4 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex-shrink-0 whitespace-nowrap transition-colors">
           <ArrowLeft size={20} />
         </button>
-        <h1 className="text-xl font-bold flex-1 truncate">Unit 5 & 6: Sets and Sequences</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1 truncate">Unit 5 & 6: Sets and Sequences</h1>
         <div className="flex space-x-2">
           <button onClick={() => setMode('sets')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sets' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600'}`}>
             <PieChart size={18} className="mr-2" /> Sets Analysis
@@ -81,7 +81,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
       {/* Main content: 2-column layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Col: Controls */}
-        <div className="w-full lg:w-1/3 min-w-[320px] p-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg z-10 flex flex-col">
+        <div className="w-full lg:w-1/3 min-w-[320px] p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg z-10 flex flex-col">
           {mode === 'sets' ? (
             <div className="space-y-6 flex-1 flex flex-col">
               <div>

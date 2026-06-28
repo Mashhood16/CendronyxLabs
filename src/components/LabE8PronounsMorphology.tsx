@@ -113,7 +113,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
         >
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <h1 className="text-xl font-bold flex-1 min-w-0 truncate">Grammar & Morphology Lab</h1>
+        <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">Grammar & Morphology Lab</h1>
         <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-900/50 dark:bg-slate-900/60 dark:bg-slate-700 rounded-lg">
            <button 
              onClick={() => setMode('morphology')} 
@@ -140,7 +140,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
       <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
         
         {/* Left Column: Controls */}
-        <div className="w-full lg:w-1/3 p-4 lg:p-6 flex flex-col gap-6 overflow-y-auto border-r border-slate-200 dark:border-slate-700 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-900/50">
+        <div className="w-full lg:w-1/3 p-4 lg:p-6 flex flex-col gap-6 lg:overflow-y-auto border-r border-slate-200 dark:border-slate-700 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-900 dark:bg-slate-900/50">
           
           {mode === 'morphology' ? (
             <>
