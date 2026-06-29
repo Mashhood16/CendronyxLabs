@@ -119,13 +119,13 @@ export default function LabC9SeparationTech({ onExit }: Props) {
               </p>
             </div>
 
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-bold text-purple-900 mb-2 dark:text-[#ffffff]">2. Paper Chromatography</h3>
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">2. Paper Chromatography</h3>
               <p className="text-sm">
                 Used to separate mixtures of soluble substances, such as colored dyes. As a solvent moves up the paper, it carries the dyes at different speeds depending on their solubility.
               </p>
-              <div className="mt-3 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-purple-200">
-                <div className="text-sm font-semibold mb-1 text-purple-800 dark:text-[#ffffff]">
+              <div className="mt-3 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-indigo-200">
+                <div className="text-sm font-semibold mb-1 text-indigo-800 dark:text-[#ffffff]">
                   Retention Factor (Rf):
                 </div>
                 <p className="text-sm italic text-slate-600 dark:text-[#a1a1aa] font-mono">
@@ -146,7 +146,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
               Distillation
             </button>
             <button 
-              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-purple-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+              className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => setActiveTab('chromatography')}
             >
               Chromatography
@@ -258,7 +258,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
 
                 <div className="flex gap-4 mt-6 shrink-0">
                   <button 
-                    className="flex items-center gap-2 px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="flex items-center gap-2 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                     onClick={() => setChromaRunning(true)}
                     disabled={chromaRunning || solventHeight >= 200}
                   >

@@ -18,7 +18,7 @@ const SUBJECT_CONFIG: Record<string, { gradient: string; icon: typeof Atom; desc
   physics:    { gradient: 'from-blue-500 to-indigo-600',   icon: Atom,        description: 'Forces, Energy, Waves & Electromagnetism', moduleKey: 'physics' },
   chemistry:  { gradient: 'from-emerald-500 to-teal-600',  icon: Microscope,  description: 'Reactions, Bonding, Organic & Inorganic', moduleKey: 'chemistry' },
   biology:    { gradient: 'from-rose-500 to-pink-600',     icon: Dna,         description: 'Cells, Genetics, Ecology & Human Body', moduleKey: 'biology' },
-  math:       { gradient: 'from-violet-500 to-purple-600',  icon: Calculator,  description: 'Algebra, Geometry, Statistics & Calculus', moduleKey: 'math' },
+  math:       { gradient: 'from-violet-500 to-indigo-600',  icon: Calculator,  description: 'Algebra, Geometry, Statistics & Calculus', moduleKey: 'math' },
   computer:   { gradient: 'from-sky-500 to-cyan-600',      icon: Laptop,      description: 'Programming, Networks, AI & Cyber Safety', moduleKey: 'computer' },
   science:    { gradient: 'from-amber-500 to-orange-600',   icon: Activity,    description: 'Integrated Science Curriculum', moduleKey: 'science' },
   english:    { gradient: 'from-fuchsia-500 to-pink-600',   icon: BookOpen,    description: 'Grammar, Vocabulary, & Writing Mechanics', moduleKey: 'english' },

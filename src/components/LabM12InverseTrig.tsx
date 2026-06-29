@@ -108,7 +108,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                         </div>
 
                         <div>
-                            <h3 className="text-lg font-semibold text-purple-700 mb-2 flex items-center">
+                            <h3 className="text-lg font-semibold text-indigo-700 mb-2 flex items-center">
                                 <Camera className="w-5 h-5 mr-2" /> Optics & Field of View
                             </h3>
                             <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
@@ -137,7 +137,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                                 Surveying
                             </button>
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'optics' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-purple-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'optics' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-indigo-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
                                 onClick={() => setActiveTab('optics')}
                             >
                                 <Camera className="w-4 h-4 mr-2" />
@@ -199,26 +199,26 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                                         <text x={camX} y={objY - 15} fill="#b45309" fontSize="12" fontWeight="bold" textAnchor="middle">Width = {widthObj}</text>
 
                                         {/* Sight lines */}
-                                        <line x1={camX} y1={camY} x2={objLeftX} y2={objY} stroke="#9333ea" strokeWidth="2" strokeDasharray="5 5" />
-                                        <line x1={camX} y1={camY} x2={objRightX} y2={objY} stroke="#9333ea" strokeWidth="2" strokeDasharray="5 5" />
+                                        <line x1={camX} y1={camY} x2={objLeftX} y2={objY} stroke="#4158D1" strokeWidth="2" strokeDasharray="5 5" />
+                                        <line x1={camX} y1={camY} x2={objRightX} y2={objY} stroke="#4158D1" strokeWidth="2" strokeDasharray="5 5" />
                                         
                                         {/* Center line */}
                                         <line x1={camX} y1={camY} x2={camX} y2={objY} stroke="#94a3b8" strokeWidth="1" strokeDasharray="3 3" />
                                         <text x={camX + 5} y={camY - pxDistO / 2} fill="#64748b" fontSize="12">d={distObj}</text>
 
                                         {/* FOV Arc */}
-                                        <path d={fovArcPath} fill="none" stroke="#9333ea" strokeWidth="2" />
-                                        <text x={camX} y={camY - rArcO - 10} fill="#9333ea" fontSize="12" fontWeight="bold" textAnchor="middle">FOV (α)</text>
+                                        <path d={fovArcPath} fill="none" stroke="#4158D1" strokeWidth="2" />
+                                        <text x={camX} y={camY - rArcO - 10} fill="#4158D1" fontSize="12" fontWeight="bold" textAnchor="middle">FOV (α)</text>
                                     </svg>
                                     
-                                    <div className="w-full grid grid-cols-1 gap-4 bg-purple-50 p-4 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b]">
+                                    <div className="w-full grid grid-cols-1 gap-4 bg-indigo-50 p-4 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b]">
                                         <div>
-                                            <label className="block text-xs font-semibold text-purple-800 mb-1 dark:text-[#ffffff]">Object Width (w): {widthObj} units</label>
-                                            <input type="range" min="5" max="50" step="1" value={widthObj} onChange={(e) => setWidthObj(parseFloat(e.target.value))} className="w-full accent-purple-600" />
+                                            <label className="block text-xs font-semibold text-indigo-800 mb-1 dark:text-[#ffffff]">Object Width (w): {widthObj} units</label>
+                                            <input type="range" min="5" max="50" step="1" value={widthObj} onChange={(e) => setWidthObj(parseFloat(e.target.value))} className="w-full accent-indigo-600" />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold text-purple-800 mb-1 dark:text-[#ffffff]">Camera Distance (d): {distObj} units</label>
-                                            <input type="range" min="5" max="50" step="1" value={distObj} onChange={(e) => setDistObj(parseFloat(e.target.value))} className="w-full accent-purple-600" />
+                                            <label className="block text-xs font-semibold text-indigo-800 mb-1 dark:text-[#ffffff]">Camera Distance (d): {distObj} units</label>
+                                            <input type="range" min="5" max="50" step="1" value={distObj} onChange={(e) => setDistObj(parseFloat(e.target.value))} className="w-full accent-indigo-600" />
                                         </div>
                                     </div>
                                 </div>
@@ -290,7 +290,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
                                             type="number" 
                                             value={ansFov} 
                                             onChange={(e) => setAnsFov(e.target.value)} 
-                                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                             placeholder="Enter α..."
                                         />
                                     </div>
@@ -298,7 +298,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
 
                                 <button 
                                     onClick={checkOptics}
-                                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                                 >
                                     Check Answer
                                 </button>

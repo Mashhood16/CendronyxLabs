@@ -261,7 +261,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
                  onPointerMove={handleShelfPointerMove}
                  onPointerUp={handleShelfPointerUp}
                  onPointerCancel={handleShelfPointerUp}>
-                <rect x="0" y="0" width="60" height="10" fill="#8b5cf6" rx="2" />
+                <rect x="0" y="0" width="60" height="10" fill="#5560F1" rx="2" />
                 <circle cx="30" cy="5" r="4" fill="#cbd5e1" pointerEvents="none" />
               </g>
 

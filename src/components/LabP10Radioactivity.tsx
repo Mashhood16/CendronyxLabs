@@ -90,11 +90,11 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
         {/* LEFT: Theory & Setup */}
         <div className="flex flex-col gap-6">
           <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-purple-600"/> Theory</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-indigo-600"/> Theory</h2>
             <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
               Radiation intensity <strong>I</strong> decreases exponentially as it passes through an absorber of thickness <strong>x</strong>:
             </p>
-            <div className="bg-purple-50 p-3 rounded-lg text-center font-mono text-purple-900 mb-4 font-bold border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-3 rounded-lg text-center font-mono text-indigo-900 mb-4 font-bold border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               I = I₀ e^(-μx)
             </div>
             <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
@@ -104,7 +104,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
           </div>
 
           <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-purple-600"/> Setup</h2>
+            <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-indigo-600"/> Setup</h2>
             
             <div className="space-y-5">
               <div>
@@ -113,7 +113,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                   {(['Alpha', 'Beta', 'Gamma'] as SourceType[]).map(s => (
                     <button 
                       key={s} onClick={() => setSource(s)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-indigo-100 border-indigo-500 text-indigo-800' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
                     >
                       {s}
                     </button>
@@ -128,7 +128,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                   {(['Paper', 'Aluminum', 'Lead'] as AbsorberType[]).map(a => (
                     <button 
                       key={a} onClick={() => setAbsorber(a)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-indigo-100 border-indigo-500 text-indigo-800' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
                     >
                       {a}
                     </button>
@@ -139,9 +139,9 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
               <div>
                 <div className="flex justify-between text-sm font-medium mb-1">
                   <span className="text-slate-700 dark:text-[#ffffff]">Absorber Thickness</span>
-                  <span className="text-purple-600 font-mono">{thickness} mm</span>
+                  <span className="text-indigo-600 font-mono">{thickness} mm</span>
                 </div>
-                <input type="range" min="0" max="30" step="1" value={thickness} onChange={(e) => setThickness(Number(e.target.value))} className="w-full accent-purple-600" />
+                <input type="range" min="0" max="30" step="1" value={thickness} onChange={(e) => setThickness(Number(e.target.value))} className="w-full accent-indigo-600" />
               </div>
             </div>
 
@@ -157,7 +157,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
         {/* MIDDLE: Simulation */}
         <div className="bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col relative overflow-hidden h-full min-h-[500px]">
           <div className="absolute top-4 left-4 text-white font-medium text-sm flex items-center gap-2 z-10">
-            <Info className="w-4 h-4 text-purple-400" /> Virtual Geiger-Muller Bench
+            <Info className="w-4 h-4 text-indigo-400" /> Virtual Geiger-Muller Bench
           </div>
           
           <div className="flex-1 relative w-full flex flex-col items-center justify-center p-8">
@@ -224,7 +224,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
             {/* Audio Blips Visualization */}
             <div className="mt-8 flex gap-1 h-8 items-end">
               {[...Array(20)].map((_, i) => (
-                 <div key={i} className="w-2 bg-purple-500 transition-all duration-75 rounded-t dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ height: `${Math.random() * Math.min(100, currentCPM / 40)}%` }} />
+                 <div key={i} className="w-2 bg-indigo-500 transition-all duration-75 rounded-t dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ height: `${Math.random() * Math.min(100, currentCPM / 40)}%` }} />
               ))}
             </div>
 
@@ -242,11 +242,11 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
         <div className="flex flex-col gap-6">
           <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col h-[400px]">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Table2 className="w-5 h-5 text-purple-600"/> Data Log</h2>
+              <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Table2 className="w-5 h-5 text-indigo-600"/> Data Log</h2>
               <button 
                 onClick={recordData}
                 disabled={!sourceOpen}
-                className="bg-purple-100 text-purple-700 px-3 py-1 rounded-md text-sm font-bold hover:bg-purple-200 disabled:opacity-50"
+                className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-md text-sm font-bold hover:bg-indigo-200 disabled:opacity-50"
               >
                 Record Data
               </button>
@@ -269,7 +269,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                       <td className="p-3 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.source}</td>
                       <td className="p-3 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.absorber}</td>
                       <td className="p-3 font-mono text-slate-600 dark:text-[#a1a1aa]">{d.thickness}</td>
-                      <td className="p-3 font-mono font-bold text-purple-600">{d.cpm}</td>
+                      <td className="p-3 font-mono font-bold text-indigo-600">{d.cpm}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -282,11 +282,11 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                 <line x1="0" y1="200" x2="300" y2="200" stroke="#cbd5e1" strokeWidth="2" />
                 <line x1="0" y1="0" x2="0" y2="200" stroke="#cbd5e1" strokeWidth="2" />
                 {points.length > 1 && (
-                  <polyline points={points.join(' ')} fill="none" stroke="#a855f7" strokeWidth="2" opacity="0.5" />
+                  <polyline points={points.join(' ')} fill="none" stroke="#5560F1" strokeWidth="2" opacity="0.5" />
                 )}
                 {points.map((p, i) => {
                   const [x, y] = p.split(',');
-                  return <circle key={i} cx={x} cy={y} r="4" fill="#9333ea" />;
+                  return <circle key={i} cx={x} cy={y} r="4" fill="#4158D1" />;
                 })}
               </svg>
             </div>

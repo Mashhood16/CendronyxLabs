@@ -253,7 +253,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
     let startAngle = 0;
     const uniqueVals = Object.keys(stats.freqs).map(Number).sort((a, b) => a - b);
-    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#14b8a6'];
+    const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#5560F1', '#ec4899', '#14b8a6'];
 
     return (
       <svg className="w-full h-full" viewBox="0 0 600 400">

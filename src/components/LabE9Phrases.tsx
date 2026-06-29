@@ -209,7 +209,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
           <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex flex-col">
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-lg">
+                <div className="p-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 rounded-lg">
                   <Search className="w-6 h-6" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Dissection Engine</h2>
@@ -235,7 +235,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                           ${isResolved 
                             ? 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 border-emerald-400 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-600 cursor-default' 
                             : isActive
-                              ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 border-purple-400 dark:bg-purple-900 dark:text-purple-300 dark:border-purple-500 animate-pulse'
+                              ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 border-indigo-400 dark:bg-indigo-900 dark:text-indigo-300 dark:border-indigo-500 animate-pulse'
                               : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-400 dark:bg-slate-700 dark:text-[#ffffff] dark:border-slate-500 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-600 cursor-pointer'
                           }
                         `}
@@ -249,8 +249,8 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
               </div>
 
               {activePhrasePart ? (
-                <div className="bg-purple-50 dark:bg-purple-900 rounded-xl p-5 border border-purple-100 dark:border-purple-900/30 animate-in slide-in-from-bottom-4">
-                  <h3 className="text-purple-900 dark:text-purple-100 dark:text-purple-300 font-bold mb-4 flex items-center gap-2">
+                <div className="bg-indigo-50 dark:bg-indigo-900 rounded-xl p-5 border border-indigo-100 dark:border-indigo-900/30 animate-in slide-in-from-bottom-4">
+                  <h3 className="text-indigo-900 dark:text-indigo-100 dark:text-indigo-300 font-bold mb-4 flex items-center gap-2">
                     <Target className="w-5 h-5" />
                     Classify: "{activePhrasePart.content}"
                   </h3>
@@ -260,14 +260,14 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
                       <button
                         key={type}
                         onClick={() => handleClassify(type)}
-                        className="py-3 px-4 bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] rounded-lg text-sm font-medium text-slate-700 dark:text-[#a1a1aa] hover:border-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:border-purple-500 transition-colors text-left"
+                        className="py-3 px-4 bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] rounded-lg text-sm font-medium text-slate-700 dark:text-[#a1a1aa] hover:border-indigo-400 hover:text-indigo-600 dark:text-indigo-400 dark:hover:border-indigo-500 transition-colors text-left"
                       >
                         {type}
                       </button>
                     ))}
                   </div>
 
-                  <div className="flex items-start gap-2 text-sm text-purple-700 dark:text-purple-300 dark:text-purple-400 bg-purple-100 dark:bg-purple-900 dark:bg-purple-900/50/50 dark:bg-purple-900 p-3 rounded-lg">
+                  <div className="flex items-start gap-2 text-sm text-indigo-700 dark:text-indigo-300 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900 dark:bg-indigo-900/50/50 dark:bg-indigo-900 p-3 rounded-lg">
                     <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
                     <p><strong>Hint:</strong> {activePhrasePart.hint}</p>
                   </div>

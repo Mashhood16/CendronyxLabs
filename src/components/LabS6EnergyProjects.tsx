@@ -25,7 +25,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
         <div className="flex gap-4 mb-8">
           <button 
             onClick={() => setActiveProject('windmill')}
-            className={`px-6 py-3 rounded-xl border-2 font-bold ${activeProject === 'windmill' ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-purple-300'}`}
+            className={`px-6 py-3 rounded-xl border-2 font-bold ${activeProject === 'windmill' ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-indigo-300'}`}
           >
             Project: Model Windmill
           </button>
@@ -41,10 +41,10 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
           
           {activeProject === 'windmill' && (
             <div className="space-y-8">
-              <div className="flex gap-4 items-start bg-purple-50 dark:bg-[#121212] border border-purple-200 dark:border-[#1c1b1b] p-6 rounded-xl">
-                <Activity className="w-8 h-8 text-purple-600 shrink-0 mt-1" />
+              <div className="flex gap-4 items-start bg-indigo-50 dark:bg-[#121212] border border-indigo-200 dark:border-[#1c1b1b] p-6 rounded-xl">
+                <Activity className="w-8 h-8 text-indigo-600 shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-xl font-bold text-purple-900 dark:text-purple-200 mb-2">Build a Working Windmill</h2>
+                  <h2 className="text-xl font-bold text-indigo-900 dark:text-indigo-200 mb-2">Build a Working Windmill</h2>
                   <p className="text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
                     Construct a model windmill using paper, pins, and sticks. Observe how wind energy (kinetic energy of air) is transformed into the mechanical (kinetic) energy of the spinning blades.
                   </p>
@@ -58,7 +58,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
                     <label key={i} className="flex items-center gap-3 cursor-pointer">
                       <input 
                         type="checkbox" 
-                        className="w-5 h-5 rounded border-slate-300 dark:border-[#1c1b1b] text-purple-600 focus:ring-purple-500" 
+                        className="w-5 h-5 rounded border-slate-300 dark:border-[#1c1b1b] text-indigo-600 focus:ring-indigo-500" 
                         checked={checks[`wind_${i}`] || false}
                         onChange={() => toggleCheck(`wind_${i}`)}
                       />

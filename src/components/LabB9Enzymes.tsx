@@ -171,7 +171,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
                 <animateTransform attributeName="transform" type="translate" values={`0,0; -2,-2; 2,2; 0,0`} dur="3s" repeatCount="indefinite" />
                 <g transform={`rotate(${progress*3.6} 200 150)`}>
                   {!isDenatured ? (
-                    <path d="M 185 150 A 15 15 0 1 0 215 150 L 200 150 Z" fill="#8b5cf6" />
+                    <path d="M 185 150 A 15 15 0 1 0 215 150 L 200 150 Z" fill="#5560F1" />
                   ) : (
                     <path d="M 180 145 Q 190 130 200 140 T 220 135 T 210 160 T 185 165 Z" fill="#9ca3af" />
                   )}

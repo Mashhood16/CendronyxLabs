@@ -73,19 +73,19 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
           
           <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
             <div>
-              <h3 className="font-bold text-purple-800 text-lg dark:text-[#ffffff]">Immobilized Enzymes</h3>
+              <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">Immobilized Enzymes</h3>
               <p className="mt-1">
                 Enzymes (like Lactase) can be trapped in an inert matrix, such as alginate beads.
                 This provides structural stability, prevents contamination of the product, and allows the enzyme to be <strong>reused</strong>.
               </p>
             </div>
 
-            <div className="bg-purple-50 p-3 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
               <p className="font-mono text-xs">Sodium Alginate + Lactase + CaCl₂ ➔ Insoluble Calcium Alginate Beads (Trapping Lactase)</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-purple-800 text-lg dark:text-[#ffffff]">Enzymes in Diagnostics</h3>
+              <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">Enzymes in Diagnostics</h3>
               <p className="mt-1">Specific enzymes leak into the blood when certain tissues are damaged. Blood tests measure these biomarkers:</p>
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 <li><strong>Amylase / Lipase:</strong> Pancreas (Pancreatitis)</li>
@@ -99,7 +99,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
         {/* Column 2: Interactive Simulator */}
         <section className="bg-[#121212] dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-hidden">
           <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-            <Activity className="text-purple-400" /> Bioreactor Simulation
+            <Activity className="text-indigo-400" /> Bioreactor Simulation
           </h3>
 
           <div className="flex-1 flex flex-col items-center justify-end relative w-full mb-4">
@@ -171,7 +171,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
         {/* Column 3: Assessment */}
         <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <ClipboardList className="text-purple-600" /> Clinical Assessment
+            <ClipboardList className="text-indigo-600" /> Clinical Assessment
           </h2>
           
           <div className="space-y-6 mt-2">
@@ -184,7 +184,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
                 value={diag1}
                 onChange={e => setDiag1(e.target.value)}
                 placeholder="Likely Diagnosis (Organ affected)..."
-                className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
               />
             </div>
 
@@ -196,12 +196,12 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
                 value={diag2}
                 onChange={e => setDiag2(e.target.value)}
                 placeholder="Likely Diagnosis (Organ affected)..."
-                className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
               />
             </div>
 
-            <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg space-y-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h4 className="font-bold text-purple-800 dark:text-[#ffffff]">Bioreactor Analytics</h4>
+            <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-lg space-y-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h4 className="font-bold text-indigo-800 dark:text-[#ffffff]">Bioreactor Analytics</h4>
               <p className="text-xs text-slate-700 dark:text-[#ffffff]">If your column of 10 lactase beads converts 100 mmol of lactose into glucose in 200 seconds, what is the rate of reaction in <strong>mmol/s</strong>?</p>
               <div className="flex items-center gap-2">
                 <input 
@@ -209,7 +209,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
                   value={rateCalc}
                   onChange={e => setRateCalc(e.target.value)}
                   placeholder="e.g. 1.5"
-                  className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-purple-400"
+                  className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
                 />
                 <span className="text-sm font-bold text-slate-500 dark:text-[#71717a]">mmol/s</span>
               </div>
@@ -217,7 +217,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <CheckCircle size={20} /> Submit Evaluation
             </button>

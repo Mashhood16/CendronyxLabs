@@ -11,7 +11,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
   const [selectedTool, setSelectedTool] = useState<string | null>(null);
 
   const tools = [
-    { id: 'server', name: 'Server', icon: <Server className="w-6 h-6" />, color: 'text-purple-600 bg-purple-100 border-purple-300' },
+    { id: 'server', name: 'Server', icon: <Server className="w-6 h-6" />, color: 'text-indigo-600 bg-indigo-100 border-indigo-300' },
     { id: 'client', name: 'Client PC', icon: <Monitor className="w-6 h-6" />, color: 'text-blue-600 bg-blue-100 border-blue-300' },
     { id: 'printer', name: 'Printer', icon: <Printer className="w-6 h-6" />, color: 'text-slate-600 dark:text-[#ffffff] bg-slate-200 dark:bg-[#121212] border-slate-400 dark:border-slate-500' },
     { id: 'switch', name: 'Switch/Hub', icon: <Network className="w-6 h-6" />, color: 'text-emerald-600 bg-emerald-100 border-emerald-300' }

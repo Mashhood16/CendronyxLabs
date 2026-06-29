@@ -35,7 +35,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
 
     // Biuret Test
     if (selectedReagent === 'biuret') {
-      if (selectedSample === 'protein') return 'fill-purple-500'; // Purple
+      if (selectedSample === 'protein') return 'fill-indigo-500'; // Purple
       return 'fill-blue-200'; // Negative
     }
 
@@ -86,8 +86,8 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
               <p>Iodine solution (I₂ dissolved in KI) slips inside the amylose helix of starch, forming a deep <strong>blue-black</strong> complex.</p>
             </div>
 
-            <div className="bg-purple-50 border-l-4 border-purple-500 p-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-bold text-purple-800 dark:text-[#ffffff]">3. Proteins (Biuret)</h3>
+            <div className="bg-indigo-50 border-l-4 border-indigo-500 p-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-bold text-indigo-800 dark:text-[#ffffff]">3. Proteins (Biuret)</h3>
               <p>Biuret reagent detects peptide bonds. In alkaline conditions, Cu²⁺ ions coordinate with nitrogen atoms in peptide bonds, turning the solution <strong>purple/violet</strong>.</p>
             </div>
 

@@ -159,7 +159,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
                {/* The Cup */}
                <div className={`w-40 h-32 border-4 border-white/20 bg-slate-50 dark:bg-[#121212]/10 rounded-b-3xl relative flex flex-col justify-end items-center pb-4 backdrop-blur-sm z-10 transition-transform ${isPlaying ? 'animate-[vibrate_0.1s_infinite]' : ''}`}>
                  {/* Magnet inside */}
-                 <div className={`w-12 h-6 bg-slate-400 dark:bg-[#121212] border-2 border-slate-500 dark:border-slate-500 rounded-sm mb-2 z-0 shadow-lg relative flex items-center justify-center ${selectedMagnet.id === 'mystery' ? 'bg-purple-900' : ''}`}>
+                 <div className={`w-12 h-6 bg-slate-400 dark:bg-[#121212] border-2 border-slate-500 dark:border-slate-500 rounded-sm mb-2 z-0 shadow-lg relative flex items-center justify-center ${selectedMagnet.id === 'mystery' ? 'bg-indigo-900' : ''}`}>
                    <span className="text-[10px] text-white font-bold">{selectedMagnet.id === 'mystery' ? '?' : 'N  S'}</span>
                  </div>
                </div>
@@ -254,9 +254,9 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-bold text-purple-800 text-sm mb-2 dark:text-[#ffffff]">Assessment: Mystery Magnet</h3>
-            <p className="text-xs text-purple-700 mb-3">
+          <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-800 text-sm mb-2 dark:text-[#ffffff]">Assessment: Mystery Magnet</h3>
+            <p className="text-xs text-indigo-700 mb-3">
               Use the Mystery Magnet. Assume <span className="font-mono">r = 0.02 m</span>. Record peak force for a known <span className="font-mono">I</span> and <span className="font-mono">N</span>, then calculate the magnetic field strength <span className="font-mono">B</span> in Tesla using <span className="font-mono">B = F / (I · N · 2πr)</span>.
             </p>
             <div className="flex gap-2">
@@ -266,12 +266,12 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
                 placeholder="e.g. 0.15"
                 value={assessmentInput}
                 onChange={(e) => { setAssessmentInput(e.target.value); setAssessmentStatus('idle'); }}
-                className="flex-1 px-3 py-1.5 border border-purple-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="flex-1 px-3 py-1.5 border border-indigo-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
-              <span className="text-xs self-center text-purple-700 font-bold mr-2">T</span>
+              <span className="text-xs self-center text-indigo-700 font-bold mr-2">T</span>
               <button 
                 onClick={checkAssessment}
-                className="px-4 py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check
               </button>

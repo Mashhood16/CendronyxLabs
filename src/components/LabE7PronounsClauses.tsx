@@ -188,7 +188,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
                                     </button>
                                     <button 
                                         onClick={() => handleSyntaxGuess('Clause')}
-                                        className="flex-1 min-w-0 py-4 bg-purple-100 dark:bg-purple-900/40 hover:bg-purple-200 dark:hover:bg-purple-900/60 text-purple-800 dark:text-purple-300 rounded-xl font-bold transition-colors border border-purple-300 dark:border-purple-700 whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2"
+                                        className="flex-1 min-w-0 py-4 bg-indigo-100 dark:bg-indigo-900/40 hover:bg-indigo-200 dark:hover:bg-indigo-900/60 text-indigo-800 dark:text-indigo-300 rounded-xl font-bold transition-colors border border-indigo-300 dark:border-indigo-700 whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2"
                                     >
                                         It's a Clause
                                     </button>

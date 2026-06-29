@@ -81,7 +81,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
-            <BookOpen className="w-5 h-5 text-purple-600" />
+            <BookOpen className="w-5 h-5 text-indigo-600" />
             <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
           </div>
           <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
@@ -91,8 +91,8 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
             <p>
               When the water at the bottom of the beaker is heated, it expands, its density decreases, and it rises. Cooler, denser water sinks to replace it, forming a continuous convection cell.
             </p>
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-bold text-purple-800 mb-2 dark:text-[#ffffff]">Formulas</h3>
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Formulas</h3>
               <p className="font-mono text-xs mb-1">Velocity (v) = Distance (d) / Time (t)</p>
               <p className="font-mono text-xs">d = 150 mm (Height of beaker)</p>
             </div>
@@ -119,14 +119,14 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
               
               {/* Dye */}
               <div 
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 bg-purple-600/70 blur-[3px] transition-all duration-75"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 bg-indigo-600/70 blur-[3px] transition-all duration-75"
                 style={{ height: `${(dyePosition / 150) * 100}%` }}
               />
 
               {/* Convection arrows */}
               {(isRunning || finished) && (
                 <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-50" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <path d="M 50 90 L 50 20" stroke="#9333ea" strokeWidth="4" strokeDasharray="5,5" className="animate-[dash_1s_linear_infinite]" />
+                  <path d="M 50 90 L 50 20" stroke="#4158D1" strokeWidth="4" strokeDasharray="5,5" className="animate-[dash_1s_linear_infinite]" />
                   <path d="M 50 20 C 50 10, 80 10, 85 40 C 90 70, 70 90, 70 90" fill="none" stroke="#3b82f6" strokeWidth="2" strokeDasharray="5,5" className="animate-[dash_2s_linear_infinite]" />
                   <path d="M 50 20 C 50 10, 20 10, 15 40 C 10 70, 30 90, 30 90" fill="none" stroke="#3b82f6" strokeWidth="2" strokeDasharray="5,5" className="animate-[dash_2s_linear_infinite]" />
                 </svg>

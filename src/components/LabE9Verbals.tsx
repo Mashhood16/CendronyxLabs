@@ -181,13 +181,13 @@ export default function LabE9Verbals({ onExit }: { onExit?: () => void }) {
 
               <section>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
-                  <ArrowRight className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                  <ArrowRight className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                   3. Infinitives
                 </h3>
-                <div className="bg-purple-50 dark:bg-purple-900 p-4 rounded-xl border border-purple-100 dark:border-purple-800/50 text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+                <div className="bg-indigo-50 dark:bg-indigo-900 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/50 text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
                   <p className="mb-2"><strong>Form:</strong> <em>to</em> + Verb</p>
                   <p className="mb-2"><strong>Function:</strong> Noun, Adjective, or Adverb.</p>
-                  <p className="italic text-purple-800 dark:text-purple-200 dark:text-purple-300">Example: "I want <strong>to eat</strong>." (Noun - Direct Object)</p>
+                  <p className="italic text-indigo-800 dark:text-indigo-200 dark:text-indigo-300">Example: "I want <strong>to eat</strong>." (Noun - Direct Object)</p>
                 </div>
               </section>
             </div>
@@ -286,7 +286,7 @@ export default function LabE9Verbals({ onExit }: { onExit?: () => void }) {
                 <button
                   onClick={() => handleSort('Infinitive')}
                   disabled={!isSimulationRunning || !currentItem}
-                  className="flex-1 py-3 px-2 bg-purple-50 hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all active:scale-95 text-sm dark:!bg-[#121212] dark:border-[#1c1b1b] dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
+                  className="flex-1 py-3 px-2 bg-indigo-50 hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all active:scale-95 text-sm dark:!bg-[#121212] dark:border-[#1c1b1b] dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
                 >
                   Infinitive
                 </button>

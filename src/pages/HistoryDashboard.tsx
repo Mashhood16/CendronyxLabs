@@ -7,7 +7,7 @@ const SUBJECT_COLORS: Record<string, string> = {
   physics: 'from-blue-500 to-indigo-600',
   chemistry: 'from-emerald-500 to-teal-600',
   biology: 'from-rose-500 to-pink-600',
-  math: 'from-violet-500 to-purple-600',
+  math: 'from-violet-500 to-indigo-600',
   computer: 'from-sky-500 to-cyan-600',
   science: 'from-amber-500 to-orange-600',
 };

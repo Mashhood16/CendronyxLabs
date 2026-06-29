@@ -69,7 +69,7 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
             <button 
               onClick={addDrop}
               disabled={isAdding || drops >= ENDPOINT + 3}
-              className="bg-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-700 text-xl shadow-lg transition-transform active:scale-95 disabled:opacity-50 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 text-xl shadow-lg transition-transform active:scale-95 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Add Drop of Acid
             </button>

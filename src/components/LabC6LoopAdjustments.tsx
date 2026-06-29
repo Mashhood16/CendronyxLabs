@@ -79,7 +79,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
                          turn <RotateCw className="w-3 h-3" /> 15 degrees
                        </div>
                     ) : (
-                       <div className="bg-purple-500 border border-purple-600 px-3 py-1 rounded w-full flex items-center shadow-sm text-xs dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                       <div className="bg-indigo-500 border border-indigo-600 px-3 py-1 rounded w-full flex items-center shadow-sm text-xs dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                          change size by 10
                        </div>
                     )}
@@ -97,7 +97,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
                 <button 
                   disabled={isRunning}
                   onClick={() => setMode('size')}
-                  className={`bg-purple-500 rounded-lg shadow-sm border border-purple-600 p-3 w-full text-white font-bold text-sm flex items-center gap-2 transition-transform ${mode !== 'size' ? 'opacity-50 hover:opacity-100 hover:scale-105' : 'ring-2 ring-purple-300 ring-offset-2'}`}
+                  className={`bg-indigo-500 rounded-lg shadow-sm border border-indigo-600 p-3 w-full text-white font-bold text-sm flex items-center gap-2 transition-transform ${mode !== 'size' ? 'opacity-50 hover:opacity-100 hover:scale-105' : 'ring-2 ring-indigo-300 ring-offset-2'}`}
                 >
                   change size by 10
                 </button>

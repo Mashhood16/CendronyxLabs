@@ -99,8 +99,8 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
           
           {/* Column 1: Theory */}
           <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 flex flex-col h-full overflow-hidden">
-            <div className="p-6 bg-purple-50 dark:bg-purple-900/30 border-b border-purple-100 dark:border-purple-800/50 flex items-center gap-3">
-              <BookOpen className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="p-6 bg-indigo-50 dark:bg-indigo-900/30 border-b border-indigo-100 dark:border-indigo-800/50 flex items-center gap-3">
+              <BookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
               <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Modals & Conditionals</h2>
             </div>
             <div className="p-6 lg:overflow-y-auto flex-1 space-y-6 text-slate-700 dark:text-[#a1a1aa]">
@@ -118,7 +118,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                 <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">Conditional Sentences</h3>
                 <div className="space-y-4">
                   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-                    <strong className="text-purple-600 dark:text-purple-400 block mb-1">First Conditional (Real Possibility)</strong>
+                    <strong className="text-indigo-600 dark:text-indigo-400 block mb-1">First Conditional (Real Possibility)</strong>
                     <p className="text-sm">If + Present Simple, ... will + infinitive</p>
                     <p className="text-sm italic mt-1 text-slate-500">"If it rains, I will stay home."</p>
                   </div>
@@ -136,7 +136,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
           {/* Column 2: Logic Engine */}
           <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 p-6 flex flex-col h-full overflow-hidden">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-neutral-900">
-              <div className="p-2 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-lg">
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-lg">
                 <Cpu className="w-6 h-6" />
               </div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Logic Engine</h2>
@@ -147,7 +147,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                 <span className="text-sm font-medium text-slate-600 dark:text-[#71717a]">
                   Scenario {currentGate + 1} of {LOGIC_GATES.length}
                 </span>
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs font-bold rounded-full">
+                <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full">
                   {LOGIC_GATES[currentGate].type}
                 </span>
               </div>
@@ -171,7 +171,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                       disabled={isAnswered}
                       className={`w-full p-4 rounded-xl text-left transition-all border-2 flex flex-col gap-2 ${
                         !isAnswered
-                          ? 'border-slate-200 dark:border-[#1c1b1b] hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/30'
+                          ? 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30'
                           : isSelected
                             ? match.isCorrect 
                               ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30' 
@@ -209,7 +209,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                 <div className="mt-4 flex justify-end pt-4 border-t border-slate-200 dark:border-neutral-900">
                   <button
                     onClick={nextGate}
-                    className="flex items-center gap-2 px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Next Scenario <ChevronRight className="w-5 h-5" />
                   </button>
@@ -221,7 +221,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
           {/* Column 3: Assessment */}
           <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-neutral-900 p-6 flex-1 flex flex-col h-full overflow-hidden">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-neutral-900">
-              <div className="p-2 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-lg">
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-lg">
                 <Target className="w-6 h-6" />
               </div>
               <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Knowledge Check</h2>
@@ -241,7 +241,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                             <input
                               type="radio"
                               name={`question-${qIdx}`}
-                              className="mt-1 w-4 h-4 text-purple-600 dark:text-purple-400 bg-slate-100 dark:bg-[#121212]/50 border-slate-300 dark:border-[#1c1b1b]"
+                              className="mt-1 w-4 h-4 text-indigo-600 dark:text-indigo-400 bg-slate-100 dark:bg-[#121212]/50 border-slate-300 dark:border-[#1c1b1b]"
                               checked={assessmentAnswers[qIdx] === oIdx}
                               onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
                             />
@@ -256,14 +256,14 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
                   <button
                     onClick={() => setAssessmentSubmitted(true)}
                     disabled={Object.keys(assessmentAnswers).length < questions.length}
-                    className="w-full mt-4 py-2 px-4 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 disabled: text-white rounded-lg font-medium transition-colors dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="w-full mt-4 py-2 px-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled: text-white rounded-lg font-medium transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Submit Evaluation
                   </button>
                 </div>
               ) : (
                 <div className="text-center py-8">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 mb-4">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 mb-4">
                     <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>

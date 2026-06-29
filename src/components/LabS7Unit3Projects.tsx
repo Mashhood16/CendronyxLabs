@@ -13,7 +13,7 @@ export default function LabS7Unit3Projects({ onExit }: LabProps) {
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-4xl w-full">
           <div className="flex items-center mb-8">
-            <div className="bg-purple-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-purple-600" /></div>
+            <div className="bg-indigo-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-indigo-600" /></div>
             <div>
               <h2 className="text-3xl font-bold text-slate-800 dark:text-[#ffffff]">Health Campaigns & Infographics</h2>
               <p className="text-slate-500 dark:text-[#71717a]">Project Work Submission Guide</p>

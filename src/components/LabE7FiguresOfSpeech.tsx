@@ -6,7 +6,7 @@ type DeviceId = 'Simile' | 'Metaphor' | 'Personification' | 'Hyperbole' | 'Allit
 
 const DEVICES: { id: DeviceId; label: string; icon: any; color: string }[] = [
   { id: 'Simile', label: 'Simile', icon: Wand2, color: 'text-pink-600 bg-pink-100 dark:text-pink-300 dark:bg-pink-900 border-pink-400' },
-  { id: 'Metaphor', label: 'Metaphor', icon: Repeat, color: 'text-purple-600 bg-purple-100 dark:text-purple-300 dark:bg-purple-900 border-purple-400' },
+  { id: 'Metaphor', label: 'Metaphor', icon: Repeat, color: 'text-indigo-600 bg-indigo-100 dark:text-indigo-300 dark:bg-indigo-900 border-indigo-400' },
   { id: 'Personification', label: 'Personification', icon: User, color: 'text-green-600 bg-green-100 dark:text-green-300 dark:bg-green-900 border-green-400' },
   { id: 'Hyperbole', label: 'Hyperbole', icon: Maximize2, color: 'text-orange-600 bg-orange-100 dark:text-orange-300 dark:bg-orange-900 border-orange-400' },
   { id: 'Alliteration', label: 'Alliteration', icon: Type, color: 'text-blue-600 bg-blue-100 dark:text-blue-300 dark:bg-blue-900 border-blue-400' }

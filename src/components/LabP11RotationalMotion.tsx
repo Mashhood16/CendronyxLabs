@@ -77,14 +77,14 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
               <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
                 <span>Arm Radius (m)</span> <span>{armRadius.toFixed(2)} m</span>
               </label>
-              <input type="range" min="0.2" max="1.0" step="0.05" value={armRadius} onChange={e => setArmRadius(Number(e.target.value))} className="w-full accent-purple-500" />
+              <input type="range" min="0.2" max="1.0" step="0.05" value={armRadius} onChange={e => setArmRadius(Number(e.target.value))} className="w-full accent-indigo-500" />
             </div>
             {!spinning && (
               <div>
                 <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
                   <span>Initial ω (rad/s)</span> <span>{initialOmega.toFixed(1)}</span>
                 </label>
-                <input type="range" min="1" max="5" step="0.1" value={initialOmega} onChange={e => setInitialOmega(Number(e.target.value))} className="w-full accent-purple-500" />
+                <input type="range" min="1" max="5" step="0.1" value={initialOmega} onChange={e => setInitialOmega(Number(e.target.value))} className="w-full accent-indigo-500" />
               </div>
             )}
             
@@ -115,7 +115,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
                 <circle cx={100 + armPixels} cy="100" r="12" fill="#64748b" />
                 
                 {/* Body/Head */}
-                <circle cx="100" cy="100" r="25" fill="#a855f7" />
+                <circle cx="100" cy="100" r="25" fill="#5560F1" />
                 {/* Orientation marker */}
                 <circle cx="100" cy="85" r="4" fill="#ffffff" />
               </svg>
@@ -125,7 +125,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
           <div className="mt-6 flex gap-6 text-sm font-mono bg-slate-100 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
             <div className="flex flex-col items-center">
               <span className="text-slate-500 dark:text-[#71717a]">I (Inertia)</span>
-              <span className="font-bold text-purple-700">{currentI.toFixed(2)}</span>
+              <span className="font-bold text-indigo-700">{currentI.toFixed(2)}</span>
             </div>
             <div className="flex flex-col items-center">
               <span className="text-slate-500 dark:text-[#71717a]">ω (Velocity)</span>
@@ -164,14 +164,14 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
                 value={omegaGuess}
                 onChange={(e) => setOmegaGuess(e.target.value)}
                 placeholder="e.g. 3.5"
-                className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             
             <button 
               onClick={checkAnswer}
               disabled={!spinning}
-              className="w-full px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <CheckCircle className="w-4 h-4" /> Check Answer
             </button>

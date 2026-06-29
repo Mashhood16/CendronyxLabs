@@ -270,7 +270,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
                   <path d="M 0 0 L -30 -100 L 0 -120 Z" className="fill-blue-500" />
                   <path d="M 0 0 L 100 -30 L 120 0 Z" className="fill-indigo-500" />
                   <path d="M 0 0 L 30 100 L 0 120 Z" className="fill-violet-500" />
-                  <path d="M 0 0 L -100 30 L -120 0 Z" className="fill-purple-500" />
+                  <path d="M 0 0 L -100 30 L -120 0 Z" className="fill-indigo-500" />
                   <circle cx="0" cy="0" r="8" className="fill-slate-800 dark:fill-slate-100" />
                 </g>
               </g>

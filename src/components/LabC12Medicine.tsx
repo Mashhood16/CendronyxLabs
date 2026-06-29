@@ -126,7 +126,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
           {/* Peptidoglycan Grid */}
           {[1, 2, 3, 4, 5].map((row) => (
             <g key={`row-${row}`}>
-              <line x1="50" y1={50 + row * 40} x2="350" y2={50 + row * 40} stroke="#a855f7" strokeWidth="4" opacity={integrity / 100} />
+              <line x1="50" y1={50 + row * 40} x2="350" y2={50 + row * 40} stroke="#5560F1" strokeWidth="4" opacity={integrity / 100} />
               {[1, 2, 3, 4, 5, 6].map((col) => (
                 <line key={`col-${col}`} x1={50 + col * 45} y1="70" x2={50 + col * 45} y2="270" stroke="#d946ef" strokeWidth="2" opacity={(integrity + Math.random() * 20) / 120} />
               ))}

@@ -118,7 +118,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
       <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
-          <div className="flex items-center gap-2 text-purple-700 mb-2">
+          <div className="flex items-center gap-2 text-indigo-700 mb-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="text-lg font-bold">Theoretical Context</h2>
           </div>
@@ -154,7 +154,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
              <div className="w-full flex flex-col gap-4 mt-8">
                 <div className="w-full h-24 bg-slate-200 dark:bg-[#121212] border-b-4 border-slate-400 dark:border-[#1c1b1b] relative overflow-hidden flex items-end rounded-t-lg">
                    {/* Train body */}
-                   <div className="absolute w-16 h-10 bg-purple-600 rounded-t-md flex items-end justify-around pb-1 transition-all duration-75" 
+                   <div className="absolute w-16 h-10 bg-indigo-600 rounded-t-md flex items-end justify-around pb-1 transition-all duration-75" 
                         style={{ left: `calc(${Math.min((history.length > 0 ? history[history.length-1].s : 0) / 2.5, 90)}% - 2rem)` }}>
                       <div className="w-4 h-4 bg-[#121212] dark:bg-[#121212] rounded-full" />
                       <div className="w-4 h-4 bg-[#121212] dark:bg-[#121212] rounded-full" />
@@ -177,7 +177,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
                    </div>
                 </div>
                 <div className="flex justify-center gap-4 mt-2">
-                   <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded shadow hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                   <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                      {isPlaying ? <Pause size={18} /> : <Play size={18} />} {isPlaying ? 'Pause' : 'Start'}
                    </button>
                    <button onClick={resetSim} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-4 py-2 rounded shadow hover:bg-slate-300 dark:bg-[#121212]">
@@ -192,7 +192,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
                 <line x1="0" y1="0" x2="-86.6" y2="50" stroke="#cbd5e1" strokeWidth="1" /> {/* y-axis */}
                 <line x1="0" y1="0" x2="0" y2="-150" stroke="#cbd5e1" strokeWidth="1" /> {/* z-axis */}
                 
-                <path d={generateHelix()} fill="none" stroke="#8b5cf6" strokeWidth="2" />
+                <path d={generateHelix()} fill="none" stroke="#5560F1" strokeWidth="2" />
                 <circle r="4" fill="#ec4899">
                    <animateMotion dur="5s" repeatCount="indefinite" path={generateHelix()} />
                 </circle>
@@ -202,7 +202,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
 
         {/* Assessment Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
-          <div className="flex items-center gap-2 text-purple-700 mb-2 shrink-0">
+          <div className="flex items-center gap-2 text-indigo-700 mb-2 shrink-0">
             <Settings2 className="w-5 h-5" />
             <h2 className="text-lg font-bold">Parameters & Assessment</h2>
           </div>
@@ -212,25 +212,25 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
             {mode === '1d' && (
               <div>
                 <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Acceleration a(t): {acceleration} m/s²</label>
-                <input type="range" min="1" max="5" step="0.5" value={acceleration} onChange={e => setAcceleration(Number(e.target.value))} className="w-full accent-purple-600" />
+                <input type="range" min="1" max="5" step="0.5" value={acceleration} onChange={e => setAcceleration(Number(e.target.value))} className="w-full accent-indigo-600" />
               </div>
             )}
             {mode === '3d' && (
               <>
                 <div>
                   <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Radius (R): {R}</label>
-                  <input type="range" min="1" max="5" step="0.5" value={R} onChange={e => setR(Number(e.target.value))} className="w-full accent-purple-600" />
+                  <input type="range" min="1" max="5" step="0.5" value={R} onChange={e => setR(Number(e.target.value))} className="w-full accent-indigo-600" />
                 </div>
                 <div>
                   <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Vertical Velocity (v): {v}</label>
-                  <input type="range" min="1" max="5" step="0.5" value={v} onChange={e => setV(Number(e.target.value))} className="w-full accent-purple-600" />
+                  <input type="range" min="1" max="5" step="0.5" value={v} onChange={e => setV(Number(e.target.value))} className="w-full accent-indigo-600" />
                 </div>
               </>
             )}
           </div>
 
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 flex-1 flex flex-col dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <div className="flex items-center gap-2 text-purple-800 mb-3 shrink-0 dark:text-[#ffffff]">
+          <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 flex-1 flex flex-col dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <div className="flex items-center gap-2 text-indigo-800 mb-3 shrink-0 dark:text-[#ffffff]">
               <Calculator className="w-5 h-5" />
               <h3 className="font-semibold">Lab Computation Task</h3>
             </div>
@@ -246,11 +246,11 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
                   value={userAnswer}
                   onChange={e => setUserAnswer(e.target.value)}
                   placeholder="Enter answer" 
-                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
                 <button 
                   onClick={checkAnswer}
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   Verify
                 </button>
@@ -272,7 +272,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
 
               <button 
                 onClick={generateProblem}
-                className="flex items-center justify-center gap-2 w-full text-purple-600 hover:bg-purple-100 px-4 py-2 rounded-md transition-colors text-sm font-medium border border-transparent mt-2"
+                className="flex items-center justify-center gap-2 w-full text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-md transition-colors text-sm font-medium border border-transparent mt-2"
               >
                 <RotateCcw className="w-4 h-4" />
                 Generate New Scenario

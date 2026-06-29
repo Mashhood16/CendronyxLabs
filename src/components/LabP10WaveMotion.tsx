@@ -94,7 +94,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
         {pts.map((p, i) => {
           const cx = 40 + (p.x / maxX) * 240;
           const cy = 160 - (p.y / maxY) * 140;
-          return <circle key={i} cx={cx} cy={cy} r="4" fill="#8b5cf6" />;
+          return <circle key={i} cx={cx} cy={cy} r="4" fill="#5560F1" />;
         })}
       </svg>
     );

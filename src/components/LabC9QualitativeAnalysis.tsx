@@ -167,7 +167,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
               <ul className="list-disc pl-5 text-sm space-y-1">
                 <li><span className="font-semibold text-yellow-600">Sodium (Na⁺):</span> Yellow / Orange</li>
                 <li><span className="font-semibold text-emerald-600">Copper (Cu²⁺):</span> Blue-Green</li>
-                <li><span className="font-semibold text-purple-600">Potassium (K⁺):</span> Lilac / Pale Purple</li>
+                <li><span className="font-semibold text-indigo-600">Potassium (K⁺):</span> Lilac / Pale Purple</li>
               </ul>
             </div>
           </div>

@@ -68,7 +68,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
                   </button>
                   <button 
                     onClick={() => handleDrop(trait, 'discontinuous')}
-                    className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 py-1 rounded text-xs font-bold transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
+                    className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 py-1 rounded text-xs font-bold transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
                   >
                     Discontinuous
                   </button>
@@ -107,13 +107,13 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
           </div>
 
           {/* Discontinuous */}
-          <div className="flex-1 bg-purple-50 border-2 border-purple-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-bold text-purple-900 text-xl mb-2 text-center border-b border-purple-200 pb-2 dark:text-[#ffffff]">Discontinuous Variation</h3>
-            <p className="text-sm text-purple-700 text-center mb-6">Traits that fall into distinct categories (you either have it or you don't).</p>
+          <div className="flex-1 bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-900 text-xl mb-2 text-center border-b border-indigo-200 pb-2 dark:text-[#ffffff]">Discontinuous Variation</h3>
+            <p className="text-sm text-indigo-700 text-center mb-6">Traits that fall into distinct categories (you either have it or you don't).</p>
             
             <div className="flex-1 flex flex-col gap-3">
               {discontinuous.map(trait => (
-                <div key={trait.id} className="bg-slate-50 dark:!bg-[#121212] px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between dark:text-[#ffffff]">
+                <div key={trait.id} className="bg-slate-50 dark:!bg-[#121212] px-4 py-3 rounded-lg border border-indigo-300 shadow-sm text-indigo-900 font-medium flex items-center justify-between dark:text-[#ffffff]">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}

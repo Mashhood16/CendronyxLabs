@@ -43,7 +43,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
         <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-12 lg:overflow-y-auto">
           
           <div className="max-w-3xl mx-auto">
-             <div className="border-b-4 border-purple-800 pb-4 mb-8 flex justify-between items-end">
+             <div className="border-b-4 border-indigo-800 pb-4 mb-8 flex justify-between items-end">
                 <input 
                   type="text" 
                   placeholder="Brand / Company Name"
@@ -57,12 +57,12 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
                 
                 <div className="group">
                    <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-                     <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm dark:text-[#ffffff]">1</span>
+                     <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center text-sm dark:text-[#ffffff]">1</span>
                      Business Overview
                    </label>
                    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-2">What does your company do? What problem are you solving?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 resize-none transition-shadow"
                      placeholder="e.g. We are creating a smart backpack that charges devices..."
                      value={plan.overview} onChange={e=>setPlan({...plan, overview: e.target.value})}
                    ></textarea>
@@ -70,12 +70,12 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
 
                 <div className="group">
                    <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-                     <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm dark:text-[#ffffff]">2</span>
+                     <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center text-sm dark:text-[#ffffff]">2</span>
                      Objectives
                    </label>
                    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-2">What are your short-term and long-term goals?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 resize-none transition-shadow"
                      placeholder="e.g. Sell 10,000 units in year 1. Expand to Europe in year 2."
                      value={plan.objectives} onChange={e=>setPlan({...plan, objectives: e.target.value})}
                    ></textarea>
@@ -83,12 +83,12 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
 
                 <div className="group">
                    <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-                     <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm dark:text-[#ffffff]">3</span>
+                     <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center text-sm dark:text-[#ffffff]">3</span>
                      Market Analysis
                    </label>
                    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-2">Who are your customers? Who are your competitors?</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 resize-none transition-shadow"
                      placeholder="e.g. Target audience is college students aged 18-24. Main competitor is BrandX."
                      value={plan.market} onChange={e=>setPlan({...plan, market: e.target.value})}
                    ></textarea>
@@ -96,12 +96,12 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
 
                 <div className="group">
                    <label className="flex items-center gap-2 text-xl font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-                     <span className="w-8 h-8 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-sm dark:text-[#ffffff]">4</span>
+                     <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-800 flex items-center justify-center text-sm dark:text-[#ffffff]">4</span>
                      Financial Costing
                    </label>
                    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-2">What is the budget required? Break down the costs.</p>
                    <textarea 
-                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-purple-400 resize-none transition-shadow"
+                     className="w-full h-32 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-indigo-400 resize-none transition-shadow"
                      placeholder="e.g. Production: $50,000. Marketing: $10,000. Website: $2,000."
                      value={plan.costing} onChange={e=>setPlan({...plan, costing: e.target.value})}
                    ></textarea>
@@ -112,7 +112,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
              <div className="mt-12 text-center pb-12">
                <button 
                  onClick={evaluatePitch}
-                 className="px-12 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xl rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 mx-auto dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                 className="px-12 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xl rounded-full shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 mx-auto dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                >
                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                  Present to Partners
@@ -124,7 +124,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
         {/* Partners Feedback Panel */}
         {feedback && (
           <div className="w-96 bg-[#000000] dark:bg-[#121212] text-white p-8 shadow-[-20px_0_40px_rgba(0,0,0,0.2)] z-10 animate-fade-in flex flex-col lg:overflow-y-auto">
-             <h2 className="text-2xl font-bold mb-6 text-purple-400 border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">Boardroom Decision</h2>
+             <h2 className="text-2xl font-bold mb-6 text-indigo-400 border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">Boardroom Decision</h2>
              
              <div className="flex-1">
                <div className="bg-[#121212] dark:bg-[#121212] p-6 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] relative">

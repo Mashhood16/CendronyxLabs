@@ -75,14 +75,14 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
 
       <main className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
-        <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 lg:overflow-y-auto border-t-4 border-purple-500">
+        <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 lg:overflow-y-auto border-t-4 border-indigo-500">
           <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center gap-2"><Grid size={20} /> Matrix Operations</h2>
           <p className="text-gray-600 text-sm">
             Matrices can represent geometric transformations or be used as cipher keys to encrypt data.
           </p>
           
-          <div className="bg-purple-50 p-3 rounded-lg border border-purple-100 mt-2 dark:bg-[#121212] dark:border-[#1c1b1b]">
-             <p className="text-sm font-semibold text-purple-900 mb-1 dark:text-[#ffffff]">Transformation Form:</p>
+          <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-100 mt-2 dark:bg-[#121212] dark:border-[#1c1b1b]">
+             <p className="text-sm font-semibold text-indigo-900 mb-1 dark:text-[#ffffff]">Transformation Form:</p>
              <p className="font-mono text-center text-sm">
                 {`[ x' ] = [ a  b ] [ x ]`} <br />
                 {`[ y' ]   [ c  d ] [ y ]`}
@@ -148,13 +148,13 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
             <polygon 
               points={transformedShape.map(p => `${p.x},${-p.y}`).join(' ')} 
               fill="rgba(168, 85, 247, 0.4)" 
-              stroke="#9333ea" 
+              stroke="#4158D1" 
               strokeWidth="0.15" 
             />
           </svg>
           <div className="mt-4 flex gap-4 text-sm">
             <div className="flex items-center gap-1"><div className="w-3 h-3 bg-gray-300 border border-gray-400"></div> Original</div>
-            <div className="flex items-center gap-1"><div className="w-3 h-3 bg-purple-400 border border-purple-600"></div> Transformed</div>
+            <div className="flex items-center gap-1"><div className="w-3 h-3 bg-indigo-400 border border-indigo-600"></div> Transformed</div>
           </div>
         </div>
 

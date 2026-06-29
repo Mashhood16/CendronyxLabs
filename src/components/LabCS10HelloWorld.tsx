@@ -181,13 +181,13 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
 
           {/* Column 3: Analysis/Assessment */}
           <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col h-full">
-            <div className="flex items-center gap-2 mb-4 text-purple-600">
+            <div className="flex items-center gap-2 mb-4 text-indigo-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>
             </div>
 
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-medium text-purple-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-medium text-indigo-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
                 <Terminal className="w-4 h-4" />
                 Knowledge Check ({questionIndex + 1}/{questions.length})
               </h3>
@@ -199,12 +199,12 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
                   type="text"
                   value={answer}
                   onChange={(e) => setAnswer(e.target.value)}
-                  className="border rounded px-3 py-2 flex-1 outline-none focus:border-purple-400"
+                  className="border rounded px-3 py-2 flex-1 outline-none focus:border-indigo-400"
                   placeholder="Your answer..."
                 />
                 <button
                   onClick={checkAnswer}
-                  className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                 >
                   Check
                 </button>
@@ -216,7 +216,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
                 </div>
               )}
               {isCorrect && questionIndex < questions.length - 1 && (
-                <button onClick={nextQuestion} className="mt-3 text-sm text-purple-600 hover:underline">
+                <button onClick={nextQuestion} className="mt-3 text-sm text-indigo-600 hover:underline">
                   Next Question &rarr;
                 </button>
               )}

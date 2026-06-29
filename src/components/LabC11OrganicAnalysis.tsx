@@ -106,7 +106,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-            <Info className="w-5 h-5 text-purple-600" /> Test Reagents
+            <Info className="w-5 h-5 text-indigo-600" /> Test Reagents
           </h2>
           
           <div className="space-y-3 text-sm text-slate-700 dark:text-[#ffffff]">
@@ -156,7 +156,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
               <button
                 key={reagent}
                 onClick={() => handleTest(reagent)}
-                className={`flex flex-col items-center justify-center p-2 rounded border text-xs font-medium transition-colors ${activeReagent === reagent ? 'bg-purple-100 border-purple-500 text-purple-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]'}`}
+                className={`flex flex-col items-center justify-center p-2 rounded border text-xs font-medium transition-colors ${activeReagent === reagent ? 'bg-indigo-100 border-indigo-500 text-indigo-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]'}`}
               >
                 <FlaskConical className="w-5 h-5 mb-1" />
                 {reagent}
@@ -172,7 +172,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
         {/* Column 3: Analysis */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-            <Beaker className="w-5 h-5 text-purple-600" /> Data Logging
+            <Beaker className="w-5 h-5 text-indigo-600" /> Data Logging
           </h2>
 
           <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-4 min-h-[150px] lg:overflow-y-auto">
@@ -189,7 +189,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
                 ) : (
                   logs.map((log, i) => (
                     <tr key={i} className="border-b border-slate-100">
-                      <td className="py-2 font-medium text-purple-700">{log.reagent}</td>
+                      <td className="py-2 font-medium text-indigo-700">{log.reagent}</td>
                       <td className="py-2">{log.observation}</td>
                     </tr>
                   ))
@@ -205,7 +205,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
             <select 
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full p-2 mb-3 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full p-2 mb-3 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="">Select class...</option>
               {Array.from(new Set(compounds.map(c => c.type))).map(t => (
@@ -216,7 +216,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
             <button 
               onClick={checkAnswer}
               disabled={!selectedType || logs.length === 0}
-              className="w-full bg-purple-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-purple-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full bg-indigo-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <CheckCircle className="w-4 h-4" /> Submit Identification
             </button>
@@ -227,7 +227,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
               </div>
             )}
 
-            <button onClick={newUnknown} className="mt-4 w-full text-sm text-purple-600 font-medium hover:underline flex justify-center items-center gap-1">
+            <button onClick={newUnknown} className="mt-4 w-full text-sm text-indigo-600 font-medium hover:underline flex justify-center items-center gap-1">
               <RefreshCw className="w-4 h-4" /> Load New Unknown
             </button>
           </div>

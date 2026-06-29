@@ -157,7 +157,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
         {/* Middle Column: Simulation */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center">
           <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 w-full">
-            {scenario === 'damping' ? <Car className="text-purple-500"/> : <Volume2 className="text-purple-500"/>}
+            {scenario === 'damping' ? <Car className="text-indigo-500"/> : <Volume2 className="text-indigo-500"/>}
             Interactive Visualizer
           </h2>
           
@@ -234,34 +234,34 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
                 <div>
                   <div className="flex justify-between mb-1">
                     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Mass (m)</label>
-                    <span className="text-sm font-mono text-purple-600">{mass} kg</span>
+                    <span className="text-sm font-mono text-indigo-600">{mass} kg</span>
                   </div>
                   <input 
                     type="range" min="500" max="2000" step="50" 
                     value={mass} onChange={(e) => setMass(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-indigo-600"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
                     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Spring Constant (k)</label>
-                    <span className="text-sm font-mono text-purple-600">{springK} N/m</span>
+                    <span className="text-sm font-mono text-indigo-600">{springK} N/m</span>
                   </div>
                   <input 
                     type="range" min="10000" max="100000" step="1000" 
                     value={springK} onChange={(e) => setSpringK(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-indigo-600"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between mb-1">
                     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Damping (c)</label>
-                    <span className="text-sm font-mono text-purple-600">{dampingC} Ns/m</span>
+                    <span className="text-sm font-mono text-indigo-600">{dampingC} Ns/m</span>
                   </div>
                   <input 
                     type="range" min="0" max="30000" step="100" 
                     value={dampingC} onChange={(e) => setDampingC(parseFloat(e.target.value))}
-                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-purple-600"
+                    className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-indigo-600"
                   />
                 </div>
               </>

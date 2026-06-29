@@ -55,7 +55,7 @@ export default function LabS7MakingRockCandy({ onExit }: LabProps) {
           {[
             { color: 'text-red-500', bg: 'bg-red-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]' },
             { color: 'text-blue-500', bg: 'bg-blue-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]' },
-            { color: 'text-purple-500', bg: 'bg-purple-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]' }
+            { color: 'text-indigo-500', bg: 'bg-indigo-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]' }
           ].map((theme, idx) => (
             <div key={idx} className="relative w-32 h-64 flex justify-center">
                

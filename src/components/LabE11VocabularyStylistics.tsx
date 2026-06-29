@@ -252,7 +252,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
               {mode === 'stylistics' && (
                 <div className="flex flex-col items-center animate-in fade-in zoom-in duration-300">
                   <div className="flex w-full justify-between items-center mb-6">
-                    <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-semibold uppercase tracking-wider">
                       Literary Devices Categorizer
                     </span>
                     <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
@@ -279,7 +279,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
                           key={device}
                           onClick={() => handleStylisticsAnswer(device)}
                           disabled={stylisticsFeedback !== null}
-                          className="bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 dark:hover:border-purple-400 text-slate-700 dark:text-[#a1a1aa] px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm whitespace-nowrap flex-shrink-0"
+                          className="bg-white dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:border-indigo-500 hover:text-indigo-700 dark:hover:text-indigo-300 dark:hover:border-indigo-400 text-slate-700 dark:text-[#a1a1aa] px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm whitespace-nowrap flex-shrink-0"
                         >
                           {device}
                         </button>

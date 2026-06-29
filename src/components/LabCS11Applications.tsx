@@ -82,7 +82,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
               IoT Systems
             </button>
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-slate-50 dark:bg-[#121212] shadow text-purple-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => { setActiveTab('blockchain'); setFeedback(null); setAssessmentAns(''); }}
             >
               Blockchain
@@ -194,7 +194,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                         <input 
                           type="text" value={block.data} 
                           onChange={(e) => updateBlock(i, 'data', e.target.value)}
-                          className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-purple-400 outline-none transition-colors"
+                          className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-indigo-400 outline-none transition-colors"
                         />
                       </div>
                       <div>
@@ -203,7 +203,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                           <input 
                             type="number" value={block.nonce} 
                             onChange={(e) => updateBlock(i, 'nonce', parseInt(e.target.value) || 0)}
-                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-purple-400 outline-none font-mono"
+                            className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-2 py-1.5 focus:border-indigo-400 outline-none font-mono"
                           />
                           <button 
                             onClick={() => updateBlock(i, 'nonce', block.nonce + 1)}
@@ -255,9 +255,9 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                 </div>
               </div>
             ) : (
-              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
-                <h3 className="font-semibold text-purple-800 mb-2 dark:text-[#ffffff]">Q: Proof of Work (Mining)</h3>
-                <p className="text-sm text-purple-900 mb-4 leading-relaxed dark:text-[#ffffff]">
+              <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Q: Proof of Work (Mining)</h3>
+                <p className="text-sm text-indigo-900 mb-4 leading-relaxed dark:text-[#ffffff]">
                   A block is only cryptographically valid if its Hash is strictly less than 1000.
                   Find a valid Nonce for <strong>Block 2</strong> by adjusting it until the block turns green. What nonce did you find?
                 </p>
@@ -266,10 +266,10 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                     type="number"
                     value={assessmentAns}
                     onChange={e => setAssessmentAns(e.target.value)}
-                    className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono"
+                    className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
                     placeholder="Enter valid nonce..."
                   />
-                  <button onClick={checkAnswer} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Submit</button>
+                  <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Submit</button>
                 </div>
               </div>
             )}

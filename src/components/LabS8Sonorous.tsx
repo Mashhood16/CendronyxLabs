@@ -164,7 +164,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => { setSelected(m); setWaves([]); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff]'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff]'}`}
             >
               {m.name}
             </button>
@@ -180,7 +180,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
             {waves.map((w, i) => (
               <div 
                 key={w}
-                className="absolute rounded-full border border-purple-400 pointer-events-none"
+                className="absolute rounded-full border border-indigo-400 pointer-events-none"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -215,13 +215,13 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
             <button 
               onClick={strike}
               disabled={isStriking || waves.length > 0}
-              className="w-full bg-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 text-xl shadow-lg flex justify-center items-center gap-3 transition-transform active:scale-95 disabled:opacity-50 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 text-xl shadow-lg flex justify-center items-center gap-3 transition-transform active:scale-95 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <BellRing className="w-6 h-6" /> Strike
             </button>
 
             {waves.length > 0 && (
-              <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.soundType === 'ring' ? 'bg-purple-50 border-purple-200 text-purple-800' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-slate-100'}`}>
+              <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.soundType === 'ring' ? 'bg-indigo-50 border-indigo-200 text-indigo-800' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-slate-100'}`}>
                 <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
                 <p className="text-sm">
                   {selected.soundType === 'ring' 

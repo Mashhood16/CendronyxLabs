@@ -8,7 +8,7 @@ import { useTheme } from '../store';
 const CLASS_CONFIG: Record<string, { color: string; icon: typeof FlaskConical; iconBg: string; textColor: string; label: string; desc: string }> = {
   '6':  { color: '#f97316', icon: FlaskConical, iconBg: 'bg-orange-500/20', textColor: 'text-orange-500', label: 'Science', desc: 'Foundations of Science. Introduction to basic concepts and principles.' },
   '7':  { color: '#3b82f6', icon: Atom,         iconBg: 'bg-blue-500/20',   textColor: 'text-blue-500',   label: 'Physics', desc: 'Exploring physical and chemical changes, acids, bases and salts.' },
-  '8':  { color: '#8b5cf6', icon: Cpu,          iconBg: 'bg-violet-500/20', textColor: 'text-violet-500', label: 'Tech', desc: 'Forces, pressure, sound, and the universe. Intermediate science.' },
+  '8':  { color: '#5560F1', icon: Cpu,          iconBg: 'bg-violet-500/20', textColor: 'text-violet-500', label: 'Tech', desc: 'Forces, pressure, sound, and the universe. Intermediate science.' },
   '9':  { color: '#ec4899', icon: Dna,          iconBg: 'bg-pink-500/20',   textColor: 'text-pink-500',   label: 'Biology', desc: 'Matter, atoms, motion, and fundamental units of life.' },
   '10': { color: '#eab308', icon: Microscope,   iconBg: 'bg-yellow-500/20', textColor: 'text-yellow-500', label: 'Chem', desc: 'Chemical reactions, life processes, light, and electricity.' },
   '11': { color: '#6366f1', icon: Calculator,   iconBg: 'bg-indigo-500/20', textColor: 'text-indigo-500', label: 'Math', desc: 'Advanced physics, chemistry, and biology. Preparation for higher studies.' },
@@ -28,7 +28,7 @@ export default function ClassSelection() {
     <Layout>
       <div className="flex flex-col relative max-w-5xl mx-auto pb-12">
         {/* Welcome Banner */}
-        <div className={`relative overflow-hidden rounded-2xl ${isDark ? 'bg-gradient-to-r from-[#6366f1] to-[#a855f7] saturate-[0.85] opacity-[0.95]' : 'bg-gradient-to-r from-blue-600 to-indigo-600'} p-8 md:p-12 mb-10 shadow-xl flex flex-col items-center text-center`}>
+        <div className={`relative overflow-hidden rounded-2xl ${isDark ? 'bg-gradient-to-r from-[#6366f1] to-[#5560F1] saturate-[0.85] opacity-[0.95]' : 'bg-gradient-to-r from-blue-600 to-indigo-600'} p-8 md:p-12 mb-10 shadow-xl flex flex-col items-center text-center`}>
           <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl pointer-events-none mix-blend-overlay"></div>
           
 

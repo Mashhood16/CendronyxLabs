@@ -111,7 +111,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
               <button 
                 onClick={() => setBlocks([...blocks, 'JUMP'])}
                 disabled={isExecuting}
-                className="bg-purple-500 hover:bg-purple-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <div className="w-4 h-4 bg-slate-50 dark:bg-[#121212]/30 rounded-full"></div>
                 Jump Forward 2 Steps
@@ -156,7 +156,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                 <div 
                   key={i} 
                   className={`font-bold px-6 py-3 shadow-md mb-1 relative w-64 -mt-1 rounded-r-xl rounded-bl-xl border-t border-white/30
-                    ${block === 'JUMP' ? 'bg-purple-500 text-white' : 'bg-blue-500 text-white'}
+                    ${block === 'JUMP' ? 'bg-indigo-500 text-white' : 'bg-blue-500 text-white'}
                   `}
                 >
                   {block === 'MOVE_FORWARD' && 'move 1 step'}

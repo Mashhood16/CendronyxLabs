@@ -15,7 +15,7 @@ interface Sentence {
 }
 
 const CATEGORIES: { id: ChunkType; label: string; color: string; bg: string; border: string }[] = [
-  { id: 'independent', label: 'Independent Clause', color: 'text-purple-700 dark:text-purple-300', bg: 'bg-purple-100 dark:bg-purple-900/40', border: 'border-purple-300 dark:border-purple-700' },
+  { id: 'independent', label: 'Independent Clause', color: 'text-indigo-700 dark:text-indigo-300', bg: 'bg-indigo-100 dark:bg-indigo-900/40', border: 'border-indigo-300 dark:border-indigo-700' },
   { id: 'dependent', label: 'Dependent Clause', color: 'text-orange-700 dark:text-orange-300', bg: 'bg-orange-100 dark:bg-orange-900/40', border: 'border-orange-300 dark:border-orange-700' },
   { id: 'prep_phrase', label: 'Prepositional Phrase', color: 'text-teal-700 dark:text-teal-300', bg: 'bg-teal-100 dark:bg-teal-900/40', border: 'border-teal-300 dark:border-teal-700' },
   { id: 'noun_clause', label: 'Noun Clause', color: 'text-pink-700 dark:text-pink-300', bg: 'bg-pink-100 dark:bg-pink-900/40', border: 'border-pink-300 dark:border-pink-700' },

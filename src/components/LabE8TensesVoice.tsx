@@ -104,12 +104,12 @@ const tensesInfo: Record<string, any> = {
   "Simple Future": {
     desc: "An action that will happen in the future.",
     example: "I will walk to the store.",
-    visual: <circle cx="75%" cy="50%" r="8" className="fill-purple-500" />
+    visual: <circle cx="75%" cy="50%" r="8" className="fill-indigo-500" />
   },
   "Future Continuous": {
     desc: "An ongoing action that will occur in the future.",
     example: "I will be walking to the store at 5 PM.",
-    visual: <rect x="70%" y="46%" width="20%" height="8" rx="4" className="fill-purple-500 opacity-60" />
+    visual: <rect x="70%" y="46%" width="20%" height="8" rx="4" className="fill-indigo-500 opacity-60" />
   }
 };
 
@@ -194,7 +194,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
                        {currentQ.originalContext}
                      </span>
                      <p className="text-lg font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
-                       "{currentQ.origSubj} <span className="text-purple-600 dark:text-purple-400 dark:text-purple-400 font-bold">{currentQ.origVerb}</span> {currentQ.origObj}."
+                       "{currentQ.origSubj} <span className="text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 font-bold">{currentQ.origVerb}</span> {currentQ.origObj}."
                      </p>
                  </div>
 
@@ -209,7 +209,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
                             value={vInput}
                             onChange={(e) => { setVInput(e.target.value); setVFeedback(null); }}
                             placeholder="verb phrase..."
-                            className="flex-1 min-w-0 px-4 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-blue-500 font-bold text-purple-600 dark:text-purple-400 dark:text-purple-300 placeholder:font-normal placeholder:text-slate-400"
+                            className="flex-1 min-w-0 px-4 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-blue-500 font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 placeholder:font-normal placeholder:text-slate-400"
                          />
                          <span className="bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-600 px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{currentQ.targetObj}.</span>
                      </div>
@@ -276,8 +276,8 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
                        <span className="text-[10px] text-blue-600 dark:text-blue-400 dark:text-blue-300 font-bold uppercase tracking-wider block mb-1">Subject</span>
                        <span className="font-semibold text-sm md:text-base">{currentQ.origSubj}</span>
                     </div>
-                    <div className="p-3 bg-purple-100 dark:bg-purple-900/50 dark:bg-purple-900/60 dark:bg-purple-900 rounded-lg text-center border-2 border-purple-300 dark:border-purple-700 min-w-[100px]">
-                       <span className="text-[10px] text-purple-600 dark:text-purple-400 dark:text-purple-300 font-bold uppercase tracking-wider block mb-1">Verb</span>
+                    <div className="p-3 bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900 rounded-lg text-center border-2 border-indigo-300 dark:border-indigo-700 min-w-[100px]">
+                       <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">Verb</span>
                        <span className="font-semibold text-sm md:text-base">{currentQ.origVerb}</span>
                     </div>
                     <div className="p-3 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900 rounded-lg text-center border-2 border-green-300 dark:border-green-700 min-w-[100px]">
@@ -316,9 +316,9 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
                        <span className="text-[10px] text-green-600 dark:text-green-400 dark:text-green-300 font-bold uppercase tracking-wider block mb-1">New Subject</span>
                        <span className="font-semibold text-sm md:text-base">{currentQ.targetSubj}</span>
                     </div>
-                    <div className={`p-3 rounded-lg text-center border-2 transition-colors min-w-[100px] flex-1 ${vFeedback === 'correct' ? 'bg-purple-100 dark:bg-purple-900/50 dark:bg-purple-900/60 dark:bg-purple-900 border-purple-400' : 'bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 border-dashed border-slate-300 dark:border-slate-600 dark:border-slate-500'}`}>
-                       <span className="text-[10px] text-purple-600 dark:text-purple-400 dark:text-purple-300 font-bold uppercase tracking-wider block mb-1">Transformed Verb</span>
-                       <span className={`font-semibold text-sm md:text-base ${vFeedback === 'correct' ? 'text-purple-700 dark:text-purple-300 dark:text-purple-200' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'}`}>
+                    <div className={`p-3 rounded-lg text-center border-2 transition-colors min-w-[100px] flex-1 ${vFeedback === 'correct' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900 border-indigo-400' : 'bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 border-dashed border-slate-300 dark:border-slate-600 dark:border-slate-500'}`}>
+                       <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">Transformed Verb</span>
+                       <span className={`font-semibold text-sm md:text-base ${vFeedback === 'correct' ? 'text-indigo-700 dark:text-indigo-300 dark:text-indigo-200' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'}`}>
                           {vFeedback === 'correct' ? currentQ.targetVerbBlank : (vInput || '???')}
                        </span>
                     </div>

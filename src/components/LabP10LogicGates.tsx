@@ -114,8 +114,8 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
             </div>
 
             <div className="absolute top-1/2 right-4 -translate-y-1/2 flex items-center gap-4">
-              <div className="w-16 h-1 bg-purple-600" />
-              <div className="bg-[#121212] dark:bg-[#121212] border-2 border-slate-600 dark:border-[#1c1b1b] rounded p-2 text-purple-400 font-mono w-16 text-center shadow-[0_0_15px_#9333ea]">{vOut.toFixed(1)}V</div>
+              <div className="w-16 h-1 bg-indigo-600" />
+              <div className="bg-[#121212] dark:bg-[#121212] border-2 border-slate-600 dark:border-[#1c1b1b] rounded p-2 text-indigo-400 font-mono w-16 text-center shadow-[0_0_15px_#4158D1]">{vOut.toFixed(1)}V</div>
             </div>
           </div>
 
@@ -171,7 +171,7 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
                   {data.map(d => {
                     const cx = 10 + (d.vA / 5) * 80;
                     const cy = 90 - (d.vOut / 5) * 80;
-                    return <circle key={d.id} cx={cx} cy={cy} r="2" fill="#9333ea" />;
+                    return <circle key={d.id} cx={cx} cy={cy} r="2" fill="#4158D1" />;
                   })}
                 </svg>
                 <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 dark:text-[#71717a]">V_A (Volts)</div>

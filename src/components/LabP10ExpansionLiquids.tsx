@@ -14,7 +14,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
 
   const LIQUIDS = {
     Water: { gamma: 2.1e-4, color: 'bg-blue-400' },
-    Ethanol: { gamma: 10.9e-4, color: 'bg-purple-300' },
+    Ethanol: { gamma: 10.9e-4, color: 'bg-indigo-300' },
     Mercury: { gamma: 1.81e-4, color: 'bg-slate-400 dark:bg-[#121212]' },
     Unknown: { gamma: 5.5e-4, color: 'bg-green-400' }, // Correct real gamma
   };

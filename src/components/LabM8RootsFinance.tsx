@@ -245,7 +245,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
             <>
               <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Users className="w-5 h-5 text-purple-500" />
+                  <Users className="w-5 h-5 text-indigo-500" />
                   Islamic Inheritance Split
                 </h2>
                 <div className="space-y-6">
@@ -254,14 +254,14 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
                     <input 
                       type="range" min="0" max={estateOptions.length - 1} 
                       value={estateIdx} onChange={(e) => setEstateIdx(parseInt(e.target.value))}
-                      className="w-full accent-purple-600"
+                      className="w-full accent-indigo-600"
                     />
-                    <div className="text-right font-mono text-lg font-bold text-purple-600 dark:text-purple-400">${estate}</div>
+                    <div className="text-right font-mono text-lg font-bold text-indigo-600 dark:text-indigo-400">${estate}</div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <label className="flex items-center gap-2 p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg cursor-pointer">
-                      <input type="checkbox" checked={hasWidow} onChange={e => setHasWidow(e.target.checked)} className="w-5 h-5 accent-purple-600" />
+                      <input type="checkbox" checked={hasWidow} onChange={e => setHasWidow(e.target.checked)} className="w-5 h-5 accent-indigo-600" />
                       <span className="font-medium text-sm">Widow Survives</span>
                     </label>
                     <label className="flex items-center gap-2 p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg cursor-pointer">
@@ -399,9 +399,9 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
                 {/* Deductions */}
                 <div className="flex flex-col gap-2 ml-4 sm:ml-8 border-l-2 border-slate-300 dark:border-[#1c1b1b] pl-4 py-2">
                   {hasWidow && (
-                    <div className="flex justify-between items-center p-3 bg-white dark:!bg-[#121212] border-l-4 border-l-purple-500 dark:border-[#1c1b1b] rounded-lg shadow-sm">
+                    <div className="flex justify-between items-center p-3 bg-white dark:!bg-[#121212] border-l-4 border-l-indigo-500 dark:border-[#1c1b1b] rounded-lg shadow-sm">
                       <span className="text-slate-600 dark:text-[#a1a1aa]">Widow ({childrenCount > 0 ? '1/8' : '1/4'})</span>
-                      <span className="font-bold text-purple-600 dark:text-purple-400">${widowShare.toLocaleString()}</span>
+                      <span className="font-bold text-indigo-600 dark:text-indigo-400">${widowShare.toLocaleString()}</span>
                     </div>
                   )}
                   {hasMother && (

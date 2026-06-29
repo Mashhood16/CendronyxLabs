@@ -140,7 +140,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
             <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'build' ? 'border-blue-500 text-blue-600 bg-blue-50/30' : 'border-transparent text-slate-500 dark:text-[#a1a1aa]'}`}>
               1. Build Phase
             </div>
-            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'analyze' ? 'border-purple-500 text-purple-600 bg-purple-50/30' : 'border-transparent text-slate-500 dark:text-[#a1a1aa]'}`}>
+            <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'analyze' ? 'border-indigo-500 text-indigo-600 bg-indigo-50/30' : 'border-transparent text-slate-500 dark:text-[#a1a1aa]'}`}>
               2. Analyze Phase
             </div>
           </div>

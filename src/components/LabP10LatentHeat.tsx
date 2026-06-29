@@ -19,7 +19,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
       T_init: -130, T_melt: -114, T_boil: 78,
       c_solid: 1200, c_liquid: 2440, c_gas: 1420,
       L_f: 109000, L_v: 838000,
-      color: 'bg-purple-300', name: 'Ethanol'
+      color: 'bg-indigo-300', name: 'Ethanol'
     },
     Unknown: {
       T_init: 10, T_melt: 40, T_boil: 150,

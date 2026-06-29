@@ -71,7 +71,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
               Data Bias Evaluator
             </button>
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'a11y' ? 'bg-slate-50 dark:bg-[#121212] shadow text-purple-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'a11y' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
               onClick={() => { setActiveTab('a11y'); setFeedback(null); setAns(''); setSrMode(false); }}
             >
               Web Accessibility
@@ -226,9 +226,9 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
                 </div>
               </div>
             ) : (
-              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
-                <h3 className="font-semibold text-purple-800 mb-2 dark:text-[#ffffff]">Q: Accessibility Flaws</h3>
-                <p className="text-sm text-purple-900 mb-4 leading-relaxed dark:text-[#ffffff]">
+              <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Q: Accessibility Flaws</h3>
+                <p className="text-sm text-indigo-900 mb-4 leading-relaxed dark:text-[#ffffff]">
                   Turn ON Screen Reader Mode. Notice how the image is read out awkwardly as a raw filename instead of a helpful description.
                   <br/><br/>
                   What specific HTML attribute is missing from the <code>&lt;img&gt;</code> tag that caused this failure?
@@ -238,10 +238,10 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
                     type="text"
                     value={ans}
                     onChange={e => setAns(e.target.value)}
-                    className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono"
+                    className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
                     placeholder="Enter attribute name..."
                   />
-                  <button onClick={checkAnswer} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Submit</button>
+                  <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md text-sm transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Submit</button>
                 </div>
               </div>
             )}

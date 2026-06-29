@@ -213,7 +213,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
                         onClick={() => setSelectedSuffix(s)}
                         className={`px-4 py-3 rounded-xl text-left text-sm font-medium transition-all ${
                           selectedSuffix === s
-                            ? 'bg-purple-600 text-white shadow-md'
+                            ? 'bg-indigo-600 text-white shadow-md'
                             : 'bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212] dark:hover:bg-slate-700 border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-slate-600'
                         }`}
                       >
@@ -232,14 +232,14 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
                     {selectedBase || '?'}
                   </div>
                   <div className="text-2xl text-slate-400 font-bold">+</div>
-                  <div className={`flex-1 p-3 text-center rounded-xl font-bold text-lg ${selectedSuffix ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 dark:text-purple-300' : 'bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] text-slate-400'}`}>
+                  <div className={`flex-1 p-3 text-center rounded-xl font-bold text-lg ${selectedSuffix ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 dark:text-indigo-300' : 'bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] text-slate-400'}`}>
                     {selectedSuffix ? `-${selectedSuffix}` : '?'}
                   </div>
                 </div>
 
                 <button
                   onClick={handleForge}
-                  className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-full shadow-lg hover:shadow-indigo-500/30 hover:scale-105 transition-all flex items-center gap-2"
+                  className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-indigo-500 text-white font-bold rounded-full shadow-lg hover:shadow-indigo-500/30 hover:scale-105 transition-all flex items-center gap-2"
                 >
                   <Hammer className="w-5 h-5" />
                   FORGE WORD

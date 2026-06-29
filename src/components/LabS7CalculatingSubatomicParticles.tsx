@@ -39,8 +39,8 @@ export default function LabS7CalculatingSubatomicParticles({ onExit }: LabProps)
             </div>
             <div className="text-center text-3xl font-bold text-blue-200">+</div>
             <div className="text-center">
-              <div className="text-sm font-bold text-purple-500 uppercase tracking-wider">Mass Number (A)</div>
-              <div className="text-5xl font-black text-purple-900 dark:text-[#ffffff]">{targetMassNumber}</div>
+              <div className="text-sm font-bold text-indigo-500 uppercase tracking-wider">Mass Number (A)</div>
+              <div className="text-5xl font-black text-indigo-900 dark:text-[#ffffff]">{targetMassNumber}</div>
             </div>
           </div>
 

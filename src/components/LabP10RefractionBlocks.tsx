@@ -8,7 +8,7 @@ const MATERIALS = [
   { id: 'Glass', n: 1.50, color: 'bg-cyan-400/20 border-cyan-300' },
   { id: 'Water', n: 1.33, color: 'bg-blue-400/20 border-blue-300' },
   { id: 'Diamond', n: 2.42, color: 'bg-slate-50 dark:bg-[#121212]/30 border-white' },
-  { id: 'Unknown', n: 1.75, color: 'bg-purple-400/20 border-purple-300' }, // Sapphire approx
+  { id: 'Unknown', n: 1.75, color: 'bg-indigo-400/20 border-indigo-300' }, // Sapphire approx
 ];
 
 export default function LabP10RefractionBlocks({ onExit }: LabProps) {

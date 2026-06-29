@@ -211,7 +211,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                                 </div>
                             </li>
                             <li className="flex items-start gap-2">
-                                <span className="font-bold text-purple-600 dark:text-purple-400 mt-0.5">•</span>
+                                <span className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">•</span>
                                 <div>
                                     <strong className="text-slate-800 dark:text-[#ffffff]">Modal Adverbs:</strong> The tone is off. Adjust the modal adverbs to match the required certainty level (hint provided on hover).
                                 </div>
@@ -270,7 +270,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
                                         ) : token.isModalTarget ? (
                                             <div className="relative group/modal inline-block mx-1">
                                                 <select 
-                                                    className="appearance-none bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300 font-bold px-2 py-0.5 rounded border border-purple-300 dark:border-purple-700 cursor-pointer outline-none focus:ring-2 focus:ring-purple-500 min-w-[100px] text-center"
+                                                    className="appearance-none bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 font-bold px-2 py-0.5 rounded border border-indigo-300 dark:border-indigo-700 cursor-pointer outline-none focus:ring-2 focus:ring-indigo-500 min-w-[100px] text-center"
                                                     value={tokenText}
                                                     onChange={(e) => setModals({ ...modals, [token.id]: e.target.value })}
                                                 >

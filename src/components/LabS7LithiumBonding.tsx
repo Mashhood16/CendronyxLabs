@@ -15,13 +15,13 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="p-6 rounded-2xl shadow-xl max-w-3xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
-          <h2 className="text-2xl font-bold text-purple-400 mb-4">Lithium Atom vs. Lithium Ion</h2>
+          <h2 className="text-2xl font-bold text-indigo-400 mb-4">Lithium Atom vs. Lithium Ion</h2>
           <p className="text-slate-300 mb-6">Compare a neutral Lithium atom (Li) with a Lithium ion (Li⁺). Observe what happens to its valence electron during ionization.</p>
           
           <div className="flex justify-center gap-4">
             <button 
               onClick={() => setIsIon(!isIon)}
-              className="flex items-center px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-bold transition-colors dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="flex items-center px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <RefreshCw className="w-5 h-5 mr-2" />
               Toggle: {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Li⁺)'}

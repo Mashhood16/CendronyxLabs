@@ -82,19 +82,19 @@ export default function LabM9SetsRelations({ onExit }: Props) {
           <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory: Overlapping Sets</h2>
           
           <div className="prose prose-slate">
-            <h3 className="text-lg font-semibold text-purple-700">What is a Set?</h3>
+            <h3 className="text-lg font-semibold text-indigo-700">What is a Set?</h3>
             <p className="text-slate-600 dark:text-[#a1a1aa]">
               A set is a collection of distinct objects. In a Venn Diagram, sets are represented by overlapping circles.
             </p>
             
-            <h3 className="text-lg font-semibold text-purple-700 mt-4">Key Operations</h3>
+            <h3 className="text-lg font-semibold text-indigo-700 mt-4">Key Operations</h3>
             <ul className="text-slate-600 dark:text-[#a1a1aa] list-disc pl-5">
               <li><strong>Intersection (A ∩ B):</strong> Elements that belong to BOTH sets. The overlapping middle section.</li>
               <li><strong>Union (A ∪ B):</strong> Elements that belong to set A, set B, or both.</li>
               <li><strong>Complement (A'):</strong> Elements outside of set A.</li>
             </ul>
 
-            <h3 className="text-lg font-semibold text-purple-700 mt-4">The Union Formula</h3>
+            <h3 className="text-lg font-semibold text-indigo-700 mt-4">The Union Formula</h3>
             <p className="text-slate-600 dark:text-[#a1a1aa] font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-sm text-center">
               n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
             </p>
@@ -107,7 +107,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
         {/* Interactive Simulator */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b]">
           <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <Users className="text-purple-600" /> Survey Categorizer
+            <Users className="text-indigo-600" /> Survey Categorizer
           </h2>
           
           {/* Unassigned Area */}
@@ -163,14 +163,14 @@ export default function LabM9SetsRelations({ onExit }: Props) {
 
             {/* Intersection - Both */}
             <div 
-              className="absolute w-24 h-48 flex flex-col items-center justify-center z-10 rounded-3xl transition-colors hover:bg-purple-200/40"
+              className="absolute w-24 h-48 flex flex-col items-center justify-center z-10 rounded-3xl transition-colors hover:bg-indigo-200/40"
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, 'both')}
             >
-              <span className="text-sm font-bold text-purple-900 absolute top-2 dark:text-[#ffffff]">Both</span>
+              <span className="text-sm font-bold text-indigo-900 absolute top-2 dark:text-[#ffffff]">Both</span>
               <div className="flex flex-col gap-1 w-full mt-6 items-center">
                 {students.filter(s => s.region === 'both').map(s => (
-                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-purple-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
+                  <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-indigo-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
                 ))}
               </div>
             </div>
@@ -210,8 +210,8 @@ export default function LabM9SetsRelations({ onExit }: Props) {
             )}
           </div>
 
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-bold text-purple-800 mb-2 dark:text-[#ffffff]">Word Problem</h3>
+          <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Word Problem</h3>
             <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4">
               In a class survey, n(Math) = {nA} and n(Science) = {nB}. 
               If n(Math ∩ Science) = {nIntersect}, how many students like <b>at least one</b> of the subjects (n(Math ∪ Science))?
@@ -219,10 +219,10 @@ export default function LabM9SetsRelations({ onExit }: Props) {
             <div className="flex flex-wrap gap-2">
               <input 
                 type="number" value={qAns} onChange={(e) => setQAns(e.target.value)}
-                className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-purple-400"
+                className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-indigo-400"
                 placeholder="Total union..."
               />
-              <button onClick={checkAnswer} className="px-3 bg-purple-600 text-white rounded font-bold hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Check</button>
+              <button onClick={checkAnswer} className="px-3 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
             </div>
             {qStatus !== null && (
               <div className={`mt-2 flex items-center gap-1 text-sm font-bold ${qStatus ? 'text-green-600' : 'text-red-500'}`}>

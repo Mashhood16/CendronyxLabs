@@ -197,8 +197,8 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
               </text>
 
               {/* Virtual Image Intersection */}
-              <circle cx={x_img} cy={cy} r="6" fill="#a855f7" opacity="0.8" />
-              <text x={x_img} y={cy - 12} fill="#a855f7" fontSize="12" textAnchor="middle" fontWeight="bold">
+              <circle cx={x_img} cy={cy} r="6" fill="#5560F1" opacity="0.8" />
+              <text x={x_img} y={cy - 12} fill="#5560F1" fontSize="12" textAnchor="middle" fontWeight="bold">
                 Image
               </text>
             </svg>
@@ -241,7 +241,7 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
                   <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
                     <td className="px-3 py-2">{Number.isNaN(d.do) ? '?' : d.do}</td>
                     <td className="px-3 py-2">{d.theta}</td>
-                    <td className="px-3 py-2 font-medium text-purple-600">{d.di}</td>
+                    <td className="px-3 py-2 font-medium text-indigo-600">{d.di}</td>
                   </tr>
                 ))}
               </tbody>
@@ -259,7 +259,7 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
                    const x = 10 + (d.theta / 45) * 90;
                    const maxDi = Math.max(...data.map(item => item.di), 50);
                    const y = 90 - (d.di / maxDi) * 80;
-                   return <circle key={i} cx={x} cy={y} r="2.5" fill="#a855f7" />;
+                   return <circle key={i} cx={x} cy={y} r="2.5" fill="#5560F1" />;
                  })}
                </svg>
             </div>

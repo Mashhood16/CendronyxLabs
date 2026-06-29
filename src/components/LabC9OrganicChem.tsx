@@ -140,14 +140,14 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <Beaker className="w-5 h-5 text-purple-600" /> Reaction Theory
+            <Beaker className="w-5 h-5 text-indigo-600" /> Reaction Theory
           </h2>
           
           <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
-            <div className="bg-purple-50 p-4 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-bold text-purple-800 mb-2 dark:text-[#ffffff]">1. Hydrogenation of Alkenes</h3>
+            <div className="bg-indigo-50 p-4 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">1. Hydrogenation of Alkenes</h3>
               <p className="mb-2">Alkenes (like Ethene, C₂H₄) are unsaturated. They can undergo <b>Addition Reactions</b> with Hydrogen gas to form saturated alkanes (Ethane, C₂H₆).</p>
-              <ul className="list-disc pl-5 font-mono text-xs text-purple-900 bg-slate-50 dark:bg-[#121212] p-2 rounded dark:text-[#ffffff]">
+              <ul className="list-disc pl-5 font-mono text-xs text-indigo-900 bg-slate-50 dark:bg-[#121212] p-2 rounded dark:text-[#ffffff]">
                 <li>Condition 1: Nickel (Ni) Catalyst</li>
                 <li>Condition 2: Heat (around 150°C - 200°C)</li>
               </ul>
@@ -261,7 +261,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
               <button 
                 onClick={runReaction}
                 disabled={reactor.reagents.length < 2 || reactionStatus !== 'idle'}
-                className="flex-1 py-3 bg-purple-600 disabled:bg-slate-300 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="flex-1 py-3 bg-indigo-600 disabled:bg-slate-300 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Start Reaction
               </button>
@@ -281,7 +281,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
           
           <div className="p-4 border-b bg-slate-50 dark:bg-[#121212]">
             <h2 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] uppercase flex items-center gap-2">
-              <CheckSquare className="w-4 h-4 text-purple-600" /> 
+              <CheckSquare className="w-4 h-4 text-indigo-600" /> 
               Assessment & Data
             </h2>
           </div>
@@ -298,7 +298,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
                   value={q1}
                   onChange={(e) => setQ1(e.target.value)}
                   placeholder="e.g. Addition"
-                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-purple-500 outline-none text-sm"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
                 />
               </div>
 
@@ -311,13 +311,13 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
                   value={q2}
                   onChange={(e) => setQ2(e.target.value)}
                   placeholder="e.g. Substitution"
-                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-purple-500 outline-none text-sm"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
                 />
               </div>
 
               <button 
                 onClick={checkAssessment}
-                className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Check Answers
               </button>
@@ -341,7 +341,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
                         <span>Log #{log.id}</span>
                         <span>{log.time}</span>
                       </div>
-                      <div className="font-mono text-purple-800 mb-1 dark:text-[#ffffff]">{log.eq}</div>
+                      <div className="font-mono text-indigo-800 mb-1 dark:text-[#ffffff]">{log.eq}</div>
                       <div className="text-slate-600 dark:text-[#a1a1aa]">{log.result}</div>
                     </div>
                   ))

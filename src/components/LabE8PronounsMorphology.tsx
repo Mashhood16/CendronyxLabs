@@ -123,7 +123,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
            </button>
            <button 
              onClick={() => setMode('pronoun')} 
-             className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'pronoun' ? 'bg-white dark:bg-[#121212] dark:bg-[#121212] shadow-sm text-purple-600 dark:text-purple-400 dark:text-purple-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
+             className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'pronoun' ? 'bg-white dark:bg-[#121212] dark:bg-[#121212] shadow-sm text-indigo-600 dark:text-indigo-400 dark:text-indigo-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
            >
              <Target className="w-4 h-4" /> Pronouns
            </button>
@@ -197,7 +197,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
             <>
               <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-lg font-semibold text-purple-600 dark:text-purple-400 dark:text-purple-400 flex items-center gap-2">
+                  <h2 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 flex items-center gap-2">
                     <Link2 className="w-5 h-5" /> Pronoun Scanner
                   </h2>
                   <button onClick={nextPronounTask} className="text-xs px-2 py-1 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 whitespace-nowrap flex-shrink-0">Next Sentence</button>
@@ -211,7 +211,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
                   <div className="flex flex-col gap-2">
                     <button 
                       onClick={() => setClickMode(clickMode === 'pronoun' ? 'none' : 'pronoun')}
-                      className={`py-2 px-4 rounded-lg border flex items-center justify-between whitespace-nowrap flex-shrink-0 ${clickMode === 'pronoun' ? 'bg-purple-100 dark:bg-purple-900/50 dark:bg-purple-900/60 border-purple-500 text-purple-700 dark:text-purple-300 dark:bg-purple-900/40 dark:text-purple-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] dark:bg-slate-700 dark:border-slate-600'}`}
+                      className={`py-2 px-4 rounded-lg border flex items-center justify-between whitespace-nowrap flex-shrink-0 ${clickMode === 'pronoun' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 border-indigo-500 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] dark:bg-slate-700 dark:border-slate-600'}`}
                     >
                       <span>1. Select Pronoun</span>
                       {selectedPronounIdx !== null && <CheckCircle2 className="w-4 h-4 text-green-500 dark:text-green-400" />}
@@ -231,7 +231,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
                     <select 
                       value={selectedType}
                       onChange={(e) => setSelectedType(e.target.value)}
-                      className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500 min-w-0"
+                      className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-w-0"
                     >
                       <option value="">Select Type...</option>
                       {PRONOUN_TYPES.map(pt => (
@@ -244,7 +244,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
 
               <button 
                 onClick={handlePronounCheck}
-                className="mt-4 w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="mt-4 w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 <Target className="w-5 h-5" />
                 Analyze Resolution
@@ -306,7 +306,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
                       let baseClass = "px-2 py-1 rounded-lg cursor-pointer transition-colors border-b-2 border-transparent ";
                       
                       if (isPronoun) {
-                        baseClass += "bg-purple-100 dark:bg-purple-900/50 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 dark:bg-purple-900/50 dark:text-purple-300 border-purple-500";
+                        baseClass += "bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/50 dark:text-indigo-300 border-indigo-500";
                       } else if (isAntecedent) {
                         baseClass += "bg-orange-100 dark:bg-orange-900/50 dark:bg-orange-900/60 text-orange-700 dark:text-orange-300 dark:bg-orange-900/50 dark:text-orange-300 border-orange-500";
                       } else if (clickMode !== 'none') {

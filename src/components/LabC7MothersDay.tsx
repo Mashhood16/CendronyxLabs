@@ -11,7 +11,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
   const [message, setMessage] = useState('Happy Mother\'s Day!');
   const [image, setImage] = useState<string | null>(null);
 
-  const backgrounds = ['bg-pink-100', 'bg-purple-100', 'bg-rose-100', 'bg-amber-100', 'bg-sky-100'];
+  const backgrounds = ['bg-pink-100', 'bg-indigo-100', 'bg-rose-100', 'bg-amber-100', 'bg-sky-100'];
   const images = [
     '🌸', '💐', '❤️', '💝', '🦋', '👩‍👧‍👦'
   ];

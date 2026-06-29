@@ -48,7 +48,7 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
                 <div className="absolute top-0 left-4 w-12 h-3 bg-amber-500 rounded-b-full dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"></div>
                 when [ c ] key pressed
               </div>
-              <div className="bg-purple-500 rounded-lg shadow-sm border border-purple-600 dark:border-purple-500 p-4 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+              <div className="bg-indigo-500 rounded-lg shadow-sm border border-indigo-600 dark:border-indigo-500 p-4 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                 next costume
               </div>
 

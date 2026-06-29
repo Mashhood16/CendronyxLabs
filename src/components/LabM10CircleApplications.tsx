@@ -141,8 +141,8 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
             {/* Main Content Grid */}
             <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 lg:overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-purple-500">
-                    <div className="flex items-center mb-4 text-purple-800 shrink-0 dark:text-[#ffffff]">
+                <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-indigo-500">
+                    <div className="flex items-center mb-4 text-indigo-800 shrink-0 dark:text-[#ffffff]">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
                     </div>
@@ -199,8 +199,8 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                                         <path d={svgArcPath} fill="none" stroke="#d946ef" strokeWidth="4" />
                                         
                                         {/* Radius lines */}
-                                        <line x1="200" y1="150" x2={200 + radius * scale} y2="150" stroke="#a855f7" strokeWidth="2" />
-                                        <line x1="200" y1="150" x2={endX} y2={endY} stroke="#a855f7" strokeWidth="2" />
+                                        <line x1="200" y1="150" x2={200 + radius * scale} y2="150" stroke="#5560F1" strokeWidth="2" />
+                                        <line x1="200" y1="150" x2={endX} y2={endY} stroke="#5560F1" strokeWidth="2" />
 
                                         {/* Tangent line at endpoint */}
                                         {angle > 0 && angle < 360 && (
@@ -214,7 +214,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                                         )}
                                         
                                         {/* Labels */}
-                                        <text x="210" y="140" fill="#a855f7" fontSize="12" fontWeight="bold">r = {radius}m</text>
+                                        <text x="210" y="140" fill="#5560F1" fontSize="12" fontWeight="bold">r = {radius}m</text>
                                         <text x={200 + 15 * Math.cos((angle/2 * Math.PI) / 180)} y={150 - 15 * Math.sin((angle/2 * Math.PI) / 180)} fill="#d946ef" fontSize="12" fontWeight="bold">{angle}°</text>
                                     </>
                                 )}
@@ -224,7 +224,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
 
                                 {/* Whirling String */}
                                 {isWhirling && !broken && (
-                                    <line x1="200" y1="150" x2={stonePos.x} y2={stonePos.y} stroke="#a855f7" strokeWidth="2" />
+                                    <line x1="200" y1="150" x2={stonePos.x} y2={stonePos.y} stroke="#5560F1" strokeWidth="2" />
                                 )}
 
                                 {/* Stone/Object */}
@@ -245,7 +245,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                             <div>
                                 <div className="flex justify-between text-sm font-medium mb-1 text-slate-300">
                                     <span>Radius (m)</span>
-                                    <span className="text-purple-400">{radius} m</span>
+                                    <span className="text-indigo-400">{radius} m</span>
                                 </div>
                                 <input
                                     type="range"
@@ -253,7 +253,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                                     max="15"
                                     value={radius}
                                     onChange={(e) => { setRadius(Number(e.target.value)); if (!isWhirling) setStonePos({ x: 200 + Number(e.target.value) * scale, y: 150 }); }}
-                                    className="w-full accent-purple-500"
+                                    className="w-full accent-indigo-500"
                                     disabled={isWhirling}
                                 />
                             </div>
@@ -275,7 +275,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                             <div className="flex space-x-2">
                                 <button
                                     onClick={toggleWhirling}
-                                    className="flex-1 min-w-0 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                                    className="flex-1 min-w-0 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded flex items-center justify-center space-x-2 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                                 >
                                     {isWhirling ? <><Square size={16}/><span>Stop</span></> : <><Play size={16}/><span>Whirl</span></>}
                                 </button>

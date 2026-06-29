@@ -260,7 +260,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                       <circle cx="0" cy="0" r="0.5" fill="transparent" stroke="#3b82f6" strokeWidth="1" strokeDasharray={`${rentDash} ${circ}`} className="transition-all duration-500" />
                       <circle cx="0" cy="0" r="0.5" fill="transparent" stroke="#f97316" strokeWidth="1" strokeDasharray={`${utilDash} ${circ}`} strokeDashoffset={utilOffset} className="transition-all duration-500" />
                       <circle cx="0" cy="0" r="0.5" fill="transparent" stroke="#22c55e" strokeWidth="1" strokeDasharray={`${saveDash} ${circ}`} strokeDashoffset={saveOffset} className="transition-all duration-500" />
-                      <circle cx="0" cy="0" r="0.5" fill="transparent" stroke="#a855f7" strokeWidth="1" strokeDasharray={`${foodDash} ${circ}`} strokeDashoffset={foodOffset} className="transition-all duration-500" />
+                      <circle cx="0" cy="0" r="0.5" fill="transparent" stroke="#5560F1" strokeWidth="1" strokeDasharray={`${foodDash} ${circ}`} strokeDashoffset={foodOffset} className="transition-all duration-500" />
                     </>
                   )}
                 </svg>
@@ -281,7 +281,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-500 rounded-full shrink-0 dark:bg-teal-950/20 dark:border-teal-900"></div> <span className="truncate">Rent ({rentN}/{rentD})</span></div>
                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-orange-500 rounded-full shrink-0"></div> <span className="truncate">Utilities ({utilN}/{utilD})</span></div>
                 <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate">Savings ({saveN}/{saveD})</span></div>
-                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-purple-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate text-purple-600 dark:text-purple-400 font-bold">Food (Rem.)</span></div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 bg-indigo-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate text-indigo-600 dark:text-indigo-400 font-bold">Food (Rem.)</span></div>
               </div>
             </div>
           )}

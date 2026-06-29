@@ -32,7 +32,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
             <button 
               key={e.id}
               onClick={() => { setSelectedExp(e); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${selectedExp.id === e.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b]'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 ${selectedExp.id === e.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-slate-300 dark:border-[#1c1b1b]'}`}
             >
               {e.name}
             </button>
@@ -79,7 +79,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
           </div>
 
           <div className="mt-8 text-center flex gap-4">
-            <button onClick={handleMix} disabled={stage !== 'initial'} className="bg-purple-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+            <button onClick={handleMix} disabled={stage !== 'initial'} className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
               Mix Reactants
             </button>
             <button onClick={reset} className="bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-6 py-2 rounded-lg font-bold hover:bg-slate-300 dark:bg-[#121212]">
@@ -88,7 +88,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
           </div>
 
           {stage === 'final' && (
-            <div className="mt-6 px-6 py-4 rounded-xl bg-purple-50 border-purple-200 border text-purple-800 text-center animate-fade-in max-w-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="mt-6 px-6 py-4 rounded-xl bg-indigo-50 border-indigo-200 border text-indigo-800 text-center animate-fade-in max-w-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <h3 className="font-bold mb-1">Sign Observed: {selectedExp.resultType}</h3>
               <p className="text-sm">
                 This physical change indicates that a chemical reaction has taken place, forming new substances!

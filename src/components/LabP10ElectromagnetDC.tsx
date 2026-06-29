@@ -137,7 +137,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
                   <input 
                     type="range" min="0.05" max="0.20" step="0.01" 
                     value={m} onChange={(e) => setM(parseFloat(e.target.value))}
-                    className="w-full accent-purple-500"
+                    className="w-full accent-indigo-500"
                   />
                 </div>
               )}
@@ -145,13 +145,13 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
               {!isMystery && (
                 <button 
                   onClick={startMystery}
-                  className="w-full mt-4 py-2 bg-purple-100 text-purple-700 font-semibold rounded-lg hover:bg-purple-200 transition-colors border border-purple-300"
+                  className="w-full mt-4 py-2 bg-indigo-100 text-indigo-700 font-semibold rounded-lg hover:bg-indigo-200 transition-colors border border-indigo-300"
                 >
                   Find Unknown Mass Challenge
                 </button>
               )}
               {isMystery && (
-                <div className="mt-4 p-3 bg-purple-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                <div className="mt-4 p-3 bg-indigo-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                   Mystery Mode! Find mass 'm'.
                 </div>
               )}
@@ -281,20 +281,20 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
             {/* Assessment */}
             {isMystery && (
-              <div className="mt-auto bg-purple-50 p-4 rounded-xl border border-purple-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
-                <h4 className="font-bold text-purple-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find 'm'</h4>
-                <p className="text-xs text-purple-700 mb-3">
+              <div className="mt-auto bg-indigo-50 p-4 rounded-xl border border-indigo-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
+                <h4 className="font-bold text-indigo-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find 'm'</h4>
+                <p className="text-xs text-indigo-700 mb-3">
                   Calculate the unknown mass <strong>m</strong>. Slope of I vs tan(θ) = (B·L)/(m·g). Use g = 9.81 m/s².
                 </p>
                 <div className="flex gap-2">
                   <input 
                     type="number" step="0.001" placeholder="Mass in kg" 
                     value={answer} onChange={(e) => setAnswer(e.target.value)}
-                    className="flex-1 px-3 py-2 rounded border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+                    className="flex-1 px-3 py-2 rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
                   />
                   <button 
                     onClick={handleCheck}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Check
                   </button>

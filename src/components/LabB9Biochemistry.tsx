@@ -28,7 +28,7 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
   const getLiquidColor = (t: TubeState) => {
     if (!t.reagent) return '#e2e8f0'; 
     if (t.reagent === 'iodine') return t.content === 'starch' ? '#1e1b4b' : '#fef08a';
-    if (t.reagent === 'biuret') return t.content === 'protein' ? '#a855f7' : '#bfdbfe';
+    if (t.reagent === 'biuret') return t.content === 'protein' ? '#5560F1' : '#bfdbfe';
     if (t.reagent === 'benedict') {
       if (t.content === 'glucose' && t.heated) return '#ef4444'; 
       return '#3b82f6';
@@ -71,9 +71,9 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
                 <strong>1. Iodine Test (Starch)</strong><br/>
                 Turns from yellow to <span className="font-bold text-indigo-900 dark:text-[#ffffff]">blue-black</span> if starch is present.
               </div>
-              <div className="bg-purple-50 p-3 rounded border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <div className="bg-indigo-50 p-3 rounded border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
                 <strong>2. Biuret Test (Proteins)</strong><br/>
-                Turns from light blue to <span className="font-bold text-purple-600">purple</span> if proteins are present.
+                Turns from light blue to <span className="font-bold text-indigo-600">purple</span> if proteins are present.
               </div>
               <div className="bg-blue-50 p-3 rounded border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
                 <strong>3. Benedict's Test (Reducing Sugars)</strong><br/>
@@ -122,7 +122,7 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
             <button onClick={() => applyReagent('iodine')} className="flex items-center justify-center p-3 border border-amber-300 bg-amber-50 hover:bg-amber-100 rounded-lg font-bold text-amber-800 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <Droplet className="w-4 h-4 mr-2" /> Add Iodine
             </button>
-            <button onClick={() => applyReagent('biuret')} className="flex items-center justify-center p-3 border border-purple-300 bg-purple-50 hover:bg-purple-100 rounded-lg font-bold text-purple-800 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <button onClick={() => applyReagent('biuret')} className="flex items-center justify-center p-3 border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 rounded-lg font-bold text-indigo-800 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <Droplet className="w-4 h-4 mr-2" /> Add Biuret
             </button>
             <button onClick={() => applyReagent('benedict')} className="flex items-center justify-center p-3 border border-blue-300 bg-blue-50 hover:bg-blue-100 rounded-lg font-bold text-blue-800 transition-colors dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">

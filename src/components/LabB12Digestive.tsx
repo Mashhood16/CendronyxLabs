@@ -72,7 +72,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
 
   const getProteinColor = () => {
     if (naohAdded && cuso4Added) {
-      return proteinSample === 'egg' ? '#9333ea' : '#bae6fd'; // Purple (peptide bonds) vs Light blue (Cu2+ ions)
+      return proteinSample === 'egg' ? '#4158D1' : '#bae6fd'; // Purple (peptide bonds) vs Light blue (Cu2+ ions)
     }
     if (cuso4Added) return '#bae6fd';
     return '#f8fafc';
@@ -133,7 +133,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
           
           <div className="flex gap-2 w-full mb-6">
             <button onClick={() => setActiveTab('starch')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'starch' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>Starch Digestion</button>
-            <button onClick={() => setActiveTab('protein')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'protein' ? 'bg-purple-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>Protein Detection</button>
+            <button onClick={() => setActiveTab('protein')} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'protein' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>Protein Detection</button>
           </div>
 
           {activeTab === 'starch' ? (
@@ -186,7 +186,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
                <div className="w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
                 <label className="flex flex-col text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff] gap-2">
                   <span>Select Sample</span>
-                  <select value={proteinSample} onChange={e => setProteinSample(e.target.value as 'egg'|'water')} className="p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-purple-600 outline-none" disabled={naohAdded || cuso4Added}>
+                  <select value={proteinSample} onChange={e => setProteinSample(e.target.value as 'egg'|'water')} className="p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-indigo-600 outline-none" disabled={naohAdded || cuso4Added}>
                     <option value="egg">Egg White Solution</option>
                     <option value="water">Distilled Water (Control)</option>
                   </select>

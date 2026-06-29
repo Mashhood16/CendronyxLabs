@@ -52,7 +52,7 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
             <p>
               Unstained blood cells are mostly transparent, except for the red hemoglobin in Red Blood Cells (RBCs). 
               To identify White Blood Cells (WBCs) and platelets, we use a differential stain like <strong>Wright's Stain</strong>. 
-              It contains eosin (red) and methylene blue. It stains the <strong>nuclei</strong> of WBCs a deep purple-blue, allowing us to see their characteristic lobed shapes (e.g., neutrophils, lymphocytes). RBCs lack a nucleus and appear pale pink.
+              It contains eosin (red) and methylene blue. It stains the <strong>nuclei</strong> of WBCs a deep indigo-blue, allowing us to see their characteristic lobed shapes (e.g., neutrophils, lymphocytes). RBCs lack a nucleus and appear pale pink.
             </p>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
                   />
                 </div>
                 <div className="flex gap-4">
-                  <button onClick={() => setStained(true)} disabled={stained} className="px-6 py-2 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 disabled:opacity-50 transition dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                  <button onClick={() => setStained(true)} disabled={stained} className="px-6 py-2 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 disabled:opacity-50 transition dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                     Apply Stain
                   </button>
                   {stained && (
@@ -171,14 +171,14 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
                     ))}
                     {/* WBCs */}
                     {Array.from({length: 3}).map((_, i) => (
-                      <div key={`wbc-${i}`} className="absolute w-10 h-10 rounded-full bg-purple-100 border border-purple-300 flex items-center justify-center"
+                      <div key={`wbc-${i}`} className="absolute w-10 h-10 rounded-full bg-indigo-100 border border-indigo-300 flex items-center justify-center"
                            style={{ top: `${Math.random() * 70 + 15}%`, left: `${Math.random() * 70 + 15}%` }}>
-                        <div className="w-6 h-6 bg-purple-700/90" style={{ borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%' }} />
+                        <div className="w-6 h-6 bg-indigo-700/90" style={{ borderRadius: '40% 60% 70% 30% / 40% 50% 60% 50%' }} />
                       </div>
                     ))}
                     {/* Platelets */}
                     {Array.from({length: 15}).map((_, i) => (
-                      <div key={`plat-${i}`} className="absolute w-2 h-2 rounded-full bg-purple-400/80"
+                      <div key={`plat-${i}`} className="absolute w-2 h-2 rounded-full bg-indigo-400/80"
                            style={{ top: `${Math.random() * 90 + 5}%`, left: `${Math.random() * 90 + 5}%` }} />
                     ))}
                   </div>

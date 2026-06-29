@@ -81,7 +81,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
           <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Setup</h2>
           <div className="text-slate-600 dark:text-[#a1a1aa] space-y-2 text-sm">
             <p><strong>Hydration</strong> of ethene is an addition reaction used for the industrial manufacture of ethanol.</p>
-            <div className="bg-purple-50 p-3 rounded font-mono text-center text-purple-900 border border-purple-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-3 rounded font-mono text-center text-indigo-900 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               C₂H₄(g) + H₂O(g) ⇌ C₂H₅OH(g)
             </div>
             <p><strong>Conditions:</strong> Concentrated phosphoric acid (H₃PO₄) catalyst, high temperature (300°C), and high pressure (60 atm).</p>
@@ -143,17 +143,17 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
               </div>
               <div className="flex justify-between">
                 <span className="font-bold text-slate-800 dark:text-[#ffffff]">Single-Pass Yield:</span>
-                <span className="font-mono text-purple-700 font-bold">{yieldPercent.toFixed(1)} %</span>
+                <span className="font-mono text-indigo-700 font-bold">{yieldPercent.toFixed(1)} %</span>
               </div>
             </div>
           </div>
 
           <div className="w-full mt-4 flex items-center justify-between gap-4">
             <div className="flex-1 bg-slate-200 dark:bg-[#121212] h-2 rounded-full lg:overflow-hidden">
-              <div className="bg-purple-500 h-full transition-all duration-100 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ width: `${(time/100)*100}%` }} />
+              <div className="bg-indigo-500 h-full transition-all duration-100 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ width: `${(time/100)*100}%` }} />
             </div>
             <div className="text-sm font-mono">{time}%</div>
-            <button onClick={handleStart} className="flex items-center gap-1 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+            <button onClick={handleStart} className="flex items-center gap-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded shadow dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
               {running ? <Square size={16} /> : <Play size={16} />}
               {running ? 'Stop' : 'Start'}
             </button>
@@ -166,7 +166,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
           <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded flex justify-between items-center">
             <div>
               <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Eq Yield</div>
-              <div className="text-2xl font-mono text-purple-700">{yieldPercent.toFixed(1)}%</div>
+              <div className="text-2xl font-mono text-indigo-700">{yieldPercent.toFixed(1)}%</div>
             </div>
             <button onClick={handleLog} disabled={time === 0} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
               Record Data
@@ -196,7 +196,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
                       <td className="p-2">{log.p}</td>
                       <td className="p-2">{log.cat}</td>
                       <td className="p-2">{log.r}</td>
-                      <td className="p-2 font-mono font-bold text-purple-700">{log.y}</td>
+                      <td className="p-2 font-mono font-bold text-indigo-700">{log.y}</td>
                     </tr>
                   ))
                 )}
@@ -204,11 +204,11 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
             </table>
           </div>
 
-          <div className="bg-purple-50 border border-purple-200 rounded p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-bold text-purple-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
+          <div className="bg-indigo-50 border border-indigo-200 rounded p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
               <CheckCircle size={18} /> Knowledge Check
             </h3>
-            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
+            <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
               What is the <strong>atom economy (%)</strong> for the hydration of ethene to produce ethanol?
             </p>
             <div className="flex gap-2">
@@ -219,7 +219,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
                 placeholder="%" 
                 className="flex-1 px-3 py-1 border rounded"
               />
-              <button onClick={checkAnswer} className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+              <button onClick={checkAnswer} className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                 Check
               </button>
             </div>

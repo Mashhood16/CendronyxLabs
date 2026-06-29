@@ -101,7 +101,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
           <button onClick={() => setActiveTab('rate')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'rate' ? 'bg-white dark:bg-[#121212] shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
             <Car className="w-4 h-4" /> Rate
           </button>
-          <button onClick={() => setActiveTab('ratio')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'ratio' ? 'bg-white dark:bg-[#121212] shadow text-purple-600 dark:text-purple-400' : 'hover:text-purple-600 dark:hover:text-purple-400'}`}>
+          <button onClick={() => setActiveTab('ratio')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'ratio' ? 'bg-white dark:bg-[#121212] shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
             <Briefcase className="w-4 h-4" /> Ratio
           </button>
           <button onClick={() => setActiveTab('percentage')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'percentage' ? 'bg-white dark:bg-[#121212] shadow text-emerald-600 dark:text-emerald-400' : 'hover:text-emerald-600 dark:hover:text-emerald-400'}`}>
@@ -166,8 +166,8 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'ratio' && (
              <div className="animate-in fade-in slide-in-from-left-4 duration-500 flex flex-col gap-6">
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl border border-purple-100 dark:border-purple-800/50 text-purple-900 dark:text-purple-100">
-                <h2 className="text-lg font-bold mb-2 flex items-center gap-2 text-purple-700 dark:text-purple-400">
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/50 text-indigo-900 dark:text-indigo-100">
+                <h2 className="text-lg font-bold mb-2 flex items-center gap-2 text-indigo-700 dark:text-indigo-400">
                   <Info className="w-5 h-5" /> Profit Distribution
                 </h2>
                 <p className="text-sm">A ratio shows the relative sizes of two or more values. In business, profits are often distributed according to the ratio of investments.</p>
@@ -181,35 +181,35 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 </div>
                 <div className="flex justify-between items-center text-sm bg-white dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
                   <span className="text-slate-500 dark:text-[#71717a]">Investment Ratio (A : B):</span>
-                  <span className="font-bold text-lg text-purple-600 dark:text-purple-400">{ratioA} : {ratioB}</span>
+                  <span className="font-bold text-lg text-indigo-600 dark:text-indigo-400">{ratioA} : {ratioB}</span>
                 </div>
                 <button onClick={generateRatioProblem} className="mt-2 flex items-center justify-center gap-2 w-full py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-[#ffffff] rounded-xl transition-colors font-semibold">
                   <RefreshCw className="w-4 h-4" /> Generate New Scenario
                 </button>
               </div>
 
-              <div className="flex flex-col gap-4 bg-purple-50 dark:bg-purple-900/20 p-5 rounded-2xl border border-purple-100 dark:border-purple-800/50">
-                <h3 className="font-bold text-purple-900 dark:text-purple-100">Distribute Profit</h3>
-                <p className="text-sm text-purple-700 dark:text-purple-300">How much profit does each partner get?</p>
+              <div className="flex flex-col gap-4 bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+                <h3 className="font-bold text-indigo-900 dark:text-indigo-100">Distribute Profit</h3>
+                <p className="text-sm text-indigo-700 dark:text-indigo-300">How much profit does each partner get?</p>
                 
                 <div className="flex flex-col gap-3 mt-2">
                   <div className="flex gap-3 items-center">
                     <span className="font-bold text-sm w-20 text-slate-700 dark:text-[#a1a1aa]">Partner A:</span>
                     <div className="relative flex-1">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                      <input type="number" value={shareA} onChange={(e) => setShareA(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
+                      <input type="number" value={shareA} onChange={(e) => setShareA(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
                     </div>
                   </div>
                   <div className="flex gap-3 items-center">
                     <span className="font-bold text-sm w-20 text-slate-700 dark:text-[#a1a1aa]">Partner B:</span>
                     <div className="relative flex-1">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
-                      <input type="number" value={shareB} onChange={(e) => setShareB(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-purple-200 dark:border-purple-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
+                      <input type="number" value={shareB} onChange={(e) => setShareB(e.target.value)} className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-indigo-200 dark:border-indigo-700 bg-white dark:!bg-[#121212] focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 font-bold text-lg shadow-sm transition-colors text-slate-800 dark:text-[#ffffff]" />
                     </div>
                   </div>
                 </div>
 
-                <button onClick={checkRatio} className="w-full py-3 mt-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98] dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                <button onClick={checkRatio} className="w-full py-3 mt-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all shadow-md active:scale-[0.98] dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                   Check Distribution
                 </button>
                 
@@ -348,7 +348,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'ratio' && (
             <div className="animate-in zoom-in-95 duration-500 w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-3xl p-10 shadow-2xl border border-slate-200 dark:border-neutral-900 flex flex-col items-center relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-purple-500 to-pink-500" />
+              <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-indigo-500 to-pink-500" />
               <h3 className="text-2xl font-black mb-12 text-slate-800 dark:text-[#ffffff]">Profit Split</h3>
               
               <div className="flex items-end justify-between gap-8 w-full max-w-lg h-72 border-b-4 border-slate-200 dark:border-[#1c1b1b] pb-6 relative">
@@ -360,10 +360,10 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 w-1/3">
-                  <span className="font-black text-xl text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-4 py-1.5 rounded-lg whitespace-nowrap">Partner A</span>
+                  <span className="font-black text-xl text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-4 py-1.5 rounded-lg whitespace-nowrap">Partner A</span>
                   <div className="flex flex-wrap gap-1.5 justify-center content-end h-40">
                     {Array.from({ length: ratioA }).map((_, i) => (
-                      <div key={`a-${i}`} className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-neutral-900 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
+                      <div key={`a-${i}`} className="w-10 h-10 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-neutral-900 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'both' }}>
                         <Briefcase className="w-4 h-4 text-white opacity-80" />
                       </div>
                     ))}

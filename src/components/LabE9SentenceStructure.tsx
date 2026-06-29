@@ -98,7 +98,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] selection:bg-purple-200 dark:bg-purple-900 dark:selection:bg-purple-900">
+    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] selection:bg-indigo-200 dark:bg-indigo-900 dark:selection:bg-indigo-900">
       <LabHeader title="Clause Collider: Conditionals & Structure" variant="blue" onExit={onExit} />
       
       <div className="flex-1 lg:overflow-y-auto p-4">
@@ -107,43 +107,43 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
           {/* Column 1: Theory */}
           <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] overflow-hidden flex flex-col h-[calc(100vh-8rem)]">
             <div className="p-4 bg-slate-100 dark:bg-[#121212] dark:bg-slate-700 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+              <BookOpen className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
               <h2 className="font-semibold">Grammar Manual</h2>
             </div>
             <div className="p-6 lg:overflow-y-auto space-y-6 text-sm flex-1">
               <section>
-                <h3 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-2">1. Dependent vs Independent Clauses</h3>
+                <h3 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">1. Dependent vs Independent Clauses</h3>
                 <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-2">
                   An <strong>independent clause</strong> can stand alone as a complete sentence. A <strong>dependent clause</strong> has a subject and a verb but cannot stand alone because it begins with a subordinating conjunction (e.g., if, when, because).
                 </p>
-                <div className="bg-purple-50 dark:bg-purple-900 p-3 rounded-lg border border-purple-100 dark:border-purple-800">
-                  <p className="font-mono text-xs text-purple-800 dark:text-purple-200 dark:text-purple-300">
+                <div className="bg-indigo-50 dark:bg-indigo-900 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800">
+                  <p className="font-mono text-xs text-indigo-800 dark:text-indigo-200 dark:text-indigo-300">
                     Dep: If you study hard,<br/>Ind: you will pass the exam.
                   </p>
                 </div>
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-2">2. Zero Conditional</h3>
+                <h3 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">2. Zero Conditional</h3>
                 <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-2">
                   Used to express general truths, scientific facts, or habits. The condition always has the same result.
                 </p>
-                <p className="font-medium text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Structure: <span className="text-purple-600 dark:text-purple-400 dark:text-purple-400">If + Present Simple, Present Simple</span></p>
-                <div className="bg-purple-50 dark:bg-purple-900 p-3 rounded-lg border border-purple-100 dark:border-purple-800">
-                  <p className="font-mono text-xs text-purple-800 dark:text-purple-200 dark:text-purple-300">
+                <p className="font-medium text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Structure: <span className="text-indigo-600 dark:text-indigo-400 dark:text-indigo-400">If + Present Simple, Present Simple</span></p>
+                <div className="bg-indigo-50 dark:bg-indigo-900 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800">
+                  <p className="font-mono text-xs text-indigo-800 dark:text-indigo-200 dark:text-indigo-300">
                     Example: If you heat ice, it melts.
                   </p>
                 </div>
               </section>
 
               <section>
-                <h3 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-2">3. Type 1 Conditional</h3>
+                <h3 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 mb-2">3. Type 1 Conditional</h3>
                 <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-2">
                   Used to express real or very probable situations in the present or future.
                 </p>
-                <p className="font-medium text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Structure: <span className="text-purple-600 dark:text-purple-400 dark:text-purple-400">If + Present Simple, Will + Base Verb</span></p>
-                <div className="bg-purple-50 dark:bg-purple-900 p-3 rounded-lg border border-purple-100 dark:border-purple-800">
-                  <p className="font-mono text-xs text-purple-800 dark:text-purple-200 dark:text-purple-300">
+                <p className="font-medium text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Structure: <span className="text-indigo-600 dark:text-indigo-400 dark:text-indigo-400">If + Present Simple, Will + Base Verb</span></p>
+                <div className="bg-indigo-50 dark:bg-indigo-900 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800">
+                  <p className="font-mono text-xs text-indigo-800 dark:text-indigo-200 dark:text-indigo-300">
                     Example: If it rains, I will stay at home.
                   </p>
                 </div>
@@ -153,9 +153,9 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
 
           {/* Column 2: Simulation */}
           <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] overflow-hidden flex flex-col h-[calc(100vh-8rem)] relative">
-            <div className="absolute inset-0 bg-purple-500 dark:bg-purple-500 z-0"></div>
+            <div className="absolute inset-0 bg-indigo-500 dark:bg-indigo-500 z-0"></div>
             <div className="p-4 bg-slate-100 dark:bg-[#121212] dark:bg-slate-700 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] flex items-center gap-2 relative z-10">
-              <Combine className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+              <Combine className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
               <h2 className="font-semibold">Clause Collider Simulator</h2>
             </div>
             
@@ -168,7 +168,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                 </div>
                 
                 <div className="flex justify-center items-center px-2 text-slate-400">
-                  <GitMerge className="w-8 h-8 text-purple-500 dark:text-purple-400" />
+                  <GitMerge className="w-8 h-8 text-indigo-500 dark:text-indigo-400" />
                 </div>
 
                 <div className={`w-full border-2 rounded-xl p-6 flex flex-col justify-center text-center relative transition-colors ${
@@ -176,7 +176,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                     ? result === 'success'
                       ? 'border-green-500 bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-300 shadow-lg'
                       : 'border-red-500 bg-red-50 dark:bg-red-900 text-red-700 dark:text-red-300 shadow-md'
-                    : 'border-dashed border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-900 text-purple-700 dark:text-purple-300 dark:text-purple-300'
+                    : 'border-dashed border-indigo-300 dark:border-indigo-700 bg-indigo-50 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 dark:text-indigo-300'
                 }`}>
                   <span className="text-xs font-bold opacity-60 uppercase tracking-widest absolute top-3 left-0 w-full">Independent Clause</span>
                   <span className="text-xl font-medium mt-4">{selectedOption || "Select an option below..."}</span>
@@ -194,7 +194,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                         ? result === 'success'
                           ? 'border-green-500 bg-green-50 dark:bg-green-900 dark:bg-green-900/20'
                           : 'border-red-500 bg-red-50 dark:bg-red-900 dark:bg-red-900/20'
-                        : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-md hover:-translate-y-0.5'
+                        : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] hover:border-indigo-400 dark:hover:border-indigo-500 hover:shadow-md hover:-translate-y-0.5'
                     } disabled:opacity-75`}
                   >
                     {opt}
@@ -231,7 +231,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
           <div className="flex flex-col gap-6 h-[calc(100vh-8rem)]">
             <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] overflow-hidden flex flex-col flex-1">
               <div className="p-4 bg-slate-100 dark:bg-[#121212] dark:bg-slate-700 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] flex items-center gap-2">
-                <Terminal className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                <Terminal className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                 <h2 className="font-semibold">Collision Logs</h2>
               </div>
               <div className="p-4 lg:overflow-y-auto flex-1 space-y-3 font-mono text-xs">
@@ -239,7 +239,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                   <p className="text-slate-400 dark:text-[#71717a] text-center mt-4">Waiting for initial collision...</p>
                 ) : (
                   logs.map(log => (
-                    <div key={log.id} className={`p-2 rounded border-l-2 ${log.success ? 'bg-purple-50 dark:bg-purple-900 border-purple-500 dark:bg-purple-900 text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff]' : 'bg-red-50 dark:bg-red-900 border-red-500 dark:bg-red-900 text-red-700 dark:text-red-300 dark:text-red-300'}`}>
+                    <div key={log.id} className={`p-2 rounded border-l-2 ${log.success ? 'bg-indigo-50 dark:bg-indigo-900 border-indigo-500 dark:bg-indigo-900 text-slate-700 dark:text-[#ffffff] dark:text-[#ffffff]' : 'bg-red-50 dark:bg-red-900 border-red-500 dark:bg-red-900 text-red-700 dark:text-red-300 dark:text-red-300'}`}>
                       <span className="opacity-50">[{new Date(log.id).toLocaleTimeString()}]</span> {log.message}
                     </div>
                   ))
@@ -249,7 +249,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
 
             <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] overflow-hidden flex flex-col flex-1">
               <div className="p-4 bg-slate-100 dark:bg-[#121212] dark:bg-slate-700 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] flex items-center gap-2">
-                <Shield className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                <Shield className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
                 <h2 className="font-semibold">Knowledge Assessment</h2>
               </div>
               <div className="p-4 lg:overflow-y-auto flex-1 space-y-6">
@@ -266,7 +266,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                                 name={`q-${idx}`}
                                 checked={assessmentAnswers[idx] === optIdx}
                                 onChange={() => setAssessmentAnswers(prev => ({ ...prev, [idx]: optIdx }))}
-                                className="text-purple-600 dark:text-purple-400 focus:ring-purple-500"
+                                className="text-indigo-600 dark:text-indigo-400 focus:ring-indigo-500"
                               />
                               <span className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">{opt}</span>
                             </label>
@@ -277,20 +277,20 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
                     <button
                       onClick={() => setAssessmentSubmitted(true)}
                       disabled={Object.keys(assessmentAnswers).length < ASSESSMENT_QUESTIONS.length}
-                      className="w-full py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                      className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                     >
                       Submit Assessment
                     </button>
                   </>
                 ) : (
                   <div className="flex flex-col items-center justify-center h-full space-y-4">
-                    <div className="text-4xl font-bold text-purple-500 dark:text-purple-400">
+                    <div className="text-4xl font-bold text-indigo-500 dark:text-indigo-400">
                       {calculateScore()} / {ASSESSMENT_QUESTIONS.length}
                     </div>
                     <p className="text-slate-600 dark:text-[#71717a] font-medium">Assessment Completed</p>
                     <button
                       onClick={() => { setAssessmentSubmitted(false); setAssessmentAnswers({}); }}
-                      className="px-4 py-2 text-sm font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900 rounded-lg hover:bg-purple-100 dark:bg-purple-900 dark:hover:bg-purple-900 transition-colors"
+                      className="px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900 rounded-lg hover:bg-indigo-100 dark:bg-indigo-900 dark:hover:bg-indigo-900 transition-colors"
                     >
                       Retake
                     </button>

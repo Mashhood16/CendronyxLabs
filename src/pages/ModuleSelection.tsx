@@ -8,7 +8,7 @@ const SUBJECT_ACCENT: Record<string, string> = {
   physics: 'from-blue-500 to-indigo-600',
   chemistry: 'from-emerald-500 to-teal-600',
   biology: 'from-rose-500 to-pink-600',
-  math: 'from-violet-500 to-purple-600',
+  math: 'from-violet-500 to-indigo-600',
   computer: 'from-sky-500 to-cyan-600',
   science: 'from-amber-500 to-orange-600',
   english: 'from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 dark:from-cyan-400 dark:to-cyan-400 dark:hover:from-cyan-300 dark:hover:to-cyan-300 dark:!text-black shadow-lg shadow-blue-500/30 dark:shadow-none',

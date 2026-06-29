@@ -144,7 +144,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
     };
 
     const getConnectionColor = (pronounId: string) => {
-        const colors = ['bg-rose-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-purple-500'];
+        const colors = ['bg-rose-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-indigo-500'];
         const index = currentData.correct.findIndex(c => c.pronounId === pronounId);
         return colors[index % colors.length] || 'bg-slate-500';
     };

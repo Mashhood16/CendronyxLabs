@@ -162,7 +162,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               <p className={`text-sm font-semibold leading-tight ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{user.name}</p>
               <p className={`text-[10px] font-medium ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>{user.email || 'student@school.edu'}</p>
             </div>
-            <div className="w-9 h-9 rounded-full bg-[#8b5cf6] flex items-center justify-center text-white font-bold text-sm tracking-wide">
+            <div className="w-9 h-9 rounded-full bg-[#5560F1] flex items-center justify-center text-white font-bold text-sm tracking-wide">
               {user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
             </div>
             <ChevronDown className={`w-4 h-4 ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`} />

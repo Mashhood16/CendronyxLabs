@@ -55,7 +55,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               <button 
                 key={mol}
                 onClick={() => { setMolecule(mol); reset(); }}
-                className={`flex-1 py-2 rounded font-bold border-2 ${molecule === mol ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-purple-300'}`}
+                className={`flex-1 py-2 rounded font-bold border-2 ${molecule === mol ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300'}`}
               >
                 {mol}
               </button>

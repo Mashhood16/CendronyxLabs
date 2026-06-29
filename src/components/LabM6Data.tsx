@@ -16,7 +16,7 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
   // Dice: 0=1, 1=2, 2=3, 3=4, 4=5, 5=6
   const optionsCount = source === 'coin' ? 2 : 6;
   const labels = source === 'coin' ? ['Heads', 'Tails'] : ['1', '2', '3', '4', '5', '6'];
-  const colors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4'];
+  const colors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#5560F1', '#06b6d4'];
 
   const roll = (count: number) => {
     setIsRolling(true);

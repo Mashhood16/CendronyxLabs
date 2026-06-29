@@ -44,20 +44,20 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
         {/* Left Column */}
         <div className="w-full lg:w-1/3 flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] bg-white dark:bg-[#121212] gap-6">
           
-          <section className="p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-100 dark:border-purple-800">
-            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-purple-700 dark:text-purple-300">
+          <section className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800">
+            <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
               <Disc className="w-5 h-5" /> Ferris Wheel Symmetry
             </h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm mb-1 font-medium">Number of Cabins (Symmetry Lines): {symmetryLines}</label>
-                <input type="range" min="3" max="12" value={symmetryLines} onChange={(e) => setSymmetryLines(Number(e.target.value))} className="w-full accent-purple-600" />
+                <input type="range" min="3" max="12" value={symmetryLines} onChange={(e) => setSymmetryLines(Number(e.target.value))} className="w-full accent-indigo-600" />
               </div>
               <div>
                 <label className="block text-sm mb-1 font-medium">Rotation Angle: {rotation}°</label>
-                <input type="range" min="0" max="360" value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="w-full accent-purple-600" />
+                <input type="range" min="0" max="360" value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="w-full accent-indigo-600" />
               </div>
-              <p className="text-sm bg-white dark:bg-[#121212] p-2 rounded border border-purple-100 dark:border-purple-800/50">
+              <p className="text-sm bg-white dark:bg-[#121212] p-2 rounded border border-indigo-100 dark:border-indigo-800/50">
                 Angle between cabins: {(360 / symmetryLines).toFixed(1)}°
               </p>
             </div>
@@ -131,11 +131,11 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
                     const y = Math.sin(rad) * 80;
                     return (
                       <g key={i}>
-                        <line x1="0" y1="0" x2={x} y2={y} stroke="currentColor" strokeWidth="2" className="text-purple-300 dark:text-purple-700" />
+                        <line x1="0" y1="0" x2={x} y2={y} stroke="currentColor" strokeWidth="2" className="text-indigo-300 dark:text-indigo-700" />
                         {/* Lines of symmetry overlay */}
-                        <line x1={-x*1.2} y1={-y*1.2} x2={x*1.2} y2={y*1.2} stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" className="text-purple-400/40 dark:text-purple-500/30" />
+                        <line x1={-x*1.2} y1={-y*1.2} x2={x*1.2} y2={y*1.2} stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" className="text-indigo-400/40 dark:text-indigo-500/30" />
                         {/* Cabin */}
-                        <circle cx={x} cy={y} r="8" className="fill-purple-500 hover:fill-purple-400 transition-colors cursor-pointer" />
+                        <circle cx={x} cy={y} r="8" className="fill-indigo-500 hover:fill-indigo-400 transition-colors cursor-pointer" />
                       </g>
                     );
                   })}
@@ -190,9 +190,9 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
                   {/* Step 2.5: Further arcs for 120 or 90 */}
                   {compassStep >= 2.5 && (targetAngle === 120 || targetAngle === 90) && (
                     <>
-                      <path d="M 60 -103.9 A 120 120 0 0 1 -70 -103.9" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-purple-400 dark:text-purple-500" strokeDasharray="4 4" />
-                      <circle cx="-60" cy="-103.9" r="4" className="fill-purple-600" />
-                      <text x="-95" y="-115" className="text-xs fill-purple-700 dark:fill-purple-300 font-bold">D (120°)</text>
+                      <path d="M 60 -103.9 A 120 120 0 0 1 -70 -103.9" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-indigo-400 dark:text-indigo-500" strokeDasharray="4 4" />
+                      <circle cx="-60" cy="-103.9" r="4" className="fill-indigo-600" />
+                      <text x="-95" y="-115" className="text-xs fill-indigo-700 dark:fill-indigo-300 font-bold">D (120°)</text>
                     </>
                   )}
 

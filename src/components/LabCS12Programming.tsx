@@ -43,16 +43,16 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2 dark:text-[#ffffff]">Theory & Context</h2>
+          <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2 dark:text-[#ffffff]">Theory & Context</h2>
           <div className="space-y-4 text-slate-700 dark:text-[#ffffff] lg:overflow-y-auto pr-2 flex-1 text-sm">
             <p>
               <strong>Object-Oriented Programming (OOP)</strong> involves encapsulating data and behavior within logical units called objects.
             </p>
-            <h3 className="font-semibold text-purple-700 mt-2">Debugging & Breakpoints</h3>
+            <h3 className="font-semibold text-indigo-700 mt-2">Debugging & Breakpoints</h3>
             <p>
               A visual debugger allows developers to pause execution (breakpoint) and step through code line-by-line while watching variable states in memory.
             </p>
-            <h3 className="font-semibold text-purple-700 mt-2">Database Normalization</h3>
+            <h3 className="font-semibold text-indigo-700 mt-2">Database Normalization</h3>
             <p>
               Normalization organizes database tables to minimize redundancy:
               <br/>- <strong>1NF:</strong> Eliminate repeating groups.
@@ -64,32 +64,32 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
 
         {/* Simulation Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2 dark:text-[#ffffff]">Simulator</h2>
+          <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2 dark:text-[#ffffff]">Simulator</h2>
           
           <div className="flex gap-2 mb-4">
-            <button onClick={() => setActiveTab('Debugger')} className={`px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1 ${activeTab === 'Debugger' ? 'bg-purple-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}><Bug size={16}/> Debugger</button>
-            <button onClick={() => setActiveTab('Database')} className={`px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1 ${activeTab === 'Database' ? 'bg-purple-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}><Database size={16}/> Normalization</button>
+            <button onClick={() => setActiveTab('Debugger')} className={`px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1 ${activeTab === 'Debugger' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}><Bug size={16}/> Debugger</button>
+            <button onClick={() => setActiveTab('Database')} className={`px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1 ${activeTab === 'Database' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}><Database size={16}/> Normalization</button>
           </div>
 
           <div className="flex-1 flex flex-col bg-[#000000] dark:bg-[#121212] rounded-lg p-4 font-mono text-sm text-slate-300 relative overflow-hidden shadow-inner">
             {activeTab === 'Debugger' && (
               <>
                 <div className="flex-1">
-                  <div className={`px-2 py-1 ${activeLine === 1 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>1: class Account {'{'}</div>
-                  <div className={`px-2 py-1 ${activeLine === 2 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>2:   constructor(balance) {'{'} this.balance = balance; {'}'}</div>
-                  <div className={`px-2 py-1 ${activeLine === 3 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>3:   deposit(amt) {'{'} this.balance += amt; {'}'}</div>
-                  <div className={`px-2 py-1 ${activeLine === 4 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>4: {'}'}</div>
-                  <div className={`px-2 py-1 ${activeLine === 5 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>5: let acc = new Account(100);</div>
-                  <div className={`px-2 py-1 ${activeLine === 6 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>6: acc.deposit(50);</div>
-                  <div className={`px-2 py-1 ${activeLine === 7 ? 'bg-purple-900 text-white border-l-4 border-purple-500' : 'pl-3'}`}>7: console.log(acc.balance);</div>
+                  <div className={`px-2 py-1 ${activeLine === 1 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>1: class Account {'{'}</div>
+                  <div className={`px-2 py-1 ${activeLine === 2 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>2:   constructor(balance) {'{'} this.balance = balance; {'}'}</div>
+                  <div className={`px-2 py-1 ${activeLine === 3 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>3:   deposit(amt) {'{'} this.balance += amt; {'}'}</div>
+                  <div className={`px-2 py-1 ${activeLine === 4 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>4: {'}'}</div>
+                  <div className={`px-2 py-1 ${activeLine === 5 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>5: let acc = new Account(100);</div>
+                  <div className={`px-2 py-1 ${activeLine === 6 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>6: acc.deposit(50);</div>
+                  <div className={`px-2 py-1 ${activeLine === 7 ? 'bg-indigo-900 text-white border-l-4 border-indigo-500' : 'pl-3'}`}>7: console.log(acc.balance);</div>
                 </div>
                 
                 <div className="border-t border-[#1c1b1b] dark:border-[#1c1b1b] pt-3 mt-3">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-bold text-purple-400">Watch Variables</span>
+                    <span className="font-bold text-indigo-400">Watch Variables</span>
                     <div className="flex gap-2">
                       <button onClick={resetDebugger} className="p-1 bg-slate-700 dark:bg-[#121212] hover:bg-slate-600 dark:bg-[#121212] rounded text-white dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"><RotateCcw size={16}/></button>
-                      <button onClick={stepDebugger} disabled={activeLine > 7} className="p-1 bg-purple-600 hover:bg-purple-500 rounded text-white disabled:opacity-50 flex items-center gap-1 text-xs px-2 dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"><StepForward size={14}/> Step</button>
+                      <button onClick={stepDebugger} disabled={activeLine > 7} className="p-1 bg-indigo-600 hover:bg-indigo-500 rounded text-white disabled:opacity-50 flex items-center gap-1 text-xs px-2 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><StepForward size={14}/> Step</button>
                     </div>
                   </div>
                   <div className="bg-[#121212] dark:bg-[#121212] p-2 rounded">
@@ -102,9 +102,9 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
             {activeTab === 'Database' && (
               <div className="flex-1 flex flex-col font-sans">
                 <div className="flex gap-2 mb-4 justify-center">
-                  <button onClick={() => setNfLevel(1)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 1 ? 'bg-purple-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>1NF</button>
-                  <button onClick={() => setNfLevel(2)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 2 ? 'bg-purple-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>2NF</button>
-                  <button onClick={() => setNfLevel(3)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 3 ? 'bg-purple-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>3NF</button>
+                  <button onClick={() => setNfLevel(1)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 1 ? 'bg-indigo-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>1NF</button>
+                  <button onClick={() => setNfLevel(2)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 2 ? 'bg-indigo-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>2NF</button>
+                  <button onClick={() => setNfLevel(3)} className={`px-3 py-1 rounded text-xs font-bold ${nfLevel === 3 ? 'bg-indigo-600 text-white' : 'bg-slate-700 dark:bg-[#121212] text-slate-300'}`}>3NF</button>
                 </div>
 
                 <div className="flex-1 lg:overflow-y-auto space-y-4 pb-4">
@@ -115,7 +115,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
                         <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r">OrdID</th><th className="p-1 border-r">CustName</th><th className="p-1 border-r">ProdID</th><th className="p-1">ProdName</th></tr></thead>
                         <tbody>
                           <tr className="border-t">
-                            <td className="p-1 border-r font-bold text-purple-700">101</td><td className="p-1 border-r">Alice</td><td className="p-1 border-r font-bold text-purple-700">P1</td><td className="p-1">Laptop</td>
+                            <td className="p-1 border-r font-bold text-indigo-700">101</td><td className="p-1 border-r">Alice</td><td className="p-1 border-r font-bold text-indigo-700">P1</td><td className="p-1">Laptop</td>
                           </tr>
                         </tbody>
                       </table>
@@ -128,14 +128,14 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
                       <div className="bg-slate-50 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] text-xs rounded border border-slate-300 dark:border-[#1c1b1b] overflow-hidden">
                         <div className="bg-slate-200 dark:bg-[#121212] font-bold p-1 border-b border-slate-300 dark:border-[#1c1b1b] text-center">Orders Table</div>
                         <table className="w-full text-left">
-                          <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-purple-700">OrdID (PK)</th><th className="p-1">CustName</th></tr></thead>
+                          <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-indigo-700">OrdID (PK)</th><th className="p-1">CustName</th></tr></thead>
                           <tbody><tr className="border-t"><td className="p-1 border-r">101</td><td className="p-1">Alice</td></tr></tbody>
                         </table>
                       </div>
                       <div className="bg-slate-50 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] text-xs rounded border border-slate-300 dark:border-[#1c1b1b] overflow-hidden">
                         <div className="bg-slate-200 dark:bg-[#121212] font-bold p-1 border-b border-slate-300 dark:border-[#1c1b1b] text-center">OrderDetails</div>
                         <table className="w-full text-left">
-                          <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-purple-700">OrdID (FK)</th><th className="p-1 border-r text-purple-700">ProdID (FK)</th>{nfLevel === 2 && <th className="p-1">ProdName</th>}</tr></thead>
+                          <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-indigo-700">OrdID (FK)</th><th className="p-1 border-r text-indigo-700">ProdID (FK)</th>{nfLevel === 2 && <th className="p-1">ProdName</th>}</tr></thead>
                           <tbody><tr className="border-t"><td className="p-1 border-r">101</td><td className="p-1 border-r">P1</td>{nfLevel === 2 && <td className="p-1">Laptop</td>}</tr></tbody>
                         </table>
                       </div>
@@ -146,7 +146,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
                     <div className="bg-slate-50 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] text-xs rounded border border-slate-300 dark:border-[#1c1b1b] overflow-hidden w-1/2 mx-auto">
                       <div className="bg-slate-200 dark:bg-[#121212] font-bold p-1 border-b border-slate-300 dark:border-[#1c1b1b] text-center">Products Table</div>
                       <table className="w-full text-left">
-                        <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-purple-700">ProdID (PK)</th><th className="p-1">ProdName</th></tr></thead>
+                        <thead className="bg-slate-100 dark:bg-[#121212]"><tr><th className="p-1 border-r text-indigo-700">ProdID (PK)</th><th className="p-1">ProdName</th></tr></thead>
                         <tbody><tr className="border-t"><td className="p-1 border-r">P1</td><td className="p-1">Laptop</td></tr></tbody>
                       </table>
                     </div>
@@ -160,14 +160,14 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
 
         {/* Assessment Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2 dark:text-[#ffffff]">Analysis & Assessment</h2>
+          <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2 dark:text-[#ffffff]">Analysis & Assessment</h2>
           
           <div className="space-y-4 lg:overflow-y-auto pr-2">
             <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
               <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Q1: Using the Debugger, what is the exact value of `acc.balance` immediately AFTER executing line 6?</label>
               <div className="flex gap-2">
                 <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="Enter value..." />
-                <button onClick={() => setQ1Status(q1.trim() === '150')} className="bg-purple-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Check</button>
+                <button onClick={() => setQ1Status(q1.trim() === '150')} className="bg-indigo-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
               </div>
               {q1Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> Correct</p>}
               {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
@@ -182,13 +182,13 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
                   <option value="OrderDetails">OrderDetails Table</option>
                   <option value="Products">Products Table</option>
                 </select>
-                <button onClick={() => setQ2Status(q2 === 'Products')} className="bg-purple-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Check</button>
+                <button onClick={() => setQ2Status(q2 === 'Products')} className="bg-indigo-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
               </div>
               {q2Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> Correct</p>}
               {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
             </div>
             
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-200 text-sm text-purple-800 mt-4 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200 text-sm text-indigo-800 mt-4 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <p className="font-bold mb-1">Developer Note</p>
               <p>State mutations (like <code>balance += amt</code>) are common sources of bugs. Debuggers are essential to track the specific moment a variable's state becomes invalid.</p>
             </div>

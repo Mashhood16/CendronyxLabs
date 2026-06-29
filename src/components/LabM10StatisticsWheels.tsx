@@ -95,7 +95,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     setFeedback({ median: medianCorrect, q1: q1Correct, prob: probCorrect });
   };
 
-  const colors = ["#ef4444", "#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899", "#14b8a6", "#f97316"];
+  const colors = ["#ef4444", "#3b82f6", "#10b981", "#f59e0b", "#5560F1", "#ec4899", "#14b8a6", "#f97316"];
 
   const createPieSectors = () => {
     const paths = [];

@@ -135,7 +135,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
                     onClick={() => setSelectedConj(c.id)}
                     className={`px-4 py-2 rounded-full border font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
                       selectedConj === c.id 
-                        ? 'bg-purple-50 border-purple-500 text-purple-700 dark:bg-purple-900/30 dark:border-purple-400 dark:text-purple-300' 
+                        ? 'bg-indigo-50 border-indigo-500 text-indigo-700 dark:bg-indigo-900/30 dark:border-indigo-400 dark:text-indigo-300' 
                         : 'bg-slate-50 border-slate-200 hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700'
                     }`}
                   >
@@ -212,7 +212,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
                   </h3>
                   <div className="bg-[#000000] p-6 rounded-lg shadow-inner border border-[#1c1b1b] text-xl font-mono leading-relaxed mx-4">
                     <span className="text-blue-300">{CLAUSES_1.find(c => c.id === selectedC1)?.text}</span>
-                    <span className="text-purple-400 mx-2 font-bold bg-purple-900/30 px-2 rounded">{CONJUNCTIONS.find(c => c.id === selectedConj)?.text}</span>
+                    <span className="text-indigo-400 mx-2 font-bold bg-indigo-900/30 px-2 rounded">{CONJUNCTIONS.find(c => c.id === selectedConj)?.text}</span>
                     <span className="text-emerald-300">{CLAUSES_2.find(c => c.id === selectedC2)?.text}</span>
                   </div>
                   {weldResult === 'fail' && (
@@ -235,7 +235,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
                 <div className="flex-1 bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800/50 min-h-[60px] flex items-center justify-center text-center text-sm font-medium dark:text-blue-200">
                   {CLAUSES_1.find(c => c.id === selectedC1)?.text || "..."}
                 </div>
-                <div className="bg-purple-50 dark:bg-purple-900/20 px-4 py-3 rounded border border-purple-200 dark:border-purple-800/50 min-h-[60px] flex items-center justify-center text-center text-sm font-bold dark:text-purple-200">
+                <div className="bg-indigo-50 dark:bg-indigo-900/20 px-4 py-3 rounded border border-indigo-200 dark:border-indigo-800/50 min-h-[60px] flex items-center justify-center text-center text-sm font-bold dark:text-indigo-200">
                   {CONJUNCTIONS.find(c => c.id === selectedConj)?.text || "+"}
                 </div>
                 <div className="flex-1 bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded border border-emerald-200 dark:border-emerald-800/50 min-h-[60px] flex items-center justify-center text-center text-sm font-medium dark:text-emerald-200">

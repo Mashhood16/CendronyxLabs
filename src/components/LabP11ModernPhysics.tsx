@@ -236,7 +236,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
                                         </>
                                     ) : (
                                         <>
-                                            <circle cx={150 - (fissionProgress - 0.5) * 2 * 100} cy={150 - (fissionProgress - 0.5) * 2 * 60} r="18" fill="#8b5cf6" />
+                                            <circle cx={150 - (fissionProgress - 0.5) * 2 * 100} cy={150 - (fissionProgress - 0.5) * 2 * 60} r="18" fill="#5560F1" />
                                             <text x={150 - (fissionProgress - 0.5) * 2 * 100} y={150 - (fissionProgress - 0.5) * 2 * 60 + 4} fill="white" fontSize="10" textAnchor="middle" fontWeight="bold">Kr-92</text>
                                             
                                             <circle cx={150 + (fissionProgress - 0.5) * 2 * 80} cy={150 + (fissionProgress - 0.5) * 2 * 90} r="24" fill="#10b981" />

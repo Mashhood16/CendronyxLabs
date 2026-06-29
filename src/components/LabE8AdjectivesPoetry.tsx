@@ -114,7 +114,7 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
                 </button>
                 <button
                   onClick={() => setActiveTab('adjectives')}
-                  className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'adjectives' ? 'bg-purple-100 dark:bg-purple-900/50 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 dark:bg-purple-900/40 dark:text-purple-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
+                  className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'adjectives' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
                 >
                   <Type size={18} /> Adjective Upgrade
                 </button>
@@ -176,7 +176,7 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
 
                     <div className="bg-white dark:!bg-[#121212] dark:bg-slate-700/50 p-5 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
                         <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4 flex items-center gap-2">
-                           <Type size={20} className="text-purple-500 dark:text-purple-400" /> Adjectives & Phrases
+                           <Type size={20} className="text-indigo-500 dark:text-indigo-400" /> Adjectives & Phrases
                         </h3>
                         <p className="text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] text-lg mb-6 italic bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">"{currentAdj.sentence}"</p>
                         
@@ -254,13 +254,13 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
             ) : (
                 <div className="flex flex-col items-center justify-center w-full max-w-md bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-lg p-10 border border-slate-200 dark:border-[#1c1b1b]">
                     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-10 flex items-center gap-3">
-                       <Sparkles className="text-purple-500 dark:text-purple-400" />
+                       <Sparkles className="text-indigo-500 dark:text-indigo-400" />
                        Descriptive Power Meter
                     </h2>
                     
                     <div className="relative w-32 h-64 bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-700/50 rounded-full overflow-hidden border-4 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
                         <div 
-                            className="absolute bottom-0 w-full bg-gradient-to-t from-blue-500 to-purple-500 transition-all duration-1000 ease-in-out"
+                            className="absolute bottom-0 w-full bg-gradient-to-t from-blue-500 to-indigo-500 transition-all duration-1000 ease-in-out"
                             style={{ height: `${fillPercentage}%` }}
                         />
                         <div className="absolute inset-0 flex flex-col items-center justify-between py-4 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] drop-shadow-[0_2px_2px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] text-sm font-bold z-10">

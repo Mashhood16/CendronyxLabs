@@ -325,7 +325,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
                   <span className="text-slate-600 dark:text-[#71717a]">Connects equal parts (FANBOYS: for, and, nor, but, or, yet, so)</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
-                  <strong className="block text-purple-600 dark:text-purple-400 mb-1">Subordinating</strong>
+                  <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">Subordinating</strong>
                   <span className="text-slate-600 dark:text-[#71717a]">Connects a dependent clause to an independent one (because, although, if)</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">

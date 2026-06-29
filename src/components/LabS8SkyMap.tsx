@@ -15,7 +15,7 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
     { name: "Orion", x: 70, y: 40, color: "text-red-300" },
     { name: "Southern Cross", x: 40, y: 80, color: "text-yellow-300" },
     { name: "Alpha Centauri", x: 35, y: 85, color: "text-white animate-pulse" },
-    { name: "Cassiopeia", x: 80, y: 20, color: "text-purple-300" }
+    { name: "Cassiopeia", x: 80, y: 20, color: "text-indigo-300" }
   ];
 
   const checkFound = (x: number, y: number) => {

@@ -116,7 +116,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
         {/* Theory Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+          <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
           {activeTab === 'halogen' ? (
             <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
               <p><strong>Halogen Displacement:</strong> Group 7 elements (Halogens) become less reactive as you go down the group. A more reactive halogen will displace a less reactive halogen from an aqueous solution of its halide salt.</p>
@@ -139,7 +139,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
         {/* Simulation Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800 w-full dark:text-[#ffffff]"><Activity className="mr-2" /> Interactive Simulator</h2>
+          <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 w-full dark:text-[#ffffff]"><Activity className="mr-2" /> Interactive Simulator</h2>
           
           <EquationDisplay equation={equation} />
 
@@ -169,7 +169,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
                 <div className="w-full transition-colors duration-1000" style={{ height: '70%', backgroundColor: beakerColor }}></div>
               </div>
 
-              <button onClick={mixHalogens} disabled={!selHalogen || !selHalide} className="px-6 py-3 bg-purple-600 text-white font-bold rounded hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+              <button onClick={mixHalogens} disabled={!selHalogen || !selHalide} className="px-6 py-3 bg-indigo-600 text-white font-bold rounded hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                 Mix Chemicals
               </button>
             </div>
@@ -177,7 +177,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
             <div className="flex flex-col w-full items-center">
               <div className="relative w-64 h-64 border-2 border-dashed border-gray-300 rounded-full flex items-center justify-center bg-slate-50 dark:bg-[#121212] overflow-hidden mb-6">
                 {/* Nucleus visualizer */}
-                <div className="text-center z-10 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded font-bold text-purple-900 border border-purple-200 dark:text-[#ffffff]">
+                <div className="text-center z-10 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded font-bold text-indigo-900 border border-indigo-200 dark:text-[#ffffff]">
                   Parent: {u238Count} <br/> Daughter: {th234Count}
                 </div>
                 {/* Abstract representation of radiation */}
@@ -194,7 +194,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
         {/* Data & Assessment Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" /> Data & Analysis</h2>
+          <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" /> Data & Analysis</h2>
           
           <div className="flex-grow lg:overflow-y-auto mb-4 border rounded">
             {activeTab === 'halogen' ? (
@@ -222,8 +222,8 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
             )}
           </div>
 
-          <div className="bg-purple-50 p-4 rounded border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-bold text-purple-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+          <div className="bg-indigo-50 p-4 rounded border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
             <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
               {activeTab === 'halogen' 
                 ? "Based on your mixing data, which halogen is the most reactive and capable of displacing all others?" 
@@ -231,7 +231,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
             </p>
             <div className="flex gap-2">
               <input type="text" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer..." className="flex-grow p-2 border rounded" />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-purple-600 text-white rounded font-bold hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Check</button>
+              <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
             </div>
             {feedback && <div className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>}
           </div>

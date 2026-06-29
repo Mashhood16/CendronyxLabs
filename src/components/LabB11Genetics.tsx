@@ -220,7 +220,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                     35S (Protein Label)
                   </button>
                   <button 
-                    className={`flex-1 py-2 text-sm font-bold rounded-md ${phageLabel === '32P' ? 'bg-purple-100 text-purple-800' : 'text-gray-500'}`}
+                    className={`flex-1 py-2 text-sm font-bold rounded-md ${phageLabel === '32P' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500'}`}
                     onClick={() => { setPhageLabel('32P'); setHcStep(0); }}
                     disabled={hcStep > 0}
                   >
@@ -240,11 +240,11 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                         <rect x="47" y="30" width="6" height="20" fill="#94a3b8" /> {/* Tail */}
                         <path d="M47,50 L30,65 M53,50 L70,65" stroke="#475569" strokeWidth="2" /> {/* Legs */}
                         {/* DNA */}
-                        <path d="M48,18 Q50,25 52,18 T50,28" stroke={phageLabel === '32P' ? '#a855f7' : '#ef4444'} strokeWidth="2" fill="none" />
+                        <path d="M48,18 Q50,25 52,18 T50,28" stroke={phageLabel === '32P' ? '#5560F1' : '#ef4444'} strokeWidth="2" fill="none" />
                         
                         {/* Bacterium */}
                         <rect x="20" y="60" width="60" height="30" rx="15" fill="#86efac" opacity="0.5" />
-                        <path d="M50,60 L50,80" stroke={phageLabel === '32P' ? '#a855f7' : '#ef4444'} strokeWidth="2" className="animate-pulse" /> {/* Injecting DNA */}
+                        <path d="M50,60 L50,80" stroke={phageLabel === '32P' ? '#5560F1' : '#ef4444'} strokeWidth="2" className="animate-pulse" /> {/* Injecting DNA */}
                       </svg>
                       <p className="text-sm font-bold mt-2 text-indigo-800 dark:text-[#ffffff]">1. Infection phase</p>
                     </div>
@@ -260,7 +260,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                         
                         {/* Bacterium with DNA */}
                         <rect x="20" y="50" width="60" height="30" rx="15" fill="#86efac" />
-                        <path d="M40,65 Q50,55 60,65 T40,65" stroke={phageLabel === '32P' ? '#a855f7' : '#ef4444'} strokeWidth="2" fill="none" />
+                        <path d="M40,65 Q50,55 60,65 T40,65" stroke={phageLabel === '32P' ? '#5560F1' : '#ef4444'} strokeWidth="2" fill="none" />
                       </svg>
                       <p className="text-sm font-bold mt-2 text-indigo-800 dark:text-[#ffffff]">2. Agitation (Blending)</p>
                     </div>
@@ -282,13 +282,13 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                             
                             {/* Radioactivity indicators */}
                             {phageLabel === '35S' && <circle cx="30" cy="70" r="5" fill="#f59e0b" className="animate-ping" />}
-                            {phageLabel === '32P' && <circle cx="30" cy="125" r="5" fill="#a855f7" className="animate-ping" />}
+                            {phageLabel === '32P' && <circle cx="30" cy="125" r="5" fill="#5560F1" className="animate-ping" />}
                           </svg>
                           <div className="mt-3 text-center text-sm font-bold">
                             {phageLabel === '35S' ? (
                               <p className="text-amber-600">Radioactivity in Supernatant</p>
                             ) : (
-                              <p className="text-purple-600">Radioactivity in Pellet</p>
+                              <p className="text-indigo-600">Radioactivity in Pellet</p>
                             )}
                           </div>
                         </>

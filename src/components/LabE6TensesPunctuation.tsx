@@ -5,7 +5,7 @@ import { useTheme } from '../store';
 
 // Data
 const TENSES = [
-  { id: 'past_perfect', name: 'Past Perfect', key: 'pastPerf', desc: 'Completed before another past action.', color: 'text-purple-500', bg: 'bg-purple-500', border: 'border-purple-500' },
+  { id: 'past_perfect', name: 'Past Perfect', key: 'pastPerf', desc: 'Completed before another past action.', color: 'text-indigo-500', bg: 'bg-indigo-500', border: 'border-indigo-500' },
   { id: 'simple_past', name: 'Simple Past', key: 'past', desc: 'Completed in the past.', color: 'text-blue-500', bg: 'bg-blue-500', border: 'border-blue-500' },
   { id: 'past_continuous', name: 'Past Continuous', key: 'pastCont', desc: 'Ongoing in the past.', color: 'text-cyan-500', bg: 'bg-cyan-500', border: 'border-cyan-500' },
   { id: 'present_perfect', name: 'Present Perfect', key: 'presPerf', desc: 'Started in past, relevant now.', color: 'text-teal-500', bg: 'bg-teal-500', border: 'border-teal-500' }

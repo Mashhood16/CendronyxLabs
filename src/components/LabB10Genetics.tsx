@@ -152,7 +152,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
               </p>
             </div>
 
-            <div className="p-4 bg-purple-50 rounded-lg text-purple-900 text-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="p-4 bg-indigo-50 rounded-lg text-indigo-900 text-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               <h3 className="font-bold mb-2 flex items-center gap-2">Law of Independent Assortment</h3>
               <p>
                 In a <strong>Dihybrid Cross (YyRr × YyRr)</strong>, alleles for different traits sort independently. Round (R) is dominant over wrinkled (r). This leads to an expected 9:3:3:1 phenotypic ratio.
@@ -190,7 +190,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
             <button
               onClick={() => handleModeSwitch('dihybrid')}
               className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${
-                crossType === 'dihybrid' ? 'bg-slate-50 dark:bg-[#121212] shadow text-purple-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'
+                crossType === 'dihybrid' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'
               }`}
             >
               Dihybrid

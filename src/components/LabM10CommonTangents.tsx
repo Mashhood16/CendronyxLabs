@@ -179,16 +179,16 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
 
             {/* Step 3: Auxiliary Circle */}
             {step >= 3 && (
-              <circle cx={cx1} cy={cy} r={Raux} fill="transparent" stroke="#8b5cf6" strokeWidth="2" strokeDasharray="4 4" />
+              <circle cx={cx1} cy={cy} r={Raux} fill="transparent" stroke="#5560F1" strokeWidth="2" strokeDasharray="4 4" />
             )}
 
             {/* Step 4: Intersections */}
             {step >= 4 && (
               <>
-                <circle cx={ax1} cy={ay1} r="4" fill="#8b5cf6" />
-                <circle cx={ax2} cy={ay2} r="4" fill="#8b5cf6" />
-                <line x1={cx1} y1={cy} x2={ax1} y2={ay1} stroke="#8b5cf6" strokeWidth="1" />
-                <line x1={cx1} y1={cy} x2={ax2} y2={ay2} stroke="#8b5cf6" strokeWidth="1" />
+                <circle cx={ax1} cy={ay1} r="4" fill="#5560F1" />
+                <circle cx={ax2} cy={ay2} r="4" fill="#5560F1" />
+                <line x1={cx1} y1={cy} x2={ax1} y2={ay1} stroke="#5560F1" strokeWidth="1" />
+                <line x1={cx1} y1={cy} x2={ax2} y2={ay2} stroke="#5560F1" strokeWidth="1" />
               </>
             )}
 
@@ -224,13 +224,13 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
 
         {/* Column 3: Assessment */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <div className="flex items-center gap-2 mb-4 text-purple-700">
+          <div className="flex items-center gap-2 mb-4 text-indigo-700">
             <Calculator className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Length Calculations</h2>
           </div>
           
           <div className="space-y-6">
-            <div className="bg-purple-50 p-3 rounded-lg text-sm text-purple-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
               Formulas:<br/>
               DCT Length = √(D² - (R1 - R2)²)<br/>
               TCT Length = √(D² - (R1 + R2)²)
@@ -244,7 +244,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
                 <input 
                   type="number" step="0.1"
                   value={ansDCT} onChange={(e) => setAnsDCT(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   placeholder="e.g. 14.5"
                 />
                 {feedback.dct === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -261,7 +261,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
                   type="number" step="0.1"
                   value={ansTCT} onChange={(e) => setAnsTCT(e.target.value)}
                   disabled={dist <= r1 + r2}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:bg-slate-100 dark:bg-[#121212]"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 dark:bg-[#121212]"
                   placeholder={dist <= r1 + r2 ? "Not possible" : "e.g. 10.2"}
                 />
                 {feedback.tct === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
@@ -274,7 +274,7 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
 
             <button 
               onClick={checkAnswers}
-              className="w-full py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               Check Answers
             </button>

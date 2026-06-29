@@ -57,7 +57,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
             <div className="flex gap-8 justify-center mb-8">
                <button onClick={() => setCellType('animal')} className={`p-6 rounded-xl border-4 flex flex-col items-center gap-4 transition-all ${cellType === 'animal' ? 'border-indigo-500 bg-indigo-50 shadow-md' : 'border-slate-100 hover:border-indigo-200'}`}>
                  <div className="w-32 h-32 bg-pink-200 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] border-4 border-pink-400 relative flex items-center justify-center">
-                    <div className="w-8 h-8 rounded-full bg-purple-600"></div>
+                    <div className="w-8 h-8 rounded-full bg-indigo-600"></div>
                  </div>
                  <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">Animal Cell</span>
                </button>
@@ -65,7 +65,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
                <button onClick={() => setCellType('plant')} className={`p-6 rounded-xl border-4 flex flex-col items-center gap-4 transition-all ${cellType === 'plant' ? 'border-indigo-500 bg-indigo-50 shadow-md' : 'border-slate-100 hover:border-indigo-200'}`}>
                  <div className="w-32 h-32 bg-green-100 border-8 border-green-600 rounded-sm relative flex items-center justify-center">
                     <div className="absolute top-2 w-24 h-16 bg-blue-200 rounded-full opacity-60"></div>
-                    <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-purple-600"></div>
+                    <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-indigo-600"></div>
                  </div>
                  <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">Plant Cell</span>
                </button>

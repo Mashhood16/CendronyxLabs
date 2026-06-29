@@ -61,7 +61,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
             </button>
             <button
               onClick={() => { setMode('3D'); setQuestionType('volume'); }}
-              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
+              className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
             >
               <Box size={20} /> 3D Volume
             </button>
@@ -81,7 +81,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
               {mode === '3D' && (
                 <div>
                   <label className="block text-sm font-medium mb-1">Depth/Height: {height} m</label>
-                  <input type="range" min={1} max={10} value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-purple-500" />
+                  <input type="range" min={1} max={10} value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-indigo-500" />
                 </div>
               )}
             </div>
@@ -172,15 +172,15 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
                 <g transform="translate(50, 80)">
                    {/* Simple Isometric Box */}
                    {/* back rect */}
-                   <path d={`M 50 0 L ${50 + length * 10} 0 L ${50 + length * 10} ${height * 15} L 50 ${height * 15} Z`} fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" />
+                   <path d={`M 50 0 L ${50 + length * 10} 0 L ${50 + length * 10} ${height * 15} L 50 ${height * 15} Z`} fill="rgba(168, 85, 247, 0.1)" stroke="#5560F1" />
                    {/* bottom rect */}
-                   <path d={`M 0 ${width * 8 + height * 15} L ${length * 10} ${width * 8 + height * 15} L ${50 + length * 10} ${height * 15} L 50 ${height * 15} Z`} fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" />
+                   <path d={`M 0 ${width * 8 + height * 15} L ${length * 10} ${width * 8 + height * 15} L ${50 + length * 10} ${height * 15} L 50 ${height * 15} Z`} fill="rgba(168, 85, 247, 0.2)" stroke="#5560F1" />
                    {/* left side */}
-                   <path d={`M 0 ${width * 8} L 50 0 L 50 ${height * 15} L 0 ${width * 8 + height * 15} Z`} fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" />
+                   <path d={`M 0 ${width * 8} L 50 0 L 50 ${height * 15} L 0 ${width * 8 + height * 15} Z`} fill="rgba(168, 85, 247, 0.15)" stroke="#5560F1" />
                    {/* front rect */}
-                   <path d={`M 0 ${width * 8} L ${length * 10} ${width * 8} L ${length * 10} ${width * 8 + height * 15} L 0 ${width * 8 + height * 15} Z`} fill="rgba(168, 85, 247, 0.3)" stroke="#a855f7" strokeWidth="2" />
+                   <path d={`M 0 ${width * 8} L ${length * 10} ${width * 8} L ${length * 10} ${width * 8 + height * 15} L 0 ${width * 8 + height * 15} Z`} fill="rgba(168, 85, 247, 0.3)" stroke="#5560F1" strokeWidth="2" />
                    {/* top rect */}
-                   <path d={`M 0 ${width * 8} L ${length * 10} ${width * 8} L ${50 + length * 10} 0 L 50 0 Z`} fill="rgba(56, 189, 248, 0.4)" stroke="#a855f7" />
+                   <path d={`M 0 ${width * 8} L ${length * 10} ${width * 8} L ${50 + length * 10} 0 L 50 0 Z`} fill="rgba(56, 189, 248, 0.4)" stroke="#5560F1" />
                    
                    {/* Dimensions */}
                    <text x={length * 5} y={width * 8 + height * 15 + 20} textAnchor="middle" fill="currentColor" className="text-sm font-semibold">{length} m</text>

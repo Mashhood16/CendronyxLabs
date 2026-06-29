@@ -151,7 +151,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
                     <button 
                       key={adv}
                       onClick={() => setAdvTime(adv)}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-purple-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
                     >
                       {adv}
                     </button>
@@ -212,7 +212,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
               The robot <span className="text-yellow-500 font-bold">{displayModal[modalLevel - 1]}</span> work{' '}
               <span className="text-blue-500 font-bold">{advManner}</span>{' '}
               <span className="text-green-500 font-bold">{advPlace}</span>{' '}
-              <span className="text-purple-500 font-bold">{advTime}</span>.
+              <span className="text-indigo-500 font-bold">{advTime}</span>.
             </p>
           </div>
 

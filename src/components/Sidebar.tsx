@@ -64,17 +64,23 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         data-sidebar
         className={`
           ${isDark ? 'bg-[#121212] border-r border-[#1c1b1b]' : 'bg-gradient-to-b from-slate-50 via-white to-slate-50 border-r border-slate-200'}
-          overflow-y-auto h-screen w-72 flex flex-col z-50
+          overflow-y-auto h-screen w-80 flex flex-col z-50
           fixed top-0 left-0
           md:static
           transition-transform duration-300 ease-in-out md:transition-none
           ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}
       >
-        <div className={`h-[72px] px-8 flex items-center border-b shrink-0 relative z-10 ${isDark ? 'border-[#1c1b1b]' : 'border-slate-200'}`}>
-          <h2 className={`text-2xl font-bold tracking-tight font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
-            Cendronyx<span className={isDark ? 'text-[#a855f7]' : 'text-purple-600'}>Labs</span>
-          </h2>
+        <div className={`h-[72px] w-full flex items-center justify-start px-6 shrink-0 relative z-10 border-b ${isDark ? 'border-[#1c1b1b]' : 'border-slate-200'}`}>
+          <img 
+            src="/logo.png" 
+            alt="Cendronyx Labs" 
+            className={`h-full py-3 object-contain origin-left pointer-events-none ${isDark ? 'drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]' : 'drop-shadow-[0_0_20px_rgba(168,85,247,0.9)] drop-shadow-[0_0_45px_rgba(56,189,248,0.7)]'}`} 
+          />
+          <span className="text-[22px] font-bold whitespace-nowrap tracking-tight flex items-center -ml-3">
+            <span className={`${isDark ? 'text-white' : 'text-slate-800'}`}>Cendronyx</span>
+            <span className="bg-gradient-to-r from-[#4158D1] to-[#5560F1] text-transparent bg-clip-text">Labs</span>
+          </span>
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-2 relative z-10">
@@ -86,16 +92,16 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 onClick={() => handleNav(item.name)}
                 className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 relative ${
                   isActive
-                    ? isDark ? 'bg-[#1c1b1b] text-[#a855f7]' : 'bg-blue-50 text-blue-600'
+                    ? isDark ? 'bg-[#1c1b1b] text-[#5560F1]' : 'bg-blue-50 text-blue-600'
                     : isDark ? 'text-[#a1a1aa] hover:text-[#ffffff]' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-700'
                 }`}
               >
-                <svg className={`w-5 h-5 transition-colors relative z-10 ${isActive ? (isDark ? 'text-[#a855f7]' : 'text-blue-600') : 'text-current'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className={`w-5 h-5 transition-colors relative z-10 ${isActive ? (isDark ? 'text-[#5560F1]' : 'text-blue-600') : 'text-current'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={isActive ? 2.5 : 2} d={item.icon} />
                 </svg>
                 <span className={`font-semibold relative z-10 ${isActive ? 'tracking-wide' : ''}`}>{item.name}</span>
                 {isActive && isDark && (
-                  <div className="ml-auto w-2 h-2 rounded-full bg-[#a855f7] relative z-10"></div>
+                  <div className="ml-auto w-2 h-2 rounded-full bg-[#5560F1] relative z-10"></div>
                 )}
               </button>
             );

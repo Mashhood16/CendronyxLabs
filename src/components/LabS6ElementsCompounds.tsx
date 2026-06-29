@@ -57,7 +57,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
                   <button 
                     onClick={() => handleSelect(q.id, 'Compound')}
                     disabled={showResults}
-                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-purple-500 border-purple-500 text-white' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-purple-300'}`}
+                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-indigo-500 border-indigo-500 text-white' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-indigo-300'}`}
                   >
                     Compound
                   </button>

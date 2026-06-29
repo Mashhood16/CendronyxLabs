@@ -77,7 +77,7 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]">
-          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center dark:text-[#ffffff]">
+          <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
             <Droplets className="mr-2" /> Theory
           </h2>
           <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
@@ -102,7 +102,7 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
         </div>
 
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200 dark:border-[#1c1b1b]">
-          <h2 className="text-xl font-bold text-purple-900 mb-4 dark:text-[#ffffff]">Titration Simulator</h2>
+          <h2 className="text-xl font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">Titration Simulator</h2>
           
           <div className="flex flex-col items-center w-full max-w-sm mb-4">
             <div className="bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg font-mono text-lg font-bold border border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-[#ffffff] mb-4 w-full text-center shadow-inner">
@@ -127,18 +127,18 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
           <div className="w-full flex flex-col space-y-3">
             <div className="flex justify-between items-center text-sm font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded">
               <span>Base Added:</span>
-              <span className="font-bold text-purple-700">{baseVol.toFixed(1)} mL</span>
+              <span className="font-bold text-indigo-700">{baseVol.toFixed(1)} mL</span>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => handleAddDrop(1)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">+ 1 mL</button>
-              <button onClick={() => handleAddDrop(5)} className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">+ 5 mL</button>
+              <button onClick={() => handleAddDrop(1)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">+ 1 mL</button>
+              <button onClick={() => handleAddDrop(5)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">+ 5 mL</button>
               <button onClick={resetTitration} className="flex-1 bg-slate-300 dark:bg-[#121212] hover:bg-slate-400 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold py-2 rounded">Reset</button>
             </div>
           </div>
         </div>
 
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center dark:text-[#ffffff]">
+          <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
             <Activity className="mr-2" /> Data Plot & Analysis
           </h2>
           
@@ -156,14 +156,14 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
               {graphData.map((d, i) => {
                 const cx = (d.v / 50) * 100;
                 const cy = 100 - ((d.ph / 14) * 100);
-                return <circle key={i} cx={cx} cy={cy} r="1.5" fill="#9333ea" />;
+                return <circle key={i} cx={cx} cy={cy} r="1.5" fill="#4158D1" />;
               })}
             </svg>
           </div>
           
-          <div className="bg-purple-50 p-4 rounded-xl border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Unknown Identification</h3>
-            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Unknown Identification</h3>
+            <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
               Observe the pH curve. Estimate the pKa of the weak acid from the graph at the half-equivalence point.
             </p>
             <input 
@@ -171,11 +171,11 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
               placeholder="Enter pKa value..." 
               value={ansPH}
               onChange={e => setAnsPH(e.target.value)}
-              className="w-full p-2 border border-purple-200 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 mb-3"
+              className="w-full p-2 border border-indigo-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3"
             />
             <button 
               onClick={checkAnswer}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <CheckCircle className="mr-2" size={18} /> Check Answer
             </button>

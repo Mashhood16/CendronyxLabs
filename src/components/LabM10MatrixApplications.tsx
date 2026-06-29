@@ -140,7 +140,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
 
               {/* Intersection Point */}
               {delta !== 0 && (
-                 <circle cx={mapX(actualX)} cy={mapY(actualY)} r="4" fill="#8b5cf6" />
+                 <circle cx={mapX(actualX)} cy={mapY(actualY)} r="4" fill="#5560F1" />
               )}
             </svg>
             

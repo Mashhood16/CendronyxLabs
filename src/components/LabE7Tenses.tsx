@@ -183,8 +183,8 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
                 <span className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold uppercase tracking-wider block mb-1">Target Tense</span>
                 <span className="font-medium">{currentQ.tense}</span>
               </div>
-              <div className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-lg border border-purple-100 dark:border-purple-800/50">
-                <span className="text-xs text-purple-600 dark:text-purple-400 font-semibold uppercase tracking-wider block mb-1">Target Voice</span>
+              <div className="p-3 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg border border-indigo-100 dark:border-indigo-800/50">
+                <span className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold uppercase tracking-wider block mb-1">Target Voice</span>
                 <span className="font-medium">{currentQ.voice}</span>
               </div>
             </div>
@@ -277,7 +277,7 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
                   <span><strong>Active Voice:</strong> The subject performs the action.</span>
                 </li>
                 <li className="flex gap-2">
-                  <span className="font-bold text-purple-500">•</span>
+                  <span className="font-bold text-indigo-500">•</span>
                   <span><strong>Passive Voice:</strong> The subject receives the action (often using 'by'). Needs a 'be' verb + past participle.</span>
                 </li>
                 <li className="flex gap-2">

@@ -211,7 +211,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
           <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex flex-col">
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 rounded-lg">
+                <div className="p-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 rounded-lg">
                   <Settings className="w-6 h-6" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Timeline Fixer</h2>
@@ -259,7 +259,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                             onClick={() => setSubjectNumber(num)}
                             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                               subjectNumber === num 
-                                ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' 
+                                ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' 
                                 : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-[#ffffff] dark:hover:text-slate-200'
                             }`}
                           >
@@ -314,7 +314,7 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
                     className={`w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
                       simulationStatus === 'success'
                         ? 'bg-emerald-50 text-white cursor-not-allowed'
-                        : 'bg-purple-600 hover:bg-purple-700 text-white shadow-md hover:shadow-lg'
+                        : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg'
                     }`}
                   >
                     {simulationStatus === 'success' ? (

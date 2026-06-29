@@ -48,7 +48,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
                 {shape.type === 'triangle' && (
                   <div className="w-0 h-0 border-l-[48px] border-l-transparent border-r-[48px] border-r-transparent border-b-[84px] border-b-emerald-600" />
                 )}
-                {shape.type === 'parallelogram' && <div className="w-32 h-20 bg-purple-600 skew-x-[-20deg]" />}
+                {shape.type === 'parallelogram' && <div className="w-32 h-20 bg-indigo-600 skew-x-[-20deg]" />}
               </div>
             );
           })}
@@ -75,7 +75,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
               <button onClick={() => addShape('circle')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]"><Circle className="w-5 h-5 text-rose-600" fill="currentColor"/></button>
               <button onClick={() => addShape('triangle')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]"><Triangle className="w-5 h-5 text-emerald-600" fill="currentColor"/></button>
               <button onClick={() => addShape('parallelogram')} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded border border-transparent hover:border-slate-300 dark:border-[#1c1b1b]">
-                <div className="w-5 h-5 bg-purple-600 skew-x-[-20deg]" />
+                <div className="w-5 h-5 bg-indigo-600 skew-x-[-20deg]" />
               </button>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
                   {shape.type === 'triangle' && (
                     <div className="w-0 h-0 border-l-[48px] border-l-transparent border-r-[48px] border-r-transparent border-b-[84px] border-b-emerald-600" />
                   )}
-                  {shape.type === 'parallelogram' && <div className="w-32 h-20 bg-purple-600 skew-x-[-20deg]" />}
+                  {shape.type === 'parallelogram' && <div className="w-32 h-20 bg-indigo-600 skew-x-[-20deg]" />}
                 </div>
               )
             })}

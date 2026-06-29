@@ -96,7 +96,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
               <input 
                 type="range" min="50" max="98" value={humidity} 
                 onChange={(e) => setHumidity(Number(e.target.value))}
-                className="w-full accent-purple-600"
+                className="w-full accent-indigo-600"
               />
             </div>
 
@@ -128,7 +128,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
             <button 
               onClick={takeMeasurements}
-              className="mt-6 flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 font-semibold transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+              className="mt-6 flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 font-semibold transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
               <Database className="w-5 h-5" /> Collect Experimental Data
             </button>
           </div>
@@ -144,7 +144,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
               {measurements.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {measurements.map((m, i) => (
-                    <span key={i} className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded font-mono text-sm shadow-sm text-purple-700 font-bold">
+                    <span key={i} className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded font-mono text-sm shadow-sm text-indigo-700 font-bold">
                       {m.toFixed(2)}
                     </span>
                   ))}
@@ -161,7 +161,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
                 </label>
                 <input 
                   type="number" step="0.01"
-                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-indigo-500 outline-none font-mono"
                   value={meanAns}
                   onChange={e => setMeanAns(e.target.value)}
                   disabled={measurements.length === 0}
@@ -174,7 +174,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
                 </label>
                 <input 
                   type="number" step="0.01"
-                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-purple-500 outline-none font-mono"
+                  className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-indigo-500 outline-none font-mono"
                   value={sdAns}
                   onChange={e => setSdAns(e.target.value)}
                   disabled={measurements.length === 0}

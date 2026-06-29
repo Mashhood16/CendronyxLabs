@@ -123,7 +123,7 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
         {/* Data & Assessment */}
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4 lg:overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
-            <Target className="text-purple-500" />
+            <Target className="text-indigo-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>
           </div>
           
@@ -154,9 +154,9 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
             </div>
           )}
 
-          <div className="mt-4 bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-            <h3 className="font-semibold text-purple-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
-            <p className="text-sm text-purple-800 mb-3 dark:text-[#ffffff]">
+          <div className="mt-4 bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+            <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
+            <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
               A fixed volume of gas at 300 K has a pressure of 150 kPa. If the temperature is raised to 400 K isochorically, what is the new pressure in kPa?
             </p>
             <div className="flex gap-2 items-center">
@@ -164,10 +164,10 @@ export default function LabP11Thermodynamics({ onExit }: { onExit?: () => void }
                 type="number" 
                 value={assessmentAnswer} 
                 onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }} 
-                className="flex-1 p-2 border border-purple-200 rounded outline-none focus:border-purple-500"
+                className="flex-1 p-2 border border-indigo-200 rounded outline-none focus:border-indigo-500"
                 placeholder="Enter P in kPa..."
               />
-              <button onClick={checkAssessment} className="py-2 px-4 bg-purple-600 text-white rounded font-medium hover:bg-purple-700 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+              <button onClick={checkAssessment} className="py-2 px-4 bg-indigo-600 text-white rounded font-medium hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                 Check
               </button>
             </div>

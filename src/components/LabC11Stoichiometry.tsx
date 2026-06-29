@@ -201,7 +201,7 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
 
           <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
             <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-purple-500" />
+              <Calculator className="w-5 h-5 text-indigo-500" />
               Yield Analysis
             </h2>
             <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
@@ -211,11 +211,11 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
               <input 
                 type="number" step="0.1" placeholder="Percent Yield %" disabled={stage !== 'filtered'}
                 value={answerYield} onChange={(e) => setAnswerYield(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
+                className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
               />
               <button 
                 onClick={checkAnswer} disabled={stage !== 'filtered'}
-                className="px-4 py-2 bg-purple-500 disabled:opacity-50 hover:bg-purple-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="px-4 py-2 bg-indigo-500 disabled:opacity-50 hover:bg-indigo-600 text-white rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                  Check
               </button>

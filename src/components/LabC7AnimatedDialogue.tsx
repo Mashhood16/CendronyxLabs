@@ -64,7 +64,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
             <div className="flex-1">
               <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-sm uppercase tracking-wider">Script Outline</h2>
               <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] text-sm font-mono text-slate-600 dark:text-[#a1a1aa] space-y-2">
-                <p className="text-purple-600 font-bold">Sprite 1:</p>
+                <p className="text-indigo-600 font-bold">Sprite 1:</p>
                 <p className="ml-4 bg-blue-100 text-blue-800 p-1 rounded inline-block dark:text-[#ffffff]">say "Hello!" for 2 secs</p>
                 
                 <p className="text-orange-600 font-bold mt-2">Sprite 2:</p>
@@ -98,7 +98,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
                     <p className="font-bold text-slate-800 dark:text-[#ffffff]">{currentMsg.text}</p>
                   </div>
                 )}
-                <div className="w-24 h-32 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-3xl shadow-lg border-4 border-white dark:bg-[#121212] dark:border-[#1c1b1b]">1</div>
+                <div className="w-24 h-32 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-3xl shadow-lg border-4 border-white dark:bg-[#121212] dark:border-[#1c1b1b]">1</div>
               </div>
 
               {/* Sprite 2 */}

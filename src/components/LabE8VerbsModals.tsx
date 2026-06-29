@@ -199,11 +199,11 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
                             <div className="flex items-center space-x-6 animate-[bounce_1s_ease-in-out_infinite]">
                                 <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Subject</div>
                                 <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">→</div>
-                                <div className="bg-purple-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                                <div className="bg-indigo-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                                     <span className="text-xs opacity-75 uppercase tracking-wider mb-1">Verb</span>
                                     {currentV.verb}
                                 </div>
-                                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400">→</div>
+                                <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400">→</div>
                                 <div className="bg-green-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">Object</div>
                             </div>
                         )}
@@ -213,7 +213,7 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
                                <div className="flex items-center space-x-6 animate-pulse">
                                     <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Subject</div>
                                     <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">→</div>
-                                    <div className="bg-purple-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                                    <div className="bg-indigo-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                                         <span className="text-xs opacity-75 uppercase tracking-wider mb-1">Verb</span>
                                         {currentV.verb}
                                     </div>
@@ -239,7 +239,7 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
                                     <span className="text-xs mt-1">AUX</span>
                                 </div>
                                 <div className="text-3xl font-bold text-teal-500 dark:text-teal-400">+</div>
-                                <div className="bg-purple-500 text-white p-5 rounded-xl font-bold shadow-lg text-lg dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                                <div className="bg-indigo-500 text-white p-5 rounded-xl font-bold shadow-lg text-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                                     Main Verb
                                 </div>
                            </div>

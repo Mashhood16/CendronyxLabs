@@ -146,7 +146,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
             <svg viewBox="-200 -200 400 400" className="w-full max-w-[350px] aspect-square drop-shadow-xl">
               {/* Backgrounds */}
               <rect x="-200" y="-200" width="400" height="200" fill="#1e293b" /> {/* Air */}
-              <rect x="-200" y="0" width="400" height="200" fill={material === 'water' ? '#0ea5e9' : material === 'oil' ? '#eab308' : material === 'glass' ? '#94a3b8' : '#8b5cf6'} opacity="0.4" /> {/* Medium */}
+              <rect x="-200" y="0" width="400" height="200" fill={material === 'water' ? '#0ea5e9' : material === 'oil' ? '#eab308' : material === 'glass' ? '#94a3b8' : '#5560F1'} opacity="0.4" /> {/* Medium */}
               
               {/* Normal Line */}
               <line x1="0" y1="-180" x2="0" y2="180" stroke="#94a3b8" strokeWidth="2" strokeDasharray="5,5" />

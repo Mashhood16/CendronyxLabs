@@ -154,7 +154,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
               </button>
               <button 
                 onClick={() => setActiveTab('conditionals')}
-                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'conditionals' ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 shadow-sm text-purple-600 dark:text-purple-400 dark:text-purple-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
+                className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'conditionals' ? 'bg-white dark:bg-[#121212] dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400 dark:text-indigo-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
               >
                 Conditional Loops
               </button>
@@ -231,18 +231,18 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
             ) : (
               <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-1">
                  <div className="flex items-center gap-2 mb-4">
-                   <RefreshCw className="w-6 h-6 text-purple-500 dark:text-purple-400" />
+                   <RefreshCw className="w-6 h-6 text-indigo-500 dark:text-indigo-400" />
                    <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Conditional Loops</h2>
                  </div>
                  <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
                     Fill in the correct verb forms to complete the conditional logic loop.
                  </p>
 
-                 <div className="bg-purple-50 dark:bg-purple-900/50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 p-4 rounded-xl mb-6">
-                     <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 dark:text-purple-400 mb-1 block">
+                 <div className="bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 p-4 rounded-xl mb-6">
+                     <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 mb-1 block">
                        {cQ.type}
                      </span>
-                     <p className="text-sm font-medium text-purple-800 dark:text-purple-200 dark:text-purple-200">
+                     <p className="text-sm font-medium text-indigo-800 dark:text-indigo-200 dark:text-indigo-200">
                        {cQ.fact}
                      </p>
                  </div>
@@ -255,7 +255,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                             value={cInput1}
                             onChange={(e) => { setCInput1(e.target.value); setCFeedback(null); }}
                             placeholder={cQ.verb1Hint}
-                            className="w-28 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
+                            className="w-28 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-indigo-500 text-center font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400"
                          />
                          <span className="font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{cQ.promptPart2}</span>
                          <input 
@@ -263,14 +263,14 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                             value={cInput2}
                             onChange={(e) => { setCInput2(e.target.value); setCFeedback(null); }}
                             placeholder={cQ.verb2Hint}
-                            className="w-32 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-purple-500 text-center font-bold text-purple-600 dark:text-purple-400 dark:text-purple-400"
+                            className="w-32 flex-shrink-0 px-3 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg bg-white dark:bg-[#121212] dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-indigo-500 text-center font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400"
                          />
                          <span className="font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{cQ.endText}</span>
                      </div>
                  </div>
 
                  <div className="flex gap-4">
-                     <button onClick={handleCCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                     <button onClick={handleCCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                        Run Logic Loop
                      </button>
                      <button onClick={handleCNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
@@ -372,7 +372,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
                           </div>
                           <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
                           <div className="flex flex-col items-center w-32">
-                             <Home className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-purple-500 dark:text-purple-400 scale-110' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-all duration-700`} />
+                             <Home className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-indigo-500 dark:text-indigo-400 scale-110' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-all duration-700`} />
                              <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? 'Mansion Acquired' : 'Dream House'}</span>
                           </div>
                        </>

@@ -113,7 +113,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         {/* Column 1: Theory */}
         <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <Layout className="text-purple-600" /> Pitch Theory
+            <Layout className="text-indigo-600" /> Pitch Theory
           </h2>
           
           <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
@@ -139,24 +139,24 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         {/* Column 2: Simulation */}
         <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <Clock className="text-purple-600" /> Pitch Simulator
+            <Clock className="text-indigo-600" /> Pitch Simulator
           </h2>
           
           {/* Timed Simulator */}
           <div className="bg-[#000000] dark:bg-[#121212] text-white p-6 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
-            <div className={`absolute top-0 left-0 h-1 bg-purple-500 transition-all duration-1000`} style={{ width: `${(timeLeft/60)*100}%` }} />
+            <div className={`absolute top-0 left-0 h-1 bg-indigo-500 transition-all duration-1000`} style={{ width: `${(timeLeft/60)*100}%` }} />
             
             <div className="text-6xl font-mono font-black mb-2 tracking-wider">
               00:{timeLeft.toString().padStart(2, '0')}
             </div>
-            <div className="text-lg font-bold text-purple-300 uppercase tracking-widest mb-6">
+            <div className="text-lg font-bold text-indigo-300 uppercase tracking-widest mb-6">
               Stage: {pitchStage}
             </div>
 
             <div className="flex gap-4">
               <button 
                 onClick={toggleTimer}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-transform active:scale-95 ${timerRunning ? 'bg-red-500 hover:bg-red-600' : 'bg-purple-600 hover:bg-purple-700'}`}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-transform active:scale-95 ${timerRunning ? 'bg-red-500 hover:bg-red-600' : 'bg-indigo-600 hover:bg-indigo-700'}`}
               >
                 {timerRunning ? <><Square size={20} fill="currentColor" /> Stop</> : <><Play size={20} fill="currentColor" /> Start Pitch</>}
               </button>
@@ -196,10 +196,10 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
               value={newNote}
               onChange={(e) => setNewNote(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && addNote()}
-              className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+              className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
               placeholder="Type idea and press Enter..."
             />
-            <button onClick={addNote} className="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 text-sm font-semibold dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+            <button onClick={addNote} className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm font-semibold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
               Add Note
             </button>
           </div>
@@ -208,7 +208,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         {/* Column 3: Analysis */}
         <section className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-            <CheckCircle className="text-purple-600" /> Assessment & Logs
+            <CheckCircle className="text-indigo-600" /> Assessment & Logs
           </h2>
 
           <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
@@ -228,7 +228,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
                     </button>
                     <button 
                       onClick={() => handleCategorize(item.id, 'Deck')}
-                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-purple-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+                      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
                     >
                       Pitch Deck
                     </button>
@@ -268,7 +268,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
                     <tr key={log.id} className="border-b border-slate-100">
                       <td className="p-2">{log.id}</td>
                       <td className="p-2">{log.timeLogged}s</td>
-                      <td className="p-2 font-medium text-purple-600">{log.stageCompleted}</td>
+                      <td className="p-2 font-medium text-indigo-600">{log.stageCompleted}</td>
                     </tr>
                   ))
                 )}

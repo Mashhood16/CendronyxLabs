@@ -229,14 +229,14 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
 
           {activeTab === "puzzle" && (
             <div className="max-w-2xl mx-auto w-full space-y-6">
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl border border-purple-100 dark:border-purple-800 flex justify-between items-center">
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800 flex justify-between items-center">
                 <div>
-                  <h2 className="text-lg font-bold text-purple-800 dark:text-purple-300 mb-1">Collocation & Phrasal Verbs Snap</h2>
-                  <p className="text-sm text-purple-600 dark:text-purple-400">
+                  <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-1">Collocation & Phrasal Verbs Snap</h2>
+                  <p className="text-sm text-indigo-600 dark:text-indigo-400">
                     Pair a verb from the left with a matching word on the right.
                   </p>
                 </div>
-                <button onClick={resetPuzzle} className="p-2 bg-purple-200 dark:bg-purple-800 text-purple-700 dark:text-purple-200 rounded-full hover:bg-purple-300 transition-colors whitespace-nowrap flex-shrink-0">
+                <button onClick={resetPuzzle} className="p-2 bg-indigo-200 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 rounded-full hover:bg-indigo-300 transition-colors whitespace-nowrap flex-shrink-0">
                   <RotateCcw className="w-5 h-5" />
                 </button>
               </div>
@@ -256,8 +256,8 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                       onClick={() => setSelectedPuzzleVerb(v === selectedPuzzleVerb ? null : v)}
                       className={`w-full py-3 px-4 rounded-lg font-bold border-2 transition-all text-left whitespace-nowrap flex-shrink-0 ${
                         selectedPuzzleVerb === v
-                          ? 'bg-purple-600 border-purple-600 text-white shadow-md scale-105 z-10 relative'
-                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-purple-300 text-slate-700 dark:text-[#ffffff]'
+                          ? 'bg-indigo-600 border-indigo-600 text-white shadow-md scale-105 z-10 relative'
+                          : 'bg-white dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 text-slate-700 dark:text-[#ffffff]'
                       }`}
                     >
                       {v}
@@ -376,7 +376,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
                 ) : (
                   completedPairs.map((pair, i) => (
                     <div key={i} className="flex bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-hidden transform transition-all hover:-translate-y-1 hover:shadow-md animate-in fade-in slide-in-from-bottom-4">
-                      <div className="flex-1 bg-purple-100 dark:bg-purple-900/30 p-4 font-black text-xl text-purple-800 dark:text-purple-300 text-right border-r-2 border-dashed border-purple-300 dark:border-purple-700">
+                      <div className="flex-1 bg-indigo-100 dark:bg-indigo-900/30 p-4 font-black text-xl text-indigo-800 dark:text-indigo-300 text-right border-r-2 border-dashed border-indigo-300 dark:border-indigo-700">
                         {pair.verb}
                       </div>
                       <div className="flex-1 bg-pink-100 dark:bg-pink-900/30 p-4 font-black text-xl text-pink-800 dark:text-pink-300 text-left">

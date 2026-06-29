@@ -73,10 +73,10 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
         <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-4">
             <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Setup</h2>
             <p className="text-slate-600 dark:text-[#a1a1aa]">Titration is used to determine the unknown concentration of an acid by neutralizing it with a standard base of known concentration.</p>
-            <div className="bg-purple-50 p-4 rounded-lg border border-purple-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-              <h3 className="font-semibold text-purple-800 mb-2 dark:text-[#ffffff]">Neutralization Equation</h3>
-              <p className="text-sm font-mono text-center text-purple-900 dark:text-[#ffffff]">M_acid × V_acid = M_base × V_base</p>
-              <ul className="mt-2 text-xs text-purple-800 space-y-1 dark:text-[#ffffff]">
+            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+              <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Neutralization Equation</h3>
+              <p className="text-sm font-mono text-center text-indigo-900 dark:text-[#ffffff]">M_acid × V_acid = M_base × V_base</p>
+              <ul className="mt-2 text-xs text-indigo-800 space-y-1 dark:text-[#ffffff]">
                 <li><strong>Base:</strong> 0.100 M NaOH</li>
                 <li><strong>Acid:</strong> Unknown M HCl</li>
                 <li><strong>Indicator:</strong> Phenolphthalein (Pink in base)</li>
@@ -138,7 +138,7 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
                         <tbody>
                             {logs.length === 0 ? <tr><td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data.</td></tr> : logs.map((log, i) => (
                                 <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 dark:bg-[#121212]">
-                                    <td className="px-4 py-2">{log.hclVol}</td><td className="px-4 py-2">{log.initialBurette.toFixed(1)}</td><td className="px-4 py-2">{log.finalBurette.toFixed(1)}</td><td className="px-4 py-2 font-mono text-purple-600">{log.added.toFixed(1)}</td>
+                                    <td className="px-4 py-2">{log.hclVol}</td><td className="px-4 py-2">{log.initialBurette.toFixed(1)}</td><td className="px-4 py-2">{log.finalBurette.toFixed(1)}</td><td className="px-4 py-2 font-mono text-indigo-600">{log.added.toFixed(1)}</td>
                                 </tr>
                             ))}
                         </tbody>

@@ -81,12 +81,12 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
         {/* Simulation Column */}
         <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center relative overflow-hidden">
           <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex w-full">
-            <FlaskConical className="mr-2 text-purple-500" /> ELISA Simulator
+            <FlaskConical className="mr-2 text-indigo-500" /> ELISA Simulator
           </h2>
           
           <div className="flex-grow flex flex-col items-center justify-center w-full space-y-6">
             <div className="text-center h-16">
-              <h3 className="font-bold text-purple-700 text-lg">{elisaStages[elisaStep].name}</h3>
+              <h3 className="font-bold text-indigo-700 text-lg">{elisaStages[elisaStep].name}</h3>
               <p className="text-sm text-slate-600 dark:text-[#a1a1aa] max-w-xs">{elisaStages[elisaStep].desc}</p>
             </div>
 
@@ -139,7 +139,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={handleNextStep}
                 disabled={elisaStep === 4}
-                className="px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                className="px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
               >
                 Next Step
               </button>
@@ -196,7 +196,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
                   <input 
                     type="number"
                     step="0.01"
-                    className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     placeholder="e.g. 5.2"
                     value={assessmentConc}
                     onChange={(e) => setAssessmentConc(e.target.value)}
@@ -205,7 +205,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
                   <button 
                     onClick={handleCheckAnswer}
                     disabled={elisaStep < 4 || !assessmentConc}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     Check
                   </button>

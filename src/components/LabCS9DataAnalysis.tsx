@@ -55,7 +55,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
     return [x, y];
   };
 
-  const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4'];
+  const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#5560F1', '#ec4899', '#06b6d4'];
   let cumulativePercent = 0;
 
   return (

@@ -214,7 +214,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
           >
             <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#71717a]" />
           </button>
-          <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 truncate">
+          <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600 dark:from-indigo-400 dark:to-pink-400 truncate">
             Sentences & Word Parts
           </h1>
         </div>
@@ -230,7 +230,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
             onClick={() => setActiveTab('affixes')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
               activeTab === 'affixes'
-                ? 'bg-white dark:bg-slate-700 shadow-sm text-purple-600 dark:text-purple-400'
+                ? 'bg-white dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400'
                 : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
           >
@@ -240,7 +240,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
             onClick={() => setActiveTab('punctuation')}
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
               activeTab === 'punctuation'
-                ? 'bg-white dark:bg-slate-700 shadow-sm text-purple-600 dark:text-purple-400'
+                ? 'bg-white dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400'
                 : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
             }`}
           >
@@ -258,7 +258,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
             <div>
               <h2 className="text-2xl font-bold mb-2 flex items-center">
                 {activeTab === 'affixes' ? (
-                  <><Layers className="w-6 h-6 mr-2 text-purple-500" /> Affix Factory</>
+                  <><Layers className="w-6 h-6 mr-2 text-indigo-500" /> Affix Factory</>
                 ) : (
                   <><Quote className="w-6 h-6 mr-2 text-pink-500" /> Transformer</>
                 )}
@@ -272,8 +272,8 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
 
             {activeTab === 'affixes' ? (
               <div className="space-y-4">
-                <div className="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-xl border border-purple-100 dark:border-purple-800/50">
-                  <h3 className="font-semibold text-purple-800 dark:text-purple-300 mb-2 flex items-center">
+                <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/50">
+                  <h3 className="font-semibold text-indigo-800 dark:text-indigo-300 mb-2 flex items-center">
                     <Search className="w-4 h-4 mr-2" /> Select Base Word
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -283,8 +283,8 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                         onClick={() => { setSelectedBaseWord(bw); resetAffixes(); }}
                         className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                           selectedBaseWord.word === bw.word 
-                            ? 'bg-purple-600 text-white' 
-                            : 'bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] hover:border-purple-300 dark:hover:border-purple-600'
+                            ? 'bg-indigo-600 text-white' 
+                            : 'bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600'
                         }`}
                       >
                         {bw.word}
@@ -296,7 +296,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
                 <div className="space-y-2">
                   <button
                     onClick={checkAffixCombo}
-                    className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+                    className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
                   >
                     <Check className="w-5 h-5 mr-2" /> Check Word
                   </button>
@@ -373,8 +373,8 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
 
                 {/* Base Word */}
                 <div className="flex flex-col items-center w-full md:w-1/3 z-10 scale-110">
-                  <div className="text-sm font-semibold text-purple-400 mb-2 uppercase tracking-wider">Base</div>
-                  <div className="h-20 px-6 flex items-center justify-center rounded-2xl bg-purple-600 text-white text-3xl font-bold shadow-lg dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">
+                  <div className="text-sm font-semibold text-indigo-400 mb-2 uppercase tracking-wider">Base</div>
+                  <div className="h-20 px-6 flex items-center justify-center rounded-2xl bg-indigo-600 text-white text-3xl font-bold shadow-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
                     {selectedBaseWord.word}
                   </div>
                   <div className="mt-4 text-xs text-slate-500 dark:text-[#71717a] italic text-center px-4">

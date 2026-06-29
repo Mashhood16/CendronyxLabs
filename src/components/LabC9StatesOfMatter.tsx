@@ -214,7 +214,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
                   <input type="range" min="20" max="100" value={waterTemp} onChange={(e) => setWaterTemp(Number(e.target.value))} className="w-full" />
                 </div>
                 {isSupersaturated && (
-                  <button onClick={triggerCrystallization} className="w-full py-2 bg-purple-600 text-white rounded hover:bg-purple-700 animate-pulse font-bold dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40">Add Seed Crystal</button>
+                  <button onClick={triggerCrystallization} className="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 animate-pulse font-bold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Add Seed Crystal</button>
                 )}
               </div>
             </div>

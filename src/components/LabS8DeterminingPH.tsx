@@ -10,7 +10,7 @@ const SOLUTIONS = [
   { id: 'water', name: 'Distilled Water', type: 'Neutral', ph: 7, color: 'bg-green-500' },
   { id: 'sugar', name: 'Sugar Solution', type: 'Neutral', ph: 7, color: 'bg-green-500' },
   { id: 'soap', name: 'Soap Solution', type: 'Weak Base', ph: 9, color: 'bg-teal-400' },
-  { id: 'naoh', name: 'NaOH', type: 'Strong Base', ph: 14, color: 'bg-purple-700' },
+  { id: 'naoh', name: 'NaOH', type: 'Strong Base', ph: 14, color: 'bg-indigo-700' },
 ];
 
 export default function LabS8DeterminingPH({ onExit }: LabProps) {

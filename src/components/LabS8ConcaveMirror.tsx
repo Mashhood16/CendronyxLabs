@@ -48,7 +48,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
           <input 
             type="range" min="0" max="100" value={distance} 
             onChange={(e) => setDistance(Number(e.target.value))}
-            className="w-full accent-purple-600"
+            className="w-full accent-indigo-600"
           />
         </div>
 
@@ -59,7 +59,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
              <div className="w-24 font-bold text-sm text-slate-500 dark:text-[#71717a]">Top-Down View:</div>
              <div className="flex-1 h-full relative">
                {/* Mirror */}
-               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-16 border-r-4 border-purple-500 rounded-r-full" />
+               <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-16 border-r-4 border-indigo-500 rounded-r-full" />
                {/* Focal Point mark */}
                <div className="absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ right: '50%' }} />
                <span className="absolute top-[60%] text-xs text-red-500 font-bold" style={{ right: '48%' }}>F</span>
@@ -93,7 +93,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
             <div className="flex flex-col gap-1 text-xs font-medium">
               <div className="flex justify-between">
                 <span className="text-slate-500 dark:text-[#71717a]">Type:</span>
-                <span className={isInsideFocal ? 'text-purple-600' : 'text-blue-600'}>{isInsideFocal ? 'Virtual' : 'Real'}</span>
+                <span className={isInsideFocal ? 'text-indigo-600' : 'text-blue-600'}>{isInsideFocal ? 'Virtual' : 'Real'}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500 dark:text-[#71717a]">Orientation:</span>

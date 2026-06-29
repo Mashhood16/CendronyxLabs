@@ -112,11 +112,11 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
                   <input type="range" min="0" max={totalStudents} value={cs} onChange={e => setCs(Number(e.target.value))} className="w-full accent-blue-600" />
                 </div>
                 <div>
-                  <div className="flex justify-between mb-1 text-purple-600 dark:text-purple-400">
+                  <div className="flex justify-between mb-1 text-indigo-600 dark:text-indigo-400">
                     <label className="text-sm font-semibold">Students in Both</label>
-                    <span className="text-sm font-bold bg-purple-100 dark:bg-purple-900/50 px-2 rounded">{both}</span>
+                    <span className="text-sm font-bold bg-indigo-100 dark:bg-indigo-900/50 px-2 rounded">{both}</span>
                   </div>
-                  <input type="range" min="0" max={Math.min(bio, cs)} value={both} onChange={e => setBoth(Number(e.target.value))} className="w-full accent-purple-600" />
+                  <input type="range" min="0" max={Math.min(bio, cs)} value={both} onChange={e => setBoth(Number(e.target.value))} className="w-full accent-indigo-600" />
                 </div>
               </div>
 

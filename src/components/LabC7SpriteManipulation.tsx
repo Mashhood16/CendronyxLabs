@@ -56,7 +56,7 @@ export default function LabC7SpriteManipulation({ onExit }: LabProps) {
 
             <button 
               onClick={applyCoordinates}
-              className="mt-4 bg-purple-600 text-white font-bold py-3 rounded-lg flex items-center justify-center hover:bg-purple-700 transition-colors shadow-md dark:text-white dark:text-white dark:bg-purple-500 dark:hover:bg-purple-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-purple-500/40"
+              className="mt-4 bg-indigo-600 text-white font-bold py-3 rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors shadow-md dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
             >
               <Play className="w-5 h-5 mr-2 fill-current" /> Execute
             </button>

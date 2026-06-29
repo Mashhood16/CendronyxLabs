@@ -49,11 +49,11 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     } else if (currentMag === 100000) {
       // Chromosomes
       return (
-        <svg viewBox="0 0 100 100" className="w-full h-full text-purple-700 stroke-current" strokeWidth="4" strokeLinecap="round">
+        <svg viewBox="0 0 100 100" className="w-full h-full text-indigo-700 stroke-current" strokeWidth="4" strokeLinecap="round">
           <path d="M 40 20 L 60 80 M 60 20 L 40 80" />
-          <circle cx="50" cy="50" r="4" className="fill-current text-purple-900 dark:text-[#ffffff]" stroke="none" />
+          <circle cx="50" cy="50" r="4" className="fill-current text-indigo-900 dark:text-[#ffffff]" stroke="none" />
           <path d="M 20 30 L 30 70 M 30 30 L 20 70" />
-          <circle cx="25" cy="50" r="3" className="fill-current text-purple-900 dark:text-[#ffffff]" stroke="none" />
+          <circle cx="25" cy="50" r="3" className="fill-current text-indigo-900 dark:text-[#ffffff]" stroke="none" />
         </svg>
       );
     } else if (currentMag === 10000000) {

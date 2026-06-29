@@ -108,7 +108,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                 {/* Simulation Column */}
                 <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-                        <Beaker size={20} className="text-purple-600" />
+                        <Beaker size={20} className="text-indigo-600" />
                         Synthesis Workspace
                     </h2>
 
