@@ -64,7 +64,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         data-sidebar
         className={`
           ${isDark ? 'bg-[#121212] border-r border-[#1c1b1b]' : 'bg-gradient-to-b from-slate-50 via-white to-slate-50 border-r border-slate-200'}
-          overflow-y-auto h-screen w-80 flex flex-col z-50
+          overflow-y-auto h-screen w-72 flex flex-col z-50
           fixed top-0 left-0
           md:static
           transition-transform duration-300 ease-in-out md:transition-none
@@ -77,7 +77,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             alt="Cendronyx Labs" 
             className={`h-full py-3 object-contain origin-left pointer-events-none ${isDark ? 'drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]' : 'drop-shadow-[0_0_20px_rgba(168,85,247,0.9)] drop-shadow-[0_0_45px_rgba(56,189,248,0.7)]'}`} 
           />
-          <span className="text-[22px] font-bold whitespace-nowrap tracking-tight flex items-center -ml-3">
+          <span className="text-[22px] font-bold whitespace-nowrap tracking-tight flex items-center -ml-1">
             <span className={`${isDark ? 'text-white' : 'text-slate-800'}`}>Cendronyx</span>
             <span className="bg-gradient-to-r from-[#4158D1] to-[#5560F1] text-transparent bg-clip-text">Labs</span>
           </span>

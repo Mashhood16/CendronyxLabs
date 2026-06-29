@@ -84,8 +84,8 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
         {/* Desktop Search Bar */}
         <div ref={searchRef} className="hidden lg:block relative w-[400px]">
-          <div className={`flex items-center rounded-lg px-4 py-2.5 transition-all ${isDark ? 'bg-[#000000] border border-[#1c1b1b] focus-within:border-[#6366f1]' : 'bg-slate-100 border border-slate-200 focus-within:ring-2 focus-within:ring-blue-500/30 focus-within:border-blue-300 focus-within:bg-white shadow-sm'}`}>
-            <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-400'}`} />
+          <div className={`flex items-center rounded-lg px-4 py-2.5 transition-all ${isDark ? 'bg-[#000000] border border-[#1c1b1b] focus-within:border-[#4158D1]' : 'bg-white border border-slate-200 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-300 shadow-sm'}`}>
+            <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-600'}`} />
             <input
               type="text"
               value={query}
@@ -93,13 +93,11 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               onFocus={() => setIsOpen(true)}
               placeholder="Search modules..."
               autoComplete="off"
-              className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-700 placeholder:text-slate-400'}`}
+              className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full font-medium ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-900 placeholder:text-slate-500'}`}
             />
-            {isDark && (
-              <div className="ml-2 px-1.5 py-0.5 rounded border border-[#1c1b1b] bg-[#000000] text-[10px] text-[#71717a] font-medium tracking-wide flex items-center shrink-0">
-                ctrl + k
-              </div>
-            )}
+            <div className={`ml-2 px-1.5 py-0.5 rounded border text-[10px] font-bold tracking-wide flex items-center shrink-0 ${isDark ? 'border-[#1c1b1b] bg-[#000000] text-[#71717a]' : 'border-slate-300 bg-slate-100 text-slate-500 shadow-sm'}`}>
+              ctrl + k
+            </div>
           </div>
 
           {/* Desktop Dropdown */}
@@ -198,8 +196,8 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <div className={`flex items-center flex-1 rounded-xl px-4 py-2.5 ${isDark ? 'bg-[#000000] border border-[#1c1b1b]' : 'bg-slate-100'}`}>
-              <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-400'}`} />
+            <div className={`flex items-center flex-1 rounded-xl px-4 py-2.5 ${isDark ? 'bg-[#000000] border border-[#1c1b1b]' : 'bg-white border border-slate-200 shadow-sm'}`}>
+              <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-600'}`} />
               <input
                 ref={mobileSearchRef}
                 type="text"
@@ -207,7 +205,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search modules..."
                 autoComplete="off"
-                className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-700 placeholder:text-slate-400'}`}
+                className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full font-medium ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-900 placeholder:text-slate-500'}`}
               />
             </div>
           </div>
