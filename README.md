@@ -5,6 +5,14 @@
 ## 👁️ Vision
 To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
 
+## 🚀 Live Demo
+
+Try Cendronyx Labs now — no installation required:
+
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-Click_Here-brightgreen?style=for-the-badge&logo=vercel)](https://virtuallab-seven.vercel.app/)
+
+> **Note:** For the full offline experience, install the PWA on your device after visiting the demo.
+
 ## 📸 Screenshots
 
 | Home Page | Subject Selection |
@@ -100,6 +108,27 @@ The platform contains a staggering **464 distinct interactive modules** spanning
 - **Biology**: 9 labs
 - **Mathematics**: 8 labs
 - **English**: 8 labs
+
+## 🗺️ Roadmap
+
+We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
+
+| Phase | Status | Milestone |
+|:---:|:---:|:---|
+| ✅ | **Complete** | 464 interactive labs across Grades 6–12 |
+| ✅ | **Complete** | Offline-first PWA with service worker caching |
+| ✅ | **Complete** | Responsive design (desktop & mobile) |
+| ✅ | **Complete** | Dark & Light theme support |
+| 🔜 | **In Progress** | Student progress tracking & analytics dashboard |
+| 🔜 | **Planned** | Teacher admin panel with class management |
+| 🔜 | **Planned** | Urdu language support for Science & Math labs |
+| 🔜 | **Planned** | Additional labs for Grades 1–5 |
+| 🔜 | **Planned** | Collaborative lab sessions (real-time multiplayer) |
+| 💡 | **Future** | AI-powered adaptive learning paths |
+| 💡 | **Future** | Native mobile apps (Android & iOS) |
+| 💡 | **Future** | Integration with school management systems (SMS/LMS) |
+
+> Have a feature request? [Open an issue](https://github.com/Mashhood16/virtuallab/issues) and let us know!
 
 ## 🛠️ Technology Stack
 - **Framework**: React (Vite)
