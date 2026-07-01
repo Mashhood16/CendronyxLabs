@@ -18,6 +18,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
  const [tokens, setTokens] = useState(initialSentence);
  const [selectedToken, setSelectedToken] = useState<number | null>(null);
  const [parserFeedback, setParserFeedback] = useState<string | null>(null);
+ const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const availableTags = ["Subject", "Verb", "Preposition", "Object"];
 
@@ -116,7 +117,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
   {/* Left Column: Controls & Workspace */}
   <div className={`flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    
-   <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+   <section className="w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b] lg:block">
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Navigation className="w-5 h-5 text-blue-500" />
     Prepositions of Direction
@@ -202,10 +203,10 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
   </div>
 
   {/* Right Column: Simulation Canvas */}
-  <div className="bg-slate-200 dark:bg-[#121212]/50 p-6 flex flex-col items-center justify-center relative overflow-hidden gap-8 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
+  <div className={`bg-slate-200 dark:bg-[#121212]/50 p-6 flex flex-col items-center justify-center relative overflow-hidden gap-8 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    
    {/* Simulation Canvas */}
-   <div className="w-full max-w-lg aspect-video bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-100 dark:border-[#1c1b1b] relative overflow-hidden ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block">
+   <div className={`w-full max-w-lg aspect-video bg-white dark:!bg-[#121212] rounded-3xl shadow-xl border border-slate-100 dark:border-[#1c1b1b] relative overflow-hidden ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <svg width="100%" height="100%" viewBox="0 0 300 300" className="absolute inset-0">
     {/* Obstacle */}
     {prep === 'through' ? (
