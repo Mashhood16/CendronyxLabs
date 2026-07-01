@@ -126,13 +126,13 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
@@ -205,7 +205,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
    <button onClick={() => {setActiveTab('Indicator'); setIndicatorTime(0); setIndicatorRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Indicator' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Activity className="w-4 h-4 inline mr-1" /> Indicator</button>
    </div>
 
-   <div className={`relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow- border-2 border-slate-200 dark:border-[#1c1b1b] flex-1 flex flex-col items-center justify-center p-4 `}>
+   <div className={`relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow- border-2 border-slate-200 dark:border-[#1c1b1b] flex-1 flex-col items-center justify-center p-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    {activeTab === 'Potometer' && (
     <svg viewBox="0 0 400 300" className="w-full h-full">
      <path d="M 50 180 L 50 280 L 150 280 L 150 180" fill="none" stroke="#94a3b8" strokeWidth="4" />

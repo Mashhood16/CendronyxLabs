@@ -159,19 +159,19 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <main className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
     
     {/* Left Column: Theory */}
-    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:h-full lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col lg:h-full lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
       <Activity className="text-indigo-600" />
       Theory & Context
@@ -183,7 +183,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
        <span className="text-xl font-semibold text-center block text-slate-800 dark:text-[#ffffff]">E = Δm c²</span>
        <p>In nuclear fission, a heavy nucleus (like Uranium-235) absorbs a neutron and splits into lighter nuclei, releasing more neutrons and a vast amount of energy.</p>
        <p>The total mass of the products is strictly <em>less</em> than the reactants. This missing mass (Δm) is converted directly into energy.</p>
-       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] space-y-1 mt-4 flex-col `}>
+       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] space-y-1 mt-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-indigo-700 font-bold mb-2">Reference Data:</p>
         <p>1 amu = 931.5 MeV</p>
         <p>Mass U-235 = 235.0439 amu</p>
@@ -200,7 +200,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
        <p>A radioactive tracer emits a <strong>positron</strong> (e⁺), the antimatter counterpart of an electron. When a positron encounters an electron (e⁻) in the tissue, they <strong>annihilate</strong> each other.</p>
        <p>Their entire mass is converted into pure energy in the form of two identical <strong>gamma ray</strong> (γ) photons emitted in exactly opposite directions to conserve momentum.</p>
        <span className="text-xl font-semibold text-center block text-slate-800 dark:text-[#ffffff] mt-2 mb-2">E = 2m<sub>e</sub>c²</span>
-       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] space-y-1 mt-4 flex-col `}>
+       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] space-y-1 mt-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-indigo-700 font-bold mb-2">Reference Data:</p>
         <p>Mass of e⁻ = 0.511 MeV/c²</p>
         <p>Mass of e⁺ = 0.511 MeV/c²</p>
@@ -219,7 +219,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
         <li><strong>B</strong> = magnetic field (T)</li>
         <li><strong>r</strong> = radius of the ring (m)</li>
        </ul>
-       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col `}>
+       <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg text-sm font-mono border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-indigo-700 font-bold mb-2">Reference Data:</p>
         <p>Charge of proton (q) = 1.6 × 10<sup>-19</sup> C</p>
        </div>
@@ -228,7 +228,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
     </div>
 
     {/* Middle Column: Visualizer */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col lg:h-full  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col lg:h-full '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex gap-2 mb-6 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg">
       <button onClick={() => handleTabChange('mass-energy')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'mass-energy' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-indigo-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}>Fission</button>
       <button onClick={() => handleTabChange('pet-scan')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'pet-scan' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-indigo-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}>PET Scan</button>
@@ -398,7 +398,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
     </div>
 
     {/* Right Column: Assessment */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col lg:h-full lg:  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
       <Activity className="text-indigo-600" />
       Data Logging & Analysis
@@ -488,7 +488,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
 
      {activeTab === 'synchrotron' && (
       <div className="space-y-5">
-       <div className="p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-md text-sm space-y-2 font-mono">
+       <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-md text-sm space-y-2 font-mono flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-indigo-700 font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-1">Sensor Readout:</p>
         <p>B-Field : {syncBField.toFixed(1)} T</p>
         <p>Radius : {syncRadius} m</p>

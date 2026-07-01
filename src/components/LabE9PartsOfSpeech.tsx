@@ -97,20 +97,20 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className={`p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex-col `}>
     <BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
@@ -184,7 +184,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl">
     <Hammer className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
@@ -234,7 +234,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    </div>
 
    {/* Forge Action */}
-   <div className="mt-auto flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+   <div className={`mt-auto flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="flex items-center justify-center gap-4 mb-6 w-full">
     <div className={`flex-1 p-4 text-center rounded-xl font-bold text-lg shadow-inner ${selectedBase ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-400'}`}>
      {selectedBase || '?'}
@@ -263,7 +263,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex flex-col p-6 overflow-hidden min-h-[500px] `}>
+  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex-col p-6 overflow- min-h-[500px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl">
     <CheckCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
@@ -294,7 +294,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
     Forged Dictionary
     </h3>
     {forgedLog.length === 0 ? (
-    <div className="text-sm text-slate-500 dark:text-[#a1a1aa] italic p-4 rounded-xl text-center border border-dashed border-slate-200 dark:border-[#2a2a2a]">
+    <div className={`text-sm text-slate-500 dark:text-[#a1a1aa] italic p-4 rounded-xl text-center border border-dashed border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      No words forged yet. Use the Word Forge to create adjectives!
     </div>
     ) : (
@@ -367,7 +367,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
      Check Answers
      </button>
     ) : (
-     <div className="p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] text-center space-y-3 shadow-sm">
+     <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] text-center space-y-3 shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="text-2xl font-black text-slate-800 dark:text-[#ffffff]">
       {calculateScore()} / {ASSESSMENT_QUESTIONS.length}
      </div>

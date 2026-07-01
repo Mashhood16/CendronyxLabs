@@ -132,20 +132,20 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
    onClick={() => setActiveMobileTab('theory')}
-   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
    Theory
   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
-   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-6 h-6 text-[#4158D1] dark:text-[#4158D1]" />
    <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">The Style Guide</h2>
@@ -157,7 +157,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     Euphemisms
    </h3>
    <p className="mb-3">A <strong>euphemism</strong> is a polite, mild, or indirect word or expression substituted for one considered to be too harsh, blunt, or unpleasant. While euphemisms are polite in everyday conversation, editors often remove them to ensure clarity, objectivity, and directness in academic or journalistic writing.</p>
-   <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col `}>
+   <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <ul className="space-y-3 m-0 p-0 list-none">
     <li className="flex items-center gap-3">
      <span className="line-through text-rose-500 dark:text-rose-400 w-24">Died</span> 
@@ -182,7 +182,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     Oxymorons
    </h3>
    <p className="mb-3">An <strong>oxymoron</strong> is a figure of speech that places two seemingly contradictory or opposite words side by side to create a rhetorical effect or reveal a paradox. They can add stylistic flair but should be used intentionally rather than accidentally.</p>
-   <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col `}>
+   <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <ul className="list-disc pl-5 m-0 space-y-1">
     <li><strong>Deafening silence:</strong> A silence so noticeable that it feels loud.</li>
     <li><strong>Open secret:</strong> A fact that is supposed to be hidden but is known to many.</li>
@@ -215,7 +215,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <FileEdit className="w-6 h-6 text-amber-600 dark:text-amber-400" />
    <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Proofreading Desk</h2>
@@ -229,7 +229,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
      Target: {currentData.issue}
     </div>
     
-    <div className="p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm">
+    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <p className="text-lg font-serif text-slate-800 dark:text-[#ffffff] leading-relaxed">
      "{currentData.original}"
      </p>
@@ -278,7 +278,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full h-full flex flex-col">
    <div className="flex items-center gap-3 mb-6 w-full">
     <History className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
@@ -294,7 +294,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     ) : (
      <div className="space-y-3">
      {logs.map(log => (
-      <div key={log.id} className="text-sm p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] shadow-sm">
+      <div key={log.id} className={`text-sm p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <div className="text-slate-600 dark:text-[#a1a1aa] mb-2 italic line-clamp-2">"{log.original}"</div>
       <div className={`font-medium flex items-center gap-2 ${log.status === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
        {log.status === 'success' ? <CheckCircle2 className="w-4 h-4 shrink-0" /> : <XCircle className="w-4 h-4 shrink-0" />}
@@ -310,7 +310,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2">Style Guide Assessment</h3>
     
     {assessmentQuestions.map((q, i) => (
-     <div key={q.id} className="space-y-3 p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a]">
+     <div key={q.id} className={`space-y-3 p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <p className="text-sm font-medium text-slate-800 dark:text-[#ffffff]">{i + 1}. {q.q}</p>
      <div className="space-y-2">
       {q.options.map(opt => {

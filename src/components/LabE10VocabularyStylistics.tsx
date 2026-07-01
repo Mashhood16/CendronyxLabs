@@ -96,20 +96,20 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
     <BookOpen className="w-5 h-5 text-[#4158D1]" />
     Vocabulary & Stylistics
@@ -154,7 +154,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
     <PenTool className="w-5 h-5 text-[#4158D1]" />
     Stylist's Workbench
@@ -170,7 +170,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
     </span>
    </div>
 
-   <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] text-center mb-6 shadow-sm flex-col `}>
+   <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] text-center mb-6 shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <p className="text-lg font-medium text-slate-900 dark:text-white leading-relaxed italic">
     "{STYLISTIC_CHALLENGES[currentChallenge].text}"
     </p>
@@ -197,7 +197,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
 
    {selectedAnswer !== null && (
     <div className="mt-auto flex flex-col gap-4">
-    <div className={`p-4 rounded-lg text-sm font-medium flex gap-3 ${ selectedAnswer === STYLISTIC_CHALLENGES[currentChallenge].correct ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : ' border border-slate-200 dark:border-[#2a2a2a] text-slate-800 dark:text-[#a1a1aa]' }`}>
+    <div className={`p-4 rounded-lg text-sm font-medium gap-3 ${ selectedAnswer === STYLISTIC_CHALLENGES[currentChallenge].correct ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : ' border border-slate-200 dark:border-[#2a2a2a] text-slate-800 dark:text-[#a1a1aa]' } flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <Hash className="w-5 h-5 flex-shrink-0 mt-0.5 opacity-70" />
      <p>{STYLISTIC_CHALLENGES[currentChallenge].explanation}</p>
     </div>
@@ -213,7 +213,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full max-w-md h-full flex flex-col">
    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-300 dark:border-[#1c1b1b]">
     <Target className="w-6 h-6 text-[#4158D1]" />

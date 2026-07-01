@@ -79,20 +79,20 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: overflow-y-auto lg:overflow-visible">
   
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
-   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col `}>
+   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
     <Beaker className="text-blue-600" /> Theory & Setup
    </h2>
@@ -151,7 +151,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
 
   {/* Middle Column: Simulation */}
   <div className="bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
-   <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Virtual Workbench</h2>
    </div>
    <div className="p-6 flex-1 flex flex-col items-center justify-between">
@@ -237,7 +237,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
 
   {/* Right Column: Data & Analysis */}
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-   <div className="bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b]">
+   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
    </div>
    <div className="p-6 flex-1 flex flex-col">
@@ -281,7 +281,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
     Record Data & Reset
    </button>
 
-   <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+   <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Assessment</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
     Calculate the theoretical yield of CuSO₄·5H₂O crystals (g) based on your current setup variables. 

@@ -167,7 +167,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">Grammar Theory</h2>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[calc(100vh-16rem)] pr-2">
    <p>
@@ -219,7 +219,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="mb-6">
    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <Clock className="w-5 h-5 text-blue-500" />
@@ -230,7 +230,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    </p>
    </div>
 
-   <div className={`flex-1 text-lg leading-[2.5] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col `}>
+   <div className={`flex-1 text-lg leading-[2.5] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {STORY_PARTS.map((part) => (
     <span key={part.id}>
     <span>{part.text}</span>
@@ -272,7 +272,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex flex-col items-center justify-center p-4 md:p-8 lg:min-h-[300px] md:lg:min-h-[500px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex-col items-center justify-center p-4 md:p-8 lg:min-h-[300px] md:lg:min-h-[500px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full mb-8 z-10 self-start">
    <h2 className="text-xl font-bold mb-2 text-slate-800 dark:text-white">Temporal Visualization</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
@@ -280,7 +280,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    </p>
    </div>
    
-   <div className="flex-1 w-full relative rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex items-center p-8 shadow-inner overflow-x-auto min-h-[300px]">
+   <div className={`flex-1 w-full relative rounded-xl border border-slate-200 dark:border-[#1c1b1b] items-center p-8 shadow-inner overflow-x-auto min-h-[300px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {/* Timeline Axis */}
    <div className="absolute left-8 right-8 h-1 bg-slate-300 dark:bg-slate-600 top-1/2 -translate-y-1/2 rounded-full min-w-[500px]"></div>
    

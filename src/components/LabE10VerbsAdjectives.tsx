@@ -117,20 +117,20 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col  ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className={`p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex-col `}>
     <BookOpen className="w-5 h-5" />
@@ -192,7 +192,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
     <Activity className="w-5 h-5" />
@@ -203,7 +203,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    <div className="flex-1 overflow-y-auto pr-2 space-y-8">
    
    {/* Voice Controls */}
-   <div className="p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
     <ArrowRightLeft className="w-4 h-4 text-indigo-500" /> Voice Conversion
     </h3>
@@ -234,7 +234,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    </div>
 
    {/* Adjective Pool Controls */}
-   <div className="p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a]">
+   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
     <Type className="w-4 h-4 text-indigo-500" /> Adjective Pool
     </h3>
@@ -258,7 +258,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    </div>
 
    {/* Assessment Component */}
-   <div className="p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a]">
+   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
     <ListChecks className="w-4 h-4 text-indigo-500" /> Knowledge Check
     </h3>
@@ -324,11 +324,11 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-4 md:p-8 overflow-hidden min-h-[500px] `}>
+  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full max-w-2xl flex flex-col gap-6 overflow-y-auto max-h-full pr-2">
     
     {/* Voice Visualizer */}
-    <div className="p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex flex-col items-center justify-center min-h-[200px]">
+    <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center justify-center min-h-[200px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <span className={`text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full ${isPassive ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}`}>
       {isPassive ? 'Passive Voice' : 'Active Voice'}
      </span>
@@ -360,7 +360,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
     </div>
 
     {/* Adjective Output Visualizer */}
-    <div className="p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex flex-col items-center min-h-[220px]">
+    <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center min-h-[220px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4">
      <Target className="w-5 h-5 text-indigo-500" />
      <h4 className="text-md font-bold text-slate-800 dark:text-[#ffffff]">Target Sentence</h4>

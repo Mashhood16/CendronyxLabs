@@ -137,20 +137,20 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col  ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-5 h-5 text-[#4158D1] dark:text-[#6b81fb]" />
    <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">Grammar Theory</h2>
@@ -213,7 +213,7 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <Target className="w-5 h-5 text-[#4158D1] dark:text-[#6b81fb]" />
    <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">Word Bank & Assessment</h2>
@@ -221,7 +221,7 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
 
    <div className="flex-1 flex flex-col gap-6 overflow-y-auto pr-2 h-[calc(100vh-250px)] lg:h-[calc(100vh-180px)]">
    {/* Word Bank */}
-   <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-shrink-0 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-shrink-0 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Available Words (Click to add)</h3>
     <div className="flex flex-wrap gap-2">
     {availablePieces.map((piece: any, idx) => (
@@ -240,7 +240,7 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
    </div>
 
    {/* Knowledge Check */}
-   <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-1 flex-col `}>
+   <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-1 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Knowledge Check</h3>
     {!assessmentSubmitted ? (
     <div className="space-y-4">
@@ -301,15 +301,15 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-4 md:p-8 overflow-hidden min-h-[500px] `}>
-   <div className="w-full max-w-lg rounded-xl shadow-lg border border-slate-200 dark:border-[#2a2a2a] p-6 flex flex-col gap-8">
+  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`w-full max-w-lg rounded-xl shadow-lg border border-slate-200 dark:border-[#2a2a2a] p-6 flex-col gap-8 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    
    {/* Speaker Bubble */}
    <div className="flex gap-4 items-start">
     <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0">
     <Mic className="w-6 h-6 text-blue-600 dark:text-blue-400" />
     </div>
-    <div className="bg-slate-100 dark:bg-[#1c1b1b] p-4 rounded-2xl rounded-tl-none border border-slate-200 dark:border-[#2a2a2a] w-full">
+    <div className={`bg-slate-100 dark:bg-[#1c1b1b] p-4 rounded-2xl rounded-tl-none border border-slate-200 dark:border-[#2a2a2a] w-full flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] block mb-1">
      {NARRATION_SCENARIOS[currentScenario].speaker}
     </span>

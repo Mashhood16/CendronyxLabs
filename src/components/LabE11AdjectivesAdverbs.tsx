@@ -214,13 +214,13 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
      onClick={() => setActiveMobileTab('theory')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
      Theory
     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >Lab</button>
   </div>
 
@@ -228,7 +228,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
     
     {/* Window 1: Theory */}
-    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex-col  ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4 flex-shrink-0">
       <BookOpen className="w-5 h-5 text-indigo-500" />
       <h2 className="text-lg font-semibold">Grammar Theory</h2>
@@ -268,7 +268,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-6 flex-shrink-0">
       <Activity className="w-5 h-5 text-indigo-500" />
       <h2 className="text-lg font-semibold">Lab Controls</h2>
@@ -276,7 +276,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
      <div className="space-y-6 flex-grow">
       {/* Configuration */}
-      <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+      <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <label className="text-sm font-semibold mb-2 block">Grammar Complexity: {complexity}</label>
        <input 
         type="range" 
@@ -294,7 +294,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
       </div>
 
       {/* Activity Status */}
-      <div className={`bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
+      <div className={`bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
         <Target className="w-4 h-4 text-emerald-500" />
         Status
@@ -381,11 +381,11 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex-col items-center justify-center p-6 overflow-hidden min-h-[500px] `}>
+    <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex-col items-center justify-center p-6 overflow- min-h-[500px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      
      <div className="w-full max-w-2xl mb-8 flex-shrink-0">
       <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Word Bank</h3>
-      <div className="p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm min-h-[120px] flex flex-wrap gap-3 items-start content-start">
+      <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm min-h-[120px] flex-wrap gap-3 items-start content-start flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        {bank.length === 0 ? (
         <p className="text-slate-400 italic text-sm w-full text-center mt-4">All words used!</p>
        ) : (
@@ -405,7 +405,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
       </div>
      </div>
 
-     <div className="w-full max-w-2xl rounded-2xl shadow-xl p-8 border border-slate-200 dark:border-[#1c1b1b] flex-grow flex flex-col justify-center">
+     <div className={`w-full max-w-2xl rounded-2xl shadow-xl p-8 border border-slate-200 dark:border-[#1c1b1b] flex-grow flex-col justify-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <h2 className="text-xl font-serif text-slate-800 dark:text-[#ffffff] mb-6 border-b border-slate-200 dark:border-[#1c1b1b] pb-4 text-center">
        Sentence Builder
       </h2>

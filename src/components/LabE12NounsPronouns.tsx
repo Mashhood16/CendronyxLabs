@@ -100,19 +100,19 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
    <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
      onClick={() => setActiveMobileTab('theory')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
      Theory
     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >Lab</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
     {/* Window 1: Theory */}
-    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
       <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
      </h2>
@@ -144,7 +144,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
       <Layers className="text-[#4158D1]" /> System Controls
      </h2>
@@ -201,7 +201,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
 
       {activeMode === 'resolver' && (
        <div className="space-y-6">
-        <div className={`p-4 rounded-xl border ${systemState === 'shorted' ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800' : systemState === 'fixed' ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800' : ' border-slate-200 dark:border-[#2a2a2a]'}`}>
+        <div className={`p-4 rounded-xl border ${systemState === 'shorted' ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800' : systemState === 'fixed' ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800' : ' border-slate-200 dark:border-[#2a2a2a]'} flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <h3 className={`font-bold flex items-center gap-2 mb-4 ${systemState === 'shorted' ? 'text-red-700 dark:text-red-400' : systemState === 'fixed' ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-800 dark:text-white'}`}>
           {systemState === 'stable' && <Shield className="w-5 h-5 text-blue-500" />}
           {systemState === 'shorted' && <Zap className="w-5 h-5 text-red-500 animate-pulse" />}
@@ -253,7 +253,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {/* Background Grid */}
      <div className="absolute inset-0 opacity-10 dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#4158D1 1px, transparent 1px), linear-gradient(90deg, #4158D1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
      

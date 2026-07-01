@@ -108,18 +108,18 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 lg: overflow-y-auto lg:overflow-visible">
     {/* Left Column: Theory */}
-    <div className={`w-full p-6 bg-slate-50 dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full p-6 bg-slate-50 dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <div>
       <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">Permutations</h2>
       <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">A permutation is an arrangement of objects in a specific order. Order matters!</p>
@@ -131,7 +131,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
      </div>
 
      {scenario === 'plates' && (
-      <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
+      <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Vehicle Number Plates</h3>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">Usually formed by selecting letters (A-Z) followed by digits (0-9). Repetition is typically allowed.</p>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] font-mono bg-slate-50 dark:bg-[#121212] p-2 rounded border mt-2">
@@ -141,7 +141,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
      )}
 
      {scenario === 'passwords' && (
-      <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+      <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Passwords & PINs</h3>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">When repetition is allowed: {"$$ n^r $$"}</p>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">When repetition is NOT allowed: {"$$ ^nP_r = \\frac{n!}{(n-r)!} $$"}</p>
@@ -149,7 +149,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
      )}
 
      {scenario === 'circular' && (
-      <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+      <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Circular Permutations</h3>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">Arranging objects in a circle is different from a line because there is no fixed start/end.</p>
        <p className="text-sm text-slate-600 dark:text-[#a1a1aa] font-mono bg-slate-50 dark:bg-[#121212] p-2 rounded border mt-2">
@@ -178,7 +178,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
          <RefreshCw size={16} /> Generate Random Plate
         </button>
         
-        <div className="w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4">
+        <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <div className="mb-6">
           <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Letters (A-Z): {numLetters}</label>
           <input type="range" min="1" max="4" value={numLetters} onChange={e => setNumLetters(parseInt(e.target.value))} className="w-full" />
@@ -212,7 +212,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
          </button>
         </div>
 
-        <div className="w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4">
+        <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <div className="mb-6">
           <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Character Pool Size: {poolSize}</label>
           <input type="range" min="5" max="10" value={poolSize} onChange={e => setPoolSize(parseInt(e.target.value))} className="w-full" />
@@ -255,7 +255,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
          })}
         </div>
 
-        <div className="w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-8">
+        <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-8 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <div className="mb-6">
           <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Number of People: {numPeople}</label>
           <input type="range" min="3" max="10" value={numPeople} onChange={e => setNumPeople(parseInt(e.target.value))} className="w-full" />
@@ -276,7 +276,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
     </div>
 
     {/* Right Column: Assessment */}
-    <div className="p-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-l border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg: ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div className={`p-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-l border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center gap-2">
       <Calculator className="text-blue-600" /> Let's Solve
      </h2>
@@ -284,7 +284,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
      <div className="space-y-6">
       {scenario === 'plates' && (
        <>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. A state issues plates with exactly 2 letters followed by 4 digits. Repetition is allowed. How many unique plates are possible?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. 1000" className={`flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm `} />
@@ -292,7 +292,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. What if the same format is used (2 letters, 4 digits) but NO character or digit can be repeated on the same plate?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -306,7 +306,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
       {scenario === 'passwords' && (
        <>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. A 3-digit lock uses numbers from a pool of 10 digits (0-9). If repetition IS allowed, how many combinations exist?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -314,7 +314,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. What if the same 3-digit lock requires UNIQUE digits (no repetition)?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -327,7 +327,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
       {scenario === 'circular' && (
        <>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. In how many ways can 6 people be seated around a circular table?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -335,7 +335,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. In how many ways can 6 people be seated around a circular table if two specific people insist on sitting next to each other?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Answer" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />

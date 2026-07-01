@@ -1,0 +1,19 @@
+ambert Law and your recorded data, determine the concentration of the unknown sample.
+   </p>
+   <div className="flex gap-2 mb-4">
+    <input 
+    type="number" step="0.1"
+    placeholder="Calculated μM" 
+    value={answer} onChange={(e) => setAnswer(e.target.value)}
+    className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-emerald-500"
+    />
+    <button 
+    onClick={checkAnswer}
+    className="bg-[#121212] dark:bg-[#121212] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-slate-700 dark:bg-[#121212] transition-colors"
+    >
+    Check
+    </button>
+   </div>
+   {feedback && (
+    <div className={`text-sm p-3 rounded-md flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-
+----------------------------------------

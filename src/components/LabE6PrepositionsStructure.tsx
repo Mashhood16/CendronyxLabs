@@ -114,7 +114,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
 
   <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: overflow-y-auto lg:overflow-visible">
   {/* Left Column: Controls & Workspace */}
-  <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8">
+  <div className={`flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    
    <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
@@ -163,7 +163,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
    </div>
 
    {selectedToken !== null && (
-    <div className={`mb-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] animate-in fade-in slide-in-from-top-2 flex-col `}>
+    <div className={`mb-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] animate-in fade-in slide-in-from-top-2 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <p className="text-sm font-bold text-slate-500 mb-3">Tag for "{tokens[selectedToken].word}":</p>
     <div className="grid grid-cols-2 gap-2">
      {availableTags.map(tag => (

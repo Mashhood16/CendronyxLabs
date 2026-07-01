@@ -66,17 +66,17 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto  ? 'block' : 'hidden'} lg:block`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">1. UI & Survey Design</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 text-sm leading-relaxed">
    In software engineering, understanding user needs through rigorous research is crucial. A survey is a primary tool for quantitative and qualitative data collection.
@@ -94,7 +94,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
    </p>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-6">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">2. Research Workspace</h2>
    <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
@@ -116,7 +116,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
    {view === 'form' ? (
    <div className="flex-1 flex flex-col space-y-4 lg:overflow-y-auto pr-2">
     {questions.map((q, index) => (
-    <div key={q.id} className={`p-4 border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] relative group flex-col `}>
+    <div key={q.id} className={`p-4 border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] relative group flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex justify-between items-start mb-2">
      <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Question {index + 1} ({q.type})</span>
      <button onClick={() => removeQuestion(q.id)} className="text-red-400 hover:text-red-600 transition-colors">
@@ -156,7 +156,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
     </div>
    </div>
    ) : (
-   <div className={`flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-6 relative lg:overflow- `}>
+   <div className={`flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-6 relative lg:overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] w-full text-left mb-6 flex items-center">
     <BarChart3 className="mr-2 text-indigo-500" /> Responses: Question 1
     </h3>
@@ -191,7 +191,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
    )}
   </div>
 
-  <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">3. Analysis & Logic</h2>
    
    <div className="space-y-6 flex-1">

@@ -77,13 +77,13 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
@@ -176,7 +176,7 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
       Analysis & Assessment
      </h2>
      
-     <div className="flex-1 min-h-[200px] lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner">
+     <div className={`flex-1 min-h-[200px] lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
       <h3 className="font-semibold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-1 border-slate-200 dark:border-[#1c1b1b]">Security Log</h3>
       {logs.length === 0 ? (
        <p className="text-xs text-slate-500 dark:text-[#71717a] italic text-center mt-8">No issues resolved yet.<br/>Interact with the tech tree.</p>

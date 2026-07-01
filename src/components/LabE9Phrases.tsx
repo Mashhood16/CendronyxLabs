@@ -147,20 +147,20 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
   
   {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <BookOpen className="w-5 h-5 text-blue-500" />
    Theory Guide
@@ -196,14 +196,14 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <Activity className="w-5 h-5 text-indigo-500" />
    Classification Controls
    </h2>
    
    {/* Control Panel / Classify UI */}
-   <div className={`w-full rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] p-4 mb-4 shrink-0 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className={`w-full rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] p-4 mb-4 shrink-0 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {activePhrasePart ? (
     <div className="animate-in fade-in slide-in-from-top-2">
     <h3 className="text-indigo-900 dark:text-indigo-300 font-bold mb-3 flex items-center gap-2">
@@ -235,7 +235,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
    </div>
 
    {/* Logs */}
-   <div className="rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 flex-1 flex flex-col min-h-[150px] mb-4 overflow-hidden">
+   <div className={`rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 flex-1 flex-col min-h-[150px] mb-4 overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <Activity className="w-4 h-4 text-emerald-500" />
     Action Logs
@@ -256,7 +256,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
    </div>
 
    {/* Assessment */}
-   <div className="rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 shrink-0">
+   <div className={`rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
     <CheckCircle className="w-4 h-4 text-rose-500" />
     Quick Assessment
@@ -317,7 +317,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-8 overflow-hidden min-h-[500px] `}>
+  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute top-4 left-4 right-4 flex items-center justify-between pb-4 border-b border-slate-200 dark:border-[#1c1b1b] z-20">
    <div className="flex items-center gap-2">
     <Search className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -330,7 +330,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
 
    <div className="w-full flex flex-col items-center justify-center relative z-10 mt-12">
    {/* The sentence container */}
-   <div className="w-full max-w-2xl rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 text-center leading-loose text-xl lg:text-2xl text-slate-800 dark:text-[#ffffff] transition-all duration-300">
+   <div className={`w-full max-w-2xl rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 text-center leading-loose text-xl lg:text-2xl text-slate-800 dark:text-[#ffffff] transition-all duration-300 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     {currentSentence.parts.map((part, i) => {
     if (part.type === 'text') {
      return <span key={i} className="mx-1">{part.content}</span>;

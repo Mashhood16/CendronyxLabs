@@ -1,0 +1,17 @@
+import glob, os, re
+
+files = [
+    'LabB10BloodSmear.tsx', 'LabC10SaltExcessBase.tsx', 'LabC10StandardizationTitration.tsx',
+    'LabCS10FutureTech.tsx'
+]
+
+for base in files:
+    f = os.path.join(r'C:\Users\mashh\.gemini\antigravity\scratch\virtuallab\src\components', base)
+    with open(f, 'r', encoding='utf-8') as file:
+        content = file.read()
+    m = re.search(r'</button>\s*</div>(.*)', content, re.DOTALL)
+    if m:
+        panels = re.findall(r'<(?:div|section)\s+className=([\'"{`]+)([^>]*?border-slate-200[^>]*?)([\'"`]+(?:>|\s))', m.group(1))
+        print(f'{base}: {len(panels)} panels')
+        for i, p in enumerate(panels):
+            print(f"  Panel {i+1} has activeMobileTab: {'activeMobileTab' in p[1]}")

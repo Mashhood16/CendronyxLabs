@@ -102,18 +102,18 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 lg: overflow-y-auto lg:overflow-visible">
     {/* Left Column: Theory */}
-    <div className={`w-full p-6 bg-slate-50 dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full p-6 bg-slate-50 dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      {mode === 'induction' ? (
       <>
        <div>
@@ -144,7 +144,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
          </p>
          <p className="text-xs text-indigo-700">Where $nCk$ (or {"$\\binom{n}{k}$"}) is the number in the $n$-th row and $k$-th column of Pascal's triangle.</p>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Formula for nCr</h3>
          <p className="text-sm font-mono text-slate-700 dark:text-[#ffffff]">
           {"$$ nCr = \\frac{n!}{r! (n-r)!} $$"}
@@ -178,7 +178,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
         ))}
        </div>
 
-       <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full max-w-md flex flex-col gap-4 `}>
+       <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full max-w-md flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Experiment Controls</p>
         <div className="flex items-center justify-between">
          <label className="text-sm text-slate-600 dark:text-[#a1a1aa]">Remove a domino (create a gap):</label>
@@ -232,7 +232,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
         ))}
        </div>
 
-       <div className="w-full max-w-md bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4 flex flex-col gap-4">
+       <div className={`w-full max-w-md bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <div className="flex items-center justify-between">
          <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Number of Rows:</label>
          <input type="range" min="3" max="10" value={pascalRows} onChange={e => {setPascalRows(parseInt(e.target.value)); setSelectedCell(null);}} className="w-1/2" />
@@ -263,7 +263,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     </div>
 
     {/* Right Column: Assessment */}
-    <div className="p-6 bg-slate-50 dark:bg-[#121212] border-l border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto">
+    <div className={`p-6 bg-slate-50 dark:bg-[#121212] border-l border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center gap-2">
        Let's Solve
      </h2>
@@ -271,7 +271,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
      <div className="space-y-6">
       {mode === 'induction' && (
        <>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. What is the name of the first step in Mathematical Induction, where you prove the statement holds for n=1?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -279,7 +279,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. In the Inductive Step, you assume the statement is true for n = k. What do you then need to prove it is true for?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -292,7 +292,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
 
       {mode === 'pascal' && (
        <>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4$?</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
@@ -301,7 +301,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
          </div>
          <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Hint: Look at Row 4 of Pascal's Triangle.</p>
         </div>
-        <div className="bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+        <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. Compute the value of $\binom{7}{3}$ (7 choose 3).</p>
          <div className="flex items-center gap-3">
           <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />

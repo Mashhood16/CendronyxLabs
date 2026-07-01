@@ -74,13 +74,13 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
@@ -117,7 +117,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
      </h2>
      
      {/* Cost Calculator */}
-     <div className={`w-full mb-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+     <div className={`w-full mb-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
       <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2">Production Costs</h3>
       <div className="space-y-4">
        <div>
@@ -152,7 +152,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
      </div>
 
      {/* Marketing Board */}
-     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2"><Users className="w-4 h-4"/> Social Media Strategy</h3>
       <div className="space-y-2">
        {platforms.map(p => (
@@ -181,7 +181,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
       Financial Overview
      </h2>
      
-     <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner space-y-4">
+     <div className={`flex-1 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner space-y-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <div>
        <h3 className="font-semibold text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">Cost Breakdown</h3>
        <div className="grid grid-cols-2 gap-2 text-sm">

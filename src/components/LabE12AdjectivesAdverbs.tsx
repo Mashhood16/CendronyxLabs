@@ -31,19 +31,19 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
      onClick={() => setActiveMobileTab('theory')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
      Theory
     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >Lab</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
     {/* Window 1: Theory */}
-    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
+    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
       <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
      </h2>
@@ -76,14 +76,14 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
       <SlidersHorizontal className="text-[#4158D1]" /> Syntactic Equalizer
      </h2>
 
      <div className="flex-1 overflow-y-auto space-y-8">
       {/* Adverb Sliders */}
-      <div className={`w-full p-5 rounded-2xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+      <div className={`w-full p-5 rounded-2xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-bold text-slate-800 dark:text-white mb-4">Adverbial Injection</h3>
        
        <div className="space-y-6">
@@ -120,7 +120,7 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
         </div>
        </div>
 
-       <div className={`mt-6 p-4 rounded-lg bg-slate-50 dark:bg-[#1a1a1a] border border-slate-200 dark:border-gray-800 flex-col `}>
+       <div className={`mt-6 p-4 rounded-lg bg-slate-50 dark:bg-[#1a1a1a] border border-slate-200 dark:border-gray-800 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <p className="text-sm font-medium dark:text-gray-300">
          The car <span className="font-bold text-purple-500">{freqText}</span> drives <span className="font-bold text-[#4158D1]">{speedText}</span> across the track.
         </p>
@@ -128,7 +128,7 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
       </div>
 
       {/* Adjective Classifier */}
-      <div className={`p-5 rounded-2xl border border-slate-200 dark:border-[#2a2a2a] flex-col `}>
+      <div className={`p-5 rounded-2xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-bold text-slate-800 dark:text-white mb-4">Adjective Taxonomy</h3>
        <div className="flex gap-2 mb-4">
         <button onClick={() => { setAdjectiveMode('descriptive'); setSelectedAdj(null); }} className={`flex-1 py-1.5 text-xs font-bold rounded ${adjectiveMode === 'descriptive' ? 'bg-[#4158D1] text-white' : 'bg-slate-100 text-slate-600 dark:bg-[#2a2a2a] dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>Descriptive</button>
@@ -155,7 +155,7 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-8 overflow-hidden min-h-[500px] `}>
+    <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="absolute inset-0 opacity-10 dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#4158D1 1px, transparent 1px), linear-gradient(90deg, #4158D1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
      
      {/* The Track */}
