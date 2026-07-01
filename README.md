@@ -26,6 +26,13 @@
 - [Roadmap](#-roadmap)
 - [Technology Stack](#-technology-stack)
 
+## 📊 Platform at a Glance
+
+- 🎓 Grades Supported: 6–12
+- 📚 Subjects: 6
+- 🧪 Interactive Labs: 464
+- 🌐 Offline-First PWA
+- 💻 Supported Platforms: Windows, macOS, Linux, Android, iOS & Chromebooks
 
 ## 👁️ Vision
 To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
@@ -80,6 +87,9 @@ A core pillar of this platform is its **Offline-First** design. Built as a Progr
 - **Safe Experimentation**: Students can explore dangerous reactions (like the Electrolysis of Molten Lead Chloride) or extreme physics scenarios without any physical risk.
 - **Cross-Disciplinary Education**: Provides a unified platform for learning not just the hard sciences, but also applied mathematics, computer programming, and English grammar/vocabulary.
 - **Scalable Education Delivery**: Schools and institutions can deploy this lightweight, highly performant React application to thousands of students simultaneously without incurring massive server or bandwidth costs.
+
+## Curriculum Alignment: 
+Designed around the Pakistani curriculum for Grades 6–12, with interactive learning experiences that complement classroom instruction.
 
 ## 📚 Curriculum Breakdown
 The platform contains a staggering **464 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
@@ -162,5 +172,9 @@ We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
 - **Icons**: Lucide React
 - **Animations/Visuals**: React state-driven SVG manipulations
 - **Architecture**: Component-based architecture with robust mobile-responsive CSS flexbox implementations.
+
+© 2026 Cendronyx Labs. All Rights Reserved.
+
+This repository contains proprietary software and documentation. No part of this project may be copied, redistributed, modified, or used without prior written permission.
 
 
