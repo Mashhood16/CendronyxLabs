@@ -59,7 +59,7 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
  const pointsSales = metrics.map((p, i) => `${(i / 20) * 100},${100 - Math.min((p.sales / maxSales) * 100, 100)}`).join(' ');
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Digital Marketing Lab" subtitle="Social Media Campaign Simulation" />
 
   
@@ -76,14 +76,14 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 overflow-y-auto lg:overflow-visible">
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
   {/* LEFT COLUMN: Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Campaign Setup</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
    
-   <div>
+   <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <label className="block text-sm font-bold mb-1">Ad Budget ($)</label>
    <input 
     type="range" min="50" max="500" step="50" 

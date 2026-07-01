@@ -19,7 +19,7 @@ export default function LabS6VegetativePropagation({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-emerald-50 font-sans">
+ <div className="flex flex-col min- lg: bg-emerald-50 font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 2: Vegetative Propagation Experiment" />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">

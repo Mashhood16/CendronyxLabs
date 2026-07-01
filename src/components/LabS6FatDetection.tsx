@@ -22,7 +22,7 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 3: Fat Detection in Food" />
 
   <div className="flex-1 flex p-8 items-center justify-center gap-16">

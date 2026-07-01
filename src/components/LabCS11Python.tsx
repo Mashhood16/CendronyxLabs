@@ -62,7 +62,7 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="CS11: Python Turtle Graphics" />
 
   
@@ -79,13 +79,13 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <PenTool className="text-indigo-500" />
    Turtle Engine Theory
    </h2>
-   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto">
+   <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
     <strong>Turtle Graphics</strong> is a popular way for introducing programming to kids. It was part of the original Logo programming language.
    </p>

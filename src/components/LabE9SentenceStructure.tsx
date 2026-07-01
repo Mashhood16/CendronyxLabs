@@ -100,7 +100,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
  };
 
  return (
- <div className="min-h-screen flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] selection:bg-indigo-200 dark:selection:bg-indigo-900">
+ <div className="min-min- lg: flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] selection:bg-indigo-200 dark:selection:bg-indigo-900 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Clause Collider: Conditionals & Structure" variant="blue" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -117,7 +117,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
    >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Window 1 (Theory) */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>

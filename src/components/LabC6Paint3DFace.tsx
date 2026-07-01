@@ -57,7 +57,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
   return (
    <div 
    key={shape.id} 
-   className="absolute rounded-full"
+   className="absolute rounded-full min-h-screen lg:h-screen overflow-x-hidden w-full"
    style={{ 
     left: shape.x - 100, top: shape.y - 100, width: 200, height: 200,
     background: 'radial-gradient(circle at 30% 30%, #fde0c3, #e3a97a, #a66a3d)',
@@ -105,7 +105,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="Paint 3D Face Design" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   

@@ -64,7 +64,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  const maxMass = Math.max(10, ...measurements.map(m => m.mass));
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* HEADER */}
   <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
   <div className="flex items-center gap-3">

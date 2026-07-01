@@ -100,7 +100,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">

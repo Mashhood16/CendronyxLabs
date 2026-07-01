@@ -31,7 +31,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
  const allCorrect = isF5Correct && isF7Correct && isG7Correct && isD10Correct && isE11Correct;
 
  return (
- <div className="w-full h-screen bg-[#1d6f42] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans">
+ <div className="w-full min- lg: bg-[#1d6f42] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 2.1: Cricket Score Calculations" subtitle="Use Excel functions to calculate scores for the Pak vs NZ series." variant="emerald" />
 
   <div className="flex-1 flex lg:overflow-hidden">

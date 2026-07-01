@@ -49,7 +49,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
  const displayModal = ["might", "can", "should", "will", "must"];
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center justify-between p-4 shadow-sm z-10">
   <div className="flex items-center gap-4">
    <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
@@ -67,7 +67,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
   </button>
   </header>
 
-  <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: overflow-y-auto lg:overflow-visible">
+  <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: lg:overflow-visible">
   {/* Left Column: Controls & Workspace */}
   <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8">
    

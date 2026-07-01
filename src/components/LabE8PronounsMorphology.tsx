@@ -104,7 +104,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] dark:bg-[#121212] shrink-0">
   <button

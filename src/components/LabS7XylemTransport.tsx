@@ -23,7 +23,7 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
  const flowerColor = `rgb(${255 - time * 1.5}, ${255 - time * 2}, 255)`; // Turns increasingly blue
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-blue-50 font-sans dark:bg-teal-950/20 dark:border-teal-900">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-blue-50 font-sans dark:bg-teal-950/20 dark:border-teal-900 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 1: Xylem Transport Demonstration" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

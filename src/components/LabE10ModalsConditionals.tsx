@@ -92,7 +92,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Unit 5: Possibility Engine (Modals & Conditionals)" variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -109,7 +109,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
   >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">

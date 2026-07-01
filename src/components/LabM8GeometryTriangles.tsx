@@ -46,7 +46,7 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
  switch (mode) {
   case 'similar-triangles':
   return (
-   <div className="space-y-4">
+   <div className="space-y-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
    <h3 className="text-xl font-semibold dark:text-[#ffffff]">Navigational Distance</h3>
    <p className="text-slate-700 dark:text-[#a1a1aa] text-sm">
     Use properties of similar triangles to find the true height of the tower. 
@@ -244,7 +244,7 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
   <header className="flex items-center p-4 shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
   <button
    onClick={onExit}

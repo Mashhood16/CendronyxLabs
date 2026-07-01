@@ -28,7 +28,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
   <div className="flex-1 flex flex-col items-center justify-center p-6">

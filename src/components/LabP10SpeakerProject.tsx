@@ -79,7 +79,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 13: Making a Speaker (Motor Effect)" subtitle="Investigate the electromagnetic forces that drive a DIY speaker." />
 
   
@@ -96,12 +96,12 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Setup</h2>
-   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
+   <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <p>
     A speaker works using the <strong>Motor Effect</strong>. When an alternating current <span className="font-mono">I</span> flows through a coil of wire in a magnetic field <span className="font-mono">B</span>, a force is exerted on the wire.
    </p>
@@ -113,7 +113,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
    </p>
    </div>
 
-   <div className="space-y-6 flex-1">
+   <div className={`space-y-6 flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
     <span>Magnet Type</span>
@@ -161,7 +161,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
    
-   <div className="flex-1 w-full flex flex-col items-center justify-center relative">
+   <div className={`flex-1 w-full flex flex-col items-center justify-center relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    
    {/* The DIY Speaker */}
    <div className="relative w-48 h-48 flex flex-col items-center justify-center">

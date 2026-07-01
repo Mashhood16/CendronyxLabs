@@ -80,7 +80,7 @@ export default function LabE10AdverbsPrepositions({ onExit = () => {} }: LabE10A
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] overflow-hidden">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Unit 3: Contextual Vectors (Adverbs & Prepositions)" variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -97,7 +97,7 @@ export default function LabE10AdverbsPrepositions({ onExit = () => {} }: LabE10A
    >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:h-full overflow- ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6 shrink-0">

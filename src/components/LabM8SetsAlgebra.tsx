@@ -61,7 +61,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
  }, [seqType, firstTerm, ratio]);
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
+ <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="flex items-center p-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b]">
   <button onClick={onExit} className="p-2 mr-4 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex-shrink-0 whitespace-nowrap transition-colors">

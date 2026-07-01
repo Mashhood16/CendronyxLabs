@@ -45,7 +45,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
  };
 
  return (
- <div className="w-full h-screen bg-slate-200 dark:!bg-[#000000] flex flex-col font-sans">
+ <div className="w-full min- lg: bg-slate-200 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 5.1: Cyber Scout Registration" subtitle="Practice filling out secure online forms on the NR3C portal." variant="blue" />
 
   <div className="flex-1 flex lg:overflow-hidden p-8 justify-center items-center bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]">

@@ -50,7 +50,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="flex items-center p-4 shadow-sm z-10">
   <button
@@ -68,7 +68,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
   </header>
 
   {/* 2-column Layout */}
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">
   {/* Left Column: Controls & Questions */}
   <div className={`w-full bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-semibold mb-4 flex items-center">

@@ -70,7 +70,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
  const scale = 80 / maxPossibleL;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] shrink-0 overflow-x-auto">
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">

@@ -76,7 +76,7 @@ export default function LabCS10FutureTech({ onExit }: Props) {
  const points = energyLog.map((p, i) => `${(i / 20) * 100},${100 - (p.e / maxE) * 100}`).join(' ');
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Future Tech Virtual Lab" subtitle="IoT, AI Bias & Cloud Computing" />
   
   
@@ -93,11 +93,11 @@ export default function LabCS10FutureTech({ onExit }: Props) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 overflow-y-auto lg:overflow-visible">
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* LEFT COLUMN: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Select Module</h2>
-   <div className="flex gap-2">
+   <div className={`flex gap-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <button onClick={() => setTab('iot')} className={`flex-1 py-2 rounded font-medium ${tab === 'iot' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>IoT Smart Home</button>
    <button onClick={() => setTab('ai')} className={`flex-1 py-2 rounded font-medium ${tab === 'ai' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>AI Bias</button>
    <button onClick={() => setTab('cloud')} className={`flex-1 py-2 rounded font-medium ${tab === 'cloud' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>Cloud Docs</button>

@@ -90,7 +90,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
  };
 
  return (
- <div className="w-full h-screen bg-slate-100 dark:!bg-[#000000] flex flex-col font-sans">
+ <div className="w-full min- lg: bg-slate-100 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 4.1: Scratch Maze Navigation" variant="amber" />
 
   <div className="flex-1 flex lg:overflow-hidden">

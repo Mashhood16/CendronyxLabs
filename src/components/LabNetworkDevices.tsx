@@ -23,7 +23,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
  };
 
  return (
- <div className="w-full h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans">
+ <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 1.2: Networking Devices Demo" subtitle="Identify devices and configure the server rack." variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">

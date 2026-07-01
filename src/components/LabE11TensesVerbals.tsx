@@ -121,7 +121,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
  };
 
  return (
- <div className="flex flex-col min-h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min-min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="w-full shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0">
   <div className="flex items-center gap-4">
@@ -164,7 +164,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   </div>
 
   {/* Main Content Area */}
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>

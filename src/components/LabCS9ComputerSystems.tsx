@@ -119,7 +119,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Computer Systems Lab" />
 
   
@@ -136,7 +136,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 lg:min-h-0 lg:overflow-visible">
   
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Context</h2>
@@ -212,7 +212,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
    {activeTab === 'osi' && (
    <div className="w-full flex flex-col lg:flex-row gap-6 h-full">
-    <div className="flex-1 flex flex-col gap-2">
+    <div className={`flex-1 flex flex-col gap-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">Roles</h3>
     {availableRoles.map(r => (
      <button
@@ -226,7 +226,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     {availableRoles.length === 0 && <div className="text-center text-sm text-slate-400 italic p-4">All roles assigned.</div>}
     </div>
     
-    <div className="flex-1 flex flex-col gap-1">
+    <div className={`flex-1 flex flex-col gap-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">OSI Layers</h3>
     {osiLayers.map(l => (
      <div key={l.num} className="flex gap-2 items-stretch h-14">

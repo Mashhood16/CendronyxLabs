@@ -95,7 +95,7 @@ export default function LabE9PrepositionsConjunctions({ onExit }: { onExit?: () 
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:bg-[#121212] dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] selection:bg-[#4158D1]/20">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] selection:bg-[#4158D1]/20 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Bridge Builder: Prepositions & Conjunctions" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -112,7 +112,7 @@ export default function LabE9PrepositionsConjunctions({ onExit }: { onExit?: () 
   >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>

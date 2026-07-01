@@ -178,7 +178,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
  const maxTemp = MATERIALS[material].T_boil + 30;
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." />
 
@@ -198,11 +198,11 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:min-h-[600px] overflow-y-auto lg:overflow-visible">
+  <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:min-h-[600px] lg:overflow-visible">
    
    {/* Column 1: Theory & Setup */}
-   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div>
+   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+   <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Theory</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
     When heating a substance, its temperature rises until it reaches a phase change. During a phase change, the temperature remains constant as energy goes into breaking bonds.
@@ -217,7 +217,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     </p>
    </div>
 
-   <div className="flex-1">
+   <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Setup Parameters</h2>
     <div className="space-y-4">
     <div>
@@ -289,7 +289,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     <div className="text-xs text-slate-400 mt-1">Energy: {(energy/1000).toFixed(1)} kJ</div>
    </div>
 
-   <div className="flex-1 w-full flex items-center justify-center relative p-8">
+   <div className={`flex-1 w-full flex items-center justify-center relative p-8 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     
     {/* Beaker System */}
     <div className="relative w-48 h-64 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 backdrop-blur-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">

@@ -10,7 +10,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
  const [bananaState, setBananaState] = useState<'whole' | 'pieces' | 'crushed' | 'mashed'>('whole');
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-orange-50 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-orange-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 4: Physical Digestion Mechanics" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

@@ -88,7 +88,7 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center p-4 bg-orange-600 dark:bg-orange-800 text-white shadow-md flex-shrink-0">
   <button 
    onClick={onExit} 

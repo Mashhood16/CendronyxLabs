@@ -94,7 +94,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <style>{styleSheet}</style>
   <header className="flex items-center justify-between p-4 shadow-sm z-10">
   <div className="flex items-center gap-4">
@@ -113,7 +113,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
   </button>
   </header>
 
-  <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: overflow-y-auto lg:overflow-visible">
+  <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: lg:overflow-visible">
   {/* Left Column: Controls & Workspace */}
   <div className={`flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    

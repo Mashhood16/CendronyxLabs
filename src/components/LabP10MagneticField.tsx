@@ -57,7 +57,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
  const mapY = (val: number) => 160 - (val / maxB) * 140;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <LabHeader onExit={onExit} title="Unit 17: Magnetic Field of a Dipole" subtitle="Investigate the inverse-cube law of a magnetic dipole on its axial line." />
 
@@ -76,7 +76,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
@@ -93,13 +93,13 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
     <p>Where <strong>m</strong> is the magnetic moment and <strong>μ₀/4π</strong> = 10⁻⁷ T·m/A. Our magnetometer measures the field in microteslas (μT).</p>
    </div>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
     <Activity className="w-4 h-4 text-blue-600" /> Controls
     </h3>
     
     {!isMystery && (
-    <div className="space-y-2">
+    <div className={`space-y-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
      <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
      <label>Magnetic Moment (m)</label>
      <span>{m.toFixed(2)} A·m²</span>

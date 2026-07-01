@@ -37,7 +37,7 @@ export default function LabS7MeasuringLungCapacity({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-blue-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-blue-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 2: Measuring Lung Capacity" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

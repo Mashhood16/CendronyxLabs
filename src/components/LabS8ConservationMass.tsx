@@ -8,7 +8,7 @@ export default function LabS8ConservationMass({ onExit }: LabProps) {
  const [stage, setStage] = useState<'initial' | 'mixed'>('initial');
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 6.2: Conservation of Mass" subtitle="Mass remains constant before and after reaction" rightContent={<button onClick={() => setStage('initial')} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
   <div className="flex-1 flex flex-col items-center justify-center p-6">

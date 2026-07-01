@@ -78,7 +78,7 @@ export default function LabE10NounsPronouns({ onExit = () => {} }: LabE10NounsPr
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Unit 1: The Identity Matrix (Nouns & Pronouns)" variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -95,7 +95,7 @@ export default function LabE10NounsPronouns({ onExit = () => {} }: LabE10NounsPr
    >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   
   {/* Window 1 (Theory) */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
@@ -237,7 +237,7 @@ export default function LabE10NounsPronouns({ onExit = () => {} }: LabE10NounsPr
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Assign the selected word to its correct category.</p>
    </div>
 
-   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 flex-grow content-start overflow-y-auto pr-2 pb-4">
+   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 flex-grow content-start pr-2 pb-4">
     {CATEGORIES.map(cat => {
     const itemsInCat = WORDS.filter(w => placedWords[w.id] === cat);
     const isHovered = selectedWordId !== null;

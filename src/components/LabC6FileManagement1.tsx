@@ -71,7 +71,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="File and Folder Management 1" subtitle="Practice creating folders and navigating the file system" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">

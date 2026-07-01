@@ -28,7 +28,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
  const sandScale = baseScale + weeks * 0.1; // Stunted growth
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-orange-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-orange-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 1: Minerals and Plant Growth" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

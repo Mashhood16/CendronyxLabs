@@ -31,7 +31,7 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
  }, []);
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Costume Change Event" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   

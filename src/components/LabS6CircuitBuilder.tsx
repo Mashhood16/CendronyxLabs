@@ -28,7 +28,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
  const brightness = getBrightness();
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 9: Electricity - Circuit Builder" />
 
   <div className="flex-1 flex p-6 gap-6">

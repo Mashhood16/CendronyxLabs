@@ -47,7 +47,7 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-green-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b]">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 11: Effect of Fertilizers on Plant Growth" />
 
   <div className="flex-1 flex flex-col p-8 items-center">

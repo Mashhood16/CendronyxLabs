@@ -28,7 +28,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 11.4: DIY Detergent" subtitle="Combine raw powders to make washing powder" />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">

@@ -122,7 +122,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
   }).join(' ');
 
   return (
-   <div className="mt-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+   <div className="mt-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
     <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
      <Activity className="w-4 h-4 text-emerald-500" />
      Accuracy Over Time
@@ -195,7 +195,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
  };
 
  return (
-  <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
+  <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
    {/* Header */}
    <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
     <div className="flex items-center gap-4">
@@ -225,7 +225,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
   </div>
 
    {/* Main Layout */}
-   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
     
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>

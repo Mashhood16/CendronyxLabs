@@ -21,7 +21,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-sky-50 font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-sky-50 font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 7: Separation of Mixtures" />
 
   <div className="flex-1 flex p-8 items-center justify-center gap-16">

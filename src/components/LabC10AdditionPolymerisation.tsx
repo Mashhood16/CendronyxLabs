@@ -84,7 +84,7 @@ export default function LabC10AdditionPolymerisation({ onExit }: LabProps) {
  };
 
  return (
-  <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    <LabHeader onExit={onExit} title="Addition Polymerisation: Polyethylene" />
 
    
@@ -101,14 +101,14 @@ export default function LabC10AdditionPolymerisation({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow overflow-y-auto lg:overflow-visible">
-    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-lg p-4 flex-col space-y-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
+    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-lg p-4 flex-col space-y-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
      <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-blue-600"/> Setup & Theory</h2>
      <p className="text-sm text-slate-700 dark:text-[#ffffff]">
       Addition polymerisation involves linking ethene monomers by breaking their C=C double bonds to form a continuous chain. High pressure, temperature, and Ziegler-Natta catalysts improve the reaction rate.
      </p>
      
-     <div className="space-y-4 mt-4">
+     <div className={`space-y-4 mt-4 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
       <div>
        <label className="block text-sm font-medium">Monomers (n): {monomers}</label>
        <input type="range" min="3" max="15" value={monomers} onChange={(e) => setMonomers(parseInt(e.target.value))} className="w-full" disabled={isReacting || progress > 0} />

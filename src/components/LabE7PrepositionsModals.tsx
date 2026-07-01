@@ -136,7 +136,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
 
  if (status === "finished") {
  return (
-  <div className="flex flex-col h-screen items-center justify-center bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none p-6">
+  <div className="flex flex-col min- lg: items-center justify-center bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none p-6 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <CheckCircle2 className="w-24 h-24 text-green-500 mb-6" />
   <h1 className="text-4xl font-bold mb-4">Well Done, Advisor!</h1>
   <p className="text-xl mb-8">You successfully helped all readers using proper prepositions and modals.</p>
@@ -152,7 +152,7 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
  }
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
+ <div className="flex flex-col min-h-screen lg:h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
   {/* Header */}
   <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
   <div className="flex items-center space-x-4">

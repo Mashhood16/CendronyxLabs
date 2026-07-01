@@ -67,7 +67,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] selection:bg-indigo-200 dark:selection:bg-indigo-900">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] selection:bg-indigo-200 dark:selection:bg-indigo-900 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-4 border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
   <div className="flex items-center gap-4">
    <button 

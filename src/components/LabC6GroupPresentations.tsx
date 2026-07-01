@@ -34,7 +34,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
 
  if (isPlaying) {
  return (
-  <div className="flex h-screen bg-[#000000] dark:!bg-[#000000] text-white flex-col items-center justify-center p-8 relative">
+  <div className="flex min- lg: bg-[#000000] dark:!bg-[#000000] text-white flex-col items-center justify-center p-8 relative min-h-screen lg:h-screen overflow-x-hidden w-full">
   <button 
    onClick={() => setIsPlaying(false)} 
    className="absolute top-8 left-8 text-slate-400 hover:text-white flex items-center"
@@ -83,7 +83,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
  }
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="Unit 1: Group Presentations" subtitle={selectedTopic ? `Presenting: ${topics.find(t => t.id === selectedTopic)?.label}` : undefined} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   

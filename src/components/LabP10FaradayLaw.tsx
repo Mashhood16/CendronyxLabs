@@ -80,7 +80,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  const mapY = (val: number) => 160 - (val / maxEmf) * 140;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 17: Faraday's Law of Induction" subtitle="Investigate the induced EMF when a magnet moves through a coil." />
 
   
@@ -97,7 +97,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
@@ -118,12 +118,12 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     <p className="text-xs text-slate-400">Where <em>c = 0.1</em> is our apparatus coupling constant.</p>
    </div>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
     <Activity className="w-4 h-4 text-red-600" /> Controls
     </h3>
     
-    <div className="space-y-2">
+    <div className={`space-y-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
      <label>Coil Turns (N)</label>
      <span>{N}</span>

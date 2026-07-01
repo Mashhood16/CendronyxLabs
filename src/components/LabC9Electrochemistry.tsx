@@ -40,7 +40,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
  const points = data.map((d: any) => `${scaleX(d[xKey])},${scaleY(d[yKey])}`).join(' ');
 
  return (
- <div className="w-full overflow-x-auto">
+ <div className="w-full overflow-x-auto min-h-screen lg:h-screen overflow-x-hidden">
   <svg width={width} height={height} className="bg-slate-50 dark:bg-[#121212] rounded shadow-sm border border-gray-200">
   <line x1={40} y1={height - 30} x2={width - 20} y2={height - 30} stroke="black" strokeWidth="2" />
   <line x1={40} y1={20} x2={40} y2={height - 30} stroke="black" strokeWidth="2" />
@@ -138,7 +138,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
   <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Electrochemistry & Redox" />
 
   
@@ -155,7 +155,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow overflow-y-auto lg:overflow-visible">
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><ClipboardList className="mr-2" /> Theory & Setup</h2>
@@ -235,7 +235,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
     <Play className="mr-2" size={16} /> Record Measurement
     </button>
 
-    <div className="flex-grow lg:overflow-y-auto mb-4 border rounded">
+    <div className="flex-grow lg:overflow-y-auto mb-4 border rounded overflow-x-auto">
     <table className="w-full text-sm text-left">
      <thead className="bg-gray-50 sticky top-0">
      <tr><th className="p-2">KMnO₄ Added (mL)</th><th className="p-2">Temp (°C)</th></tr>

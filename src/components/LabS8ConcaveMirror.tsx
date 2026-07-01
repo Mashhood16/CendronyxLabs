@@ -34,7 +34,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
  }
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 9.5: Shaving Mirror" subtitle="Concave Mirror Reflection" />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">

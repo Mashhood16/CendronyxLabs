@@ -24,7 +24,7 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 7: Removing Oil Pollutants" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

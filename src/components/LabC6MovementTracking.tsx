@@ -38,7 +38,7 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
  }, []);
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] overflow-hidden">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Tracking Movement with Variables" />
   <div className="flex-1 p-8 flex flex-col lg:overflow-y-auto min-h-0">
   

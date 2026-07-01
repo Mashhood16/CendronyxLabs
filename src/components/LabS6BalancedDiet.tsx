@@ -17,7 +17,7 @@ export default function LabS6BalancedDiet({ onExit }: LabProps) {
  });
 
  return (
- <div className="flex flex-col h-screen bg-rose-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b]">
+ <div className="flex flex-col min- lg: bg-rose-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 3: Balanced Diet Activities" />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">

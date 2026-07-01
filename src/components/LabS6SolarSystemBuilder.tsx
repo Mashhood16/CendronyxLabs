@@ -42,7 +42,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 12: 3-D Solar System Model" />
 
   <div className="flex-1 flex lg:overflow-hidden">

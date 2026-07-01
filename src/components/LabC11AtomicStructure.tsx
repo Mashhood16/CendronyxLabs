@@ -52,7 +52,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <LabHeader onExit={onExit} title="Atomic Structure & Mass Spectrometry" />
 
@@ -71,11 +71,11 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+   <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <Activity className="w-5 h-5 text-indigo-500" />
     Theory
@@ -92,7 +92,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
    </p>
    </div>
 
-   <div className="flex-1">
+   <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Instrument Controls</h3>
    
    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Magnetic Field: {bField.toFixed(2)} T</label>

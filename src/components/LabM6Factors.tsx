@@ -52,7 +52,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
   <div className="flex items-center gap-4">

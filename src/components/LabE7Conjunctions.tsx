@@ -103,7 +103,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
 
  const renderSimulation = () => {
  return (
-  <div className="relative w-full h-80 bg-cyan-50 dark:bg-cyan-950/30 rounded-2xl border-2 border-cyan-100 dark:border-cyan-900 overflow-hidden shadow-inner flex flex-col justify-center">
+  <div className="relative w-full h-80 bg-cyan-50 dark:bg-cyan-950/30 rounded-2xl border-2 border-cyan-100 dark:border-cyan-900 overflow-hidden shadow-inner flex flex-col justify-center min-h-screen lg:h-screen overflow-x-hidden">
   {/* Background elements */}
   <div className="absolute inset-0 opacity-20 pointer-events-none">
    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +169,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
+ <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
   {/* Header */}
   <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] z-10">
   <div className="flex items-center gap-4">

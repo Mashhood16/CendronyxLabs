@@ -36,7 +36,7 @@ export default function LabDataComm({ onExit }: LabProps) {
  const isComplete = slots.every(s => nodes.find(n => n.slot === s.id && n.id === s.correctId));
 
  return (
- <div className="w-full h-screen bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans">
+ <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 1.1: Data Communication Model" subtitle="Assemble the components of the communication cycle." variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">

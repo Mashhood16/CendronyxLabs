@@ -68,7 +68,7 @@ if (score >= 90) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex items-center justify-between bg-indigo-600 text-white p-4 shadow-md dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
   <LabHeader onExit={onExit} title="JavaScript Logic Sandbox" />
   </div>
@@ -87,13 +87,13 @@ if (score >= 90) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-indigo-700">
    <BookOpen size={24} /> Theory & Context
    </h2>
-   <div className="prose prose-slate flex-1 lg:overflow-y-auto">
+   <div className={`prose prose-slate flex-1 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
     In JavaScript, <code>if/else</code> statements allow you to execute different blocks of code based on conditions.
    </p>
@@ -120,7 +120,7 @@ if (score >= 90) {
    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-blue-400">
    <Code size={24} /> Code Editor
    </h2>
-   <div className="flex-1 flex flex-col gap-2">
+   <div className={`flex-1 flex flex-col gap-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <div className="font-mono text-sm text-slate-400">
     function getGrade(score) {'{'}
    </div>

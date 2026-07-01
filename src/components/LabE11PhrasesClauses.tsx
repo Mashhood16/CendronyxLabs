@@ -117,7 +117,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:bg-[#121212] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="w-full shadow-sm p-4 flex items-center justify-between z-10 flex-shrink-0 border-b border-slate-200 dark:border-[#1c1b1b]">
   <div className="flex items-center gap-4">
@@ -159,7 +159,7 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
    >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-full pr-2 pb-10">

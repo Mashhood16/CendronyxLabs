@@ -49,7 +49,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
   else if (selected === 'b2') { val = b2; setVal = setB2; label = 'Bias o1'; }
 
   return (
-   <div className="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-[#121212] rounded border border-slate-200 dark:border-[#1c1b1b]">
+   <div className="flex flex-col gap-2 p-4 bg-slate-50 dark:bg-[#121212] rounded border border-slate-200 dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
     <label className="font-semibold text-sm text-slate-700 dark:text-[#ffffff]">{label}: {val.toFixed(2)}</label>
     <input 
      type="range" min="-2" max="2" step="0.1" 
@@ -65,7 +65,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
  };
 
  return (
-  <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
    {/* Header */}
    <LabHeader onExit={onExit} variant="dark" title="Lab 12.2: Deep Learning Neural Networks" />
 
@@ -83,7 +83,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:h-full lg:min-h-0 overflow-y-auto lg:overflow-visible">
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:h-full lg:min-h-0 lg:overflow-visible">
     {/* Column 1 */}
     <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">

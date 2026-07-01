@@ -48,7 +48,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
 
  return (
  <div 
-  className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none"
+  className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full"
   onPointerUp={handlePointerUp}
   onPointerLeave={handlePointerUp}
  >

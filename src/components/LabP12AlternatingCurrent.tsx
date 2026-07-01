@@ -83,7 +83,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Lab P12.3: Circuit Engineering (AC to DC)" />
 
   
@@ -100,7 +100,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
@@ -108,7 +108,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
    <Power className="w-6 h-6 mr-2" />
    <h2 className="text-lg font-bold">Theory & Context</h2>
    </div>
-   <div className="text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2">
+   <div className={`text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
     Electronic devices (like laptops and phones) require steady <strong>Direct Current (DC)</strong>, 
     but the power grid delivers <strong>Alternating Current (AC)</strong>. Converting AC to DC requires several steps.

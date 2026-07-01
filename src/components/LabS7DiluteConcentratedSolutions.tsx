@@ -14,7 +14,7 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
  const getOpactiy = (syrup: number) => Math.min(1, syrup * 0.15 + 0.1);
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 7: Dilute and Concentrated Solutions" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

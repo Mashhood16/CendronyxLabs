@@ -148,7 +148,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Metal Reactivity Series: Rate of Reaction" />
 
   
@@ -165,16 +165,16 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
-   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`bg-slate-100 dark:bg-[#121212] p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
     <Activity className="text-teal-600" /> Theory & Setup
    </h2>
    </div>
-   <div className="p-6 flex-1 lg:overflow-y-auto space-y-6">
+   <div className={`p-6 flex-1 lg:overflow-y-auto space-y-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <div>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Reaction Principle</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">

@@ -88,7 +88,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
  }, [needsPct, wantsPct, savingsPct]);
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none">
+ <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="flex items-center justify-between p-4 shadow-sm z-10 shrink-0 border-b border-slate-200 dark:border-[#1c1b1b]">
   <div className="flex items-center gap-4">

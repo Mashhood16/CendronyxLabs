@@ -43,7 +43,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
  const maxVal = Math.max(...currentData.map(d => d.val), 1);
 
  return (
- <div className="lg:overflow-y-auto w-full h-screen bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans">
+ <div className="lg:overflow-y-auto w-full min- lg: bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title="Act 2.2: Worksheet and Chart Creation" subtitle="Prepare data and draw corresponding charts for 3 scenarios." variant="emerald" />
 
   <div className="flex-1 flex lg:overflow-hidden">

@@ -122,7 +122,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center justify-between p-4 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
   <h1 className="text-lg md:text-xl font-bold">Class 8 English: Narration & Conditionals</h1>
   {onExit && (
@@ -141,7 +141,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
   </header>
   
   <main className="flex-1 p-6">
-  <div className="max-w-7xl mx-auto lg:h-full flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <div className="max-w-7xl mx-auto lg:h-full flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6 lg:overflow-visible">
    {/* Left Panel */}
    <div className="flex flex-col gap-4">
    {/* Tabs */}

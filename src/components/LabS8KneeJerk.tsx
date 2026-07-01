@@ -24,7 +24,7 @@ export default function LabS8KneeJerk({ onExit }: LabS8KneeJerkProps) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 2.2: Knee Jerk Reflex" subtitle="Observe an involuntary reflex action" />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">

@@ -33,7 +33,7 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-[#000000] dark:!bg-[#000000] font-sans select-none text-white overflow-hidden">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-[#000000] dark:!bg-[#000000] font-sans select-none text-white overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} variant="dark" title="Act 12.1: Sky Map Mobile App" />
   <div className="bg-[#121212] dark:bg-[#121212]/80 backdrop-blur-md border-b border-[#1c1b1b] dark:border-[#1c1b1b] p-2 flex justify-end z-10">
   <div className="flex gap-2">

@@ -81,7 +81,7 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center p-4 bg-white dark:bg-[#1c1b1b] shadow-sm z-10 border-b border-slate-200 dark:border-[#2a2a2a]">
   <button 
    onClick={onExit} 
@@ -109,7 +109,7 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
   >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:h-full ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2">

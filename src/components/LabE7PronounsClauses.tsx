@@ -104,7 +104,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
  };
 
  return (
-  <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
    {/* Header */}
    <div className="flex items-center justify-between p-4 bg-indigo-600 text-white shadow-md">
     <div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
    </div>
 
    {/* Main Content */}
-   <div className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
+   <div className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     
     {/* Left Column: Controls & Workspace */}
     <div className={`w-full flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]  ? 'flex' : 'hidden'} lg:flex`}>

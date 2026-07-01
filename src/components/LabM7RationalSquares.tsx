@@ -109,7 +109,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="flex items-center p-4 shadow-sm z-20 shrink-0">
   {onExit && (

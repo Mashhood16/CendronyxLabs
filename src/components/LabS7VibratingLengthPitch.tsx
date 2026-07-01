@@ -21,7 +21,7 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
  const pitchLabel = distance < 40 ? 'High Pitch (Shrill)' : distance > 70 ? 'Low Pitch (Grave)' : 'Medium Pitch';
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-indigo-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-indigo-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 9: Waves and Energy" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

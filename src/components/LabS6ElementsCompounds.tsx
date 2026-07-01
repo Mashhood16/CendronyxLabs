@@ -28,7 +28,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 6: Elements vs. Compounds" />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">

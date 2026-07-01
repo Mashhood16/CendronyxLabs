@@ -83,7 +83,7 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
  const fillPercentage = (currentPower / totalPower) * 100;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center p-4 dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
    <button onClick={onExit} className="mr-4 whitespace-nowrap flex-shrink-0 p-2 rounded-full hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700 transition-colors">
     <ArrowLeft size={24} />

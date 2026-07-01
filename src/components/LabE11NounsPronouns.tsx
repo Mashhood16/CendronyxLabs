@@ -164,7 +164,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
   }).join(' ');
 
   return (
-   <div className="p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
+   <div className="p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-shrink-0 min-h-screen lg:h-screen overflow-x-hidden w-full">
     <h3 className="font-semibold text-sm mb-4 flex items-center gap-2 text-slate-700 dark:text-[#a1a1aa]">
      <Activity className="w-4 h-4 text-indigo-500" />
      Accuracy Over Time
@@ -192,7 +192,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
  };
 
  return (
-  <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
+  <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
    <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
     <div className="flex items-center gap-4">
      <button 
@@ -220,7 +220,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
     >Lab</button>
   </div>
 
-   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:min-h-0 overflow-y-auto lg:overflow-visible">
+   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:min-h-0 lg:overflow-visible">
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:h-full lg:min-h-0 overflow- ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2 flex-shrink-0">

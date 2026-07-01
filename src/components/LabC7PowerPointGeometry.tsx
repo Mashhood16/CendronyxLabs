@@ -34,7 +34,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
 
  if (isPlaying) {
  return (
-  <div className="fixed inset-0 bg-black z-50 flex items-center justify-center" onClick={handleExitPlay}>
+  <div className="fixed inset-0 bg-black z-50 flex items-center justify-center min-h-screen lg:h-screen overflow-x-hidden w-full" onClick={handleExitPlay}>
   <div className="w-full max-w-5xl aspect-[16/9] bg-white relative overflow-hidden shadow-2xl dark:bg-[#121212]">
    {shapes.map(shape => {
    let animStyle = '';
@@ -59,7 +59,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
  }
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="Geometry Presentation" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 

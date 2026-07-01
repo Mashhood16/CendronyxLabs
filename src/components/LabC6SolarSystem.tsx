@@ -68,7 +68,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
   return (
    <div 
    key={item.id} 
-   className="absolute rounded-full"
+   className="absolute rounded-full min-h-screen lg:h-screen overflow-x-hidden w-full"
    style={{ 
     left: item.x - (item.size! / 2), 
     top: item.y - (item.size! / 2), 
@@ -106,7 +106,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="Solar System 3D Creator" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   

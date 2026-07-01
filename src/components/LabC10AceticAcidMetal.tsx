@@ -86,7 +86,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  const maxVol = Math.max(600, ...logs.map((l) => l.volume));
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Acid-Metal Reaction: Acetic Acid & Sodium" />
 
   
@@ -103,9 +103,9 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 overflow-y-auto lg:overflow-visible">
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* Theory Section */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
    <Info className="w-5 h-5 text-blue-500" /> Theory & Setup
    </h2>
@@ -113,7 +113,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
    Acids react with reactive metals to produce a salt and hydrogen gas. 
    Acetic acid (CH₃COOH) is a weak acid, but it still reacts vigorously with a highly reactive metal like Sodium (Na).
    </p>
-   <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff] flex-col `}>
+   <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff] flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    2CH₃COOH + 2Na → 2CH₃COONa + H₂
    </div>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mt-2">

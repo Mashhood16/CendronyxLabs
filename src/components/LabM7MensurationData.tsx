@@ -295,7 +295,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex items-center p-4 bg-indigo-600 text-white shadow-md z-10">
   <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
    <ArrowLeft className="w-5 h-5" />

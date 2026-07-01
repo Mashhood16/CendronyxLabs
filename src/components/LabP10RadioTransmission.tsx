@@ -86,7 +86,7 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
  const intercept = n > 1 && denom !== 0 ? (sumY - slope * sumX) / n : 0;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 19: Amplitude Modulation" subtitle="Analyze how a carrier wave is modulated by an information signal." />
 
   
@@ -103,10 +103,10 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+   <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">In Amplitude Modulation (AM), the amplitude of a high-frequency carrier wave is varied in proportion to a low-frequency information signal.</p>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">The modulated voltage is given by:</p>
@@ -156,7 +156,7 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
    </div>
    
    <div className="mt-8 flex gap-8 w-full justify-between items-center">
-   <div className="flex-1 bg-[#121212] dark:bg-[#121212] rounded p-4 border border-[#1c1b1b] dark:border-[#1c1b1b]">
+   <div className={`flex-1 bg-[#121212] dark:bg-[#121212] rounded p-4 border border-[#1c1b1b] dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     <div className="text-slate-400 text-xs mb-1">V_MAX (Peak) Readout</div>
     <div className="text-green-400 font-mono text-xl">{displayedVmax.toFixed(2)} V</div>
    </div>

@@ -94,7 +94,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
  if (editingFileId) {
  const file = items.find(i => i.id === editingFileId);
  return (
-  <div className="flex h-screen font-sans bg-slate-50 dark:!bg-[#000000] p-8">
+  <div className="flex min- lg: font-sans bg-slate-50 dark:!bg-[#000000] p-8 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
    <div className="flex items-center justify-between mb-6 border-b pb-4">
    <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -123,7 +123,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
  }
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="File and Folder Management 2" subtitle="Create, edit, delete & recover files and folders" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">

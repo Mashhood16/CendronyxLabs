@@ -140,7 +140,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="min-h-screen bg-slate-50 dark:bg-[#121212] dark:!bg-[#000000] flex flex-col font-sans">
+ <div className="min-min- lg: bg-slate-50 dark:bg-[#121212] dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader title="Phrase Dynamics: Adjectival & Adverbial" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
@@ -157,7 +157,7 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
    >Lab</button>
   </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>

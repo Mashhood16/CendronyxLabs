@@ -49,7 +49,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
  const earthScale = 1 + (earthY / orbitRadiusY) * 0.2;
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 12: Earth's Seasons" />
 
   <div className="flex-1 relative flex flex-col items-center p-8">

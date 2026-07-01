@@ -160,7 +160,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-slate-950 font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 shadow-sm border-b border-slate-200 dark:border-neutral-900 z-10">
   <div className="flex items-center space-x-3">
@@ -319,7 +319,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
     </div>
 
     {/* Category Bins */}
-    <div className="flex flex-col lg:grid sm:grid-cols-2 lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 overflow-y-auto lg:overflow-visible">
+    <div className="flex flex-col lg:grid sm:grid-cols-2 lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 lg:overflow-visible">
     {CATEGORIES.map(cat => (
      <div
      key={cat.id}

@@ -107,7 +107,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] transition-colors duration-300">
+ <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <style dangerouslySetInnerHTML={{__html: `
   @keyframes scan {
    0% { top: 0; }
@@ -149,7 +149,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
   </header>
   
   {/* Main content */}
-  <div className="lg:flex-1 lg: flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 lg: flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg:overflow-visible">
   {/* Left Column: Interactive Controls */}
   <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-6">
    <div>

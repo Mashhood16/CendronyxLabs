@@ -22,7 +22,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
  const reset = () => setStage('initial');
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 6.1: Signs of Chemical Reaction" subtitle="Observe color changes, precipitates, and gas" />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">

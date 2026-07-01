@@ -35,7 +35,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
  const movieData = movies.find(m => m.id === current.movie);
 
  return (
-  <div className="fixed inset-0 bg-black z-50 flex items-center justify-center font-sans text-white" onClick={() => setIsPlaying(false)}>
+  <div className="fixed inset-0 bg-black z-50 flex items-center justify-center font-sans text-white min-h-screen lg:h-screen overflow-x-hidden w-full" onClick={() => setIsPlaying(false)}>
   <div className="max-w-6xl w-full h-[80vh] flex flex-col items-center justify-center relative px-12">
    {movieData && (
    <img src={movieData.img} alt="Background" className="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" />
@@ -73,7 +73,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
  }
 
  return (
- <div className="flex flex-col h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
   <LabHeader onExit={onExit} title="Cybercrime Presentation" subtitle="Prepare a presentation based on a movie or story about cybercrime" />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 

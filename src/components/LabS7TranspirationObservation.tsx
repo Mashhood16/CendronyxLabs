@@ -21,7 +21,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
  }, [running, time]);
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 1: Transpiration Observation" />
 
   <div className="flex-1 p-8 flex flex-col items-center">

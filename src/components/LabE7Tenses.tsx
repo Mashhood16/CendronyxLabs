@@ -94,7 +94,7 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
 
  const renderTimeline = () => {
  return (
-  <div className="relative w-full h-48 flex items-center justify-center mt-12 bg-slate-100 dark:bg-[#121212] rounded-xl p-4">
+  <div className="relative w-full h-48 flex items-center justify-center mt-12 bg-slate-100 dark:bg-[#121212] rounded-xl p-4 min-h-screen lg:h-screen overflow-x-hidden">
   {/* Timeline Axis */}
   <div className="absolute w-[80%] h-1 bg-slate-300 dark:bg-slate-600 rounded-full" />
   
@@ -123,7 +123,7 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
+ <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
   {/* Header */}
   <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] z-10">
   <div className="flex items-center gap-4">

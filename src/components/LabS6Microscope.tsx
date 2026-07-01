@@ -31,7 +31,7 @@ export default function LabS6Microscope({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-100 dark:!bg-[#000000] font-sans">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-100 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Unit 1: Microscope Slide Preparation" />
 
   <div className="flex-1 flex flex-col p-6 items-center">

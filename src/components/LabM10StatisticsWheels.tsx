@@ -138,7 +138,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Experimental Probability & Statistics" />
 
   
@@ -155,10 +155,10 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 max-w-7xl mx-auto w-full overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Setup & Data */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center gap-2 mb-4 text-teal-800">
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+   <div className={`flex items-center gap-2 mb-4 text-teal-800 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <BarChart3 className="w-6 h-6" />
    <h2 className="text-lg font-semibold">Data Logging</h2>
    </div>
@@ -193,7 +193,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
    </button>
    </div>
 
-   <div className="flex-1 min-w-0 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[300px]">
+   <div className={`flex-1 min-w-0 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[300px] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <table className="w-full text-sm text-left">
     <thead className={`bg-slate-50 dark:bg-[#121212] sticky top-0 flex-col `}>
     <tr>

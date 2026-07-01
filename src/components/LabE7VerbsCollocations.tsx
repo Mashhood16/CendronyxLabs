@@ -103,7 +103,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
  }, [selectedPuzzleVerb, selectedPuzzleMatch]);
 
  return (
- <div className="flex flex-col h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
+ <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
   <div className="flex items-center space-x-4">

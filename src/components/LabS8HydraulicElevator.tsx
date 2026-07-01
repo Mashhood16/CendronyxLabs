@@ -22,7 +22,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
 
  return (
  <div 
-  className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none"
+  className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full"
   onPointerUp={handlePointerUp}
   onPointerLeave={handlePointerUp}
   onPointerMove={handlePointerMove}

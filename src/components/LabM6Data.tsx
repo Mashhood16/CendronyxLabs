@@ -103,7 +103,7 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div ref={containerRef} className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div ref={containerRef} className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center p-4 shadow-sm z-10">
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
    <ArrowLeft size={24} />
@@ -111,7 +111,7 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
   <h1 className="text-2xl font-bold flex-1">Unit 10: Data Dashboard</h1>
   </header>
 
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 overflow-y-auto lg:overflow-visible">
+  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:overflow-visible">
   {/* Left: Controls */}
   <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">

@@ -51,7 +51,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <style>{`
   @keyframes shake {
    0%, 100% { transform: translateX(0); }
@@ -199,7 +199,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
 
    {/* Data Table and Graph */}
    <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow-x-auto">
+   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-x-auto">
     <h3 className="font-semibold mb-2">Identified Devices Table</h3>
     <table className="w-full text-sm text-left">
      <thead className="bg-slate-100 dark:bg-slate-700">

@@ -7,7 +7,7 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
  const [mirrorType, setMirrorType] = useState<'plane' | 'convex'>('convex');
 
  return (
- <div className="lg:overflow-y-auto flex flex-col h-screen bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+ <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Act 9.6: Car Rearview Mirror" subtitle="Convex vs Plane Mirrors" />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
