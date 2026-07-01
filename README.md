@@ -1,6 +1,31 @@
 # Cendronyx Labs
 
+<p align="center">
+  <a href="https://virtuallab-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Try_It-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"></a>
+  <a href="https://github.com/Mashhood16/virtuallab"><img src="https://img.shields.io/badge/Version-0.0.0-blue?style=for-the-badge&logo=github" alt="Version"></a>
+  <img src="https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Deployed on Vercel">
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/PWA-Offline_First-F48C06?style=for-the-badge" alt="PWA">
+</p>
+
 > **Cendronyx Labs is an offline-first Progressive Web App that delivers 464 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+
+## 📑 Table of Contents
+
+- [Vision](#-vision)
+- [Live Demo](#-live-demo)
+- [Screenshots](#-screenshots)
+- [Key Features](#-key-features)
+- [What Cendronyx Labs Does](#-what-this-web-app-does)
+- [Offline Architecture](#-offline-first--pwa-architecture)
+- [Curriculum](#-curriculum-breakdown)
+- [Roadmap](#-roadmap)
+- [Technology Stack](#-technology-stack)
+
 
 ## 👁️ Vision
 To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
@@ -33,7 +58,7 @@ Try Cendronyx Labs now — no installation required:
 - ✅ **Real-time simulations** driven by dynamic inputs.
 - ✅ **Curriculum organized** systematically by grade and subject.
 
-## 🚀 What This Web App Does
+## 📖 What This Web App Does
 This application serves as a massive suite of **interactive educational simulations**. It replaces static textbook diagrams with dynamic, interactive digital laboratories where students can tweak parameters (like voltage, temperature, mass, and velocity) and instantly observe real-time visual results. 
 
 Each module in the application typically features a meticulously balanced three-column layout (on desktop) consisting of:
@@ -137,3 +162,5 @@ We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
 - **Icons**: Lucide React
 - **Animations/Visuals**: React state-driven SVG manipulations
 - **Architecture**: Component-based architecture with robust mobile-responsive CSS flexbox implementations.
+
+
