@@ -1,9 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
-import { Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import { Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DeepDivePanel from './DeepDivePanel';
+import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP12ElectricPotential({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [mode, setMode] = useState<'eel' | 'rc'>('eel');
  
  // Eel State
@@ -155,7 +160,10 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Lab P12.2: Capacitors & Bioelectricity" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -173,9 +181,9 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center mb-4 text-emerald-700">
+      <div className="flex items-center mb-4 text-emerald-700">
    <Activity className="w-6 h-6 mr-2" />
-   <h2 className="text-lg font-bold">Theory & Context</h2>
+   <h2 className="text-lg font-bold">Theory & Context {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500 ml-2" />}</h2>
    </div>
    <div className={`text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
@@ -205,6 +213,40 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
     A camera flash slowly charges a capacitor (taking seconds) and then rapidly discharges it through a low-resistance bulb (taking milliseconds), releasing an intense burst of light.
    </p>
    </div>
+
+   {config.showDerivations && (
+   <DeepDivePanel
+    derivation={{
+    title: "Coulomb's Law to Gauss's Law",
+    question: "How does a single point charge's field lead to a general law for any charge distribution? Let's derive Gauss's law from Coulomb's law.",
+    steps: [
+     {
+     label: "Coulomb's Force Law",
+     latex: "F = (1/4πε₀) · q₁q₂ / r²",
+     explanation: "Coulomb's law gives the electrostatic force between two point charges. It is the fundamental experimental law of electrostatics, analogous to Newton's gravitational force law. The constant ε₀ = 8.85×10⁻¹² C²/N·m² is the permittivity of free space."
+     },
+     {
+     label: "Electric Field from a Point Charge",
+     latex: "E = F / q = (1/4πε₀) · Q / r²",
+     explanation: "The electric field E is defined as force per unit test charge. For a point charge Q, the field radiates radially outward (positive) or inward (negative) with magnitude E = Q/(4πε₀r²). This is the foundation for all electrostatics."
+     },
+     {
+     label: "Electric Flux through a Sphere",
+     latex: "Φ = ∮ E · dA = ∮ E·dA·cos(0)\n  = E · 4πr²\n  = (Q / 4πε₀r²) · 4πr²\n  = Q / ε₀",
+     explanation: "The electric flux Φ is the surface integral of E·dA. For a spherical surface centered on the charge, E is constant and perpendicular to the surface (cos 0 = 1). The surface area is 4πr². The r² cancels, giving Φ = Q/ε₀ — independent of radius!"
+     },
+     {
+     label: "Gauss's Law & Capacitance",
+     latex: "∮ E · dA = Qₑₙ𝒸 / ε₀  (Gauss's Law)\n\nFor a parallel plate capacitor:\nE = σ / ε₀ = Q / (ε₀A)\nV = E·d = Qd / (ε₀A)\n∴ C = Q/V = ε₀A / d",
+     explanation: "Gauss's law generalizes: the net flux through ANY closed surface equals the enclosed charge divided by ε₀. Applying it to parallel plates: the field is uniform E = Q/(ε₀A), so voltage V = Ed = Qd/(ε₀A), giving capacitance C = ε₀A/d. This is why the camera flash capacitor's geometry determines its charge storage!"
+     }
+    ],
+    conclusion: "Gauss's law is a profound generalization of Coulomb's law: while Coulomb's law describes the force between individual charges, Gauss's law relates the electric field over a surface to the charge enclosed. This is one of Maxwell's four equations and the foundation of all capacitor physics — from the eel's bio-capacitors to the camera flash circuit.",
+    realWorldApplication: "Every capacitor in electronics follows C = ε₀A/d. The eel's electrocytes are biological capacitors — each cell maintains an ion gradient across a membrane (the dielectric), creating a potential difference of ~0.15V. Stacking 5000 of these 'capacitors' in series produces 600V+. In the camera flash, the capacitor stores charge slowly through a large resistor (seconds), then discharges rapidly through a low-resistance bulb (milliseconds) — the RC time constant τ = RC governs both processes."
+    }}
+    defaultExpanded={difficulty === 'deep-dive'}
+   />
+   )}
   </div>
 
   {/* Middle Column: Simulation */}
@@ -378,6 +420,9 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
    </button>
    </div>
 
+   {config.showResearchConnections && (
+    <ResearchPaperAnalysis paper={RESEARCH_PAPERS['bioelectricity']} />
+   )}
   </div>
   </div>
  </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Beaker, Play, ClipboardList, CheckCircle, Flame, Thermometer } from 'lucide-react';
+import { Beaker, Play, ClipboardList, CheckCircle, Flame, Thermometer, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
 
 interface Props {
  onExit: () => void;
@@ -57,6 +58,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 
 export default function LabC9StatesOfMatter({ onExit }: Props) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const config = DIFFICULTY_CONFIGS['deep-dive'];
 
  const [activeTab] = useState<'sugar' | 'cuso4'>('sugar');
  const [equation, setEquation] = useState<string[]>([]);
@@ -163,7 +165,10 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
   <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: States of Matter & Solutions" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -180,7 +185,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-blue-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
    {activeTab === 'sugar' ? (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
     <p><strong>Solutions:</strong> A solution is formed when a solute dissolves in a solvent. The maximum amount of solute that can dissolve at a given temperature is its solubility.</p>
@@ -202,6 +207,12 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
 
   {/* Simulation Column */}
   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.showHints && (
+    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+     <span><strong>Hint:</strong> Solubility increases with temperature. The formula is S = 200 + 2T. Try heating the water to dissolve more sugar!</span>
+    </div>
+   )}
    <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 w-full dark:text-[#ffffff]"><Beaker className="mr-2" /> Interactive Simulator</h2>
    
    <EquationDisplay equation={equation} />

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ClipboardList, CheckCircle, Activity, Zap } from 'lucide-react';
+import { ClipboardList, CheckCircle, Activity, Zap, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
 
 interface Props {
  onExit: () => void;
@@ -25,6 +26,7 @@ const EquationDisplay = ({ equation }: { equation: string[] }) => (
 
 export default function LabC9AtomicStructure({ onExit }: Props) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const config = DIFFICULTY_CONFIGS['deep-dive'];
 
  const [activeTab] = useState<'alpha' | 'halogen'>('halogen');
  const [equation, setEquation] = useState<string[]>([]);
@@ -115,7 +117,10 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Atomic Structure & Reactivity" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -132,7 +137,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-indigo-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
    {activeTab === 'halogen' ? (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
     <p><strong>Halogen Displacement:</strong> Group 7 elements (Halogens) become less reactive as you go down the group. A more reactive halogen will displace a less reactive halogen from an aqueous solution of its halide salt.</p>
@@ -155,6 +160,12 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
   {/* Simulation Column */}
   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.showHints && (
+    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+     <span><strong>Hint:</strong> In displacement reactions, a more reactive halogen can replace a less reactive one. Reactivity: F &gt; Cl &gt; Br &gt; I.</span>
+    </div>
+   )}
    <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 w-full dark:text-[#ffffff]"><Activity className="mr-2" /> Interactive Simulator</h2>
    
    <EquationDisplay equation={equation} />

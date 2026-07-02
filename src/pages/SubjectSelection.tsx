@@ -47,7 +47,7 @@ export default function SubjectSelection() {
                 <button
                   key={subject}
                   onClick={() => navigate(`/class/${classId}/${subject}`)}
-                  className="relative group p-6 rounded-2xl bg-white dark:bg-[#121212] border border-slate-200/50 dark:border-[#1c1b1b] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                  className="relative group p-6 rounded-2xl bg-white dark:bg-[#121212] border border-slate-200/50 dark:border-[#1c1b1b] hover:-translate-y-2 hover:shadow-xl hover:border-transparent transition-all duration-300 overflow-hidden text-left hover:gradient-border"
                 >
                   {/* Top accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>

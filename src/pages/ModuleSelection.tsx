@@ -2,6 +2,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { LAB_MODULES, formatSubject } from '../data/labModules';
 import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Class9Physics from './Class9Physics';
+import Class10Physics from './Class10Physics';
+import Class11Physics from './Class11Physics';
+import Class12Physics from './Class12Physics';
 import { Rocket, Lock } from 'lucide-react';
 
 const SUBJECT_ACCENT: Record<string, string> = {
@@ -17,6 +21,20 @@ const SUBJECT_ACCENT: Record<string, string> = {
 export default function ModuleSelection() {
   const { classId, subjectId } = useParams();
   const navigate = useNavigate();
+
+  // Class 9 & 10 Physics get a special tabbed view with Labs and Derivations
+  if (classId === '9' && subjectId === 'physics') {
+    return <Class9Physics />;
+  }
+  if (classId === '10' && subjectId === 'physics') {
+    return <Class10Physics />;
+  }
+  if (classId === '11' && subjectId === 'physics') {
+    return <Class11Physics />;
+  }
+  if (classId === '12' && subjectId === 'physics') {
+    return <Class12Physics />;
+  }
 
   const filteredModules = LAB_MODULES.filter(m => m.classLevel === classId && m.subject === subjectId);
   const accent = SUBJECT_ACCENT[subjectId || ''] || 'from-slate-500 to-slate-600';
@@ -48,7 +66,7 @@ export default function ModuleSelection() {
                     onClick={() => isBuilt && navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
                     className={`relative group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
                       isBuilt
-                        ? 'glass border border-slate-200/50 dark:border-[#1c1b1b]/50 hover:-translate-y-2 hover:shadow-xl cursor-pointer'
+                        ? 'glass border border-slate-200/50 dark:border-[#1c1b1b]/50 hover:-translate-y-2 hover:shadow-xl hover:border-transparent cursor-pointer hover:gradient-border'
                         : 'glass border border-dashed border-slate-200/50 dark:border-[#1c1b1b]/50 opacity-70'
                     }`}
                   >

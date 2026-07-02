@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
-import { Info, CheckCircle, XCircle } from 'lucide-react';
+import { Info, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [plugs, setPlugs] = useState<boolean[]>([true, true, true]);
  const svgRef = useRef<SVGSVGElement>(null);
  const [rulerX, setRulerX] = useState<number>(200);
@@ -45,7 +48,9 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
  const checkPressure = () => {
   const p = parseFloat(userPressure);
   // P = rho * g * h = 1000 * 9.8 * 0.8 = 7840 Pa
-  if (!isNaN(p) && Math.abs(p - 7840) < 100) {
+  // Apply slight tolerance based on difficulty
+  const tolerance = difficulty === 'understand' ? 200 : difficulty === 'apply' ? 300 : 500;
+  if (!isNaN(p) && Math.abs(p - 7840) < tolerance) {
    setAssessmentResult('correct');
   } else {
    setAssessmentResult('incorrect');
@@ -73,7 +78,10 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    <LabHeader onExit={onExit} title="Liquid Pressure Lab" subtitle="Investigate the relationship between liquid depth and pressure." />
 
-   
+   <div className="px-4 pt-2 lg:pt-0">
+    
+   </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -90,7 +98,7 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-     <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-4 mt-2">
       <Info className="w-5 h-5 text-blue-600" />
       <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
      </div>
@@ -116,6 +124,12 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
 
     {/* Column 2: Simulation */}
     <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     {config.showHints && (
+      <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+       <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+       <span><strong>Hint:</strong> P = ρgh. Use ρ = 1000 kg/m³, g = 9.8 m/s². Convert 80cm to 0.8m!</span>
+      </div>
+     )}
      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">2. Interactive Simulation</h2>
      <svg 
       ref={svgRef} 

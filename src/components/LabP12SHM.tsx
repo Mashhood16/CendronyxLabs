@@ -1,9 +1,14 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { Car, Waves, Activity, CheckCircle, XCircle, Volume2 } from 'lucide-react';
+import { Car, Waves, Activity, CheckCircle, XCircle, Volume2, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DeepDivePanel from './DeepDivePanel';
+import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [scenario] = useState<'damping' | 'waves'>('damping');
 
  // Damping State
@@ -104,7 +109,10 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Oscillations & Waves" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -122,10 +130,10 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
   
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   {scenario === 'damping' ? (
+      {scenario === 'damping' ? (
    <>
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-    <Car className="text-blue-600"/> Damped Harmonic Motion
+    <Car className="text-blue-600"/> Damped Harmonic Motion {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
     </h2>
     <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
@@ -165,6 +173,40 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
      </p>
     </div>
     </div>
+    
+    {config.showDerivations && (
+   <DeepDivePanel
+    derivation={{
+    title: "SHM from Hooke's Law",
+    question: "Why does a mass on a spring oscillate with frequency ω = √(k/m)? Let's derive SHM from first principles.",
+    steps: [
+     {
+     label: "Hooke's Law & Newton's 2nd",
+     latex: "F = -kx\nm·a = -kx\nm·d²x/dt² = -kx",
+     explanation: "For an ideal spring, the restoring force is proportional to displacement (Hooke's Law). Apply Newton's 2nd Law: m·d²x/dt² = -kx. Rearranging: d²x/dt² + (k/m)·x = 0. This is the fundamental equation of SHM."
+     },
+     {
+     label: "Guess the Solution",
+     latex: "x(t) = A·cos(ωt + φ)\ndx/dt = -A·ω·sin(ωt + φ)\nd²x/dt² = -A·ω²·cos(ωt + φ) = -ω²·x",
+     explanation: "We try x(t) = A·cos(ωt + φ), where A is amplitude, ω is angular frequency, and φ is phase. Differentiate twice: first derivative gives velocity, second gives acceleration. Notice d²x/dt² = -ω²·x."
+     },
+     {
+     label: "Substitute to Find ω",
+     latex: "d²x/dt² = -(k/m)·x  (from Newton)\nd²x/dt² = -ω²·x  (from solution)\n∴ -ω²·x = -(k/m)·x\nω² = k/m\nω = √(k/m)",
+     explanation: "Equating the two expressions for acceleration: -ω²·x = -(k/m)·x. Cancel -x (assuming x ≠ 0): ω² = k/m. Therefore the angular frequency is ω = √(k/m). The period T = 2π/ω = 2π√(m/k)."
+     },
+     {
+     label: "Energy in SHM",
+     latex: "PE = ½kx² = ½k[A·cos(ωt + φ)]²\nKE = ½mv² = ½m[ωA·sin(ωt + φ)]² = ½kA²·sin²(ωt + φ)\nE_total = PE + KE = ½kA²[cos² + sin²] = ½kA²",
+     explanation: "Total mechanical energy is constant! PE is maximum at amplitude (x = ±A), KE is maximum at equilibrium (x = 0). Using sin² + cos² = 1, total energy E = ½kA². This energy conservation is why undamped SHM oscillates forever."
+     }
+    ],
+    conclusion: "Simple Harmonic Motion emerges naturally from Hooke's law (F = -kx) combined with Newton's 2nd law. The frequency depends only on spring constant k and mass m: ω = √(k/m). This exact equation governs everything from car suspensions to MEMS oscillators.",
+    realWorldApplication: "Car suspension tuning directly uses ω = √(k/m) and critical damping c_c = 2√(mk) — the same formulas in this lab. MEMS accelerometers in smartphones use tiny proof masses on springs oscillating at their resonant frequency, and by measuring the frequency shift from acceleration, they track your phone's orientation!"
+    }}
+    defaultExpanded={difficulty === 'deep-dive'}
+   />
+   )}
    </>
    )}
   </div>
@@ -367,6 +409,10 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     </div>
    )}
    </div>
+
+   {config.showResearchConnections && (
+    <ResearchPaperAnalysis paper={RESEARCH_PAPERS['mems-oscillator']} />
+   )}
   </div>
   </div>
  </div>

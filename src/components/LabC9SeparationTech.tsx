@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Play, RotateCcw, CheckCircle, BookOpen } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, BookOpen, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
 
 interface Props {
  onExit?: () => void;
@@ -8,6 +9,7 @@ interface Props {
 
 export default function LabC9SeparationTech({ onExit }: Props) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const config = DIFFICULTY_CONFIGS['deep-dive'];
 
  const [activeTab, setActiveTab] = useState<'distillation' | 'chromatography'>('distillation');
  
@@ -101,7 +103,10 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Grade 9 Chemistry: Separation Techniques" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -118,7 +123,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
   <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center gap-2 mb-4 text-blue-800 dark:text-[#ffffff]">
+      <div className="flex items-center gap-2 mb-4 mt-2 text-blue-800 dark:text-[#ffffff]">
    <BookOpen size={24} />
    <h2 className="text-xl font-semibold">Theory & Context</h2>
    </div>
@@ -154,6 +159,12 @@ export default function LabC9SeparationTech({ onExit }: Props) {
 
   {/* Column 2: Simulator */}
   <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col lg:h-[600px] lg:h-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.showHints && (
+    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+     <span><strong>Hint:</strong> Rf = Distance by spot / Distance by solvent. For the blue dye: spot moved 160mm when solvent moved 200mm.</span>
+    </div>
+   )}
    <div className="flex gap-4 mb-4 shrink-0">
    <button 
     className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}

@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Flame, ThermometerSun } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Flame, ThermometerSun, Gauge } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DataChart from './DataChart';
+import ProgressionPath from './ProgressionPath';
+import { addMeasurementNoise } from '../utils/measurementNoise';
 
 interface LabProps {
  onExit: () => void;
@@ -9,18 +12,43 @@ interface LabProps {
 export default function LabS7ThermalConduction({ onExit }: LabProps) {
  const [running, setRunning] = useState(false);
  const [time, setTime] = useState(0);
+ const lastLogIdx = useRef(0);
+ const [tempLog, setTempLog] = useState<{ time: number; metal: number; plastic: number; wood: number }[]>([]);
 
  useEffect(() => {
  let interval: number;
  if (running && time < 100) {
   interval = window.setInterval(() => {
-  setTime(t => Math.min(100, t + 1));
+    setTime(currentTime => {
+      const newTime = Math.min(100, currentTime + 1);
+      // Log temperature data periodically
+      if (Math.floor(newTime / 5) > lastLogIdx.current) {
+        lastLogIdx.current = Math.floor(newTime / 5);
+        const metalTemp = addMeasurementNoise(Math.min(95, newTime * 1.8), newTime, 3);
+        const plasticTemp = addMeasurementNoise(Math.min(70, newTime * 0.7), newTime + 100, 5);
+        const woodTemp = addMeasurementNoise(Math.min(30, newTime * 0.15), newTime + 200, 8);
+        setTempLog(prev => [...prev, {
+          time: newTime,
+          metal: parseFloat(metalTemp.toFixed(1)),
+          plastic: parseFloat(plasticTemp.toFixed(1)),
+          wood: parseFloat(woodTemp.toFixed(1)),
+        }]);
+      }
+      return newTime;
+    });
   }, 100);
  } else if (time === 100) {
   setRunning(false);
  }
  return () => clearInterval(interval);
  }, [running, time]);
+
+ // Log temperature data is now handled inside the main timer interval for performance
+
+ const resetTempData = () => {
+  setTempLog([]);
+  lastLogIdx.current = 0;
+ };
 
  const metalMelt = Math.min(100, time * 2); // Melts fast
  const plasticMelt = Math.min(100, time * 0.5); // Melts slowly
@@ -45,7 +73,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
     {running ? 'Pause Heat' : time === 100 ? 'Experiment Complete' : 'Apply Boiling Water'}
    </button>
    <button 
-    onClick={() => { setTime(0); setRunning(false); }}
+    onClick={() => { setTime(0); setRunning(false); resetTempData(); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
     Reset
@@ -121,6 +149,48 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
    <div className="mt-4 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-red-500 max-w-2xl text-center">
    <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><ThermometerSun className="w-5 h-5 mr-2 text-red-500" /> Conclusion</h4>
    <p>The butter on the <strong>Metal Spoon</strong> melted very quickly! Metal is an excellent thermal conductor, allowing heat to rapidly travel up the handle. Plastic is a poor conductor (an insulator), so its butter melted slowly. Wood is a very strong insulator, so its butter didn't melt at all during the timeframe.</p>
+   </div>
+  )}
+
+  {/* Data Collection & Analysis */}
+  {tempLog.length >= 2 && (
+   <div className="mt-8 w-full max-w-2xl space-y-4">
+    <DataChart
+     title="Temperature Data Logger"
+     xAxisKey="time"
+     xAxisLabel="Time (s)"
+     series={[
+      { key: 'metal', name: 'Metal (°C)', color: '#ef4444' },
+      { key: 'plastic', name: 'Plastic (°C)', color: '#f59e0b' },
+      { key: 'wood', name: 'Wood (°C)', color: '#8b5cf6' },
+     ]}
+     data={tempLog}
+     onRecord={() => {}} // Auto-logged
+     onReset={resetTempData}
+     noisePercent={3}
+     recordLabel="Auto-Logging Active"
+    />
+
+    {time === 100 && (
+     <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
+      <h4 className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-2 mb-2">
+       <Gauge className="w-4 h-4" /> Analysis
+      </h4>
+      <p className="text-sm text-amber-700 dark:text-amber-300">
+       Metal conducted heat fastest (temperature rose quickly), plastic was moderate (insulator), and wood barely conducted at all (strong insulator). The graph clearly shows the different rates of thermal conduction.
+      </p>
+      <p className="text-xs mt-2 text-amber-500">
+       Real experiments show small variations due to <strong>measurement uncertainty</strong>. That's why scientists take multiple readings!
+      </p>
+     </div>
+    )}
+
+    <ProgressionPath
+     currentClass={7}
+     links={[
+      { fromClass: 6, fromSubject: 'Science', fromLab: 'Heat & Temperature', toConcept: 'Heat flows from hot to cold objects' },
+     ]}
+    />
    </div>
   )}
   </div>

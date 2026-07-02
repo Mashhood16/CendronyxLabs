@@ -1,9 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
-import { Activity, AlertTriangle, Zap, ThermometerSun, Shield } from 'lucide-react';
+import { Activity, AlertTriangle, Zap, ThermometerSun, Shield, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DeepDivePanel from './DeepDivePanel';
+import FrontierApplicationsPanel from './FrontierApplicationsPanel';
+import type { FrontierTopic } from './FrontierApplicationsPanel';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 
 export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [controlRodDepth, setControlRodDepth] = useState(80);
  const [coolantFlow, setCoolantFlow] = useState(50);
  const [temperature, setTemperature] = useState(300);
@@ -58,6 +65,29 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  else setReactorFeedback('Incorrect. Use m = E/c².');
  };
 
+ const frontierTopics: FrontierTopic[] = [
+  {
+   id: 'quantum-comp',
+   icon: 'quantum',
+   title: 'Quantum Computing & Nuclear Physics',
+   summary: 'Quantum computers use principles from nuclear and quantum physics — superposition, entanglement, and tunneling — to perform calculations that are impossible for classical computers. The same E = hc/λ and E = mc² equations that govern nuclear reactions also set fundamental limits on quantum computing hardware.',
+   connectionToLab: 'The PET scan detectors in this lab use scintillation crystals that convert gamma-ray photons into electrical signals — a process governed by the photoelectric effect (E = hc/λ). Quantum computing research is exploring similar scintillator materials for qubit readout.',
+   currentResearch: 'Researchers at CERN are exploring how nuclear physics detectors can be adapted for quantum computing. In 2024, a team used a nuclear reactor\'s neutron flux to demonstrate the first nuclear-assisted quantum error correction protocol.',
+   careerPath: 'Quantum Engineer, Nuclear MedTech Researcher, Particle Physics Data Scientist',
+   keyConcept: 'Quantum tunneling in nuclear fusion — the sun runs on protons quantum-tunneling through the Coulomb barrier, a phenomenon that quantum computers may help us harness for clean energy.'
+  },
+  {
+   id: 'nanotech',
+   icon: 'nanotech',
+   title: 'Nanomaterials for Radiation Detection',
+   summary: 'Nanotechnology is revolutionizing radiation detection. Perovskite nanocrystals and quantum dots can detect individual gamma photons at room temperature, potentially replacing bulky traditional scintillators used in PET scans and nuclear reactors.',
+   connectionToLab: 'The reactor control panel in this lab simulates real-time temperature and power monitoring. In real reactors, nano-scale thermocouples and radiation-hardened nanosensors provide distributed sensing that improves safety margins.',
+   currentResearch: 'MIT and KAIST are developing graphene-based radiation sensors that are 100x more sensitive than traditional Geiger-Müller tubes. These could be deployed in swarms across nuclear facilities for real-time 3D radiation mapping.',
+   careerPath: 'Nanomaterials Scientist, Radiation Detection Engineer, Nuclear Safety Technologist',
+   keyConcept: 'Quantum dots — semiconductor nanoparticles that emit light at specific wavelengths when struck by radiation. By tuning their size (quantum confinement), they can be engineered to detect specific photon energies.'
+  }
+ ];
+
  const restart = () => {
  meltdownRef.current = false;
  setMeltdown(false);
@@ -70,6 +100,14 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Lab 12.1: Quantum & Nuclear Engineering" />
+
+  <div className="px-4 pt-2">
+   
+  </div>
+  
+  {/* Difficulty Selector */}
+  <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+     </div>
 
   
   {/* Mobile Tab Navigation */}
@@ -87,8 +125,41 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">Theory & Context</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">Theory & Context {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}</h2>
    
+   {config.showDerivations && (
+    <DeepDivePanel 
+     derivation={{
+      title: 'Why ΔE = hc/λ? — Photon Energy from Quantum Mechanics',
+      question: 'Why is the energy of a photon inversely proportional to its wavelength? Where does the formula E = hc/λ actually come from?',
+      steps: [
+       {
+        label: 'Start with Planck\'s Quantum Hypothesis',
+        latex: 'E = hf\n\nWhere:\nE = energy of a single quantum (photon)\nh = Planck\'s constant = 6.626 × 10⁻³⁴ J·s\nf = frequency of the electromagnetic radiation',
+        explanation: 'In 1900, Max Planck proposed that energy is quantized — it can only be emitted or absorbed in discrete packets called "quanta." The energy of each quantum is proportional to the frequency of the radiation, with h as the fundamental constant of proportionality.'
+       },
+       {
+        label: 'Use the wave equation: c = fλ',
+        latex: 'c = f × λ\n\nRearranged: f = c / λ\n\nWhere:\nc = speed of light in vacuum = 3.0 × 10⁸ m/s\nλ = wavelength of the photon',
+        explanation: 'All electromagnetic radiation travels at the speed of light c. The fundamental wave equation tells us that frequency and wavelength are inversely related — a shorter wavelength means a higher frequency, and vice versa.'
+       },
+       {
+        label: 'Substitute f into E = hf',
+        latex: 'E = h × f\nE = h × (c / λ)\n\nTherefore:\nE = hc / λ\n\nOr equivalently:\nE = hc × (1/λ)',
+        explanation: 'By substituting f = c/λ into Planck\'s equation, we derive the classic formula. This shows that photon energy is inversely proportional to wavelength — blue light (short λ) carries more energy per photon than red light (long λ).'
+       },
+       {
+        label: 'Express in electron-volts (eV) for atomic scales',
+        latex: 'hc = (6.626 × 10⁻³⁴ J·s)(3.0 × 10⁸ m/s)\n   = 1.986 × 10⁻²⁵ J·m\n\nIn eV·nm:\nhc = 1240 eV·nm\n\nSo: E(eV) = 1240 / λ(nm)',
+        explanation: 'At atomic and molecular scales, energies are more conveniently expressed in electron-volts (eV). The product hc is a fundamental constant that appears throughout quantum mechanics. When λ is in nanometers, E = 1240/λ gives energy directly in eV — a handy formula for spectroscopy.'
+       }
+      ],
+      conclusion: 'The formula ΔE = hc/λ falls directly out of Planck\'s quantum hypothesis and the wave nature of light. It is the bridge between the wave picture (wavelength) and the particle picture (photon energy) of light — the essence of wave-particle duality. This equation governs everything from the colors of fireworks to the spectral lines used to identify elements in distant stars.',
+      realWorldApplication: 'In PET scans (explored in this lab), the annihilation of an electron and positron produces two 511 keV gamma rays. Using E = hc/λ, we find λ = 1240 eV·nm / (511 × 10³ eV) = 0.00243 nm — this is a gamma-ray wavelength. Detectors are specifically designed to catch these photons and reconstruct the 3D location of the annihilation event, creating the PET scan image.'
+     }}
+    />
+   )}
+
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
    <section>
     <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
@@ -188,6 +259,22 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {/* Research Paper Analysis */}
+   {config.showResearchConnections && (
+    <div className="mt-2">
+     <ResearchPaperAnalysis paper={RESEARCH_PAPERS['pet-imaging']} />
+    </div>
+   )}
+
+   {/* Frontier Applications */}
+   {config.showDerivations && (
+    <div className="mt-2">
+     <FrontierApplicationsPanel 
+      topics={frontierTopics}
+     />
+    </div>
+   )}
+
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">Analysis & Computing</h2>
    
    <div className="space-y-6">

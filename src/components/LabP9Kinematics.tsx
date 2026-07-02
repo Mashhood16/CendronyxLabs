@@ -1,9 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, XCircle, Play, RotateCcw} from 'lucide-react';
+import { CheckCircle, XCircle, Play, RotateCcw, Lightbulb, BarChart3 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import PredictionChallenge from './PredictionChallenge';
 
 export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
+
  const pitchLength = 20.12; // meters
  const [speedTrue, setSpeedTrue] = useState(30); // m/s
  const [ballX, setBallX] = useState(0); // 0 to 100%
@@ -80,10 +85,12 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
  const checkAnswer = () => {
  const userV = parseFloat(inputSpeed);
  if (isNaN(userV)) return;
- // We check against the time they measured!
+ // We check against the time they measured! 
+ // Add measurement noise for realism
  const expectedSpeed = pitchLength / stopwatchTime;
+ const noiseTolerance = difficulty === 'understand' ? 0.5 : difficulty === 'apply' ? 0.8 : 1.0;
  
- if (Math.abs(userV - expectedSpeed) < 0.5) {
+ if (Math.abs(userV - expectedSpeed) < noiseTolerance) {
   setFeedback('correct');
  } else {
   setFeedback('incorrect');
@@ -103,7 +110,10 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Physics Grade 9: Kinematics & Precision" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -117,10 +127,9 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  {/* Column 1: Theory */}
+  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible"> {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory</h2>
+      <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory</h2>
    <div className="prose prose-sm space-y-4">
    <div>
     <h3 className="font-semibold text-blue-800 dark:text-[#ffffff]">1. Speed and Velocity</h3>
@@ -141,12 +150,18 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
    <div className={`bg-yellow-50 border border-yellow-200 p-3 rounded-lg mt-4 text-xs text-yellow-800 flex-col `}>
     <strong>Instructions:</strong><br/>
     Click <em>Bowl Delivery</em>. Manually Start and Stop the stopwatch to measure the flight time. Then calculate the ball's speed.
-   </div>
+    </div>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.showHints && (
+    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+     <span><strong>Hint:</strong> Speed = Distance ÷ Time. The pitch is {pitchLength}m. Try measuring the time accurately with the stopwatch!</span>
+    </div>
+   )}
    <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">Cricket Pitch Simulator</h2>
    
    <div className={`w-full relative h-32 bg-green-600 border-4 border-green-800 rounded-lg overflow- flex items-center mb-8 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 flex-col `}>
@@ -197,6 +212,19 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
 
   {/* Column 3: Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.predictionPhase && !feedback && stopwatchTime === 0 && (
+    <div className="mb-4">
+     <PredictionChallenge
+      challenge={{
+       question: "Before running the experiment: if the ball travels 20.12m in 0.67 seconds, what speed do you expect?",
+       options: ["About 15 m/s", "About 30 m/s", "About 45 m/s", "About 60 m/s"],
+       correctOption: 1,
+       explanation: "v = d/t = 20.12m / 0.67s ≈ 30 m/s. That's fast — like a real cricket bowler!"
+      }}
+      onComplete={() => {}}
+     />
+    </div>
+   )}
    <div>
    <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 mb-4">1. Speed Calculation</h2>
    <div className="space-y-3">

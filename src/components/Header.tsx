@@ -1,23 +1,57 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown } from 'lucide-react';
+import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X } from 'lucide-react';
 import { useAuth, useTheme } from '../store';
 import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES, formatSubject } from '../data/labModules';
 
+const RECENT_SEARCHES_KEY = 'cendronyx-recent-searches';
+const SUBJECT_FILTERS = ['all', 'physics', 'chemistry', 'biology', 'math', 'computer', 'science', 'english'];
+
 interface HeaderProps {
   onToggleSidebar: () => void;
+  onMobileSearchOpen?: () => void;
+  mobileSearchOpen?: boolean;
+  onMobileSearchClose?: () => void;
 }
 
-export default function Header({ onToggleSidebar }: HeaderProps) {
+export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSearchOpen: externalMobileSearchOpen, onMobileSearchClose }: HeaderProps) {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [subjectFilter, setSubjectFilter] = useState('all');
   const searchRef = useRef<HTMLDivElement>(null);
   const mobileSearchRef = useRef<HTMLInputElement>(null);
   const isDark = theme === 'dark';
+
+  const isMobileSearchOpen = externalMobileSearchOpen ?? mobileSearchOpen;
+  const closeMobileSearch = onMobileSearchClose ?? (() => setMobileSearchOpen(false));
+
+  useEffect(() => {
+    const saved = localStorage.getItem(RECENT_SEARCHES_KEY);
+    if (saved) {
+      try {
+        setRecentSearches(JSON.parse(saved));
+      } catch {
+        setRecentSearches([]);
+      }
+    }
+  }, []);
+
+  const saveRecentSearch = (search: string) => {
+    if (!search.trim()) return;
+    const updated = [search, ...recentSearches.filter(s => s !== search)].slice(0, 5);
+    setRecentSearches(updated);
+    localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(updated));
+  };
+
+  const clearRecentSearches = () => {
+    setRecentSearches([]);
+    localStorage.removeItem(RECENT_SEARCHES_KEY);
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -55,18 +89,21 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   const results = query.trim()
     ? LAB_MODULES.filter((m) => {
         const q = query.toLowerCase();
-        return (
+        const matchesQuery = (
           m.title.toLowerCase().includes(q) ||
           m.desc.toLowerCase().includes(q) ||
           m.subject.toLowerCase().includes(q) ||
           `class ${m.classLevel}`.includes(q)
         );
+        const matchesFilter = subjectFilter === 'all' || m.subject === subjectFilter;
+        return matchesQuery && matchesFilter;
       }).slice(0, 8)
     : [];
 
   const handleSelect = (lab: typeof LAB_MODULES[number]) => {
+    saveRecentSearch(query);
     setIsOpen(false);
-    setMobileSearchOpen(false);
+    closeMobileSearch();
     setQuery('');
     navigate(`/class/${lab.classLevel}/${lab.subject}/lab/${lab.id}`);
   };
@@ -91,7 +128,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
         {/* Desktop Search Bar */}
         <div ref={searchRef} className="hidden lg:block relative w-[400px]">
-          <div className={`flex items-center rounded-lg px-4 py-2.5 transition-all ${isDark ? 'bg-[#000000] border border-[#1c1b1b] focus-within:border-[#4158D1]' : 'bg-white border border-slate-200 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-300 shadow-sm'}`}>
+          <div className={`flex items-center rounded-lg px-4 py-2.5 transition-all ${isDark ? 'bg-[#000000] border border-[#1c1b1b] focus-within:gradient-border' : 'bg-white border border-slate-200 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-300 shadow-sm'}`}>
             <Search className={`w-4 h-4 mr-3 shrink-0 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-600'}`} />
             <input
               type="text"
@@ -142,7 +179,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       {/* Right: Actions */}
       <div className="flex items-center gap-4 shrink-0">
         <button
-          onClick={() => setMobileSearchOpen(true)}
+          onClick={() => onMobileSearchOpen ? onMobileSearchOpen() : setMobileSearchOpen(true)}
           className={`lg:hidden p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           aria-label="Search labs"
         >
@@ -192,11 +229,11 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       </div>
 
       {/* Mobile search overlay */}
-      {mobileSearchOpen && (
+      {isMobileSearchOpen && (
         <div className={`fixed inset-0 z-[100] flex flex-col ${isDark ? 'bg-[#121212]' : 'bg-white'}`}>
           <div className={`flex items-center gap-3 px-4 py-3 ${isDark ? 'border-b border-[#1c1b1b]' : 'border-b border-slate-200'}`}>
             <button
-              onClick={() => { setMobileSearchOpen(false); setQuery(''); }}
+              onClick={() => { closeMobileSearch(); setQuery(''); }}
               className={`p-2 -ml-2 transition-colors shrink-0 ${isDark ? 'text-[#a1a1aa] hover:text-[#ffffff]' : 'text-slate-500 hover:text-slate-700'}`}
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,6 +253,24 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               />
             </div>
           </div>
+          
+          {/* Subject filters */}
+          <div className={`px-4 py-2 flex gap-2 overflow-x-auto ${isDark ? 'border-b border-[#1c1b1b]' : 'border-b border-slate-100'}`}>
+            {SUBJECT_FILTERS.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setSubjectFilter(filter)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                  subjectFilter === filter
+                    ? 'bg-indigo-500 text-white'
+                    : isDark ? 'bg-[#1c1b1b] text-[#71717a] hover:text-[#a1a1aa]' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                }`}
+              >
+                {filter === 'all' ? 'All' : formatSubject(filter)}
+              </button>
+            ))}
+          </div>
+
           <div className="flex-1 overflow-y-auto">
             {query.trim() !== '' ? (
               results.length > 0 ? (
@@ -228,6 +283,9 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                       >
                         <div className="flex items-center justify-between gap-2">
                           <span className={`font-semibold text-sm ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{lab.title}</span>
+                          <span className={`text-[10px] font-medium px-2 py-0.5 rounded whitespace-nowrap ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                            Class {lab.classLevel}
+                          </span>
                         </div>
                       </button>
                     </li>
@@ -239,9 +297,39 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 </div>
               )
             ) : (
-              <div className={`p-10 text-center text-sm ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>
-                <Search className={`w-8 h-8 mx-auto mb-3 opacity-30`} />
-                <p>Type to search across all labs...</p>
+              <div className="p-4">
+                {recentSearches.length > 0 && (
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-2 px-1">
+                      <span className={`text-xs font-semibold ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>Recent Searches</span>
+                      <button
+                        onClick={clearRecentSearches}
+                        className="text-xs text-indigo-500 hover:text-indigo-600 font-medium"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {recentSearches.map((search, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => { setQuery(search); setSubjectFilter('all'); }}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                            isDark ? 'bg-[#1c1b1b] text-[#a1a1aa] hover:text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          }`}
+                        >
+                          <Clock className="w-3 h-3" />
+                          {search}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                <div className={`p-8 text-center text-sm ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>
+                  <Search className="w-8 h-8 mx-auto mb-3 opacity-30" />
+                  <p>Type to search across all labs...</p>
+                </div>
               </div>
             )}
           </div>

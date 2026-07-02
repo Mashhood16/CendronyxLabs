@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Play, CheckCircle, XCircle, Code, BookOpen, ListChecks } from 'lucide-react';
+import { Play, CheckCircle, XCircle, Code, BookOpen, ListChecks, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 interface LabCS9JavaScriptProps {
  onExit?: () => void;
@@ -8,6 +9,8 @@ interface LabCS9JavaScriptProps {
 
 export default function LabCS9JavaScript({ onExit }: LabCS9JavaScriptProps) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty] = useState<DifficultyLevel>('deep-dive');
+ 
 
  const [code, setCode] = useState(`// Write your logic here
 // The variable 'score' is provided.
@@ -67,11 +70,26 @@ if (score >= 90) {
  }
  };
 
+ const config = DIFFICULTY_CONFIGS['deep-dive'];
+
+ // Step-by-step hint for "understand" mode
+ const getHint = (): string => {
+   if (difficulty !== 'understand') return '';
+   return `Hint: Use "if/else if" statements to check score ranges.
+   Start with: if (score >= 90) return 'A+';`;
+ };
+
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex items-center justify-between bg-indigo-600 text-white p-4 shadow-md dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
   <LabHeader onExit={onExit} title="JavaScript Logic Sandbox" />
   </div>
+
+  <div className="px-4 pt-2 bg-white dark:bg-[#1c1b1b]">
+   
+  </div>
+
+
 
   
   {/* Mobile Tab Navigation */}
@@ -112,6 +130,12 @@ if (score >= 90) {
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
     Ensure you handle all possible conditions. The automated test suite will run your logic against random scores to verify correctness.
    </p>
+   {config.showHints && (
+   <div className="mt-4 p-3 rounded-lg bg-blue-50 dark:bg-[#1c1b1b] border border-blue-200 dark:border-blue-900 flex gap-2">
+    <Lightbulb size={18} className="text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+    <div className="text-sm text-blue-700 dark:text-blue-300 font-mono whitespace-pre-wrap">{getHint()}</div>
+   </div>
+   )}
    </div>
   </div>
 
@@ -178,7 +202,18 @@ if (score >= 90) {
    </div>
    {testResults.length > 0 && (
    <div className={`mt-6 p-4 rounded-xl text-center font-bold text-lg ${isPassed ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-700 border border-red-300'}`}>
-    {isPassed ? 'All Tests Passed! Excellent Work!' : 'Some tests failed. Check your logic and try again.'}
+    {isPassed ? (
+     <>
+      <div>All Tests Passed! Excellent Work!</div>
+      {difficulty === 'understand' && <div className="text-sm mt-2">Try "apply" or "analyze" modes for a greater challenge.</div>}
+      {difficulty === 'apply' && <div className="text-sm mt-2">Great! Can you handle the "analyze" mode?</div>}
+     </>
+    ) : (
+     <>
+      <div>Some tests failed. Check your logic and try again.</div>
+      {config.allowHints && <div className="text-sm mt-2">💡 Review the hint in the Theory section.</div>}
+     </>
+    )}
    </div>
    )}
   </div>

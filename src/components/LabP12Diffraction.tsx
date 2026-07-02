@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import { CheckCircle, XCircle, Activity, Settings2, Database, Calculator, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DeepDivePanel from './DeepDivePanel';
+import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [mode, setMode] = useState<'noise' | 'diffraction'>('diffraction');
  
  // Diffraction State
@@ -152,6 +157,13 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Lab P12.1: Optical Interference & Diffraction" />
 
+  <div className="px-4 pt-2">
+   
+  </div>
+
+  {/* Difficulty Selector */}
+  <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+     </div>
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -172,8 +184,42 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center mb-4 text-blue-700">
    <Activity className="w-6 h-6 mr-2" />
-   <h2 className="text-lg font-bold">Theory & Context</h2>
+   <h2 className="text-lg font-bold">Theory & Context {config.showDerivations && <GraduationCap className="w-4 h-4 ml-2 text-indigo-500" />}</h2>
    </div>
+
+   {config.showDerivations && (
+    <DeepDivePanel
+     derivation={{
+      title: 'Wave-Particle Duality — Why d·sinθ = mλ for Matter Too',
+      question: 'Light behaves as both a wave (interference pattern) AND a particle (photon). But de Broglie showed that particles ALSO have wave nature. How does the same diffraction equation apply to electrons?',
+      steps: [
+       {
+        label: 'Light as an electromagnetic wave: Huygens\' Principle',
+        latex: 'Each slit acts as a point source of spherical wavefronts.\nFor constructive interference: path difference = mλ\nPath diff = d × sin(θ)\n\nTherefore:\nd × sin(θ) = m × λ',
+        explanation: 'When light passes through a double slit, each slit acts as a new wave source (Huygens\' Principle). Waves from the two slits travel different distances to reach a point on the screen. When the path difference equals an integer number of wavelengths, the waves arrive in phase, producing constructive interference — a bright fringe.'
+       },
+       {
+        label: 'Einstein shows light is also a particle (photon)',
+        latex: 'E_photon = hf = hc / λ\np_photon = h / λ\n\nPhotoelectric effect:\nK_max = hf - Φ\n\nWhere Φ = work function (minimum energy to eject an electron)',
+        explanation: 'Einstein\'s photoelectric effect (Nobel Prize 1921) proved that light consists of discrete quanta — photons. Each photon carries energy E = hf and momentum p = h/λ. A single photon hits one atom and ejects one electron instantly, ruling out the classical wave picture of gradual energy absorption.'
+       },
+       {
+        label: 'de Broglie: Particles are waves too! λ = h/p',
+        latex: 'λ = h / p = h / (mv)\n\nWhere:\nh = Planck\'s constant = 6.63 × 10⁻³⁴ J·s\nm = mass of the particle\nv = velocity of the particle\np = mv = momentum\n\nFor an electron (m = 9.11×10⁻³¹ kg) at v = 10⁶ m/s:\nλ = 6.63×10⁻³⁴ / (9.11×10⁻³¹ × 10⁶)\nλ = 0.73 nm — comparable to X-ray wavelengths!',
+        explanation: 'In 1924, Louis de Broglie proposed that every moving particle has an associated wavelength, inversely proportional to its momentum. This was revolutionary — it meant that electrons, neutrons, and even atoms should produce interference patterns just like light! The same d·sinθ = mλ equation applies to all of them, you just plug in the de Broglie wavelength.'
+       },
+       {
+        label: 'Experimental confirmation: Davisson-Germer experiment',
+        latex: 'Electron diffraction from a nickel crystal:\n\nBragg condition: nλ = 2d × sin(θ)\n\nFor electrons accelerated through V volts:\nλ = h / √(2meV)\nλ = 1.226 / √V  nm\n\nAt V = 54V:\nλ = 1.226 / √54 = 0.167 nm\nThis matched the measured diffraction peak!',
+        explanation: 'Davisson and Germer (Nobel Prize 1937) fired electrons at a nickel crystal and observed a diffraction pattern — exactly as de Broglie predicted. The same happened for neutrons, protons, and even C₆₀ buckyballs. This is why electron microscopes can achieve atomic resolution — electrons have much shorter wavelengths than visible light, giving λ ∼ 0.01 nm at 15 keV.'
+       }
+      ],
+      conclusion: 'Wave-particle duality is not a paradox — it is the fundamental nature of quantum objects. Light and matter both exhibit wave properties (interference, diffraction) and particle properties (localized detection, momentum). The d·sinθ = mλ equation that you interact with in this lab is universal: it governs X-ray crystallography, electron microscopy, neutron scattering, and even the interference of large molecules like C₆₀. The wave nature determines where things CAN go; the particle nature determines where they DO go when measured.',
+      realWorldApplication: 'Transmission Electron Microscopes (TEMs) use the wave nature of electrons to image individual atoms. By accelerating electrons to 200 keV, their de Broglie wavelength is λ = 0.0025 nm — 250,000x smaller than visible light. The same d·sinθ = mλ equation determines the diffraction pattern that the TEM uses to reconstruct atomic positions with sub-angstrom precision. This is how scientists recently imaged individual hydrogen atoms in a protein structure.'
+     }}
+    />
+   )}
+
    <div className={`text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
     <strong>Interference</strong> occurs when two or more waves superpose to form a resultant wave. 
@@ -316,6 +362,12 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
     </tbody>
     </table>
    </div>
+   )}
+
+   {config.showResearchConnections && (
+    <div className="mb-4">
+     <ResearchPaperAnalysis paper={RESEARCH_PAPERS['quantum-eraser']} />
+    </div>
    )}
 
    <div className={`flex-1 flex-col bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>

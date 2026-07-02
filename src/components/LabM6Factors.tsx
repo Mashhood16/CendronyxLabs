@@ -1,5 +1,24 @@
-import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, Check, X, Info } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { ArrowLeft, Play, Pause, RotateCcw, Check, X, Info, Star, Timer, Lightbulb, Award } from 'lucide-react';
+
+const PB_KEY = 'cendronyx-m6-pb';
+
+function getPB(): { lcm: number | null; hcf: number | null } {
+  try {
+    const raw = localStorage.getItem(PB_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return { lcm: null, hcf: null };
+}
+
+function savePB(pb: { lcm: number | null; hcf: number | null }) {
+  try { localStorage.setItem(PB_KEY, JSON.stringify(pb)); } catch {}
+}
+
+function formatTime(seconds: number) {
+  const s = seconds.toFixed(1);
+  return `${s}s`;
+}
 
 export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  const [activeTab, setActiveTab] = useState<'LCM' | 'HCF'>('LCM');
@@ -11,6 +30,14 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  const [lcmFeedback, setLcmFeedback] = useState<{status: 'correct' | 'incorrect' | null, msg: string}>({status: null, msg: ''});
  const [time, setTime] = useState<number>(0);
  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+ const [lcmSolved, setLcmSolved] = useState(false);
+ const [lcmStartTime, setLcmStartTime] = useState<number | null>(null);
+ const [lcmElapsed, setLcmElapsed] = useState<number | null>(null);
+ const [showLcmDemo, setShowLcmDemo] = useState(false);
+ const [lcmDemoStep, setLcmDemoStep] = useState(0);
+ const lcmDemoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+ const hcfDemoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+ const [personalBest, setPersonalBest] = useState(getPB());
 
  useEffect(() => {
  let timer: ReturnType<typeof setTimeout>;
@@ -22,14 +49,62 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  return () => clearInterval(timer);
  }, [isPlaying]);
 
+ // Track solve time for LCM
+ useEffect(() => {
+  if (lcmSolved && lcmStartTime !== null) {
+    const elapsed = Date.now() - lcmStartTime;
+    const elapsedSec = parseFloat((elapsed / 1000).toFixed(1));
+    setLcmElapsed(elapsedSec);
+    if (personalBest.lcm === null || elapsedSec < personalBest.lcm) {
+      const newPB = { ...personalBest, lcm: elapsedSec };
+      setPersonalBest(newPB);
+      savePB(newPB);
+    }
+  }
+ }, [lcmSolved]);
+
  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
  const calcLcm = (a: number, b: number) => (a * b) / gcd(a, b);
+
+ // LCM step-by-step demo
+ const lcmMultiplesA = useRef<number[]>([]);
+ const lcmMultiplesB = useRef<number[]>([]);
+
+ const runLcmDemo = useCallback(() => {
+  const lcm = (lh1 * lh2) / gcd(lh1, lh2);
+  const ma: number[] = [];
+  const mb: number[] = [];
+  for (let i = 1; i <= 12; i++) {
+    const va = lh1 * i;
+    const vb = lh2 * i;
+    if (va <= lcm * 2) ma.push(va);
+    if (vb <= lcm * 2) mb.push(vb);
+  }
+  lcmMultiplesA.current = ma;
+  lcmMultiplesB.current = mb;
+  setShowLcmDemo(true);
+  setLcmDemoStep(0);
+  // Auto-advance steps
+  let step = 0;
+  if (lcmDemoRef.current) clearInterval(lcmDemoRef.current);
+  lcmDemoRef.current = setInterval(() => {
+    step++;
+    if (step > 5) {
+      if (lcmDemoRef.current) clearInterval(lcmDemoRef.current);
+      lcmDemoRef.current = null;
+      return;
+    }
+    setLcmDemoStep(step);
+  }, 1200);
+ }, [lh1, lh2]);
 
  const handleLcmCheck = () => {
  const ans = parseInt(lcmInput);
  if (isNaN(ans)) return;
  if (ans === calcLcm(lh1, lh2)) {
   setLcmFeedback({status: 'correct', msg: 'Great job! You found the Least Common Multiple.'});
+  setLcmSolved(true);
+  if (lcmStartTime === null) setLcmStartTime(Date.now());
  } else {
   setLcmFeedback({status: 'incorrect', msg: 'Not quite. Find the smallest number that is a multiple of both.'});
  }
@@ -40,16 +115,61 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  const [pipe2, setPipe2] = useState<number>(18);
  const [hcfInput, setHcfInput] = useState<string>('');
  const [hcfFeedback, setHcfFeedback] = useState<{status: 'correct' | 'incorrect' | null, msg: string}>({status: null, msg: ''});
+ const [hcfSolved, setHcfSolved] = useState(false);
+ const [hcfStartTime, setHcfStartTime] = useState<number | null>(null);
+ const [hcfElapsed, setHcfElapsed] = useState<number | null>(null);
+ const [showHcfDemo, setShowHcfDemo] = useState(false);
+ const [hcfDemoStep, setHcfDemoStep] = useState(0);
+
+ // Track solve time for HCF
+ useEffect(() => {
+  if (hcfSolved && hcfStartTime !== null) {
+    const elapsed = Date.now() - hcfStartTime;
+    const elapsedSec = parseFloat((elapsed / 1000).toFixed(1));
+    setHcfElapsed(elapsedSec);
+    if (personalBest.hcf === null || elapsedSec < personalBest.hcf) {
+      const newPB = { ...personalBest, hcf: elapsedSec };
+      setPersonalBest(newPB);
+      savePB(newPB);
+    }
+  }
+ }, [hcfSolved]);
 
  const handleHcfCheck = () => {
  const ans = parseInt(hcfInput);
  if (isNaN(ans)) return;
  if (ans === gcd(pipe1, pipe2)) {
   setHcfFeedback({status: 'correct', msg: 'Excellent! You found the Highest Common Factor.'});
+  setHcfSolved(true);
+  if (hcfStartTime === null) setHcfStartTime(Date.now());
  } else {
   setHcfFeedback({status: 'incorrect', msg: 'Not quite. Find the largest number that divides both equally.'});
  }
  };
+
+ const runHcfDemo = useCallback(() => {
+  setShowHcfDemo(true);
+  setHcfDemoStep(0);
+  let step = 0;
+  if (hcfDemoRef.current) clearInterval(hcfDemoRef.current);
+  hcfDemoRef.current = setInterval(() => {
+    step++;
+    if (step > 4) {
+      if (hcfDemoRef.current) clearInterval(hcfDemoRef.current);
+      hcfDemoRef.current = null;
+      return;
+    }
+    setHcfDemoStep(step);
+  }, 1400);
+ }, []);
+
+ // Cleanup intervals on unmount
+ useEffect(() => {
+  return () => {
+    if (lcmDemoRef.current) clearInterval(lcmDemoRef.current);
+    if (hcfDemoRef.current) clearInterval(hcfDemoRef.current);
+  };
+ }, []);
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
@@ -95,6 +215,13 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     <p className="text-sm text-blue-700 dark:text-blue-400">
      Two lighthouses flash at different intervals. Find the time when they will flash together! This is the <strong>Least Common Multiple (LCM)</strong> of their intervals.
     </p>
+    <button
+     onClick={runLcmDemo}
+     className="mt-3 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2 dark:bg-indigo-500 dark:hover:bg-indigo-400"
+    >
+     <Lightbulb className="w-4 h-4" />
+     Show Me How (Step-by-Step Demo)
+    </button>
     </div>
 
     <div className="space-y-4">
@@ -117,6 +244,27 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      className="w-full accent-red-600"
      />
     </div>
+    </div>
+
+    {/* Personal Best / Speed Badge */}
+    <div className="flex items-center gap-3">
+     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+      <Timer className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+      <span className="text-xs font-bold text-amber-700 dark:text-amber-300">
+        {lcmElapsed !== null ? formatTime(lcmElapsed) : '--'}
+      </span>
+     </div>
+     {personalBest.lcm !== null && (
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
+       <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+       <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+         Best: {formatTime(personalBest.lcm)}
+       </span>
+      </div>
+     )}
+     {lcmElapsed !== null && personalBest.lcm !== null && lcmElapsed === personalBest.lcm && (
+      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">New Record!</span>
+     )}
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
@@ -156,6 +304,13 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     <p className="text-sm text-green-700 dark:text-green-400">
      You have two pipes of different lengths. You need to cut them into smaller pieces of <strong>equal maximum length</strong> with no leftovers. This is the <strong>Highest Common Factor (HCF)</strong>.
     </p>
+    <button
+     onClick={runHcfDemo}
+     className="mt-3 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2 dark:bg-indigo-500 dark:hover:bg-indigo-400"
+    >
+     <Lightbulb className="w-4 h-4" />
+     Show Me How (Pipe Cutting Demo)
+    </button>
     </div>
 
     <div className="space-y-4">
@@ -178,6 +333,27 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      className="w-full accent-emerald-600"
      />
     </div>
+    </div>
+
+    {/* Personal Best / Speed Badge - HCF */}
+    <div className="flex items-center gap-3">
+     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+      <Timer className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+      <span className="text-xs font-bold text-amber-700 dark:text-amber-300">
+        {hcfElapsed !== null ? formatTime(hcfElapsed) : '--'}
+      </span>
+     </div>
+     {personalBest.hcf !== null && (
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
+       <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+       <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
+         Best: {formatTime(personalBest.hcf)}
+       </span>
+      </div>
+     )}
+     {hcfElapsed !== null && personalBest.hcf !== null && hcfElapsed === personalBest.hcf && (
+      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">New Record!</span>
+     )}
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
@@ -212,13 +388,134 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Right Column: Simulation Stage */}
+  <style>{`
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.5); } 60% { opacity: 1; transform: scale(1.1); } 100% { transform: scale(1); } }
+    .animate-fadeIn { animation: fadeIn 0.5s ease-out forwards; }
+    .animate-bounce-in { animation: bounceIn 0.6s ease-out forwards; }
+  `}</style>
   <div className="w-1/2 bg-slate-100 dark:bg-[#121212] p-6 flex flex-col relative overflow-hidden">
    {activeTab === 'LCM' ? (
    <div className="flex flex-col h-full">
+    {/* LCM Step-by-Step Demo Overlay */}
+    {showLcmDemo && (
+     <div className="absolute inset-0 z-20 bg-white/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowLcmDemo(false)}>
+      <div className="flex items-center justify-between mb-4" onClick={e => e.stopPropagation()}>
+       <h3 className="text-lg font-bold flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
+        <Lightbulb className="w-5 h-5" /> How Lighthouses Sync
+       </h3>
+       <button onClick={() => setShowLcmDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">Close</button>
+      </div>
+      
+      <div className="flex-1 flex flex-col gap-4" onClick={e => e.stopPropagation()}>
+       {/* Step 1: Show multiples of A */}
+       {lcmDemoStep >= 1 && (
+        <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">
+          1. Multiples of Lighthouse A (every {lh1}s):
+         </p>
+         <div className="flex flex-wrap gap-1.5">
+          {lcmMultiplesA.current.slice(0, 6).map((m, i) => (
+           <span key={i} className={`px-2 py-1 rounded text-xs font-mono font-bold ${m === calcLcm(lh1, lh2) ? 'bg-yellow-300 text-yellow-900 ring-2 ring-yellow-500' : 'bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200'}`}>
+            {m}
+           </span>
+          ))}
+         </div>
+        </div>
+       )}
+
+       {/* Step 2: Show multiples of B */}
+       {lcmDemoStep >= 2 && (
+        <div className="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-red-800 dark:text-red-300 mb-2">
+          2. Multiples of Lighthouse B (every {lh2}s):
+         </p>
+         <div className="flex flex-wrap gap-1.5">
+          {lcmMultiplesB.current.slice(0, 6).map((m, i) => (
+           <span key={i} className={`px-2 py-1 rounded text-xs font-mono font-bold ${m === calcLcm(lh1, lh2) ? 'bg-yellow-300 text-yellow-900 ring-2 ring-yellow-500' : 'bg-red-100 dark:bg-red-800 text-red-700 dark:text-red-200'}`}>
+            {m}
+           </span>
+          ))}
+         </div>
+        </div>
+       )}
+
+       {/* Step 3: Show common multiples */}
+       {lcmDemoStep >= 3 && (
+        <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
+          3. Common multiples (appear in BOTH lists):
+         </p>
+         <div className="flex flex-wrap gap-2">
+          {(() => {
+           const common = lcmMultiplesA.current.filter(v => lcmMultiplesB.current.includes(v));
+           return common.length > 0 ? common.map((m, i) => (
+            <span key={i} className="px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 ring-2 ring-green-400">
+             {m}
+            </span>
+           )) : <span className="text-xs text-slate-500">None yet — keep looking!</span>;
+          })()}
+         </div>
+        </div>
+       )}
+
+       {/* Step 4: Highlight LCM */}
+       {lcmDemoStep >= 4 && (
+        <div className="p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 dark:border-yellow-600 animate-bounce-in text-center">
+         <Star className="w-6 h-6 text-yellow-500 mx-auto mb-1" />
+         <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">
+          LCM = {calcLcm(lh1, lh2)}
+         </p>
+         <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
+          Both lighthouses flash together every {calcLcm(lh1, lh2)} seconds!
+         </p>
+        </div>
+       )}
+
+       {/* Step 5: Show timeline visualization */}
+       {lcmDemoStep >= 5 && (
+        <div className="p-3 rounded-lg bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] animate-fadeIn">
+         <p className="text-xs font-semibold text-slate-600 dark:text-[#71717a] mb-3 text-center">Timeline (seconds)</p>
+         <div className="relative h-20">
+          {/* Multiples of A */}
+          <div className="absolute top-0 w-full h-6">
+           <span className="text-[10px] text-blue-600 dark:text-blue-400 font-bold absolute -top-1 left-0">A</span>
+           {lcmMultiplesA.current.slice(0, 8).map((m, i) => (
+            <div key={`a-${i}`} className={`absolute top-0 w-3 h-3 rounded-full ${m === calcLcm(lh1, lh2) ? 'bg-yellow-400 ring-2 ring-yellow-500 z-10' : 'bg-blue-400'}`}
+              style={{ left: `${(m / (Math.max(...lcmMultiplesA.current.slice(0, 8), ...lcmMultiplesB.current.slice(0, 8)))) * 100}%` }}>
+              <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] font-mono">{m}</span>
+            </div>
+           ))}
+          </div>
+          {/* Multiples of B */}
+          <div className="absolute top-8 w-full h-6">
+           <span className="text-[10px] text-red-600 dark:text-red-400 font-bold absolute -top-1 left-0">B</span>
+           {lcmMultiplesB.current.slice(0, 8).map((m, i) => (
+            <div key={`b-${i}`} className={`absolute top-0 w-3 h-3 rounded-full ${m === calcLcm(lh1, lh2) ? 'bg-yellow-400 ring-2 ring-yellow-500 z-10' : 'bg-red-400'}`}
+              style={{ left: `${(m / (Math.max(...lcmMultiplesA.current.slice(0, 8), ...lcmMultiplesB.current.slice(0, 8)))) * 100}%` }}>
+              <span className="absolute -top-4 left-1/2 -translate-x-1/2 text-[9px] font-mono">{m}</span>
+            </div>
+           ))}
+          </div>
+          {/* Sync marker */}
+          <div className="absolute top-0 bottom-0 w-0.5 bg-yellow-500 z-20"
+            style={{ left: `${(calcLcm(lh1, lh2) / (Math.max(...lcmMultiplesA.current.slice(0, 8), ...lcmMultiplesB.current.slice(0, 8)))) * 100}%` }}>
+          </div>
+         </div>
+        </div>
+       )}
+       
+       <p className="text-xs text-center text-slate-400 dark:text-[#71717a] mt-2">
+        Demo auto-advances. Click anywhere or press Close to start solving.
+       </p>
+      </div>
+     </div>
+    )}
+
     {/* Controls */}
     <div className="flex justify-center gap-4 mb-8">
     <button 
-     onClick={() => setIsPlaying(!isPlaying)}
+     onClick={() => {if (!isPlaying) setLcmStartTime(Date.now()); setIsPlaying(!isPlaying);}}
      className="flex items-center gap-2 px-4 py-2 bg-[#121212] dark:bg-slate-200 text-white dark:text-slate-900 rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors shadow-sm"
     >
      {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
@@ -299,6 +596,96 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    </div>
    ) : (
    <div className="flex flex-col h-full justify-center">
+    {/* HCF Step-by-Step Demo Overlay */}
+    {showHcfDemo && (
+     <div className="absolute inset-0 z-20 bg-white/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowHcfDemo(false)}>
+      <div className="flex items-center justify-between mb-4" onClick={e => e.stopPropagation()}>
+       <h3 className="text-lg font-bold flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
+        <Lightbulb className="w-5 h-5" /> How Pipe Cutting Works
+       </h3>
+       <button onClick={() => setShowHcfDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">Close</button>
+      </div>
+      
+      <div className="flex-1 flex flex-col gap-4" onClick={e => e.stopPropagation()}>
+       {/* Step 1: Show pipe lengths */}
+       {hcfDemoStep >= 1 && (
+        <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
+          1. We have two pipes: {pipe1}m and {pipe2}m
+         </p>
+         <div className="flex gap-4 items-center justify-center">
+          <div className="h-6 bg-green-400 rounded" style={{ width: `${(pipe1/36)*200}px` }}></div>
+          <span className="text-sm font-mono font-bold">{pipe1}m</span>
+         </div>
+         <div className="flex gap-4 items-center justify-center mt-2">
+          <div className="h-6 bg-emerald-400 rounded" style={{ width: `${(pipe2/36)*200}px` }}></div>
+          <span className="text-sm font-mono font-bold">{pipe2}m</span>
+         </div>
+        </div>
+       )}
+
+       {/* Step 2: List factors of each */}
+       {hcfDemoStep >= 2 && (
+        <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">
+          2. Find all factors of each pipe length:
+         </p>
+         <div className="space-y-2">
+          <div>
+           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">Factors of {pipe1}: </span>
+           <span className="text-xs font-mono">{[...Array(pipe1)].map((_, i) => i + 1).filter(f => pipe1 % f === 0).join(', ')}</span>
+          </div>
+          <div>
+           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">Factors of {pipe2}: </span>
+           <span className="text-xs font-mono">{[...Array(pipe2)].map((_, i) => i + 1).filter(f => pipe2 % f === 0).join(', ')}</span>
+          </div>
+         </div>
+        </div>
+       )}
+
+       {/* Step 3: Show common factors */}
+       {hcfDemoStep >= 3 && (
+        <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
+         <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
+          3. Common factors (divides BOTH pipes):
+         </p>
+         <div className="flex flex-wrap gap-2">
+          {[...Array(Math.min(pipe1, pipe2))].map((_, i) => {
+           const f = i + 1;
+           const isCommon = pipe1 % f === 0 && pipe2 % f === 0;
+           return isCommon ? (
+            <span key={f} className={`px-2.5 py-1 rounded text-xs font-mono font-bold ${f === gcd(pipe1, pipe2) ? 'bg-yellow-300 text-yellow-900 ring-2 ring-yellow-500 scale-110' : 'bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200'}`}>
+             {f}
+            </span>
+           ) : null;
+          })}
+         </div>
+        </div>
+       )}
+
+       {/* Step 4: Highlight HCF */}
+       {hcfDemoStep >= 4 && (
+        <div className="p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 dark:border-yellow-600 animate-bounce-in text-center">
+         <Star className="w-6 h-6 text-yellow-500 mx-auto mb-1" />
+         <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">
+          HCF = {gcd(pipe1, pipe2)}m
+         </p>
+         <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
+          Cut both pipes into {gcd(pipe1, pipe2)}m pieces — no leftovers!
+         </p>
+         <p className="text-xs text-yellow-500 mt-1">
+          Pipe A: {pipe1 / gcd(pipe1, pipe2)} pieces &nbsp;|&nbsp; Pipe B: {pipe2 / gcd(pipe1, pipe2)} pieces
+         </p>
+        </div>
+       )}
+       
+       <p className="text-xs text-center text-slate-400 dark:text-[#71717a] mt-2">
+        Demo auto-advances. Click anywhere or press Close to start solving.
+       </p>
+      </div>
+     </div>
+    )}
+
     <div className="flex-1 min-w-0 flex flex-col justify-center items-center gap-12 w-full max-w-2xl mx-auto">
     
     {/* Pipe 1 */}

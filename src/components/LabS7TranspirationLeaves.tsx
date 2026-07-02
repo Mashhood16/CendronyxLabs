@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { Info } from 'lucide-react';
+import { Info, Droplets } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DataChart from './DataChart';
+import ProgressionPath from './ProgressionPath';
+import { addMeasurementNoise } from '../utils/measurementNoise';
 
 interface LabProps {
  onExit: () => void;
@@ -10,6 +13,8 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
  const [upperColor, setUpperColor] = useState('blue');
  const [lowerColor, setLowerColor] = useState('blue');
  const [tested, setTested] = useState(false);
+ const [dataLog, setDataLog] = useState<{ time: number; waterLoss: number }[]>([]);
+ const [runCount, setRunCount] = useState(0);
 
  const runTest = () => {
  // Stomata are primarily on the lower surface. Upper surface has fewer/none depending on the plant.
@@ -26,6 +31,22 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
  setTested(false);
  setUpperColor('blue');
  setLowerColor('blue');
+ };
+
+ const handleRecord = () => {
+  const t = dataLog.length + 1;
+  // Simulate water loss: more from lower surface, less from upper
+  const baseLoss = t * 2.5;
+  const lowerLoss = addMeasurementNoise(baseLoss * 1.8, t, 5);
+  const upperLoss = addMeasurementNoise(baseLoss * 0.3, t + 100, 8);
+  const totalLoss = parseFloat((lowerLoss + upperLoss).toFixed(1));
+  setDataLog(prev => [...prev, { time: t * 10, waterLoss: totalLoss }]);
+  setRunCount(prev => prev + 1);
+ };
+
+ const resetData = () => {
+  setDataLog([]);
+  setRunCount(0);
  };
 
  return (
@@ -94,6 +115,45 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
    <div className="mt-12 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-l-4 border-blue-500 max-w-xl animate-bounce">
    <h4 className="font-bold text-lg mb-2 flex items-center"><Info className="w-5 h-5 mr-2 text-blue-500"/> Observation Result</h4>
    <p>The paper on the <strong>lower surface</strong> turned pink, while the upper surface paper remained blue! This proves that transpiration occurs mainly through tiny pores called <strong>stomata</strong>, which are concentrated on the underside of leaves to reduce excessive water loss from direct sunlight.</p>
+   </div>
+  )}
+
+  {/* Data Collection & Analysis */}
+  {tested && (
+   <div className="mt-8 w-full max-w-2xl space-y-4">
+    <DataChart
+     title="Transpiration Data Logger"
+     xAxisKey="time"
+     xAxisLabel="Time (min)"
+     series={[{ key: 'waterLoss', name: 'Water Loss (ml)', color: '#3b82f6' }]}
+     data={dataLog}
+     onRecord={handleRecord}
+     onReset={resetData}
+     noisePercent={3}
+     recordLabel="Record Measurement"
+    />
+
+    {dataLog.length >= 3 && (
+     <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+      <h4 className="font-bold text-blue-800 dark:text-blue-300 flex items-center gap-2 mb-2">
+       <Droplets className="w-4 h-4" /> Analysis
+      </h4>
+      <p className="text-sm text-blue-700 dark:text-blue-300">
+       Notice how water loss increases over time! The rate depends on the number of stomata, humidity, temperature, and air movement. Try recording multiple data points to see the trend.
+      </p>
+      <p className="text-xs mt-2 text-blue-500">
+       Why is the answer slightly different each time? Because real experiments have{' '}
+       <strong>measurement uncertainty</strong> — no two readings are exactly the same!
+      </p>
+     </div>
+    )}
+
+    <ProgressionPath
+     currentClass={7}
+     links={[
+      { fromClass: 6, fromSubject: 'Science', fromLab: 'Plant Basics', toConcept: 'Plants need water, sunlight, and air' },
+     ]}
+    />
    </div>
   )}
   </div>

@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { Info, Play, RotateCcw, CheckCircle, XCircle } from 'lucide-react';
+import { Info, Play, RotateCcw, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import PredictionChallenge from './PredictionChallenge';
 
 export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [mass, setMass] = useState<number>(2);
  const [mode, setMode] = useState<'sliding' | 'rolling' | 'unknown'>('sliding');
  const [pulling, setPulling] = useState<boolean>(false);
@@ -89,7 +93,10 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    <LabHeader onExit={onExit} title="Friction Lab" subtitle="Investigate Static, Kinetic, and Rolling Friction" />
 
-   
+   <div className="px-4 pt-2 lg:pt-0">
+    
+   </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -106,7 +113,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-     <div className={`flex items-center gap-2 mb-4 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+          <div className={`flex items-center gap-2 mb-4 mt-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
       <Info className="w-5 h-5 text-blue-600" />
       <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
      </div>
@@ -170,6 +177,12 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
 
     {/* Column 2: Simulation */}
     <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     {config.showHints && (
+      <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+       <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+       <span><strong>Hint:</strong> F_max = μ_s × m × g. Kinetic friction is usually lower than static. Try the rolling mode to compare!</span>
+      </div>
+     )}
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">2. Interactive Simulation</h2>
      <div className={`flex-1 border rounded-lg bg-slate-50 dark:bg-[#121212] relative flex flex-col justify-between lg:overflow- `}>
       <svg viewBox="0 0 400 450" className="w-full h-full">
@@ -228,6 +241,19 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
 
     {/* Column 3: Analysis */}
     <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     {config.predictionPhase && (
+      <div className="mb-4">
+       <PredictionChallenge
+        challenge={{
+         question: "Will static friction or kinetic friction be greater for the wooden block on a wooden surface?",
+         options: ["Static friction will be greater", "Kinetic friction will be greater", "They will be equal", "It depends on the mass only"],
+         correctOption: 0,
+         explanation: "Static friction (μs = 0.4) is always greater than kinetic friction (μk = 0.3) for the same surfaces. You need more force to start moving than to keep moving."
+        }}
+        onComplete={() => {}}
+       />
+      </div>
+     )}
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">3. Data & Analysis</h2>
      
      <div className="overflow-x-auto mb-6">

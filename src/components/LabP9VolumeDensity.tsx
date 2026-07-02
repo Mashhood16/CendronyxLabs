@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, RotateCcw} from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [objectData, setObjectData] = useState({ mass: 0, volume: 0, density: 0, name: '' });
  const [step, setStep] = useState<'start' | 'on_balance' | 'in_water'>('start');
  
@@ -46,13 +49,17 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
  const v2_val = parseFloat(v2Input);
  const d = parseFloat(densityInput);
  
- if (Math.abs(m - objectData.mass) > 0.1 || Math.abs(v1_val - v1) > 0.1 || Math.abs(v2_val - (v1 + objectData.volume)) > 0.1) {
+ // Tolerance varies by difficulty level
+ const measureTolerance = difficulty === 'understand' ? 0.1 : difficulty === 'apply' ? 0.3 : 0.5;
+ 
+ if (Math.abs(m - objectData.mass) > measureTolerance || Math.abs(v1_val - v1) > measureTolerance || Math.abs(v2_val - (v1 + objectData.volume)) > measureTolerance) {
   setFeedback('measurements_error');
   return;
  }
 
  const calcDensity = m / (v2_val - v1_val);
- if (Math.abs(calcDensity - d) < 0.2) {
+ const densityTolerance = difficulty === 'understand' ? 0.2 : difficulty === 'apply' ? 0.5 : 0.8;
+ if (Math.abs(calcDensity - d) < densityTolerance) {
   setFeedback('correct');
  } else {
   setFeedback('density_error');
@@ -63,7 +70,10 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Physics Grade 9: Volume & Density" />
 
-  
+  <div className="px-4 pt-2 lg:pt-0">
+   
+  </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -80,7 +90,7 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory: Density</h2>
+      <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory: Density</h2>
    <div className="prose prose-sm">
    <p>
     <strong>Density</strong> is the mass per unit volume of a substance. 
@@ -106,6 +116,12 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
 
   {/* Column 2: Simulator */}
   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {config.showHints && (
+    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+     <span><strong>Hint:</strong> &rho; = m / V. Volume = V2 - V1 (displacement). The cylinder starts at V1=50 mL.</span>
+    </div>
+   )}
    <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">Laboratory Bench</h2>
 
    <div className="flex gap-2 w-full justify-center mb-6">

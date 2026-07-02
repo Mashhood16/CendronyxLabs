@@ -1,9 +1,12 @@
-import { useState, useMemo } from 'react';
-import {Globe, Activity, CheckCircle, XCircle } from 'lucide-react';
+import { useState, useMemo } from 'react';import { Globe, Activity, CheckCircle, XCircle, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DeepDivePanel from './DeepDivePanel';
+import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
+import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
 
 export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const config = DIFFICULTY_CONFIGS['deep-dive'];
  const [velocity, setVelocity] = useState<number>(7.67); // km/s
  const [height, setHeight] = useState<number>(400); // km
 
@@ -79,6 +82,13 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <LabHeader onExit={onExit} title="Orbital Mechanics & Gravitation" />
 
+  <div className="px-4 pt-2">
+   
+  </div>
+
+  {/* Difficulty Selector */}
+  <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+     </div>
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -96,7 +106,41 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Newton's Cannonball</h2>
+   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">Newton's Cannonball {config.showDerivations && <GraduationCap className="w-5 h-5 text-indigo-500" />}</h2>
+
+   {config.showDerivations && (
+    <DeepDivePanel
+     derivation={{
+      title: 'Kepler\'s Laws from Newton\'s Inverse-Square Law',
+      question: 'Kepler discovered the elliptical orbits of planets empirically in 1609. But WHY are orbits elliptical? How did Newton derive Kepler\'s three laws from his universal law of gravitation?',
+      steps: [
+       {
+        label: 'Newton\'s Universal Law of Gravitation (Center Force)',
+        latex: 'F(r) = -GMm / r² × r̂\n\nWhere:\nG = 6.674×10⁻¹¹ N·m²/kg²\nM = mass of central body (Sun/Earth)\nm = mass of orbiting body (planet/satellite)\nr = distance between centers\nr̂ = unit vector pointing radially outward',
+        explanation: 'Newton realized that the same force that makes an apple fall also holds the Moon in orbit. The gravitational force is always attractive, central (pointing along the line connecting the two bodies), and follows an inverse-square law with distance. The minus sign indicates attraction — the force points opposite to the radial direction.'
+       },
+       {
+        label: 'Conservation of Angular Momentum → Constant Areal Velocity',
+        latex: 'L = m × r × v_⟂ = constant\n\nTorque τ = r × F = 0 (central force → no torque)\nSo L is conserved!\n\nThis means:\ndA/dt = L/(2m) = constant\n(Ellipses sweep equal areas in equal times)',
+        explanation: 'Since the gravitational force is purely radial (no tangential component), it exerts zero torque on the orbiting body. Therefore, angular momentum L is conserved. This directly implies Kepler\'s Second Law: a line from the Sun to a planet sweeps out equal areas in equal times. When the planet is closer to the Sun, it must move faster to sweep the same area.'
+       },
+       {
+        label: 'Derive the Orbital Equation (the Ellipse)',
+        latex: 'From F = ma and F = -GMm/r²:\n\nd²u/dθ² + u = GM / h²\n\nWhere u = 1/r and h = L/m = r² · dθ/dt\n\nSolution:\nr(θ) = h²/[GM × (1 + e × cos(θ))]\n\nThis is the equation of an ellipse with:\ne = sqrt(1 + 2Eh²/G²M²) = eccentricity\nE = total orbital energy per unit mass',
+        explanation: 'The differential equation has a beautiful solution: the general orbit is a conic section. When e = 0, the orbit is a circle; when 0 < e < 1, it\'s an ellipse (Kepler\'s First Law!); when e = 1, it\'s a parabola; when e > 1, it\'s a hyperbola. The eccentricity e is determined by the total energy — bound orbits (E < 0) are ellipses, unbound (E ≥ 0) are parabolas or hyperbolas.'
+       },
+       {
+        label: 'Kepler\'s Third Law: T² ∝ a³',
+        latex: 'For a circular orbit: centripetal = gravitational\nmv²/r = GMm/r²\nv² = GM/r\n\nPeriod T = 2πr / v\nT² = 4π²r² / v²\nT² = 4π²r² / (GM/r)\nT² = (4π²/GM) × r³\n\nFor elliptical orbits (semi-major axis a):\nT² = (4π²/GM) × a³',
+        explanation: 'Kepler\'s Third Law falls out directly from equating centripetal acceleration to gravitational acceleration. The key insight: T² is proportional to a³ with a constant of proportionality that depends ONLY on the central mass M — NOT on the orbiting body\'s mass. This is why all planets in our solar system follow the same T²/a³ = constant relationship, and why we can calculate the mass of any central body just by measuring a satellite\'s orbit!'
+       }
+      ],
+      conclusion: 'Newton\'s inverse-square law of gravity elegantly explains ALL of Kepler\'s empirical laws. The elliptical orbits (Kepler I) emerge from solving the orbital differential equation. Equal areas in equal times (Kepler II) come from angular momentum conservation. The T² ∝ a³ relation (Kepler III) follows directly from equating centripetal and gravitational forces. This unification of celestial and terrestrial mechanics was humanity\'s first grand unification of physics — showing that the same laws govern the fall of an apple and the motion of the planets.',
+      realWorldApplication: 'This lab\'s orbit simulator uses exactly these equations! The numerical integration uses ax = -GMx/r³ and ay = -GMy/r³ — the same inverse-square law. When you set the velocity to 7.67 km/s at 400 km altitude, the satellite follows an elliptical orbit (or circular, if perfectly tuned). NASA\'s Mission Control uses these same Newtonian equations to plan every satellite launch, ISS resupply trajectory, and Mars rover landing — corrected slightly by Einstein\'s general relativity for GPS satellites where the 38 μs/day relativistic drift would accumulate to 10 km of positioning error per day.'
+     }}
+    />
+   )}
+
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
    <p>
     Imagine a cannon on top of a very high mountain. If the cannonball is fired with low velocity, it falls back to Earth.
@@ -214,6 +258,13 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
 
   {/* Right Column: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   {/* Research Paper Analysis */}
+   {config.showResearchConnections && (
+    <div className="mb-4">
+     <ResearchPaperAnalysis paper={RESEARCH_PAPERS['exoplanet-gravitational']} />
+    </div>
+   )}
+
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
    <Activity className="text-emerald-500" />
    Engineering Tasks

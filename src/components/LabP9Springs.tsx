@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
-import { Info, Plus, Minus, CheckCircle, XCircle } from 'lucide-react';
+import { Info, Plus, Minus, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
+ const config = DIFFICULTY_CONFIGS[difficulty];
  const [numSprings, setNumSprings] = useState<number>(1);
  const [mass, setMass] = useState<number>(100);
  const [noise] = useState([Math.random()*0.04-0.02, Math.random()*0.04-0.02, Math.random()*0.04-0.02]);
@@ -55,8 +58,11 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
  const checkAnswers = () => {
   const f = parseFloat(userForce);
   const k = parseFloat(userK);
-  setAssessmentResult1(Math.abs(f - 1.96) < 0.1 ? 'correct' : 'incorrect');
-  setAssessmentResult2(Math.abs(k - 50) < 1 ? 'correct' : 'incorrect');
+  // Tolerance varies by difficulty level
+  const forceTolerance = difficulty === 'understand' ? 0.2 : difficulty === 'apply' ? 0.3 : 0.5;
+  const kTolerance = difficulty === 'understand' ? 1 : difficulty === 'apply' ? 2 : 5;
+  setAssessmentResult1(Math.abs(f - 1.96) < forceTolerance ? 'correct' : 'incorrect');
+  setAssessmentResult2(Math.abs(k - 50) < kTolerance ? 'correct' : 'incorrect');
  };
 
  const renderBalances = () => {
@@ -104,7 +110,10 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    <LabHeader onExit={onExit} title="Springs in Series Lab" subtitle="Observe forces and extensions when springs are connected sequentially." />
 
-   
+   <div className="px-4 pt-2 lg:pt-0">
+    
+   </div>
+
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
@@ -121,7 +130,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-     <div className={`flex items-center gap-2 mb-4 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+          <div className={`flex items-center gap-2 mb-4 mt-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
       <Info className="w-5 h-5 text-emerald-600" />
       <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
      </div>
@@ -161,6 +170,12 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
 
     {/* Column 2: Simulation */}
     <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     {config.showHints && (
+      <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+       <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+       <span><strong>Hint:</strong> Springs in series have the same tension. The total extension is the sum of each spring's extension. 1/k_eq = 1/k1 + 1/k2 + ...</span>
+      </div>
+     )}
      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">2. Interactive Simulation</h2>
      <svg 
       ref={svgRef} 

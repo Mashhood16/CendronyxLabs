@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Activity, Play } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Activity, Play, Heart } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DataChart from './DataChart';
+import ProgressionPath from './ProgressionPath';
+import { addMeasurementNoise } from '../utils/measurementNoise';
 
 interface LabProps {
  onExit: () => void;
@@ -10,6 +13,10 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
  const [state, setState] = useState<'rest' | 'exercising' | 'recovery'>('rest');
  const [pulse, setPulse] = useState(72); // resting BPM
  const [timer, setTimer] = useState(0);
+ const [pulseLog, setPulseLog] = useState<{ time: number; bpm: number; phase: string }[]>([]);
+ const logIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+ const pulseRef = useRef(pulse);
+ pulseRef.current = pulse;
 
  useEffect(() => {
  let interval: number;
@@ -39,9 +46,28 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
  return () => clearInterval(interval);
  }, [state]);
 
+ // Auto-log pulse data at intervals during experiment
+ useEffect(() => {
+  if (state !== 'rest') {
+    logIntervalRef.current = setInterval(() => {
+      setPulseLog(prev => {
+        const t = prev.length + 1;
+        const noisyBpm = addMeasurementNoise(pulseRef.current, t, 2);
+        return [...prev, { time: t * 5, bpm: parseFloat(noisyBpm.toFixed(1)), phase: state }];
+      });
+    }, 1500);
+  }
+  return () => { if (logIntervalRef.current) clearInterval(logIntervalRef.current); };
+ }, [state]);
+
  const startExercise = () => {
  setState('exercising');
  setTimer(0);
+ setPulseLog([]);
+ };
+
+ const resetPulseData = () => {
+  setPulseLog([]);
  };
 
  return (
@@ -147,6 +173,46 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
   {state === 'recovery' && timer > 50 && (
    <div className="mt-8 p-4 bg-red-100 text-red-800 rounded-xl border border-red-200 text-center font-medium max-w-xl animate-fade-in">
    Notice how your breathing and pulse rate spiked during exercise? Your muscles needed more oxygen and energy, so your heart had to pump blood faster to deliver it. During recovery, the rate slowly returns to normal as oxygen debt is repaid.
+   </div>
+  )}
+
+  {/* Data Collection & Analysis */}
+  {state !== 'rest' && pulseLog.length >= 2 && (
+   <div className="mt-8 w-full max-w-4xl space-y-4">
+    <DataChart
+     title="Pulse Rate Logger"
+     xAxisKey="time"
+     xAxisLabel="Time (sec)"
+     series={[
+      { key: 'bpm', name: 'Heart Rate (BPM)', color: '#ef4444' },
+     ]}
+     data={pulseLog}
+     onRecord={() => {}} // Auto-logged
+     onReset={resetPulseData}
+     noisePercent={2}
+     recordLabel="Auto-Logging Active"
+    />
+
+    {pulseLog.length >= 5 && (
+     <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
+      <h4 className="font-bold text-red-800 dark:text-red-300 flex items-center gap-2 mb-2">
+       <Heart className="w-4 h-4" /> Analysis
+      </h4>
+      <p className="text-sm text-red-700 dark:text-red-300">
+       Your pulse increased during exercise and is now recovering. The rate of recovery is an indicator of cardiovascular fitness. Fit individuals recover faster!
+      </p>
+      <p className="text-xs mt-2 text-red-500">
+       Notice small variations between readings? That's <strong>biological variability</strong> — real heart rates fluctuate naturally.
+      </p>
+     </div>
+    )}
+
+    <ProgressionPath
+     currentClass={7}
+     links={[
+      { fromClass: 6, fromSubject: 'Science', fromLab: 'Human Body Basics', toConcept: 'Heart pumps blood through the body' },
+     ]}
+    />
    </div>
   )}
   </div>

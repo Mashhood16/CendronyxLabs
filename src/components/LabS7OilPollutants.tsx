@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { Droplets, Grid, Utensils } from 'lucide-react';
+import { Droplets, Grid, Utensils, BarChart3 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import DataChart from './DataChart';
+import ProgressionPath from './ProgressionPath';
+import { addMeasurementNoise } from '../utils/measurementNoise';
 
 interface LabProps {
  onExit: () => void;
@@ -9,19 +12,40 @@ interface LabProps {
 export default function LabS7OilPollutants({ onExit }: LabProps) {
  const [method, setMethod] = useState<'none' | 'spoon' | 'cheesecloth' | 'sand'>('none');
  const [oilRemoved, setOilRemoved] = useState(0); // 0 to 100
+ const [trialResults, setTrialResults] = useState<{ method: string; efficiency: number }[]>([]);
+ const [trialCount, setTrialCount] = useState(0);
 
  const applyMethod = (m: 'spoon' | 'cheesecloth' | 'sand') => {
  setMethod(m);
  // Spoon removes a little (20%), cheesecloth removes some (50%), sand clumps and removes lots (90%)
- if (m === 'spoon') setOilRemoved(20);
- else if (m === 'cheesecloth') setOilRemoved(50);
- else if (m === 'sand') setOilRemoved(90);
+ const baseEff = m === 'spoon' ? 20 : m === 'cheesecloth' ? 50 : 90;
+ const noisyEff = parseFloat(addMeasurementNoise(baseEff, trialCount + 1, 8).toFixed(1));
+ const clampedEff = Math.min(100, Math.max(0, noisyEff));
+ setOilRemoved(clampedEff);
+ };
+
+ const recordTrial = () => {
+  if (method === 'none') return;
+  setTrialResults(prev => [...prev, { method, efficiency: oilRemoved }]);
+  setTrialCount(prev => prev + 1);
  };
 
  const reset = () => {
  setMethod('none');
  setOilRemoved(0);
  };
+
+ const resetTrials = () => {
+  setTrialResults([]);
+  setTrialCount(0);
+ };
+
+ // Aggregate trial results by method for the chart
+ const aggregatedData = ['spoon', 'cheesecloth', 'sand'].map(m => {
+  const trials = trialResults.filter(t => t.method === m);
+  const avg = trials.length > 0 ? trials.reduce((s, t) => s + t.efficiency, 0) / trials.length : 0;
+  return { method: m === 'spoon' ? 'Spoon' : m === 'cheesecloth' ? 'Cheesecloth' : 'Sand', avgEff: parseFloat(avg.toFixed(1)) };
+ }).filter(d => d.avgEff > 0);
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
@@ -109,6 +133,54 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
    {method === 'spoon' && <p>Skimming with a spoon only removes small amounts at a time and is highly inefficient for large spills.</p>}
    {method === 'cheesecloth' && <p>Dragging cheesecloth (a porous material) absorbs and traps oil, working better than a spoon but still leaving a significant slick.</p>}
    {method === 'sand' && <p>Sprinkling sand over the oil causes the sand particles to bind with the oil. The combined mass becomes denser than water, causing it to clump and sink to the bottom, clearing the surface.</p>}
+   </div>
+  )}
+
+  {/* Record Trial Button */}
+  {method !== 'none' && oilRemoved > 0 && (
+   <button
+    onClick={recordTrial}
+    className="mt-4 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400"
+   >
+    Record Trial #{trialCount + 1}
+   </button>
+  )}
+
+  {/* Data Collection & Analysis */}
+  {trialResults.length >= 1 && (
+   <div className="mt-8 w-full max-w-2xl space-y-4">
+    <DataChart
+     title="Oil Removal Efficiency Comparison"
+     xAxisKey="method"
+     xAxisLabel="Method"
+     series={[
+      { key: 'avgEff', name: 'Avg Efficiency (%)', color: '#10b981' },
+     ]}
+     data={aggregatedData}
+     onRecord={() => {}}
+     onReset={resetTrials}
+     noisePercent={5}
+     recordLabel={`${trialResults.length} Trials Recorded`}
+     chartType="bar"
+    />
+
+    {trialResults.length >= 2 && (
+     <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
+      <h4 className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-2 mb-2">
+       <BarChart3 className="w-4 h-4" /> Analysis
+      </h4>
+      <p className="text-sm text-emerald-700 dark:text-emerald-300">
+       Sand consistently removes the most oil! Compare the average efficiencies across methods. Note that each trial gives slightly different results due to <strong>experimental variation</strong>.
+      </p>
+     </div>
+    )}
+
+    <ProgressionPath
+     currentClass={7}
+     links={[
+      { fromClass: 6, fromSubject: 'Science', fromLab: 'Environmental Awareness', toConcept: 'Pollution harms ecosystems' },
+     ]}
+    />
    </div>
   )}
   </div>
