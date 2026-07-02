@@ -1,21 +1,59 @@
 # Cendronyx Labs
 
-> **Cendronyx Labs is an offline-first Progressive Web App that delivers 464 interactive simulations for Science, Physics, Chemistry, Biology, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+<p align="center">
+  <a href="https://virtuallab-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Try_It-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"></a>
+  <a href="https://github.com/Mashhood16/virtuallab"><img src="https://img.shields.io/badge/Version-beta-blue?style=for-the-badge&logo=github" alt="Version"></a>
+  <img src="https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Deployed on Vercel">
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/PWA-Offline_First-F48C06?style=for-the-badge" alt="PWA">
+</p>
+
+> **Cendronyx Labs is an offline-first Progressive Web App that delivers 464 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+
+## 📑 Table of Contents
+
+- [Vision](#-vision)
+- [Live Demo](#-live-demo)
+- [Screenshots](#-screenshots)
+- [Key Features](#-key-features)
+- [What Cendronyx Labs Does](#-what-this-web-app-does)
+- [Offline Architecture](#-offline-first--pwa-architecture)
+- [Curriculum](#-curriculum-breakdown)
+- [Roadmap](#-roadmap)
+- [Technology Stack](#-technology-stack)
+
+## 📊 Platform at a Glance
+
+- 🎓 Grades Supported: 6–12
+- 📚 Subjects: 6
+- 🧪 Interactive Labs: 464
+- 🌐 Offline-First PWA
+- 💻 Supported Platforms: Windows, macOS, Linux, Android, iOS & Chromebooks
 
 ## 👁️ Vision
 To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
+
+## 🚀 Live Demo
+
+Try Cendronyx Labs now — no installation required:
+
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-Click_Here-brightgreen?style=for-the-badge&logo=vercel)](https://virtuallab-seven.vercel.app/)
+
+> **Note:** For the full offline experience, install the PWA on your device after visiting the demo.
 
 ## 📸 Screenshots
 
 | Home Page | Subject Selection |
 |:---:|:---:|
-| ![Home Page](path/to/home-page-screenshot.png) | ![Subject Selection](path/to/subject-selection-screenshot.png) |
+| ![Home Page](public/screenshots/home-page.png) | ![Subject Selection](public/screenshots/subject-selection.png) |
 
 | Interactive Lab | Mobile View |
 |:---:|:---:|
-| ![Interactive Lab](path/to/interactive-lab-screenshot.png) | ![Mobile View](path/to/mobile-view-screenshot.png) |
-
-*(Note: Replace the placeholder image paths above with actual screenshot files)*
+| ![Interactive Lab](public/screenshots/interactive-lab.png) | ![Mobile View](public/screenshots/mobile-view.png) |
 
 ## ✨ Key Features
 - ✅ **464 interactive virtual labs** spanning multiple subjects.
@@ -27,7 +65,7 @@ To make high-quality interactive STEM and language education accessible to every
 - ✅ **Real-time simulations** driven by dynamic inputs.
 - ✅ **Curriculum organized** systematically by grade and subject.
 
-## 🚀 What This Web App Does
+## 📖 What This Web App Does
 This application serves as a massive suite of **interactive educational simulations**. It replaces static textbook diagrams with dynamic, interactive digital laboratories where students can tweak parameters (like voltage, temperature, mass, and velocity) and instantly observe real-time visual results. 
 
 Each module in the application typically features a meticulously balanced three-column layout (on desktop) consisting of:
@@ -49,6 +87,9 @@ A core pillar of this platform is its **Offline-First** design. Built as a Progr
 - **Safe Experimentation**: Students can explore dangerous reactions (like the Electrolysis of Molten Lead Chloride) or extreme physics scenarios without any physical risk.
 - **Cross-Disciplinary Education**: Provides a unified platform for learning not just the hard sciences, but also applied mathematics, computer programming, and English grammar/vocabulary.
 - **Scalable Education Delivery**: Schools and institutions can deploy this lightweight, highly performant React application to thousands of students simultaneously without incurring massive server or bandwidth costs.
+
+## Curriculum Alignment: 
+Designed around the Pakistani curriculum for Grades 6–12, with interactive learning experiences that complement classroom instruction.
 
 ## 📚 Curriculum Breakdown
 The platform contains a staggering **464 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
@@ -103,6 +144,27 @@ The platform contains a staggering **464 distinct interactive modules** spanning
 - **Mathematics**: 8 labs
 - **English**: 8 labs
 
+## 🗺️ Roadmap
+
+We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
+
+| Phase | Status | Milestone |
+|:---:|:---:|:---|
+| ✅ | **Complete** | 464 interactive labs across Grades 6–12 |
+| ✅ | **Complete** | Offline-first PWA with service worker caching |
+| ✅ | **Complete** | Responsive design (desktop & mobile) |
+| ✅ | **Complete** | Dark & Light theme support |
+| 🔜 | **In Progress** | Student progress tracking & analytics dashboard |
+| 🔜 | **Planned** | Teacher admin panel with class management |
+| 🔜 | **Planned** | Urdu language support for Science & Math labs |
+| 🔜 | **Planned** | Additional labs for Grades 1–5 |
+| 🔜 | **Planned** | Collaborative lab sessions (real-time multiplayer) |
+| 💡 | **Future** | AI-powered adaptive learning paths |
+| 💡 | **Future** | Native mobile apps (Android & iOS) |
+| 💡 | **Future** | Integration with school management systems (SMS/LMS) |
+
+> Have a feature request? [Open an issue](https://github.com/Mashhood16/virtuallab/issues) and let us know!
+
 ## 🛠️ Technology Stack
 - **Framework**: React (Vite)
 - **Progressive Web App**: Vite PWA Plugin for Service Worker precaching & offline-first delivery
@@ -110,3 +172,9 @@ The platform contains a staggering **464 distinct interactive modules** spanning
 - **Icons**: Lucide React
 - **Animations/Visuals**: React state-driven SVG manipulations
 - **Architecture**: Component-based architecture with robust mobile-responsive CSS flexbox implementations.
+
+© 2026 Cendronyx Labs. All Rights Reserved.
+
+This repository contains proprietary software and documentation. No part of this project may be copied, redistributed, modified, or used without prior written permission.
+
+
