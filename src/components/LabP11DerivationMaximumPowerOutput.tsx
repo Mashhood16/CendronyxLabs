@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationMaximumPowerOutput({ onExit }: Props) {
-  const key = 'maximumPowerOutput';
+  const key = 'maximum_power_output';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

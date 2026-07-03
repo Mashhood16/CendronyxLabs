@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationDopplerListenerAway({ onExit }: Props) {
-  const key = 'dopplerListenerAway';
+  const key = 'doppler_listener_away';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

@@ -19,9 +19,9 @@ export default function LabP10DerivationExpansionLiquids({ onExit }: { onExit?: 
 
   const steps = [
     { label: 'Real vs Apparent Expansion', formula: 'Real Expansion = Apparent Expansion + Flask Expansion', detail: 'When a liquid is heated in a glass flask, we only see apparent expansion. The flask itself also expands, hiding some of the liquid\'s true expansion.' },
-    { label: 'Define Coefficients', formula: '\u03B3_r = \u03B3_a + \u03B3_g', detail: '\u03B3_r is the real expansion coefficient of the liquid. \u03B3_a is what we observe. \u03B3_g is the glass flask expansion coefficient.' },
-    { label: 'Physical Meaning', formula: '\u03B3_r > \u03B3_a', detail: 'The real expansion is always greater than apparent expansion because the container expands too, making room for the liquid.' },
-    { label: 'Why It Matters', formula: '\u03B3_a = \u03B3_r \u2212 \u03B3_g', detail: 'To find true liquid expansion, subtract the container expansion from what you measure. Mercury thermometers account for this!' },
+    { label: 'Define Coefficients', formula: 'γ_r = γ_a + γ_g', detail: 'γ_r is the real expansion coefficient of the liquid. γ_a is what we observe. γ_g is the glass flask expansion coefficient.' },
+    { label: 'Physical Meaning', formula: 'γ_r > γ_a', detail: 'The real expansion is always greater than apparent expansion because the container expands too, making room for the liquid.' },
+    { label: 'Why It Matters', formula: 'γ_a = γ_r − γ_g', detail: 'To find true liquid expansion, subtract the container expansion from what you measure. Mercury thermometers account for this!' },
   ];
 
   return (
@@ -35,11 +35,11 @@ export default function LabP10DerivationExpansionLiquids({ onExit }: { onExit?: 
         <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg"><FlaskRound className="w-5 h-5 text-white" /></div>
-            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Understanding why \u03B3_r = \u03B3_a + \u03B3_g</p></div>
+            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Understanding why γ_r = γ_a + γ_g</p></div>
           </div>
           <div className="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-teal-200 font-semibold uppercase tracking-wider">Core Relation</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">\u03B3_r = \u03B3_a + \u03B3_g</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">γ_r = γ_a + γ_g</p>
             <p className="text-xs text-teal-200 mt-1">Real = Apparent + Glass expansion coefficients</p>
           </div>
           <div className="space-y-0">
@@ -63,7 +63,7 @@ export default function LabP10DerivationExpansionLiquids({ onExit }: { onExit?: 
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">This is why liquid-in-glass thermometers work! The liquid (\u03B3_r large) expands more than glass (\u03B3_g small), so the apparent rise (\u03B3_a) is positive and observable.</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">This is why liquid-in-glass thermometers work! The liquid (γ_r large) expands more than glass (γ_g small), so the apparent rise (γ_a) is positive and observable.</p></div>
             </div>
           </div>
         </div>
@@ -72,28 +72,28 @@ export default function LabP10DerivationExpansionLiquids({ onExit }: { onExit?: 
             <div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-teal-500" /><h2 className="text-lg font-bold">See the Relation in Action</h2></div>
             <p className="text-sm text-slate-500 mb-4">Adjust expansion coefficients to see the real vs apparent relationship.</p>
             <div className="space-y-3">
-              <div><div className="flex justify-between text-xs font-semibold"><span>Apparent Coeff (\u03B3_a)</span><span className="text-teal-600 font-mono">{gammaA.toExponential(2)}</span></div><input type="range" min="0.5e-4" max="2e-4" step="0.1e-4" value={gammaA} onChange={e => { setGammaA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /></div>
-              <div><div className="flex justify-between text-xs font-semibold"><span>Glass Coeff (\u03B3_g)</span><span className="text-teal-600 font-mono">{gammaG.toExponential(2)}</span></div><input type="range" min="1e-5" max="5e-5" step="0.1e-5" value={gammaG} onChange={e => { setGammaG(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Apparent Coeff (γ_a)</span><span className="text-teal-600 font-mono">{gammaA.toExponential(2)}</span></div><input type="range" min="0.5e-4" max="2e-4" step="0.1e-4" value={gammaA} onChange={e => { setGammaA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Glass Coeff (γ_g)</span><span className="text-teal-600 font-mono">{gammaG.toExponential(2)}</span></div><input type="range" min="1e-5" max="5e-5" step="0.1e-5" value={gammaG} onChange={e => { setGammaG(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">\u03B3_r = {gammaA.toExponential(2)} + {gammaG.toExponential(2)}</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">\u03B3_r = </span><span className="text-yellow-400 font-mono font-bold">{gammaR.toExponential(2)}/\u00B0C</span></p>
+                <p className="text-sm text-slate-400">γ_r = {gammaA.toExponential(2)} + {gammaG.toExponential(2)}</p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">γ_r = </span><span className="text-yellow-400 font-mono font-bold">{gammaR.toExponential(2)}/°C</span></p>
               </div>
             </div>
           </div>
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><FlaskRound className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">A liquid\'s apparent expansion in a glass flask is \u03B3_a = 1.2\u00D710\u207B\u2074/\u00B0C. The glass expansion is \u03B3_g = 2.5\u00D710\u207B\u2075/\u00B0C.</p>
-              <p className="text-base font-medium">Find the real expansion coefficient \u03B3_r.</p>
-              <div className="bg-teal-50 dark:bg-teal-900/20 rounded p-2 mt-2"><p className="text-xs text-teal-700 dark:text-teal-300 font-mono">\u03B3_r = 1.2\u00D710\u207B\u2074 + 2.5\u00D710\u207B\u2075 = ?</p></div>
+              <p className="text-base font-medium mb-2">A liquid\'s apparent expansion in a glass flask is γ_a = 1.2×10⁻⁴/°C. The glass expansion is γ_g = 2.5×10⁻⁵/°C.</p>
+              <p className="text-base font-medium">Find the real expansion coefficient γ_r.</p>
+              <div className="bg-teal-50 dark:bg-teal-900/20 rounded p-2 mt-2"><p className="text-xs text-teal-700 dark:text-teal-300 font-mono">γ_r = 1.2×10⁻⁴ + 2.5×10⁻⁵ = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
-              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="\u03B3_r (scientific notation)..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-teal-500 outline-none" />
+              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="γ_r (scientific notation)..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-teal-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 1.45\u00D710\u207B\u2074/\u00B0C.</strong> The real expansion is always larger than apparent due to the glass expansion.</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> \u03B3_r = \u03B3_a + \u03B3_g = (1.2 + 0.25)\u00D710\u207B\u2074 = 1.45\u00D710\u207B\u2074/\u00B0C</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 1.45×10⁻⁴/°C.</strong> The real expansion is always larger than apparent due to the glass expansion.</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> γ_r = γ_a + γ_g = (1.2 + 0.25)×10⁻⁴ = 1.45×10⁻⁴/°C</p></div>}
           </div>
         </div>
       </div>

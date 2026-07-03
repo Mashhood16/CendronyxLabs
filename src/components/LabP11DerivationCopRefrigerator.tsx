@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationCopRefrigerator({ onExit }: Props) {
-  const key = 'copRefrigerator';
+  const key = 'cop_refrigerator';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

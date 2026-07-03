@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationArtificialGravity({ onExit }: Props) {
-  const key = 'artificialGravity';
+  const key = 'artificial_gravity';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

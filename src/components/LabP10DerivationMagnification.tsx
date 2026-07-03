@@ -24,7 +24,7 @@ export default function LabP10DerivationMagnification({ onExit }: { onExit?: () 
     { label: 'Magnification = Image / Object Height', formula: 'M = I / O', detail: 'Magnification is defined as the ratio of image height to object height. If M {'>'} 1, the image is enlarged.' },
     { label: 'From Ray Diagram Similar Triangles', formula: 'M = q / p', detail: 'Using similar triangles in ray diagrams, the same ratio equals image distance q divided by object distance p.' },
     { label: 'Combined Formula', formula: 'M = I / O = q / p', detail: 'So magnification can be found from heights OR distances. For a concave mirror, q is negative for real images.' },
-    { label: 'Sign Convention Matters', formula: 'M = \u2212q / p (mirrors)', detail: 'For mirrors, the Cartesian sign convention gives M = -q/p. Negative M means an inverted image.' },
+    { label: 'Sign Convention Matters', formula: 'M = −q / p (mirrors)', detail: 'For mirrors, the Cartesian sign convention gives M = -q/p. Negative M means an inverted image.' },
   ];
 
   return (
@@ -66,7 +66,7 @@ export default function LabP10DerivationMagnification({ onExit }: { onExit?: () 
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Magnification M = -q/p for mirrors (using sign convention). Negative M = inverted image. |M| {'>'} 1 means enlarged. A microscope uses M = I/O with eyepiece and objective!</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Magnification M = -q/p for mirrors (using sign convention). Negative M = inverted image. |M| {'>'} 1 means enlarged. A microscope uses M = I/O with eyepiece and objective!</p></div>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function LabP10DerivationMagnification({ onExit }: { onExit?: () 
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
                 <p className="text-sm text-slate-400">M = I/O = {imgH}/{objH} = {m1.toFixed(2)}</p>
                 <p className="text-sm text-slate-400">M = q/p = {imgD}/{objD} = {m2.toFixed(2)}</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">M = </span><span className="text-yellow-400 font-mono font-bold">{m1.toFixed(2)}\u00D7</span></p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">M = </span><span className="text-yellow-400 font-mono font-bold">{m1.toFixed(2)}×</span></p>
               </div>
             </div>
           </div>
@@ -91,14 +91,14 @@ export default function LabP10DerivationMagnification({ onExit }: { onExit?: () 
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
               <p className="text-base font-medium mb-2">An object <strong>2 cm</strong> tall is placed <strong>15 cm</strong> from a concave mirror. Image forms <strong>30 cm</strong> in front.</p>
               <p className="text-base font-medium">Find the magnification and image height.</p>
-              <div className="bg-green-50 dark:bg-green-900/20 rounded p-2 mt-2"><p className="text-xs text-green-700 dark:text-green-300 font-mono">M = -30/15 = -2. I = M\u00D7O = -2\u00D72 = ?</p></div>
+              <div className="bg-green-50 dark:bg-green-900/20 rounded p-2 mt-2"><p className="text-xs text-green-700 dark:text-green-300 font-mono">M = -30/15 = -2. I = M×O = -2×2 = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
               <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Image height (cm)..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-green-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
             {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! I = 4 cm (inverted).</strong> M = -2 means the image is twice as tall and inverted!</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> M = q/p = 30/15 = 2. Image height I = M\u00D7O = 2\u00D72 = 4 cm (inverted).</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> M = q/p = 30/15 = 2. Image height I = M×O = 2×2 = 4 cm (inverted).</p></div>}
           </div>
         </div>
       </div>

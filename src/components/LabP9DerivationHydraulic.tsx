@@ -20,10 +20,10 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
   };
 
   const steps = [
-    { label: "Pascal's Principle", formula: 'P\u2081 = P\u2082', detail: 'Blaise Pascal discovered that pressure applied to a fluid in a closed container is transmitted equally in all directions. Pressure is the same everywhere in the fluid.' },
-    { label: 'Pressure on Small Piston', formula: 'P\u2081 = F\u2081 / A\u2081', detail: 'Pushing the small piston with force F\u2081 creates pressure P\u2081 = F\u2081/A\u2081. A small area means big pressure from a small force.' },
-    { label: 'Same Pressure on Large Piston', formula: 'F\u2082 / A\u2082 = F\u2081 / A\u2081', detail: 'By Pascal\u2019s principle, the pressure on the large piston equals the pressure on the small piston: P\u2082 = P\u2081. So F\u2082/A\u2082 = F\u2081/A\u2081.' },
-    { label: 'Solve for Output Force', formula: 'F\u2082 = (A\u2082 / A\u2081) \u00D7 F\u2081', detail: 'Rearranging: F\u2082 = (A\u2082/A\u2081) \u00D7 F\u2081. The ratio A\u2082/A\u2081 is the mechanical advantage. If A\u2082 is 50\u00D7 A\u2081, then F\u2082 is 50\u00D7 F\u2081!' },
+    { label: "Pascal's Principle", formula: 'P₁ = P₂', detail: 'Blaise Pascal discovered that pressure applied to a fluid in a closed container is transmitted equally in all directions. Pressure is the same everywhere in the fluid.' },
+    { label: 'Pressure on Small Piston', formula: 'P₁ = F₁ / A₁', detail: 'Pushing the small piston with force F₁ creates pressure P₁ = F₁/A₁. A small area means big pressure from a small force.' },
+    { label: 'Same Pressure on Large Piston', formula: 'F₂ / A₂ = F₁ / A₁', detail: 'By Pascal’s principle, the pressure on the large piston equals the pressure on the small piston: P₂ = P₁. So F₂/A₂ = F₁/A₁.' },
+    { label: 'Solve for Output Force', formula: 'F₂ = (A₂ / A₁) × F₁', detail: 'Rearranging: F₂ = (A₂/A₁) × F₁. The ratio A₂/A₁ is the mechanical advantage. If A₂ is 50× A₁, then F₂ is 50× F₁!' },
   ];
 
   return (
@@ -44,14 +44,14 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">How Pascal\u2019s principle lets a small force lift a heavy load</p>
+              <p className="text-xs text-slate-500">How Pascal’s principle lets a small force lift a heavy load</p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-rose-500 to-red-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-rose-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">F\u2082 = (A\u2082/A\u2081) \u00D7 F\u2081</p>
-            <p className="text-xs text-rose-200 mt-1">Output force = area ratio \u00D7 input force</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">F₂ = (A₂/A₁) × F₁</p>
+            <p className="text-xs text-rose-200 mt-1">Output force = area ratio × input force</p>
           </div>
 
           <div className="space-y-0">
@@ -81,8 +81,8 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The mechanical advantage A\u2082/A\u2081 is what makes hydraulics so powerful. Car brakes, construction excavators, and dentist chairs all use this principle to multiply force!</p>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
+                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The mechanical advantage A₂/A₁ is what makes hydraulics so powerful. Car brakes, construction excavators, and dentist chairs all use this principle to multiply force!</p>
               </div>
             </div>
           </div>
@@ -95,36 +95,36 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             <p className="text-sm text-slate-500 mb-4">Adjust piston areas and input force to see force multiplication.</p>
             <div className="space-y-3">
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Small Piston Area (A\u2081)</span><span className="text-rose-600 font-mono">{areaSmall} m\u00B2</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>Small Piston Area (A₁)</span><span className="text-rose-600 font-mono">{areaSmall} m²</span></div>
                 <input type="range" min="0.002" max="0.05" step="0.001" value={areaSmall} onChange={e => { setAreaSmall(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Large Piston Area (A\u2082)</span><span className="text-rose-600 font-mono">{areaLarge} m\u00B2</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>Large Piston Area (A₂)</span><span className="text-rose-600 font-mono">{areaLarge} m²</span></div>
                 <input type="range" min="0.05" max="2" step="0.01" value={areaLarge} onChange={e => { setAreaLarge(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Input Force (F\u2081)</span><span className="text-rose-600 font-mono">{inputForce} N</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>Input Force (F₁)</span><span className="text-rose-600 font-mono">{inputForce} N</span></div>
                 <input type="range" min="10" max="500" step="10" value={inputForce} onChange={e => { setInputForce(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
               </div>
 
               <div className="relative h-32 bg-white dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-300 dark:border-[#2a2a2a]">
                 <div className="absolute bottom-2 left-[15%] right-[15%] h-[55%] bg-rose-400/20 rounded-b-lg border border-rose-400/30" />
                 <div className="absolute bottom-[calc(2px+55%)] left-[15%] translate-x-[-50%]" style={{ width: `${12 + areaSmall * 400}px`, height: '18px' }}>
-                  <div className="w-full h-full bg-rose-500 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold">F\u2081={inputForce}N</div>
+                  <div className="w-full h-full bg-rose-500 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold">F₁={inputForce}N</div>
                 </div>
                 <div className="absolute bottom-[calc(2px+55%)] right-[15%] translate-x-[50%]" style={{ width: `${12 + areaLarge * 18}px`, height: `${18 + inputForce / 25}px`, minHeight: '28px' }}>
-                  <div className="w-full h-full bg-rose-600 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold text-center leading-tight">F\u2082={outputForce.toFixed(0)}N</div>
+                  <div className="w-full h-full bg-rose-600 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold text-center leading-tight">F₂={outputForce.toFixed(0)}N</div>
                 </div>
-                <div className="absolute bottom-1 left-1 text-[7px] text-slate-500">A\u2081={areaSmall}m\u00B2</div>
-                <div className="absolute bottom-1 right-1 text-[7px] text-slate-500">A\u2082={areaLarge}m\u00B2</div>
+                <div className="absolute bottom-1 left-1 text-[7px] text-slate-500">A₁={areaSmall}m²</div>
+                <div className="absolute bottom-1 right-1 text-[7px] text-slate-500">A₂={areaLarge}m²</div>
               </div>
 
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">P\u2081 = F\u2081/A\u2081 = {inputForce}/{areaSmall} = {(inputForce/areaSmall).toFixed(0)} Pa</p>
-                <p className="text-sm text-slate-400">P\u2082 = P\u2081 (Pascal\u2019s Principle)</p>
-                <p className="text-sm text-slate-400">F\u2082 = P\u2082 \u00D7 A\u2082 = {(inputForce/areaSmall).toFixed(0)} \u00D7 {areaLarge}</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">Mech. Advantage: </span><span className="text-yellow-400 font-mono font-bold">{mechanicalAdvantage.toFixed(1)}\u00D7</span> <span className="text-green-400 font-bold"> | F\u2082 = </span><span className="text-yellow-400 font-mono font-bold">{outputForce.toFixed(0)} N</span></p>
+                <p className="text-sm text-slate-400">P₁ = F₁/A₁ = {inputForce}/{areaSmall} = {(inputForce/areaSmall).toFixed(0)} Pa</p>
+                <p className="text-sm text-slate-400">P₂ = P₁ (Pascal’s Principle)</p>
+                <p className="text-sm text-slate-400">F₂ = P₂ × A₂ = {(inputForce/areaSmall).toFixed(0)} × {areaLarge}</p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">Mech. Advantage: </span><span className="text-yellow-400 font-mono font-bold">{mechanicalAdvantage.toFixed(1)}×</span> <span className="text-green-400 font-bold"> | F₂ = </span><span className="text-yellow-400 font-mono font-bold">{outputForce.toFixed(0)} N</span></p>
                 {outputForce > 1000 && <p className="text-xs text-amber-400">Lifts {(outputForce/9.81).toFixed(0)} kg!</p>}
               </div>
             </div>
@@ -134,10 +134,10 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><ArrowUpDown className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">Hydraulic lift: A\u2081 = <strong>0.005 m\u00B2</strong>, A\u2082 = <strong>0.25 m\u00B2</strong>. Car weight = <strong>12,000 N</strong>.</p>
+              <p className="text-base font-medium mb-2">Hydraulic lift: A₁ = <strong>0.005 m²</strong>, A₂ = <strong>0.25 m²</strong>. Car weight = <strong>12,000 N</strong>.</p>
               <p className="text-base font-medium">What minimum input force is needed?</p>
               <div className="bg-rose-50 dark:bg-rose-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-rose-700 dark:text-rose-300 font-mono">F\u2081 = F\u2082 \u00D7 A\u2081/A\u2082 = 12,000 \u00D7 0.005 / 0.25</p>
+                <p className="text-xs text-rose-700 dark:text-rose-300 font-mono">F₁ = F₂ × A₁/A₂ = 12,000 × 0.005 / 0.25</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
@@ -149,13 +149,13 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F\u2081 = 240 N.</strong> With a 50:1 mechanical advantage, 240 N lifts 12,000 N \u2014 that\u2019s the power of hydraulics!</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F₁ = 240 N.</strong> With a 50:1 mechanical advantage, 240 N lifts 12,000 N — that’s the power of hydraulics!</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> F\u2081 = F\u2082 \u00D7 A\u2081/A\u2082 = 12,000 \u00D7 0.005 / 0.25</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> F₁ = F₂ × A₁/A₂ = 12,000 × 0.005 / 0.25</p>
               </div>
             )}
           </div>

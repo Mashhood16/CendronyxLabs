@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationResistanceParallel({ onExit }: Props) {
-  const key = 'resistanceParallel';
+  const key = 'resistance_parallel';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

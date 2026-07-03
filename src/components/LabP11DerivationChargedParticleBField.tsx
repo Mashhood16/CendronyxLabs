@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationChargedParticleBField({ onExit }: Props) {
-  const key = 'chargedParticleBField';
+  const key = 'charged_particle_b_field';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

@@ -22,7 +22,7 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
   const steps = [
     { label: 'Ideal Transformer Assumption', formula: 'Power_in = Power_out', detail: 'An ideal transformer has no power loss. All electrical power from the primary side is delivered to the secondary side.' },
     { label: 'Substitute Power Formula', formula: 'I_p V_p = I_s V_s', detail: 'Substituting P = IV for both primary and secondary coils. The product of current and voltage is conserved.' },
-    { label: 'Solve for Secondary Current', formula: 'I_s = (V_p / V_s) \u00D7 I_p', detail: 'Rearrange to find I_s. If V_s < V_p (step-down), then I_s > I_p. Voltage steps down, current steps up!' },
+    { label: 'Solve for Secondary Current', formula: 'I_s = (V_p / V_s) × I_p', detail: 'Rearrange to find I_s. If V_s < V_p (step-down), then I_s > I_p. Voltage steps down, current steps up!' },
     { label: 'Turns Ratio Relation', formula: 'V_s / V_p = N_s / N_p = I_p / I_s', detail: 'The voltage ratio equals the turns ratio. And inversely equals the current ratio. This relates all four quantities!' },
   ];
 
@@ -65,7 +65,7 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Step-up transformers (V_s {'>'} V_p) are used in power transmission. At 500 kV, current is low, so I\u00B2R power loss is tiny. Step-down transformers at your home bring it back to 230V safely!</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Step-up transformers (V_s {'>'} V_p) are used in power transmission. At 500 kV, current is low, so I²R power loss is tiny. Step-down transformers at your home bring it back to 230V safely!</p></div>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
               <div><div className="flex justify-between text-xs font-semibold"><span>Secondary V_s</span><span className="text-slate-600 font-mono">{vs} V</span></div><input type="range" min="6" max="1000" step="1" value={vs} onChange={e => { setVs(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-slate-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">P_in = {vp}\u00D7{ip} = {power.toFixed(0)} W</p>
+                <p className="text-sm text-slate-400">P_in = {vp}×{ip} = {power.toFixed(0)} W</p>
                 <p className="text-sm text-slate-400">P_out = P_in (ideal transformer)</p>
                 <p className="text-sm text-slate-400">I_s = P_out/V_s = {power.toFixed(0)}/{vs}</p>
                 <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">I_s = </span><span className="text-yellow-400 font-mono font-bold">{is.toFixed(2)} A</span></p>
@@ -91,14 +91,14 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
               <p className="text-base font-medium mb-2">A step-down transformer: <strong>V_p = 240V, I_p = 2A, V_s = 24V</strong>.</p>
               <p className="text-base font-medium">Find the secondary current I_s.</p>
-              <div className="bg-slate-50 dark:bg-slate-900/20 rounded p-2 mt-2"><p className="text-xs text-slate-700 dark:text-slate-300 font-mono">I_s = (240 \u00D7 2) / 24 = ?</p></div>
+              <div className="bg-slate-50 dark:bg-slate-900/20 rounded p-2 mt-2"><p className="text-xs text-slate-700 dark:text-slate-300 font-mono">I_s = (240 × 2) / 24 = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
               <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="I_s in Amps..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-slate-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 20A.</strong> Voltage steps down 10\u00D7, so current steps up 10\u00D7. Power conserved: 480W = 480W.</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> I_s = I_p V_p / V_s = 2 \u00D7 240 / 24 = 20 A</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 20A.</strong> Voltage steps down 10×, so current steps up 10×. Power conserved: 480W = 480W.</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> I_s = I_p V_p / V_s = 2 × 240 / 24 = 20 A</p></div>}
           </div>
         </div>
       </div>

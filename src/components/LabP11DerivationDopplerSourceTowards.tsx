@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationDopplerSourceTowards({ onExit }: Props) {
-  const key = 'dopplerSourceTowards';
+  const key = 'doppler_source_towards';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

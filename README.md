@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/PWA-Offline_First-F48C06?style=for-the-badge" alt="PWA">
 </p>
 
-> **Cendronyx Labs is an offline-first Progressive Web App that delivers 464 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+> **Cendronyx Labs is an offline-first Progressive Web App that delivers 571 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
 
 ## 📑 Table of Contents
 
@@ -29,8 +29,8 @@
 ## 📊 Platform at a Glance
 
 - 🎓 Grades Supported: 6–12
-- 📚 Subjects: 6
-- 🧪 Interactive Labs: 464
+- 📚 Subjects: 7
+- 🧪 Interactive Labs: 571
 - 🌐 Offline-First PWA
 - 💻 Supported Platforms: Windows, macOS, Linux, Android, iOS & Chromebooks
 
@@ -56,7 +56,7 @@ Try Cendronyx Labs now — no installation required:
 | ![Interactive Lab](public/screenshots/interactive-lab.png) | ![Mobile View](public/screenshots/mobile-view.png) |
 
 ## ✨ Key Features
-- ✅ **464 interactive virtual labs** spanning multiple subjects.
+- ✅ **571 interactive virtual labs** spanning multiple subjects.
 - ✅ **Offline-first Progressive Web App** architecture.
 - ✅ **Installable** on Windows, Android, iOS, and Chromebooks.
 - ✅ **Dark & Light themes** perfectly customized for readability.
@@ -77,7 +77,8 @@ The application is fully responsive, condensing into a streamlined, tab-based mo
 
 ## 📡 Offline-First & PWA Architecture
 A core pillar of this platform is its **Offline-First** design. Built as a Progressive Web Application (PWA) with aggressive service worker caching, Cendronyx Labs is explicitly engineered for environments with unreliable or zero internet connectivity.
-- **Offline Reliability**: Designed to function fully offline after the initial installation. All 464 lab modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
+- **Offline Reliability**: Designed to function fully offline after the initial installation. All 571 lab 
+modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
 - **Installable**: Students can "install" the web app directly to their home screens or desktops, functioning indistinguishably from a native application.
 - **Performance**: Near-instant local performance, as simulations run directly on the device rather than relying on server-side rendering.
 
@@ -92,11 +93,11 @@ A core pillar of this platform is its **Offline-First** design. Built as a Progr
 Designed around the Pakistani curriculum for Grades 6–12, with interactive learning experiences that complement classroom instruction.
 
 ## 📚 Curriculum Breakdown
-The platform contains a staggering **464 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
+The platform contains a staggering **571 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
 
-### Grade 6 (59 Labs)
-- **Computer Science**: 22 labs
+### Grade 6 (57 Labs)
 - **Science**: 21 labs
+- **Computer Science**: 20 labs
 - **English**: 8 labs
 - **Mathematics**: 8 labs
 
@@ -106,38 +107,38 @@ The platform contains a staggering **464 distinct interactive modules** spanning
 - **English**: 8 labs
 - **Mathematics**: 8 labs
 
-### Grade 8 (68 Labs)
-- **Science**: 41 labs
+### Grade 8 (69 Labs)
+- **Science**: 42 labs
 - **Computer Science**: 11 labs
 - **English**: 8 labs
 - **Mathematics**: 8 labs
 
-### Grade 9 (49 Labs)
-- **Physics**: 10 labs
+### Grade 9 (56 Labs)
+- **Physics**: 17 labs
 - **Mathematics**: 9 labs
 - **Computer Science**: 9 labs
 - **English**: 8 labs
 - **Chemistry**: 7 labs
 - **Biology**: 6 labs
 
-### Grade 10 (111 Labs)
-- **Physics**: 36 labs
+### Grade 10 (131 Labs)
+- **Physics**: 56 labs
 - **Chemistry**: 27 labs
 - **Mathematics**: 19 labs
 - **Computer Science**: 14 labs
 - **English**: 8 labs
 - **Biology**: 7 labs
 
-### Grade 11 (56 Labs)
-- **Physics**: 13 labs
+### Grade 11 (101 Labs)
+- **Physics**: 58 labs
 - **Chemistry**: 10 labs
 - **Biology**: 9 labs
 - **Computer Science**: 8 labs
 - **Mathematics**: 8 labs
 - **English**: 8 labs
 
-### Grade 12 (52 Labs)
-- **Physics**: 9 labs
+### Grade 12 (88 Labs)
+- **Physics**: 45 labs
 - **Chemistry**: 9 labs
 - **Computer Science**: 9 labs
 - **Biology**: 9 labs
@@ -150,7 +151,7 @@ We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
 
 | Phase | Status | Milestone |
 |:---:|:---:|:---|
-| ✅ | **Complete** | 464 interactive labs across Grades 6–12 |
+| ✅ | **Complete** | 571 interactive labs across Grades 6–12 |
 | ✅ | **Complete** | Offline-first PWA with service worker caching |
 | ✅ | **Complete** | Responsive design (desktop & mobile) |
 | ✅ | **Complete** | Dark & Light theme support |

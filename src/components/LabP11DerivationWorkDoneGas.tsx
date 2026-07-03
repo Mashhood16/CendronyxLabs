@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationWorkDoneGas({ onExit }: Props) {
-  const key = 'workDoneGas';
+  const key = 'work_done_gas';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

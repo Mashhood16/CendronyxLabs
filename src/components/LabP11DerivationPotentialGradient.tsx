@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationPotentialGradient({ onExit }: Props) {
-  const key = 'potentialGradient';
+  const key = 'potential_gradient';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

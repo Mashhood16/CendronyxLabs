@@ -28,8 +28,8 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
   const steps = [
     { label: 'Conservation of Momentum', formula: 'pi = pf', detail: 'In an isolated system (no external forces), total momentum before = total momentum after. This is one of the most fundamental laws in physics.' },
     { label: 'Before Firing: Everything at Rest', formula: 'pi = 0', detail: 'Before firing, both gun and bullet are at rest. Their velocities are zero, so total initial momentum is zero.' },
-    { label: 'After Firing: Bullet + Gun Move', formula: 'mb\u00D7vb + mg\u00D7vg = 0', detail: 'After firing, bullet goes forward (mb\u00D7vb), gun recoils backward (mg\u00D7vg). By conservation: mb\u00D7vb + mg\u00D7vg = 0.' },
-    { label: 'Solve for Recoil Velocity', formula: 'vg = \u2212(mb\u00D7vb) / mg', detail: 'Rearranging: mg\u00D7vg = \u2212mb\u00D7vb. Dividing by mg: vg = \u2212(mb\u00D7vb)/mg. The negative sign means opposite direction. Heavier gun = less recoil!' },
+    { label: 'After Firing: Bullet + Gun Move', formula: 'mb×vb + mg×vg = 0', detail: 'After firing, bullet goes forward (mb×vb), gun recoils backward (mg×vg). By conservation: mb×vb + mg×vg = 0.' },
+    { label: 'Solve for Recoil Velocity', formula: 'vg = −(mb×vb) / mg', detail: 'Rearranging: mg×vg = −mb×vb. Dividing by mg: vg = −(mb×vb)/mg. The negative sign means opposite direction. Heavier gun = less recoil!' },
   ];
 
   return (
@@ -56,8 +56,8 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
 
           <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">vg = \u2212(mb \u00D7 vb) / mg</p>
-            <p className="text-xs text-amber-200 mt-1">The gun recoils opposite to the bullet\u2019s direction</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">vg = −(mb × vb) / mg</p>
+            <p className="text-xs text-amber-200 mt-1">The gun recoils opposite to the bullet’s direction</p>
           </div>
 
           <div className="space-y-0">
@@ -91,8 +91,8 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The negative sign shows the gun moves opposite to the bullet. A heavier gun recoils less \u2014 which is why cannons are so massive! Rockets work the same way: exhaust goes down, rocket goes up.</p>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
+                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The negative sign shows the gun moves opposite to the bullet. A heavier gun recoils less — which is why cannons are so massive! Rockets work the same way: exhaust goes down, rocket goes up.</p>
               </div>
             </div>
           </div>
@@ -122,14 +122,14 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
 
               <button onClick={handleFire}
                 className="w-full py-2.5 bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold rounded-lg transition-all text-sm shadow-lg">
-                {fired ? 'BOOM! \uD83D\uDCA5' : 'FIRE! \uD83D\uDD25'}
+                {fired ? 'BOOM! 💥' : 'FIRE! 🔥'}
               </button>
 
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1.5">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Momentum Conservation</p>
                 <p className="text-sm text-slate-400">Before: pi = 0 (both at rest)</p>
-                <p className="text-sm text-slate-400">After: mb\u00D7vb = {bMassKg} \u00D7 {bulletVel} = <span className="text-green-400">{(bMassKg * bulletVel).toFixed(2)}</span></p>
-                <p className="text-sm text-slate-400">mg\u00D7vg must be: <span className="text-green-400">-{(bMassKg * bulletVel).toFixed(2)}</span></p>
+                <p className="text-sm text-slate-400">After: mb×vb = {bMassKg} × {bulletVel} = <span className="text-green-400">{(bMassKg * bulletVel).toFixed(2)}</span></p>
+                <p className="text-sm text-slate-400">mg×vg must be: <span className="text-green-400">-{(bMassKg * bulletVel).toFixed(2)}</span></p>
                 <p className="border-t border-[#2a2a2a] pt-1.5 text-xs"><span className="text-amber-400 font-bold">Recoil velocity: </span><span className="text-yellow-400 font-mono font-bold">{recoilV.toFixed(2)} m/s</span></p>
               </div>
 
@@ -148,7 +148,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
               <p className="text-base font-medium mb-2">A <strong>4 kg</strong> rifle fires a <strong>12 g</strong> bullet at <strong>500 m/s</strong>.</p>
               <p className="text-base font-medium">What is the recoil velocity of the rifle?</p>
               <div className="bg-amber-50 dark:bg-amber-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-amber-700 dark:text-amber-300 font-mono">mb = 12g = 0.012 kg, vb = 500 m/s, mg = 4 kg. vg = \u2212(mb\u00D7vb)/mg = \u2212(0.012\u00D7500)/4</p>
+                <p className="text-xs text-amber-700 dark:text-amber-300 font-mono">mb = 12g = 0.012 kg, vb = 500 m/s, mg = 4 kg. vg = −(mb×vb)/mg = −(0.012×500)/4</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
@@ -161,13 +161,13 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! vg = 1.5 m/s.</strong> The rifle kicks back at just 1.5 m/s because it\u2019s much heavier than the bullet.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! vg = 1.5 m/s.</strong> The rifle kicks back at just 1.5 m/s because it’s much heavier than the bullet.</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Use vg = (mb \u00D7 vb) / mg = (0.012 \u00D7 500) / 4</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Use vg = (mb × vb) / mg = (0.012 × 500) / 4</p>
               </div>
             )}
           </div>

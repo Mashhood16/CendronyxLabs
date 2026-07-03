@@ -42,9 +42,9 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
   if (!selected) return <p className="text-sm text-slate-500 dark:text-[#71717a] italic p-4 bg-slate-50 dark:bg-[#121212] rounded">Click a weight (line) or bias (node) in the diagram to edit.</p>;
   
   let val = 0, setVal: (n: number) => void = () => {}, label = '';
-  if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 \u2192 h1'; }
-  else if (selected === 'w21') { val = w21; setVal = setW21; label = 'Weight i2 \u2192 h1'; }
-  else if (selected === 'w31') { val = w31; setVal = setW31; label = 'Weight h1 \u2192 o1'; }
+  if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 → h1'; }
+  else if (selected === 'w21') { val = w21; setVal = setW21; label = 'Weight i2 → h1'; }
+  else if (selected === 'w31') { val = w31; setVal = setW31; label = 'Weight h1 → o1'; }
   else if (selected === 'b1') { val = b1; setVal = setB1; label = 'Bias h1'; }
   else if (selected === 'b2') { val = b2; setVal = setB2; label = 'Bias o1'; }
 
@@ -99,7 +99,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
       </ul>
       <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Feedforward Flow</h3>
       <p>Data propagates from input to output. For any neuron:</p>
-      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>Z = (i1 \u00d7 w1) + (i2 \u00d7 w2) + b</p>
+      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>Z = (i1 × w1) + (i2 × w2) + b</p>
       <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Activation (ReLU)</h3>
       <p>Introduces non-linearity. Rectified Linear Unit (ReLU) outputs the input if positive, else 0:</p>
       <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>Output = max(0, Z)</p>

@@ -19,10 +19,10 @@ export default function LabP10DerivationResistivity({ onExit }: { onExit?: () =>
   };
 
   const steps = [
-    { label: 'Resistance Depends on Geometry', formula: 'R \u221D L / A', detail: 'Resistance is directly proportional to length L and inversely proportional to cross-sectional area A. Longer wires resist more; thicker wires resist less.' },
-    { label: 'Insert Proportionality Constant', formula: 'R = \u03C1 \u00D7 L / A', detail: 'The constant \u03C1 (rho) is called resistivity. It is a material property independent of shape.' },
-    { label: 'Rearrange for Resistivity', formula: '\u03C1 = R \u00D7 A / L', detail: 'Resistivity = Resistance \u00D7 Area / Length. Units: \u03A9\u00B7m. Each material has its characteristic resistivity.' },
-    { label: 'Material Comparison', formula: '\u03C1_Cu = 1.68\u00D710\u207B\u2078, \u03C1_Al = 2.65\u00D710\u207B\u2078, \u03C1_Fe = 9.71\u00D710\u207B\u2078', detail: 'Copper has low resistivity = good conductor. Insulators like rubber have \u03C1 > 10\u00B9\u00B3 \u03A9\u00B7m \u2014 that\'s 10\u00B2\u00B9 times more!' },
+    { label: 'Resistance Depends on Geometry', formula: 'R ∝ L / A', detail: 'Resistance is directly proportional to length L and inversely proportional to cross-sectional area A. Longer wires resist more; thicker wires resist less.' },
+    { label: 'Insert Proportionality Constant', formula: 'R = ρ × L / A', detail: 'The constant ρ (rho) is called resistivity. It is a material property independent of shape.' },
+    { label: 'Rearrange for Resistivity', formula: 'ρ = R × A / L', detail: 'Resistivity = Resistance × Area / Length. Units: Ω·m. Each material has its characteristic resistivity.' },
+    { label: 'Material Comparison', formula: 'ρ_Cu = 1.68×10⁻⁸, ρ_Al = 2.65×10⁻⁸, ρ_Fe = 9.71×10⁻⁸', detail: 'Copper has low resistivity = good conductor. Insulators like rubber have ρ > 10¹³ Ω·m — that\'s 10²¹ times more!' },
   ];
 
   return (
@@ -40,8 +40,8 @@ export default function LabP10DerivationResistivity({ onExit }: { onExit?: () =>
           </div>
           <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">\u03C1 = R \u00D7 A / L</p>
-            <p className="text-xs text-amber-200 mt-1">Resistivity = Resistance \u00D7 Area / Length (\u03A9\u00B7m)</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">ρ = R × A / L</p>
+            <p className="text-xs text-amber-200 mt-1">Resistivity = Resistance × Area / Length (Ω·m)</p>
           </div>
           <div className="space-y-0">
             {steps.map((step, idx) => (
@@ -64,7 +64,7 @@ export default function LabP10DerivationResistivity({ onExit }: { onExit?: () =>
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Resistivity is a material fingerprint. Copper (\u03C1=1.68\u00D710\u207B\u2078) is used for wires. Silver is slightly lower but too expensive. Aluminum is a lighter alternative used in power lines!</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Resistivity is a material fingerprint. Copper (ρ=1.68×10⁻⁸) is used for wires. Silver is slightly lower but too expensive. Aluminum is a lighter alternative used in power lines!</p></div>
             </div>
           </div>
         </div>
@@ -73,29 +73,29 @@ export default function LabP10DerivationResistivity({ onExit }: { onExit?: () =>
             <div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-amber-500" /><h2 className="text-lg font-bold">See the Derivation in Action</h2></div>
             <p className="text-sm text-slate-500 mb-4">Adjust wire properties to see resistivity in action.</p>
             <div className="space-y-3">
-              <div><div className="flex justify-between text-xs font-semibold"><span>Resistance (R)</span><span className="text-amber-600 font-mono">{r} \u03A9</span></div><input type="range" min="1" max="50" step="1" value={r} onChange={e => { setR(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Resistance (R)</span><span className="text-amber-600 font-mono">{r} Ω</span></div><input type="range" min="1" max="50" step="1" value={r} onChange={e => { setR(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" /></div>
               <div><div className="flex justify-between text-xs font-semibold"><span>Length (L)</span><span className="text-amber-600 font-mono">{l} m</span></div><input type="range" min="0.5" max="10" step="0.5" value={l} onChange={e => { setL(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" /></div>
-              <div><div className="flex justify-between text-xs font-semibold"><span>Area (A)</span><span className="text-amber-600 font-mono">{(a*1e6).toFixed(0)} mm\u00B2</span></div><input type="range" min="0.2e-6" max="5e-6" step="0.1e-6" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Area (A)</span><span className="text-amber-600 font-mono">{(a*1e6).toFixed(0)} mm²</span></div><input type="range" min="0.2e-6" max="5e-6" step="0.1e-6" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">\u03C1 = R\u00D7A/L = {r}\u00D7{(a*1e6).toFixed(0)}\u00D710\u207B\u2076/{l}</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">\u03C1 = </span><span className="text-yellow-400 font-mono font-bold">{rho.toExponential(2)} \u03A9\u00B7m</span></p>
+                <p className="text-sm text-slate-400">ρ = R×A/L = {r}×{(a*1e6).toFixed(0)}×10⁻⁶/{l}</p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">ρ = </span><span className="text-yellow-400 font-mono font-bold">{rho.toExponential(2)} Ω·m</span></p>
               </div>
             </div>
           </div>
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Cable className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">A copper wire is <strong>5 m</strong> long, <strong>A = 1\u00D710\u207B\u2076 m\u00B2</strong>, and has <strong>R = 0.084 \u03A9</strong>.</p>
+              <p className="text-base font-medium mb-2">A copper wire is <strong>5 m</strong> long, <strong>A = 1×10⁻⁶ m²</strong>, and has <strong>R = 0.084 Ω</strong>.</p>
               <p className="text-base font-medium">Find the resistivity of copper.</p>
-              <div className="bg-amber-50 dark:bg-amber-900/20 rounded p-2 mt-2"><p className="text-xs text-amber-700 dark:text-amber-300 font-mono">\u03C1 = 0.084 \u00D7 10\u207B\u2076 / 5 = ?</p></div>
+              <div className="bg-amber-50 dark:bg-amber-900/20 rounded p-2 mt-2"><p className="text-xs text-amber-700 dark:text-amber-300 font-mono">ρ = 0.084 × 10⁻⁶ / 5 = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
-              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="\u03C1 in \u03A9\u00B7m..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-amber-500 outline-none" />
+              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="ρ in Ω·m..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-amber-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 1.68\u00D710\u207B\u2078 \u03A9\u00B7m.</strong> That\'s copper\'s resistivity \u2014 low enough to make it the standard for electrical wiring!</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> \u03C1 = R\u00D7A/L = 0.084\u00D710\u207B\u2076/5 = 1.68\u00D710\u207B\u2078 \u03A9\u00B7m</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 1.68×10⁻⁸ Ω·m.</strong> That\'s copper\'s resistivity — low enough to make it the standard for electrical wiring!</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> ρ = R×A/L = 0.084×10⁻⁶/5 = 1.68×10⁻⁸ Ω·m</p></div>}
           </div>
         </div>
       </div>

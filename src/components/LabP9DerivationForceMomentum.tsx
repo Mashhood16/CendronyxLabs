@@ -22,10 +22,10 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
   };
 
   const steps = [
-    { label: "Newton's Second Law", formula: 'F = m \u00D7 a', detail: "Newton\u2019s 2nd law states that net force equals mass times acceleration. Heavier objects need more force to accelerate." },
-    { label: 'Acceleration = Rate of Velocity Change', formula: 'a = (vf \u2212 vi) / \u0394t', detail: 'Acceleration is how quickly velocity changes over time. From initial velocity vi to final velocity vf in time \u0394t.' },
-    { label: 'Substitute a into F = ma', formula: 'F = m \u00D7 (vf \u2212 vi) / \u0394t', detail: 'Replacing a with the velocity change formula. Distribute m: F = (mvf \u2212 mvi) / \u0394t.' },
-    { label: 'Recognize Momentum p = mv', formula: 'F = (pf \u2212 pi) / \u0394t = \u0394p / \u0394t', detail: 'mv is momentum (p). The numerator is the change in momentum \u0394p. So: F = \u0394p/\u0394t. Force equals rate of change of momentum!' },
+    { label: "Newton's Second Law", formula: 'F = m × a', detail: "Newton’s 2nd law states that net force equals mass times acceleration. Heavier objects need more force to accelerate." },
+    { label: 'Acceleration = Rate of Velocity Change', formula: 'a = (vf − vi) / Δt', detail: 'Acceleration is how quickly velocity changes over time. From initial velocity vi to final velocity vf in time Δt.' },
+    { label: 'Substitute a into F = ma', formula: 'F = m × (vf − vi) / Δt', detail: 'Replacing a with the velocity change formula. Distribute m: F = (mvf − mvi) / Δt.' },
+    { label: 'Recognize Momentum p = mv', formula: 'F = (pf − pi) / Δt = Δp / Δt', detail: 'mv is momentum (p). The numerator is the change in momentum Δp. So: F = Δp/Δt. Force equals rate of change of momentum!' },
   ];
 
   return (
@@ -49,14 +49,14 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">Follow the logical progression from Newton\u2019s 2nd law to F = \u0394p/\u0394t</p>
+              <p className="text-xs text-slate-500">Follow the logical progression from Newton’s 2nd law to F = Δp/Δt</p>
             </div>
           </div>
 
           {/* Formula card - always visible */}
           <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-blue-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">F = \u0394p / \u0394t</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">F = Δp / Δt</p>
             <p className="text-xs text-blue-200 mt-1">The net force equals the rate of change of momentum</p>
           </div>
 
@@ -103,8 +103,8 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Momentum p = mv measures motion. Force changes momentum over time. If no force acts, momentum stays constant \u2014 this is the law of conservation of momentum! Airbags increase impact time \u0394t, reducing force F.</p>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
+                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Momentum p = mv measures motion. Force changes momentum over time. If no force acts, momentum stays constant — this is the law of conservation of momentum! Airbags increase impact time Δt, reducing force F.</p>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
               <Lightbulb className="w-5 h-5 text-amber-500" />
               <h2 className="text-lg font-bold">See the Derivation in Action</h2>
             </div>
-            <p className="text-sm text-slate-500 mb-4">Adjust the sliders to see how F = \u0394p/\u0394t works with real numbers.</p>
+            <p className="text-sm text-slate-500 mb-4">Adjust the sliders to see how F = Δp/Δt works with real numbers.</p>
 
             <div className="space-y-3">
               <div>
@@ -134,7 +134,7 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
                 <input type="range" min="0" max="30" step="1" value={vf} onChange={e => { setVf(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Time Interval (\u0394t)</span><span className="text-blue-600 font-mono">{time} s</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>Time Interval (Δt)</span><span className="text-blue-600 font-mono">{time} s</span></div>
                 <input type="range" min="0.5" max="5" step="0.5" value={time} onChange={e => { setTime(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
               </div>
 
@@ -142,10 +142,10 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-2">
                 <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Derivation Trace</p>
                 <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 1: F = ma</span><span className="text-slate-500">F = {mass} \u00D7 a</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 2: a = \u0394v/\u0394t</span><span className="text-slate-500">a = ({vf} \u2212 {vi}) / {time} = {((vf - vi) / time).toFixed(1)} m/s\u00B2</span></div>
-                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 3: F = m(\u0394v/\u0394t)</span><span className="text-slate-500">F = {mass} \u00D7 {((vf - vi) / time).toFixed(1)}</span></div>
-                  <div className="border-t border-[#2a2a2a] pt-1.5 flex justify-between text-xs"><span className="text-green-400 font-bold">Step 4: F = \u0394p/\u0394t</span><span className="text-yellow-400 font-mono font-bold">{force.toFixed(1)} N</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 1: F = ma</span><span className="text-slate-500">F = {mass} × a</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 2: a = Δv/Δt</span><span className="text-slate-500">a = ({vf} − {vi}) / {time} = {((vf - vi) / time).toFixed(1)} m/s²</span></div>
+                  <div className="flex justify-between text-sm"><span className="text-slate-400">Step 3: F = m(Δv/Δt)</span><span className="text-slate-500">F = {mass} × {((vf - vi) / time).toFixed(1)}</span></div>
+                  <div className="border-t border-[#2a2a2a] pt-1.5 flex justify-between text-xs"><span className="text-green-400 font-bold">Step 4: F = Δp/Δt</span><span className="text-yellow-400 font-mono font-bold">{force.toFixed(1)} N</span></div>
                 </div>
               </div>
 
@@ -170,7 +170,7 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
               <p className="text-base font-medium mb-2">A cricket ball (<strong>0.16 kg</strong>) is bowled at <strong>30 m/s</strong> and hit back at <strong>40 m/s</strong> in the opposite direction. Contact time: <strong>0.01 s</strong>.</p>
               <p className="text-base font-medium">What is the average force exerted by the bat?</p>
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-blue-700 dark:text-blue-300 font-mono">\u0394p = m(vf \u2212 vi) = 0.16 \u00D7 (40 \u2212 (\u221230)) = 0.16 \u00D7 70 = 11.2 kg\u00B7m/s. F = \u0394p/\u0394t = 11.2 / 0.01 = ?</p>
+                <p className="text-xs text-blue-700 dark:text-blue-300 font-mono">Δp = m(vf − vi) = 0.16 × (40 − (−30)) = 0.16 × 70 = 11.2 kg·m/s. F = Δp/Δt = 11.2 / 0.01 = ?</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
@@ -185,13 +185,13 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F = 1120 N.</strong> Using F = \u0394p/\u0394t, we get 11.2 / 0.01 = 1120 N \u2014 more than the weight of a person!</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F = 1120 N.</strong> Using F = Δp/Δt, we get 11.2 / 0.01 = 1120 N — more than the weight of a person!</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Remember velocity changes direction! vf = \u221240 m/s. So \u0394v = 40 \u2212 (\u221230) = 70 m/s, not 10 m/s.</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Remember velocity changes direction! vf = −40 m/s. So Δv = 40 − (−30) = 70 m/s, not 10 m/s.</p>
               </div>
             )}
           </div>

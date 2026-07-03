@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationTerminalVelocity({ onExit }: Props) {
-  const key = 'terminalVelocity';
+  const key = 'terminal_velocity';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

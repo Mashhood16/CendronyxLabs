@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationProjectileTimeFlight({ onExit }: Props) {
-  const key = 'projectileTimeFlight';
+  const key = 'projectile_time_flight';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationVenturiMeter({ onExit }: Props) {
-  const key = 'venturiMeter';
+  const key = 'venturi_meter';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

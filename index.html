@@ -2,19 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo_favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo_favicon.png" />
+    <link rel="apple-touch-icon" href="/logo_favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cendronyx Labs</title>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-            console.log('Nuked Service Worker!');
-          }
-        });
-      }
-    </script>
   </head>
   <body>
     <div id="root"></div>

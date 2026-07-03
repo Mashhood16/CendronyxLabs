@@ -23,9 +23,9 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
   };
 
   const steps = [
-    { label: 'Energy Supplied by Heater', formula: 'Q_heater = V \u00D7 I \u00D7 t', detail: 'Electrical energy from the heater is the product of voltage, current, and heating time. All electrical energy is converted to heat.' },
-    { label: 'Heat Gained by Liquid + Calorimeter', formula: 'Q_heater = m_l c_l \u0394T + m_c c_c \u0394T', detail: 'The heat from the heater warms both the liquid and the metal calorimeter container. \u0394T = T_f - T_i.' },
-    { label: 'Solve for Liquid Specific Heat', formula: 'c_l = (Q_heater - m_c c_c \u0394T) / (m_l \u0394T)', detail: 'Rearrange to isolate c_l. Subtract the calorimeter\'s heat absorption, then divide by liquid mass and temperature change.' },
+    { label: 'Energy Supplied by Heater', formula: 'Q_heater = V × I × t', detail: 'Electrical energy from the heater is the product of voltage, current, and heating time. All electrical energy is converted to heat.' },
+    { label: 'Heat Gained by Liquid + Calorimeter', formula: 'Q_heater = m_l c_l ΔT + m_c c_c ΔT', detail: 'The heat from the heater warms both the liquid and the metal calorimeter container. ΔT = T_f - T_i.' },
+    { label: 'Solve for Liquid Specific Heat', formula: 'c_l = (Q_heater - m_c c_c ΔT) / (m_l ΔT)', detail: 'Rearrange to isolate c_l. Subtract the calorimeter\'s heat absorption, then divide by liquid mass and temperature change.' },
     { label: 'Final Formula', formula: 'c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))', detail: 'Substitute Q_heater back. All values are measurable! This is the electrical method for finding specific heat of liquids.' },
   ];
 
@@ -68,7 +68,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The electrical method is more accurate than the mixture method because you can precisely control the heat input. The calorimeter absorbs some heat, so its correction term m_c c_c \u0394T is essential.</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The electrical method is more accurate than the mixture method because you can precisely control the heat input. The calorimeter absorbs some heat, so its correction term m_c c_c ΔT is essential.</p></div>
             </div>
           </div>
         </div>
@@ -83,24 +83,24 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
               <div><div className="flex justify-between text-xs font-semibold"><span>Liquid Mass (m_l)</span><span className="text-violet-600 font-mono">{ml} kg</span></div><input type="range" min="0.1" max="1" step="0.05" value={ml} onChange={e => { setMl(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">Q_heater = {v}\u00D7{i}\u00D7{t} = {qHeater} J</p>
-                <p className="text-sm text-slate-400">c_l = ({qHeater} - {mc}\u00D7{cc}\u00D7({tf}-{ti})) / ({ml}\u00D7({tf}-{ti}))</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">c_l = </span><span className="text-yellow-400 font-mono font-bold">{cl.toFixed(0)} J/kg\u00B7K</span></p>
+                <p className="text-sm text-slate-400">Q_heater = {v}×{i}×{t} = {qHeater} J</p>
+                <p className="text-sm text-slate-400">c_l = ({qHeater} - {mc}×{cc}×({tf}-{ti})) / ({ml}×({tf}-{ti}))</p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">c_l = </span><span className="text-yellow-400 font-mono font-bold">{cl.toFixed(0)} J/kg·K</span></p>
               </div>
             </div>
           </div>
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">A 12V, 3A heater runs for 150s in a calorimeter (m_c=0.08 kg, c_c=900 J/kg\u00B7K) containing 0.3 kg liquid. Temp rises from 22\u00B0C to 42\u00B0C.</p>
+              <p className="text-base font-medium mb-2">A 12V, 3A heater runs for 150s in a calorimeter (m_c=0.08 kg, c_c=900 J/kg·K) containing 0.3 kg liquid. Temp rises from 22°C to 42°C.</p>
               <p className="text-base font-medium">Find the specific heat of the liquid.</p>
-              <div className="bg-violet-50 dark:bg-violet-900/20 rounded p-2 mt-2"><p className="text-xs text-violet-700 dark:text-violet-300 font-mono">Q_heater = 12\u00D73\u00D7150 = 5400 J. \u0394T = 20. c_l = (5400 - 0.08\u00D7900\u00D720) / (0.3\u00D720)</p></div>
+              <div className="bg-violet-50 dark:bg-violet-900/20 rounded p-2 mt-2"><p className="text-xs text-violet-700 dark:text-violet-300 font-mono">Q_heater = 12×3×150 = 5400 J. ΔT = 20. c_l = (5400 - 0.08×900×20) / (0.3×20)</p></div>
             </div>
             <div className="flex gap-2 mb-2">
-              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="c_l (J/kg\u00B7K)..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-violet-500 outline-none" />
+              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="c_l (J/kg·K)..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-violet-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! ~780 J/kg\u00B7K</strong> \u2014 typical for vegetable oils! Different liquids have unique specific heats.</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! ~780 J/kg·K</strong> — typical for vegetable oils! Different liquids have unique specific heats.</p></div>}
             {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Use c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))</p></div>}
           </div>
         </div>

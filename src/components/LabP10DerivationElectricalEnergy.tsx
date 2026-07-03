@@ -22,9 +22,9 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
 
   const steps = [
     { label: 'Energy from Voltage and Charge', formula: 'E = qV', detail: 'Potential difference V = W/q = E/q. So energy E = qV. Voltage tells us energy per unit charge.' },
-    { label: 'Charge = Current \u00D7 Time', formula: 'E = I t V', detail: 'Charge q = current \u00D7 time. Substitute q = It into E = qV. This gives E = IVt, the basic electrical energy formula.' },
-    { label: 'Using Ohm\'s Law V = IR', formula: 'E = I\u00B2 R t', detail: 'Substitute V = IR into E = IVt to get E = I\u00B2Rt. Useful when you know current and resistance.' },
-    { label: 'Using Ohm\'s Law I = V/R', formula: 'E = V\u00B2 t / R', detail: 'Substitute I = V/R into E = IVt to get E = V\u00B2t/R. Useful when you know voltage and resistance.' },
+    { label: 'Charge = Current × Time', formula: 'E = I t V', detail: 'Charge q = current × time. Substitute q = It into E = qV. This gives E = IVt, the basic electrical energy formula.' },
+    { label: 'Using Ohm\'s Law V = IR', formula: 'E = I² R t', detail: 'Substitute V = IR into E = IVt to get E = I²Rt. Useful when you know current and resistance.' },
+    { label: 'Using Ohm\'s Law I = V/R', formula: 'E = V² t / R', detail: 'Substitute I = V/R into E = IVt to get E = V²t/R. Useful when you know voltage and resistance.' },
   ];
 
   return (
@@ -38,11 +38,11 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
         <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-lg"><Battery className="w-5 h-5 text-white" /></div>
-            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Deriving E = IVt = I\u00B2Rt = V\u00B2t/R</p></div>
+            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Deriving E = IVt = I²Rt = V²t/R</p></div>
           </div>
           <div className="bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-indigo-200 font-semibold uppercase tracking-wider">Three Equivalent Formulas</p>
-            <p className="text-base font-bold font-mono text-white mt-1">E = IVt = I\u00B2Rt = V\u00B2t/R</p>
+            <p className="text-base font-bold font-mono text-white mt-1">E = IVt = I²Rt = V²t/R</p>
             <p className="text-xs text-indigo-200 mt-1">Choose the form with the quantities you know</p>
           </div>
           <div className="space-y-0">
@@ -66,7 +66,7 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Your electricity bill charges for energy in kWh. 1 kWh = 3.6\u00D710\u2076 J. A 100W bulb running 10 hours uses 1 kWh of energy. Energy companies use E = Pt (power \u00D7 time)!</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Your electricity bill charges for energy in kWh. 1 kWh = 3.6×10⁶ J. A 100W bulb running 10 hours uses 1 kWh of energy. Energy companies use E = Pt (power × time)!</p></div>
             </div>
           </div>
         </div>
@@ -80,9 +80,9 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
               <div><div className="flex justify-between text-xs font-semibold"><span>Time (t)</span><span className="text-indigo-600 font-mono">{t} s</span></div><input type="range" min="10" max="300" step="10" value={t} onChange={e => { setT(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">All Three Forms</p>
-                <p className="text-sm text-slate-400">E = IVt = {v}\u00D7{i}\u00D7{t} = {e1} J</p>
-                <p className="text-sm text-slate-400">E = I\u00B2Rt = {i}\u00B2\u00D7{(v/i).toFixed(1)}\u00D7{t} = {e1} J</p>
-                <p className="text-sm text-slate-400">E = V\u00B2t/R = {v}\u00B2\u00D7{t}/{(v/i).toFixed(1)} = {e1} J</p>
+                <p className="text-sm text-slate-400">E = IVt = {v}×{i}×{t} = {e1} J</p>
+                <p className="text-sm text-slate-400">E = I²Rt = {i}²×{(v/i).toFixed(1)}×{t} = {e1} J</p>
+                <p className="text-sm text-slate-400">E = V²t/R = {v}²×{t}/{(v/i).toFixed(1)} = {e1} J</p>
                 <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">E = </span><span className="text-yellow-400 font-mono font-bold">{e1} J</span></p>
               </div>
             </div>
@@ -92,14 +92,14 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
               <p className="text-base font-medium mb-2">A <strong>12V</strong> heater draws <strong>5A</strong> for <strong>2 minutes (120s)</strong>.</p>
               <p className="text-base font-medium">How much electrical energy is used?</p>
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-2 mt-2"><p className="text-xs text-indigo-700 dark:text-indigo-300 font-mono">E = IVt = 12 \u00D7 5 \u00D7 120 = ?</p></div>
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-2 mt-2"><p className="text-xs text-indigo-700 dark:text-indigo-300 font-mono">E = IVt = 12 × 5 × 120 = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
               <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Energy in Joules..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 7200 J.</strong> That\'s enough energy to heat a cup of coffee! In kWh: 7200/3.6\u00D710\u2076 = 0.002 kWh.</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> E = IVt = 12 \u00D7 5 \u00D7 120 = 7200 J</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 7200 J.</strong> That\'s enough energy to heat a cup of coffee! In kWh: 7200/3.6×10⁶ = 0.002 kWh.</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> E = IVt = 12 × 5 × 120 = 7200 J</p></div>}
           </div>
         </div>
       </div>

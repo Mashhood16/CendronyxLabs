@@ -19,14 +19,14 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
 
   const steps = [
     { label: 'Pressure = Force per Area', formula: 'P = F / A', detail: 'Pressure is force divided by area. For a liquid, the force pushing down comes from the weight of the liquid column above.' },
-    { label: 'Force = Weight of Liquid Column', formula: 'F = m \u00D7 g = \u03C1 \u00D7 V \u00D7 g', detail: 'The force on the bottom is the weight of the liquid above. Weight = mass \u00D7 gravity. Mass = density \u00D7 volume. So F = \u03C1 \u00D7 V \u00D7 g.' },
-    { label: 'Volume = Area \u00D7 Height', formula: 'V = A \u00D7 h', detail: 'A column of liquid has volume = base area \u00D7 height. Substituting: F = \u03C1 \u00D7 A \u00D7 h \u00D7 g. The area A appears here but will cancel!' },
-    { label: 'Cancel Area to Get P = \u03C1gh', formula: 'P = \u03C1 \u00D7 g \u00D7 h', detail: 'Finally: P = F/A = (\u03C1 \u00D7 A \u00D7 h \u00D7 g) / A. The area A cancels! Pressure depends only on density (\u03C1), gravity (g), and depth (h) \u2014 NOT on the container shape!' },
+    { label: 'Force = Weight of Liquid Column', formula: 'F = m × g = ρ × V × g', detail: 'The force on the bottom is the weight of the liquid above. Weight = mass × gravity. Mass = density × volume. So F = ρ × V × g.' },
+    { label: 'Volume = Area × Height', formula: 'V = A × h', detail: 'A column of liquid has volume = base area × height. Substituting: F = ρ × A × h × g. The area A appears here but will cancel!' },
+    { label: 'Cancel Area to Get P = ρgh', formula: 'P = ρ × g × h', detail: 'Finally: P = F/A = (ρ × A × h × g) / A. The area A cancels! Pressure depends only on density (ρ), gravity (g), and depth (h) — NOT on the container shape!' },
   ];
 
   return (
     <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:bg-[#000000] font-sans select-none text-slate-800 dark:text-white overflow-x-hidden w-full">
-      <LabHeader onExit={onExit} title="Derivation: Liquid Pressure (P = \u03C1gh)" />
+      <LabHeader onExit={onExit} title="Derivation: Liquid Pressure (P = ρgh)" />
       <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 shrink-0">
         <button onClick={() => setActiveMobileTab('theory')}
           className={`py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-cyan-600 text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>Derivation</button>
@@ -42,14 +42,14 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">How P = \u03C1gh emerges from the definition of pressure and weight</p>
+              <p className="text-xs text-slate-500">How P = ρgh emerges from the definition of pressure and weight</p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-cyan-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">P = \u03C1 \u00D7 g \u00D7 h</p>
-            <p className="text-xs text-cyan-200 mt-1">Pressure = density \u00D7 gravity \u00D7 depth</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">P = ρ × g × h</p>
+            <p className="text-xs text-cyan-200 mt-1">Pressure = density × gravity × depth</p>
           </div>
 
           <div className="space-y-0">
@@ -79,8 +79,8 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The area cancels out because pressure is force per area \u2014 and the force already includes area through volume. This means pressure at a given depth is the SAME regardless of container shape. This is called the hydrostatic paradox!</p>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
+                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The area cancels out because pressure is force per area — and the force already includes area through volume. This means pressure at a given depth is the SAME regardless of container shape. This is called the hydrostatic paradox!</p>
               </div>
             </div>
           </div>
@@ -90,14 +90,14 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
         <div className={`lg:col-span-2 w-full flex flex-col gap-5 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-cyan-500" /><h2 className="text-lg font-bold">See the Derivation in Action</h2></div>
-            <p className="text-sm text-slate-500 mb-4">Adjust depth and density to see how P = \u03C1gh works with real values.</p>
+            <p className="text-sm text-slate-500 mb-4">Adjust depth and density to see how P = ρgh works with real values.</p>
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between text-xs font-semibold"><span>Depth (h)</span><span className="text-cyan-600 font-mono">{depth} m</span></div>
                 <input type="range" min="1" max="50" step="0.5" value={depth} onChange={e => { setDepth(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Density (\u03C1)</span><span className="text-cyan-600 font-mono">{density} kg/m\u00B3</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>Density (ρ)</span><span className="text-cyan-600 font-mono">{density} kg/m³</span></div>
                 <input type="range" min="500" max="1500" step="10" value={density} onChange={e => { setDensity(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
                 <div className="flex justify-between text-[9px] text-slate-400 mt-0.5"><span>Oil (920)</span><span>Water (1000)</span><span>Seawater (1025)</span></div>
               </div>
@@ -122,9 +122,9 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
 
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">P = F/A = (\u03C1 \u00D7 V \u00D7 g) / A</p>
-                <p className="text-sm text-slate-400">V = A \u00D7 h, so P = (\u03C1 \u00D7 A \u00D7 h \u00D7 g) / A</p>
-                <p className="text-sm text-slate-400">A cancels: P = \u03C1gh</p>
+                <p className="text-sm text-slate-400">P = F/A = (ρ × V × g) / A</p>
+                <p className="text-sm text-slate-400">V = A × h, so P = (ρ × A × h × g) / A</p>
+                <p className="text-sm text-slate-400">A cancels: P = ρgh</p>
                 <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">P = </span><span className="text-yellow-400 font-mono font-bold">{pressure.toFixed(0)} Pa</span></p>
               </div>
             </div>
@@ -134,10 +134,10 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Waves className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">A submarine dives in seawater (\u03C1 = 1025 kg/m\u00B3) to <strong>30 m</strong>.</p>
-              <p className="text-base font-medium">What\u2019s the pressure at that depth? (g = 9.81 m/s\u00B2)</p>
+              <p className="text-base font-medium mb-2">A submarine dives in seawater (ρ = 1025 kg/m³) to <strong>30 m</strong>.</p>
+              <p className="text-base font-medium">What’s the pressure at that depth? (g = 9.81 m/s²)</p>
               <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-cyan-700 dark:text-cyan-300 font-mono">P = \u03C1gh = 1025 \u00D7 9.81 \u00D7 30 = ?</p>
+                <p className="text-xs text-cyan-700 dark:text-cyan-300 font-mono">P = ρgh = 1025 × 9.81 × 30 = ?</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
@@ -149,13 +149,13 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 301,658 Pa.</strong> That\u2019s ~3\u00D7 atmospheric pressure! Submarines are built to withstand these forces.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 301,658 Pa.</strong> That’s ~3× atmospheric pressure! Submarines are built to withstand these forces.</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> P = \u03C1gh = 1025 \u00D7 9.81 \u00D7 30. Multiply all three!</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> P = ρgh = 1025 × 9.81 × 30. Multiply all three!</p>
               </div>
             )}
           </div>

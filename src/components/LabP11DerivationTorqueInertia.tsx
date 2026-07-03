@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationTorqueInertia({ onExit }: Props) {
-  const key = 'torqueInertia';
+  const key = 'torque_inertia';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

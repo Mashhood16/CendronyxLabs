@@ -20,9 +20,9 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
 
   const steps = [
     { label: 'Average Speed Formula', formula: 'v = d / t', detail: 'The average speed of any object is total distance divided by total time. For a satellite, distance is its orbital circumference, and time is its orbital period.' },
-    { label: 'Distance in One Orbit = Circumference', formula: 'd = 2\u03C0r', detail: 'A satellite travels in a circular path. The distance for one complete orbit is the circumference of a circle: 2\u03C0r, where r is the orbit radius from Earth\'s center.' },
+    { label: 'Distance in One Orbit = Circumference', formula: 'd = 2πr', detail: 'A satellite travels in a circular path. The distance for one complete orbit is the circumference of a circle: 2πr, where r is the orbit radius from Earth\'s center.' },
     { label: 'Time = Orbital Period T', formula: 't = T', detail: 'The time to complete one full orbit is called the orbital period T. Low Earth orbit (ISS) takes ~90 minutes. Geostationary satellites take exactly 24 hours.' },
-    { label: 'Substitute to Get Orbital Speed', formula: 'v = 2\u03C0r / T', detail: 'Putting it together: v = distance / time = 2\u03C0r / T. Higher orbits (larger r) have longer periods (larger T) but lower speeds. The Moon orbits at ~1 km/s!' },
+    { label: 'Substitute to Get Orbital Speed', formula: 'v = 2πr / T', detail: 'Putting it together: v = distance / time = 2πr / T. Higher orbits (larger r) have longer periods (larger T) but lower speeds. The Moon orbits at ~1 km/s!' },
   ];
 
   return (
@@ -43,14 +43,14 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">Derive v = 2\u03C0r/T from basic definitions of speed and circular motion</p>
+              <p className="text-xs text-slate-500">Derive v = 2πr/T from basic definitions of speed and circular motion</p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-indigo-500 to-fuchsia-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-indigo-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">v = 2\u03C0r / T</p>
-            <p className="text-xs text-indigo-200 mt-1">Orbital speed = circumference \u00F7 orbital period</p>
+            <p className="text-2xl font-bold font-mono text-white mt-1">v = 2πr / T</p>
+            <p className="text-xs text-indigo-200 mt-1">Orbital speed = circumference ÷ orbital period</p>
           </div>
 
           <div className="space-y-0">
@@ -80,7 +80,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
                 <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Higher orbits have lower speeds but longer periods. The ISS (400 km up) zips at 7.66 km/s, orbiting 16 times a day. GPS satellites (20,200 km) move at 3.9 km/s with a 12-hour orbit.</p>
               </div>
             </div>
@@ -116,9 +116,9 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
                 <p className="text-sm text-slate-400">Step 1: v = d/t</p>
-                <p className="text-sm text-slate-400">Step 2: d = 2\u03C0r = 2\u03C0 \u00D7 {rM.toLocaleString()} m</p>
+                <p className="text-sm text-slate-400">Step 2: d = 2πr = 2π × {rM.toLocaleString()} m</p>
                 <p className="text-sm text-slate-400">Step 3: T = {period.toFixed(0)} s</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">Step 4: v = 2\u03C0r/T = </span><span className="text-yellow-400 font-mono font-bold">{speed.toFixed(0)} m/s</span></p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">Step 4: v = 2πr/T = </span><span className="text-yellow-400 font-mono font-bold">{speed.toFixed(0)} m/s</span></p>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
               <p className="text-base font-medium mb-2">ISS orbits at <strong>408 km</strong> altitude. Earth radius = <strong>6,371 km</strong>. T = <strong>92.7 minutes</strong>.</p>
               <p className="text-base font-medium">Calculate the orbital speed.</p>
               <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-indigo-700 dark:text-indigo-300 font-mono">r = 408 + 6371 = 6779 km = 6,779,000 m. T = 92.7\u00D760 = 5562 s. v = 2\u03C0r/T</p>
+                <p className="text-xs text-indigo-700 dark:text-indigo-300 font-mono">r = 408 + 6371 = 6779 km = 6,779,000 m. T = 92.7×60 = 5562 s. v = 2πr/T</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
@@ -143,13 +143,13 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! ~7,658 m/s.</strong> The ISS travels at 7.66 km/s \u2014 over 27,000 km/h, orbiting Earth 16 times per day!</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! ~7,658 m/s.</strong> The ISS travels at 7.66 km/s — over 27,000 km/h, orbiting Earth 16 times per day!</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> r = 6,779,000 m, T = 5,562 s. v = 2\u03C0(6,779,000)/5,562. Convert km to m!</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> r = 6,779,000 m, T = 5,562 s. v = 2π(6,779,000)/5,562. Convert km to m!</p>
               </div>
             )}
           </div>

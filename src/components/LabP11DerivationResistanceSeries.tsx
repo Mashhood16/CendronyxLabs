@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationResistanceSeries({ onExit }: Props) {
-  const key = 'resistanceSeries';
+  const key = 'resistance_series';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

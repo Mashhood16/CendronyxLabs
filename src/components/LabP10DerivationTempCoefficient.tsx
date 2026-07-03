@@ -19,10 +19,10 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
   };
 
   const steps = [
-    { label: 'Resistivity Changes with Temperature', formula: '\u03C1\u1d35 \u2212 \u03C1\u2080 \u221D \u03C1\u2080 \u00D7 \u0394T', detail: 'The change in resistivity is directly proportional to the initial resistivity and the temperature change.' },
-    { label: 'Insert Proportionality Constant', formula: '\u03C1\u1d35 \u2212 \u03C1\u2080 = \u03B1 \u03C1\u2080 \u0394T', detail: 'The constant \u03B1 is the temperature coefficient of resistivity. Positive for metals, negative for semiconductors.' },
-    { label: 'Rearrange for \u03B1', formula: '\u03B1 = (\u03C1\u1d35 \u2212 \u03C1\u2080) / (\u03C1\u2080 \u0394T)', detail: 'Temperature coefficient per \u00B0C. For copper \u03B1 = 0.0039/\u00B0C meaning resistance increases 0.39% per \u00B0C.' },
-    { label: 'Final Resistivity Formula', formula: '\u03C1\u1d35 = \u03C1\u2080 [1 + \u03B1(T \u2212 T\u2080)]', detail: 'This is the practical form. R(T) = R\u2080[1 + \u03B1\u0394T] for resistance. Used in RTD temperature sensors!' },
+    { label: 'Resistivity Changes with Temperature', formula: 'ρᴵ − ρ₀ ∝ ρ₀ × ΔT', detail: 'The change in resistivity is directly proportional to the initial resistivity and the temperature change.' },
+    { label: 'Insert Proportionality Constant', formula: 'ρᴵ − ρ₀ = α ρ₀ ΔT', detail: 'The constant α is the temperature coefficient of resistivity. Positive for metals, negative for semiconductors.' },
+    { label: 'Rearrange for α', formula: 'α = (ρᴵ − ρ₀) / (ρ₀ ΔT)', detail: 'Temperature coefficient per °C. For copper α = 0.0039/°C meaning resistance increases 0.39% per °C.' },
+    { label: 'Final Resistivity Formula', formula: 'ρᴵ = ρ₀ [1 + α(T − T₀)]', detail: 'This is the practical form. R(T) = R₀[1 + αΔT] for resistance. Used in RTD temperature sensors!' },
   ];
 
   return (
@@ -36,12 +36,12 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
         <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg"><Thermometer className="w-5 h-5 text-white" /></div>
-            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Deriving the temperature coefficient \u03B1 of resistivity</p></div>
+            <div><h2 className="text-lg font-bold">Step-by-Step Derivation</h2><p className="text-xs text-slate-500">Deriving the temperature coefficient α of resistivity</p></div>
           </div>
           <div className="bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-yellow-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-xl font-bold font-mono text-white mt-1">\u03B1 = (\u03C1\u209c \u2212 \u03C1\u2080) / (\u03C1\u2080 \u0394T)</p>
-            <p className="text-xs text-yellow-200 mt-1">Temperature coefficient of resistivity (/\u00B0C)</p>
+            <p className="text-xl font-bold font-mono text-white mt-1">α = (ρₜ − ρ₀) / (ρ₀ ΔT)</p>
+            <p className="text-xs text-yellow-200 mt-1">Temperature coefficient of resistivity (/°C)</p>
           </div>
           <div className="space-y-0">
             {steps.map((step, idx) => (
@@ -64,7 +64,7 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Metals have positive \u03B1 (resistance increases with heat). Carbon and semiconductors have negative \u03B1 (resistance decreases). This is used in thermistors for digital thermometers!</p></div>
+              <div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Metals have positive α (resistance increases with heat). Carbon and semiconductors have negative α (resistance decreases). This is used in thermistors for digital thermometers!</p></div>
             </div>
           </div>
         </div>
@@ -73,29 +73,29 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
             <div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-yellow-500" /><h2 className="text-lg font-bold">See the Derivation in Action</h2></div>
             <p className="text-sm text-slate-500 mb-4">Adjust values to find temperature coefficient.</p>
             <div className="space-y-3">
-              <div><div className="flex justify-between text-xs font-semibold"><span>Initial Resistivity (\u03C1\u2080)</span><span className="text-yellow-600 font-mono">{rho0.toExponential(2)} \u03A9\u00B7m</span></div><input type="range" min="1e-8" max="1e-7" step="0.1e-8" value={rho0} onChange={e => { setRho0(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
-              <div><div className="flex justify-between text-xs font-semibold"><span>Resistivity at T (\u03C1\u209c)</span><span className="text-yellow-600 font-mono">{rhoT.toExponential(2)} \u03A9\u00B7m</span></div><input type="range" min={rho0+0.1e-8} max="5e-7" step="0.1e-8" value={rhoT} onChange={e => { setRhoT(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
-              <div><div className="flex justify-between text-xs font-semibold"><span>Temp Change (\u0394T)</span><span className="text-yellow-600 font-mono">{dt}\u00B0C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Initial Resistivity (ρ₀)</span><span className="text-yellow-600 font-mono">{rho0.toExponential(2)} Ω·m</span></div><input type="range" min="1e-8" max="1e-7" step="0.1e-8" value={rho0} onChange={e => { setRho0(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Resistivity at T (ρₜ)</span><span className="text-yellow-600 font-mono">{rhoT.toExponential(2)} Ω·m</span></div><input type="range" min={rho0+0.1e-8} max="5e-7" step="0.1e-8" value={rhoT} onChange={e => { setRhoT(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
+              <div><div className="flex justify-between text-xs font-semibold"><span>Temp Change (ΔT)</span><span className="text-yellow-600 font-mono">{dt}°C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
-                <p className="text-sm text-slate-400">\u03B1 = ({rhoT.toExponential(2)} - {rho0.toExponential(2)}) / ({rho0.toExponential(2)}\u00D7{dt})</p>
-                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">\u03B1 = </span><span className="text-yellow-400 font-mono font-bold">{alpha.toExponential(4)} /\u00B0C</span></p>
+                <p className="text-sm text-slate-400">α = ({rhoT.toExponential(2)} - {rho0.toExponential(2)}) / ({rho0.toExponential(2)}×{dt})</p>
+                <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">α = </span><span className="text-yellow-400 font-mono font-bold">{alpha.toExponential(4)} /°C</span></p>
               </div>
             </div>
           </div>
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Thermometer className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">Copper has \u03C1\u2080 = 1.68\u00D710\u207B\u2078 at 20\u00B0C. At 70\u00B0C, \u03C1\u209c = 2.01\u00D710\u207B\u2078.</p>
-              <p className="text-base font-medium">Find the temperature coefficient \u03B1 of copper.</p>
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded p-2 mt-2"><p className="text-xs text-yellow-700 dark:text-yellow-300 font-mono">\u03B1 = (2.01-1.68)\u00D710\u207B\u2078 / (1.68\u00D710\u207B\u2078\u00D750) = ?</p></div>
+              <p className="text-base font-medium mb-2">Copper has ρ₀ = 1.68×10⁻⁸ at 20°C. At 70°C, ρₜ = 2.01×10⁻⁸.</p>
+              <p className="text-base font-medium">Find the temperature coefficient α of copper.</p>
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded p-2 mt-2"><p className="text-xs text-yellow-700 dark:text-yellow-300 font-mono">α = (2.01-1.68)×10⁻⁸ / (1.68×10⁻⁸×50) = ?</p></div>
             </div>
             <div className="flex gap-2 mb-2">
-              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="\u03B1 in /\u00B0C..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-yellow-500 outline-none" />
+              <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="α in /°C..." className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-yellow-500 outline-none" />
               <button onClick={checkAnswer} className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
             </div>
-            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 0.0039/\u00B0C.</strong> This means copper resistance increases 0.39% per \u00B0C rise \u2014 important for power line calculations!</p></div>}
-            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> \u03B1 = (\u03C1\u209c-\u03C1\u2080)/(\u03C1\u2080\u0394T) = (0.33\u00D710\u207B\u2078)/(1.68\u00D710\u207B\u2078\u00D750) = 0.0039/\u00B0C</p></div>}
+            {checkResult === 'correct' && <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 0.0039/°C.</strong> This means copper resistance increases 0.39% per °C rise — important for power line calculations!</p></div>}
+            {checkResult === 'incorrect' && <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2"><XCircle className="w-5 h-5 text-red-500 shrink-0" /><p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> α = (ρₜ-ρ₀)/(ρ₀ΔT) = (0.33×10⁻⁸)/(1.68×10⁻⁸×50) = 0.0039/°C</p></div>}
           </div>
         </div>
       </div>

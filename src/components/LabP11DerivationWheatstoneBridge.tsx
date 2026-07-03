@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationWheatstoneBridge({ onExit }: Props) {
-  const key = 'wheatstoneBridge';
+  const key = 'wheatstone_bridge';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

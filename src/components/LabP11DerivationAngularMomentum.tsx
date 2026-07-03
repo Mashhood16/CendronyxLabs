@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationAngularMomentum({ onExit }: Props) {
-  const key = 'angularMomentum';
+  const key = 'angular_momentum';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

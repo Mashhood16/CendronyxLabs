@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationStationaryWavesAirColumn({ onExit }: Props) {
-  const key = 'stationaryWavesAirColumn';
+  const key = 'stationary_waves_air_column';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab

@@ -99,7 +99,7 @@ export function GenericDerivationLab({ onExit, config }: { onExit?: () => void; 
           <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
             <div className="flex items-start gap-2">
               <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div><p className="font-bold text-sm text-amber-700 dark:text-amber-300">{'\uD83D\uDCA1'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Each step builds on simple concepts to reveal powerful physics relationships.</p></div>
+              <div><p className="font-bold text-sm text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Each step builds on simple concepts to reveal powerful physics relationships.</p></div>
             </div>
           </div>
         </div>

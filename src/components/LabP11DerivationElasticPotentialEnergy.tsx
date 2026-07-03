@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function LabP11DerivationElasticPotentialEnergy({ onExit }: Props) {
-  const key = 'elasticPotentialEnergy';
+  const key = 'elastic_potential_energy';
   const config = CLASS11_DERIVATIONS[key];
   return (
     <GenericDerivationLab
