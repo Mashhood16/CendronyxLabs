@@ -18,10 +18,9 @@ export default function LabP10DerivationExpansionLiquids({ onExit }: { onExit?: 
   };
 
   const steps = [
-    { label: 'Real vs Apparent Expansion', formula: 'Real Expansion = Apparent Expansion + Flask Expansion', detail: 'When a liquid is heated in a glass flask, we only see apparent expansion. The flask itself also expands, hiding some of the liquid\'s true expansion.' },
-    { label: 'Define Coefficients', formula: 'γ_r = γ_a + γ_g', detail: 'γ_r is the real expansion coefficient of the liquid. γ_a is what we observe. γ_g is the glass flask expansion coefficient.' },
-    { label: 'Physical Meaning', formula: 'γ_r > γ_a', detail: 'The real expansion is always greater than apparent expansion because the container expands too, making room for the liquid.' },
-    { label: 'Why It Matters', formula: 'γ_a = γ_r − γ_g', detail: 'To find true liquid expansion, subtract the container expansion from what you measure. Mercury thermometers account for this!' },
+    { label: 'Define Coefficients', formula: 'γ_r = γ_a + γ_g', detail: 'On a hot summer day, you check the outdoor thermometer. The red liquid climbs up the glass tube. But here is the trick: the glass itself also expands. You are only seeing the APPARENT expansion of the liquid.' },
+    { label: 'Physical Meaning', formula: 'γ_r > γ_a', detail: 'Gamma-r = Gamma-a + Gamma-g. The real expansion of the liquid (Gamma-r) equals what you observe (Gamma-a) plus the glass flask expansion (Gamma-g). The glass hides some of the liquid true expansion.' },
+    { label: 'Why It Matters', formula: 'γ_a = γ_r − γ_g', detail: 'Since Gamma-r is greater than Gamma-a always, the real expansion is always bigger than what you see. The glass container grows too, making extra room for the liquid.' }
   ];
 
   return (

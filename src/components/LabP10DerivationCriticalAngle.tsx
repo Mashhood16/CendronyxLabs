@@ -18,10 +18,9 @@ export default function LabP10DerivationCriticalAngle({ onExit }: { onExit?: () 
   };
 
   const steps = [
-    { label: "Snell's Law", formula: 'n₁ sinθᵢ = n₂ sinθr', detail: "Snell's law relates the angles of incidence and refraction to the refractive indices of two media." },
-    { label: 'At Critical Angle, θr = 90°', formula: 'n₁ sinθc = n₂ sin 90°', detail: 'At the critical angle, the refracted ray grazes the boundary at 90°. Beyond this, total internal reflection occurs.' },
-    { label: 'sin 90° = 1', formula: 'n₁ sinθc = n₂', detail: 'Since sin 90° = 1, the equation simplifies to n₁ sinθc = n₂.' },
-    { label: 'Solve for Critical Angle', formula: 'θc = sin⁻¹(n₂ / n₁)', detail: 'For air (n₂≈1), this simplifies to θc = sin⁻¹(1/n). Used in optical fibers and diamond sparkle!' },
+    { label: 'At Critical Angle, θr = 90°', formula: 'n₁ sinθc = n₂ sin 90°', detail: 'Swimming underwater, you look up at the surface. The world above appears as a shimmering circle. Light bends as it leaves water (n=1.33) into air (n=1.0). Snell\'s law n₁ sinθᵢ = n₂ sinθr describes exactly how much it bends.' },
+    { label: 'sin 90° = 1', formula: 'n₁ sinθc = n₂', detail: 'As you swim deeper and look up at a steeper angle, the bright circle shrinks. At a certain angle, the refracted ray runs along the surface at 90 degrees. This is the critical angle — beyond it, you can no longer see above the water.' },
+    { label: 'Solve for Critical Angle', formula: 'θc = sin⁻¹(n₂ / n₁)', detail: 'With sin 90 = 1, Snell\'s law simplifies: n₁ sinθc = n₂. The water surface turns into a perfect mirror. Below the critical angle, total internal reflection takes over.' }
   ];
 
   return (

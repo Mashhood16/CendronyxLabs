@@ -19,10 +19,9 @@ export default function LabP10DerivationResistivity({ onExit }: { onExit?: () =>
   };
 
   const steps = [
-    { label: 'Resistance Depends on Geometry', formula: 'R ∝ L / A', detail: 'Resistance is directly proportional to length L and inversely proportional to cross-sectional area A. Longer wires resist more; thicker wires resist less.' },
-    { label: 'Insert Proportionality Constant', formula: 'R = ρ × L / A', detail: 'The constant ρ (rho) is called resistivity. It is a material property independent of shape.' },
-    { label: 'Rearrange for Resistivity', formula: 'ρ = R × A / L', detail: 'Resistivity = Resistance × Area / Length. Units: Ω·m. Each material has its characteristic resistivity.' },
-    { label: 'Material Comparison', formula: 'ρ_Cu = 1.68×10⁻⁸, ρ_Al = 2.65×10⁻⁸, ρ_Fe = 9.71×10⁻⁸', detail: 'Copper has low resistivity = good conductor. Insulators like rubber have ρ > 10¹³ Ω·m — that\'s 10²¹ times more!' },
+    { label: 'Resistance Depends on Geometry', formula: 'R ∝ L / A', detail: 'An electrician is wiring a new house. Should she use copper or aluminum wire? Resistance depends on geometry: R is proportional to L/A. Longer wires resist more; thicker wires resist less.' },
+    { label: 'Insert Proportionality Constant', formula: 'R = ρ × L / A', detail: 'R = rho x L/A. The constant rho is resistivity — the material\'s inherent opposition to current. Copper rho = 1.68e-8 ohm-meters. Aluminum rho = 2.65e-8 ohm-meters. Copper wins for house wiring!' },
+    { label: 'Rearrange for Resistivity', formula: 'ρ = R × A / L', detail: 'rho = R x A / L. Units: ohm-meters. Silver has the lowest resistivity (1.59e-8), but it is too expensive for house wiring. Copper is the practical champion. Rubber has rho above 10-to-the-13 ohm-meters!' }
   ];
 
   return (

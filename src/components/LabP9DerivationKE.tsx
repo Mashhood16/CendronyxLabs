@@ -18,10 +18,10 @@ export default function LabP9DerivationKE({ onExit }: { onExit?: () => void }) {
   };
 
   const steps = [
-    { label: 'Work-Energy Theorem', formula: 'Eₖ = W = F × d', detail: 'The work-energy theorem states that work done on an object equals its change in kinetic energy. Work is force times distance.' },
-    { label: 'Substitute F = ma', formula: 'Eₖ = (m × a) × d', detail: 'From Newton’s second law, F = m × a. Substituting: Eₖ = m × a × d. Kinetic energy depends on mass, acceleration, and distance.' },
-    { label: 'Use Motion Equations', formula: 'd = (v/2) × t, a = v/t', detail: 'Starting from rest (vi = 0), average velocity = v/2. Distance d = (v/2) × t. Acceleration a = v/t. Substituting: Eₖ = m × (v/t) × (v/2 × t).' },
-    { label: 'The t Cancels!', formula: 'Eₖ = ½mv²', detail: 'The time t cancels out: Eₖ = m × v/t × v/2 × t = ½mv². Velocity is SQUARED — doubling speed quadruples kinetic energy!' },
+    { label: 'Work-Energy Theorem', formula: 'Eₖ = W = F × d', detail: "🛹 You're at the top of a massive half-pipe, heart pounding. You drop in, and gravity takes over. The work gravity does on you transforms into your kinetic energy: E_k = Work = F × d. The steeper the drop, the more work gravity does." },
+    { label: 'Substitute F = ma', formula: 'Eₖ = (m × a) × d', detail: 'Gravity pulls you with force F = mg. The distance d you travel relates to your speed. Starting from rest, your average speed down the ramp is v_avg = v/2. So d = v_avg × t = (v/2) × t. E_k = (ma)(d) = m × a × (v/2 × t).' },
+    { label: 'Use Motion Equations', formula: 'd = (v/2) × t, a = v/t', detail: 'Your acceleration down the ramp is a = v/t (how quickly you reach speed v in time t). Plug it in: E_k = m × (v/t) × (v/2 × t). The t appears in the numerator AND denominator. Something beautiful is about to happen...' },
+    { label: 'The t Cancels!', formula: 'Eₖ = ½mv²', detail: 'The time cancels! E_k = m × v × v/2 = ½mv². Doubling your speed means QUADRUPLING your energy. This is why car crashes at 100 km/h are 4× as destructive as at 50 km/h, and why dropping from twice the height on a skateboard doesn\'t just hurt twice as much — it hurts four times as much!' },
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function LabP9DerivationKE({ onExit }: { onExit?: () => void }) {
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">How Eₖ = ½mv² comes from work and Newton’s second law</p>
+              <p className="text-xs text-slate-500">How Eₖ = ½mv² comes from work and Newton's second law</p>
             </div>
           </div>
 
@@ -148,7 +148,7 @@ export default function LabP9DerivationKE({ onExit }: { onExit?: () => void }) {
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 200,000 J.</strong> At 40 m/s (144 km/h), it’d be 800 kJ — four times more! That’s why speed is so dangerous.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 200,000 J.</strong> At 40 m/s (144 km/h), it'd be 800 kJ — four times more! That's why speed is so dangerous.</p>
               </div>
             )}
             {checkResult === 'incorrect' && (

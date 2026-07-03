@@ -19,10 +19,8 @@ export default function LabP10DerivationPhotonEnergy({ onExit }: { onExit?: () =
   };
 
   const steps = [
-    { label: "Planck's Equation", formula: 'E = hf', detail: 'Max Planck discovered that energy is quantized. The energy of a photon equals Planck\'s constant h times its frequency f.' },
-    { label: 'Wave Equation for Light', formula: 'c = fλ ⇒ f = c/λ', detail: 'For light, speed c = fλ. Rearranging gives f = c/λ, which relates frequency to wavelength.' },
-    { label: 'Substitute f', formula: 'E = hc / λ', detail: 'Replace f with c/λ in Planck\'s equation. Energy is inversely proportional to wavelength — shorter wavelength = higher energy!' },
-    { label: 'Photon Momentum', formula: 'p = h / λ = hf / c', detail: 'Light has momentum too! p = h/λ (from de Broglie). This is why light can push solar sails in space.' },
+    { label: 'Wave Equation for Light', formula: 'c = fλ ⇒ f = c/λ', detail: 'You\'re at the beach on a sunny day. The sunlight feels warm, but tomorrow you might have a sunburn. Max Planck discovered that light comes in tiny packets called photons. E = hf — each photon energy equals Planck constant times frequency.' },
+    { label: 'Photon Momentum', formula: 'p = h / λ = hf / c', detail: 'For light, c = f x lambda, so f = c/lambda. Red light (700nm) has low frequency. UV light (below 380nm) has higher frequency — meaning more energetic photons that can damage your skin.' }
   ];
 
   return (

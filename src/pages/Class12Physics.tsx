@@ -68,10 +68,10 @@ export default function Class12Physics() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#1c1b1b] p-1.5 rounded-xl w-fit">
+        <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#1c1b1b] p-1.5 rounded-xl w-full sm:w-fit">
           <button
             onClick={() => setActiveTab('labs')}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${
+            className={`flex flex-1 sm:flex-none justify-center items-center gap-2 px-3 sm:px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${
               activeTab === 'labs'
                 ? 'bg-white dark:bg-[#121212] text-purple-600 dark:text-purple-400 shadow-sm'
                 : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
@@ -85,7 +85,7 @@ export default function Class12Physics() {
           </button>
           <button
             onClick={() => setActiveTab('derivations')}
-            className={`flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${
+            className={`flex flex-1 sm:flex-none justify-center items-center gap-2 px-3 sm:px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${
               activeTab === 'derivations'
                 ? 'bg-white dark:bg-[#121212] text-purple-600 dark:text-purple-400 shadow-sm'
                 : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'

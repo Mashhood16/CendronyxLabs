@@ -20,10 +20,10 @@ export default function LabP10DerivationRadioactiveDecay({ onExit }: { onExit?: 
   };
 
   const steps = [
-    { label: 'After 1 Half-Life', formula: 'N₁ = ½ N₀', detail: 'After one half-life, exactly half of the radioactive nuclei remain. The rest have decayed into other elements.' },
-    { label: 'After 2 Half-Lives', formula: 'N₂ = ½ × ½ N₀ = (½)² N₀', detail: 'After two half-lives, one quarter remains. The pattern is clear: each half-life multiplies by 1/2.' },
-    { label: 'After n Half-Lives', formula: 'N = (½)ⁿ N₀ = N₀ / 2ⁿ', detail: 'After n half-lives, N = N₀ / 2ⁿ. This is an exponential decay law.' },
-    { label: 'Number of Half-Lives', formula: 'n = Δt / T½', detail: 'The number of half-lives n equals total time divided by the half-life period. Substituting gives: N = N₀ / 2^(Δt/T½).' },
+    { label: 'After 1 Half-Life', formula: 'N₁ = ½ N₀', detail: 'An archaeologist discovers an ancient wooden tool. How old is it? Carbon-14 dating holds the answer. After one half-life (5,730 years for C-14), exactly half of the radioactive nuclei remain: N1 = half of N0.' },
+    { label: 'After 2 Half-Lives', formula: 'N₂ = ½ × ½ N₀ = (½)² N₀', detail: 'After two half-lives (11,460 years), only a quarter remains: N2 = half x half x N0 = (half)squared x N0. The pattern is clear — each 5,730 years halves what remains.' },
+    { label: 'After n Half-Lives', formula: 'N = (½)ⁿ N₀ = N₀ / 2ⁿ', detail: 'After n half-lives: N = (half)to-the-n x N0 = N0 / 2-to-the-n. This is exponential decay. The number of half-lives n = total-time / half-life-period.' },
+    { label: 'Number of Half-Lives', formula: 'n = Δt / T½', detail: 'N = N0/2-to-the-(t-over-T-half). If the tool has 25 percent of original C-14, then N/N0 = 1/4 = 1/2-squared, so n = 2 half-lives = 11,460 years old. The Shroud of Turin was dated using this exact formula!' }
   ];
 
   return (

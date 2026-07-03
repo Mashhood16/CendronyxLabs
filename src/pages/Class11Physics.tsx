@@ -65,11 +65,11 @@ export default function Class11Physics() {
           </div>
         </div>
 
-        <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#1c1b1b] p-1.5 rounded-xl w-fit">
-          <button onClick={() => setActiveTab('labs')} className={`flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${activeTab === 'labs' ? 'bg-white dark:bg-[#121212] text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
+        <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#1c1b1b] p-1.5 rounded-xl w-full sm:w-fit">
+          <button onClick={() => setActiveTab('labs')} className={`flex flex-1 sm:flex-none justify-center items-center gap-2 px-3 sm:px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${activeTab === 'labs' ? 'bg-white dark:bg-[#121212] text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
             <Beaker className="w-4 h-4" /> Labs <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400">{readyCount - derivationModules.length}</span>
           </button>
-          <button onClick={() => setActiveTab('derivations')} className={`flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${activeTab === 'derivations' ? 'bg-white dark:bg-[#121212] text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
+          <button onClick={() => setActiveTab('derivations')} className={`flex flex-1 sm:flex-none justify-center items-center gap-2 px-3 sm:px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${activeTab === 'derivations' ? 'bg-white dark:bg-[#121212] text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}>
             <GraduationCap className="w-4 h-4" /> Derivations <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">{derivationModules.length}</span>
           </button>
         </div>

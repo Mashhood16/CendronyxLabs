@@ -19,10 +19,10 @@ export default function LabP10DerivationVolumetricExpansion({ onExit }: { onExit
   };
 
   const steps = [
-    { label: 'Volume Change is Proportional', formula: 'ΔV ∝ V_o × ΔT', detail: 'The change in volume of a solid or liquid is directly proportional to its original volume and temperature change.' },
-    { label: 'Insert Proportionality Constant', formula: 'ΔV = β V_o ΔT', detail: 'The constant β is the coefficient of volumetric thermal expansion. For isotropic solids, β ≈ 3α.' },
-    { label: 'Rearrange for β', formula: 'β = ΔV / (V_o ΔT)', detail: 'This gives volumetric expansion coefficient. Units: 1/°C. Used for liquids, gases, and solids.' },
-    { label: 'Relation between β and α', formula: 'β = 3α', detail: 'For isotropic solids, volumetric expansion is approximately three times linear expansion. Volume depends on length in three dimensions!' },
+    { label: 'Volume Change is Proportional', formula: 'ΔV ∝ V_o × ΔT', detail: 'On a hot day, the fuel in your car\'s gas tank expands. The change in volume is proportional to original volume and temperature change. Gas station tanks are calibrated to account for this.' },
+    { label: 'Insert Proportionality Constant', formula: 'ΔV = β V_o ΔT', detail: 'Delta-V = beta x V0 x Delta-T. beta is the coefficient of volumetric expansion. For liquids, beta is much larger than for solids. Gasoline beta approx 9.5e-4 per degree C — it expands visibly on a hot day.' },
+    { label: 'Rearrange for β', formula: 'β = ΔV / (V_o ΔT)', detail: 'beta = Delta-V/(V0 x Delta-T). For isotropic solids, beta approx 3 x alpha. Why? Volume = L cubed. If length expands by (1+alpha Delta-T), then volume expands by about 1+3 alpha Delta-T for small changes.' },
+    { label: 'Relation between β and α', formula: 'β = 3α', detail: 'This beta = 3 alpha relationship is why hot air balloons rise — the air inside expands (big beta for gases), becomes less dense, and floats. Mercury thermometers work because mercury beta is much larger than glass beta!' }
   ];
 
   return (

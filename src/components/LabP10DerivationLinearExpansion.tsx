@@ -19,10 +19,10 @@ export default function LabP10DerivationLinearExpansion({ onExit }: { onExit?: (
   };
 
   const steps = [
-    { label: 'Length Change is Proportional', formula: 'ΔL ∝ L_o × ΔT', detail: 'The change in length of a solid rod is directly proportional to its original length and the temperature change.' },
-    { label: 'Insert Proportionality Constant', formula: 'ΔL = α L_o ΔT', detail: 'The constant α is the coefficient of linear thermal expansion. Different materials have different α values.' },
-    { label: 'Rearrange for α', formula: 'α = ΔL / (L_o ΔT)', detail: 'This gives the formula for linear expansion coefficient. Units: 1/°C or 1/K.' },
-    { label: 'Final Formula', formula: 'L = L_o (1 + α ΔT)', detail: 'The final length L = L_o + ΔL = L_o + α L_o ΔT = L_o (1 + α ΔT). Used in bridges, railways, and thermostats!' },
+    { label: 'Length Change is Proportional', formula: 'ΔL ∝ L_o × ΔT', detail: 'On a scorching summer day, train tracks can buckle under the heat. The rails expand — a 100 m steel track grows several centimeters. The change in length is proportional to original length and temperature change.' },
+    { label: 'Insert Proportionality Constant', formula: 'ΔL = α L_o ΔT', detail: 'Engineers use expansion joints (gaps between rails) to prevent buckling. The constant alpha is the coefficient of linear expansion: Delta-L = alpha x L-zero x Delta-T. Steel has alpha = 1.2e-5 per degree C.' },
+    { label: 'Rearrange for α', formula: 'α = ΔL / (L_o ΔT)', detail: 'Rearranging: alpha = Delta-L/(L-zero x Delta-T). A 100 m rail heating from 15 C to 45 C expands by 3.6 cm. That gap is the sound you hear when trains go clickety-clack!' },
+    { label: 'Final Formula', formula: 'L = L_o (1 + α ΔT)', detail: 'L = L-zero(1 + alpha x Delta-T). Every material has its own alpha. Invar barely expands at all — used in precision instruments like clocks and telescopes. Bimetallic strips in thermostats use two different metals to bend and switch circuits!' }
   ];
 
   return (

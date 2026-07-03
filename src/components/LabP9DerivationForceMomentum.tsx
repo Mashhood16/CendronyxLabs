@@ -22,10 +22,10 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
   };
 
   const steps = [
-    { label: "Newton's Second Law", formula: 'F = m × a', detail: "Newton’s 2nd law states that net force equals mass times acceleration. Heavier objects need more force to accelerate." },
-    { label: 'Acceleration = Rate of Velocity Change', formula: 'a = (vf − vi) / Δt', detail: 'Acceleration is how quickly velocity changes over time. From initial velocity vi to final velocity vf in time Δt.' },
-    { label: 'Substitute a into F = ma', formula: 'F = m × (vf − vi) / Δt', detail: 'Replacing a with the velocity change formula. Distribute m: F = (mvf − mvi) / Δt.' },
-    { label: 'Recognize Momentum p = mv', formula: 'F = (pf − pi) / Δt = Δp / Δt', detail: 'mv is momentum (p). The numerator is the change in momentum Δp. So: F = Δp/Δt. Force equals rate of change of momentum!' },
+    { label: "Newton's Second Law", formula: 'F = m × a', detail: "🚴 You're cycling at 10 m/s down a neighborhood street when a child suddenly runs out chasing a ball. You slam the brakes. Newton's 2nd law says F = ma — the brake pads squeeze the rim, applying a force that decelerates you. This is the force that will save the day." },
+    { label: 'Acceleration = Rate of Velocity Change', formula: 'a = (vf − vi) / Δt', detail: 'Your speed drops from 10 m/s to 0 in just 2 seconds. That rate of change is acceleration: a = (0 − 10)/2 = −5 m/s². Your body lurches forward — that\'s inertia fighting the change. The negative sign? You\'re slowing down, which means the force is backward.' },
+    { label: 'Substitute a into F = ma', formula: 'F = m × (vf − vi) / Δt', detail: 'You + your bike = 80 kg. F = 80 × (0 − 10)/2 = −400 N. Distribute the mass: F = (80×0 − 80×10)/2 = (0 − 800)/2. Your brakes are applying 400 N of force — about the weight of a small adult pushing against your motion!' },
+    { label: 'Recognize Momentum p = mv', formula: 'F = (pf − pi) / Δt = Δp / Δt', detail: 'Momentum p = mv captures your "quantity of motion." You started with p = 80 × 10 = 800 kg·m/s. Over 2 seconds, that momentum drops to zero. So F = Δp/Δt = (0 − 800)/2 = −400 N. Force is simply how fast momentum changes. This is why airbags save lives — they increase impact time Δt, which reduces the force F!' },
   ];
 
   return (
@@ -49,7 +49,7 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">Follow the logical progression from Newton’s 2nd law to F = Δp/Δt</p>
+              <p className="text-xs text-slate-500">Follow the logical progression from Newton's 2nd law to F = Δp/Δt</p>
             </div>
           </div>
 

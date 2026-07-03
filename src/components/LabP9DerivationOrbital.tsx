@@ -19,10 +19,10 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
   };
 
   const steps = [
-    { label: 'Average Speed Formula', formula: 'v = d / t', detail: 'The average speed of any object is total distance divided by total time. For a satellite, distance is its orbital circumference, and time is its orbital period.' },
-    { label: 'Distance in One Orbit = Circumference', formula: 'd = 2πr', detail: 'A satellite travels in a circular path. The distance for one complete orbit is the circumference of a circle: 2πr, where r is the orbit radius from Earth\'s center.' },
-    { label: 'Time = Orbital Period T', formula: 't = T', detail: 'The time to complete one full orbit is called the orbital period T. Low Earth orbit (ISS) takes ~90 minutes. Geostationary satellites take exactly 24 hours.' },
-    { label: 'Substitute to Get Orbital Speed', formula: 'v = 2πr / T', detail: 'Putting it together: v = distance / time = 2πr / T. Higher orbits (larger r) have longer periods (larger T) but lower speeds. The Moon orbits at ~1 km/s!' },
+    { label: 'Average Speed Formula', formula: 'v = d / t', detail: "🛰️ Imagine throwing a baseball horizontally from the top of a 100 km tall mountain. It arcs downward and lands far away. The further you want it to go, the faster you must throw. Average speed = distance / time — this simple idea is the seed of orbital mechanics." },
+    { label: 'Distance in One Orbit = Circumference', formula: 'd = 2πr', detail: 'Now imagine throwing at 7.8 km/s — so fast that the Earth curves away beneath the ball at the same rate it falls! The ball never hits the ground — it orbits. In one full orbit, it travels the circumference of a circle: d = 2πr, where r is the distance from Earth\'s center.' },
+    { label: 'Time = Orbital Period T', formula: 't = T', detail: 'At 408 km above Earth (the ISS altitude), one complete orbit takes T = 92.7 minutes — that\'s the orbital period. The ISS crew sees 16 sunrises and sunsets every single day because they orbit so fast.' },
+    { label: 'Substitute to Get Orbital Speed', formula: 'v = 2πr / T', detail: 'v = 2πr/T = 2π × 6,779,000 m / 5,562 s ≈ 7,660 m/s — over 27,000 km/h! Higher orbits are slower: the Moon at 384,000 km orbits at just 1 km/s. The higher you go, the more leisurely your journey around Earth.' },
   ];
 
   return (

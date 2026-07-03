@@ -21,10 +21,9 @@ export default function LabP10DerivationParallelResistance({ onExit }: { onExit?
   };
 
   const steps = [
-    { label: 'Currents in Branches Add Up', formula: 'I = I₁ + I₂ + I₃', detail: 'In a parallel circuit, total current splits among branches. Each branch carries part of the total current.' },
-    { label: 'Apply Ohm\'s Law to Each Branch', formula: 'V/R_eq = V/R₁ + V/R₂ + V/R₃', detail: 'I = V/R for each branch. Voltage V is the same across all parallel resistors.' },
-    { label: 'Factor Out Voltage', formula: '1/R_eq = 1/R₁ + 1/R₂ + 1/R₃', detail: 'Divide both sides by V (same voltage). The reciprocal of equivalent resistance equals sum of reciprocals.' },
-    { label: 'Key Principle', formula: 'R_eq < R₁, R₂, R₃ individually', detail: 'Adding resistors in parallel always decreases total resistance. More paths = less opposition to current!' },
+    { label: 'Currents in Branches Add Up', formula: 'I = I₁ + I₂ + I₃', detail: 'You flip a switch and the ceiling light turns on. Add another lamp — both stay bright. That is because they are wired in parallel. The total current splits among branches: I = I1 + I2 + I3. Each bulb gets full voltage.' },
+    { label: 'Factor Out Voltage', formula: '1/R_eq = 1/R₁ + 1/R₂ + 1/R₃', detail: 'Using Ohm\'s law for each branch: V/Req = V/R1 + V/R2 + V/R3. Voltage V is the same across all parallel components. Each bulb conducts independently.' },
+    { label: 'Key Principle', formula: 'R_eq < R₁, R₂, R₃ individually', detail: 'Divide by V: 1/Req = 1/R1 + 1/R2 + 1/R3. The reciprocals add. For two 100-ohm resistors in parallel: 1/Req = 1/100 + 1/100 = 2/100, so Req = 50 ohms. Adding more paths DECREASES total resistance.' }
   ];
 
   return (

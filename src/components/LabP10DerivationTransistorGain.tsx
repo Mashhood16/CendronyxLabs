@@ -20,10 +20,10 @@ export default function LabP10DerivationTransistorGain({ onExit }: { onExit?: ()
   };
 
   const steps = [
-    { label: 'Emitter Current = Sum', formula: 'I_E = I_B + I_C', detail: 'In a bipolar junction transistor, the emitter current is the sum of base current and collector current.' },
-    { label: 'Current Gain β (Beta)', formula: 'β = I_C / I_B', detail: 'Beta is the DC current gain. Typical values: 50 to 400. A small base current controls a large collector current.' },
-    { label: 'Current Gain α (Alpha)', formula: 'α = I_C / I_E', detail: 'Alpha is always less than 1 but close to 1 (typically 0.95-0.99). Relates to β as α = β/(β+1).' },
-    { label: 'Amplification', formula: 'I_C = β × I_B', detail: 'This is the key transistor equation. A tiny change in I_B causes a β-times larger change in I_C — this is how transistors amplify!' },
+    { label: 'Emitter Current = Sum', formula: 'I_E = I_B + I_C', detail: 'You\'re at a concert. The singer whispers into a microphone and it fills the stadium. Inside the mic, a tiny transistor amplifies the signal. IE = IB + IC — emitter current equals base plus collector current.' },
+    { label: 'Current Gain β (Beta)', formula: 'β = I_C / I_B', detail: 'Beta = IC/IB. Beta is the current gain — typically 50 to 400. A tiny base current (the whisper) controls a much larger collector current (the stadium speakers). That is amplification!' },
+    { label: 'Current Gain α (Alpha)', formula: 'α = I_C / I_E', detail: 'Alpha = IC/IE. Alpha is always slightly less than 1 (0.95-0.99). Alpha = Beta/(Beta+1). Most of the emitter current flows to the collector with only a tiny fraction going to the base.' },
+    { label: 'Amplification', formula: 'I_C = β × I_B', detail: 'IC = Beta x IB. A 1 microamp change in base current produces a 200 microamp change in collector current if Beta=200. This is the magic of transistors — your smartphone has BILLIONS amplifying signals billions of times per second.' }
   ];
 
   return (

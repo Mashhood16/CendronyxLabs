@@ -21,10 +21,8 @@ export default function LabP10DerivationElectricalEnergy({ onExit }: { onExit?: 
   };
 
   const steps = [
-    { label: 'Energy from Voltage and Charge', formula: 'E = qV', detail: 'Potential difference V = W/q = E/q. So energy E = qV. Voltage tells us energy per unit charge.' },
-    { label: 'Charge = Current × Time', formula: 'E = I t V', detail: 'Charge q = current × time. Substitute q = It into E = qV. This gives E = IVt, the basic electrical energy formula.' },
-    { label: 'Using Ohm\'s Law V = IR', formula: 'E = I² R t', detail: 'Substitute V = IR into E = IVt to get E = I²Rt. Useful when you know current and resistance.' },
-    { label: 'Using Ohm\'s Law I = V/R', formula: 'E = V² t / R', detail: 'Substitute I = V/R into E = IVt to get E = V²t/R. Useful when you know voltage and resistance.' },
+    { label: 'Energy from Voltage and Charge', formula: 'E = qV', detail: 'Your phone battery is dead. You plug it into a charger. Potential difference V = W/q means voltage tells us how much energy each coulomb of charge carries. E = qV — energy = charge times voltage.' },
+    { label: 'Charge = Current × Time', formula: 'E = I t V', detail: 'The charger supplies current I for time t. Charge q = I x t flows into your battery. Substitute: E = IVt. That is the basic electrical energy formula. Your 5V 2A charger delivers 10 Joules every second.' }
   ];
 
   return (

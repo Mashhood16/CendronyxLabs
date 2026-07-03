@@ -18,10 +18,10 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
   };
 
   const steps = [
-    { label: 'Pressure = Force per Area', formula: 'P = F / A', detail: 'Pressure is force divided by area. For a liquid, the force pushing down comes from the weight of the liquid column above.' },
-    { label: 'Force = Weight of Liquid Column', formula: 'F = m × g = ρ × V × g', detail: 'The force on the bottom is the weight of the liquid above. Weight = mass × gravity. Mass = density × volume. So F = ρ × V × g.' },
-    { label: 'Volume = Area × Height', formula: 'V = A × h', detail: 'A column of liquid has volume = base area × height. Substituting: F = ρ × A × h × g. The area A appears here but will cancel!' },
-    { label: 'Cancel Area to Get P = ρgh', formula: 'P = ρ × g × h', detail: 'Finally: P = F/A = (ρ × A × h × g) / A. The area A cancels! Pressure depends only on density (ρ), gravity (g), and depth (h) — NOT on the container shape!' },
+    { label: 'Pressure = Force per Area', formula: 'P = F / A', detail: "🏊 You jump off a boat into the ocean and dive down. Your ears feel an uncomfortable pressure building. Pressure = force / area — the column of water above you has weight, and that weight pushes on every square millimeter of your body." },
+    { label: 'Force = Weight of Liquid Column', formula: 'F = m × g = ρ × V × g', detail: 'The force is the weight of the water: F = mg. But m = ρV (density × volume). Seawater density is 1,025 kg/m³ — it\'s heavier than fresh water, which is why floating in the ocean is easier! F = ρ × V × g.' },
+    { label: 'Volume = Area × Height', formula: 'V = A × h', detail: 'The volume of water above you = area of your body × depth: V = A × h. So F = ρ × A × h × g. Notice the area A appears — a wider person has more water weight above them. But something magical happens next...' },
+    { label: 'Cancel Area to Get P = ρgh', formula: 'P = ρ × g × h', detail: 'P = F/A = (ρ × A × h × g)/A = ρgh. The area CANCELS! Pressure at a given depth is the same for everyone regardless of body shape. At just 10 m deep, pressure doubles to 2 atmospheres. Free divers train for years to handle this — the pressure crushes air spaces like your lungs and sinuses.' },
   ];
 
   return (
@@ -135,7 +135,7 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
             <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Waves className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
               <p className="text-base font-medium mb-2">A submarine dives in seawater (ρ = 1025 kg/m³) to <strong>30 m</strong>.</p>
-              <p className="text-base font-medium">What’s the pressure at that depth? (g = 9.81 m/s²)</p>
+              <p className="text-base font-medium">What's the pressure at that depth? (g = 9.81 m/s²)</p>
               <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded p-2 mt-2">
                 <p className="text-xs text-cyan-700 dark:text-cyan-300 font-mono">P = ρgh = 1025 × 9.81 × 30 = ?</p>
               </div>
@@ -149,7 +149,7 @@ export default function LabP9DerivationLiquidPressure({ onExit }: { onExit?: () 
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 301,658 Pa.</strong> That’s ~3× atmospheric pressure! Submarines are built to withstand these forces.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! 301,658 Pa.</strong> That's ~3× atmospheric pressure! Submarines are built to withstand these forces.</p>
               </div>
             )}
             {checkResult === 'incorrect' && (

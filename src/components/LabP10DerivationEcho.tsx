@@ -18,10 +18,10 @@ export default function LabP10DerivationEcho({ onExit }: { onExit?: () => void }
   };
 
   const steps = [
-    { label: 'Basic Speed Formula', formula: 'v = D / t', detail: 'Speed equals distance divided by time. For sound traveling in a medium, this is the starting relationship.' },
-    { label: 'Distance is Double (There and Back)', formula: 'D = 2d', detail: 'In echo/ultrasound, the sound travels to the object and reflects back. Total distance D is twice the one-way distance d.' },
-    { label: 'Substitute D', formula: 'v = 2d / t', detail: 'Replace D with 2d in the speed equation. Sound travels twice the target distance.' },
-    { label: 'Solve for Distance', formula: 'd = v × t / 2', detail: 'Rearrange to isolate d. This is the sonar/ultrasound formula! Half the product of speed and time gives the depth.' },
+    { label: 'Basic Speed Formula', formula: 'v = D / t', detail: 'You\'re a sonar operator on a research ship mapping the ocean floor. You send a powerful ping into the deep. Speed = distance over time — the sound pulse travels through water at 1500 m/s, searching for the bottom.' },
+    { label: 'Distance is Double (There and Back)', formula: 'D = 2d', detail: 'The ping hits the ocean floor and reflects back up. The total journey is there AND back: D = 2d. Your sound travels twice the target distance. You wait, listening for the echo...' },
+    { label: 'Substitute D', formula: 'v = 2d / t', detail: 'Your equipment measures exactly 0.4 seconds between sending the ping and receiving the echo. v = 2d/t means 1500 = 2d/0.4. The sound traveled 600 m total.' },
+    { label: 'Solve for Distance', formula: 'd = v × t / 2', detail: 'd = v x t / 2 = 1500 x 0.4 / 2 = 300 m. Divide by 2 because the sound went down AND back up! This same formula maps the ocean floor, detects submarines, and creates ultrasound images of babies in the womb.' }
   ];
 
   return (

@@ -21,10 +21,8 @@ export default function LabP10DerivationElectricPower({ onExit }: { onExit?: () 
   };
 
   const steps = [
-    { label: 'Power = Energy / Time', formula: 'P = E / t', detail: 'Power is the rate at which energy is used. Energy per unit time.' },
-    { label: 'Substitute E = IVt', formula: 'P = (I V t) / t = IV', detail: 'Substituting electrical energy E = IVt and dividing by time t gives P = IV. Power = current × voltage!' },
-    { label: 'Using Ohm\'s Law V = IR', formula: 'P = I² R', detail: 'Substitute V = IR into P = IV. Result: P = I²R. Power lost in a resistor (heating).' },
-    { label: 'Using Ohm\'s Law I = V/R', formula: 'P = V² / R', detail: 'Substitute I = V/R into P = IV. Result: P = V²/R. Useful for fixed-voltage appliances.' },
+    { label: 'Power = Energy / Time', formula: 'P = E / t', detail: 'You\'re shopping for light bulbs. An LED says 9W and an old incandescent says 60W. Power is energy per time: P = E/t. The LED uses far less energy each second for the same brightness!' },
+    { label: 'Substitute E = IVt', formula: 'P = (I V t) / t = IV', detail: 'Substitute E = IVt: P = IVt/t = IV. Power = current times voltage. At 230V, the 60W bulb draws I = 60/230 = 0.26A. The 9W LED draws only 0.04A. Watts tell you the energy appetite!' }
   ];
 
   return (

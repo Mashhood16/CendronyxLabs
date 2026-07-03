@@ -19,10 +19,9 @@ export default function LabP10DerivationPotentialDivider({ onExit }: { onExit?: 
   };
 
   const steps = [
-    { label: 'Current in Series Circuit', formula: 'I = V / (R₁ + R₂)', detail: 'For resistors R₁ and R₂ in series, the current I depends on the total resistance and applied voltage.' },
-    { label: 'Voltage Drop Across R₂', formula: 'V₂ = I × R₂', detail: 'Using Ohm\'s law, the voltage across R₂ is the product of current and R₂.' },
-    { label: 'Substitute Current', formula: 'V₂ = (V / (R₁+R₂)) × R₂', detail: 'Replace I with the expression from step 1. The voltage divides based on resistance values.' },
-    { label: 'Potential Divider Formula', formula: 'V_out = R₂ / (R₁+R₂) × V_in', detail: 'This is the potential divider formula. You can select R₁ and R₂ to get any V_out from 0 to V_in. Used in sensors!' },
+    { label: 'Current in Series Circuit', formula: 'I = V / (R₁ + R₂)', detail: 'You turn the volume knob on your speakers. Inside is a potentiometer — a variable resistor that divides voltage. For two resistors R1 and R2 in series, the current I depends on total resistance: I = Vin/(R1+R2).' },
+    { label: 'Substitute Current', formula: 'V₂ = (V / (R₁+R₂)) × R₂', detail: 'The voltage you want is across R2. Using Ohm\'s law: Vout = I x R2. The same current flows through both resistors.' },
+    { label: 'Potential Divider Formula', formula: 'V_out = R₂ / (R₁+R₂) × V_in', detail: 'Substituting I: Vout = (Vin/(R1+R2)) x R2 = R2/(R1+R2) x Vin. The voltage divides proportionally to the resistance ratio. Turn the knob — R2 changes, Vout changes, volume changes!' }
   ];
 
   return (

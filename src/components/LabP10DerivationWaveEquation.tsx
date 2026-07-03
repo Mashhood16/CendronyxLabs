@@ -18,10 +18,10 @@ export default function LabP10DerivationWaveEquation({ onExit }: { onExit?: () =
   };
 
   const steps = [
-    { label: 'Wave Speed = Distance / Time', formula: 'v = Δd / Δt', detail: 'The basic definition of speed applies to waves too. Distance traveled divided by time taken.' },
-    { label: 'One Wavelength in One Period', formula: 'v = λ / T', detail: 'In one complete cycle, a wave travels one wavelength λ in one time period T. Substitute these into the speed formula.' },
-    { label: 'Frequency = 1 / Period', formula: 'f = 1 / T', detail: 'The frequency f is the reciprocal of the period. Higher frequency means shorter period — more waves per second.' },
-    { label: 'Final Wave Equation', formula: 'v = f λ', detail: 'Substitute 1/T = f into v = λ/T to get v = fλ. This is the universal wave equation - it works for ALL waves!' },
+    { label: 'Wave Speed = Distance / Time', formula: 'v = Δd / Δt', detail: 'You\'re at the beach watching waves roll in. You time them — one wave crashes every 5 seconds. The distance between wave crests is 8 meters. How fast are they moving? Wave speed = distance over time: v = d/t.' },
+    { label: 'One Wavelength in One Period', formula: 'v = λ / T', detail: 'In one complete wave cycle, a wave travels exactly one wavelength in one time period T. Substituting: v = lambda/T. The faster the waves, the more distance they cover in each cycle.' },
+    { label: 'Frequency = 1 / Period', formula: 'f = 1 / T', detail: 'Frequency f = 1/T. Higher frequency means more waves per second. The surfer wants long-period waves (low f, long lambda). Light waves have enormous frequencies — 5e14 Hz for green light.' },
+    { label: 'Final Wave Equation', formula: 'v = f λ', detail: 'v = f x lambda. This is the UNIVERSAL wave equation — it works for ALL waves. Sound in air: v = 343 m/s. Light: v = 3e8 m/s. Radio stations tune by changing frequency. But the wave equation works for everything: water, sound, light, seismic — all obey v = f-lambda!' }
   ];
 
   return (

@@ -19,10 +19,10 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
   };
 
   const steps = [
-    { label: 'Resistivity Changes with Temperature', formula: 'ρᴵ − ρ₀ ∝ ρ₀ × ΔT', detail: 'The change in resistivity is directly proportional to the initial resistivity and the temperature change.' },
-    { label: 'Insert Proportionality Constant', formula: 'ρᴵ − ρ₀ = α ρ₀ ΔT', detail: 'The constant α is the temperature coefficient of resistivity. Positive for metals, negative for semiconductors.' },
-    { label: 'Rearrange for α', formula: 'α = (ρᴵ − ρ₀) / (ρ₀ ΔT)', detail: 'Temperature coefficient per °C. For copper α = 0.0039/°C meaning resistance increases 0.39% per °C.' },
-    { label: 'Final Resistivity Formula', formula: 'ρᴵ = ρ₀ [1 + α(T − T₀)]', detail: 'This is the practical form. R(T) = R₀[1 + αΔT] for resistance. Used in RTD temperature sensors!' },
+    { label: 'Resistivity Changes with Temperature', formula: 'ρᴵ − ρ₀ ∝ ρ₀ × ΔT', detail: 'Your phone dies faster on a freezing winter day. That is because resistance changes with temperature. The change in resistivity is proportional to initial resistivity and temperature change.' },
+    { label: 'Insert Proportionality Constant', formula: 'ρᴵ − ρ₀ = α ρ₀ ΔT', detail: 'rho-T - rho-0 = alpha x rho-0 x Delta-T. alpha is the temperature coefficient. For copper (and most metals), alpha is positive — resistance INCREASES when hot. That is why your laptop fan spins faster when working hard.' },
+    { label: 'Rearrange for α', formula: 'α = (ρᴵ − ρ₀) / (ρ₀ ΔT)', detail: 'alpha = (rho-T - rho-0)/(rho-0 x Delta-T). Copper alpha = 0.0039 per degree C. A copper wire heating up by 50 C increases its resistance by 19.5 percent. This matters for power lines in summer.' },
+    { label: 'Final Resistivity Formula', formula: 'ρᴵ = ρ₀ [1 + α(T − T₀)]', detail: 'rho-T = rho-0 (1 + alpha (T - T0)). Metals: positive alpha. Carbon and semiconductors: NEGATIVE alpha (resistance DOWN with heat). This is used in thermistors — digital thermometers in your car engine temperature sensor!' }
   ];
 
   return (

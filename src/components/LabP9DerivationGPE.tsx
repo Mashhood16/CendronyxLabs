@@ -18,10 +18,10 @@ export default function LabP9DerivationGPE({ onExit }: { onExit?: () => void }) 
   };
 
   const steps = [
-    { label: 'Work Done Against Gravity', formula: 'Eₚ = Work = F × S', detail: 'Gravitational potential energy is the work done to lift an object against gravity. Work = force × distance.' },
-    { label: 'Force = Weight of Object', formula: 'F = m × g', detail: 'The force needed to lift an object equals its weight. From Newton’s second law: F = m × g, where g = 9.81 m/s².' },
-    { label: 'Distance = Height Lifted', formula: 'S = h', detail: 'The distance moved in the direction of the force is the height: S = h. Substituting: Eₚ = (m × g) × h = mgh.' },
-    { label: 'Gravitational PE Formula', formula: 'Eₚ = m × g × h', detail: 'Potential energy depends on three things: mass (m), gravity (g ≈ 9.81 m/s²), and height (h). Double the height = double the energy. On the Moon (g = 1.62), the same lift stores much less!' },
+    { label: 'Work Done Against Gravity', formula: 'Eₚ = Work = F × S', detail: "🎢 You're strapped into a roller coaster car, clicking up the first massive hill. The chain lift mechanism groans as it pulls you higher. Every meter you rise stores energy. E_p = Work = F × S — the motor does work against gravity to lift you." },
+    { label: 'Force = Weight of Object', formula: 'F = m × g', detail: 'The force needed to lift the 500 kg car (plus you!) at constant speed equals its weight: F = mg. With two passengers, total mass ≈ 700 kg, so F = 700 × 9.81 = 6,867 N — about the weight of a small car.' },
+    { label: 'Distance = Height Lifted', formula: 'S = h', detail: 'The first hill towers 45 meters above the ground — that\'s the vertical height S = h. The motor\'s work: W = 6,867 × 45 = 309,015 J. Every joule is stored as gravitational potential energy, waiting to be released.' },
+    { label: 'Gravitational PE Formula', formula: 'Eₚ = m × g × h', detail: 'E_p = mgh = 700 × 9.81 × 45 = 309,015 J — enough energy to light a 60W bulb for 85 minutes! At the crest, you pause for a split second... then you plunge. That stored PE converts into kinetic energy as you race down, powering you through loops and corkscrews. The higher the first hill, the more energy for the entire ride!' },
   ];
 
   return (

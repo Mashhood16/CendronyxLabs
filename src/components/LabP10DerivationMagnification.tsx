@@ -21,10 +21,9 @@ export default function LabP10DerivationMagnification({ onExit }: { onExit?: () 
   };
 
   const steps = [
-    { label: 'Magnification = Image / Object Height', formula: 'M = I / O', detail: 'Magnification is defined as the ratio of image height to object height. If M {'>'} 1, the image is enlarged.' },
-    { label: 'From Ray Diagram Similar Triangles', formula: 'M = q / p', detail: 'Using similar triangles in ray diagrams, the same ratio equals image distance q divided by object distance p.' },
-    { label: 'Combined Formula', formula: 'M = I / O = q / p', detail: 'So magnification can be found from heights OR distances. For a concave mirror, q is negative for real images.' },
-    { label: 'Sign Convention Matters', formula: 'M = −q / p (mirrors)', detail: 'For mirrors, the Cartesian sign convention gives M = -q/p. Negative M means an inverted image.' },
+    { label: 'From Ray Diagram Similar Triangles', formula: 'M = q / p', detail: 'You\'re examining a tiny antique watch with a magnifying glass. The intricate gears appear huge. Magnification M is the ratio of image height I to object height O: M = I/O. The lens makes a small thing look big.' },
+    { label: 'Combined Formula', formula: 'M = I / O = q / p', detail: 'From ray diagram geometry, similar triangles reveal the same ratio equals image distance q divided by object distance p: M = q/p. The lens creates a virtual image that your brain interprets as larger.' },
+    { label: 'Sign Convention Matters', formula: 'M = −q / p (mirrors)', detail: 'M = I/O = q/p. If the watch gear (O=2mm) appears as I=10mm, M = 5x. For a concave mirror, q is negative for real images. Both height ratio and distance ratio give the same answer.' }
   ];
 
   return (

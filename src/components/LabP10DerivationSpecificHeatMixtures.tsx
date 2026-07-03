@@ -21,10 +21,10 @@ export default function LabP10DerivationSpecificHeatMixtures({ onExit }: { onExi
   };
 
   const steps = [
-    { label: 'Conservation of Energy', formula: 'Q_lost = Q_gained', detail: 'Heat lost by the hot solid equals heat gained by the water and calorimeter together.' },
-    { label: 'Heat Lost by Solid', formula: 'Q_s = m_s c_s (T2 − T3)', detail: 'The solid cools from T2 to final equilibrium T3. Its heat loss depends on mass, specific heat, and temperature drop.' },
-    { label: 'Heat Gained by Water + Calorimeter', formula: 'Q_w + Q_c = (m_w c_w + m_c c_c)(T3 − T1)', detail: 'Both the water and the calorimeter warm up from room temperature T1 to final temperature T3.' },
-    { label: 'Solve for c_s', formula: 'c_s = (m_w c_w + m_c c_c)(T3 − T1) / m_s (T2 − T3)', detail: 'Equating Q_lost = Q_gained and rearranging gives c_s. All values on the right are measurable in the lab!' },
+    { label: 'Conservation of Energy', formula: 'Q_lost = Q_gained', detail: 'You\'re making tea. You pour hot water into a cup and add cold milk. After a moment, the mixture reaches a comfortable drinking temperature. Conservation of energy: heat lost = heat gained.' },
+    { label: 'Heat Lost by Solid', formula: 'Q_s = m_s c_s (T2 − T3)', detail: 'The hot solid cools down: Q-s = m-s x c-s x (T2 - T3). It loses heat from initial high temperature T2 to final equilibrium T3. Greater specific heat means more energy released per degree.' },
+    { label: 'Heat Gained by Water + Calorimeter', formula: 'Q_w + Q_c = (m_w c_w + m_c c_c)(T3 − T1)', detail: 'The water and calorimeter warm up: Q-w + Q-c = (m-w x c-w + m-c x c-c)(T3 - T1). Both the liquid and the container absorb heat. The calorimeter has its own specific heat to account for.' },
+    { label: 'Solve for c_s', formula: 'c_s = (m_w c_w + m_c c_c)(T3 − T1) / m_s (T2 − T3)', detail: 'c-s = (m-w x c-w + m-c x c-c)(T3 - T1) / (m-s x (T2 - T3)). All values are measurable in the lab. Drop a hot metal into cold water, measure temperatures, and you can identify the metal by its specific heat. This is how scientists discovered many material properties!' }
   ];
 
   return (

@@ -26,10 +26,10 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
   };
 
   const steps = [
-    { label: 'Conservation of Momentum', formula: 'pi = pf', detail: 'In an isolated system (no external forces), total momentum before = total momentum after. This is one of the most fundamental laws in physics.' },
-    { label: 'Before Firing: Everything at Rest', formula: 'pi = 0', detail: 'Before firing, both gun and bullet are at rest. Their velocities are zero, so total initial momentum is zero.' },
-    { label: 'After Firing: Bullet + Gun Move', formula: 'mb×vb + mg×vg = 0', detail: 'After firing, bullet goes forward (mb×vb), gun recoils backward (mg×vg). By conservation: mb×vb + mg×vg = 0.' },
-    { label: 'Solve for Recoil Velocity', formula: 'vg = −(mb×vb) / mg', detail: 'Rearranging: mg×vg = −mb×vb. Dividing by mg: vg = −(mb×vb)/mg. The negative sign means opposite direction. Heavier gun = less recoil!' },
+    { label: 'Conservation of Momentum', formula: 'pi = pf', detail: "🎯 You're at a shooting range, a 4 kg rifle resting on your shoulder. You breathe, aim at the target, and squeeze the trigger. The gun + bullet form an \"isolated system\" — all the momentum before firing must equal all the momentum after." },
+    { label: 'Before Firing: Everything at Rest', formula: 'pi = 0', detail: 'Before firing, the rifle and the 10 g bullet are both completely still in your hands. Total initial momentum = 0. Everything is quiet, steady — zero motion, zero momentum. Then the firing pin strikes.' },
+    { label: 'After Firing: Bullet + Gun Move', formula: 'mb×vb + mg×vg = 0', detail: 'BANG! The bullet rockets forward at 400 m/s. Its momentum: 0.01 × 400 = 4 kg·m/s forward. By conservation, the gun must have −4 kg·m/s momentum backward into your shoulder: m_b·v_b + m_g·v_g = 0.' },
+    { label: 'Solve for Recoil Velocity', formula: 'vg = −(mb×vb) / mg', detail: 'Solving: v_g = −(m_b·v_b)/m_g = −(0.01 × 400)/4 = −1 m/s. The negative sign? The gun kicks backward into your shoulder at 1 m/s. A heavier gun recoils less — that\'s why competition shooters use massive rifles. Rockets work the same way: exhaust shoots down, the rocket goes up!' },
   ];
 
   return (
@@ -57,7 +57,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
           <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
             <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">Final Formula</p>
             <p className="text-2xl font-bold font-mono text-white mt-1">vg = −(mb × vb) / mg</p>
-            <p className="text-xs text-amber-200 mt-1">The gun recoils opposite to the bullet’s direction</p>
+            <p className="text-xs text-amber-200 mt-1">The gun recoils opposite to the bullet's direction</p>
           </div>
 
           <div className="space-y-0">
@@ -161,7 +161,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! vg = 1.5 m/s.</strong> The rifle kicks back at just 1.5 m/s because it’s much heavier than the bullet.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! vg = 1.5 m/s.</strong> The rifle kicks back at just 1.5 m/s because it's much heavier than the bullet.</p>
               </div>
             )}
             {checkResult === 'incorrect' && (

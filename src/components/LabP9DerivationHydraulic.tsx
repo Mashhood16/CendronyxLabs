@@ -20,10 +20,10 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
   };
 
   const steps = [
-    { label: "Pascal's Principle", formula: 'P₁ = P₂', detail: 'Blaise Pascal discovered that pressure applied to a fluid in a closed container is transmitted equally in all directions. Pressure is the same everywhere in the fluid.' },
-    { label: 'Pressure on Small Piston', formula: 'P₁ = F₁ / A₁', detail: 'Pushing the small piston with force F₁ creates pressure P₁ = F₁/A₁. A small area means big pressure from a small force.' },
-    { label: 'Same Pressure on Large Piston', formula: 'F₂ / A₂ = F₁ / A₁', detail: 'By Pascal’s principle, the pressure on the large piston equals the pressure on the small piston: P₂ = P₁. So F₂/A₂ = F₁/A₁.' },
-    { label: 'Solve for Output Force', formula: 'F₂ = (A₂ / A₁) × F₁', detail: 'Rearranging: F₂ = (A₂/A₁) × F₁. The ratio A₂/A₁ is the mechanical advantage. If A₂ is 50× A₁, then F₂ is 50× F₁!' },
+    { label: "Pascal's Principle", formula: 'P₁ = P₂', detail: "🔧 You're a mechanic with a 1500 kg car that needs lifting. You place a hydraulic jack under the frame and pump the handle. Blaise Pascal discovered that pressure applied to a fluid in a closed container is transmitted equally in all directions. The pressure you create at the handle reaches the car undiminished." },
+    { label: 'Pressure on Small Piston', formula: 'P₁ = F₁ / A₁', detail: 'Pushing the small piston (area = 0.005 m²) with just 240 N of force creates P₁ = 240/0.005 = 48,000 Pa — like pressing a pen tip into your palm. A small area means big pressure from a small force.' },
+    { label: 'Same Pressure on Large Piston', formula: 'F₂ / A₂ = F₁ / A₁', detail: 'By Pascal\'s principle, the 48,000 Pa you created at the pump handle is transmitted through the hydraulic fluid WITHOUT LOSING ANY STRENGTH. P₂ = P₁ = 48,000 Pa. The fluid carries your force invisibly to where it\'s needed.' },
+    { label: 'Solve for Output Force', formula: 'F₂ = (A₂ / A₁) × F₁', detail: 'F₂/A₂ = F₁/A₁, so F₂ = (A₂/A₁) × F₁ = (0.25/0.005) × 240 = 12,000 N! Your puny 240 N push lifts a full car. Mechanical advantage = 50×. This same principle stops your car when you press the brake pedal, controls massive excavators, and even powers dentist chairs!' },
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             </div>
             <div>
               <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">How Pascal’s principle lets a small force lift a heavy load</p>
+              <p className="text-xs text-slate-500">How Pascal's principle lets a small force lift a heavy load</p>
             </div>
           </div>
 
@@ -122,7 +122,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
                 <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
                 <p className="text-sm text-slate-400">P₁ = F₁/A₁ = {inputForce}/{areaSmall} = {(inputForce/areaSmall).toFixed(0)} Pa</p>
-                <p className="text-sm text-slate-400">P₂ = P₁ (Pascal’s Principle)</p>
+                <p className="text-sm text-slate-400">P₂ = P₁ (Pascal's Principle)</p>
                 <p className="text-sm text-slate-400">F₂ = P₂ × A₂ = {(inputForce/areaSmall).toFixed(0)} × {areaLarge}</p>
                 <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">Mech. Advantage: </span><span className="text-yellow-400 font-mono font-bold">{mechanicalAdvantage.toFixed(1)}×</span> <span className="text-green-400 font-bold"> | F₂ = </span><span className="text-yellow-400 font-mono font-bold">{outputForce.toFixed(0)} N</span></p>
                 {outputForce > 1000 && <p className="text-xs text-amber-400">Lifts {(outputForce/9.81).toFixed(0)} kg!</p>}
@@ -149,7 +149,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F₁ = 240 N.</strong> With a 50:1 mechanical advantage, 240 N lifts 12,000 N — that’s the power of hydraulics!</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! F₁ = 240 N.</strong> With a 50:1 mechanical advantage, 240 N lifts 12,000 N — that's the power of hydraulics!</p>
               </div>
             )}
             {checkResult === 'incorrect' && (

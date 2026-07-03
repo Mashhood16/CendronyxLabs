@@ -23,10 +23,9 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
   };
 
   const steps = [
-    { label: 'Energy Supplied by Heater', formula: 'Q_heater = V × I × t', detail: 'Electrical energy from the heater is the product of voltage, current, and heating time. All electrical energy is converted to heat.' },
-    { label: 'Heat Gained by Liquid + Calorimeter', formula: 'Q_heater = m_l c_l ΔT + m_c c_c ΔT', detail: 'The heat from the heater warms both the liquid and the metal calorimeter container. ΔT = T_f - T_i.' },
-    { label: 'Solve for Liquid Specific Heat', formula: 'c_l = (Q_heater - m_c c_c ΔT) / (m_l ΔT)', detail: 'Rearrange to isolate c_l. Subtract the calorimeter\'s heat absorption, then divide by liquid mass and temperature change.' },
-    { label: 'Final Formula', formula: 'c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))', detail: 'Substitute Q_heater back. All values are measurable! This is the electrical method for finding specific heat of liquids.' },
+    { label: 'Energy Supplied by Heater', formula: 'Q_heater = V × I × t', detail: 'You fill an electric kettle with water and switch it on. The heating element converts electrical energy into heat: Q-heater = V x I x t. A 230V 10A kettle running for 120 seconds delivers 276,000 J of energy.' },
+    { label: 'Heat Gained by Liquid + Calorimeter', formula: 'Q_heater = m_l c_l ΔT + m_c c_c ΔT', detail: 'The heat warms both the water AND the metal calorimeter: Q-heater = m-liquid x c-liquid x Delta-T + m-cup x c-cup x Delta-T. Some heat is stolen by the container — we must account for it.' },
+    { label: 'Final Formula', formula: 'c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))', detail: 'Rearrange to find specific heat of water: c-liquid = (Q-heater - m-cup x c-cup x Delta-T) / (m-liquid x Delta-T). Subtract the calorimeter share, then divide by water mass and temperature rise.' }
   ];
 
   return (

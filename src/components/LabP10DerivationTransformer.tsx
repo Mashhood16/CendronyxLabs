@@ -20,10 +20,10 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
   };
 
   const steps = [
-    { label: 'Ideal Transformer Assumption', formula: 'Power_in = Power_out', detail: 'An ideal transformer has no power loss. All electrical power from the primary side is delivered to the secondary side.' },
-    { label: 'Substitute Power Formula', formula: 'I_p V_p = I_s V_s', detail: 'Substituting P = IV for both primary and secondary coils. The product of current and voltage is conserved.' },
-    { label: 'Solve for Secondary Current', formula: 'I_s = (V_p / V_s) × I_p', detail: 'Rearrange to find I_s. If V_s < V_p (step-down), then I_s > I_p. Voltage steps down, current steps up!' },
-    { label: 'Turns Ratio Relation', formula: 'V_s / V_p = N_s / N_p = I_p / I_s', detail: 'The voltage ratio equals the turns ratio. And inversely equals the current ratio. This relates all four quantities!' },
+    { label: 'Ideal Transformer Assumption', formula: 'Power_in = Power_out', detail: 'A power plant generates electricity at 25,000V. To send it across the country, transformers step it up to 500,000V. An ideal transformer conserves power: Power-in = Power-out. No energy is lost ideally.' },
+    { label: 'Substitute Power Formula', formula: 'I_p V_p = I_s V_s', detail: 'P = IV for both coils: I-p V-p = I-s V-s. If voltage goes up, current must go down to keep power the same. This is WHY we use high voltage — low current means low I-squared-R heating losses.' },
+    { label: 'Solve for Secondary Current', formula: 'I_s = (V_p / V_s) × I_p', detail: 'Rearranging: I-s = (Vp/Vs) x I-p. A step-down transformer (500kV to 230V) has Vp/Vs approx 2174. Current multiplies by 2174. Big voltage drop = big current increase for your home appliances.' },
+    { label: 'Turns Ratio Relation', formula: 'V_s / V_p = N_s / N_p = I_p / I_s', detail: 'Vs/Vp = Ns/Np = Ip/Is. The voltage ratio equals the turns ratio, which is inverse of the current ratio. The transformer at the pole outside your house steps 11kV down to 230V. Without transformers power distribution would be impossible!' }
   ];
 
   return (

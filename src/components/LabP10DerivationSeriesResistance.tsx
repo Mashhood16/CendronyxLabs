@@ -21,10 +21,9 @@ export default function LabP10DerivationSeriesResistance({ onExit }: { onExit?: 
   };
 
   const steps = [
-    { label: 'Voltage Drops Add Up', formula: 'V = V₁ + V₂ + V₃', detail: 'In a series circuit, the total voltage is the sum of individual voltage drops across each resistor.' },
-    { label: 'Apply Ohm\'s Law to Each', formula: 'I R_eq = I R₁ + I R₂ + I R₃', detail: 'V=IR for each. The current I is the same through all series resistors.' },
-    { label: 'Factor Out Current', formula: 'R_eq = R₁ + R₂ + R₃', detail: 'Divide both sides by I (which is constant). Equivalent resistance is simply the sum!' },
-    { label: 'Key Principle', formula: 'R_eq > R₁, R₂, R₃ individually', detail: 'Adding resistors in series always increases total resistance. More resistors = more opposition to current!' },
+    { label: 'Voltage Drops Add Up', formula: 'V = V₁ + V₂ + V₃', detail: 'Remember old Christmas lights where if ONE bulb burned out, the WHOLE string went dark? That is series wiring. Total voltage = V1 + V2 + V3. The sum of voltage drops equals the battery voltage.' },
+    { label: 'Factor Out Current', formula: 'R_eq = R₁ + R₂ + R₃', detail: 'Using Ohm\'s law: I x Req = I x R1 + I x R2 + I x R3. The same current I flows through every bulb — only one path. If one breaks, the current stops everywhere!' },
+    { label: 'Key Principle', formula: 'R_eq > R₁, R₂, R₃ individually', detail: 'Divide by I (same everywhere): Req = R1 + R2 + R3. Simple addition. Three 100-ohm bulbs in series give 300 ohms total. More bulbs = higher resistance = dimmer each becomes.' }
   ];
 
   return (
