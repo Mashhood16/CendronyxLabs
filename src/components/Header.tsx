@@ -198,10 +198,10 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
       </div>
 
       {/* Right: Actions */}
-      <div className="flex items-center gap-4 shrink-0">
+      <div className="flex items-center gap-1 sm:gap-4 shrink-0">
         <button
           onClick={() => onMobileSearchOpen ? onMobileSearchOpen() : setMobileSearchOpen(true)}
-          className={`lg:hidden p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+          className={`lg:hidden p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           aria-label="Search labs"
         >
           <Search className="w-5 h-5" />
@@ -210,7 +210,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         {/* Reload / Clear Cache */}
         <button
           onClick={handleHardReload}
-          className={`p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+          className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           title="Clear Cache & Reload"
         >
           <RefreshCw className="w-5 h-5" />
@@ -219,7 +219,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         {/* Language Switcher */}
         <div className="relative group">
           <button
-            className={`p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+            className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
             title={t('settings.language')}
           >
             <Languages className="w-5 h-5" />
@@ -248,30 +248,30 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
 
         <button
           onClick={toggleTheme}
-          className={`p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+          className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
 
-        <button className={`relative p-2 rounded-full transition-colors hidden sm:block ${isDark ? 'text-[#a1a1aa] hover:text-[#ffffff] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}>
+        <button className={`relative p-1.5 sm:p-2 rounded-full transition-colors hidden sm:block ${isDark ? 'text-[#a1a1aa] hover:text-[#ffffff] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}>
           <Bell className="w-5 h-5" />
         </button>
 
         {user ? (
-          <div className="flex items-center gap-3 group relative ml-2 pl-4 border-l border-[#1c1b1b] cursor-pointer">
+          <div className="flex items-center gap-2 sm:gap-3 group relative ml-1 sm:ml-2 pl-2 sm:pl-4 border-l border-[#1c1b1b] cursor-pointer">
             <div className="hidden sm:block text-right">
               <p className={`text-sm font-semibold leading-tight ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{user.name}</p>
               <p className={`text-[10px] font-medium ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>{user.email || 'student@school.edu'}</p>
             </div>
-            <div className="w-9 h-9 rounded-full bg-[#5560F1] flex items-center justify-center text-white font-bold text-sm tracking-wide">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#5560F1] flex items-center justify-center text-white font-bold text-sm tracking-wide">
               {user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
             </div>
-            <ChevronDown className={`w-4 h-4 ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`} />
+            <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`} />
             
             <button
               onClick={() => { logout(); navigate('/login'); }}
-              className={`absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 font-semibold text-sm min-w-[150px] ${isDark ? 'bg-[#121212] border border-[#1c1b1b] text-rose-400 hover:bg-[#1a1515]' : 'bg-white border border-slate-200 text-rose-600 hover:bg-rose-50'}`}
+              className={`absolute right-0 top-10 sm:top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 font-semibold text-sm min-w-[150px] ${isDark ? 'bg-[#121212] border border-[#1c1b1b] text-rose-400 hover:bg-[#1a1515]' : 'bg-white border border-slate-200 text-rose-600 hover:bg-rose-50'}`}
             >
               <LogOut className="w-4 h-4" />
               {t('auth.sign_out')}
@@ -280,7 +280,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         ) : (
           <button
             onClick={() => navigate('/login')}
-            className="flex items-center gap-2 px-5 py-2 bg-[#6366f1] text-white font-semibold rounded-lg hover:bg-[#4f46e5] transition-colors"
+            className="flex items-center gap-2 px-3 sm:px-5 py-1.5 sm:py-2 text-sm sm:text-base bg-[#6366f1] text-white font-semibold rounded-lg hover:bg-[#4f46e5] transition-colors ml-1 sm:ml-2"
           >
             <LogIn className="w-4 h-4" />
             <span className="hidden sm:block">{t('auth.log_in')}</span>
