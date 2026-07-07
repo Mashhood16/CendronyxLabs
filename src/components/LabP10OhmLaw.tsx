@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,6 +12,7 @@ const RESISTORS = [
 ];
 
 export default function LabP10OhmLaw({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [resistor, setResistor] = useState(RESISTORS[0]);
@@ -19,6 +21,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
  
  const [answerR, setAnswerR] = useState('');
  const [feedback, setFeedback] = useState('');
+ const [feedbackType, setFeedbackType] = useState<'correct'|'incorrect'|null>(null);
 
  // Add random ~2% measurement noise for realism
  const [noiseSeed, setNoiseSeed] = useState(Math.random());
@@ -36,33 +39,35 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
  // Avoid duplicates
  if (dataPoints.find(p => p.V === voltage)) return;
  setDataPoints(prev => [...prev, {V: voltage, I: measuredCurrent}].sort((a,b) => a.V - b.V));
- };
-
- const reset = () => {
- setVoltage(0);
- setDataPoints([]);
- setAnswerR('');
- setFeedback('');
- setNoiseSeed(Math.random());
+ }; const reset = () => {
+  setVoltage(0);
+  setDataPoints([]);
+  setAnswerR('');
+  setFeedback('');
+  setFeedbackType(null);
+  setNoiseSeed(Math.random());
  };
 
  const checkAnswer = () => {
  const userR = parseFloat(answerR);
  if (isNaN(userR)) {
-  setFeedback('Please enter a valid number.');
+  setFeedback(t('lab.p10_ohm_valid_number'));
+  setFeedbackType(null);
   return;
  }
  const error = Math.abs((userR - resistor.value) / resistor.value) * 100;
  if (error < 5) {
-  setFeedback(`Correct! The true resistance is ${resistor.value} Ω.`);
+  setFeedback(t('lab.p10_ohm_correct_fb', { r: resistor.value }));
+  setFeedbackType('correct');
  } else {
-  setFeedback(`Incorrect. Check your calculations. (Error: ${error.toFixed(1)}%)`);
+  setFeedback(t('lab.p10_ohm_incorrect_fb', { err: error.toFixed(1) }));
+  setFeedbackType('incorrect');
  }
  };
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 16: Ohm's Law (Quantitative)" subtitle="Determine unknown resistance by plotting a V-I graph." />
+  <LabHeader onExit={onExit} title={t('lab.p10_ohm_title')} subtitle={t('lab.p10_ohm_subtitle')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -71,34 +76,34 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
+    {t('lab.tab.theory')}
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
   {/* Left Panel: Theory & Setup */}
   <div className="lg:col-span-1 flex flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.theory')}</h2>
    <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
-    <p>Ohm's Law states that current (I) is directly proportional to voltage (V) in an ohmic conductor.</p>
+    <p>{t('lab.p10_ohm_theory')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded font-mono text-center text-lg text-slate-800 dark:text-[#ffffff] font-bold flex-col `}>
-    V = I × R
+    {t('lab.p10_ohm_formula')}
     </div>
-    <p>By plotting a graph of Voltage (V) vs Current (I), the gradient (slope) of the line of best fit represents the Resistance (R).</p>
+    <p>{t('lab.p10_ohm_formula2')}</p>
    </div>
    </div>
 
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Controls</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.p10_ohm_controls')}</h2>
    
    <div className="space-y-6">
     <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Select Unknown Resistor</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p10_ohm_resistor_label')}</label>
     <div className="flex gap-2">
      {RESISTORS.map(r => (
      <button 
@@ -114,7 +119,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
 
     <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 flex justify-between">
-     <span>Power Supply (V)</span>
+     <span>{t('lab.p10_ohm_power_label')}</span>
      <span className="text-amber-600 font-bold">{voltage.toFixed(1)} V</span>
     </label>
     <input 
@@ -131,27 +136,27 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
     disabled={dataPoints.some(p => p.V === voltage)}
     className={`w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white py-3 rounded-lg font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
     >
-    <Activity className="w-5 h-5" /> Record V-I Reading
+    <Activity className="w-5 h-5" /> {t('lab.p10_ohm_record_btn')}
     </button>
    </div>
    </div>
 
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Analysis</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.p10_ohm_analysis')}</h2>
    <div className="space-y-3">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">Calculate Resistance (Ω):</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_ohm_calc_label')}</label>
     <div className="flex gap-2">
     <input 
      type="number" 
      value={answerR}
      onChange={e => setAnswerR(e.target.value)}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-blue-500 font-mono"
-     placeholder="e.g. 15.5"
+     placeholder={t('lab.p10_ohm_placeholder')}
     />
-    <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Check</button>
+    <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.check')}</button>
     </div>
     {feedback && (
-    <div className={`p-3 rounded text-sm ${feedback.includes('Correct') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+    <div className={`p-3 rounded text-sm ${feedbackType === 'correct' ? 'bg-green-100 text-green-800' : feedbackType === 'incorrect' ? 'bg-red-100 text-red-800' : ''}`}>
      {feedback}
     </div>
     )}
@@ -162,24 +167,24 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
   {/* Center Panel: Circuit & Graph */}
   <div className="lg:col-span-2 flex flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col items-center justify-center relative min-h-[300px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="absolute top-4 left-4 font-bold text-slate-700 dark:text-[#ffffff]">Circuit Diagram</h3>
+   <h3 className="absolute top-4 left-4 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.circuit_diagram')}</h3>
    
    <div className="w-full max-w-lg relative h-[250px] border-2 border-slate-200 dark:border-[#1c1b1b] rounded-xl bg-slate-50 dark:bg-[#121212] mt-8">
     {/* Power Supply */}
-    <div className="absolute left-[15%] top-[40%] flex flex-col items-center bg-white lg:bg-slate-50 dark:!bg-[#121212] p-3 border-2 border-amber-400 rounded-lg z-10 shadow-sm ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
-     <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1">DC Supply</div>
+    <div className="absolute left-[15%] top-[40%] flex flex-col items-center bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 border-2 border-amber-400 rounded-lg z-10 shadow-sm ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+     <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1">{t('lab.dc_supply')}</div>
      <div className="text-2xl font-mono text-amber-600 font-bold">{voltage.toFixed(1)}V</div>
     </div>
 
     {/* Resistor */}
     <div className="absolute right-[15%] top-[40%] flex flex-col items-center bg-slate-50 dark:!bg-[#121212] p-3 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg z-10 shadow-sm">
-     <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1">Resistor {resistor.id}</div>
+     <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1">{t('lab.resistor')} {resistor.id}</div>
      <div className={`w-12 h-6 ${resistor.color} rounded my-1`} />
     </div>
 
     {/* Ammeter */}
     <div className="absolute left-[40%] top-[10%] flex flex-col items-center bg-slate-50 dark:bg-[#121212] p-2 border-2 border-blue-400 rounded-full w-20 h-20 justify-center z-10 shadow-sm">
-     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a]">Ammeter</div>
+     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a]">{t('lab.ammeter')}</div>
      <div className="text-lg font-mono text-blue-600 font-bold">{measuredCurrent.toFixed(2)}A</div>
     </div>
 
@@ -201,7 +206,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
    </div>
 
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col flex-1 min-h-[300px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">V-I Data & Graph</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.p10ohmlaw_v_i')} {t('lab.p10_ohm_record_btn')}</h3>
    <div className="flex flex-col md:flex-row gap-6 h-full">
     
     {/* Data Table */}
@@ -209,8 +214,8 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
     <table className="w-full text-sm text-center">
      <thead className="bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] sticky top-0">
      <tr>
-      <th className="py-2 px-3 font-medium">Voltage (V)</th>
-      <th className="py-2 px-3 font-medium">Current (A)</th>
+      <th className="py-2 px-3 font-medium">{t('lab.p10_ohm_table_v')}</th>
+      <th className="py-2 px-3 font-medium">{t('lab.p10_ohm_table_i')}</th>
      </tr>
      </thead>
      <tbody>
@@ -221,7 +226,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
       </tr>
      ))}
      {dataPoints.length === 0 && (
-      <tr><td colSpan={2} className="py-6 text-slate-400">No data recorded</td></tr>
+      <tr>      <td colSpan={2} className="py-6 text-slate-400">{t('lab.p10_ohm_no_data')}</td></tr>
      )}
      </tbody>
     </table>
@@ -229,8 +234,8 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
 
     {/* Graph */}
     <div className="w-full md:w-2/3 border-2 border-slate-200 dark:border-[#1c1b1b] rounded-lg relative bg-slate-50 dark:bg-[#121212] overflow-hidden">
-    <div className="absolute top-4 left-4 text-xs font-bold text-amber-600">Voltage (V)</div>
-    <div className="absolute bottom-4 right-4 text-xs font-bold text-blue-600">Current (A)</div>
+    <div className="absolute top-4 left-4 text-xs font-bold text-amber-600">{t('lab.p10_ohm_graph_v')}</div>
+    <div className="absolute bottom-4 right-4 text-xs font-bold text-blue-600">{t('lab.p10_ohm_graph_i')}</div>
     
     {/* Max Voltage = 12, Max Current = 1.0 (for R1=12) */}
     <svg className="absolute inset-0 w-full h-full pt-10 pb-8 px-12" preserveAspectRatio="none">

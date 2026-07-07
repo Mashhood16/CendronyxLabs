@@ -1,0 +1,2002 @@
+{
+  "lab.cs10churnprediction_simulate_time_forward_high_ris": {
+    "original": "Simulate Time Forward (High Risk Churns)",
+    "protected_terms": true
+  },
+  "lab.cs10churnprediction_log_assessment": {
+    "original": "Log & Assessment",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_campaign_log": {
+    "original": "Campaign Log",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_waiting_for_actions": {
+    "original": "Waiting for actions...",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_if_a_customer_has": {
+    "original": "If a customer has",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_5_logins": {
+    "original": "5 logins",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_and": {
+    "original": "and",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_3_tickets": {
+    "original": "3 tickets",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_what_would_their_risk_score_be": {
+    "original": ", what would their Risk Score be with your current weights? (Cap at 0-100)",
+    "protected_terms": true
+  },
+  "lab.cs10churnprediction_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10churnprediction_churn_prediction_lab": {
+    "original": "Churn Prediction Lab",
+    "protected_terms": true
+  },
+  "lab.cs10churnprediction_expected_risk_score": {
+    "original": "Expected Risk Score",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_theory_core_concepts": {
+    "original": "Theory: Core Concepts",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_computational_thinking": {
+    "original": "Computational Thinking",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_involves_solving_problems_desi": {
+    "original": "involves solving problems, designing systems, and understanding human behavior by drawing on the concepts fundamental to computer science.",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_1_abstraction": {
+    "original": "1. Abstraction",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_abstraction_is_the_process_of_": {
+    "original": "Abstraction is the process of filtering out – ignoring – the characteristics that we don't need in order to concentrate on those that we do. It simplifies complex systems.",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_example": {
+    "original": "Example:",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_a_subway_map_ignores_exact_geo": {
+    "original": "A subway map ignores exact geographical curves and above-ground details like trees, showing only stations and connecting lines.",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_2_modular_design": {
+    "original": "2. Modular Design",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_modular_programming_is_a_softw": {
+    "original": "Modular programming is a software design technique that separates the functionality of a program into independent, interchangeable modules.",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_each_module_contains_everythin": {
+    "original": "Each module contains everything necessary to execute only one aspect of the desired functionality.",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_interactive_exercises": {
+    "original": "Interactive Exercises",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_map_abstraction": {
+    "original": "Map Abstraction",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_modular_design": {
+    "original": "Modular Design",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_click_the_buttons_below_to_rem": {
+    "original": "Click the buttons below to remove details from the map, increasing its level of abstraction.",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_abstraction_level": {
+    "original": "Abstraction Level:",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_main_road": {
+    "original": "MAIN ROAD",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_pure_abstraction": {
+    "original": "Pure Abstraction",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_drag_and_arrange_the_program_m": {
+    "original": "Drag and arrange the program modules to structure the application visually.",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_assessment_logs": {
+    "original": "Assessment & Logs",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_verify_answer": {
+    "original": "Verify Answer",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_activity_tracker": {
+    "original": "Activity Tracker",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_no_actions_recorded": {
+    "original": "No actions recorded.",
+    "protected_terms": false
+  },
+  "lab.cs10computationalthinking_computational_thinking_lab": {
+    "original": "Computational Thinking Lab",
+    "protected_terms": true
+  },
+  "lab.cs10computationalthinking_type_your_answer": {
+    "original": "Type your answer...",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10cybersafety_1_poster_builder_tools": {
+    "original": "1. Poster Builder Tools",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_design_an_anti_cyberbullying_p": {
+    "original": "Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_add_text_box": {
+    "original": "Add Text Box",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_add_icons": {
+    "original": "Add Icons:",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_submit_to_gallery_walk": {
+    "original": "Submit to Gallery Walk",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_empty_canvas": {
+    "original": "Empty Canvas",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_3_gallery_walk_assessment": {
+    "original": "3. Gallery Walk & Assessment",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_complete_your_poster_and_click": {
+    "original": "Complete your poster and click \"Submit to Gallery Walk\" to unlock peer reviews and your final assessment.",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_rate_peer_posters": {
+    "original": "Rate Peer Posters:",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_poster": {
+    "original": "Poster #",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_final_assessment": {
+    "original": "Final Assessment",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_which_of_the_following_is_the_": {
+    "original": "Which of the following is the BEST immediate action if you witness cyberbullying?",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_select": {
+    "original": "Select...",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_reply_angrily_to_the_bully": {
+    "original": "Reply angrily to the bully",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_take_screenshots_block_and_rep": {
+    "original": "Take screenshots, block, and report",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_ignore_it_and_delete_your_acco": {
+    "original": "Ignore it and delete your account",
+    "protected_terms": true
+  },
+  "lab.cs10cybersafety_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.cs10cybersafety_cyber_safety_lab": {
+    "original": "Cyber Safety Lab",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_theory_setup": {
+    "original": "Theory & Setup",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_real_world_datasets_are_often_": {
+    "original": "Real-world datasets are often messy. Before visualizing data or feeding it into a machine learning model, you must",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_clean": {
+    "original": "clean",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_it": {
+    "original": "it.",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_remove_missing_values_null_nan": {
+    "original": "Remove missing values (null/NaN)",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_filter_out_extreme_outliers": {
+    "original": "Filter out extreme outliers",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_central_tendency": {
+    "original": "Central Tendency",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_mean": {
+    "original": "Mean:",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_the_average_of_all_values": {
+    "original": "The average of all values.",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_median": {
+    "original": "Median:",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_the_middle_value_when_sorted": {
+    "original": "The middle value when sorted.",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_mode": {
+    "original": "Mode:",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_the_most_frequent_value": {
+    "original": "The most frequent value.",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_raw_dataset_first_5_rows": {
+    "original": "Raw Dataset (First 5 rows)",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_pet": {
+    "original": "Pet",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_age": {
+    "original": "Age",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_clean_data": {
+    "original": "Clean Data",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_calculate_stats": {
+    "original": "Calculate Stats",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_visualization": {
+    "original": "Visualization",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_clean_data_to_view_visualizati": {
+    "original": "Clean data to view visualizations",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_pet_preferences_chart": {
+    "original": "Pet Preferences Chart",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_mean_age": {
+    "original": "Mean Age",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_median_age": {
+    "original": "Median Age",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_mode_age": {
+    "original": "Mode Age",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_data_log_assessment": {
+    "original": "Data Log & Assessment",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_process_log": {
+    "original": "Process Log",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_awaiting_data_pipeline": {
+    "original": "Awaiting data pipeline...",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_based_on_the_cleaned_dataset_w": {
+    "original": "Based on the cleaned dataset, what is the exact",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_median_1": {
+    "original": "Median",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_age_1": {
+    "original": "age?",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10datavisualization_data_dashboard_lab": {
+    "original": "Data Dashboard Lab",
+    "protected_terms": true
+  },
+  "lab.cs10datavisualization_median_value": {
+    "original": "Median Value...",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10digitalmarketing_1_campaign_setup": {
+    "original": "1. Campaign Setup",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_design_your_social_media_ad_ca": {
+    "original": "Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_ad_budget": {
+    "original": "Ad Budget ($)",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_target_audience": {
+    "original": "Target Audience",
+    "protected_terms": true
+  },
+  "lab.cs10digitalmarketing_broad_18_65_global": {
+    "original": "Broad (18-65+, Global)",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_niche_25_34_local_tech_enthusi": {
+    "original": "Niche (25-34, Local Tech Enthusiasts)",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_techgadget_store": {
+    "original": "TechGadget Store",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_sponsored": {
+    "original": "Sponsored",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_upgrade_your_setup_with_our_la": {
+    "original": "Upgrade your setup with our latest smart accessories! Click to learn more. 🚀",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_likes": {
+    "original": "Likes",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_clicks": {
+    "original": "Clicks",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_live_data": {
+    "original": "LIVE DATA...",
+    "protected_terms": true
+  },
+  "lab.cs10digitalmarketing_3_analytics_roi": {
+    "original": "3. Analytics & ROI",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_performance_graph": {
+    "original": "Performance Graph",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_sales": {
+    "original": "Sales",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_sales_1": {
+    "original": "Sales:",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_revenue": {
+    "original": "Revenue:",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_calculate_roi": {
+    "original": "Calculate ROI",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_revenue_sales_50_calculate_pro": {
+    "original": "Revenue = Sales * $50. Calculate Profit (Revenue - Budget). Is it positive or negative?",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.cs10digitalmarketing_digital_marketing_lab": {
+    "original": "Digital Marketing Lab",
+    "protected_terms": true
+  },
+  "lab.cs10digitalmarketing_enter_calculated_profit": {
+    "original": "Enter calculated profit ($)",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_array": {
+    "original": "Array",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_is_a_fundamental_data_structur": {
+    "original": "is a fundamental data structure consisting of a collection of elements identified by index or key.",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_common_operations": {
+    "original": "Common Operations",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_push_pop": {
+    "original": "Push / Pop:",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_add_or_remove_from_the_end_of_": {
+    "original": "Add or remove from the end of the array. Very fast (O(1)).",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_unshift_shift": {
+    "original": "Unshift / Shift:",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_add_or_remove_from_the_beginni": {
+    "original": "Add or remove from the beginning. Slower (O(n)) because all other elements must be shifted.",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_insert_remove_at_index": {
+    "original": "Insert / Remove at Index:",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_modifying_elements_in_the_midd": {
+    "original": "Modifying elements in the middle also requires shifting elements (O(n)).",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_simulation": {
+    "original": "Simulation",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_array_is_empty": {
+    "original": "Array is empty",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_push": {
+    "original": "Push",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_unshift": {
+    "original": "Unshift",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_insert_at_index": {
+    "original": "Insert at Index",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_pop": {
+    "original": "Pop",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_shift": {
+    "original": "Shift",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_remove_at_index": {
+    "original": "Remove at Index",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_data_assessment": {
+    "original": "Data & Assessment",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_operation_log": {
+    "original": "Operation Log",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_no_operations_yet": {
+    "original": "No operations yet.",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_based_on_the_current_array_sta": {
+    "original": "Based on the current array state above, what is the exact string value at index",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10dynamiclist_dynamic_list_lab": {
+    "original": "Dynamic List Lab",
+    "protected_terms": true
+  },
+  "lab.cs10dynamiclist_value": {
+    "original": "Value...",
+    "protected_terms": false
+  },
+  "lab.cs10financials_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10financials_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10financials_financial_concepts": {
+    "original": "Financial Concepts",
+    "protected_terms": false
+  },
+  "lab.cs10financials_revenue_expenses": {
+    "original": "Revenue & Expenses",
+    "protected_terms": false
+  },
+  "lab.cs10financials_revenue": {
+    "original": "Revenue",
+    "protected_terms": false
+  },
+  "lab.cs10financials_is_the_total_amount_of_money_b": {
+    "original": "is the total amount of money brought in by sales.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_expenses": {
+    "original": "Expenses",
+    "protected_terms": false
+  },
+  "lab.cs10financials_are_the_costs_required_to_oper": {
+    "original": "are the costs required to operate.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_profit_revenue_total_expenses": {
+    "original": "Profit = Revenue - Total Expenses",
+    "protected_terms": false
+  },
+  "lab.cs10financials_fixed_vs_variable_costs": {
+    "original": "Fixed vs Variable Costs",
+    "protected_terms": false
+  },
+  "lab.cs10financials_fixed_costs": {
+    "original": "Fixed Costs",
+    "protected_terms": false
+  },
+  "lab.cs10financials_e_g_rent_salaries_don_t_change": {
+    "original": "(e.g., rent, salaries) don't change based on how many items you sell.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_variable_costs": {
+    "original": "Variable Costs",
+    "protected_terms": false
+  },
+  "lab.cs10financials_e_g_raw_materials_increase_wit": {
+    "original": "(e.g., raw materials) increase with each unit sold.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_break_even_point": {
+    "original": "Break-even Point",
+    "protected_terms": false
+  },
+  "lab.cs10financials_the_point_where_total_revenue_": {
+    "original": "The point where total revenue equals total costs. You are neither making a profit nor a loss.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_break_even_units_fixed_costs_p": {
+    "original": "Break-even Units = Fixed Costs / (Price - Variable Cost)",
+    "protected_terms": false
+  },
+  "lab.cs10financials_interactive_spreadsheet": {
+    "original": "Interactive Spreadsheet",
+    "protected_terms": false
+  },
+  "lab.cs10financials_price_per_unit": {
+    "original": "Price per Unit ($)",
+    "protected_terms": false
+  },
+  "lab.cs10financials_variable_cost_unit": {
+    "original": "Variable Cost/Unit ($)",
+    "protected_terms": false
+  },
+  "lab.cs10financials_fixed_costs_month": {
+    "original": "Fixed Costs/Month ($)",
+    "protected_terms": false
+  },
+  "lab.cs10financials_start_units_sold_month": {
+    "original": "Start Units Sold/Month",
+    "protected_terms": false
+  },
+  "lab.cs10financials_monthly_profit": {
+    "original": "Monthly Profit",
+    "protected_terms": false
+  },
+  "lab.cs10financials_break_even_units": {
+    "original": "Break-even Units",
+    "protected_terms": false
+  },
+  "lab.cs10financials_12_month_projection_5_monthly_": {
+    "original": "12-Month Projection (5% Monthly Growth)",
+    "protected_terms": false
+  },
+  "lab.cs10financials_log_projection": {
+    "original": "Log Projection",
+    "protected_terms": false
+  },
+  "lab.cs10financials_data_logs_assessment": {
+    "original": "Data Logs & Assessment",
+    "protected_terms": true
+  },
+  "lab.cs10financials_saved_scenarios": {
+    "original": "Saved Scenarios",
+    "protected_terms": false
+  },
+  "lab.cs10financials_price": {
+    "original": "Price",
+    "protected_terms": false
+  },
+  "lab.cs10financials_units": {
+    "original": "Units",
+    "protected_terms": false
+  },
+  "lab.cs10financials_y1_profit": {
+    "original": "Y1 Profit",
+    "protected_terms": false
+  },
+  "lab.cs10financials_no_projections_logged": {
+    "original": "No projections logged.",
+    "protected_terms": false
+  },
+  "lab.cs10financials_break_even_challenge": {
+    "original": "Break-Even Challenge",
+    "protected_terms": false
+  },
+  "lab.cs10financials_your_fixed_costs_are": {
+    "original": "Your fixed costs are",
+    "protected_terms": false
+  },
+  "lab.cs10financials_you_sell_a_product_for": {
+    "original": ". You sell a product for",
+    "protected_terms": false
+  },
+  "lab.cs10financials_and_the_variable_cost_per_unit": {
+    "original": ", and the variable cost per unit is",
+    "protected_terms": false
+  },
+  "lab.cs10financials_how_many_units_do_you_need_to_": {
+    "original": ". How many units do you need to sell to break even?",
+    "protected_terms": true
+  },
+  "lab.cs10financials_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10financials_lab_financial_projections": {
+    "original": "Lab: Financial Projections",
+    "protected_terms": true
+  },
+  "lab.cs10financials_units_1": {
+    "original": "Units...",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_1_select_module": {
+    "original": "1. Select Module",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_iot_smart_home": {
+    "original": "IoT Smart Home",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_ai_bias": {
+    "original": "AI Bias",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_cloud_docs": {
+    "original": "Cloud Docs",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_internet_of_things_iot": {
+    "original": "Internet of Things (IoT):",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_connects_physical_devices_to_t": {
+    "original": "Connects physical devices to the internet. Toggle the AC and Lights to observe energy consumption dynamically.",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_ai_bias_1": {
+    "original": "AI Bias:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_artificial_intelligence_models": {
+    "original": "Artificial Intelligence models can inherit human biases from training data. Run the AI screening tool and analyze its selections.",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_cloud_computing": {
+    "original": "Cloud Computing:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_enables_real_time_collaboratio": {
+    "original": "Enables real-time collaboration. Watch how cloud synchronization handles concurrent text edits.",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_device_controls": {
+    "original": "Device Controls",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_ac_unit_1500w": {
+    "original": "AC Unit (1500W)",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_smart_lights_60w": {
+    "original": "Smart Lights (60W)",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_smart_home_floor_plan": {
+    "original": "Smart Home Floor Plan",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_living_room": {
+    "original": "Living Room",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_ac_cooling": {
+    "original": "AC Cooling...",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_garage_offline": {
+    "original": "Garage (Offline)",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_ai_resume_screener": {
+    "original": "AI Resume Screener",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_run_screening": {
+    "original": "Run Screening",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_gender": {
+    "original": "Gender:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_experience": {
+    "original": "| Experience:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_yrs": {
+    "original": "yrs",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_collaborative_document": {
+    "original": "Collaborative Document",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_server_sync_logs": {
+    "original": "Server Sync Logs:",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_3_data_logging_analysis": {
+    "original": "3. Data Logging & Analysis",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_energy_graph_w": {
+    "original": "Energy Graph (W)",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_past": {
+    "original": "Past",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_now": {
+    "original": "Now",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_assessment": {
+    "original": "Assessment",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_if_both_the_ac_and_lights_are_": {
+    "original": "If both the AC and Lights are left on for 5 hours, what is the total energy consumed in Watt-hours (Wh)? (AC=1500W, Light=60W)",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_data_table": {
+    "original": "Data Table",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_group": {
+    "original": "Group",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_accepted": {
+    "original": "Accepted",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_rejected": {
+    "original": "Rejected",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_male_m": {
+    "original": "Male (M)",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_female_f": {
+    "original": "Female (F)",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_based_on_the_data_table_the_ai": {
+    "original": "Based on the data table, the AI shows a strong bias against which group?",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_select": {
+    "original": "Select...",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_male_candidates": {
+    "original": "Male Candidates",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_female_candidates": {
+    "original": "Female Candidates",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_no_bias": {
+    "original": "No Bias",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_network_logs": {
+    "original": "Network Logs",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_packets_sent": {
+    "original": "Packets Sent:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_avg_latency": {
+    "original": "Avg Latency:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_35ms": {
+    "original": "35ms",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_connections": {
+    "original": "Connections:",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_2_active": {
+    "original": "2 Active",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_if_alice_s_connection_drops_wh": {
+    "original": "If Alice's connection drops, what mechanism ensures she doesn't lose offline edits?",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_edits_are_permanently_dropped": {
+    "original": "Edits are permanently dropped",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_local_caching_and_conflict_res": {
+    "original": "Local caching and conflict resolution",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_changes_are_emailed_to_bob": {
+    "original": "Changes are emailed to Bob",
+    "protected_terms": false
+  },
+  "lab.cs10futuretech_future_tech_virtual_lab": {
+    "original": "Future Tech Virtual Lab",
+    "protected_terms": true
+  },
+  "lab.cs10futuretech_enter_total_wh": {
+    "original": "Enter total Wh...",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10helloworld_web_basics_theory": {
+    "original": "Web Basics Theory",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_a_web_page_is_typically_built_": {
+    "original": "A web page is typically built using three core languages:",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_html_hypertext_markup_language": {
+    "original": "HTML (HyperText Markup Language):",
+    "protected_terms": true
+  },
+  "lab.cs10helloworld_provides_the_structure_of_the_": {
+    "original": "Provides the structure of the webpage. You use tags like",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_lt_div_gt": {
+    "original": "&lt;div&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_and": {
+    "original": "and",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_lt_button_gt": {
+    "original": "&lt;button&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_to_define_elements": {
+    "original": "to define elements.",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_css_cascading_style_sheets": {
+    "original": "CSS (Cascading Style Sheets):",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_defines_the_visual_appearance_": {
+    "original": "Defines the visual appearance. You can change colors, sizes, and layouts.",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_javascript_js": {
+    "original": "JavaScript (JS):",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_adds_interactivity_and_logic_i": {
+    "original": "Adds interactivity and logic. It can modify HTML and CSS on the fly when events (like a button click) occur.",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_in_this_lab_you_have_a_small_c": {
+    "original": "In this lab, you have a small code editor. Try changing the",
+    "protected_terms": true
+  },
+  "lab.cs10helloworld_html": {
+    "original": "HTML",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_text_the": {
+    "original": "text, the",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_css": {
+    "original": "CSS",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_colors_or_the": {
+    "original": "colors, or the",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_function_to_see_how_it_affects": {
+    "original": "function to see how it affects the preview!",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_code_editor_preview": {
+    "original": "Code Editor & Preview",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_run_code": {
+    "original": "Run Code",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_javascript": {
+    "original": "JavaScript",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_live_preview": {
+    "original": "Live Preview",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_assessment_logs": {
+    "original": "Assessment & Logs",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_knowledge_check": {
+    "original": "Knowledge Check (",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_next_question_rarr": {
+    "original": "Next Question &rarr;",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_editor_logs": {
+    "original": "Editor Logs",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_no_events_logged": {
+    "original": "No events logged.",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_hello_world_virtual_web_dev": {
+    "original": "Hello World! Virtual Web Dev",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_preview": {
+    "original": "preview",
+    "protected_terms": false
+  },
+  "lab.cs10helloworld_your_answer": {
+    "original": "Your answer...",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_option_1": {
+    "original": "Option 1",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_option_2": {
+    "original": "Option 2",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_submit": {
+    "original": "Submit",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_theory_forms_tables_css": {
+    "original": "Theory: Forms, Tables & CSS",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_html_forms": {
+    "original": "HTML Forms",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_forms_are_used_to_collect_user": {
+    "original": "Forms are used to collect user input. Elements include",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_lt_input_gt": {
+    "original": "&lt;input&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lt_select_gt": {
+    "original": "&lt;select&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_and": {
+    "original": ", and",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lt_button_gt": {
+    "original": "&lt;button&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_html_tables": {
+    "original": "HTML Tables",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_tables_organize_data_into_rows": {
+    "original": "Tables organize data into rows and columns. Key tags:",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_lt_table_gt": {
+    "original": "&lt;table&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_defines_the_table": {
+    "original": ": Defines the table",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lt_tr_gt": {
+    "original": "&lt;tr&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_table_row": {
+    "original": ": Table row",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lt_th_gt": {
+    "original": "&lt;th&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_table_header_cell": {
+    "original": ": Table header cell",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_lt_td_gt": {
+    "original": "&lt;td&gt;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_table_data_cell": {
+    "original": ": Table data cell",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_css_transitions": {
+    "original": "CSS Transitions",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_transitions_provide_a_way_to_c": {
+    "original": "Transitions provide a way to control animation speed when changing CSS properties. Instead of property changes taking effect immediately, you can cause the changes in a property to take place over a period of time.",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_interactive_builder": {
+    "original": "Interactive Builder",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_travel_form": {
+    "original": "Travel Form",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_timetable": {
+    "original": "Timetable",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_css_animation": {
+    "original": "CSS Animation",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_text_input": {
+    "original": "+ Text Input",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_email": {
+    "original": "+ Email",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_date": {
+    "original": "+ Date",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_select": {
+    "original": "+ Select",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_submit_button": {
+    "original": "+ Submit Button",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_clear": {
+    "original": "Clear",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_add_fields_to_build_your_form": {
+    "original": "Add fields to build your form",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_rows": {
+    "original": "Rows",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_cols": {
+    "original": "Cols",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_header": {
+    "original": "Header",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_cell": {
+    "original": "Cell",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_duration": {
+    "original": "Duration (",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_hover_color": {
+    "original": "Hover Color",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_hover_me": {
+    "original": "Hover Me!",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_box": {
+    "original": ".box",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_nbsp_nbsp_transition_all": {
+    "original": "&nbsp;&nbsp;transition: all",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_s_ease_in_out": {
+    "original": "s ease-in-out;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_nbsp_nbsp_background_color_1e2": {
+    "original": "&nbsp;&nbsp;background-color: #1e293b;",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_box_hover": {
+    "original": ".box:hover",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_nbsp_nbsp_background_color": {
+    "original": "&nbsp;&nbsp;background-color:",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_nbsp_nbsp_transform_scale_1_1_": {
+    "original": "&nbsp;&nbsp;transform: scale(1.1) rotate(5deg);",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_assessment_logs": {
+    "original": "Assessment & Logs",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_verify": {
+    "original": "Verify",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_activity_tracker": {
+    "original": "Activity Tracker",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_no_actions_recorded": {
+    "original": "No actions recorded.",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_text_input_1": {
+    "original": "Text Input",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_email_input": {
+    "original": "Email Input",
+    "protected_terms": true
+  },
+  "lab.cs10htmlcss_advanced_html_css_web_builder": {
+    "original": "Advanced HTML & CSS Web Builder",
+    "protected_terms": false
+  },
+  "lab.cs10htmlcss_type_your_answer": {
+    "original": "Type your answer...",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_theory_setup": {
+    "original": "Theory & Setup",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_in_computer_science_searching_": {
+    "original": "In computer science, searching algorithms are used to find a specific element within a data structure.",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_linear_search": {
+    "original": "Linear Search",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_checks_each_element_in_the_arr": {
+    "original": "Checks each element in the array sequentially until the target is found. Time complexity:",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_o_n": {
+    "original": "O(n)",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_binary_search": {
+    "original": "Binary Search",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_works_only_on": {
+    "original": "Works only on",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_sorted": {
+    "original": "sorted",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_arrays_it_repeatedly_divides_t": {
+    "original": "arrays. It repeatedly divides the search interval in half. Time complexity:",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_o_log_n": {
+    "original": "O(log n)",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_lab_setup": {
+    "original": "Lab Setup",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_search_type": {
+    "original": "Search Type",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_target_value": {
+    "original": "Target Value",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_simulation": {
+    "original": "Simulation",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_step": {
+    "original": "Step",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_data_assessment": {
+    "original": "Data & Assessment",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_execution_log": {
+    "original": "Execution Log",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_awaiting_execution": {
+    "original": "Awaiting execution...",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_how_many_steps_would_a": {
+    "original": "How many steps would a",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_take_to_find_the_value": {
+    "original": "take to find the value",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_in_the_default_array": {
+    "original": "in the default array?",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10jsalgorithms_algorithms_lab": {
+    "original": "Algorithms Lab",
+    "protected_terms": true
+  },
+  "lab.cs10jsalgorithms_steps": {
+    "original": "Steps",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_theory_setup": {
+    "original": "Theory & Setup",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_customer_acquisition_cost_cac": {
+    "original": "Customer Acquisition Cost (CAC)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_cac_is_the_total_cost_of_acqui": {
+    "original": "CAC is the total cost of acquiring a new customer. It includes all marketing and sales expenses over a specific period, divided by the number of new customers acquired during that period.",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_cac_marketing_spend_sales_spen": {
+    "original": "CAC = (Marketing Spend + Sales Spend) / New Customers",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_unique_selling_proposition_usp": {
+    "original": "Unique Selling Proposition (USP)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_a_usp_is_what_makes_your_produ": {
+    "original": "A USP is what makes your product different from competitors. We often visualize this using a Competitive Matrix, plotting competitors on two axes (e.g., Price vs. Quality) to find a \"gap\" in the market.",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_interactive_builders": {
+    "original": "Interactive Builders",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_cac_calculator": {
+    "original": "CAC Calculator",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_marketing_spend": {
+    "original": "Marketing Spend ($)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_sales_spend": {
+    "original": "Sales Spend ($)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_new_customers": {
+    "original": "New Customers",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_current_cac": {
+    "original": "Current CAC:",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_record_data": {
+    "original": "Record Data",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_usp_matrix_builder": {
+    "original": "USP Matrix Builder",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_click_on_the_grid_to_position_": {
+    "original": "Click on the grid to position your product based on Price and Quality.",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_high_quality": {
+    "original": "High Quality",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_low_quality": {
+    "original": "Low Quality",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_low_price": {
+    "original": "Low Price",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_high_price": {
+    "original": "High Price",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_you": {
+    "original": "You",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_your_product_price": {
+    "original": "Your Product: Price",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_quality": {
+    "original": "%, Quality",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_data_assessment": {
+    "original": "Data & Assessment",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_data_log": {
+    "original": "Data Log",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_trial": {
+    "original": "Trial",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_mkt": {
+    "original": "Mkt ($)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_sales": {
+    "original": "Sales ($)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_cust": {
+    "original": "Cust.",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_cac": {
+    "original": "CAC ($)",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_no_data_recorded_yet": {
+    "original": "No data recorded yet.",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_your_startup_spent": {
+    "original": "Your startup spent",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_on_marketing_and": {
+    "original": "on marketing and",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_on_sales_this_month_you_acquir": {
+    "original": "on sales this month. You acquired",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_new_customers_what_is_your_cac": {
+    "original": "new customers. What is your CAC?",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_lab_market_research_cac": {
+    "original": "Lab: Market Research & CAC",
+    "protected_terms": true
+  },
+  "lab.cs10marketresearch_competitor_a": {
+    "original": "Competitor A",
+    "protected_terms": false
+  },
+  "lab.cs10marketresearch_competitor_b": {
+    "original": "Competitor B",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs10numbersystems_theory_concepts": {
+    "original": "Theory & Concepts",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_number_systems": {
+    "original": "Number Systems",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_are_ways_to_represent_quantiti": {
+    "original": "are ways to represent quantities. The most common systems are:",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_decimal_base_10": {
+    "original": "Decimal (Base 10):",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_digits_0_9_our_daily_system": {
+    "original": "Digits 0-9. Our daily system.",
+    "protected_terms": true
+  },
+  "lab.cs10numbersystems_binary_base_2": {
+    "original": "Binary (Base 2):",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_digits_0_1_used_in_digital_ele": {
+    "original": "Digits 0-1. Used in digital electronics.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_octal_base_8": {
+    "original": "Octal (Base 8):",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_digits_0_7": {
+    "original": "Digits 0-7.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_hexadecimal_base_16": {
+    "original": "Hexadecimal (Base 16):",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_digits_0_9_a_f_used_for_memory": {
+    "original": "Digits 0-9, A-F. Used for memory addresses.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_binary_arithmetic": {
+    "original": "Binary Arithmetic",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_follows_similar_rules_to_decim": {
+    "original": "follows similar rules to decimal arithmetic, but you carry over at 2 instead of 10.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_1_s_complement": {
+    "original": "1's Complement:",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_flip_all_bits_0_becomes_1_1_be": {
+    "original": "Flip all bits (0 becomes 1, 1 becomes 0).",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_2_s_complement": {
+    "original": "2's Complement:",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_add_1_to_the_1_s_complement_us": {
+    "original": "Add 1 to the 1's complement. Used to represent negative numbers in computers.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_interactive_tools": {
+    "original": "Interactive Tools",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_conversion": {
+    "original": "Conversion",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_arithmetic": {
+    "original": "Arithmetic",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_complements": {
+    "original": "Complements",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_input_value": {
+    "original": "Input Value",
+    "protected_terms": true
+  },
+  "lab.cs10numbersystems_from_base": {
+    "original": "From Base",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_binary_2": {
+    "original": "Binary (2)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_octal_8": {
+    "original": "Octal (8)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_decimal_10": {
+    "original": "Decimal (10)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_hex_16": {
+    "original": "Hex (16)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_to_base": {
+    "original": "To Base",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_convert": {
+    "original": "Convert",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_result": {
+    "original": "Result:",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_binary_a": {
+    "original": "Binary A",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_operation": {
+    "original": "Operation",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_addition": {
+    "original": "Addition (+)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_subtraction": {
+    "original": "Subtraction (-)",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_binary_b": {
+    "original": "Binary B",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_calculate": {
+    "original": "Calculate",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_input_binary": {
+    "original": "Input Binary",
+    "protected_terms": true
+  },
+  "lab.cs10numbersystems_calculate_complements": {
+    "original": "Calculate Complements",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_assessment_logs": {
+    "original": "Assessment & Logs",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_practice_challenge": {
+    "original": "Practice Challenge",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_base": {
+    "original": "(Base",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_to_base_1": {
+    "original": ") to Base",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_new_question": {
+    "original": "New Question",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_activity_log": {
+    "original": "Activity Log",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_no_activity_yet": {
+    "original": "No activity yet.",
+    "protected_terms": false
+  },
+  "lab.cs10numbersystems_number_systems_virtual_lab": {
+    "original": "Number Systems Virtual Lab",
+    "protected_terms": true
+  },
+  "lab.cs10numbersystems_your_answer": {
+    "original": "Your answer...",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs11algorithms_bubble_sort_theory": {
+    "original": "Bubble Sort Theory",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_bubble_sort": {
+    "original": "Bubble Sort",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_is_a_simple_sorting_algorithm_": {
+    "original": "is a simple sorting algorithm that repeatedly steps through the input list element by element.",
+    "protected_terms": true
+  },
+  "lab.cs11algorithms_it_compares_the_current_elemen": {
+    "original": "It compares the current element with the one after it.",
+    "protected_terms": true
+  },
+  "lab.cs11algorithms_if_they_are_out_of_order_it": {
+    "original": "If they are out of order, it",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_swaps": {
+    "original": "swaps",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_them": {
+    "original": "them.",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_this_process_is_repeated_until": {
+    "original": "This process is repeated until the list is sorted.",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_during_each_pass_the_largest_r": {
+    "original": "During each pass, the largest remaining element \"bubbles\" up to its correct position at the end of the array.",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_for_i_from_0_to_n_1": {
+    "original": "For i from 0 to N-1:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_for_j_from_0_to_n_i_1": {
+    "original": "For j from 0 to N-i-1:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_if_arr_j_gt_arr_j_1": {
+    "original": "if arr[j] &gt; arr[j+1]:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_swap_arr_j_arr_j_1": {
+    "original": "swap(arr[j], arr[j+1])",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_sorting_array_simulator": {
+    "original": "Sorting Array Simulator",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_step_forward": {
+    "original": "Step Forward",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_pass": {
+    "original": "Pass:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_comparisons_swaps": {
+    "original": "Comparisons/Swaps:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_memory_swap_analysis": {
+    "original": "Memory Swap Analysis",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_consider_the_initial_array_sta": {
+    "original": "Consider the initial array state in the simulator:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_track_the_memory_swaps_manuall": {
+    "original": "Track the memory swaps manually. After the",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_first_full_pass": {
+    "original": "first full pass",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_i_0_completes_all_adjacent_ele": {
+    "original": "(i=0 completes, all adjacent elements compared once), what is the exact state of the array?",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_enter_the_array_elements_separ": {
+    "original": "Enter the array elements separated by commas:",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.cs11algorithms_cs11_algorithm_visualization": {
+    "original": "CS11: Algorithm Visualization",
+    "protected_terms": true
+  },
+  "lab.cs11algorithms_e_g_10_20_30_40_50": {
+    "original": "e.g. 10, 20, 30, 40, 50",
+    "protected_terms": false
+  },
+  "lab.cs11applications_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs11applications_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs11applications_concepts_theory": {
+    "original": "Concepts & Theory",
+    "protected_terms": false
+  },
+  "lab.cs11applications_iot_systems": {
+    "original": "IoT Systems",
+    "protected_terms": false
+  },
+  "lab.cs11applications_blockchain": {
+    "original": "Blockchain",
+    "protected_terms": false
+  },
+  "lab.cs11applications_internet_of_things_iot": {
+    "original": "Internet of Things (IoT)",
+    "protected_terms": true
+  },
+  "lab.cs11applications_refers_to_interconnected_physi": {
+    "original": "refers to interconnected physical devices equipped with sensors, processing ability, and software.",
+    "protected_terms": true
+  },
+  "lab.cs11applications_our_virtual_testbench_features": {
+    "original": "Our virtual testbench features:",
+    "protected_terms": false
+  },
+  "lab.cs11applications_pir_sensor": {
+    "original": "PIR Sensor:",
+    "protected_terms": false
+  },
+  "lab.cs11applications_detects_motion_boolean_true_fa": {
+    "original": "Detects motion (boolean true/false).",
+    "protected_terms": false
+  },
+  "lab.cs11applications_pressure_pad": {
+    "original": "Pressure Pad:",
+    "protected_terms": true
+  },
+  "lab.cs11applications_detects_physical_weight_analog": {
+    "original": "Detects physical weight (analog value 0-100).",
+    "protected_terms": false
+  },
+  "lab.cs11applications_logic_controller": {
+    "original": "Logic Controller:",
+    "protected_terms": false
+  },
+  "lab.cs11applications_combines_inputs_using_boolean_": {
+    "original": "Combines inputs using boolean logic to control an actuator (the Alarm system).",
+    "protected_terms": true
+  },
+  "lab.cs11applications_if_motion_true_pressure_gt_thr": {
+    "original": "if (motion == true && pressure &gt; threshold)",
+    "protected_terms": true
+  },
+  "lab.cs11applications_is_a_distributed_immutable_led": {
+    "original": "is a distributed, immutable ledger where transactions are grouped into cryptographically secured blocks.",
+    "protected_terms": false
+  },
+  "lab.cs11applications_key_properties_of_our_simulato": {
+    "original": "Key properties of our simulator:",
+    "protected_terms": false
+  },
+  "lab.cs11applications_cryptographic_hash": {
+    "original": "Cryptographic Hash:",
+    "protected_terms": false
+  }
+}

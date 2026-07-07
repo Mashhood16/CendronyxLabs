@@ -1,0 +1,134 @@
+/**
+ * Safety Filter for Translation Batches
+ * 
+ * Prevents:
+ * 1. Formula/equation corruption - reverts to English
+ * 2. Units/measurements from being translated
+ * 3. Code/technical syntax from being modified
+ * 
+ * Usage: node scripts/safety-filter.cjs
+ * Reads: src/locales/en/translation.json + src/locales/roman-urdu/translation.json
+ * Output: src/locales/roman-urdu/translation.json (cleaned)
+ */
+
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+/**
+ * Patterns that indicate a string should NOT be translated (preserve original English)
+ */
+const PRESERVE_PATTERNS = [
+  // Pure measurements and units
+  /^\d+\.?\d*\s*(V|W|A|Ω|Hz|F|H|T|N|J|Pa|m|cm|mm|km|g|kg|mL|L|mol|M|°C|°F|K|%|ppm|ms|s|h|min)\b/i,
+  /^pH\s*\d+/i,
+  /^\d+\s*[×x]\s*\d+/,
+  
+  // Chemical formulas (pure)
+  /^[A-Z][a-z]?\d*(?:[·.][A-Z][a-z]?\d*)*\s*(?:\([sgl]\))?$/,
+  /^[A-Z][a-z]?\d*(?:\s*\+\s*[A-Z][a-z]?\d*)*\s*[→⇌]=?\s*/,
+  
+  // Math expressions
+  /^[=<>≤≥≈≠]\s*[-+]?\d+\.?\d*/,
+  /^[a-z]\s*=\s*/,
+  /^[A-Z]_\{?[a-zA-Z]+\}?\s*=/,
+  /\\frac|\\sqrt|\\sum|\\int|\\lim/,
+  /°\s*[CFK]/,
+  
+  // Pure coordinates, IP addresses, URLs
+  /^https?:\/\//,
+  /^\d+\.\d+\.\d+\.\d+$/,
+  /^[xy]\s*=\s*[-+]?\d+$/,
+  
+  // Variables, property names (short)
+  /^[a-z][A-Z][a-zA-Z]+$/,  // camelCase
+  /^[a-z]+_[a-z]+$/,         // snake_case
+  
+  // Time/date formats
+  /^\d+:\d+$/,
+  /^\d{1,2}\s*(second|minute|hour|day|week|month|year)s?$/i,
+];
+
+/**
+ * Check if the English original should be preserved as-is
+ */
+function shouldPreserve(text) {
+  if (!text || !text.trim()) return false;
+  const trimmed = text.trim();
+  for (const pattern of PRESERVE_PATTERNS) {
+    if (pattern.test(trimmed)) return true;
+  }
+  return false;
+}
+
+/**
+ * Check if the English original contains special math/chem symbols that must be preserved
+ */
+const MATH_SYMBOLS = /[→⇌÷×±∞√∫∑πθρΩω²³⁴⁺⁻°·≈≠≤≥₀₁₂₃₄₅₆₇₈₉⁰¹⁵⁶⁷⁸⁹]/;
+const CHEMICAL_PATTERN = /\([sgl]\+?\)|[A-Z][a-z]?\d+\.?\d*[A-Z]|[A-Z][a-z]\d/;
+
+/**
+ * Fix a translation: if the original should be preserved, use original;
+ * if the original has math symbols, only translate the non-math parts
+ */
+function fixTranslation(key, original, translation) {
+  if (!original || !translation) return translation;
+  if (original === translation) return translation;
+  
+  const trimmed = original.trim();
+  
+  // Preserve entire original if it matches preserve patterns
+  if (shouldPreserve(trimmed)) {
+    return original;
+  }
+  
+  // If original has math symbols but translation changed, check if it's a formula
+  if (MATH_SYMBOLS.test(trimmed) || CHEMICAL_PATTERN.test(trimmed)) {
+    // Count how many non-letter, non-space chars
+    const specialChars = trimmed.replace(/[\s\w]/g, '').length;
+    const letters = trimmed.replace(/[^a-zA-Z]/g, '').length;
+    
+    // If it's mostly symbols and numbers, keep original
+    if (specialChars > 3 || letters < trimmed.replace(/[^a-zA-Z\s]/g, '').length * 0.3) {
+      return original;
+    }
+  }
+  
+  return translation;
+}
+
+// Apply fixes
+let preserved = 0;
+let formulaProtected = 0;
+
+const fixed = {};
+Object.entries(ur).forEach(([key, val]) => {
+  const original = en[key] || val;
+  const result = fixTranslation(key, original, val);
+  fixed[key] = result;
+  
+  if (result !== val) {
+    if (result === original && val !== original) {
+      preserved++;
+    } else {
+      formulaProtected++;
+    }
+  }
+});
+
+// Also add any missing English originals that should be preserved
+Object.entries(en).forEach(([key, val]) => {
+  if (!fixed[key] && val && shouldPreserve(val)) {
+    fixed[key] = val;
+    preserved++;
+  }
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(fixed, null, 2));
+console.log(`Safety filter applied:`);
+console.log(`  Preserved as English: ${preserved}`);
+console.log(`  Formula protected: ${formulaProtected}`);
+console.log(`  Total entries: ${Object.keys(fixed).length}`);

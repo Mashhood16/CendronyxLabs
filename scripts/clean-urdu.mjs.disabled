@@ -1,0 +1,33 @@
+import fs from 'fs';
+
+const en = JSON.parse(fs.readFileSync('src/locales/en/translation.json', 'utf8'));
+const ur = JSON.parse(fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8'));
+
+const URDU_RE = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+let fixed = 0;
+let deleted = 0;
+
+Object.keys(ur).forEach(k => {
+  if (ur[k] && URDU_RE.test(ur[k])) {
+    if (en[k]) {
+      ur[k] = en[k]; // revert to English
+      fixed++;
+    } else {
+      delete ur[k]; // remove if no English version
+      deleted++;
+    }
+  }
+});
+
+fs.writeFileSync('src/locales/roman-urdu/translation.json', JSON.stringify(ur, null, 2));
+
+// Verify
+const check = JSON.parse(fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8'));
+let remaining = 0;
+Object.values(check).forEach(v => { if (v && URDU_RE.test(v)) remaining++; });
+
+console.log(`Fixed: ${fixed}`);
+console.log(`Deleted: ${deleted}`);
+console.log(`Remaining Urdu: ${remaining}`);
+console.log(`Total keys: ${Object.keys(check).length}`);

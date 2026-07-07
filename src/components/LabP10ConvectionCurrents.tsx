@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import {Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
+import MathText from './MathText';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [power, setPower] = useState(200);
  const [isRunning, setIsRunning] = useState(false);
@@ -77,7 +80,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 10: Convection Currents" subtitle="Determine the relationship between heater power and convection velocity." />
+  <LabHeader onExit={onExit} title={t('lab.p10convectioncurrents_unit_10_convection_currents')} subtitle={t('lab.subtitle_determine_relationship_between')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -86,46 +89,49 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10convectioncurrents_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10convectioncurrents_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 border-b pb-2">
    <BookOpen className="w-5 h-5 text-indigo-600" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10convectioncurrents_theory_andsetup')}</h2>
    </div>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
    <p>
-    <strong>Convection</strong> is the transfer of thermal energy through a fluid (liquid or gas) by the upward movement of warmer, less dense regions of fluid.
-   </p>
+    <strong>{t('lab.10convectioncurrents_convection')}</strong>  {t('lab.p10convectioncurrents_is_the_transfer_of_thermal_ene')}
+                            </p>
    <p>
-    When the water at the bottom of the beaker is heated, it expands, its density decreases, and it rises. Cooler, denser water sinks to replace it, forming a continuous convection cell.
-   </p>
+    
+                             {t('lab.p10convectioncurrents_when_the_water_at_the_bottom_o')}
+                            </p>
    <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Formulas</h3>
-    <p className="font-mono text-xs mb-1">Velocity (v) = Distance (d) / Time (t)</p>
-    <p className="font-mono text-xs">d = 150 mm (Height of beaker)</p>
+    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.10convectioncurrents_formulas')}</h3>
+    <p className="font-mono text-xs mb-1">{t('lab.p10convectioncurrents_velocity_v_distance_d_time_t')}</p>
+    <p className="font-mono text-xs">{t('lab.p10convectioncurrents_d_150_mm_height_of_beaker')}</p>
    </div>
    <div className={`flex items-start gap-2 bg-blue-50 text-blue-800 p-3 rounded-md dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
     <Info className="w-5 h-5 shrink-0 mt-0.5" />
     <p className="text-xs">
-    Set the heater power and start the experiment. The purple dye traces the convection current. Measure the time it takes to reach the top.
-    </p>
+    
+                                 {t('lab.p10convectioncurrents_set_the_heater_power_and_start')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 border-b pb-2">
    <Activity className="w-5 h-5 text-blue-600" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Simulation</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10convectioncurrents_simulation')}</h2>
    </div>
 
    <div className={`flex-1 relative bg-slate-50 dark:bg-[#121212] border-2 border-slate-200 dark:border-[#1c1b1b] rounded-xl justify-center items-end p-4 h-80 lg:overflow- flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
@@ -164,7 +170,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
    <div className="space-y-4">
    <div>
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Heater Power (W)</span>
+    <span>{t('lab.p10convectioncurrents_heater_power_w')}</span>
     <span className="text-blue-600">{power} W</span>
     </label>
     <input 
@@ -177,12 +183,12 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
    <div className="flex gap-2">
     {!isRunning ? (
     <button onClick={startHeating} disabled={finished} className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md font-medium transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     <Play className="w-4 h-4" /> Start Heating
-    </button>
+     <Play className="w-4 h-4" />  {t('lab.p10convectioncurrents_start_heating')}
+                                     </button>
     ) : (
     <button onClick={stopHeating} className="flex-1 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
-     <Square className="w-4 h-4" /> Stop
-    </button>
+     <Square className="w-4 h-4" />  {t('lab.p10convectioncurrents_stop')}
+                                         </button>
     )}
    </div>
    </div>
@@ -192,32 +198,33 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 border-b pb-2">
    <LineChart className="w-5 h-5 text-emerald-600" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10convectioncurrents_data_andanalysis')}</h2>
    </div>
 
    <div className="flex justify-between items-center">
-   <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">Measure velocity when finished.</span>
+   <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.10convectioncurrents_measurevelocitywhenfinished')}</span>
    <button 
     onClick={recordData}
     disabled={!finished}
     className="bg-emerald-100 text-emerald-700 hover:bg-emerald-200 px-3 py-1.5 rounded-md text-sm font-medium transition-colors disabled:opacity-50"
    >
-    Record Data
-   </button>
+    
+                             {t('lab.p10convectioncurrents_record_data')}
+                            </button>
    </div>
 
    <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0 shadow-sm">
     <tr>
-     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Power (W)</th>
-     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Time (s)</th>
-     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Vel (mm/s)</th>
+     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10convectioncurrents_power_w')}</th>
+     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10convectioncurrents_time_s')}</th>
+     <th className="px-3 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10convectioncurrents_vel_mm_s')}</th>
     </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
     {data.length === 0 && (
-     <tr><td colSpan={3} className="px-3 py-4 text-center text-slate-400">No data recorded yet.</td></tr>
+     <tr><td colSpan={3} className="px-3 py-4 text-center text-slate-400">{t('lab.10convectioncurrents_nodatarecordedyet')}</td></tr>
     )}
     {data.map((d, i) => (
      <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -232,13 +239,13 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
    {/* Graph */}
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-2">Velocity vs Heater Power</span>
+   <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-2">{t('lab.10convectioncurrents_velocityvsheaterpower')}</span>
    <svg width="250" height="150" className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-sm">
     {/* Grid & Axes */}
     <line x1="20" y1="130" x2="240" y2="130" stroke="#cbd5e1" strokeWidth="2" />
     <line x1="20" y1="10" x2="20" y2="130" stroke="#cbd5e1" strokeWidth="2" />
-    <text x="120" y="145" fontSize="10" fill="#64748b">Power (W)</text>
-    <text x="5" y="75" fontSize="10" fill="#64748b" transform="rotate(-90 5 75)">Vel (mm/s)</text>
+    <text x="120" y="145" fontSize="10" fill="#64748b">{t('lab.p10convectioncurrents_power_w')}</text>
+    <text x="5" y="75" fontSize="10" fill="#64748b" transform="rotate(-90 5 75)">{t('lab.p10convectioncurrents_vel_mm_s')}</text>
     
     {/* Points */}
     {data.map((d, i) => {
@@ -251,24 +258,25 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
    {/* Assessment */}
    <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-100 mt-auto">
-   <h3 className="font-bold text-emerald-800 mb-2 text-sm">Assessment</h3>
+   <h3 className="font-bold text-emerald-800 mb-2 text-sm">{t('lab.10convectioncurrents_assessment')}</h3>
    <p className="text-xs text-emerald-700 mb-3">
-    Given $v = kP + c$, use your plotted data to calculate the proportionality constant $k$ (the slope). Enter to 3 decimal places.
+    <MathText>{t('lab.p10convectioncurrents_given_v_kp_c_use_your_plotted_')}</MathText>
    </p>
    <div className="flex gap-2">
     <input 
     type="text" 
     value={assessmentAnswer}
     onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder="e.g. 0.050"
+    placeholder={t('lab.p10convectioncurrents_t_lab_10convectioncurrents_eg0')}
     className="flex-1 px-3 py-1.5 rounded-md border border-emerald-300 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
     />
     <button onClick={checkAssessment} className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-md text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    Check
-    </button>
+    
+                                 {t('lab.p10convectioncurrents_check')}
+                                 </button>
    </div>
-   {assessmentStatus === 'correct' && <p className="text-xs text-green-600 mt-2 font-bold">✓ Correct! k ≈ 0.030</p>}
-   {assessmentStatus === 'incorrect' && <p className="text-xs text-red-600 mt-2 font-bold">✗ Incorrect. Hint: Pick two points and calculate (v2-v1)/(P2-P1).</p>}
+   {assessmentStatus === 'correct' && <p className="text-xs text-green-600 mt-2 font-bold">{t('lab.10convectioncurrents_correctk0030')}</p>}
+   {assessmentStatus === 'incorrect' && <p className="text-xs text-red-600 mt-2 font-bold">{t('lab.p10convectioncurrents_incorrect_hint_pick_two_points')}</p>}
    </div>
   </div>
   </div>

@@ -6,7 +6,13 @@ import Class9Physics from './Class9Physics';
 import Class10Physics from './Class10Physics';
 import Class11Physics from './Class11Physics';
 import Class12Physics from './Class12Physics';
-import { Rocket, Lock } from 'lucide-react';
+import Class9Math from './Class9Math';
+import Class10Math from './Class10Math';
+import Class11Math from './Class11Math';
+import Class12Math from './Class12Math';
+import { Rocket, Lock, Atom, Calculator, Dna, Laptop, Activity, BookOpen, Beaker } from 'lucide-react';
+import { useTranslate } from '../i18n';
+import { translateLabDesc } from '../i18n/labContent';
 
 const SUBJECT_ACCENT: Record<string, string> = {
   physics: 'from-blue-500 to-indigo-600',
@@ -18,11 +24,21 @@ const SUBJECT_ACCENT: Record<string, string> = {
   english: 'from-blue-600 to-blue-600 hover:from-blue-700 hover:to-blue-700 dark:from-cyan-400 dark:to-cyan-400 dark:hover:from-cyan-300 dark:hover:to-cyan-300 dark:!text-black shadow-lg shadow-blue-500/30 dark:shadow-none',
 };
 
+const SUBJECT_BANNER: Record<string, { icon: typeof Atom; gradient: string; description: string }> = {
+  physics:    { icon: Atom,        gradient: 'from-blue-600 via-indigo-600 to-purple-600',    description: 'Forces, Energy, Waves, Light & Electromagnetism — with interactive labs and step-by-step derivations' },
+  chemistry:  { icon: Beaker,      gradient: 'from-emerald-600 via-teal-600 to-cyan-600',     description: 'Reactions, Bonding, Atomic Structure & Organic Chemistry — with virtual lab experiments and simulations' },
+  biology:    { icon: Dna,         gradient: 'from-rose-600 via-pink-600 to-fuchsia-600',     description: 'Cells, Genetics, Ecology & Human Body Systems — with interactive dissections and microscopy' },
+  math:       { icon: Calculator,  gradient: 'from-violet-500 via-purple-600 to-indigo-600',  description: 'Algebra, Geometry, Trigonometry & Calculus — with interactive problem solving and theorem proofs' },
+  computer:   { icon: Laptop,      gradient: 'from-sky-500 via-blue-600 to-indigo-700',       description: 'Programming, Networks, AI, Data Science & Cyber Safety — with hands-on coding and simulations' },
+  science:    { icon: Activity,    gradient: 'from-amber-500 via-orange-600 to-red-600',       description: 'Integrated Science Curriculum — covering physics, chemistry, and biology fundamentals' },
+  english:    { icon: BookOpen,    gradient: 'from-fuchsia-500 via-pink-600 to-rose-600',      description: 'Grammar, Vocabulary, Reading Comprehension & Writing Mechanics — with interactive exercises' },
+};
+
 export default function ModuleSelection() {
   const { classId, subjectId } = useParams();
   const navigate = useNavigate();
 
-  // Class 9 & 10 Physics get a special tabbed view with Labs and Derivations
+  // Class 9-12 Physics get a special tabbed view with Labs and Derivations
   if (classId === '9' && subjectId === 'physics') {
     return <Class9Physics />;
   }
@@ -36,8 +52,23 @@ export default function ModuleSelection() {
     return <Class12Physics />;
   }
 
+  // Class 9-12 Math get a special tabbed view with Labs and Theorems
+  if (classId === '9' && subjectId === 'math') {
+    return <Class9Math />;
+  }
+  if (classId === '10' && subjectId === 'math') {
+    return <Class10Math />;
+  }
+  if (classId === '11' && subjectId === 'math') {
+    return <Class11Math />;
+  }
+  if (classId === '12' && subjectId === 'math') {
+    return <Class12Math />;
+  }
+
   const filteredModules = LAB_MODULES.filter(m => m.classLevel === classId && m.subject === subjectId);
   const accent = SUBJECT_ACCENT[subjectId || ''] || 'from-slate-500 to-slate-600';
+  const { t, language } = useTranslate();
 
   return (
     <Layout>
@@ -49,13 +80,30 @@ export default function ModuleSelection() {
             <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${accent} flex items-center justify-center mb-4 opacity-50`}>
               <Lock className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-slate-700 mb-2">Modules Coming Soon</h3>
-            <p className="text-slate-500 max-w-md text-center">We are actively developing premium virtual labs for Class {classId} {subjectId && formatSubject(subjectId)}. Check back soon!</p>
+            <h3 className="text-xl font-bold text-slate-700 mb-2">{t('module.no_modules')}</h3>
+            <p className="text-slate-500 max-w-md text-center">{t('module.no_modules_desc', { classId: classId! })}</p>
           </div>
         ) : (
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Curriculum Modules</h2>
-            <p className="text-slate-500 mt-1 mb-6">High-End Interactive Experiments &mdash; Class {classId} {subjectId && formatSubject(subjectId)}</p>
+          <>
+            {/* Subject Banner */}
+            <div className="relative overflow-hidden rounded-2xl mb-6 shadow-lg">
+              <div className={`absolute inset-0 bg-gradient-to-br ${(subjectId && SUBJECT_BANNER[subjectId]?.gradient) || 'from-slate-500 to-slate-600'}`}></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="relative z-10 px-6 py-8 md:px-10 md:py-10">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    {subjectId && SUBJECT_BANNER[subjectId] ? (() => {
+                      const Icon = SUBJECT_BANNER[subjectId].icon;
+                      return <Icon className="w-5 h-5 text-white" />;
+                    })() : <BookOpen className="w-5 h-5 text-white" />}
+                  </div>
+                  <div>
+                    <h1 className="text-2xl md:text-3xl font-bold text-white">Class {classId} {subjectId && formatSubject(subjectId)}</h1>
+                    <p className="text-white/80 text-sm">{(subjectId && SUBJECT_BANNER[subjectId]?.description) || 'Interactive experiments and virtual labs'}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredModules.map((lab) => {
@@ -85,12 +133,10 @@ export default function ModuleSelection() {
                       
                       {/* Built indicator */}
                       {isBuilt ? (
-                        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">
-                          <Rocket className="w-3.5 h-3.5" /> Ready
+                        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">                            <Rocket className="w-3.5 h-3.5" /> {t('module.ready')}
                         </div>
                       ) : (
-                        <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/30 text-white/70 text-xs font-bold backdrop-blur-sm">
-                          Coming Soon
+                        <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/30 text-white/70 text-xs font-bold backdrop-blur-sm">                            {t('module.coming_soon')}
                         </div>
                       )}
                     </div>
@@ -101,7 +147,7 @@ export default function ModuleSelection() {
                         {lab.title}
                       </h3>
                       <p className="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2 flex-1">
-                        {lab.desc}
+                        {translateLabDesc(lab.id, lab.desc, language)}
                       </p>
 
                       {/* Bottom row */}
@@ -110,15 +156,15 @@ export default function ModuleSelection() {
                           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="text-xs font-bold">~15 min</span>
+                          <span className="text-xs font-bold">                            {t('module.time_estimate', { min: 15 })}</span>
                         </div>
                         {isBuilt ? (
                           <span className={`text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r ${accent} group-hover:scale-105 transition-transform`}>
-                            Launch &rarr;
+                            {t('module.launch')}
                           </span>
                         ) : (
                           <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                            Soon
+                            {t('module.coming_soon')}
                           </span>
                         )}
                       </div>
@@ -127,7 +173,7 @@ export default function ModuleSelection() {
                 );
               })}
             </div>
-          </div>
+          </>
         )}
       </div>
     </Layout>

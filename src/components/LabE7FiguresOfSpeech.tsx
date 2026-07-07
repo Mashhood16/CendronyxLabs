@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle2, Maximize2, User, Repeat, Type, Wand2 , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 type DeviceId = 'Simile' | 'Metaphor' | 'Personification' | 'Hyperbole' | 'Alliteration';
 
@@ -21,6 +22,7 @@ const POEM_LINES = [
 ];
 
 export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTool, setActiveTool] = useState<DeviceId | null>(null);
  const [solvedLines, setSolvedLines] = useState<Record<string, DeviceId>>({});
@@ -69,11 +71,11 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
    <ArrowLeft size={20} />
   </button>
-  <h1 className="text-lg md:text-xl font-bold">Poetry Visualizer: Figures of Speech</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.e7figuresofspeech_poetry_visualizer_figures_of_s')}</h1>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -86,14 +88,15 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
   <div className="w-full md:w-1/2 lg:w-5/12 p-6 flex flex-col gap-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b]">
    
    <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-   <h2 className="text-lg font-bold text-indigo-900 dark:text-indigo-100 mb-2">Instructions</h2>
+   <h2 className="text-lg font-bold text-indigo-900 dark:text-indigo-100 mb-2">{t('lab.e7figuresofspeech_instructions')}</h2>
    <p className="text-sm text-indigo-800 dark:text-indigo-200">
-    Select a highlighting tool below, then click on the corresponding line in the poem to identify its figure of speech. Find all 5!
-   </p>
+    
+                             {t('lab.e7figuresofspeech_select_a_highlighting_tool_bel')}
+                            </p>
    </div>
    
    <div>
-   <h3 className="font-semibold mb-3">Highlighter Tools</h3>
+   <h3 className="font-semibold mb-3">{t('lab.e7figuresofspeech_highlighter_tools')}</h3>
    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
     {DEVICES.map(device => {
      const Icon = device.icon;
@@ -119,7 +122,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
 
    <div className="p-4 bg-slate-50 dark:bg-[#121212]/50 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     <div className="flex justify-between items-center mb-2">
-    <h3 className="font-semibold">Progress</h3>
+    <h3 className="font-semibold">{t('lab.e7figuresofspeech_progress')}</h3>
     <span className="font-bold text-indigo-600 dark:text-indigo-400">{Object.keys(solvedLines).length} / 5</span>
     </div>
     <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
@@ -128,28 +131,29 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
     {Object.keys(solvedLines).length === 5 && (
     <div className="mt-4 p-3 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-lg flex items-center gap-2">
      <CheckCircle2 size={20} />
-     <span className="font-semibold">All figures of speech identified!</span>
+     <span className="font-semibold">{t('lab.e7figuresofspeech_all_figures_of_speech_identifi')}</span>
     </div>
     )}
    </div>
 
    <div className="mt-auto p-4 bg-slate-100 dark:bg-[#121212]/80 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
-   <h3 className="font-semibold mb-2 flex items-center gap-2"><Wand2 size={16}/> Assessment Challenge</h3>
-   <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">Write your own Simile (must contain 'like' or 'as').</p>
+   <h3 className="font-semibold mb-2 flex items-center gap-2"><Wand2 size={16}/>  {t('lab.e7figuresofspeech_assessment_challenge')}</h3>
+   <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">{t('lab.e7figuresofspeech_write_your_own_simile_must_con')}</p>
    <div className="flex gap-2">
     <input 
     type="text" 
     value={assessmentInput}
     onChange={(e) => setAssessmentInput(e.target.value)}
-    placeholder="e.g., As brave as a lion..."
+    placeholder={t('lab.e7figuresofspeech_e_g_as_brave_as_a_lion')}
     className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
     onClick={handleCheckAssessment}
     className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.e7figuresofspeech_check_answer')}
+                                 </button>
    </div>
    {assessmentResult && (
     <p className={`text-sm mt-2 font-medium ${assessmentResult.includes('Excellent') ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>
@@ -163,8 +167,8 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
   <div className="w-full md:w-1/2 lg:w-7/12 p-8 flex flex-col relative bg-slate-50 dark:bg-[#121212] items-center lg:overflow-y-auto">
    
    <div className="text-center mb-8">
-    <h2 className="text-3xl font-serif font-bold text-slate-800 dark:text-[#ffffff] mb-2">Midnight Musings</h2>
-    <p className="text-slate-500 dark:text-[#71717a] italic">An interactive poem</p>
+    <h2 className="text-3xl font-serif font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.e7figuresofspeech_midnight_musings')}</h2>
+    <p className="text-slate-500 dark:text-[#71717a] italic">{t('lab.e7figuresofspeech_an_interactive_poem')}</p>
    </div>
    
    <div className="max-w-2xl w-full mx-auto p-8 bg-[#fdfbf7] dark:!bg-[#121212] rounded-xl shadow-lg border border-amber-100 dark:border-[#1c1b1b] font-serif space-y-6">
@@ -189,7 +193,8 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       {isSolved && (
       <div className="mt-2 flex items-center gap-1 text-sm font-semibold opacity-80">
        <CheckCircle2 size={16} />
-       Identified as: {solvedDevice?.label}
+       
+                           {t('lab.e7figuresofspeech_identified_as')} {solvedDevice?.label}
       </div>
       )}
      </div>
@@ -200,12 +205,12 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
    {/* Data Table and Graph */}
    <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-x-auto">
-    <h3 className="font-semibold mb-2">Identified Devices Table</h3>
+    <h3 className="font-semibold mb-2">{t('lab.e7figuresofspeech_identified_devices_table')}</h3>
     <table className="w-full text-sm text-left">
      <thead className="bg-slate-100 dark:bg-slate-700">
       <tr>
-      <th className="px-3 py-2 rounded-tl-lg">Device</th>
-      <th className="px-3 py-2 rounded-tr-lg">Status</th>
+      <th className="px-3 py-2 rounded-tl-lg">{t('lab.e7figuresofspeech_device')}</th>
+      <th className="px-3 py-2 rounded-tr-lg">{t('lab.e7figuresofspeech_status')}</th>
       </tr>
      </thead>
      <tbody>
@@ -223,7 +228,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
    </div>
 
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h3 className="font-semibold mb-2">Discovery Graph</h3>
+    <h3 className="font-semibold mb-2">{t('lab.e7figuresofspeech_discovery_graph')}</h3>
     <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-[#121212] rounded-lg">
      {(() => {
       const found = Object.keys(solvedLines).length;
@@ -232,11 +237,11 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
       <>
        <rect x="40" y={130 - (found/5)*100} width="40" height={(found/5)*100} fill="#22c55e" rx="2" />
        <text x="60" y={130 - (found/5)*100 - 5} textAnchor="middle" fill="#64748b" fontSize="10">{found}</text>
-       <text x="60" y="145" textAnchor="middle" fill="#64748b" fontSize="10">Found</text>
+       <text x="60" y="145" textAnchor="middle" fill="#64748b" fontSize="10">{t('lab.e7figuresofspeech_found')}</text>
 
        <rect x="120" y={130 - (pending/5)*100} width="40" height={(pending/5)*100} fill="#ef4444" rx="2" />
        <text x="140" y={130 - (pending/5)*100 - 5} textAnchor="middle" fill="#64748b" fontSize="10">{pending}</text>
-       <text x="140" y="145" textAnchor="middle" fill="#64748b" fontSize="10">Pending</text>
+       <text x="140" y="145" textAnchor="middle" fill="#64748b" fontSize="10">{t('lab.e7figuresofspeech_pending')}</text>
 
        <line x1="15" y1="130" x2="195" y2="130" stroke="#cbd5e1" strokeWidth="2" />
       </>

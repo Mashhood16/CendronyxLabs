@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabDataComm({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [nodes, setNodes] = useState<{ id: string, label: string, slot: number | null }[]>([
  { id: 'n1', label: 'Sender', slot: null },
  { id: 'n2', label: 'Message', slot: null },
@@ -37,14 +39,14 @@ export default function LabDataComm({ onExit }: LabProps) {
 
  return (
  <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
-  <LabHeader onExit={onExit} title="Act 1.1: Data Communication Model" subtitle="Assemble the components of the communication cycle." variant="dark" />
+  <LabHeader onExit={onExit} title={t('lab.datacomm_act_1_1_data_communication_mod')} subtitle={t('lab.subtitle_assemble_components_communication')} variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
   {/* Lab Area */}
   <div className="flex-1 bg-slate-100 dark:bg-[#121212] p-12 flex flex-col relative border-r-4 border-slate-300 dark:border-[#1c1b1b] shadow-inner bg-[url('https://www.transparenttextures.com/patterns/connected.png')]">
    
-   <h2 className="text-2xl font-bold text-slate-700 dark:text-[#ffffff] mb-8 text-center bg-slate-50 dark:!bg-[#121212] py-2 rounded-xl shadow-sm">Build the Network Model</h2>
+   <h2 className="text-2xl font-bold text-slate-700 dark:text-[#ffffff] mb-8 text-center bg-slate-50 dark:!bg-[#121212] py-2 rounded-xl shadow-sm">{t('lab.datacomm_build_the_network_model')}</h2>
 
    <div className="flex-1 relative flex items-center justify-center">
     
@@ -166,9 +168,9 @@ export default function LabDataComm({ onExit }: LabProps) {
 
   {/* Control Panel */}
   <div className="w-96 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 lg:overflow-y-auto">
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 border-b-2 pb-2">Components Rack</h2>
+   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 border-b-2 pb-2">{t('lab.datacomm_components_rack')}</h2>
    
-   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6">Drag components from the rack into their correct logical positions in the communication cycle diagram.</p>
+   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6">{t('lab.datacomm_drag_components_from_the_rack_')}</p>
 
    <div className="grid grid-cols-2 gap-4 mb-8">
     {nodes.filter(n => n.slot === null).map(node => (
@@ -187,11 +189,13 @@ export default function LabDataComm({ onExit }: LabProps) {
     <div className="mt-auto bg-green-50 p-6 rounded-xl border border-green-200 animate-fade-in dark:bg-[#121212] dark:border-[#1c1b1b]">
     <h3 className="font-bold text-green-800 mb-2 uppercase tracking-wider text-sm flex items-center gap-2 dark:text-[#ffffff]">
      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-     Network Online!
-    </h3>
+     
+                                  {t('lab.datacomm_network_online')}
+                                 </h3>
     <p className="text-green-700 text-sm">
-     The <strong>Sender</strong> transmits a <strong>Message</strong> over a <strong>Medium</strong> to a <strong>Receiver</strong>, while both obey a strict <strong>Protocol</strong> to understand each other.
-    </p>
+     
+                                  {t('lab.datacomm_the')} <strong>{t('lab.datacomm_sender')}</strong>  {t('lab.datacomm_transmits_a')} <strong>{t('lab.datacomm_message')}</strong>  {t('lab.datacomm_over_a')} <strong>{t('lab.datacomm_medium')}</strong>  {t('lab.datacomm_to_a')} <strong>{t('lab.datacomm_receiver')}</strong>{t('lab.datacomm_while_both_obey_a_strict')} <strong>{t('lab.datacomm_protocol')}</strong>  {t('lab.datacomm_to_understand_each_other')}
+                                 </p>
     </div>
    )}
   </div>

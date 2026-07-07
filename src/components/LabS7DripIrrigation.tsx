@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Droplets, Droplet } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7DripIrrigation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [running, setRunning] = useState(false);
  const [waterTank, setWaterTank] = useState(100);
  const [soilMoisture, setSoilMoisture] = useState(0);
@@ -26,12 +28,12 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 11: Drip Irrigation Model" />
+  <LabHeader onExit={onExit} title={t('lab.s7dripirrigation_unit_11_drip_irrigation_model')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">Water Conservation</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Drip irrigation delivers water directly to the roots of plants drop by drop. This minimizes evaporation waste and ensures highly efficient water usage compared to flood or sprinkler irrigation.</p>
+   <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">{t('lab.s7dripirrigation_water_conservation')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7dripirrigation_drip_irrigation_delivers_water')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -46,8 +48,9 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
     onClick={() => { setWaterTank(100); setSoilMoisture(0); setRunning(false); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Refill Tank
-   </button>
+    
+                             {t('lab.s7dripirrigation_refill_tank')}
+                            </button>
    </div>
   </div>
 
@@ -61,7 +64,7 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
     className="w-full bg-blue-500/80 transition-all duration-200 border-t-2 border-blue-400 dark:bg-teal-950/20 dark:border-teal-900"
     style={{ height: `${waterTank}%` }}
     ></div>
-    <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-600 dark:text-[#a1a1aa] mix-blend-overlay text-xl">TANK</div>
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-slate-600 dark:text-[#a1a1aa] mix-blend-overlay text-xl">{t('lab.s7dripirrigation_tank')}</div>
    </div>
 
    {/* The Main Pipe */}
@@ -117,8 +120,9 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
 
   {waterTank === 0 && (
    <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-medium max-w-xl animate-fade-in dark:text-[#ffffff]">
-   Notice how the soil around the roots is perfectly moistened without wasting water on the empty spaces between the plants. This is the power of drip irrigation!
-   </div>
+   
+                        {t('lab.s7dripirrigation_notice_how_the_soil_around_the')}
+                        </div>
   )}
   </div>
  </div>

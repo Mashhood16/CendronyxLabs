@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, Mic, CheckCircle2, ChevronRight } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10SentenceNarrationProps {
  onExit?: () => void;
@@ -58,6 +59,7 @@ const NARRATION_SCENARIOS = [
 ];
 
 export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10SentenceNarrationProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  
  const [currentScenario, setCurrentScenario] = useState(0);
@@ -131,7 +133,7 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 7: The Reporter's Desk (Narration)" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e10sentencenarration_unit_7_the_reporter_s_desk_nar')} variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -139,12 +141,13 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e10sentencenarration_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]'}`}
-   >Lab</button>
+   >{t('lab.e10sentencenarration_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
@@ -153,76 +156,76 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-5 h-5 text-[#4158D1] dark:text-[#6b81fb]" />
-   <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">Grammar Theory</h2>
+   <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10sentencenarration_grammar_theory')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[calc(100vh-250px)] lg:h-[calc(100vh-180px)] pr-2">
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">1. Types of Sentences</h3>
-   <p>In English grammar, sentences are categorized by their structure. Understanding these structures is crucial before learning how to report speech:</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.e10sentencenarration_1_types_of_sentences')}</h3>
+   <p>{t('lab.e10sentencenarration_in_english_grammar_sentences_a')}</p>
    <ul className="list-disc pl-5 space-y-2 mb-6">
-    <li><strong>Simple Sentence:</strong> Contains a single independent clause (one subject and one predicate) and expresses a complete thought. <br/><em className="text-slate-500 dark:text-[#71717a]">Example: The reporter took notes.</em></li>
-    <li><strong>Compound Sentence:</strong> Contains two or more independent clauses joined by a coordinating conjunction (for, and, nor, but, or, yet, so) or a semicolon. <br/><em className="text-slate-500 dark:text-[#71717a]">Example: The mayor spoke, and the reporter took notes.</em></li>
-    <li><strong>Complex Sentence:</strong> Contains one independent clause and at least one dependent (subordinate) clause. <br/><em className="text-slate-500 dark:text-[#71717a]">Example: Because the mayor spoke quickly, the reporter had to write fast.</em></li>
-    <li><strong>Compound-Complex Sentence:</strong> Contains two or more independent clauses and at least one dependent clause.</li>
+    <li><strong>{t('lab.e10sentencenarration_simple_sentence')}</strong>  {t('lab.e10sentencenarration_contains_a_single_independent_')} <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_the_reporter_took_note')}</em></li>
+    <li><strong>{t('lab.e10sentencenarration_compound_sentence')}</strong>  {t('lab.e10sentencenarration_contains_two_or_more_independe')} <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_the_mayor_spoke_and_th')}</em></li>
+    <li><strong>{t('lab.e10sentencenarration_complex_sentence')}</strong>  {t('lab.e10sentencenarration_contains_one_independent_claus')} <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_because_the_mayor_spok')}</em></li>
+    <li><strong>{t('lab.e10sentencenarration_compound_complex_sentence')}</strong>  {t('lab.e10sentencenarration_contains_two_or_more_independe_1')}</li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">2. Direct vs. Indirect Speech (Narration)</h3>
-   <p><strong>Direct Speech</strong> quotes the exact words spoken. They are enclosed in quotation marks. <br/><em className="text-slate-500 dark:text-[#71717a]">Example: She said, "I am reading a book."</em></p>
-   <p className="mt-2 mb-4"><strong>Indirect Speech (Reported Speech)</strong> conveys the meaning of what was said without using the exact words. Quotation marks are removed, and a conjunction (like 'that') is often used.</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.e10sentencenarration_2_direct_vs_indirect_speech_na')}</h3>
+   <p><strong>{t('lab.e10sentencenarration_direct_speech')}</strong>  {t('lab.e10sentencenarration_quotes_the_exact_words_spoken_')} <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_she_said_i_am_reading_')}</em></p>
+   <p className="mt-2 mb-4"><strong>{t('lab.e10sentencenarration_indirect_speech_reported_speec')}</strong>  {t('lab.e10sentencenarration_conveys_the_meaning_of_what_wa')}</p>
 
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">3. Rules for Converting to Indirect Speech</h3>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.e10sentencenarration_3_rules_for_converting_to_indi')}</h3>
    
-   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">A. Tense Changes (Backshifting)</h4>
-   <p>If the reporting verb (e.g., said, asked) is in the past tense, the tense in the reported clause generally shifts back one step in the past:</p>
+   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">{t('lab.e10sentencenarration_a_tense_changes_backshifting')}</h4>
+   <p>{t('lab.e10sentencenarration_if_the_reporting_verb_e_g_said')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>Simple Present ➔ Simple Past</strong> (e.g., "I walk" ➔ he walked)</li>
-    <li><strong>Present Continuous ➔ Past Continuous</strong> (e.g., "I am walking" ➔ he was walking)</li>
-    <li><strong>Present Perfect ➔ Past Perfect</strong> (e.g., "I have walked" ➔ he had walked)</li>
-    <li><strong>Simple Past ➔ Past Perfect</strong> (e.g., "I walked" ➔ he had walked)</li>
-    <li><strong>Modals:</strong> will ➔ would, can ➔ could, may ➔ might, must ➔ had to.</li>
+    <li><strong>{t('lab.e10sentencenarration_simple_present_simple_past')}</strong>  {t('lab.e10sentencenarration_e_g_i_walk_he_walked')}</li>
+    <li><strong>{t('lab.e10sentencenarration_present_continuous_past_contin')}</strong>  {t('lab.e10sentencenarration_e_g_i_am_walking_he_was_walkin')}</li>
+    <li><strong>{t('lab.e10sentencenarration_present_perfect_past_perfect')}</strong>  {t('lab.e10sentencenarration_e_g_i_have_walked_he_had_walke')}</li>
+    <li><strong>{t('lab.e10sentencenarration_simple_past_past_perfect')}</strong>  {t('lab.e10sentencenarration_e_g_i_walked_he_had_walked')}</li>
+    <li><strong>{t('lab.e10sentencenarration_modals')}</strong>  {t('lab.e10sentencenarration_will_would_can_could_may_might')}</li>
    </ul>
 
-   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">B. Pronoun Changes</h4>
-   <p>Pronouns change to reflect the perspective of the reporter rather than the original speaker.</p>
+   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">{t('lab.e10sentencenarration_b_pronoun_changes')}</h4>
+   <p>{t('lab.e10sentencenarration_pronouns_change_to_reflect_the')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li>First-person pronouns (I, we, my) change to match the subject of the reporting verb (he, she, they, his/her).</li>
-    <li>Second-person pronouns (you, your) change to match the object of the reporting verb (me, him, her, us).</li>
+    <li>{t('lab.e10sentencenarration_first_person_pronouns_i_we_my_')}</li>
+    <li>{t('lab.e10sentencenarration_second_person_pronouns_you_you')}</li>
    </ul>
 
-   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">C. Time and Place Expressions</h4>
-   <p>Words indicating proximity in time and space shift to indicate distance:</p>
+   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">{t('lab.e10sentencenarration_c_time_and_place_expressions')}</h4>
+   <p>{t('lab.e10sentencenarration_words_indicating_proximity_in_')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li>Now ➔ Then / At that time</li>
-    <li>Today ➔ That day</li>
-    <li>Tomorrow ➔ The next day / The following day</li>
-    <li>Yesterday ➔ The previous day / The day before</li>
-    <li>Here ➔ There</li>
-    <li>This / These ➔ That / Those</li>
+    <li>{t('lab.e10sentencenarration_now_then_at_that_time')}</li>
+    <li>{t('lab.e10sentencenarration_today_that_day')}</li>
+    <li>{t('lab.e10sentencenarration_tomorrow_the_next_day_the_foll')}</li>
+    <li>{t('lab.e10sentencenarration_yesterday_the_previous_day_the')}</li>
+    <li>{t('lab.e10sentencenarration_here_there')}</li>
+    <li>{t('lab.e10sentencenarration_this_these_that_those')}</li>
    </ul>
 
-   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">D. Reporting Questions</h4>
-   <p>When converting questions to indirect speech:</p>
+   <h4 className="font-medium text-slate-700 dark:text-[#ffffff] mt-4 mb-2">{t('lab.e10sentencenarration_d_reporting_questions')}</h4>
+   <p>{t('lab.e10sentencenarration_when_converting_questions_to_i')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li>Change the reporting verb to "asked", "inquired", or "wondered".</li>
-    <li><strong>Yes/No Questions:</strong> Use "if" or "whether" as the connector.</li>
-    <li><strong>WH- Questions:</strong> Keep the original question word (who, what, where, when, why, how) as the connector.</li>
-    <li><strong>Word Order:</strong> Change the sentence structure from interrogative (verb-subject) back to declarative (subject-verb). Do not use a question mark.</li>
-    <li><em className="text-slate-500 dark:text-[#71717a]">Example (WH): He asked, "Where are you going?" ➔ He asked where I was going.</em></li>
-    <li><em className="text-slate-500 dark:text-[#71717a]">Example (Y/N): She asked, "Do you like tea?" ➔ She asked if I liked tea.</em></li>
+    <li>{t('lab.e10sentencenarration_change_the_reporting_verb_to_a')}</li>
+    <li><strong>{t('lab.e10sentencenarration_yes_no_questions')}</strong>  {t('lab.e10sentencenarration_use_if_or_whether_as_the_conne')}</li>
+    <li><strong>{t('lab.e10sentencenarration_wh_questions')}</strong>  {t('lab.e10sentencenarration_keep_the_original_question_wor')}</li>
+    <li><strong>{t('lab.e10sentencenarration_word_order')}</strong>  {t('lab.e10sentencenarration_change_the_sentence_structure_')}</li>
+    <li><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_wh_he_asked_where_are_')}</em></li>
+    <li><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e10sentencenarration_example_y_n_she_asked_do_you_l')}</em></li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <Target className="w-5 h-5 text-[#4158D1] dark:text-[#6b81fb]" />
-   <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">Word Bank & Assessment</h2>
+   <h2 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10sentencenarration_word_bank_assessment')}</h2>
    </div>
 
    <div className="flex-1 flex flex-col gap-6 overflow-y-auto pr-2 h-[calc(100vh-250px)] lg:h-[calc(100vh-180px)]">
    {/* Word Bank */}
    <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-shrink-0 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Available Words (Click to add)</h3>
+    <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">{t('lab.e10sentencenarration_available_words_click_to_add')}</h3>
     <div className="flex flex-wrap gap-2">
     {availablePieces.map((piece: any, idx) => (
      <button
@@ -234,14 +237,14 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
      </button>
     ))}
     {availablePieces.length === 0 && (
-     <span className="text-sm text-slate-400 dark:text-[#71717a] italic">All words used.</span>
+     <span className="text-sm text-slate-400 dark:text-[#71717a] italic">{t('lab.e10sentencenarration_all_words_used')}</span>
     )}
     </div>
    </div>
 
    {/* Knowledge Check */}
    <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-1 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Knowledge Check</h3>
+    <h3 className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">{t('lab.e10sentencenarration_knowledge_check')}</h3>
     {!assessmentSubmitted ? (
     <div className="space-y-4">
      {questions.map((q, qIdx) => (
@@ -272,8 +275,9 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className="w-full mt-2 py-2 px-4 bg-[#4158D1] hover:bg-[#3144a8] disabled:bg-slate-300 dark:disabled:bg-slate-700 disabled:text-slate-500 text-white rounded-lg font-medium transition-colors text-sm"
      >
-     Submit Assessment
-     </button>
+     
+                                          {t('lab.e10sentencenarration_submit_assessment')}
+                                          </button>
     </div>
     ) : (
     <div className="text-center py-4">
@@ -292,8 +296,9 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
      }}
      className="w-full py-2 px-4 bg-slate-100 dark:bg-[#2a2a2a] hover:bg-slate-200 dark:hover:bg-[#3a3a3a] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors text-sm"
      >
-     Retry Assessment
-     </button>
+     
+                                              {t('lab.e10sentencenarration_retry_assessment')}
+                                              </button>
     </div>
     )}
    </div>
@@ -326,21 +331,22 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
     </div>
     <div className="flex-1 bg-yellow-50 dark:bg-yellow-900/10 p-4 rounded-2xl rounded-tl-none border border-yellow-200 dark:border-yellow-900/30 min-h-[120px] w-full">
     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] block mb-3">
-     Your Report (Indirect Speech)
-    </span>
+     
+                                      {t('lab.e10sentencenarration_your_report_indirect_speech')}
+                                     </span>
     <div className="flex flex-wrap gap-2">
      {constructed.map((piece, idx) => (
      <button
       key={idx}
       onClick={() => handleRemovePiece(piece)}
       className="px-3 py-1.5 bg-slate-700 dark:bg-[#2a2a2a] text-white rounded-lg text-sm shadow hover:bg-slate-800 dark:hover:bg-[#1c1b1b] transition-colors"
-      title="Click to remove"
+      title={t('lab.e10sentencenarration_click_to_remove')}
      >
       {piece.text}
      </button>
      ))}
      {constructed.length === 0 && (
-     <span className="text-sm text-slate-400 dark:text-[#71717a] italic mt-1">Select words from the Word Bank to write your report...</span>
+     <span className="text-sm text-slate-400 dark:text-[#71717a] italic mt-1">{t('lab.e10sentencenarration_select_words_from_the_word_ban')}</span>
      )}
     </div>
     </div>
@@ -349,13 +355,14 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
    {checkConstruction() && (
     <div className="mt-2 p-4 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800/50 flex flex-col items-center gap-3">
     <div className="text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-2">
-     <CheckCircle2 className="w-5 h-5" /> Perfect Report!
-    </div>
+     <CheckCircle2 className="w-5 h-5" />  {t('lab.e10sentencenarration_perfect_report')}
+                                     </div>
     <button
      onClick={nextScenario}
      className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold transition-colors flex items-center gap-2"
     >
-     Next Scenario <ChevronRight className="w-4 h-4" />
+     
+                                      {t('lab.e10sentencenarration_next_scenario')} <ChevronRight className="w-4 h-4" />
     </button>
     </div>
    )}

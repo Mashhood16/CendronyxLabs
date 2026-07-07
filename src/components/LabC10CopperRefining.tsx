@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10CopperRefining({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const initialAnode = 100.0;
  const initialCathode = 10.0;
@@ -89,7 +91,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Electrolytic Refining of Copper" />
+  <LabHeader onExit={onExit} title={t('lab.c10copperrefining_electrolytic_refining_of_coppe')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -98,12 +100,13 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10copperrefining_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10copperrefining_lab')}</button>
   </div>
   <main className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
@@ -111,26 +114,29 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <Info className="w-5 h-5 text-orange-600" />
-    Theory
-   </h2>
+    
+                             {t('lab.c10copperrefining_theory')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    Impure copper from smelting is purified via electrolysis using a CuSO₄ electrolyte.
-   </p>
-   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <div><strong>Anode (+):</strong> Cu(s) → Cu²⁺(aq) + 2e⁻</div>
-    <div><strong>Cathode (-):</strong> Cu²⁺(aq) + 2e⁻ → Cu(s)</div>
+    
+                             {t('lab.c10copperrefining_impure_copper_from_smelting_is')}
+                            </p>
+   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div><strong>{t('lab.c10copperrefining_anode')}</strong>  {t('lab.c10copperrefining_cu_s_cu_aq_2e')}</div>
+    <div><strong>{t('lab.c10copperrefining_cathode')}</strong>  {t('lab.c10copperrefining_cu_aq_2e_cu_s')}</div>
    </div>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    The impure anode dissolves, while pure copper plates onto the cathode. Impurities (like Ag, Au) fall to the bottom as <strong>anode slime</strong>.
+    
+                             {t('lab.c10copperrefining_the_impure_anode_dissolves_whi')} <strong>{t('lab.c10copperrefining_anode_slime')}</strong>.
    </p>
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10copperrefining_experiment_setup')}</h2>
    <div className="space-y-6">
     <div>
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-     <span>Operating Voltage</span>
+     <span>{t('lab.c10copperrefining_operating_voltage')}</span>
      <span>{voltage.toFixed(1)} V</span>
     </label>
     <input
@@ -165,12 +171,12 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Cell View</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10copperrefining_cell_view')}</h2>
    
    <div className="absolute top-6 right-6 text-right">
    <div className="text-2xl font-mono font-bold text-orange-600">{(time / 3600).toFixed(1)} hr</div>
-   <div className="text-sm text-slate-500 dark:text-[#71717a]">Elapsed Time</div>
+   <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.c10copperrefining_elapsed_time')}</div>
    </div>
 
    <svg width={svgW} height={svgH} className="mt-8" viewBox="0 0 400 500">
@@ -185,7 +191,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    <path d="M 100 200 L 100 480 Q 100 490 110 490 L 290 490 Q 300 490 300 480 L 300 200" stroke="#94a3b8" strokeWidth="6" fill="#f8fafc" />
    
    <path d="M 103 230 L 103 487 L 297 487 L 297 230 Z" fill="#3b82f6" opacity="0.3" />
-   <text x="200" y="460" fill="#1d4ed8" textAnchor="middle" fontSize="14" fontWeight="bold">CuSO₄(aq)</text>
+   <text x="200" y="460" fill="#1d4ed8" textAnchor="middle" fontSize="14" fontWeight="bold">{t('lab.c10copperrefining_cuso_aq')}</text>
    
    {initialAnode - massAnode > 0 && (
     <path d={`M 140 487 L 190 487 L 180 ${487 - Math.min(20, (initialAnode - massAnode)*0.2)} L 150 ${487 - Math.min(20, (initialAnode - massAnode)*0.2)} Z`} fill="#475569" />
@@ -197,8 +203,8 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    
    <rect x={230 - cathodeWidth/2} y="150" width={cathodeWidth} height="250" fill="#d97706" />
 
-   <text x="170" y="140" fill="#b45309" textAnchor="middle" fontSize="12" fontWeight="bold">Impure Anode</text>
-   <text x="230" y="140" fill="#d97706" textAnchor="middle" fontSize="12" fontWeight="bold">Pure Cathode</text>
+   <text x="170" y="140" fill="#b45309" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10copperrefining_impure_anode')}</text>
+   <text x="230" y="140" fill="#d97706" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10copperrefining_pure_cathode')}</text>
 
    {isRunning && massAnode > 0 && (
     <>
@@ -208,7 +214,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
     <circle cx="200" cy="350" r="3" fill="#1d4ed8">
      <animate attributeName="cx" values="170;230" dur={`${3.5/voltage}s`} repeatCount="indefinite" />
     </circle>
-    <text x="200" y="290" fill="#1d4ed8" fontSize="10">Cu²⁺</text>
+    <text x="200" y="290" fill="#1d4ed8" fontSize="10">{t('lab.c10copperrefining_cu')}</text>
     </>
    )}
 
@@ -222,10 +228,12 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    
    <div className="absolute bottom-6 left-6 right-6 flex justify-between px-4">
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Anode: {massAnode.toFixed(1)} g
+    
+                             {t('lab.c10copperrefining_anode_1')} {massAnode.toFixed(1)} g
    </div>
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Cathode: {massCathode.toFixed(1)} g
+    
+                             {t('lab.c10copperrefining_cathode_1')} {massCathode.toFixed(1)} g
    </div>
    </div>
   </div>
@@ -233,24 +241,25 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Mass Log</h2>
+    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10copperrefining_mass_log')}</h2>
     <button
     onClick={recordData}
     disabled={!isRunning}
     className="flex items-center gap-2 px-3 py-1.5 bg-orange-100 text-orange-700 hover:bg-orange-200 rounded-lg font-medium transition-colors disabled:opacity-50"
     >
     <Save className="w-4 h-4" />
-    Record
-    </button>
+    
+                                 {t('lab.c10copperrefining_record')}
+                                 </button>
    </div>
    
    <div className="overflow-x-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
-     <th className="px-4 py-2">Time (hr)</th>
-     <th className="px-4 py-2">Anode (g)</th>
-     <th className="px-4 py-2">Cathode (g)</th>
+     <th className="px-4 py-2">{t('lab.c10copperrefining_time_hr')}</th>
+     <th className="px-4 py-2">{t('lab.c10copperrefining_anode_g')}</th>
+     <th className="px-4 py-2">{t('lab.c10copperrefining_cathode_g')}</th>
      </tr>
     </thead>
     <tbody>
@@ -267,15 +276,16 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
    </div>
 
    <div className="bg-orange-50 p-4 rounded-xl border border-orange-100 mt-auto">
-   <h3 className="font-semibold text-orange-900 mb-2">Purity Analysis</h3>
+   <h3 className="font-semibold text-orange-900 mb-2">{t('lab.c10copperrefining_purity_analysis')}</h3>
    <p className="text-sm text-orange-800 mb-4">
-    During a real trial, the anode lost <strong>{assessmentLoss} g</strong> in mass, while the cathode gained <strong>{assessmentGain} g</strong> in mass. Calculate the percentage purity of the original copper anode.
-   </p>
+    
+                             {t('lab.c10copperrefining_during_a_real_trial_the_anode_')} <strong>{assessmentLoss} g</strong>  {t('lab.c10copperrefining_in_mass_while_the_cathode_gain')} <strong>{assessmentGain} g</strong>  {t('lab.c10copperrefining_in_mass_calculate_the_percenta')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     step="0.1"
-    placeholder="% Purity"
+    placeholder={t('lab.c10copperrefining_purity')}
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
     className="flex-1 px-3 py-2 rounded-lg border border-orange-200"
@@ -284,8 +294,9 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
     onClick={checkAnswer}
     className="px-4 py-2 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.c10copperrefining_check')}
+                                 </button>
    </div>
    
    {isCorrect !== null && (

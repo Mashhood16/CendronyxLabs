@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import {Zap, CheckCircle, XCircle, Power, ShieldAlert } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [inputA, setInputA] = useState<boolean>(false);
  const [inputB, setInputB] = useState<boolean>(false);
@@ -27,7 +29,7 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="CS11: Logic Gates & Systems" />
+  <LabHeader onExit={onExit} title={t('lab.cs11systemsnetworks_cs11_logic_gates_systems')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -36,42 +38,45 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs11systemsnetworks_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs11systemsnetworks_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <ShieldAlert className="text-indigo-500" />
-   Systems Theory
-   </h2>
+   
+                        {t('lab.cs11systemsnetworks_systems_theory')}
+                        </h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    In computer systems, <strong>logic gates</strong> are the fundamental building blocks of digital circuits. 
-    They process binary inputs (0 and 1) to produce a single binary output based on a boolean function.
-   </p>
+    
+                             {t('lab.cs11systemsnetworks_in_computer_systems')} <strong>{t('lab.cs11systemsnetworks_logic_gates')}</strong>  {t('lab.cs11systemsnetworks_are_the_fundamental_building_b')}
+                            </p>
    <ul className="space-y-2 mt-4">
-    <li><strong>AND Gate:</strong> Outputs 1 only if ALL inputs are 1.</li>
-    <li><strong>OR Gate:</strong> Outputs 1 if AT LEAST ONE input is 1.</li>
-    <li><strong>XOR (Exclusive OR):</strong> Outputs 1 if inputs are DIFFERENT.</li>
-    <li><strong>NAND Gate:</strong> The inverse of AND. Outputs 0 only if ALL inputs are 1.</li>
+    <li><strong>{t('lab.cs11systemsnetworks_and_gate')}</strong>  {t('lab.cs11systemsnetworks_outputs_1_only_if_all_inputs_a')}</li>
+    <li><strong>{t('lab.cs11systemsnetworks_or_gate')}</strong>  {t('lab.cs11systemsnetworks_outputs_1_if_at_least_one_inpu')}</li>
+    <li><strong>{t('lab.cs11systemsnetworks_xor_exclusive_or')}</strong>  {t('lab.cs11systemsnetworks_outputs_1_if_inputs_are_differ')}</li>
+    <li><strong>{t('lab.cs11systemsnetworks_nand_gate')}</strong>  {t('lab.cs11systemsnetworks_the_inverse_of_and_outputs_0_o')}</li>
    </ul>
    <p className="mt-4">
-    Use the simulator to observe how different gates react to changing inputs. 
-    The glowing lines represent electrical signals (High = 1 = On, Low = 0 = Off).
-   </p>
+    
+                             {t('lab.cs11systemsnetworks_use_the_simulator_to_observe_h')}
+                            </p>
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <Zap className="text-amber-500" />
-   Logic Breadboard Simulator
-   </h2>
+   
+                        {t('lab.cs11systemsnetworks_logic_breadboard_simulator')}
+                        </h2>
    
    <div className="w-full flex justify-center gap-4 mb-6">
    {(['AND', 'OR', 'XOR', 'NAND'] as const).map(gate => (
@@ -119,11 +124,11 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
    </div>
    
    <div className="mt-8 text-center text-slate-600 dark:text-[#a1a1aa]">
-   <p>Toggle the inputs to see the truth table in action!</p>
+   <p>{t('lab.cs11systemsnetworks_toggle_the_inputs_to_see_the_t')}</p>
    <div className="flex justify-center gap-4 mt-2">
-    <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">Input A: {inputA ? '1' : '0'}</span>
-    <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">Input B: {inputB ? '1' : '0'}</span>
-    <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded font-bold text-sm dark:text-[#ffffff]">Output: {output ? '1' : '0'}</span>
+    <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">{t('lab.cs11systemsnetworks_input_a')} {inputA ? '1' : '0'}</span>
+    <span className="px-3 py-1 bg-slate-200 dark:bg-[#121212] rounded text-sm">{t('lab.cs11systemsnetworks_input_b')} {inputB ? '1' : '0'}</span>
+    <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded font-bold text-sm dark:text-[#ffffff]">{t('lab.cs11systemsnetworks_output')} {output ? '1' : '0'}</span>
    </div>
    </div>
   </div>
@@ -131,21 +136,21 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <CheckCircle className="text-green-500" />
-   System Analysis Task
-   </h2>
+   
+                        {t('lab.cs11systemsnetworks_system_analysis_task')}
+                        </h2>
    <div className="flex-1">
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">
-    A security system uses a two-factor authentication logic. 
-    The vault opens (Output = 1) <strong>only if</strong> the user provides a Pin (Input A) 
-    or a Biometric scan (Input B), but <strong>not both</strong> (to prevent system override attacks).
-   </p>
+    
+                             {t('lab.cs11systemsnetworks_a_security_system_uses_a_two_f')} <strong>{t('lab.cs11systemsnetworks_only_if')}</strong>  {t('lab.cs11systemsnetworks_the_user_provides_a_pin_input_')} <strong>{t('lab.cs11systemsnetworks_not_both')}</strong>  {t('lab.cs11systemsnetworks_to_prevent_system_override_att')}
+                            </p>
    
    <table className="w-full text-left border-collapse mb-6">
     <thead>
     <tr className="bg-slate-100 dark:bg-[#121212]">
      <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">A</th>
      <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">B</th>
-     <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">Output</th>
+     <th className="p-2 border border-slate-200 dark:border-[#1c1b1b]">{t('lab.cs11systemsnetworks_output_1')}</th>
     </tr>
     </thead>
     <tbody>
@@ -173,12 +178,12 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
    </table>
 
    <div className="mb-4">
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Which logic gate does this system use?</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.cs11systemsnetworks_which_logic_gate_does_this_sys')}</label>
     <input
     type="text"
     value={assessmentAns}
     onChange={e => setAssessmentAns(e.target.value)}
-    placeholder="Enter gate name (e.g., AND)"
+    placeholder={t('lab.cs11systemsnetworks_enter_gate_name_e_g_and')}
     className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
     />
    </div>
@@ -187,8 +192,9 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
     onClick={handleCheck}
     className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Check Answer
-   </button>
+    
+                             {t('lab.cs11systemsnetworks_check_answer')}
+                            </button>
 
    {feedback && (
     <div className={`mt-4 p-4 rounded-md flex items-start gap-3 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

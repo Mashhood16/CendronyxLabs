@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isRunning, setIsRunning] = useState(false);
  const [voltage, setVoltage] = useState(5);
@@ -87,7 +89,7 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Electrolysis of Aqueous Solutions" />
+  <LabHeader onExit={onExit} title={t('lab.c10aqueouselectrolysis_electrolysis_of_aqueous_soluti')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -96,12 +98,13 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10aqueouselectrolysis_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10aqueouselectrolysis_lab')}</button>
   </div>
   <main className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
@@ -109,53 +112,57 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <Info className="w-5 h-5 text-sky-600" />
-    Theory
-   </h2>
+    
+                             {t('lab.c10aqueouselectrolysis_theory')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    In aqueous solutions, water competes with dissolved ions at the electrodes.
-   </p>
+    
+                             {t('lab.c10aqueouselectrolysis_in_aqueous_solutions_water_com')}
+                            </p>
    {solutionType === 'conc' ? (
-    <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-    <div className="font-bold text-sky-700 mb-1">Concentrated NaCl (Brine)</div>
-    <div><strong>Cathode (-):</strong> 2H₂O + 2e⁻ → H₂(g) + 2OH⁻</div>
-    <div><strong>Anode (+):</strong> 2Cl⁻ → Cl₂(g) + 2e⁻</div>
-    <div className="mt-2 text-xs text-slate-500 dark:text-[#71717a]">Cl⁻ is in high concentration, so it discharges over OH⁻.</div>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className="font-bold text-sky-700 mb-1">{t('lab.c10aqueouselectrolysis_concentrated_nacl_brine')}</div>
+    <div><strong>{t('lab.c10aqueouselectrolysis_cathode')}</strong>  {t('lab.c10aqueouselectrolysis_2h_o_2e_h_g_2oh')}</div>
+    <div><strong>{t('lab.c10aqueouselectrolysis_anode')}</strong>  {t('lab.c10aqueouselectrolysis_2cl_cl_g_2e')}</div>
+    <div className="mt-2 text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c10aqueouselectrolysis_cl_is_in_high_concentration_so')}</div>
     </div>
    ) : (
-    <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <div className="font-bold text-sky-700 mb-1">Dilute NaCl</div>
-    <div><strong>Cathode (-):</strong> 2H₂O + 2e⁻ → H₂(g) + 2OH⁻</div>
-    <div><strong>Anode (+):</strong> 2H₂O → O₂(g) + 4H⁺ + 4e⁻</div>
-    <div className="mt-2 text-xs text-slate-500 dark:text-[#71717a]">Cl⁻ is sparse, so water is oxidized to form Oxygen gas.</div>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className="font-bold text-sky-700 mb-1">{t('lab.c10aqueouselectrolysis_dilute_nacl')}</div>
+    <div><strong>{t('lab.c10aqueouselectrolysis_cathode')}</strong>  {t('lab.c10aqueouselectrolysis_2h_o_2e_h_g_2oh')}</div>
+    <div><strong>{t('lab.c10aqueouselectrolysis_anode')}</strong>  {t('lab.c10aqueouselectrolysis_2h_o_o_g_4h_4e')}</div>
+    <div className="mt-2 text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c10aqueouselectrolysis_cl_is_sparse_so_water_is_oxidi')}</div>
     </div>
    )}
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10aqueouselectrolysis_experiment_setup')}</h2>
    <div className="space-y-4">
     
     <div>
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 block">Electrolyte Solution</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 block">{t('lab.c10aqueouselectrolysis_electrolyte_solution')}</label>
     <div className="flex gap-2">
      <button 
      onClick={() => handleSolutionChange('conc')}
      className={`flex-1 py-2 rounded border ${solutionType === 'conc' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
      >
-     Conc NaCl (Brine)
-     </button>
+     
+                                          {t('lab.c10aqueouselectrolysis_conc_nacl_brine')}
+                                          </button>
      <button 
      onClick={() => handleSolutionChange('dilute')}
      className={`flex-1 py-2 rounded border ${solutionType === 'dilute' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
      >
-     Dilute NaCl
-     </button>
+     
+                                          {t('lab.c10aqueouselectrolysis_dilute_nacl')}
+                                          </button>
     </div>
     </div>
 
     <div>
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 mt-4">
-     <span>Voltage</span>
+     <span>{t('lab.c10aqueouselectrolysis_voltage')}</span>
      <span>{voltage.toFixed(1)} V</span>
     </label>
     <input
@@ -190,11 +197,11 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col items-center justify-center relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Hoffman Voltameter</h2>
+   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10aqueouselectrolysis_hoffman_voltameter')}</h2>
    
    <div className="absolute top-6 right-6 text-right">
-   <div className="text-2xl font-mono font-bold text-sky-600">{(time / 60).toFixed(1)} min</div>
-   <div className="text-sm text-slate-500 dark:text-[#71717a]">Elapsed</div>
+   <div className="text-2xl font-mono font-bold text-sky-600">{(time / 60).toFixed(1)}  {t('lab.c10aqueouselectrolysis_min')}</div>
+   <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.c10aqueouselectrolysis_elapsed')}</div>
    </div>
 
    <svg width={svgW} height={svgH} className="mt-8" viewBox="0 0 400 500">
@@ -230,8 +237,8 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
     </circle>
    ))}
 
-   <text x="170" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">Anode (+)</text>
-   <text x="230" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">Cathode (-)</text>
+   <text x="170" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10aqueouselectrolysis_anode_1')}</text>
+   <text x="230" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10aqueouselectrolysis_cathode_1')}</text>
    <text x="170" y="125" fill="#ef4444" textAnchor="middle" fontSize="10">{solutionType === 'conc' ? 'Cl₂' : 'O₂'}</text>
    <text x="230" y="125" fill="#3b82f6" textAnchor="middle" fontSize="10">H₂</text>
 
@@ -239,10 +246,12 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
    
    <div className="absolute bottom-6 left-6 right-6 flex justify-between px-4">
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Anode Gas: {volAnode.toFixed(1)} mL
+    
+                             {t('lab.c10aqueouselectrolysis_anode_gas')} {volAnode.toFixed(1)} mL
    </div>
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Cathode Gas: {volCathode.toFixed(1)} mL
+    
+                             {t('lab.c10aqueouselectrolysis_cathode_gas')} {volCathode.toFixed(1)} mL
    </div>
    </div>
   </div>
@@ -250,17 +259,18 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Collected Data</h2>
+    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10aqueouselectrolysis_collected_data')}</h2>
     <div className="flex gap-2">
-    <button onClick={clearLogs} className="text-xs text-slate-500 dark:text-[#71717a] hover:text-slate-700 dark:text-[#ffffff] px-2">Clear</button>
+    <button onClick={clearLogs} className="text-xs text-slate-500 dark:text-[#71717a] hover:text-slate-700 dark:text-[#ffffff] px-2">{t('lab.c10aqueouselectrolysis_clear')}</button>
     <button
      onClick={recordData}
      disabled={!isRunning}
      className="flex items-center gap-2 px-3 py-1.5 bg-sky-100 text-sky-700 hover:bg-sky-200 rounded-lg font-medium transition-colors disabled:opacity-50"
     >
      <Save className="w-4 h-4" />
-     Record
-    </button>
+     
+                                      {t('lab.c10aqueouselectrolysis_record')}
+                                     </button>
     </div>
    </div>
    
@@ -268,10 +278,10 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
     <table className="w-full text-xs text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
-     <th className="px-3 py-2">Solution</th>
-     <th className="px-3 py-2">Anode Vol (mL)</th>
-     <th className="px-3 py-2">Cathode Vol (mL)</th>
-     <th className="px-3 py-2">Ratio (C:A)</th>
+     <th className="px-3 py-2">{t('lab.c10aqueouselectrolysis_solution')}</th>
+     <th className="px-3 py-2">{t('lab.c10aqueouselectrolysis_anode_vol_ml')}</th>
+     <th className="px-3 py-2">{t('lab.c10aqueouselectrolysis_cathode_vol_ml')}</th>
+     <th className="px-3 py-2">{t('lab.c10aqueouselectrolysis_ratio_c_a')}</th>
      </tr>
     </thead>
     <tbody>
@@ -291,14 +301,15 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
    </div>
 
    <div className="bg-sky-50 p-4 rounded-xl border border-sky-100 mt-auto">
-   <h3 className="font-semibold text-sky-900 mb-2">Analysis</h3>
+   <h3 className="font-semibold text-sky-900 mb-2">{t('lab.c10aqueouselectrolysis_analysis')}</h3>
    <p className="text-sm text-sky-800 mb-4">
-    Look at the volume ratio for Dilute NaCl. The cathode gas volume is exactly double the anode gas volume. Based on the chemical formula of water (H₂O), what gas is being produced at the <strong>anode</strong>?
+    
+                             {t('lab.c10aqueouselectrolysis_look_at_the_volume_ratio_for_d')} <strong>{t('lab.c10aqueouselectrolysis_anode_2')}</strong>?
    </p>
    <div className="flex gap-2">
     <input 
     type="text" 
-    placeholder="Name of gas..."
+    placeholder={t('lab.c10aqueouselectrolysis_name_of_gas')}
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
     className="flex-1 px-3 py-2 rounded-lg border border-sky-200"
@@ -307,8 +318,9 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
     onClick={checkAnswer}
     className="px-4 py-2 bg-sky-600 text-white font-medium rounded-lg hover:bg-sky-700 dark:text-white dark:text-white dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-sky-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.c10aqueouselectrolysis_check')}
+                                 </button>
    </div>
    
    {isCorrect !== null && (

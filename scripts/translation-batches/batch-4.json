@@ -1,0 +1,2002 @@
+{
+  "lab.cs12hci_in_software_engineering_every_": {
+    "original": "In software engineering, every UI/UX and security decision requires a trade-off. Extreme security reduces user conversions, while high accessibility requires specialized UI layouts.",
+    "protected_terms": true
+  },
+  "lab.cs12hci_submit_results_exit": {
+    "original": "Submit Results & Exit",
+    "protected_terms": false
+  },
+  "lab.cs12hci_interactive_software_engineeri": {
+    "original": "Interactive Software Engineering (HCI)",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_internet_of_things_iot": {
+    "original": "Internet of Things (IoT)",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_systems_connect_physical_senso": {
+    "original": "systems connect physical sensors to the Cloud to monitor real-world metrics like Air Quality (PM2.5).",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_the_trust_problem": {
+    "original": "The Trust Problem",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_how_do_we_ensure_that_collecte": {
+    "original": "How do we ensure that collected data is never secretly altered (tampered)? We use a",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_blockchain_ledger": {
+    "original": "Blockchain Ledger",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_blockchain_mechanics": {
+    "original": "Blockchain Mechanics",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_each_time_data_is_logged_it_is": {
+    "original": "Each time data is logged, it is packaged into a Block.",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_each_block_calculates_a_crypto": {
+    "original": "Each block calculates a cryptographic",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_hash": {
+    "original": "Hash",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_based_on_its_data_and_the_prev": {
+    "original": "based on its data and the previous block's hash.",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_hash_f_data_prevhash": {
+    "original": "Hash = f(Data, PrevHash)",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_because_each_block_includes_th": {
+    "original": "Because each block includes the hash of the block before it, they form an unbreakable chain. If an attacker modifies an old block's data, its Hash changes. This breaks the link to the next block, immediately exposing the tampering.",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_because_the_blockchain_is_dist": {
+    "original": "Because the blockchain is distributed across many decentralized nodes, attackers cannot simply recalculate and update the entire chain everywhere simultaneously.",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_iot_network_ledger": {
+    "original": "IoT Network & Ledger",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_pm2_5": {
+    "original": "PM2.5",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_log_to_chain": {
+    "original": "Log to Chain",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_block": {
+    "original": "Block",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_tampered_data": {
+    "original": "Tampered Data",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_broken_link": {
+    "original": "Broken Link",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_sensor_id": {
+    "original": "Sensor ID",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_data_pm2_5": {
+    "original": "Data (PM2.5)",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_previous_hash": {
+    "original": "Previous Hash",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_current_hash": {
+    "original": "Current Hash",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_assessment_analysis": {
+    "original": "Assessment & Analysis",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_lab_formula": {
+    "original": "Lab Formula:",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_hash_data_times_7_prevhash_tim": {
+    "original": "Hash = (Data &times; 7 + PrevHash &times; 13) % 10000",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_1_given_data_50_prevhash_100_c": {
+    "original": "1. Given Data=50, PrevHash=100. Calculate the exact Hash:",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_2_log_a_few_blocks_if_you_tamp": {
+    "original": "2. Log a few blocks. If you tamper with Block 2's data by editing the PM2.5 value, which block index is the FIRST to show a broken PrevHash link? (Enter number)",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_3_is_it_possible_for_a_hacker_": {
+    "original": "3. Is it possible for a hacker to silently tamper a block without breaking the chain if copies of the ledger exist on thousands of decentralized nodes? (Yes/No)",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_check_answers": {
+    "original": "Check Answers",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_submit_results_exit": {
+    "original": "Submit Results & Exit",
+    "protected_terms": false
+  },
+  "lab.cs12iotcloud_lab_12_3_distributed_iot_block": {
+    "original": "Lab 12.3: Distributed IoT & Blockchain",
+    "protected_terms": true
+  },
+  "lab.cs12iotcloud_click_to_edit_and_simulate_tam": {
+    "original": "Click to edit and simulate tampering",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_in_machine_learning_we_evaluat": {
+    "original": "In Machine Learning, we evaluate models by splitting our dataset into",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_training": {
+    "original": "Training",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_and": {
+    "original": "and",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_testing": {
+    "original": "Testing",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_subsets_to_prevent_overfitting": {
+    "original": "subsets to prevent overfitting.",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_confusion_matrix": {
+    "original": "Confusion Matrix",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_true_positives_actual_positive": {
+    "original": "(True Positives): Actual Positive, Predicted Positive",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_true_negatives_actual_negative": {
+    "original": "(True Negatives): Actual Negative, Predicted Negative",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_false_positives_actual_negativ": {
+    "original": "(False Positives): Actual Negative, Predicted Positive",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_false_negatives_actual_positiv": {
+    "original": "(False Negatives): Actual Positive, Predicted Negative",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_key_metrics": {
+    "original": "Key Metrics",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_accuracy": {
+    "original": "Accuracy",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_tp_tn_total_test": {
+    "original": "= (TP + TN) / Total Test",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_precision": {
+    "original": "Precision",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_tp_tp_fp": {
+    "original": "= TP / (TP + FP)",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_recall": {
+    "original": "Recall",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_tp_tp_fn": {
+    "original": "= TP / (TP + FN)",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_statistical_hypothesis_testing": {
+    "original": "Statistical Hypothesis Testing",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_we_use_p_values_to_determine_i": {
+    "original": "We use p-values to determine if a model's improvement over a baseline is statistically significant. A p-value &lt; alpha (e.g., 0.05) means the result is significant, so we reject the null hypothesis.",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_interactive_data_science": {
+    "original": "Interactive Data Science",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_train_test_split": {
+    "original": "Train/Test Split:",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_train": {
+    "original": "% Train /",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_test": {
+    "original": "% Test",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_reshuffle_data": {
+    "original": "Reshuffle Data",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_evaluate_on_test_set": {
+    "original": "Evaluate on Test Set",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_test_set_results_confusion_mat": {
+    "original": "Test Set Results (Confusion Matrix)",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_true_positives_tp": {
+    "original": "True Positives (TP):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_false_positives_fp": {
+    "original": "False Positives (FP):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_true_negatives_tn": {
+    "original": "True Negatives (TN):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_false_negatives_fn": {
+    "original": "False Negatives (FN):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_total_test_points": {
+    "original": "Total Test Points:",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_assessment_analysis": {
+    "original": "Assessment & Analysis",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_please_evaluate_the_model_in_t": {
+    "original": "Please evaluate the model in the simulator first to generate test results.",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_1_calculate_model_accuracy_dec": {
+    "original": "1. Calculate Model Accuracy (decimal form, e.g., 0.85):",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_2_calculate_precision_decimal_": {
+    "original": "2. Calculate Precision (decimal form):",
+    "protected_terms": true
+  },
+  "lab.cs12machinelearning_3_calculate_recall_decimal_for": {
+    "original": "3. Calculate Recall (decimal form):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_4_if_a_t_test_compares_our_mod": {
+    "original": "4. If a t-test compares our model to a baseline and yields p = 0.03 (alpha = 0.05), is our model significantly different? (Yes/No):",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_check_answers": {
+    "original": "Check Answers",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_submit_results_exit": {
+    "original": "Submit Results & Exit",
+    "protected_terms": false
+  },
+  "lab.cs12machinelearning_lab_12_1_machine_learning_stat": {
+    "original": "Lab 12.1: Machine Learning & Statistical Testing",
+    "protected_terms": true
+  },
+  "lab.cs12programming_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs12programming_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs12programming_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs12programming_object_oriented_programming_oo": {
+    "original": "Object-Oriented Programming (OOP)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_involves_encapsulating_data_an": {
+    "original": "involves encapsulating data and behavior within logical units called objects.",
+    "protected_terms": true
+  },
+  "lab.cs12programming_debugging_breakpoints": {
+    "original": "Debugging & Breakpoints",
+    "protected_terms": false
+  },
+  "lab.cs12programming_a_visual_debugger_allows_devel": {
+    "original": "A visual debugger allows developers to pause execution (breakpoint) and step through code line-by-line while watching variable states in memory.",
+    "protected_terms": false
+  },
+  "lab.cs12programming_database_normalization": {
+    "original": "Database Normalization",
+    "protected_terms": true
+  },
+  "lab.cs12programming_normalization_organizes_databa": {
+    "original": "Normalization organizes database tables to minimize redundancy:",
+    "protected_terms": true
+  },
+  "lab.cs12programming_1nf": {
+    "original": "1NF:",
+    "protected_terms": false
+  },
+  "lab.cs12programming_eliminate_repeating_groups": {
+    "original": "Eliminate repeating groups.",
+    "protected_terms": false
+  },
+  "lab.cs12programming_2nf": {
+    "original": "2NF:",
+    "protected_terms": false
+  },
+  "lab.cs12programming_remove_partial_dependencies": {
+    "original": "Remove partial dependencies.",
+    "protected_terms": false
+  },
+  "lab.cs12programming_3nf": {
+    "original": "3NF:",
+    "protected_terms": false
+  },
+  "lab.cs12programming_remove_transitive_dependencies": {
+    "original": "Remove transitive dependencies (non-key columns depend only on primary key).",
+    "protected_terms": false
+  },
+  "lab.cs12programming_simulator": {
+    "original": "Simulator",
+    "protected_terms": false
+  },
+  "lab.cs12programming_debugger": {
+    "original": "Debugger",
+    "protected_terms": false
+  },
+  "lab.cs12programming_normalization": {
+    "original": "Normalization",
+    "protected_terms": false
+  },
+  "lab.cs12programming_1_class_account": {
+    "original": "1: class Account",
+    "protected_terms": true
+  },
+  "lab.cs12programming_2_constructor_balance": {
+    "original": "2: constructor(balance)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_this_balance_balance": {
+    "original": "this.balance = balance;",
+    "protected_terms": false
+  },
+  "lab.cs12programming_3_deposit_amt": {
+    "original": "3: deposit(amt)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_this_balance_amt": {
+    "original": "this.balance += amt;",
+    "protected_terms": false
+  },
+  "lab.cs12programming_5_let_acc_new_account_100": {
+    "original": "5: let acc = new Account(100);",
+    "protected_terms": true
+  },
+  "lab.cs12programming_6_acc_deposit_50": {
+    "original": "6: acc.deposit(50);",
+    "protected_terms": false
+  },
+  "lab.cs12programming_7_console_log_acc_balance": {
+    "original": "7: console.log(acc.balance);",
+    "protected_terms": false
+  },
+  "lab.cs12programming_watch_variables": {
+    "original": "Watch Variables",
+    "protected_terms": false
+  },
+  "lab.cs12programming_step": {
+    "original": "Step",
+    "protected_terms": false
+  },
+  "lab.cs12programming_acc": {
+    "original": "acc:",
+    "protected_terms": false
+  },
+  "lab.cs12programming_1nf_1": {
+    "original": "1NF",
+    "protected_terms": false
+  },
+  "lab.cs12programming_2nf_1": {
+    "original": "2NF",
+    "protected_terms": false
+  },
+  "lab.cs12programming_3nf_1": {
+    "original": "3NF",
+    "protected_terms": false
+  },
+  "lab.cs12programming_unnormalized_1nf_single_table": {
+    "original": "Unnormalized / 1NF (Single Table)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_ordid": {
+    "original": "OrdID",
+    "protected_terms": false
+  },
+  "lab.cs12programming_custname": {
+    "original": "CustName",
+    "protected_terms": false
+  },
+  "lab.cs12programming_prodid": {
+    "original": "ProdID",
+    "protected_terms": false
+  },
+  "lab.cs12programming_prodname": {
+    "original": "ProdName",
+    "protected_terms": false
+  },
+  "lab.cs12programming_alice": {
+    "original": "Alice",
+    "protected_terms": false
+  },
+  "lab.cs12programming_laptop": {
+    "original": "Laptop",
+    "protected_terms": true
+  },
+  "lab.cs12programming_issue_partial_transitive_depen": {
+    "original": "Issue: Partial & Transitive dependencies exist.",
+    "protected_terms": false
+  },
+  "lab.cs12programming_orders_table": {
+    "original": "Orders Table",
+    "protected_terms": false
+  },
+  "lab.cs12programming_ordid_pk": {
+    "original": "OrdID (PK)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_orderdetails": {
+    "original": "OrderDetails",
+    "protected_terms": false
+  },
+  "lab.cs12programming_ordid_fk": {
+    "original": "OrdID (FK)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_prodid_fk": {
+    "original": "ProdID (FK)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_products_table": {
+    "original": "Products Table",
+    "protected_terms": false
+  },
+  "lab.cs12programming_prodid_pk": {
+    "original": "ProdID (PK)",
+    "protected_terms": false
+  },
+  "lab.cs12programming_fully_normalized_to_3nf": {
+    "original": "Fully Normalized to 3NF!",
+    "protected_terms": false
+  },
+  "lab.cs12programming_analysis_assessment": {
+    "original": "Analysis & Assessment",
+    "protected_terms": false
+  },
+  "lab.cs12programming_q1_using_the_debugger_what_is_": {
+    "original": "Q1: Using the Debugger, what is the exact value of `acc.balance` immediately AFTER executing line 6?",
+    "protected_terms": false
+  },
+  "lab.cs12programming_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs12programming_correct": {
+    "original": "Correct",
+    "protected_terms": false
+  },
+  "lab.cs12programming_incorrect": {
+    "original": "Incorrect",
+    "protected_terms": false
+  },
+  "lab.cs12programming_q2_in_3nf_database_normalizati": {
+    "original": "Q2: In 3NF database normalization, which table correctly holds the `ProdName` column?",
+    "protected_terms": true
+  },
+  "lab.cs12programming_select_table": {
+    "original": "Select Table...",
+    "protected_terms": false
+  },
+  "lab.cs12programming_orderdetails_table": {
+    "original": "OrderDetails Table",
+    "protected_terms": false
+  },
+  "lab.cs12programming_developer_note": {
+    "original": "Developer Note",
+    "protected_terms": false
+  },
+  "lab.cs12programming_state_mutations_like": {
+    "original": "State mutations (like",
+    "protected_terms": false
+  },
+  "lab.cs12programming_balance_amt": {
+    "original": "balance += amt",
+    "protected_terms": false
+  },
+  "lab.cs12programming_are_common_sources_of_bugs_deb": {
+    "original": ") are common sources of bugs. Debuggers are essential to track the specific moment a variable's state becomes invalid.",
+    "protected_terms": false
+  },
+  "lab.cs12programming_submit_results_exit": {
+    "original": "Submit Results & Exit",
+    "protected_terms": false
+  },
+  "lab.cs12programming_interactive_core_dev": {
+    "original": "Interactive Core Dev",
+    "protected_terms": false
+  },
+  "lab.cs12programming_enter_value": {
+    "original": "Enter value...",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9aiapplications_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_artificial_intelligence_ai": {
+    "original": "Artificial Intelligence (AI)",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_systems_are_designed_to_perfor": {
+    "original": "systems are designed to perform tasks that typically require human intelligence, such as visual perception, speech recognition, and decision-making.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_however_real_world_ai_applicat": {
+    "original": "However, real-world AI applications face significant functional and ethical challenges:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_healthcare": {
+    "original": "Healthcare:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_patient_privacy_and_the_risk_o": {
+    "original": "Patient privacy and the risk of false diagnoses.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_nlp_natural_language_processin": {
+    "original": "NLP (Natural Language Processing):",
+    "protected_terms": true
+  },
+  "lab.cs9aiapplications_inheriting_human_biases_from_t": {
+    "original": "Inheriting human biases from training data and generating false information (hallucinations).",
+    "protected_terms": true
+  },
+  "lab.cs9aiapplications_manufacturing": {
+    "original": "Manufacturing:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_job_displacement_and_over_reli": {
+    "original": "Job displacement and over-reliance on automated quality control.",
+    "protected_terms": true
+  },
+  "lab.cs9aiapplications_objective": {
+    "original": "Objective",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_explore_the_tech_tree_identify": {
+    "original": "Explore the tech tree, identify the risks associated with each domain, and deploy solutions to make the AI safe for use.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_ai_tech_tree_simulator": {
+    "original": "AI Tech Tree Simulator",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_click_locked_nodes_gray_to_ana": {
+    "original": "Click locked nodes (gray) to analyze their issues. Solve them to unlock the tech.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_analysis": {
+    "original": "Analysis",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_identified_risk": {
+    "original": "Identified Risk:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_solved": {
+    "original": "Solved:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_propose_solution": {
+    "original": "Propose Solution:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_deploy": {
+    "original": "Deploy:",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_analysis_assessment": {
+    "original": "Analysis & Assessment",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_security_log": {
+    "original": "Security Log",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_no_issues_resolved_yet": {
+    "original": "No issues resolved yet.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_interact_with_the_tech_tree": {
+    "original": "Interact with the tech tree.",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_ai_applications_ethics": {
+    "original": "AI Applications & Ethics",
+    "protected_terms": false
+  },
+  "lab.cs9aiapplications_type_the_issue_name_exactly": {
+    "original": "Type the issue name exactly...",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9algorithms_task_details": {
+    "original": "Task Details",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_flowchart_symbols": {
+    "original": "Flowchart Symbols",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_terminal": {
+    "original": "Terminal:",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_start_or_end_of_a_program": {
+    "original": "Start or End of a program.",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_input_output": {
+    "original": "Input/Output:",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_getting_data_or_displaying_res": {
+    "original": "Getting data or displaying results.",
+    "protected_terms": true
+  },
+  "lab.cs9algorithms_process": {
+    "original": "Process:",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_calculations_or_variable_assig": {
+    "original": "Calculations or variable assignments.",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_decision": {
+    "original": "Decision:",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_yes_no_questions_branching": {
+    "original": "Yes/No questions (branching).",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_algorithm_canvas": {
+    "original": "Algorithm Canvas",
+    "protected_terms": true
+  },
+  "lab.cs9algorithms_available_blocks_click_to_add": {
+    "original": "Available Blocks (Click to add)",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_all_blocks_used": {
+    "original": "All blocks used.",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_your_sequence_click_to_remove": {
+    "original": "Your Sequence (Click to remove)",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_canvas_is_empty": {
+    "original": "Canvas is empty",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_analysis_validation": {
+    "original": "Analysis & Validation",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_execute_check_logic": {
+    "original": "Execute / Check Logic",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_trace_logs": {
+    "original": "--- TRACE LOGS ---",
+    "protected_terms": false
+  },
+  "lab.cs9algorithms_algorithms_lab": {
+    "original": "Algorithms Lab",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_cpu_central_processing_unit": {
+    "original": "CPU (Central Processing Unit):",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_the_brain_of_the_computer_hand": {
+    "original": "The brain of the computer, handling instructions and processing data.",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_ram_random_access_memory": {
+    "original": "RAM (Random Access Memory):",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_short_term_volatile_memory_use": {
+    "original": "Short-term volatile memory used for active tasks and applications.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_gpu_graphics_processing_unit": {
+    "original": "GPU (Graphics Processing Unit):",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_specialized_processor_for_rend": {
+    "original": "Specialized processor for rendering images and video.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_ssd_solid_state_drive": {
+    "original": "SSD (Solid State Drive):",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_long_term_non_volatile_storage": {
+    "original": "Long-term non-volatile storage for the OS and files.",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_psu_power_supply_unit": {
+    "original": "PSU (Power Supply Unit):",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_converts_electrical_power_from": {
+    "original": "Converts electrical power from an outlet into usable power for components.",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_task": {
+    "original": "Task:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_select_a_component_from_the_li": {
+    "original": "Select a component from the list and place it into the correct motherboard slot.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_the": {
+    "original": "The",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_osi_model": {
+    "original": "OSI Model",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_open_systems_interconnection_c": {
+    "original": "(Open Systems Interconnection) conceptualizes how data is transmitted over a network in 7 distinct layers.",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_7_application": {
+    "original": "7. Application:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_end_user_apps": {
+    "original": "End-user apps.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_6_presentation": {
+    "original": "6. Presentation:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_data_format_encryption": {
+    "original": "Data format, encryption.",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_5_session": {
+    "original": "5. Session:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_connection_management": {
+    "original": "Connection management.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_4_transport": {
+    "original": "4. Transport:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_reliability_tcp_udp": {
+    "original": "Reliability, TCP/UDP.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_3_network": {
+    "original": "3. Network:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_routing_ip_addresses": {
+    "original": "Routing, IP addresses.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_2_data_link": {
+    "original": "2. Data Link:",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_mac_addresses_switches": {
+    "original": "MAC addresses, switches.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_1_physical": {
+    "original": "1. Physical:",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_raw_bits_over_cables_radio": {
+    "original": "Raw bits over cables/radio.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_assign_the_correct_functional_": {
+    "original": "Assign the correct functional role to each layer of the OSI stack.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_interactive_workspace": {
+    "original": "Interactive Workspace",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_all_components_placed": {
+    "original": "All components placed.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_motherboard_v1": {
+    "original": "MOTHERBOARD_V1",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_roles": {
+    "original": "Roles",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_all_roles_assigned": {
+    "original": "All roles assigned.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_osi_layers": {
+    "original": "OSI Layers",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_select_a_role": {
+    "original": "- Select a role...",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_assessment_logs": {
+    "original": "Assessment & Logs",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_assemble_all_parts_before_chec": {
+    "original": "Assemble all parts before checking.",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_system_logs": {
+    "original": "--- SYSTEM LOGS ---",
+    "protected_terms": true
+  },
+  "lab.cs9computersystems_waiting_for_activity": {
+    "original": "Waiting for activity...",
+    "protected_terms": false
+  },
+  "lab.cs9computersystems_computer_systems_lab": {
+    "original": "Computer Systems Lab",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_digital_threats": {
+    "original": "Digital Threats",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_in_the_digital_world_every_act": {
+    "original": "In the digital world, every action you take contributes to your",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_digital_footprint": {
+    "original": "Digital Footprint",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_being_aware_of_online_threats_": {
+    "original": ". Being aware of online threats is crucial for maintaining your privacy and safety.",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_phishing": {
+    "original": "Phishing",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_deceptive_attempts_to_steal_se": {
+    "original": "Deceptive attempts to steal sensitive information by masquerading as a trustworthy entity (e.g., fake login links, urgent warnings).",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_cyberbullying": {
+    "original": "Cyberbullying",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_using_digital_platforms_to_har": {
+    "original": "Using digital platforms to harass, embarrass, or target individuals. Sharing harmful content makes you a participant.",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_fake_news": {
+    "original": "Fake News",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_false_or_misleading_informatio": {
+    "original": "False or misleading information presented as news. Always verify the source before clicking \"Share\".",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_device_simulator": {
+    "original": "Device Simulator",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_messages": {
+    "original": "Messages",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_simulation_complete": {
+    "original": "Simulation Complete",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_check_the_analysis_panel_for_y": {
+    "original": "Check the Analysis panel for your results.",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_safety_log_analysis": {
+    "original": "Safety Log & Analysis",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_overall_safety_score": {
+    "original": "Overall Safety Score",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_action_history": {
+    "original": "Action History",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_make_choices_on_the_device_to_": {
+    "original": "Make choices on the device to log data.",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_scenario": {
+    "original": "Scenario:",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_you_chose": {
+    "original": "You chose: \"",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_final_assessment": {
+    "original": "Final Assessment",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_complete_all_scenarios_to_gene": {
+    "original": "Complete all scenarios to generate your final safety report.",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_generate_report": {
+    "original": "Generate Report",
+    "protected_terms": false
+  },
+  "lab.cs9cybersafety_score": {
+    "original": "Score:",
+    "protected_terms": true
+  },
+  "lab.cs9cybersafety_cyber_safety_digital_footprint": {
+    "original": "Cyber Safety & Digital Footprint",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_enterprise_survey_analysis": {
+    "original": "Enterprise Survey Analysis",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_data_visualization_helps_in_un": {
+    "original": "Data visualization helps in understanding complex data sets by representing them graphically.",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_bar_charts": {
+    "original": "Bar Charts",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_useful_for_comparing_different": {
+    "original": "Useful for comparing different categories. The length of the bar is proportional to the value it represents.",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_pie_charts": {
+    "original": "Pie Charts",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_useful_for_showing_parts_of_a_": {
+    "original": "Useful for showing parts of a whole. The entire pie represents 100%, and each slice represents a percentage of the total.",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_instructions": {
+    "original": "Instructions:",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_enter_the_enterprise_survey_da": {
+    "original": "Enter the enterprise survey data into the table.",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_add_or_remove_rows_to_see_how_": {
+    "original": "Add or remove rows to see how the charts react dynamically.",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_switch_between_bar_and_pie_cha": {
+    "original": "Switch between Bar and Pie chart views.",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_answer_the_assessment_question": {
+    "original": "Answer the assessment question based on your data.",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_data_entry": {
+    "original": "Data Entry",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_category": {
+    "original": "Category",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_value": {
+    "original": "Value",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_add_category": {
+    "original": "Add Category",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_total_value": {
+    "original": "Total Value:",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_bar_chart": {
+    "original": "Bar Chart",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_pie_chart": {
+    "original": "Pie Chart",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_no_data_to_display": {
+    "original": "No data to display",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_assessment": {
+    "original": "Assessment",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_based_on_the_visualization_whi": {
+    "original": "Based on the visualization, which category has the highest value?",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.cs9dataanalysis_data_visualization_dashboard": {
+    "original": "Data Visualization Dashboard",
+    "protected_terms": true
+  },
+  "lab.cs9dataanalysis_type_category_name": {
+    "original": "Type category name...",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9entrepreneurship_business_economics": {
+    "original": "Business Economics",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_entrepreneurship_in_tech_invol": {
+    "original": "Entrepreneurship in tech involves not just building a product, but understanding the economics of bringing it to market.",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_cost_structure": {
+    "original": "Cost Structure",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_fixed_costs": {
+    "original": "Fixed Costs:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_expenses_that_don_t_change_bas": {
+    "original": "Expenses that don't change based on production volume (e.g., Rent, Software Licenses).",
+    "protected_terms": true
+  },
+  "lab.cs9entrepreneurship_variable_costs": {
+    "original": "Variable Costs:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_expenses_that_scale_with_produ": {
+    "original": "Expenses that scale with production (e.g., Cloud hosting per user, Raw materials).",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_break_even_point_bep": {
+    "original": "Break-Even Point (BEP)",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_bep_fixed_costs_price_variable": {
+    "original": "BEP = Fixed Costs / (Price - Variable Cost)",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_the_number_of_units_you_must_s": {
+    "original": "The number of units you must sell to exactly cover your total costs. Beyond this point, you make profit.",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_business_planner": {
+    "original": "Business Planner",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_production_costs": {
+    "original": "Production Costs",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_units_to_produce": {
+    "original": "Units to Produce:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_units": {
+    "original": "units",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_raw_material_cost_unit": {
+    "original": "Raw Material Cost/Unit:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_labor_cost_unit": {
+    "original": "Labor Cost/Unit:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_fixed_overhead": {
+    "original": "Fixed Overhead:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_social_media_strategy": {
+    "original": "Social Media Strategy",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_est_reach": {
+    "original": "Est. Reach:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_financial_overview": {
+    "original": "Financial Overview",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_cost_breakdown": {
+    "original": "Cost Breakdown",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_total_var_cost": {
+    "original": "Total Var. Cost",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_fixed_costs_1": {
+    "original": "Fixed Costs",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_total_production_cost": {
+    "original": "Total Production Cost",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_cost_per_unit_produced": {
+    "original": "Cost Per Unit Produced",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_unit": {
+    "original": "/unit",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_marketing_totals": {
+    "original": "Marketing Totals",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_budget_spent": {
+    "original": "Budget Spent",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_expected_reach": {
+    "original": "Expected Reach",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_people": {
+    "original": "people",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_assessment_find_the_bep": {
+    "original": "Assessment: Find the BEP",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_calculate_the_break_even_point": {
+    "original": "Calculate the Break-Even Point (in units) given these market conditions:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_variable_cost_unit": {
+    "original": "Variable Cost/Unit:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_selling_price_unit": {
+    "original": "Selling Price/Unit:",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_submit_calculation": {
+    "original": "Submit Calculation",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_tech_entrepreneurship": {
+    "original": "Tech Entrepreneurship",
+    "protected_terms": false
+  },
+  "lab.cs9entrepreneurship_enter_break_even_units": {
+    "original": "Enter Break-Even units...",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_theory_context": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_in_javascript": {
+    "original": "In JavaScript,",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_if_else": {
+    "original": "if/else",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_statements_allow_you_to_execut": {
+    "original": "statements allow you to execute different blocks of code based on conditions.",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_grading_system": {
+    "original": "Grading System",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_your_task_is_to_write_logic_to": {
+    "original": "Your task is to write logic to determine a student's grade based on their",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_score": {
+    "original": "score",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_score_gt_90": {
+    "original": "score &gt;= 90",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_score_gt_80": {
+    "original": "score &gt;= 80",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_and": {
+    "original": "and",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_lt_90": {
+    "original": "&lt; 90",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_score_gt_70": {
+    "original": "score &gt;= 70",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_lt_80": {
+    "original": "&lt; 80",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_score_gt_60": {
+    "original": "score &gt;= 60",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_lt_70": {
+    "original": "&lt; 70",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_score_lt_60": {
+    "original": "score &lt; 60",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_ensure_you_handle_all_possible": {
+    "original": "Ensure you handle all possible conditions. The automated test suite will run your logic against random scores to verify correctness.",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_code_editor": {
+    "original": "Code Editor",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_function_getgrade_score": {
+    "original": "function getGrade(score)",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_run_tests": {
+    "original": "Run Tests",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_automated_test_suite": {
+    "original": "Automated Test Suite",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_run_your_code_to_see_test_resu": {
+    "original": "Run your code to see test results",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_test": {
+    "original": "Test",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_score_1": {
+    "original": ": Score =",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_expected": {
+    "original": "Expected:",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_actual": {
+    "original": "Actual:",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_all_tests_passed_excellent_wor": {
+    "original": "All Tests Passed! Excellent Work!",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_try_apply_or_analyze_modes_for": {
+    "original": "Try \"apply\" or \"analyze\" modes for a greater challenge.",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_great_can_you_handle_the_analy": {
+    "original": "Great! Can you handle the \"analyze\" mode?",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_some_tests_failed_check_your_l": {
+    "original": "Some tests failed. Check your logic and try again.",
+    "protected_terms": false
+  },
+  "lab.cs9javascript_review_the_hint_in_the_theory_": {
+    "original": "💡 Review the hint in the Theory section.",
+    "protected_terms": true
+  },
+  "lab.cs9javascript_javascript_logic_sandbox": {
+    "original": "JavaScript Logic Sandbox",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_validate_tasks": {
+    "original": "Validate Tasks",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9webbasics_concepts_tasks": {
+    "original": "Concepts & Tasks",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_html": {
+    "original": "HTML",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_hypertext_markup_language_prov": {
+    "original": "(HyperText Markup Language) provides the structure of a webpage. Tags define elements like headings",
+    "protected_terms": true
+  },
+  "lab.cs9webbasics_lt_h1_gt": {
+    "original": "&lt;h1&gt;",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_paragraphs": {
+    "original": ", paragraphs",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_lt_p_gt": {
+    "original": "&lt;p&gt;",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_and_lists": {
+    "original": ", and lists",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_lt_ul_gt": {
+    "original": "&lt;ul&gt;",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_css": {
+    "original": "CSS",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_cascading_style_sheets_provide": {
+    "original": "(Cascading Style Sheets) provides the visual styling. It uses selectors (like",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_and_declarations_like": {
+    "original": ") and declarations (like",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_color_red": {
+    "original": "color: red;",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_mission_objectives": {
+    "original": "Mission Objectives",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_code_editor": {
+    "original": "Code Editor",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_index_html": {
+    "original": "index.html",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_styles_css": {
+    "original": "styles.css",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_live_browser_preview": {
+    "original": "Live Browser Preview",
+    "protected_terms": false
+  },
+  "lab.cs9webbasics_web_basics_lab": {
+    "original": "Web Basics Lab",
+    "protected_terms": true
+  },
+  "lab.cs9webbasics_live_preview": {
+    "original": "Live Preview",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.cs9webprojects_select_a_project": {
+    "original": "Select a Project",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_requirements_checklist": {
+    "original": "Requirements Checklist",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_tip": {
+    "original": "Tip:",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_write_your_html_in_the_middle_": {
+    "original": "Write your HTML in the middle column. The preview on the right will update automatically after half a second.",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_html_editor": {
+    "original": "HTML Editor",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_live_preview": {
+    "original": "Live Preview",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_web_development_projects_ide": {
+    "original": "Web Development Projects IDE",
+    "protected_terms": false
+  },
+  "lab.cs9webprojects_preview": {
+    "original": "preview",
+    "protected_terms": false
+  },
+  "lab.cyberscout_https_www_nr3c_gov_pk_cyber_sc": {
+    "original": "https://www.nr3c.gov.pk/cyber-scout/register",
+    "protected_terms": false
+  },
+  "lab.cyberscout_nr3c": {
+    "original": "NR3C",
+    "protected_terms": false
+  },
+  "lab.cyberscout_cyber_scout_program": {
+    "original": "Cyber Scout Program",
+    "protected_terms": false
+  },
+  "lab.cyberscout_national_response_centre_for_c": {
+    "original": "National Response Centre for Cyber Crime",
+    "protected_terms": false
+  },
+  "lab.cyberscout_registration_successful": {
+    "original": "Registration Successful!",
+    "protected_terms": false
+  },
+  "lab.cyberscout_welcome_to_the_cyber_scout_tea": {
+    "original": "Welcome to the Cyber Scout team,",
+    "protected_terms": false
+  },
+  "lab.cyberscout_you_are_now_part_of_the_initia": {
+    "original": ". You are now part of the initiative to promote digital safety.",
+    "protected_terms": false
+  },
+  "lab.cyberscout_register_another": {
+    "original": "Register Another",
+    "protected_terms": false
+  },
+  "lab.cyberscout_full_name": {
+    "original": "Full Name",
+    "protected_terms": false
+  },
+  "lab.cyberscout_email_address": {
+    "original": "Email Address",
+    "protected_terms": false
+  },
+  "lab.cyberscout_date_of_birth": {
+    "original": "Date of Birth",
+    "protected_terms": true
+  },
+  "lab.cyberscout_form_b_cnic_no": {
+    "original": "Form B / CNIC No.",
+    "protected_terms": false
+  },
+  "lab.cyberscout_account_security": {
+    "original": "Account Security",
+    "protected_terms": true
+  },
+  "lab.cyberscout_strong_password": {
+    "original": "Strong Password",
+    "protected_terms": true
+  },
+  "lab.cyberscout_confirm_password": {
+    "original": "Confirm Password",
+    "protected_terms": true
+  },
+  "lab.cyberscout_at_least_8_characters": {
+    "original": "At least 8 characters",
+    "protected_terms": false
+  },
+  "lab.cyberscout_one_uppercase_letter": {
+    "original": "One uppercase letter",
+    "protected_terms": false
+  },
+  "lab.cyberscout_one_number": {
+    "original": "One number",
+    "protected_terms": false
+  },
+  "lab.cyberscout_one_special_character": {
+    "original": "One special character",
+    "protected_terms": false
+  },
+  "lab.cyberscout_submit_application": {
+    "original": "Submit Application",
+    "protected_terms": false
+  },
+  "lab.cyberscout_act_5_1_cyber_scout_registrati": {
+    "original": "Act 5.1: Cyber Scout Registration",
+    "protected_terms": false
+  },
+  "lab.cyberscout_13_digits": {
+    "original": "13 digits",
+    "protected_terms": false
+  },
+  "lab.datacomm_build_the_network_model": {
+    "original": "Build the Network Model",
+    "protected_terms": false
+  },
+  "lab.datacomm_components_rack": {
+    "original": "Components Rack",
+    "protected_terms": false
+  },
+  "lab.datacomm_drag_components_from_the_rack_": {
+    "original": "Drag components from the rack into their correct logical positions in the communication cycle diagram.",
+    "protected_terms": false
+  },
+  "lab.datacomm_network_online": {
+    "original": "Network Online!",
+    "protected_terms": true
+  },
+  "lab.datacomm_the": {
+    "original": "The",
+    "protected_terms": false
+  },
+  "lab.datacomm_sender": {
+    "original": "Sender",
+    "protected_terms": false
+  },
+  "lab.datacomm_transmits_a": {
+    "original": "transmits a",
+    "protected_terms": false
+  },
+  "lab.datacomm_message": {
+    "original": "Message",
+    "protected_terms": true
+  },
+  "lab.datacomm_over_a": {
+    "original": "over a",
+    "protected_terms": false
+  },
+  "lab.datacomm_medium": {
+    "original": "Medium",
+    "protected_terms": false
+  },
+  "lab.datacomm_to_a": {
+    "original": "to a",
+    "protected_terms": false
+  },
+  "lab.datacomm_receiver": {
+    "original": "Receiver",
+    "protected_terms": false
+  },
+  "lab.datacomm_while_both_obey_a_strict": {
+    "original": ", while both obey a strict",
+    "protected_terms": false
+  },
+  "lab.datacomm_protocol": {
+    "original": "Protocol",
+    "protected_terms": false
+  },
+  "lab.datacomm_to_understand_each_other": {
+    "original": "to understand each other.",
+    "protected_terms": false
+  },
+  "lab.datacomm_act_1_1_data_communication_mod": {
+    "original": "Act 1.1: Data Communication Model",
+    "protected_terms": true
+  },
+  "lab.dataworksheets_scenarios": {
+    "original": "Scenarios",
+    "protected_terms": false
+  },
+  "lab.dataworksheets_student_heights_bar_chart": {
+    "original": "Student Heights (Bar Chart)",
+    "protected_terms": false
+  },
+  "lab.dataworksheets_home_budget_pie_chart": {
+    "original": "Home Budget (Pie Chart)",
+    "protected_terms": true
+  },
+  "lab.dataworksheets_electricity_bill_line_chart": {
+    "original": "Electricity Bill (Line Chart)",
+    "protected_terms": true
+  },
+  "lab.dataworksheets_data_worksheet": {
+    "original": "Data Worksheet",
+    "protected_terms": true
+  },
+  "lab.dataworksheets_item_name": {
+    "original": "Item / Name",
+    "protected_terms": false
+  },
+  "lab.dataworksheets_value": {
+    "original": "Value",
+    "protected_terms": false
+  },
+  "lab.dataworksheets_generated_chart": {
+    "original": "Generated Chart",
+    "protected_terms": false
+  },
+  "lab.dataworksheets_act_2_2_worksheet_and_chart_cr": {
+    "original": "Act 2.2: Worksheet and Chart Creation",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_dice_game_pseudo": {
+    "original": "dice_game.pseudo",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_set_player1_score_0": {
+    "original": "SET player1_score = 0",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_set_player2_score_0": {
+    "original": "SET player2_score = 0",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_for_turn_1_to_10": {
+    "original": "FOR turn = 1 TO 10",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player_1_s_turn": {
+    "original": "// Player 1's Turn",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_roll_random_1_6": {
+    "original": "roll = Random(1, 6)",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player1_score_player1_score_ro": {
+    "original": "player1_score = player1_score + roll",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_while_roll_6": {
+    "original": "WHILE roll == 6",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player_2_s_turn": {
+    "original": "// Player 2's Turn",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player2_score_player2_score_ro": {
+    "original": "player2_score = player2_score + roll",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_next_turn": {
+    "original": "NEXT turn",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_if_player1_score": {
+    "original": "IF player1_score",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player2_score_then": {
+    "original": "player2_score THEN",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_output_player_1_wins": {
+    "original": "OUTPUT \"Player 1 Wins\"",
+    "protected_terms": true
+  },
+  "lab.dicegamealgorithm_else_if_player2_score": {
+    "original": "ELSE IF player2_score",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player1_score_then": {
+    "original": "player1_score THEN",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_output_player_2_wins": {
+    "original": "OUTPUT \"Player 2 Wins\"",
+    "protected_terms": true
+  },
+  "lab.dicegamealgorithm_else": {
+    "original": "ELSE",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_output_draw": {
+    "original": "OUTPUT \"Draw\"",
+    "protected_terms": true
+  },
+  "lab.dicegamealgorithm_end_if": {
+    "original": "END IF",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player_1": {
+    "original": "Player 1",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_round": {
+    "original": "Round",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_player_2": {
+    "original": "Player 2",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_execute_program": {
+    "original": "Execute Program",
+    "protected_terms": false
+  },
+  "lab.dicegamealgorithm_act_3_2_dice_game_algorithm": {
+    "original": "Act 3.2: Dice Game Algorithm",
+    "protected_terms": true
+  },
+  "lab.digitalmarketing_campaign_manager": {
+    "original": "Campaign Manager",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_brand_pia_pakistan_airlines": {
+    "original": "Brand: PIA (Pakistan Airlines)",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_remaining_budget": {
+    "original": "Remaining Budget",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_rs": {
+    "original": "Rs.",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_1_select_special_incentive": {
+    "original": "1. Select Special Incentive",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_what_special_offer_are_you_pro": {
+    "original": "What special offer are you promoting to attract valuable customers?",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_20_off_tickets": {
+    "original": "20% Off Tickets",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_free_vip_lounge": {
+    "original": "Free VIP Lounge",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_double_air_miles": {
+    "original": "Double Air Miles",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_2_allocate_ad_budget": {
+    "original": "2. Allocate Ad Budget",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_distribute_your_rs_10_000_budg": {
+    "original": "Distribute your Rs. 10,000 budget across different platforms.",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_facebook_ads": {
+    "original": "Facebook Ads",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_instagram_stories": {
+    "original": "Instagram Stories",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_search_engine_ads": {
+    "original": "Search Engine Ads",
+    "protected_terms": true
+  },
+  "lab.digitalmarketing_launch_campaign": {
+    "original": "Launch Campaign",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_error_budget_exceeded": {
+    "original": "Error: Budget Exceeded!",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_live_campaign_analytics": {
+    "original": "Live Campaign Analytics",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_ad_clicks": {
+    "original": "Ad Clicks",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_gathering_traffic": {
+    "original": "Gathering traffic...",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_tickets_sold": {
+    "original": "Tickets Sold",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_processing_sales": {
+    "original": "Processing sales...",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_ad_creative_preview": {
+    "original": "Ad Creative Preview",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_pia": {
+    "original": "PIA",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_fly_with_pakistan_airlines_tod": {
+    "original": "Fly with Pakistan Airlines today!",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_book_flight": {
+    "original": "Book Flight",
+    "protected_terms": false
+  },
+  "lab.digitalmarketing_act_6_2_digital_marketing_stra": {
+    "original": "Act 6.2: Digital Marketing Strategy",
+    "protected_terms": false
+  },
+  "lab.e10adverbsprepositions_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e10adverbsprepositions_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e10adverbsprepositions_contextual_vectors": {
+    "original": "Contextual Vectors",
+    "protected_terms": true
+  }
+}

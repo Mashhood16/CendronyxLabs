@@ -1,8 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [conicType, setConicType] = useState<'parabola' | 'ellipse' | 'hyperbola'>('parabola');
  
@@ -81,7 +84,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab M12.1: Advanced Conic Sections" />
+  <LabHeader onExit={onExit} title={t('lab.m12conics_lab_m12_1_advanced_conic_secti')} />
   <div className="bg-blue-900 text-white p-2 flex justify-end shrink-0">
   <div className="flex bg-blue-800 rounded-lg p-1">
    {(['parabola', 'ellipse', 'hyperbola'] as const).map(type => (
@@ -103,70 +106,71 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m12conics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m12conics_lab')}</button>
   </div>
   <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-blue-700 mb-2">
    <BookOpen className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Theoretical Context</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12conics_theoretical_context')}</h2>
    </div>
    
    {conicType === 'parabola' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p>A <strong>Parabola</strong> is the locus of a point equidistant from a focus and a directrix.</p>
+    <p>A <strong>{t('lab.m12conics_parabola')}</strong>  {t('lab.m12conics_is_the_locus_of_a_point_equidi')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono flex-col `}>
-    {"$$x^2 = 4py$$"}
+    <MathText>{"$$x^2 = 4py$$"}</MathText>
     </div>
-    <p><strong>Applications:</strong> Parabolic antennas focus incoming parallel signals perfectly onto the focus point (0, p).</p>
+    <p><strong>{t('lab.m12conics_applications')}</strong>  {t('lab.m12conics_parabolic_antennas_focus_incom')}</p>
     <ul className="list-disc pl-5 space-y-1">
-    <li>Focus: (0, p)</li>
-    <li>Directrix: y = -p</li>
-    <li>Vertex: (0, 0)</li>
+    <li>{t('lab.m12conics_focus_0_p')}</li>
+    <li>{t('lab.m12conics_directrix_y_p')}</li>
+    <li>{t('lab.m12conics_vertex_0_0')}</li>
     </ul>
    </div>
    )}
 
    {conicType === 'ellipse' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p>An <strong>Ellipse</strong> is the locus of a point where the sum of distances to two foci is constant.</p>
+    <p>An <strong>{t('lab.m12conics_ellipse')}</strong>  {t('lab.m12conics_is_the_locus_of_a_point_where_')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono flex-col `}>
-    {"$$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$$"}
+    <MathText>{"$$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$$"}</MathText>
     </div>
-    <p><strong>Applications:</strong> Kepler's First Law states planetary orbits are ellipses with the Sun at one focus.</p>
+    <p><strong>{t('lab.m12conics_applications')}</strong>  {t('lab.m12conics_kepler_s_first_law_states_plan')}</p>
     <ul className="list-disc pl-5 space-y-1">
-    <li>Foci: (±c, 0) where c = √|a² - b²|</li>
-    <li>Eccentricity: e = c / a</li>
-    <li>Major Axis Length: 2a</li>
+    <li>{t('lab.m12conics_foci_c_0_where_c_a_b')}</li>
+    <li>{t('lab.m12conics_eccentricity_e_c_a')}</li>
+    <li>{t('lab.m12conics_major_axis_length_2a')}</li>
     </ul>
    </div>
    )}
 
    {conicType === 'hyperbola' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p>A <strong>Hyperbola</strong> is the locus of a point where the difference of distances to two foci is constant.</p>
+    <p>A <strong>{t('lab.m12conics_hyperbola')}</strong>  {t('lab.m12conics_is_the_locus_of_a_point_where__1')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono flex-col `}>
-    {"$$\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$$"}
+    <MathText>{"$$\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$$"}</MathText>
     </div>
-    <p><strong>Applications:</strong> Nuclear cooling towers use hyperboloid geometries for structural strength and natural updraft cooling efficiency.</p>
+    <p><strong>{t('lab.m12conics_applications')}</strong>  {t('lab.m12conics_nuclear_cooling_towers_use_hyp')}</p>
     <ul className="list-disc pl-5 space-y-1">
-    <li>Foci: (±c, 0) where c = √(a² + b²)</li>
-    <li>Vertices: (±a, 0)</li>
-    <li>Asymptotes: y = ±(b/a)x</li>
+    <li>{t('lab.m12conics_foci_c_0_where_c_a_b_1')}</li>
+    <li>{t('lab.m12conics_vertices_a_0')}</li>
+    <li>{t('lab.m12conics_asymptotes_y_b_a_x')}</li>
     </ul>
    </div>
    )}
   </div>
 
   {/* Visualizer Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 items-center justify-center relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">Live Simulation</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 items-center justify-center relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">{t('lab.m12conics_live_simulation')}</h2>
    
    <svg viewBox="-60 -60 120 120" className="w-full max-w-md aspect-square bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-inner mt-8">
    <g transform="scale(1, -1)">
@@ -228,28 +232,28 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Assessment Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-blue-700 mb-2 shrink-0">
    <Settings2 className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Parameters & Assessment</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12conics_parameters_assessment')}</h2>
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] space-y-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Interactive Variables</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.m12conics_interactive_variables')}</h3>
    {conicType === 'parabola' && (
     <div>
-    <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Focus distance (p): {p}</label>
+    <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12conics_focus_distance_p')} {p}</label>
     <input type="range" min="1" max="20" step="0.5" value={p} onChange={e => setP(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
    )}
    {conicType !== 'parabola' && (
     <>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Parameter a: {a}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12conics_parameter_a')} {a}</label>
      <input type="range" min="2" max="30" step="1" value={a} onChange={e => setA(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Parameter b: {b}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12conics_parameter_b')} {b}</label>
      <input type="range" min="2" max="30" step="1" value={b} onChange={e => setB(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     </>
@@ -259,7 +263,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 flex-1 flex flex-col dark:bg-teal-950/20 dark:border-teal-900">
    <div className="flex items-center gap-2 text-blue-800 mb-3 shrink-0 dark:text-[#ffffff]">
     <Calculator className="w-5 h-5" />
-    <h3 className="font-semibold">Lab Computation Task</h3>
+    <h3 className="font-semibold">{t('lab.m12conics_lab_computation_task')}</h3>
    </div>
    
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 flex-1">
@@ -272,28 +276,29 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
      type="number" 
      value={userAnswer}
      onChange={e => setUserAnswer(e.target.value)}
-     placeholder="Enter answer" 
+     placeholder={t('lab.m12conics_enter_answer')} 
      className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-     Verify
-    </button>
+     
+                                      {t('lab.m12conics_verify')}
+                                     </button>
     </div>
 
     {feedback === "correct" && (
     <div className="flex items-center gap-2 text-green-700 bg-green-50 p-2 rounded border border-green-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
      <CheckCircle2 className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Excellent! Your calculation is correct.</span>
+     <span className="font-medium text-sm">{t('lab.m12conics_excellent_your_calculation_is_')}</span>
     </div>
     )}
 
     {feedback === "incorrect" && (
     <div className="flex items-center gap-2 text-red-700 bg-red-50 p-2 rounded border border-red-200">
      <XCircle className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Incorrect. Double-check your formula.</span>
+     <span className="font-medium text-sm">{t('lab.m12conics_incorrect_double_check_your_fo')}</span>
     </div>
     )}
 
@@ -302,8 +307,9 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
     className="flex items-center justify-center gap-2 w-full text-blue-600 hover:bg-blue-100 px-4 py-2 rounded-md transition-colors text-sm font-medium border border-transparent mt-2"
     >
     <RotateCcw className="w-4 h-4" />
-    Generate New Scenario
-    </button>
+    
+                                 {t('lab.m12conics_generate_new_scenario')}
+                                 </button>
    </div>
    </div>
   </div>

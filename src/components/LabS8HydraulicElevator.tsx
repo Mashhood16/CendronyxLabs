@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react';
 import {Hand } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8HydraulicElevator({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [pushed, setPushed] = useState(0); // 0 to 100
  const isDragging = useRef(false);
 
@@ -27,7 +29,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
   onPointerLeave={handlePointerUp}
   onPointerMove={handlePointerMove}
  >
-  <LabHeader onExit={onExit} title="Act 8.2: Hydraulic Elevator" subtitle="Fluid pressure multiplies force" />
+  <LabHeader onExit={onExit} title={t('lab.s8hydraulicelevator_act_8_2_hydraulic_elevator')} subtitle={t('lab.subtitle_fluid_pressure_multiplies')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
   
@@ -35,8 +37,9 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
    
    <p className="absolute top-6 text-slate-500 dark:text-[#71717a] flex items-center gap-2 font-bold animate-pulse">
    <Hand className="w-5 h-5 text-blue-500" />
-   Drag the small syringe plunger DOWN
-   </p>
+   
+                        {t('lab.s8hydraulicelevator_drag_the_small_syringe_plunger')}
+                        </p>
 
    <div className="relative w-[500px] h-80 flex items-end">
    
@@ -98,10 +101,11 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
    </div>
 
    <div className="mt-12 bg-blue-50 border border-blue-200 px-6 py-4 rounded-xl text-blue-900 text-center max-w-md dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-   <h3 className="font-bold mb-1">Pascal's Principle</h3>
+   <h3 className="font-bold mb-1">{t('lab.s8hydraulicelevator_pascal_s_principle')}</h3>
    <p className="text-sm">
-    Pressing the small syringe transfers fluid pressure equally to the large syringe. Because the large syringe has a bigger area, it exerts a <strong>larger force</strong>, lifting the heavy car!
-   </p>
+    
+                             {t('lab.s8hydraulicelevator_pressing_the_small_syringe_tra')} <strong>{t('lab.s8hydraulicelevator_larger_force')}</strong>{t('lab.s8hydraulicelevator_lifting_the_heavy_car')}
+                            </p>
    </div>
 
   </div>

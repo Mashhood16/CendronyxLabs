@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Droplet, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabS8DNAExtractionProps {
  onExit?: () => void;
@@ -14,11 +15,12 @@ const STEPS = [
 ];
 
 export default function LabS8DNAExtraction({ onExit }: LabS8DNAExtractionProps) {
+    const { t } = useTranslate();
  const [currentStep, setCurrentStep] = useState(0);
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 3.1: DNA Extraction" subtitle="Extract visible DNA strands from a strawberry" />
+  <LabHeader onExit={onExit} title={t('lab.s8dnaextraction_act_3_1_dna_extraction')} subtitle={t('lab.subtitle_extract_visible_strands')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Left Column: Simulation */}
@@ -78,7 +80,7 @@ export default function LabS8DNAExtraction({ onExit }: LabS8DNAExtractionProps) 
   {/* Right Column: Steps */}
   <div className="w-full md:w-96 flex flex-col gap-4">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col h-full">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-6 text-lg">Extraction Protocol</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-6 text-lg">{t('lab.s8dnaextraction_extraction_protocol')}</h3>
    
    <div className="flex flex-col gap-4 flex-1">
     {STEPS.map((step, index) => {
@@ -121,10 +123,11 @@ export default function LabS8DNAExtraction({ onExit }: LabS8DNAExtractionProps) 
 
    {currentStep >= 4 && (
     <div className="mt-6 p-4 bg-green-100 rounded-xl border border-green-200 animate-fade-in text-center">
-    <h4 className="font-bold text-green-800 mb-1 dark:text-[#ffffff]">Success!</h4>
+    <h4 className="font-bold text-green-800 mb-1 dark:text-[#ffffff]">{t('lab.s8dnaextraction_success')}</h4>
     <p className="text-sm text-green-700">
-     The fluffy white precipitate is the DNA separating from the strawberry cells. The soap broke the cell membranes, and the alcohol caused the DNA to precipitate out of the solution!
-    </p>
+     
+                                      {t('lab.s8dnaextraction_the_fluffy_white_precipitate_i')}
+                                     </p>
     </div>
    )}
    </div>

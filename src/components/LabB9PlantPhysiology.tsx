@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Thermometer, Wind, Sun, Moon, Play, RotateCcw, CheckCircle, Info, Flame, Droplet, Activity, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'Potometer' | 'Hydrilla' | 'Indicator'>('Potometer');
 
@@ -119,7 +121,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Plant Physiology" />
+  <LabHeader onExit={onExit} title={t('lab.b9plantphysiology_virtual_lab_plant_physiology')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -128,12 +130,13 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b9plantphysiology_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b9plantphysiology_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
@@ -141,28 +144,30 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
    <div>
    <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
     <Info className="w-5 h-5 mr-2 text-emerald-600" />
-    Theory & Context
-   </h2>
+    
+                             {t('lab.b9plantphysiology_theory_context')}
+                            </h2>
    <p className="text-gray-600 text-sm leading-relaxed mb-2">
-    Plants perform essential physiological processes: <strong>Transpiration</strong> (water loss), <strong>Photosynthesis</strong> (producing oxygen in light), and <strong>Respiration</strong> (producing CO₂ continuously).
-   </p>
+    
+                             {t('lab.b9plantphysiology_plants_perform_essential_physi')} <strong>{t('lab.b9plantphysiology_transpiration')}</strong>  {t('lab.b9plantphysiology_water_loss')} <strong>{t('lab.b9plantphysiology_photosynthesis')}</strong>  {t('lab.b9plantphysiology_producing_oxygen_in_light_and')} <strong>{t('lab.b9plantphysiology_respiration')}</strong>  {t('lab.b9plantphysiology_producing_co_continuously')}
+                            </p>
    </div>
 
    <div className="space-y-4 flex-1">
-   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Lab Setup: {activeTab}</h3>
+   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">{t('lab.b9plantphysiology_lab_setup')} {activeTab}</h3>
    
    {activeTab === 'Potometer' && (
     <>
     <div className="space-y-2 pt-4">
      <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
-     <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> Temperature (°C)</span>
+     <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" />  {t('lab.b9plantphysiology_temperature_c')}</span>
      <span>{temp}°C</span>
      </label>
      <input type="range" min="10" max="40" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <div className="space-y-2 pt-4">
      <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
-     <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-[#71717a]" /> Wind Speed</span>
+     <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-[#71717a]" />  {t('lab.b9plantphysiology_wind_speed')}</span>
      <span>{wind}</span>
      </label>
      <input type="range" min="0" max="10" value={wind} onChange={(e) => setWind(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -173,7 +178,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
    {activeTab === 'Hydrilla' && (
     <div className="space-y-2 pt-4">
     <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
-     <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" /> Light Intensity (%)</span>
+     <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" />  {t('lab.b9plantphysiology_light_intensity')}</span>
      <span>{lightIntensity}%</span>
     </label>
     <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -182,14 +187,14 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
    {activeTab === 'Indicator' && (
     <div className="space-y-2 pt-4">
-    <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff] block mb-2">Environment State</label>
+    <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff] block mb-2">{t('lab.b9plantphysiology_environment_state')}</label>
     <div className="flex space-x-2">
      <button onClick={() => setIsLight(true)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${isLight ? 'bg-yellow-100 text-yellow-700 border-2 border-yellow-400' : 'bg-gray-100 text-gray-600'}`}>
-     <Sun className="w-4 h-4 mr-2" /> Light
-     </button>
+     <Sun className="w-4 h-4 mr-2" />  {t('lab.b9plantphysiology_light')}
+                                          </button>
      <button onClick={() => setIsLight(false)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${!isLight ? 'bg-slate-700 dark:bg-[#121212] text-white border-2 border-slate-900 dark:border-slate-500' : 'bg-gray-100 text-gray-600'}`}>
-     <Moon className="w-4 h-4 mr-2" /> Dark
-     </button>
+     <Moon className="w-4 h-4 mr-2" />  {t('lab.b9plantphysiology_dark')}
+                                          </button>
     </div>
     </div>
    )}
@@ -198,11 +203,11 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <div className="flex space-x-2 mb-4">
-   <button onClick={() => {setActiveTab('Potometer'); setBubblePos(0); setPotometerRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Potometer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Droplet className="w-4 h-4 inline mr-1" /> Potometer</button>
-   <button onClick={() => {setActiveTab('Hydrilla'); setGasVolume(0); setHydrillaRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Hydrilla' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Sun className="w-4 h-4 inline mr-1" /> Hydrilla</button>
-   <button onClick={() => {setActiveTab('Indicator'); setIndicatorTime(0); setIndicatorRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Indicator' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Activity className="w-4 h-4 inline mr-1" /> Indicator</button>
+   <button onClick={() => {setActiveTab('Potometer'); setBubblePos(0); setPotometerRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Potometer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Droplet className="w-4 h-4 inline mr-1" />  {t('lab.b9plantphysiology_potometer')}</button>
+   <button onClick={() => {setActiveTab('Hydrilla'); setGasVolume(0); setHydrillaRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Hydrilla' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Sun className="w-4 h-4 inline mr-1" />  {t('lab.b9plantphysiology_hydrilla')}</button>
+   <button onClick={() => {setActiveTab('Indicator'); setIndicatorTime(0); setIndicatorRunning(false);}} className={`px-2 py-2 flex-1 rounded-lg text-xs font-semibold transition ${activeTab === 'Indicator' ? 'bg-emerald-600 text-white' : 'bg-gray-100 hover:bg-gray-200'}`}><Activity className="w-4 h-4 inline mr-1" />  {t('lab.b9plantphysiology_indicator')}</button>
    </div>
 
    <div className={`relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow- border-2 border-slate-200 dark:border-[#1c1b1b] flex-1 flex-col items-center justify-center p-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
@@ -281,7 +286,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
       {matchstickState === 'pop' && (
       <g>
        <path d="M 0 -30 Q -10 -45 0 -60 Q 10 -45 0 -30 Z" fill="#facc15" stroke="#ef4444" strokeWidth="2" />
-       <text x="0" y="-70" textAnchor="middle" fill="#ef4444" fontSize="12" fontWeight="bold">Relights!</text>
+       <text x="0" y="-70" textAnchor="middle" fill="#ef4444" fontSize="12" fontWeight="bold">{t('lab.b9plantphysiology_relights')}</text>
       </g>
       )}
      </g>
@@ -294,13 +299,13 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
      {/* Tube 1 (Control) */}
      <rect x="100" y="80" width="40" height="180" rx="20" fill="none" stroke="#cbd5e1" strokeWidth="4" />
      <rect x="102" y="150" width="36" height="108" rx="18" fill="#ef4444" opacity="0.6" />
-     <text x="120" y="280" textAnchor="middle" fontSize="12" fill="#64748b" fontWeight="bold">Control</text>
+     <text x="120" y="280" textAnchor="middle" fontSize="12" fill="#64748b" fontWeight="bold">{t('lab.b9plantphysiology_control')}</text>
 
      {/* Tube 2 (Leaf) */}
      <rect x="250" y="80" width="40" height="180" rx="20" fill="none" stroke="#cbd5e1" strokeWidth="4" />
      <rect x="252" y="150" width="36" height="108" rx="18" fill={isLight ? `rgb(${239 - indicatorTime}, ${68 - indicatorTime*0.4}, ${68 + indicatorTime*1.5})` : `rgb(${239 + indicatorTime*0.1}, ${68 + indicatorTime*1.5}, ${68 - indicatorTime*0.5})`} opacity="0.6" />
      <path d="M 270 180 Q 255 200 270 230 Q 285 200 270 180 Z" fill="#22c55e" />
-     <text x="270" y="280" textAnchor="middle" fontSize="12" fill="#64748b" fontWeight="bold">Leaf</text>
+     <text x="270" y="280" textAnchor="middle" fontSize="12" fill="#64748b" fontWeight="bold">{t('lab.b9plantphysiology_leaf')}</text>
      
      {/* Environment Icon */}
      {isLight ? <Sun className="text-yellow-500 w-12 h-12" x="180" y="20" /> : <Moon className="text-slate-400 w-12 h-12" x="180" y="20" />}
@@ -321,8 +326,8 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
      {hydrillaRunning ? <RotateCcw className="w-4 h-4 mr-1" /> : <Play className="w-4 h-4 mr-1" />} {hydrillaRunning ? 'Stop' : 'Start'}
      </button>
      <button onClick={handleTestGas} disabled={gasVolume < 30} className={`p-2 flex items-center rounded-lg text-sm font-semibold bg-amber-100 text-amber-700 disabled:opacity-50 flex-col `}>
-     <Flame className="w-4 h-4 mr-1" /> Test Gas
-     </button>
+     <Flame className="w-4 h-4 mr-1" />  {t('lab.b9plantphysiology_test_gas')}
+                                          </button>
     </>
     )}
     {activeTab === 'Indicator' && (
@@ -336,31 +341,32 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
     if(activeTab === 'Potometer') { setBubblePos(0); setPotometerRunning(false); }
     if(activeTab === 'Hydrilla') { setGasVolume(0); setHydrillaRunning(false); }
     if(activeTab === 'Indicator') { setIndicatorTime(0); setIndicatorRunning(false); }
-   }} className={`p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 flex-col `} title="Reset">
+   }} className={`p-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 flex-col `} title={t('lab.b9plantphysiology_reset')}>
     <RotateCcw className="w-5 h-5" />
    </button>
    </div>
   </div>
 
   {/* Right Column: Data & Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
    <Save className="w-5 h-5 mr-2 text-emerald-600" />
-   Data Logging & Analysis
-   </h2>
+   
+                        {t('lab.b9plantphysiology_data_logging_analysis')}
+                        </h2>
    
    <button onClick={recordData} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
-   <CheckCircle className="w-4 h-4 mr-2" /> Record Data
-   </button>
+   <CheckCircle className="w-4 h-4 mr-2" />  {t('lab.b9plantphysiology_record_data')}
+                        </button>
 
    <div className="lg:overflow-y-auto max-h-40 mb-6 border rounded-lg">
    <table className="w-full text-xs text-left">
     <thead className="bg-gray-50 sticky top-0">
     <tr>
-     <th className="px-2 py-2">Exp.</th>
-     <th className="px-2 py-2">Cond 1</th>
-     <th className="px-2 py-2">Cond 2</th>
-     <th className="px-2 py-2">Result</th>
+     <th className="px-2 py-2">{t('lab.b9plantphysiology_exp')}</th>
+     <th className="px-2 py-2">{t('lab.b9plantphysiology_cond_1')}</th>
+     <th className="px-2 py-2">{t('lab.b9plantphysiology_cond_2')}</th>
+     <th className="px-2 py-2">{t('lab.b9plantphysiology_result')}</th>
     </tr>
     </thead>
     <tbody>
@@ -374,7 +380,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
     ))}
     {dataPoints.length === 0 && (
      <tr>
-     <td colSpan={4} className="px-3 py-4 text-center text-gray-400">No data recorded yet</td>
+     <td colSpan={4} className="px-3 py-4 text-center text-gray-400">{t('lab.b9plantphysiology_no_data_recorded_yet')}</td>
      </tr>
     )}
     </tbody>
@@ -382,24 +388,25 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
    </div>
 
    <div className="flex-1 space-y-4">
-   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Assessment</h3>
+   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">{t('lab.b9plantphysiology_assessment')}</h3>
    <div className="space-y-3">
     <div>
-    <label className="text-sm text-gray-600 block mb-1">1. How does increasing wind affect the transpiration rate?</label>
-    <input type="text" value={q1} onChange={(e) => setQ1(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="e.g. increases" />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9plantphysiology_1_how_does_increasing_wind_aff')}</label>
+    <input type="text" value={q1} onChange={(e) => setQ1(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9plantphysiology_e_g_increases')} />
     </div>
     <div>
-    <label className="text-sm text-gray-600 block mb-1">2. What gas is collected in the Hydrilla test tube?</label>
-    <input type="text" value={q2} onChange={(e) => setQ2(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="Name of gas..." />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9plantphysiology_2_what_gas_is_collected_in_the')}</label>
+    <input type="text" value={q2} onChange={(e) => setQ2(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9plantphysiology_name_of_gas')} />
     </div>
     <div>
-    <label className="text-sm text-gray-600 block mb-1">3. In the dark, the indicator turns yellow due to CO₂ production. What process causes this?</label>
-    <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="Process name..." />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9plantphysiology_3_in_the_dark_the_indicator_tu')}</label>
+    <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9plantphysiology_process_name')} />
     </div>
    </div>
    <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    Check Answers
-   </button>
+    
+                             {t('lab.b9plantphysiology_check_answers')}
+                            </button>
    {feedback && (
     <div className={`p-3 mt-2 rounded-lg text-sm font-medium ${feedback.includes('Excellent') ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
     {feedback}

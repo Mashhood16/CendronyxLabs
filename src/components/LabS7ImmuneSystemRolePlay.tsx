@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Bug } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [phase, setPhase] = useState(0); // 0: start, 1: breach, 2: T-cells, 3: B-cells
 
  const advance = () => {
@@ -19,12 +21,12 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-indigo-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 3: Immune System Role Play" />
+  <LabHeader onExit={onExit} title={t('lab.s7immunesystemroleplay_unit_3_immune_system_role_play')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-indigo-100 max-w-3xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-indigo-800 mb-4 dark:text-[#ffffff]">The Body's Defense Army</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Step through this simulation to see how the skin, T-Cells, and B-Cells act as the lines of defense against invading pathogens (germs).</p>
+   <h2 className="text-2xl font-bold text-indigo-800 mb-4 dark:text-[#ffffff]">{t('lab.s7immunesystemroleplay_the_body_s_defense_army')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7immunesystemroleplay_step_through_this_simulation_t')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -38,8 +40,9 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
     onClick={reset}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset Simulation
-   </button>
+    
+                             {t('lab.s7immunesystemroleplay_reset_simulation')}
+                            </button>
    </div>
   </div>
 
@@ -48,7 +51,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
    
    {/* Outside (Pathogens) */}
    <div className="w-1/4 bg-[#121212] dark:bg-[#121212] h-full p-4 flex flex-col items-center justify-center relative">
-   <h3 className="text-white font-bold mb-4 z-10 text-center">Outside World<br/>(Pathogens)</h3>
+   <h3 className="text-white font-bold mb-4 z-10 text-center">{t('lab.s7immunesystemroleplay_outside_world')}<br/>{t('lab.s7immunesystemroleplay_pathogens')}</h3>
    
    {/* Pathogens */}
    {phase === 0 && (
@@ -71,7 +74,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
 
    {/* Inside Body (Bloodstream) */}
    <div className="flex-1 bg-red-50 dark:bg-red-900/20 relative p-8">
-   <h3 className="font-bold text-red-900/50 dark:text-red-100/50 text-2xl absolute top-8 right-8">Inside the Body</h3>
+   <h3 className="font-bold text-red-900/50 dark:text-red-100/50 text-2xl absolute top-8 right-8">{t('lab.s7immunesystemroleplay_inside_the_body')}</h3>
 
    {/* Pathogens entering */}
    {phase >= 1 && (
@@ -80,7 +83,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
      <Bug className="text-green-600 w-12 h-12 animate-pulse" />
      <Bug className="text-green-600 w-12 h-12 animate-pulse" />
     </div>
-    {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-slate-50 dark:bg-[#121212] px-2 py-1 rounded shadow">Pathogens invading!</div>}
+    {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-slate-50 dark:bg-[#121212] px-2 py-1 rounded shadow">{t('lab.s7immunesystemroleplay_pathogens_invading')}</div>}
     </div>
    )}
 
@@ -92,8 +95,9 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
     </div>
     {phase === 2 && (
      <div className="absolute -top-12 left-1/2 -ml-24 w-48 text-xs font-bold text-blue-800 bg-blue-100 px-3 py-2 rounded-lg shadow-md border border-blue-300 dark:text-[#ffffff]">
-     "I am the T-Cell! I destroy infected cells and signal the B-Cells!"
-     </div>
+     
+                                          {t('lab.s7immunesystemroleplay_i_am_the_t_cell_i_destroy_infe')}
+                                          </div>
     )}
     </div>
    )}
@@ -112,8 +116,9 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
      </div>
     </div>
     <div className="absolute -top-16 left-0 w-64 text-xs font-bold text-indigo-800 bg-indigo-100 px-3 py-2 rounded-lg shadow-md border border-indigo-300 dark:text-[#ffffff]">
-     "I am the B-Cell! I create specific 'Y' shaped antibodies to neutralize the pathogens and remember them for next time!"
-    </div>
+     
+                                      {t('lab.s7immunesystemroleplay_i_am_the_b_cell_i_create_speci')}
+                                     </div>
     </div>
    )}
    </div>

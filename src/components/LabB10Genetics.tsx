@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Beaker, CheckCircle, RotateCcw, MousePointerClick } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 type CrossType = 'monohybrid' | 'dihybrid';
 
 export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [crossType, setCrossType] = useState<CrossType>('monohybrid');
  const [trials, setTrials] = useState<string[]>([]);
@@ -129,7 +131,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Mendelian Genetics" />
+  <LabHeader onExit={onExit} title={t('lab.b10genetics_virtual_lab_mendelian_genetics')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -138,12 +140,13 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b10genetics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b10genetics_lab')}</button>
   </div>
   <main className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory */}
@@ -152,34 +155,37 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
    <div className={`p-3 bg-blue-100 rounded-xl text-blue-600 flex-col `}>
     <Beaker className="w-6 h-6" />
    </div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Theory & Context</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10genetics_theory_context')}</h2>
    </div>
 
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa]">
    <p>
-    Mendelian genetics explores how traits are passed from parents to offspring. The fundamental laws are demonstrated using statistical probabilities of fertilization.
-   </p>
+    
+                             {t('lab.b10genetics_mendelian_genetics_explores_ho')}
+                            </p>
 
    <div className={`p-4 bg-blue-50 rounded-lg text-blue-900 text-sm dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    <h3 className="font-bold mb-2 flex items-center gap-2">Law of Segregation</h3>
+    <h3 className="font-bold mb-2 flex items-center gap-2">{t('lab.b10genetics_law_of_segregation')}</h3>
     <p>
-    In a <strong>Monohybrid Cross (Yy × Yy)</strong>, each parent passes one randomly selected allele to the offspring. Yellow (Y) is dominant over Green (y). This leads to an expected 3:1 phenotypic ratio.
-    </p>
+    
+                                 {t('lab.b10genetics_in_a')} <strong>{t('lab.b10genetics_monohybrid_cross_yy_yy')}</strong>{t('lab.b10genetics_each_parent_passes_one_randoml')}
+                                 </p>
    </div>
 
    <div className="p-4 bg-indigo-50 rounded-lg text-indigo-900 text-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
-    <h3 className="font-bold mb-2 flex items-center gap-2">Law of Independent Assortment</h3>
+    <h3 className="font-bold mb-2 flex items-center gap-2">{t('lab.b10genetics_law_of_independent_assortment')}</h3>
     <p>
-    In a <strong>Dihybrid Cross (YyRr × YyRr)</strong>, alleles for different traits sort independently. Round (R) is dominant over wrinkled (r). This leads to an expected 9:3:3:1 phenotypic ratio.
-    </p>
+    
+                                 {t('lab.b10genetics_in_a')} <strong>{t('lab.b10genetics_dihybrid_cross_yyrr_yyrr')}</strong>{t('lab.b10genetics_alleles_for_different_traits_s')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Interactive Simulator */}
-  <div className={`lg:col-span-1 bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`lg:col-span-1 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between w-full mb-6">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Fertilization Simulator</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10genetics_fertilization_simulator')}</h2>
    <button
     onClick={() => {
     setTrials([]);
@@ -187,7 +193,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
     setSelectedFemale(null);
     }}
     className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors"
-    title="Reset Data"
+    title={t('lab.b10genetics_reset_data')}
    >
     <RotateCcw className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
    </button>
@@ -198,19 +204,22 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
     onClick={() => handleModeSwitch('monohybrid')}
     className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${ crossType === 'monohybrid' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]' }`}
    >
-    Monohybrid
-   </button>
+    
+                             {t('lab.b10genetics_monohybrid')}
+                            </button>
    <button
     onClick={() => handleModeSwitch('dihybrid')}
     className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${ crossType === 'dihybrid' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]' }`}
    >
-    Dihybrid
-   </button>
+    
+                             {t('lab.b10genetics_dihybrid')}
+                            </button>
    </div>
 
    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6 text-center">
-   Click each bowl to randomly draw an allele from the parent's gamete pool, simulating fertilization.
-   </p>
+   
+                        {t('lab.b10genetics_click_each_bowl_to_randomly_dr')}
+                        </p>
 
    <div className="flex justify-around w-full mt-4">
    {/* Male Bowl */}
@@ -222,14 +231,14 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
      <div className="w-12 h-12"></div>
     )}
     </div>
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Paternal Gametes</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.b10genetics_paternal_gametes')}</h3>
     <button
     onClick={handleDrawMale}
     className={`w-32 h-32 bg-blue-100 rounded-b-full border-4 border-blue-300 shadow-inner flex flex-wrap items-center justify-center gap-1 p-3 cursor-pointer hover:bg-blue-200 transition-colors relative group `}
     >
     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 bg-blue-900/10 rounded-b-full transition-opacity z-10">
      <MousePointerClick className="text-blue-700 w-8 h-8" />
-     <span className="font-bold text-blue-800 text-sm dark:text-[#ffffff]">Draw</span>
+     <span className="font-bold text-blue-800 text-sm dark:text-[#ffffff]">{t('lab.b10genetics_draw')}</span>
     </div>
     {(crossType === 'monohybrid' ? monoGametes : diGametes).map((g, i) => (
      <div key={i} className="scale-75 pointer-events-none">
@@ -252,14 +261,14 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
      <div className="w-12 h-12"></div>
     )}
     </div>
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Maternal Gametes</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.b10genetics_maternal_gametes')}</h3>
     <button
     onClick={handleDrawFemale}
     className={`w-32 h-32 bg-pink-100 rounded-b-full border-4 border-pink-300 shadow-inner flex flex-wrap items-center justify-center gap-1 p-3 cursor-pointer hover:bg-pink-200 transition-colors relative group `}
     >
     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 bg-pink-900/10 rounded-b-full transition-opacity z-10">
      <MousePointerClick className="text-pink-700 w-8 h-8" />
-     <span className="font-bold text-pink-800 text-sm">Draw</span>
+     <span className="font-bold text-pink-800 text-sm">{t('lab.b10genetics_draw')}</span>
     </div>
     {(crossType === 'monohybrid' ? monoGametes : diGametes).map((g, i) => (
      <div key={i} className="scale-75 pointer-events-none">
@@ -275,52 +284,54 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
     onClick={() => autoDraw(10)}
     className="flex-1 px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white font-bold rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors"
    >
-    Auto Draw 10
-   </button>
+    
+                             {t('lab.b10genetics_auto_draw_10')}
+                            </button>
    <button
     onClick={() => autoDraw(50)}
     className="flex-1 px-4 py-2 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Auto Draw 50
-   </button>
+    
+                             {t('lab.b10genetics_auto_draw_50')}
+                            </button>
    </div>
   </div>
 
   {/* Right Column: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <CheckCircle className="w-6 h-6 text-green-500" /> Analysis & Assessment
-   </h2>
+   <CheckCircle className="w-6 h-6 text-green-500" />  {t('lab.b10genetics_analysis_assessment')}
+                        </h2>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">Observation Log ({trials.length} trials)</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.b10genetics_observation_log')}{trials.length}  {t('lab.b10genetics_trials')}</h3>
    {crossType === 'monohybrid' ? (
     <div className="grid grid-cols-2 gap-3 text-sm">
     <div className="flex flex-col p-3 bg-yellow-100 rounded border border-yellow-200 text-yellow-900">
-     <span className="font-semibold">Yellow</span>
+     <span className="font-semibold">{t('lab.b10genetics_yellow')}</span>
      <span className="text-xl font-bold">{phenotypeCounts['Yellow'] || 0}</span>
     </div>
     <div className="flex flex-col p-3 bg-green-100 rounded border border-green-200 text-green-900 dark:text-[#ffffff]">
-     <span className="font-semibold">Green</span>
+     <span className="font-semibold">{t('lab.b10genetics_green')}</span>
      <span className="text-xl font-bold">{phenotypeCounts['Green'] || 0}</span>
     </div>
     </div>
    ) : (
     <div className="grid grid-cols-2 gap-3 text-sm">
     <div className="flex flex-col p-2 bg-yellow-100 rounded border border-yellow-300 text-yellow-900">
-     <span className="font-semibold text-xs">Yellow Round</span>
+     <span className="font-semibold text-xs">{t('lab.b10genetics_yellow_round')}</span>
      <span className="text-lg font-bold">{phenotypeCounts['Yellow Round'] || 0}</span>
     </div>
     <div className="flex flex-col p-2 bg-yellow-50 rounded border-2 border-dashed border-yellow-400 text-yellow-900">
-     <span className="font-semibold text-xs">Yellow Wrinkled</span>
+     <span className="font-semibold text-xs">{t('lab.b10genetics_yellow_wrinkled')}</span>
      <span className="text-lg font-bold">{phenotypeCounts['Yellow Wrinkled'] || 0}</span>
     </div>
     <div className="flex flex-col p-2 bg-green-100 rounded border border-green-300 text-green-900 dark:text-[#ffffff]">
-     <span className="font-semibold text-xs">Green Round</span>
+     <span className="font-semibold text-xs">{t('lab.b10genetics_green_round')}</span>
      <span className="text-lg font-bold">{phenotypeCounts['Green Round'] || 0}</span>
     </div>
     <div className="flex flex-col p-2 bg-green-50 rounded border-2 border-dashed border-green-400 text-green-900 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
-     <span className="font-semibold text-xs">Green Wrinkled</span>
+     <span className="font-semibold text-xs">{t('lab.b10genetics_green_wrinkled')}</span>
      <span className="text-lg font-bold">{phenotypeCounts['Green Wrinkled'] || 0}</span>
     </div>
     </div>
@@ -330,8 +341,9 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
    <div className="flex flex-col gap-4 mt-auto">
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-    1. Based on theory, what is the expected phenotypic ratio?
-    </label>
+    
+                                 {t('lab.b10genetics_1_based_on_theory_what_is_the_')}
+                                 </label>
     <input
     type="text"
     placeholder={crossType === 'monohybrid' ? 'e.g. 3:1' : 'e.g. 9:3:3:1'}
@@ -342,8 +354,9 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
    </div>
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-    2. Which exact phenotype outcome is fully recessive?
-    </label>
+    
+                                 {t('lab.b10genetics_2_which_exact_phenotype_outcom')}
+                                 </label>
     <input
     type="text"
     placeholder={crossType === 'monohybrid' ? 'e.g. Green' : 'e.g. Green Wrinkled'}
@@ -356,8 +369,9 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
     onClick={handleCheck}
     className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md mt-2 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    Verify Answers
-   </button>
+    
+                             {t('lab.b10genetics_verify_answers')}
+                            </button>
    {feedback && (
     <div
     className={`p-4 rounded-lg text-sm font-semibold border ${ feedback.includes('Correct!') ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800' }`}

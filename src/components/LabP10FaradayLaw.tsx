@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import {Calculator, Activity, BookOpen, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10FaradayLaw({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [N, setN] = useState<number>(500); // Turns
  const [B, setB] = useState<number>(0.5); // Tesla
@@ -81,7 +83,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 17: Faraday's Law of Induction" subtitle="Investigate the induced EMF when a magnet moves through a coil." />
+  <LabHeader onExit={onExit} title={t('lab.p10faradaylaw_unit_17_faraday_s_law_of_induc')} subtitle={t('lab.subtitle_investigate_induced_when')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -90,12 +92,13 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10faradaylaw_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10faradaylaw_lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
@@ -103,29 +106,30 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`bg-red-600 p-4 text-white flex items-center gap-2 flex-col `}>
    <BookOpen className="w-5 h-5" />
-   <h2 className="font-bold text-lg">Theory & Setup</h2>
+   <h2 className="font-bold text-lg">{t('lab.10faradaylaw_theory_andsetup')}</h2>
    </div>
    <div className="p-6 flex-1 flex flex-col gap-6 lg:overflow-y-auto">
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
-    <p>According to Faraday's Law, the induced EMF <strong>ε</strong> is proportional to the rate of change of magnetic flux:</p>
+    <p>{t('lab.10faradaylaw_accordingtofaradayslawtheinducedemf')}<strong>ε</strong>{t('lab.10faradaylaw_isproportionaltotherateofchangeofma')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    ε = -N · (ΔΦ / Δt)
-    </div>
-    <p>For our mechanical setup, peak EMF is proportional to Turns (<strong>N</strong>), Field (<strong>B</strong>), Area (<strong>A</strong>), and Velocity (<strong>v</strong>):</p>
+    
+                                 {t('lab.p10faradaylaw_n_t')}
+                                 </div>
+    <p>{t('lab.p10faradaylaw_for_our_mechanical_setup_peak_')}<strong>N</strong>{t('lab.p10faradaylaw_field')}<strong>B</strong>{t('lab.p10faradaylaw_area')}<strong>A</strong>{t('lab.p10faradaylaw_and_velocity')}<strong>v</strong>):</p>
     <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
-    ε<sub>peak</sub> = c · N · B · A · v
-    </div>
-    <p className="text-xs text-slate-400">Where <em>c = 0.1</em> is our apparatus coupling constant.</p>
+    ε<sub>{t('lab.10faradaylaw_peak')}</sub>  {t('lab.p10faradaylaw_c_n_b_a_v')}
+                                 </div>
+    <p className="text-xs text-slate-400">{t('lab.10faradaylaw_where')}<em>{t('lab.10faradaylaw_c01')}</em>{t('lab.10faradaylaw_isourapparatuscouplingconstant')}</p>
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <Activity className="w-4 h-4 text-red-600" /> Controls
-    </h3>
+    <Activity className="w-4 h-4 text-red-600" />  {t('lab.p10faradaylaw_controls')}
+                                 </h3>
     
     <div className={`space-y-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Coil Turns (N)</label>
+     <label>{t('lab.p10faradaylaw_coil_turns_n')}</label>
      <span>{N}</span>
     </div>
     <input 
@@ -137,7 +141,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Magnet Strength (B)</label>
+     <label>{t('lab.p10faradaylaw_magnet_strength_b')}</label>
      <span>{B.toFixed(2)} T</span>
     </div>
     <input 
@@ -149,8 +153,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Insertion Speed (v)</label>
-     <span>{v.toFixed(1)} m/s</span>
+     <label>{t('lab.p10faradaylaw_insertion_speed_v')}</label>
+     <span>{v.toFixed(1)}  {t('lab.p10faradaylaw_m_s')}</span>
     </div>
     <input 
      type="range" min="0.1" max="5.0" step="0.1" 
@@ -162,7 +166,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     {!isMystery && (
     <div className="space-y-2">
      <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Coil Area (A)</label>
+     <label>{t('lab.p10faradaylaw_coil_area_a')}</label>
      <span>{A.toFixed(3)} m²</span>
      </div>
      <input 
@@ -178,31 +182,33 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
      onClick={startMystery}
      className="w-full mt-4 py-2 bg-indigo-100 text-indigo-700 font-semibold rounded-lg hover:bg-indigo-200 transition-colors border border-indigo-300"
     >
-     Find Unknown Area Challenge
-    </button>
+     
+                                      {t('lab.p10faradaylaw_find_unknown_area_challenge')}
+                                     </button>
     )}
     {isMystery && (
     <div className="mt-4 p-3 bg-indigo-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-     Mystery Mode! Find Coil Area 'A'.
-    </div>
+     
+                                      {t('lab.p10faradaylaw_mystery_mode_find_coil_area_a')}
+                                     </div>
     )}
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className="bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
    
    <div className="flex-1 relative w-full flex flex-col items-center mt-6">
    
    {/* Voltmeter */}
-   <div className="w-48 h-32 bg-white lg:bg-slate-50 dark:!bg-[#121212] border-4 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-full relative flex justify-center items-end pb-4 shadow-md z-10 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+   <div className="w-48 h-32 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] border-4 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-full relative flex justify-center items-end pb-4 shadow-md z-10 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     {/* Scale */}
     <div className="absolute top-4 w-32 h-16 border-t-2 border-dashed border-slate-400 dark:border-[#1c1b1b] rounded-t-full" />
     <div className="absolute top-2 font-bold text-slate-500 dark:text-[#71717a] text-xs">0</div>
     <div className="absolute top-10 left-4 font-bold text-red-500 text-xs">-</div>
     <div className="absolute top-10 right-4 font-bold text-green-500 text-xs">+</div>
-    <div className="absolute bottom-2 font-bold text-slate-800 dark:text-[#ffffff] tracking-widest text-[10px]">VOLTMETER</div>
+    <div className="absolute bottom-2 font-bold text-slate-800 dark:text-[#ffffff] tracking-widest text-[10px]">{t('lab.10faradaylaw_voltmeter')}</div>
     
     {/* Digital Readout */}
     <div className="absolute bottom-6 bg-[#121212] dark:bg-[#121212] text-green-400 font-mono text-xs px-2 py-0.5 rounded">
@@ -270,8 +276,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     disabled={animStatus !== 'idle'}
     className={`px-6 py-3 bg-red-600 hover:bg-red-500 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40 `}
    >
-    <Play className="w-5 h-5" fill="currentColor" /> Run & Record Data
-   </button>
+    <Play className="w-5 h-5" fill="currentColor" />  {t('lab.p10faradaylaw_run_record_data')}
+                            </button>
    </div>
   </div>
 
@@ -279,7 +285,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
    <div className="bg-blue-600 p-4 text-white flex items-center gap-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
    <Calculator className="w-5 h-5" />
-   <h2 className="font-bold text-lg">Data & Analysis</h2>
+   <h2 className="font-bold text-lg">{t('lab.10faradaylaw_data_andanalysis')}</h2>
    </div>
    
    <div className="p-4 flex-1 flex flex-col gap-4 lg:overflow-y-auto">
@@ -289,14 +295,14 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
      <th className="px-2 py-2">N</th>
-     <th className="px-2 py-2">B (T)</th>
-     <th className="px-2 py-2">v (m/s)</th>
-     <th className="px-2 py-2">ε (V)</th>
+     <th className="px-2 py-2">{t('lab.p10faradaylaw_b_t')}</th>
+     <th className="px-2 py-2">{t('lab.p10faradaylaw_v_m_s')}</th>
+     <th className="px-2 py-2">{t('lab.p10faradaylaw_v')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
-     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">No data recorded.</td></tr>
+     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">{t('lab.10faradaylaw_nodatarecorded')}</td></tr>
      ) : (
      data.map((row, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -313,7 +319,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
 
    {/* SVG Graph */}
    <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-col items-center shrink-0 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">v vs ε (Peak EMF)</h4>
+    <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">{t('lab.p10faradaylaw_v_vs_peak_emf')}</h4>
     <div className="relative w-full aspect-[3/2] max-w-[300px]">
     <svg viewBox="0 0 300 200" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner">
      {/* Axes */}
@@ -321,8 +327,8 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
      <line x1="40" y1="20" x2="40" y2="160" stroke="#94a3b8" strokeWidth="2" />
      
      {/* Labels */}
-     <text x="150" y="190" textAnchor="middle" fontSize="10" fill="#64748b">v (m/s)</text>
-     <text x="15" y="90" textAnchor="middle" transform="rotate(-90, 15, 90)" fontSize="10" fill="#64748b">ε (V)</text>
+     <text x="150" y="190" textAnchor="middle" fontSize="10" fill="#64748b">{t('lab.p10faradaylaw_v_m_s')}</text>
+     <text x="15" y="90" textAnchor="middle" transform="rotate(-90, 15, 90)" fontSize="10" fill="#64748b">{t('lab.p10faradaylaw_v')}</text>
 
      {/* Data Points */}
      {data.map((d, i) => (
@@ -345,13 +351,14 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
    {/* Assessment */}
    {isMystery && (
     <div className="mt-auto bg-indigo-50 p-4 rounded-xl border border-indigo-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h4 className="font-bold text-indigo-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find Area 'A'</h4>
+    <h4 className="font-bold text-indigo-800 mb-2 text-sm dark:text-[#ffffff]">{t('lab.10faradaylaw_analysisfindareaa')}</h4>
     <p className="text-xs text-indigo-700 mb-3">
-     Calculate the unknown coil area <strong>A</strong> using your data. <br/> ε = 0.1 · N · B · A · v.
-    </p>
+     
+                                      {t('lab.p10faradaylaw_calculate_the_unknown_coil_are')} <strong>A</strong>{t('lab.10faradaylaw_usingyourdata')}<br/>  {t('lab.p10faradaylaw_0_1_n_b_a_v')}
+                                     </p>
     <div className="flex gap-2">
      <input 
-     type="number" step="0.001" placeholder="Area in m²" 
+     type="number" step="0.001" placeholder={t('lab.p10faradaylaw_t_lab_10faradaylaw_areainm')} 
      value={answer} onChange={(e) => setAnswer(e.target.value)}
      className="flex-1 px-3 py-2 rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
      />
@@ -359,11 +366,12 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
      onClick={handleCheck}
      className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.p10faradaylaw_check')}
+                                          </button>
     </div>
-    {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">Correct! You found A = {mysteryA} m²</div>}
-    {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">Incorrect. A = ε / (0.1 · N · B · v).</div>}
+    {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_correct_you_found_a')} {mysteryA} m²</div>}
+    {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_incorrect_a_0_1_n_b_v')}</div>}
     </div>
    )}
    </div>

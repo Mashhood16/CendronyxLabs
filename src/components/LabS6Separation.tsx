@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Flame, Wind } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6Separation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(0);
 
  const nextStep = () => {
@@ -22,12 +24,12 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-sky-50 font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 7: Separation of Mixtures" />
+  <LabHeader onExit={onExit} title={t('lab.s6separation_unit_7_separation_of_mixtures')} />
 
   <div className="flex-1 flex p-8 items-center justify-center gap-16">
   
   <div className="w-96 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-2xl font-bold mb-6 text-sky-800">Experiment Steps</h2>
+   <h2 className="text-2xl font-bold mb-6 text-sky-800">{t('lab.s6separation_experiment_steps')}</h2>
    
    <div className="space-y-4 relative">
    {/* Progress line */}
@@ -39,8 +41,8 @@ export default function LabS6Separation({ onExit }: LabProps) {
    >
     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 0 ? 'bg-sky-500' : step > 0 ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-[#121212]'}`}>1</div>
     <div className="flex-1">
-    <h3 className={`font-bold ${step === 0 ? 'text-sky-800' : ''}`}>Initial Mixture</h3>
-    <p className="text-xs">Observe salt and sand mixed.</p>
+    <h3 className={`font-bold ${step === 0 ? 'text-sky-800' : ''}`}>{t('lab.s6separation_initial_mixture')}</h3>
+    <p className="text-xs">{t('lab.s6separation_observe_salt_and_sand_mixed')}</p>
     </div>
    </button>
 
@@ -50,8 +52,8 @@ export default function LabS6Separation({ onExit }: LabProps) {
    >
     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 1 ? 'bg-sky-500' : step > 1 ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-[#121212]'}`}>2</div>
     <div className="flex-1">
-    <h3 className={`font-bold ${step === 1 ? 'text-sky-800' : ''}`}>Dissolving</h3>
-    <p className="text-xs">Add water. Salt dissolves, sand does not.</p>
+    <h3 className={`font-bold ${step === 1 ? 'text-sky-800' : ''}`}>{t('lab.s6separation_dissolving')}</h3>
+    <p className="text-xs">{t('lab.s6separation_add_water_salt_dissolves_sand_')}</p>
     </div>
    </button>
 
@@ -61,8 +63,8 @@ export default function LabS6Separation({ onExit }: LabProps) {
    >
     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 2 ? 'bg-sky-500' : step > 2 ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-[#121212]'}`}>3</div>
     <div className="flex-1">
-    <h3 className={`font-bold ${step === 2 ? 'text-sky-800' : ''}`}>Filtration</h3>
-    <p className="text-xs">Filter to separate sand from salt water.</p>
+    <h3 className={`font-bold ${step === 2 ? 'text-sky-800' : ''}`}>{t('lab.s6separation_filtration')}</h3>
+    <p className="text-xs">{t('lab.s6separation_filter_to_separate_sand_from_s')}</p>
     </div>
    </button>
 
@@ -72,14 +74,14 @@ export default function LabS6Separation({ onExit }: LabProps) {
    >
     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 3 ? 'bg-sky-500' : step > 3 ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-[#121212]'}`}>4</div>
     <div className="flex-1">
-    <h3 className={`font-bold ${step === 3 ? 'text-sky-800' : ''}`}>Evaporation</h3>
-    <p className="text-xs">Boil off water to recover pure salt.</p>
+    <h3 className={`font-bold ${step === 3 ? 'text-sky-800' : ''}`}>{t('lab.s6separation_evaporation')}</h3>
+    <p className="text-xs">{t('lab.s6separation_boil_off_water_to_recover_pure')}</p>
     </div>
    </button>
    </div>
    
    {step === 3 && (
-   <button onClick={() => setStep(0)} className="w-full mt-6 py-2 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded font-bold hover:bg-emerald-200">Restart Separation</button>
+   <button onClick={() => setStep(0)} className="w-full mt-6 py-2 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded font-bold hover:bg-emerald-200">{t('lab.s6separation_restart_separation')}</button>
    )}
   </div>
 

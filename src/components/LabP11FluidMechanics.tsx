@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Activity, Target, Save, Info, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [ballast, setBallast] = useState(100000);
  const [isRunning, setIsRunning] = useState(false);
@@ -78,7 +80,7 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Fluid Mechanics: Submarine Buoyancy Simulator" />
+  <LabHeader onExit={onExit} title={t('lab.p11_fluid_title')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -87,29 +89,27 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
+    {t('lab.tab.theory')}
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`flex items-center gap-2 border-b pb-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <Info className="text-blue-500" />
-   <h2 className="text-lg font-semibold">Theory & Setup</h2>
+   <h2 className="text-lg font-semibold">{t('lab.p11_fluid_theory_title')}</h2>
    </div>
-   <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
-   <p><strong>Archimedes Principle:</strong> The upward buoyant force exerted on a body immersed in a fluid is equal to the weight of the fluid displaced.</p>
-   <p><strong>Neutral Buoyancy:</strong> Reached when the total weight of the submarine (including ballast) exactly equals the buoyant force. <br/> <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">Fg = Fb</code> ➔ <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">(m_sub + m_ballast)g = ρVg</code></p>
-   </div>
+   <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2" dangerouslySetInnerHTML={{ __html: t('lab.p11_fluid_theory_p1') }} />
+   <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2" dangerouslySetInnerHTML={{ __html: t('lab.p11_fluid_theory_p2') }} />
    
    <div className="space-y-4 mt-4">
    <div>
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-    <span>Ballast Mass (kg)</span>
+    <span>{t('lab.p11_fluid_slider_ballast')}</span>
     <span>{ballast.toLocaleString()} kg</span>
     </label>
     <input type="range" min="50000" max="150000" step="5000" value={ballast} onChange={(e) => setBallast(Number(e.target.value))} className="w-full mt-1" disabled={isRunning} />
@@ -117,20 +117,20 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
    
    <div className="flex gap-2">
     <button onClick={() => setIsRunning(!isRunning)} className={`flex-1 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
-    {isRunning ? 'Pause' : 'Release Submarine'}
+    {isRunning ? t('lab.p11_fluid_pause_btn') : t('lab.p11_fluid_release_btn')}
     </button>
     <button onClick={handleReset} className={`py-2 px-4 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors flex-col `}>
-    Reset
+    {t('lab.p11_fluid_reset_btn')}
     </button>
    </div>
    </div>
   </div>
 
   {/* Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 border-b pb-2">
    <Activity className="text-green-500" />
-   <h2 className="text-lg font-semibold">Interactive Simulator</h2>
+   <h2 className="text-lg font-semibold">{t('lab.p11_fluid_sim_title')}</h2>
    </div>
    <div className={`relative flex-1 bg-blue-900 rounded-lg overflow- border border-slate-200 dark:border-[#1c1b1b] min-h-[300px] flex-col `}>
    <svg viewBox="0 0 400 400" className="w-full h-full absolute inset-0">
@@ -146,21 +146,21 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
     </g>
     
     <rect x="10" y="10" width="140" height="60" fill="rgba(255,255,255,0.8)" rx="4" />
-    <text x="20" y="30" className="text-sm font-bold fill-slate-800">Depth: {simState.depth.toFixed(1)} m</text>
-    <text x="20" y="55" className="text-sm font-bold fill-slate-800">Vel: {simState.v.toFixed(2)} m/s</text>
+    <text x="20" y="30" className="text-sm font-bold fill-slate-800">{t('lab.p11_fluid_label_depth', { depth: simState.depth.toFixed(1) })}</text>
+    <text x="20" y="55" className="text-sm font-bold fill-slate-800">{t('lab.p11_fluid_label_vel', { vel: simState.v.toFixed(2) })}</text>
    </svg>
    </div>
   </div>
 
   {/* Data & Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 border-b pb-2">
    <Target className="text-indigo-500" />
-   <h2 className="text-lg font-semibold">Data & Assessment</h2>
+   <h2 className="text-lg font-semibold">{t('lab.p11_fluid_data_title')}</h2>
    </div>
    
    <button onClick={handleRecord} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-500 text-white rounded-lg font-medium hover:bg-emerald-600 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-   <Save size={18} /> Record Data Point
+   <Save size={18} /> {t('lab.p11_fluid_record_btn')}
    </button>
    
    {dataPoints.length > 0 && (
@@ -168,8 +168,8 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
     <table className="w-full border-collapse">
     <thead>
      <tr className="bg-slate-100 dark:bg-[#121212]">
-     <th className="border p-1">Ballast (kg)</th>
-     <th className="border p-1">V_term (m/s)</th>
+     <th className="border p-1">{t('lab.p11_fluid_table_ballast')}</th>
+     <th className="border p-1">{t('lab.p11_fluid_table_vterm')}</th>
      </tr>
     </thead>
     <tbody>
@@ -185,9 +185,9 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
    )}
 
    <div className="mt-4 bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Analysis Question</h3>
+   <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.p11_fluid_data_title')}</h3>
    <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    A submarine in fresh water (ρ=1000 kg/m³) achieves neutral buoyancy (terminal velocity = 0) when total mass is 500,000 kg. Calculate its volume in m³.
+    {t('lab.p11_fluid_analysis_q')}
    </p>
    <div className="flex gap-2 items-center">
     <input 
@@ -195,14 +195,14 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
     value={assessmentAnswer} 
     onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }} 
     className="flex-1 p-2 border border-indigo-200 rounded outline-none focus:border-indigo-500"
-    placeholder="Enter Volume..."
+    placeholder={t('lab.p11_fluid_analysis_placeholder')}
     />
     <button onClick={checkAssessment} className="py-2 px-4 bg-indigo-600 text-white rounded font-medium hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-    Check
+    {t('lab.p11_fluid_check_btn')}
     </button>
    </div>
-   {assessmentStatus === 'correct' && <div className="mt-2 text-sm text-green-600 flex items-center gap-1"><CheckCircle size={16}/> Correct! V = m / ρ.</div>}
-   {assessmentStatus === 'incorrect' && <div className="mt-2 text-sm text-red-600 flex items-center gap-1"><XCircle size={16}/> Incorrect. Consider Archimedes principle: V = m / ρ</div>}
+   {assessmentStatus === 'correct' && <div className="mt-2 text-sm text-green-600 flex items-center gap-1"><CheckCircle size={16}/> {t('lab.p11_fluid_correct_fb')}</div>}
+   {assessmentStatus === 'incorrect' && <div className="mt-2 text-sm text-red-600 flex items-center gap-1"><XCircle size={16}/> {t('lab.p11_fluid_incorrect_fb')}</div>}
    </div>
   </div>
   </div>

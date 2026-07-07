@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeft, Check, RefreshCw, Settings, Sparkles, BookOpen , Sun, Moon} from 'lucide-react';
 import type { MouseEvent } from 'react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 type Part = { id: string; text: string; type: 'c1' | 'conj' | 'c2' };
 
@@ -34,6 +35,7 @@ const VALID_WELDS = [
 ];
 
 export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [selectedC1, setSelectedC1] = useState<string>("");
  const [selectedConj, setSelectedConj] = useState<string>("");
@@ -79,13 +81,14 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
    </button>
    <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
    <Settings className="w-6 h-6 text-indigo-500" />
-   Sentence Welder (Clauses & Conjunctions)
-   </h1>
+   
+                        {t('lab.e6clausesconjunctions_sentence_welder_clauses_conjun')}
+                        </h1>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -99,22 +102,22 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
    <div>
     <h2 className="text-lg font-semibold mb-2 flex items-center gap-2">
     <BookOpen className="w-5 h-5 text-blue-500" />
-    Theory & Setup
-    </h2>
+    
+                                 {t('lab.e6clausesconjunctions_theory_setup')}
+                                 </h2>
     <p className="text-sm text-slate-600 dark:text-[#71717a]">
-    A <strong>clause</strong> contains a subject and a verb. 
-    We use <strong>conjunctions</strong> and <strong>relative pronouns</strong> (who, which, that) to connect clauses. Choose pieces below to form a logical complex sentence!
-    </p>
+    A <strong>{t('lab.e6clausesconjunctions_clause')}</strong>  {t('lab.e6clausesconjunctions_contains_a_subject_and_a_verb_')} <strong>{t('lab.e6clausesconjunctions_conjunctions')}</strong>  {t('lab.e6clausesconjunctions_and')} <strong>{t('lab.e6clausesconjunctions_relative_pronouns')}</strong>  {t('lab.e6clausesconjunctions_who_which_that_to_connect_clau')}
+                                 </p>
    </div>
 
    <div className="space-y-4">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">1. Independent Clause</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e6clausesconjunctions_1_independent_clause')}</h3>
     <div className="grid gap-2">
     {CLAUSES_1.map(c => (
      <button
      key={c.id}
      onClick={() => setSelectedC1(c.id)}
-     className={`p-3 text-left rounded-lg border transition-colors whitespace-normal ${ selectedC1 === c.id ? 'bg-blue-50 border-blue-500 dark:bg-blue-900/30 dark:border-blue-400' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
+     className={`p-3 text-left rounded-lg border transition-colors whitespace-normal ${ selectedC1 === c.id ? 'bg-blue-50 border-blue-500 dark:bg-blue-900/30 dark:border-blue-400' : 'bg-slate-50 dark:bg-[#000000] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
      >
      {c.text}
      </button>
@@ -123,13 +126,13 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
    </div>
 
    <div className="space-y-4">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">2. Conjunction / Pronoun</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e6clausesconjunctions_2_conjunction_pronoun')}</h3>
     <div className="flex flex-wrap gap-2">
     {CONJUNCTIONS.map(c => (
      <button
      key={c.id}
      onClick={() => setSelectedConj(c.id)}
-     className={`px-4 py-2 rounded-full border font-medium transition-colors whitespace-nowrap flex-shrink-0 ${ selectedConj === c.id ? 'bg-indigo-50 border-indigo-500 text-indigo-700 dark:bg-indigo-900/30 dark:border-indigo-400 dark:text-indigo-300' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
+     className={`px-4 py-2 rounded-full border font-medium transition-colors whitespace-nowrap flex-shrink-0 ${ selectedConj === c.id ? 'bg-indigo-50 border-indigo-500 text-indigo-700 dark:bg-indigo-900/30 dark:border-indigo-400 dark:text-indigo-300' : 'bg-slate-50 dark:bg-[#000000] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
      >
      {c.text}
      </button>
@@ -138,13 +141,13 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
    </div>
 
    <div className="space-y-4">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">3. Dependent Clause</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e6clausesconjunctions_3_dependent_clause')}</h3>
     <div className="grid gap-2">
     {CLAUSES_2.map(c => (
      <button
      key={c.id}
      onClick={() => setSelectedC2(c.id)}
-     className={`p-3 text-left rounded-lg border transition-colors whitespace-normal ${ selectedC2 === c.id ? 'bg-emerald-50 border-emerald-500 dark:bg-emerald-900/30 dark:border-emerald-400' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
+     className={`p-3 text-left rounded-lg border transition-colors whitespace-normal ${ selectedC2 === c.id ? 'bg-emerald-50 border-emerald-500 dark:bg-emerald-900/30 dark:border-emerald-400' : 'bg-slate-50 dark:bg-[#000000] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
      >
      {c.text}
      </button>
@@ -179,7 +182,7 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
     {!isWelding && !weldedSentence && (
     <div className="text-slate-500 flex flex-col items-center gap-4 z-10">
      <Settings className="w-16 h-16 opacity-50" />
-     <p>Select your parts on the left and click WELD.</p>
+     <p>{t('lab.e6clausesconjunctions_select_your_parts_on_the_left_')}</p>
     </div>
     )}
     
@@ -205,20 +208,21 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
      </div>
      {weldResult === 'fail' && (
      <p className="mt-6 text-slate-300 max-w-md mx-auto">
-      Warning: The independent clause does not logically or grammatically connect with this dependent clause using the chosen conjunction.
-     </p>
+      
+                                               {t('lab.e6clausesconjunctions_warning_the_independent_clause')}
+                                              </p>
      )}
      {weldResult === 'success' && (
      <p className="mt-6 text-slate-300 flex items-center justify-center gap-2">
-      <Check className="w-5 h-5 text-emerald-400" /> Perfect complex sentence!
-     </p>
+      <Check className="w-5 h-5 text-emerald-400" />  {t('lab.e6clausesconjunctions_perfect_complex_sentence')}
+                                              </p>
      )}
     </div>
     )}
    </div>
 
    <div className="w-full max-w-2xl bg-white dark:!bg-[#121212] rounded-xl p-4 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h4 className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-3 uppercase tracking-wider">Live Preview</h4>
+    <h4 className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-3 uppercase tracking-wider">{t('lab.e6clausesconjunctions_live_preview')}</h4>
     <div className="flex flex-col md:flex-row gap-3">
     <div className="flex-1 bg-blue-50 dark:bg-blue-900/20 p-3 rounded border border-blue-200 dark:border-blue-800/50 min-h-[60px] flex items-center justify-center text-center text-sm font-medium dark:text-blue-200">
      {CLAUSES_1.find(c => c.id === selectedC1)?.text || "..."}

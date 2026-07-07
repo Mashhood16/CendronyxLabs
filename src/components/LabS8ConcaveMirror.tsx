@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8ConcaveMirror({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [distance, setDistance] = useState(30); // 0 close, 100 far
  
  // Focal point is roughly at 50
@@ -35,15 +37,15 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 9.5: Shaving Mirror" subtitle="Concave Mirror Reflection" />
+  <LabHeader onExit={onExit} title={t('lab.s8concavemirror_act_9_5_shaving_mirror')} subtitle={t('lab.subtitle_concave_mirror_reflection')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
   
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full mb-6">
    <div className="flex justify-between text-sm font-bold text-slate-500 dark:text-[#71717a] mb-2">
-   <span>Very Close</span>
-   <span>Focal Point (Blurry)</span>
-   <span>Far Away</span>
+   <span>{t('lab.s8concavemirror_very_close')}</span>
+   <span>{t('lab.s8concavemirror_focal_point_blurry')}</span>
+   <span>{t('lab.s8concavemirror_far_away')}</span>
    </div>
    <input 
    type="range" min="0" max="100" value={distance} 
@@ -56,7 +58,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
    
    {/* Real world representation (Top-down view) */}
    <div className="absolute top-4 left-4 right-4 h-24 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex items-center px-4 gap-4 z-10">
-    <div className="w-24 font-bold text-sm text-slate-500 dark:text-[#71717a]">Top-Down View:</div>
+    <div className="w-24 font-bold text-sm text-slate-500 dark:text-[#71717a]">{t('lab.s8concavemirror_top_down_view')}</div>
     <div className="flex-1 h-full relative">
     {/* Mirror */}
     <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-16 border-r-4 border-indigo-500 rounded-r-full" />
@@ -89,18 +91,18 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
 
    {/* Properties Panel */}
    <div className="absolute bottom-6 right-6 bg-slate-50 dark:bg-[#121212]/90 backdrop-blur px-6 py-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-lg text-center z-20" style={{width: '220px'}}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2 text-sm">Image Properties</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2 text-sm">{t('lab.s8concavemirror_image_properties')}</h3>
    <div className="flex flex-col gap-1 text-xs font-medium">
     <div className="flex justify-between">
-    <span className="text-slate-500 dark:text-[#71717a]">Type:</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.s8concavemirror_type')}</span>
     <span className={isInsideFocal ? 'text-indigo-600' : 'text-blue-600'}>{isInsideFocal ? 'Virtual' : 'Real'}</span>
     </div>
     <div className="flex justify-between">
-    <span className="text-slate-500 dark:text-[#71717a]">Orientation:</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.s8concavemirror_orientation')}</span>
     <span className={isInsideFocal ? 'text-green-600' : 'text-red-600'}>{isInsideFocal ? 'Upright' : 'Inverted'}</span>
     </div>
     <div className="flex justify-between">
-    <span className="text-slate-500 dark:text-[#71717a]">Size:</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.s8concavemirror_size')}</span>
     <span className="text-amber-600">{scale > 1.2 ? 'Magnified' : scale < 0.8 ? 'Diminished' : 'Same Size'}</span>
     </div>
    </div>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ArrowLeft, Box, Landmark, Users, CheckCircle2, XCircle } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'volume' | 'partnership' | 'inheritance'>('volume');
 
  // Volume State
@@ -92,29 +94,32 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">Class 8: Roots & Finance Labs</h1>
+  <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">{t('lab.m8rootsfinance_class_8_roots_finance_labs')}</h1>
   <div className="flex flex-wrap gap-2">
    <button 
    onClick={() => setActiveTab('volume')}
    className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'volume' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
    <Box className="w-4 h-4 inline-block mr-2" />
-   Cube Roots
-   </button>
+   
+                        {t('lab.m8rootsfinance_cube_roots')}
+                        </button>
    <button 
    onClick={() => setActiveTab('partnership')}
    className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'partnership' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
    <Landmark className="w-4 h-4 inline-block mr-2" />
-   Partnership
-   </button>
+   
+                        {t('lab.m8rootsfinance_partnership')}
+                        </button>
    <button 
    onClick={() => setActiveTab('inheritance')}
    className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'inheritance' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
    <Users className="w-4 h-4 inline-block mr-2" />
-   Inheritance
-   </button>
+   
+                        {t('lab.m8rootsfinance_inheritance')}
+                        </button>
   </div>
   </header>
 
@@ -127,11 +132,12 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
      <Box className="w-5 h-5 text-blue-500" />
-     Architectural Volume Simulator
-    </h2>
+     
+                                      {t('lab.m8rootsfinance_architectural_volume_simulator')}
+                                     </h2>
     <div className="space-y-6">
      <div>
-     <label className="block text-sm font-medium mb-1">Volume of Cubic Structure (m³)</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_volume_of_cubic_structure_m')}</label>
      <input 
       type="range" min="0" max={perfectCubes.length - 1} 
       value={cubeIndex} onChange={(e) => setCubeIndex(parseInt(e.target.value))}
@@ -143,21 +149,23 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     </div>
 
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h2 className="text-lg font-bold mb-4">Assessment</h2>
+    <h2 className="text-lg font-bold mb-4">{t('lab.m8rootsfinance_assessment')}</h2>
     <p className="mb-4 text-sm">
-     Find the exact side length of the cubic structure by calculating the <strong>cube root</strong> of the volume.
-    </p>
+     
+                                      {t('lab.m8rootsfinance_find_the_exact_side_length_of_')} <strong>{t('lab.m8rootsfinance_cube_root')}</strong>  {t('lab.m8rootsfinance_of_the_volume')}
+                                     </p>
     <div className="flex items-center gap-3">
      <input 
      type="number" 
      value={volAns} 
      onChange={e => setVolAns(e.target.value)}
-     placeholder="Side Length (m)"
+     placeholder={t('lab.m8rootsfinance_side_length_m')}
      className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
      />
      <button onClick={checkVol} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-     Check Answer
-     </button>
+     
+                                          {t('lab.m8rootsfinance_check_answer')}
+                                          </button>
     </div>
     {volFeedback.status !== 'idle' && (
      <div className={`mt-4 p-3 rounded-lg flex items-start gap-2 ${volFeedback.status === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'}`}>
@@ -174,62 +182,65 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
      <Landmark className="w-5 h-5 text-green-500" />
-     Compound Partnership
-    </h2>
+     
+                                      {t('lab.m8rootsfinance_compound_partnership')}
+                                     </h2>
     
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
      {/* Partner A */}
      <div className="space-y-4 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-lg border border-slate-100 dark:border-[#1c1b1b]">
-     <h3 className="font-bold text-blue-600 dark:text-blue-400 border-b border-blue-200 dark:border-blue-800 pb-2">Partner A</h3>
+     <h3 className="font-bold text-blue-600 dark:text-blue-400 border-b border-blue-200 dark:border-blue-800 pb-2">{t('lab.m8rootsfinance_partner_a')}</h3>
      <div>
-      <label className="block text-sm font-medium mb-1">Investment ($)</label>
+      <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_investment')}</label>
       <input type="number" step="1000" value={invA} onChange={e => setInvA(parseInt(e.target.value)||0)} className="w-full p-2 border rounded-md dark:bg-slate-950 dark:border-[#1c1b1b]" />
      </div>
      <div>
-      <label className="block text-sm font-medium mb-1">Duration (Months)</label>
+      <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_duration_months')}</label>
       <input type="range" min="1" max="12" value={timeA} onChange={e => setTimeA(parseInt(e.target.value))} className="w-full accent-blue-600" />
-      <div className="text-right text-xs font-mono font-bold">{timeA} mos</div>
+      <div className="text-right text-xs font-mono font-bold">{timeA}  {t('lab.m8rootsfinance_mos')}</div>
      </div>
      </div>
      
      {/* Partner B */}
      <div className="space-y-4 bg-slate-50 dark:bg-[#121212]/50 p-4 rounded-lg border border-slate-100 dark:border-[#1c1b1b]">
-     <h3 className="font-bold text-green-600 dark:text-green-400 border-b border-green-200 dark:border-green-800 pb-2">Partner B</h3>
+     <h3 className="font-bold text-green-600 dark:text-green-400 border-b border-green-200 dark:border-green-800 pb-2">{t('lab.m8rootsfinance_partner_b')}</h3>
      <div>
-      <label className="block text-sm font-medium mb-1">Investment ($)</label>
+      <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_investment')}</label>
       <input type="number" step="1000" value={invB} onChange={e => setInvB(parseInt(e.target.value)||0)} className="w-full p-2 border rounded-md dark:bg-slate-950 dark:border-[#1c1b1b]" />
      </div>
      <div>
-      <label className="block text-sm font-medium mb-1">Duration (Months)</label>
+      <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_duration_months')}</label>
       <input type="range" min="1" max="12" value={timeB} onChange={e => setTimeB(parseInt(e.target.value))} className="w-full accent-green-600" />
-      <div className="text-right text-xs font-mono font-bold">{timeB} mos</div>
+      <div className="text-right text-xs font-mono font-bold">{timeB}  {t('lab.m8rootsfinance_mos')}</div>
      </div>
      </div>
     </div>
 
     <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700/50 rounded-lg">
-     <label className="block text-sm font-bold mb-1 text-yellow-800 dark:text-yellow-500">Total Profit Earned ($)</label>
+     <label className="block text-sm font-bold mb-1 text-yellow-800 dark:text-yellow-500">{t('lab.m8rootsfinance_total_profit_earned')}</label>
      <input type="number" step="1000" value={profit} onChange={e => setProfit(parseInt(e.target.value)||0)} className="w-full p-2 border rounded-md dark:bg-slate-950 dark:border-[#1c1b1b] font-bold" />
     </div>
     </div>
 
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h2 className="text-lg font-bold mb-4">Assessment</h2>
+    <h2 className="text-lg font-bold mb-4">{t('lab.m8rootsfinance_assessment')}</h2>
     <p className="mb-4 text-sm">
-     Calculate <strong>Partner A's</strong> exact share of the profit using equivalent investment ratios.
-    </p>
+     
+                                      {t('lab.m8rootsfinance_calculate')} <strong>{t('lab.m8rootsfinance_partner_a_s')}</strong>  {t('lab.m8rootsfinance_exact_share_of_the_profit_usin')}
+                                     </p>
     <div className="flex items-center gap-3">
      <span className="font-bold text-lg">$</span>
      <input 
      type="number" 
      value={partAns} 
      onChange={e => setPartAns(e.target.value)}
-     placeholder="Partner A's Share"
+     placeholder={t('lab.m8rootsfinance_partner_a_s_share')}
      className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
      />
      <button onClick={checkPart} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-     Check Answer
-     </button>
+     
+                                          {t('lab.m8rootsfinance_check_answer')}
+                                          </button>
     </div>
     {partFeedback.status !== 'idle' && (
      <div className={`mt-4 p-3 rounded-lg flex items-start gap-2 ${partFeedback.status === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'}`}>
@@ -246,11 +257,12 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
      <Users className="w-5 h-5 text-indigo-500" />
-     Islamic Inheritance Split
-    </h2>
+     
+                                      {t('lab.m8rootsfinance_islamic_inheritance_split')}
+                                     </h2>
     <div className="space-y-6">
      <div>
-     <label className="block text-sm font-medium mb-1">Net Estate ($)</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m8rootsfinance_net_estate')}</label>
      <input 
       type="range" min="0" max={estateOptions.length - 1} 
       value={estateIdx} onChange={(e) => setEstateIdx(parseInt(e.target.value))}
@@ -262,21 +274,21 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
      <div className="grid grid-cols-2 gap-4">
      <label className="flex items-center gap-2 p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg cursor-pointer">
       <input type="checkbox" checked={hasWidow} onChange={e => setHasWidow(e.target.checked)} className="w-5 h-5 accent-indigo-600" />
-      <span className="font-medium text-sm">Widow Survives</span>
+      <span className="font-medium text-sm">{t('lab.m8rootsfinance_widow_survives')}</span>
      </label>
      <label className="flex items-center gap-2 p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg cursor-pointer">
       <input type="checkbox" checked={hasMother} onChange={e => setHasMother(e.target.checked)} className="w-5 h-5 accent-orange-600" />
-      <span className="font-medium text-sm">Mother Survives</span>
+      <span className="font-medium text-sm">{t('lab.m8rootsfinance_mother_survives')}</span>
      </label>
      </div>
 
      <div className="grid grid-cols-2 gap-4">
      <div>
-      <label className="block text-sm font-medium mb-1 text-blue-600 dark:text-blue-400">Number of Sons</label>
+      <label className="block text-sm font-medium mb-1 text-blue-600 dark:text-blue-400">{t('lab.m8rootsfinance_number_of_sons')}</label>
       <input type="number" min="0" max="10" value={sons} onChange={e => setSons(parseInt(e.target.value)||0)} className="w-full p-2 border rounded-md dark:bg-slate-950 dark:border-[#1c1b1b]" />
      </div>
      <div>
-      <label className="block text-sm font-medium mb-1 text-pink-600 dark:text-pink-400">Number of Daughters</label>
+      <label className="block text-sm font-medium mb-1 text-pink-600 dark:text-pink-400">{t('lab.m8rootsfinance_number_of_daughters')}</label>
       <input type="number" min="0" max="10" value={daughters} onChange={e => setDaughters(parseInt(e.target.value)||0)} className="w-full p-2 border rounded-md dark:bg-slate-950 dark:border-[#1c1b1b]" />
      </div>
      </div>
@@ -284,22 +296,24 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     </div>
 
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h2 className="text-lg font-bold mb-4">Assessment</h2>
+    <h2 className="text-lg font-bold mb-4">{t('lab.m8rootsfinance_assessment')}</h2>
     <p className="mb-4 text-sm">
-     Calculate the exact financial share allocated to <strong>ONE Daughter</strong> (assuming 2:1 ratio for sons to daughters from the remainder).
-    </p>
+     
+                                      {t('lab.m8rootsfinance_calculate_the_exact_financial_')} <strong>{t('lab.m8rootsfinance_one_daughter')}</strong>  {t('lab.m8rootsfinance_assuming_2_1_ratio_for_sons_to')}
+                                     </p>
     <div className="flex items-center gap-3">
      <span className="font-bold text-lg">$</span>
      <input 
      type="number" 
      value={inhAns} 
      onChange={e => setInhAns(e.target.value)}
-     placeholder="Daughter's Share"
+     placeholder={t('lab.m8rootsfinance_daughter_s_share')}
      className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
      />
      <button onClick={checkInh} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-     Check Answer
-     </button>
+     
+                                          {t('lab.m8rootsfinance_check_answer')}
+                                          </button>
     </div>
     {inhFeedback.status !== 'idle' && (
      <div className={`mt-4 p-3 rounded-lg flex items-start gap-2 ${inhFeedback.status === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'}`}>
@@ -318,7 +332,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
    
    {activeTab === 'volume' && (
    <div className="flex flex-col items-center justify-center w-full h-full max-w-lg">
-    <h3 className="text-xl font-bold mb-8 text-center">3D Cube Representation</h3>
+    <h3 className="text-xl font-bold mb-8 text-center">{t('lab.m8rootsfinance_3d_cube_representation')}</h3>
     
     <div className="w-full aspect-square relative bg-white dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-center">
     <svg viewBox="-100 -100 200 200" className="w-full h-full max-w-[80%] max-h-[80%] overflow-visible drop-shadow-xl transition-all duration-500">
@@ -330,31 +344,33 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
      {/* Dimension Annotations */}
      <line x1="2" y1={s + 5} x2={s*0.866 + 2} y2={s*0.5 + 5} stroke="currentColor" strokeWidth="1.5" className="text-slate-500 dark:text-[#71717a]" />
      <text x={s*0.433 + 6} y={s*0.75 + 16} fontSize="10" textAnchor="middle" fill="currentColor" className="font-mono font-bold text-slate-700 dark:text-[#a1a1aa]">
-     ? m
-     </text>
+     
+                                          {t('lab.m8rootsfinance_m')}
+                                          </text>
     </svg>
     </div>
     <div className="mt-6 text-center text-slate-600 dark:text-[#71717a] bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full">
-    Volume = Side × Side × Side = <span className="font-bold text-slate-800 dark:text-[#ffffff]">{volume} m³</span>
+    
+                                 {t('lab.m8rootsfinance_volume_side_side_side')} <span className="font-bold text-slate-800 dark:text-[#ffffff]">{volume} m³</span>
     </div>
    </div>
    )}
 
    {activeTab === 'partnership' && (
    <div className="flex flex-col items-center justify-center w-full h-full max-w-lg">
-    <h3 className="text-xl font-bold mb-8 text-center">Profit Distribution</h3>
+    <h3 className="text-xl font-bold mb-8 text-center">{t('lab.m8rootsfinance_profit_distribution')}</h3>
     
     <div className="w-full bg-white dark:!bg-[#121212] p-6 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
     
     <div className="flex flex-col gap-2">
-     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Equivalent Investment (Ratio)</div>
+     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">{t('lab.m8rootsfinance_equivalent_investment_ratio')}</div>
      <div className="w-full h-12 flex rounded-lg overflow-hidden text-white font-bold text-xs sm:text-sm shadow-inner transition-all duration-500">
      <div style={{width: totalRatio > 0 ? `${(ratioA/totalRatio)*100}%` : '50%'}} className="bg-blue-500 flex flex-col items-center justify-center transition-all duration-500 border-r border-blue-600 dark:bg-teal-950/20 dark:border-teal-900">
-      <span>Partner A</span>
+      <span>{t('lab.m8rootsfinance_partner_a')}</span>
       <span className="font-mono opacity-90">{ratioA.toLocaleString()}</span>
      </div>
      <div style={{width: totalRatio > 0 ? `${(ratioB/totalRatio)*100}%` : '50%'}} className="bg-green-500 flex flex-col items-center justify-center transition-all duration-500 dark:bg-[#121212] dark:border-[#1c1b1b]">
-      <span>Partner B</span>
+      <span>{t('lab.m8rootsfinance_partner_b')}</span>
       <span className="font-mono opacity-90">{ratioB.toLocaleString()}</span>
      </div>
      </div>
@@ -362,19 +378,20 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
 
     <div className="flex justify-center my-2">
      <div className="px-4 py-2 bg-slate-100 dark:bg-[#121212] rounded-full border border-slate-200 dark:border-[#1c1b1b] font-bold text-slate-700 dark:text-[#a1a1aa]">
-     Total Profit: ${profit.toLocaleString()}
+     
+                                          {t('lab.m8rootsfinance_total_profit')}{profit.toLocaleString()}
      </div>
     </div>
 
     <div className="flex flex-col gap-2">
-     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Final Profit Share</div>
+     <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">{t('lab.m8rootsfinance_final_profit_share')}</div>
      <div className="w-full h-16 flex rounded-lg overflow-hidden text-white font-bold text-sm shadow-inner transition-all duration-500">
      <div style={{width: totalRatio > 0 ? `${(ratioA/totalRatio)*100}%` : '50%'}} className="bg-blue-600 flex flex-col items-center justify-center transition-all duration-500 border-r border-blue-700">
-      <span className="text-xs opacity-80">Partner A</span>
+      <span className="text-xs opacity-80">{t('lab.m8rootsfinance_partner_a')}</span>
       <span className="text-lg">${Math.round(shareA).toLocaleString()}</span>
      </div>
      <div style={{width: totalRatio > 0 ? `${(ratioB/totalRatio)*100}%` : '50%'}} className="bg-green-600 flex flex-col items-center justify-center transition-all duration-500">
-      <span className="text-xs opacity-80">Partner B</span>
+      <span className="text-xs opacity-80">{t('lab.m8rootsfinance_partner_b')}</span>
       <span className="text-lg">${Math.round(shareB).toLocaleString()}</span>
      </div>
      </div>
@@ -386,13 +403,13 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
 
    {activeTab === 'inheritance' && (
    <div className="flex flex-col items-center w-full max-w-lg">
-    <h3 className="text-xl font-bold mb-6 text-center">Inheritance Distribution Tree</h3>
+    <h3 className="text-xl font-bold mb-6 text-center">{t('lab.m8rootsfinance_inheritance_distribution_tree')}</h3>
     
     <div className="w-full flex flex-col gap-3 font-mono text-sm">
     
     {/* Net Estate */}
     <div className="flex justify-between items-center p-4 bg-white dark:!bg-[#121212] border dark:border-[#1c1b1b] rounded-xl shadow-md z-10">
-     <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">Net Estate</span>
+     <span className="font-bold text-lg text-slate-700 dark:text-[#ffffff]">{t('lab.m8rootsfinance_net_estate_1')}</span>
      <span className="font-bold text-xl text-emerald-600 dark:text-emerald-400">${estate.toLocaleString()}</span>
     </div>
 
@@ -400,13 +417,13 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col gap-2 ml-4 sm:ml-8 border-l-2 border-slate-300 dark:border-[#1c1b1b] pl-4 py-2">
      {hasWidow && (
      <div className="flex justify-between items-center p-3 bg-white dark:!bg-[#121212] border-l-4 border-l-indigo-500 dark:border-[#1c1b1b] rounded-lg shadow-sm">
-      <span className="text-slate-600 dark:text-[#a1a1aa]">Widow ({childrenCount > 0 ? '1/8' : '1/4'})</span>
+      <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.m8rootsfinance_widow')}{childrenCount > 0 ? '1/8' : '1/4'})</span>
       <span className="font-bold text-indigo-600 dark:text-indigo-400">${widowShare.toLocaleString()}</span>
      </div>
      )}
      {hasMother && (
      <div className="flex justify-between items-center p-3 bg-white dark:!bg-[#121212] border-l-4 border-l-orange-500 dark:border-[#1c1b1b] rounded-lg shadow-sm">
-      <span className="text-slate-600 dark:text-[#a1a1aa]">Mother ({childrenCount > 0 ? '1/6' : '1/3'})</span>
+      <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.m8rootsfinance_mother')}{childrenCount > 0 ? '1/6' : '1/3'})</span>
       <span className="font-bold text-orange-600 dark:text-orange-400">${Math.round(motherShare).toLocaleString()}</span>
      </div>
      )}
@@ -414,7 +431,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
 
     {/* Remainder */}
     <div className="flex justify-between items-center p-3 mt-2 bg-slate-200 dark:!bg-[#121212] border dark:border-[#1c1b1b] rounded-lg shadow-sm z-10">
-     <span className="font-semibold text-slate-700 dark:text-[#a1a1aa]">Remainder for Children</span>
+     <span className="font-semibold text-slate-700 dark:text-[#a1a1aa]">{t('lab.m8rootsfinance_remainder_for_children')}</span>
      <span className="font-bold text-slate-800 dark:text-[#ffffff]">${Math.round(remaining).toLocaleString()}</span>
     </div>
 
@@ -423,13 +440,13 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
      <div className="grid grid-cols-2 gap-3 mt-2 ml-4 sm:ml-8 pl-4 border-l-2 border-slate-300 dark:border-[#1c1b1b] py-2">
      {Array.from({length: sons}).map((_, i) => (
       <div key={`s-${i}`} className="p-3 bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-lg text-center shadow-sm flex flex-col justify-center">
-      <div className="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider mb-1">Son {i+1} (2x)</div>
+      <div className="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider mb-1">{t('lab.m8rootsfinance_son')} {i+1}  {t('lab.m8rootsfinance_2x')}</div>
       <div className="font-bold text-blue-700 dark:text-blue-300">${Math.round(singleSonShare).toLocaleString()}</div>
       </div>
      ))}
      {Array.from({length: daughters}).map((_, i) => (
       <div key={`d-${i}`} className="p-3 bg-pink-50 dark:bg-pink-900/30 border border-pink-200 dark:border-pink-800 rounded-lg text-center shadow-sm flex flex-col justify-center">
-      <div className="text-xs text-pink-600 dark:text-pink-400 font-bold uppercase tracking-wider mb-1">Daughter {i+1} (1x)</div>
+      <div className="text-xs text-pink-600 dark:text-pink-400 font-bold uppercase tracking-wider mb-1">{t('lab.m8rootsfinance_daughter')} {i+1}  {t('lab.m8rootsfinance_1x')}</div>
       <div className="font-bold text-pink-700 dark:text-pink-300">${Math.round(singleDaughterShare).toLocaleString()}</div>
       </div>
      ))}
@@ -437,8 +454,9 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
     )}
     {childrenCount === 0 && remaining > 0 && (
      <div className="ml-4 sm:ml-8 pl-4 py-2 text-slate-500 text-sm italic">
-      * Remaining estate goes to extended family (Asabah) which is beyond Class 8 scope.
-     </div>
+      
+                                           {t('lab.m8rootsfinance_remaining_estate_goes_to_exten')}
+                                          </div>
     )}
 
     </div>

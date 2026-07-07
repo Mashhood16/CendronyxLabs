@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Clock, Rocket, History, FastForward, CheckCircle, HelpCircle, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  // 0 = Past Perfect, 1 = Past, 2 = Present, 3 = Future, 4 = Future Perfect
  const [timeDial, setTimeDial] = useState<number>(2); 
@@ -30,7 +32,7 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Chronology Engine Lab" />
+   <LabHeader onExit={onExit} title={t('lab.e12tensesverbals_chronology_engine_lab')} />
 
    
    {/* Mobile Tab Navigation */}
@@ -39,74 +41,78 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e12tensesverbals_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e12tensesverbals_lab')}</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
-     </h2>
+      <BookOpen className="mr-2 text-indigo-500" />  {t('lab.e12tensesverbals_grammar_theory')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
       <p>
-       <strong>Tenses</strong> establish the chronological location of an action, while <strong>Verbals</strong> are verbs functioning as entirely different parts of speech.
-      </p>
+       <strong>{t('lab.e12tensesverbals_tenses')}</strong>  {t('lab.e12tensesverbals_establish_the_chronological_lo')} <strong>{t('lab.e12tensesverbals_verbals')}</strong>  {t('lab.e12tensesverbals_are_verbs_functioning_as_entir')}
+                               </p>
       
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">The 12 Tense Framework</h4>
-      <p className="mt-2">Time is categorized into Past, Present, and Future. Each time has four aspects:</p>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12tensesverbals_the_12_tense_framework')}</h4>
+      <p className="mt-2">{t('lab.e12tensesverbals_time_is_categorized_into_past_')}</p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Simple:</strong> Basic action (e.g., I walk, I walked, I will walk).</li>
-       <li><strong>Continuous (Progressive):</strong> Ongoing action (e.g., I am walking).</li>
-       <li><strong>Perfect:</strong> Completed action before a certain point (e.g., I have walked, I had walked, I will have walked).</li>
-       <li><strong>Perfect Continuous:</strong> Ongoing action up to a certain point (e.g., I have been walking).</li>
+       <li><strong>{t('lab.e12tensesverbals_simple')}</strong>  {t('lab.e12tensesverbals_basic_action_e_g_i_walk_i_walk')}</li>
+       <li><strong>{t('lab.e12tensesverbals_continuous_progressive')}</strong>  {t('lab.e12tensesverbals_ongoing_action_e_g_i_am_walkin')}</li>
+       <li><strong>{t('lab.e12tensesverbals_perfect')}</strong>  {t('lab.e12tensesverbals_completed_action_before_a_cert')}</li>
+       <li><strong>{t('lab.e12tensesverbals_perfect_continuous')}</strong>  {t('lab.e12tensesverbals_ongoing_action_up_to_a_certain')}</li>
       </ul>
 
       <hr className="my-6 border-slate-200 dark:border-gray-800" />
 
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Verbal Identification</h4>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12tensesverbals_verbal_identification')}</h4>
       <p className="mt-2">
-       Verbals look like verbs but do not act like them. They function as nouns, adjectives, or adverbs.
-      </p>
+       
+                                {t('lab.e12tensesverbals_verbals_look_like_verbs_but_do')}
+                               </p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Gerund:</strong> Ends in "-ing" and acts as a noun. (e.g., <em>Swimming</em> is fun).</li>
-       <li><strong>Infinitive:</strong> "To" + base verb, acting as noun, adjective, or adverb. (e.g., I love <em>to swim</em>).</li>
-       <li><strong>Participle:</strong> Ends in "-ing", "-ed", or "-en" and acts as an adjective. (e.g., The <em>broken</em> vase).</li>
+       <li><strong>{t('lab.e12tensesverbals_gerund')}</strong>  {t('lab.e12tensesverbals_ends_in_ing_and_acts_as_a_noun')} <em>{t('lab.e12tensesverbals_swimming')}</em>  {t('lab.e12tensesverbals_is_fun')}</li>
+       <li><strong>{t('lab.e12tensesverbals_infinitive')}</strong>  {t('lab.e12tensesverbals_to_base_verb_acting_as_noun_ad')} <em>{t('lab.e12tensesverbals_to_swim')}</em>).</li>
+       <li><strong>{t('lab.e12tensesverbals_participle')}</strong>  {t('lab.e12tensesverbals_ends_in_ing_ed_or_en_and_acts_')} <em>{t('lab.e12tensesverbals_broken')}</em>  {t('lab.e12tensesverbals_vase')}</li>
       </ul>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
-      <Clock className="text-[#4158D1]" /> Temporal Shift
-     </h2>
+      <Clock className="text-[#4158D1]" />  {t('lab.e12tensesverbals_temporal_shift')}
+                          </h2>
 
      <div className="flex gap-2 mb-6">
       <button 
        onClick={() => setActiveMode('tenses')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'tenses' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Time Machine
-      </button>
+       
+                                {t('lab.e12tensesverbals_time_machine')}
+                               </button>
       <button 
        onClick={() => setActiveMode('verbals')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'verbals' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Verbal Parser
-      </button>
+       
+                                {t('lab.e12tensesverbals_verbal_parser')}
+                               </button>
      </div>
 
      <div className="flex-1 overflow-y-auto">
       {activeMode === 'tenses' && (
        <div className="space-y-6">
         <div className={`p-6 rounded-2xl border border-slate-200 dark:border-[#2a2a2a] text-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <h3 className="font-bold text-slate-800 dark:text-white mb-6 uppercase tracking-widest text-sm">Temporal Dial</h3>
+         <h3 className="font-bold text-slate-800 dark:text-white mb-6 uppercase tracking-widest text-sm">{t('lab.e12tensesverbals_temporal_dial')}</h3>
          
          <div className="relative w-48 h-48 mx-auto mb-8">
           {/* The Dial */}
@@ -133,16 +139,17 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
          </div>
 
          <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-          <p className="font-bold text-yellow-800 dark:text-yellow-500 mb-1">Quest:</p>
+          <p className="font-bold text-yellow-800 dark:text-yellow-500 mb-1">{t('lab.e12tensesverbals_quest')}</p>
           <p className="text-sm text-yellow-700 dark:text-yellow-400">
-           Dial the timeline forward until the action implies it will be completed before a specified point in the future.
-          </p>
+           
+                                                    {t('lab.e12tensesverbals_dial_the_timeline_forward_unti')}
+                                                   </p>
          </div>
 
          {timeDial === targetTense && (
           <div className="mt-4 p-3 bg-emerald-500 text-white rounded-lg font-bold flex justify-center items-center gap-2 animate-pulse">
-           <CheckCircle className="w-5 h-5" /> Timeline Synced
-          </div>
+           <CheckCircle className="w-5 h-5" />  {t('lab.e12tensesverbals_timeline_synced')}
+                                                   </div>
          )}
         </div>
        </div>
@@ -152,8 +159,8 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
         <div className="space-y-6">
         <div className="p-4 rounded-xl border border-purple-200 dark:border-[#2a2a2a]">
          <h3 className="font-bold text-purple-800 dark:text-white flex items-center gap-2 mb-4">
-          <HelpCircle className="w-5 h-5 text-purple-500" /> Verbal Identification
-         </h3>
+          <HelpCircle className="w-5 h-5 text-purple-500" />  {t('lab.e12tensesverbals_verbal_identification')}
+                                              </h3>
          <p className="text-lg font-medium mb-6 text-center py-4 bg-purple-50 dark:bg-[#1a1a1a] rounded-lg border border-purple-100 dark:border-gray-800 dark:text-white">
           {verbalScenarios[verbalIndex].sentence}
          </p>
@@ -173,8 +180,9 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
            onClick={() => { setVerbalIndex(p => (p + 1) % verbalScenarios.length); setSelectedVerbal(null); }}
            className="mt-6 w-full py-3 bg-[#4158D1] text-white rounded-xl font-bold hover:bg-blue-700"
           >
-           Next Verbal Parse
-          </button>
+           
+                                                    {t('lab.e12tensesverbals_next_verbal_parse')}
+                                                   </button>
          )}
         </div>
        </div>
@@ -201,7 +209,8 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
        
        <div className="absolute bottom-6 bg-black/70 backdrop-blur px-6 py-3 rounded-xl border border-white/20 shadow-2xl">
         <p className="text-xl font-black text-white font-mono uppercase tracking-widest text-center">
-         The Tree <span className="text-[#4158D1]">{tenseMap[timeDial].text}</span>
+         
+                                          {t('lab.e12tensesverbals_the_tree')} <span className="text-[#4158D1]">{tenseMap[timeDial].text}</span>
         </p>
        </div>
       </div>
@@ -210,7 +219,7 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
      {activeMode === 'verbals' && (
       <div className="text-center z-10">
        <Rocket className="w-32 h-32 text-gray-700 mx-auto mb-8 opacity-20" />
-       <h2 className="text-3xl font-black tracking-widest text-gray-700 uppercase opacity-20">Timeline Paused</h2>
+       <h2 className="text-3xl font-black tracking-widest text-gray-700 uppercase opacity-20">{t('lab.e12tensesverbals_timeline_paused')}</h2>
       </div>
      )}
     </section>

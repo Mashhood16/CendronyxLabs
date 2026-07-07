@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Keyboard, Type } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7UrduTyping({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [text, setText] = useState('');
  const [urduMode, setUrduMode] = useState(false);
 
@@ -31,10 +33,10 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Urdu Typing Practice" />
+  <LabHeader onExit={onExit} title={t('lab.c7urdutyping_urdu_typing_practice')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Toggle the Pak Urdu Installer layout and type a sentence in Urdu.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7urdutyping_toggle_the_pak_urdu_installer_')}</p>
 
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col flex-1 overflow-hidden">
    {/* Editor Toolbar */}
@@ -66,8 +68,8 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
   </div>
 
   <div className="w-80 bg-slate-50 dark:bg-[#121212] p-6 border-l border-slate-200 dark:border-[#1c1b1b] shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col lg:overflow-y-auto">
-  <h2 className="font-bold text-lg mb-4 flex items-center"><Type className="w-5 h-5 mr-2 text-blue-500"/> Phonetic Map</h2>
-  <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">A simplified reference for the Pak Urdu Installer Phonetic layout:</p>
+  <h2 className="font-bold text-lg mb-4 flex items-center"><Type className="w-5 h-5 mr-2 text-blue-500"/>  {t('lab.c7urdutyping_phonetic_map')}</h2>
+  <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.c7urdutyping_a_simplified_reference_for_the')}</p>
   
   <div className="grid grid-cols-2 gap-2 text-sm">
    {Object.entries(urduMap).map(([eng, urd]) => {

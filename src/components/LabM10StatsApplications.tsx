@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Calculator, BookOpen, LineChart, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Point {
  x: number;
@@ -8,6 +9,7 @@ interface Point {
 }
 
 export default function LabM10StatsApplications({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [points, setPoints] = useState<Point[]>([]);
  
@@ -105,7 +107,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    {/* Header */}
-   <LabHeader onExit={onExit} title="Statistics & Scatter Plots" />
+   <LabHeader onExit={onExit} title={t('lab.m10statsapplications_statistics_scatter_plots')} />
 
    {/* Main Content Grid */}
    
@@ -115,48 +117,50 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10statsapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10statsapplications_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
     {/* Column 1: Theory */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-orange-500  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center mb-4 text-orange-800 shrink-0">
       <BookOpen className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Theory & Context</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10statsapplications_theory_context')}</h2>
      </div>
      <div className="prose prose-orange flex-1 text-slate-700 dark:text-[#ffffff]">
       <p>
-       <strong>Scatter plots</strong> are used to visualize the relationship (or correlation) between two distinct variables.
-      </p>
-      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Types of Correlation</h3>
+       <strong>{t('lab.m10statsapplications_scatter_plots')}</strong>  {t('lab.m10statsapplications_are_used_to_visualize_the_rela')}
+                               </p>
+      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m10statsapplications_types_of_correlation')}</h3>
       <ul className="list-disc pl-5 space-y-2">
-       <li><strong>Positive Correlation:</strong> As one variable increases, the other also increases.</li>
-       <li><strong>Negative Correlation:</strong> As one variable increases, the other decreases.</li>
-       <li><strong>No Correlation:</strong> The points are scattered randomly with no clear pattern.</li>
+       <li><strong>{t('lab.m10statsapplications_positive_correlation')}</strong>  {t('lab.m10statsapplications_as_one_variable_increases_the_')}</li>
+       <li><strong>{t('lab.m10statsapplications_negative_correlation')}</strong>  {t('lab.m10statsapplications_as_one_variable_increases_the__1')}</li>
+       <li><strong>{t('lab.m10statsapplications_no_correlation')}</strong>  {t('lab.m10statsapplications_the_points_are_scattered_rando')}</li>
       </ul>
       
-      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Line of Best Fit</h3>
+      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m10statsapplications_line_of_best_fit')}</h3>
       <p>
-       A <strong>Line of Best Fit</strong> (or trendline) is a straight line drawn through the center of the data points that best represents the trend. It can be used to make <strong>predictions</strong> (interpolation or extrapolation).
-      </p>
+       A <strong>{t('lab.m10statsapplications_line_of_best_fit')}</strong>  {t('lab.m10statsapplications_or_trendline_is_a_straight_lin')} <strong>{t('lab.m10statsapplications_predictions')}</strong>  {t('lab.m10statsapplications_interpolation_or_extrapolation')}
+                               </p>
       
-      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Pearson Correlation (r)</h3>
+      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m10statsapplications_pearson_correlation_r')}</h3>
       <p>
-       The correlation coefficient <code>r</code> measures the strength of the linear relationship, ranging from -1 (perfect negative) to 1 (perfect positive).
-      </p>
+       
+                                {t('lab.m10statsapplications_the_correlation_coefficient')} <code>r</code>  {t('lab.m10statsapplications_measures_the_strength_of_the_l')}
+                               </p>
      </div>
     </div>
 
     {/* Column 2: Simulator */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      <div className="flex items-center mb-4 text-blue-800 shrink-0 dark:text-[#ffffff]">
       <LineChart className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10statsapplications_interactive_visualizer')}</h2>
      </div>
      
      <div className={`flex-1 min-w-0 relative bg-slate-50 dark:bg-[#121212] rounded-lg overflow- border border-slate-200 dark:border-[#1c1b1b] flex flex-col min-h-[300px] `}>
@@ -181,8 +185,8 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
         ))}
 
         {/* Axis Labels */}
-        <text x="200" y="290" textAnchor="middle" fill="#334155" fontSize="12" fontWeight="bold">Active Minutes per Day</text>
-        <text x="15" y="150" textAnchor="middle" fill="#334155" fontSize="12" fontWeight="bold" transform="rotate(-90 15 150)">Overall Fitness Score</text>
+        <text x="200" y="290" textAnchor="middle" fill="#334155" fontSize="12" fontWeight="bold">{t('lab.m10statsapplications_active_minutes_per_day')}</text>
+        <text x="15" y="150" textAnchor="middle" fill="#334155" fontSize="12" fontWeight="bold" transform="rotate(-90 15 150)">{t('lab.m10statsapplications_overall_fitness_score')}</text>
 
         {/* Points */}
         {points.map((p, i) => (
@@ -213,22 +217,22 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
        </svg>
       </div>
 
-      <div className={`w-full p-4 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-t border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+      <div className={`w-full p-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-t border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
        <div className="flex items-center space-x-4">
         <div className="flex-1">
-         <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase tracking-wider">True Trend</label>
+         <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase tracking-wider">{t('lab.m10statsapplications_true_trend')}</label>
          <select 
           value={trend} 
           onChange={(e) => setTrend(Number(e.target.value))}
           className={`w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm bg-slate-50 dark:bg-[#121212] flex-col `}
          >
-          <option value={1}>Positive (More Exercise = Fitter)</option>
-          <option value={-1}>Negative (More Exercise = Lower BMI)</option>
-          <option value={0}>None (Random / No Relation)</option>
+          <option value={1}>{t('lab.m10statsapplications_positive_more_exercise_fitter')}</option>
+          <option value={-1}>{t('lab.m10statsapplications_negative_more_exercise_lower_b')}</option>
+          <option value={0}>{t('lab.m10statsapplications_none_random_no_relation')}</option>
          </select>
         </div>
         <div className="flex-1">
-         <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase tracking-wider">Variance (Noise)</label>
+         <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase tracking-wider">{t('lab.m10statsapplications_variance_noise')}</label>
          <input
           type="range"
           min="2"
@@ -241,8 +245,8 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
        </div>
        
        <div className="flex justify-between items-center bg-blue-100 p-2 rounded border border-blue-200 text-blue-900 text-sm font-mono dark:text-[#ffffff]">
-        <span>r ≈ {stats ? stats.r.toFixed(3) : 'N/A'}</span>
-        <span>y = {stats ? `${stats.slope.toFixed(2)}x + ${stats.intercept.toFixed(2)}` : 'N/A'}</span>
+        <span>{t('lab.m10statsapplications_r')} {stats ? stats.r.toFixed(3) : 'N/A'}</span>
+        <span>{t('lab.m10statsapplications_y')} {stats ? `${stats.slope.toFixed(2)}x + ${stats.intercept.toFixed(2)}` : 'N/A'}</span>
        </div>
       </div>
      </div>
@@ -252,32 +256,34 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
     <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-amber-500 `}>
      <div className="flex items-center mb-4 text-amber-800 shrink-0 dark:text-[#ffffff]">
       <Calculator className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Data Analysis</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10statsapplications_data_analysis')}</h2>
      </div>
      
      <div className="flex-1 min-w-0 flex flex-col space-y-5">
       <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 text-slate-800 dark:text-[#ffffff] dark:bg-[#121212] dark:border-[#1c1b1b]">
        <p className="mb-2">
-        Observe the generated scatter plot mapping daily <strong>Active Minutes</strong> (x) to a <strong>Fitness Score</strong> (y).
-       </p>
+        
+                                     {t('lab.m10statsapplications_observe_the_generated_scatter_')} <strong>{t('lab.m10statsapplications_active_minutes')}</strong>  {t('lab.m10statsapplications_x_to_a')} <strong>{t('lab.m10statsapplications_fitness_score')}</strong>  {t('lab.m10statsapplications_y_1')}
+                                    </p>
       </div>
 
       <div>
-       <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">1. What type of correlation does this dataset show?</label>
+       <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.m10statsapplications_1_what_type_of_correlation_doe')}</label>
        <select 
         value={userCorrelation}
         onChange={(e) => setUserCorrelation(e.target.value)}
         className="w-full p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 dark:bg-[#121212] text-lg"
        >
-        <option value="positive">Positive Correlation</option>
-        <option value="negative">Negative Correlation</option>
-        <option value="none">No Correlation</option>
+        <option value="positive">{t('lab.m10statsapplications_positive_correlation_1')}</option>
+        <option value="negative">{t('lab.m10statsapplications_negative_correlation_1')}</option>
+        <option value="none">{t('lab.m10statsapplications_no_correlation_1')}</option>
        </select>
       </div>
 
       <div>
        <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-        2. Based on the Line of Best Fit, predict the Fitness Score (y) if a person exercises for <strong>{predictX} minutes</strong>:
+        
+                                     {t('lab.m10statsapplications_2_based_on_the_line_of_best_fi')} <strong>{predictX}  {t('lab.m10statsapplications_minutes')}</strong>:
        </label>
        <input
         type="number"
@@ -285,17 +291,18 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
         value={userPredictY}
         onChange={(e) => setUserPredictY(e.target.value)}
         className="w-full p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-amber-500 outline-none transition-shadow text-lg font-mono"
-        placeholder="e.g. 75"
+        placeholder={t('lab.m10statsapplications_e_g_75')}
        />
-       <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">(Estimate using the dashed orange line or the equation)</p>
+       <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.m10statsapplications_estimate_using_the_dashed_oran')}</p>
       </div>
 
       <button
        onClick={checkAnswer}
        className="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg transition-colors shadow-sm mt-2 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
       >
-       Submit Analysis
-      </button>
+       
+                                {t('lab.m10statsapplications_submit_analysis')}
+                               </button>
 
       {feedback && (
        <div className={`p-4 rounded-lg flex items-start space-x-3 shadow-inner ${feedback.includes('Correct!') ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'}`}>
@@ -310,7 +317,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
         className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg transition-colors border border-slate-300 dark:border-[#1c1b1b]"
        >
         <RotateCcw size={20} />
-        <span>Generate New Dataset</span>
+        <span>{t('lab.m10statsapplications_generate_new_dataset')}</span>
        </button>
       </div>
      </div>

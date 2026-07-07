@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, AlertTriangle, Info, Type, Move } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6EthicsChart({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [stickers, setStickers] = useState<{id: string, text: string, type: 'good'|'bad'|'info', x: number, y: number}[]>([]);
  
  const rules = [
@@ -29,16 +31,16 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Cyber Ethics Chart Builder" />
+  <LabHeader onExit={onExit} title={t('lab.c6ethicschart_cyber_ethics_chart_builder')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6ethicschart_drag_rules_from_the_bank_onto_')}</p>
 
   <div className="flex gap-8 flex-1 h-[600px]">
    {/* Rule Bank */}
    <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden p-6">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm mb-4">{t('lab.c6ethicschart_rule_bank')}</h3>
    <div className="flex flex-col gap-3 lg:overflow-y-auto pr-2 pb-2">
     {rules.map((rule, idx) => (
     <div 
@@ -70,13 +72,14 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
    }}
    >
    <div className="bg-slate-50 dark:bg-[#121212] px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
-    Classroom Cyber Ethics
-   </div>
+    
+                             {t('lab.c6ethicschart_classroom_cyber_ethics')}
+                            </div>
 
    {stickers.length === 0 && (
     <div className="absolute inset-0 flex flex-col items-center justify-center opacity-50 pointer-events-none">
     <Type className="w-16 h-16 text-amber-900 mb-4 dark:text-[#ffffff]" />
-    <p className="font-bold text-amber-900 text-xl dark:text-[#ffffff]">Drag rules here to build the chart</p>
+    <p className="font-bold text-amber-900 text-xl dark:text-[#ffffff]">{t('lab.c6ethicschart_drag_rules_here_to_build_the_c')}</p>
     </div>
    )}
 
@@ -98,8 +101,9 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
   {stickers.length >= 4 && (
    <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg dark:text-[#ffffff]">
    <CheckCircle className="w-6 h-6" /> 
-   Chart is looking great! This covers enough rules to be displayed in the lab.
-   </div>
+    
+                        {t('lab.c6ethicschart_chart_is_looking_great_this_co')}
+                        </div>
   )}
   </div>
  </div>

@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabNetworkDevices({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selectedDevice, setSelectedDevice] = useState<string | null>(null);
  
  // Power states
@@ -24,7 +26,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
 
  return (
  <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
-  <LabHeader onExit={onExit} title="Act 1.2: Networking Devices Demo" subtitle="Identify devices and configure the server rack." variant="dark" />
+  <LabHeader onExit={onExit} title={t('lab.networkdevices_act_1_2_networking_devices_dem')} subtitle={t('lab.subtitle_identify_devices_configure')} variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
@@ -39,7 +41,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     className={`w-full h-24 bg-[#000000] dark:bg-[#121212] border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'router' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
     onClick={() => setSelectedDevice('router')}
     >
-    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">Edge Router</div>
+    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">{t('lab.networkdevices_edge_router')}</div>
     <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-4">
      {/* Internet Port */}
      <div className="w-8 h-8 bg-black rounded border border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center justify-center">
@@ -67,7 +69,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     className={`w-full h-24 bg-[#000000] dark:bg-[#121212] border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'switch' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
     onClick={() => setSelectedDevice('switch')}
     >
-    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">24-Port Switch</div>
+    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">{t('lab.networkdevices_24_port_switch')}</div>
     <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
      {/* Uplink Port */}
      <div className="w-8 h-8 mr-4 rounded border bg-blue-500 border-blue-400 flex items-center justify-center opacity-50 dark:bg-teal-950/20 dark:border-teal-900"></div>
@@ -100,7 +102,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     className={`w-full h-32 bg-[#000000] dark:bg-[#121212] border-2 rounded-lg relative cursor-pointer transition-all flex justify-center items-center ${selectedDevice === 'wap' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
     onClick={() => setSelectedDevice('wap')}
     >
-    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">Wireless Access Point</div>
+    <div className="absolute top-2 left-4 font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest text-xs">{t('lab.networkdevices_wireless_access_point')}</div>
     
     {/* Antennas */}
     <div className="absolute top-[-30px] left-10 w-2 h-10 bg-slate-400 dark:bg-[#121212] rounded-t-full"></div>
@@ -127,10 +129,10 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     className={`absolute bottom-4 left-4 w-48 h-32 bg-[#121212] dark:bg-[#121212] border-2 rounded-lg relative cursor-pointer transition-all ${selectedDevice === 'nic' ? 'border-sky-500 shadow-[0_0_15px_rgba(14,165,233,0.5)]' : 'border-slate-600 dark:border-slate-500'}`}
     onClick={() => setSelectedDevice('nic')}
     >
-    <div className="absolute top-2 left-4 font-bold text-slate-400 uppercase tracking-widest text-xs">Workstation PC</div>
+    <div className="absolute top-2 left-4 font-bold text-slate-400 uppercase tracking-widest text-xs">{t('lab.networkdevices_workstation_pc')}</div>
     {/* Network Interface Card highlighted */}
     <div className="absolute right-[-10px] bottom-4 w-8 h-20 bg-green-800 border border-green-600 rounded flex items-center justify-center rotate-y-12">
-     <div className="text-[8px] font-mono text-green-300 -rotate-90 whitespace-nowrap">NIC CARD</div>
+     <div className="text-[8px] font-mono text-green-300 -rotate-90 whitespace-nowrap">{t('lab.networkdevices_nic_card')}</div>
      {wifiOnline && <div className="absolute -right-2 top-2 w-1 h-8 bg-sky-400 rounded-full animate-pulse shadow-[0_0_10px_#38bdf8] dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-sky-500/40"></div>} {/* wifi antenna receiving */}
     </div>
     </div>
@@ -141,24 +143,24 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
 
   {/* Control Panel */}
   <div className="w-96 bg-[#121212] dark:bg-[#121212] p-8 flex flex-col border-l border-[#1c1b1b] dark:border-[#1c1b1b] z-10 text-slate-200 lg:overflow-y-auto">
-   <h2 className="text-xl font-bold text-white mb-6 border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">Hardware Setup</h2>
+   <h2 className="text-xl font-bold text-white mb-6 border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">{t('lab.networkdevices_hardware_setup')}</h2>
    
    <div className="grid grid-cols-2 gap-4 mb-8">
     <button 
     onClick={() => setPower(p => ({...p, router: !p.router}))}
     className={`py-2 px-4 rounded font-bold border transition-colors ${power.router ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-[#121212] border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-[#121212]'}`}
-    >Power Router</button>
+    >{t('lab.networkdevices_power_router')}</button>
     <button 
     onClick={() => setPower(p => ({...p, switch: !p.switch}))}
     className={`py-2 px-4 rounded font-bold border transition-colors ${power.switch ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-[#121212] border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-[#121212]'}`}
-    >Power Switch</button>
+    >{t('lab.networkdevices_power_switch')}</button>
     <button 
     onClick={() => setPower(p => ({...p, wap: !p.wap}))}
     className={`py-2 px-4 rounded font-bold border transition-colors ${power.wap ? 'bg-green-600 border-green-500 text-white' : 'bg-slate-700 dark:bg-[#121212] border-slate-600 dark:border-slate-500 hover:bg-slate-600 dark:bg-[#121212]'}`}
-    >Power WAP</button>
+    >{t('lab.networkdevices_power_wap')}</button>
    </div>
 
-   <p className="text-sm text-slate-400 mb-6">Click empty ports on the devices to plug in cables. Click on a device to read its function.</p>
+   <p className="text-sm text-slate-400 mb-6">{t('lab.networkdevices_click_empty_ports_on_the_devic')}</p>
 
    {selectedDevice ? (
     <div className="bg-[#000000] dark:!bg-[#121212] p-6 rounded-xl border border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.1)] animate-fade-in">
@@ -171,7 +173,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     </div>
    ) : (
     <div className="bg-[#000000] dark:bg-[#121212]/50 p-6 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] border-dashed text-center">
-    <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-widest text-xs">Select a Device to Inspect</span>
+    <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-widest text-xs">{t('lab.networkdevices_select_a_device_to_inspect')}</span>
     </div>
    )}
 
@@ -180,11 +182,13 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     <div className="bg-sky-900/50 p-4 rounded-xl border border-sky-500 animate-fade-in">
      <h3 className="font-bold text-sky-300 mb-1 tracking-wider text-sm flex items-center gap-2">
      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
-     WLAN Online
-     </h3>
+     
+                                      {t('lab.networkdevices_wlan_online')}
+                                      </h3>
      <p className="text-sky-200 text-xs">
-     The Internet is routed to the Switch, which connects to the WAP, which broadcasts Wi-Fi to the PC's Network Interface Card!
-     </p>
+     
+                                      {t('lab.networkdevices_the_internet_is_routed_to_the_')}
+                                      </p>
     </div>
     )}
    </div>

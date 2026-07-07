@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Server, Monitor, Printer, Network, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7NetworkDiagram({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [nodes, setNodes] = useState<{id: string, type: string, x: number, y: number}[]>([]);
  const [selectedTool, setSelectedTool] = useState<string | null>(null);
 
@@ -38,22 +40,23 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Network Diagram Builder" />
+  <LabHeader onExit={onExit} title={t('lab.c7networkdiagram_network_diagram_builder')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Select a component from the toolbar and click on the canvas to place it. Build a basic Client-Server network topology.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.c7networkdiagram_select_a_component_from_the_to')}</p>
 
   {isValid && (
    <div className="bg-emerald-100 text-emerald-800 p-3 rounded-lg flex items-center mb-6 w-fit border border-emerald-300 shadow-sm">
    <CheckCircle className="w-5 h-5 mr-2" />
-   Basic network topology complete!
-   </div>
+   
+                        {t('lab.c7networkdiagram_basic_network_topology_complet')}
+                        </div>
   )}
 
   <div className="flex flex-1 gap-6">
    {/* Toolbar */}
    <div className="w-48 bg-slate-50 dark:!bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl p-4 shadow-sm flex flex-col gap-3">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] text-sm uppercase tracking-wider mb-2">Components</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] text-sm uppercase tracking-wider mb-2">{t('lab.c7networkdiagram_components')}</h3>
    {tools.map(tool => (
     <button
     key={tool.id}
@@ -68,8 +71,9 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
    ))}
    <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
     <button onClick={clearCanvas} className="w-full py-2 text-sm text-rose-600 font-medium hover:bg-rose-50 rounded-lg transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]">
-    Clear Canvas
-    </button>
+    
+                                 {t('lab.c7networkdiagram_clear_canvas')}
+                                 </button>
    </div>
    </div>
 
@@ -111,8 +115,9 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
    })}
    {nodes.length === 0 && !selectedTool && (
     <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium italic">
-    Select a tool and click here to place components
-    </div>
+    
+                                 {t('lab.c7networkdiagram_select_a_tool_and_click_here_t')}
+                                 </div>
    )}
    </div>
   </div>

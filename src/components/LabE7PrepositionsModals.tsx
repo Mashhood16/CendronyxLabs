@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Send, CheckCircle2, XCircle, Mail, Newspaper, User, PenTool , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const SCENARIOS = [
  {
@@ -51,6 +52,7 @@ const SCENARIOS = [
 ];
 
 export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [currentScenarioIdx, setCurrentScenarioIdx] = useState(0);
  const [selections, setSelections] = useState<Record<string, string>>({});
@@ -138,15 +140,16 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
  return (
   <div className="flex flex-col min- lg: items-center justify-center bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none p-6 min-h-screen lg:h-screen overflow-x-hidden w-full">
   <CheckCircle2 className="w-24 h-24 text-green-500 mb-6" />
-  <h1 className="text-4xl font-bold mb-4">Well Done, Advisor!</h1>
-  <p className="text-xl mb-8">You successfully helped all readers using proper prepositions and modals.</p>
-  <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-8">Final Score: {score}</div>
+  <h1 className="text-4xl font-bold mb-4">{t('lab.e7prepositionsmodals_well_done_advisor')}</h1>
+  <p className="text-xl mb-8">{t('lab.e7prepositionsmodals_you_successfully_helped_all_re')}</p>
+  <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-8">{t('lab.e7prepositionsmodals_final_score')} {score}</div>
   <button
    onClick={onExit}
    className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
   >
-   Return to Dashboard
-  </button>
+   
+                {t('lab.e7prepositionsmodals_return_to_dashboard')}
+               </button>
   </div>
  );
  }
@@ -159,17 +162,18 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
    <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
    <ArrowLeft className="w-5 h-5" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold hidden sm:block">Advice Columnist Simulator</h1>
+   <h1 className="text-lg md:text-xl font-bold hidden sm:block">{t('lab.e7prepositionsmodals_advice_columnist_simulator')}</h1>
   </div>
   <div className="flex items-center space-x-4">
    <div className="font-semibold px-4 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full shadow-inner">
-   Score: {score}
+   
+                        {t('lab.e7prepositionsmodals_score')} {score}
    </div>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -183,11 +187,13 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
     <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 flex items-center mb-2">
     <PenTool className="w-5 h-5 mr-2" />
-    Case #{scenario.id}: Help {scenario.reader}
+    
+                                 {t('lab.e7prepositionsmodals_case')}{scenario.id}{t('lab.e7prepositionsmodals_help')} {scenario.reader}
     </h2>
     <p className="text-sm text-indigo-600 dark:text-indigo-400">
-    Complete the reader's letter with the correct <strong>prepositional phrases</strong>, then draft your advice using <strong>modals of obligation</strong> (should, must, have to).
-    </p>
+    
+                                 {t('lab.e7prepositionsmodals_complete_the_reader_s_letter_w')} <strong>{t('lab.e7prepositionsmodals_prepositional_phrases')}</strong>{t('lab.e7prepositionsmodals_then_draft_your_advice_using')} <strong>{t('lab.e7prepositionsmodals_modals_of_obligation')}</strong>  {t('lab.e7prepositionsmodals_should_must_have_to')}
+                                 </p>
    </div>
 
    {/* Reader's Letter */}
@@ -195,8 +201,9 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
     <div className="absolute top-4 right-4 text-4xl opacity-50">{scenario.avatar}</div>
     <h3 className="font-bold text-slate-500 dark:text-[#71717a] flex items-center mb-4 uppercase text-sm tracking-wider">
     <Mail className="w-4 h-4 mr-2" />
-    Incoming Letter
-    </h3>
+    
+                                 {t('lab.e7prepositionsmodals_incoming_letter')}
+                                 </h3>
     <div className="text-lg leading-loose text-slate-700 dark:text-[#ffffff]">
     {renderTextWithBlanks(scenario.letterParts, scenario.blanks, 'slate-400')}
     </div>
@@ -206,8 +213,9 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl shadow-sm border border-blue-200 dark:border-blue-800 p-6">
     <h3 className="font-bold text-blue-600 dark:text-blue-400 flex items-center mb-4 uppercase text-sm tracking-wider">
     <User className="w-4 h-4 mr-2" />
-    Your Advice Draft
-    </h3>
+    
+                                 {t('lab.e7prepositionsmodals_your_advice_draft')}
+                                 </h3>
     <div className="text-lg leading-loose text-slate-700 dark:text-[#ffffff]">
     {renderTextWithBlanks(scenario.adviceParts, scenario.adviceBlanks, 'blue-500')}
     </div>
@@ -219,14 +227,16 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
     {status === "error" && showErrors && (
      <div className="flex items-center text-red-600 dark:text-red-400 text-sm font-semibold">
      <XCircle className="w-5 h-5 mr-2" />
-     Review your choices! Some are incorrect or missing.
-     </div>
+     
+                                          {t('lab.e7prepositionsmodals_review_your_choices_some_are_i')}
+                                          </div>
     )}
     {status === "published" && (
      <div className="flex items-center text-green-600 dark:text-green-400 text-sm font-semibold">
      <CheckCircle2 className="w-5 h-5 mr-2" />
-     Perfect advice! Published successfully.
-     </div>
+     
+                                          {t('lab.e7prepositionsmodals_perfect_advice_published_succe')}
+                                          </div>
     )}
     </div>
     
@@ -236,15 +246,17 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
      className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
      <Send className="w-4 h-4 mr-2" />
-     Publish Advice
-    </button>
+     
+                                      {t('lab.e7prepositionsmodals_publish_advice')}
+                                     </button>
     ) : (
     <button
      onClick={handleNext}
      className="w-full sm:w-auto px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center animate-pulse dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-     Next Case
-     <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
+     
+                                          {t('lab.e7prepositionsmodals_next_case')}
+                                          <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
     </button>
     )}
    </div>
@@ -255,21 +267,22 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
   <section className="hidden lg:flex w-1/2 bg-slate-200 dark:bg-slate-950 flex-col items-center justify-center p-8 relative overflow-hidden">
    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
    
-   <div className="bg-white text-black w-full max-w-lg aspect-[3/4] shadow-2xl rotate-1 transform transition-transform hover:rotate-0 flex flex-col p-8 relative dark:bg-[#121212]">
+   <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] text-black w-full max-w-lg aspect-[3/4] shadow-2xl rotate-1 transform transition-transform hover:rotate-0 flex flex-col p-8 relative dark:bg-[#121212]">
    {/* Newspaper Header */}
    <div className="border-b-4 border-black pb-4 mb-6 text-center">
     <h1 className="text-4xl font-serif font-black tracking-tighter uppercase flex items-center justify-center">
     <Newspaper className="w-8 h-8 mr-3" />
-    The Daily Advice
-    </h1>
-    <p className="text-xs uppercase tracking-widest mt-2 font-bold text-gray-500">Volume XLII • Expert Opinions</p>
+    
+                                 {t('lab.e7prepositionsmodals_the_daily_advice')}
+                                 </h1>
+    <p className="text-xs uppercase tracking-widest mt-2 font-bold text-gray-500">{t('lab.e7prepositionsmodals_volume_xlii_expert_opinions')}</p>
    </div>
 
    {/* Newspaper Body */}
    <div className="flex-1 flex flex-col space-y-6">
     <div className="font-serif">
-    <h2 className="font-bold text-xl mb-2 border-b-2 border-gray-300 pb-1">Q: From {scenario.reader}</h2>
-    <p className="text-sm leading-relaxed text-gray-800 italic">
+    <h2 className="font-bold text-xl mb-2 border-b-2 border-gray-300 pb-1">{t('lab.e7prepositionsmodals_q_from')} {scenario.reader}</h2>
+    <p className="text-sm leading-relaxed text-gray-800 dark:text-[#f8fafc] italic">
      {scenario.letterParts.map((part, i) => (
      <span key={i}>
       {part}
@@ -284,8 +297,8 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
     </div>
 
     <div className="font-serif">
-    <h2 className="font-bold text-xl mb-2 border-b-2 border-gray-300 pb-1">A: The Expert Says</h2>
-    <p className="text-sm leading-relaxed text-gray-800">
+    <h2 className="font-bold text-xl mb-2 border-b-2 border-gray-300 pb-1">{t('lab.e7prepositionsmodals_a_the_expert_says')}</h2>
+    <p className="text-sm leading-relaxed text-gray-800 dark:text-[#f8fafc]">
      {scenario.adviceParts.map((part, i) => (
      <span key={i}>
       {part}
@@ -303,9 +316,10 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
    {/* Published Stamp */}
    {status === "published" && (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-    <div className="transform -rotate-12 border-4 border-red-500 text-red-500 font-black text-5xl uppercase tracking-widest p-4 rounded-lg opacity-80 mix-blend-multiply drop-shadow-md bg-white/50 dark:bg-[#121212]">
-     PUBLISHED
-    </div>
+    <div className="transform -rotate-12 border-4 border-red-500 text-red-500 font-black text-5xl uppercase tracking-widest p-4 rounded-lg opacity-80 mix-blend-multiply drop-shadow-md bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:bg-[#121212]">
+     
+                                      {t('lab.e7prepositionsmodals_published')}
+                                     </div>
     </div>
    )}
    </div>

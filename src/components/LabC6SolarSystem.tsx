@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Circle, Type, Palette, Trash2, Undo } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -17,6 +18,7 @@ type CanvasItem = {
 };
 
 export default function LabC6SolarSystem({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [items, setItems] = useState<CanvasItem[]>([]);
  const [selectedTool, setSelectedTool] = useState<'planet' | 'orbit' | 'label' | null>(null);
  const [currentColor, setCurrentColor] = useState('#eab308'); // yellow
@@ -107,43 +109,43 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-  <LabHeader onExit={onExit} title="Solar System 3D Creator" />
+  <LabHeader onExit={onExit} title={t('lab.c6solarsystem_solar_system_3d_creator')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Draw planets using 3D shapes, fill them with colors, draw orbits, and label them.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6solarsystem_draw_planets_using_3d_shapes_f')}</p>
 
   <div className="flex gap-6 flex-1 h-[600px]">
    {/* Toolbar */}
    <div className="w-72 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex flex-col gap-6 lg:overflow-y-auto">
    <div>
-    <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">Tools</h3>
+    <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">{t('lab.c6solarsystem_tools')}</h3>
     <div className="flex flex-col gap-2">
     <button
      onClick={() => setSelectedTool('planet')}
      className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${ selectedTool === 'planet' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]' }`}
     >
-     <Circle className="w-5 h-5 fill-current" /> 3D Planet Shape
-    </button>
+     <Circle className="w-5 h-5 fill-current" />  {t('lab.c6solarsystem_3d_planet_shape')}
+                                     </button>
     <button
      onClick={() => setSelectedTool('orbit')}
      className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${ selectedTool === 'orbit' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]' }`}
     >
-     <Circle className="w-5 h-5" strokeDasharray="4 4" /> Draw Orbit
-    </button>
+     <Circle className="w-5 h-5" strokeDasharray="4 4" />  {t('lab.c6solarsystem_draw_orbit')}
+                                     </button>
     <button
      onClick={() => setSelectedTool('label')}
      className={`flex items-center gap-3 p-3 rounded-lg border-2 text-left font-bold text-sm transition-colors ${ selectedTool === 'label' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff]' }`}
     >
-     <Type className="w-5 h-5" /> Text Label
-    </button>
+     <Type className="w-5 h-5" />  {t('lab.c6solarsystem_text_label')}
+                                     </button>
     </div>
    </div>
 
    <div>
     <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3 flex items-center gap-2">
-    <Palette className="w-4 h-4" /> Colors
-    </h3>
+    <Palette className="w-4 h-4" />  {t('lab.c6solarsystem_colors')}
+                                 </h3>
     <div className="flex flex-wrap gap-2">
     {colors.map(c => (
      <button
@@ -158,7 +160,8 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
 
    <div>
     <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3 flex items-center gap-2">
-    Size: {currentSize}px
+    
+                                 {t('lab.c6solarsystem_size')} {currentSize}px
     </h3>
     <input 
     type="range" 
@@ -172,11 +175,11 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
    <div className="mt-auto flex gap-2 pt-4 border-t border-slate-100">
     <button onClick={undo} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-50 dark:bg-[#121212] disabled:opacity-50">
     <Undo className="w-5 h-5 mb-1" />
-    <span className="text-xs font-bold">Undo</span>
+    <span className="text-xs font-bold">{t('lab.c6solarsystem_undo')}</span>
     </button>
     <button onClick={clear} disabled={items.length === 0} className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-red-600 hover:bg-red-50 disabled:opacity-50">
     <Trash2 className="w-5 h-5 mb-1" />
-    <span className="text-xs font-bold">Clear</span>
+    <span className="text-xs font-bold">{t('lab.c6solarsystem_clear')}</span>
     </button>
    </div>
    </div>
@@ -196,7 +199,7 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
     <div className="text-slate-400 flex flex-col items-center gap-4 bg-[#121212] dark:bg-[#121212]/80 p-8 rounded-2xl border border-[#1c1b1b] dark:border-[#1c1b1b]">
      <Palette className="w-12 h-12" />
-     <p className="font-bold">Select a tool to start drawing the Solar System</p>
+     <p className="font-bold">{t('lab.c6solarsystem_select_a_tool_to_start_drawing')}</p>
     </div>
     </div>
    )}

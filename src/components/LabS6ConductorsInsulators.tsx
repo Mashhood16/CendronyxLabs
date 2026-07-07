@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Zap, FileQuestion, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [tested, setTested] = useState<Record<string, 'Conductor' | 'Insulator'>>({});
 
  const materials = [
@@ -24,7 +26,7 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 9: Conductors & Insulators" />
+  <LabHeader onExit={onExit} title={t('lab.s6conductorsinsulators_unit_9_conductors_insulators')} />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">
   <div className="w-full max-w-4xl bg-slate-100 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-300 dark:border-[#1c1b1b] p-8">
@@ -32,10 +34,11 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
    <div className="bg-slate-200 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#a1a1aa] p-6 rounded-xl mb-8 flex gap-4">
    <Zap className="w-8 h-8 text-yellow-500 shrink-0 mt-1" />
    <div>
-    <h2 className="text-xl font-bold text-yellow-400 mb-2">Virtual Testing Lab</h2>
+    <h2 className="text-xl font-bold text-yellow-400 mb-2">{t('lab.s6conductorsinsulators_virtual_testing_lab')}</h2>
     <p className="text-sm leading-relaxed">
-    Connect each material to our virtual circuit. If the bulb lights up, the material allows electricity to pass through and is a <strong>Conductor</strong>. If the bulb stays dark, it blocks electricity and is an <strong>Insulator</strong>. Classify all the materials to complete the activity.
-    </p>
+    
+                                 {t('lab.s6conductorsinsulators_connect_each_material_to_our_v')} <strong>{t('lab.s6conductorsinsulators_conductor')}</strong>{t('lab.s6conductorsinsulators_if_the_bulb_stays_dark_it_bloc')} <strong>{t('lab.s6conductorsinsulators_insulator')}</strong>{t('lab.s6conductorsinsulators_classify_all_the_materials_to_')}
+                                 </p>
    </div>
    </div>
 
@@ -55,8 +58,8 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
     {/* Circuit Tester Mini-visual */}
     <div className="h-24 bg-[#000000] dark:bg-[#121212] rounded-lg border border-[#1c1b1b] dark:border-[#1c1b1b] mb-6 flex items-center justify-center relative overflow-hidden">
      {/* Wires */}
-     <div className="absolute top-1/2 left-0 w-1/3 h-1 bg-slate-500 dark:bg-[#121212]"></div>
-     <div className="absolute top-1/2 right-0 w-1/3 h-1 bg-slate-500 dark:bg-[#121212]"></div>
+     <div className="absolute top-1/2 left-0 w-1/3 h-1 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212]"></div>
+     <div className="absolute top-1/2 right-0 w-1/3 h-1 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212]"></div>
      
      {/* The Material in middle */}
      <div className="px-4 py-2 bg-slate-600 dark:bg-[#121212] border border-slate-500 dark:border-[#1c1b1b] rounded text-xs font-bold text-slate-300 z-10 relative">
@@ -72,16 +75,18 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
     <div className="flex gap-4 mt-auto">
      <button 
      onClick={() => handleClassify(mat.id, 'Conductor')}
-     className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Conductor' ? 'bg-yellow-500 border-yellow-500 text-slate-900' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-slate-600 text-slate-500 dark:text-[#a1a1aa] hover:border-yellow-500 hover:text-yellow-500'}`}
+     className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Conductor' ? 'bg-yellow-500 border-yellow-500 text-slate-900 dark:text-white' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-slate-600 text-slate-500 dark:text-[#a1a1aa] hover:border-yellow-500 hover:text-yellow-500'}`}
      >
-     Conductor
-     </button>
+     
+                        {t('lab.s6conductorsinsulators_conductor')}
+                        </button>
      <button 
      onClick={() => handleClassify(mat.id, 'Insulator')}
      className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Insulator' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-slate-600 text-slate-500 dark:text-[#a1a1aa] hover:border-blue-500 hover:text-blue-500'}`}
      >
-     Insulator
-     </button>
+     
+                        {t('lab.s6conductorsinsulators_insulator')}
+                        </button>
     </div>
     </div>
    ))}
@@ -91,8 +96,8 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
    <div className="mt-8 p-6 bg-emerald-900/50 border border-emerald-500 text-emerald-100 rounded-xl flex items-center justify-center gap-4">
     <CheckCircle className="w-8 h-8 text-emerald-400" />
     <div>
-    <h3 className="font-bold text-xl">Lab Complete!</h3>
-    <p className="text-emerald-200/80">You have correctly identified all conductors and insulators.</p>
+    <h3 className="font-bold text-xl">{t('lab.s6conductorsinsulators_lab_complete')}</h3>
+    <p className="text-emerald-200/80">{t('lab.s6conductorsinsulators_you_have_correctly_identified_')}</p>
     </div>
    </div>
    )}

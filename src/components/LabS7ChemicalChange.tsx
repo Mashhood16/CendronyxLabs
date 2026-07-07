@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7ChemicalChange({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [mixed, setMixed] = useState(false);
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 4: Chemical Change" />
+  <LabHeader onExit={onExit} title={t('lab.s7chemicalchange_unit_4_chemical_change')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-white dark:!bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-2xl font-bold text-amber-600 dark:text-amber-400 mb-4">Baking Soda and Vinegar</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">A balloon containing Baking Soda (NaHCO₃) is stretched over a flask of Vinegar (Acetic Acid). Click to tip the balloon and mix the chemicals to observe a chemical reaction.</p>
+   <h2 className="text-2xl font-bold text-amber-600 dark:text-amber-400 mb-4">{t('lab.s7chemicalchange_baking_soda_and_vinegar')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7chemicalchange_a_balloon_containing_baking_so')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -24,13 +26,15 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
     disabled={mixed}
     className="flex items-center px-6 py-2 bg-amber-500 text-slate-900 dark:text-white rounded-lg hover:bg-amber-400 disabled:opacity-50 font-bold dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
    >
-    Tip Balloon (Mix)
-   </button>    <button 
+    
+                             {t('lab.s7chemicalchange_tip_balloon_mix')}
+                            </button>    <button 
     onClick={() => setMixed(false)}
     className="flex items-center px-6 py-2 text-slate-600 dark:text-[#a1a1aa] rounded-lg font-medium bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600"
    >
-    Reset Setup
-   </button>
+    
+                             {t('lab.s7chemicalchange_reset_setup')}
+                            </button>
    </div>
   </div>
 
@@ -71,8 +75,9 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
     {/* Gas indicator (After mixing) */}
     {mixed && (
      <div className="absolute inset-0 flex items-center justify-center font-bold text-white/50 text-3xl">
-     CO₂ Gas
-     </div>
+     
+                                      {t('lab.s7chemicalchange_co_gas')}
+                                      </div>
     )}
     </div>
    </div>
@@ -81,8 +86,8 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
 
   {mixed && (
    <div className="mt-8 p-6 rounded-xl max-w-xl text-center bg-amber-50 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] border border-amber-300 dark:border-amber-500/50">
-   <h3 className="text-amber-700 dark:text-amber-400 font-bold text-lg mb-2">Chemical Change Observed!</h3>
-   <p>The baking soda and vinegar reacted to create a completely new substance: <strong>Carbon Dioxide (CO₂) gas</strong>. The production of this gas rapidly expanded, filling and inflating the balloon. This creation of a new substance with different properties proves it is a chemical change, not a physical one.</p>
+   <h3 className="text-amber-700 dark:text-amber-400 font-bold text-lg mb-2">{t('lab.s7chemicalchange_chemical_change_observed')}</h3>
+   <p>{t('lab.s7chemicalchange_the_baking_soda_and_vinegar_re')} <strong>{t('lab.s7chemicalchange_carbon_dioxide_co_gas')}</strong>{t('lab.s7chemicalchange_the_production_of_this_gas_rap')}</p>
    </div>
   )}
   </div>

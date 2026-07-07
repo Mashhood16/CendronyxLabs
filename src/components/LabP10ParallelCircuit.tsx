@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10ParallelCircuit({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [numBranches, setNumBranches] = useState<number>(3); // 1 to 3
  const [voltage, setVoltage] = useState<number>(12); // Volts
@@ -82,7 +84,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 16: Resistors in Parallel" subtitle="Investigate voltage, current, and equivalent resistance in parallel branches." />
+  <LabHeader onExit={onExit} title={t('lab.p10parallelcircuit_unit_16_resistors_in_parallel')} subtitle={t('lab.subtitle_investigate_voltage_current')} />
 
   {/* Main Grid */}
   
@@ -92,38 +94,41 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10parallelcircuit_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10parallelcircuit_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10parallelcircuit_theory')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3">
-    In a parallel circuit, the voltage across each branch is identical. The total current splits among the branches.
-   </p>
+    
+                             {t('lab.p10parallelcircuit_in_a_parallel_circuit_the_volt')}
+                            </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-serif text-slate-800 dark:text-[#ffffff] mb-2 text-sm flex-col `}>
-    <div className="mb-1">1/R_eq = 1/R₁ + 1/R₂ + ...</div>
-    <div>I_total = I₁ + I₂ + ...</div>
+    <div className="mb-1">{t('lab.p10parallelcircuit_1_r_eq_1_r_1_r')}</div>
+    <div>{t('lab.10parallelcircuit_i_totalii')}</div>
    </div>
    <p className="text-xs text-slate-500 dark:text-[#71717a]">
-    Adding branches <em>decreases</em> total resistance. Notice how real batteries have internal resistance (r_int), causing the terminal voltage to drop when total current increases.
-   </p>
+    
+                             {t('lab.p10parallelcircuit_adding_branches')} <em>{t('lab.10parallelcircuit_decreases')}</em>  {t('lab.p10parallelcircuit_total_resistance_notice_how_re')}
+                            </p>
    </div>
 
    <div className="h-px bg-slate-200 dark:bg-[#121212]" />
 
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.10parallelcircuit_experimentsetup')}</h2>
    
    <div className="mb-4">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] block mb-2">Number of Parallel Branches</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] block mb-2">{t('lab.10parallelcircuit_numberofparallelbranches')}</label>
     <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
     {[1, 2, 3].map((n) => (
      <button 
@@ -131,7 +136,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
      onClick={() => setNumBranches(n)}
      className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numBranches === n ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
      >
-     {n} Branch{n > 1 ? 'es' : ''}
+     {n}  {t('lab.p10parallelcircuit_branch')}{n > 1 ? 'es' : ''}
      </button>
     ))}
     </div>
@@ -139,7 +144,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">EMF Voltage (V)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10parallelcircuit_emf_voltage_v')}</label>
     <span className="text-sm font-mono text-emerald-600">{voltage} V</span>
     </div>
     <input 
@@ -151,7 +156,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
    <div className="mb-4">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Internal Resistance (r_int)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10parallelcircuit_internal_resistance_r_int')}</label>
     <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Ω</span>
     </div>
     <input 
@@ -165,7 +170,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
     {[ { r: r1, setR: setR1, id: 1 }, { r: r2, setR: setR2, id: 2 }, { r: r3, setR: setR3, id: 3 } ].map((item, idx) => (
     <div key={item.id} className={idx < numBranches ? 'opacity-100' : 'opacity-40 pointer-events-none'}>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Branch {item.id} Resistance</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10parallelcircuit_branch')} {item.id}  {t('lab.p10parallelcircuit_resistance')}</label>
      <span className="text-sm font-mono text-amber-600">{item.r} Ω</span>
      </div>
      <input 
@@ -182,7 +187,7 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
   {/* Column 2: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">Circuit Simulation</h2>
+   <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">{t('lab.10parallelcircuit_circuitsimulation')}</h2>
    
    <div className={`flex-1 flex flex-col items-center justify-center relative pt-10 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    
@@ -241,13 +246,13 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
    {/* Meters Dashboard */}
    <div className="mt-8 flex gap-4 w-full justify-center">
     <div className="bg-black p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col items-center w-36 shadow-lg">
-    <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Total Current</span>
+    <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">{t('lab.10parallelcircuit_totalcurrent')}</span>
     <div className="font-mono text-xl font-bold text-emerald-400 tracking-wider">
      {(currentTotalMeasured * 1000).toFixed(0)} <span className="text-xs">mA</span>
     </div>
     </div>
     <div className="bg-black p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col items-center w-36 shadow-lg">
-    <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Terminal Volts</span>
+    <span className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">{t('lab.10parallelcircuit_terminalvolts')}</span>
     <div className="font-mono text-xl font-bold text-blue-400 tracking-wider">
      {vTerminalMeasured.toFixed(2)} <span className="text-xs">V</span>
     </div>
@@ -260,13 +265,13 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
   {/* Column 3: Data & Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col h-full overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10parallelcircuit_datalogging')}</h2>
    <button 
     onClick={recordData}
     className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <Plus className="w-4 h-4" /> Record
-   </button>
+    <Plus className="w-4 h-4" />  {t('lab.p10parallelcircuit_record')}
+                            </button>
    </div>
 
    <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[200px]">
@@ -274,15 +279,15 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
     <thead className="text-[10px] text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
      <th className="px-3 py-2">N</th>
-     <th className="px-3 py-2">V_term (V)</th>
-     <th className="px-3 py-2">I_tot (mA)</th>
-     <th className="px-3 py-2">I_branch1 (mA)</th>
+     <th className="px-3 py-2">{t('lab.p10parallelcircuit_v_term_v')}</th>
+     <th className="px-3 py-2">{t('lab.p10parallelcircuit_i_tot_ma')}</th>
+     <th className="px-3 py-2">{t('lab.p10parallelcircuit_i_branch1_ma')}</th>
     </tr>
     </thead>
     <tbody>
     {dataPoints.length === 0 ? (
      <tr>
-     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded yet.</td>
+     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.10parallelcircuit_nodatarecordedyet')}</td>
      </tr>
     ) : (
      dataPoints.map((dp) => (
@@ -302,16 +307,15 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
 
    {/* Assessment Section */}
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Check</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10parallelcircuit_analysischeck')}</h2>
    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
     <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
-    <strong>Problem:</strong> Assume r_int = 0. A 12V battery is connected to two identical 30 Ω resistors in parallel. 
-    What is the total current flowing out of the battery (in mA)?
-    </p>
+    <strong>{t('lab.10parallelcircuit_problem')}</strong>  {t('lab.p10parallelcircuit_assume_r_int_0_a_12v_battery_i')}
+                                 </p>
     <div className="flex gap-2 items-center">
     <input 
      type="number" 
-     placeholder="e.g. 500"
+     placeholder={t('lab.p10parallelcircuit_t_lab_10parallelcircuit_eg500')}
      value={assessmentAnswer}
      onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
      className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -321,19 +325,21 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
      onClick={checkAnswer}
      className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-     Check Answer
-    </button>
+     
+                                      {t('lab.p10parallelcircuit_check_answer')}
+                                     </button>
     </div>
     {assessmentStatus === 'correct' && (
     <div className="mt-3 flex items-start gap-1 text-emerald-700 text-sm font-medium bg-emerald-100 p-2 rounded">
      <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" /> 
-     Correct! R_eq = 15 Ω. I = 12 / 15 = 0.8 A = 800 mA.
-    </div>
+      
+                                      {t('lab.p10parallelcircuit_correct_r_eq_15_i_12_15_0_8_a_')}
+                                     </div>
     )}
     {assessmentStatus === 'incorrect' && (
     <div className="mt-3 flex items-center gap-1 text-rose-600 text-sm font-medium">
-     <XCircle className="w-4 h-4" /> Incorrect. Try finding equivalent resistance (1/Req = 1/R1 + 1/R2).
-    </div>
+     <XCircle className="w-4 h-4" />  {t('lab.p10parallelcircuit_incorrect_try_finding_equivale')}
+                                     </div>
     )}
    </div>
    </div>

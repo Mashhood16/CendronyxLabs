@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isRunning, setIsRunning] = useState(false);
  const [voltage, setVoltage] = useState(6);
@@ -84,7 +86,7 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Electrolysis of Molten PbCl₂" />
+  <LabHeader onExit={onExit} title={t('lab.c10moltenleadchloride_electrolysis_of_molten_pbcl')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -93,12 +95,13 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10moltenleadchloride_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10moltenleadchloride_lab')}</button>
   </div>
   <main className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
@@ -106,29 +109,33 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <Info className="w-5 h-5 text-fuchsia-600" />
-    Theory
-   </h2>
+    
+                             {t('lab.c10moltenleadchloride_theory')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    When lead(II) chloride (PbCl₂) is heated until it melts, the Pb²⁺ and Cl⁻ ions become free to move and carry charge.
-   </p>
-   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <div><strong>Cathode (-):</strong> Pb²⁺ + 2e⁻ → Pb(l)</div>
-    <div><strong>Anode (+):</strong> 2Cl⁻ → Cl₂(g) + 2e⁻</div>
+    
+                             {t('lab.c10moltenleadchloride_when_lead_ii_chloride_pbcl_is_')}
+                            </p>
+   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg font-mono text-sm mb-2 text-slate-700 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div><strong>{t('lab.c10moltenleadchloride_cathode')}</strong>  {t('lab.c10moltenleadchloride_pb_2e_pb_l')}</div>
+    <div><strong>{t('lab.c10moltenleadchloride_anode')}</strong>  {t('lab.c10moltenleadchloride_2cl_cl_g_2e')}</div>
     <div className="mt-2 text-fuchsia-600 font-bold border-t border-slate-300 dark:border-[#1c1b1b] pt-2">
-    Overall: PbCl₂(l) → Pb(l) + Cl₂(g)
-    </div>
+    
+                                 {t('lab.c10moltenleadchloride_overall_pbcl_l_pb_l_cl_g')}
+                                 </div>
    </div>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Silvery liquid lead forms at the cathode and sinks to the bottom. Pale green chlorine gas bubbles off at the anode.
-   </p>
+    
+                             {t('lab.c10moltenleadchloride_silvery_liquid_lead_forms_at_t')}
+                            </p>
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10moltenleadchloride_experiment_setup')}</h2>
    <div className="space-y-6">
     <div>
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-     <span>Power Supply Voltage</span>
+     <span>{t('lab.c10moltenleadchloride_power_supply_voltage')}</span>
      <span>{voltage.toFixed(1)} V</span>
     </label>
     <input
@@ -162,12 +169,12 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Crucible View</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10moltenleadchloride_crucible_view')}</h2>
    
    <div className="absolute top-6 right-6 text-right">
-   <div className="text-2xl font-mono font-bold text-fuchsia-600">{(time / 60).toFixed(1)} min</div>
-   <div className="text-sm text-slate-500 dark:text-[#71717a]">Elapsed Time</div>
+   <div className="text-2xl font-mono font-bold text-fuchsia-600">{(time / 60).toFixed(1)}  {t('lab.c10moltenleadchloride_min')}</div>
+   <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.c10moltenleadchloride_elapsed_time')}</div>
    <div className="text-lg font-mono font-bold text-emerald-600 mt-2">{current.toFixed(2)} A</div>
    </div>
 
@@ -187,7 +194,7 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    <path d="M 185 490 L 195 475 L 200 485 L 205 475 L 215 490 Z" fill="#fbbf24" />
 
    <path d="M 105 250 L 118 445 Q 200 475 282 445 L 295 250 Z" fill="#fdba74" opacity="0.5" />
-   <text x="200" y="430" fill="#c2410c" textAnchor="middle" fontSize="14" fontWeight="bold">Molten PbCl₂</text>
+   <text x="200" y="430" fill="#c2410c" textAnchor="middle" fontSize="14" fontWeight="bold">{t('lab.c10moltenleadchloride_molten_pbcl')}</text>
    
    {massPb > 0 && (
     <path d={`M 130 435 Q 200 ${460 - Math.min(20, massPb * 0.1)} 270 435 Q 200 470 130 435`} fill="#94a3b8" />
@@ -196,8 +203,8 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    <rect x="160" y="150" width="20" height="200" fill="#1e293b" />
    <rect x="220" y="150" width="20" height="200" fill="#1e293b" />
    
-   <text x="170" y="140" fill="#1e293b" textAnchor="middle" fontSize="12" fontWeight="bold">Anode (+)</text>
-   <text x="230" y="140" fill="#1e293b" textAnchor="middle" fontSize="12" fontWeight="bold">Cathode (-)</text>
+   <text x="170" y="140" fill="#1e293b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10moltenleadchloride_anode_1')}</text>
+   <text x="230" y="140" fill="#1e293b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10moltenleadchloride_cathode_1')}</text>
 
    {isRunning && (
     <>
@@ -227,10 +234,12 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    
    <div className="absolute bottom-6 left-6 right-6 flex justify-between px-4">
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Pb Mass: {massPb.toFixed(2)} g
+    
+                             {t('lab.c10moltenleadchloride_pb_mass')} {massPb.toFixed(2)} g
    </div>
    <div className="bg-slate-100 dark:bg-[#121212] px-3 py-1 rounded text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Cl₂ Vol: {volCl2.toFixed(0)} mL
+    
+                             {t('lab.c10moltenleadchloride_cl_vol')} {volCl2.toFixed(0)} mL
    </div>
    </div>
   </div>
@@ -238,25 +247,26 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <div className="flex justify-between items-center mb-4">
-    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Data Table</h2>
+    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10moltenleadchloride_data_table')}</h2>
     <button
     onClick={recordData}
     disabled={!isRunning}
     className="flex items-center gap-2 px-3 py-1.5 bg-fuchsia-100 text-fuchsia-700 hover:bg-fuchsia-200 rounded-lg font-medium transition-colors disabled:opacity-50"
     >
     <Save className="w-4 h-4" />
-    Record Data
-    </button>
+    
+                                 {t('lab.c10moltenleadchloride_record_data')}
+                                 </button>
    </div>
    
    <div className="overflow-x-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
-     <th className="px-4 py-2">Time (s)</th>
-     <th className="px-4 py-2">Current (A)</th>
-     <th className="px-4 py-2">Mass Pb (g)</th>
-     <th className="px-4 py-2">Vol Cl₂ (mL)</th>
+     <th className="px-4 py-2">{t('lab.c10moltenleadchloride_time_s')}</th>
+     <th className="px-4 py-2">{t('lab.c10moltenleadchloride_current_a')}</th>
+     <th className="px-4 py-2">{t('lab.c10moltenleadchloride_mass_pb_g')}</th>
+     <th className="px-4 py-2">{t('lab.c10moltenleadchloride_vol_cl_ml')}</th>
      </tr>
     </thead>
     <tbody>
@@ -275,7 +285,7 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
 
    {logs.length > 1 && (
    <div>
-    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Graph: Mass of Pb vs Time</h3>
+    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10moltenleadchloride_graph_mass_of_pb_vs_time')}</h3>
     <div className={`w-full h-48 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg relative p-2 `}>
     <svg width="100%" height="100%" viewBox="0 0 300 150" preserveAspectRatio="none">
      <line x1="20" y1="130" x2="280" y2="130" stroke="#94a3b8" strokeWidth="2" />
@@ -298,16 +308,16 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
    )}
 
    <div className="bg-fuchsia-50 p-4 rounded-xl border border-fuchsia-100 mt-auto">
-   <h3 className="font-semibold text-fuchsia-900 mb-2">Analysis</h3>
+   <h3 className="font-semibold text-fuchsia-900 mb-2">{t('lab.c10moltenleadchloride_analysis')}</h3>
    <p className="text-sm text-fuchsia-800 mb-4">
-    A cell operating at <strong>{assessmentCurrent} A</strong> runs for <strong>{assessmentTime} minutes</strong>. 
-    Calculate the theoretical mass of lead produced. (Pb = 207.2)
-   </p>
+    
+                             {t('lab.c10moltenleadchloride_a_cell_operating_at')} <strong>{assessmentCurrent} A</strong>  {t('lab.c10moltenleadchloride_runs_for')} <strong>{assessmentTime}  {t('lab.c10moltenleadchloride_minutes')}</strong>{t('lab.c10moltenleadchloride_calculate_the_theoretical_mass')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     step="0.01"
-    placeholder="Mass (g)"
+    placeholder={t('lab.c10moltenleadchloride_mass_g')}
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
     className="flex-1 px-3 py-2 rounded-lg border border-fuchsia-200"
@@ -316,8 +326,9 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
     onClick={checkAnswer}
     className="px-4 py-2 bg-fuchsia-600 text-white font-medium rounded-lg hover:bg-fuchsia-700 dark:text-white dark:text-white dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-fuchsia-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.c10moltenleadchloride_check')}
+                                 </button>
    </div>
    
    {isCorrect !== null && (

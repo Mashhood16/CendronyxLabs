@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, Play , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const QUESTIONS = [
  {
@@ -42,6 +43,7 @@ const QUESTIONS = [
 ];
 
 export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [currentQIdx, setCurrentQIdx] = useState(0);
  const [manner, setManner] = useState("");
@@ -106,9 +108,10 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    className="flex items-center gap-2 hover:/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
   >
    <ArrowLeft size={18} />
-   Go Back
-  </button>
-  <h1 className="text-lg md:text-xl font-bold ml-6 flex-1 text-center">Scene Director: Adverbs & Prepositions</h1>
+   
+                    {t('lab.e8adverbsprepositions_go_back')}
+                   </button>
+  <h1 className="text-lg md:text-xl font-bold ml-6 flex-1 text-center">{t('lab.e8adverbsprepositions_scene_director_adverbs_preposi')}</h1>
   
   <button
    onClick={toggleTheme}
@@ -123,13 +126,13 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
   <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 lg:overflow-y-auto dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b]">
    
    <div className="bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-   <h2 className="text-sm font-bold text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 uppercase tracking-wider mb-2">Director's Goal</h2>
+   <h2 className="text-sm font-bold text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 uppercase tracking-wider mb-2">{t('lab.e8adverbsprepositions_director_s_goal')}</h2>
    <p className="text-lg font-medium">{question.goal}</p>
    </div>
 
    <div className="flex flex-col gap-4">
    <div>
-    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Adverb of Manner (How?)</label>
+    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">{t('lab.e8adverbsprepositions_adverb_of_manner_how')}</label>
     <div className="grid grid-cols-3 gap-2">
     {question.mannerOpts.map(opt => (
      <button
@@ -144,7 +147,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    </div>
 
    <div>
-    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Prepositional Phrase (Where?)</label>
+    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">{t('lab.e8adverbsprepositions_prepositional_phrase_where')}</label>
     <div className="grid grid-cols-1 gap-2">
     {question.placeOpts.map(opt => (
      <button
@@ -159,7 +162,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    </div>
 
    <div>
-    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">Adverb/Phrase of Time (When?)</label>
+    <label className="block text-sm font-semibold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-1">{t('lab.e8adverbsprepositions_adverb_phrase_of_time_when')}</label>
     <div className="grid grid-cols-3 gap-2">
     {question.timeOpts.map(opt => (
      <button
@@ -181,8 +184,9 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
     className="flex-1 py-3 px-6 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 min-w-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
     <Play size={20} />
-    Action!
-   </button>
+    
+                             {t('lab.e8adverbsprepositions_action')}
+                            </button>
    </div>
 
    {status === 'success' && (
@@ -190,7 +194,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
     <div className="flex items-start gap-3">
     <CheckCircle className="text-green-600 dark:text-green-400 dark:text-green-400 mt-0.5" size={20} />
     <div>
-     <h3 className="font-bold text-green-800 dark:text-green-200 dark:text-green-300">Perfect Direction!</h3>
+     <h3 className="font-bold text-green-800 dark:text-green-200 dark:text-green-300">{t('lab.e8adverbsprepositions_perfect_direction')}</h3>
      <p className="text-sm text-green-700 dark:text-green-300 dark:text-green-400 mt-1">{question.feedback}</p>
     </div>
     </div>
@@ -199,12 +203,14 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
      onClick={nextQuestion}
      className="mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium w-full transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-     Next Scene
-    </button>
+     
+                                      {t('lab.e8adverbsprepositions_next_scene')}
+                                     </button>
     ) : (
     <div className="mt-4 text-center font-bold text-green-700 dark:text-green-300 dark:text-green-400">
-     Bravo! You've successfully directed all scenes!
-    </div>
+     
+                                          {t('lab.e8adverbsprepositions_bravo_you_ve_successfully_dire')}
+                                         </div>
     )}
    </div>
    )}
@@ -212,14 +218,14 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    {status === 'error' && (
    <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-xl animate-[fadeIn_0.5s_ease-out] flex items-center gap-3">
     <XCircle className="text-red-600 dark:text-red-400 dark:text-red-400 flex-shrink-0" size={20} />
-    <p className="text-sm font-medium text-red-800 dark:text-red-200 dark:text-red-300">Cut! That wasn't quite right. Review the goal and try matching the correct manner, place, and time.</p>
+    <p className="text-sm font-medium text-red-800 dark:text-red-200 dark:text-red-300">{t('lab.e8adverbsprepositions_cut_that_wasn_t_quite_right_re')}</p>
    </div>
    )}
 
   </div>
 
   <div className="w-full lg:w-1/2 p-6 bg-[#000000] flex flex-col items-center justify-center relative overflow-hidden">
-   <h2 className="absolute top-6 left-6 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] font-bold tracking-widest uppercase text-sm">The Stage</h2>
+   <h2 className="absolute top-6 left-6 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] font-bold tracking-widest uppercase text-sm">{t('lab.e8adverbsprepositions_the_stage')}</h2>
    
    <div className="relative w-full max-w-md aspect-video bg-[#121212] rounded-xl overflow-hidden shadow-2xl border-4 border-[#1c1b1b]">
    <div className="absolute bottom-0 w-full h-1/3 bg-amber-900/40 rounded-t-[100%] shadow-[inset_0_10px_20px_rgba(0,0,0,0.5)]"></div>
@@ -230,7 +236,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
    {question.id === 1 && (
     <div className="absolute bottom-16 left-1/4 w-24 h-32 bg-slate-600 rounded-lg shadow-lg border-2 border-slate-500 z-0">
-    <div className="text-xs text-center mt-12 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa]">STAGE PROPS</div>
+    <div className="text-xs text-center mt-12 text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa]">{t('lab.e8adverbsprepositions_stage_props')}</div>
     </div>
    )}
    {question.id === 3 && (
@@ -240,7 +246,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    )}
    {question.id === 4 && (
     <div className="absolute bottom-16 left-1/3 w-32 h-16 bg-stone-600 rounded-t-sm z-0 shadow-lg border-t-2 border-stone-500">
-    <div className="text-xs text-center mt-6 text-stone-400">BRICK WALL</div>
+    <div className="text-xs text-center mt-6 text-stone-400">{t('lab.e8adverbsprepositions_brick_wall')}</div>
     </div>
    )}
 
@@ -267,7 +273,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
    </div>
 
    <div className="mt-8 text-center text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] max-w-sm">
-   <p className="text-sm font-medium">Observe the stage to see your directions come to life when correctly assembled.</p>
+   <p className="text-sm font-medium">{t('lab.e8adverbsprepositions_observe_the_stage_to_see_your_')}</p>
    </div>
 
   </div>

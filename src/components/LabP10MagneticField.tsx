@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Calculator, Activity, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10MagneticField({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [m, setM] = useState<number>(0.5);
@@ -59,7 +61,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 17: Magnetic Field of a Dipole" subtitle="Investigate the inverse-cube law of a magnetic dipole on its axial line." />
+  <LabHeader onExit={onExit} title={t('lab.p10_magfield_title')} subtitle={t('lab.p10_magfield_subtitle')} />
 
   {/* Main 3-Column Grid */}
   
@@ -68,13 +70,11 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   
@@ -82,27 +82,27 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`bg-blue-600 p-4 text-white flex items-center gap-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent flex-col `}>
    <BookOpen className="w-5 h-5" />
-   <h2 className="font-bold text-lg">Theory & Setup</h2>
+   <h2 className="font-bold text-lg">{t('lab.theory_setup')}</h2>
    </div>
    <div className="p-6 flex-1 flex flex-col gap-6 lg:overflow-y-auto">
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
-    <p>The magnetic field <strong>B</strong> on the axial line of a short bar magnet (a magnetic dipole) at distance <strong>x</strong> from its center is:</p>
+    <p>{t('lab.p10_magfield_theory')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    B = (μ₀ / 4π) · (2m / x³)
+    {t('lab.p10_magfield_formula')}
     </div>
-    <p>Where <strong>m</strong> is the magnetic moment and <strong>μ₀/4π</strong> = 10⁻⁷ T·m/A. Our magnetometer measures the field in microteslas (μT).</p>
+    <p>{t('lab.p10_magfield_formula_desc')}</p>
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] space-y-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
     <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <Activity className="w-4 h-4 text-blue-600" /> Controls
+    <Activity className="w-4 h-4 text-blue-600" /> {t('lab.p10_magfield_controls')}
     </h3>
     
     {!isMystery && (
     <div className={`space-y-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
      <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Magnetic Moment (m)</label>
-     <span>{m.toFixed(2)} A·m²</span>
+     <label>{t('lab.p10_magfield_moment_label')}</label>
+     <span>{m.toFixed(2)}  {t('lab.p10magneticfield_a_m')}</span>
      </div>
      <input 
      type="range" min="0.1" max="1.0" step="0.1" 
@@ -114,7 +114,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <label>Sensor Position (x)</label>
+     <label>{t('lab.p10_magfield_pos_label')}</label>
      <span>{xCm} cm</span>
     </div>
     <input 
@@ -129,12 +129,12 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
      onClick={startMystery}
      className="w-full mt-4 py-2 bg-indigo-100 text-indigo-700 font-semibold rounded-lg hover:bg-indigo-200 transition-colors border border-indigo-300"
     >
-     Start Mystery Magnet Challenge
+     {t('lab.p10_magfield_mystery_btn')}
     </button>
     )}
     {isMystery && (
     <div className="mt-4 p-3 bg-indigo-600 text-white rounded-lg text-sm font-medium text-center shadow-inner dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-     Mystery Mode Active! Determine 'm'.
+     {t('lab.p10_magfield_mystery_active')}
     </div>
     )}
    </div>
@@ -144,8 +144,8 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
   {/* Column 2: Simulation */}
   <div className="bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
    <div className="absolute top-4 left-4 text-slate-300 font-medium text-sm flex items-center gap-2 z-10">
-   <Activity className="w-4 h-4 text-green-400" /> Top-Down View
-   </div>
+   <Activity className="w-4 h-4 text-green-400" />  {t('lab.p10magneticfield_top_down_view')}
+                        </div>
    
    <div className="flex-1 relative w-full flex items-center justify-center min-h-[400px]">
    {/* Rulers and Grid */}
@@ -157,7 +157,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
    <div className="absolute top-1/2 left-1/2 w-[300px] h-4 flex translate-y-2">
     {[5, 10, 15, 20].map(mark => (
      <div key={mark} className="absolute text-xs text-slate-400 -translate-x-1/2" style={{ left: `${(mark/20)*100}%` }}>
-     <div className="w-px h-2 bg-slate-500 dark:bg-[#121212] mx-auto mb-1"></div>
+     <div className="w-px h-2 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212] mx-auto mb-1"></div>
      {mark}
      </div>
     ))}
@@ -194,8 +194,8 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
     onClick={handleRecord}
     className={`px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 `}
    >
-    <Activity className="w-5 h-5" /> Record B-Field
-   </button>
+    <Activity className="w-5 h-5" />  {t('lab.p10magneticfield_record_b_field')}
+                            </button>
    </div>
   </div>
 
@@ -203,7 +203,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
    <div className="bg-emerald-600 p-4 text-white flex items-center gap-2 dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
    <Calculator className="w-5 h-5" />
-   <h2 className="font-bold text-lg">Data & Analysis</h2>
+   <h2 className="font-bold text-lg">{t('lab.p10_magfield_data')}</h2>
    </div>
    
    <div className="p-4 flex-1 flex flex-col gap-4 lg:overflow-y-auto">
@@ -212,14 +212,14 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
-     <th className="px-3 py-2">x (cm)</th>
-     <th className="px-3 py-2">1/x³ (m⁻³)</th>
-     <th className="px-3 py-2">B (μT)</th>
+     <th className="px-3 py-2">{t('lab.p10_magfield_table_x')}</th>
+     <th className="px-3 py-2">{t('lab.p10_magfield_table_invx3')}</th>
+     <th className="px-3 py-2">{t('lab.p10_magfield_table_b')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
-     <tr><td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">No data recorded yet.</td></tr>
+     <tr><td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">{t('lab.p10_magfield_no_data')}</td></tr>
      ) : (
      data.map((row, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -235,7 +235,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
 
    {/* SVG Graph */}
    <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-col items-center shrink-0 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">B vs 1/x³</h4>
+    <h4 className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">{t('lab.10magneticfield_bvs1x')}</h4>
     <div className="relative w-full aspect-[3/2] max-w-[300px]">
     <svg viewBox="0 0 300 200" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner">
      {/* Axes */}
@@ -243,8 +243,8 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
      <line x1="40" y1="20" x2="40" y2="160" stroke="#94a3b8" strokeWidth="2" />
      
      {/* Labels */}
-     <text x="150" y="190" textAnchor="middle" fontSize="10" fill="#64748b">1/x³ (m⁻³)</text>
-     <text x="15" y="90" textAnchor="middle" transform="rotate(-90, 15, 90)" fontSize="10" fill="#64748b">B (μT)</text>
+     <text x="150" y="190" textAnchor="middle" fontSize="10" fill="#64748b">{t('lab.p10magneticfield_1_x_m')}</text>
+     <text x="15" y="90" textAnchor="middle" transform="rotate(-90, 15, 90)" fontSize="10" fill="#64748b">{t('lab.p10magneticfield_b_t')}</text>
 
      {/* Data Points */}
      {data.map((d, i) => (
@@ -267,13 +267,11 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
    {/* Assessment */}
    {isMystery && (
     <div className="mt-auto bg-indigo-50 p-4 rounded-xl border border-indigo-200 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h4 className="font-bold text-indigo-800 mb-2 text-sm dark:text-[#ffffff]">Analysis: Find 'm'</h4>
-    <p className="text-xs text-indigo-700 mb-3">
-     Calculate the slope of your B vs 1/x³ graph to find the unknown magnetic moment. Slope = 0.2 × m.
-    </p>
+    <h4 className="font-bold text-indigo-800 mb-2 text-sm dark:text-[#ffffff]">{t('lab.10magneticfield_analysisfindm')}</h4>
+    <p className="text-xs text-indigo-700 mb-3">{t('lab.p10_magfield_desc')}</p>
     <div className="flex gap-2">
      <input 
-     type="number" step="0.01" placeholder="m in A·m²" 
+     type="number" step="0.01" placeholder={t('lab.p10_magfield_placeholder')} 
      value={answer} onChange={(e) => setAnswer(e.target.value)}
      className="flex-1 px-3 py-2 rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
      />
@@ -281,11 +279,12 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
      onClick={handleCheck}
      className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded text-sm transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.p10magneticfield_check')}
+                                          </button>
     </div>
-    {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">Correct! You found m = {mysteryM} A·m²</div>}
-    {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">Incorrect. Check your slope calculation.</div>}
+    {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10_magfield_correct_fb', { m: mysteryM })}</div>}
+    {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">{t('lab.p10_magfield_incorrect_fb')}</div>}
     </div>
    )}
    </div>

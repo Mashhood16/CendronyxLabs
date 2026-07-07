@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Ruler, Box, CheckCircle, XCircle } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const containerRef = useRef<HTMLDivElement>(null);
  const [mode, setMode] = useState<'2D' | '3D'>('2D');
  const [length, setLength] = useState(10);
@@ -45,7 +47,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
    <ArrowLeft size={24} />
   </button>
-  <h1 className="text-2xl font-bold flex-1">Unit 9: Mensuration Sandbox</h1>
+  <h1 className="text-2xl font-bold flex-1">{t('lab.m6mensuration_unit_9_mensuration_sandbox')}</h1>
   </header>
 
   {/* Main Content */}
@@ -55,56 +57,58 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
    <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
    <button
     onClick={() => { setMode('2D'); setQuestionType('area'); }}
-    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '2D' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
+    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '2D' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
    >
-    <Ruler size={20} /> 2D Area & Perimeter
-   </button>
+    <Ruler size={20} />  {t('lab.m6mensuration_2d_area_perimeter')}
+                            </button>
    <button
     onClick={() => { setMode('3D'); setQuestionType('volume'); }}
-    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
+    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${mode === '3D' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
    >
-    <Box size={20} /> 3D Volume
-   </button>
+    <Box size={20} />  {t('lab.m6mensuration_3d_volume')}
+                            </button>
    </div>
 
    <div className="space-y-4">
-   <h2 className="text-xl font-semibold">Dimensions (m)</h2>
+   <h2 className="text-xl font-semibold">{t('lab.m6mensuration_dimensions_m')}</h2>
    <div className="grid grid-cols-2 gap-4">
     <div>
-    <label className="block text-sm font-medium mb-1">Length: {length} m</label>
+    <label className="block text-sm font-medium mb-1">{t('lab.m6mensuration_length')} {length} m</label>
     <input type="range" min={1} max={20} value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full accent-blue-500" />
     </div>
     <div>
-    <label className="block text-sm font-medium mb-1">Width: {width} m</label>
+    <label className="block text-sm font-medium mb-1">{t('lab.m6mensuration_width')} {width} m</label>
     <input type="range" min={1} max={20} value={width} onChange={(e) => setWidth(Number(e.target.value))} className="w-full accent-blue-500" />
     </div>
     {mode === '3D' && (
     <div>
-     <label className="block text-sm font-medium mb-1">Depth/Height: {height} m</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m6mensuration_depth_height')} {height} m</label>
      <input type="range" min={1} max={10} value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-indigo-500" />
     </div>
     )}
    </div>
    {mode === '2D' && (
     <div className="pt-2">
-    <label className="block text-sm font-medium mb-1">Cost per Unit ($): {costPerUnit}</label>
+    <label className="block text-sm font-medium mb-1">{t('lab.m6mensuration_cost_per_unit')} {costPerUnit}</label>
     <input type="range" min={5} max={100} step={5} value={costPerUnit} onChange={(e) => setCostPerUnit(Number(e.target.value))} className="w-full accent-green-500" />
     </div>
    )}
    </div>
 
-   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 p-4 rounded-xl space-y-4  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-xl font-semibold">Assessment</h2>
+   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 p-4 rounded-xl space-y-4  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <h2 className="text-xl font-semibold">{t('lab.m6mensuration_assessment')}</h2>
    {mode === '2D' ? (
     <div className="flex gap-4 mb-4">
     <label className="flex items-center gap-2 cursor-pointer">
      <input type="radio" checked={questionType === 'area'} onChange={() => setQuestionType('area')} className="accent-blue-500 w-4 h-4 cursor-pointer" />
-     Carpet Room (Area)
-    </label>
+     
+                                      {t('lab.m6mensuration_carpet_room_area')}
+                                     </label>
     <label className="flex items-center gap-2 cursor-pointer">
      <input type="radio" checked={questionType === 'perimeter'} onChange={() => setQuestionType('perimeter')} className="accent-blue-500 w-4 h-4 cursor-pointer" />
-     Fence Field (Perimeter)
-    </label>
+     
+                                      {t('lab.m6mensuration_fence_field_perimeter')}
+                                     </label>
     </div>
    ) : null}
 
@@ -119,15 +123,16 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
     type="number"
     value={studentAnswer}
     onChange={(e) => setStudentAnswer(e.target.value)}
-    placeholder="Enter your answer..."
+    placeholder={t('lab.m6mensuration_enter_your_answer')}
     className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <button
     onClick={checkAnswer}
     className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.m6mensuration_check')}
+                                 </button>
    </div>
 
    {feedback !== 'none' && (
@@ -141,14 +146,14 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
 
   {/* Right: Simulation Stage */}
   <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col items-center justify-center min-h-[400px]">
-   <h2 className="text-xl font-semibold mb-6 self-start">Simulation Stage</h2>
+   <h2 className="text-xl font-semibold mb-6 self-start">{t('lab.m6mensuration_simulation_stage')}</h2>
    <div className="flex-1 min-w-0 w-full flex items-center justify-center relative">
    <svg viewBox="-50 -50 400 400" className="w-full h-full max-h-[500px]">
     {mode === '2D' ? (
     <g>
      {/* Grid background */}
      <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" className="text-slate-200 dark:text-slate-700" strokeWidth="1" />
+     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" className="text-slate-200 dark:text-slate-700 dark:text-slate-300" strokeWidth="1" />
      </pattern>
      <rect x="-50" y="-50" width="400" height="400" fill="url(#grid)" />
      

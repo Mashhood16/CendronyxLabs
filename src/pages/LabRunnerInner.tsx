@@ -1,8 +1,9 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useMemo } from 'react';
 import { getLabComponent } from '../routes/labRoutes';
 import { LAB_MODULES } from '../data/labModules';
 import { historyDB } from '../services/dbService';
-import { useAuth } from '../store';
+import { useAuth, LabProvider } from '../store';
+
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
 
@@ -42,6 +43,19 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     onExit();
   }, [moduleId, user, onExit]);
 
+  const hideCalculator = useMemo(() => {
+    const mod = LAB_MODULES.find(m => m.id === moduleId);
+    if (!mod) return false;
+    return mod.subject === 'english' || ['6', '7', '8'].includes(mod.classLevel);
+  }, [moduleId]);
+
+  // English labs should not be translated
+  const isEnglishLab = useMemo(() => {
+    if (!moduleId) return false;
+    const mod = LAB_MODULES.find(m => m.id === moduleId);
+    return mod?.subject === 'english';
+  }, [moduleId]);
+
   if (!LabComponent || !moduleId) {
     return (
       <Layout>
@@ -57,8 +71,10 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   }
 
   return (
-    <div className="text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen">
-      <LabComponent onExit={handleExit} />
-    </div>
+    <LabProvider value={{ hideCalculator, isEnglishLab, moduleId }}>
+      <div className="english-lab-runner text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen">
+        <LabComponent onExit={handleExit} />
+      </div>
+    </LabProvider>
   );
 }

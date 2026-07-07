@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7Cybercrime({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [slides, setSlides] = useState([
  { title: '', movie: '', content: '' }
  ]);
@@ -56,9 +58,10 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
     onClick={(e) => { e.stopPropagation(); if(activeSlide > 0) setActiveSlide(activeSlide - 1); }}
     className={`text-white/50 hover:text-white ${activeSlide === 0 ? 'invisible' : ''}`}
    >
-    &larr; Previous
-   </button>
-   <span className="text-white/50">Slide {activeSlide + 1} of {slides.length}</span>
+    
+                         {t('lab.c7cybercrime_larr_previous')}
+                        </button>
+   <span className="text-white/50">{t('lab.c7cybercrime_slide')} {activeSlide + 1} of {slides.length}</span>
    <button 
     onClick={(e) => { e.stopPropagation(); if(activeSlide < slides.length - 1) setActiveSlide(activeSlide + 1); else setIsPlaying(false); }}
     className="text-white/50 hover:text-white"
@@ -66,7 +69,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
     {activeSlide < slides.length - 1 ? 'Next &rarr;' : 'End Show'}
    </button>
    </div>
-   <div className="absolute top-10 right-10 text-white/30 text-sm">Click anywhere to exit</div>
+   <div className="absolute top-10 right-10 text-white/30 text-sm">{t('lab.c7cybercrime_click_anywhere_to_exit')}</div>
   </div>
   </div>
  );
@@ -74,17 +77,18 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-  <LabHeader onExit={onExit} title="Cybercrime Presentation" subtitle="Prepare a presentation based on a movie or story about cybercrime" />
+  <LabHeader onExit={onExit} title={t('lab.c7cybercrime_cybercrime_presentation')} subtitle={t('lab.subtitle_prepare_presentation_based')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Prepare a presentation based on a movie or story about cybercrime.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7cybercrime_prepare_a_presentation_based_o')}</p>
 
   <div className="flex gap-8 max-w-6xl w-full h-[600px]">
    {/* Slides List */}
    <div className="w-64 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
    <div className="p-4 border-b border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] font-bold text-slate-700 dark:text-[#ffffff] flex justify-between items-center">
-    Slides
-    <button onClick={addSlide} className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 font-black text-xl">+</button>
+    
+                             {t('lab.c7cybercrime_slides')}
+                             <button onClick={addSlide} className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 font-black text-xl">+</button>
    </div>
    <div className="flex-1 lg:overflow-y-auto p-4 flex flex-col gap-4">
     {slides.map((s, i) => (
@@ -102,20 +106,20 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
    {/* Editor */}
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
    <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-3 flex items-center">
-    <span className="font-bold text-slate-600 dark:text-[#a1a1aa] text-sm">Slide Editor</span>
+    <span className="font-bold text-slate-600 dark:text-[#a1a1aa] text-sm">{t('lab.c7cybercrime_slide_editor')}</span>
    </div>
 
    <div className="flex-1 p-12 lg:overflow-y-auto flex flex-col gap-6 max-w-3xl mx-auto w-full">
     <input 
     type="text" 
-    placeholder="Click to add title..."
+    placeholder={t('lab.c7cybercrime_click_to_add_title')}
     className="w-full text-4xl font-bold outline-none border-b border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 pb-2 text-center"
     value={slides[activeSlide].title}
     onChange={(e) => updateSlide('title', e.target.value)}
     />
 
     <div className="mt-8 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-xl p-8 bg-slate-50 dark:bg-[#121212]">
-    <h3 className="font-bold text-slate-600 dark:text-[#a1a1aa] mb-4 flex items-center justify-center"><ImageIcon className="w-5 h-5 mr-2"/> Select Movie Reference</h3>
+    <h3 className="font-bold text-slate-600 dark:text-[#a1a1aa] mb-4 flex items-center justify-center"><ImageIcon className="w-5 h-5 mr-2"/>  {t('lab.c7cybercrime_select_movie_reference')}</h3>
     <div className="grid grid-cols-3 gap-4">
      {movies.map(m => (
      <div 
@@ -131,7 +135,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
     </div>
 
     <textarea 
-    placeholder="Click to add summary points, ethical takeaways, or story details..."
+    placeholder={t('lab.c7cybercrime_click_to_add_summary_points_et')}
     className="w-full flex-1 min-h-[150px] outline-none border-b border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 text-lg text-slate-600 dark:text-[#a1a1aa] resize-none mt-4 p-4"
     value={slides[activeSlide].content}
     onChange={(e) => updateSlide('content', e.target.value)}

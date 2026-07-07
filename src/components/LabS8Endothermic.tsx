@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Snowflake, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8Endothermic({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [stage, setStage] = useState<'initial' | 'adding' | 'reaction'>('initial');
  const [temp, setTemp] = useState(25); // Celsius
  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -29,7 +31,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 6.3: Endothermic Reaction" subtitle="Vinegar + Baking Soda (Absorbs Heat)" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
+  <LabHeader onExit={onExit} title={t('lab.s8endothermic_act_6_3_endothermic_reaction')} subtitle={t('lab.subtitle_vinegar_baking_soda')} rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> {t('lab.reset')}</button>} />
 
   <div className="flex-1 flex flex-col items-center justify-center p-6">
   <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-3xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] max-w-2xl w-full flex flex-col items-center min-h-[500px]">
@@ -89,13 +91,13 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
     onClick={handleAdd}
     className="w-full bg-cyan-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-cyan-700 text-xl shadow-lg transition-transform active:scale-95 dark:text-white dark:text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
     >
-    Add Baking Soda
+    {t('lab.apply')}
     </button>
    ) : (
     <>
     <div className="bg-cyan-50 border-2 border-cyan-200 px-6 py-4 rounded-xl text-cyan-900 animate-fade-in">
-     <h3 className="font-bold text-lg mb-1">Temperature Decreased!</h3>
-     <p className="text-sm">This is an <strong>Endothermic</strong> reaction. It absorbs heat from its surroundings, making the beaker feel cold.</p>
+     <h3 className="font-bold text-lg mb-1">{t('lab.s8endothermic_temperature_decreased')}</h3>
+     <p className="text-sm">{t('lab.s8endothermic_this_is_an')} <strong>{t('lab.s8endothermic_endothermic')}</strong>  {t('lab.s8endothermic_reaction_it_absorbs_heat_from_')}</p>
     </div>
     </>
    )}

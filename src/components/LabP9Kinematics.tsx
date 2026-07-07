@@ -3,8 +3,10 @@ import { CheckCircle, XCircle, Play, RotateCcw, Lightbulb, BarChart3 } from 'luc
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 import PredictionChallenge from './PredictionChallenge';
+import { useTranslate } from '../i18n';
 
 export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -108,7 +110,7 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Physics Grade 9: Kinematics & Precision" />
+  <LabHeader onExit={onExit} title={t('lab.p9kinematics_physics_grade_9_kinematics_pre')} />
 
   <div className="px-4 pt-2 lg:pt-0">
    
@@ -119,50 +121,52 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible"> {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-      <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory</h2>
+      <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9kinematics_theory')}</h2>
    <div className="prose prose-sm space-y-4">
    <div>
-    <h3 className="font-semibold text-blue-800 dark:text-[#ffffff]">1. Speed and Velocity</h3>
+    <h3 className="font-semibold text-blue-800 dark:text-[#ffffff]">{t('lab.p9kinematics_1_speed_and_velocity')}</h3>
     <p>
-    Average speed is the total distance traveled divided by the total time taken.
-    </p>
+    
+                                 {t('lab.p9kinematics_average_speed_is_the_total_dis')}
+                                 </p>
     <div className={`bg-blue-50 p-2 rounded text-center font-mono my-2 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    Speed (v) = Distance (d) / Time (t)
-    </div>
+    
+                                 {t('lab.p9kinematics_speed_v_distance_d_time_t')}
+                                 </div>
    </div>
    
    <div>
-    <h3 className="font-semibold text-blue-800 dark:text-[#ffffff]">2. Significant Figures</h3>
+    <h3 className="font-semibold text-blue-800 dark:text-[#ffffff]">{t('lab.p9kinematics_2_significant_figures')}</h3>
     <p>
-    When taking a measurement, record all certain digits plus one estimated digit. If a ruler has 1mm marks, you can estimate to 0.1mm (0.01cm).
-    </p>
+    
+                                 {t('lab.p9kinematics_when_taking_a_measurement_reco')}
+                                 </p>
    </div>
    <div className={`bg-yellow-50 border border-yellow-200 p-3 rounded-lg mt-4 text-xs text-yellow-800 flex-col `}>
-    <strong>Instructions:</strong><br/>
-    Click <em>Bowl Delivery</em>. Manually Start and Stop the stopwatch to measure the flight time. Then calculate the ball's speed.
-    </div>
+    <strong>{t('lab.p9kinematics_instructions')}</strong><br/>
+    
+                             {t('lab.p9kinematics_click')} <em>{t('lab.p9kinematics_bowl_delivery')}</em>{t('lab.p9kinematics_manually_start_and_stop_the_st')}
+                             </div>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {config.showHints && (
     <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
      <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-     <span><strong>Hint:</strong> Speed = Distance ÷ Time. The pitch is {pitchLength}m. Try measuring the time accurately with the stopwatch!</span>
+     <span><strong>{t('lab.p9kinematics_hint')}</strong>  {t('lab.p9kinematics_speed_distance_time_the_pitch_')} {pitchLength}{t('lab.p9kinematics_m_try_measuring_the_time_accur')}</span>
     </div>
    )}
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">Cricket Pitch Simulator</h2>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">{t('lab.p9kinematics_cricket_pitch_simulator')}</h2>
    
    <div className={`w-full relative h-32 bg-green-600 border-4 border-green-800 rounded-lg overflow- flex items-center mb-8 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 flex-col `}>
    {/* Pitch */}
@@ -184,8 +188,8 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
     disabled={isBowling}
     className={`px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2 shadow-md dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 `}
    >
-    <Play size={18} /> Bowl Delivery
-   </button>
+    <Play size={18} />  {t('lab.p9kinematics_bowl_delivery')}
+                            </button>
    <button 
     onClick={resetBowl}
     className="px-4 py-3 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors flex items-center gap-2"
@@ -195,7 +199,7 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
    </div>
 
    <div className="w-full max-w-sm bg-[#121212] dark:!bg-[#121212] text-white rounded-xl p-6 shadow-xl flex flex-col items-center border-4 border-[#1c1b1b] dark:border-[#1c1b1b]">
-   <div className="text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">Digital Stopwatch</div>
+   <div className="text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wider">{t('lab.p9kinematics_digital_stopwatch')}</div>
    <div className="text-5xl font-mono mb-6 text-green-400 font-light tracking-wider">
     {stopwatchTime.toFixed(2)}<span className="text-2xl text-slate-500 dark:text-[#71717a]">s</span>
    </div>
@@ -226,20 +230,22 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
     </div>
    )}
    <div>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 mb-4">1. Speed Calculation</h2>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 mb-4">{t('lab.p9kinematics_1_speed_calculation')}</h2>
    <div className="space-y-3">
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Distance: <strong>{pitchLength} m</strong><br/>
-    Time (your measurement): <strong>{stopwatchTime > 0 ? stopwatchTime.toFixed(2) : '--'} s</strong>
+    
+                                 {t('lab.p9kinematics_distance')} <strong>{pitchLength} m</strong><br/>
+    
+                                 {t('lab.p9kinematics_time_your_measurement')} <strong>{stopwatchTime > 0 ? stopwatchTime.toFixed(2) : '--'} s</strong>
     </p>
     <div>
-    <label className="block text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">Calculated Speed (m/s)</label>
+    <label className="block text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p9kinematics_calculated_speed_m_s')}</label>
     <input 
      type="number" 
      value={inputSpeed} 
      onChange={(e)=>setInputSpeed(e.target.value)} 
      className="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-     placeholder="e.g. 32.5"
+     placeholder={t('lab.p9kinematics_e_g_32_5')}
     />
     </div>
     <button 
@@ -247,24 +253,25 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
     disabled={stopwatchTime === 0}
     className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check Speed
-    </button>
+    
+                                 {t('lab.p9kinematics_check_speed')}
+                                 </button>
     
     {feedback === 'correct' && (
     <p className="text-sm text-green-700 flex items-center gap-1 mt-2">
-     <CheckCircle size={16}/> Correct based on your time! (True speed was {speedTrue} m/s)
-    </p>
+     <CheckCircle size={16}/>  {t('lab.p9kinematics_correct_based_on_your_time_tru')} {speedTrue}  {t('lab.p9kinematics_m_s')}
+                                     </p>
     )}
     {feedback === 'incorrect' && (
     <p className="text-sm text-red-700 flex items-center gap-1 mt-2">
-     <XCircle size={16}/> Incorrect. Divide distance by YOUR time.
-    </p>
+     <XCircle size={16}/>  {t('lab.p9kinematics_incorrect_divide_distance_by_y')}
+                                     </p>
     )}
    </div>
    </div>
 
    <div>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 mb-4">2. Significant Figures</h2>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 mb-4">{t('lab.p9kinematics_2_significant_figures')}</h2>
    <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg relative mb-3">
     {/* Fake ruler measuring a textbook block */}
     <div className="w-full h-8 bg-blue-300 rounded mb-1 shadow-sm"></div>
@@ -278,33 +285,34 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
     <div className="absolute left-[50%] top-0 bottom-6 w-0.5 bg-red-500 shadow-[0_0_2px_rgba(255,0,0,0.5)]"></div>
    </div>
    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2">
-    The red line shows the edge of the textbook. The ruler marks are in centimeters (cm).
-    Record the length to the correct number of significant figures.
-   </p>
+    
+                             {t('lab.p9kinematics_the_red_line_shows_the_edge_of')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="text" 
     value={sigFigInput} 
     onChange={(e)=>setSigFigInput(e.target.value)} 
     className="flex-1 border rounded p-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-    placeholder="e.g. 24.5"
+    placeholder={t('lab.p9kinematics_e_g_24_5')}
     />
     <button 
     onClick={checkSigFigs}
     className="px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Submit
-    </button>
+    
+                                 {t('lab.p9kinematics_submit')}
+                                 </button>
    </div>
    {sigFigFeedback === 'correct' && (
     <p className="text-sm text-green-700 flex items-center gap-1 mt-2">
-    <CheckCircle size={16}/> Correct! 3 sig figs.
-    </p>
+    <CheckCircle size={16}/>  {t('lab.p9kinematics_correct_3_sig_figs')}
+                                 </p>
    )}
    {sigFigFeedback === 'incorrect' && (
     <p className="text-sm text-red-700 flex items-center gap-1 mt-2">
-    <XCircle size={16}/> Incorrect. Look closely at the marks. Estimate one digit past the smallest mark.
-    </p>
+    <XCircle size={16}/>  {t('lab.p9kinematics_incorrect_look_closely_at_the_')}
+                                 </p>
    )}
    </div>
   </div>

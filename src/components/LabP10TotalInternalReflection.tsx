@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
@@ -14,7 +15,8 @@ const MATERIALS = [
 ];
 
 export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [materialId, setMaterialId] = useState('glass');
  const [angle1, setAngle1] = useState(30); // Incident angle in denser medium
@@ -73,7 +75,7 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 14: Total Internal Reflection" subtitle="Investigate Snell's Law and the Critical Angle." />
+  <LabHeader onExit={onExit} title={t('lab.p10totalinternalreflection_unit_14_total_internal_reflect')} subtitle={t('lab.subtitle_investigate_snell_critical')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -82,34 +84,38 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10totalinternalreflection_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10totalinternalreflection_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10totalinternalreflection_theory_andsetup')}</h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    When light travels from a <strong>denser</strong> to a <strong>less dense</strong> medium (e.g., Glass to Air), it bends <em>away</em> from the normal. This is governed by Snell's Law:
-   </p>
+    
+                             {t('lab.p10totalinternalreflection_when_light_travels_from_a')} <strong>{t('lab.10totalinternalreflection_denser')}</strong>{t('lab.10totalinternalreflection_toa')}<strong>{t('lab.10totalinternalreflection_lessdense')}</strong>  {t('lab.p10totalinternalreflection_medium_e_g_glass_to_air_it_ben')} <em>{t('lab.10totalinternalreflection_away')}</em>  {t('lab.p10totalinternalreflection_from_the_normal_this_is_govern')}
+                            </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono font-bold text-sm flex-col `}>
-    n₁ · sin(θ₁) = n₂ · sin(θ₂)
-   </div>
+    
+                             {t('lab.p10totalinternalreflection_n_sin_n_sin')}
+                            </div>
    <p className="mt-2">
-    If the angle of incidence <span className="font-mono">θ₁</span> is increased, <span className="font-mono">θ₂</span> eventually reaches 90°. The incident angle at which this occurs is the <strong>Critical Angle (θ_c)</strong>. If <span className="font-mono">θ₁ &gt; θ_c</span>, all light is reflected back (Total Internal Reflection).
-   </p>
+    
+                             {t('lab.p10totalinternalreflection_if_the_angle_of_incidence')} <span className="font-mono">{t('lab.10totalinternalreflection_label')}</span>{t('lab.10totalinternalreflection_isincreased')}<span className="font-mono">{t('lab.10totalinternalreflection_label')}</span>  {t('lab.p10totalinternalreflection_eventually_reaches_90_the_inci')} <strong>{t('lab.p10totalinternalreflection_critical_angle_c')}</strong>{t('lab.10totalinternalreflection_if')}<span className="font-mono">{t('lab.10totalinternalreflection_andgt_c')}</span>{t('lab.p10totalinternalreflection_all_light_is_reflected_back_to')}
+                            </p>
    </div>
 
    <div className={`space-y-6 flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Denser Medium (n₁)</span>
+    <span>{t('lab.p10totalinternalreflection_denser_medium_n')}</span>
     </label>
     <select 
     value={materialId} 
@@ -124,16 +130,17 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Less Dense Medium (n₂)</span>
+    <span>{t('lab.p10totalinternalreflection_less_dense_medium_n')}</span>
     </label>
     <div className={`w-full p-2 border border-slate-200 dark:border-[#1c1b1b] rounded-md bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] font-mono flex-col `}>
-    Air (n = 1.00)
-    </div>
+    
+                                 {t('lab.p10totalinternalreflection_air_n_1_00')}
+                                 </div>
    </div>
 
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Angle of Incidence (θ₁)</span>
+    <span>{t('lab.p10totalinternalreflection_angle_of_incidence')}</span>
     <span className="text-blue-600 font-bold">{angle1}°</span>
     </label>
     <input 
@@ -148,14 +155,14 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
 
   {/* Column 2: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
+   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">{t('lab.10totalinternalreflection_simulation')}</h2>
    
    <div className={`flex-1 w-full flex items-center justify-center relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <svg width="100%" height="100%" viewBox="-200 -200 400 400" className="bg-black rounded-lg shadow-inner">
     
     {/* Air Medium (Top Half) */}
     <rect x="-200" y="-200" width="400" height="200" fill="#0f172a" />
-    <text x="180" y="-180" fill="#475569" fontSize="14" textAnchor="end" fontWeight="bold">Air (n=1.00)</text>
+    <text x="180" y="-180" fill="#475569" fontSize="14" textAnchor="end" fontWeight="bold">{t('lab.p10totalinternalreflection_air_n_1_00_1')}</text>
 
     {/* Denser Medium (Bottom Half) */}
     <rect x="-200" y="0" width="400" height="200" fill="#1e3a8a" opacity="0.6" />
@@ -210,7 +217,7 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
     d={`M 0 40 A 40 40 0 0 0 ${40 * Math.sin(angle1 * Math.PI / 180)} ${40 * Math.cos(angle1 * Math.PI / 180)}`} 
     fill="none" stroke="#facc15" strokeWidth="1.5" 
     />
-    <text x={20 * Math.sin(angle1/2 * Math.PI / 180)} y={20 * Math.cos(angle1/2 * Math.PI / 180) + 15} fill="#facc15" fontSize="12" textAnchor="middle">θ₁</text>
+    <text x={20 * Math.sin(angle1/2 * Math.PI / 180)} y={20 * Math.cos(angle1/2 * Math.PI / 180) + 15} fill="#facc15" fontSize="12" textAnchor="middle">{t('lab.10totalinternalreflection_label')}</text>
 
     {/* Arc for theta2 */}
     {!isTIR && (
@@ -219,15 +226,16 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
      d={`M 0 -40 A 40 40 0 0 1 ${-40 * Math.sin(trueTheta2 * Math.PI / 180)} ${-40 * Math.cos(trueTheta2 * Math.PI / 180)}`} 
      fill="none" stroke="#f87171" strokeWidth="1.5" 
      />
-     <text x={-20 * Math.sin(trueTheta2/2 * Math.PI / 180) - 10} y={-20 * Math.cos(trueTheta2/2 * Math.PI / 180) - 10} fill="#f87171" fontSize="12" textAnchor="middle">θ₂</text>
+     <text x={-20 * Math.sin(trueTheta2/2 * Math.PI / 180) - 10} y={-20 * Math.cos(trueTheta2/2 * Math.PI / 180) - 10} fill="#f87171" fontSize="12" textAnchor="middle">{t('lab.10totalinternalreflection_label')}</text>
     </>
     )}
    </svg>
 
    {isTIR && (
     <div className="absolute top-4 bg-red-500/20 border border-red-500 text-red-400 px-4 py-1 rounded font-bold animate-pulse text-sm dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    TOTAL INTERNAL REFLECTION
-    </div>
+    
+                                 {t('lab.p10totalinternalreflection_total_internal_reflection')}
+                                 </div>
    )}
    </div>
   </div>
@@ -235,28 +243,28 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
   {/* Column 3: Data & Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logger</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10totalinternalreflection_datalogger')}</h2>
    <button 
     onClick={recordData}
     className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Save className="w-4 h-4" /> Record Data
-   </button>
+    <Save className="w-4 h-4" />  {t('lab.p10totalinternalreflection_record_data')}
+                            </button>
    </div>
 
    <div className="overflow-auto max-h-40 border border-slate-200 dark:border-[#1c1b1b] rounded-lg mb-4">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-3 py-2 border-b">n₁</th>
+     <th className="px-3 py-2 border-b">{t('lab.10totalinternalreflection_n')}</th>
      <th className="px-3 py-2 border-b">θ₁ (°)</th>
-     <th className="px-3 py-2 border-b">Measured θ₂ (°)</th>
+     <th className="px-3 py-2 border-b">{t('lab.p10totalinternalreflection_measured')}</th>
     </tr>
     </thead>
     <tbody>
     {data.length === 0 && (
      <tr>
-     <td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">No data recorded yet</td>
+     <td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">{t('lab.10totalinternalreflection_no_data')}</td>
      </tr>
     )}
     {data.map(d => (
@@ -271,7 +279,7 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
    </div>
 
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">sin(θ₁) vs sin(θ₂)</h3>
+   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">{t('lab.p10totalinternalreflection_sin_vs_sin')}</h3>
    <div className="w-full h-full pt-6">
     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
      <line x1="10" y1="90" x2="100" y2="90" stroke="#cbd5e1" strokeWidth="1" />
@@ -288,19 +296,20 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
      })}
     </svg>
    </div>
-   <p className="absolute bottom-1 right-2 text-[10px] text-slate-400">Slope = n₂ / n₁</p>
+   <p className="absolute bottom-1 right-2 text-[10px] text-slate-400">{t('lab.10totalinternalreflection_slopenn')}</p>
    </div>
 
    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-amber-800 text-sm mb-2 dark:text-[#ffffff]">Assessment: Mystery Material</h3>
+   <h3 className="font-bold text-amber-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10totalinternalreflection_assessmentmysterymaterial')}</h3>
    <p className="text-xs text-amber-700 mb-3">
-    Select the "Mystery Material". Slowly increase <span className="font-mono">θ₁</span> until TIR occurs to find the Critical Angle <span className="font-mono">θ_c</span>. Then calculate its refractive index using <span className="font-mono">n₁ = 1 / sin(θ_c)</span>.
+    
+                             {t('lab.p10totalinternalreflection_select_the_mystery_material_sl')} <span className="font-mono">{t('lab.10totalinternalreflection_label')}</span>{t('lab.10totalinternalreflection_untiltiroccurstofindthecriticalangl')}<span className="font-mono">{t('lab.10totalinternalreflection_c')}</span>{t('lab.10totalinternalreflection_thencalculateitsrefractiveindexusin')}<span className="font-mono">{t('lab.p10totalinternalreflection_n_1_sin_c')}</span>.
    </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     step="0.01"
-    placeholder="e.g. 1.50"
+    placeholder={t('lab.p10totalinternalreflection_t_lab_10totalinternalreflectio')}
     value={assessmentInput}
     onChange={(e) => { setAssessmentInput(e.target.value); setAssessmentStatus('idle'); }}
     className="flex-1 px-3 py-1.5 border border-amber-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
@@ -310,18 +319,19 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
     onClick={checkAssessment}
     className="px-4 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10totalinternalreflection_check')}
+                                 </button>
    </div>
    {assessmentStatus === 'correct' && (
     <div className="mt-2 flex items-center gap-1 text-emerald-600 text-sm font-bold">
-    <CheckCircle className="w-4 h-4" /> Correct! n ≈ 1.65.
-    </div>
+    <CheckCircle className="w-4 h-4" />  {t('lab.p10totalinternalreflection_correct_n_1_65')}
+                                 </div>
    )}
    {assessmentStatus === 'incorrect' && (
     <div className="mt-2 flex items-center gap-1 text-red-600 text-sm font-bold">
-    <XCircle className="w-4 h-4" /> Incorrect. Find where θ₂ hits 90°!
-    </div>
+    <XCircle className="w-4 h-4" />  {t('lab.p10totalinternalreflection_incorrect_find_where_hits_90')}
+                                 </div>
    )}
    </div>
   </div>

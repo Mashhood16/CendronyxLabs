@@ -1,0 +1,1602 @@
+{
+  "class.title": {
+    "original": "Class {number}",
+    "protected_terms": false
+  },
+  "class.platform_name": {
+    "original": "Cendronyx Labs",
+    "protected_terms": false
+  },
+  "class.class_label": {
+    "original": "Class",
+    "protected_terms": false
+  },
+  "settings.theme": {
+    "original": "Theme",
+    "protected_terms": false
+  },
+  "settings.font_size": {
+    "original": "Font Size",
+    "protected_terms": false
+  },
+  "settings.sign_out": {
+    "original": "Sign Out",
+    "protected_terms": false
+  },
+  "settings.log_in": {
+    "original": "Log In",
+    "protected_terms": false
+  },
+  "settings.class_label": {
+    "original": "Class",
+    "protected_terms": false
+  },
+  "settings.section_label": {
+    "original": "Section",
+    "protected_terms": false
+  },
+  "auth.log_in": {
+    "original": "Log In",
+    "protected_terms": false
+  },
+  "auth.sign_out": {
+    "original": "Sign Out",
+    "protected_terms": false
+  },
+  "auth.register": {
+    "original": "Register",
+    "protected_terms": false
+  },
+  "status.online": {
+    "original": "System Online",
+    "protected_terms": false
+  },
+  "status.offline": {
+    "original": "System Offline",
+    "protected_terms": false
+  },
+  "lab.calculator": {
+    "original": "Calculator",
+    "protected_terms": false
+  },
+  "lab.simulation": {
+    "original": "Simulation",
+    "protected_terms": false
+  },
+  "lab.input": {
+    "original": "Input",
+    "protected_terms": false
+  },
+  "lab.output": {
+    "original": "Output",
+    "protected_terms": false
+  },
+  "lab.tab.lab": {
+    "original": "Lab",
+    "protected_terms": false
+  },
+  "lab.tab.simulation": {
+    "original": "Simulation",
+    "protected_terms": false
+  },
+  "lab.tab.derivation": {
+    "original": "Derivation",
+    "protected_terms": false
+  },
+  "lab.step": {
+    "original": "Step {n}",
+    "protected_terms": false
+  },
+  "lab.ammeter": {
+    "original": "Ammeter",
+    "protected_terms": false
+  },
+  "lab.resistor": {
+    "original": "Resistor",
+    "protected_terms": false
+  },
+  "lab.score": {
+    "original": "Score: {n}%",
+    "protected_terms": false
+  },
+  "lab.current_label": {
+    "original": "Current: {n} A",
+    "protected_terms": false
+  },
+  "lab.final_formula_desc": {
+    "original": "The net force equals the rate of change of momentum",
+    "protected_terms": false
+  },
+  "lab.mass_label": {
+    "original": "Mass (m)",
+    "protected_terms": false
+  },
+  "lab.initial_velocity_label": {
+    "original": "Initial Velocity (vi)",
+    "protected_terms": false
+  },
+  "lab.final_velocity_label": {
+    "original": "Final Velocity (vf)",
+    "protected_terms": false
+  },
+  "lab.time_interval_label": {
+    "original": "Time Interval (Δt)",
+    "protected_terms": false
+  },
+  "lab.force_placeholder": {
+    "original": "Force in Newtons...",
+    "protected_terms": false
+  },
+  "lab.step1_label": {
+    "original": "Newton's Second Law",
+    "protected_terms": false
+  },
+  "subject.physics": {
+    "original": "Physics",
+    "protected_terms": false
+  },
+  "subject.chemistry": {
+    "original": "Chemistry",
+    "protected_terms": false
+  },
+  "subject.biology": {
+    "original": "Biology",
+    "protected_terms": false
+  },
+  "subject.math": {
+    "original": "Math",
+    "protected_terms": false
+  },
+  "subject.computer": {
+    "original": "Computer",
+    "protected_terms": false
+  },
+  "subject.science": {
+    "original": "Science",
+    "protected_terms": false
+  },
+  "subject.english": {
+    "original": "English",
+    "protected_terms": false
+  },
+  "lab.force_title": {
+    "original": "Derivation: Force & Change in Momentum",
+    "protected_terms": false
+  },
+  "lab.recoil_title": {
+    "original": "Derivation: Recoil Velocity of a Gun",
+    "protected_terms": false
+  },
+  "lab.recoil_step1_label": {
+    "original": "Conservation of Momentum",
+    "protected_terms": false
+  },
+  "lab.recoil_step2_label": {
+    "original": "Before Firing: Everything at Rest",
+    "protected_terms": false
+  },
+  "lab.recoil_step3_label": {
+    "original": "After Firing: Bullet + Gun Move",
+    "protected_terms": false
+  },
+  "lab.recoil_step4_label": {
+    "original": "Solve for Recoil Velocity",
+    "protected_terms": false
+  },
+  "lab.recoil_bullet_mass_label": {
+    "original": "Bullet Mass",
+    "protected_terms": false
+  },
+  "lab.recoil_bullet_vel_label": {
+    "original": "Bullet Velocity",
+    "protected_terms": false
+  },
+  "lab.recoil_gun_mass_label": {
+    "original": "Gun Mass",
+    "protected_terms": false
+  },
+  "lab.recoil_placeholder": {
+    "original": "Velocity (m/s)...",
+    "protected_terms": false
+  },
+  "lab.orbital_title": {
+    "original": "Derivation: Orbital Speed of a Satellite",
+    "protected_terms": false
+  },
+  "lab.orbital_step1_label": {
+    "original": "Average Speed Formula",
+    "protected_terms": false
+  },
+  "lab.orbital_step4_label": {
+    "original": "Substitute to Get Orbital Speed",
+    "protected_terms": false
+  },
+  "lab.orbital_radius_label": {
+    "original": "Orbit Radius",
+    "protected_terms": false
+  },
+  "lab.orbital_placeholder": {
+    "original": "Orbital speed (m/s)...",
+    "protected_terms": false
+  },
+  "lab.hydraulic_title": {
+    "original": "Derivation: Hydraulic Lift (Pascal's Principle)",
+    "protected_terms": false
+  },
+  "lab.ke_step1_label": {
+    "original": "Work-Energy Theorem",
+    "protected_terms": false
+  },
+  "lab.ke_mass_label": {
+    "original": "Mass (m)",
+    "protected_terms": false
+  },
+  "lab.ke_vel_label": {
+    "original": "Velocity (v)",
+    "protected_terms": false
+  },
+  "lab.gpe_step4_label": {
+    "original": "Gravitational PE Formula",
+    "protected_terms": false
+  },
+  "lab.gpe_mass_label": {
+    "original": "Mass (m)",
+    "protected_terms": false
+  },
+  "lab.gpe_placeholder": {
+    "original": "Energy (J)...",
+    "protected_terms": false
+  },
+  "lab.p9_friction_mass_label": {
+    "original": "Block Mass: {mass} kg",
+    "protected_terms": false
+  },
+  "lab.p9_friction_mode_label": {
+    "original": "Surface Mode",
+    "protected_terms": false
+  },
+  "lab.p9_friction_mode_sliding": {
+    "original": "Wood on Wood (Sliding)",
+    "protected_terms": false
+  },
+  "lab.p9_friction_mode_rolling": {
+    "original": "Wood on Pencils (Rolling)",
+    "protected_terms": false
+  },
+  "lab.p9_friction_mode_unknown": {
+    "original": "Unknown Material (Sliding)",
+    "protected_terms": false
+  },
+  "lab.p9_friction_start": {
+    "original": "Start Pulling",
+    "protected_terms": false
+  },
+  "lab.p9_friction_table_mode": {
+    "original": "Mode",
+    "protected_terms": false
+  },
+  "lab.p9_friction_table_mass": {
+    "original": "Mass (kg)",
+    "protected_terms": false
+  },
+  "lab.p9_friction_table_peak": {
+    "original": "Peak (N)",
+    "protected_terms": false
+  },
+  "lab.p9_friction_table_kinetic": {
+    "original": "Kinetic (N)",
+    "protected_terms": false
+  },
+  "lab.p9_inertia_section2": {
+    "original": "Simulator",
+    "protected_terms": false
+  },
+  "lab.p9_inertia_flick_label": {
+    "original": "Flick Force: {force} N",
+    "protected_terms": false
+  },
+  "lab.p9_inertia_flick_btn": {
+    "original": "FLICK!",
+    "protected_terms": false
+  },
+  "lab.p9_kinematics_section1": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.p9_kinematics_section2": {
+    "original": "Cricket Pitch Simulator",
+    "protected_terms": false
+  },
+  "lab.p9_kinematics_bowl_btn": {
+    "original": "Bowl Delivery",
+    "protected_terms": false
+  },
+  "lab.p9_kinematics_stopwatch": {
+    "original": "Digital Stopwatch",
+    "protected_terms": false
+  },
+  "lab.p9_kinematics_distance_label": {
+    "original": "Distance: {d} m",
+    "protected_terms": false
+  },
+  "lab.p9_measurement_section1": {
+    "original": "Theory: Measurement",
+    "protected_terms": false
+  },
+  "lab.p9_measurement_section2": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p9_springs_mass_label": {
+    "original": "Hanging Mass: {mass} g",
+    "protected_terms": false
+  },
+  "lab.p9_springs_placeholder_springs": {
+    "original": "Springs",
+    "protected_terms": false
+  },
+  "lab.p9_springs_placeholder_mass": {
+    "original": "Mass (g)",
+    "protected_terms": false
+  },
+  "lab.p9_springs_placeholder_reading": {
+    "original": "Top Reading (N)",
+    "protected_terms": false
+  },
+  "lab.p9_springs_placeholder_ext": {
+    "original": "Total Ext (cm)",
+    "protected_terms": false
+  },
+  "lab.p9_springs_table_springs": {
+    "original": "Springs",
+    "protected_terms": false
+  },
+  "lab.p9_springs_table_mass": {
+    "original": "Mass(g)",
+    "protected_terms": false
+  },
+  "lab.p9_springs_table_reading": {
+    "original": "Top(N)",
+    "protected_terms": false
+  },
+  "lab.p9_springs_table_ext": {
+    "original": "Ext(cm)",
+    "protected_terms": false
+  },
+  "lab.p9_density_section1": {
+    "original": "Theory: Density",
+    "protected_terms": false
+  },
+  "lab.p9_density_section2": {
+    "original": "Laboratory Bench",
+    "protected_terms": false
+  },
+  "lab.p9_density_tab_table": {
+    "original": "Table",
+    "protected_terms": false
+  },
+  "lab.p9_density_tab_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.p9_density_mass_label": {
+    "original": "Mass (g)",
+    "protected_terms": false
+  },
+  "lab.p9_magfields_section2": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p9_magfields_table_num": {
+    "original": "Reading #",
+    "protected_terms": false
+  },
+  "lab.p9_magfields_table_pos": {
+    "original": "Position (x,y)",
+    "protected_terms": false
+  },
+  "lab.p9_magind_section2": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p9_magind_ew_label": {
+    "original": "Bar Aligned East-West",
+    "protected_terms": false
+  },
+  "lab.p9_magind_ns_label": {
+    "original": "Bar Aligned North-South",
+    "protected_terms": false
+  },
+  "lab.p9_magind_hammer_btn": {
+    "original": "Hammer Bar",
+    "protected_terms": false
+  },
+  "lab.p9_magind_table_action": {
+    "original": "Action",
+    "protected_terms": false
+  },
+  "lab.p9_magind_table_magnetization": {
+    "original": "Net Magnetization",
+    "protected_terms": false
+  },
+  "lab.p9_magind_guess_left": {
+    "original": "The domains' North poles are repelled by the magnet's North pole, ending up pointing left. So the left end becomes North.",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_section2": {
+    "original": "Interactive Classroom",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_section3": {
+    "original": "Experiment Data",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_gravity_placeholder": {
+    "original": "g value...",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_friction_placeholder": {
+    "original": "μ value...",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_check_btn": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_table_object": {
+    "original": "Object",
+    "protected_terms": false
+  },
+  "lab.p9_everyday_table_measurement": {
+    "original": "Measurement",
+    "protected_terms": false
+  },
+  "lab.p10_ohm_title": {
+    "original": "Unit 16: Ohm's Law (Quantitative)",
+    "protected_terms": false
+  },
+  "lab.p10_ohm_controls": {
+    "original": "Controls",
+    "protected_terms": false
+  },
+  "lab.p10_ohm_power_label": {
+    "original": "Power Supply (V)",
+    "protected_terms": false
+  },
+  "lab.p10_ohm_table_i": {
+    "original": "Current (A)",
+    "protected_terms": false
+  },
+  "lab.p10_ohm_graph_i": {
+    "original": "Current (A)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_title": {
+    "original": "Unit 15: Gold-Leaf Electroscope",
+    "protected_terms": false
+  },
+  "lab.p10_escope_setup": {
+    "original": "Experiment Setup",
+    "protected_terms": false
+  },
+  "lab.p10_escope_rod_label": {
+    "original": "Rod Charge (Q_rod)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_dist_label": {
+    "original": "Rod Distance (d)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_data": {
+    "original": "Data Logging",
+    "protected_terms": false
+  },
+  "lab.p10_escope_record": {
+    "original": "Record",
+    "protected_terms": false
+  },
+  "lab.p10_escope_table_qrod": {
+    "original": "Q_rod (μC)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_table_d": {
+    "original": "d (cm)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_table_qnet": {
+    "original": "Q_net (μC)",
+    "protected_terms": false
+  },
+  "lab.p10_escope_analysis": {
+    "original": "Analysis Check",
+    "protected_terms": false
+  },
+  "lab.p10_escope_qnet_label": {
+    "original": "Q_net: {q} μC",
+    "protected_terms": false
+  },
+  "lab.p10_logic_title": {
+    "original": "Unit 18: Logic Gates",
+    "protected_terms": false
+  },
+  "lab.p10_logic_setup": {
+    "original": "Setup",
+    "protected_terms": false
+  },
+  "lab.p10_logic_gate_label": {
+    "original": "Gate Type",
+    "protected_terms": false
+  },
+  "lab.p10_logic_input_a": {
+    "original": "Input A Voltage: {v} V",
+    "protected_terms": false
+  },
+  "lab.p10_logic_input_b": {
+    "original": "Input B Voltage: {v} V",
+    "protected_terms": false
+  },
+  "lab.p10_logic_table_va": {
+    "original": "V_A (V)",
+    "protected_terms": false
+  },
+  "lab.p10_logic_table_vb": {
+    "original": "V_B (V)",
+    "protected_terms": false
+  },
+  "lab.p10_logic_table_vout": {
+    "original": "V_out (V)",
+    "protected_terms": false
+  },
+  "lab.p10_logic_graph_title": {
+    "original": "Graph: V_out vs V_A",
+    "protected_terms": false
+  },
+  "lab.p10_logic_analysis": {
+    "original": "Analysis",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_title": {
+    "original": "Unit 15: Coulomb's Law & Electrostatics",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_setup": {
+    "original": "Experiment Setup",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_r_label": {
+    "original": "Separation Distance (r)",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_sim": {
+    "original": "Simulation",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_force_output": {
+    "original": "Force Sensor Output",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_data": {
+    "original": "Data Logging",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_record": {
+    "original": "Record",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_table_r": {
+    "original": "r (cm)",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_table_f": {
+    "original": "F (N)",
+    "protected_terms": false
+  },
+  "lab.p10_coulomb_analysis": {
+    "original": "Analysis Check",
+    "protected_terms": false
+  },
+  "lab.p10_magfield_title": {
+    "original": "Unit 17: Magnetic Field of a Dipole",
+    "protected_terms": false
+  },
+  "lab.p10_magfield_controls": {
+    "original": "Controls",
+    "protected_terms": false
+  },
+  "lab.p10_magfield_table_x": {
+    "original": "x (cm)",
+    "protected_terms": false
+  },
+  "lab.p10_halflife_setup": {
+    "original": "Setup",
+    "protected_terms": false
+  },
+  "lab.p10_halflife_sample_box": {
+    "original": "Isotope Sample Box",
+    "protected_terms": false
+  },
+  "lab.p10_halflife_data": {
+    "original": "Data Log",
+    "protected_terms": false
+  },
+  "lab.p10_lorentz_controls": {
+    "original": "Controls",
+    "protected_terms": false
+  },
+  "lab.p10_lorentz_current_label": {
+    "original": "Current (I)",
+    "protected_terms": false
+  },
+  "lab.p10_lorentz_table_i": {
+    "original": "I (A)",
+    "protected_terms": false
+  },
+  "lab.p10_lorentz_table_b": {
+    "original": "B (T)",
+    "protected_terms": false
+  },
+  "lab.p10_lorentz_graph_x": {
+    "original": "I (A)",
+    "protected_terms": false
+  },
+  "lab.p10_waveeq_freq_label": {
+    "original": "Frequency (f)",
+    "protected_terms": false
+  },
+  "lab.p10_waveeq_wavelength_label": {
+    "original": "Wavelength (λ)",
+    "protected_terms": false
+  },
+  "lab.p10_power_v_label": {
+    "original": "Voltage (V)",
+    "protected_terms": false
+  },
+  "lab.p10_power_i_label": {
+    "original": "Current (I)",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_title": {
+    "original": "Derivation: Linear Thermal Expansion",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_final_desc": {
+    "original": "Coefficient of linear thermal expansion",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_step4_label": {
+    "original": "Final Formula",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_dt_label": {
+    "original": "Temp Change (ΔT)",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_alpha_label": {
+    "original": "Coefficient (α)",
+    "protected_terms": false
+  },
+  "lab.p10_linExp_placeholder": {
+    "original": "ΔL in mm...",
+    "protected_terms": false
+  },
+  "lab.p10_mag_title": {
+    "original": "Derivation: Linear Magnification",
+    "protected_terms": false
+  },
+  "lab.p10_mag_final_desc": {
+    "original": "Magnification = Image height / Object height = Image distance / Object distance",
+    "protected_terms": false
+  },
+  "lab.p10_mag_step2_label": {
+    "original": "Combined Formula",
+    "protected_terms": false
+  },
+  "lab.p10_mag_oh_label": {
+    "original": "Object Height (O)",
+    "protected_terms": false
+  },
+  "lab.p10_mag_ih_label": {
+    "original": "Image Height (I)",
+    "protected_terms": false
+  },
+  "lab.p10_mag_od_label": {
+    "original": "Object Distance (p)",
+    "protected_terms": false
+  },
+  "lab.p10_mag_placeholder": {
+    "original": "Image height (cm)...",
+    "protected_terms": false
+  },
+  "lab.p10_par_title": {
+    "original": "Derivation: Parallel Resistance",
+    "protected_terms": false
+  },
+  "lab.p10_photon_title": {
+    "original": "Derivation: Photon Energy & Momentum",
+    "protected_terms": false
+  },
+  "lab.p10_photon_step2_label": {
+    "original": "Photon Momentum",
+    "protected_terms": false
+  },
+  "lab.p10_photon_freq_label": {
+    "original": "Frequency (f)",
+    "protected_terms": false
+  },
+  "lab.p10_photon_placeholder": {
+    "original": "Energy in Joules...",
+    "protected_terms": false
+  },
+  "lab.p10_potDiv_title": {
+    "original": "Derivation: Potential Divider Formula",
+    "protected_terms": false
+  },
+  "lab.p10_potDiv_step3_label": {
+    "original": "Potential Divider Formula",
+    "protected_terms": false
+  },
+  "lab.p10_potDiv_vin_label": {
+    "original": "Input Voltage (V_in)",
+    "protected_terms": false
+  },
+  "lab.p10_potDiv_placeholder": {
+    "original": "V_out (V)...",
+    "protected_terms": false
+  },
+  "lab.p10_radDecay_title": {
+    "original": "Derivation: Radioactive Decay Formula",
+    "protected_terms": false
+  },
+  "lab.p10_radDecay_hl_label": {
+    "original": "Half-Life (T½)",
+    "protected_terms": false
+  },
+  "lab.p10_radDecay_time_label": {
+    "original": "Total Time (Δt)",
+    "protected_terms": false
+  },
+  "lab.p10_radDecay_placeholder": {
+    "original": "Remaining nuclei...",
+    "protected_terms": false
+  },
+  "lab.p10_resist_title": {
+    "original": "Derivation: Resistivity",
+    "protected_terms": false
+  },
+  "lab.p10_resist_r_label": {
+    "original": "Resistance (R)",
+    "protected_terms": false
+  },
+  "lab.p10_resist_l_label": {
+    "original": "Length (L)",
+    "protected_terms": false
+  },
+  "lab.p10_resist_a_label": {
+    "original": "Area (A)",
+    "protected_terms": false
+  },
+  "lab.p10_ser_title": {
+    "original": "Derivation: Series Resistance",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_title": {
+    "original": "Derivation: Specific Heat (Electrical Method)",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_step3_label": {
+    "original": "Final Formula",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_v_label": {
+    "original": "Voltage (V)",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_i_label": {
+    "original": "Current (I)",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_t_label": {
+    "original": "Heating Time (t)",
+    "protected_terms": false
+  },
+  "lab.p10_shElec_ml_label": {
+    "original": "Liquid Mass (m_l)",
+    "protected_terms": false
+  },
+  "lab.p10_shMix_title": {
+    "original": "Derivation: Specific Heat (Method of Mixtures)",
+    "protected_terms": false
+  },
+  "lab.p10_shMix_step1_label": {
+    "original": "Conservation of Energy",
+    "protected_terms": false
+  },
+  "lab.p10_shMix_ms_label": {
+    "original": "Solid Mass (m_s)",
+    "protected_terms": false
+  },
+  "lab.p10_shMix_mw_label": {
+    "original": "Water Mass (m_w)",
+    "protected_terms": false
+  },
+  "lab.p10_tempCo_title": {
+    "original": "Derivation: Temperature Coefficient of Resistivity",
+    "protected_terms": false
+  },
+  "lab.p10_tempCo_step4_label": {
+    "original": "Final Resistivity Formula",
+    "protected_terms": false
+  },
+  "lab.p10_tempCo_dt_label": {
+    "original": "Temp Change (ΔT)",
+    "protected_terms": false
+  },
+  "lab.p10_trans_title": {
+    "original": "Derivation: Ideal Transformer Power",
+    "protected_terms": false
+  },
+  "lab.p10_trans_step1_label": {
+    "original": "Ideal Transformer Assumption",
+    "protected_terms": false
+  },
+  "lab.p10_trans_step4_label": {
+    "original": "Turns Ratio Relation",
+    "protected_terms": false
+  },
+  "lab.p10_trans_vp_label": {
+    "original": "Primary V_p",
+    "protected_terms": false
+  },
+  "lab.p10_trans_ip_label": {
+    "original": "Primary I_p",
+    "protected_terms": false
+  },
+  "lab.p10_trans_vs_label": {
+    "original": "Secondary V_s",
+    "protected_terms": false
+  },
+  "lab.p10_trans_placeholder": {
+    "original": "I_s in Amps...",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_title": {
+    "original": "Derivation: Transistor Current Gain",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_step2_label": {
+    "original": "Current Gain β (Beta)",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_step3_label": {
+    "original": "Current Gain α (Alpha)",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_step4_label": {
+    "original": "Amplification",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_ib_label": {
+    "original": "Base Current (I_B)",
+    "protected_terms": false
+  },
+  "lab.p10_transGain_ic_label": {
+    "original": "Collector Current (I_C)",
+    "protected_terms": false
+  },
+  "lab.p10_volExp_title": {
+    "original": "Derivation: Volumetric Thermal Expansion",
+    "protected_terms": false
+  },
+  "lab.p10_volExp_final_desc": {
+    "original": "Coefficient of volumetric thermal expansion",
+    "protected_terms": false
+  },
+  "lab.p10_volExp_dt_label": {
+    "original": "Temp Change (ΔT)",
+    "protected_terms": false
+  },
+  "lab.p10_volExp_beta_label": {
+    "original": "Expansion Coeff (β)",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_sim_title": {
+    "original": "Vector Mapping",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_legend_force": {
+    "original": "Force",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_legend_disp": {
+    "original": "Displacement",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_input_label": {
+    "original": "Work Done (Joules):",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_slider_fmag": {
+    "original": "Force Magnitude (N)",
+    "protected_terms": false
+  },
+  "lab.p11_vectors_slider_dmag": {
+    "original": "Disp. Magnitude (m)",
+    "protected_terms": false
+  },
+  "lab.p11_quantities_sim_title": {
+    "original": "Target Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_quantities_table_shot": {
+    "original": "Shot",
+    "protected_terms": false
+  },
+  "lab.p11_quantities_table_x": {
+    "original": "X Coord",
+    "protected_terms": false
+  },
+  "lab.p11_quantities_table_y": {
+    "original": "Y Coord",
+    "protected_terms": false
+  },
+  "lab.p11_trans_title": {
+    "original": "Translatory Motion",
+    "protected_terms": false
+  },
+  "lab.p11_trans_slider_drag": {
+    "original": "Air Resistance (k)",
+    "protected_terms": false
+  },
+  "lab.p11_trans_sim_title": {
+    "original": "Trajectory Visualizer",
+    "protected_terms": false
+  },
+  "lab.p11_trans_range": {
+    "original": "Range: {r} m",
+    "protected_terms": false
+  },
+  "lab.p11_rot_sim_title": {
+    "original": "Skater Visualizer",
+    "protected_terms": false
+  },
+  "lab.p11_rot_label_inertia": {
+    "original": "I (Inertia)",
+    "protected_terms": false
+  },
+  "lab.p11_rot_label_momentum": {
+    "original": "L (Momentum)",
+    "protected_terms": false
+  },
+  "lab.p11_work_slider_mass": {
+    "original": "Skydiver Mass (kg)",
+    "protected_terms": false
+  },
+  "lab.p11_work_reset_btn": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.p11_work_sim_title": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_work_table_mass": {
+    "original": "Mass (kg)",
+    "protected_terms": false
+  },
+  "lab.p11_work_table_vterm": {
+    "original": "V_term (m/s)",
+    "protected_terms": false
+  },
+  "lab.p11_work_check_btn": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_title": {
+    "original": "Fluid Mechanics: Submarine Buoyancy Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_slider_ballast": {
+    "original": "Ballast Mass (kg)",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_reset_btn": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_sim_title": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_table_ballast": {
+    "original": "Ballast (kg)",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_table_vterm": {
+    "original": "V_term (m/s)",
+    "protected_terms": false
+  },
+  "lab.p11_fluid_check_btn": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_solids_title": {
+    "original": "Solids: Young's Modulus Material Tester",
+    "protected_terms": false
+  },
+  "lab.p11_solids_steel": {
+    "original": "Steel",
+    "protected_terms": false
+  },
+  "lab.p11_solids_copper": {
+    "original": "Copper",
+    "protected_terms": false
+  },
+  "lab.p11_solids_aluminum": {
+    "original": "Aluminum",
+    "protected_terms": false
+  },
+  "lab.p11_solids_sim_title": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_solids_table_mat": {
+    "original": "Material",
+    "protected_terms": false
+  },
+  "lab.p11_solids_table_force": {
+    "original": "Force (N)",
+    "protected_terms": false
+  },
+  "lab.p11_solids_table_ext": {
+    "original": "Ext (mm)",
+    "protected_terms": false
+  },
+  "lab.p11_solids_check_btn": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_title": {
+    "original": "Thermodynamics: Isochoric Pressure Vessel",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_sim_title": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_label_press": {
+    "original": "P: {P} kPa",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_table_heat": {
+    "original": "Heat (J)",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_table_temp": {
+    "original": "Temp (K)",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_table_press": {
+    "original": "Press (kPa)",
+    "protected_terms": false
+  },
+  "lab.p11_thermo_check_btn": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_modern_fission_btn": {
+    "original": "Trigger Fission",
+    "protected_terms": false
+  },
+  "lab.p11_modern_pet_label": {
+    "original": "Gamma Photon Energy (Eγ)",
+    "protected_terms": false
+  },
+  "lab.p11_modern_sync_bfield": {
+    "original": "Magnetic Field (B)",
+    "protected_terms": false
+  },
+  "lab.p11_modern_sync_radius": {
+    "original": "Ring Radius (r)",
+    "protected_terms": false
+  },
+  "lab.p11_modern_sync_readout": {
+    "original": "Sensor Readout:",
+    "protected_terms": false
+  },
+  "lab.p11_elec_title": {
+    "original": "Electricity",
+    "protected_terms": false
+  },
+  "lab.p11_elec_theory_title": {
+    "original": "RC Circuits & Time Constants",
+    "protected_terms": false
+  },
+  "lab.p11_elec_c_label": {
+    "original": "Capacitance (μF)",
+    "protected_terms": false
+  },
+  "lab.p11_elec_tau_label2": {
+    "original": "Time Constant τ (s):",
+    "protected_terms": false
+  },
+  "lab.p11_emag_freq_label": {
+    "original": "Oscillation Frequency (Hz)",
+    "protected_terms": false
+  },
+  "lab.p11_emag_flux_label": {
+    "original": "Magnetic Flux: {flux} Wb",
+    "protected_terms": false
+  },
+  "lab.p11_emag_emf_label": {
+    "original": "Induced EMF: {emf} V",
+    "protected_terms": false
+  },
+  "lab.p11_estat_charge_label": {
+    "original": "Charge Q (nC)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_v_label": {
+    "original": "Electric Potential V (V):",
+    "protected_terms": false
+  },
+  "lab.p11_elec_vout": {
+    "original": "V_out",
+    "protected_terms": false
+  },
+  "lab.p11_elec_v_dropv": {
+    "original": "V_drop (V)",
+    "protected_terms": false
+  },
+  "lab.p11_elec_v_outv": {
+    "original": "V_out (V)",
+    "protected_terms": false
+  },
+  "lab.p11_elec_v_out": {
+    "original": "V_out",
+    "protected_terms": false
+  },
+  "lab.p11_modern_kev": {
+    "original": "keV",
+    "protected_terms": false
+  },
+  "lab.p11_modern_mev": {
+    "original": "MeV",
+    "protected_terms": false
+  },
+  "lab.p11_modern_amu": {
+    "original": "amu",
+    "protected_terms": false
+  },
+  "lab.p11_modern_kr_92": {
+    "original": "Kr-92",
+    "protected_terms": false
+  },
+  "lab.p11_modern_synchrotron": {
+    "original": "Synchrotron",
+    "protected_terms": false
+  },
+  "lab.p11_modern_petscan": {
+    "original": "PET Scan",
+    "protected_terms": false
+  },
+  "lab.p11_modern_thisisachievedbysynchronizingtheinc": {
+    "original": "This is achieved by synchronizing the increasing magnetic field (B) with the increasing momentum (p) of the particle, guided by the equation:",
+    "protected_terms": false
+  },
+  "lab.p11_modern_isacyclicparticleaccelerator_unlike": {
+    "original": "is a cyclic particle accelerator. Unlike a cyclotron where the particle spirals outwards, a synchrotron keeps particles in a closed loop of constant radius.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_photonsemittedinexactlyoppositedire": {
+    "original": "(γ) photons emitted in exactly opposite directions to conserve momentum.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_gammaray": {
+    "original": "gamma ray",
+    "protected_terms": false
+  },
+  "lab.p11_modern_theirentiremassisconvertedintopuree": {
+    "original": "Their entire mass is converted into pure energy in the form of two identical",
+    "protected_terms": false
+  },
+  "lab.p11_modern_eachother": {
+    "original": "each other.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_annihilate": {
+    "original": "annihilate",
+    "protected_terms": false
+  },
+  "lab.p11_modern_positron": {
+    "original": "positron",
+    "protected_terms": false
+  },
+  "lab.p11_modern_aradioactivetraceremitsa": {
+    "original": "A radioactive tracer emits a",
+    "protected_terms": false
+  },
+  "lab.p11_modern_isamedicalimagingtechniquethatutili": {
+    "original": "is a medical imaging technique that utilizes antimatter.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_positronemissiontomographypet": {
+    "original": "Positron Emission Tomography (PET)",
+    "protected_terms": false
+  },
+  "lab.p11_modern_thanthereactants_thismissingmassmis": {
+    "original": "than the reactants. This missing mass (Δm) is converted directly into energy.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_less": {
+    "original": "less",
+    "protected_terms": false
+  },
+  "lab.p11_modern_thetotalmassoftheproductsisstrictly": {
+    "original": "The total mass of the products is strictly",
+    "protected_terms": false
+  },
+  "lab.p11_modern_innuclearfissionaheavynucleuslikeur": {
+    "original": "In nuclear fission, a heavy nucleus (like Uranium-235) absorbs a neutron and splits into lighter nuclei, releasing more neutrons and a vast amount of energy.",
+    "protected_terms": false
+  },
+  "lab.p11_modern_istheprinciplethatmassandenergyarem": {
+    "original": "is the principle that mass and energy are mutually convertible, expressed by Einstein's famous equation:",
+    "protected_terms": false
+  },
+  "lab.p11_modern_mass_energyequivalence": {
+    "original": "Mass-Energy Equivalence",
+    "protected_terms": false
+  },
+  "lab.p11_waves_incorrect_tryagain": {
+    "original": "Incorrect. Try again.",
+    "protected_terms": false
+  },
+  "lab.p11_waves_apolicecarmovestowardsyouat50msemit": {
+    "original": "A police car moves towards you at 50 m/s emitting a 500 Hz siren. Speed of sound is 343 m/s. What is the observed frequency? (Hz)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_q_title": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.p11_waves_fhz": {
+    "original": "f (Hz)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_strainx10_21": {
+    "original": "Strain (x10^-21)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_f_obshz": {
+    "original": "f_obs (Hz)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_f_shz": {
+    "original": "f_s (Hz)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_v_sms": {
+    "original": "v_s (m/s)",
+    "protected_terms": false
+  },
+  "lab.p11_waves_play_btn": {
+    "original": "Play",
+    "protected_terms": false
+  },
+  "lab.p11_waves_pause_btn": {
+    "original": "Pause",
+    "protected_terms": false
+  },
+  "lab.p11_waves_observer": {
+    "original": "Observer",
+    "protected_terms": false
+  },
+  "lab.p11_estat_incorrect_tryagain": {
+    "original": "Incorrect. Try again.",
+    "protected_terms": false
+  },
+  "lab.p11_estat_incorrect_thinkaboutthepropertiesof": {
+    "original": "Incorrect. Think about the properties of conductors.",
+    "protected_terms": false
+  },
+  "lab.p11_estat_correcte_fieldinsideaconductoriszer": {
+    "original": "Correct! E-field inside a conductor is zero.",
+    "protected_terms": false
+  },
+  "lab.p11_estat_bt": {
+    "original": "B (T)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_ia": {
+    "original": "I (A)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_nturnsm": {
+    "original": "n (turns/m)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_e_invm": {
+    "original": "E_in (V/m)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_e_ext_percent": {
+    "original": "E_ext (%)",
+    "protected_terms": false
+  },
+  "lab.p11_estat_current": {
+    "original": "Current (",
+    "protected_terms": false
+  },
+  "lab.p11_emag_bmt": {
+    "original": "B (mT)",
+    "protected_terms": false
+  },
+  "lab.p11_emag_ekvm": {
+    "original": "E (kV/m)",
+    "protected_terms": false
+  },
+  "lab.p11_emag_b_field": {
+    "original": "B-Field (",
+    "protected_terms": false
+  },
+  "lab.p11_emag_e_field": {
+    "original": "E-Field (",
+    "protected_terms": false
+  },
+  "lab.p11_emag_inducedemf": {
+    "original": "Induced EMF",
+    "protected_terms": false
+  },
+  "lab.p11_emag_positiveplate": {
+    "original": "Positive Plate (+)",
+    "protected_terms": false
+  },
+  "lab.p11_modern_mev_unit": {
+    "original": "MeV",
+    "protected_terms": false
+  },
+  "lab.p11_modern_amu_unit": {
+    "original": "amu",
+    "protected_terms": false
+  },
+  "lab.p11_modern_kr92": {
+    "original": "Kr-92",
+    "protected_terms": false
+  },
+  "lab.p11_modern_ref_data": {
+    "original": "Reference Data:",
+    "protected_terms": false
+  },
+  "lab.p11_emag_correct": {
+    "original": "Correct!",
+    "protected_terms": false
+  },
+  "lab.p11_emag_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_emag_bfield": {
+    "original": "B-Field (",
+    "protected_terms": false
+  },
+  "lab.p11_emag_efield": {
+    "original": "E-Field (",
+    "protected_terms": false
+  },
+  "lab.p11_estat_correctefieldinsideaconductoriszero": {
+    "original": "Correct! E-field inside a conductor is zero.",
+    "protected_terms": false
+  },
+  "lab.p11_estat_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.p11_waves_correct": {
+    "original": "Correct!",
+    "protected_terms": false
+  },
+  "lab.p11_waves_strainx1021": {
+    "original": "Strain (x10^-21)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_q_title": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_nodatarecordedyet": {
+    "original": "No data recorded yet.",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_filter": {
+    "original": "Filter",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_vpv": {
+    "original": "Vp (V)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_freqhz": {
+    "original": "Freq (Hz)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_datalog_andanalysis": {
+    "original": "Data Log & Analysis",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_loadresistance": {
+    "original": "Load Resistance",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_filtercapacitance": {
+    "original": "Filter Capacitance",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_peakvoltage": {
+    "original": "Peak Voltage",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_acfrequency": {
+    "original": "AC Frequency",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_filtercapacitor": {
+    "original": "Filter Capacitor",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_interactiveoscilloscope": {
+    "original": "Interactive Oscilloscope",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_i": {
+    "original": "I:",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_filtercapacitancef": {
+    "original": "Filter capacitance (F)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_c": {
+    "original": "C:",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_acsourcefrequencyhz": {
+    "original": "AC source frequency (Hz)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_f": {
+    "original": "f:",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_assumingfullwavewhereripplefrequenc": {
+    "original": "(Assuming Full-Wave where ripple frequency is 2f)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_ripplevoltagev_r": {
+    "original": "Ripple Voltage (V_r)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_fullwavebridgerectifier": {
+    "original": "Full-Wave Bridge Rectifier",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_alternatingcurrentac": {
+    "original": "Alternating Current (AC)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_directcurrentdc": {
+    "original": "Direct Current (DC)",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_theory_andcontext": {
+    "original": "Theory & Context",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_lab": {
+    "original": "Lab",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_smootheddcoutput": {
+    "original": "Smoothed DC Output",
+    "protected_terms": false
+  },
+  "lab.p12_alternatingcurrent_rectifiedunfiltered": {
+    "original": "Rectified (Unfiltered)",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_nm": {
+    "original": "nm",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_assessments": {
+    "original": "Assessments",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_thermohalinedownwelling": {
+    "original": "Thermohaline Downwelling",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_spectrometerdopplershift": {
+    "original": "Spectrometer (Doppler Shift)",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_visiblelightrange380to750nm": {
+    "original": "Visible light range: ~380 to 750 nm",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_peakwavelength_max": {
+    "original": "Peak Wavelength (λ_max):",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_stellarthermometer": {
+    "original": "Stellar Thermometer",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.p12_cosmologyclimate_lab": {
+    "original": "Lab",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_roundto2decimalplaces": {
+    "original": "(Round to 2 decimal places)",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_q_title": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_nodatarecordedyet": {
+    "original": "No data recorded yet.",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_lm": {
+    "original": "L (m)",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_linesmm": {
+    "original": "lines/mm",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_data_andanalysis": {
+    "original": "Data & Analysis",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_screendistancel": {
+    "original": "Screen Distance (L)",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_gratinglinesmm": {
+    "original": "Grating Lines/mm",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_wavelength": {
+    "original": "Wavelength (λ)",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_phaseshiftdegrees": {
+    "original": "Phase Shift (Degrees)",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_interactivesimulator": {
+    "original": "Interactive Simulator",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_onthescreenatadistance": {
+    "original": "on the screen at a distance",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_wavelengthoflight": {
+    "original": "Wavelength of light",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_angletothemaximum": {
+    "original": "Angle to the maximum",
+    "protected_terms": false
+  },
+  "lab.p12_diffraction_distancebetweenslitsgratingspacing": {
+    "original": "Distance between slits (grating spacing)",
+    "protected_terms": false
+  }
+}

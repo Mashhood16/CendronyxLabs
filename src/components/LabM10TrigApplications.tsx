@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Calculator, BookOpen, Ruler, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface TrigProblem {
  distance: number;
@@ -10,6 +11,7 @@ interface TrigProblem {
 }
 
 export default function LabM10TrigApplications({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [distance, setDistance] = useState<number>(50); // meters
  const [angle, setAngle] = useState<number>(45); // degrees
@@ -51,7 +53,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    {/* Header */}
-   <LabHeader onExit={onExit} title="Trigonometry Applications" />
+   <LabHeader onExit={onExit} title={t('lab.m10trigapplications_trigonometry_applications')} />
 
    {/* Main Content Grid */}
    
@@ -61,49 +63,56 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10trigapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10trigapplications_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
     {/* Column 1: Theory */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col lg:overflow-y-auto border-t-4 border-indigo-500  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center mb-4 text-indigo-800 shrink-0 dark:text-[#ffffff]">
       <BookOpen className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Theory & Context</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10trigapplications_theory_context')}</h2>
      </div>
      <div className="prose prose-indigo flex-1 text-slate-700 dark:text-[#ffffff]">
       <p>
-       Trigonometry allows us to calculate distances and heights that are difficult or impossible to measure directly, such as the height of the <strong>Burj Khalifa</strong> or an aviation sightline.
-      </p>
-      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Angle of Elevation</h3>
+       
+                                {t('lab.m10trigapplications_trigonometry_allows_us_to_calc')} <strong>{t('lab.m10trigapplications_burj_khalifa')}</strong>  {t('lab.m10trigapplications_or_an_aviation_sightline')}
+                               </p>
+      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m10trigapplications_angle_of_elevation')}</h3>
       <p>
-       The angle of elevation is the angle formed by the line of sight looking upward and the horizontal line. It is measured using an instrument called a <strong>Theodolite</strong> or a Clinometer.
-      </p>
-      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">Using Tangent (SOH CAH TOA)</h3>
+       
+                                {t('lab.m10trigapplications_the_angle_of_elevation_is_the_')} <strong>{t('lab.m10trigapplications_theodolite')}</strong>  {t('lab.m10trigapplications_or_a_clinometer')}
+                               </p>
+      <h3 className="text-lg font-bold mt-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m10trigapplications_using_tangent_soh_cah_toa')}</h3>
       <p>
-       For a right-angled triangle, the tangent function relates the opposite side (height) to the adjacent side (distance):
-      </p>
+       
+                                {t('lab.m10trigapplications_for_a_right_angled_triangle_th')}
+                               </p>
       <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-       tan(θ) = Opposite / Adjacent
-      </div>
+       
+                                {t('lab.m10trigapplications_tan_opposite_adjacent')}
+                               </div>
       <p>
-       To find the total height of a building, we must also add the height of the observer's eye level from the ground:
-      </p>
+       
+                                {t('lab.m10trigapplications_to_find_the_total_height_of_a_')}
+                               </p>
       <div className={`bg-indigo-50 p-3 rounded-lg font-mono text-sm text-indigo-900 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff] flex-col `}>
-       Height = (Distance × tan(θ)) + Observer Height
-      </div>
+       
+                                {t('lab.m10trigapplications_height_distance_tan_observer_h')}
+                               </div>
      </div>
     </div>
 
     {/* Column 2: Simulator */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      <div className="flex items-center mb-4 text-sky-800 shrink-0">
       <Ruler className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10trigapplications_interactive_visualizer')}</h2>
      </div>
      
      <div className={`flex-1 min-w-0 relative bg-sky-50 rounded-lg overflow- border border-slate-200 dark:border-[#1c1b1b] flex flex-col min-h-[300px] `}>
@@ -138,14 +147,14 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
         <text x={300 - distance * 2 + 45} y={250 - eyeHeight * 2 - 10} fill="#dc2626" fontSize="14" fontWeight="bold">{angle}°</text>
 
         {/* Distance Label */}
-        <text x={300 - distance} y="265" textAnchor="middle" fill="#0f172a" fontSize="14" fontWeight="bold">d = {distance} m</text>
+        <text x={300 - distance} y="265" textAnchor="middle" fill="#0f172a" fontSize="14" fontWeight="bold">{t('lab.m10trigapplications_d')} {distance} m</text>
        </svg>
       </div>
 
-      <div className={`p-4 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-t border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+      <div className={`p-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-t border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] space-y-4 shrink-0 shadow-inner rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
        <div>
         <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-[#ffffff]">
-         <span>Distance to Base (m)</span>
+         <span>{t('lab.m10trigapplications_distance_to_base_m')}</span>
          <span className="text-sky-600">{distance} m</span>
         </div>
         <input
@@ -159,7 +168,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
        </div>
        <div>
         <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-[#ffffff]">
-         <span>Angle of Elevation (°)</span>
+         <span>{t('lab.m10trigapplications_angle_of_elevation_1')}</span>
          <span className="text-red-600">{angle}°</span>
         </div>
         <input
@@ -172,7 +181,8 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
         />
        </div>
        <div className="text-center text-sm font-bold text-slate-800 dark:text-[#ffffff] bg-slate-100 dark:bg-[#121212] py-2 rounded">
-        Simulated Height: {calculatedHeight.toFixed(1)} m
+        
+                                     {t('lab.m10trigapplications_simulated_height')} {calculatedHeight.toFixed(1)} m
        </div>
       </div>
      </div>
@@ -182,31 +192,32 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
     <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-emerald-500 `}>
      <div className="flex items-center mb-4 text-emerald-800 shrink-0">
       <Calculator className="mr-2" size={24} />
-      <h2 className="text-xl font-semibold">Math Assessment</h2>
+      <h2 className="text-xl font-semibold">{t('lab.m10trigapplications_math_assessment')}</h2>
      </div>
      
      {problem && (
       <div className="flex-1 min-w-0 flex flex-col space-y-5">
        <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200">
         <p className="text-slate-800 dark:text-[#ffffff] mb-3 leading-relaxed">
-         You are surveying a skyscraper to verify its height. You stand exactly <strong>{problem.distance} meters</strong> away from its base. 
-         Looking up with your theodolite, you measure an angle of elevation of <strong>{problem.angle}°</strong> to the very top.
-        </p>
+         
+                                          {t('lab.m10trigapplications_you_are_surveying_a_skyscraper')} <strong>{problem.distance}  {t('lab.m10trigapplications_meters')}</strong>  {t('lab.m10trigapplications_away_from_its_base_looking_up_')} <strong>{problem.angle}°</strong>  {t('lab.m10trigapplications_to_the_very_top')}
+                                         </p>
         <p className="text-slate-800 dark:text-[#ffffff] font-semibold">
-         If your instrument is situated at eye level, which is {problem.eyeHeight} m above the ground, what is the total height of the building?
-        </p>
-        <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 font-mono">(Round your answer to 1 decimal place)</p>
+         
+                                          {t('lab.m10trigapplications_if_your_instrument_is_situated')} {problem.eyeHeight}  {t('lab.m10trigapplications_m_above_the_ground_what_is_the')}
+                                         </p>
+        <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 font-mono">{t('lab.m10trigapplications_round_your_answer_to_1_decimal')}</p>
        </div>
 
        <div>
-        <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Calculated Height (m):</label>
+        <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10trigapplications_calculated_height_m')}</label>
         <input
          type="number"
          step="0.1"
          value={userAnswer}
          onChange={(e) => setUserAnswer(e.target.value)}
          className="w-full p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none transition-shadow text-lg font-mono"
-         placeholder="e.g. 150.5"
+         placeholder={t('lab.m10trigapplications_e_g_150_5')}
         />
        </div>
 
@@ -214,8 +225,9 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
         onClick={checkAnswer}
         className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-sm dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
        >
-        Check Answer
-       </button>
+        
+                                     {t('lab.m10trigapplications_check_answer')}
+                                    </button>
 
        {feedback && (
         <div className={`p-4 rounded-lg flex items-start space-x-3 shadow-inner ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-300' : 'bg-red-100 text-red-800 border border-red-300'}`}>
@@ -230,7 +242,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
          className="w-full py-3 flex items-center justify-center space-x-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg transition-colors border border-slate-300 dark:border-[#1c1b1b]"
         >
          <RotateCcw size={20} />
-         <span>Generate New Problem</span>
+         <span>{t('lab.m10trigapplications_generate_new_problem')}</span>
         </button>
        </div>
       </div>

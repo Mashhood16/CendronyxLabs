@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Clock, Diamond } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7MakingRockCandy({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [days, setDays] = useState(0);
  const [running, setRunning] = useState(false);
 
@@ -24,12 +26,12 @@ export default function LabS7MakingRockCandy({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-pink-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 7: Making Rock Candy" />
+  <LabHeader onExit={onExit} title={t('lab.s7makingrockcandy_unit_7_making_rock_candy')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-pink-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-pink-800 mb-4">Crystallization</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">A supersaturated solution of sugar and water is poured into jars. Seeded wooden sticks are dangled in. Over a week, as the water evaporates and cools, massive sugar crystals form.</p>
+   <h2 className="text-2xl font-bold text-pink-800 mb-4">{t('lab.s7makingrockcandy_crystallization')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7makingrockcandy_a_supersaturated_solution_of_s')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -44,10 +46,11 @@ export default function LabS7MakingRockCandy({ onExit }: LabProps) {
     onClick={() => { setDays(0); setRunning(false); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7makingrockcandy_reset')}
+                            </button>
    </div>
-   <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">Time Elapsed: {days} Days</div>
+   <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">{t('lab.s7makingrockcandy_time_elapsed')} {days}  {t('lab.s7makingrockcandy_days')}</div>
   </div>
 
   <div className="flex gap-16 justify-center mt-12 w-full flex-wrap">
@@ -89,8 +92,8 @@ export default function LabS7MakingRockCandy({ onExit }: LabProps) {
 
   {days === 7 && (
    <div className="mt-16 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-pink-500 max-w-2xl text-center">
-   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Diamond className="w-5 h-5 mr-2 text-pink-500" /> Conclusion</h4>
-   <p>Hot water can dissolve much more sugar than cold water, creating a <strong>supersaturated solution</strong>. As the water cools and evaporates, it can no longer hold all that sugar. The sugar falls out of the solution and attaches to the seed crystals on the stick, growing massive geometric structures.</p>
+   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Diamond className="w-5 h-5 mr-2 text-pink-500" />  {t('lab.s7makingrockcandy_conclusion')}</h4>
+   <p>{t('lab.s7makingrockcandy_hot_water_can_dissolve_much_mo')} <strong>{t('lab.s7makingrockcandy_supersaturated_solution')}</strong>{t('lab.s7makingrockcandy_as_the_water_cools_and_evapora')}</p>
    </div>
   )}
   </div>

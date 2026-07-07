@@ -1,0 +1,224 @@
+import fs from 'fs';
+
+const en = JSON.parse(fs.readFileSync('src/locales/en/translation.json', 'utf8'));
+const ur = JSON.parse(fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8'));
+
+// Find strings still same as English
+const same = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+
+// Filter out formula/technical
+const isFormula = (t) => {
+  if (!t) return true;
+  return /[→⇌÷×±∞√∫∑πθρΩωΔ²³⁴⁺⁻°₀₁₂₃₄₅₆₇₈₉≈≠≤≥∂]/.test(t) ||
+    /^\d+\.?\d*/.test(t) ||
+    /^https?:\/\//.test(t) ||
+    /^<[a-z]/.test(t) ||
+    /^\$/.test(t) ||
+    /^[A-Z][a-z]?\d/.test(t) ||
+    /^[a-z]\s*=\s*/.test(t) ||
+    t.includes('&&') || t.includes('Math.') ||
+    /\\frac|\\sqrt/.test(t) ||
+    /^[A-Z0-9._-]+$/.test(t) && t.length < 40;
+};
+
+const textStrs = same.filter(k => !isFormula(en[k]));
+
+console.log('Total untranslated:', same.length);
+console.log('Text strings to translate:', textStrs.length);
+
+// Comprehensive Roman Urdu phrase map
+const MAP = {
+  // Lab subtitles
+  'Observe an involuntary reflex action': 'Ek ghair-ikhtiyari reflex action ka mushahida karein',
+  'Visualizing wind direction and speed': 'Hawa ki simt aur raftar ka andaza lagayein',
+  'Arthroplasty & Bone Fracture Repair': 'Arthroplasty aur Bone Fracture ka ilaaj',
+  'Design an Anti-Cyberbullying Poster': 'Anti-Cyberbullying Poster design karein',
+  'Sort traits by their variation type': 'Khoobiyon ko un ki variation type ke mutabiq chhanein',
+  'Navigate the laser through the maze': 'Laser ko maze mein se guzarein',
+  'Preparation & Cell Identification': 'Tayyari aur Cell ki Pehchan',
+  'Gas Exchange & Boyle\'s Law Model': 'Gas Exchange aur Boyle ke Law ka Model',
+  'Measuring Enthalpy of Combustion': 'Combustion ki Enthalpy naapein',
+  'Social Media Campaign Simulation': 'Social Media Campaign Simulation',
+  'Vinegar + Baking Soda propulsion': 'Vinegar aur Baking Soda se propulsion',
+  'Blood Types & Hemolytic Disease': 'Blood Types aur Hemolytic Disease',
+  'Recombinant DNA & Thermocycling': 'Recombinant DNA aur Thermocycling',
+  'Fluid pressure multiplies force': 'Fluid pressure force ko barhata hai',
+  'Identification of Biomolecules': 'Biomolecules ki pehchan',
+  'Meselson-Stahl & Hershey-Chase': 'Meselson-Stahl aur Hershey-Chase',
+  'IoT, AI Bias & Cloud Computing': 'IoT, AI Bias aur Cloud Computing',
+  'Synthesizing Methyl Ethanoate': 'Methyl Ethanoate ki tayyari',
+  'Measure human reaction time': 'Insani reaction time naapein',
+  'Titration of NaOH with HCl': 'NaOH ka HCl ke saath Titration',
+  'Grade 10 Computer Science': 'Grade 10 Computer Science',
+  'Concave Mirror Reflection': 'Concave Mirror Reflection',
+  'Casein polymer extraction': 'Casein polymer extraction',
+  'Pushing a nail into wood': 'Lakri mein keel thekna',
+  'Depolymerisation of PET': 'PET ki Depolymerisation',
+  'Gas Tests & Flame Tests': 'Gas Tests aur Flame Tests',
+  'HTML & CSS Fundamentals': 'HTML aur CSS Fundamentals',
+  'Convex vs Plane Mirrors': 'Convex aur Plane Mirrors',
+  'Immunoassay Simulation': 'Immunoassay Simulation',
+  'Mathematics Class 11': 'Mathematics Class 11',
+  'Mathematics Class 12': 'Mathematics Class 12',
+  'Mathematics Class 9': 'Mathematics Class 9',
+  'Mathematics Class 10': 'Mathematics Class 10',
+  'Physics Class 11': 'Physics Class 11',
+  'Physics Class 12': 'Physics Class 12',
+  'Physics Class 9': 'Physics Class 9',
+  'Physics Class 10': 'Physics Class 10',
+  'Chemistry Class 10': 'Chemistry Class 10',
+  'Chemistry Class 11': 'Chemistry Class 11',
+  'Chemistry Class 12': 'Chemistry Class 12',
+  'Biology Class 9': 'Biology Class 9',
+  'Biology Class 10': 'Biology Class 10',
+  'Biology Class 11': 'Biology Class 11',
+  'Biology Class 12': 'Biology Class 12',
+  'Computer Science Class 6': 'Computer Science Class 6',
+  'Computer Science Class 10': 'Computer Science Class 10',
+  'Computer Science Class 11': 'Computer Science Class 11',
+  'Business Plans Class 10': 'Business Plans Class 10',
+  'English Class 11': 'English Class 11',
+  'English Class 10': 'English Class 10',
+  'General Science Class 6': 'General Science Class 6',
+  'General Science Class 7': 'General Science Class 7',
+  'General Science Class 8': 'General Science Class 8',
+
+  // Step labels
+  "Newton's Second Law": "Newton ka Doosra Qanoon",
+  'Acceleration = Rate of Velocity Change': 'Acceleration = Raftar mein tabdeeli ki sharah',
+  'Substitute a into F = ma': 'F = ma mein a ki jagah rakhein',
+  'Recognize Momentum p = mv': 'Momentum p = mv ko pehchanein',
+  'Conservation of Momentum': 'Momentum ka Tahafuz',
+  'Before Firing: Everything at Rest': 'Firing se pehle: Sab kuch khamosh',
+  'After Firing: Bullet + Gun Move': 'Firing ke baad: Bullet aur Gun harkat karte hain',
+  'Solve for Recoil Velocity': 'Recoil Velocity nikaln',
+  'Average Speed Formula': 'Average Speed ka Formula',
+  'Distance in One Orbit = Circumference': 'Ek orbit mein distance = circumference',
+  'Time = Orbital Period T': 'Waqt = Orbital Period T',
+  'Substitute to Get Orbital Speed': 'Jagah rakhein Orbital Speed hasil karne ke liye',
+  'Work-Energy Theorem': 'Work-Energy Theorem',
+  'Substitute F = ma': 'F = ki jagah ma rakhein',
+  'Use Motion Equations': 'Motion equations istemal karein',
+  'The t Cancels!': 't kat jata hai!',
+  'Work Done Against Gravity': 'Gravity ke khilaf kaam',
+  'Force = Weight of Object': 'Force = cheez ka wazan',
+  'Distance = Height Lifted': 'Distance = oonchai jitna uthaya',
+  'Gravitational PE Formula': 'Gravitational PE Formula',
+  "Pascal's Principle": "Pascal ka Usool",
+  'Pressure on Small Piston': 'Chote piston par pressure',
+  'Same Pressure on Large Piston': 'Bade piston par wohi pressure',
+  'Solve for Output Force': 'Output Force nikaln',
+  'Conservation of Energy': 'Energy ka Tahafuz',
+  'Solid Heat Loss': 'Solid ka Heat Loss',
+  'Water + Calorimeter Heat Gain': 'Water aur Calorimeter ka Heat Gain',
+  'Solve for c_s': 'c_s nikaln',
+  'Resistivity = Resistance × Area / Length (Ω·m)': 'Resistivity = Resistance × Area / Length (Ω·m)',
+  'Resistance Depends on Geometry': 'Resistance geometry par munsar hai',
+  'Introduce Proportionality Constant': 'Proportionality Constant mutaarif karayein',
+  'Rearrange for Resistivity': 'Resistivity ke liye dobara arrange karein',
+  'Voltage Drops Add Up': 'Voltage drops jortay hain',
+  'Factor Out Current': 'Current ko factor karein',
+  'Key Principle': 'Ahem Usool',
+  'Branches Currents Add': 'Branches mein currents jortay hain',
+  'Factor Out Voltage': 'Voltage ko factor karein',
+  'Wave Speed = Distance / Time': 'Wave Speed = Distance / Time',
+  'One Wavelength in One Period': 'Ek wavelength ek period mein',
+  'Frequency = 1 / Period': 'Frequency = 1 / Period',
+  'Final Wave Equation': 'Final Wave Equation',
+  "Light's Wave Equation": "Light ki Wave Equation",
+  'Photon Momentum': 'Photon Momentum',
+  'Series Circuit Current': 'Series Circuit Current',
+  'Substitute Current': 'Current ki jagah rakhein',
+  'Potential Divider Formula': 'Potential Divider Formula',
+  '1 Half-Life After': '1 Half-Life ke baad',
+  '2 Half-Lives After': '2 Half-Lives ke baad',
+  'n Half-Lives After': 'n Half-Lives ke baad',
+  'Count the Half-Lives': 'Half-Lives ginen',
+  'Ideal Transformer Assumption': 'Ideal Transformer ka Qayias',
+  'Substitute Power Formula': 'Power Formula mein jagah rakhein',
+  'Solve for Secondary Current': 'Secondary Current nikaln',
+  'Turns Ratio Relation': 'Turns Ratio ka Talluq',
+  'Emitter Current = Sum': 'Emitter Current = Jumla',
+  'Current Gain β (Beta)': 'Current Gain β (Beta)',
+  'Current Gain α (Alpha)': 'Current Gain α (Alpha)',
+  'Amplification': 'Amplification',
+  'Volume Change Proportional': 'Volume Change mutanasib',
+  'Introduce Constant β': 'Constant β mutaarif karayein',
+  'Solve for β': 'β nikaln',
+  'β and α Relation': 'β aur α ka talluq',
+  'Coefficient Definition': 'Coefficient ki tareef',
+  'Physical Meaning': 'Tabeeghati mani',
+  'Why It Matters': 'Yeh kyun ahem hai',
+  'Length Change Proportional': 'Lambai mein tabdeeli mutanasib',
+  'Rearrange for α': 'α ke liye dobara arrange karein',
+  'Final Formula': 'Final Formula',
+  'Critical Angle Conditions': 'Critical Angle ki shartein',
+  'sin 90° = 1': 'sin 90° = 1',
+  'Solve for Critical Angle': 'Critical Angle nikaln',
+  'Depth from Echo Time': 'Echo time se gahrai',
+  'Basic Speed Formula': 'Basic Speed Formula',
+  'Distance is Double (There & Back)': 'Distance double hai (wahan aur wapas)',
+  'Substitute for D': 'D ki jagah rakhein',
+  'Solve for Distance': 'Distance nikaln',  
+  'Average Speed = Distance / Time': 'Average Speed = Distance / Time',
+  'Light Energy Packets': 'Light ke energy packets',
+  'Photon Energy & Frequency': 'Photon Energy aur Frequency',
+  'Power Definition': 'Power ki tareef',
+  'Rearrange for Energy': 'Energy ke liye dobara arrange karein',
+  'Substitute P = VI': 'P = VI ki jagah rakhein',
+  'Final E = VIt': 'Final E = VIt',
+  'Ray Diagram Similar Triangles': 'Ray diagram se similar triangles',
+  'Combined Formula': 'Combined Formula',
+  'Sign Convention Matters': 'Sign Convention ahem hai',
+};
+
+// Translate - apply phrase map first, then handle individual patterns
+let translated = 0;
+let phraseMatched = 0;
+
+textStrs.forEach(k => {
+  const text = en[k].trim();
+  
+  // Check exact phrase match
+  const normText = text.replace(/\.$/, '').replace(/:$/, '').trim();
+  if (MAP[normText]) {
+    ur[k] = MAP[normText];
+    phraseMatched++;
+    translated++;
+    return;
+  }
+  if (MAP[text]) {
+    ur[k] = MAP[text];
+    phraseMatched++;
+    translated++;
+    return;
+  }
+  
+  // For short labels, keep as English (they're commonly used in Urdu too)
+  if (text.length < 30 && !text.includes(' ')) {
+    // Single word - keep English
+    return;
+  }
+  
+  // For longer texts that don't have a match, keep English for now
+  // We'll expand the map
+});
+
+fs.writeFileSync('src/locales/roman-urdu/translation.json', JSON.stringify(ur, null, 2));
+
+// Check remaining
+const finalSame = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+
+const finalText = finalSame.filter(k => !isFormula(en[k]));
+console.log('Exact phrase matches:', phraseMatched);
+console.log('Total translated this run:', translated);
+console.log('Remaining untranslated (total):', finalSame.length);
+console.log('Remaining text strings:', finalText.length);

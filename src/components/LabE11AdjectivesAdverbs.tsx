@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 interface WordItem { id: string; text: string; category: string; }
 
 export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  
  const [complexity, setComplexity] = useState<number>(2);
@@ -125,8 +127,9 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    <div className="mt-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
     <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
      <Activity className="w-4 h-4 text-emerald-500" />
-     Accuracy Over Time
-    </h3>
+     
+                   {t('lab.e11adjectivesadverbs_accuracy_over_time')}
+                  </h3>
     <svg viewBox={`-10 -10 ${width + 20} ${height + 20}`} className="w-full h-24 overflow-visible">
      <line x1="0" y1="0" x2="0" y2={height} stroke="currentColor" strokeWidth="1" className="text-slate-300 dark:text-slate-600" />
      <line x1="0" y1={height} x2={width} y2={height} stroke="currentColor" strokeWidth="1" className="text-slate-300 dark:text-slate-600" />
@@ -202,11 +205,11 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
      <button 
       onClick={onExit}
       className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
-      title="Go Back"
+      title={t('lab.e11adjectivesadverbs_go_back')}
      >
       <ArrowLeft className="w-6 h-6" />
      </button>
-     <h1 className="text-xl font-bold">Adjectives & Adverbs Sequence Builder</h1>
+     <h1 className="text-xl font-bold">{t('lab.e11adjectivesadverbs_adjectives_adverbs_sequence_bu')}</h1>
     </div>
    </header>
 
@@ -216,12 +219,13 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e11adjectivesadverbs_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e11adjectivesadverbs_lab')}</button>
   </div>
 
    {/* Main Layout */}
@@ -231,53 +235,53 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4 flex-shrink-0">
       <BookOpen className="w-5 h-5 text-indigo-500" />
-      <h2 className="text-lg font-semibold">Grammar Theory</h2>
+      <h2 className="text-lg font-semibold">{t('lab.e11adjectivesadverbs_grammar_theory')}</h2>
      </div>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto pr-2 flex-grow">
-      <h3 className="text-base font-bold text-slate-800 dark:text-white mb-2">Adjectives</h3>
-      <p className="mb-3">Adjectives describe nouns or pronouns. When multiple adjectives are used to describe a single noun, they typically follow a specific, "royal" order.</p>
+      <h3 className="text-base font-bold text-slate-800 dark:text-white mb-2">{t('lab.e11adjectivesadverbs_adjectives')}</h3>
+      <p className="mb-3">{t('lab.e11adjectivesadverbs_adjectives_describe_nouns_or_p')}</p>
       
-      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mt-4 mb-1">The Royal Order of Adjectives</h4>
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mt-4 mb-1">{t('lab.e11adjectivesadverbs_the_royal_order_of_adjectives')}</h4>
       <ol className="list-decimal pl-5 space-y-1 mb-4">
-       <li><strong>Quantity or number</strong> (e.g., one, several, many)</li>
-       <li><strong>Opinion or observation</strong> (e.g., beautiful, ugly, delicious)</li>
-       <li><strong>Size</strong> (e.g., small, large, tiny)</li>
-       <li><strong>Physical quality</strong> (e.g., rough, smooth)</li>
-       <li><strong>Shape</strong> (e.g., round, square)</li>
-       <li><strong>Age</strong> (e.g., old, new, young)</li>
-       <li><strong>Color</strong> (e.g., red, blue)</li>
-       <li><strong>Origin</strong> (e.g., French, lunar)</li>
-       <li><strong>Material</strong> (e.g., wooden, metal)</li>
-       <li><strong>Type</strong> (e.g., general-purpose, U-shaped)</li>
-       <li><strong>Purpose</strong> (e.g., sleeping bag, dining table)</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_quantity_or_number')}</strong>  {t('lab.e11adjectivesadverbs_e_g_one_several_many')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_opinion_or_observation')}</strong>  {t('lab.e11adjectivesadverbs_e_g_beautiful_ugly_delicious')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_size')}</strong>  {t('lab.e11adjectivesadverbs_e_g_small_large_tiny')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_physical_quality')}</strong>  {t('lab.e11adjectivesadverbs_e_g_rough_smooth')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_shape')}</strong>  {t('lab.e11adjectivesadverbs_e_g_round_square')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_age')}</strong>  {t('lab.e11adjectivesadverbs_e_g_old_new_young')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_color')}</strong>  {t('lab.e11adjectivesadverbs_e_g_red_blue')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_origin')}</strong>  {t('lab.e11adjectivesadverbs_e_g_french_lunar')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_material')}</strong>  {t('lab.e11adjectivesadverbs_e_g_wooden_metal')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_type')}</strong>  {t('lab.e11adjectivesadverbs_e_g_general_purpose_u_shaped')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_purpose')}</strong>  {t('lab.e11adjectivesadverbs_e_g_sleeping_bag_dining_table')}</li>
       </ol>
-      <p className="mb-4"><em>Example:</em> "A beautiful (opinion) small (size) old (age) round (shape) wooden (material) dining (purpose) table."</p>
+      <p className="mb-4"><em>{t('lab.e11adjectivesadverbs_example')}</em>  {t('lab.e11adjectivesadverbs_a_beautiful_opinion_small_size')}</p>
 
-      <h3 className="text-base font-bold text-slate-800 dark:text-white mt-6 mb-2">Adverbs</h3>
-      <p className="mb-3">Adverbs modify verbs, adjectives, or other adverbs. They often answer questions like how, where, when, how much, or how often.</p>
+      <h3 className="text-base font-bold text-slate-800 dark:text-white mt-6 mb-2">{t('lab.e11adjectivesadverbs_adverbs')}</h3>
+      <p className="mb-3">{t('lab.e11adjectivesadverbs_adverbs_modify_verbs_adjective')}</p>
 
-      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mt-4 mb-1">Order of Adverbs (MPT)</h4>
-      <p className="mb-3">When multiple adverbs modify the same verb, the standard order is usually:</p>
+      <h4 className="font-semibold text-slate-700 dark:text-slate-300 mt-4 mb-1">{t('lab.e11adjectivesadverbs_order_of_adverbs_mpt')}</h4>
+      <p className="mb-3">{t('lab.e11adjectivesadverbs_when_multiple_adverbs_modify_t')}</p>
       <ul className="list-disc pl-5 space-y-1 mb-4">
-       <li><strong>Manner:</strong> How? (e.g., quickly, carefully)</li>
-       <li><strong>Place:</strong> Where? (e.g., outside, here)</li>
-       <li><strong>Time:</strong> When? (e.g., yesterday, soon)</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_manner')}</strong>  {t('lab.e11adjectivesadverbs_how_e_g_quickly_carefully')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_place')}</strong>  {t('lab.e11adjectivesadverbs_where_e_g_outside_here')}</li>
+       <li><strong>{t('lab.e11adjectivesadverbs_time')}</strong>  {t('lab.e11adjectivesadverbs_when_e_g_yesterday_soon')}</li>
       </ul>
-      <p className="mb-4"><em>Example:</em> "The fox ran quickly (manner) outside (place) yesterday (time)."</p>
+      <p className="mb-4"><em>{t('lab.e11adjectivesadverbs_example')}</em>  {t('lab.e11adjectivesadverbs_the_fox_ran_quickly_manner_out')}</p>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-6 flex-shrink-0">
       <Activity className="w-5 h-5 text-indigo-500" />
-      <h2 className="text-lg font-semibold">Lab Controls</h2>
+      <h2 className="text-lg font-semibold">{t('lab.e11adjectivesadverbs_lab_controls')}</h2>
      </div>
 
      <div className="space-y-6 flex-grow">
       {/* Configuration */}
       <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-       <label className="text-sm font-semibold mb-2 block">Grammar Complexity: {complexity}</label>
+       <label className="text-sm font-semibold mb-2 block">{t('lab.e11adjectivesadverbs_grammar_complexity')} {complexity}</label>
        <input 
         type="range" 
         min="1" 
@@ -287,9 +291,9 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
         className="w-full accent-emerald-600"
        />
        <div className="flex justify-between text-xs text-slate-500 mt-1">
-        <span>Basic</span>
-        <span>Royal Order</span>
-        <span>Adj + Adv</span>
+        <span>{t('lab.e11adjectivesadverbs_basic')}</span>
+        <span>{t('lab.e11adjectivesadverbs_royal_order')}</span>
+        <span>{t('lab.e11adjectivesadverbs_adj_adv')}</span>
        </div>
       </div>
 
@@ -297,8 +301,9 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
       <div className={`bg-white dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
         <Target className="w-4 h-4 text-emerald-500" />
-        Status
-       </h3>
+        
+                                     {t('lab.e11adjectivesadverbs_status')}
+                                    </h3>
        <p className="text-sm font-medium mb-4 min-h-[40px] text-emerald-700 dark:text-emerald-300">
         {feedback}
        </p>
@@ -309,33 +314,35 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
          className={`flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium text-sm flex-col `}
         >
          <CheckCircle className="w-4 h-4" />
-         Check Sequence
-        </button>
+         
+                                          {t('lab.e11adjectivesadverbs_check_sequence')}
+                                         </button>
         <button
          onClick={resetActivity}
          className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium text-sm"
         >
          <RefreshCw className="w-4 h-4" />
-         Reset
-        </button>
+         
+                                          {t('lab.e11adjectivesadverbs_reset')}
+                                         </button>
        </div>
       </div>
 
       {/* Data Table */}
       <div>
-       <h3 className="font-semibold mb-2 text-sm text-slate-500 uppercase tracking-wider">Word Categories</h3>
+       <h3 className="font-semibold mb-2 text-sm text-slate-500 uppercase tracking-wider">{t('lab.e11adjectivesadverbs_word_categories')}</h3>
        <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
         <table className="w-full text-sm text-left">
          <thead className="bg-slate-50 dark:bg-[#1c1b1b] border-b border-slate-200 dark:border-[#2a2a2a] text-xs uppercase text-slate-500">
           <tr>
-           <th className="px-4 py-2">Word</th>
-           <th className="px-4 py-2">Category</th>
+           <th className="px-4 py-2">{t('lab.e11adjectivesadverbs_word')}</th>
+           <th className="px-4 py-2">{t('lab.e11adjectivesadverbs_category')}</th>
           </tr>
          </thead>
          <tbody>
           {sentence.length === 0 ? (
            <tr>
-            <td colSpan={2} className="px-4 py-3 text-center text-slate-400 italic">No words added yet</td>
+            <td colSpan={2} className="px-4 py-3 text-center text-slate-400 italic">{t('lab.e11adjectivesadverbs_no_words_added_yet')}</td>
            </tr>
           ) : (
            sentence.map((w, i) => (
@@ -354,24 +361,26 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
       {/* Assessment */}
       <div className="bg-emerald-50 dark:bg-emerald-900/30 p-4 rounded-xl border border-emerald-100 dark:border-emerald-800/50">
-       <h3 className="font-semibold text-emerald-900 dark:text-emerald-200 mb-2 text-sm">Assessment</h3>
+       <h3 className="font-semibold text-emerald-900 dark:text-emerald-200 mb-2 text-sm">{t('lab.e11adjectivesadverbs_assessment')}</h3>
        <p className="text-xs text-emerald-800 dark:text-emerald-300 mb-3">
-        What is the standard order of Adverbs in a sentence? (Use the 3-letter acronym)
-       </p>
+        
+                                     {t('lab.e11adjectivesadverbs_what_is_the_standard_order_of_')}
+                                    </p>
        <div className="flex gap-2">
         <input 
          type="text" 
          value={assessmentAnswer}
          onChange={(e) => setAssessmentAnswer(e.target.value)}
-         placeholder="Enter acronym..."
+         placeholder={t('lab.e11adjectivesadverbs_enter_acronym')}
          className="flex-1 px-3 py-2 rounded-lg border border-emerald-200 dark:border-emerald-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
         <button 
          onClick={checkAssessment}
          className="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0"
         >
-         Submit
-        </button>
+         
+                                          {t('lab.e11adjectivesadverbs_submit')}
+                                         </button>
        </div>
        {assessmentResult && (
         <p className="mt-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">{assessmentResult}</p>
@@ -384,10 +393,10 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex-col items-center justify-center p-6 overflow- min-h-[500px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      
      <div className="w-full max-w-2xl mb-8 flex-shrink-0">
-      <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Word Bank</h3>
+      <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">{t('lab.e11adjectivesadverbs_word_bank')}</h3>
       <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm min-h-[120px] flex-wrap gap-3 items-start content-start flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        {bank.length === 0 ? (
-        <p className="text-slate-400 italic text-sm w-full text-center mt-4">All words used!</p>
+        <p className="text-slate-400 italic text-sm w-full text-center mt-4">{t('lab.e11adjectivesadverbs_all_words_used')}</p>
        ) : (
         bank.map((w) => (
          <button
@@ -407,16 +416,18 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
      <div className={`w-full max-w-2xl rounded-2xl shadow-xl p-8 border border-slate-200 dark:border-[#1c1b1b] flex-grow flex-col justify-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <h2 className="text-xl font-serif text-slate-800 dark:text-[#ffffff] mb-6 border-b border-slate-200 dark:border-[#1c1b1b] pb-4 text-center">
-       Sentence Builder
-      </h2>
+       
+                                {t('lab.e11adjectivesadverbs_sentence_builder')}
+                               </h2>
       
       <div className="min-h-[120px] flex items-center justify-center p-6 bg-slate-50 dark:bg-[#1c1b1b]/50 rounded-xl border border-slate-100 dark:border-[#2a2a2a]/50">
        {renderSentenceUI()}
       </div>
       
       <p className="mt-6 text-center text-sm text-slate-500 dark:text-[#71717a]">
-       Tip: Click words in the sentence to return them to the bank.
-      </p>
+       
+                                {t('lab.e11adjectivesadverbs_tip_click_words_in_the_sentenc')}
+                               </p>
      </div>
 
     </section>

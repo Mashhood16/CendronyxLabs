@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CheckCircle, ShieldAlert, Check, X } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -13,6 +14,7 @@ interface Rule {
 }
 
 export default function LabC6LabRules({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const allRules: Rule[] = [
  { id: '1', text: 'Keep the computer lab clean and tidy.', type: 'do' },
  { id: '2', text: 'Bring food or drinks near the computers.', type: 'dont' },
@@ -48,17 +50,17 @@ export default function LabC6LabRules({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="ICT Lab Rules Chart" />
+  <LabHeader onExit={onExit} title={t('lab.c6labrules_ict_lab_rules_chart')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Click a rule from the list, then click either the "Do" or "Don't" button to sort it onto the chart.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6labrules_click_a_rule_from_the_list_the')}</p>
 
   <div className="flex gap-8 flex-1 min-h-[500px]">
    {/* Rules Pool */}
    <div className="w-1/3 flex flex-col gap-4">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-1 flex flex-col">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">Unsorted Rules ({unassigned.length})</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6labrules_unsorted_rules')}{unassigned.length})</h3>
     <div className="flex flex-col gap-3 flex-1 lg:overflow-y-auto pr-2">
     {unassigned.map(rule => (
      <button
@@ -71,8 +73,9 @@ export default function LabC6LabRules({ onExit }: LabProps) {
     ))}
     {unassigned.length === 0 && (
      <div className="flex-1 flex items-center justify-center text-slate-400 font-medium">
-     All rules sorted!
-     </div>
+     
+                                          {t('lab.c6labrules_all_rules_sorted')}
+                                          </div>
     )}
     </div>
 
@@ -91,8 +94,9 @@ export default function LabC6LabRules({ onExit }: LabProps) {
      className="flex-1 py-3 bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex justify-center items-center gap-2"
     >
      <X className="w-5 h-5" />
-     DON'T
-    </button>
+     
+                                      {t('lab.c6labrules_don_t')}
+                                     </button>
     </div>
    </div>
    </div>
@@ -102,8 +106,8 @@ export default function LabC6LabRules({ onExit }: LabProps) {
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
     <div className="bg-emerald-500 text-white p-4 text-center">
     <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
-     <CheckCircle className="w-6 h-6" /> Do's
-    </h2>
+     <CheckCircle className="w-6 h-6" />  {t('lab.c6labrules_do_s')}
+                                     </h2>
     </div>
     <div className="p-6 flex-1 flex flex-col gap-3 lg:overflow-y-auto bg-emerald-50/30">
     {dos.map(rule => (
@@ -118,8 +122,8 @@ export default function LabC6LabRules({ onExit }: LabProps) {
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
     <div className="bg-rose-500 text-white p-4 text-center dark:bg-[#121212] dark:border-[#1c1b1b]">
     <h2 className="text-2xl font-bold uppercase tracking-wider flex items-center justify-center gap-2">
-     <ShieldAlert className="w-6 h-6" /> Don'ts
-    </h2>
+     <ShieldAlert className="w-6 h-6" />  {t('lab.c6labrules_don_ts')}
+                                     </h2>
     </div>
     <div className="p-6 flex-1 flex flex-col gap-3 lg:overflow-y-auto bg-rose-50/30 dark:bg-[#121212] dark:border-[#1c1b1b]">
     {donts.map(rule => (
@@ -138,13 +142,15 @@ export default function LabC6LabRules({ onExit }: LabProps) {
    {isCorrect ? (
     <>
     <CheckCircle className="w-8 h-8" />
-    Perfect! The ICT Lab Rules chart is ready to be displayed.
-    </>
+    
+                                 {t('lab.c6labrules_perfect_the_ict_lab_rules_char')}
+                                 </>
    ) : (
     <>
     <ShieldAlert className="w-8 h-8" />
-    Some rules are in the wrong columns. Refresh and try again!
-    </>
+    
+                                     {t('lab.c6labrules_some_rules_are_in_the_wrong_co')}
+                                     </>
    )}
    </div>
   )}

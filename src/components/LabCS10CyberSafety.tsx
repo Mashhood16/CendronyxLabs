@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Shield, AlertTriangle, CheckCircle, Type, Trash2, Star, Send, Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface PosterElement {
  id: number;
@@ -12,6 +13,7 @@ interface PosterElement {
 }
 
 export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [elements, setElements] = useState<PosterElement[]>([]);
  const [draggingId, setDraggingId] = useState<number | null>(null);
@@ -72,7 +74,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Cyber Safety Lab" subtitle="Design an Anti-Cyberbullying Poster" />
+  <LabHeader onExit={onExit} title={t('lab.cs10cybersafety_cyber_safety_lab')} subtitle={t('lab.subtitle_design_anti_cyberbullying')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -81,26 +83,27 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs10cybersafety_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs10cybersafety_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
   {/* LEFT COLUMN: Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Poster Builder Tools</h2>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.cs10cybersafety_1_poster_builder_tools')}</h2>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">{t('lab.cs10cybersafety_design_an_anti_cyberbullying_p')}</p>
    
    <button onClick={addText} className={`flex items-center gap-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded font-medium text-slate-700 dark:text-[#ffffff] flex-col `}>
-   <Type size={18}/> Add Text Box
-   </button>
+   <Type size={18}/>  {t('lab.cs10cybersafety_add_text_box')}
+                        </button>
    
    <div className="border-t pt-4">
-   <p className="text-sm font-semibold mb-2">Add Icons:</p>
+   <p className="text-sm font-semibold mb-2">{t('lab.cs10cybersafety_add_icons')}</p>
    <div className="grid grid-cols-3 gap-2">
     <button onClick={() => addIcon('shield')} className={`flex justify-center bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded flex-col `}><Shield className="text-blue-500"/></button>
     <button onClick={() => addIcon('alert')} className={`flex justify-center bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] p-3 rounded flex-col `}><AlertTriangle className="text-yellow-500"/></button>
@@ -110,18 +113,18 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
 
    <div className="mt-auto border-t pt-4">
     <button onClick={() => setGalleryMode(true)} className="w-full flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white p-3 rounded font-bold dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    <Send size={18}/> Submit to Gallery Walk
-    </button>
+    <Send size={18}/>  {t('lab.cs10cybersafety_submit_to_gallery_walk')}
+                             </button>
    </div>
   </div>
 
   {/* MIDDLE COLUMN: Canvas */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col items-center justify-center border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col items-center justify-center border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div 
    ref={canvasRef}
    className="w-full max-w-sm aspect-[3/4] bg-slate-100 dark:bg-[#121212] border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] relative shadow-inner overflow-hidden"
    >
-   {elements.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">Empty Canvas</div>}
+   {elements.length === 0 && <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-medium">{t('lab.cs10cybersafety_empty_canvas')}</div>}
    
    {elements.map(el => (
     <div
@@ -158,20 +161,21 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
   </div>
 
   {/* RIGHT COLUMN: Gallery & Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">3. Gallery Walk & Assessment</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-5 rounded-xl shadow-sm flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.cs10cybersafety_3_gallery_walk_assessment')}</h2>
    
    {!galleryMode ? (
    <div className="p-4 bg-emerald-50 rounded-lg text-emerald-800 text-sm">
-    Complete your poster and click "Submit to Gallery Walk" to unlock peer reviews and your final assessment.
-   </div>
+    
+                             {t('lab.cs10cybersafety_complete_your_poster_and_click')}
+                            </div>
    ) : (
    <>
     <div className="space-y-4">
-    <p className="text-sm font-semibold">Rate Peer Posters:</p>
+    <p className="text-sm font-semibold">{t('lab.cs10cybersafety_rate_peer_posters')}</p>
     {[1, 2, 3].map((posterNum, i) => (
      <div key={posterNum} className="p-3 bg-slate-50 dark:bg-[#121212] border rounded-lg flex items-center justify-between">
-     <span className="font-medium text-sm">Poster #{posterNum}</span>
+     <span className="font-medium text-sm">{t('lab.cs10cybersafety_poster')}{posterNum}</span>
      <div className="flex gap-1">
       {[1,2,3,4,5].map(star => (
       <button key={star} onClick={() => {
@@ -188,15 +192,15 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
     </div>
 
     <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mt-4">
-     <h3 className="font-bold mb-2">Final Assessment</h3>
-     <p className="text-sm mb-2">Which of the following is the BEST immediate action if you witness cyberbullying?</p>
+     <h3 className="font-bold mb-2">{t('lab.cs10cybersafety_final_assessment')}</h3>
+     <p className="text-sm mb-2">{t('lab.cs10cybersafety_which_of_the_following_is_the_')}</p>
      <select value={mcqAns} onChange={e=>setMcqAns(e.target.value)} className="w-full p-2 border rounded mb-2 text-sm">
-     <option value="">Select...</option>
-     <option value="A">Reply angrily to the bully</option>
-     <option value="B">Take screenshots, block, and report</option>
-     <option value="C">Ignore it and delete your account</option>
+     <option value="">{t('lab.cs10cybersafety_select')}</option>
+     <option value="A">{t('lab.cs10cybersafety_reply_angrily_to_the_bully')}</option>
+     <option value="B">{t('lab.cs10cybersafety_take_screenshots_block_and_rep')}</option>
+     <option value="C">{t('lab.cs10cybersafety_ignore_it_and_delete_your_acco')}</option>
      </select>
-     <button className="w-full bg-emerald-600 text-white py-2 rounded font-bold dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40" onClick={() => alert(mcqAns === 'B' ? 'Correct! Documenting evidence and reporting is the safest action.' : 'Incorrect. Think about safety and evidence.')}>Check Answer</button>
+     <button className="w-full bg-emerald-600 text-white py-2 rounded font-bold dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40" onClick={() => alert(mcqAns === 'B' ? 'Correct! Documenting evidence and reporting is the safest action.' : 'Incorrect. Think about safety and evidence.')}>{t('lab.cs10cybersafety_check_answer')}</button>
     </div>
    </>
    )}

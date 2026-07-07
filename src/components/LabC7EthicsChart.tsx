@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Save, Layout, ShieldAlert, ShieldCheck } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7EthicsChart({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [elements, setElements] = useState<{id: string, type: string, content: string, x: number, y: number}[]>([]);
  const [draggedItem, setDraggedItem] = useState<{type: string, content: string} | null>(null);
 
@@ -34,15 +36,15 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-100 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Digital Ethics Poster" />
+  <LabHeader onExit={onExit} title={t('lab.c7ethicschart_digital_ethics_poster')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Design a classroom display chart about Ethical Use, Online Safety, or Cybercrimes.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7ethicschart_design_a_classroom_display_cha')}</p>
 
   <div className="flex gap-8 flex-1 w-full max-w-6xl mx-auto">
    {/* Library */}
    <div className="w-80 bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-4">
-   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm flex items-center mb-2"><Layout className="w-4 h-4 mr-2"/> Components</h2>
+   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm flex items-center mb-2"><Layout className="w-4 h-4 mr-2"/>  {t('lab.c7ethicschart_components')}</h2>
    
    <div className="space-y-3 lg:overflow-y-auto pr-2 pb-4">
     {library.map((item, i) => (
@@ -62,8 +64,8 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
 
    <div className="mt-auto border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
     <button className="w-full py-3 bg-blue-100 text-blue-700 font-bold rounded flex items-center justify-center hover:bg-blue-200 transition-colors">
-    <Save className="w-5 h-5 mr-2" /> Save Poster
-    </button>
+    <Save className="w-5 h-5 mr-2" />  {t('lab.c7ethicschart_save_poster')}
+                                 </button>
    </div>
    </div>
 
@@ -75,8 +77,9 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
    >
    {elements.length === 0 && (
     <div className="absolute inset-0 flex items-center justify-center text-slate-300 font-medium italic text-2xl">
-    Drag items here to build your chart
-    </div>
+    
+                                 {t('lab.c7ethicschart_drag_items_here_to_build_your_')}
+                                 </div>
    )}
 
    {elements.map(el => (

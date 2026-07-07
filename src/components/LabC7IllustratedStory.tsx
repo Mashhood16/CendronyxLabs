@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Image as ImageIcon, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7IllustratedStory({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [story, setStory] = useState('');
  const [images, setImages] = useState<string[]>([]);
  const [showGallery, setShowGallery] = useState(false);
@@ -25,10 +27,10 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Illustrated Story Writing" />
+  <LabHeader onExit={onExit} title={t('lab.c7illustratedstory_illustrated_story_writing')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Write a short story and insert relevant pictures from the gallery to illustrate it.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7illustratedstory_write_a_short_story_and_insert')}</p>
 
   <div className="bg-slate-50 dark:bg-[#121212] rounded-xl shadow border border-slate-300 dark:border-[#1c1b1b] flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden relative">
    
@@ -39,20 +41,22 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
     className="flex items-center px-4 py-2 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] rounded text-sm font-medium transition-colors"
    >
     <ImageIcon className="w-4 h-4 mr-2 text-rose-500" />
-    Insert Picture
-   </button>
+    
+                             {t('lab.c7illustratedstory_insert_picture')}
+                            </button>
    <div className="ml-auto flex items-center text-slate-400 text-sm">
     <BookOpen className="w-4 h-4 mr-2" />
-    Story Mode
-   </div>
+    
+                             {t('lab.c7illustratedstory_story_mode')}
+                            </div>
    </div>
 
    {/* Gallery Modal Overlay */}
    {showGallery && (
    <div className="absolute top-16 left-0 right-0 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-lg p-6 z-20 grid grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
     <div className="col-span-4 flex justify-between items-center mb-2">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">Select Image to Insert</h3>
-    <button onClick={() => setShowGallery(false)} className="text-slate-400 hover:text-slate-800 dark:text-[#ffffff]">Close</button>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c7illustratedstory_select_image_to_insert')}</h3>
+    <button onClick={() => setShowGallery(false)} className="text-slate-400 hover:text-slate-800 dark:text-[#ffffff]">{t('lab.c7illustratedstory_close')}</button>
     </div>
     {gallery.map(img => (
     <button 
@@ -62,7 +66,7 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
     >
      <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
      <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-     <span className="text-white font-medium text-sm">Insert</span>
+     <span className="text-white font-medium text-sm">{t('lab.c7illustratedstory_insert')}</span>
      </div>
     </button>
     ))}
@@ -73,7 +77,7 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
    <div className="flex-1 p-12 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
    <textarea
     className="w-full min-h-[200px] bg-transparent resize-none outline-none text-lg font-serif text-slate-800 dark:text-[#ffffff] leading-relaxed mb-8 placeholder:text-slate-300"
-    placeholder="Once upon a time..."
+    placeholder={t('lab.c7illustratedstory_once_upon_a_time')}
     value={story}
     onChange={(e) => setStory(e.target.value)}
    />
@@ -94,8 +98,9 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
    
    {images.length === 0 && story.length > 50 && (
     <div className="text-center text-slate-400 italic mt-12 animate-pulse">
-    Click 'Insert Picture' to add an illustration to your story.
-    </div>
+    
+                                 {t('lab.c7illustratedstory_click_insert_picture_to_add_an')}
+                                 </div>
    )}
    </div>
 

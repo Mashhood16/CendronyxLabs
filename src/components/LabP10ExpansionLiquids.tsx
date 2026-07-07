@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // --- Constants and Types ---
  const V0 = 250; // Initial volume in cm^3 (250 ml)
@@ -154,7 +156,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 11: Real and Apparent Expansion of Liquids" subtitle="Determine the real thermal expansivity of an unknown liquid." />
+  <LabHeader onExit={onExit} title={t('lab.p10expansionliquids_unit_11_real_and_apparent_expa')} subtitle={t('lab.subtitle_determine_real_thermal')} />
 
   {/* Main Grid */}
   <div className="flex-1 lg:overflow-y-auto p-4 md:p-6">
@@ -165,40 +167,42 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                         {t('lab.p10expansionliquids_theory')}
+                        </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10expansionliquids_lab')}</button>
   </div>
   <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:min-h-[600px] lg:overflow-visible">
    
    {/* Column 1: Theory & Setup */}
    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Theory</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10expansionliquids_theory')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    When a liquid in a vessel is heated, the vessel expands first, causing the liquid level to momentarily drop. Then, the liquid heats up and expands.
-    </p>
+    
+                                 {t('lab.p10expansionliquids_when_a_liquid_in_a_vessel_is_h')}
+                                 </p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm font-mono text-slate-700 dark:text-[#ffffff] space-y-1 flex-col `}>
-    <p>γ_real = γ_apparent + γ_flask</p>
-    <p>ΔV_app = A × h</p>
-    <p>γ_app = ΔV_app / (V₀ × ΔT)</p>
+    <p>{t('lab.10expansionliquids_real_apparent_flask')}</p>
+    <p>{t('lab.10expansionliquids_v_appah')}</p>
+    <p>{t('lab.p10expansionliquids_app_v_app_v_t')}</p>
     </div>
     <ul className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 list-disc pl-5">
-    <li>V₀ = {V0} cm³</li>
-    <li>Capillary Diameter = {D_capillary} cm</li>
-    <li>Area A = {A.toFixed(4)} cm²</li>
-    <li>Initial Temp T₀ = {T0} °C</li>
+    <li>{t('lab.p10expansionliquids_v')} {V0}  {t('lab.p10expansionliquids_cm')}</li>
+    <li>{t('lab.p10expansionliquids_capillary_diameter')} {D_capillary} cm</li>
+    <li>{t('lab.p10expansionliquids_area_a')} {A.toFixed(4)}  {t('lab.p10expansionliquids_cm_1')}</li>
+    <li>{t('lab.p10expansionliquids_initial_temp_t')} {T0} °C</li>
     </ul>
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Setup Parameters</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10expansionliquids_setupparameters')}</h2>
     <div className="space-y-4">
     <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Liquid Type</label>
+     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10expansionliquids_liquidtype')}</label>
      <select 
      className={`w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 bg-slate-50 dark:bg-[#121212] `}
      value={liquid}
@@ -209,7 +213,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
      </select>
     </div>
     <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Flask Material</label>
+     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10expansionliquids_flaskmaterial')}</label>
      <select 
      className={`w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 bg-slate-50 dark:bg-[#121212] `}
      value={flask}
@@ -221,7 +225,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Water Bath Temp: {targetTemp}°C</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10expansionliquids_water_bath_temp')} {targetTemp}°C</label>
      </div>
      <input 
      type="range" min="20" max="100" step="1" 
@@ -234,7 +238,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
    </div>
 
    <div className={`bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-center justify-between dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <div className="text-sm font-bold text-blue-900 dark:text-[#ffffff]">Simulation Time</div>
+    <div className="text-sm font-bold text-blue-900 dark:text-[#ffffff]">{t('lab.10expansionliquids_simulationtime')}</div>
     <div className="font-mono text-blue-800 text-lg dark:text-[#ffffff]">{time.toFixed(1)}s</div>
    </div>
    </div>
@@ -251,15 +255,15 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
    </div>
    
    <div className="absolute top-4 right-4 text-white text-xs font-mono text-right bg-black/50 p-2 rounded">
-    <div>T_flask: {tFlask.toFixed(1)}°C</div>
-    <div>T_liquid: {tLiquid.toFixed(1)}°C</div>
-    <div>h_app: {h_apparent.toFixed(2)} cm</div>
+    <div>{t('lab.p10expansionliquids_t_flask')} {tFlask.toFixed(1)}°C</div>
+    <div>{t('lab.p10expansionliquids_t_liquid')} {tLiquid.toFixed(1)}°C</div>
+    <div>{t('lab.p10expansionliquids_h_app')} {h_apparent.toFixed(2)} cm</div>
    </div>
 
    <div className={`flex-1 w-full flex items-end justify-center pb-12 relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     {/* Bath */}
     <div className="absolute bottom-8 w-64 h-48 bg-blue-500/20 border-x-4 border-b-4 border-white/20 rounded-b-3xl dark:bg-teal-950/20 dark:border-teal-900 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-     <div className="absolute top-2 right-2 text-blue-200/50 font-bold text-sm">Water Bath</div>
+     <div className="absolute top-2 right-2 text-blue-200/50 font-bold text-sm">{t('lab.10expansionliquids_waterbath')}</div>
      {/* Heat waves */}
      {targetTemp > T0 && (
      <div className="absolute inset-0 overflow-hidden rounded-b-2xl opacity-30">
@@ -299,33 +303,33 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
     </div>
     </div>
    </div>
-   <div className="text-center text-slate-400 text-xs mt-2">Expansion scale is highly exaggerated for visualization</div>
+   <div className="text-center text-slate-400 text-xs mt-2">{t('lab.10expansionliquids_expansionscaleishighlyexaggeratedfo')}</div>
    </div>
 
    {/* Column 3: Data & Analysis */}
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between border-b pb-2">
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Recording</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10expansionliquids_datarecording')}</h2>
     <button 
     onClick={recordData}
     disabled={time < 10}
     className="flex items-center gap-2 bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 disabled:opacity-50 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    <ClipboardList className="w-4 h-4" /> Record (Eq)
-    </button>
+    <ClipboardList className="w-4 h-4" />  {t('lab.p10expansionliquids_record_eq')}
+                                 </button>
    </div>
 
    <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
      <tr>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">T_bath (°C)</th>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Apparent Height (cm)</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10expansionliquids_t_bath_c')}</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10expansionliquids_apparent_height_cm')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {logs.length === 0 ? (
-     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-400">No data recorded. Wait for equilibrium.</td></tr>
+     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-400">{t('lab.10expansionliquids_nodatarecordedwaitforequilibrium')}</td></tr>
      ) : (
      logs.map((log, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -340,8 +344,8 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
 
    {/* Graph area */}
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative min-h-[150px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">Height (cm)</div>
-    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">Temperature (°C)</div>
+    <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10expansionliquids_height_cm')}</div>
+    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10expansionliquids_temperature_c')}</div>
     
     <svg className="w-full h-[calc(100%-20px)] overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
      {/* Grid */}
@@ -378,24 +382,26 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
 
    {/* Assessment */}
    <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10expansionliquids_analysis')}</h3>
     <p className="text-xs text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Select "Unknown" liquid. Use the graph gradient or a data point to find γ_app, then calculate the real expansivity γ_real. Enter your answer below (e.g., 0.00055).
-    </p>
+    
+                                 {t('lab.p10expansionliquids_select_unknown_liquid_use_the_')}
+                                 </p>
     <div className="flex gap-2">
     <input 
      type="text" 
      value={answer}
      onChange={(e) => setAnswer(e.target.value)}
-     placeholder="e.g., 5.5e-4"
+     placeholder={t('lab.p10expansionliquids_t_lab_10expansionliquids_eg55e')}
      className="flex-1 px-3 py-1.5 text-sm border border-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-md text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10expansionliquids_check')}
+                                     </button>
     </div>
     {feedback && (
     <div className={`mt-2 text-xs font-medium ${feedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>

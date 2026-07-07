@@ -1,6 +1,8 @@
 import { useMemo, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { LAB_MODULES, formatSubject } from '../data/labModules';
+import { LAB_MODULES, formatSubject, hasCalculator } from '../data/labModules';
+import { useTranslate } from '../i18n';
+import { translateLabDesc } from '../i18n/labContent';
 import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { Rocket, GraduationCap, Beaker, Atom, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
@@ -36,6 +38,7 @@ export default function Class9Physics() {
       sessionStorage.removeItem(`scroll_${classId}_${subjectId}`);
     }
   }, []);
+  const { language } = useTranslate();
   const accent = SUBJECT_ACCENT[subjectId] || 'from-slate-500 to-slate-600';
 
   const filteredModules = useMemo(
@@ -136,6 +139,11 @@ export default function Class9Physics() {
                           <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
                             {formatSubject(lab.subject)} &middot; Class {lab.classLevel}
                           </div>
+                          {hasCalculator(lab) && (
+                            <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-400/90 text-amber-900 text-[10px] font-bold backdrop-blur-sm shadow-sm">
+                              🧮 Calc
+                            </div>
+                          )}
                           {isBuilt ? (
                             <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">
                               <Rocket className="w-3.5 h-3.5" /> Ready
@@ -151,7 +159,7 @@ export default function Class9Physics() {
                             {lab.title}
                           </h3>
                           <p className="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2 flex-1">
-                            {lab.desc}
+                            {translateLabDesc(lab.id, lab.desc, language)}
                           </p>
                           <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                             <div className="flex items-center gap-1.5 text-slate-400">
@@ -200,6 +208,11 @@ export default function Class9Physics() {
                       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
                         Derivation &middot; Class 9 Physics
                       </div>
+                      {hasCalculator(lab) && (
+                        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-400/90 text-amber-900 text-[10px] font-bold backdrop-blur-sm shadow-sm">
+                          🧮 Calc
+                        </div>
+                      )}
                       <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-500/90 text-white text-xs font-bold backdrop-blur-sm">
                         <BookOpen className="w-3.5 h-3.5" /> Step-by-Step
                       </div>

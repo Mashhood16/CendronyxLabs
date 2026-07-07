@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Music } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [distance, setDistance] = useState(80); // 20 to 100
  const [playing, setPlaying] = useState(false);
 
@@ -22,15 +24,15 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-indigo-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 9: Waves and Energy" />
+  <LabHeader onExit={onExit} title={t('lab.s7vibratinglengthpitch_unit_9_waves_and_energy')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-indigo-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-indigo-800 mb-4 dark:text-[#ffffff]">Pitch and Vibrating Length</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">A rubber band is stretched over a hollow box, supported by two pens. Adjust the distance between the pens to change the length of the vibrating segment, then pluck the band.</p>
+   <h2 className="text-2xl font-bold text-indigo-800 mb-4 dark:text-[#ffffff]">{t('lab.s7vibratinglengthpitch_pitch_and_vibrating_length')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7vibratinglengthpitch_a_rubber_band_is_stretched_ove')}</p>
    
    <div className="flex items-center gap-4 px-12">
-   <span className="font-bold text-slate-500 dark:text-[#71717a] whitespace-nowrap">Distance:</span>
+   <span className="font-bold text-slate-500 dark:text-[#71717a] whitespace-nowrap">{t('lab.s7vibratinglengthpitch_distance')}</span>
    <input 
     type="range" min="20" max="100" value={distance} onChange={e => setDistance(parseInt(e.target.value))}
     className="flex-1 accent-indigo-600"
@@ -41,8 +43,8 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
    onClick={pluck}
    className="mt-8 flex mx-auto items-center px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 font-bold active:scale-95 transition-transform shadow-md dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-   <Music className="w-5 h-5 mr-2" /> Pluck Rubber Band
-   </button>
+   <Music className="w-5 h-5 mr-2" />  {t('lab.s7vibratinglengthpitch_pluck_rubber_band')}
+                        </button>
   </div>
 
   {/* The Instrument */}
@@ -101,7 +103,7 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
   {/* Audio Visualizer (Fake) */}
   <div className="mt-12 bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm w-full max-w-2xl">
    <div className="flex justify-between items-center mb-4">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">Audio Waveform</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.s7vibratinglengthpitch_audio_waveform')}</h3>
     <span className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full font-bold text-sm uppercase tracking-wider dark:text-[#ffffff]">{pitchLabel}</span>
    </div>
    <div className="h-24 bg-[#000000] dark:bg-[#121212] rounded-lg overflow-hidden relative flex items-center justify-center">
@@ -119,8 +121,9 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
     )}
    </div>
    <p className="mt-4 text-slate-500 dark:text-[#71717a] text-sm text-center">
-    Shorter lengths vibrate faster (higher frequency), producing a higher pitch. Longer lengths vibrate slower (lower frequency), producing a lower pitch.
-   </p>
+    
+                         {t('lab.s7vibratinglengthpitch_shorter_lengths_vibrate_faster')}
+                        </p>
   </div>
   </div>
  </div>

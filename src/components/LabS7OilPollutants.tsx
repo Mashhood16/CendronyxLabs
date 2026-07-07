@@ -4,12 +4,14 @@ import LabHeader from './LabHeader';
 import DataChart from './DataChart';
 import ProgressionPath from './ProgressionPath';
 import { addMeasurementNoise } from '../utils/measurementNoise';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7OilPollutants({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [method, setMethod] = useState<'none' | 'spoon' | 'cheesecloth' | 'sand'>('none');
  const [oilRemoved, setOilRemoved] = useState(0); // 0 to 100
  const [trialResults, setTrialResults] = useState<{ method: string; efficiency: number }[]>([]);
@@ -49,38 +51,39 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 7: Removing Oil Pollutants" />
+  <LabHeader onExit={onExit} title={t('lab.s7oilpollutants_unit_7_removing_oil_pollutants')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-slate-50 dark:!bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-2xl font-bold text-emerald-400 mb-4">Cleaning Oil Spills</h2>
-   <p className="text-slate-300 mb-6">Oil is less dense than water, so it floats on top forming a slick. Select different tools to try and clean up the oil spill from the water's surface.</p>
+   <h2 className="text-2xl font-bold text-emerald-400 mb-4">{t('lab.s7oilpollutants_cleaning_oil_spills')}</h2>
+   <p className="text-slate-300 mb-6">{t('lab.s7oilpollutants_oil_is_less_dense_than_water_s')}</p>
    
    <div className="flex justify-center gap-4 flex-wrap">
    <button 
     onClick={() => applyMethod('spoon')}
     className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
    >
-    <Utensils className="w-4 h-4 mr-2" /> Skim with Spoon
-   </button>
+    <Utensils className="w-4 h-4 mr-2" />  {t('lab.s7oilpollutants_skim_with_spoon')}
+                            </button>
    <button 
     onClick={() => applyMethod('cheesecloth')}
     className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
    >
-    <Grid className="w-4 h-4 mr-2" /> Drag Cheesecloth
-   </button>
+    <Grid className="w-4 h-4 mr-2" />  {t('lab.s7oilpollutants_drag_cheesecloth')}
+                            </button>
    <button 
     onClick={() => applyMethod('sand')}
     className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
    >
-    <Droplets className="w-4 h-4 mr-2" /> Sprinkle Sand
-   </button>
+    <Droplets className="w-4 h-4 mr-2" />  {t('lab.s7oilpollutants_sprinkle_sand')}
+                            </button>
    <button 
     onClick={reset}
     className="flex items-center px-4 py-2 bg-red-600/20 text-red-400 border border-red-500/50 rounded-lg hover:bg-red-600/40 font-medium ml-4 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
    >
-    Reset Spill
-   </button>
+    
+                             {t('lab.s7oilpollutants_reset_spill')}
+                            </button>
    </div>
   </div>
 
@@ -102,7 +105,7 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
     borderRadius: '50% 40% 60% 40% / 40% 50% 60% 50%' 
    }}
    >
-    <span className="text-yellow-900 font-bold opacity-50 select-none tracking-widest">CRUDE OIL</span>
+    <span className="text-yellow-900 font-bold opacity-50 select-none tracking-widest">{t('lab.s7oilpollutants_crude_oil')}</span>
    </div>
 
    {/* Sinking Clumps (Sand only) */}
@@ -124,15 +127,16 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
    )}
 
    <div className="absolute bottom-4 right-6 text-slate-400 font-bold">
-   Efficiency: {oilRemoved}% Removed
-   </div>
+   
+                        {t('lab.s7oilpollutants_efficiency')} {oilRemoved}{t('lab.s7oilpollutants_removed')}
+                        </div>
   </div>
 
   {method !== 'none' && (
    <div className="mt-8 p-6 rounded-xl max-w-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-100 border-l-4 border-emerald-500">
-   {method === 'spoon' && <p>Skimming with a spoon only removes small amounts at a time and is highly inefficient for large spills.</p>}
-   {method === 'cheesecloth' && <p>Dragging cheesecloth (a porous material) absorbs and traps oil, working better than a spoon but still leaving a significant slick.</p>}
-   {method === 'sand' && <p>Sprinkling sand over the oil causes the sand particles to bind with the oil. The combined mass becomes denser than water, causing it to clump and sink to the bottom, clearing the surface.</p>}
+   {method === 'spoon' && <p>{t('lab.s7oilpollutants_skimming_with_a_spoon_only_rem')}</p>}
+   {method === 'cheesecloth' && <p>{t('lab.s7oilpollutants_dragging_cheesecloth_a_porous_')}</p>}
+   {method === 'sand' && <p>{t('lab.s7oilpollutants_sprinkling_sand_over_the_oil_c')}</p>}
    </div>
   )}
 
@@ -142,7 +146,8 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
     onClick={recordTrial}
     className="mt-4 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400"
    >
-    Record Trial #{trialCount + 1}
+    
+                         {t('lab.s7oilpollutants_record_trial')}{trialCount + 1}
    </button>
   )}
 
@@ -150,7 +155,7 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
   {trialResults.length >= 1 && (
    <div className="mt-8 w-full max-w-2xl space-y-4">
     <DataChart
-     title="Oil Removal Efficiency Comparison"
+     title={t('lab.s7oilpollutants_oil_removal_efficiency_compari')}
      xAxisKey="method"
      xAxisLabel="Method"
      series={[
@@ -167,10 +172,11 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
     {trialResults.length >= 2 && (
      <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
       <h4 className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-2 mb-2">
-       <BarChart3 className="w-4 h-4" /> Analysis
-      </h4>
+       <BarChart3 className="w-4 h-4" />  {t('lab.s7oilpollutants_analysis')}
+                                       </h4>
       <p className="text-sm text-emerald-700 dark:text-emerald-300">
-       Sand consistently removes the most oil! Compare the average efficiencies across methods. Note that each trial gives slightly different results due to <strong>experimental variation</strong>.
+       
+                                        {t('lab.s7oilpollutants_sand_consistently_removes_the_')} <strong>{t('lab.s7oilpollutants_experimental_variation')}</strong>.
       </p>
      </div>
     )}

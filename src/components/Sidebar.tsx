@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMemo, useState, useEffect } from 'react';
 import { LAB_MODULES } from '../data/labModules';
-
 import { useTheme } from '../store';
+import { useTranslate } from '../i18n';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -14,6 +14,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const { t } = useTranslate();
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -46,9 +47,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   };
 
   const navItems = [
-    { name: 'Modules', icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
-    { name: 'History', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-    { name: 'Settings', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' }
+    { id: 'Modules', name: t('nav.modules'), icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
+    { id: 'History', name: t('nav.history'), icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+    { id: 'Settings', name: t('nav.settings'), icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' }
   ];
 
   return (
@@ -88,8 +89,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             const isActive = active === item.name;
             return (
               <button
-                key={item.name}
-                onClick={() => handleNav(item.name)}
+                key={item.id}
+                onClick={() => handleNav(item.id)}
                 className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 relative ${
                   isActive
                     ? isDark ? 'bg-[#1c1b1b] text-[#5560F1]' : 'bg-blue-50 text-blue-600'
@@ -117,14 +118,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {isOnline && <div className="absolute w-2 h-2 rounded-full bg-emerald-500 animate-ping opacity-75"></div>}
               </div>
               <span className={`text-[10px] font-bold uppercase tracking-widest ${isOnline ? (isDark ? 'text-emerald-400' : 'text-emerald-600') : (isDark ? 'text-rose-400' : 'text-rose-600')}`}>
-                {isOnline ? 'System Online' : 'System Offline'}
+                {isOnline ? t('status.online') : t('status.offline')}
               </span>
             </div>
             <p className={`text-xl font-bold tracking-tight mb-0.5 ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
-              {moduleCount} Modules
+              {t('status.available_count', { count: moduleCount })}
             </p>
             <p className={`text-xs font-medium uppercase tracking-wider ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>
-              Available to play
+              {t('status.available_to_play')}
             </p>
           </div>
         </div>

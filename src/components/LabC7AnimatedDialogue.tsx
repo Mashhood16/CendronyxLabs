@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Play, Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [bgSet, setBgSet] = useState(false);
  const [playing, setPlaying] = useState(false);
  const [, setStep] = useState(-1);
@@ -42,17 +44,17 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Animated Dialogue" />
+  <LabHeader onExit={onExit} title={t('lab.c7animateddialogue_animated_dialogue')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Set the stage background and run the dialogue script between two sprites.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7animateddialogue_set_the_stage_background_and_r')}</p>
 
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] p-6 flex gap-8 max-w-5xl mx-auto w-full">
    
    {/* Controls */}
    <div className="w-64 flex flex-col gap-6 border-r border-slate-200 dark:border-[#1c1b1b] pr-8">
    <div>
-    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-sm uppercase tracking-wider">Background</h2>
+    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-sm uppercase tracking-wider">{t('lab.c7animateddialogue_background')}</h2>
     <button 
     onClick={() => setBgSet(true)}
     className={`w-full py-3 px-4 rounded-lg font-bold border-2 flex items-center justify-center transition-colors ${bgSet ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-slate-400 dark:border-slate-500'}`}
@@ -62,14 +64,14 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
    </div>
 
    <div className="flex-1">
-    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-sm uppercase tracking-wider">Script Outline</h2>
+    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-sm uppercase tracking-wider">{t('lab.c7animateddialogue_script_outline')}</h2>
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] text-sm font-mono text-slate-600 dark:text-[#a1a1aa] space-y-2">
-    <p className="text-indigo-600 font-bold">Sprite 1:</p>
-    <p className="ml-4 bg-blue-100 text-blue-800 p-1 rounded inline-block dark:text-[#ffffff]">say "Hello!" for 2 secs</p>
+    <p className="text-indigo-600 font-bold">{t('lab.c7animateddialogue_sprite_1')}</p>
+    <p className="ml-4 bg-blue-100 text-blue-800 p-1 rounded inline-block dark:text-[#ffffff]">{t('lab.c7animateddialogue_say_hello_for_2_secs')}</p>
     
-    <p className="text-orange-600 font-bold mt-2">Sprite 2:</p>
-    <p className="ml-4 bg-orange-100 text-orange-800 p-1 rounded inline-block">wait 2 secs</p>
-    <p className="ml-4 bg-blue-100 text-blue-800 p-1 rounded inline-block dark:text-[#ffffff]">say "Hi there!" for 2 secs</p>
+    <p className="text-orange-600 font-bold mt-2">{t('lab.c7animateddialogue_sprite_2')}</p>
+    <p className="ml-4 bg-orange-100 text-orange-800 p-1 rounded inline-block">{t('lab.c7animateddialogue_wait_2_secs')}</p>
+    <p className="ml-4 bg-blue-100 text-blue-800 p-1 rounded inline-block dark:text-[#ffffff]">{t('lab.c7animateddialogue_say_hi_there_for_2_secs')}</p>
     </div>
    </div>
 
@@ -78,8 +80,8 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
     disabled={!bgSet || playing}
     className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors shadow-md disabled:opacity-50 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Play className="w-5 h-5 mr-2 fill-current" /> Play Scene
-   </button>
+    <Play className="w-5 h-5 mr-2 fill-current" />  {t('lab.c7animateddialogue_play_scene')}
+                            </button>
    </div>
 
    {/* Stage */}
@@ -113,7 +115,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
 
     {!bgSet && (
     <div className="absolute inset-0 flex items-center justify-center">
-     <p className="text-slate-400 font-bold text-xl uppercase tracking-widest bg-slate-50 dark:bg-[#121212]/80 px-6 py-2 rounded-lg">Select Background First</p>
+     <p className="text-slate-400 font-bold text-xl uppercase tracking-widest bg-slate-50 dark:bg-[#121212]/80 px-6 py-2 rounded-lg">{t('lab.c7animateddialogue_select_background_first')}</p>
     </div>
     )}
    </div>

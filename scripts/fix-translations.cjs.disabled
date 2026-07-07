@@ -1,0 +1,374 @@
+/**
+ * Fix Script for Roman Urdu Translations
+ * 
+ * This script:
+ * 1. Converts Urdu script (Arabic characters) to Roman Urdu (English alphabet)
+ * 2. Reverts corrupted formulas back to their English originals
+ * 3. Provides a safety filter for future translations
+ * 
+ * Usage: node scripts/fix-translations.cjs
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+const PROTECTED_FILE = 'scripts/protected-words.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+const protectedWords = new Set(JSON.parse(fs.readFileSync(PROTECTED_FILE, 'utf8')).map(w => w.toLowerCase()));
+
+/**
+ * Urdu to Roman Urdu transliteration map
+ * Maps common Urdu words to their Roman Urdu equivalents
+ */
+const urduToRoman = {
+  // Common words
+  'اجوائن': 'Ajwain',
+  'وقت': 'Waqt',
+  'منٹ': 'Minute',
+  'درجہ': 'Darja',
+  'حرارت': 'Hararat',
+  'نمی': 'Nami',
+  'ڈیٹا': 'Data',
+  'کا': 'ka',
+  'تجزیہ': 'Tajzia',
+  'ریکارڈ': 'Record',
+  'شدہ': 'shuda',
+  'پیمائشیں': 'Pemaishein',
+  'ابھی': 'Abhi',
+  'تک': 'tak',
+  'کوئی': 'Koi',
+  'جمع': 'Jama',
+  'نہیں': 'nahi',
+  'ہوا': 'hua',
+  'چلائیں': 'Chalayein',
+  'فیصد': 'Fee-sad',
+  'تبدیلی': 'Tabdeeli',
+  'بمقابلہ': 'Muqabla',
+  'میں': 'mein',
+  'جائزہ': 'Jaiza',
+  'آپ': 'Aap',
+  'کے': 'ke',
+  'بنیاد': 'Bunyad',
+  'پر': 'par',
+  'کیا': 'kya',
+  'ہے': 'hai',
+  'اشارہ': 'Ishara',
+  'وہ': 'woh',
+  'نقطہ': 'Nuqta',
+  'تلاش': 'Talash',
+  'کریں': 'karein',
+  'جہاں': 'jahan',
+  '۰': '0',
+  'پر': 'par',
+  'آلو': 'Aloo',
+  'خلیوں': 'Khilion',
+  'حساب': 'Hisab',
+  'لگائیں': 'Lagayein',
+  'استعمال': 'Istemal',
+  'کریں': 'karein',
+  'فرض': 'Farz',
+  'ہونا': 'hona',
+  'چاہیے': 'chahiye',
+  'درست': 'Durust',
+  'تقریباً': 'Taqreeban',
+  'اور': 'aur',
+  'غلط': 'Ghalat',
+  'اپنے': 'apne',
+  'گراف': 'Graph',
+  'دیکھیں': 'dekhein',
+  'یہ': 'yah',
+  'کو': 'ko',
+  'عبور': 'Uboor',
+  'کرتا': 'karta',
+  'یقینی': 'Yaqeeni',
+  'بنائیں': 'banayein',
+  'مثلاً': 'maslan',
+  'تھیوری': 'Theory',
+  'لیب': 'Lab',
+  'سیاق': 'Siyaq',
+  'سباق': 'Sabaq',
+  'اس': 'is',
+  'عمل': 'Amal',
+  'دلچسپی': 'Dilchaspi',
+  'انسانی': 'Insani',
+  'انسولین': 'Insulin',
+  'الگ': 'Alag',
+  'کرنا': 'karna',
+  'بیکٹیریل': 'Bacterial',
+  'ایسے': 'Aise',
+  'جیسے': 'jaise',
+  'مخصوص': 'Makhsoos',
+  'پر': 'par',
+  'کاٹتے': 'kaatte',
+  'ہیں': 'hain',
+  'اکثر': 'Aksar',
+  'لٹکتے': 'latakte',
+  'ہوئے': 'hue',
+  'چھوڑتے': 'chhorte',
+  'جو': 'jo',
+  'آسان': 'Aasan',
+  'بناتے': 'banate',
+  'قریبی': 'Qareebi',
+  'درمیان': 'darmiyan',
+  'باند': 'Band',
+  'تا': 'ta',
+  'تیزی': 'Tezi',
+  'سے': 'se',
+  'بڑھاتا': 'barhata',
+  'ٹوٹ': 'Toot',
+  'جاتے': 'jate',
+  'الگ': 'Alag',
+  'کرتے': 'karte',
+  'جڑ': 'Jur',
+  'جاتے': 'jate',
+  'دباؤ': 'Dabao',
+  'برابر': 'Barabar',
+  'ساتھ': 'saath',
+  'ملا': 'Mila',
+  'کلی': 'kulli',
+  'طرح': 'tarah',
+  'معیاری': 'Mayari',
+  'حالت': 'Halat',
+  'غیر': 'Ghair',
+  'فعال': 'Faal',
+  'بعد': 'baad',
+  'علامات': 'Alamaat',
+  'شدت': 'Shiddat',
+  'مریض': 'Mareez',
+  'بیماری': 'Bimari',
+  'علاج': 'Ilaj',
+  'ادویات': 'Adwiyaat',
+  'خوراک': 'Khurak',
+  'سکتی': 'sakti',
+  'ہے': 'hai',
+  'ہوں': 'hoon',
+  'گے': 'ge',
+  'گی': 'gi',
+  'تھا': 'tha',
+  'تھی': 'thi',
+  'تھے': 'thay',
+  'ہو': 'ho',
+  'نے': 'ne',
+  'لیے': 'liye',
+  'دیے': 'diye',
+  'دیا': 'diya',
+  'گئی': 'gayi',
+  'گئے': 'gaye',
+  'رہا': 'raha',
+  'رہی': 'rahi',
+  'رہے': 'rahay',
+  'سکتا': 'sakta',
+  'سکے': 'sake',
+  'والا': 'wala',
+  'والی': 'wali',
+  'والے': 'walay',
+  'ان': 'in',
+  'انہوں': 'unhon',
+  'انھوں': 'unhon',
+  'جن': 'jin',
+  'کن': 'kin',
+  'کس': 'kis',
+  'کی': 'ki',
+  'گئیں': 'gayein',
+  'دی': 'di',
+  'دے': 'de',
+  'لے': 'le',
+  'کر': 'kar',
+  'کہ': 'keh',
+  'تو': 'to',
+  'بھی': 'bhi',
+  'پھر': 'phir',
+  'جب': 'jab',
+  'یہاں': 'yahan',
+  'وہاں': 'wahan',
+  'کچھ': 'kuch',
+  'سب': 'sab',
+  'بہت': 'bohat',
+  'زیادہ': 'zyada',
+  'کم': 'kam',
+  'نیچے': 'neechay',
+  'اوپر': 'upar',
+  'اندر': 'andar',
+  'باہر': 'bahar',
+  'پاس': 'paas',
+  'دور': 'door',
+  'آج': 'aaj',
+  'کل': 'kal',
+  'اب': 'ab',
+  'تب': 'tab',
+  'ہمیشہ': 'hamesha',
+  'کبھی': 'kabhi',
+  'ہر': 'har',
+  'دوسرا': 'doosra',
+  'پہلا': 'pehla',
+  'آخری': 'aakhri',
+  'درمیانی': 'darmiyani',
+  'کے': 'ke',
+  'لیے': 'liye',
+  'بارے': 'bare',
+  'مطلب': 'matlab',
+  'کیونکہ': 'kyunke',
+  'لیکن': 'lekin',
+  'اگر': 'agar',
+  'تو': 'to',
+  'ورنہ': 'warna',
+  'چاہیے': 'chahiye',
+  'ضروری': 'zaroori',
+  'ممکن': 'mumkin',
+  'ناممکن': 'namumkin',
+  'صحیح': 'sahi',
+  'غلط': 'ghalat',
+  'اچھا': 'acha',
+  'برا': 'bura',
+  'بڑا': 'bara',
+  'چھوٹا': 'chhota',
+  'نیا': 'naya',
+  'پرانا': 'purana',
+  'اگلا': 'agla',
+  'پچھلا': 'pichla',
+  'پورا': 'pora',
+  'ادھ': 'aadha',
+  'تمام': 'tamaam',
+  'کافی': 'kaafi',
+  'تھوڑا': 'thoda',
+};
+
+// Also handle common Urdu prefixes/suffixes
+const commonPrefixes = [
+  ['نا', 'na-'], // ناقابل -> na-qabil
+  ['لا', 'la-'], // لازوال -> la-zawal
+  ['بے', 'be-'], // بےحد -> be-had
+  ['با', 'ba-'], // باعزت -> ba-izzat
+];
+
+/**
+ * Check if a string contains Urdu/Arabic script
+ */
+function hasUrduScript(text) {
+  return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text);
+}
+
+/**
+ * Check if a string is a formula/equation that should be preserved
+ */
+function isFormula(text) {
+  // Chemical formulas, math equations, code
+  const formulaPatterns = [
+    /[→⇌÷×±∞√∫∑πθρΩω²³⁴⁺⁻°]/,
+    /^[A-Z][a-z]?\d/, // H2O, CO2 etc
+    /[A-Z]{2,}\(/, // NaOH( etc
+    /\\frac|\\sqrt|\\sum|\\int/,
+    /[=<>]\s*[-+]?\d+\.?\d*/,
+    /^[A-Z][a-z]?\d?[A-Z]/, // NaCl, KMnO4
+    /\([sglaq]+\b/, // (s), (g), (aq)
+    /\b\d+\s*[+×÷]\s*\d+/,
+    /\b[A-Z][a-z]?\d*[+×÷]/,
+    /[≈±≥≤]/,
+    /→|⇌/,
+  ];
+  return formulaPatterns.some(p => p.test(text));
+}
+
+/**
+ * Check if a string has mostly symbols/numbers (should NOT be translated)
+ */
+function isMostlySymbolic(text) {
+  const clean = text.replace(/\s+/g, '');
+  if (clean.length < 3) return false;
+  const letters = clean.replace(/[^a-zA-Z]/g, '').length;
+  return letters / clean.length < 0.3;
+}
+
+/**
+ * Basic Urdu to Roman Urdu transliteration for a full text
+ */
+function transliterateUrduToRoman(text) {
+  if (!text || !hasUrduScript(text)) return text;
+  
+  let result = text;
+  
+  // Replace known words (longer matches first to avoid partial replacements)
+  const sortedEntries = Object.entries(urduToRoman).sort((a, b) => b[0].length - a[0].length);
+  for (const [urdu, roman] of sortedEntries) {
+    // Escape special regex characters in Urdu text
+    const escaped = urdu.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    result = result.replace(new RegExp(escaped, 'g'), roman);
+  }
+  
+  // Clean up any remaining Urdu characters
+  result = result.replace(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g, '');
+  
+  // Clean up double spaces
+  result = result.replace(/\s+/g, ' ').trim();
+  
+  return result;
+}
+
+// Track fixes
+let urduFixed = 0;
+let formulaFixed = 0;
+let skipped = 0;
+let errors = [];
+
+const fixed = {};
+
+Object.entries(ur).forEach(([key, val]) => {
+  if (!val || !val.trim()) {
+    fixed[key] = val;
+    return;
+  }
+  
+  const original = en[key] || '';
+  let newVal = val;
+  
+  // Issue 1: Fix Urdu script to Roman Urdu
+  if (hasUrduScript(val)) {
+    newVal = transliterateUrduToRoman(val);
+    if (newVal !== val) {
+      urduFixed++;
+      console.log(`URDU FIXED [${key}]: ${val.substring(0, 60)} → ${newVal.substring(0, 60)}`);
+    }
+  }
+  
+  // Issue 2: Fix corrupted formulas
+  if (original && isFormula(original) && original !== newVal) {
+    // Revert to original English if the translation modified formula content
+    const hasMathSymbols = /[→⇌÷×±∞√∫∑πθρΩω²³⁴⁺⁻°=<>]/.test(original);
+    const hasChemFormula = /^[A-Z][a-z]?\d/.test(original);
+    
+    if (hasMathSymbols || hasChemFormula || isMostlySymbolic(original)) {
+      console.log(`FORMULA FIXED [${key}]: ${newVal.substring(0, 60)} → ${original.substring(0, 60)}`);
+      newVal = original;
+      formulaFixed++;
+    }
+  }
+  
+  fixed[key] = newVal;
+});
+
+// Also check for translations that should be their English original
+// (e.g., strings that are purely formulas, code, or protected words)
+Object.entries(en).forEach(([key, val]) => {
+  if (!fixed[key] && val) {
+    // If not yet translated, check if it should be auto-preserved
+    if (isFormula(val) && isMostlySymbolic(val)) {
+      fixed[key] = val;
+      skipped++;
+      if (skipped <= 5) console.log(`AUTO-PRESERVED: ${key} = ${val.substring(0, 80)}`);
+    }
+  }
+});
+
+// Write fixed file
+const outputPath = 'src/locales/roman-urdu/translation.json';
+fs.writeFileSync(outputPath, JSON.stringify(fixed, null, 2));
+
+console.log('\n=== FIX SUMMARY ===');
+console.log(`Urdu → Roman conversions: ${urduFixed}`);
+console.log(`Formulas reverted: ${formulaFixed}`);
+console.log(`Auto-preserved formulas: ${skipped}`);
+console.log(`Total entries: ${Object.keys(fixed).length}`);

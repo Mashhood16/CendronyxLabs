@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Info, Compass, Sparkles, RefreshCw, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface Filing {
  id: number;
@@ -17,6 +18,7 @@ interface CompassData {
 }
 
 export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [filings, setFilings] = useState<Filing[]>([]);
  const [compasses, setCompasses] = useState<CompassData[]>([]);
@@ -97,7 +99,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab: Magnetic Field Lines" subtitle="Investigate magnetic field lines using compasses and iron filings" />
+  <LabHeader onExit={onExit} title={t('lab.p9magnetismfields_lab_magnetic_field_lines')} subtitle={t('lab.subtitle_investigate_magnetic_field')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -105,45 +107,43 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-slate-800 dark:text-[#ffffff]">
-   <Info className="mr-2" /> Theory & Setup
-   </h2>
+   <Info className="mr-2" />  {t('lab.p9magnetismfields_theory_setup')}
+                        </h2>
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff] leading-relaxed">
    <p>
-    A <strong>magnetic field</strong> is the region around a magnet where magnetic forces act. We can visualize this invisible field using magnetic field lines.
-   </p>
-   <p>Key properties of magnetic field lines:</p>
+    A <strong>{t('lab.p9magnetismfields_magnetic_field')}</strong>  {t('lab.p9magnetismfields_is_the_region_around_a_magnet_')}
+                            </p>
+   <p>{t('lab.p9magnetismfields_key_properties_of_magnetic_fie')}</p>
    <ul className="list-disc pl-5 space-y-2">
-    <li>They always point from the <strong>North</strong> pole to the <strong>South</strong> pole outside the magnet.</li>
-    <li>They never cross each other.</li>
-    <li>They are continuous loops, returning through the magnet's interior.</li>
-    <li>The closer the lines are to each other, the stronger the magnetic field in that region.</li>
+    <li>{t('lab.p9magnetismfields_they_always_point_from_the')} <strong>{t('lab.p9magnetismfields_north')}</strong>  {t('lab.p9magnetismfields_pole_to_the')} <strong>{t('lab.p9magnetismfields_south')}</strong>  {t('lab.p9magnetismfields_pole_outside_the_magnet')}</li>
+    <li>{t('lab.p9magnetismfields_they_never_cross_each_other')}</li>
+    <li>{t('lab.p9magnetismfields_they_are_continuous_loops_retu')}</li>
+    <li>{t('lab.p9magnetismfields_the_closer_the_lines_are_to_ea')}</li>
    </ul>
    <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 mt-6 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">Instructions:</h3>
+    <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.p9magnetismfields_instructions')}</h3>
     <ol className="list-decimal pl-5 space-y-2 text-sm">
-    <li>Select a tool below the interactive simulator.</li>
-    <li><strong>Compass:</strong> Click anywhere around the magnet to see the exact direction of the field at that specific point.</li>
-    <li><strong>Iron Filings:</strong> Sprinkle them to reveal the overall shape and pattern of the magnetic field.</li>
+    <li>{t('lab.p9magnetismfields_select_a_tool_below_the_intera')}</li>
+    <li><strong>{t('lab.p9magnetismfields_compass')}</strong>  {t('lab.p9magnetismfields_click_anywhere_around_the_magn')}</li>
+    <li><strong>{t('lab.p9magnetismfields_iron_filings')}</strong>  {t('lab.p9magnetismfields_sprinkle_them_to_reveal_the_ov')}</li>
     </ol>
    </div>
    </div>
   </div>
 
   {/* Simulator Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-[#ffffff] text-center">Interactive Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-[#ffffff] text-center">{t('lab.p9magnetismfields_interactive_simulator')}</h2>
    <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-[#121212] rounded-xl overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
    <svg
     ref={svgRef}
@@ -184,44 +184,48 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
     className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'compass' ? 'bg-blue-600 text-white shadow-md' : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]'}`}
    >
     <Compass className="w-4 h-4 mr-2" />
-    Place Compass
-   </button>
+    
+                             {t('lab.p9magnetismfields_place_compass')}
+                            </button>
    <button
     onClick={sprinkleFilings}
     className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${mode === 'filings' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]'}`}
    >
     <Sparkles className="w-4 h-4 mr-2" />
-    Sprinkle Filings
-   </button>
+    
+                             {t('lab.p9magnetismfields_sprinkle_filings')}
+                            </button>
    <button
     onClick={() => { setFilings([]); setCompasses([]); }}
     className="flex items-center px-4 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200 transition-colors"
    >
     <RefreshCw className="w-4 h-4 mr-2" />
-    Clear All
-   </button>
+    
+                             {t('lab.p9magnetismfields_clear_all')}
+                            </button>
    </div>
   </div>
 
   {/* Data & Analysis Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Data Logging & Analysis</h2>
+   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.p9magnetismfields_data_logging_analysis')}</h2>
    
    <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-64">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Reading #</th>
-     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Position (x,y)</th>
-     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Angle (°)</th>
+     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetismfields_reading')}</th>
+     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetismfields_position_x_y')}</th>
+     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetismfields_angle')}</th>
     </tr>
     </thead>
     <tbody>
     {compasses.length === 0 ? (
      <tr>
      <td colSpan={3} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">
-      Place compasses on the simulator to record field directions.
-     </td>
+      
+                                               {t('lab.p9magnetismfields_place_compasses_on_the_simulat')}
+                                              </td>
      </tr>
     ) : (
      compasses.map((c, i) => (
@@ -239,25 +243,28 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
    <div className="bg-blue-50 p-5 rounded-xl border border-blue-100 shadow-sm dark:bg-teal-950/20 dark:border-teal-900">
    <h3 className="font-bold text-blue-800 mb-2 flex items-center dark:text-[#ffffff]">
     <CheckCircle className="w-5 h-5 mr-2" />
-    Assessment
-   </h3>
+    
+                             {t('lab.p9magnetismfields_assessment')}
+                            </h3>
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 leading-relaxed">
-    Based on your observations, what is the approximate direction (in degrees, from 0 to 360, where 0 is right, 90 is down) of the magnetic field <strong>directly above the center</strong> of the magnet?
-   </p>
+    
+                             {t('lab.p9magnetismfields_based_on_your_observations_wha')} <strong>{t('lab.p9magnetismfields_directly_above_the_center')}</strong>  {t('lab.p9magnetismfields_of_the_magnet')}
+                            </p>
    <div className="flex gap-2">
     <input
     type="number"
     value={assessmentAnswer}
     onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder="e.g. 180"
+    placeholder={t('lab.p9magnetismfields_e_g_180')}
     className="flex-1 px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
     />
     <button
     onClick={checkAssessment}
     className="px-5 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p9magnetismfields_check')}
+                                 </button>
    </div>
    {assessmentResult && (
     <div className={`mt-4 p-3 rounded-lg text-sm font-medium ${assessmentResult.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10LatentHeat({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // --- Constants and Types ---
  const MATERIALS = {
@@ -180,7 +182,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." />
+  <LabHeader onExit={onExit} title={t('lab.p10latentheat_unit_11_specific_latent_heat')} subtitle={t('lab.subtitle_determine_specific_latent')} />
 
   {/* Main Grid */}
   <div className="flex-1 lg:overflow-y-auto p-4 md:p-6">
@@ -191,37 +193,40 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                         {t('lab.p10latentheat_theory')}
+                        </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10latentheat_lab')}</button>
   </div>
   <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:min-h-[600px] lg:overflow-visible">
    
    {/* Column 1: Theory & Setup */}
    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Theory</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10latentheat_theory')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    When heating a substance, its temperature rises until it reaches a phase change. During a phase change, the temperature remains constant as energy goes into breaking bonds.
-    </p>
+    
+                                 {t('lab.p10latentheat_when_heating_a_substance_its_t')}
+                                 </p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm font-mono text-slate-700 dark:text-[#ffffff] space-y-1 flex-col `}>
-    <p>Heating: Q = mcΔT</p>
-    <p>Phase Change: Q = mL</p>
-    <p>Energy Input: Q = P × t</p>
+    <p>{t('lab.10latentheat_heatingqmct')}</p>
+    <p>{t('lab.10latentheat_phasechangeqml')}</p>
+    <p>{t('lab.10latentheat_energyinputqpt')}</p>
     </div>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
-    To find the specific latent heat of fusion (L_f), measure the time (Δt) it takes to completely melt the solid. Then: L_f = (P × Δt) / m.
-    </p>
+    
+                                 {t('lab.p10latentheat_to_find_the_specific_latent_he')}
+                                 </p>
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Setup Parameters</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10latentheat_setupparameters')}</h2>
     <div className="space-y-4">
     <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Substance</label>
+     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10latentheat_substance')}</label>
      <select 
      className={`w-full border border-slate-300 dark:border-[#1c1b1b] rounded-md p-2 bg-slate-50 dark:bg-[#121212] `}
      value={material}
@@ -233,7 +238,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Mass (kg): {mass.toFixed(2)} kg</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10latentheat_mass_kg')} {mass.toFixed(2)} kg</label>
      </div>
      <input 
      type="range" min="0.1" max="0.5" step="0.05" 
@@ -248,7 +253,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Heater Power (W): {power} W</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10latentheat_heater_power_w')} {power} W</label>
      </div>
      <input 
      type="range" min="100" max="2000" step="100" 
@@ -263,11 +268,11 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
 
    <div className={`bg-blue-50 p-4 rounded-xl border border-blue-100 grid grid-cols-2 gap-4 dark:bg-teal-950/20 dark:border-teal-900 `}>
     <div>
-    <div className="text-xs font-bold text-blue-900 uppercase dark:text-[#ffffff]">Sim Time</div>
+    <div className="text-xs font-bold text-blue-900 uppercase dark:text-[#ffffff]">{t('lab.10latentheat_simtime')}</div>
     <div className="font-mono text-blue-800 text-lg dark:text-[#ffffff]">{time.toFixed(0)}s</div>
     </div>
     <div>
-    <div className="text-xs font-bold text-blue-900 uppercase dark:text-[#ffffff]">Phase</div>
+    <div className="text-xs font-bold text-blue-900 uppercase dark:text-[#ffffff]">{t('lab.10latentheat_phase')}</div>
     <div className="font-mono text-blue-800 text-lg font-bold dark:text-[#ffffff]">{phase}</div>
     </div>
    </div>
@@ -286,13 +291,13 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
    
    <div className={`absolute top-4 right-4 text-white text-sm font-mono text-right bg-black/60 p-3 rounded-lg z-20 backdrop-blur-md border border-white/10 flex-col `}>
     <div className="text-2xl text-blue-300 font-bold">{temperature.toFixed(1)}°C</div>
-    <div className="text-xs text-slate-400 mt-1">Energy: {(energy/1000).toFixed(1)} kJ</div>
+    <div className="text-xs text-slate-400 mt-1">{t('lab.p10latentheat_energy')} {(energy/1000).toFixed(1)} kJ</div>
    </div>
 
    <div className={`flex-1 w-full flex items-center justify-center relative p-8 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
     
     {/* Beaker System */}
-    <div className="relative w-48 h-64 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 backdrop-blur-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div className="relative w-48 h-64 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 backdrop-blur-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     
     {/* Liquid Phase */}
     {fractionLiquid > 0 && (
@@ -358,12 +363,12 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
 
    {/* Column 3: Data & Analysis */}
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 shrink-0">Live Data Graph</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 shrink-0">{t('lab.10latentheat_livedatagraph')}</h2>
 
    {/* Graph area: Temp vs Time */}
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative min-h-[200px] w-full lg:overflow- flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <div className="absolute -left-6 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">Temp (°C)</div>
-    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">Time (s)</div>
+    <div className="absolute -left-6 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10latentheat_temp_c')}</div>
+    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10latentheat_time_s')}</div>
     
     <svg className="w-full h-[calc(100%-20px)] overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
      {/* Grid */}
@@ -403,8 +408,8 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
     <table className="w-full text-xs text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
      <tr>
-     <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-[#ffffff]">Time (s)</th>
-     <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-[#ffffff]">Temp (°C)</th>
+     <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10latentheat_time_s')}</th>
+     <th className="px-3 py-1.5 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10latentheat_temp_c')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
@@ -414,31 +419,33 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
       <td className="px-3 py-1 font-mono">{log.temp.toFixed(1)}</td>
      </tr>
      ))}
-     {logs.length === 0 && <tr><td colSpan={2} className="px-3 py-2 text-center text-slate-400">Run to record</td></tr>}
+     {logs.length === 0 && <tr><td colSpan={2} className="px-3 py-2 text-center text-slate-400">{t('lab.10latentheat_runtorecord')}</td></tr>}
     </tbody>
     </table>
    </div>
 
    {/* Assessment */}
    <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10latentheat_analysis')}</h3>
     <p className="text-xs text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Select "Unknown X". Run the simulation until melting finishes. Measure the time (Δt) of the melting plateau. Calculate L_f = (Power × Δt) / Mass.
-    </p>
+    
+                                 {t('lab.p10latentheat_select_unknown_x_run_the_simul')}
+                                 </p>
     <div className="flex gap-2">
     <input 
      type="text" 
      value={answer}
      onChange={(e) => setAnswer(e.target.value)}
-     placeholder="e.g., 150000"
+     placeholder={t('lab.p10latentheat_t_lab_10latentheat_eg150000')}
      className="flex-1 px-3 py-1.5 text-sm border border-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-md text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10latentheat_check')}
+                                     </button>
     </div>
     {feedback && (
     <div className={`mt-2 text-xs font-medium ${feedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>

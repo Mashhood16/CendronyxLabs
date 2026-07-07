@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import {Hand } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -12,6 +13,7 @@ const MATERIALS = [
 ];
 
 export default function LabS8Flexibility({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState(MATERIALS[0]);
  const [bendAmount, setBendAmount] = useState(0); // 0 to 100
  const [broken, setBroken] = useState(false);
@@ -52,12 +54,12 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
   onPointerUp={handlePointerUp}
   onPointerLeave={handlePointerUp}
  >
-  <LabHeader onExit={onExit} title="Act 5.4: Flexibility" subtitle="Test if materials bend or break under force" />
+  <LabHeader onExit={onExit} title={t('lab.s8flexibility_act_5_4_flexibility')} subtitle={t('lab.subtitle_test_materials_bend')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Material</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8flexibility_select_material')}</h3>
    {MATERIALS.map(m => (
    <button 
     key={m.id}
@@ -74,8 +76,9 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
    
    <p className="text-slate-500 dark:text-[#71717a] mb-8 text-center flex items-center gap-2">
    <Hand className="w-5 h-5 text-indigo-500" />
-   Press and drag down on the right side to bend
-   </p>
+   
+                        {t('lab.s8flexibility_press_and_drag_down_on_the_rig')}
+                        </p>
 
    <div 
    className="relative w-80 h-40 flex items-center justify-center"

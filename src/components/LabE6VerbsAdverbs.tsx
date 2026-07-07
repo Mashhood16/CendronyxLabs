@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, RefreshCw, Activity, Clock, MapPin, Zap, Play , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [modalLevel, setModalLevel] = useState(3);
  const [advManner, setAdvManner] = useState('carefully');
@@ -55,12 +57,12 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
    <ArrowLeft className="w-5 h-5" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Verbs & Adverbs Lab</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.e6verbsadverbs_verbs_adverbs_lab')}</h1>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -74,8 +76,9 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Zap className="w-5 h-5 text-yellow-500" />
-    Modal Verbs Strength Meter
-   </h2>
+    
+                             {t('lab.e6verbsadverbs_modal_verbs_strength_meter')}
+                            </h2>
    <div className="space-y-4">
     <input 
     type="range" 
@@ -86,8 +89,8 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
     className="w-full accent-yellow-500 cursor-pointer"
     />
     <div className="flex justify-between text-sm font-medium">
-    <span className={modalLevel === 1 ? 'text-yellow-500 font-bold' : 'text-slate-400'}>Possibility</span>
-    <span className={modalLevel === 5 ? 'text-yellow-500 font-bold' : 'text-slate-400'}>Obligation</span>
+    <span className={modalLevel === 1 ? 'text-yellow-500 font-bold' : 'text-slate-400'}>{t('lab.e6verbsadverbs_possibility')}</span>
+    <span className={modalLevel === 5 ? 'text-yellow-500 font-bold' : 'text-slate-400'}>{t('lab.e6verbsadverbs_obligation')}</span>
     </div>
     <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl text-center">
     <span className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
@@ -107,19 +110,20 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Play className="w-5 h-5 text-blue-500" />
-    Adverbs Controller
-   </h2>
+    
+                             {t('lab.e6verbsadverbs_adverbs_controller')}
+                            </h2>
    <div className="grid gap-4">
     <div>
     <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
-     <Activity className="w-4 h-4" /> Manner (How?)
-    </label>
+     <Activity className="w-4 h-4" />  {t('lab.e6verbsadverbs_manner_how')}
+                                     </label>
     <div className="flex gap-2">
      {['carefully', 'quickly', 'clumsily'].map(adv => (
      <button 
       key={adv}
       onClick={() => setAdvManner(adv)}
-      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advManner === adv ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advManner === adv ? 'bg-blue-500 text-white shadow-md' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
      >
       {adv}
      </button>
@@ -128,14 +132,14 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
     </div>
     <div>
     <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
-     <MapPin className="w-4 h-4" /> Place (Where?)
-    </label>
+     <MapPin className="w-4 h-4" />  {t('lab.e6verbsadverbs_place_where')}
+                                     </label>
     <div className="flex gap-2">
      {['inside', 'outside', 'upstairs'].map(adv => (
      <button 
       key={adv}
       onClick={() => setAdvPlace(adv)}
-      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advPlace === adv ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advPlace === adv ? 'bg-green-500 text-white shadow-md' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
      >
       {adv}
      </button>
@@ -144,14 +148,14 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
     </div>
     <div>
     <label className="text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-2 flex items-center gap-2">
-     <Clock className="w-4 h-4" /> Time (When?)
-    </label>
+     <Clock className="w-4 h-4" />  {t('lab.e6verbsadverbs_time_when')}
+                                     </label>
     <div className="flex gap-2">
      {['now', 'tomorrow', 'later'].map(adv => (
      <button 
       key={adv}
       onClick={() => setAdvTime(adv)}
-      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
+      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${advTime === adv ? 'bg-indigo-500 text-white shadow-md' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600'}`}
      >
       {adv}
      </button>
@@ -162,7 +166,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    </section>
 
    <section className={`w-full bg-blue-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:flex-1 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300">Knowledge Check</h2>
+   <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300">{t('lab.e6verbsadverbs_knowledge_check')}</h2>
    <div className="flex-1 flex flex-col justify-center space-y-4">
     <p className="font-medium text-lg">{questions[questionIndex].q}</p>
     <div className="grid grid-cols-2 gap-3">
@@ -182,8 +186,8 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
      disabled={!userAnswer}
      className="px-6 py-2.5 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 disabled: disabled:cursor-not-allowed text-white font-bold rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-     <Check className="w-5 h-5" /> Check Answer
-    </button>
+     <Check className="w-5 h-5" />  {t('lab.e6verbsadverbs_check_answer')}
+                                     </button>
     {feedback && (
      <div className="flex items-center gap-4">
      <span className={`font-bold ${feedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
@@ -207,9 +211,10 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    
    {/* Sentence Builder Display */}
    <div className="absolute top-8 left-8 right-8 bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] text-center z-10">
-   <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Live Sentence</h3>
+   <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">{t('lab.e6verbsadverbs_live_sentence')}</h3>
    <p className="text-xl lg:text-2xl font-serif text-slate-800 dark:text-[#ffffff]">
-    The robot <span className="text-yellow-500 font-bold">{displayModal[modalLevel - 1]}</span> work{' '}
+    
+                             {t('lab.e6verbsadverbs_the_robot')} <span className="text-yellow-500 font-bold">{displayModal[modalLevel - 1]}</span>  {t('lab.e6verbsadverbs_work')}{' '}
     <span className="text-blue-500 font-bold">{advManner}</span>{' '}
     <span className="text-green-500 font-bold">{advPlace}</span>{' '}
     <span className="text-indigo-500 font-bold">{advTime}</span>.
@@ -283,8 +288,9 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
 
    {/* Time / Mode Overlay Text */}
    <div className="absolute bottom-8 text-center w-full z-10">
-    <span className="bg-white/80 dark:bg-[#121212]/80 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-[#ffffff] backdrop-blur-sm shadow-sm">
-    Status: {advManner} {advTime}
+    <span className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/80 dark:bg-[#121212]/80 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-[#ffffff] backdrop-blur-sm shadow-sm">
+    
+                                 {t('lab.e6verbsadverbs_status')} {advManner} {advTime}
     </span>
    </div>
    </div>

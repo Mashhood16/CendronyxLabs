@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { BarChart3, CheckCircle, RotateCcw, ListOrdered, BookOpen, Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const initialData = [15, 30, 10, 25, 20];
  const cropYields = [
@@ -72,7 +74,7 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Biostatistics" />
+  <LabHeader onExit={onExit} title={t('lab.b10biostatistics_virtual_lab_biostatistics')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -81,12 +83,13 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b10biostatistics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b10biostatistics_lab')}</button>
   </div>
   <main className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory Context */}
@@ -95,51 +98,55 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
    <div className={`p-3 bg-indigo-100 rounded-xl text-indigo-600 flex-col `}>
     <BookOpen className="w-6 h-6" />
    </div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Biostatistics Basics</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10biostatistics_biostatistics_basics')}</h2>
    </div>
 
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa]">
    <p>
-    Biostatistics involves applying statistical methods to biological data. In this lab, we analyze <strong>Crop Yield</strong> across 5 experimental plots (A - E).
-   </p>
+    
+                             {t('lab.b10biostatistics_biostatistics_involves_applyin')} <strong>{t('lab.b10biostatistics_crop_yield')}</strong>  {t('lab.b10biostatistics_across_5_experimental_plots_a_')}
+                            </p>
 
    <div className={`p-4 bg-indigo-50 rounded-lg text-indigo-900 text-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff] flex-col `}>
     <h3 className="font-bold mb-2 flex items-center gap-2">
-    <ListOrdered className="w-4 h-4" /> Median
-    </h3>
+    <ListOrdered className="w-4 h-4" />  {t('lab.b10biostatistics_median')}
+                                 </h3>
     <p>
-    The median is the middle value of a dataset when ordered from least to greatest. If there is an even number of values, the median is the average of the two middle values.
-    </p>
+    
+                                 {t('lab.b10biostatistics_the_median_is_the_middle_value')}
+                                 </p>
    </div>
 
    <div className="p-4 bg-blue-50 rounded-lg text-blue-900 text-sm dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
     <h3 className="font-bold mb-2 flex items-center gap-2">
-    <Activity className="w-4 h-4" /> Mean (Average)
-    </h3>
+    <Activity className="w-4 h-4" />  {t('lab.b10biostatistics_mean_average')}
+                                 </h3>
     <p>
-    The mean is calculated by adding all the values and dividing by the total number of values.
-    </p>
+    
+                                 {t('lab.b10biostatistics_the_mean_is_calculated_by_addi')}
+                                 </p>
    </div>
 
    <div className="p-4 bg-green-50 rounded-lg text-green-900 text-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
     <h3 className="font-bold mb-2 flex items-center gap-2">
-    <BarChart3 className="w-4 h-4" /> Bar Charts
-    </h3>
+    <BarChart3 className="w-4 h-4" />  {t('lab.b10biostatistics_bar_charts')}
+                                 </h3>
     <p>
-    Bar charts use rectangular bars to represent categorical data. The height of each bar is proportional to the value it represents.
-    </p>
+    
+                                 {t('lab.b10biostatistics_bar_charts_use_rectangular_bar')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Interactive Visualizer */}
-  <div className={`lg:col-span-1 bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`lg:col-span-1 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between mb-6">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Interactive Data Tasks</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10biostatistics_interactive_data_tasks')}</h2>
    <button
     onClick={handleReset}
     className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors"
-    title="Reset All"
+    title={t('lab.b10biostatistics_reset_all')}
    >
     <RotateCcw className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
    </button>
@@ -148,8 +155,8 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
    <div className="flex-1 lg:overflow-y-auto pr-2 space-y-8">
    {/* Task 1: Sorting */}
    <div>
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">1. Sort the Data (Ascending)</h3>
-    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">Click two cards to swap their positions.</p>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.b10biostatistics_1_sort_the_data_ascending')}</h3>
+    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">{t('lab.b10biostatistics_click_two_cards_to_swap_their_')}</p>
     <div className="flex gap-2 justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     {sortData.map((val, idx) => (
      <button
@@ -165,13 +172,15 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
    {/* Task 2: Charting */}
    <div>
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">2. Plot the Raw Data</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.b10biostatistics_2_plot_the_raw_data')}</h3>
     <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">
-    Click inside the grid columns to set the bar height for each plot.
-    </p>
+    
+                                 {t('lab.b10biostatistics_click_inside_the_grid_columns_')}
+                                 </p>
     <div className="flex justify-center mb-4 text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    Raw Data: A=15, B=30, C=10, D=25, E=20
-    </div>
+    
+                                 {t('lab.b10biostatistics_raw_data_a_15_b_30_c_10_d_25_e')}
+                                 </div>
     <div className="relative border-l-2 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] w-full max-w-sm mx-auto h-64 flex mt-8">
     <div className="absolute -left-6 top-0 bottom-0 flex flex-col justify-between text-xs text-slate-600 dark:text-[#a1a1aa] font-medium">
      {[30, 25, 20, 15, 10, 5, 0].map((v) => (
@@ -219,14 +228,15 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
   {/* Right Column: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <CheckCircle className="w-6 h-6 text-green-500" /> Analysis & Assessment
-   </h2>
+   <CheckCircle className="w-6 h-6 text-green-500" />  {t('lab.b10biostatistics_analysis_assessment')}
+                        </h2>
 
    <div className="flex flex-col gap-6 flex-1">
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    1. Sort the raw data cards in the interactive panel. Are they correctly sorted ascending?
-    </label>
+    
+                                 {t('lab.b10biostatistics_1_sort_the_raw_data_cards_in_t')}
+                                 </label>
     <div
     className={`p-3 rounded text-sm font-semibold flex items-center justify-between ${ sortData.join(',') === '10,15,20,25,30' ? 'bg-green-100 text-green-800' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]' }`}
     >
@@ -236,8 +246,9 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    2. Plot the bar chart in the interactive panel. Is it accurate?
-    </label>
+    
+                                 {t('lab.b10biostatistics_2_plot_the_bar_chart_in_the_in')}
+                                 </label>
     <div
     className={`p-3 rounded text-sm font-semibold flex items-center justify-between ${ bars.A === 15 && bars.B === 30 && bars.C === 10 && bars.D === 25 && bars.E === 20 ? 'bg-green-100 text-green-800' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]' }`}
     >
@@ -249,11 +260,12 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-    3. What is the Median crop yield (kg)?
-    </label>
+    
+                                 {t('lab.b10biostatistics_3_what_is_the_median_crop_yiel')}
+                                 </label>
     <input
     type="text"
-    placeholder="Enter median..."
+    placeholder={t('lab.b10biostatistics_enter_median')}
     value={q1}
     onChange={(e) => setQ1(e.target.value)}
     className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-indigo-500"
@@ -262,11 +274,12 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
    <div>
     <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-    4. What is the Mean crop yield (kg)?
-    </label>
+    
+                                 {t('lab.b10biostatistics_4_what_is_the_mean_crop_yield_')}
+                                 </label>
     <input
     type="text"
-    placeholder="Enter mean..."
+    placeholder={t('lab.b10biostatistics_enter_mean')}
     value={q2}
     onChange={(e) => setQ2(e.target.value)}
     className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-indigo-500"
@@ -278,8 +291,9 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
     onClick={handleCheckAnswers}
     className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors shadow-md dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Verify All Answers
-    </button>
+    
+                                 {t('lab.b10biostatistics_verify_all_answers')}
+                                 </button>
     {feedback && (
     <div
      className={`mt-4 p-4 rounded-lg text-sm font-semibold border ${ feedback.includes('Excellent') ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800' }`}

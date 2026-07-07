@@ -1,0 +1,2002 @@
+{
+  "lab.e10vocabularystylistics_prefixes": {
+    "original": "Prefixes:",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_added_to_the_beginning_of_a_ro": {
+    "original": "Added to the beginning of a root word to alter its meaning (e.g.,",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_un": {
+    "original": "un-",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_meaning_not_as_in": {
+    "original": "meaning \"not\", as in",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_unbelievable": {
+    "original": "unbelievable",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_suffixes": {
+    "original": "Suffixes:",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_added_to_the_end_of_a_word_to_": {
+    "original": "Added to the end of a word to change its grammatical function or meaning (e.g.,",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_able": {
+    "original": "-able",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_meaning_capable_of": {
+    "original": "meaning \"capable of\").",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_root_words": {
+    "original": "Root Words:",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_the_core_meaning_of_a_word_oft": {
+    "original": "The core meaning of a word, often derived from Latin or Greek.",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_4_punctuation_for_style": {
+    "original": "4. Punctuation for Style",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_punctuation_guides_the_reader_": {
+    "original": "Punctuation guides the reader and affects the pacing of the text:",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_period": {
+    "original": "Period (.):",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_ends_a_declarative_sentence_es": {
+    "original": "Ends a declarative sentence, establishing a firm stop.",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_comma": {
+    "original": "Comma (,):",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_indicates_a_brief_pause_separa": {
+    "original": "Indicates a brief pause, separates items in a list, or joins clauses with a conjunction.",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_semicolon": {
+    "original": "Semicolon (;):",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_links_two_related_independent_": {
+    "original": "Links two related independent clauses without a conjunction, showing a close relationship between the ideas.",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_colon": {
+    "original": "Colon (:):",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_introduces_a_list_a_quotation_": {
+    "original": "Introduces a list, a quotation, or an explanation, drawing attention to what follows.",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_stylist_s_workbench": {
+    "original": "Stylist's Workbench",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_challenge": {
+    "original": "Challenge",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_next_challenge": {
+    "original": "Next Challenge",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_knowledge_check": {
+    "original": "Knowledge Check",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_submit_evaluation": {
+    "original": "Submit Evaluation",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_assessment_complete": {
+    "original": "Assessment Complete",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_retry_assessment": {
+    "original": "Retry Assessment",
+    "protected_terms": false
+  },
+  "lab.e10vocabularystylistics_unit_8_vocabulary_stylistics": {
+    "original": "Unit 8: Vocabulary & Stylistics",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_accuracy_over_time": {
+    "original": "Accuracy Over Time",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_adjectives_adverbs_sequence_bu": {
+    "original": "Adjectives & Adverbs Sequence Builder",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_grammar_theory": {
+    "original": "Grammar Theory",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_adjectives": {
+    "original": "Adjectives",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_adjectives_describe_nouns_or_p": {
+    "original": "Adjectives describe nouns or pronouns. When multiple adjectives are used to describe a single noun, they typically follow a specific, \"royal\" order.",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_the_royal_order_of_adjectives": {
+    "original": "The Royal Order of Adjectives",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_quantity_or_number": {
+    "original": "Quantity or number",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_one_several_many": {
+    "original": "(e.g., one, several, many)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_opinion_or_observation": {
+    "original": "Opinion or observation",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_beautiful_ugly_delicious": {
+    "original": "(e.g., beautiful, ugly, delicious)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_size": {
+    "original": "Size",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_small_large_tiny": {
+    "original": "(e.g., small, large, tiny)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_physical_quality": {
+    "original": "Physical quality",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_rough_smooth": {
+    "original": "(e.g., rough, smooth)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_shape": {
+    "original": "Shape",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_round_square": {
+    "original": "(e.g., round, square)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_age": {
+    "original": "Age",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_old_new_young": {
+    "original": "(e.g., old, new, young)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_color": {
+    "original": "Color",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_red_blue": {
+    "original": "(e.g., red, blue)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_origin": {
+    "original": "Origin",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_french_lunar": {
+    "original": "(e.g., French, lunar)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_material": {
+    "original": "Material",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_wooden_metal": {
+    "original": "(e.g., wooden, metal)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_type": {
+    "original": "Type",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_general_purpose_u_shaped": {
+    "original": "(e.g., general-purpose, U-shaped)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_purpose": {
+    "original": "Purpose",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_e_g_sleeping_bag_dining_table": {
+    "original": "(e.g., sleeping bag, dining table)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_example": {
+    "original": "Example:",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_a_beautiful_opinion_small_size": {
+    "original": "\"A beautiful (opinion) small (size) old (age) round (shape) wooden (material) dining (purpose) table.\"",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_adverbs": {
+    "original": "Adverbs",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_adverbs_modify_verbs_adjective": {
+    "original": "Adverbs modify verbs, adjectives, or other adverbs. They often answer questions like how, where, when, how much, or how often.",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_order_of_adverbs_mpt": {
+    "original": "Order of Adverbs (MPT)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_when_multiple_adverbs_modify_t": {
+    "original": "When multiple adverbs modify the same verb, the standard order is usually:",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_manner": {
+    "original": "Manner:",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_how_e_g_quickly_carefully": {
+    "original": "How? (e.g., quickly, carefully)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_place": {
+    "original": "Place:",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_where_e_g_outside_here": {
+    "original": "Where? (e.g., outside, here)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_time": {
+    "original": "Time:",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_when_e_g_yesterday_soon": {
+    "original": "When? (e.g., yesterday, soon)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_the_fox_ran_quickly_manner_out": {
+    "original": "\"The fox ran quickly (manner) outside (place) yesterday (time).\"",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_lab_controls": {
+    "original": "Lab Controls",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_grammar_complexity": {
+    "original": "Grammar Complexity:",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_basic": {
+    "original": "Basic",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_royal_order": {
+    "original": "Royal Order",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_adj_adv": {
+    "original": "Adj + Adv",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_status": {
+    "original": "Status",
+    "protected_terms": true
+  },
+  "lab.e11adjectivesadverbs_check_sequence": {
+    "original": "Check Sequence",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_word_categories": {
+    "original": "Word Categories",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_word": {
+    "original": "Word",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_category": {
+    "original": "Category",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_no_words_added_yet": {
+    "original": "No words added yet",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_assessment": {
+    "original": "Assessment",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_what_is_the_standard_order_of_": {
+    "original": "What is the standard order of Adverbs in a sentence? (Use the 3-letter acronym)",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_submit": {
+    "original": "Submit",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_word_bank": {
+    "original": "Word Bank",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_all_words_used": {
+    "original": "All words used!",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_sentence_builder": {
+    "original": "Sentence Builder",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_tip_click_words_in_the_sentenc": {
+    "original": "Tip: Click words in the sentence to return them to the bank.",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_go_back": {
+    "original": "Go Back",
+    "protected_terms": false
+  },
+  "lab.e11adjectivesadverbs_enter_acronym": {
+    "original": "Enter acronym...",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_accuracy_over_time": {
+    "original": "Accuracy Over Time",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_nouns_amp_pronouns_reference_m": {
+    "original": "Nouns &amp; Pronouns: Reference Mapping",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_theory_nouns_amp_pronouns": {
+    "original": "Theory: Nouns &amp; Pronouns",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_1_introduction_to_reference_ma": {
+    "original": "1. Introduction to Reference Mapping",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_in_english_grammar_a": {
+    "original": "In English grammar, a",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_pronoun": {
+    "original": "pronoun",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_is_a_word_that_replaces_a": {
+    "original": "is a word that replaces a",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_noun": {
+    "original": "noun",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_or_a_noun_phrase_the_noun_that": {
+    "original": "or a noun phrase. The noun that the pronoun refers back to (or forward to) is called its",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_antecedent": {
+    "original": "antecedent",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_understanding_the_link_between": {
+    "original": "Understanding the link between a pronoun and its antecedent is critical for clarity in reading and writing. This link is referred to as",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_reference_mapping": {
+    "original": "reference mapping",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_2_types_of_references": {
+    "original": "2. Types of References",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_anaphoric_reference": {
+    "original": "Anaphoric Reference:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_this_is_the_most_common_type_o": {
+    "original": "This is the most common type of reference. The pronoun refers back to an antecedent that has already been mentioned in the text.",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_example": {
+    "original": "Example:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_the": {
+    "original": "\"The",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_queen": {
+    "original": "queen",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_lost": {
+    "original": "lost",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_her": {
+    "original": "her",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_crown_here_her_refers_back_to_": {
+    "original": "crown.\" Here, \"her\" refers back to \"queen\".",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_cataphoric_reference": {
+    "original": "Cataphoric Reference:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_the_pronoun_appears": {
+    "original": "The pronoun appears",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_before": {
+    "original": "before",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_the_noun_it_refers_to_this_is_": {
+    "original": "the noun it refers to. This is often used for dramatic effect or in complex sentence structures.",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_although": {
+    "original": "\"Although",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_was_tired_the": {
+    "original": "was tired, the",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_king": {
+    "original": "king",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_fought_the_dragon_here_he_refe": {
+    "original": "fought the dragon.\" Here, \"he\" refers forward to \"king\".",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_3_pronoun_agreement": {
+    "original": "3. Pronoun Agreement",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_a_pronoun_must_agree_with_its_": {
+    "original": "A pronoun must agree with its antecedent in three ways:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_number": {
+    "original": "Number:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_singular_antecedents_require_s": {
+    "original": "Singular antecedents require singular pronouns (e.g., he, she, it). Plural antecedents require plural pronouns (e.g., they, them).",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_gender": {
+    "original": "Gender:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_masculine_feminine_or_neuter_p": {
+    "original": "Masculine, feminine, or neuter pronouns must correctly match the antecedent.",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_person": {
+    "original": "Person:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_first_person_i_we_second_perso": {
+    "original": "First person (I, we), second person (you), or third person (he, she, it, they).",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_4_common_pitfalls": {
+    "original": "4. Common Pitfalls",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_ambiguous_reference": {
+    "original": "Ambiguous Reference:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_when_a_sentence_contains_multi": {
+    "original": "When a sentence contains multiple nouns, it might be unclear which one the pronoun replaces.",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_john_told_mark_that_he_had_won": {
+    "original": "\"John told Mark that he had won the prize.\" (Who won? John or Mark?)",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_5_lab_instructions": {
+    "original": "5. Lab Instructions",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_in_this_interactive_lab_your_t": {
+    "original": "In this interactive lab, your task is to successfully map pronouns to their antecedents across sentences of varying complexity.",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_first_click_on_a_highlighted": {
+    "original": "First, click on a highlighted",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_pronoun_1": {
+    "original": "Pronoun",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_underlined_in_blue": {
+    "original": "(underlined in blue).",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_next_locate_and_click_on_its_c": {
+    "original": "Next, locate and click on its corresponding",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_antecedent_1": {
+    "original": "Antecedent",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_underlined_with_dashed_yellow": {
+    "original": "(underlined with dashed yellow).",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_use_the_check_links_button_in_": {
+    "original": "Use the \"Check Links\" button in the Controls panel to evaluate your accuracy.",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_controls_amp_status": {
+    "original": "Controls &amp; Status",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_lab_configuration": {
+    "original": "Lab Configuration",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_sentence_complexity": {
+    "original": "Sentence Complexity:",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_basic": {
+    "original": "Basic",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_standard": {
+    "original": "Standard",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_complex": {
+    "original": "Complex",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_activity_status": {
+    "original": "Activity Status",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_check_links": {
+    "original": "Check Links",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_current_links": {
+    "original": "Current Links",
+    "protected_terms": true
+  },
+  "lab.e11nounspronouns_no_links_recorded_yet": {
+    "original": "No links recorded yet",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_assessment": {
+    "original": "Assessment",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_in_complexity_3_the_pronoun_he": {
+    "original": "In Complexity 3, the pronoun \"he\" appears before its antecedent \"king\". What is this type of reference called?",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_submit": {
+    "original": "Submit",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_interactive_stage_complexity": {
+    "original": "Interactive Stage: Complexity",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_pronouns_click_first": {
+    "original": "Pronouns (Click first)",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_nouns_antecedents": {
+    "original": "Nouns (Antecedents)",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_go_back": {
+    "original": "Go Back",
+    "protected_terms": false
+  },
+  "lab.e11nounspronouns_enter_type": {
+    "original": "Enter type...",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_lab_phrases_clauses_highlighte": {
+    "original": "Lab: Phrases & Clauses Highlighter",
+    "protected_terms": true
+  },
+  "lab.e11phrasesclauses_score": {
+    "original": "Score:",
+    "protected_terms": true
+  },
+  "lab.e11phrasesclauses_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11phrasesclauses_phrases_and_clauses": {
+    "original": "Phrases and Clauses",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_clause": {
+    "original": "clause",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_is_a_group_of_words_that_conta": {
+    "original": "is a group of words that contains a subject and a verb.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_independent_clause": {
+    "original": "Independent Clause:",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_can_stand_alone_as_a_complete_": {
+    "original": "Can stand alone as a complete sentence.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g_the_sun_is_shining": {
+    "original": "(e.g., The sun is shining.)",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_dependent_clause": {
+    "original": "Dependent Clause:",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_cannot_stand_alone_and_begins_": {
+    "original": "Cannot stand alone and begins with a subordinating conjunction or relative pronoun.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g_because_it_is_raining": {
+    "original": "(e.g., Because it is raining...)",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_types_of_dependent_clauses": {
+    "original": "Types of Dependent Clauses",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_noun_clause": {
+    "original": "Noun Clause:",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_functions_as_a_noun_in_the_sen": {
+    "original": "Functions as a noun in the sentence.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g_i_know": {
+    "original": "(e.g., I know",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_what_you_did": {
+    "original": "what you did",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_relative_clause_adjective_clau": {
+    "original": "Relative Clause (Adjective Clause):",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_modifies_a_noun_or_pronoun": {
+    "original": "Modifies a noun or pronoun.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g_the_book": {
+    "original": "(e.g., The book",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_that_i_borrowed": {
+    "original": "that I borrowed",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_is_great": {
+    "original": "is great.)",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_adverb_clause": {
+    "original": "Adverb Clause:",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_functions_as_an_adverb_modifyi": {
+    "original": "Functions as an adverb, modifying verbs, adjectives, or other adverbs.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g_he_left": {
+    "original": "(e.g., He left",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_when_the_bell_rang": {
+    "original": "when the bell rang",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_phrases": {
+    "original": "Phrases",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_phrase": {
+    "original": "phrase",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_is_a_group_of_related_words_th": {
+    "original": "is a group of related words that does",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_not": {
+    "original": "not",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_contain_both_a_subject_and_a_v": {
+    "original": "contain both a subject and a verb. It functions as a single part of speech.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_prepositional_phrase": {
+    "original": "Prepositional Phrase:",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_begins_with_a_preposition_and_": {
+    "original": "Begins with a preposition and ends with a noun or pronoun object.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_e_g": {
+    "original": "(e.g.,",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_under_the_bed": {
+    "original": "under the bed",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_in_the_morning": {
+    "original": "in the morning",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_syntactic_tools": {
+    "original": "Syntactic Tools",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_select_a_syntactic_category_be": {
+    "original": "Select a syntactic category below, then click on the corresponding chunks in the Simulation Stage to highlight them.",
+    "protected_terms": true
+  },
+  "lab.e11phrasesclauses_evaluate_analysis": {
+    "original": "Evaluate Analysis",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_sentence_analysis_stage": {
+    "original": "Sentence Analysis Stage",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_apply_your_selected_syntactic_": {
+    "original": "Apply your selected syntactic tools to classify the highlighted chunks.",
+    "protected_terms": false
+  },
+  "lab.e11phrasesclauses_go_back": {
+    "original": "Go Back",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_prepositions_conjunctions": {
+    "original": "Prepositions & Conjunctions",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11prepositionsconjunctions_grammar_theory": {
+    "original": "Grammar Theory",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_prepositions": {
+    "original": "Prepositions",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_a_preposition_is_a_word_or_gro": {
+    "original": "A preposition is a word or group of words used before a noun, pronoun, or noun phrase to show direction, time, place, location, spatial relationships, or to introduce an object.",
+    "protected_terms": true
+  },
+  "lab.e11prepositionsconjunctions_time": {
+    "original": "Time:",
+    "protected_terms": true
+  },
+  "lab.e11prepositionsconjunctions_indicates_when_an_event_happen": {
+    "original": "Indicates when an event happens. Example:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_5_pm": {
+    "original": "5 PM,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_monday": {
+    "original": "Monday,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_may": {
+    "original": "May,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_during": {
+    "original": "during",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_test": {
+    "original": "the test.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_place": {
+    "original": "Place:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_indicates_where_something_is_l": {
+    "original": "Indicates where something is located. Example:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_box": {
+    "original": "the box,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_table": {
+    "original": "the table,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_door": {
+    "original": "the door,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_under": {
+    "original": "under",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_bed": {
+    "original": "the bed.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_direction": {
+    "original": "Direction:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_shows_movement_towards_a_desti": {
+    "original": "Shows movement towards a destination. Example: travel",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_school_walk": {
+    "original": "school, walk",
+    "protected_terms": true
+  },
+  "lab.e11prepositionsconjunctions_into": {
+    "original": "into",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_room_look": {
+    "original": "the room, look",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_towards": {
+    "original": "towards",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_sky": {
+    "original": "the sky.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_phrasal_prepositions": {
+    "original": "Phrasal Prepositions:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_two_or_more_words_acting_as_a_": {
+    "original": "Two or more words acting as a preposition. Example:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_because_of": {
+    "original": "because of",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_rain": {
+    "original": "the rain,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_in_spite_of": {
+    "original": "in spite of",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_delay": {
+    "original": "the delay,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_according_to": {
+    "original": "according to",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_the_rules": {
+    "original": "the rules.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_conjunctions": {
+    "original": "Conjunctions",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_a_conjunction_connects_clauses": {
+    "original": "A conjunction connects clauses, sentences, or coordinates words in the same clause. They are essential for demonstrating the relationship between different ideas.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_coordinating_conjunctions": {
+    "original": "Coordinating Conjunctions:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_join_parts_of_a_sentence_that_": {
+    "original": "Join parts of a sentence that are grammatically equal. Remember the acronym FANBOYS (For, And, Nor, But, Or, Yet, So).",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_example_i_wanted_to_go": {
+    "original": "Example: I wanted to go,",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_but": {
+    "original": "but",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_it_was_raining": {
+    "original": "it was raining.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_subordinating_conjunctions": {
+    "original": "Subordinating Conjunctions:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_join_a_dependent_clause_to_an_": {
+    "original": "Join a dependent clause to an independent clause, establishing a relationship of time, reason, or condition.",
+    "protected_terms": true
+  },
+  "lab.e11prepositionsconjunctions_example_we_stayed_inside": {
+    "original": "Example: We stayed inside",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_because": {
+    "original": "because",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_it_was_cold": {
+    "original": "it was cold.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_correlative_conjunctions": {
+    "original": "Correlative Conjunctions:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_work_in_pairs_to_join_words_or": {
+    "original": "Work in pairs to join words or phrases that carry equal importance.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_example_she_is": {
+    "original": "Example: She is",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_not_only": {
+    "original": "not only",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_intelligent": {
+    "original": "intelligent",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_but_also": {
+    "original": "but also",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_very_kind": {
+    "original": "very kind.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_interjections": {
+    "original": "Interjections",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_an_interjection_is_a_word_or_p": {
+    "original": "An interjection is a word or phrase that expresses a strong emotion or sudden feeling. They can stand alone or be placed before a sentence, often followed by an exclamation point.",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_joy_surprise": {
+    "original": "Joy/Surprise:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_wow_oh_aha": {
+    "original": "Wow!, Oh!, Aha!",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_pain": {
+    "original": "Pain:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_ouch_ow": {
+    "original": "Ouch!, Ow!",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_sorrow": {
+    "original": "Sorrow:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_alas": {
+    "original": "Alas!",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_hesitation": {
+    "original": "Hesitation:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_uh_well_hmm": {
+    "original": "Uh, well, hmm...",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_options": {
+    "original": "Options",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_select_the_correct_word_to_com": {
+    "original": "Select the correct word to complete the sentence:",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_correct": {
+    "original": "Correct!",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_next_puzzle": {
+    "original": "Next Puzzle",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_incorrect_try_another_option": {
+    "original": "Incorrect, try another option!",
+    "protected_terms": false
+  },
+  "lab.e11prepositionsconjunctions_sentence_construction": {
+    "original": "Sentence Construction",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_lab_e11_sentence_structure_mod": {
+    "original": "Lab E11: Sentence Structure & Modifiers",
+    "protected_terms": true
+  },
+  "lab.e11sentencestructure_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11sentencestructure_sentence_types": {
+    "original": "Sentence Types",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_sentences_are_categorized_by_t": {
+    "original": "Sentences are categorized by their purpose. Understanding sentence types allows for clearer communication and varied sentence structure.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_declarative": {
+    "original": "Declarative:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_makes_a_statement_or_states_a_": {
+    "original": "Makes a statement or states a fact. Ends with a period.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_example_the_sun_rises_in_the_e": {
+    "original": "Example: \"The sun rises in the east.\"",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_interrogative": {
+    "original": "Interrogative:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_asks_a_question_ends_with_a_qu": {
+    "original": "Asks a question. Ends with a question mark.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_example_have_you_finished_read": {
+    "original": "Example: \"Have you finished reading?\"",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_exclamatory": {
+    "original": "Exclamatory:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_expresses_strong_emotion_or_su": {
+    "original": "Expresses strong emotion or surprise. Ends with an exclamation mark.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_example_what_a_beautiful_day": {
+    "original": "Example: \"What a beautiful day!\"",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_imperative": {
+    "original": "Imperative:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_gives_a_command_or_makes_a_req": {
+    "original": "Gives a command or makes a request. Often, the subject 'you' is implied.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_example_please_close_the_door": {
+    "original": "Example: \"Please close the door.\"",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_optative": {
+    "original": "Optative:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_expresses_a_wish_prayer_curse_": {
+    "original": "Expresses a wish, prayer, curse, or desire.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_example_may_you_live_long": {
+    "original": "Example: \"May you live long.\"",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_misplaced_and_dangling_modifie": {
+    "original": "Misplaced and Dangling Modifiers",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_modifier": {
+    "original": "modifier",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_is_a_word_phrase_or_clause_tha": {
+    "original": "is a word, phrase, or clause that describes or limits another word in the same sentence. For a sentence to be clear and logical, a modifier must be placed as close as possible to the word it describes.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_misplaced_modifiers": {
+    "original": "Misplaced Modifiers",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_occurs_when_the_modifier_is_se": {
+    "original": "Occurs when the modifier is separated from the word it intends to describe, creating confusion or unintended humor.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_wrong_he_served_sandwiches_to_": {
+    "original": "Wrong: He served sandwiches to the children on paper plates.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_correct_he_served_sandwiches_o": {
+    "original": "Correct: He served sandwiches on paper plates to the children.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_dangling_modifiers": {
+    "original": "Dangling Modifiers",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_occurs_when_the_word_the_modif": {
+    "original": "Occurs when the word the modifier is supposed to describe is entirely missing from the sentence. Dangling modifiers usually appear at the beginning of a sentence.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_wrong_hoping_to_excuse_the_abs": {
+    "original": "Wrong: Hoping to excuse the absence, the note was written and signed by the student.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_correct_hoping_to_excuse_the_a": {
+    "original": "Correct: Hoping to excuse the absence, the student wrote and signed the note.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_pro_tip": {
+    "original": "Pro Tip:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_to_fix_a_dangling_modifier_you": {
+    "original": "To fix a dangling modifier, you usually need to rewrite the main clause to include the subject that is performing the action described by the modifier.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_controls": {
+    "original": "Controls",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_identify_declarative_interroga": {
+    "original": "Identify Declarative, Interrogative, Exclamatory, Imperative, and Optative sentences.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_rewrite_sentences_to_fix_dangl": {
+    "original": "Rewrite sentences to fix dangling or misplaced descriptive phrases.",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_instructions": {
+    "original": "Instructions",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_module_1_analysis": {
+    "original": "Module 1: Analysis",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_sentence": {
+    "original": "Sentence",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_module_2_correction": {
+    "original": "Module 2: Correction",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_flawed_sentence": {
+    "original": "FLAWED SENTENCE",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_rewrite_correctly": {
+    "original": "Rewrite correctly:",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_check": {
+    "original": "Check",
+    "protected_terms": false
+  },
+  "lab.e11sentencestructure_type_your_corrected_sentence_h": {
+    "original": "Type your corrected sentence here...",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_lab_tenses_verbals": {
+    "original": "Lab: Tenses & Verbals",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_score": {
+    "original": "Score:",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_grammar_theory": {
+    "original": "Grammar Theory",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_mastering_tenses_and_verbals_h": {
+    "original": "Mastering tenses and verbals helps ensure that your narrative timeline remains consistent and logical. Here's a breakdown of the concepts covered in this lab.",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_1_past_and_past_perfect": {
+    "original": "1. Past and Past Perfect",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_when_narrating_events_in_the_p": {
+    "original": "When narrating events in the past, it is important to distinguish the sequence of actions.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_simple_past": {
+    "original": "Simple Past:",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_used_for_an_action_that_was_co": {
+    "original": "Used for an action that was completely finished in the past.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example_the_rescue_team": {
+    "original": "Example: \"The rescue team",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_arrived": {
+    "original": "arrived",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_past_perfect_continuous": {
+    "original": "Past Perfect Continuous:",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_emphasizes_the_ongoing_nature_": {
+    "original": "Emphasizes the ongoing nature of an action that happened",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_before": {
+    "original": "before",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_another_action_in_the_past": {
+    "original": "another action in the past.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example_the_hikers": {
+    "original": "Example: \"The hikers",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_had_been_waiting": {
+    "original": "had been waiting",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_for_hours_by_the_time_the_team": {
+    "original": "for hours by the time the team arrived.\"",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_2_present_tenses": {
+    "original": "2. Present Tenses",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_the": {
+    "original": "The",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_present_continuous": {
+    "original": "Present Continuous",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_tense_describes_actions_happen": {
+    "original": "tense describes actions happening right now or around the present moment. It is formed with the present tense of \"to be\" + present participle (-ing).",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example_right_now_they": {
+    "original": "Example: \"Right now, they",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_are_resting": {
+    "original": "are resting",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_3_verbals_gerunds": {
+    "original": "3. Verbals: Gerunds",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_gerund": {
+    "original": "Gerund",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_is_a_verb_ending_in": {
+    "original": "is a verb ending in",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_ing": {
+    "original": "-ing",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_that_functions_entirely_as_a_n": {
+    "original": "that functions entirely as a noun.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_as_a_subject": {
+    "original": "As a Subject:",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_a_gerund_can_act_as_the_main_s": {
+    "original": "A gerund can act as the main subject of a sentence.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example": {
+    "original": "Example: \"",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_surviving": {
+    "original": "Surviving",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_such_an_ordeal_requires_resili": {
+    "original": "such an ordeal requires resilience.\"",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_object_of_a_preposition": {
+    "original": "Object of a Preposition:",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_gerunds_must_be_used_after_pre": {
+    "original": "Gerunds must be used after prepositions or phrasal verbs ending in a preposition.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example_looking_forward_to": {
+    "original": "Example: \"Looking forward to",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_settling": {
+    "original": "settling",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_down": {
+    "original": "down.\"",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_note_to_is_a_preposition_here_": {
+    "original": "(Note: \"to\" is a preposition here, not an infinitive marker.)",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_4_future_tenses": {
+    "original": "4. Future Tenses",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_future_continuous": {
+    "original": "Future Continuous",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_tense_describes_an_action_that": {
+    "original": "tense describes an action that will be in progress at a specific time in the future. It is formed with",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_will_be": {
+    "original": "will be",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_present_participle": {
+    "original": "+ present participle.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_example_by_this_time_tomorrow_": {
+    "original": "Example: \"By this time tomorrow, they",
+    "protected_terms": true
+  },
+  "lab.e11tensesverbals_will_be_traveling": {
+    "original": "will be traveling",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_narrative_editor": {
+    "original": "Narrative Editor",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_fix_the_tense_inconsistencies_": {
+    "original": "Fix the tense inconsistencies and select the correct verbal forms in the story below.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_select": {
+    "original": "Select...",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_hint": {
+    "original": "Hint:",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_check_narrative": {
+    "original": "Check Narrative",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_temporal_visualization": {
+    "original": "Temporal Visualization",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_as_you_correct_the_tenses_the_": {
+    "original": "As you correct the tenses, the events will snap to their proper place on the timeline.",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_past_perfect": {
+    "original": "Past Perfect",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_past": {
+    "original": "Past",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_present": {
+    "original": "Present",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_future": {
+    "original": "Future",
+    "protected_terms": false
+  },
+  "lab.e11tensesverbals_go_back": {
+    "original": "Go Back",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_verbs_modals": {
+    "original": "Verbs & Modals",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11verbsmodals_study_notes": {
+    "original": "Study Notes",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_introduction_to_verbs": {
+    "original": "Introduction to Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_verbs_describe_an_action_state": {
+    "original": "Verbs describe an action, state, or occurrence. They form the main part of the predicate of a sentence.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_action_vs_linking_verbs": {
+    "original": "Action vs. Linking Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_action_verbs": {
+    "original": "Action verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_express_physical_or_mental_act": {
+    "original": "express physical or mental actions (e.g., run, think, jump).",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_she_runs_every_morning": {
+    "original": "Example: She runs every morning.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_linking_verbs": {
+    "original": "Linking verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_connect_the_subject_to_a_compl": {
+    "original": "connect the subject to a complement that describes it (e.g., is, seems, tastes).",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_the_soup_tastes_delici": {
+    "original": "Example: The soup tastes delicious.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_transitive_vs_intransitive_ver": {
+    "original": "Transitive vs. Intransitive Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_transitive_verbs": {
+    "original": "Transitive verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_require_a_direct_object_to_com": {
+    "original": "require a direct object to complete their meaning.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_she_wrote_a_letter_obj": {
+    "original": "Example: She wrote a letter. (Object: a letter)",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_intransitive_verbs": {
+    "original": "Intransitive verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_do_not_take_an_object": {
+    "original": "do not take an object.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_he_slept_peacefully": {
+    "original": "Example: He slept peacefully.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_finite_vs_non_finite_verbs": {
+    "original": "Finite vs. Non-finite Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_finite_verbs": {
+    "original": "Finite verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_change_their_form_according_to": {
+    "original": "change their form according to tense, person, and number.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_i_walk_he_walks": {
+    "original": "Example: I walk. He walks.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_non_finite_verbs": {
+    "original": "Non-finite verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_infinitives_participles_gerund": {
+    "original": "(infinitives, participles, gerunds) do not change form.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_i_want_to_walk_he_want": {
+    "original": "Example: I want to walk. He wants to walk.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_regular_vs_irregular_verbs": {
+    "original": "Regular vs. Irregular Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_regular_verbs": {
+    "original": "Regular verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_form_their_past_tense_by_addin": {
+    "original": "form their past tense by adding '-ed' or '-d'.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_play_played": {
+    "original": "Example: play → played.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_irregular_verbs": {
+    "original": "Irregular verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_have_unique_past_tense_forms_t": {
+    "original": "have unique past tense forms that don't follow the regular rule.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_catch_caught_go_went": {
+    "original": "Example: catch → caught, go → went.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_modal_verbs": {
+    "original": "Modal Verbs",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_modal_verbs_are_helping_verbs_": {
+    "original": "Modal verbs are helping verbs that express necessity, possibility, permission, or ability. They are never used alone and are always followed by the base form of the verb.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_must": {
+    "original": "Must:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_expresses_strong_obligation_or": {
+    "original": "Expresses strong obligation or a logical deduction based on clear evidence.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_it_must_be_raining": {
+    "original": "Example: It must be raining.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_might_may": {
+    "original": "Might / May:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_expresses_possibility_or_is_us": {
+    "original": "Expresses possibility or is used to ask for formal permission.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_it_might_rain_later": {
+    "original": "Example: It might rain later.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_should_ought_to": {
+    "original": "Should / Ought to:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_used_for_giving_advice_recomme": {
+    "original": "Used for giving advice, recommendation, or expressing expectation.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_you_should_study_more": {
+    "original": "Example: You should study more.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_can_could": {
+    "original": "Can / Could:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_expresses_ability_possibility_": {
+    "original": "Expresses ability, possibility, or is used for polite requests.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_could_you_help_me": {
+    "original": "Example: Could you help me?",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_will_would": {
+    "original": "Will / Would:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_used_for_future_intentions_con": {
+    "original": "Used for future intentions, conditionals, or polite offers.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_example_i_will_go_to_the_store": {
+    "original": "Example: I will go to the store.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_scenario_simulator": {
+    "original": "Scenario Simulator",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_scenario": {
+    "original": "Scenario",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_select_the_best_answer": {
+    "original": "Select the best answer:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_incorrect_review_the_options": {
+    "original": "Incorrect, review the options.",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_verify_answer": {
+    "original": "Verify Answer",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_next_scenario": {
+    "original": "Next Scenario",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_situation": {
+    "original": "Situation:",
+    "protected_terms": false
+  },
+  "lab.e11verbsmodals_correct": {
+    "original": "Correct!",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_lab_e11_vocabulary_stylistics": {
+    "original": "Lab E11: Vocabulary & Stylistics",
+    "protected_terms": true
+  },
+  "lab.e11vocabularystylistics_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.e11vocabularystylistics_vocabulary_stylistics": {
+    "original": "Vocabulary & Stylistics",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_understanding_vocabulary_nuanc": {
+    "original": "Understanding vocabulary nuances and rhetorical stylistics is essential for advanced English comprehension and eloquent expression. This guide explores distinct facets of word choice and literary devices.",
+    "protected_terms": true
+  },
+  "lab.e11vocabularystylistics_1_vocabulary_nuances": {
+    "original": "1. Vocabulary Nuances",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_silent_letters": {
+    "original": "Silent Letters:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_many_english_words_contain_let": {
+    "original": "Many English words contain letters that are not pronounced (e.g., the 'm' in",
+    "protected_terms": true
+  },
+  "lab.e11vocabularystylistics_mnemonic": {
+    "original": "mnemonic",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_k_in": {
+    "original": ", 'k' in",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_knight": {
+    "original": "knight",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_b_in": {
+    "original": ", 'b' in",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_subtle": {
+    "original": "subtle",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_idioms": {
+    "original": "Idioms:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_phrases_whose_meanings_cannot_": {
+    "original": "Phrases whose meanings cannot be deduced from the literal definitions of their words. Example:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_beat_around_the_bush": {
+    "original": "\"Beat around the bush\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_means_to_avoid_the_main_topic": {
+    "original": "means to avoid the main topic.",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_connotation_vs_denotation": {
+    "original": "Connotation vs. Denotation:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_denotation": {
+    "original": "Denotation:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_the_literal_dictionary_definit": {
+    "original": "The literal dictionary definition.",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_connotation": {
+    "original": "Connotation:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_the_emotional_or_cultural_asso": {
+    "original": "The emotional or cultural associations a word carries. Example:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_inquisitive": {
+    "original": "Inquisitive",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_positive_vs": {
+    "original": "(positive) vs.",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_nosy": {
+    "original": "Nosy",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_negative": {
+    "original": "(negative).",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_transitional_devices": {
+    "original": "Transitional Devices:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_words_or_phrases_that_bridge_i": {
+    "original": "Words or phrases that bridge ideas. Example:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_furthermore": {
+    "original": "Furthermore",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_addition": {
+    "original": "(addition),",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_nevertheless": {
+    "original": "Nevertheless",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_contrast": {
+    "original": "(contrast),",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_consequently": {
+    "original": "Consequently",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_result": {
+    "original": "(result).",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_2_literary_devices_stylistics": {
+    "original": "2. Literary Devices (Stylistics)",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_stylistics_involves_analyzing_": {
+    "original": "Stylistics involves analyzing how writers use language for effect. Key figures of speech include:",
+    "protected_terms": true
+  },
+  "lab.e11vocabularystylistics_simile": {
+    "original": "Simile:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_a_comparison_using_like_or_as": {
+    "original": "A comparison using \"like\" or \"as\". (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_i_wandered_lonely_as_a_cloud": {
+    "original": "\"I wandered lonely as a cloud.\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_metaphor": {
+    "original": "Metaphor:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_a_direct_comparison_asserting_": {
+    "original": "A direct comparison asserting one thing is another. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_all_the_world_s_a_stage": {
+    "original": "\"All the world's a stage.\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_personification": {
+    "original": "Personification:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_giving_human_traits_to_non_hum": {
+    "original": "Giving human traits to non-human entities. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_the_leaves_danced_in_the_wind": {
+    "original": "\"The leaves danced in the wind.\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_hyperbole": {
+    "original": "Hyperbole:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_extreme_exaggeration_for_empha": {
+    "original": "Extreme exaggeration for emphasis. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_i_ve_told_you_a_million_times": {
+    "original": "\"I've told you a million times!\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_alliteration": {
+    "original": "Alliteration:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_repetition_of_initial_consonan": {
+    "original": "Repetition of initial consonant sounds. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_peter_piper_picked_a_peck": {
+    "original": "\"Peter Piper picked a peck...\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_oxymoron": {
+    "original": "Oxymoron:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_combining_contradictory_terms": {
+    "original": "Combining contradictory terms. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_parting_is_such_sweet_sorrow": {
+    "original": "\"Parting is such sweet sorrow.\"",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_synecdoche": {
+    "original": "Synecdoche:",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_using_a_part_to_represent_the_": {
+    "original": "Using a part to represent the whole. (",
+    "protected_terms": false
+  },
+  "lab.e11vocabularystylistics_the_pen_is_mightier_than_the_s": {
+    "original": "\"The pen is mightier than the sword.\"",
+    "protected_terms": false
+  }
+}

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Rocket, CheckCircle, XCircle, Lightbulb, ArrowRight } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathFormula from './MathFormula';
+import { useTranslate } from '../i18n';
 
 export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void }) {
+  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
   const [bulletMass, setBulletMass] = useState(10);
   const [bulletVel, setBulletVel] = useState(400);
@@ -26,20 +29,19 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
   };
 
   const steps = [
-    { label: 'Conservation of Momentum', formula: 'pi = pf', detail: "🎯 You're at a shooting range, a 4 kg rifle resting on your shoulder. You breathe, aim at the target, and squeeze the trigger. The gun + bullet form an \"isolated system\" — all the momentum before firing must equal all the momentum after." },
-    { label: 'Before Firing: Everything at Rest', formula: 'pi = 0', detail: 'Before firing, the rifle and the 10 g bullet are both completely still in your hands. Total initial momentum = 0. Everything is quiet, steady — zero motion, zero momentum. Then the firing pin strikes.' },
-    { label: 'After Firing: Bullet + Gun Move', formula: 'mb×vb + mg×vg = 0', detail: 'BANG! The bullet rockets forward at 400 m/s. Its momentum: 0.01 × 400 = 4 kg·m/s forward. By conservation, the gun must have −4 kg·m/s momentum backward into your shoulder: m_b·v_b + m_g·v_g = 0.' },
-    { label: 'Solve for Recoil Velocity', formula: 'vg = −(mb×vb) / mg', detail: 'Solving: v_g = −(m_b·v_b)/m_g = −(0.01 × 400)/4 = −1 m/s. The negative sign? The gun kicks backward into your shoulder at 1 m/s. A heavier gun recoils less — that\'s why competition shooters use massive rifles. Rockets work the same way: exhaust shoots down, the rocket goes up!' },
+    { label: t('lab.recoil_step1_label'), formula: 'pi = pf', detail: t('lab.recoil_step1_detail') },
+    { label: t('lab.recoil_step2_label'), formula: 'pi = 0', detail: t('lab.recoil_step2_detail') },
+    { label: t('lab.recoil_step3_label'), formula: 'mb×vb + mg×vg = 0', detail: t('lab.recoil_step3_detail') },
+    { label: t('lab.recoil_step4_label'), formula: 'vg = −(mb×vb) / mg', detail: t('lab.recoil_step4_detail') },
   ];
 
   return (
     <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:bg-[#000000] font-sans select-none text-slate-800 dark:text-white overflow-x-hidden w-full">
-      <LabHeader onExit={onExit} title="Derivation: Recoil Velocity of a Gun" />
-      <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 shrink-0">
+      <LabHeader onExit={onExit} title="Derivation: Recoil Velocity of a Gun" />          <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 shrink-0">
         <button onClick={() => setActiveMobileTab('theory')}
-          className={`py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-amber-600 text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>Derivation</button>
+          className={`py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-amber-600 text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>{t('lab.tab.derivation')}</button>
         <button onClick={() => setActiveMobileTab('lab')}
-          className={`py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-amber-600 text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>Simulation</button>
+          className={`py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-amber-600 text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}>{t('lab.tab.simulation')}</button>
       </div>
       <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-5 gap-0 lg:gap-6 p-4 lg:p-6 lg:overflow-visible">
         {/* Column 1: Derivation (primary focus - spans 3 columns) */}
@@ -49,15 +51,15 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
               <Rocket className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-lg font-bold">Step-by-Step Derivation</h2>
-              <p className="text-xs text-slate-500">Follow how conservation of momentum gives the recoil formula</p>
+              <h2 className="text-lg font-bold">{t('lab.step_by_step')}</h2>
+              <p className="text-xs text-slate-500">{t('lab.recoil_subtitle')}</p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
-            <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">Final Formula</p>
-            <p className="text-2xl font-bold font-mono text-white mt-1">vg = −(mb × vb) / mg</p>
-            <p className="text-xs text-amber-200 mt-1">The gun recoils opposite to the bullet's direction</p>
+            <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p>
+            <p className="text-2xl font-bold text-white mt-1"><MathFormula formula="vg = −(mb × vb) / mg" /></p>
+            <p className="text-xs text-amber-200 mt-1">{t('lab.recoil_final_desc')}</p>
           </div>
 
           <div className="space-y-0">
@@ -75,7 +77,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
                       <p className="font-bold text-base text-amber-800 dark:text-amber-300">{step.label}</p>
                     </div>
                     <div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]">
-                      <span className="text-sm font-mono font-bold text-yellow-400">{step.formula}</span>
+                      <MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" />
                     </div>
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>
                     {idx < steps.length - 1 && (
@@ -86,16 +88,6 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
               </div>
             ))}
           </div>
-
-          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
-            <div className="flex items-start gap-2">
-              <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{'💡'} Key Insight</p>
-                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">The negative sign shows the gun moves opposite to the bullet. A heavier gun recoils less — which is why cannons are so massive! Rockets work the same way: exhaust goes down, rocket goes up.</p>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Column 2: Interactive + Assessment */}
@@ -103,20 +95,20 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
             <div className="flex items-center gap-2 mb-3">
               <Lightbulb className="w-5 h-5 text-amber-500" />
-              <h2 className="text-lg font-bold">See the Derivation in Action</h2>
+              <h2 className="text-lg font-bold">{t('lab.see_in_action')}</h2>
             </div>
-            <p className="text-sm text-slate-500 mb-4">Adjust sliders, then press FIRE! to see conservation of momentum at work.</p>
+            <p className="text-sm text-slate-500 mb-4">{t('lab.recoil_adjust_desc')}</p>
             <div className="space-y-3">
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Bullet Mass</span><span className="text-amber-600 font-mono">{bulletMass} g ({bMassKg} kg)</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_bullet_mass_label')}</span><span className="text-amber-600 font-mono">{bulletMass}  {t('lab.p9derivationrecoil_g')}{bMassKg}  {t('lab.p9derivationrecoil_kg')}</span></div>
                 <input type="range" min="2" max="50" step="1" value={bulletMass} onChange={e => { setBulletMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Bullet Velocity</span><span className="text-amber-600 font-mono">{bulletVel} m/s</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_bullet_vel_label')}</span><span className="text-amber-600 font-mono">{bulletVel}  {t('lab.p9derivationrecoil_m_s')}</span></div>
                 <input type="range" min="100" max="800" step="10" value={bulletVel} onChange={e => { setBulletVel(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
               </div>
               <div>
-                <div className="flex justify-between text-xs font-semibold"><span>Gun Mass</span><span className="text-amber-600 font-mono">{gunMass} kg</span></div>
+                <div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_gun_mass_label')}</span><span className="text-amber-600 font-mono">{gunMass} kg</span></div>
                 <input type="range" min="1" max="10" step="0.5" value={gunMass} onChange={e => { setGunMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
               </div>
 
@@ -126,11 +118,11 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
               </button>
 
               <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1.5">
-                <p className="text-xs text-slate-500 font-semibold uppercase">Momentum Conservation</p>
-                <p className="text-sm text-slate-400">Before: pi = 0 (both at rest)</p>
-                <p className="text-sm text-slate-400">After: mb×vb = {bMassKg} × {bulletVel} = <span className="text-green-400">{(bMassKg * bulletVel).toFixed(2)}</span></p>
-                <p className="text-sm text-slate-400">mg×vg must be: <span className="text-green-400">-{(bMassKg * bulletVel).toFixed(2)}</span></p>
-                <p className="border-t border-[#2a2a2a] pt-1.5 text-xs"><span className="text-amber-400 font-bold">Recoil velocity: </span><span className="text-yellow-400 font-mono font-bold">{recoilV.toFixed(2)} m/s</span></p>
+                <p className="text-xs text-slate-500 font-semibold uppercase">{t('lab.derivation_trace')}</p>
+                <p className="text-sm text-slate-400">{t('lab.recoil_trace1')}</p>
+                <p className="text-sm text-slate-400">{t('lab.recoil_trace2', { mb: bMassKg, vb: bulletVel, mbvb: (bMassKg * bulletVel).toFixed(2) })}</p>
+                <p className="text-sm text-slate-400">{t('lab.recoil_trace3', { mgvg: '-' + (bMassKg * bulletVel).toFixed(2) })}</p>
+                <p className="border-t border-[#2a2a2a] pt-1.5 text-xs"><span className="text-amber-400 font-bold">{t('lab.recoil_trace4', { recoil: recoilV.toFixed(2) })}</span></p>
               </div>
 
               {fired && (
@@ -141,35 +133,54 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
             </div>
           </div>
 
+          <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2">
+            <div className="flex items-start gap-2">
+              <Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-base text-amber-700 dark:text-amber-300">{t('lab.real_life_application')}</p>
+                <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">{t('lab.recoil_real_life')}</p>
+              </div>
+            </div>
+          </div>
+
           {/* Assessment */}
           <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
-            <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Rocket className="w-5 h-5 text-emerald-500" /> Practice: Apply the Derivation</h2>
+            <h2 className="text-lg font-bold mb-3 flex items-center gap-2"><Rocket className="w-5 h-5 text-emerald-500" /> {t('lab.practice_apply')}</h2>
             <div className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-4 border border-slate-200 dark:border-[#2a2a2a] mb-3">
-              <p className="text-base font-medium mb-2">A <strong>4 kg</strong> rifle fires a <strong>12 g</strong> bullet at <strong>500 m/s</strong>.</p>
-              <p className="text-base font-medium">What is the recoil velocity of the rifle?</p>
+              <p className="text-base font-medium mb-2">{t('lab.recoil_practice_q')}</p>
+              <p className="text-base font-medium">{t('lab.recoil_practice_q2')}</p>
               <div className="bg-amber-50 dark:bg-amber-900/20 rounded p-2 mt-2">
-                <p className="text-xs text-amber-700 dark:text-amber-300 font-mono">mb = 12g = 0.012 kg, vb = 500 m/s, mg = 4 kg. vg = −(mb×vb)/mg = −(0.012×500)/4</p>
+                <p className="text-xs text-amber-700 dark:text-amber-300 font-mono">{t('lab.recoil_practice_hint')}</p>
               </div>
             </div>
             <div className="flex gap-2 mb-2">
               <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-                placeholder="Velocity (m/s)..."
+                placeholder={t('lab.recoil_placeholder')}
                 className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-amber-500 outline-none" />
               <button onClick={checkAnswer}
-                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg transition-colors">Check</button>
+                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg transition-colors">{t('lab.check')}</button>
             </div>
             {checkResult === 'correct' && (
               <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
-                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>Correct! vg = 1.5 m/s.</strong> The rifle kicks back at just 1.5 m/s because it's much heavier than the bullet.</p>
+                <p className="text-xs text-emerald-700 dark:text-emerald-300"><strong>{t('lab.correct')}</strong> {t('lab.recoil_correct_feedback')}</p>
               </div>
             )}
             {checkResult === 'incorrect' && (
               <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-800 flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500 shrink-0" />
-                <p className="text-xs text-red-700 dark:text-red-300"><strong>Not quite.</strong> Use vg = (mb × vb) / mg = (0.012 × 500) / 4</p>
+                <p className="text-xs text-red-700 dark:text-red-300"><strong>{t('lab.incorrect')}</strong> {t('lab.recoil_incorrect_feedback')}</p>
               </div>
             )}
+          </div>
+          <div className="text-center">
+            <p className="text-[11px] text-slate-400 dark:text-[#71717a]">
+              {t('lab.footer_prefix')}{' '}
+              <span className="font-semibold text-indigo-500 dark:text-indigo-400">
+                {t('lab.calculator')}
+              </span>
+              {' '}{t('lab.footer_suffix')}
+            </p>
           </div>
         </div>
       </div>

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Plus, Minus, Database, FileText } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabCS10DynamicList({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [array, setArray] = useState<string[]>(['Apple', 'Banana', 'Cherry']);
@@ -93,7 +95,7 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Dynamic List Lab" />
+   <LabHeader onExit={onExit} title={t('lab.cs10dynamiclist_dynamic_list_lab')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -102,42 +104,43 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs10dynamiclist_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs10dynamiclist_lab')}</button>
   </div>
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Theory */}
     <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <FileText className="mr-2 text-teal-500" /> Theory
-     </h2>
+      <FileText className="mr-2 text-teal-500" />  {t('lab.cs10dynamiclist_theory')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
       <p>
-       An <strong>Array</strong> is a fundamental data structure consisting of a collection of elements identified by index or key.
-      </p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Common Operations</h3>
+       An <strong>{t('lab.cs10dynamiclist_array')}</strong>  {t('lab.cs10dynamiclist_is_a_fundamental_data_structur')}
+                               </p>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs10dynamiclist_common_operations')}</h3>
       <ul className="list-disc pl-5 space-y-1">
-       <li><strong>Push / Pop:</strong> Add or remove from the end of the array. Very fast (O(1)).</li>
-       <li><strong>Unshift / Shift:</strong> Add or remove from the beginning. Slower (O(n)) because all other elements must be shifted.</li>
-       <li><strong>Insert / Remove at Index:</strong> Modifying elements in the middle also requires shifting elements (O(n)).</li>
+       <li><strong>{t('lab.cs10dynamiclist_push_pop')}</strong>  {t('lab.cs10dynamiclist_add_or_remove_from_the_end_of_')}</li>
+       <li><strong>{t('lab.cs10dynamiclist_unshift_shift')}</strong>  {t('lab.cs10dynamiclist_add_or_remove_from_the_beginni')}</li>
+       <li><strong>{t('lab.cs10dynamiclist_insert_remove_at_index')}</strong>  {t('lab.cs10dynamiclist_modifying_elements_in_the_midd')}</li>
       </ul>
      </div>
     </section>
 
     {/* Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <Database className="mr-2 text-teal-500" /> Simulation
-     </h2>
+      <Database className="mr-2 text-teal-500" />  {t('lab.cs10dynamiclist_simulation')}
+                          </h2>
      
      <div className={`mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 bg-slate-50 dark:bg-[#121212] overflow-x-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <div className="flex items-end gap-2 min-h-[80px]">
        {array.length === 0 ? (
-        <span className="text-slate-400 italic mx-auto">Array is empty</span>
+        <span className="text-slate-400 italic mx-auto">{t('lab.cs10dynamiclist_array_is_empty')}</span>
        ) : (
         array.map((item, idx) => (
          <div key={idx} className="flex flex-col items-center">
@@ -157,15 +160,15 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Value..."
+        placeholder={t('lab.cs10dynamiclist_value')}
         className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-teal-500"
        />
        <button onClick={pushItem} className={`flex items-center px-3 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40 flex-col `}>
-        <Plus size={16} className="mr-1" /> Push
-       </button>
+        <Plus size={16} className="mr-1" />  {t('lab.cs10dynamiclist_push')}
+                                    </button>
        <button onClick={unshiftItem} className={`flex items-center px-3 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40 flex-col `}>
-        <Plus size={16} className="mr-1" /> Unshift
-       </button>
+        <Plus size={16} className="mr-1" />  {t('lab.cs10dynamiclist_unshift')}
+                                    </button>
       </div>
       
       <div className="flex gap-2">
@@ -176,19 +179,20 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
         className="w-20 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-teal-500"
        />
        <button onClick={insertAt} className="flex-grow flex items-center justify-center px-3 py-2 bg-teal-100 text-teal-800 border border-teal-300 rounded-md hover:bg-teal-200">
-        Insert at Index
-       </button>
+        
+                                     {t('lab.cs10dynamiclist_insert_at_index')}
+                                    </button>
       </div>
 
       <hr className="my-2 border-slate-200 dark:border-[#1c1b1b]" />
 
       <div className="flex gap-2">
        <button onClick={popItem} className="flex-grow flex justify-center items-center px-3 py-2 bg-red-100 text-red-800 border border-red-300 rounded-md hover:bg-red-200">
-        <Minus size={16} className="mr-1" /> Pop
-       </button>
+        <Minus size={16} className="mr-1" />  {t('lab.cs10dynamiclist_pop')}
+                                    </button>
        <button onClick={shiftItem} className="flex-grow flex justify-center items-center px-3 py-2 bg-red-100 text-red-800 border border-red-300 rounded-md hover:bg-red-200">
-        <Minus size={16} className="mr-1" /> Shift
-       </button>
+        <Minus size={16} className="mr-1" />  {t('lab.cs10dynamiclist_shift')}
+                                    </button>
       </div>
 
       <div className="flex gap-2">
@@ -199,22 +203,23 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
         className="w-20 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-red-500"
        />
        <button onClick={removeAt} className="flex-grow flex items-center justify-center px-3 py-2 bg-red-100 text-red-800 border border-red-300 rounded-md hover:bg-red-200">
-        Remove at Index
-       </button>
+        
+                                     {t('lab.cs10dynamiclist_remove_at_index')}
+                                    </button>
       </div>
      </div>
     </section>
 
     {/* Analysis */}
-    <section className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <FileText className="mr-2 text-teal-500" /> Data & Assessment
-     </h2>
+      <FileText className="mr-2 text-teal-500" />  {t('lab.cs10dynamiclist_data_assessment')}
+                          </h2>
      
      <div className="mb-6 flex-grow">
-      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">Operation Log</h3>
+      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">{t('lab.cs10dynamiclist_operation_log')}</h3>
       <div className="bg-[#000000] dark:bg-[#121212] rounded-lg p-3 h-48 lg:overflow-y-auto font-mono text-xs text-green-400">
-       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">No operations yet.</span>}
+       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">{t('lab.cs10dynamiclist_no_operations_yet')}</span>}
        {logs.map((log, i) => (
         <div key={i}>{`> ${log}`}</div>
        ))}
@@ -222,9 +227,10 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
      </div>
 
      <div className="bg-teal-50 rounded-lg p-4">
-      <h3 className="font-bold text-teal-900 mb-2">Knowledge Check</h3>
+      <h3 className="font-bold text-teal-900 mb-2">{t('lab.cs10dynamiclist_knowledge_check')}</h3>
       <p className="text-sm text-teal-800 mb-4">
-       Based on the current array state above, what is the exact string value at index <strong>{assessmentIndex}</strong>?
+       
+                                {t('lab.cs10dynamiclist_based_on_the_current_array_sta')} <strong>{assessmentIndex}</strong>?
       </p>
       <div className="flex gap-2">
        <input 
@@ -232,14 +238,15 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
         value={assessmentAnswer}
         onChange={(e) => setAssessmentAnswer(e.target.value)}
         className="flex-grow p-2 border border-teal-200 rounded-md focus:ring-2 focus:ring-teal-500"
-        placeholder="Value..."
+        placeholder={t('lab.cs10dynamiclist_value')}
        />
        <button 
         onClick={checkAssessment}
         className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
        >
-        Check
-       </button>
+        
+                                     {t('lab.cs10dynamiclist_check')}
+                                    </button>
       </div>
       {assessmentResult !== null && (
        <p className={`mt-2 text-sm font-semibold ${assessmentResult ? 'text-green-600' : 'text-red-600'}`}>

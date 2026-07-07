@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Play, CheckCircle, Sliders, BookOpen, Network, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [w11, setW11] = useState(0.5);
@@ -39,7 +41,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
  };
 
  const renderControls = () => {
-  if (!selected) return <p className="text-sm text-slate-500 dark:text-[#71717a] italic p-4 bg-slate-50 dark:bg-[#121212] rounded">Click a weight (line) or bias (node) in the diagram to edit.</p>;
+  if (!selected) return <p className="text-sm text-slate-500 dark:text-[#71717a] italic p-4 bg-slate-50 dark:bg-[#121212] rounded">{t('lab.cs12deeplearning_click_a_weight_line_or_bias_no')}</p>;
   
   let val = 0, setVal: (n: number) => void = () => {}, label = '';
   if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 → h1'; }
@@ -67,7 +69,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
  return (
   <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
    {/* Header */}
-   <LabHeader onExit={onExit} variant="dark" title="Lab 12.2: Deep Learning Neural Networks" />
+   <LabHeader onExit={onExit} variant="dark" title={t('lab.cs12deeplearning_lab_12_2_deep_learning_neural_')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -76,49 +78,50 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs12deeplearning_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs12deeplearning_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:h-full lg:min-h-0 lg:overflow-visible">
     {/* Column 1 */}
     <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-      <BookOpen className="text-indigo-500" /> Theory & Context
-     </h2>
+      <BookOpen className="text-indigo-500" />  {t('lab.cs12deeplearning_theory_context')}
+                          </h2>
      <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-4">
-      <p>Deep Learning models use Artificial Neural Networks to process complex data.</p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Key Components</h3>
+      <p>{t('lab.cs12deeplearning_deep_learning_models_use_artif')}</p>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12deeplearning_key_components')}</h3>
       <ul className="list-disc pl-5 space-y-1">
-       <li><strong>Neurons (Nodes):</strong> Hold a value based on inputs.</li>
-       <li><strong>Weights (w):</strong> Multipliers that strengthen or weaken signals between neurons.</li>
-       <li><strong>Biases (b):</strong> Constants added to inputs to shift the activation function.</li>
+       <li><strong>{t('lab.cs12deeplearning_neurons_nodes')}</strong>  {t('lab.cs12deeplearning_hold_a_value_based_on_inputs')}</li>
+       <li><strong>{t('lab.cs12deeplearning_weights_w')}</strong>  {t('lab.cs12deeplearning_multipliers_that_strengthen_or')}</li>
+       <li><strong>{t('lab.cs12deeplearning_biases_b')}</strong>  {t('lab.cs12deeplearning_constants_added_to_inputs_to_s')}</li>
       </ul>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Feedforward Flow</h3>
-      <p>Data propagates from input to output. For any neuron:</p>
-      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>Z = (i1 × w1) + (i2 × w2) + b</p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Activation (ReLU)</h3>
-      <p>Introduces non-linearity. Rectified Linear Unit (ReLU) outputs the input if positive, else 0:</p>
-      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>Output = max(0, Z)</p>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12deeplearning_feedforward_flow')}</h3>
+      <p>{t('lab.cs12deeplearning_data_propagates_from_input_to_')}</p>
+      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>{t('lab.cs12deeplearning_z_i1_w1_i2_w2_b')}</p>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12deeplearning_activation_relu')}</h3>
+      <p>{t('lab.cs12deeplearning_introduces_non_linearity_recti')}</p>
+      <p className={`bg-slate-100 dark:bg-[#121212] p-2 rounded font-mono text-xs flex-col `}>{t('lab.cs12deeplearning_output_max_0_z')}</p>
      </div>
     </div>
 
     {/* Column 2 */}
-    <div className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
-      <Network className="text-indigo-500" /> Architecture Visualizer
-     </h2>
+      <Network className="text-indigo-500" />  {t('lab.cs12deeplearning_architecture_visualizer')}
+                          </h2>
 
      <div className="flex gap-2 mb-4 shrink-0">
       <button 
        onClick={() => setIsForwarded(true)} 
        className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded flex justify-center items-center gap-2 text-sm font-medium transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
       >
-       <Play size={16} /> Run Feedforward
-      </button>
+       <Play size={16} />  {t('lab.cs12deeplearning_run_feedforward')}
+                               </button>
      </div>
 
      <div className="relative w-full h-64 bg-slate-100 dark:bg-[#121212] rounded-lg shadow-inner mb-4 overflow-hidden border border-slate-200 dark:border-[#1c1b1b] shrink-0">
@@ -162,8 +165,8 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
 
        {isForwarded && (
         <>
-         <text x="150" y="135" textAnchor="middle" fontSize="10" fill="#b91c1c" fontWeight="bold">out={h1_out.toFixed(2)}</text>
-         <text x="250" y="135" textAnchor="middle" fontSize="10" fill="#b91c1c" fontWeight="bold">out={o1_out.toFixed(2)}</text>
+         <text x="150" y="135" textAnchor="middle" fontSize="10" fill="#b91c1c" fontWeight="bold">{t('lab.cs12deeplearning_out')}{h1_out.toFixed(2)}</text>
+         <text x="250" y="135" textAnchor="middle" fontSize="10" fill="#b91c1c" fontWeight="bold">{t('lab.cs12deeplearning_out')}{o1_out.toFixed(2)}</text>
         </>
        )}
       </svg>
@@ -171,42 +174,44 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
 
      <div className="mt-auto shrink-0">
       <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 mb-2">
-       <Sliders size={16} className="text-slate-500 dark:text-[#71717a]" /> Tweak Parameters
-      </h3>
+       <Sliders size={16} className="text-slate-500 dark:text-[#71717a]" />  {t('lab.cs12deeplearning_tweak_parameters')}
+                               </h3>
       {renderControls()}
      </div>
     </div>
 
     {/* Column 3 */}
-    <div className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
-      <CheckCircle className="text-indigo-500" /> Assessment & Trace
-     </h2>
+      <CheckCircle className="text-indigo-500" />  {t('lab.cs12deeplearning_assessment_trace')}
+                          </h2>
      
      <div className="space-y-4 flex-1 lg:overflow-y-auto text-sm pr-2">
       <p className="text-slate-600 dark:text-[#a1a1aa] bg-slate-50 dark:bg-[#121212] p-3 rounded">
-       Based on your currently set weights and biases, trace the data flow manually.
-      </p>
+       
+                                {t('lab.cs12deeplearning_based_on_your_currently_set_we')}
+                               </p>
       <div>
-       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">1. Calc h1 pre-activation (Z): <br/> <span className="text-xs font-normal">Z = i1&times;w11 + i2&times;w21 + b1</span></label>
+       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">{t('lab.cs12deeplearning_1_calc_h1_pre_activation_z')} <br/> <span className="text-xs font-normal">{t('lab.cs12deeplearning_z_i1_times_w11_i2_times_w21_b1')}</span></label>
        <input type="number" step="0.01" value={ansH1In} onChange={e => setAnsH1In(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
       </div>
       <div>
-       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">2. Calc h1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
+       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">{t('lab.cs12deeplearning_2_calc_h1_relu_output')}<br/> <span className="text-xs font-normal">{t('lab.cs12deeplearning_out_max_0_z')}</span></label>
        <input type="number" step="0.01" value={ansH1Out} onChange={e => setAnsH1Out(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
       </div>
       <div>
-       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">3. Calc o1 pre-activation (Z):<br/> <span className="text-xs font-normal">Z = h1_out&times;w31 + b2</span></label>
+       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">{t('lab.cs12deeplearning_3_calc_o1_pre_activation_z')}<br/> <span className="text-xs font-normal">{t('lab.cs12deeplearning_z_h1_out_times_w31_b2')}</span></label>
        <input type="number" step="0.01" value={ansO1In} onChange={e => setAnsO1In(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
       </div>
       <div>
-       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">4. Calc o1 ReLU output:<br/> <span className="text-xs font-normal">Out = max(0, Z)</span></label>
+       <label className="block text-slate-700 dark:text-[#ffffff] mb-1 font-medium">{t('lab.cs12deeplearning_4_calc_o1_relu_output')}<br/> <span className="text-xs font-normal">{t('lab.cs12deeplearning_out_max_0_z')}</span></label>
        <input type="number" step="0.01" value={ansO1Out} onChange={e => setAnsO1Out(e.target.value)} className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded" />
       </div>
 
       <button onClick={checkAnswers} className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-       Check Answers
-      </button>
+       
+                                {t('lab.cs12deeplearning_check_answers')}
+                               </button>
 
       {feedback && (
        <div className={`p-3 rounded mt-4 font-medium ${feedback.includes('Excellent') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
@@ -222,8 +227,9 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
         className={`w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40 `}
        >
         <Save size={20} />
-        Submit Results & Exit
-       </button>
+        
+                                     {t('lab.cs12deeplearning_submit_results_exit')}
+                                    </button>
       </div>
      </div>
     </div>

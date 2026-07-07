@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Users } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
@@ -26,6 +27,7 @@ const initialStudents: Student[] = [
 ];
 
 export default function LabM9SetsRelations({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [students, setStudents] = useState<Student[]>(initialStudents);
@@ -75,7 +77,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 9 Math: Sets & Venn Diagrams" />
+  <LabHeader onExit={onExit} title={t('lab.m9setsrelations_grade_9_math_sets_venn_diagram')} />
   
 
   
@@ -85,50 +87,54 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m9setsrelations_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m9setsrelations_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory: Overlapping Sets</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.m9setsrelations_theory_overlapping_sets')}</h2>
    
    <div className="prose prose-slate">
-   <h3 className="text-lg font-semibold text-indigo-700">What is a Set?</h3>
+   <h3 className="text-lg font-semibold text-indigo-700">{t('lab.m9setsrelations_what_is_a_set')}</h3>
    <p className="text-slate-600 dark:text-[#a1a1aa]">
-    A set is a collection of distinct objects. In a Venn Diagram, sets are represented by overlapping circles.
-   </p>
+    
+                             {t('lab.m9setsrelations_a_set_is_a_collection_of_disti')}
+                            </p>
    
-   <h3 className="text-lg font-semibold text-indigo-700 mt-4">Key Operations</h3>
+   <h3 className="text-lg font-semibold text-indigo-700 mt-4">{t('lab.m9setsrelations_key_operations')}</h3>
    <ul className="text-slate-600 dark:text-[#a1a1aa] list-disc pl-5">
-    <li><strong>Intersection (A ∩ B):</strong> Elements that belong to BOTH sets. The overlapping middle section.</li>
-    <li><strong>Union (A ∪ B):</strong> Elements that belong to set A, set B, or both.</li>
-    <li><strong>Complement (A'):</strong> Elements outside of set A.</li>
+    <li><strong>{t('lab.m9setsrelations_intersection_a_b')}</strong>  {t('lab.m9setsrelations_elements_that_belong_to_both_s')}</li>
+    <li><strong>{t('lab.m9setsrelations_union_a_b')}</strong>  {t('lab.m9setsrelations_elements_that_belong_to_set_a_')}</li>
+    <li><strong>{t('lab.m9setsrelations_complement_a')}</strong>  {t('lab.m9setsrelations_elements_outside_of_set_a')}</li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-indigo-700 mt-4">The Union Formula</h3>
+   <h3 className="text-lg font-semibold text-indigo-700 mt-4">{t('lab.m9setsrelations_the_union_formula')}</h3>
    <p className={`text-slate-600 dark:text-[#a1a1aa] font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-sm text-center flex-col `}>
-    n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
-   </p>
+    
+                             {t('lab.m9setsrelations_n_a_b_n_a_n_b_n_a_b')}
+                            </p>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mt-2">
-    We subtract the intersection once because it was counted twice (once in A and once in B).
-   </p>
+    
+                             {t('lab.m9setsrelations_we_subtract_the_intersection_o')}
+                            </p>
    </div>
   </div>
 
   {/* Interactive Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <Users className="text-indigo-600" /> Survey Categorizer
-   </h2>
+   <Users className="text-indigo-600" />  {t('lab.m9setsrelations_survey_categorizer')}
+                        </h2>
    
    {/* Unassigned Area */}
-   <div className={`w-full lg:min-h-[80px] bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg p-3 border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase">Drag Students to Categorize</div>
+   <div className={`w-full lg:min-h-[80px] bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg p-3 border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase">{t('lab.m9setsrelations_drag_students_to_categorize')}</div>
    <div className="flex flex-wrap gap-2">
     {students.filter(s => s.region === 'unassigned').map(s => (
     <div
@@ -141,7 +147,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     </div>
     ))}
     {students.filter(s => s.region === 'unassigned').length === 0 && (
-    <span className="text-slate-400 italic text-sm py-1">All students categorized!</span>
+    <span className="text-slate-400 italic text-sm py-1">{t('lab.m9setsrelations_all_students_categorized')}</span>
     )}
    </div>
    </div>
@@ -155,7 +161,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     onDragOver={handleDragOver}
     onDrop={(e) => handleDrop(e, 'math')}
    >
-    <span className="text-sm font-bold text-blue-800 absolute top-6 left-6 dark:text-[#ffffff]">Math Only</span>
+    <span className="text-sm font-bold text-blue-800 absolute top-6 left-6 dark:text-[#ffffff]">{t('lab.m9setsrelations_math_only')}</span>
     <div className="flex flex-col gap-1 w-full mt-4 items-start">
     {students.filter(s => s.region === 'math').map(s => (
      <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-blue-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
@@ -169,7 +175,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     onDragOver={handleDragOver}
     onDrop={(e) => handleDrop(e, 'science')}
    >
-    <span className="text-sm font-bold text-green-800 absolute top-6 right-6 dark:text-[#ffffff]">Science Only</span>
+    <span className="text-sm font-bold text-green-800 absolute top-6 right-6 dark:text-[#ffffff]">{t('lab.m9setsrelations_science_only')}</span>
     <div className="flex flex-col gap-1 w-full mt-4 items-end">
     {students.filter(s => s.region === 'science').map(s => (
      <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-green-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
@@ -183,7 +189,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     onDragOver={handleDragOver}
     onDrop={(e) => handleDrop(e, 'both')}
    >
-    <span className="text-sm font-bold text-indigo-900 absolute top-2 dark:text-[#ffffff]">Both</span>
+    <span className="text-sm font-bold text-indigo-900 absolute top-2 dark:text-[#ffffff]">{t('lab.m9setsrelations_both')}</span>
     <div className="flex flex-col gap-1 w-full mt-6 items-center">
     {students.filter(s => s.region === 'both').map(s => (
      <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212]/90 border border-indigo-300 px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
@@ -197,7 +203,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
     onDragOver={handleDragOver}
     onDrop={(e) => handleDrop(e, 'neither')}
    >
-    <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-1">Neither</span>
+    <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m9setsrelations_neither')}</span>
     <div className="flex flex-wrap justify-center gap-1 lg:overflow-y-auto">
     {students.filter(s => s.region === 'neither').map(s => (
      <div key={s.id} draggable onDragStart={(e) => handleDragStart(e, s.id)} className="text-xs bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-2 py-1 rounded shadow-sm cursor-grab">{s.name}</div>
@@ -210,35 +216,36 @@ export default function LabM9SetsRelations({ onExit }: Props) {
 
   {/* Data & Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Analysis & Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.m9setsrelations_analysis_assessment')}</h2>
    
    <div className="flex-1 min-w-0 bg-slate-50 dark:bg-[#121212] border rounded-lg p-4 flex flex-col justify-center items-center text-center">
    {isAllCorrect ? (
     <div className="text-green-600 flex flex-col items-center gap-2">
     <CheckCircle size={48} />
-    <h3 className="font-bold text-lg">Diagram Complete!</h3>
-    <p className="text-sm">You have correctly categorized all students.</p>
+    <h3 className="font-bold text-lg">{t('lab.m9setsrelations_diagram_complete')}</h3>
+    <p className="text-sm">{t('lab.m9setsrelations_you_have_correctly_categorized')}</p>
     </div>
    ) : (
     <div className="text-slate-500 dark:text-[#71717a]">
-    Categorize all students correctly to complete the diagram.
-    </div>
+    
+                                     {t('lab.m9setsrelations_categorize_all_students_correc')}
+                                     </div>
    )}
    </div>
 
    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Word Problem</h3>
+   <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.m9setsrelations_word_problem')}</h3>
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4">
-    In a class survey, n(Math) = {nA} and n(Science) = {nB}. 
-    If n(Math ∩ Science) = {nIntersect}, how many students like <b>at least one</b> of the subjects (n(Math ∪ Science))?
-   </p>
+    
+                             {t('lab.m9setsrelations_in_a_class_survey_n_math')} {nA}  {t('lab.m9setsrelations_and_n_science')} {nB}{t('lab.m9setsrelations_if_n_math_science')} {nIntersect}{t('lab.m9setsrelations_how_many_students_like')} <b>{t('lab.m9setsrelations_at_least_one')}</b>  {t('lab.m9setsrelations_of_the_subjects_n_math_science')}
+                            </p>
    <div className="flex flex-wrap gap-2">
     <input 
     type="number" value={qAns} onChange={(e) => setQAns(e.target.value)}
     className="flex-1 min-w-0 border rounded px-2 py-1 outline-none focus:border-indigo-400"
-    placeholder="Total union..."
+    placeholder={t('lab.m9setsrelations_total_union')}
     />
-    <button onClick={checkAnswer} className="px-3 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
+    <button onClick={checkAnswer} className="px-3 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m9setsrelations_check')}</button>
    </div>
    {qStatus !== null && (
     <div className={`mt-2 flex items-center gap-1 text-sm font-bold ${qStatus ? 'text-green-600' : 'text-red-500'}`}>

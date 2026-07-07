@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle2, XCircle, Puzzle, Target, Beaker, Link2, Sparkles , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const MORPHOLOGY_TARGETS = [
  { prefix: "un", root: "happy", suffix: "ness", result: "unhappiness", meaning: "The state of not being happy" },
@@ -38,6 +39,7 @@ const PRONOUN_TASKS = [
 const PRONOUN_TYPES = ["Personal", "Possessive", "Reflexive", "Demonstrative", "Relative"];
 
 export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [mode, setMode] = useState<'morphology' | 'pronoun'>('morphology');
 
@@ -113,20 +115,20 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
   >
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">Grammar & Morphology Lab</h1>
+  <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">{t('lab.e8pronounsmorphology_grammar_morphology_lab')}</h1>
   <div className="flex gap-2 p-1 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded-lg">
    <button 
     onClick={() => setMode('morphology')} 
     className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'morphology' ? ' dark:bg-[#121212] shadow-sm text-blue-600 dark:text-blue-400 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
    >
-    <Puzzle className="w-4 h-4" /> Morphology
-   </button>
+    <Puzzle className="w-4 h-4" />  {t('lab.e8pronounsmorphology_morphology')}
+                        </button>
    <button 
     onClick={() => setMode('pronoun')} 
     className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'pronoun' ? ' dark:bg-[#121212] shadow-sm text-indigo-600 dark:text-indigo-400 dark:text-indigo-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
    >
-    <Target className="w-4 h-4" /> Pronouns
-   </button>
+    <Target className="w-4 h-4" />  {t('lab.e8pronounsmorphology_pronouns')}
+                        </button>
   </div>
   <button
    onClick={toggleTheme}
@@ -146,11 +148,11 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
    <>
     <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-semibold mb-4 text-blue-600 dark:text-blue-400 dark:text-blue-400 flex items-center gap-2">
-     <Beaker className="w-5 h-5" /> Chemical Roots
-    </h2>
+     <Beaker className="w-5 h-5" />  {t('lab.e8pronounsmorphology_chemical_roots')}
+                                     </h2>
     <div className="space-y-4">
      <div>
-     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">Prefix</label>
+     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">{t('lab.e8pronounsmorphology_prefix')}</label>
      <div className="flex flex-wrap gap-2">
       {["un", "re", "dis", "mis", "pre", ""].map(p => (
       <button key={p} onClick={() => setSelectedPrefix(p)} className={`px-3 py-1.5 rounded-md border text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors ${selectedPrefix === p ? 'bg-amber-100 dark:bg-amber-900/50 dark:bg-amber-900/60 border-amber-500 text-amber-700 dark:text-amber-300 dark:bg-amber-900/40 dark:border-amber-500 dark:text-amber-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] dark:bg-slate-700 dark:border-slate-600 dark:text-[#ffffff]'}`}>
@@ -161,7 +163,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
      </div>
 
      <div>
-     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">Root Word</label>
+     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">{t('lab.e8pronounsmorphology_root_word')}</label>
      <div className="flex flex-wrap gap-2">
       {["happy", "build", "connect", "understand", "view", "act"].map(r => (
       <button key={r} onClick={() => setSelectedRoot(r)} className={`px-3 py-1.5 rounded-md border text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors ${selectedRoot === r ? 'bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 border-blue-500 text-blue-700 dark:text-blue-300 dark:bg-blue-900/40 dark:border-blue-500 dark:text-blue-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] dark:bg-slate-700 dark:border-slate-600 dark:text-[#ffffff]'}`}>
@@ -172,7 +174,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
      </div>
 
      <div>
-     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">Suffix</label>
+     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">{t('lab.e8pronounsmorphology_suffix')}</label>
      <div className="flex flex-wrap gap-2">
       {["ness", "er", "ion", "ing", "able", ""].map(s => (
       <button key={s} onClick={() => setSelectedSuffix(s)} className={`px-3 py-1.5 rounded-md border text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors ${selectedSuffix === s ? 'bg-emerald-100 dark:bg-emerald-900/50 dark:bg-emerald-900/60 border-emerald-500 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-900/40 dark:border-emerald-500 dark:text-emerald-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] dark:bg-slate-700 dark:border-slate-600 dark:text-[#ffffff]'}`}>
@@ -190,30 +192,32 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
     className="mt-4 w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
     {isSynthesizing ? <Sparkles className="w-5 h-5 animate-spin" /> : <Beaker className="w-5 h-5" />}
-    Synthesize Compound
-    </button>
+    
+                                 {t('lab.e8pronounsmorphology_synthesize_compound')}
+                                 </button>
    </>
    ) : (
    <>
     <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <div className="flex justify-between items-center mb-4">
      <h2 className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 flex items-center gap-2">
-     <Link2 className="w-5 h-5" /> Pronoun Scanner
-     </h2>
-     <button onClick={nextPronounTask} className="text-xs px-2 py-1 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 whitespace-nowrap flex-shrink-0">Next Sentence</button>
+     <Link2 className="w-5 h-5" />  {t('lab.e8pronounsmorphology_pronoun_scanner')}
+                                              </h2>
+     <button onClick={nextPronounTask} className="text-xs px-2 py-1 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 whitespace-nowrap flex-shrink-0">{t('lab.e8pronounsmorphology_next_sentence')}</button>
     </div>
     
     <div className="space-y-4">
      <div className="bg-blue-50 dark:bg-blue-900/50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800/50 text-sm mb-4">
-     First, select a tool below. Then click on a word in the right panel to assign it.
-     </div>
+     
+                                              {t('lab.e8pronounsmorphology_first_select_a_tool_below_then')}
+                                              </div>
 
      <div className="flex flex-col gap-2">
      <button 
       onClick={() => setClickMode(clickMode === 'pronoun' ? 'none' : 'pronoun')}
       className={`py-2 px-4 rounded-lg border flex items-center justify-between whitespace-nowrap flex-shrink-0 ${clickMode === 'pronoun' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 border-indigo-500 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] dark:bg-slate-700 dark:border-slate-600'}`}
      >
-      <span>1. Select Pronoun</span>
+      <span>{t('lab.e8pronounsmorphology_1_select_pronoun')}</span>
       {selectedPronounIdx !== null && <CheckCircle2 className="w-4 h-4 text-green-500 dark:text-green-400" />}
      </button>
      
@@ -221,19 +225,19 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
       onClick={() => setClickMode(clickMode === 'antecedent' ? 'none' : 'antecedent')}
       className={`py-2 px-4 rounded-lg border flex items-center justify-between whitespace-nowrap flex-shrink-0 ${clickMode === 'antecedent' ? 'bg-orange-100 dark:bg-orange-900/50 dark:bg-orange-900/60 border-orange-500 text-orange-700 dark:text-orange-300 dark:bg-orange-900/40 dark:text-orange-300' : 'bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] dark:bg-slate-700 dark:border-slate-600'}`}
      >
-      <span>2. Select Antecedent</span>
+      <span>{t('lab.e8pronounsmorphology_2_select_antecedent')}</span>
       {selectedAntecedentIdx !== null && <CheckCircle2 className="w-4 h-4 text-green-500 dark:text-green-400" />}
      </button>
      </div>
 
      <div className="mt-4 pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
-     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">3. Pronoun Type</label>
+     <label className="block text-sm font-medium mb-2 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">{t('lab.e8pronounsmorphology_3_pronoun_type')}</label>
      <select 
       value={selectedType}
       onChange={(e) => setSelectedType(e.target.value)}
       className="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-w-0"
      >
-      <option value="">Select Type...</option>
+      <option value="">{t('lab.e8pronounsmorphology_select_type')}</option>
       {PRONOUN_TYPES.map(pt => (
       <option key={pt} value={pt}>{pt}</option>
       ))}
@@ -247,8 +251,9 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
     className="mt-4 w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
     <Target className="w-5 h-5" />
-    Analyze Resolution
-    </button>
+    
+                                     {t('lab.e8pronounsmorphology_analyze_resolution')}
+                                     </button>
    </>
    )}
 
@@ -297,7 +302,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
     <div className="relative z-10 w-full max-w-3xl flex flex-col items-center gap-12">
     
     <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] w-full">
-     <h3 className="text-sm font-bold text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] uppercase tracking-widest mb-6 text-center">Sentence Analysis Viewer</h3>
+     <h3 className="text-sm font-bold text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] uppercase tracking-widest mb-6 text-center">{t('lab.e8pronounsmorphology_sentence_analysis_viewer')}</h3>
      
      <div className="flex flex-wrap gap-3 justify-center text-2xl font-medium leading-relaxed">
      {PRONOUN_TASKS[taskIdx].words.map((word, idx) => {
@@ -327,7 +332,8 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
 
      {clickMode !== 'none' && (
      <div className="mt-8 text-center animate-pulse text-blue-500 dark:text-blue-400 dark:text-blue-400 font-medium">
-      Click a word in the sentence to assign it as the {clickMode}.
+      
+                                               {t('lab.e8pronounsmorphology_click_a_word_in_the_sentence_t')} {clickMode}.
      </div>
      )}
     </div>

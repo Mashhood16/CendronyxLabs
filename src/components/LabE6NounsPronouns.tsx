@@ -2,6 +2,7 @@ import type { DragEvent } from 'react';
 import { useState, } from 'react';
 import { ArrowLeft, RefreshCw, BookOpen, Type, Target, ShieldCheck, AlertCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 interface WordItem {
  id: string;
@@ -44,6 +45,7 @@ const ARTICLE_QUESTIONS: ArticleQuestion[] = [
 ];
 
 export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'nouns' | 'articles'>('nouns');
 
@@ -171,12 +173,13 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
    <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#71717a]" />
    </button>
    <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-   Nouns, Pronouns & Articles
-   </h1>
+   
+                        {t('lab.e6nounspronouns_nouns_pronouns_articles')}
+                        </h1>
   </div>
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -186,14 +189,16 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
    onClick={() => setActiveTab('nouns')}
    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ activeTab === 'nouns' ? 'bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300' }`}
    >
-   Word Categories
-   </button>
+   
+                        {t('lab.e6nounspronouns_word_categories')}
+                        </button>
    <button
    onClick={() => setActiveTab('articles')}
    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ activeTab === 'articles' ? 'bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300' }`}
    >
-   Articles (a, an, the)
-   </button>
+   
+                        {t('lab.e6nounspronouns_articles_a_an_the')}
+                        </button>
   </div>
   </div>
 
@@ -206,9 +211,9 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
    <div>
     <h2 className="text-2xl font-bold mb-2 flex items-center">
     {activeTab === 'nouns' ? (
-     <><Target className="w-6 h-6 mr-2 text-indigo-500" /> Categorizer</>
+     <><Target className="w-6 h-6 mr-2 text-indigo-500" />  {t('lab.e6nounspronouns_categorizer')}</>
     ) : (
-     <><BookOpen className="w-6 h-6 mr-2 text-indigo-500" /> Article Fill</>
+     <><BookOpen className="w-6 h-6 mr-2 text-indigo-500" />  {t('lab.e6nounspronouns_article_fill')}</>
     )}
     </h2>
     <p className="text-slate-600 dark:text-[#71717a]">
@@ -220,21 +225,21 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
 
    <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/50">
     <h3 className="font-semibold text-indigo-800 dark:text-indigo-300 flex items-center mb-2">
-    <AlertCircle className="w-4 h-4 mr-2" /> Quick Rules
-    </h3>
+    <AlertCircle className="w-4 h-4 mr-2" />  {t('lab.e6nounspronouns_quick_rules')}
+                                 </h3>
     {activeTab === 'nouns' ? (
     <ul className="text-sm text-indigo-700 dark:text-indigo-400 space-y-1 list-disc pl-5">
-     <li><strong>Proper:</strong> Specific names (Capitalized).</li>
-     <li><strong>Common:</strong> General items or things.</li>
-     <li><strong>Abstract:</strong> Ideas or feelings you can't touch.</li>
-     <li><strong>Collective:</strong> Groups of things.</li>
-     <li><strong>Pronoun:</strong> Words taking place of nouns (he, she).</li>
+     <li><strong>{t('lab.e6nounspronouns_proper')}</strong>  {t('lab.e6nounspronouns_specific_names_capitalized')}</li>
+     <li><strong>{t('lab.e6nounspronouns_common')}</strong>  {t('lab.e6nounspronouns_general_items_or_things')}</li>
+     <li><strong>{t('lab.e6nounspronouns_abstract')}</strong>  {t('lab.e6nounspronouns_ideas_or_feelings_you_can_t_to')}</li>
+     <li><strong>{t('lab.e6nounspronouns_collective')}</strong>  {t('lab.e6nounspronouns_groups_of_things')}</li>
+     <li><strong>{t('lab.e6nounspronouns_pronoun')}</strong>  {t('lab.e6nounspronouns_words_taking_place_of_nouns_he')}</li>
     </ul>
     ) : (
     <ul className="text-sm text-indigo-700 dark:text-indigo-400 space-y-1 list-disc pl-5">
-     <li><strong>A:</strong> Before consonant sounds.</li>
-     <li><strong>An:</strong> Before vowel sounds.</li>
-     <li><strong>The:</strong> For specific or unique nouns.</li>
+     <li><strong>A:</strong>  {t('lab.e6nounspronouns_before_consonant_sounds')}</li>
+     <li><strong>{t('lab.e6nounspronouns_an')}</strong>  {t('lab.e6nounspronouns_before_vowel_sounds')}</li>
+     <li><strong>{t('lab.e6nounspronouns_the')}</strong>  {t('lab.e6nounspronouns_for_specific_or_unique_nouns')}</li>
     </ul>
     )}
    </div>
@@ -246,17 +251,18 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
      onClick={checkNouns}
      className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     <ShieldCheck className="w-5 h-5 mr-2" /> Check Categories
-     </button>
+     <ShieldCheck className="w-5 h-5 mr-2" />  {t('lab.e6nounspronouns_check_categories')}
+                                          </button>
      <button
      onClick={resetNouns}
      className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
      >
-     <RefreshCw className="w-5 h-5 mr-2" /> Reset
-     </button>
+     <RefreshCw className="w-5 h-5 mr-2" />  {t('lab.e6nounspronouns_reset')}
+                                          </button>
      {nounScore !== null && (
      <div className={`p-4 rounded-xl text-center font-bold text-lg ${ nounScore === INITIAL_WORDS.length ? 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300' : 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300' }`}>
-      Score: {nounScore} / {INITIAL_WORDS.length}
+      
+                                               {t('lab.e6nounspronouns_score')} {nounScore} / {INITIAL_WORDS.length}
      </div>
      )}
     </>
@@ -266,17 +272,18 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
      onClick={checkArticles}
      className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     <ShieldCheck className="w-5 h-5 mr-2" /> Check Articles
-     </button>
+     <ShieldCheck className="w-5 h-5 mr-2" />  {t('lab.e6nounspronouns_check_articles')}
+                                              </button>
      <button
      onClick={resetArticles}
      className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
      >
-     <RefreshCw className="w-5 h-5 mr-2" /> Reset
-     </button>
+     <RefreshCw className="w-5 h-5 mr-2" />  {t('lab.e6nounspronouns_reset')}
+                                              </button>
      {articleScore !== null && (
      <div className={`p-4 rounded-xl text-center font-bold text-lg ${ articleScore === ARTICLE_QUESTIONS.reduce((acc, q) => acc + q.answers.length, 0) ? 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300' : 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300' }`}>
-      Score: {articleScore} / {ARTICLE_QUESTIONS.reduce((acc, q) => acc + q.answers.length, 0)}
+      
+                                                   {t('lab.e6nounspronouns_score')} {articleScore} / {ARTICLE_QUESTIONS.reduce((acc, q) => acc + q.answers.length, 0)}
      </div>
      )}
     </>
@@ -298,8 +305,8 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
     onClick={() => handleBinClick('unassigned')}
     >
     <h3 className="text-lg font-semibold mb-4 flex items-center text-slate-700 dark:text-[#a1a1aa]">
-     <Type className="w-5 h-5 mr-2" /> Word Pool (Drag from here)
-    </h3>
+     <Type className="w-5 h-5 mr-2" />  {t('lab.e6nounspronouns_word_pool_drag_from_here')}
+                                     </h3>
     <div className="flex flex-wrap gap-3">
      {unassignedWords.map(w => (
      <div
@@ -313,7 +320,7 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
      </div>
      ))}
      {unassignedWords.length === 0 && (
-     <div className="text-slate-400 dark:text-[#71717a] italic py-2">All words categorized!</div>
+     <div className="text-slate-400 dark:text-[#71717a] italic py-2">{t('lab.e6nounspronouns_all_words_categorized')}</div>
      )}
     </div>
     </div>
@@ -372,8 +379,8 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
         <option value="" disabled>___</option>
         <option value="a">a</option>
         <option value="an">an</option>
-        <option value="the">the</option>
-        <option value="x">(no article)</option>
+        <option value="the">{t('lab.e6nounspronouns_the_1')}</option>
+        <option value="x">{t('lab.e6nounspronouns_no_article')}</option>
        </select>
        </div>
       )}

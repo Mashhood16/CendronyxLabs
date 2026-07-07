@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Flame, Snowflake } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [temperature, setTemperature] = useState(25);
  const [running, setRunning] = useState(false);
  const [substance, setSubstance] = useState<'none' | 'NaOH' | 'NH4NO3'>('none');
@@ -41,7 +43,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 7: Exothermic & Endothermic Solutions" />
+  <LabHeader onExit={onExit} title={t('lab.s6solutioninvestigation_unit_7_exothermic_endothermic_')} />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">
   <div className="w-full max-w-5xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex gap-8">
@@ -49,33 +51,34 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
    {/* Controls */}
    <div className="w-1/2 flex flex-col justify-between">
    <div>
-    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Temperature Changes during Dissolution</h2>
+    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.s6solutioninvestigation_temperature_changes_during_dis')}</h2>
     <p className="text-slate-600 dark:text-[#a1a1aa] mb-8 leading-relaxed">
-    Some substances release heat when they dissolve in water (Exothermic), while others absorb heat, making the solution colder (Endothermic).
-    </p>
+    
+                                 {t('lab.s6solutioninvestigation_some_substances_release_heat_w')}
+                                 </p>
 
     <div className="space-y-4">
     <button 
      onClick={() => runExperiment('NaOH')}
      disabled={running}
-     className="w-full p-4 border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-[#1c1b1b] dark:bg-[#121212] dark:hover:bg-slate-700"
+     className="w-full p-4 border-2 border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#000000] hover:bg-slate-100 dark:bg-[#1c1b1b] rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-[#1c1b1b] dark:bg-[#121212] dark:hover:bg-slate-700"
     >
      <div className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center shrink-0"><Flame className="w-6 h-6" /></div>
      <div>
-     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">Dissolve Sodium Hydroxide (NaOH)</h3>
-     <p className="text-xs text-slate-600 dark:text-[#71717a]">Observe what happens to the temperature.</p>
+     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.s6solutioninvestigation_dissolve_sodium_hydroxide_naoh')}</h3>
+     <p className="text-xs text-slate-600 dark:text-[#71717a]">{t('lab.s6solutioninvestigation_observe_what_happens_to_the_te')}</p>
      </div>
     </button>
 
     <button 
      onClick={() => runExperiment('NH4NO3')}
      disabled={running}
-     className="w-full p-4 border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-[#1c1b1b] dark:bg-[#121212] dark:hover:bg-slate-700"
+     className="w-full p-4 border-2 border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#000000] hover:bg-slate-100 dark:bg-[#1c1b1b] rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-[#1c1b1b] dark:bg-[#121212] dark:hover:bg-slate-700"
     >
      <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shrink-0 dark:bg-teal-950/20 dark:border-teal-900"><Snowflake className="w-6 h-6" /></div>
      <div>
-     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">Dissolve Ammonium Nitrate (NH₄NO₃)</h3>
-     <p className="text-xs text-slate-600 dark:text-[#71717a]">Observe what happens to the temperature.</p>
+     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.s6solutioninvestigation_dissolve_ammonium_nitrate_nh_n')}</h3>
+     <p className="text-xs text-slate-600 dark:text-[#71717a]">{t('lab.s6solutioninvestigation_observe_what_happens_to_the_te')}</p>
      </div>
     </button>
     </div>
@@ -83,11 +86,11 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
 
    {progress === 100 && (
     <div className="mt-8 p-6 bg-slate-100 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl">
-     <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Conclusion</h3>
+     <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.s6solutioninvestigation_conclusion')}</h3>
      {substance === 'NaOH' ? (
-     <p className="text-sm text-slate-700 dark:text-[#ffffff]">The temperature increased. This is an <strong>Exothermic</strong> process because heat energy was released into the solution.</p>
+     <p className="text-sm text-slate-700 dark:text-[#ffffff]">{t('lab.s6solutioninvestigation_the_temperature_increased_this')} <strong>{t('lab.s6solutioninvestigation_exothermic')}</strong>  {t('lab.s6solutioninvestigation_process_because_heat_energy_wa')}</p>
      ) : (
-     <p className="text-sm text-slate-700 dark:text-[#ffffff]">The temperature decreased. This is an <strong>Endothermic</strong> process because heat energy was absorbed from the solution.</p>
+     <p className="text-sm text-slate-700 dark:text-[#ffffff]">{t('lab.s6solutioninvestigation_the_temperature_decreased_this')} <strong>{t('lab.s6solutioninvestigation_endothermic')}</strong>  {t('lab.s6solutioninvestigation_process_because_heat_energy_wa_1')}</p>
      )}
     </div>
    )}

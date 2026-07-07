@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import type { PointerEvent } from 'react';
 import {BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
@@ -14,6 +15,7 @@ const questions = [
 ];
 
 export default function LabM10EqualChords({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const svgRef = useRef<SVGSVGElement>(null);
@@ -103,7 +105,7 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab M10: Equal Chords" />
+  <LabHeader onExit={onExit} title={t('lab.m10equalchords_lab_m10_equal_chords')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -112,46 +114,50 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10equalchords_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10equalchords_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <BookOpen className="w-5 h-5 text-blue-600" />
-   Theory & Concepts
-   </h2>
+   
+                        {t('lab.m10equalchords_theory_concepts')}
+                        </h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
    <p>
-    In geometry, chords of a circle have fascinating properties relating their length, their distance from the center, and the angle they subtend at the center.
-   </p>
+    
+                             {t('lab.m10equalchords_in_geometry_chords_of_a_circle')}
+                            </p>
    <div className={`bg-amber-50 p-4 rounded-lg border border-amber-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-semibold text-amber-800 mb-2 dark:text-[#ffffff]">Key Properties of Equal Chords</h3>
+    <h3 className="font-semibold text-amber-800 mb-2 dark:text-[#ffffff]">{t('lab.m10equalchords_key_properties_of_equal_chords')}</h3>
     <ul className="list-disc pl-5 space-y-2 text-amber-700">
     <li>
-     <strong>Equidistant:</strong> Equal chords of a circle are equidistant from the center. (And conversely, chords that are equidistant from the center are equal in length).
-    </li>
+     <strong>{t('lab.m10equalchords_equidistant')}</strong>  {t('lab.m10equalchords_equal_chords_of_a_circle_are_e')}
+                                     </li>
     <li>
-     <strong>Equal Angles:</strong> Equal chords subtend equal angles at the center of the circle.
-    </li>
+     <strong>{t('lab.m10equalchords_equal_angles')}</strong>  {t('lab.m10equalchords_equal_chords_subtend_equal_ang')}
+                                     </li>
     </ul>
    </div>
    <p>
-    Use the interactive canvas to verify these properties experimentally. Try dragging the points until the lengths of the two chords match exactly, and observe their distance to the center and their central angles!
-   </p>
+    
+                             {t('lab.m10equalchords_use_the_interactive_canvas_to_')}
+                            </p>
    </div>
   </div>
 
   {/* Middle Column: Interactive Lab */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] overflow- relative flex flex-col lg:h-[500px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] overflow- relative flex flex-col lg:h-[500px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <div className={`p-4 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-center">Interactive Canvas</h3>
-   <p className="text-xs text-slate-500 dark:text-[#71717a] text-center">Drag points A, B, C, D to change the chords.</p>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-center">{t('lab.m10equalchords_interactive_canvas')}</h3>
+   <p className="text-xs text-slate-500 dark:text-[#71717a] text-center">{t('lab.m10equalchords_drag_points_a_b_c_d_to_change_')}</p>
    </div>
    <div className="flex-1 min-w-0 relative">
    <svg 
@@ -197,24 +203,25 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
    </svg>
 
    {/* Floating Info Panels */}
-   <div className="absolute top-4 left-4 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-3 rounded-lg border border-blue-200 shadow-sm pointer-events-none text-xs w-48 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    <div className="font-bold text-blue-700 mb-1 border-b border-blue-100 pb-1">Chord AB</div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Length:</span> <span className="font-semibold">{lenAB.toFixed(0)} px</span></div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Distance to Center:</span> <span className="font-semibold">{distAB.toFixed(0)} px</span></div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Central Angle:</span> <span className="font-semibold">{angAB.toFixed(0)}°</span></div>
+   <div className="absolute top-4 left-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-3 rounded-lg border border-blue-200 shadow-sm pointer-events-none text-xs w-48 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div className="font-bold text-blue-700 mb-1 border-b border-blue-100 pb-1">{t('lab.m10equalchords_chord_ab')}</div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_length')}</span> <span className="font-semibold">{lenAB.toFixed(0)} px</span></div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_distance_to_center')}</span> <span className="font-semibold">{distAB.toFixed(0)} px</span></div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angAB.toFixed(0)}°</span></div>
    </div>
 
    <div className="absolute top-4 right-4 bg-slate-50 dark:bg-[#121212]/90 p-3 rounded-lg border border-red-200 shadow-sm pointer-events-none text-xs w-48">
-    <div className="font-bold text-red-700 mb-1 border-b border-red-100 pb-1">Chord CD</div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Length:</span> <span className="font-semibold">{lenCD.toFixed(0)} px</span></div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Distance to Center:</span> <span className="font-semibold">{distCD.toFixed(0)} px</span></div>
-    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>Central Angle:</span> <span className="font-semibold">{angCD.toFixed(0)}°</span></div>
+    <div className="font-bold text-red-700 mb-1 border-b border-red-100 pb-1">{t('lab.m10equalchords_chord_cd')}</div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_length')}</span> <span className="font-semibold">{lenCD.toFixed(0)} px</span></div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_distance_to_center')}</span> <span className="font-semibold">{distCD.toFixed(0)} px</span></div>
+    <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angCD.toFixed(0)}°</span></div>
    </div>
    
    {Math.abs(lenAB - lenCD) < 2 && (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-green-100 text-green-800 px-4 py-2 rounded-full font-bold text-sm shadow-md border border-green-300 whitespace-nowrap dark:text-[#ffffff]">
-    🎉 Chords are Equal! Notice the distances and angles.
-    </div>
+    
+                                 {t('lab.m10equalchords_chords_are_equal_notice_the_di')}
+                                 </div>
    )}
    </div>
   </div>
@@ -224,9 +231,10 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
    <div className="flex items-center justify-between mb-4">
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
     <CheckCircle className="w-5 h-5 text-green-600" />
-    Assessment
-   </h2>
-   <button onClick={nextQuestion} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title="Next Question">
+    
+                             {t('lab.m10equalchords_assessment')}
+                            </h2>
+   <button onClick={nextQuestion} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title={t('lab.m10equalchords_next_question')}>
     <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
    </button>
    </div>
@@ -242,15 +250,16 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
      value={ans}
      onChange={(e) => setAns(e.target.value)}
      className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-     placeholder="Value..."
+     placeholder={t('lab.m10equalchords_value')}
     />
     </div>
     <button 
     onClick={handleCheckQuiz}
     className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.m10equalchords_check_answer')}
+                                 </button>
    </div>
    
    {feedback && (

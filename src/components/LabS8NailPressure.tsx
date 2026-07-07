@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Hammer } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8NailPressure({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [orientation, setOrientation] = useState<'pointed' | 'flat'>('pointed');
  const [hits, setHits] = useState(0);
 
@@ -16,25 +18,27 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 8.1: Force & Pressure" subtitle="Pushing a nail into wood" />
+  <LabHeader onExit={onExit} title={t('lab.s8nailpressure_act_8_1_force_pressure')} subtitle={t('lab.subtitle_pushing_nail_into')} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
   
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Nail Orientation</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8nailpressure_nail_orientation')}</h3>
    <button 
    onClick={() => { setOrientation('pointed'); reset(); }}
    className={`p-3 text-left rounded-lg font-bold border-2 transition-colors ${orientation === 'pointed' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
    >
-   Pointed End Down
-   </button>
+   
+                        {t('lab.s8nailpressure_pointed_end_down')}
+                        </button>
    <button 
    onClick={() => { setOrientation('flat'); reset(); }}
    className={`p-3 text-left rounded-lg font-bold border-2 transition-colors ${orientation === 'flat' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
    >
-   Flat Head Down
-   </button>
+   
+                        {t('lab.s8nailpressure_flat_head_down')}
+                        </button>
   </div>
 
   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[400px]">
@@ -82,8 +86,8 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
     disabled={hits >= 3}
     className="w-full bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 text-xl shadow-lg flex justify-center items-center gap-3 transition-transform active:scale-95 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Hammer className="w-6 h-6" /> Hit with Hammer
-   </button>
+    <Hammer className="w-6 h-6" />  {t('lab.s8nailpressure_hit_with_hammer')}
+                            </button>
 
    {hits >= 3 && (
     <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${orientation === 'pointed' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>

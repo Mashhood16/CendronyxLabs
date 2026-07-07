@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
@@ -15,7 +16,8 @@ interface DataPoint {
 }
 
 export default function LabP10RefractionIllusion({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [angleI, setAngleI] = useState<number>(30);
  const [material, setMaterial] = useState<string>('water');
@@ -69,7 +71,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Refraction & Snell's Law" subtitle="Investigate the bending of light across different media" />
+  <LabHeader onExit={onExit} title={t('lab.p10refractionillusion_refraction_snell_s_law')} subtitle={t('lab.subtitle_investigate_bending_light')} />
 
   {/* Main Grid */}
   
@@ -79,40 +81,44 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10refractionillusion_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10refractionillusion_lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory and Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10refractionillusion_theory_andsetup')}</h2>
    </div>
    <div className={`p-5 flex-1 lg:overflow-y-auto space-y-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <div className="space-y-2 text-sm text-slate-600 dark:text-[#a1a1aa]">
     <p>
-    When light travels from one transparent medium to another, its speed changes, causing the ray to bend. This is called <strong>refraction</strong>.
+    
+                                 {t('lab.p10refractionillusion_when_light_travels_from_one_tr')} <strong>{t('lab.10refractionillusion_refraction')}</strong>.
     </p>
     <p>
-    <strong>Snell's Law</strong> describes this relationship quantitatively:
-    </p>
+    <strong>{t('lab.10refractionillusion_snellslaw')}</strong>  {t('lab.p10refractionillusion_describes_this_relationship_qu')}
+                                 </p>
     <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-100 text-center font-mono text-base text-slate-800 dark:text-[#ffffff] flex-col `}>
-    n₁·sin(θ₁) = n₂·sin(θ₂)
-    </div>
+    
+                                 {t('lab.p10refractionillusion_n_sin_n_sin')}
+                                 </div>
     <p>
-    Where <strong>n</strong> is the refractive index, <strong>θ₁</strong> is the angle of incidence, and <strong>θ₂</strong> is the angle of refraction.
-    </p>
+    
+                                 {t('lab.p10refractionillusion_where')} <strong>n</strong>{t('lab.10refractionillusion_istherefractiveindex')}<strong>{t('lab.10refractionillusion_label')}</strong>{t('lab.10refractionillusion_istheangleofincidenceand')}<strong>{t('lab.10refractionillusion_label')}</strong>  {t('lab.p10refractionillusion_is_the_angle_of_refraction')}
+                                 </p>
    </div>
 
    <div className="border-t border-slate-100 pt-4 space-y-4">
     <div className="space-y-2">
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <span>Angle of Incidence (θ₁)</span>
+     <span>{t('lab.p10refractionillusion_angle_of_incidence')}</span>
      <span>{angleI}°</span>
     </label>
     <input
@@ -128,8 +134,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     Refracting Medium (n₂)
-    </label>
+     
+                                      {t('lab.p10refractionillusion_refracting_medium_n')}
+                                     </label>
     <select
      value={material}
      onChange={(e) => setMaterial(e.target.value)}
@@ -146,16 +153,16 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
 
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
     <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    <strong>Experiment:</strong> Change the angle of incidence and record the angle of refraction. Plot sin(θ₁) vs sin(θ₂) to determine the refractive index.
-    </p>
+    <strong>{t('lab.10refractionillusion_experiment')}</strong>  {t('lab.p10refractionillusion_change_the_angle_of_incidence_')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className="bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col lg:col-span-1 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col lg:col-span-1 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 justify-between items-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Simulation View</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10refractionillusion_simulationview')}</h2>
    </div>
    <div className="p-4 flex-1 flex flex-col items-center justify-center bg-[#000000] dark:bg-[#121212] relative overflow-hidden">
    
@@ -275,12 +282,12 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
    {/* Readout */}
    <div className="mt-6 flex justify-around w-full max-w-sm bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-inner flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     <div className="text-center">
-    <p className="text-xs text-slate-400 uppercase tracking-wider">Incidence (θ₁)</p>
+    <p className="text-xs text-slate-400 uppercase tracking-wider">{t('lab.p10refractionillusion_incidence')}</p>
     <p className="text-2xl font-mono text-amber-400">{angleI.toFixed(1)}°</p>
     </div>
     <div className="w-px bg-slate-700 dark:bg-[#121212]"></div>
     <div className="text-center">
-    <p className="text-xs text-slate-400 uppercase tracking-wider">Refraction (θ₂)</p>
+    <p className="text-xs text-slate-400 uppercase tracking-wider">{t('lab.p10refractionillusion_refraction')}</p>
     <p className="text-2xl font-mono text-sky-400">{measuredR.toFixed(1)}°</p>
     </div>
    </div>
@@ -291,20 +298,20 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
   {/* Column 3: Data & Analysis */}
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 justify-between items-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10refractionillusion_data_andanalysis')}</h2>
    <div className="flex gap-2">
     <button
     onClick={handleRecordData}
     className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    <Plus className="w-4 h-4" /> Record
-    </button>
+    <Plus className="w-4 h-4" />  {t('lab.p10refractionillusion_record')}
+                                 </button>
     <button
     onClick={handleClearData}
     className="flex items-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm font-medium"
     >
-    <Trash2 className="w-4 h-4" /> Clear
-    </button>
+    <Trash2 className="w-4 h-4" />  {t('lab.p10refractionillusion_clear')}
+                                 </button>
    </div>
    </div>
    
@@ -317,16 +324,17 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
      <tr>
      <th className="px-3 py-2 text-center">θ₁ (°)</th>
      <th className="px-3 py-2 text-center">θ₂ (°)</th>
-     <th className="px-3 py-2 text-center">sin(θ₁)</th>
-     <th className="px-3 py-2 text-center">sin(θ₂)</th>
+     <th className="px-3 py-2 text-center">{t('lab.p10refractionillusion_sin')}</th>
+     <th className="px-3 py-2 text-center">{t('lab.p10refractionillusion_sin_1')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
      <tr>
       <td colSpan={4} className="px-3 py-6 text-center text-slate-400 italic">
-      No data recorded yet.
-      </td>
+      
+                                                   {t('lab.p10refractionillusion_no_data_recorded_yet')}
+                                                   </td>
      </tr>
      ) : (
      data.map((point) => (
@@ -344,7 +352,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
 
    {/* Graph */}
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">Graph of sin(θ₁) vs sin(θ₂)</h3>
+    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">{t('lab.p10refractionillusion_graph_of_sin_vs_sin')}</h3>
     <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-[#121212] border-l-2 border-b-2 border-slate-600 dark:border-[#1c1b1b]">
     {/* Grid lines */}
     {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
@@ -355,9 +363,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
     ))}
     
     {/* Axis Labels */}
-    <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-[#71717a] font-medium">sin(θ₂)</div>
+    <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-[#71717a] font-medium">{t('lab.p10refractionillusion_sin_1')}</div>
     <div className="absolute top-0 bottom-0 -left-6 flex items-center">
-     <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a] font-medium whitespace-nowrap">sin(θ₁)</div>
+     <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a] font-medium whitespace-nowrap">{t('lab.p10refractionillusion_sin')}</div>
     </div>
 
     {/* Data Points */}
@@ -392,15 +400,16 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
 
    {/* Assessment */}
    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.10refractionillusion_analysis')}</h3>
     <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Select "Unknown Liquid" as the medium. Record data for several angles. Calculate the gradient (sin θ₁ / sin θ₂) to find its refractive index.
-    </p>
+    
+                                 {t('lab.p10refractionillusion_select_unknown_liquid_as_the_m')}
+                                 </p>
     <div className="flex gap-2 items-center">
     <input
      type="number"
      step="0.01"
-     placeholder="Calculated n"
+     placeholder={t('lab.p10refractionillusion_t_lab_10refractionillusion_cal')}
      value={assessmentAnswer}
      onChange={(e) => setAssessmentAnswer(e.target.value)}
      className="w-full p-2 rounded border border-indigo-200 text-sm focus:ring-2 focus:ring-indigo-500"
@@ -409,20 +418,21 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
      onClick={checkAssessment}
      className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-700 transition-colors whitespace-nowrap dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10refractionillusion_check')}
+                                     </button>
     </div>
     
     {assessmentResult === 'correct' && (
     <div className="mt-3 flex items-center gap-2 text-emerald-600 bg-emerald-50 p-2 rounded border border-emerald-200">
      <CheckCircle className="w-5 h-5" />
-     <span className="text-sm font-medium">Correct! The index is ≈ 1.65.</span>
+     <span className="text-sm font-medium">{t('lab.10refractionillusion_correcttheindexis165')}</span>
     </div>
     )}
     {assessmentResult === 'incorrect' && (
     <div className="mt-3 flex items-center gap-2 text-rose-600 bg-rose-50 p-2 rounded border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
      <XCircle className="w-5 h-5" />
-     <span className="text-sm font-medium">Incorrect. Try plotting the points and finding the slope.</span>
+     <span className="text-sm font-medium">{t('lab.10refractionillusion_incorrecttryplottingthepointsandfin')}</span>
     </div>
     )}
    </div>

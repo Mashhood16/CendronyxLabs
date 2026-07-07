@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Play, RotateCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6LoopAdjustments({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [mode, setMode] = useState<'turn' | 'size'>('turn');
  const [isRunning, setIsRunning] = useState(false);
  const [iteration, setIteration] = useState(0);
@@ -51,11 +53,11 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Loop Adjustments" />
+  <LabHeader onExit={onExit} title={t('lab.c6loopadjustments_loop_adjustments')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Swap out the block inside the repeat loop and observe the different experimental outputs.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6loopadjustments_swap_out_the_block_inside_the_')}</p>
 
   <div className="flex gap-8 flex-1">
    {/* Blocks Editor (Mock) */}
@@ -63,44 +65,49 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
    
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
     <div className="bg-amber-500 text-white font-bold p-3 text-sm flex justify-between items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <span>Control & Motion/Looks</span>
+    <span>{t('lab.c6loopadjustments_control_motion_looks')}</span>
     </div>
     <div className="p-6 flex flex-col gap-4 bg-slate-50 dark:bg-[#121212]/50 items-start">
     
     <div className="bg-amber-500 rounded-lg shadow-sm border border-amber-600 p-4 w-full text-white font-bold text-sm pb-10 relative z-10 dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
      <div className="mb-2 flex items-center gap-2">
-     repeat <span className="bg-slate-50 dark:bg-[#121212] text-black dark:text-white px-2 py-0.5 rounded">10</span>
+     
+                                          {t('lab.c6loopadjustments_repeat')} <span className="bg-slate-50 dark:bg-[#121212] text-black dark:text-white px-2 py-0.5 rounded">10</span>
      </div>
      
      {/* Inside Loop */}
      <div className="bg-slate-50 dark:bg-[#121212]/20 p-2 rounded absolute bottom-2 left-4 right-4 h-12 flex items-center justify-center border-2 border-dashed border-white/50 cursor-pointer">
      {mode === 'turn' ? (
       <div className="bg-blue-500 border border-blue-600 px-3 py-1 rounded w-full flex items-center gap-2 shadow-sm text-xs /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-       turn <RotateCw className="w-3 h-3" /> 15 degrees
-      </div>
+       
+                                                    {t('lab.c6loopadjustments_turn')} <RotateCw className="w-3 h-3" />  {t('lab.c6loopadjustments_15_degrees')}
+                                                   </div>
      ) : (
       <div className="bg-indigo-500 border border-indigo-600 px-3 py-1 rounded w-full flex items-center shadow-sm text-xs dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-       change size by 10
-      </div>
+       
+                                                        {t('lab.c6loopadjustments_change_size_by_10')}
+                                                       </div>
      )}
      </div>
     </div>
 
-    <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mt-4 mb-2">Available Blocks (Click to Swap):</div>
+    <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mt-4 mb-2">{t('lab.c6loopadjustments_available_blocks_click_to_swap')}</div>
     <button 
      disabled={isRunning}
      onClick={() => setMode('turn')}
      className={`bg-blue-500 rounded-lg shadow-sm border border-blue-600 p-3 w-full text-white font-bold text-sm flex items-center gap-2 transition-transform ${mode !== 'turn' ? 'opacity-50 hover:opacity-100 hover:scale-105' : 'ring-2 ring-blue-300 ring-offset-2'}`}
     >
-     turn <RotateCw className="w-4 h-4" /> 15 degrees
-    </button>
+     
+                                      {t('lab.c6loopadjustments_turn')} <RotateCw className="w-4 h-4" />  {t('lab.c6loopadjustments_15_degrees')}
+                                     </button>
     <button 
      disabled={isRunning}
      onClick={() => setMode('size')}
      className={`bg-indigo-500 rounded-lg shadow-sm border border-indigo-600 p-3 w-full text-white font-bold text-sm flex items-center gap-2 transition-transform ${mode !== 'size' ? 'opacity-50 hover:opacity-100 hover:scale-105' : 'ring-2 ring-indigo-300 ring-offset-2'}`}
     >
-     change size by 10
-    </button>
+     
+                                      {t('lab.c6loopadjustments_change_size_by_10')}
+                                     </button>
 
     </div>
    </div>
@@ -119,19 +126,20 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
     disabled={isRunning}
     className="flex items-center justify-center w-full py-2 bg-slate-200 dark:!bg-[#121212] hover:bg-slate-300 dark:!bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-xl shadow-sm disabled:opacity-50 transition-colors text-sm"
    >
-    Reset Sprite
-   </button>
+    
+                             {t('lab.c6loopadjustments_reset_sprite')}
+                            </button>
 
    </div>
 
    {/* Stage Area */}
    <div className="flex-1 flex flex-col">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-t-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] border-b-0 p-3 flex justify-between items-center bg-slate-100 dark:!bg-[#121212]">
-    <span className="font-bold text-sm text-slate-600 dark:text-[#a1a1aa]">Scratch Stage</span>
+    <span className="font-bold text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6loopadjustments_scratch_stage')}</span>
     <div className="flex items-center gap-4 text-sm font-bold text-slate-500 dark:text-[#71717a]">
-    <span>Iteration: {iteration}/10</span>
-    <span>Size: {size}%</span>
-    <span>Dir: {rotation}&deg;</span>
+    <span>{t('lab.c6loopadjustments_iteration')} {iteration}/10</span>
+    <span>{t('lab.c6loopadjustments_size')} {size}%</span>
+    <span>{t('lab.c6loopadjustments_dir')} {rotation}{t('lab.c6loopadjustments_deg')}</span>
     </div>
    </div>
    

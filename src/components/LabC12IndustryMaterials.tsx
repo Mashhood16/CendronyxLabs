@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, FlaskConical } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 type IndProcess = 'CementKiln' | 'CatalyticCracking' | 'Cosmetics';
 
 export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [process] = useState<IndProcess>('CementKiln');
  const [parameter, setParameter] = useState<number>(1450);
@@ -89,7 +91,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
  if (process === 'CementKiln') {
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">Clinker Yield: {metricValue.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12industrymaterials_clinker_yield')} {metricValue.toFixed(1)}%</text>
    
    {/* Rotary Kiln Cylinder */}
    <g transform={`rotate(${isPlaying ? (time * 20) % 360 : 0} 200 150)`}>
@@ -118,14 +120,14 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     />
    );
    })}
-   {metricValue > 80 && <text x="130" y="250" fill="#22c55e" className="text-sm font-bold">High Quality Clinker Formed!</text>}
+   {metricValue > 80 && <text x="130" y="250" fill="#22c55e" className="text-sm font-bold">{t('lab.c12industrymaterials_high_quality_clinker_formed')}</text>}
   </svg>
   );
  } else if (process === 'CatalyticCracking') {
   const isCracked = metricValue > 50;
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">Conversion: {metricValue.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12industrymaterials_conversion')} {metricValue.toFixed(1)}%</text>
    
    {/* Zeolite Catalyst Bed */}
    <rect x="50" y="200" width="300" height="50" fill="#a1a1aa" />
@@ -147,16 +149,16 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
    )}
    
    {/* Heat indicator */}
-   {parameter > 600 && <text x="150" y="60" fill="#ef4444" className="text-xs">High Thermal Energy</text>}
+   {parameter > 600 && <text x="150" y="60" fill="#ef4444" className="text-xs">{t('lab.c12industrymaterials_high_thermal_energy')}</text>}
    </g>
    
-   {isCracked && <text x="120" y="180" fill="#22c55e" className="text-sm font-bold">C-C Bonds Cleaved!</text>}
+   {isCracked && <text x="120" y="180" fill="#22c55e" className="text-sm font-bold">{t('lab.c12industrymaterials_c_c_bonds_cleaved')}</text>}
   </svg>
   );
  } else {
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">Emulsion Stability: {metricValue.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12industrymaterials_emulsion_stability')} {metricValue.toFixed(1)}%</text>
    
    {/* Beaker */}
    <path d="M 120 50 L 120 250 A 20 20 0 0 0 140 270 L 260 270 A 20 20 0 0 0 280 250 L 280 50 Z" fill="none" stroke="#cbd5e1" strokeWidth="4" />
@@ -179,7 +181,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
    </>
    )}
 
-   {metricValue > 90 && <text x="140" y="200" fill="#1e293b" className="text-sm font-bold">Stable Micelles</text>}
+   {metricValue > 90 && <text x="140" y="200" fill="#1e293b" className="text-sm font-bold">{t('lab.c12industrymaterials_stable_micelles')}</text>}
   </svg>
   );
  }
@@ -195,7 +197,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Interactive Industry Materials Lab" />
+  <LabHeader onExit={onExit} title={t('lab.c12industrymaterials_interactive_industry_materials')} />
 
   {/* Main Content */}
   
@@ -205,12 +207,13 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c12industrymaterials_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c12industrymaterials_lab')}</button>
   </div>
   <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
@@ -219,27 +222,28 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2 flex items-center gap-2">
     <ShieldAlert className="text-slate-500 dark:text-[#71717a]" size={20} />
-    Process Theory
-   </h2>
+    
+                             {t('lab.c12industrymaterials_process_theory')}
+                            </h2>
    {process === 'CementKiln' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Cement Production</strong> requires heating limestone (CaCO₃) and clay in a rotary kiln up to 1450°C. The intense heat causes calcination and fusion, forming solid clinker nodules (mostly tricalcium silicate).
-    </p>
+    <strong>{t('lab.c12industrymaterials_cement_production')}</strong>  {t('lab.c12industrymaterials_requires_heating_limestone_cac')}
+                                 </p>
    )}
    {process === 'CatalyticCracking' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Catalytic Cracking</strong> breaks down large, low-value hydrocarbon molecules into lighter, higher-value products (like gasoline components) using heat and a zeolite catalyst.
-    </p>
+    <strong>{t('lab.c12industrymaterials_catalytic_cracking')}</strong>  {t('lab.c12industrymaterials_breaks_down_large_low_value_hy')}
+                                 </p>
    )}
    {process === 'Cosmetics' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Cosmetics Formulation</strong> relies heavily on creating stable emulsions. Emulsifiers (surfactants) reduce the surface tension between oil and water, forming stable micelles that prevent phase separation.
-    </p>
+    <strong>{t('lab.c12industrymaterials_cosmetics_formulation')}</strong>  {t('lab.c12industrymaterials_relies_heavily_on_creating_sta')}
+                                 </p>
    )}
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Operating Parameters</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.c12industrymaterials_operating_parameters')}</h3>
    <label className="block text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mb-1">
     {config.label}: {parameter}
    </label>
@@ -255,7 +259,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
    
    <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-lg items-center justify-between border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="flex flex-col">
-    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Elapsed Time</span>
+    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.c12industrymaterials_elapsed_time')}</span>
     <span className="text-2xl font-mono text-slate-800 dark:text-[#ffffff]">{time.toFixed(1)} s</span>
     </div>
    </div>
@@ -263,11 +267,12 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
   </div>
 
   {/* Middle Column: Interactive Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
    <FlaskConical className="text-slate-500 dark:text-[#71717a]" size={20} />
-   Plant Simulator
-   </h2>
+   
+                        {t('lab.c12industrymaterials_plant_simulator')}
+                        </h2>
    
    <div className="w-full mt-10">
    {renderSimulation()}
@@ -286,47 +291,53 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors"
    >
     <RotateCcw size={18} />
-    Reset
-   </button>
+    
+                             {t('lab.c12industrymaterials_reset')}
+                            </button>
    </div>
   </div>
 
   {/* Right Column: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2">
-   Production Engineering Analysis
-   </h2>
+   
+                        {t('lab.c12industrymaterials_production_engineering_analysi')}
+                        </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
-   Compute the industrial yields and rates based on the plant simulator's operational data.
-   </p>
+   
+                        {t('lab.c12industrymaterials_compute_the_industrial_yields_')}
+                        </p>
 
    <div className="bg-orange-50 p-4 rounded-lg border border-orange-100 mb-6">
-   <h3 className="font-semibold text-orange-900 mb-2">Assignment Question</h3>
+   <h3 className="font-semibold text-orange-900 mb-2">{t('lab.c12industrymaterials_assignment_question')}</h3>
    {process === 'CementKiln' && (
     <p className="text-sm text-orange-800">
-    At a kiln temperature of <strong>1350°C</strong>, what is the exact clinker yield (%) precisely at <strong>t = 10.0 s</strong>? <br/><br/><em>(Rate = (Temp - 1200) / 300. Yield = Rate × time × 10)</em>
+    
+                                 {t('lab.c12industrymaterials_at_a_kiln_temperature_of')} <strong>{t('lab.c12industrymaterials_1350_c')}</strong>{t('lab.c12industrymaterials_what_is_the_exact_clinker_yiel')} <strong>{t('lab.c12industrymaterials_t_10_0_s')}</strong>? <br/><br/><em>{t('lab.c12industrymaterials_rate_temp_1200_300_yield_rate_')}</em>
     </p>
    )}
    {process === 'CatalyticCracking' && (
     <p className="text-sm text-orange-800">
-    At a cracking temperature of <strong>550°C</strong>, calculate the exact % conversion at precisely <strong>t = 5.0 s</strong>. <br/><br/><em>(Rate = (Temp - 300) / 500. Conv = Rate × time × 10)</em>
+    
+                                 {t('lab.c12industrymaterials_at_a_cracking_temperature_of')} <strong>{t('lab.c12industrymaterials_550_c')}</strong>{t('lab.c12industrymaterials_calculate_the_exact_conversion')} <strong>{t('lab.c12industrymaterials_t_5_0_s')}</strong>. <br/><br/><em>{t('lab.c12industrymaterials_rate_temp_300_500_conv_rate_ti')}</em>
     </p>
    )}
    {process === 'Cosmetics' && (
     <p className="text-sm text-orange-800">
-    With an emulsifier concentration of <strong>4.0%</strong>, at what exact time (in seconds) does the emulsion stability reach <strong>100%</strong>? <br/><br/><em>(Rate = Emulsifier / 10. Stability = Rate × time × 20)</em>
+    
+                                 {t('lab.c12industrymaterials_with_an_emulsifier_concentrati')} <strong>4.0%</strong>{t('lab.c12industrymaterials_at_what_exact_time_in_seconds_')} <strong>100%</strong>? <br/><br/><em>{t('lab.c12industrymaterials_rate_emulsifier_10_stability_r')}</em>
     </p>
    )}
    </div>
 
    <div className="flex flex-col gap-4">
    <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.c12industrymaterials_your_answer')}</label>
     <input
     type="number"
     value={answer}
     onChange={(e) => setAnswer(e.target.value)}
-    placeholder="Enter numerical value"
+    placeholder={t('lab.c12industrymaterials_enter_numerical_value')}
     className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
     />
    </div>
@@ -334,8 +345,9 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     onClick={checkAnswer}
     className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg font-medium hover:bg-[#000000] dark:bg-[#121212] transition-colors"
    >
-    Check Answer
-   </button>
+    
+                             {t('lab.c12industrymaterials_check_answer')}
+                            </button>
    
    {feedback && (
     <div className={`p-4 rounded-lg flex items-start gap-3 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

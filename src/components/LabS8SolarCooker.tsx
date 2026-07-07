@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Sun } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8SolarCooker({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [temperature, setTemperature] = useState(25);
  const [sunlight, setSunlight] = useState(false);
 
@@ -22,7 +24,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.5: Solar Cooker" subtitle="Parabolic mirror concentrating solar energy" />
+  <LabHeader onExit={onExit} title={t('lab.s8solarcooker_act_11_5_solar_cooker')} subtitle={t('lab.subtitle_parabolic_mirror_concentrating')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
   
@@ -76,7 +78,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
 
    {/* Temperature Gauge */}
    <div className="absolute bottom-10 right-10 bg-slate-50 dark:!bg-[#121212] px-6 py-4 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center gap-2">
-    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase">Pot Temp</span>
+    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.s8solarcooker_pot_temp')}</span>
     <span className={`text-4xl font-black font-mono transition-colors duration-1000 ${temperature > 50 ? 'text-red-500' : 'text-blue-500'}`}>
      {temperature}°C
     </span>

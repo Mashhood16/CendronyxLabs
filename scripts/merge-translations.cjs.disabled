@@ -1,0 +1,150 @@
+/**
+ * Merges translated batch files back into src/locales/roman-urdu/translation.json
+ * 
+ * Usage: node scripts/merge-translations.js <batch-number>
+ *   or:  node scripts/merge-translations.js all  (to merge all completed batches)
+ * 
+ * This reads:
+ *   - scripts/translation-batches/batch-<N>.translated.json  (the translation output)
+ *   - src/locales/roman-urdu/translation.json               (to merge into)
+ *   - scripts/protected-words.json                          (to verify protected words kept)
+ * 
+ * The translated batch file should have format:
+ *   { "key1": "translated text", "key2": "translated text", ... }
+ */
+const fs = require('fs');
+const path = require('path');
+
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+const PROTECTED_FILE = 'scripts/protected-words.json';
+const BATCH_DIR = 'scripts/translation-batches';
+
+const arg = process.argv[2];
+if (!arg) {
+  console.error('Usage: node scripts/merge-translations.js <batch-number> | all');
+  process.exit(1);
+}
+
+// Read files
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+let ur = {};
+if (fs.existsSync(UR_FILE)) {
+  try {
+    ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+  } catch (e) {
+    console.warn('Warning: Could not parse existing roman-urdu file, starting fresh');
+  }
+}
+const protectedWords = new Set(JSON.parse(fs.readFileSync(PROTECTED_FILE, 'utf8')).map(w => w.toLowerCase()));
+
+function verifyAndMerge(batchFile, translatedFile) {
+  if (!fs.existsSync(translatedFile)) {
+    console.log(`  ✗ Translation file not found: ${translatedFile}`);
+    return false;
+  }
+  
+  const batch = JSON.parse(fs.readFileSync(batchFile, 'utf8'));
+  const translation = JSON.parse(fs.readFileSync(translatedFile, 'utf8'));
+  
+  const batchKeys = Object.keys(batch);
+  const transKeys = Object.keys(translation);
+  
+  console.log(`  Batch keys: ${batchKeys.length}, Translation keys: ${transKeys.length}`);
+  
+  // Check for missing keys
+  const missing = batchKeys.filter(k => !transKeys.includes(k));
+  if (missing.length > 0) {
+    console.log(`  ⚠ ${missing.length} keys missing from translation:`);
+    missing.slice(0, 5).forEach(k => console.log(`    - ${k}`));
+    return false;
+  }
+  
+  // Check for protected words being translated (optional - just verify)
+  let protectedPreserved = 0;
+  Object.entries(translation).forEach(([key, translatedValue]) => {
+    if (!ur[key] && en[key]) {
+      // Check that protected terms from original are preserved
+      const original = en[key];
+      const origWords = original.split(/\s+/);
+      origWords.forEach(w => {
+        const clean = w.replace(/[^a-zA-Z]/g, '').toLowerCase();
+        if (clean.length > 0 && protectedWords.has(clean)) {
+          // Verify the protected word appears in the translation
+          if (translatedValue && !translatedValue.toLowerCase().includes(clean.toLowerCase())) {
+            protectedPreserved++;
+          }
+        }
+      });
+    }
+  });
+  
+  if (protectedPreserved > 0) {
+    console.log(`  ⚠ ${protectedPreserved} protected words may not have been preserved`);
+  }
+  
+  // Merge translations
+  let added = 0;
+  let updated = 0;
+  Object.entries(translation).forEach(([key, value]) => {
+    if (!ur[key]) {
+      ur[key] = value;
+      added++;
+    } else if (ur[key] !== value) {
+      ur[key] = value;
+      updated++;
+    }
+  });
+  
+  console.log(`  Added: ${added}, Updated: ${updated}`);
+  return true;
+}
+
+let merged = false;
+
+if (arg === 'all') {
+  // Find all batches and their translated versions
+  const files = fs.readdirSync(BATCH_DIR).filter(f => f.startsWith('batch-') && f.endsWith('.json') && !f.includes('.translated'));
+  const batchNums = files.map(f => parseInt(f.match(/batch-(\d+)/)[1])).sort((a, b) => a - b);
+  
+  batchNums.forEach(num => {
+    const batchFile = path.join(BATCH_DIR, `batch-${num}.json`);
+    const transFile = path.join(BATCH_DIR, `batch-${num}.translated.json`);
+    console.log(`\nBatch ${num}:`);
+    if (verifyAndMerge(batchFile, transFile)) {
+      merged = true;
+    }
+  });
+} else {
+  const batchNum = parseInt(arg);
+  if (isNaN(batchNum)) {
+    console.error('Invalid batch number');
+    process.exit(1);
+  }
+  
+  const batchFile = path.join(BATCH_DIR, `batch-${batchNum}.json`);
+  const transFile = path.join(BATCH_DIR, `batch-${batchNum}.translated.json`);
+  
+  if (!fs.existsSync(batchFile)) {
+    console.error(`Batch file not found: ${batchFile}`);
+    process.exit(1);
+  }
+  
+  if (verifyAndMerge(batchFile, transFile)) {
+    merged = true;
+  }
+}
+
+if (merged) {
+  // Write back to roman-urdu file
+  fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+  console.log(`\n✓ Written ${Object.keys(ur).length} keys to ${UR_FILE}`);
+  
+  // Show progress
+  const allKeys = Object.keys(en);
+  const translatedCount = Object.keys(ur).length;
+  const pct = Math.round(translatedCount / allKeys * 100);
+  console.log(`Progress: ${translatedCount}/${allKeys} (${pct}%)`);
+} else {
+  console.log('\nNo changes made.');
+}

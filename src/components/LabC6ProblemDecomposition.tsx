@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, PlusCircle, Trash2, ArrowDown, ShoppingBag } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [subProblems, setSubProblems] = useState([
  { id: '1', text: 'Make a shopping list' },
  { id: '2', text: 'Get money / wallet' }
@@ -26,18 +28,18 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Problem Decomposition" />
+  <LabHeader onExit={onExit} title={t('lab.c6problemdecomposition_problem_decomposition')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Break down the main problem ("How to do grocery shopping?") into smaller, manageable sub-problems.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6problemdecomposition_break_down_the_main_problem_ho')}</p>
 
   <div className="flex-1 flex flex-col items-center bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-12">
    
    <div className="bg-blue-600 text-white p-6 rounded-2xl shadow-lg border-4 border-blue-700 w-full max-w-lg text-center relative z-10 flex flex-col items-center gap-3 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
    <ShoppingBag className="w-10 h-10" />
-   <h2 className="text-2xl font-bold">Main Problem:</h2>
-   <p className="text-xl">"How to do grocery shopping for Uncle?"</p>
+   <h2 className="text-2xl font-bold">{t('lab.c6problemdecomposition_main_problem')}</h2>
+   <p className="text-xl">{t('lab.c6problemdecomposition_how_to_do_grocery_shopping_for')}</p>
    </div>
 
    {subProblems.length > 0 && (
@@ -56,14 +58,14 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
    </div>
 
    <div className="mt-12 bg-slate-100 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] p-6 rounded-xl w-full max-w-xl flex flex-col gap-4">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">Add a Sub-Problem</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c6problemdecomposition_add_a_sub_problem')}</h3>
    <div className="flex gap-2">
     <input 
     type="text" 
     value={inputText}
     onChange={e => setInputText(e.target.value)}
     onKeyDown={e => e.key === 'Enter' && addProblem()}
-    placeholder="e.g. Go to the supermarket..."
+    placeholder={t('lab.c6problemdecomposition_e_g_go_to_the_supermarket')}
     className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
     />
     <button 
@@ -71,16 +73,17 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
     disabled={!inputText.trim()}
     className="bg-blue-600 hover:bg-blue-700 text-white px-6 rounded-lg font-bold disabled:opacity-50 transition-colors flex items-center gap-2 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    <PlusCircle className="w-5 h-5" /> Add
-    </button>
+    <PlusCircle className="w-5 h-5" />  {t('lab.c6problemdecomposition_add')}
+                                 </button>
    </div>
    </div>
 
    {subProblems.length >= 4 && (
    <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center gap-3 font-bold max-w-xl w-full dark:text-[#ffffff]">
     <CheckCircle className="w-6 h-6" /> 
-    Great job! You have successfully decomposed the problem into manageable steps.
-   </div>
+     
+                             {t('lab.c6problemdecomposition_great_job_you_have_successfull')}
+                            </div>
    )}
 
   </div>

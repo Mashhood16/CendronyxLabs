@@ -1,5 +1,6 @@
 import { useState, MouseEvent } from 'react';
 import { ArrowLeft, Check, RefreshCw, Layers } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 type ChunkType = 'independent' | 'dependent' | 'prep_phrase' | 'noun_clause' | 'relative_clause' | 'adverb_clause' | 'none';
 
@@ -54,6 +55,7 @@ const SENTENCES: Sentence[] = [
 ];
 
 export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTool, setActiveTool] = useState<ChunkType>('independent');
  const [chunkAssignments, setChunkAssignments] = useState<Record<string, ChunkType>>({});
@@ -124,24 +126,25 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
    <button
    onClick={onExit}
    className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
-   title="Go Back"
+   title={t('lab.e11phrasesclauses_go_back')}
    >
    <ArrowLeft className="w-6 h-6" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Lab: Phrases & Clauses Highlighter</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.e11phrasesclauses_lab_phrases_clauses_highlighte')}</h1>
   </div>
   <div className="flex items-center gap-2">
    {score !== null && (
    <span className="font-semibold text-lg mr-4 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
-    Score: {score}
+    
+                             {t('lab.e11phrasesclauses_score')} {score}
    </span>
    )}
    <button
    onClick={reset}
    className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg font-medium transition-colors whitespace-nowrap flex-shrink-0"
    >
-   <RefreshCw className="w-4 h-4" /> Reset
-   </button>
+   <RefreshCw className="w-4 h-4" />  {t('lab.e11phrasesclauses_reset')}
+                        </button>
   </div>
   </div>
 
@@ -151,50 +154,53 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e11phrasesclauses_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e11phrasesclauses_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-full pr-2 pb-10">
-   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">Phrases and Clauses</h2>
-   <p className="mb-2">A <strong>clause</strong> is a group of words that contains a subject and a verb.</p>
+   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">{t('lab.e11phrasesclauses_phrases_and_clauses')}</h2>
+   <p className="mb-2">A <strong>{t('lab.e11phrasesclauses_clause')}</strong>  {t('lab.e11phrasesclauses_is_a_group_of_words_that_conta')}</p>
    <ul className="list-disc pl-5 space-y-2 mb-4">
-    <li><strong>Independent Clause:</strong> Can stand alone as a complete sentence. <em>(e.g., The sun is shining.)</em></li>
-    <li><strong>Dependent Clause:</strong> Cannot stand alone and begins with a subordinating conjunction or relative pronoun. <em>(e.g., Because it is raining...)</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_independent_clause')}</strong>  {t('lab.e11phrasesclauses_can_stand_alone_as_a_complete_')} <em>{t('lab.e11phrasesclauses_e_g_the_sun_is_shining')}</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_dependent_clause')}</strong>  {t('lab.e11phrasesclauses_cannot_stand_alone_and_begins_')} <em>{t('lab.e11phrasesclauses_e_g_because_it_is_raining')}</em></li>
    </ul>
    
-   <h3 className="text-lg font-semibold mt-6 mb-2 text-slate-800 dark:text-white">Types of Dependent Clauses</h3>
+   <h3 className="text-lg font-semibold mt-6 mb-2 text-slate-800 dark:text-white">{t('lab.e11phrasesclauses_types_of_dependent_clauses')}</h3>
    <ul className="list-disc pl-5 space-y-2 mb-4">
-    <li><strong>Noun Clause:</strong> Functions as a noun in the sentence. <em>(e.g., I know <strong>what you did</strong>.)</em></li>
-    <li><strong>Relative Clause (Adjective Clause):</strong> Modifies a noun or pronoun. <em>(e.g., The book <strong>that I borrowed</strong> is great.)</em></li>
-    <li><strong>Adverb Clause:</strong> Functions as an adverb, modifying verbs, adjectives, or other adverbs. <em>(e.g., He left <strong>when the bell rang</strong>.)</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_noun_clause')}</strong>  {t('lab.e11phrasesclauses_functions_as_a_noun_in_the_sen')} <em>{t('lab.e11phrasesclauses_e_g_i_know')} <strong>{t('lab.e11phrasesclauses_what_you_did')}</strong>.)</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_relative_clause_adjective_clau')}</strong>  {t('lab.e11phrasesclauses_modifies_a_noun_or_pronoun')} <em>{t('lab.e11phrasesclauses_e_g_the_book')} <strong>{t('lab.e11phrasesclauses_that_i_borrowed')}</strong>  {t('lab.e11phrasesclauses_is_great')}</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_adverb_clause')}</strong>  {t('lab.e11phrasesclauses_functions_as_an_adverb_modifyi')} <em>{t('lab.e11phrasesclauses_e_g_he_left')} <strong>{t('lab.e11phrasesclauses_when_the_bell_rang')}</strong>.)</em></li>
    </ul>
 
-   <h3 className="text-lg font-semibold mt-6 mb-2 text-slate-800 dark:text-white">Phrases</h3>
-   <p className="mb-2">A <strong>phrase</strong> is a group of related words that does <em>not</em> contain both a subject and a verb. It functions as a single part of speech.</p>
+   <h3 className="text-lg font-semibold mt-6 mb-2 text-slate-800 dark:text-white">{t('lab.e11phrasesclauses_phrases')}</h3>
+   <p className="mb-2">A <strong>{t('lab.e11phrasesclauses_phrase')}</strong>  {t('lab.e11phrasesclauses_is_a_group_of_related_words_th')} <em>{t('lab.e11phrasesclauses_not')}</em>  {t('lab.e11phrasesclauses_contain_both_a_subject_and_a_v')}</p>
    <ul className="list-disc pl-5 space-y-2">
-    <li><strong>Prepositional Phrase:</strong> Begins with a preposition and ends with a noun or pronoun object. <em>(e.g., <strong>under the bed</strong>, <strong>in the morning</strong>)</em></li>
+    <li><strong>{t('lab.e11phrasesclauses_prepositional_phrase')}</strong>  {t('lab.e11phrasesclauses_begins_with_a_preposition_and_')} <em>{t('lab.e11phrasesclauses_e_g')} <strong>{t('lab.e11phrasesclauses_under_the_bed')}</strong>, <strong>{t('lab.e11phrasesclauses_in_the_morning')}</strong>)</em></li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="mb-6 flex-shrink-0">
    <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 dark:text-white">
     <Layers className="w-5 h-5 text-indigo-500" />
-    Syntactic Tools
-   </h2>
+    
+                             {t('lab.e11phrasesclauses_syntactic_tools')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Select a syntactic category below, then click on the corresponding chunks in the Simulation Stage to highlight them.
-   </p>
+    
+                             {t('lab.e11phrasesclauses_select_a_syntactic_category_be')}
+                            </p>
    </div>
 
    <div className="flex flex-col gap-3 flex-grow overflow-y-auto pr-2 pb-4">
@@ -218,19 +224,20 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
     onClick={checkAnswers}
     className={`w-full flex items-center justify-center gap-2 px-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-lg transition-colors whitespace-nowrap shadow-md dark:bg-indigo-500 dark:hover:bg-indigo-400 flex-col `}
    >
-    <Check className="w-6 h-6" /> Evaluate Analysis
-   </button>
+    <Check className="w-6 h-6" />  {t('lab.e11phrasesclauses_evaluate_analysis')}
+                            </button>
    </div>
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full h-full flex flex-col overflow-y-auto pr-2">
    <div className="mb-6 max-w-3xl mx-auto w-full text-center md:text-left flex-shrink-0">
-    <h2 className="text-xl md:text-2xl font-bold mb-2 dark:text-white">Sentence Analysis Stage</h2>
+    <h2 className="text-xl md:text-2xl font-bold mb-2 dark:text-white">{t('lab.e11phrasesclauses_sentence_analysis_stage')}</h2>
     <p className="text-sm md:text-base text-slate-600 dark:text-[#a1a1aa]">
-    Apply your selected syntactic tools to classify the highlighted chunks.
-    </p>
+    
+                                 {t('lab.e11phrasesclauses_apply_your_selected_syntactic_')}
+                                 </p>
    </div>
    
    <div className="flex flex-col gap-6 max-w-3xl mx-auto w-full pb-8">

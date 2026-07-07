@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Thermometer, Sun, Wind} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabS8GreenhouseEffectProps {
  onExit?: () => void;
 }
 
 export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectProps) {
+    const { t } = useTranslate();
  const [timePassed, setTimePassed] = useState(0);
  const [isRunning, setIsRunning] = useState(false);
  
@@ -40,7 +42,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 1.1: Greenhouse Effect" subtitle="Observe how a closed environment traps thermal energy" />
+  <LabHeader onExit={onExit} title={t('lab.s8greenhouseeffect_act_1_1_greenhouse_effect')} subtitle={t('lab.subtitle_observe_closed_environment')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Left Column: Visual */}
@@ -48,13 +50,14 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
    
    <div className="absolute top-8 left-8">
    <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />
-   <div className="text-sm text-center text-slate-500 dark:text-[#71717a] font-medium mt-2">Sunlight</div>
+   <div className="text-sm text-center text-slate-500 dark:text-[#71717a] font-medium mt-2">{t('lab.s8greenhouseeffect_sunlight')}</div>
    </div>
    
    <div className="absolute top-10 right-10">
    <div className="flex items-center gap-2 text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-full font-bold">
-    Time: {timePassed} minutes
-   </div>
+    
+                             {t('lab.s8greenhouseeffect_time')} {timePassed}  {t('lab.s8greenhouseeffect_minutes')}
+                            </div>
    </div>
 
    <div className="flex items-end justify-center gap-16 mt-16 w-full h-80 border-b-4 border-emerald-700 pb-2 relative">
@@ -72,7 +75,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
     <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
     </div>
     <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
-    <div className="text-slate-500 dark:text-[#71717a] text-sm">Open Air</div>
+    <div className="text-slate-500 dark:text-[#71717a] text-sm">{t('lab.s8greenhouseeffect_open_air')}</div>
    </div>
 
    {/* Thermometer 2 (Inside Jar) */}
@@ -98,7 +101,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
     )}
     </div>
     <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
-    <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">Inside Closed Jar</div>
+    <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">{t('lab.s8greenhouseeffect_inside_closed_jar')}</div>
    </div>
 
    </div>
@@ -107,23 +110,27 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
   {/* Right Column: Information */}
   <div className="w-full md:w-80 flex flex-col gap-4">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Observation</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.s8greenhouseeffect_observation')}</h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    As time passes, solar energy enters both environments. The open air thermometer cools naturally through convection (wind/air flow).
-   </p>
+    
+                             {t('lab.s8greenhouseeffect_as_time_passes_solar_energy_en')}
+                            </p>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
-    The glass jar allows light energy in, but prevents the warmed air from escaping. This traps thermal energy, causing the temperature to rise rapidly.
-   </p>
+    
+                             {t('lab.s8greenhouseeffect_the_glass_jar_allows_light_ene')}
+                            </p>
    </div>
 
    <div className="bg-blue-50 rounded-2xl shadow-sm border border-blue-100 p-6 dark:bg-teal-950/20 dark:border-teal-900">
    <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
     <Thermometer className="w-5 h-5" />
-    Real World Link
-   </h3>
+    
+                             {t('lab.s8greenhouseeffect_real_world_link')}
+                            </h3>
    <p className="text-sm text-blue-700">
-    This experiment perfectly models the <strong>Greenhouse Effect</strong> in our atmosphere. Gases like Carbon Dioxide (CO₂) and Methane act just like the glass jar, trapping Earth's heat and contributing to global warming.
-   </p>
+    
+                             {t('lab.s8greenhouseeffect_this_experiment_perfectly_mode')} <strong>{t('lab.s8greenhouseeffect_greenhouse_effect')}</strong>  {t('lab.s8greenhouseeffect_in_our_atmosphere_gases_like_c')}
+                            </p>
    </div>
   </div>
   </div>

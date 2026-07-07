@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Flag } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8Windsock({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [windDir, setWindDir] = useState(90); // 0 North, 90 East, 180 South, 270 West
  const [windSpeed, setWindSpeed] = useState(50); // 0 to 100
 
@@ -27,14 +29,14 @@ export default function LabS8Windsock({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.9: Design a Windsock" subtitle="Visualizing wind direction and speed" />
+  <LabHeader onExit={onExit} title={t('lab.s8windsock_act_11_9_design_a_windsock')} subtitle={t('lab.subtitle_visualizing_wind_direction')} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
   
   {/* Weather Controls */}
   <div className="w-full md:w-64 flex flex-col gap-6">
    <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">Wind Direction</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.s8windsock_wind_direction')}</h3>
     
     {/* Compass Dial */}
     <div className="w-40 h-40 rounded-full bg-slate-100 dark:bg-[#121212] border-4 border-slate-300 dark:border-[#1c1b1b] mx-auto relative flex items-center justify-center mb-4">
@@ -56,11 +58,11 @@ export default function LabS8Windsock({ onExit }: LabProps) {
     onChange={(e) => setWindDir(Number(e.target.value))}
     className="w-full accent-blue-500"
     />
-    <div className="text-center mt-2 font-bold text-sky-600">Wind from {getCompassDir(windDir)}</div>
+    <div className="text-center mt-2 font-bold text-sky-600">{t('lab.s8windsock_wind_from')} {getCompassDir(windDir)}</div>
    </div>
 
    <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">Wind Speed</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.s8windsock_wind_speed')}</h3>
     <input 
     type="range" min="0" max="100" value={windSpeed} 
     onChange={(e) => setWindSpeed(Number(e.target.value))}
@@ -117,11 +119,13 @@ export default function LabS8Windsock({ onExit }: LabProps) {
    {/* Hint */}
    <div className="absolute bottom-6 bg-slate-50 dark:bg-[#121212]/80 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] text-center z-30">
    <h4 className="font-bold text-slate-800 dark:text-[#ffffff] mb-1 flex items-center justify-center gap-2">
-    <Flag className="w-5 h-5 text-orange-500" /> Observation
-   </h4>
+    <Flag className="w-5 h-5 text-orange-500" />  {t('lab.s8windsock_observation')}
+                            </h4>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    The windsock fills with air and points <strong>opposite</strong> to where the wind is blowing from.<br/>
-    Wind from {getCompassDir(windDir)} &rarr; Sock points {getSockDir(windDir)}.<br/>
+    
+                             {t('lab.s8windsock_the_windsock_fills_with_air_an')} <strong>{t('lab.s8windsock_opposite')}</strong>  {t('lab.s8windsock_to_where_the_wind_is_blowing_f')}<br/>
+    
+                             {t('lab.s8windsock_wind_from')} {getCompassDir(windDir)}  {t('lab.s8windsock_rarr_sock_points')} {getSockDir(windDir)}.<br/>
     {windSpeed === 0 ? 'No wind — sock hangs limp.' : windSpeed < 30 ? 'Light breeze — sock droops slightly.' : windSpeed < 70 ? 'Strong wind — sock extends outward.' : 'Gale force — sock is nearly horizontal!'}
    </p>
    </div>

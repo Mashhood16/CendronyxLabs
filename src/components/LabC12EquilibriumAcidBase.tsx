@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import {Droplets, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [baseVol, setBaseVol] = useState<number>(0);
  const acidVol = 25; 
@@ -74,7 +76,7 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Equilibrium & Acid-Base" />
+  <LabHeader onExit={onExit} title={t('lab.c12equilibriumacidbase_virtual_lab_equilibrium_acid_b')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -83,45 +85,48 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c12equilibriumacidbase_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c12equilibriumacidbase_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
-   <Droplets className="mr-2" /> Theory
-   </h2>
+   <Droplets className="mr-2" />  {t('lab.c12equilibriumacidbase_theory')}
+                        </h2>
    <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
-   <p><strong>Titrations</strong> determine the concentration of an unknown solution by reacting it with a standard solution.</p>
-   <h3 className="text-md font-semibold mt-4">Henderson-Hasselbalch Equation</h3>
-   <p>Used for buffer regions (like blood plasma buffers):</p>
+   <p><strong>{t('lab.c12equilibriumacidbase_titrations')}</strong>  {t('lab.c12equilibriumacidbase_determine_the_concentration_of')}</p>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12equilibriumacidbase_henderson_hasselbalch_equation')}</h3>
+   <p>{t('lab.c12equilibriumacidbase_used_for_buffer_regions_like_b')}</p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>
-    pH = pKa + log([A⁻]/[HA])
-   </div>
-   <p>At the <strong>half-equivalence point</strong>, [A⁻] = [HA], so <strong>pH = pKa</strong>.</p>
+    
+                             {t('lab.c12equilibriumacidbase_ph_pka_log_a_ha')}
+                            </div>
+   <p>{t('lab.c12equilibriumacidbase_at_the')} <strong>{t('lab.c12equilibriumacidbase_half_equivalence_point')}</strong>{t('lab.c12equilibriumacidbase_a_ha_so')} <strong>{t('lab.c12equilibriumacidbase_ph_pka')}</strong>.</p>
    
-   <h3 className="text-md font-semibold mt-4">Partition Coefficients</h3>
-   <p>In equilibrium, solutes partition between two immiscible phases (e.g. organic and aqueous). K_pc = [Solute]_org / [Solute]_aq.</p>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12equilibriumacidbase_partition_coefficients')}</h3>
+   <p>{t('lab.c12equilibriumacidbase_in_equilibrium_solutes_partiti')}</p>
    
-   <h3 className="text-md font-semibold mt-4">Current Experiment</h3>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12equilibriumacidbase_current_experiment')}</h3>
    <ul className="list-disc pl-5">
-    <li>Flask: 25.0 mL of 0.1 M Weak Acid (CH₃COOH)</li>
-    <li>Burette: 0.1 M Strong Base (NaOH)</li>
-    <li>Indicator: Phenolphthalein (colorless &lt; pH 8.2, pink &gt; 8.2)</li>
+    <li>{t('lab.c12equilibriumacidbase_flask_25_0_ml_of_0_1_m_weak_ac')}</li>
+    <li>{t('lab.c12equilibriumacidbase_burette_0_1_m_strong_base_naoh')}</li>
+    <li>{t('lab.c12equilibriumacidbase_indicator_phenolphthalein_colo')}</li>
    </ul>
    </div>
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col items-center border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">Titration Simulator</h2>
+   <h2 className="text-xl font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">{t('lab.c12equilibriumacidbase_titration_simulator')}</h2>
    
    <div className="flex flex-col items-center w-full max-w-sm mb-4">
    <div className={`bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg font-mono text-lg font-bold border border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-[#ffffff] mb-4 w-full text-center shadow-inner flex-col `}>
-    pH Meter: {currentPh.toFixed(2)}
+    
+                             {t('lab.c12equilibriumacidbase_ph_meter')} {currentPh.toFixed(2)}
    </div>
 
    <div className={`relative w-full aspect-square bg-slate-50 dark:bg-[#121212] border rounded-xl overflow- flex flex-col items-center justify-end pb-8 `}>
@@ -141,31 +146,31 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
    
    <div className="w-full flex flex-col space-y-3">
    <div className="flex justify-between items-center text-sm font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded">
-    <span>Base Added:</span>
+    <span>{t('lab.c12equilibriumacidbase_base_added')}</span>
     <span className="font-bold text-indigo-700">{baseVol.toFixed(1)} mL</span>
    </div>
    <div className="flex gap-2">
-    <button onClick={() => handleAddDrop(1)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">+ 1 mL</button>
-    <button onClick={() => handleAddDrop(5)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">+ 5 mL</button>
-    <button onClick={resetTitration} className="flex-1 bg-slate-300 dark:bg-[#121212] hover:bg-slate-400 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold py-2 rounded">Reset</button>
+    <button onClick={() => handleAddDrop(1)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.c12equilibriumacidbase_1_ml')}</button>
+    <button onClick={() => handleAddDrop(5)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.c12equilibriumacidbase_5_ml')}</button>
+    <button onClick={resetTitration} className="flex-1 bg-slate-300 dark:bg-[#121212] hover:bg-slate-400 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold py-2 rounded">{t('lab.c12equilibriumacidbase_reset')}</button>
    </div>
    </div>
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
-   <Activity className="mr-2" /> Data Plot & Analysis
-   </h2>
+   <Activity className="mr-2" />  {t('lab.c12equilibriumacidbase_data_plot_analysis')}
+                        </h2>
    
    <div className="relative w-full flex-1 min-h-[200px] mb-4 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2">
    <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
     {/* Gridlines */}
     <line x1="0" y1="50" x2="100" y2="50" stroke="#e2e8f0" strokeWidth="0.5" />
     <line x1="50" y1="0" x2="50" y2="100" stroke="#e2e8f0" strokeWidth="0.5" />
-    <text x="50" y="98" fontSize="4" textAnchor="middle" fill="#64748b">25 mL</text>
-    <text x="98" y="98" fontSize="4" textAnchor="end" fill="#64748b">50 mL</text>
-    <text x="2" y="5" fontSize="4" fill="#64748b">pH 14</text>
-    <text x="2" y="52" fontSize="4" fill="#64748b">pH 7</text>
+    <text x="50" y="98" fontSize="4" textAnchor="middle" fill="#64748b">{t('lab.c12equilibriumacidbase_25_ml')}</text>
+    <text x="98" y="98" fontSize="4" textAnchor="end" fill="#64748b">{t('lab.c12equilibriumacidbase_50_ml')}</text>
+    <text x="2" y="5" fontSize="4" fill="#64748b">{t('lab.c12equilibriumacidbase_ph_14')}</text>
+    <text x="2" y="52" fontSize="4" fill="#64748b">{t('lab.c12equilibriumacidbase_ph_7')}</text>
     
     {/* Points */}
     {graphData.map((d, i) => {
@@ -177,13 +182,14 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
    </div>
    
    <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] lg:dark:bg-[#121212] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Unknown Identification</h3>
+   <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c12equilibriumacidbase_unknown_identification')}</h3>
    <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Observe the pH curve. Estimate the pKa of the weak acid from the graph at the half-equivalence point.
-   </p>
+    
+                             {t('lab.c12equilibriumacidbase_observe_the_ph_curve_estimate_')}
+                            </p>
    <input 
     type="text" 
-    placeholder="Enter pKa value..." 
+    placeholder={t('lab.c12equilibriumacidbase_enter_pka_value')} 
     value={ansPH}
     onChange={e => setAnsPH(e.target.value)}
     className="w-full p-2 border border-indigo-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3"
@@ -192,8 +198,8 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
     onClick={checkAnswer}
     className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <CheckCircle className="mr-2" size={18} /> Check Answer
-   </button>
+    <CheckCircle className="mr-2" size={18} />  {t('lab.c12equilibriumacidbase_check_answer')}
+                            </button>
    {feedback && (
     <p className={`mt-3 text-sm font-semibold p-2 rounded ${feedback.includes('Correct') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
     {feedback}

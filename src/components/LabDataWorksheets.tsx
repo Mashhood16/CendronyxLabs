@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabDataWorksheets({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [scenario, setScenario] = useState<'heights' | 'budget' | 'bills'>('heights');
  
  // Data grids for the 3 scenarios
@@ -44,43 +46,46 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto w-full min- lg: bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
-  <LabHeader onExit={onExit} title="Act 2.2: Worksheet and Chart Creation" subtitle="Prepare data and draw corresponding charts for 3 scenarios." variant="emerald" />
+  <LabHeader onExit={onExit} title={t('lab.dataworksheets_act_2_2_worksheet_and_chart_cr')} subtitle={t('lab.subtitle_prepare_data_draw')} variant="emerald" />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
   {/* Scenarios Panel */}
   <div className="w-64 bg-slate-100 dark:bg-[#121212] border-r border-slate-300 dark:border-[#1c1b1b] flex flex-col p-4 gap-2">
-   <h3 className="font-bold text-slate-600 dark:text-[#a1a1aa] mb-2 uppercase tracking-widest text-xs">Scenarios</h3>
+   <h3 className="font-bold text-slate-600 dark:text-[#a1a1aa] mb-2 uppercase tracking-widest text-xs">{t('lab.dataworksheets_scenarios')}</h3>
    
    <button 
     onClick={() => setScenario('heights')}
     className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'heights' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]'}`}
    >
-    Student Heights (Bar Chart)
-   </button>
+    
+                         {t('lab.dataworksheets_student_heights_bar_chart')}
+                        </button>
    <button 
     onClick={() => setScenario('budget')}
     className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'budget' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]'}`}
    >
-    Home Budget (Pie Chart)
-   </button>
+    
+                         {t('lab.dataworksheets_home_budget_pie_chart')}
+                        </button>
    <button 
     onClick={() => setScenario('bills')}
     className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'bills' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]'}`}
    >
-    Electricity Bill (Line Chart)
-   </button>
+    
+                         {t('lab.dataworksheets_electricity_bill_line_chart')}
+                        </button>
   </div>
 
   {/* Spreadsheet Input */}
   <div className="flex-1 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col relative lg:overflow-hidden">
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-6">Data Worksheet</h2>
+   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-6">{t('lab.dataworksheets_data_worksheet')}</h2>
    <div className="bg-slate-50 dark:!bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden shadow-sm">
     <table className="w-full text-left font-mono">
      <thead className="bg-slate-200 dark:bg-[#121212]">
      <tr>
-      <th className="p-3 border-b border-r border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-normal">Item / Name</th>
-      <th className="p-3 border-b border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-normal">Value</th>
+      <th className="p-3 border-b border-r border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-normal">{t('lab.dataworksheets_item_name')}</th>
+      <th className="p-3 border-b border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-normal">{t('lab.dataworksheets_value')}</th>
      </tr>
      </thead>
      <tbody>
@@ -111,7 +116,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
 
   {/* Dynamic Chart Output */}
   <div className="flex-1 bg-slate-50 dark:bg-[#121212] border-l border-slate-300 dark:border-[#1c1b1b] p-8 flex flex-col justify-center items-center relative shadow-inner bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
-   <h2 className="absolute top-8 left-8 text-2xl font-bold text-slate-800 dark:text-[#ffffff]">Generated Chart</h2>
+   <h2 className="absolute top-8 left-8 text-2xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.dataworksheets_generated_chart')}</h2>
    
    <div className="w-full max-w-md h-80 bg-slate-50 dark:!bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] shadow-xl rounded-xl p-8 flex items-end justify-between relative">
     

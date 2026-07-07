@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Clock, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7TranspirationObservation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [time, setTime] = useState(0);
  const [running, setRunning] = useState(false);
 
@@ -22,12 +24,12 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 1: Transpiration Observation" />
+  <LabHeader onExit={onExit} title={t('lab.s7transpirationobservation_unit_1_transpiration_observati')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">Water Loss in Plants</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Two branches are covered with clear polythene bags. One branch has leaves, and the other has been stripped bare. Wait to observe condensation forming inside the bags.</p>
+   <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">{t('lab.s7transpirationobservation_water_loss_in_plants')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7transpirationobservation_two_branches_are_covered_with_')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -42,8 +44,9 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
     onClick={() => { setTime(0); setRunning(false); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7transpirationobservation_reset')}
+                            </button>
    </div>
   </div>
 
@@ -52,7 +55,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
    
    {/* Branch A (With Leaves) */}
    <div className="flex flex-col items-center">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Branch A (With Leaves)</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_a_with_leaves')}</h3>
    <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     {/* Plant Stem */}
     <div className="w-4 h-40 bg-green-700 relative z-10">
@@ -82,7 +85,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
 
    {/* Branch B (No Leaves) */}
    <div className="flex flex-col items-center">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Branch B (Bare)</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_b_bare')}</h3>
    <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     {/* Plant Stem */}
     <div className="w-4 h-40 bg-green-700 relative z-10">
@@ -104,8 +107,9 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
   {time === 100 && (
    <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-medium max-w-xl dark:text-[#ffffff]">
    <div className="flex justify-center mb-2"><Info className="w-6 h-6" /></div>
-   Water droplets appeared only in the bag covering the leafy branch! This shows that water evaporates from the aerial parts of the plant, specifically the leaves, through a process called transpiration.
-   </div>
+   
+                        {t('lab.s7transpirationobservation_water_droplets_appeared_only_i')}
+                        </div>
   )}
   </div>
  </div>

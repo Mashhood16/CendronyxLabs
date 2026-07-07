@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Code, Layout, BookOpen, CheckSquare } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Project {
  id: string;
@@ -82,6 +83,7 @@ interface LabCS9WebProjectsProps {
 }
 
 export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeProjectIdx, setActiveProjectIdx] = useState(0);
@@ -105,7 +107,7 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex items-center justify-between bg-emerald-600 text-white p-4 shadow-md dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
-  <LabHeader onExit={onExit} title="Web Development Projects IDE" />
+  <LabHeader onExit={onExit} title={t('lab.cs9webprojects_web_development_projects_ide')} />
   </div>
 
   
@@ -115,19 +117,20 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs9webprojects_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs9webprojects_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory & Projects */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold flex items-center gap-2 text-emerald-700">
-   <BookOpen size={24} /> Select a Project
-   </h2>
+   <BookOpen size={24} />  {t('lab.cs9webprojects_select_a_project')}
+                        </h2>
    <div className="flex flex-col gap-2">
    {PROJECTS.map((proj, idx) => (
     <button
@@ -145,8 +148,8 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 text-sm leading-relaxed">{activeProject.description}</p>
    
    <h4 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-2 flex items-center gap-1">
-    <CheckSquare size={16} /> Requirements Checklist
-   </h4>
+    <CheckSquare size={16} />  {t('lab.cs9webprojects_requirements_checklist')}
+                            </h4>
    <div className="space-y-2 flex-1">
     {activeProject.requirements.map(req => {
     const isMet = req.validator(debouncedCode);
@@ -164,8 +167,8 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
    </div>
    
    <div className={`mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h4 className="font-bold text-blue-800 mb-1 text-sm dark:text-[#ffffff]">Tip:</h4>
-    <p className="text-blue-700 text-xs">Write your HTML in the middle column. The preview on the right will update automatically after half a second.</p>
+    <h4 className="font-bold text-blue-800 mb-1 text-sm dark:text-[#ffffff]">{t('lab.cs9webprojects_tip')}</h4>
+    <p className="text-blue-700 text-xs">{t('lab.cs9webprojects_write_your_html_in_the_middle_')}</p>
    </div>
    </div>
   </div>
@@ -173,8 +176,8 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
   {/* Middle Column: IDE */}
   <div className={`w-full bg-[#1e1e1e] p-4 rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col text-slate-100  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-blue-400">
-   <Code size={24} /> HTML Editor
-   </h2>
+   <Code size={24} />  {t('lab.cs9webprojects_html_editor')}
+                        </h2>
    <textarea
    className="flex-1 w-full bg-[#1e1e1e] text-[#d4d4d4] p-2 font-mono text-sm focus:outline-none resize-none border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg"
    value={code}
@@ -184,13 +187,13 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
   </div>
 
   {/* Right Column: Live Preview */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-700">
-   <Layout size={24} /> Live Preview
-   </h2>
+   <Layout size={24} />  {t('lab.cs9webprojects_live_preview')}
+                        </h2>
    <div className="flex-1 border border-slate-300 dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-slate-50 dark:bg-[#121212]">
    <iframe
-    title="preview"
+    title={t('lab.cs9webprojects_preview')}
     srcDoc={debouncedCode}
     className="w-full h-full bg-slate-50 dark:bg-[#121212]"
     sandbox="allow-scripts"

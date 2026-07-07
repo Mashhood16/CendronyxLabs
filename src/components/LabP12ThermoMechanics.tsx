@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Train, Star, Activity, CheckCircle, XCircle, Thermometer} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [scenario, setScenario] = useState<'maglev' | 'whitedwarf'>('maglev');
 
@@ -33,15 +35,15 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Extreme States of Matter" />
+  <LabHeader onExit={onExit} title={t('lab.p12thermomechanics_extreme_states_of_matter')} />
   <div className="bg-[#000000] dark:bg-[#121212] text-white p-2 flex justify-end">
   <select 
    className="bg-[#121212] dark:bg-[#121212] border border-[#1c1b1b] dark:border-[#1c1b1b] text-white px-3 py-1 rounded-md outline-none focus:border-orange-500"
    value={scenario}
    onChange={(e) => setScenario(e.target.value as any)}
   >
-   <option value="maglev">Superconducting Maglev</option>
-   <option value="whitedwarf">White Dwarf Degeneracy</option>
+   <option value="maglev">{t('lab.12thermomechanics_superconductingmaglev')}</option>
+   <option value="whitedwarf">{t('lab.12thermomechanics_whitedwarfdegeneracy')}</option>
   </select>
   </div>
 
@@ -52,12 +54,13 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p12thermomechanics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.12thermomechanics_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   
@@ -66,42 +69,46 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
    {scenario === 'maglev' ? (
    <>
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-    <Train className="text-blue-600"/> Superconductivity
-    </h2>
+    <Train className="text-blue-600"/>  {t('lab.p12thermomechanics_superconductivity')}
+                                 </h2>
     <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
-     At extremely low temperatures, certain materials undergo a phase transition where their electrical resistance drops exactly to zero.
-    </p>
+     
+                                      {t('lab.p12thermomechanics_at_extremely_low_temperatures_')}
+                                     </p>
     <p>
-     <strong>Meissner Effect:</strong> Superconductors expel magnetic fields from their interior. This perfectly diamagnetic behavior allows them to stably levitate above permanent magnets, a principle used in Maglev trains.
-    </p>
+     <strong>{t('lab.12thermomechanics_meissnereffect')}</strong>  {t('lab.p12thermomechanics_superconductors_expel_magnetic')}
+                                     </p>
     <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-     <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Magnetic Levitation Force</h3>
-     <p className="font-mono text-center text-blue-800 dark:text-[#ffffff]">F_m = (B² / 2μ₀) × A</p>
+     <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.12thermomechanics_magneticlevitationforce')}</h3>
+     <p className="font-mono text-center text-blue-800 dark:text-[#ffffff]">{t('lab.p12thermomechanics_f_m_b_2_a')}</p>
      <p className="text-sm text-blue-700 mt-2">
-     For levitation, the magnetic force F_m must equal the gravitational force (m·g).
-     </p>
+     
+                                          {t('lab.p12thermomechanics_for_levitation_the_magnetic_fo')}
+                                          </p>
     </div>
     </div>
    </>
    ) : (
    <>
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-    <Star className="text-orange-500"/> Electron Degeneracy
-    </h2>
+    <Star className="text-orange-500"/>  {t('lab.p12thermomechanics_electron_degeneracy')}
+                                     </h2>
     <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
-     When a medium-sized star exhausts its nuclear fuel, it collapses under its own gravity to form a White Dwarf.
-    </p>
+     
+                                          {t('lab.p12thermomechanics_when_a_medium_sized_star_exhau')}
+                                         </p>
     <p>
-     <strong>Pauli Exclusion Principle:</strong> No two electrons can occupy the same quantum state. As gravity crushes the star, electrons are forced into higher energy states, generating immense <strong>Electron Degeneracy Pressure</strong> that halts the collapse.
-    </p>
+     <strong>{t('lab.12thermomechanics_pauliexclusionprinciple')}</strong>  {t('lab.p12thermomechanics_no_two_electrons_can_occupy_th')} <strong>{t('lab.12thermomechanics_electrondegeneracypressure')}</strong>  {t('lab.p12thermomechanics_that_halts_the_collapse')}
+                                         </p>
     <div className={`bg-orange-50 p-4 rounded-lg border border-orange-100 flex-col `}>
-     <h3 className="font-semibold text-orange-900 mb-2">Mass-Radius Relation</h3>
-     <p className="font-mono text-center text-orange-800">R ∝ M^(-1/3)</p>
+     <h3 className="font-semibold text-orange-900 mb-2">{t('lab.12thermomechanics_massradiusrelation')}</h3>
+     <p className="font-mono text-center text-orange-800">{t('lab.p12thermomechanics_r_m_1_3')}</p>
      <p className="text-sm text-orange-800 mt-2">
-     Unlike normal objects, adding mass to a white dwarf makes it <em>smaller</em>. If it exceeds the <strong>Chandrasekhar Limit (~1.44 M_sun)</strong>, electron degeneracy pressure fails, and it collapses into a neutron star or black hole.
-     </p>
+     
+                                              {t('lab.p12thermomechanics_unlike_normal_objects_adding_m')} <em>{t('lab.12thermomechanics_smaller')}</em>{t('lab.12thermomechanics_ifitexceedsthe')}<strong>{t('lab.p12thermomechanics_chandrasekhar_limit_1_44_m_sun')}</strong>{t('lab.p12thermomechanics_electron_degeneracy_pressure_f')}
+                                              </p>
     </div>
     </div>
    </>
@@ -109,11 +116,12 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
   </div>
 
   {/* Middle Column: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 w-full">
    {scenario === 'maglev' ? <Thermometer className="text-blue-500"/> : <Star className="text-orange-500"/>}
-   Interactive Visualizer
-   </h2>
+   
+                        {t('lab.p12thermomechanics_interactive_visualizer')}
+                        </h2>
    
    <div className={`w-full aspect-square max-w-md bg-[#000000] dark:bg-[#121212] rounded-xl relative overflow- flex items-center justify-center border-4 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-inner flex-col `}>
    {scenario === 'maglev' ? (
@@ -121,7 +129,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
     {/* Track */}
     <rect x="20" y="160" width="160" height="20" fill="#475569" />
     <rect x="20" y="150" width="160" height="10" fill="#64748b" />
-    <text x="100" y="175" fill="white" fontSize="10" textAnchor="middle">Magnetic Track</text>
+    <text x="100" y="175" fill="white" fontSize="10" textAnchor="middle">{t('lab.12thermomechanics_magnetictrack')}</text>
     
     {/* Field lines */}
     {Array.from({length: 7}).map((_, i) => {
@@ -188,7 +196,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
     </defs>
 
     {mass > limit && (
-     <text x="100" y="100" fill="red" fontSize="14" textAnchor="middle" fontWeight="bold">COLLAPSED (Black Hole)</text>
+     <text x="100" y="100" fill="red" fontSize="14" textAnchor="middle" fontWeight="bold">{t('lab.p12thermomechanics_collapsed_black_hole')}</text>
     )}
     </svg>
    )}
@@ -199,7 +207,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
     <>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Temperature (T)</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12thermomechanics_temperature_t')}</label>
      <span className="text-sm font-mono text-blue-600">{temperature} K</span>
      </div>
      <input 
@@ -210,15 +218,15 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
      className="w-full h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer accent-blue-600"
      />
      <div className="text-xs text-slate-500 dark:text-[#71717a] mt-1 flex justify-between">
-     <span>Liquid Helium (4K)</span>
-     <span>Liquid N2 (77K)</span>
-     <span>Room Temp</span>
+     <span>{t('lab.p12thermomechanics_liquid_helium_4k')}</span>
+     <span>{t('lab.p12thermomechanics_liquid_n2_77k')}</span>
+     <span>{t('lab.12thermomechanics_roomtemp')}</span>
      </div>
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Magnetic Field (B)</label>
-     <span className="text-sm font-mono text-blue-600">{magneticField.toFixed(1)} Tesla</span>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12thermomechanics_magnetic_field_b')}</label>
+     <span className="text-sm font-mono text-blue-600">{magneticField.toFixed(1)}  {t('lab.p12thermomechanics_tesla')}</span>
      </div>
      <input 
      type="range" 
@@ -233,8 +241,8 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
     <>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Star Mass (M)</label>
-     <span className="text-sm font-mono text-orange-600">{mass.toFixed(2)} M_sun</span>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12thermomechanics_star_mass_m')}</label>
+     <span className="text-sm font-mono text-orange-600">{mass.toFixed(2)}  {t('lab.p12thermomechanics_m_sun')}</span>
      </div>
      <input 
      type="range" 
@@ -250,63 +258,65 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
   </div>
 
   {/* Right Column: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
    <Activity className="text-emerald-500" />
-   Analysis & Computation
-   </h2>
+   
+                        {t('lab.p12thermomechanics_analysis_computation')}
+                        </h2>
 
    <div className="space-y-6">
    {scenario === 'maglev' ? (
     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Magnetic Pressure</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12thermomechanics_magneticpressure')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-     To levitate a train of mass 50,000 kg over an area of 50 m², the magnetic pressure P = F/A must equal the pressure from gravity. 
-     Given P = B² / 2μ₀ (where μ₀ = 4π × 10⁻⁷ T·m/A) and g = 9.8 m/s².
-     Calculate the required Magnetic Field (B) in milliTesla (mT).
-    </p>
+     
+                                      {t('lab.p12thermomechanics_to_levitate_a_train_of_mass_50')}
+                                     </p>
     <div className="flex gap-2">
      <input 
      type="text" 
      value={maglevAns}
      onChange={(e) => setMaglevAns(e.target.value)}
-     placeholder="e.g. 9.8"
+     placeholder={t('lab.p12thermomechanics_t_lab_12thermomechanics_eg98')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
      />
      <button 
      onClick={checkMaglev}
      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.p12thermomechanics_check')}
+                                          </button>
     </div>
-    {maglevStatus === 'correct' && <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1"><CheckCircle size={16}/> Correct! B ≈ 9.8 mT.</p>}
-    {maglevStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Evaluate mg/A first, then solve for B.</p>}
+    {maglevStatus === 'correct' && <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1"><CheckCircle size={16}/>{t('lab.12thermomechanics_correctb98mt')}</p>}
+    {maglevStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/>{t('lab.12thermomechanics_tryagainevaluatemgafirstthensolvefo')}</p>}
     </div>
    ) : (
     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Chandrasekhar Limit</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12thermomechanics_chandrasekharlimit')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-     Subrahmanyan Chandrasekhar determined that a white dwarf cannot support itself if its mass exceeds a certain limit.
-     Based on the simulation, at what exact mass (in M_sun) does the star completely collapse?
-    </p>
+     
+                                          {t('lab.p12thermomechanics_subrahmanyan_chandrasekhar_det')}
+                                         </p>
     <div className="flex gap-2">
      <input 
      type="text" 
      value={wdAns}
      onChange={(e) => setWdAns(e.target.value)}
-     placeholder="e.g. 1.44"
+     placeholder={t('lab.p12thermomechanics_t_lab_12thermomechanics_eg144')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
      />
      <button 
      onClick={checkWd}
      className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
      >
-     Check
-     </button>
+     
+                                              {t('lab.p12thermomechanics_check')}
+                                              </button>
     </div>
-    {wdStatus === 'correct' && <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1"><CheckCircle size={16}/> Correct! Limit is ~1.44 Solar Masses.</p>}
-    {wdStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Observe the simulator carefully.</p>}
+    {wdStatus === 'correct' && <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1"><CheckCircle size={16}/>{t('lab.12thermomechanics_correctlimitis144solarmasses')}</p>}
+    {wdStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/>{t('lab.12thermomechanics_tryagainobservethesimulatorcarefull')}</p>}
     </div>
    )}
    </div>

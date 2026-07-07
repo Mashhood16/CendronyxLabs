@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import {Scissors, ArrowRightLeft, Check } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabS8CrossingOverProps {
  onExit?: () => void;
 }
 
 export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(0);
 
  const handleNext = () => {
@@ -15,7 +17,7 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 3.3: Crossing Over" subtitle="Model genetic recombination during meiosis" />
+  <LabHeader onExit={onExit} title={t('lab.s8crossingover_act_3_3_crossing_over')} subtitle={t('lab.subtitle_model_genetic_recombination')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Left Column: Interactive Diagram */}
@@ -76,31 +78,32 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
   {/* Right Column: Educational Text */}
   <div className="w-full md:w-80 flex flex-col gap-4">
    <div className="bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm text-white p-6 border border-[#1c1b1b] dark:border-[#1c1b1b] h-full">
-   <h3 className="font-bold text-slate-200 mb-6 text-xl">The Process</h3>
+   <h3 className="font-bold text-slate-200 mb-6 text-xl">{t('lab.s8crossingover_the_process')}</h3>
    
    <div className="space-y-6">
     <div className={`transition-opacity duration-300 ${step >= 0 ? 'opacity-100' : 'opacity-30'}`}>
-    <h4 className="font-bold text-indigo-300">1. Pairing Up</h4>
-    <p className="text-sm text-slate-400 mt-1">Homologous chromosomes (one from each parent) align perfectly next to each other.</p>
+    <h4 className="font-bold text-indigo-300">{t('lab.s8crossingover_1_pairing_up')}</h4>
+    <p className="text-sm text-slate-400 mt-1">{t('lab.s8crossingover_homologous_chromosomes_one_fro')}</p>
     </div>
 
     <div className={`transition-opacity duration-300 ${step >= 1 ? 'opacity-100' : 'opacity-30'}`}>
-    <h4 className="font-bold text-indigo-300">2. Chiasma Formation</h4>
-    <p className="text-sm text-slate-400 mt-1">The chromatids overlap at points called chiasmata, physically touching each other.</p>
+    <h4 className="font-bold text-indigo-300">{t('lab.s8crossingover_2_chiasma_formation')}</h4>
+    <p className="text-sm text-slate-400 mt-1">{t('lab.s8crossingover_the_chromatids_overlap_at_poin')}</p>
     </div>
 
     <div className={`transition-opacity duration-300 ${step >= 2 ? 'opacity-100' : 'opacity-30'}`}>
-    <h4 className="font-bold text-indigo-300">3. DNA Cleavage</h4>
-    <p className="text-sm text-slate-400 mt-1">Enzymes cut both DNA molecules at identical locations.</p>
+    <h4 className="font-bold text-indigo-300">{t('lab.s8crossingover_3_dna_cleavage')}</h4>
+    <p className="text-sm text-slate-400 mt-1">{t('lab.s8crossingover_enzymes_cut_both_dna_molecules')}</p>
     </div>
 
     <div className={`transition-opacity duration-300 ${step >= 3 ? 'opacity-100' : 'opacity-30'}`}>
     <h4 className="font-bold text-green-400 flex items-center gap-2">
-     <CheckCircle2 className="w-5 h-5" /> 4. Recombination
-    </h4>
+     <CheckCircle2 className="w-5 h-5" />  {t('lab.s8crossingover_4_recombination')}
+                                     </h4>
     <p className="text-sm text-slate-400 mt-1">
-     The broken DNA is repaired, but the segments are swapped! This creates new, unique combinations of genes, driving genetic variation in offspring.
-    </p>
+     
+                                      {t('lab.s8crossingover_the_broken_dna_is_repaired_but')}
+                                     </p>
     </div>
    </div>
    </div>

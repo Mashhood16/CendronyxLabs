@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabCricketSpreadsheet({ onExit }: LabProps) {
+    const { t } = useTranslate();
  // We mock a spreadsheet state
  const [f5, setF5] = useState('');
  const [f7, setF7] = useState('');
@@ -32,7 +34,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
 
  return (
  <div className="w-full min- lg: bg-[#1d6f42] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
-  <LabHeader onExit={onExit} title="Act 2.1: Cricket Score Calculations" subtitle="Use Excel functions to calculate scores for the Pak vs NZ series." variant="emerald" />
+  <LabHeader onExit={onExit} title={t('lab.cricketspreadsheet_act_2_1_cricket_score_calculat')} subtitle={t('lab.subtitle_excel_functions_calculate')} variant="emerald" />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
@@ -43,8 +45,9 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
    <div className="w-full h-16 bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] flex items-center px-4 gap-4 mb-4">
    <div className="font-bold text-green-700 font-mono text-xl flex items-center gap-2">
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h6v6h6v10H6z"/></svg>
-    Excel Virtual
-   </div>
+    
+                             {t('lab.cricketspreadsheet_excel_virtual')}
+                            </div>
    <div className="w-px h-8 bg-slate-300 dark:bg-[#121212]"></div>
    <span className="font-mono bg-slate-50 dark:bg-[#121212] px-2 py-1 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm text-slate-500 dark:text-[#71717a]">fx</span>
    </div>
@@ -98,7 +101,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
     {/* Bar Chart Overlay */}
     {showChart && (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] shadow-2xl p-6 flex flex-col rounded z-10 animate-fade-in">
-     <h3 className="text-center font-bold text-slate-700 dark:text-[#ffffff] mb-4">Average Scores</h3>
+     <h3 className="text-center font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.cricketspreadsheet_average_scores')}</h3>
      <div className="flex-1 border-l-2 border-b-2 border-slate-400 dark:border-[#1c1b1b] flex items-end justify-around pb-0 pt-4 px-2">
       <div className="w-12 bg-blue-500 rounded-t flex items-end justify-center text-xs text-white pb-1 dark:bg-teal-950/20 dark:border-teal-900" style={{height: '70%'}}>70</div>
       <div className="w-12 bg-blue-500 rounded-t flex items-end justify-center text-xs text-white pb-1 dark:bg-teal-950/20 dark:border-teal-900" style={{height: '11%'}}>11</div>
@@ -107,11 +110,11 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
       <div className="w-12 bg-blue-500 rounded-t flex items-end justify-center text-xs text-white pb-1 dark:bg-teal-950/20 dark:border-teal-900" style={{height: '27%'}}>27.5</div>
      </div>
      <div className="flex justify-around text-[10px] text-slate-500 dark:text-[#71717a] mt-2 font-bold rotate-[-15deg]">
-      <span>Fakhar</span>
-      <span>Imam</span>
-      <span>Babar</span>
-      <span>Haris</span>
-      <span>Hafeez</span>
+      <span>{t('lab.cricketspreadsheet_fakhar')}</span>
+      <span>{t('lab.cricketspreadsheet_imam')}</span>
+      <span>{t('lab.cricketspreadsheet_babar')}</span>
+      <span>{t('lab.cricketspreadsheet_haris')}</span>
+      <span>{t('lab.cricketspreadsheet_hafeez')}</span>
      </div>
      <button onClick={() => setShowChart(false)} className="absolute top-2 right-2 text-slate-400 hover:text-red-500">
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -123,28 +126,28 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
 
   {/* Control Panel */}
   <div className="w-96 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 lg:overflow-y-auto">
-   <h2 className="text-2xl font-bold text-green-800 mb-6 border-b-2 border-green-100 pb-2 dark:text-[#ffffff]">Formula Tasks</h2>
+   <h2 className="text-2xl font-bold text-green-800 mb-6 border-b-2 border-green-100 pb-2 dark:text-[#ffffff]">{t('lab.cricketspreadsheet_formula_tasks')}</h2>
    
    <div className="space-y-4 mb-8">
    <div className={`p-4 rounded border ${isF5Correct ? 'bg-green-50 border-green-500' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]'}`}>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>F5:</strong> Write formula for Total Score of Babar Azam.</p>
-    {isF5Correct && <span className="text-green-600 font-bold text-xs">✓ Correct ({f5})</span>}
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>{t('lab.cricketspreadsheet_f5')}</strong>  {t('lab.cricketspreadsheet_write_formula_for_total_score_')}</p>
+    {isF5Correct && <span className="text-green-600 font-bold text-xs">{t('lab.cricketspreadsheet_correct')}{f5})</span>}
    </div>
    <div className={`p-4 rounded border ${isF7Correct ? 'bg-green-50 border-green-500' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]'}`}>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>F7:</strong> Write SUM function for Total Score of M. Hafeez.</p>
-    {isF7Correct && <span className="text-green-600 font-bold text-xs">✓ Correct</span>}
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>{t('lab.cricketspreadsheet_f7')}</strong>  {t('lab.cricketspreadsheet_write_sum_function_for_total_s')}</p>
+    {isF7Correct && <span className="text-green-600 font-bold text-xs">{t('lab.cricketspreadsheet_correct_1')}</span>}
    </div>
    <div className={`p-4 rounded border ${isG7Correct ? 'bg-green-50 border-green-500' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]'}`}>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>G7:</strong> Write AVERAGE function for M. Hafeez.</p>
-    {isG7Correct && <span className="text-green-600 font-bold text-xs">✓ Correct</span>}
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>{t('lab.cricketspreadsheet_g7')}</strong>  {t('lab.cricketspreadsheet_write_average_function_for_m_h')}</p>
+    {isG7Correct && <span className="text-green-600 font-bold text-xs">{t('lab.cricketspreadsheet_correct_1')}</span>}
    </div>
    <div className={`p-4 rounded border ${isD10Correct ? 'bg-green-50 border-green-500' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]'}`}>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>D10:</strong> Write MAX function for Match 2 column.</p>
-    {isD10Correct && <span className="text-green-600 font-bold text-xs">✓ Correct</span>}
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>{t('lab.cricketspreadsheet_d10')}</strong>  {t('lab.cricketspreadsheet_write_max_function_for_match_2')}</p>
+    {isD10Correct && <span className="text-green-600 font-bold text-xs">{t('lab.cricketspreadsheet_correct_1')}</span>}
    </div>
    <div className={`p-4 rounded border ${isE11Correct ? 'bg-green-50 border-green-500' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b]'}`}>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>E11:</strong> Write MIN function for Match 3 column.</p>
-    {isE11Correct && <span className="text-green-600 font-bold text-xs">✓ Correct</span>}
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]"><strong>{t('lab.cricketspreadsheet_e11')}</strong>  {t('lab.cricketspreadsheet_write_min_function_for_match_3')}</p>
+    {isE11Correct && <span className="text-green-600 font-bold text-xs">{t('lab.cricketspreadsheet_correct_1')}</span>}
    </div>
    </div>
 
@@ -153,9 +156,10 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
    disabled={!allCorrect}
    className={`py-4 font-bold rounded-xl transition-all shadow-md ${allCorrect ? 'bg-blue-600 hover:bg-blue-700 text-white active:scale-95' : 'bg-slate-200 dark:bg-[#121212] text-slate-400 cursor-not-allowed'}`}
    >
-   Draw Bar Chart
-   </button>
-   {!allCorrect && <p className="text-xs text-center text-slate-500 dark:text-[#71717a] mt-2">Complete all formulas to unlock charts.</p>}
+   
+                        {t('lab.cricketspreadsheet_draw_bar_chart')}
+                        </button>
+   {!allCorrect && <p className="text-xs text-center text-slate-500 dark:text-[#71717a] mt-2">{t('lab.cricketspreadsheet_complete_all_formulas_to_unloc')}</p>}
 
   </div>
   </div>

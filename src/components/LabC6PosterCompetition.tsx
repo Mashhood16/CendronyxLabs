@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, Palette, Image as ImageIcon, Download, Copy, Shield, AlertTriangle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6PosterCompetition({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [topic, setTopic] = useState<'cyber_ethics' | 'cyber_safety' | 'plagiarism' | 'copyright' | null>(null);
  const [headline, setHeadline] = useState('');
  const [colorScheme, setColorScheme] = useState('blue');
@@ -29,17 +31,17 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Group Poster Competition" />
+  <LabHeader onExit={onExit} title={t('lab.c6postercompetition_group_poster_competition')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Work with your virtual group to prepare a poster for the lab competition.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6postercompetition_work_with_your_virtual_group_t')}</p>
 
   <div className="flex gap-8 flex-1">
    {/* Editor Sidebar */}
    <div className="w-80 flex flex-col gap-6">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">1. Select Theme</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6postercompetition_1_select_theme')}</h3>
     <div className="grid grid-cols-2 gap-2">
     {topics.map(t => {
      const Icon = t.icon;
@@ -58,20 +60,20 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
    </div>
 
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">2. Headline</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6postercompetition_2_headline')}</h3>
     <input 
     type="text" 
     value={headline}
     onChange={e => setHeadline(e.target.value)}
-    placeholder="Enter catchy headline..."
+    placeholder={t('lab.c6postercompetition_enter_catchy_headline')}
     className="w-full p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
     />
    </div>
 
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
     <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider flex items-center gap-2">
-    <Palette className="w-4 h-4" /> Color Scheme
-    </h3>
+    <Palette className="w-4 h-4" />  {t('lab.c6postercompetition_color_scheme')}
+                                 </h3>
     <div className="flex gap-2">
     {Object.keys(colorClasses).map(color => (
      <button
@@ -89,8 +91,9 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
     disabled={!topic || !headline}
     className="mt-auto py-4 bg-[#121212] dark:!bg-[#121212] hover:bg-[#000000] dark:!bg-[#121212] text-white font-bold rounded-xl shadow-sm disabled:opacity-50 transition-colors"
    >
-    Submit Poster Entry
-   </button>
+    
+                             {t('lab.c6postercompetition_submit_poster_entry')}
+                            </button>
    </div>
 
    {/* Canvas Area */}
@@ -126,14 +129,15 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
    {isFinished && (
     <div className="absolute inset-0 bg-slate-50 dark:bg-[#121212]/80 backdrop-blur-sm flex flex-col items-center justify-center p-12 text-center animate-in fade-in">
     <CheckCircle className="w-24 h-24 text-green-500 mb-6" />
-    <h2 className="text-4xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Poster Submitted!</h2>
-    <p className="text-xl text-slate-600 dark:text-[#a1a1aa] max-w-md">Your group's poster is now entered into the competition. It looks fantastic!</p>
+    <h2 className="text-4xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c6postercompetition_poster_submitted')}</h2>
+    <p className="text-xl text-slate-600 dark:text-[#a1a1aa] max-w-md">{t('lab.c6postercompetition_your_group_s_poster_is_now_ent')}</p>
     <button 
      onClick={() => setIsFinished(false)}
      className="mt-8 px-6 py-3 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded-lg font-bold text-slate-700 dark:text-[#ffffff]"
     >
-     Edit Poster
-    </button>
+     
+                                      {t('lab.c6postercompetition_edit_poster')}
+                                     </button>
     </div>
    )}
    </div>

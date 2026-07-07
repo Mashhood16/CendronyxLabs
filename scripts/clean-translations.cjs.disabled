@@ -1,0 +1,75 @@
+/**
+ * Final Clean Script for Roman Urdu Translations
+ * 
+ * This script does one thing well:
+ * - Reverts any translation that contains Urdu/Arabic script characters
+ *   back to its original English text
+ * - Preserves all Roman Urdu (English alphabet only) translations
+ * 
+ * Why? The Urdu→Roman Urdu transliteration requires a comprehensive 
+ * dictionary. Running a partial map produced garbled text. It's better 
+ * to keep the English original than display broken Urdu script.
+ * 
+ * Usage: node scripts/clean-translations.cjs
+ */
+
+const fs = require('fs');
+
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+// Urdu/Arabic script Unicode ranges
+const URDU_SCRIPT = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+let reverted = 0;
+let kept = 0;
+let issues = [];
+
+const clean = {};
+
+Object.entries(ur).forEach(([key, val]) => {
+  if (!val || !val.trim()) {
+    // Empty translation - use English original if available
+    clean[key] = en[key] || '';
+    if (en[key]) reverted++;
+    return;
+  }
+  
+  if (URDU_SCRIPT.test(val)) {
+    // Has Urdu script - revert to English original
+    const original = en[key] || val;
+    clean[key] = original;
+    reverted++;
+    if (reverted <= 5) {
+      issues.push({ key, was: val.substring(0, 80), now: original.substring(0, 80) });
+    }
+  } else {
+    // Clean Roman Urdu - keep it
+    clean[key] = val;
+    kept++;
+  }
+});
+
+// Also ensure all English keys exist
+Object.keys(en).forEach(key => {
+  if (!clean[key]) {
+    clean[key] = en[key];
+  }
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(clean, null, 2));
+
+console.log('=== Clean Results ===');
+console.log(`Reverted to English: ${reverted}`);
+console.log(`Kept Roman Urdu: ${kept}`);
+console.log(`Total entries: ${Object.keys(clean).length}`);
+console.log('\nSample reverts:');
+issues.slice(0, 5).forEach(i => {
+  console.log(`  ${i.key}`);
+  console.log(`    was: ${i.was}`);
+  console.log(`    now: ${i.now}`);
+  console.log('');
+});

@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BookOpen, Activity, CheckCircle, Calculator, Play, Pause, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [tab] = useState<'cooling' | 'ballistics'>('cooling');
  
@@ -124,7 +127,7 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="M12 Differential Eq Lab" />
+   <LabHeader onExit={onExit} title={t('lab.m12differentialeq_m12_differential_eq_lab')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -133,42 +136,43 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m12differentialeq_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m12differentialeq_lab')}</button>
   </div>
   <div className="p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 flex-grow lg:overflow-visible">
     {/* Theory Column */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
+     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />{t('lab.m12differentialeq_theory_context')}</h2>
      <div className="prose prose-slate prose-sm text-slate-600 dark:text-[#a1a1aa]">
       {tab === 'cooling' && (
        <>
-        <p><strong>Newton's Law of Cooling:</strong></p>
-        <p>The rate of change of temperature is proportional to the difference between the object's temperature and the ambient environment.</p>
-        <p className="font-semibold text-blue-700">{"$$ \\frac{dT}{dt} = -k(T - T_{env}) $$"}</p>
-        <p>This is a separable first-order differential equation. Its exact solution is:</p>
-        <p>{"$$ T(t) = T_{env} + (T_0 - T_{env}) e^{-kt} $$"}</p>
+        <p><strong>{t('lab.m12differentialeq_newton_s_law_of_cooling')}</strong></p>
+        <p>{t('lab.m12differentialeq_the_rate_of_change_of_temperat')}</p>
+        <p className="font-semibold text-blue-700"><MathText>{"$$ \\frac{dT}{dt} = -k(T - T_{env}) $$"}</MathText></p>
+        <p>{t('lab.m12differentialeq_this_is_a_separable_first_orde')}</p>
+        <p><MathText>{"$$ T(t) = T_{env} + (T_0 - T_{env}) e^{-kt} $$"}</MathText></p>
        </>
       )}
       {tab === 'ballistics' && (
        <>
-        <p><strong>Ballistics with Air Resistance:</strong></p>
-        <p>A projectile under gravity experiences air resistance proportional to velocity. The differential equations of motion are:</p>
-        <p className="font-semibold text-blue-700">{"$$ m \\frac{dv_x}{dt} = -k v_x $$"}</p>
-        <p className="font-semibold text-blue-700">{"$$ m \\frac{dv_y}{dt} = -mg - k v_y $$"}</p>
-        <p>Assuming mass $m = 1$ kg, the terminal velocity $v_T$ is reached when the drag force equals gravity: $kv_T = mg$.</p>
+        <p><strong>{t('lab.m12differentialeq_ballistics_with_air_resistance')}</strong></p>
+        <p>{t('lab.m12differentialeq_a_projectile_under_gravity_exp')}</p>
+        <p className="font-semibold text-blue-700"><MathText>{"$$ m \\frac{dv_x}{dt} = -k v_x $$"}</MathText></p>
+        <p className="font-semibold text-blue-700"><MathText>{"$$ m \\frac{dv_y}{dt} = -mg - k v_y $$"}</MathText></p>
+        <p><MathText>{t('lab.m12differentialeq_assuming_mass_m_1_kg_the_termi')}</MathText></p>
        </>
       )}
      </div>
     </div>
 
     {/* Interactive Simulator Column */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />{t('lab.m12differentialeq_interactive_simulator')}</h2>
      
      {tab === 'cooling' && (
       <div className="flex-grow flex flex-col">
@@ -180,7 +184,7 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
         <circle cx={100 + (timeC / 100) * 280} cy={280 - (currTemp / 200) * 260} r="5" fill="#ef4444" />
         
         <rect x="10" y="100" width="80" height="100" fill="none" stroke="#94a3b8" strokeDasharray="4" rx="4" />
-        <text x="50" y="120" textAnchor="middle" fontSize="10" fill="#64748b">Env: {tEnv}°C</text>
+        <text x="50" y="120" textAnchor="middle" fontSize="10" fill="#64748b">{t('lab.m12differentialeq_env')} {tEnv}°C</text>
         <circle cx="50" cy="160" r="25" fill={interpolateColor(currTemp)} stroke="#334155" strokeWidth="2" />
         <text x="50" y="164" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">{Math.round(currTemp)}°C</text>
        </svg>
@@ -189,14 +193,14 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
          {runC ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runC ? 'Pause' : 'Start'}
         </button>
         <button onClick={() => { setRunC(false); setTimeC(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-[#121212]">
-         <RotateCcw className="w-4 h-4 mr-2" /> Reset
-        </button>
+         <RotateCcw className="w-4 h-4 mr-2" />  {t('lab.m12differentialeq_reset')}
+                                         </button>
        </div>
-       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Cooling Constant ($k$): {kCool.toFixed(3)}</label>
+       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_cooling_constant')}<MathText>{t('lab.m12differentialeq_k')}</MathText>): {kCool.toFixed(3)}</label>
        <input type="range" min="0.01" max="0.1" step="0.01" value={kCool} onChange={(e) => setKCool(Number(e.target.value))} className="mb-2" />
-       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Initial Temp ($T_0$): {t0}°C</label>
+       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_initial_temp')}<MathText>{t('lab.m12differentialeq_t_0')}</MathText>): {t0}°C</label>
        <input type="range" min="50" max="200" step="10" value={t0} onChange={(e) => setT0(Number(e.target.value))} className="mb-2" />
-       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Ambient Temp ({"$T_{env}$"}): {tEnv}°C</label>
+       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_ambient_temp')}<MathText>{"$T_{env}$"}</MathText>): {tEnv}°C</label>
        <input type="range" min="0" max="40" step="1" value={tEnv} onChange={(e) => setTEnv(Number(e.target.value))} />
       </div>
      )}
@@ -214,42 +218,43 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
          {runB ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />} {runB ? 'Pause' : 'Fire'}
         </button>
         <button onClick={() => { setRunB(false); setTimeB(0); }} className="flex-1 min-w-0 bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] py-2 rounded-md font-medium flex items-center justify-center hover:bg-slate-200 dark:bg-[#121212]">
-         <RotateCcw className="w-4 h-4 mr-2" /> Reset
-        </button>
+         <RotateCcw className="w-4 h-4 mr-2" />  {t('lab.m12differentialeq_reset')}
+                                         </button>
        </div>
-       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Drag Coefficient ($k$): {drag.toFixed(2)} kg/s</label>
+       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_drag_coefficient')}<MathText>{t('lab.m12differentialeq_k')}</MathText>): {drag.toFixed(2)}  {t('lab.m12differentialeq_kg_s')}</label>
        <input type="range" min="0" max="0.5" step="0.05" value={drag} onChange={(e) => { setDrag(Number(e.target.value)); setTimeB(0); setRunB(false); }} className="mb-2" />
-       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Launch Angle: {angle}°</label>
+       <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_launch_angle')} {angle}°</label>
        <input type="range" min="15" max="85" step="5" value={angle} onChange={(e) => { setAngle(Number(e.target.value)); setTimeB(0); setRunB(false); }} />
       </div>
      )}
     </div>
 
     {/* Assessment Column */}
-    <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
+    <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />{t('lab.m12differentialeq_assessment')}</h2>
      <div className={`bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] `}>
-      {tab === 'cooling' && <p>An object starts at $T_0 = {t0}$°C in an environment of {"$T_{env}$"} = {tEnv}°C. With $k = {kCool}$, how many seconds will it take to cool down to exactly {"$T_{target}$"} = {targetTemp}°C?</p>}
-      {tab === 'ballistics' && <p>Calculate the vertical terminal velocity $v_T$ (in m/s) for a projectile of mass $m=1$ kg and drag coefficient $k = {drag}$ kg/s. (Assume $g = 9.8$ m/s²).</p>}
+      {tab === 'cooling' && <p><MathText>{t('lab.m12differentialeq_an_object_starts_at_t_0')} {t0}{t('lab.m12differentialeq_c_in_an_environment_of')} {"$T_{env}$"} = {tEnv}{t('lab.m12differentialeq_c_with_k')} {kCool}{t('lab.m12differentialeq_how_many_seconds_will_it_take_')} {"$T_{target}$"} = {targetTemp}{t('lab.m12differentialeq_c')}</MathText></p>}
+      {tab === 'ballistics' && <p><MathText>{t('lab.m12differentialeq_calculate_the_vertical_termina')} {drag}{t('lab.m12differentialeq_kg_s_assume_g_9_8_m_s')}</MathText></p>}
      </div>
      
      <div className="space-y-4">
       <div>
-       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
+       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_your_answer')}</label>
        <input 
         type="text" 
         value={userAns} 
         onChange={(e) => setUserAns(e.target.value)}
         className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        placeholder="Enter numerical value..."
+        placeholder={t('lab.m12differentialeq_enter_numerical_value')}
        />
       </div>
       <button 
        onClick={checkAnswer}
        className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
       >
-       Check Answer
-      </button>
+       
+                                {t('lab.m12differentialeq_check_answer')}
+                               </button>
       
       {feedback && (
        <div className={`p-4 rounded-md text-sm flex items-start ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

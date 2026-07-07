@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Circle, Smile, Minus, Brush, Undo, Trash2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -15,6 +16,7 @@ type Shape = {
 };
 
 export default function LabC6Paint3DFace({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [shapes, setShapes] = useState<Shape[]>([]);
  const [selectedTool, setSelectedTool] = useState<'head' | 'eye' | 'mouth' | 'eyebrow' | null>(null);
 
@@ -106,17 +108,17 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-  <LabHeader onExit={onExit} title="Paint 3D Face Design" />
+  <LabHeader onExit={onExit} title={t('lab.c6paint3dface_paint_3d_face_design')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6paint3dface_select_a_3d_or_curve_tool_from')}</p>
 
   <div className="flex gap-6 flex-1 h-[600px]">
    {/* Toolbar */}
    <div className="w-64 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex flex-col gap-6">
    <div>
-    <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">3D Tools</h3>
+    <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">{t('lab.c6paint3dface_3d_tools')}</h3>
     <div className="flex flex-col gap-2">
     {tools.map(tool => {
      const Icon = tool.icon;
@@ -141,7 +143,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
     className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-50 dark:bg-[#121212] disabled:opacity-50"
     >
     <Undo className="w-5 h-5 mb-1" />
-    <span className="text-xs font-bold">Undo</span>
+    <span className="text-xs font-bold">{t('lab.c6paint3dface_undo')}</span>
     </button>
     <button 
     onClick={clear}
@@ -149,7 +151,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
     className="flex-1 flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-[#1c1b1b] text-red-600 hover:bg-red-50 disabled:opacity-50"
     >
     <Trash2 className="w-5 h-5 mb-1" />
-    <span className="text-xs font-bold">Clear</span>
+    <span className="text-xs font-bold">{t('lab.c6paint3dface_clear')}</span>
     </button>
    </div>
    </div>
@@ -167,7 +169,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
     <div className="text-slate-400 flex flex-col items-center gap-4 bg-slate-50 dark:bg-[#121212]/80 p-8 rounded-2xl">
      <Brush className="w-12 h-12" />
-     <p className="font-bold">Select a tool to start drawing</p>
+     <p className="font-bold">{t('lab.c6paint3dface_select_a_tool_to_start_drawing')}</p>
     </div>
     </div>
    )}

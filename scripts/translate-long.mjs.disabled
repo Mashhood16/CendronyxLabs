@@ -1,0 +1,224 @@
+import fs from 'fs';
+
+const en = JSON.parse(fs.readFileSync('src/locales/en/translation.json', 'utf8'));
+const ur = JSON.parse(fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8'));
+
+const isFormula = (t) => {
+  if (!t) return true;
+  if (/[→⇌÷×±∞√∫∑πθρΩωΔ²³⁴⁺⁻°₀₁₂₃₄₅₆₇₈₉≈≠≤≥∂]/.test(t)) return true;
+  if (/^\d+\.?\d*/.test(t)) return true;
+  if (/^https?:\/\//.test(t)) return true;
+  if (/^<[a-z]/.test(t) || /^\$/.test(t)) return true;
+  if (/^[A-Z][a-z]?\d/.test(t)) return true;
+  if (/^[a-z]\s*=\s*/.test(t)) return true;
+  if (t.includes('&&') || t.includes('Math.') || /\\frac|\\sqrt/.test(t)) return true;
+  if (/^[A-Z0-9._-]+$/.test(t) && t.length < 40) return true;
+  return false;
+};
+
+// Find untranslated text strings
+const same = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+
+const textStrs = same.filter(k => !isFormula(en[k]));
+const longTexts = textStrs.filter(k => en[k].length >= 25);
+
+console.log('Long text strings to translate:', longTexts.length);
+
+// Comprehensive phrase map for long educational/scientific text
+const LONG_MAP = {
+  // Derivation subtitles
+  'Derivation: Orbital Speed of a Satellite': 'Ikhtiyar: Satellite ki Orbital Speed',
+  'Derivation: Specific Heat (Electrical Method)': 'Ikhtiyar: Specific Heat (Electrical Method)',
+  'Derivation: Specific Heat (Method of Mixtures)': 'Ikhtiyar: Specific Heat (Mixtures ka Method)',
+  'Derivation: Universal Wave Equation v = fλ': 'Ikhtiyar: Universal Wave Equation v = fλ',
+  'Derivation: Electric Power P = VI': 'Ikhtiyar: Electric Power P = VI',
+  'Derivation: Electrical Energy E = Pt': 'Ikhtiyar: Electrical Energy E = Pt',
+  'Derivation: Real vs Apparent Expansion of Liquids': 'Ikhtiyar: Liquids ka Real aur Apparent Expansion',
+  'Derivation: Linear Thermal Expansion': 'Ikhtiyar: Linear Thermal Expansion',
+  'Derivation: Linear Magnification': 'Ikhtiyar: Linear Magnification',
+  'Derivation: Parallel Resistance': 'Ikhtiyar: Parallel Resistance',
+  'Derivation: Series Resistance': 'Ikhtiyar: Series Resistance',
+  'Derivation: Photon Energy & Momentum': 'Ikhtiyar: Photon Energy aur Momentum',
+  'Derivation: Potential Divider Formula': 'Ikhtiyar: Potential Divider Formula',
+  'Derivation: Radioactive Decay Formula': 'Ikhtiyar: Radioactive Decay Formula',
+  'Derivation: Resistivity': 'Ikhtiyar: Resistivity',
+  'Derivation: Ideal Transformer Power': 'Ikhtiyar: Ideal Transformer Power',
+  'Derivation: Transistor Current Gain': 'Ikhtiyar: Transistor Current Gain',
+  'Derivation: Volumetric Thermal Expansion': 'Ikhtiyar: Volumetric Thermal Expansion',
+  'Derivation: Critical Angle for TIR': 'Ikhtiyar: Critical Angle for TIR',
+  'Derivation: Depth via Echo (Ultrasound)': 'Ikhtiyar: Depth via Echo (Ultrasound)',
+  'Derivation: Temperature Coefficient of Resistivity': 'Ikhtiyar: Temperature Coefficient of Resistivity',
+
+  // Common description strings
+  'The net force equals the rate of change of momentum': 'Net force momentum mein tabdeeli ki sharah ke barabar hota hai',
+  'No scenarios recorded. Drive and record to compare.': 'Koi scenario record nahi hai. Compare karne ke liye drive karein aur record karein.',
+  'Expansion scale is highly exaggerated for visualization.': 'Expansion scale visualization ke liye bohat barhaya gaya hai.',
+  'E-field inside a conductor is zero.': 'Conductor ke andar E-field zero hota hai.',
+  'Incorrect. Think about the properties of conductors': 'Ghalat. Conductors ki khaasiyaton ke baare mein sochein',
+  'Notice how error grows at smaller angles!': 'Dekhein ke chotay angles par error kaise barhta hai!',
+  'Calculate the mass of chlorine required in': 'Chlorine ka mass hisab karein',
+  'The observed color is the': 'Dekha gaya rang hai',
+  'of the absorbed light.': 'absorbed light ka.',
+  'Uses Iron (Fe) catalyst.': 'Iron (Fe) catalyst istemal karta hai.',
+  'complementary color': 'complementary rang',
+  'Ligands split d-orbitals by different amounts:': 'Ligands d-orbitals ko mukhtalif miqdar mein taqseem karte hain:',
+
+  // Educational physics contexts
+  'A police car moves towards you at 50 m/s': 'Police car 50 m/s se aap ki taraf barh rahi hai',
+  'In nuclear fission, a heavy nucleus': 'Nuclear fission mein, ek bhaari nucleus',
+  'absorbs a neutron and splits into smaller': 'neutron absorb karta hai aur chotay hisson mein bant jata hai',
+  'nuclei, releasing a huge amount of energy.': 'nuclei, jo ek bari miqdar mein energy release karte hain.',
+
+  // Assessment labels  
+  'Assessment:': 'Jaiza:',
+  'Data Analysis:': 'Data Analysis:',
+  'Lab Assessment:': 'Lab ka Jaiza:',
+  'Knowledge Check:': 'Ilm ka Imtihaan:',
+  'Analysis Check:': 'Analysis Check:',
+  'Goal Assessment:': 'Goal Assessment:',
+  'Grade Assessment': 'Grade Assessment',
+  'Assessment': 'Jaiza',
+  'Analysis': 'Analysis',
+  'Assignment Question': 'Assignment Sawal',
+
+  // Common UI patterns
+  'Select phase...': 'Phase muntakhab karein...',
+  'Select class...': 'Class muntakhab karein...',
+  'Select shape...': 'Shape muntakhab karein...',
+  'Enter compound name': 'Compound ka naam daalein',
+  'Enter m/z value': 'm/z value daalein',
+  'Enter value in mM': 'mM mein value daalein',
+  'Enter pH': 'pH daalein',
+  'Enter pKa value...': 'pKa value daalein...',
+  'Enter value in kJ/mol...': 'kJ/mol mein value daalein...',
+  'Enter % ee': '% ee daalein',
+  'Enter numerical value': 'Numerical value daalein',
+
+  // Feedback messages
+  'Correct! Excellent job.': 'Sahi! Bohot khoob.',
+  'Correct! Good analytical technique.': 'Sahi! Achi analytical technique.',
+  'Correct! The exact molarity is': 'Sahi! Theek molarity hai',
+  'Correct! Hydrogen gas is produced.': 'Sahi! Hydrogen gas paida hoti hai.',
+  'Correct! Evaporation (or Crystallization) isolates the salt.': 'Sahi! Evaporation (ya Crystallization) namak ko alag karta hai.',
+  'Correct geometry identified!': 'Sahi geometry ki pehchan hui!',
+  'Incorrect. Re-evaluate the electron pairs.': 'Ghalat. Electron pairs ko dobara check karein.',
+  'Incorrect, check your calculations.': 'Ghalat, apne calculations check karein.',
+  'Incorrect. Check your limiting reactant math.': 'Ghalat. Apne limiting reactant ka hisab check karein.',
+  'Incorrect. Check your formula and try again.': 'Ghalat. Apna formula check karein aur dobara koshish karein.',
+  'Incorrect. Keep adjusting the temperature slider.': 'Ghalat. Temperature slider ko adjust karte rahein.',
+
+  // Status messages
+  'System Online': 'System Online',
+  'System Offline': 'System Offline',
+  'Monitor Offline': 'Monitor Offline',
+  'No data recorded': 'Koi data record nahi',
+  'No data recorded yet': 'Abhi tak koi data record nahi',
+  'No data logged': 'Koi data log nahi',
+  'No data logged yet': 'Abhi tak koi data log nahi',
+  'No data.': 'Koi data nahi.',
+  'No observations recorded.': 'Koi observation record nahi.',
+  'No attempts logged': 'Koi attempt log nahi',
+  'No yields recorded.': 'Koi yield record nahi.',
+  'No molecules saved.': 'Koi molecule save nahi.',
+  'No tests performed yet.': 'Abhi tak koi test nahi kiya gaya.',
+  'No points logged.': 'Koi point log nahi.',
+  'All organisms sorted!': 'Sab organisms sort ho gaye!',
+  'All tasks completed successfully!': 'Sab tasks kamyabi se mukammal ho gaye!',
+
+  // Instructions
+  'Click a bucket to place': 'Rakhne ke liye bucket par click karein',
+  'Drag rules here to build the chart': 'Chart banane ke liye yahan rules ghaseet kar girao',
+  'Select a hardware topic and prepare your slides.': 'Hardware ka topic muntakhab karein aur slides tayyar karein.',
+  'Please select a hardware topic first.': 'Meharbani kar ke pehle hardware topic muntakhab karein.',
+  'Unsorted Organisms': 'Ghair sort shuda organisms',
+  'Taxonomic Sorting Area': 'Taxonomic Sorting Area',
+  'Wash Tubes': 'Wash Tubes',
+  'Lab Bench': 'Lab Bench',
+  'Interactive Simulation': 'Interactive Simulation',
+  'Simulation Viewer': 'Simulation Viewer',
+  'Interactive Model': 'Interactive Model',
+  'Interactive Test Rack': 'Interactive Test Rack',
+  'Virtual Workbench': 'Virtual Workbench',
+  'Reaction Viewer': 'Reaction Viewer',
+  'Agro-Visualizer': 'Agro-Visualizer',
+  'Plant Simulator': 'Plant Simulator',
+  'Molecular Visualizer': 'Molecular Visualizer',
+  'Burette Simulator': 'Burette Simulator',
+  'Boiling Simulator': 'Boiling Simulator',
+  'Mass Spectrometer Tube': 'Mass Spectrometer Tube',
+  'Detector Array': 'Detector Array',
+  'Reaction Beaker': 'Reaction Beaker',
+  'Coffee-cup Calorimeter': 'Coffee-cup Calorimeter',
+  'Industrial Reactor': 'Industrial Reactor',
+  'Synthesis Workspace': 'Synthesis Workspace',
+  'Instrument Panel': 'Instrument Panel',
+  'Control Panel': 'Control Panel',
+  'Experiment Controls': 'Experiment Controls',
+  'Operating Parameters': 'Operating Parameters',
+  'Instrument Controls': 'Instrument Controls',
+  'Experimental Setup': 'Experimental Setup',
+  'Experiment Setup': 'Experiment Setup',
+  'Controls': 'Controls',
+  'Procedure': 'Tariqa-e-Kaar',
+  'Data Logging': 'Data Logging',
+  'Data Analysis': 'Data Analysis',
+  'Data & Analysis': 'Data aur Analysis',
+  'Data Log': 'Data Log',
+  'Phase Data': 'Phase Data',
+  'Experiment Log': 'Experiment Log',
+  'Lab Journal': 'Lab Journal',
+  'Observations Log': 'Observations Log',
+  'Data Logging & Analysis': 'Data Logging aur Analysis',
+  'Results & Analysis': 'Results aur Analysis',
+  'Kinetics & Analysis': 'Kinetics aur Analysis',
+  'Mass Log': 'Mass Log',
+  'Analysis & Assessment': 'Analysis aur Assessment',
+  'Computational Analysis': 'Computational Analysis',
+  'Production Engineering Analysis': 'Production Engineering Analysis',
+  'Purity Analysis': 'Purity Analysis',
+  'Yield Analysis': 'Yield Analysis',
+  'Kinetics Analysis': 'Kinetics Analysis',
+  'Data Plot & Analysis': 'Data Plot aur Analysis',
+  'Graph: Mass of Pb vs Time': 'Graph: Pb ka Mass vs Time',
+  'Graph: Mass of Pb vs Time.': 'Graph: Pb ka Mass vs Time.',
+};
+
+// Apply translations
+let matched = 0;
+longTexts.forEach(k => {
+  const text = en[k].trim();
+  const norm = text.replace(/\.$/, '').replace(/:$/, '').trim();
+  
+  if (LONG_MAP[text]) {
+    ur[k] = LONG_MAP[text];
+    matched++;
+  } else if (LONG_MAP[norm]) {
+    ur[k] = LONG_MAP[norm];
+    matched++;
+  }
+  // For short labels (< 25 chars), keep English - they're commonly used as-is
+});
+
+fs.writeFileSync('src/locales/roman-urdu/translation.json', JSON.stringify(ur, null, 2));
+
+// Check remaining
+const finalSame = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+const finalText = finalSame.filter(k => !isFormula(en[k]) && en[k].length >= 25);
+
+console.log('Matched this run:', matched);
+console.log('Remaining long text:', finalText.length);
+console.log('Remaining total (all):', finalSame.length);
+
+// Sample remaining long text
+console.log('\n=== Remaining long text (first 20) ===');
+finalText.slice(0, 20).forEach((k, i) => {
+  console.log((i+1) + '. [' + k + '] ' + en[k].substring(0, 100));
+});

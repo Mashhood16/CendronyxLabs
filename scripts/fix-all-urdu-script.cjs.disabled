@@ -1,0 +1,48 @@
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+// Arabic/Urdu script Unicode ranges
+const URDU_CHARS = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+let found = [];
+Object.keys(ur).forEach(k => {
+  if (ur[k] && URDU_CHARS.test(ur[k])) {
+    found.push({ key: k, value: ur[k].substring(0, 120) });
+  }
+});
+
+console.log('Total entries with Urdu script:', found.length);
+
+if (found.length > 0) {
+  // Show first 30
+  found.slice(0, 30).forEach((f, i) => {
+    console.log((i+1) + '. [' + f.key + '] ' + f.value);
+  });
+
+  // Fix all: revert to English original
+  let fixed = 0;
+  let notFound = 0;
+  found.forEach(f => {
+    if (en[f.key]) {
+      ur[f.key] = en[f.key];
+      fixed++;
+    } else {
+      // Key doesn't exist in English - delete it
+      delete ur[f.key];
+      notFound++;
+    }
+  });
+
+  fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+  console.log('\nFixed (reverted to English):', fixed);
+  console.log('Deleted (no English version):', notFound);
+
+  // Verify no Urdu script remains
+  const remaining = Object.keys(ur).filter(k => ur[k] && URDU_CHARS.test(ur[k]));
+  console.log('Remaining Urdu script entries:', remaining.length);
+} else {
+  console.log('No Urdu script found - file is clean!');
+}

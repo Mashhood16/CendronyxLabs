@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7BouncingBall({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [blocks, setBlocks] = useState<string[]>([]);
  const [isPlaying, setIsPlaying] = useState(false);
  
@@ -68,22 +70,22 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Bouncing Ball Project" />
+  <LabHeader onExit={onExit} title={t('lab.c7bouncingball_bouncing_ball_project')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Assemble the correct Scratch blocks to make the ball continuously bounce off the stage edges.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7bouncingball_assemble_the_correct_scratch_b')}</p>
 
   {isCorrect && (
    <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
    <CheckCircle className="w-6 h-6 mr-3" />
-   <span className="font-bold">Correct Code!</span> The ball is now bouncing forever.
-   </div>
+   <span className="font-bold">{t('lab.c7bouncingball_correct_code')}</span>  {t('lab.c7bouncingball_the_ball_is_now_bouncing_forev')}
+                        </div>
   )}
 
   <div className="flex gap-8 max-w-5xl mx-auto w-full">
    {/* Block Palette */}
    <div className="w-72 bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">Palette</h2>
+   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">{t('lab.c7bouncingball_palette')}</h2>
    <div className="flex flex-col gap-3">
     {availableBlocks.map(block => (
     <button
@@ -99,15 +101,16 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
 
    {/* Workspace */}
    <div className="w-80 bg-slate-100 dark:bg-[#121212] p-6 rounded-xl shadow-inner border-2 border-slate-200 dark:border-[#1c1b1b] relative">
-    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">Script</h2>
+    <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">{t('lab.c7bouncingball_script')}</h2>
     
     <div className="flex items-center text-yellow-600 font-bold mb-2 bg-yellow-100 px-3 py-2 rounded-t-lg w-fit shadow-sm">
-    When 🏁 clicked
-    </div>
+    
+                             {t('lab.c7bouncingball_when_clicked')}
+                             </div>
 
     {blocks.includes('forever') ? (
     <div className="bg-orange-500 text-white p-4 rounded-lg rounded-tl-none font-bold shadow-sm relative cursor-pointer dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40" onClick={() => handleRemoveBlock('forever')}>
-     <span className="mb-2 block text-sm">forever</span>
+     <span className="mb-2 block text-sm">{t('lab.c7bouncingball_forever')}</span>
      <div className="bg-orange-400 p-4 rounded min-h-[100px] flex flex-col gap-2 dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">
      {blocks.filter(b => b !== 'forever').map(b => (
       <div key={b} onClick={(e) => { e.stopPropagation(); handleRemoveBlock(b); }} className="bg-blue-500 text-white p-2 rounded text-sm shadow-sm hover:bg-blue-600 cursor-pointer dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
@@ -115,14 +118,15 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
       </div>
      ))}
      {blocks.length === 1 && (
-      <div className="border-2 border-dashed border-orange-300 p-4 rounded text-orange-200 text-sm text-center">Add motion blocks inside</div>
+      <div className="border-2 border-dashed border-orange-300 p-4 rounded text-orange-200 text-sm text-center">{t('lab.c7bouncingball_add_motion_blocks_inside')}</div>
      )}
      </div>
     </div>
     ) : (
     <div className="bg-slate-50 dark:bg-[#121212] border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] p-6 rounded min-h-[150px] text-slate-400 text-sm text-center flex items-center justify-center">
-     Click blocks from palette to add them to your script.
-     {blocks.length > 0 && <br/>}
+     
+                                      {t('lab.c7bouncingball_click_blocks_from_palette_to_a')}
+                                      {blocks.length > 0 && <br/>}
      {blocks.filter(b => b !== 'forever').map(b => (
      <div key={b} onClick={(e) => { e.stopPropagation(); handleRemoveBlock(b); }} className="mt-2 bg-blue-500 text-white p-2 rounded text-sm shadow-sm hover:bg-blue-600 cursor-pointer text-left w-fit mx-auto dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
       {availableBlocks.find(x => x.id === b)?.name}

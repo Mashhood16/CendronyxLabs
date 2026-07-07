@@ -1,7 +1,9 @@
 import { useState, useMemo } from 'react';
 import { ArrowLeft, Box, Database, BarChart3, PieChart, CheckCircle } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM7MensurationData({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [tab, setTab] = useState<'volume' | 'data'>('volume');
 
  // Volume State
@@ -240,7 +242,8 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
   {/* Mean Line */}
   <line x1={xScale(stats.mean)} y1={pad} x2={xScale(stats.mean)} y2={height - pad} stroke="#10b981" strokeWidth="2" strokeDasharray="6 4" />
   <text x={xScale(stats.mean)} y={pad - 10} textAnchor="middle" fill="#10b981" className="text-sm font-bold">
-   Mean ({stats.mean.toFixed(1)})
+   
+                {t('lab.m7mensurationdata_mean')}{stats.mean.toFixed(1)})
   </text>
   </svg>
  );
@@ -281,7 +284,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
    return (
    <g key={v}>
-    <path d={pathData} fill={color} stroke="currentColor" className="text-white dark:text-slate-800 drop-shadow-sm hover:opacity-90 transition-opacity" strokeWidth="2" />
+    <path d={pathData} fill={color} stroke="currentColor" className="text-white dark:text-slate-800 dark:text-[#f8fafc] drop-shadow-sm hover:opacity-90 transition-opacity" strokeWidth="2" />
     {sliceAngle > 5 && (
     <text x={lx} y={ly} textAnchor="middle" alignmentBaseline="middle" fill="currentColor" className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa]">
      {v} ({freq})
@@ -300,7 +303,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
   <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
    <ArrowLeft className="w-5 h-5" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold">Class 7 Maths: Mensuration & Data Handling</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.m7mensurationdata_class_7_maths_mensuration_data')}</h1>
   </div>
 
   <div className="flex flex-1 overflow-hidden">
@@ -312,34 +315,34 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
     onClick={() => setTab('volume')}
     className={`flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center transition-colors ${ tab === 'volume' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-800 dark:hover:text-slate-200' }`}
    >
-    <Box className="w-4 h-4 mr-2" /> Volume
-   </button>
+    <Box className="w-4 h-4 mr-2" />  {t('lab.m7mensurationdata_volume')}
+                            </button>
    <button
     onClick={() => setTab('data')}
     className={`flex-1 py-2 text-sm font-medium rounded-md flex items-center justify-center transition-colors ${ tab === 'data' ? 'bg-white dark:bg-slate-600 shadow text-indigo-700 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-800 dark:hover:text-slate-200' }`}
    >
-    <BarChart3 className="w-4 h-4 mr-2" /> Data Handling
-   </button>
+    <BarChart3 className="w-4 h-4 mr-2" />  {t('lab.m7mensurationdata_data_handling')}
+                            </button>
    </div>
 
    {tab === 'volume' && (
    <div className="space-y-6">
     <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Select 3D Shape</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">{t('lab.m7mensurationdata_select_3d_shape')}</label>
     <div className="flex space-x-3">
      <button
      onClick={() => setShape('cylinder')}
      className={`flex-1 flex flex-col items-center py-3 px-4 rounded-xl border transition-colors ${ shape === 'cylinder' ? 'bg-indigo-100 border-indigo-500 text-indigo-700 dark:bg-indigo-900/50 dark:border-indigo-400 dark:text-indigo-300' : 'border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700' }`}
      >
      <Database className="w-6 h-6 mb-1" />
-     <span className="text-sm font-medium">Cylinder</span>
+     <span className="text-sm font-medium">{t('lab.m7mensurationdata_cylinder')}</span>
      </button>
      <button
      onClick={() => setShape('prism')}
      className={`flex-1 flex flex-col items-center py-3 px-4 rounded-xl border transition-colors ${ shape === 'prism' ? 'bg-indigo-100 border-indigo-500 text-indigo-700 dark:bg-indigo-900/50 dark:border-indigo-400 dark:text-indigo-300' : 'border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700' }`}
      >
      <Box className="w-6 h-6 mb-1" />
-     <span className="text-sm font-medium">Prism</span>
+     <span className="text-sm font-medium">{t('lab.m7mensurationdata_prism')}</span>
      </button>
     </div>
     </div>
@@ -349,14 +352,14 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
      <>
      <div>
       <label className="flex justify-between text-sm font-medium mb-2">
-      <span>Radius (r)</span>
+      <span>{t('lab.m7mensurationdata_radius_r')}</span>
       <span className="text-indigo-600 dark:text-indigo-400">{cylR} m</span>
       </label>
       <input type="range" min="1" max="10" value={cylR} onChange={(e) => setCylR(Number(e.target.value))} className="w-full accent-indigo-600" />
      </div>
      <div>
       <label className="flex justify-between text-sm font-medium mb-2">
-      <span>Height (h)</span>
+      <span>{t('lab.m7mensurationdata_height_h')}</span>
       <span className="text-indigo-600 dark:text-indigo-400">{cylH} m</span>
       </label>
       <input type="range" min="1" max="20" value={cylH} onChange={(e) => setCylH(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -366,21 +369,21 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
      <>
      <div>
       <label className="flex justify-between text-sm font-medium mb-2">
-      <span>Length (L)</span>
+      <span>{t('lab.m7mensurationdata_length_l')}</span>
       <span className="text-indigo-600 dark:text-indigo-400">{prismL} m</span>
       </label>
       <input type="range" min="1" max="10" value={prismL} onChange={(e) => setPrismL(Number(e.target.value))} className="w-full accent-indigo-600" />
      </div>
      <div>
       <label className="flex justify-between text-sm font-medium mb-2">
-      <span>Width (W)</span>
+      <span>{t('lab.m7mensurationdata_width_w')}</span>
       <span className="text-indigo-600 dark:text-indigo-400">{prismW} m</span>
       </label>
       <input type="range" min="1" max="10" value={prismW} onChange={(e) => setPrismW(Number(e.target.value))} className="w-full accent-indigo-600" />
      </div>
      <div>
       <label className="flex justify-between text-sm font-medium mb-2">
-      <span>Height (H)</span>
+      <span>{t('lab.m7mensurationdata_height_h_1')}</span>
       <span className="text-indigo-600 dark:text-indigo-400">{prismH} m</span>
       </label>
       <input type="range" min="1" max="20" value={prismH} onChange={(e) => setPrismH(Number(e.target.value))} className="w-full accent-indigo-600" />
@@ -390,7 +393,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
     </div>
 
     <div className="bg-indigo-50 dark:bg-indigo-900/30 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800">
-    <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Total Volume Capacity</h3>
+    <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">{t('lab.m7mensurationdata_total_volume_capacity')}</h3>
     <p className="text-3xl font-mono font-bold text-indigo-600 dark:text-indigo-400">{shape === 'cylinder' ? cylVol : prismVol} m³</p>
     <p className="text-sm font-medium text-indigo-500 mt-2">
      {shape === 'cylinder' ? `Formula: π × ${cylR}² × ${cylH}` : `Formula: ${prismL} × ${prismW} × ${prismH}`}
@@ -399,12 +402,13 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
     <div className="pt-4">
     <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">
-     <span>Fill with Liquid</span>
+     <span>{t('lab.m7mensurationdata_fill_with_liquid')}</span>
      <span className="text-blue-600 dark:text-blue-400">{fillPercent}%</span>
     </label>
     <input type="range" min="0" max="100" value={fillPercent} onChange={(e) => setFillPercent(Number(e.target.value))} className="w-full accent-blue-500" />
     <p className="text-sm font-medium mt-3 text-slate-600 dark:text-[#71717a]">
-     Current Liquid Volume:{' '}
+     
+                                      {t('lab.m7mensurationdata_current_liquid_volume')}{' '}
      <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{shape === 'cylinder' ? cylLiq : prismLiq} m³</span>
     </p>
     </div>
@@ -414,60 +418,63 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
    {tab === 'data' && (
    <div className="space-y-6">
     <div>
-    <label className="block text-sm font-bold mb-3 text-slate-700 dark:text-[#a1a1aa]">Survey Dataset (comma separated)</label>
+    <label className="block text-sm font-bold mb-3 text-slate-700 dark:text-[#a1a1aa]">{t('lab.m7mensurationdata_survey_dataset_comma_separated')}</label>
     <textarea
      value={dataStr}
      onChange={(e) => setDataStr(e.target.value)}
      className="w-full p-4 font-mono text-sm border border-slate-300 dark:border-[#1c1b1b] rounded-xl bg-slate-50 dark:bg-slate-700 focus:ring-2 focus:ring-indigo-500 outline-none transition-shadow"
      rows={3}
     />
-    <p className="text-xs font-medium text-slate-500 dark:text-[#71717a] mt-2">Example: 1, 2, 3, 2, 4</p>
+    <p className="text-xs font-medium text-slate-500 dark:text-[#71717a] mt-2">{t('lab.m7mensurationdata_example_1_2_3_2_4')}</p>
     </div>
 
     <div className="grid grid-cols-3 gap-3">
     <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl border border-emerald-200 dark:border-emerald-800 text-center">
-     <div className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">Mean</div>
+     <div className="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider">{t('lab.m7mensurationdata_mean_1')}</div>
      <div className="text-2xl font-mono font-bold text-emerald-700 dark:text-emerald-300 mt-1">{stats.mean.toFixed(2)}</div>
     </div>
     <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-xl border border-amber-200 dark:border-amber-800 text-center">
-     <div className="text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">Median</div>
+     <div className="text-xs text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">{t('lab.m7mensurationdata_median')}</div>
      <div className="text-2xl font-mono font-bold text-amber-700 dark:text-amber-300 mt-1">{stats.median}</div>
     </div>
     <div className="bg-rose-50 dark:bg-rose-900/20 p-4 rounded-xl border border-rose-200 dark:border-rose-800 text-center">
-     <div className="text-xs text-rose-600 dark:text-rose-400 font-bold uppercase tracking-wider">Mode</div>
+     <div className="text-xs text-rose-600 dark:text-rose-400 font-bold uppercase tracking-wider">{t('lab.m7mensurationdata_mode')}</div>
      <div className="text-2xl font-mono font-bold text-rose-700 dark:text-rose-300 mt-1">{stats.mode}</div>
     </div>
     </div>
 
     <div className="bg-indigo-50 dark:bg-indigo-900/20 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800 mt-6">
-    <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Assessment</h3>
+    <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">{t('lab.m7mensurationdata_assessment')}</h3>
     <p className="text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-4">
-     If you add the number <b>20</b> to this dataset, what will the new Mode be?
-    </p>
+     
+                                      {t('lab.m7mensurationdata_if_you_add_the_number')} <b>20</b>  {t('lab.m7mensurationdata_to_this_dataset_what_will_the_')}
+                                     </p>
     <div className="flex space-x-2">
      <input
      type="number"
      value={dataAnswer}
      onChange={(e) => setDataAnswer(e.target.value)}
      className="flex-1 min-w-0 p-2 font-mono text-sm border border-slate-300 rounded-lg dark:bg-slate-700 dark:border-[#1c1b1b] focus:ring-2 focus:ring-indigo-500 outline-none"
-     placeholder="Enter mode"
+     placeholder={t('lab.m7mensurationdata_enter_mode')}
      />
      <button
      onClick={checkDataAnswer}
      className="whitespace-nowrap flex-shrink-0 bg-indigo-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.m7mensurationdata_check')}
+                                          </button>
     </div>
     {dataQStatus === 'correct' && (
      <p className="text-emerald-600 dark:text-emerald-400 text-sm font-bold mt-3 flex items-center">
-     <CheckCircle className="w-4 h-4 mr-1" /> Correct! The mode (most frequent number) stays the same.
-     </p>
+     <CheckCircle className="w-4 h-4 mr-1" />  {t('lab.m7mensurationdata_correct_the_mode_most_frequent')}
+                                          </p>
     )}
     {dataQStatus === 'incorrect' && (
      <p className="text-rose-600 dark:text-rose-400 text-sm font-bold mt-3">
-     Incorrect. Remember, Mode is the number that appears most frequently.
-     </p>
+     
+                                          {t('lab.m7mensurationdata_incorrect_remember_mode_is_the')}
+                                          </p>
     )}
     </div>
    </div>
@@ -484,14 +491,14 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
     <button
      onClick={() => setChartType('bar')}
      className={`p-2 rounded-md transition-colors ${chartType === 'bar' ? 'bg-white dark:bg-slate-600 shadow text-indigo-600 dark:text-indigo-400' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
-     title="Bar Graph"
+     title={t('lab.m7mensurationdata_bar_graph')}
     >
      <BarChart3 className="w-5 h-5" />
     </button>
     <button
      onClick={() => setChartType('pie')}
      className={`p-2 rounded-md transition-colors ${chartType === 'pie' ? 'bg-white dark:bg-slate-600 shadow text-indigo-600 dark:text-indigo-400' : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'}`}
-     title="Pie Chart"
+     title={t('lab.m7mensurationdata_pie_chart')}
     >
      <PieChart className="w-5 h-5" />
     </button>

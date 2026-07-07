@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Music } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7InteractivePiano({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeKey, setActiveKey] = useState<number | null>(null);
 
  const keys = [
@@ -51,10 +53,10 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans text-slate-100 min-h-screen lg:h-screen overflow-x-hidden w-full" style={{backgroundColor: '#0f172a'}}>
-  <LabHeader onExit={onExit} title="Interactive Piano" />
+  <LabHeader onExit={onExit} title={t('lab.c7interactivepiano_interactive_piano')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto items-center">
 
-  <p className="text-slate-400 mb-12">Click the keys to trigger different sounds, simulating a programmed Scratch digital piano.</p>
+  <p className="text-slate-400 mb-12">{t('lab.c7interactivepiano_click_the_keys_to_trigger_diff')}</p>
 
   <div className="p-8 rounded-2xl shadow-2xl max-w-4xl w-full" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
    
@@ -78,8 +80,9 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
    </div>
 
    <div className="mt-8 text-center text-slate-500 dark:text-[#71717a] text-sm font-medium">
-   Programming Concept: Event Listeners (When Sprite Clicked -{'>'} Play Sound)
-   </div>
+   
+                        {t('lab.c7interactivepiano_programming_concept_event_list')}{'>'}  {t('lab.c7interactivepiano_play_sound')}
+                        </div>
   </div>
 
   </div>

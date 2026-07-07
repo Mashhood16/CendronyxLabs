@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Play, LayoutGrid, Puzzle, CheckCircle2, XCircle, Circle, DoorClosed, Bell, Book, RotateCcw , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const TRANSITIVE_VERBS = ["open", "kick", "ring", "read"];
 const INTRANSITIVE_VERBS = ["sleep", "laugh", "cry", "jump"];
@@ -24,6 +25,7 @@ const PUZZLE_PAIRS = [
 const shuffle = (array: any[]) => [...array].sort(() => Math.random() - 0.5);
 
 export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<"stage" | "puzzle">("stage");
 
@@ -110,7 +112,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
    <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
    <ArrowLeft className="w-5 h-5" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold hidden sm:block">Verb Types & Collocations</h1>
+   <h1 className="text-lg md:text-xl font-bold hidden sm:block">{t('lab.e7verbscollocations_verb_types_collocations')}</h1>
   </div>
   <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
    <button
@@ -118,23 +120,26 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
    className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "stage" ? " shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
    >
    <LayoutGrid className="w-4 h-4 mr-2" />
-   Action Stage
-   </button>
+   
+                        {t('lab.e7verbscollocations_action_stage')}
+                        </button>
    <button
    onClick={() => setActiveTab("puzzle")}
    className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "puzzle" ? " shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
    >
    <Puzzle className="w-4 h-4 mr-2" />
-   Collocation Puzzle
-   </button>
+   
+                        {t('lab.e7verbscollocations_collocation_puzzle')}
+                        </button>
   </div>
   <div className="font-semibold px-4 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full shadow-inner hidden lg:block">
-   Score: {activeTab === "stage" ? stageScore : puzzleScore}
+   
+                    {t('lab.e7verbscollocations_score')} {activeTab === "stage" ? stageScore : puzzleScore}
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -148,14 +153,15 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
    {activeTab === "stage" && (
    <div className="max-w-xl mx-auto w-full space-y-8">
     <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800">
-    <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-2">Director's Script</h2>
+    <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-2">{t('lab.e7verbscollocations_director_s_script')}</h2>
     <p className="text-sm text-indigo-600 dark:text-indigo-400">
-     Select a verb and optionally an object. Remember: <strong>Transitive verbs</strong> need an object. <strong>Intransitive verbs</strong> do not!
-    </p>
+     
+                                      {t('lab.e7verbscollocations_select_a_verb_and_optionally_a')} <strong>{t('lab.e7verbscollocations_transitive_verbs')}</strong>  {t('lab.e7verbscollocations_need_an_object')} <strong>{t('lab.e7verbscollocations_intransitive_verbs')}</strong>  {t('lab.e7verbscollocations_do_not')}
+                                     </p>
     </div>
 
     <div>
-    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">1. Select Verb</h3>
+    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">{t('lab.e7verbscollocations_1_select_verb')}</h3>
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
      {[...TRANSITIVE_VERBS, ...INTRANSITIVE_VERBS].sort().map(verb => (
      <button
@@ -170,15 +176,16 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
     </div>
 
     <div>
-    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">2. Select Object (Optional)</h3>
+    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase text-sm tracking-wider mb-3">{t('lab.e7verbscollocations_2_select_object_optional')}</h3>
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
      <button
      onClick={() => setSelectedObject(null)}
      className={`py-2 px-3 rounded-lg font-bold border-2 transition-all flex flex-col items-center justify-center whitespace-nowrap flex-shrink-0 ${ selectedObject === null ? 'bg-blue-600 border-blue-600 text-white shadow-md transform scale-105' : ' border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:border-blue-300' }`}
      >
      <span className="text-xl mb-1">🎭</span>
-     No Object
-     </button>
+     
+                                          {t('lab.e7verbscollocations_no_object')}
+                                          </button>
      {OBJECTS.map(obj => (
      <button
       key={obj.id}
@@ -198,8 +205,9 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
      className="w-full py-4 bg-green-600 hover:bg-green-700 text-white rounded-xl font-black text-xl shadow-lg transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
      <Play className="w-6 h-6 mr-2 fill-current" />
-     ACTION!
-    </button>
+     
+                                      {t('lab.e7verbscollocations_action')}
+                                     </button>
     </div>
 
     {stageLog && (
@@ -215,10 +223,11 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
    <div className="max-w-2xl mx-auto w-full space-y-6">
     <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800 flex justify-between items-center">
     <div>
-     <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-1">Collocation & Phrasal Verbs Snap</h2>
+     <h2 className="text-lg font-bold text-indigo-800 dark:text-indigo-300 mb-1">{t('lab.e7verbscollocations_collocation_phrasal_verbs_snap')}</h2>
      <p className="text-sm text-indigo-600 dark:text-indigo-400">
-     Pair a verb from the left with a matching word on the right.
-     </p>
+     
+                                          {t('lab.e7verbscollocations_pair_a_verb_from_the_left_with')}
+                                          </p>
     </div>
     <button onClick={resetPuzzle} className="p-2 bg-indigo-200 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 rounded-full hover:bg-indigo-300 transition-colors whitespace-nowrap flex-shrink-0">
      <RotateCcw className="w-5 h-5" />
@@ -233,7 +242,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
 
     <div className="flex gap-4">
     <div className="flex-1 space-y-3">
-     <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">Verbs</h3>
+     <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">{t('lab.e7verbscollocations_verbs')}</h3>
      {availableVerbs.map(v => (
      <button
       key={v}
@@ -244,7 +253,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
      </button>
      ))}
      {availableVerbs.length === 0 && (
-     <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">Empty</div>
+     <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">{t('lab.e7verbscollocations_empty')}</div>
      )}
     </div>
 
@@ -253,7 +262,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
     </div>
 
     <div className="flex-1 space-y-3">
-     <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">Matches</h3>
+     <h3 className="font-bold text-slate-500 dark:text-[#71717a] text-center uppercase text-sm tracking-wider">{t('lab.e7verbscollocations_matches')}</h3>
      {availableMatches.map(m => (
      <button
       key={m}
@@ -264,7 +273,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
      </button>
      ))}
      {availableMatches.length === 0 && (
-     <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">Empty</div>
+     <div className="text-center p-4 text-slate-400 font-bold border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg">{t('lab.e7verbscollocations_empty')}</div>
      )}
     </div>
     </div>
@@ -335,15 +344,16 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
    <div className="w-full max-w-xl h-full flex flex-col">
     <h2 className="text-2xl font-black text-slate-800 dark:text-[#ffffff] mb-6 flex items-center">
     <CheckCircle2 className="w-8 h-8 mr-3 text-green-500" />
-    Completed Pairs
-    </h2>
+    
+                                 {t('lab.e7verbscollocations_completed_pairs')}
+                                 </h2>
     
     <div className="flex-1 lg:overflow-y-auto space-y-3 pr-2">
     {completedPairs.length === 0 ? (
      <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 border-4 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-2xl p-8 text-center">
      <Puzzle className="w-16 h-16 mb-4 opacity-50" />
-     <p className="text-xl font-bold">No pairs completed yet.</p>
-     <p className="mt-2">Match verbs and phrases on the left to build your collection!</p>
+     <p className="text-xl font-bold">{t('lab.e7verbscollocations_no_pairs_completed_yet')}</p>
+     <p className="mt-2">{t('lab.e7verbscollocations_match_verbs_and_phrases_on_the')}</p>
      </div>
     ) : (
      completedPairs.map((pair, i) => (
@@ -366,8 +376,8 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
     
     {completedPairs.length === PUZZLE_PAIRS.length && (
      <div className="p-6 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-2xl shadow-xl text-center mt-6 animate-bounce">
-     <h3 className="text-2xl font-black mb-2">Puzzle Complete!</h3>
-     <p className="font-bold opacity-90">You matched all collocations and phrasal verbs perfectly.</p>
+     <h3 className="text-2xl font-black mb-2">{t('lab.e7verbscollocations_puzzle_complete')}</h3>
+     <p className="font-bold opacity-90">{t('lab.e7verbscollocations_you_matched_all_collocations_a')}</p>
      </div>
     )}
     </div>

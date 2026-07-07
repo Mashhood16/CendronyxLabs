@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { UserX, AlertTriangle, CheckCircle, Target, TrendingDown } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Customer {
  id: number;
@@ -16,6 +17,7 @@ interface LabProps {
 }
 
 export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [customers, setCustomers] = useState<Customer[]>([
@@ -87,7 +89,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Churn Prediction Lab" />
+   <LabHeader onExit={onExit} title={t('lab.cs10churnprediction_churn_prediction_lab')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -96,31 +98,32 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs10churnprediction_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs10churnprediction_lab')}</button>
   </div>
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Theory */}
     <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <Target className="mr-2 text-orange-500" /> Model Setup
-     </h2>
+      <Target className="mr-2 text-orange-500" />  {t('lab.cs10churnprediction_model_setup')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
       <p>
-       <strong>Customer Churn</strong> is when users stop doing business with a company. We can use a simple mathematical model to predict their risk score based on behaviors.
-      </p>
+       <strong>{t('lab.cs10churnprediction_customer_churn')}</strong>  {t('lab.cs10churnprediction_is_when_users_stop_doing_busin')}
+                               </p>
       
       <div className={`mt-6 bg-orange-50 p-4 rounded-lg border border-orange-100 flex-col `}>
-       <h3 className="font-semibold text-orange-900 mb-3">Adjust Model Weights</h3>
+       <h3 className="font-semibold text-orange-900 mb-3">{t('lab.cs10churnprediction_adjust_model_weights')}</h3>
        
        <div className="space-y-4">
         <div>
          <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-[#ffffff]">
-          <label>Base Risk</label>
+          <label>{t('lab.cs10churnprediction_base_risk')}</label>
           <span>{baseRisk}</span>
          </div>
          <input 
@@ -132,8 +135,8 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
         
         <div>
          <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-[#ffffff]">
-          <label>Support Tickets Weight (Positive Risk)</label>
-          <span>+{ticketWeight} per ticket</span>
+          <label>{t('lab.cs10churnprediction_support_tickets_weight_positiv')}</label>
+          <span>+{ticketWeight}  {t('lab.cs10churnprediction_per_ticket')}</span>
          </div>
          <input 
           type="range" min="0" max="30" 
@@ -144,8 +147,8 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
         
         <div>
          <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-[#ffffff]">
-          <label>Login Days Weight (Negative Risk)</label>
-          <span>{loginWeight} per day</span>
+          <label>{t('lab.cs10churnprediction_login_days_weight_negative_ris')}</label>
+          <span>{loginWeight}  {t('lab.cs10churnprediction_per_day')}</span>
          </div>
          <input 
           type="range" min="-10" max="0" 
@@ -158,28 +161,29 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
          onClick={recalculateRisk}
          className={`w-full py-2 bg-orange-600 text-white font-medium rounded-md hover:bg-orange-700 transition dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40 flex-col `}
         >
-         Recalculate Model
-        </button>
+         
+                                          {t('lab.cs10churnprediction_recalculate_model')}
+                                         </button>
        </div>
       </div>
      </div>
     </section>
 
     {/* Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <TrendingDown className="mr-2 text-orange-500" /> Customer Data
-     </h2>
+      <TrendingDown className="mr-2 text-orange-500" />  {t('lab.cs10churnprediction_customer_data')}
+                          </h2>
      
      <div className="flex-grow overflow-auto">
       <table className="w-full text-sm text-left border-collapse">
        <thead>
         <tr className="border-b-2 border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa]">
-         <th className="p-2">Customer</th>
-         <th className="p-2">Logins/30d</th>
-         <th className="p-2">Tickets</th>
-         <th className="p-2">Risk Score</th>
-         <th className="p-2">Action</th>
+         <th className="p-2">{t('lab.cs10churnprediction_customer')}</th>
+         <th className="p-2">{t('lab.cs10churnprediction_logins_30d')}</th>
+         <th className="p-2">{t('lab.cs10churnprediction_tickets')}</th>
+         <th className="p-2">{t('lab.cs10churnprediction_risk_score')}</th>
+         <th className="p-2">{t('lab.cs10churnprediction_action')}</th>
         </tr>
        </thead>
        <tbody>
@@ -190,9 +194,9 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
           <td className="p-2 text-slate-600 dark:text-[#a1a1aa]">{c.supportTickets}</td>
           <td className="p-2">
            {c.status === 'Churned' ? (
-            <span className="text-red-600 font-bold flex items-center">CHURNED <UserX size={14} className="ml-1"/></span>
+            <span className="text-red-600 font-bold flex items-center">{t('lab.cs10churnprediction_churned')} <UserX size={14} className="ml-1"/></span>
            ) : c.status === 'Promoted' ? (
-            <span className="text-green-600 font-bold flex items-center">SAVED <CheckCircle size={14} className="ml-1"/></span>
+            <span className="text-green-600 font-bold flex items-center">{t('lab.cs10churnprediction_saved')} <CheckCircle size={14} className="ml-1"/></span>
            ) : (
             <div className="flex items-center">
              <div className={`w-16 h-2 bg-slate-200 dark:bg-[#121212] rounded-full mr-2 overflow- flex-col `}>
@@ -211,8 +215,9 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
              onClick={() => applyPromo(c.id)}
              className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded hover:bg-indigo-200"
             >
-             Promo
-            </button>
+             
+                                         {t('lab.cs10churnprediction_promo')}
+                                        </button>
            )}
           </td>
          </tr>
@@ -225,20 +230,20 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
       onClick={simulateTime}
       className="mt-4 w-full py-3 bg-red-50 text-red-700 border border-red-200 font-bold rounded-md hover:bg-red-100 flex items-center justify-center transition"
      >
-      <AlertTriangle className="mr-2" size={18} /> Simulate Time Forward (High Risk Churns)
-     </button>
+      <AlertTriangle className="mr-2" size={18} />  {t('lab.cs10churnprediction_simulate_time_forward_high_ris')}
+                          </button>
     </section>
 
     {/* Analysis */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <Target className="mr-2 text-orange-500" /> Log & Assessment
-     </h2>
+      <Target className="mr-2 text-orange-500" />  {t('lab.cs10churnprediction_log_assessment')}
+                          </h2>
      
      <div className="mb-6 flex-grow">
-      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">Campaign Log</h3>
+      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">{t('lab.cs10churnprediction_campaign_log')}</h3>
       <div className="bg-[#000000] dark:bg-[#121212] rounded-lg p-3 h-48 lg:overflow-y-auto font-mono text-xs text-green-400">
-       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">Waiting for actions...</span>}
+       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">{t('lab.cs10churnprediction_waiting_for_actions')}</span>}
        {logs.map((log, i) => (
         <div key={i}>{`> ${log}`}</div>
        ))}
@@ -246,24 +251,26 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
      </div>
 
      <div className="bg-orange-50 rounded-lg p-4">
-      <h3 className="font-bold text-orange-900 mb-2">Knowledge Check</h3>
+      <h3 className="font-bold text-orange-900 mb-2">{t('lab.cs10churnprediction_knowledge_check')}</h3>
       <p className="text-sm text-orange-800 mb-4">
-       If a customer has <strong>5 logins</strong> and <strong>3 tickets</strong>, what would their Risk Score be with your current weights? (Cap at 0-100)
-      </p>
+       
+                                {t('lab.cs10churnprediction_if_a_customer_has')} <strong>{t('lab.cs10churnprediction_5_logins')}</strong>  {t('lab.cs10churnprediction_and')} <strong>{t('lab.cs10churnprediction_3_tickets')}</strong>{t('lab.cs10churnprediction_what_would_their_risk_score_be')}
+                               </p>
       <div className="flex gap-2">
        <input 
         type="number" 
         value={assessmentInput}
         onChange={(e) => setAssessmentInput(e.target.value)}
         className="w-full p-2 border border-orange-200 rounded-md focus:ring-2 focus:ring-orange-500"
-        placeholder="Expected Risk Score"
+        placeholder={t('lab.cs10churnprediction_expected_risk_score')}
        />
        <button 
         onClick={checkAssessment}
         className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
        >
-        Check
-       </button>
+        
+                                     {t('lab.cs10churnprediction_check')}
+                                    </button>
       </div>
       {assessmentRes !== null && (
        <p className={`mt-2 text-sm font-semibold ${assessmentRes ? 'text-green-600' : 'text-red-600'}`}>

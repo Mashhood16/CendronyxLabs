@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7EarthSeasons({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [running, setRunning] = useState(false);
  const [angle, setAngle] = useState(0); // 0 to 360 degrees
 
@@ -50,22 +52,22 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 12: Earth's Seasons" />
+  <LabHeader onExit={onExit} title={t('lab.s7earthseasons_unit_12_earth_s_seasons')} />
 
   <div className="flex-1 relative flex flex-col items-center p-8">
-  <div className="backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-2xl w-full text-center mb-12 bg-white/80 dark:bg-[#121212]/80 border border-slate-200 dark:border-neutral-900 relative z-10">
-   <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">Axial Tilt and Revolution</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">The Earth's axis is tilted at 23.5 degrees. As it revolves around the Sun, this constant tilt causes the Northern and Southern Hemispheres to receive varying amounts of direct sunlight, creating the seasons.</p>
+  <div className="backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-2xl w-full text-center mb-12 bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/80 dark:bg-[#121212]/80 border border-slate-200 dark:border-neutral-900 relative z-10">
+   <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">{t('lab.s7earthseasons_axial_tilt_and_revolution')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7earthseasons_the_earth_s_axis_is_tilted_at_')}</p>
    
    <div className="flex justify-center gap-4 items-center">
    <button 
     onClick={() => setRunning(!running)}
     className="flex items-center px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    {running ? <><Pause className="w-5 h-5 mr-2" /> Pause Orbit</> : <><Play className="w-5 h-5 mr-2" /> Start Orbit</>}
+    {running ? <><Pause className="w-5 h-5 mr-2" />  {t('lab.s7earthseasons_pause_orbit')}</> : <><Play className="w-5 h-5 mr-2" />  {t('lab.s7earthseasons_start_orbit')}</>}
    </button>
    <div className="ml-8 text-left">
-    <div className="text-sm text-slate-500 dark:text-[#71717a] uppercase tracking-widest font-bold">Northern Hemisphere</div>
+    <div className="text-sm text-slate-500 dark:text-[#71717a] uppercase tracking-widest font-bold">{t('lab.s7earthseasons_northern_hemisphere')}</div>
     <div className={`text-3xl font-black ${seasonColor}`}>{season}</div>
    </div>
    </div>
@@ -103,7 +105,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
      </div>
 
      {/* Northern Hemisphere Indicator */}
-     <div className="absolute -top-8 -left-4 text-xs font-bold text-white bg-[#000000] dark:bg-[#121212]/50 px-1 rounded shadow drop-shadow-md">North</div>
+     <div className="absolute -top-8 -left-4 text-xs font-bold text-white bg-[#000000] dark:bg-[#121212]/50 px-1 rounded shadow drop-shadow-md">{t('lab.s7earthseasons_north')}</div>
     </div>
    </div>
 

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Wind, Droplets } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6ParticleSimulation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [simulation, setSimulation] = useState<'none' | 'dissolving' | 'diffusion'>('none');
  const [progress, setProgress] = useState(0); // 0 to 100
 
@@ -32,7 +34,7 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 5: Matter as Particles" />
+  <LabHeader onExit={onExit} title={t('lab.s6particlesimulation_unit_5_matter_as_particles')} />
 
   <div className="flex-1 flex flex-col p-8 items-center">
   <div className="flex gap-4 mb-8">
@@ -40,22 +42,23 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
    onClick={startDissolving}
    className={`px-6 py-3 rounded-xl border-2 font-bold flex items-center gap-2 ${simulation === 'dissolving' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-blue-300'}`}
    >
-   <Droplets className="w-5 h-5" /> Dissolving Sugar
-   </button>
+   <Droplets className="w-5 h-5" />  {t('lab.s6particlesimulation_dissolving_sugar')}
+                        </button>
    <button 
    onClick={startDiffusion}
    className={`px-6 py-3 rounded-xl border-2 font-bold flex items-center gap-2 ${simulation === 'diffusion' ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300'}`}
    >
-   <Wind className="w-5 h-5" /> Gas Diffusion
-   </button>
+   <Wind className="w-5 h-5" />  {t('lab.s6particlesimulation_gas_diffusion')}
+                        </button>
   </div>
 
   {simulation === 'dissolving' && (
    <div className="w-full max-w-2xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center">
-   <h2 className="text-2xl font-bold mb-4 text-blue-800 dark:text-[#ffffff]">Dissolving Sugar in Water</h2>
+   <h2 className="text-2xl font-bold mb-4 text-blue-800 dark:text-[#ffffff]">{t('lab.s6particlesimulation_dissolving_sugar_in_water')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-center mb-8">
-    Watch as the brown sugar coating dissolves. The sugar particles are finding spaces between the water particles.
-   </p>
+    
+                             {t('lab.s6particlesimulation_watch_as_the_brown_sugar_coati')}
+                            </p>
 
    <div className="relative w-64 h-64 border-4 border-blue-200 rounded-b-3xl bg-blue-50/30 overflow-hidden flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
     {/* Water */}
@@ -81,20 +84,21 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
    <div className="mt-8 w-full bg-slate-100 dark:bg-[#121212] h-2 rounded-full overflow-hidden">
     <div className="h-full bg-blue-500 dark:bg-teal-950/20 dark:border-teal-900" style={{ width: `${progress}%` }}></div>
    </div>
-   {progress === 100 && <p className="mt-4 text-blue-600 font-bold">Dissolving Complete! The sugar particles have spread evenly through the water.</p>}
+   {progress === 100 && <p className="mt-4 text-blue-600 font-bold">{t('lab.s6particlesimulation_dissolving_complete_the_sugar_')}</p>}
    </div>
   )}
 
   {simulation === 'diffusion' && (
    <div className="w-full max-w-2xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center">
-   <h2 className="text-2xl font-bold mb-4 text-indigo-800 dark:text-[#ffffff]">Diffusion of Air Freshener</h2>
+   <h2 className="text-2xl font-bold mb-4 text-indigo-800 dark:text-[#ffffff]">{t('lab.s6particlesimulation_diffusion_of_air_freshener')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-center mb-8">
-    Gas particles move quickly and randomly. Watch how the concentrated spray spreads to evenly fill the entire room.
-   </p>
+    
+                             {t('lab.s6particlesimulation_gas_particles_move_quickly_and')}
+                            </p>
 
    <div className="relative w-96 h-64 border-2 border-slate-300 dark:border-[#1c1b1b] rounded bg-slate-50 dark:bg-[#121212] overflow-hidden">
     {/* Spray nozzle */}
-    <div className="absolute top-4 left-4 text-xs font-bold text-slate-400">Spray Corner</div>
+    <div className="absolute top-4 left-4 text-xs font-bold text-slate-400">{t('lab.s6particlesimulation_spray_corner')}</div>
     
     {/* Particles spreading */}
     {[...Array(100)].map((_, i) => {
@@ -122,14 +126,15 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
    <div className="mt-8 w-full bg-slate-100 dark:bg-[#121212] h-2 rounded-full overflow-hidden">
     <div className="h-full bg-indigo-500 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{ width: `${progress}%` }}></div>
    </div>
-   {progress === 100 && <p className="mt-4 text-indigo-600 font-bold">Diffusion Complete! Equilibrium is reached.</p>}
+   {progress === 100 && <p className="mt-4 text-indigo-600 font-bold">{t('lab.s6particlesimulation_diffusion_complete_equilibrium')}</p>}
    </div>
   )}
 
   {simulation === 'none' && (
    <div className="text-center text-slate-500 dark:text-[#71717a] mt-12">
-   Select a simulation above to observe particle behavior.
-   </div>
+   
+                        {t('lab.s6particlesimulation_select_a_simulation_above_to_o')}
+                        </div>
   )}
   </div>
  </div>

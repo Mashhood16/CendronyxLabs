@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import {Eye } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8Periscope({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [showRays, setShowRays] = useState(false);
  const [objectPos, setObjectPos] = useState(50); // 0 to 100
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 9.3: Making a Periscope" subtitle="See over obstacles using two 45° mirrors" />
+  <LabHeader onExit={onExit} title={t('lab.s8periscope_act_9_3_making_a_periscope')} subtitle={t('lab.subtitle_over_obstacles_using')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
   
   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center relative lg:overflow-hidden">
    
    <div className="flex gap-4 items-center mb-8 bg-slate-100 dark:bg-[#121212] p-4 rounded-xl shadow-inner w-full max-w-md">
-   <span className="font-bold text-slate-600 dark:text-[#a1a1aa]">Object Position:</span>
+   <span className="font-bold text-slate-600 dark:text-[#a1a1aa]">{t('lab.s8periscope_object_position')}</span>
    <input 
     type="range" min="0" max="100" value={objectPos} 
     onChange={(e) => setObjectPos(Number(e.target.value))}
@@ -29,7 +31,7 @@ export default function LabS8Periscope({ onExit }: LabProps) {
    
    {/* The Wall/Obstacle */}
    <div className="absolute left-[30%] top-1/4 w-8 h-3/4 bg-[#121212] dark:!bg-[#121212] rounded-t-sm z-30 flex flex-col items-center shadow-xl">
-    <div className="text-xs text-slate-400 font-bold -rotate-90 mt-12 tracking-widest uppercase">Brick Wall</div>
+    <div className="text-xs text-slate-400 font-bold -rotate-90 mt-12 tracking-widest uppercase">{t('lab.s8periscope_brick_wall')}</div>
    </div>
 
    {/* The Object (Apple) */}
@@ -89,8 +91,8 @@ export default function LabS8Periscope({ onExit }: LabProps) {
 
    {showRays && (
    <div className="mt-6 px-6 py-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-center animate-fade-in max-w-lg dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
-    <h3 className="font-bold mb-1">How it works</h3>
-    <p className="text-sm">Light from the apple enters the top window, reflects 90° down the tube off the first 45° mirror, and reflects another 90° off the bottom mirror directly into your eye.</p>
+    <h3 className="font-bold mb-1">{t('lab.s8periscope_how_it_works')}</h3>
+    <p className="text-sm">{t('lab.s8periscope_light_from_the_apple_enters_th')}</p>
    </div>
    )}
 

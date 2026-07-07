@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Clock, Droplet } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7XylemTransport({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [time, setTime] = useState(0);
  const [running, setRunning] = useState(false);
 
@@ -24,12 +26,12 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-blue-50 font-sans dark:bg-teal-950/20 dark:border-teal-900 min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 1: Xylem Transport Demonstration" />
+  <LabHeader onExit={onExit} title={t('lab.s7xylemtransport_unit_1_xylem_transport_demonst')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-blue-800 mb-4 dark:text-[#ffffff]">Capillary Action in Xylem</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Observe how a white flower changes color over time when its stem is placed in colored water. This demonstrates how xylem vessels transport water upwards from the roots to the leaves.</p>
+   <h2 className="text-2xl font-bold text-blue-800 mb-4 dark:text-[#ffffff]">{t('lab.s7xylemtransport_capillary_action_in_xylem')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7xylemtransport_observe_how_a_white_flower_cha')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -44,8 +46,9 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
     onClick={() => { setTime(0); setRunning(false); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7xylemtransport_reset')}
+                            </button>
    </div>
   </div>
 
@@ -90,8 +93,9 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
 
   {time === 100 && (
    <div className="mt-8 p-4 bg-blue-100 text-blue-800 rounded-xl border border-blue-200 text-center font-medium max-w-xl animate-pulse dark:text-[#ffffff]">
-   Success! The flower's petals have turned blue. This proves that the xylem tissues transport water and dissolved minerals from the base of the stem all the way up to the leaves and flowers.
-   </div>
+   
+                        {t('lab.s7xylemtransport_success_the_flower_s_petals_ha')}
+                        </div>
   )}
   </div>
  </div>

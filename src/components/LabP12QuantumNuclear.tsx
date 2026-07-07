@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Activity, AlertTriangle, Zap, ThermometerSun, Shield, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import FrontierApplicationsPanel from './FrontierApplicationsPanel';
 import type { FrontierTopic } from './FrontierApplicationsPanel';
@@ -8,6 +9,7 @@ import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffoldin
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 
 export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -99,7 +101,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab 12.1: Quantum & Nuclear Engineering" />
+  <LabHeader onExit={onExit} title={t('lab.p12quantumnuclear_lab_12_1_quantum_nuclear_engin')} />
 
   <div className="px-4 pt-2">
    
@@ -116,16 +118,17 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p12quantumnuclear_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.12quantumnuclear_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">Theory & Context {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">{t('lab.p12quantumnuclear_theory_context')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}</h2>
    
    {config.showDerivations && (
     <DeepDivePanel 
@@ -163,37 +166,39 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
    <section>
     <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
-    <Shield size={16} className="text-emerald-600"/> Nuclear Fission & Reactors
-    </h3>
+    <Shield size={16} className="text-emerald-600"/>  {t('lab.p12quantumnuclear_nuclear_fission_reactors')}
+                                 </h3>
     <p className="mt-1">
-    Nuclear power harnesses the energy released from induced fission of U-235. Neutrons strike the nucleus, splitting it into daughter nuclei and releasing 2-3 fast neutrons plus energy (E=mc²).
-    </p>
+    
+                                 {t('lab.p12quantumnuclear_nuclear_power_harnesses_the_en')}
+                                 </p>
     <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li><b>Moderator:</b> Slows down fast neutrons to thermal speeds so they can induce fission.</li>
-    <li><b>Control Rods:</b> (e.g., Boron, Cadmium) Absorb neutrons to control the chain reaction rate.</li>
-    <li><b>Coolant:</b> Transfers heat to generate steam, producing electricity.</li>
+    <li><b>{t('lab.12quantumnuclear_moderator')}</b>  {t('lab.p12quantumnuclear_slows_down_fast_neutrons_to_th')}</li>
+    <li><b>{t('lab.12quantumnuclear_controlrods')}</b>  {t('lab.p12quantumnuclear_e_g_boron_cadmium_absorb_neutr')}</li>
+    <li><b>{t('lab.12quantumnuclear_coolant')}</b>{t('lab.12quantumnuclear_transfersheattogeneratesteamproduci')}</li>
     </ul>
    </section>
 
    <section>
     <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
-    <Zap size={16} className="text-amber-500"/> PET Scans & Antimatter
-    </h3>
+    <Zap size={16} className="text-amber-500"/>  {t('lab.p12quantumnuclear_pet_scans_antimatter')}
+                                 </h3>
     <p className="mt-1">
-    Positron Emission Tomography (PET) relies on antimatter. A tracer emits a positron (e⁺), which annihilates with an electron (e⁻). 
-    The entire mass is converted into two gamma rays traveling in opposite directions: E = 2m_e c².
-    </p>
+    
+                                 {t('lab.p12quantumnuclear_positron_emission_tomography_p')}
+                                 </p>
    </section>
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Reactor Control Panel</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_reactorcontrolpanel')}</h2>
    
-   <div className={`w-full flex gap-4 mb-4 bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full flex gap-4 mb-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <div className="flex-1">
     <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
-    Control Rod Depth: {controlRodDepth}%
+    
+                                 {t('lab.p12quantumnuclear_control_rod_depth')} {controlRodDepth}%
     </label>
     <input 
     type="range" min="0" max="100" value={controlRodDepth} 
@@ -204,7 +209,8 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
    </div>
    <div className="flex-1">
     <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
-    Coolant Flow: {coolantFlow}%
+    
+                                 {t('lab.p12quantumnuclear_coolant_flow')} {coolantFlow}%
     </label>
     <input 
     type="range" min="0" max="100" value={coolantFlow} 
@@ -219,12 +225,12 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
    <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]'}`}>
     <ThermometerSun size={24} className="mb-1" />
     <span className="text-xl font-bold">{temperature}°C</span>
-    <span className="text-xs">Core Temp</span>
+    <span className="text-xs">{t('lab.12quantumnuclear_coretemp')}</span>
    </div>
    <div className={`p-3 rounded-lg flex flex-col items-center bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] `}>
     <Activity size={24} className="mb-1 text-emerald-600" />
     <span className="text-xl font-bold">{power} MW</span>
-    <span className="text-xs">Power Output</span>
+    <span className="text-xs">{t('lab.12quantumnuclear_poweroutput')}</span>
    </div>
    </div>
 
@@ -232,11 +238,12 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
    {meltdown ? (
     <div className="text-center text-red-500 animate-pulse flex flex-col items-center">
     <AlertTriangle size={64} className="mb-4" />
-    <h3 className="text-2xl font-bold uppercase tracking-widest">Meltdown</h3>
-    <p className="text-sm mt-2 text-slate-300">Core temperature exceeded 2000°C</p>
+    <h3 className="text-2xl font-bold uppercase tracking-widest">{t('lab.12quantumnuclear_meltdown')}</h3>
+    <p className="text-sm mt-2 text-slate-300">{t('lab.12quantumnuclear_coretemperatureexceeded2000c')}</p>
     <button onClick={restart} className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
-     Reset System
-    </button>
+     
+                                      {t('lab.p12quantumnuclear_reset_system')}
+                                     </button>
     </div>
    ) : (
     <svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
@@ -275,44 +282,48 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
     </div>
    )}
 
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">Analysis & Computing</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12quantumnuclear_analysis_andcomputing')}</h2>
    
    <div className="space-y-6">
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Q1: PET Scan Annihilation</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q1petscanannihilation')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    In a PET scan, a positron and electron annihilate. Calculate the total energy of the two gamma rays produced in <strong>MeV</strong>.
-    <br/><span className="text-xs italic">(m_e = 9.11×10⁻³¹ kg, c = 3×10⁸ m/s, 1 eV = 1.6×10⁻¹⁹ J)</span>
+    
+                                 {t('lab.p12quantumnuclear_in_a_pet_scan_a_positron_and_e')} <strong>{t('lab.12quantumnuclear_mev')}</strong>.
+    <br/><span className="text-xs italic">{t('lab.p12quantumnuclear_m_e_9_11_10_kg_c_3_10_m_s_1_ev')}</span>
     </p>
     <div className="flex gap-2">
     <input 
      type="number" value={petAns} onChange={e => setPetAns(e.target.value)}
-     placeholder="e.g. 1.022" 
+     placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg1022')} 
      className="flex-1 border rounded px-3 py-1.5 text-sm"
     />
     <button onClick={checkPet} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     Check
-    </button>
+     
+                                      {t('lab.p12quantumnuclear_check')}
+                                     </button>
     </div>
     {petFeedback && <p className={`mt-2 text-sm font-medium ${petFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{petFeedback}</p>}
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Q2: Mass Defect</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q2massdefect')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    If your reactor operates continuously at 1.0 GW (10⁹ W), how much mass is converted to pure energy every second? (Provide answer in <strong>×10⁻⁸ kg</strong>).
-    <br/><span className="text-xs italic">Use E = mc²</span>
+    
+                                 {t('lab.p12quantumnuclear_if_your_reactor_operates_conti')} <strong>{t('lab.12quantumnuclear_10kg')}</strong>).
+    <br/><span className="text-xs italic">{t('lab.12quantumnuclear_useemc')}</span>
     </p>
     <div className="flex gap-2 items-center">
     <input 
      type="number" value={reactorAns} onChange={e => setReactorAns(e.target.value)}
-     placeholder="e.g. 1.11" 
+     placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg111')} 
      className="flex-1 border rounded px-3 py-1.5 text-sm"
     />
-    <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">× 10⁻⁸ kg</span>
+    <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12quantumnuclear_10kg')}</span>
     <button onClick={checkReactor} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     Check
-    </button>
+     
+                                      {t('lab.p12quantumnuclear_check')}
+                                     </button>
     </div>
     {reactorFeedback && <p className={`mt-2 text-sm font-medium ${reactorFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{reactorFeedback}</p>}
    </div>

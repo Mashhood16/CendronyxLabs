@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 interface WordToken {
  id: string;
@@ -13,6 +14,7 @@ interface Connection {
 }
 
 export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [complexity, setComplexity] = useState<number>(2);
  const [selectedPronoun, setSelectedPronoun] = useState<string | null>(null);
@@ -147,7 +149,7 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
  const getConnectionColor = (pronounId: string) => {
   const colors = ['bg-rose-500', 'bg-blue-500', 'bg-emerald-500', 'bg-amber-500', 'bg-indigo-500'];
   const index = currentData.correct.findIndex(c => c.pronounId === pronounId);
-  return colors[index % colors.length] || 'bg-slate-500';
+  return colors[index % colors.length] || 'bg-slate-50 dark:bg-[#000000]0';
  };
 
  const renderGraph = () => {
@@ -167,8 +169,9 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
    <div className="p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-shrink-0 min-h-screen lg:h-screen overflow-x-hidden w-full">
     <h3 className="font-semibold text-sm mb-4 flex items-center gap-2 text-slate-700 dark:text-[#a1a1aa]">
      <Activity className="w-4 h-4 text-indigo-500" />
-     Accuracy Over Time
-    </h3>
+     
+                   {t('lab.e11nounspronouns_accuracy_over_time')}
+                  </h3>
     <svg viewBox={`-10 -10 ${width + 20} ${height + 20}`} className="w-full h-24 overflow-visible">
      <line x1="0" y1="0" x2="0" y2={height} stroke="currentColor" strokeWidth="1" className="text-slate-300 dark:text-[#2a2a2a]" />
      <line x1="0" y1={height} x2={width} y2={height} stroke="currentColor" strokeWidth="1" className="text-slate-300 dark:text-[#2a2a2a]" />
@@ -198,11 +201,11 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
      <button 
       onClick={onExit}
       className="p-2 hover:bg-slate-100 dark:hover:bg-[#1c1b1b] rounded-full transition-colors whitespace-nowrap flex-shrink-0"
-      title="Go Back"
+      title={t('lab.e11nounspronouns_go_back')}
      >
       <ArrowLeft className="w-6 h-6 dark:text-[#a1a1aa]" />
      </button>
-     <h1 className="text-lg md:text-xl font-bold dark:text-[#ffffff]">Nouns &amp; Pronouns: Reference Mapping</h1>
+     <h1 className="text-lg md:text-xl font-bold dark:text-[#ffffff]">{t('lab.e11nounspronouns_nouns_amp_pronouns_reference_m')}</h1>
     </div>
    </header>
 
@@ -212,12 +215,13 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e11nounspronouns_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e11nounspronouns_lab')}</button>
   </div>
 
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:min-h-0 lg:overflow-visible">
@@ -225,56 +229,58 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:h-full lg:min-h-0 overflow- ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2 flex-shrink-0">
       <BookOpen className="w-5 h-5 text-indigo-500" />
-      Theory: Nouns &amp; Pronouns
-     </h2>
+      
+                           {t('lab.e11nounspronouns_theory_nouns_amp_pronouns')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-full pr-2">
-      <h3 className="text-slate-800 dark:text-white mt-0">1. Introduction to Reference Mapping</h3>
-      <p>In English grammar, a <strong>pronoun</strong> is a word that replaces a <strong>noun</strong> or a noun phrase. The noun that the pronoun refers back to (or forward to) is called its <strong>antecedent</strong>.</p>
-      <p>Understanding the link between a pronoun and its antecedent is critical for clarity in reading and writing. This link is referred to as <strong>reference mapping</strong>.</p>
+      <h3 className="text-slate-800 dark:text-white mt-0">{t('lab.e11nounspronouns_1_introduction_to_reference_ma')}</h3>
+      <p>{t('lab.e11nounspronouns_in_english_grammar_a')} <strong>{t('lab.e11nounspronouns_pronoun')}</strong>  {t('lab.e11nounspronouns_is_a_word_that_replaces_a')} <strong>{t('lab.e11nounspronouns_noun')}</strong>  {t('lab.e11nounspronouns_or_a_noun_phrase_the_noun_that')} <strong>{t('lab.e11nounspronouns_antecedent')}</strong>.</p>
+      <p>{t('lab.e11nounspronouns_understanding_the_link_between')} <strong>{t('lab.e11nounspronouns_reference_mapping')}</strong>.</p>
 
-      <h3 className="text-slate-800 dark:text-white">2. Types of References</h3>
+      <h3 className="text-slate-800 dark:text-white">{t('lab.e11nounspronouns_2_types_of_references')}</h3>
       <ul>
-       <li><strong>Anaphoric Reference:</strong> This is the most common type of reference. The pronoun refers back to an antecedent that has already been mentioned in the text. 
-        <br/><em>Example:</em> "The <strong>queen</strong> lost <strong>her</strong> crown." Here, "her" refers back to "queen".
-       </li>
-       <li><strong>Cataphoric Reference:</strong> The pronoun appears <em>before</em> the noun it refers to. This is often used for dramatic effect or in complex sentence structures.
-        <br/><em>Example:</em> "Although <strong>he</strong> was tired, the <strong>king</strong> fought the dragon." Here, "he" refers forward to "king".
-       </li>
+       <li><strong>{t('lab.e11nounspronouns_anaphoric_reference')}</strong>  {t('lab.e11nounspronouns_this_is_the_most_common_type_o')} 
+                                 <br/><em>{t('lab.e11nounspronouns_example')}</em>  {t('lab.e11nounspronouns_the')} <strong>{t('lab.e11nounspronouns_queen')}</strong>  {t('lab.e11nounspronouns_lost')} <strong>{t('lab.e11nounspronouns_her')}</strong>  {t('lab.e11nounspronouns_crown_here_her_refers_back_to_')}
+                                    </li>
+       <li><strong>{t('lab.e11nounspronouns_cataphoric_reference')}</strong>  {t('lab.e11nounspronouns_the_pronoun_appears')} <em>{t('lab.e11nounspronouns_before')}</em>  {t('lab.e11nounspronouns_the_noun_it_refers_to_this_is_')}
+                                 <br/><em>{t('lab.e11nounspronouns_example')}</em>  {t('lab.e11nounspronouns_although')} <strong>he</strong>  {t('lab.e11nounspronouns_was_tired_the')} <strong>{t('lab.e11nounspronouns_king')}</strong>  {t('lab.e11nounspronouns_fought_the_dragon_here_he_refe')}
+                                    </li>
       </ul>
 
-      <h3 className="text-slate-800 dark:text-white">3. Pronoun Agreement</h3>
-      <p>A pronoun must agree with its antecedent in three ways:</p>
+      <h3 className="text-slate-800 dark:text-white">{t('lab.e11nounspronouns_3_pronoun_agreement')}</h3>
+      <p>{t('lab.e11nounspronouns_a_pronoun_must_agree_with_its_')}</p>
       <ul>
-       <li><strong>Number:</strong> Singular antecedents require singular pronouns (e.g., he, she, it). Plural antecedents require plural pronouns (e.g., they, them).</li>
-       <li><strong>Gender:</strong> Masculine, feminine, or neuter pronouns must correctly match the antecedent.</li>
-       <li><strong>Person:</strong> First person (I, we), second person (you), or third person (he, she, it, they).</li>
+       <li><strong>{t('lab.e11nounspronouns_number')}</strong>  {t('lab.e11nounspronouns_singular_antecedents_require_s')}</li>
+       <li><strong>{t('lab.e11nounspronouns_gender')}</strong>  {t('lab.e11nounspronouns_masculine_feminine_or_neuter_p')}</li>
+       <li><strong>{t('lab.e11nounspronouns_person')}</strong>  {t('lab.e11nounspronouns_first_person_i_we_second_perso')}</li>
       </ul>
 
-      <h3 className="text-slate-800 dark:text-white">4. Common Pitfalls</h3>
-      <p><strong>Ambiguous Reference:</strong> When a sentence contains multiple nouns, it might be unclear which one the pronoun replaces.</p>
-      <p><em>Example:</em> "John told Mark that he had won the prize." (Who won? John or Mark?)</p>
+      <h3 className="text-slate-800 dark:text-white">{t('lab.e11nounspronouns_4_common_pitfalls')}</h3>
+      <p><strong>{t('lab.e11nounspronouns_ambiguous_reference')}</strong>  {t('lab.e11nounspronouns_when_a_sentence_contains_multi')}</p>
+      <p><em>{t('lab.e11nounspronouns_example')}</em>  {t('lab.e11nounspronouns_john_told_mark_that_he_had_won')}</p>
 
-      <h3 className="text-slate-800 dark:text-white">5. Lab Instructions</h3>
-      <p>In this interactive lab, your task is to successfully map pronouns to their antecedents across sentences of varying complexity.</p>
+      <h3 className="text-slate-800 dark:text-white">{t('lab.e11nounspronouns_5_lab_instructions')}</h3>
+      <p>{t('lab.e11nounspronouns_in_this_interactive_lab_your_t')}</p>
       <ul>
-       <li>First, click on a highlighted <strong>Pronoun</strong> (underlined in blue).</li>
-       <li>Next, locate and click on its corresponding <strong>Antecedent</strong> (underlined with dashed yellow).</li>
-       <li>Use the "Check Links" button in the Controls panel to evaluate your accuracy.</li>
+       <li>{t('lab.e11nounspronouns_first_click_on_a_highlighted')} <strong>{t('lab.e11nounspronouns_pronoun_1')}</strong>  {t('lab.e11nounspronouns_underlined_in_blue')}</li>
+       <li>{t('lab.e11nounspronouns_next_locate_and_click_on_its_c')} <strong>{t('lab.e11nounspronouns_antecedent_1')}</strong>  {t('lab.e11nounspronouns_underlined_with_dashed_yellow')}</li>
+       <li>{t('lab.e11nounspronouns_use_the_check_links_button_in_')}</li>
       </ul>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full lg:min-h-0 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full lg:min-h-0 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2 flex-shrink-0">
       <Activity className="w-5 h-5 text-indigo-500" />
-      Controls &amp; Status
-     </h2>
+      
+                           {t('lab.e11nounspronouns_controls_amp_status')}
+                          </h2>
      <div className="flex-1 overflow-y-auto pr-2 space-y-6">
       <div>
-       <h3 className="font-semibold text-sm mb-2 text-slate-700 dark:text-slate-300">Lab Configuration</h3>
+       <h3 className="font-semibold text-sm mb-2 text-slate-700 dark:text-slate-300">{t('lab.e11nounspronouns_lab_configuration')}</h3>
        <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-        <label className="text-sm font-semibold mb-2 block dark:text-[#a1a1aa]">Sentence Complexity: {complexity}</label>
+        <label className="text-sm font-semibold mb-2 block dark:text-[#a1a1aa]">{t('lab.e11nounspronouns_sentence_complexity')} {complexity}</label>
         <input 
          type="range" 
          min="1" 
@@ -284,9 +290,9 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
          className="w-full accent-indigo-600"
         />
         <div className="flex justify-between text-xs text-slate-500 dark:text-[#71717a] mt-1">
-         <span>Basic</span>
-         <span>Standard</span>
-         <span>Complex</span>
+         <span>{t('lab.e11nounspronouns_basic')}</span>
+         <span>{t('lab.e11nounspronouns_standard')}</span>
+         <span>{t('lab.e11nounspronouns_complex')}</span>
         </div>
        </div>
       </div>
@@ -294,8 +300,9 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
       <div className={`rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
        <h3 className="font-semibold text-sm mb-2 text-slate-700 dark:text-slate-300 flex items-center gap-2">
         <Target className="w-4 h-4 text-indigo-500" />
-        Activity Status
-       </h3>
+        
+                                     {t('lab.e11nounspronouns_activity_status')}
+                                    </h3>
        <p className="text-sm font-medium mb-4 min-h-[40px] text-indigo-700 dark:text-indigo-400">
         {feedback}
        </p>
@@ -306,32 +313,34 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
          className={`flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium text-sm shadow-sm flex-col `}
         >
          <CheckCircle className="w-4 h-4" />
-         Check Links
-        </button>
+         
+                                          {t('lab.e11nounspronouns_check_links')}
+                                         </button>
         <button
          onClick={resetActivity}
          className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg transition-colors whitespace-nowrap flex-shrink-0 font-medium text-sm border border-transparent dark:border-slate-700"
         >
          <RefreshCw className="w-4 h-4" />
-         Reset
-        </button>
+         
+                                          {t('lab.e11nounspronouns_reset')}
+                                         </button>
        </div>
       </div>
 
       <div>
-       <h3 className="font-semibold mb-2 text-sm text-slate-700 dark:text-slate-300">Current Links</h3>
+       <h3 className="font-semibold mb-2 text-sm text-slate-700 dark:text-slate-300">{t('lab.e11nounspronouns_current_links')}</h3>
        <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden">
         <table className="w-full text-sm text-left">
          <thead className="bg-slate-50 dark:bg-[#1c1b1b] border-b border-slate-200 dark:border-[#2a2a2a] text-xs uppercase text-slate-500 dark:text-[#a1a1aa]">
           <tr>
-           <th className="px-4 py-2">Pronoun</th>
-           <th className="px-4 py-2">Antecedent</th>
+           <th className="px-4 py-2">{t('lab.e11nounspronouns_pronoun_1')}</th>
+           <th className="px-4 py-2">{t('lab.e11nounspronouns_antecedent_1')}</th>
           </tr>
          </thead>
          <tbody>
           {connections.length === 0 ? (
            <tr>
-            <td colSpan={2} className="px-4 py-3 text-center text-slate-400 dark:text-[#71717a] italic">No links recorded yet</td>
+            <td colSpan={2} className="px-4 py-3 text-center text-slate-400 dark:text-[#71717a] italic">{t('lab.e11nounspronouns_no_links_recorded_yet')}</td>
            </tr>
           ) : (
            connections.map((c, i) => {
@@ -356,24 +365,26 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
       {renderGraph()}
 
       <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/30 flex-shrink-0">
-       <h3 className="font-semibold text-indigo-900 dark:text-indigo-300 text-sm mb-2">Assessment</h3>
+       <h3 className="font-semibold text-indigo-900 dark:text-indigo-300 text-sm mb-2">{t('lab.e11nounspronouns_assessment')}</h3>
        <p className="text-xs text-indigo-800 dark:text-indigo-400 mb-3">
-        In Complexity 3, the pronoun "he" appears before its antecedent "king". What is this type of reference called?
-       </p>
+        
+                                     {t('lab.e11nounspronouns_in_complexity_3_the_pronoun_he')}
+                                    </p>
        <div className="flex gap-2">
         <input 
          type="text" 
          value={assessmentAnswer}
          onChange={(e) => setAssessmentAnswer(e.target.value)}
-         placeholder="Enter type..."
+         placeholder={t('lab.e11nounspronouns_enter_type')}
          className="flex-1 px-3 py-2 rounded-lg border border-indigo-200 dark:border-indigo-700/50 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-[#a1a1aa]"
         />
         <button 
          onClick={checkAssessment}
          className="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium whitespace-nowrap"
         >
-         Submit
-        </button>
+         
+                                          {t('lab.e11nounspronouns_submit')}
+                                         </button>
        </div>
        {assessmentResult && (
         <p className="mt-2 text-xs font-medium text-indigo-700 dark:text-indigo-400 bg-white dark:bg-[#1c1b1b] p-2 rounded border border-indigo-100 dark:border-indigo-800/30">{assessmentResult}</p>
@@ -383,10 +394,11 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full lg:min-h-0 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full lg:min-h-0 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className={`rounded-2xl shadow-xl p-8 max-w-3xl w-full border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
       <h2 className="text-2xl font-serif text-slate-800 dark:text-[#ffffff] mb-8 border-b border-slate-200 dark:border-[#2a2a2a] pb-4">
-       Interactive Stage: Complexity {complexity}
+       
+                                {t('lab.e11nounspronouns_interactive_stage_complexity')} {complexity}
       </h2>
       
       <div className="text-xl leading-loose font-serif text-slate-800 dark:text-[#ffffff]">
@@ -444,11 +456,11 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
       <div className="mt-12 flex items-center justify-center gap-6 text-sm text-slate-500 dark:text-[#71717a] bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-100 dark:border-[#2a2a2a]">
        <div className="flex items-center gap-2">
         <span className="w-6 h-1 bg-indigo-400 rounded-full"></span>
-        <span>Pronouns (Click first)</span>
+        <span>{t('lab.e11nounspronouns_pronouns_click_first')}</span>
        </div>
        <div className="flex items-center gap-2">
         <span className="w-6 h-1 border-b-2 border-dashed border-amber-400"></span>
-        <span>Nouns (Antecedents)</span>
+        <span>{t('lab.e11nounspronouns_nouns_antecedents')}</span>
        </div>
       </div>
      </div>

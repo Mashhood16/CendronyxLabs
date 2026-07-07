@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, RefreshCw, Layers, Check, Search, Quote, MoveRight, HelpCircle, Lightbulb , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 interface BaseWord {
  word: string;
@@ -77,6 +78,7 @@ const SIMPLE_PUNCTUATION_TASKS = [
 ];
 
 export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'affixes' | 'punctuation'>('affixes');
 
@@ -215,12 +217,13 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
    <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#71717a]" />
    </button>
    <h1 className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600 dark:from-indigo-400 dark:to-pink-400 truncate">
-   Sentences & Word Parts
-   </h1>
+   
+                        {t('lab.e6sentencesaffixes_sentences_word_parts')}
+                        </h1>
   </div>
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -230,14 +233,16 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
    onClick={() => setActiveTab('affixes')}
    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ activeTab === 'affixes' ? 'bg-white dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300' }`}
    >
-   Affix Engine
-   </button>
+   
+                        {t('lab.e6sentencesaffixes_affix_engine')}
+                        </button>
    <button
    onClick={() => setActiveTab('punctuation')}
    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ activeTab === 'punctuation' ? 'bg-white dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300' }`}
    >
-   Sentence Transformer
-   </button>
+   
+                        {t('lab.e6sentencesaffixes_sentence_transformer')}
+                        </button>
   </div>
   </div>
 
@@ -250,9 +255,9 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
    <div>
     <h2 className="text-2xl font-bold mb-2 flex items-center">
     {activeTab === 'affixes' ? (
-     <><Layers className="w-6 h-6 mr-2 text-indigo-500" /> Affix Factory</>
+     <><Layers className="w-6 h-6 mr-2 text-indigo-500" />  {t('lab.e6sentencesaffixes_affix_factory')}</>
     ) : (
-     <><Quote className="w-6 h-6 mr-2 text-pink-500" /> Transformer</>
+     <><Quote className="w-6 h-6 mr-2 text-pink-500" />  {t('lab.e6sentencesaffixes_transformer')}</>
     )}
     </h2>
     <p className="text-slate-600 dark:text-[#71717a]">
@@ -266,8 +271,8 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
     <div className="space-y-4">
     <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-800/50">
      <h3 className="font-semibold text-indigo-800 dark:text-indigo-300 mb-2 flex items-center">
-     <Search className="w-4 h-4 mr-2" /> Select Base Word
-     </h3>
+     <Search className="w-4 h-4 mr-2" />  {t('lab.e6sentencesaffixes_select_base_word')}
+                                          </h3>
      <div className="flex flex-wrap gap-2">
      {BASE_WORDS.map(bw => (
       <button
@@ -286,27 +291,29 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
      onClick={checkAffixCombo}
      className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
      >
-     <Check className="w-5 h-5 mr-2" /> Check Word
-     </button>
+     <Check className="w-5 h-5 mr-2" />  {t('lab.e6sentencesaffixes_check_word')}
+                                          </button>
      <button
      onClick={resetAffixes}
      className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
      >
-     <RefreshCw className="w-5 h-5 mr-2" /> Clear Affixes
-     </button>
+     <RefreshCw className="w-5 h-5 mr-2" />  {t('lab.e6sentencesaffixes_clear_affixes')}
+                                          </button>
     </div>
     </div>
    ) : (
     <div className="space-y-4">
     <div className="bg-pink-50 dark:bg-pink-900/30 p-4 rounded-xl border border-pink-100 dark:border-pink-800/50">
      <h3 className="font-semibold text-pink-800 dark:text-pink-300 mb-2 flex items-center">
-     <Target className="w-4 h-4 mr-2" /> Current Mission
-     </h3>
+     <Target className="w-4 h-4 mr-2" />  {t('lab.e6sentencesaffixes_current_mission')}
+                                              </h3>
      <p className="text-sm text-slate-700 dark:text-[#a1a1aa] mb-2">
-     Original: <span className="italic text-slate-500">"{currentTask.base}"</span>
+     
+                                              {t('lab.e6sentencesaffixes_original')} <span className="italic text-slate-500">"{currentTask.base}"</span>
      </p>
      <p className="text-md font-bold text-pink-700 dark:text-pink-400">
-     Transform to: {currentTask.targetType}
+     
+                                              {t('lab.e6sentencesaffixes_transform_to')} {currentTask.targetType}
      </p>
     </div>
 
@@ -315,14 +322,14 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
      onClick={checkPunctuation}
      className="w-full py-3 px-4 bg-pink-600 hover:bg-pink-700 text-white rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
      >
-     <Check className="w-5 h-5 mr-2" /> Verify Sentence
-     </button>
+     <Check className="w-5 h-5 mr-2" />  {t('lab.e6sentencesaffixes_verify_sentence')}
+                                              </button>
      <button
      onClick={nextTask}
      className="w-full py-3 px-4 bg-slate-200 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-xl font-semibold transition-colors flex items-center justify-center whitespace-nowrap flex-shrink-0"
      >
-     <MoveRight className="w-5 h-5 mr-2" /> Next Challenge
-     </button>
+     <MoveRight className="w-5 h-5 mr-2" />  {t('lab.e6sentencesaffixes_next_challenge')}
+                                              </button>
     </div>
     </div>
    )}
@@ -338,7 +345,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
     <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12 w-full">
     {/* Prefix Slot */}
     <div className="flex flex-col items-center w-full md:w-1/3">
-     <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Prefix</div>
+     <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">{t('lab.e6sentencesaffixes_prefix')}</div>
      <div className={`h-20 w-full flex items-center justify-center rounded-2xl border-4 border-dashed transition-all ${ activePrefix ? 'bg-blue-100 border-blue-400 text-blue-700 dark:bg-blue-900/50 dark:border-blue-500 dark:text-blue-200 text-3xl font-bold' : 'border-slate-200 dark:border-[#1c1b1b]' }`}>
      {activePrefix || <span className="text-slate-300 dark:text-slate-600 font-mono text-xl">____</span>}
      </div>
@@ -357,7 +364,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
 
     {/* Base Word */}
     <div className="flex flex-col items-center w-full md:w-1/3 z-10 scale-110">
-     <div className="text-sm font-semibold text-indigo-400 mb-2 uppercase tracking-wider">Base</div>
+     <div className="text-sm font-semibold text-indigo-400 mb-2 uppercase tracking-wider">{t('lab.e6sentencesaffixes_base')}</div>
      <div className="h-20 px-6 flex items-center justify-center rounded-2xl bg-indigo-600 text-white text-3xl font-bold shadow-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
      {selectedBaseWord.word}
      </div>
@@ -368,7 +375,7 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
 
     {/* Suffix Slot */}
     <div className="flex flex-col items-center w-full md:w-1/3">
-     <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">Suffix</div>
+     <div className="text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">{t('lab.e6sentencesaffixes_suffix')}</div>
      <div className={`h-20 w-full flex items-center justify-center rounded-2xl border-4 border-dashed transition-all ${ activeSuffix ? 'bg-green-100 border-green-400 text-green-700 dark:bg-green-900/50 dark:border-green-500 dark:text-green-200 text-3xl font-bold' : 'border-slate-200 dark:border-[#1c1b1b]' }`}>
      {activeSuffix || <span className="text-slate-300 dark:text-slate-600 font-mono text-xl">____</span>}
      </div>
@@ -400,8 +407,9 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
    <div className="w-full max-w-3xl bg-white dark:!bg-[#121212] rounded-3xl p-8 shadow-sm border border-slate-200 dark:border-neutral-900 flex flex-col items-center">
     
     <div className="text-lg text-slate-500 dark:text-[#71717a] mb-8 text-center">
-    Use the arrows to reorder the words. Click the punctuation mark to change it.
-    </div>
+    
+                                     {t('lab.e6sentencesaffixes_use_the_arrows_to_reorder_the_')}
+                                     </div>
 
     <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
     {userWords.map((word, idx) => (

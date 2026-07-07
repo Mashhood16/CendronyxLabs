@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [armRadius, setArmRadius] = useState(1.0); // 0.2 to 1.0 m
  const [initialOmega, setInitialOmega] = useState(2.0); // rad/s
@@ -11,7 +13,8 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
  const [currentAngle, setCurrentAngle] = useState(0);
 
  const [omegaGuess, setOmegaGuess] = useState('');
- const [feedback, setFeedback] = useState<string | null>(null);
+ const [feedbackType, setFeedbackType] = useState<'correct' | 'incorrect' | null>(null);
+ const [lastOmega, setLastOmega] = useState(0);
 
  const I_body = 1.0; // kg*m^2
  const m_arms = 10.0; // kg
@@ -45,10 +48,11 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
 
  const checkAnswer = () => {
  const guess = parseFloat(omegaGuess);
+ setLastOmega(currentOmega);
  if (Math.abs(currentOmega - guess) < 0.1) {
-  setFeedback('Correct! Angular momentum is conserved.');
+  setFeedbackType('correct');
  } else {
-  setFeedback(`Incorrect. Try L = I_initial * ω_initial = I_final * ω_final. Actual ω = ${currentOmega.toFixed(2)} rad/s.`);
+  setFeedbackType('incorrect');
  }
  };
 
@@ -56,7 +60,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Rotational Motion" />
+  <LabHeader onExit={onExit} title={t('lab.p11_rot_title')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -65,39 +69,39 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
+    {t('lab.tab.theory')}
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   {/* Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Conservation of Angular Momentum</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p11_rot_theory_title')}</h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <p>When no external torque acts on a system, its angular momentum <strong>L</strong> remains constant.</p>
-   <p className={`text-center font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-slate-800 dark:text-[#ffffff] flex-col `}>L = I × ω = constant</p>
-   <p>where <strong>I</strong> is the moment of inertia and <strong>ω</strong> is angular velocity.</p>
+   <p>{t('lab.p11_rot_theory_p1')}</p>
+   <p className={`text-center font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-slate-800 dark:text-[#ffffff] flex-col `}>{t('lab.p11_rot_theory_p2')}</p>
+   <p>{t('lab.p11_rot_theory_p3')}</p>
    <ul className="list-disc pl-4 mt-2 space-y-1">
-    <li>A skater pulls their arms in to reduce <em>r</em>.</li>
-    <li>This reduces their moment of inertia (I = I_body + m_arms × r²).</li>
-    <li>To keep L constant, angular velocity (ω) must increase.</li>
+    <li>{t('lab.p11_rot_theory_li1')}</li>
+    <li>{t('lab.p11_rot_theory_li2')}</li>
+    <li>{t('lab.p11_rot_theory_li3')}</li>
    </ul>
    </div>
    
    <div className="mt-6 space-y-4">
    <div>
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-    <span>Arm Radius (m)</span> <span>{armRadius.toFixed(2)} m</span>
+    <span>{t('lab.p11_rot_slider_arm')}</span> <span>{armRadius.toFixed(2)} m</span>
     </label>
     <input type="range" min="0.2" max="1.0" step="0.05" value={armRadius} onChange={e => setArmRadius(Number(e.target.value))} className="w-full accent-indigo-500" />
    </div>
    {!spinning && (
     <div>
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-     <span>Initial ω (rad/s)</span> <span>{initialOmega.toFixed(1)}</span>
+     <span>{t('lab.p11_rot_slider_omega')}</span> <span>{initialOmega.toFixed(1)}</span>
     </label>
     <input type="range" min="1" max="5" step="0.1" value={initialOmega} onChange={e => setInitialOmega(Number(e.target.value))} className="w-full accent-indigo-500" />
     </div>
@@ -107,14 +111,14 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
     onClick={() => setSpinning(!spinning)}
     className={`w-full py-2 rounded-lg font-bold text-white transition-colors ${spinning ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}`}
    >
-    {spinning ? 'Stop Spinning' : 'Start Spinning'}
+    {spinning ? t('lab.p11_rot_stop_btn') : t('lab.p11_rot_start_btn')}
    </button>
    </div>
   </div>
 
   {/* Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Skater Visualizer</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p11_rot_sim_title')}</h2>
    
    <div className={`relative w-64 h-64 bg-slate-100 dark:bg-[#121212] rounded-full border-4 border-slate-200 dark:border-[#1c1b1b] shadow-inner flex items-center justify-center overflow- flex-col `}>
    {/* Spinning Container */}
@@ -137,17 +141,17 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
    </div>
    </div>
    
-   <div className={`w-full mt-6 flex gap-6 text-sm font-mono bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full mt-6 flex gap-6 text-sm font-mono bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <div className="flex flex-col items-center">
-    <span className="text-slate-500 dark:text-[#71717a]">I (Inertia)</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.p11_rot_label_inertia')}</span>
     <span className="font-bold text-indigo-700">{currentI.toFixed(2)}</span>
    </div>
    <div className="flex flex-col items-center">
-    <span className="text-slate-500 dark:text-[#71717a]">ω (Velocity)</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.p11_rot_label_velocity')}</span>
     <span className="font-bold text-blue-700">{currentOmega.toFixed(2)}</span>
    </div>
    <div className="flex flex-col items-center">
-    <span className="text-slate-500 dark:text-[#71717a]">L (Momentum)</span>
+    <span className="text-slate-500 dark:text-[#71717a]">{t('lab.p11_rot_label_momentum')}</span>
     <span className="font-bold text-emerald-700">{angularMomentum.toFixed(2)}</span>
    </div>
    </div>
@@ -157,28 +161,28 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <Calculator className="w-5 h-5 text-emerald-500" />
-   Calculate Final Velocity
+   {t('lab.p11_rot_assess_title')}
    </h2>
    
    <div className={`mb-6 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg space-y-2 text-sm text-slate-700 dark:text-[#ffffff] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <p><strong>I_body</strong> = {I_body} kg·m²</p>
-   <p><strong>m_arms</strong> = {m_arms} kg</p>
-   <p><strong>r</strong> = {armRadius.toFixed(2)} m</p>
+   <p>{t('lab.p11_rot_data_body', { I_body })}</p>
+   <p>{t('lab.p11_rot_data_arms', { m_arms })}</p>
+   <p>{t('lab.p11_rot_data_r', { r: armRadius.toFixed(2) })}</p>
    <p className="mt-2 pt-2 border-t border-slate-200 dark:border-[#1c1b1b]">
-    <strong>L</strong> = {angularMomentum.toFixed(2)} kg·m²/s
+    {t('lab.p11_rot_data_L', { L: angularMomentum.toFixed(2) })}
    </p>
    </div>
 
    <div className="space-y-4">
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    Final Angular Velocity ω (rad/s):
+    {t('lab.p11_rot_omega_label')}
     </label>
     <input
     type="number"
     value={omegaGuess}
     onChange={(e) => setOmegaGuess(e.target.value)}
-    placeholder="e.g. 3.5"
+    placeholder={t('lab.p11_rot_placeholder')}
     className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
    </div>
@@ -188,14 +192,20 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
     disabled={!spinning}
     className="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <CheckCircle className="w-4 h-4" /> Check Answer
+    <CheckCircle className="w-4 h-4" /> {t('lab.p11_rot_check_btn')}
    </button>
-   {!spinning && <p className="text-xs text-center text-slate-500 dark:text-[#71717a]">Start spinning first!</p>}
+   {!spinning && <p className="text-xs text-center text-slate-500 dark:text-[#71717a]">{t('lab.p11_rot_start_hint')}</p>}
 
-   {feedback && (
-    <div className={`p-3 rounded-lg text-sm flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-    {feedback.includes('Correct') ? <CheckCircle className="w-4 h-4 mt-0.5 shrink-0" /> : <XCircle className="w-4 h-4 mt-0.5 shrink-0" />}
-    <span>{feedback}</span>
+   {feedbackType === 'correct' && (
+    <div className="p-3 rounded-lg text-sm flex items-start gap-2 bg-green-50 text-green-800 border border-green-200">
+    <CheckCircle className="w-4 h-4 mt-0.5 shrink-0" />
+    <span>{t('lab.p11_rot_correct_fb')}</span>
+    </div>
+   )}
+   {feedbackType === 'incorrect' && (
+    <div className="p-3 rounded-lg text-sm flex items-start gap-2 bg-red-50 text-red-800 border border-red-200">
+    <XCircle className="w-4 h-4 mt-0.5 shrink-0" />
+    <span>{t('lab.p11_rot_incorrect_fb', { omega: lastOmega.toFixed(2) })}</span>
     </div>
    )}
    </div>

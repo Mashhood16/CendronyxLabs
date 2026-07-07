@@ -1,7 +1,9 @@
 import { useState, useRef, useMemo } from 'react';
 import { ArrowLeft, BarChart2, Settings, Play, Target, Activity } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM8DataProbability({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  // --- STATE ---
  const [trueValue, setTrueValue] = useState<number>(25.0); // True Temperature in °C
  const [noiseStd, setNoiseStd] = useState<number>(2.0); // Standard Deviation of sensor noise
@@ -94,7 +96,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
  }, [currentBatch, trueValue]);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000] font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* HEADER */}
   <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
   <div className="flex items-center gap-3">
@@ -108,8 +110,9 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    )}
    <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
    <BarChart2 className="w-6 h-6 text-emerald-500" />
-   Weather Sensor Quality Control (Probability & Data)
-   </h1>
+   
+                        {t('lab.m8dataprobability_weather_sensor_quality_control')}
+                        </h1>
   </div>
   </header>
 
@@ -121,16 +124,18 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    <div>
    <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <Settings className="w-5 h-5 text-blue-500" />
-    Sensor Environment
-   </h2>
+    
+                             {t('lab.m8dataprobability_sensor_environment')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
-    Simulate taking weather temperature readings. All sensors have inherent thermal noise (Variance). Adjust parameters to see the effect on experimental data.
-   </p>
+    
+                             {t('lab.m8dataprobability_simulate_taking_weather_temper')}
+                            </p>
 
    <div className="space-y-4">
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span>True Environment Temp (°C)</span>
+     <span>{t('lab.m8dataprobability_true_environment_temp_c')}</span>
      <span>{trueValue.toFixed(1)}</span>
     </label>
     <input
@@ -146,7 +151,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
 
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span>Sensor Noise (Std Dev, σ)</span>
+     <span>{t('lab.m8dataprobability_sensor_noise_std_dev')}</span>
      <span>{noiseStd.toFixed(1)} °C</span>
     </label>
     <input
@@ -162,8 +167,8 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
 
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span>Sample Size (n)</span>
-     <span>{sampleSize} readings</span>
+     <span>{t('lab.m8dataprobability_sample_size_n')}</span>
+     <span>{sampleSize}  {t('lab.m8dataprobability_readings')}</span>
     </label>
     <input
      type="range"
@@ -183,20 +188,22 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    className="mt-2 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
    <Play className="w-4 h-4 fill-current" />
-   Simulate Readings
-   </button>
+   
+                        {t('lab.m8dataprobability_simulate_readings')}
+                        </button>
 
    <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-100 dark:border-blue-800 text-sm text-blue-800 dark:text-blue-300">
-   <strong>Theoretical Note:</strong> The sample mean (x̄) should approach the True Temp (μ) as sample size (n) increases, demonstrating the Law of Large Numbers.
-   </div>
+   <strong>{t('lab.m8dataprobability_theoretical_note')}</strong>  {t('lab.m8dataprobability_the_sample_mean_x_should_appro')}
+                        </div>
   </div>
 
   {/* COLUMN 2: SIMULATION STAGE */}
   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center min-h-[400px] relative">
    <h2 className="text-lg font-semibold text-slate-800 dark:text-white mb-2 flex items-center gap-2 self-start">
    <Target className="w-5 h-5 text-indigo-500" />
-   Frequency Distribution vs Theoretical Probability
-   </h2>
+   
+                        {t('lab.m8dataprobability_frequency_distribution_vs_theo')}
+                        </h2>
    
    <div className="w-full h-64 mt-4 relative border-b-2 border-l-2 border-slate-300 dark:border-[#1c1b1b]">
    {currentBatch.length > 0 ? (
@@ -244,8 +251,9 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
     </svg>
    ) : (
     <div className="flex items-center justify-center h-full text-slate-400 italic text-sm">
-    Run simulation to view probability distribution.
-    </div>
+    
+                                     {t('lab.m8dataprobability_run_simulation_to_view_probabi')}
+                                     </div>
    )}
    </div>
 
@@ -258,11 +266,11 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    <div className="mt-4 flex items-center justify-center gap-4 text-sm w-full">
    <div className="flex items-center gap-1">
     <div className="w-3 h-3 bg-[#34d399] opacity-70"></div>
-    <span>Experimental Frequency</span>
+    <span>{t('lab.m8dataprobability_experimental_frequency')}</span>
    </div>
    <div className="flex items-center gap-1">
     <div className="w-4 h-0.5 bg-[#ef4444]"></div>
-    <span>Theoretical Probability</span>
+    <span>{t('lab.m8dataprobability_theoretical_probability')}</span>
    </div>
    </div>
   </div>
@@ -272,15 +280,15 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    
    {/* Data Table */}
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
-   <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">Batch Analytics</h2>
+   <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8dataprobability_batch_analytics')}</h2>
    <div className="lg:overflow-y-auto flex-1">
     <table className="w-full text-sm text-left">
     <thead className="sticky top-0 text-slate-500 dark:text-[#71717a]">
      <tr>
-     <th className="py-2">Batch</th>
+     <th className="py-2">{t('lab.m8dataprobability_batch')}</th>
      <th className="py-2">n</th>
-     <th className="py-2">Mean (x̄)</th>
-     <th className="py-2">Std (s)</th>
+     <th className="py-2">{t('lab.m8dataprobability_mean_x')}</th>
+     <th className="py-2">{t('lab.m8dataprobability_std_s')}</th>
      </tr>
     </thead>
     <tbody>
@@ -294,7 +302,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
      ))}
      {history.length === 0 && (
      <tr>
-      <td colSpan={4} className="py-4 text-center text-slate-400 italic">No batches recorded.</td>
+      <td colSpan={4} className="py-4 text-center text-slate-400 italic">{t('lab.m8dataprobability_no_batches_recorded')}</td>
      </tr>
      )}
     </tbody>
@@ -306,28 +314,32 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
    <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <Activity className="w-5 h-5 text-amber-500" />
-    QC Assessment
-   </h2>
+    
+                             {t('lab.m8dataprobability_qc_assessment')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
-    During quality control, a technician pulls 5 sensor readings: <br/>
+    
+                             {t('lab.m8dataprobability_during_quality_control_a_techn')} <br/>
     <span className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">24.5, 25.1, 24.8, 25.5, 25.1</span><br/>
-    Calculate the sample variance (s²).
-   </p>
+    
+                             {t('lab.m8dataprobability_calculate_the_sample_variance_')}
+                            </p>
    <div className="flex flex-wrap gap-2">
     <input
     type="number"
     step="0.01"
     value={assessmentAnswer}
     onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder="e.g. 0.25"
+    placeholder={t('lab.m8dataprobability_e_g_0_25')}
     className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
     />
     <button
     onClick={checkAssessment}
     className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.m8dataprobability_check_answer')}
+                                 </button>
    </div>
    {assessmentFeedback && (
     <div className={`mt-3 text-sm p-2 rounded-md ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'}`}>

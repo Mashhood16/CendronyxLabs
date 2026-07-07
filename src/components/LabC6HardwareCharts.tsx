@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, Monitor, Keyboard, Mouse, HardDrive, Cpu, Printer } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6HardwareCharts({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const hardwareItems = [
  { id: 'monitor', label: 'Monitor', icon: Monitor },
  { id: 'keyboard', label: 'Keyboard', icon: Keyboard },
@@ -39,16 +41,16 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Hardware Identification Charts" />
+  <LabHeader onExit={onExit} title={t('lab.c6hardwarecharts_hardware_identification_charts')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6hardwarecharts_click_a_label_from_the_word_ba')}</p>
 
   <div className="flex flex-col lg:flex-row gap-8 flex-1">
    {/* Main Chart Area */}
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-6 text-center">Hardware Components</h2>
+   <h2 className="text-xl font-bold mb-6 text-center">{t('lab.c6hardwarecharts_hardware_components')}</h2>
    
    <div className="grid grid-cols-3 gap-8 flex-1">
     {hardwareItems.map(item => {
@@ -76,8 +78,9 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
     {isCorrect ? (
      <>
      <CheckCircle className="w-6 h-6" />
-     All components labeled correctly! Excellent work.
-     </>
+     
+                                          {t('lab.c6hardwarecharts_all_components_labeled_correct')}
+                                          </>
     ) : (
      "Some labels are incorrect. Click a label to remove it and try again."
     )}
@@ -88,7 +91,7 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
    {/* Word Bank Sidebar */}
    <div className="w-full lg:w-64 flex flex-col gap-4">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">Word Bank</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6hardwarecharts_word_bank')}</h3>
     <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3">
     {hardwareItems.map(item => {
      const isUsed = Object.values(matches).includes(item.id);

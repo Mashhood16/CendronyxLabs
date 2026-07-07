@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, RefreshCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6MolecularBuilder({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [molecule, setMolecule] = useState<'H2O' | 'CO2' | 'CH4'>('H2O');
  
  // Inventory
@@ -43,13 +45,13 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-100 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 6: Molecular Models" />
+  <LabHeader onExit={onExit} title={t('lab.s6molecularbuilder_unit_6_molecular_models')} />
 
   <div className="flex-1 flex p-6 gap-6">
   
   {/* Left Panel - Inventory */}
   <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
-   <h2 className="text-lg font-bold mb-4 border-b pb-2">Target Molecule</h2>
+   <h2 className="text-lg font-bold mb-4 border-b pb-2">{t('lab.s6molecularbuilder_target_molecule')}</h2>
    <div className="flex gap-2 mb-6">
    {(['H2O', 'CO2', 'CH4'] as const).map(mol => (
     <button 
@@ -62,8 +64,8 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
    ))}
    </div>
 
-   <h2 className="text-lg font-bold mb-4 border-b pb-2">Atom Inventory</h2>
-   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">Click to add atoms to the builder to form {requirements[molecule].name}.</p>
+   <h2 className="text-lg font-bold mb-4 border-b pb-2">{t('lab.s6molecularbuilder_atom_inventory')}</h2>
+   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">{t('lab.s6molecularbuilder_click_to_add_atoms_to_the_buil')} {requirements[molecule].name}.</p>
    
    <div className="space-y-4">
    <button 
@@ -72,7 +74,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
     className="w-full p-3 flex items-center gap-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl hover:bg-slate-100 dark:bg-[#121212] disabled:opacity-50"
    >
     <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-700 border-2 border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center font-bold text-slate-800 dark:text-white">H</div>
-    <span className="font-medium text-slate-700 dark:text-[#ffffff]">Hydrogen (White)</span>
+    <span className="font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.s6molecularbuilder_hydrogen_white')}</span>
    </button>
    
    <button 
@@ -81,7 +83,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
     className="w-full p-3 flex items-center gap-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl hover:bg-slate-100 dark:bg-[#121212] disabled:opacity-50"
    >
     <div className="w-8 h-8 rounded-full bg-[#121212] dark:bg-[#121212] flex items-center justify-center font-bold text-white border-2 border-slate-600">C</div>
-    <span className="font-medium text-slate-700 dark:text-[#ffffff]">Carbon (Black)</span>
+    <span className="font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.s6molecularbuilder_carbon_black')}</span>
    </button>
 
    <button 
@@ -90,13 +92,13 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
     className="w-full p-3 flex items-center gap-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl hover:bg-slate-100 dark:bg-[#121212] disabled:opacity-50"
    >
     <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center font-bold text-white">O</div>
-    <span className="font-medium text-slate-700 dark:text-[#ffffff]">Oxygen (Red)</span>
+    <span className="font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.s6molecularbuilder_oxygen_red')}</span>
    </button>
    </div>
 
    <button onClick={reset} className="mt-auto flex items-center justify-center py-3 text-slate-500 dark:text-[#71717a] hover:text-slate-800 dark:text-[#ffffff] font-bold bg-slate-100 dark:bg-[#121212] rounded-lg">
-   <RefreshCcw className="w-5 h-5 mr-2" /> Reset Canvas
-   </button>
+   <RefreshCcw className="w-5 h-5 mr-2" />  {t('lab.s6molecularbuilder_reset_canvas')}
+                        </button>
   </div>
 
   {/* Right Panel - Assembly Canvas */}
@@ -105,12 +107,14 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
    {isComplete() ? (
    <div className="absolute top-8 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 font-bold flex items-center gap-2 animate-bounce">
     <CheckCircle className="w-6 h-6" />
-    Success! You built {requirements[molecule].name}.
+    
+                             {t('lab.s6molecularbuilder_success_you_built')} {requirements[molecule].name}.
    </div>
    ) : (
    <div className="absolute top-8 p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl text-slate-500 dark:text-[#71717a] font-medium text-center">
-    Add {requirements[molecule].C || 0} Carbon, {requirements[molecule].H || 0} Hydrogen, and {requirements[molecule].O || 0} Oxygen.
-   </div>
+    
+                                 {t('lab.s6molecularbuilder_add')} {requirements[molecule].C || 0}  {t('lab.s6molecularbuilder_carbon')} {requirements[molecule].H || 0}  {t('lab.s6molecularbuilder_hydrogen_and')} {requirements[molecule].O || 0}  {t('lab.s6molecularbuilder_oxygen')}
+                                </div>
    )}
 
    {/* Molecule Visualization */}

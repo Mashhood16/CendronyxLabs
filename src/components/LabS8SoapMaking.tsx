@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {AlertTriangle, ShieldCheck } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8SoapMaking({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(0);
  const [hasGloves, setHasGloves] = useState(false);
  const [hasGoggles, setHasGoggles] = useState(false);
@@ -29,7 +31,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.2: Soap Making" subtitle="The chemical process of saponification" />
+  <LabHeader onExit={onExit} title={t('lab.s8soapmaking_act_11_2_soap_making')} subtitle={t('lab.subtitle_chemical_process_saponification')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
   
@@ -57,22 +59,22 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
    {step === 0 && (
    <div className="flex flex-col items-center gap-8">
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <ShieldCheck className="text-blue-500" /> Prepare for Chemistry
-    </h2>
+    <ShieldCheck className="text-blue-500" />  {t('lab.s8soapmaking_prepare_for_chemistry')}
+                                 </h2>
     <div className="flex gap-6">
     <button 
      onClick={() => setHasGloves(!hasGloves)}
      className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGloves ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-500 dark:text-[#a1a1aa]'}`}
     >
      <div className="text-4xl">🧤</div>
-     <span className="font-bold text-sm">Gloves</span>
+     <span className="font-bold text-sm">{t('lab.s8soapmaking_gloves')}</span>
     </button>
     <button 
      onClick={() => setHasGoggles(!hasGoggles)}
      className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGoggles ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-500 dark:text-[#a1a1aa]'}`}
     >
      <div className="text-4xl">🥽</div>
-     <span className="font-bold text-sm">Goggles</span>
+     <span className="font-bold text-sm">{t('lab.s8soapmaking_goggles')}</span>
     </button>
     </div>
    </div>
@@ -84,17 +86,17 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
     <div className="flex gap-4 items-end">
      <div className="flex flex-col items-center">
      <div className="text-3xl mb-2">💧</div>
-     <div className="text-sm font-bold text-blue-600">30g Water</div>
+     <div className="text-sm font-bold text-blue-600">{t('lab.s8soapmaking_30g_water')}</div>
      </div>
      <div className="text-2xl font-bold text-slate-400 mb-6">+</div>
      <div className="flex flex-col items-center">
      <div className="text-3xl mb-2">🧂</div>
-     <div className="text-sm font-bold text-red-600">15g Pure Lye</div>
+     <div className="text-sm font-bold text-red-600">{t('lab.s8soapmaking_15g_pure_lye')}</div>
      </div>
     </div>
     <div className="w-48 h-48 bg-slate-100 dark:bg-[#121212] rounded-b-3xl border-4 border-t-0 border-slate-300 dark:border-[#1c1b1b] relative flex flex-col justify-end p-2 overflow-hidden">
     <div className="w-full h-2/3 bg-blue-100/80 rounded-b-xl border-t-2 border-white/50 backdrop-blur-sm animate-pulse" />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-red-800 bg-red-100 px-2 py-1 rounded">CAUTION: Gets Hot!</div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-bold text-red-800 bg-red-100 px-2 py-1 rounded">{t('lab.s8soapmaking_caution_gets_hot')}</div>
     </div>
    </div>
    )}
@@ -117,7 +119,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
      <div className="w-4 h-8 bg-orange-500 rounded-t-full animate-[pulse_0.6s_infinite_0.2s]" />
      </div>
 
-     <div className="absolute bottom-4 font-mono text-red-500 text-2xl font-bold tracking-widest">50°C</div>
+     <div className="absolute bottom-4 font-mono text-red-500 text-2xl font-bold tracking-widest">{t('lab.s8soapmaking_50_c')}</div>
     </div>
    </div>
    )}
@@ -125,12 +127,12 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
    {/* Step 3: Saponification */}
    {step === 3 && (
    <div className="flex flex-col items-center gap-4">
-    <div className="text-lg font-bold text-slate-600 dark:text-[#a1a1aa] mb-4">Chemical Reaction Occurring...</div>
+    <div className="text-lg font-bold text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.s8soapmaking_chemical_reaction_occurring')}</div>
     <div className="w-48 h-48 bg-slate-200 dark:bg-[#121212] rounded-full border-8 border-slate-300 dark:border-[#1c1b1b] relative flex items-center justify-center animate-spin-slow">
      <div className="absolute inset-2 bg-amber-100 rounded-full mix-blend-multiply" />
      <div className="absolute inset-4 bg-blue-100/50 rounded-full" />
      <div className="w-32 h-32 bg-yellow-50 rounded-full flex items-center justify-center shadow-inner">
-     <span className="font-bold text-amber-800 rotate-12 dark:text-[#ffffff]">Thick Paste</span>
+     <span className="font-bold text-amber-800 rotate-12 dark:text-[#ffffff]">{t('lab.s8soapmaking_thick_paste')}</span>
      </div>
     </div>
    </div>
@@ -142,13 +144,13 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
     <div className="flex gap-4">
      {[1,2,3].map(i => (
      <div key={i} className="w-24 h-16 bg-amber-100 border-2 border-amber-200 rounded shadow-md flex items-center justify-center transform -rotate-2 hover:rotate-0 transition-transform">
-      <span className="text-amber-800/20 font-bold uppercase tracking-widest text-xl dark:text-[#ffffff]">SOAP</span>
+      <span className="text-amber-800/20 font-bold uppercase tracking-widest text-xl dark:text-[#ffffff]">{t('lab.s8soapmaking_soap')}</span>
      </div>
      ))}
     </div>
     <div className="bg-emerald-100 text-emerald-800 px-6 py-4 rounded-xl border border-emerald-200 text-center">
-    <h3 className="font-bold text-lg">Curing Complete!</h3>
-    <p className="text-sm">The lye and oil have fully reacted (saponified) to create safe, usable soap bars.</p>
+    <h3 className="font-bold text-lg">{t('lab.s8soapmaking_curing_complete')}</h3>
+    <p className="text-sm">{t('lab.s8soapmaking_the_lye_and_oil_have_fully_rea')}</p>
     </div>
    </div>
    )}
@@ -160,7 +162,8 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
     onClick={handleNextStep}
     className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-transform active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Proceed: {steps[step + 1].title}
+    
+                                 {t('lab.s8soapmaking_proceed')} {steps[step + 1].title}
     </button>
    )}
    </div>

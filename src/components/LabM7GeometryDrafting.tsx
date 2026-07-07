@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import type { MouseEvent as ReactMouseEvent } from 'react';
 import { ArrowLeft, Circle, Ruler, MapPin, Trash2, CheckCircle } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 type Point = { id: string; x: number; y: number };
 type Line = { id: string; p1: string; p2: string };
@@ -42,6 +43,7 @@ const getIntersections = (circles: CircleType[], points: Point[]) => {
 };
 
 export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [points, setPoints] = useState<Point[]>([]);
  const [lines, setLines] = useState<Line[]>([]);
  const [circles, setCircles] = useState<CircleType[]>([]);
@@ -151,14 +153,14 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
   <button onClick={onExit} className="mr-4 hover:bg-rose-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-rose-600 dark:hover:bg-rose-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">
    <ArrowLeft className="w-5 h-5" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold">Class 7 Maths: Practical Geometry</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.m7geometrydrafting_class_7_maths_practical_geomet')}</h1>
   </div>
 
   <div className="flex flex-1 overflow-hidden">
   {/* Left Column Controls */}
   <div className="w-1/3 p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b]">
    <div className="mb-6">
-   <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">Select Drafting Tool</label>
+   <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3">{t('lab.m7geometrydrafting_select_drafting_tool')}</label>
    <div className="grid grid-cols-3 gap-2">
     <button
     onClick={() => {
@@ -168,7 +170,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
     className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${ tool === 'point' ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300' : ' border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700' }`}
     >
     <MapPin className="w-6 h-6 mb-1" />
-    <span className="text-xs font-medium">Point</span>
+    <span className="text-xs font-medium">{t('lab.m7geometrydrafting_point')}</span>
     </button>
     <button
     onClick={() => {
@@ -178,7 +180,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
     className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${ tool === 'line' ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300' : ' border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700' }`}
     >
     <Ruler className="w-6 h-6 mb-1" />
-    <span className="text-xs font-medium">Ruler</span>
+    <span className="text-xs font-medium">{t('lab.m7geometrydrafting_ruler')}</span>
     </button>
     <button
     onClick={() => {
@@ -188,7 +190,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
     className={`flex flex-col items-center p-3 rounded-lg border transition-colors ${ tool === 'compass' ? 'bg-rose-100 border-rose-500 text-rose-700 dark:bg-rose-900/50 dark:border-rose-400 dark:text-rose-300' : ' border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:hover:bg-slate-700' }`}
     >
     <Circle className="w-6 h-6 mb-1" />
-    <span className="text-xs font-medium">Compass</span>
+    <span className="text-xs font-medium">{t('lab.m7geometrydrafting_compass')}</span>
     </button>
    </div>
    </div>
@@ -197,7 +199,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
    {tool === 'compass' && (
     <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
     <label className="flex justify-between text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">
-     <span>Compass Radius</span>
+     <span>{t('lab.m7geometrydrafting_compass_radius')}</span>
      <span className="text-rose-600 dark:text-rose-400">{compassRadius.toFixed(1)} cm</span>
     </label>
     <input
@@ -209,25 +211,25 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
      onChange={(e) => setCompassRadius(parseFloat(e.target.value))}
      className="w-full accent-rose-600"
     />
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Click an existing point on the canvas to draw an arc.</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">{t('lab.m7geometrydrafting_click_an_existing_point_on_the')}</p>
     </div>
    )}
    {tool === 'line' && (
     <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b] h-full flex items-center">
-    <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">Click two points to connect them with a line segment.</p>
+    <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">{t('lab.m7geometrydrafting_click_two_points_to_connect_th')}</p>
     </div>
    )}
    {tool === 'point' && (
     <div className="p-4 bg-slate-100 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-[#1c1b1b] h-full flex items-center">
-    <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">Click anywhere on the canvas or an intersection to place a point.</p>
+    <p className="text-sm text-slate-600 dark:text-[#71717a] font-medium">{t('lab.m7geometrydrafting_click_anywhere_on_the_canvas_o')}</p>
     </div>
    )}
    </div>
 
    <div className="mb-6">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Measured Segments</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m7geometrydrafting_measured_segments')}</h3>
    {lines.length === 0 ? (
-    <p className="text-sm text-slate-500 italic">No lines drawn yet.</p>
+    <p className="text-sm text-slate-500 italic">{t('lab.m7geometrydrafting_no_lines_drawn_yet')}</p>
    ) : (
     <ul className="text-sm space-y-1 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
     {lines.map((l) => {
@@ -246,13 +248,14 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
    </div>
 
    <div className="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-800">
-   <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">Assessment Task</h3>
+   <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">{t('lab.m7geometrydrafting_assessment_task')}</h3>
    <p className="text-sm text-slate-700 dark:text-[#a1a1aa] mb-4 leading-relaxed">
-    Construct a triangle ABC with sides <b>5cm, 4cm, and 3cm</b>.<br />
-    <span className="text-xs opacity-80">(Hint: Draw a 5cm line AB. Draw a 4cm circle from A, and a 3cm circle from B. Mark intersection C.)</span>
+    
+                             {t('lab.m7geometrydrafting_construct_a_triangle_abc_with_')} <b>{t('lab.m7geometrydrafting_5cm_4cm_and_3cm')}</b>.<br />
+    <span className="text-xs opacity-80">{t('lab.m7geometrydrafting_hint_draw_a_5cm_line_ab_draw_a')}</span>
    </p>
    <div className="mb-4">
-    <p className="font-medium text-sm text-slate-800 dark:text-[#ffffff] mb-2">Based on your construction, what type of triangle is it?</p>
+    <p className="font-medium text-sm text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m7geometrydrafting_based_on_your_construction_wha')}</p>
     <div className="flex flex-col space-y-2 text-sm">
     {['Equilateral', 'Isosceles', 'Right-angled Scalene'].map((opt) => (
      <label key={opt} className="flex items-center space-x-2 cursor-pointer">
@@ -274,17 +277,19 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
     disabled={!selectedAnswer}
     className="whitespace-nowrap flex-shrink-0 w-full bg-indigo-600 disabled:bg-slate-400 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Check Answer
-   </button>
+    
+                             {t('lab.m7geometrydrafting_check_answer')}
+                            </button>
    {questionStatus === 'correct' && (
     <p className="mt-3 text-emerald-600 dark:text-emerald-400 text-sm font-bold flex items-center">
-    <CheckCircle className="w-4 h-4 mr-1" /> Correct! 3² + 4² = 5²
-    </p>
+    <CheckCircle className="w-4 h-4 mr-1" />  {t('lab.m7geometrydrafting_correct_3_4_5')}
+                                 </p>
    )}
    {questionStatus === 'incorrect' && (
     <p className="mt-3 text-rose-600 dark:text-rose-400 text-sm font-bold">
-    Incorrect. Try completing the construction!
-    </p>
+    
+                                 {t('lab.m7geometrydrafting_incorrect_try_completing_the_c')}
+                                 </p>
    )}
    </div>
 
@@ -292,8 +297,8 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
    onClick={clearCanvas}
    className="w-full mt-6 flex justify-center items-center py-2 text-rose-600 bg-rose-50 hover:bg-rose-100 dark:bg-rose-900/20 dark:text-rose-400 rounded-lg transition-colors border border-rose-200 dark:border-rose-800"
    >
-   <Trash2 className="w-4 h-4 mr-2" /> Clear Canvas
-   </button>
+   <Trash2 className="w-4 h-4 mr-2" />  {t('lab.m7geometrydrafting_clear_canvas')}
+                        </button>
   </div>
 
   {/* Right Column Stage */}

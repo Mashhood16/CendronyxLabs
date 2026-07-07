@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, Folder, File, Trash2, Monitor, RotateCcw, Save, Plus, FilePlus } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -16,6 +17,7 @@ type FileSystemItem = {
 };
 
 export default function LabC6FileManagement2({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [items, setItems] = useState<FileSystemItem[]>([
  { id: 'desktop', name: 'Desktop', type: 'folder', parentId: null },
  { id: 'recycle_bin', name: 'Recycle Bin', type: 'folder', parentId: null },
@@ -99,23 +101,25 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
    <div className="flex items-center justify-between mb-6 border-b pb-4">
    <h2 className="text-2xl font-bold flex items-center gap-2">
     <File className="w-6 h-6 text-blue-500" /> 
-    Editing {file?.name}.txt
-   </h2>
+     
+                         {t('lab.c6filemanagement2_editing')} {file?.name}{t('lab.c6filemanagement2_txt')}
+                        </h2>
    <button 
     onClick={handleSaveFile}
     className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Save className="w-5 h-5" /> Save & Close
-   </button>
+    <Save className="w-5 h-5" />  {t('lab.c6filemanagement2_save_close')}
+                        </button>
    </div>
    <div className="mb-4 text-slate-500 dark:text-[#71717a] text-sm">
-   Write down the names of the subjects you are currently studying.
-   </div>
+   
+                    {t('lab.c6filemanagement2_write_down_the_names_of_the_su')}
+                    </div>
    <textarea 
    value={fileContent}
    onChange={e => setFileContent(e.target.value)}
    className="flex-1 w-full border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-4 outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-slate-700 dark:text-[#ffffff] leading-relaxed"
-   placeholder="e.g. Mathematics, English, Computer Science..."
+   placeholder={t('lab.c6filemanagement2_e_g_mathematics_english_comput')}
    />
   </div>
   </div>
@@ -124,14 +128,14 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-  <LabHeader onExit={onExit} title="File and Folder Management 2" subtitle="Create, edit, delete & recover files and folders" />
+  <LabHeader onExit={onExit} title={t('lab.c6filemanagement2_file_and_folder_management_2')} subtitle={t('lab.subtitle_create_edit_delete')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-   <h3 className="font-bold mb-2">Tasks to Complete:</h3>
+   <h3 className="font-bold mb-2">{t('lab.c6filemanagement2_tasks_to_complete')}</h3>
    <ul className="list-disc pl-5 space-y-1 text-sm">
-   <li className={hasNameFolder ? 'text-green-600 line-through' : ''}>Create a folder saved by your name on the Desktop.</li>
-   <li className={hasActivityFile ? 'text-green-600 line-through' : ''}>Open it, create a file named 'activity', and write subjects inside.</li>
-   <li>Delete the folder and practice recovering the 'activity' file from the Recycle Bin.</li>
+   <li className={hasNameFolder ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement2_create_a_folder_saved_by_your_')}</li>
+   <li className={hasActivityFile ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement2_open_it_create_a_file_named_ac')}</li>
+   <li>{t('lab.c6filemanagement2_delete_the_folder_and_practice')}</li>
    </ul>
   </div>
 
@@ -157,31 +161,31 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
    
    <div className="flex items-center gap-2">
     <button onClick={() => setCurrentFolderId('desktop')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
-    <Monitor className="w-4 h-4" /> Desktop
-    </button>
+    <Monitor className="w-4 h-4" />  {t('lab.c6filemanagement2_desktop')}
+                                 </button>
     <button onClick={() => setCurrentFolderId('recycle_bin')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
-    <Trash2 className="w-4 h-4" /> Recycle Bin
-    </button>
+    <Trash2 className="w-4 h-4" />  {t('lab.c6filemanagement2_recycle_bin')}
+                                 </button>
    </div>
    </div>
 
    {/* Toolbar */}
    <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] px-4 py-2 flex items-center gap-2">
    <button onClick={() => setIsCreatingFolder(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm font-bold transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
-    <Plus className="w-4 h-4" /> New Folder
-   </button>
+    <Plus className="w-4 h-4" />  {t('lab.c6filemanagement2_new_folder')}
+                            </button>
    <button onClick={() => setIsCreatingFile(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    <FilePlus className="w-4 h-4" /> New File
-   </button>
+    <FilePlus className="w-4 h-4" />  {t('lab.c6filemanagement2_new_file')}
+                            </button>
    {selectedItemId && currentFolderId !== 'recycle_bin' && (
     <button onClick={handleDelete} className="flex items-center gap-1.5 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
-    <Trash2 className="w-4 h-4" /> Delete
-    </button>
+    <Trash2 className="w-4 h-4" />  {t('lab.c6filemanagement2_delete')}
+                                 </button>
    )}
    {selectedItemId && currentFolderId === 'recycle_bin' && (
     <button onClick={handleRecover} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    <RotateCcw className="w-4 h-4" /> Recover
-    </button>
+    <RotateCcw className="w-4 h-4" />  {t('lab.c6filemanagement2_recover')}
+                                 </button>
    )}
    </div>
 
@@ -189,7 +193,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
    <div className="flex-1 p-6 bg-slate-50 dark:bg-[#121212] lg:overflow-y-auto">
    {isCreatingFolder && (
     <div className="mb-6 p-4 border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-950 rounded-lg max-w-sm">
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">New Folder Name</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">{t('lab.c6filemanagement2_new_folder_name')}</label>
     <div className="flex gap-2">
      <input 
      autoFocus
@@ -200,14 +204,14 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
      className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded"
      />
      <button onClick={handleCreateFolder} className="px-3 py-1.5 bg-amber-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">OK</button>
-     <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-[#121212] text-slate-700 dark:text-[#a1a1aa] rounded font-bold">Cancel</button>
+     <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-[#121212] text-slate-700 dark:text-[#a1a1aa] rounded font-bold">{t('lab.c6filemanagement2_cancel')}</button>
     </div>
     </div>
    )}
 
    {isCreatingFile && (
     <div className="mb-6 p-4 border border-blue-300 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 rounded-lg max-w-sm">
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">New File Name (.txt)</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-2">{t('lab.c6filemanagement2_new_file_name_txt')}</label>
     <div className="flex gap-2">
      <input 
      autoFocus
@@ -218,7 +222,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
      className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded"
      />
      <button onClick={handleCreateFile} className="px-3 py-1.5 bg-blue-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">OK</button>
-     <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-[#121212] text-slate-700 dark:text-[#a1a1aa] rounded font-bold">Cancel</button>
+     <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 dark:bg-[#121212] text-slate-700 dark:text-[#a1a1aa] rounded font-bold">{t('lab.c6filemanagement2_cancel')}</button>
     </div>
     </div>
    )}
@@ -258,7 +262,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
    </div>
    
    <div className="bg-slate-100 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] p-2 text-xs text-slate-500 dark:text-[#71717a]">
-   {(currentFolderId === 'recycle_bin' ? recycleBinItems : currentItems).length} items | {selectedItemId ? '1 item selected' : ''}
+   {(currentFolderId === 'recycle_bin' ? recycleBinItems : currentItems).length}  {t('lab.c6filemanagement2_items')} {selectedItemId ? '1 item selected' : ''}
    </div>
   </div>
   </div>

@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { ArrowLeft, CheckCircle2, RotateCcw, Sparkles, Layers, AlertCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 type Word = { id: string; text: string; category: string; type: string };
 
@@ -55,6 +56,7 @@ const QUESTIONS = [
 ];
 
 export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [selectedWords, setSelectedWords] = useState<Word[]>([]);
  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
@@ -128,11 +130,11 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
    <ArrowLeft size={20} />
   </button>
-  <h1 className="text-lg md:text-xl font-bold">Noun Modder: Articles & Adjectives</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.e7articlesadjectives_noun_modder_articles_adjective')}</h1>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -147,8 +149,8 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
    {/* Current Task */}
    <div className="bg-indigo-50 dark:bg-indigo-900/30 p-5 rounded-xl border border-indigo-100 dark:border-indigo-800">
    <div className="flex justify-between items-start mb-2">
-    <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Current Challenge {currentQuestionIdx + 1}/3</h2>
-    {showSuccess && <span className="flex items-center text-green-600 dark:text-green-400 text-sm font-bold"><CheckCircle2 size={16} className="mr-1"/> Correct!</span>}
+    <h2 className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">{t('lab.e7articlesadjectives_current_challenge')} {currentQuestionIdx + 1}/3</h2>
+    {showSuccess && <span className="flex items-center text-green-600 dark:text-green-400 text-sm font-bold"><CheckCircle2 size={16} className="mr-1"/>  {t('lab.e7articlesadjectives_correct')}</span>}
    </div>
    <p className="text-lg font-medium text-slate-800 dark:text-[#ffffff] mb-4">
     {QUESTIONS[currentQuestionIdx].instruction}
@@ -158,31 +160,32 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
     onClick={handleCheckAnswer}
     className="flex-1 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    <Sparkles size={18} /> Check Phrase
-    </button>
+    <Sparkles size={18} />  {t('lab.e7articlesadjectives_check_phrase')}
+                                 </button>
     {showSuccess && currentQuestionIdx < QUESTIONS.length - 1 && (
     <button 
      onClick={handleNextQuestion}
      className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-     Next
-    </button>
+     
+                                      {t('lab.e7articlesadjectives_next')}
+                                     </button>
     )}
    </div>
    {showError && (
     <p className="mt-3 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
-    <AlertCircle size={16} /> That doesn't look quite right. Check the categories!
-    </p>
+    <AlertCircle size={16} />  {t('lab.e7articlesadjectives_that_doesn_t_look_quite_right_')}
+                                 </p>
    )}
    </div>
 
    {/* Word Bank */}
    <div className="flex-1">
    <div className="flex justify-between items-center mb-4">
-    <h3 className="font-semibold text-lg flex items-center gap-2"><Layers size={20}/> Word Bank</h3>
+    <h3 className="font-semibold text-lg flex items-center gap-2"><Layers size={20}/>  {t('lab.e7articlesadjectives_word_bank')}</h3>
     <button onClick={() => setSelectedWords([])} className="text-sm text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-1 whitespace-nowrap flex-shrink-0">
-    <RotateCcw size={14} /> Clear
-    </button>
+    <RotateCcw size={14} />  {t('lab.e7articlesadjectives_clear')}
+                                 </button>
    </div>
    
    <div className="space-y-6">
@@ -194,7 +197,7 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
       <button
        key={w.id}
        onClick={() => handleWordClick(w)}
-       className="px-3 py-1.5 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] rounded-md hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-900 dark:hover:text-indigo-200 border border-slate-200 dark:border-[#1c1b1b] whitespace-nowrap flex-shrink-0 transition-colors"
+       className="px-3 py-1.5 bg-slate-100 dark:bg-[#1c1b1b] text-slate-700 dark:bg-slate-700 dark:text-[#ffffff] rounded-md hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-900 dark:hover:text-indigo-200 border border-slate-200 dark:border-[#1c1b1b] whitespace-nowrap flex-shrink-0 transition-colors"
       >
        {w.text}
       </button>
@@ -207,24 +210,26 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
 
    {/* Assessment Section */}
    <div className="p-4 bg-slate-100 dark:bg-[#121212]/80 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
-   <h3 className="font-semibold mb-2 flex items-center gap-2"><Sparkles size={16}/> Assessment: Sentence Builder</h3>
+   <h3 className="font-semibold mb-2 flex items-center gap-2"><Sparkles size={16}/>  {t('lab.e7articlesadjectives_assessment_sentence_builder')}</h3>
    <p className="text-sm mb-3 text-slate-600 dark:text-[#71717a]">
-    Type a custom phrase using exactly one article and one noun.
-   </p>
+    
+                             {t('lab.e7articlesadjectives_type_a_custom_phrase_using_exa')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="text" 
     value={assessmentInput}
     onChange={(e) => setAssessmentInput(e.target.value)}
-    placeholder="e.g. the cat..."
+    placeholder={t('lab.e7articlesadjectives_e_g_the_cat')}
     className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
     onClick={handleCheckAssessment}
     className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md whitespace-nowrap flex-shrink-0 transition-colors font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.e7articlesadjectives_check_answer')}
+                                 </button>
    </div>
    {assessmentResult && (
     <p className={`text-sm mt-2 font-medium ${assessmentResult.includes('Great') ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'}`}>
@@ -239,14 +244,14 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
    
    <div className="flex flex-col items-center justify-center space-y-12 w-full max-w-2xl mx-auto mb-8">
     <div className="text-center">
-    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">Phrase Visualizer</h2>
-    <p className="text-slate-500 dark:text-[#71717a]">Click words in your phrase to remove them.</p>
+    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.e7articlesadjectives_phrase_visualizer')}</h2>
+    <p className="text-slate-500 dark:text-[#71717a]">{t('lab.e7articlesadjectives_click_words_in_your_phrase_to_')}</p>
     </div>
     
     {/* Visualizer output */}
     <div className="min-h-[200px] w-full flex flex-col items-center justify-center p-8 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     {selectedWords.length === 0 ? (
-     <p className="text-slate-400 dark:text-[#71717a] text-lg">Your phrase will appear here...</p>
+     <p className="text-slate-400 dark:text-[#71717a] text-lg">{t('lab.e7articlesadjectives_your_phrase_will_appear_here')}</p>
     ) : (
      <div className="flex flex-wrap gap-4 items-end justify-center">
       {selectedWords.map((word, idx) => (
@@ -279,19 +284,19 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
    {/* Data Logging & Graph */}
    <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-auto">
     <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h3 className="font-semibold mb-2">Word Data Table</h3>
+    <h3 className="font-semibold mb-2">{t('lab.e7articlesadjectives_word_data_table')}</h3>
     <div className="overflow-x-auto">
      <table className="w-full text-sm text-left">
       <thead className="bg-slate-100 dark:bg-slate-700">
        <tr>
-       <th className="px-3 py-2 rounded-tl-lg">Word</th>
-       <th className="px-3 py-2">Category</th>
-       <th className="px-3 py-2 rounded-tr-lg">Type</th>
+       <th className="px-3 py-2 rounded-tl-lg">{t('lab.e7articlesadjectives_word')}</th>
+       <th className="px-3 py-2">{t('lab.e7articlesadjectives_category')}</th>
+       <th className="px-3 py-2 rounded-tr-lg">{t('lab.e7articlesadjectives_type')}</th>
        </tr>
       </thead>
       <tbody>
        {selectedWords.length === 0 ? (
-       <tr><td colSpan={3} className="px-3 py-2 text-center text-slate-500">No data logged yet</td></tr>
+       <tr><td colSpan={3} className="px-3 py-2 text-center text-slate-500">{t('lab.e7articlesadjectives_no_data_logged_yet')}</td></tr>
        ) : (
        selectedWords.map((w, i) => (
         <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]">
@@ -307,10 +312,10 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
     </div>
 
     <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h3 className="font-semibold mb-2">Category Graph</h3>
+    <h3 className="font-semibold mb-2">{t('lab.e7articlesadjectives_category_graph')}</h3>
     <svg viewBox="0 0 200 150" className="w-full h-auto bg-slate-50 dark:bg-[#121212] rounded-lg">
      {categories.length === 0 ? (
-      <text x="100" y="75" textAnchor="middle" fill="#94a3b8" fontSize="12">Add words to see graph</text>
+      <text x="100" y="75" textAnchor="middle" fill="#94a3b8" fontSize="12">{t('lab.e7articlesadjectives_add_words_to_see_graph')}</text>
      ) : (
       categories.map((cat, i) => {
        const count = categoryCounts[cat];

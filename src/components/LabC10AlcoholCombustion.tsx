@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Square, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [fuel, setFuel] = useState<'Methanol' | 'Ethanol'>('Methanol');
  const [waterVol, setWaterVol] = useState(100); 
@@ -89,7 +91,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Combustion of Alcohols" subtitle="Measuring Enthalpy of Combustion" />
+  <LabHeader onExit={onExit} title={t('lab.c10alcoholcombustion_virtual_lab_combustion_of_alco')} subtitle={t('lab.subtitle_measuring_enthalpy_combustion')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -98,40 +100,42 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10alcoholcombustion_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10alcoholcombustion_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:flex-1 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10alcoholcombustion_theory_setup')}</h2>
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-2 text-sm">
-   <p><strong>Combustion</strong> of alcohols releases heat energy (exothermic).</p>
+   <p><strong>{t('lab.c10alcoholcombustion_combustion')}</strong>  {t('lab.c10alcoholcombustion_of_alcohols_releases_heat_ener')}</p>
    <div className={`bg-orange-50 p-3 rounded font-mono text-center text-orange-900 border border-orange-200 flex-col `}>
-    C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O
-   </div>
-   <p><strong>Experiment:</strong> We burn a known mass of fuel under a copper calorimeter containing water to measure the temperature rise.</p>
-   <p><strong>Calculation:</strong> The heat energy transferred to the water is calculated using <em>q = mcΔT</em>.</p>
+    
+                             {t('lab.c10alcoholcombustion_c_h_oh_3o_2co_3h_o')}
+                            </div>
+   <p><strong>{t('lab.c10alcoholcombustion_experiment')}</strong>  {t('lab.c10alcoholcombustion_we_burn_a_known_mass_of_fuel_u')}</p>
+   <p><strong>{t('lab.c10alcoholcombustion_calculation')}</strong>  {t('lab.c10alcoholcombustion_the_heat_energy_transferred_to')} <em>{t('lab.c10alcoholcombustion_q_mc_t')}</em>.</p>
    </div>
    
    <div className="flex-1 overflow-auto">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">Experiment Controls</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">{t('lab.c10alcoholcombustion_experiment_controls')}</h3>
    <div className="space-y-4">
     <div>
     <label className="text-sm font-semibold flex justify-between mb-1">
-     <span>Select Fuel</span>
+     <span>{t('lab.c10alcoholcombustion_select_fuel')}</span>
     </label>
     <div className="flex gap-2">
-     <button onClick={() => { setFuel('Methanol'); setTime(0); }} disabled={running} className={`flex-1 py-1 border rounded ${fuel === 'Methanol' ? 'bg-orange-100 border-orange-500 font-bold' : ''}`}>Methanol</button>
-     <button onClick={() => { setFuel('Ethanol'); setTime(0); }} disabled={running} className={`flex-1 py-1 border rounded ${fuel === 'Ethanol' ? 'bg-orange-100 border-orange-500 font-bold' : ''}`}>Ethanol</button>
+     <button onClick={() => { setFuel('Methanol'); setTime(0); }} disabled={running} className={`flex-1 py-1 border rounded ${fuel === 'Methanol' ? 'bg-orange-100 border-orange-500 font-bold' : ''}`}>{t('lab.c10alcoholcombustion_methanol')}</button>
+     <button onClick={() => { setFuel('Ethanol'); setTime(0); }} disabled={running} className={`flex-1 py-1 border rounded ${fuel === 'Ethanol' ? 'bg-orange-100 border-orange-500 font-bold' : ''}`}>{t('lab.c10alcoholcombustion_ethanol')}</button>
     </div>
     </div>
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Water Volume (mL)</span>
+     <span>{t('lab.c10alcoholcombustion_water_volume_ml')}</span>
      <span>{waterVol} mL</span>
     </label>
     <input type="range" min="50" max="200" value={waterVol} onChange={(e) => { setWaterVol(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
@@ -140,8 +144,8 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">Simulation</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">{t('lab.c10alcoholcombustion_simulation')}</h2>
    
    <div className="flex-1 w-full flex flex-col items-center justify-center relative">
    <svg viewBox="0 0 200 300" className="w-64 h-auto max-h-full drop-shadow-xl">
@@ -167,11 +171,11 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
 
    <div className="w-full mt-4 text-xs text-slate-600 dark:text-[#a1a1aa] space-y-1">
     <div className="flex justify-between">
-    <span className="font-bold text-slate-800 dark:text-[#ffffff]">Fuel Mass:</span>
+    <span className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.c10alcoholcombustion_fuel_mass')}</span>
     <span className="font-mono">{fuelMass.toFixed(2)} g</span>
     </div>
     <div className="flex justify-between">
-    <span className="font-bold text-slate-800 dark:text-[#ffffff]">Water Temp:</span>
+    <span className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.c10alcoholcombustion_water_temp')}</span>
     <span className="font-mono">{waterTemp.toFixed(1)} °C</span>
     </div>
    </div>
@@ -181,7 +185,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
    <div className={`flex-1 bg-slate-200 dark:bg-[#121212] h-2 rounded-full lg:overflow- flex-col `}>
     <div className="bg-orange-500 h-full transition-all duration-100" style={{ width: `${(time/60)*100}%` }} />
    </div>
-   <div className="text-sm font-mono">{time}s / 60s</div>
+   <div className="text-sm font-mono">{time}{t('lab.c10alcoholcombustion_s_60s')}</div>
    <button onClick={handleStart} className={`flex items-center gap-1 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded shadow dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40 flex-col `}>
     {running ? <Square size={16} /> : <Play size={16} />}
     {running ? 'Stop' : 'Start'}
@@ -189,33 +193,34 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Data & Analysis</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10alcoholcombustion_data_analysis')}</h2>
    
    <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded flex justify-between items-center">
    <div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Mass Burned</div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10alcoholcombustion_mass_burned')}</div>
     <div className="text-2xl font-mono text-orange-700">{(initialFuelMass - fuelMass).toFixed(2)}g</div>
    </div>
    <button onClick={handleLog} disabled={time === 0} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    Record Data
-   </button>
+    
+                             {t('lab.c10alcoholcombustion_record_data')}
+                            </button>
    </div>
 
    <div className="flex-1 overflow-auto border rounded bg-slate-50 dark:bg-[#121212]">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-200 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="p-2">Fuel</th>
-     <th className="p-2">Vol</th>
-     <th className="p-2">Mass(g)</th>
-     <th className="p-2">ΔT(°C)</th>
-     <th className="p-2">q(J)</th>
+     <th className="p-2">{t('lab.c10alcoholcombustion_fuel')}</th>
+     <th className="p-2">{t('lab.c10alcoholcombustion_vol')}</th>
+     <th className="p-2">{t('lab.c10alcoholcombustion_mass_g')}</th>
+     <th className="p-2">{t('lab.c10alcoholcombustion_t_c')}</th>
+     <th className="p-2">{t('lab.c10alcoholcombustion_q_j')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
-     <tr><td colSpan={5} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet.</td></tr>
+     <tr><td colSpan={5} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.c10alcoholcombustion_no_data_recorded_yet')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="border-b">
@@ -233,22 +238,24 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
 
    <div className="bg-orange-50 border border-orange-200 rounded p-4">
    <h3 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
-    <CheckCircle size={18} /> Knowledge Check
-   </h3>
+    <CheckCircle size={18} />  {t('lab.c10alcoholcombustion_knowledge_check')}
+                            </h3>
    <p className="text-sm text-orange-800 mb-3">
-    In a separate experiment, a student burned <strong>{targetM.current} g</strong> of ethanol to heat <strong>{targetV.current} cm³</strong> of water. The temperature rise was <strong>{targetT.current} °C</strong>. Calculate the enthalpy of combustion of ethanol in <strong>kJ/mol</strong>. (c = 4.18 J/g°C, M_r = 46)
-   </p>
+    
+                             {t('lab.c10alcoholcombustion_in_a_separate_experiment_a_stu')} <strong>{targetM.current} g</strong>  {t('lab.c10alcoholcombustion_of_ethanol_to_heat')} <strong>{targetV.current}  {t('lab.c10alcoholcombustion_cm')}</strong>  {t('lab.c10alcoholcombustion_of_water_the_temperature_rise_')} <strong>{targetT.current} °C</strong>{t('lab.c10alcoholcombustion_calculate_the_enthalpy_of_comb')} <strong>{t('lab.c10alcoholcombustion_kj_mol')}</strong>{t('lab.c10alcoholcombustion_c_4_18_j_g_c_m_r_46')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     value={answer}
     onChange={e => setAnswer(e.target.value)}
-    placeholder="kJ/mol" 
+    placeholder={t('lab.c10alcoholcombustion_kj_mol')} 
     className="flex-1 px-3 py-1 border rounded"
     />
     <button onClick={checkAnswer} className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">
-    Check
-    </button>
+    
+                                 {t('lab.c10alcoholcombustion_check')}
+                                 </button>
    </div>
    {feedback && (
     <p className={`mt-2 text-sm font-semibold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>

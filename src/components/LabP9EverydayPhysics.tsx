@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Info, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LogEntry {
  id: number;
@@ -9,6 +10,7 @@ interface LogEntry {
 }
 
 export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const svgRef = useRef<SVGSVGElement>(null);
  const [logs, setLogs] = useState<LogEntry[]>([]);
@@ -190,7 +192,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab: Everyday Physics Classroom" />
+  <LabHeader onExit={onExit} title={t('lab.p9everydayphysics_lab_everyday_physics_classroom')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -198,54 +200,53 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-800">
-   <Info className="mr-2" /> Concepts at Work
-   </h2>
+   <Info className="mr-2" />  {t('lab.p9everydayphysics_concepts_at_work')}
+                        </h2>
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff] leading-relaxed text-sm">
    <p>
-    Physics isn't just in the lab—it governs everything in our daily environment!
-   </p>
+    
+                             {t('lab.p9everydayphysics_physics_isn_t_just_in_the_lab_')}
+                            </p>
    
    <div className="border-l-4 border-red-500 pl-3">
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">1. Free Fall (Kinematics)</h3>
-    <p>When an object is dropped, gravity accelerates it downwards at roughly 9.8 m/s². The height and time are related by: <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">h = ½gt²</code>.</p>
+    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p9everydayphysics_1_free_fall_kinematics')}</h3>
+    <p>{t('lab.p9everydayphysics_when_an_object_is_dropped_grav')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.p9everydayphysics_h_gt')}</code>.</p>
    </div>
 
    <div className="border-l-4 border-amber-500 pl-3">
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">2. Periodic Motion</h3>
-    <p>A pendulum swings back and forth. The time it takes for one full swing (Period, T) depends entirely on its length and gravity: <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">T = 2π√(L/g)</code>.</p>
+    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p9everydayphysics_2_periodic_motion')}</h3>
+    <p>{t('lab.p9everydayphysics_a_pendulum_swings_back_and_for')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.p9everydayphysics_t_2_l_g')}</code>.</p>
    </div>
 
    <div className="border-l-4 border-emerald-500 pl-3">
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">3. Kinetic Friction</h3>
-    <p>A sliding box slows down because the floor exerts a frictional force. The distance it slides before stopping depends on initial velocity and the coefficient of friction (μ): <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">d = v₀² / (2μg)</code>.</p>
+    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p9everydayphysics_3_kinetic_friction')}</h3>
+    <p>{t('lab.p9everydayphysics_a_sliding_box_slows_down_becau')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.p9everydayphysics_d_v_2_g')}</code>.</p>
    </div>
 
    <div className={`bg-emerald-50 p-4 rounded-lg border border-emerald-100 mt-6 flex-col `}>
-    <h3 className="font-semibold text-emerald-800 mb-2">Instructions:</h3>
+    <h3 className="font-semibold text-emerald-800 mb-2">{t('lab.p9everydayphysics_instructions')}</h3>
     <ul className="list-disc pl-5 space-y-1">
-    <li>Adjust the shelf height, then click the ball to drop it.</li>
-    <li>Adjust the pendulum length, then click the bob to swing it.</li>
-    <li>Click 'Push' to slide the box across the floor.</li>
+    <li>{t('lab.p9everydayphysics_adjust_the_shelf_height_then_c')}</li>
+    <li>{t('lab.p9everydayphysics_adjust_the_pendulum_length_the')}</li>
+    <li>{t('lab.p9everydayphysics_click_push_to_slide_the_box_ac')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Simulator Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-emerald-800 text-center">Interactive Classroom</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 text-emerald-800 text-center">{t('lab.p9everydayphysics_interactive_classroom')}</h2>
    
    <div className="flex-1 relative flex items-center justify-center bg-sky-50 rounded-xl overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
    <svg
@@ -285,7 +286,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
     <circle cx="0" cy="0" r="10" fill="#ef4444" 
       style={{ cursor: 'pointer' }}
       onClick={dropBall} />
-    {!isBallFalling && <text x="0" y="-15" fontSize="10" fill="#ef4444" textAnchor="middle" pointerEvents="none" fontWeight="bold">Drop</text>}
+    {!isBallFalling && <text x="0" y="-15" fontSize="10" fill="#ef4444" textAnchor="middle" pointerEvents="none" fontWeight="bold">{t('lab.p9everydayphysics_drop')}</text>}
     </g>
 
     {/* Pendulum */}
@@ -294,7 +295,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
     <g transform={`rotate(${pendulumState.angle})`}>
      <line x1="0" y1="0" x2="0" y2={pendulumState.length} stroke="#64748b" strokeWidth="2" />
      <circle cx="0" cy={pendulumState.length} r="15" fill="#f59e0b" style={{cursor: 'pointer'}} onClick={startPendulum} />
-     {!pendulumState.isSwinging && <text x="0" y={pendulumState.length + 25} fontSize="10" fill="#d97706" textAnchor="middle" pointerEvents="none" fontWeight="bold">Swing</text>}
+     {!pendulumState.isSwinging && <text x="0" y={pendulumState.length + 25} fontSize="10" fill="#d97706" textAnchor="middle" pointerEvents="none" fontWeight="bold">{t('lab.p9everydayphysics_swing')}</text>}
      
      {/* Draggable length handle */}
      <circle cx="0" cy={pendulumState.length} r="20" fill="transparent"
@@ -309,12 +310,12 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
     {/* Sliding Box */}
     <g transform={`translate(${boxState.x}, 320)`}>
     <rect x="0" y="0" width="30" height="30" fill="#10b981" rx="2" />
-    <text x="15" y="20" fontSize="10" fill="white" textAnchor="middle" pointerEvents="none" fontWeight="bold">Box</text>
+    <text x="15" y="20" fontSize="10" fill="white" textAnchor="middle" pointerEvents="none" fontWeight="bold">{t('lab.p9everydayphysics_box')}</text>
     </g>
     {!boxState.isSliding && (
     <g transform={`translate(${boxState.x - 35}, 325)`} style={{cursor: 'pointer'}} onClick={pushBox}>
      <rect x="0" y="0" width="30" height="20" fill="#3b82f6" rx="4" />
-     <text x="15" y="14" fontSize="10" fill="white" textAnchor="middle" pointerEvents="none" fontWeight="bold">Push</text>
+     <text x="15" y="14" fontSize="10" fill="white" textAnchor="middle" pointerEvents="none" fontWeight="bold">{t('lab.p9everydayphysics_push')}</text>
     </g>
     )}
    </svg>
@@ -332,29 +333,31 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
     className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors"
    >
     <RefreshCw className="w-4 h-4 mr-2" />
-    Reset Objects
-   </button>
+    
+                             {t('lab.p9everydayphysics_reset_objects')}
+                            </button>
    </div>
   </div>
 
   {/* Data & Analysis Column */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-emerald-800">Experiment Data</h2>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 text-emerald-800">{t('lab.p9everydayphysics_experiment_data')}</h2>
    
    <div className="flex-1 lg:overflow-y-auto mb-4 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-48">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Object</th>
-     <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-[#ffffff]">Measurement</th>
+     <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9everydayphysics_object')}</th>
+     <th className="px-3 py-2 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9everydayphysics_measurement')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
      <tr>
      <td colSpan={2} className="px-4 py-6 text-center text-slate-500 dark:text-[#71717a] italic">
-      Interact with objects to log data.
-     </td>
+      
+                                               {t('lab.p9everydayphysics_interact_with_objects_to_log_d')}
+                                              </td>
      </tr>
     ) : (
      logs.map((log) => (
@@ -371,24 +374,24 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
    <div className="space-y-4">
    <div className="bg-red-50 p-4 rounded-xl border border-red-100 shadow-sm">
     <h3 className="font-bold text-red-800 mb-2 flex items-center text-sm">
-    <CheckCircle className="w-4 h-4 mr-2" /> Calc Gravity
-    </h3>
-    <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">Drop the ball. Calculate <strong>g</strong> (m/s²) using <code className="bg-slate-50 dark:bg-[#121212] px-1">g = 2h / t²</code></p>
+    <CheckCircle className="w-4 h-4 mr-2" />  {t('lab.p9everydayphysics_calc_gravity')}
+                                 </h3>
+    <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9everydayphysics_drop_the_ball_calculate')} <strong>g</strong>  {t('lab.p9everydayphysics_m_s_using')} <code className="bg-slate-50 dark:bg-[#121212] px-1">{t('lab.p9everydayphysics_g_2h_t')}</code></p>
     <div className="flex gap-2">
     <input type="number" value={ansGravity} onChange={e => setAnsGravity(e.target.value)} className="w-20 px-2 py-1 text-sm border rounded" />
-    <button onClick={checkGravity} className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">Check</button>
+    <button onClick={checkGravity} className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">{t('lab.p9everydayphysics_check')}</button>
     </div>
     {resGravity && <p className={`mt-2 text-xs font-medium ${resGravity.includes('Correct') ? 'text-green-700' : 'text-red-600'}`}>{resGravity}</p>}
    </div>
 
    <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 shadow-sm">
     <h3 className="font-bold text-emerald-800 mb-2 flex items-center text-sm">
-    <CheckCircle className="w-4 h-4 mr-2" /> Calc Friction
-    </h3>
-    <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">Push the box. Calculate <strong>μ</strong> using <code className="bg-slate-50 dark:bg-[#121212] px-1">μ = v₀² / (2gd)</code> (use g=9.8)</p>
+    <CheckCircle className="w-4 h-4 mr-2" />  {t('lab.p9everydayphysics_calc_friction')}
+                                 </h3>
+    <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9everydayphysics_push_the_box_calculate')} <strong>μ</strong>  {t('lab.p9everydayphysics_using')} <code className="bg-slate-50 dark:bg-[#121212] px-1">{t('lab.p9everydayphysics_v_2gd')}</code>  {t('lab.p9everydayphysics_use_g_9_8')}</p>
     <div className="flex gap-2">
     <input type="number" value={ansFriction} onChange={e => setAnsFriction(e.target.value)} step="0.1" className="w-20 px-2 py-1 text-sm border rounded" />
-    <button onClick={checkFriction} className="px-3 py-1 bg-emerald-600 text-white rounded text-sm hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Check</button>
+    <button onClick={checkFriction} className="px-3 py-1 bg-emerald-600 text-white rounded text-sm hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.p9everydayphysics_check')}</button>
     </div>
     {resFriction && <p className={`mt-2 text-xs font-medium ${resFriction.includes('Correct') ? 'text-green-700' : 'text-red-600'}`}>{resFriction}</p>}
    </div>

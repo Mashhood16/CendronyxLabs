@@ -1,7 +1,9 @@
 import { useState, useRef, useMemo } from 'react';
 import { ArrowLeft, Database, CheckCircle, Activity, Ruler } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  // --- STATE ---
  const [shape, setShape] = useState<'Sphere' | 'Cone' | 'Pyramid'>('Cone');
  const [radius, setRadius] = useState<number>(5); // Acts as base width/2 for pyramid
@@ -64,7 +66,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  const maxMass = Math.max(10, ...measurements.map(m => m.mass));
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000] font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* HEADER */}
   <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
   <div className="flex items-center gap-3">
@@ -78,8 +80,9 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
    )}
    <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
    <Ruler className="w-6 h-6 text-indigo-500" />
-   Advanced Mensuration & Solid Properties
-   </h1>
+   
+                        {t('lab.m8mensuration_advanced_mensuration_solid_pro')}
+                        </h1>
   </div>
   </header>
 
@@ -91,29 +94,31 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
    <div>
    <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <Activity className="w-5 h-5 text-blue-500" />
-    Object Parameters
-   </h2>
+    
+                             {t('lab.m8mensuration_object_parameters')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
-    Select a solid shape to compute its theoretical surface area and volume. Set material density to determine physical mass.
-   </p>
+    
+                             {t('lab.m8mensuration_select_a_solid_shape_to_comput')}
+                            </p>
 
    <div className="space-y-4">
     <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium">Shape</label>
+    <label className="text-sm font-medium">{t('lab.m8mensuration_shape')}</label>
     <select
      value={shape}
      onChange={(e) => setShape(e.target.value as any)}
      className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
     >
-     <option value="Cone">Solid Cone</option>
-     <option value="Sphere">Solid Sphere</option>
-     <option value="Pyramid">Square Pyramid</option>
+     <option value="Cone">{t('lab.m8mensuration_solid_cone')}</option>
+     <option value="Sphere">{t('lab.m8mensuration_solid_sphere')}</option>
+     <option value="Pyramid">{t('lab.m8mensuration_square_pyramid')}</option>
     </select>
     </div>
 
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span>Radius / Half-Base (cm)</span>
+     <span>{t('lab.m8mensuration_radius_half_base_cm')}</span>
      <span>{radius} cm</span>
     </label>
     <input
@@ -129,7 +134,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
 
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span className={shape === 'Sphere' ? 'opacity-50' : ''}>Height (cm)</span>
+     <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{t('lab.m8mensuration_height_cm')}</span>
      <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{shape === 'Sphere' ? 'N/A' : `${height} cm`}</span>
     </label>
     <input
@@ -146,7 +151,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
 
     <div className="flex flex-col gap-1">
     <label className="text-sm font-medium flex justify-between">
-     <span>Material Density (kg/m³)</span>
+     <span>{t('lab.m8mensuration_material_density_kg_m')}</span>
      <span>{density}</span>
     </label>
     <select
@@ -154,10 +159,10 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
      onChange={(e) => setDensity(parseInt(e.target.value))}
      className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
     >
-     <option value={7800}>Iron (7800 kg/m³)</option>
-     <option value={2700}>Aluminum (2700 kg/m³)</option>
-     <option value={19300}>Gold (19300 kg/m³)</option>
-     <option value={1000}>Water / Ice (1000 kg/m³)</option>
+     <option value={7800}>{t('lab.m8mensuration_iron_7800_kg_m')}</option>
+     <option value={2700}>{t('lab.m8mensuration_aluminum_2700_kg_m')}</option>
+     <option value={19300}>{t('lab.m8mensuration_gold_19300_kg_m')}</option>
+     <option value={1000}>{t('lab.m8mensuration_water_ice_1000_kg_m')}</option>
     </select>
     </div>
    </div>
@@ -168,15 +173,17 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
    className="mt-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
    <Database className="w-4 h-4" />
-   Log Measurement
-   </button>
+   
+                        {t('lab.m8mensuration_log_measurement')}
+                        </button>
   </div>
 
   {/* COLUMN 2: SIMULATION STAGE */}
   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px] relative">
    <h2 className="absolute top-4 left-4 text-lg font-semibold text-slate-800 dark:text-white">
-   Cross-Section Visualizer
-   </h2>
+   
+                        {t('lab.m8mensuration_cross_section_visualizer')}
+                        </h2>
    
    <div className="w-full h-64 flex items-center justify-center mt-8">
    <svg viewBox="-100 -100 200 200" className="w-full h-full max-w-[250px] drop-shadow-xl overflow-visible">
@@ -232,16 +239,17 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
 
    <div className="w-full bg-slate-100 dark:bg-slate-700 p-3 rounded-lg mt-4 grid grid-cols-2 gap-2 text-sm">
    <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
-    <span className="text-slate-600 dark:text-[#71717a]">Exact Volume:</span>
-    <span className="font-mono font-medium">{volume.toFixed(1)} cm³</span>
+    <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_exact_volume')}</span>
+    <span className="font-mono font-medium">{volume.toFixed(1)}  {t('lab.m8mensuration_cm')}</span>
    </div>
    <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
-    <span className="text-slate-600 dark:text-[#71717a]">Surface Area:</span>
-    <span className="font-mono font-medium">{surfaceArea.toFixed(1)} cm²</span>
+    <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_surface_area')}</span>
+    <span className="font-mono font-medium">{surfaceArea.toFixed(1)}  {t('lab.m8mensuration_cm_1')}</span>
    </div>
    <div className="flex justify-between col-span-2 pt-1">
     <span className="text-slate-600 dark:text-[#71717a] flex items-center gap-1">
-    Measured Mass <span className="text-xs text-indigo-500">(w/ ±1.5% tool error)</span>:
+    
+                                 {t('lab.m8mensuration_measured_mass')} <span className="text-xs text-indigo-500">{t('lab.m8mensuration_w_1_5_tool_error')}</span>:
     </span>
     <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">{mass.toFixed(3)} kg</span>
    </div>
@@ -253,15 +261,15 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
    
    {/* Data Table */}
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
-   <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">Logged Data</h2>
+   <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_logged_data')}</h2>
    <div className="lg:overflow-y-auto flex-1">
     <table className="w-full text-sm text-left">
     <thead className="sticky top-0 text-slate-500 dark:text-[#71717a]">
      <tr>
-     <th className="py-2">Shape</th>
-     <th className="py-2">r/b</th>
+     <th className="py-2">{t('lab.m8mensuration_shape')}</th>
+     <th className="py-2">{t('lab.m8mensuration_r_b')}</th>
      <th className="py-2">h</th>
-     <th className="py-2">Mass (kg)</th>
+     <th className="py-2">{t('lab.m8mensuration_mass_kg')}</th>
      </tr>
     </thead>
     <tbody>
@@ -275,7 +283,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
      ))}
      {measurements.length === 0 && (
      <tr>
-      <td colSpan={4} className="py-4 text-center text-slate-400 italic">No data logged yet.</td>
+      <td colSpan={4} className="py-4 text-center text-slate-400 italic">{t('lab.m8mensuration_no_data_logged_yet')}</td>
      </tr>
      )}
     </tbody>
@@ -285,7 +293,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
 
    {/* Simple Graph */}
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-sm font-semibold mb-2 text-slate-800 dark:text-white">Mass Trend</h2>
+   <h2 className="text-sm font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_mass_trend')}</h2>
    <div className="h-32 w-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
     {measurements.length > 1 ? (
     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -307,7 +315,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
      })}
     </svg>
     ) : (
-    <div className="flex items-center justify-center h-full text-xs text-slate-400">Log at least 2 points to graph.</div>
+    <div className="flex items-center justify-center h-full text-xs text-slate-400">{t('lab.m8mensuration_log_at_least_2_points_to_graph')}</div>
     )}
    </div>
    </div>
@@ -316,25 +324,28 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
    <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
    <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <CheckCircle className="w-5 h-5 text-green-500" />
-    Assessment
-   </h2>
+    
+                             {t('lab.m8mensuration_assessment')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
-    A solid gold sphere has a radius of 10 cm. The density of gold is 19300 kg/m³. Calculate its theoretical mass in kg.
-   </p>
+    
+                             {t('lab.m8mensuration_a_solid_gold_sphere_has_a_radi')}
+                            </p>
    <div className="flex flex-wrap gap-2">
     <input
     type="number"
     value={assessmentAnswer}
     onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder="e.g. 50.5"
+    placeholder={t('lab.m8mensuration_e_g_50_5')}
     className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
     />
     <button
     onClick={checkAssessment}
     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.m8mensuration_check_answer')}
+                                 </button>
    </div>
    {assessmentFeedback && (
     <div className={`mt-3 text-sm p-2 rounded-md ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'}`}>

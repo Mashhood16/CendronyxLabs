@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Server, Box, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface ComponentItem { id: string; type: string; name: string; }
 interface SlotItem { id: string; name: string; expected: string; filledBy: ComponentItem | null; }
@@ -8,6 +9,7 @@ interface RoleItem { id: string; desc: string; layer: number; }
 interface LayerItem { num: number; name: string; expectedLayer: number; filledBy: RoleItem | null; }
 
 export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab] = useState<'hardware' | 'osi'>('hardware');
 
@@ -120,7 +122,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Computer Systems Lab" />
+  <LabHeader onExit={onExit} title={t('lab.cs9computersystems_computer_systems_lab')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -129,49 +131,50 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs9computersystems_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs9computersystems_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 lg:min-h-0 lg:overflow-visible">
   
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Context</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.cs9computersystems_theory_context')}</h2>
    {activeTab === 'hardware' ? (
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4 text-sm leading-relaxed">
-    <p><strong>CPU (Central Processing Unit):</strong> The brain of the computer, handling instructions and processing data.</p>
-    <p><strong>RAM (Random Access Memory):</strong> Short-term volatile memory used for active tasks and applications.</p>
-    <p><strong>GPU (Graphics Processing Unit):</strong> Specialized processor for rendering images and video.</p>
-    <p><strong>SSD (Solid State Drive):</strong> Long-term non-volatile storage for the OS and files.</p>
-    <p><strong>PSU (Power Supply Unit):</strong> Converts electrical power from an outlet into usable power for components.</p>
+    <p><strong>{t('lab.cs9computersystems_cpu_central_processing_unit')}</strong>  {t('lab.cs9computersystems_the_brain_of_the_computer_hand')}</p>
+    <p><strong>{t('lab.cs9computersystems_ram_random_access_memory')}</strong>  {t('lab.cs9computersystems_short_term_volatile_memory_use')}</p>
+    <p><strong>{t('lab.cs9computersystems_gpu_graphics_processing_unit')}</strong>  {t('lab.cs9computersystems_specialized_processor_for_rend')}</p>
+    <p><strong>{t('lab.cs9computersystems_ssd_solid_state_drive')}</strong>  {t('lab.cs9computersystems_long_term_non_volatile_storage')}</p>
+    <p><strong>{t('lab.cs9computersystems_psu_power_supply_unit')}</strong>  {t('lab.cs9computersystems_converts_electrical_power_from')}</p>
     <div className={`w-full bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-    <strong className="text-blue-800 dark:text-[#ffffff]">Task:</strong> Select a component from the list and place it into the correct motherboard slot.
-    </div>
+    <strong className="text-blue-800 dark:text-[#ffffff]">{t('lab.cs9computersystems_task')}</strong>  {t('lab.cs9computersystems_select_a_component_from_the_li')}
+                                 </div>
    </div>
    ) : (
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4 text-sm leading-relaxed">
-    <p>The <strong>OSI Model</strong> (Open Systems Interconnection) conceptualizes how data is transmitted over a network in 7 distinct layers.</p>
+    <p>{t('lab.cs9computersystems_the')} <strong>{t('lab.cs9computersystems_osi_model')}</strong>  {t('lab.cs9computersystems_open_systems_interconnection_c')}</p>
     <ul className="list-disc pl-5 space-y-1">
-    <li><strong>7. Application:</strong> End-user apps.</li>
-    <li><strong>6. Presentation:</strong> Data format, encryption.</li>
-    <li><strong>5. Session:</strong> Connection management.</li>
-    <li><strong>4. Transport:</strong> Reliability, TCP/UDP.</li>
-    <li><strong>3. Network:</strong> Routing, IP addresses.</li>
-    <li><strong>2. Data Link:</strong> MAC addresses, switches.</li>
-    <li><strong>1. Physical:</strong> Raw bits over cables/radio.</li>
+    <li><strong>{t('lab.cs9computersystems_7_application')}</strong>  {t('lab.cs9computersystems_end_user_apps')}</li>
+    <li><strong>{t('lab.cs9computersystems_6_presentation')}</strong>  {t('lab.cs9computersystems_data_format_encryption')}</li>
+    <li><strong>{t('lab.cs9computersystems_5_session')}</strong>  {t('lab.cs9computersystems_connection_management')}</li>
+    <li><strong>{t('lab.cs9computersystems_4_transport')}</strong>  {t('lab.cs9computersystems_reliability_tcp_udp')}</li>
+    <li><strong>{t('lab.cs9computersystems_3_network')}</strong>  {t('lab.cs9computersystems_routing_ip_addresses')}</li>
+    <li><strong>{t('lab.cs9computersystems_2_data_link')}</strong>  {t('lab.cs9computersystems_mac_addresses_switches')}</li>
+    <li><strong>{t('lab.cs9computersystems_1_physical')}</strong>  {t('lab.cs9computersystems_raw_bits_over_cables_radio')}</li>
     </ul>
     <div className={`w-full bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <strong className="text-blue-800 dark:text-[#ffffff]">Task:</strong> Assign the correct functional role to each layer of the OSI stack.
-    </div>
+    <strong className="text-blue-800 dark:text-[#ffffff]">{t('lab.cs9computersystems_task')}</strong>  {t('lab.cs9computersystems_assign_the_correct_functional_')}
+                                     </div>
    </div>
    )}
   </div>
 
   <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-xl shadow-inner border border-slate-300 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col items-center `}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 w-full text-center">Interactive Workspace</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 w-full text-center">{t('lab.cs9computersystems_interactive_workspace')}</h2>
    
    {activeTab === 'hardware' && (
    <div className="w-full flex flex-col gap-6">
@@ -185,11 +188,11 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
      <Server className="w-4 h-4" /> {c.name}
      </button>
     ))}
-    {availableHw.length === 0 && <span className="text-sm text-slate-400 italic">All components placed.</span>}
+    {availableHw.length === 0 && <span className="text-sm text-slate-400 italic">{t('lab.cs9computersystems_all_components_placed')}</span>}
     </div>
 
     <div className={`bg-green-800 rounded-xl p-6 relative w-full max-w-md mx-auto aspect-[3/4] border-4 border-green-900 shadow-2xl flex flex-col gap-4 `}>
-    <div className="absolute top-2 left-2 text-green-400 opacity-50 font-mono text-xs">MOTHERBOARD_V1</div>
+    <div className="absolute top-2 left-2 text-green-400 opacity-50 font-mono text-xs">{t('lab.cs9computersystems_motherboard_v1')}</div>
     {hwSlots.map(s => (
      <button
      key={s.id}
@@ -213,7 +216,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
    {activeTab === 'osi' && (
    <div className="w-full flex flex-col lg:flex-row gap-6 h-full">
     <div className={`flex-1 flex flex-col gap-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">Roles</h3>
+    <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">{t('lab.cs9computersystems_roles')}</h3>
     {availableRoles.map(r => (
      <button
      key={r.id}
@@ -223,11 +226,11 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
      {r.desc}
      </button>
     ))}
-    {availableRoles.length === 0 && <div className="text-center text-sm text-slate-400 italic p-4">All roles assigned.</div>}
+    {availableRoles.length === 0 && <div className="text-center text-sm text-slate-400 italic p-4">{t('lab.cs9computersystems_all_roles_assigned')}</div>}
     </div>
     
     <div className={`flex-1 flex flex-col gap-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">OSI Layers</h3>
+    <h3 className="font-bold text-sm text-slate-500 dark:text-[#71717a] text-center uppercase tracking-wider">{t('lab.cs9computersystems_osi_layers')}</h3>
     {osiLayers.map(l => (
      <div key={l.num} className="flex gap-2 items-stretch h-14">
      <div className="w-12 bg-[#121212] dark:!bg-[#121212] text-white font-bold flex items-center justify-center rounded-l-lg shrink-0 shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b]">
@@ -237,7 +240,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
       onClick={() => handleOsiSlotClick(l.num)}
       className={`flex-1 border-2 border-dashed rounded-r-lg flex items-center p-2 text-sm text-left transition-colors ${selectedRole ? 'hover:bg-indigo-50 border-indigo-400 cursor-pointer' : ''} ${l.filledBy ? 'bg-indigo-600 border-indigo-700 text-white shadow-inner font-medium' : 'border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-400'}`}
      >
-      {l.filledBy ? l.filledBy.desc : <span className="opacity-50">{l.name} - Select a role...</span>}
+      {l.filledBy ? l.filledBy.desc : <span className="opacity-50">{l.name}  {t('lab.cs9computersystems_select_a_role')}</span>}
      </button>
      </div>
     ))}
@@ -248,7 +251,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Assessment & Logs</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.cs9computersystems_assessment_logs')}</h2>
    
    <div className="mb-6 flex flex-col gap-2">
    <button 
@@ -256,17 +259,19 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
     <CheckCircle className="w-5 h-5" />
-    Check {activeTab === 'hardware' ? 'Hardware' : 'OSI Layers'}
+    
+                             {t('lab.cs9computersystems_check')} {activeTab === 'hardware' ? 'Hardware' : 'OSI Layers'}
    </button>
    <div className="text-xs text-slate-500 dark:text-[#71717a] text-center mt-1">
-    Assemble all parts before checking.
-   </div>
+    
+                             {t('lab.cs9computersystems_assemble_all_parts_before_chec')}
+                            </div>
    </div>
 
    <div className="flex-1 bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-xs p-3 rounded-lg lg:overflow-y-auto shadow-inner border border-[#1c1b1b] dark:border-[#1c1b1b]">
-   <div className="opacity-50 mb-2">--- SYSTEM LOGS ---</div>
+   <div className="opacity-50 mb-2">{t('lab.cs9computersystems_system_logs')}</div>
    {logs.length === 0 ? (
-    <div className="opacity-50 italic">Waiting for activity...</div>
+    <div className="opacity-50 italic">{t('lab.cs9computersystems_waiting_for_activity')}</div>
    ) : (
     logs.map((log, i) => <div key={i} className="mb-1 leading-tight">{log}</div>)
    )}

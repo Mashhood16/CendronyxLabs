@@ -10,6 +10,9 @@ export interface LabModule {
 
 export const formatSubject = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
+export const hasCalculator = (lab: LabModule) =>
+  lab.subject !== 'english' && !['6', '7', '8'].includes(lab.classLevel);
+
 export const LAB_MODULES = [
   // Class 8 Computer
   { id: 'c8c_1_1', classLevel: '8', subject: 'computer', title: 'Act 1.1: Data Comm Model', desc: 'Assemble the components of the communication cycle.', built: true, bg: 'from-blue-500 to-indigo-600' },
@@ -491,6 +494,25 @@ export const LAB_MODULES = [
   { id: 'm11_7', classLevel: '11', subject: 'math', title: 'Unit 7: Induction & Binomial', desc: 'Prove formulas via Domino Effects and map probability with Pascal.', built: true, bg: 'from-teal-600 to-emerald-800' },
   { id: 'm11_8', classLevel: '11', subject: 'math', title: 'Unit 8-9: Trigonometry', desc: 'Graph the periodic sinusoidal heights of rotating Ferris Wheels.', built: true, bg: 'from-slate-700 to-gray-900' },
 
+  // Class 11 Math Theorems
+  { id: 'm11_theorem_complex_magnitude', classLevel: '11', subject: 'math', title: 'Theorem: Magnitude of Complex Numbers', desc: 'Prove |z| >= 0 and |z| = 0 iff z = 0 with radar signal simulation.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'm11_theorem_complex_inverse_polar', classLevel: '11', subject: 'math', title: 'Theorem: Inverse in Polar Form', desc: 'Prove z^-1 = (1/r)(cos theta - i sin theta) using conjugate method.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm11_theorem_complex_division_polar', classLevel: '11', subject: 'math', title: 'Theorem: Division in Polar Form', desc: 'Prove z1/z2 = (r1/r2)[cos(theta1-theta2)+i sin(theta1-theta2)].', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'm11_theorem_determinant_transpose', classLevel: '11', subject: 'math', title: 'Theorem: Determinant of Transpose', desc: 'Prove |A| = |A^T| with step-by-step expansion of a 3x3 matrix.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm11_theorem_determinant_interchange', classLevel: '11', subject: 'math', title: 'Theorem: Row/Column Interchange', desc: 'Prove interchanging two rows flips determinant sign: |B| = -|A|.', built: true, bg: 'from-orange-500 to-red-600' },
+  { id: 'm11_theorem_determinant_identical', classLevel: '11', subject: 'math', title: 'Theorem: Identical Rows/Columns', desc: 'Prove determinant is zero when two rows are identical.', built: true, bg: 'from-red-500 to-rose-600' },
+  { id: 'm11_theorem_parallelogram_diagonals', classLevel: '11', subject: 'math', title: 'Theorem: Parallelogram Diagonals', desc: 'Prove diagonals of a parallelogram bisect each other using vectors.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'm11_theorem_triangle_midpoint', classLevel: '11', subject: 'math', title: 'Theorem: Triangle Midpoint Theorem', desc: 'Prove line joining midpoints is parallel to third side and half its length.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm11_theorem_trapezium_midpoint', classLevel: '11', subject: 'math', title: 'Theorem: Trapezium Midpoint Theorem', desc: 'Prove midpoint line = half sum of parallel sides with bridge design demo.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm11_theorem_geometric_sum', classLevel: '11', subject: 'math', title: 'Theorem: Sum of Geometric Series', desc: 'Prove Sn = a(1-r^n)/(1-r) with interactive loan amortization simulation.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm11_theorem_arithmetico_geometric_sum', classLevel: '11', subject: 'math', title: 'Theorem: Arithmetico-Geometric Sum', desc: 'Prove sum formula for AG sequences with investment growth simulation.', built: true, bg: 'from-teal-500 to-cyan-600' },
+  { id: 'm11_theorem_remainder', classLevel: '11', subject: 'math', title: 'Theorem: Remainder Theorem', desc: 'Prove p(c) is remainder when p(x) is divided by (x-c) with pizza slicing demo.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm11_theorem_factor', classLevel: '11', subject: 'math', title: 'Theorem: Factor Theorem', desc: 'Prove (x-c) is a factor iff p(c)=0 with construction crane simulation.', built: true, bg: 'from-rose-500 to-pink-600' },
+  { id: 'm11_theorem_combination', classLevel: '11', subject: 'math', title: 'Theorem: Combination Formula', desc: 'Prove nCr = n!/(r!(n-r)!) with interactive committee selection demo.', built: true, bg: 'from-violet-500 to-purple-600' },
+  { id: 'm11_theorem_binomial', classLevel: '11', subject: 'math', title: 'Theorem: Binomial Theorem', desc: 'Prove (a+b)^n by mathematical induction with Pascal triangle pattern.', built: true, bg: 'from-sky-500 to-blue-600' },
+  { id: 'm11_theorem_fundamental_trig', classLevel: '11', subject: 'math', title: 'Theorem: Fundamental Law of Trigonometry', desc: 'Prove cos(alpha-beta) = cos alpha cos beta + sin alpha sin beta.', built: true, bg: 'from-yellow-500 to-amber-600' },
+  { id: 'm11_theorem_trig_identities', classLevel: '11', subject: 'math', title: 'Theorem: Trigonometric Identities', desc: 'Derive allied angle, double angle, and triple angle identities.', built: true, bg: 'from-green-500 to-emerald-600' },
+
   // Class 12 Mathematics
   { id: 'm12_1', classLevel: '12', subject: 'math', title: 'Unit 2: Derivatives', desc: 'Optimize architectural dimensions and calculate marginal business revenue.', built: true, bg: 'from-red-600 to-rose-800' },
   { id: 'm12_2', classLevel: '12', subject: 'math', title: 'Unit 3: Integration', desc: 'Map Dam hydrostatic force and generate 3D Solids of Revolution.', built: true, bg: 'from-blue-600 to-indigo-800' },
@@ -499,7 +521,27 @@ export const LAB_MODULES = [
   { id: 'm12_5', classLevel: '12', subject: 'math', title: 'Unit 6: Analytical Geo', desc: 'Map urban traffic intersections and calculate landscaping costs.', built: true, bg: 'from-amber-600 to-orange-800' },
   { id: 'm12_6', classLevel: '12', subject: 'math', title: 'Unit 5: Kinematics', desc: 'Graph 3D particle trajectories and displacement-time vehicular models.', built: true, bg: 'from-cyan-600 to-blue-800' },
   { id: 'm12_7', classLevel: '12', subject: 'math', title: 'Unit 1: Functions', desc: 'Calculate Market Equilibrium points and compound interest growth.', built: true, bg: 'from-indigo-600 to-violet-800' },
-  { id: 'm12_8', classLevel: '12', subject: 'math', title: 'Unit 8: Inverse Trig', desc: 'Reverse-engineer 3D rendering algorithms and optics angles.', built: true, bg: 'from-slate-700 to-gray-900' },  // Class 11 Physics (batch 2)
+  { id: 'm12_8', classLevel: '12', subject: 'math', title: 'Unit 8: Inverse Trig', desc: 'Reverse-engineer 3D rendering algorithms and optics angles.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 12 Math Theorems
+  { id: 'm12_theorem_power_rule', classLevel: '12', subject: 'math', title: 'Theorem: Power Rule for Differentiation', desc: 'Prove d/dx x^n = nx^(n-1) with interactive rocket velocity simulation.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'm12_theorem_sin_derivative', classLevel: '12', subject: 'math', title: 'Theorem: Derivative of Sine', desc: 'Prove d/dx sin x = cos x with interactive sound wave simulation.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm12_theorem_inverse_trig_derivatives', classLevel: '12', subject: 'math', title: 'Theorem: Inverse Trig Derivatives', desc: 'Derive d/dx sin^-1 x = 1/sqrt(1-x^2) using implicit differentiation.', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'm12_theorem_basic_integrals', classLevel: '12', subject: 'math', title: 'Theorem: Basic Indefinite Integrals', desc: 'Derive integral formulas from reverse differentiation with interactive sliders.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm12_theorem_substitution_integrals', classLevel: '12', subject: 'math', title: 'Theorem: Integration by Substitution', desc: 'Derive standard integrals via trigonometric substitution with interactive calculator.', built: true, bg: 'from-teal-500 to-cyan-600' },
+  { id: 'm12_theorem_fundamental_theorem_calc', classLevel: '12', subject: 'math', title: 'Theorem: Fundamental Theorem of Calculus', desc: 'Prove FTC linking derivatives to definite integrals with river delta simulation.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm12_theorem_concurrency_altitudes', classLevel: '12', subject: 'math', title: 'Theorem: Concurrency of Altitudes', desc: 'Prove three altitudes of a triangle meet at orthocenter via determinant method.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'm12_theorem_concurrency_bisectors', classLevel: '12', subject: 'math', title: 'Theorem: Concurrency of Right Bisectors', desc: 'Prove perpendicular bisectors meet at circumcenter for GPS triangulation.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm12_theorem_concurrency_medians', classLevel: '12', subject: 'math', title: 'Theorem: Concurrency of Medians', desc: 'Prove medians meet at centroid with interactive bridge truss simulation.', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm12_theorem_homogeneous_second_degree', classLevel: '12', subject: 'math', title: 'Theorem: Homogeneous Second-Degree Equations', desc: 'Prove ax^2+2hxy+by^2=0 represents two lines through the origin.', built: true, bg: 'from-violet-500 to-indigo-600' },
+  { id: 'm12_theorem_circle_general', classLevel: '12', subject: 'math', title: 'Theorem: General Equation of a Circle', desc: 'Complete the square to find center and radius with GPS triangulation demo.', built: true, bg: 'from-violet-500 to-purple-600' },
+  { id: 'm12_theorem_circle_tangent', classLevel: '12', subject: 'math', title: 'Theorem: Tangent to a Circle', desc: 'Derive T=0 tangent equation using implicit differentiation with gear demo.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'm12_theorem_parabola_standard', classLevel: '12', subject: 'math', title: 'Theorem: Standard Equation of a Parabola', desc: 'Derive y^2=4ax from focus-directrix definition with satellite dish demo.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm12_theorem_parabola_tangent', classLevel: '12', subject: 'math', title: 'Theorem: Tangent to a Parabola', desc: 'Derive y=mx+a/m tangency condition with architectural arch simulation.', built: true, bg: 'from-orange-500 to-red-600' },
+  { id: 'm12_theorem_ellipse_standard', classLevel: '12', subject: 'math', title: 'Theorem: Standard Equation of an Ellipse', desc: 'Derive x^2/a^2+y^2/b^2=1 with Kepler orbital simulation.', built: true, bg: 'from-green-500 to-emerald-600' },
+  { id: 'm12_theorem_hyperbola_standard', classLevel: '12', subject: 'math', title: 'Theorem: Standard Equation of a Hyperbola', desc: 'Derive x^2/a^2-y^2/b^2=1 with LORAN ship navigation simulation.', built: true, bg: 'from-rose-500 to-pink-600' },
+
+  // Class 11 Physics (batch 2)
   { id: 'p11_deriv_projectile_time_flight', classLevel: '11', subject: 'physics', title: 'Derivation: Time of Flight of Projectile', desc: 'Total time projectile stays in the air: T = 2v_i sin\u03B8 / g', built: true, bg: 'from-rose-500 to-red-600' },
   { id: 'p11_deriv_angular_momentum', classLevel: '11', subject: 'physics', title: 'Derivation: Angular Momentum', desc: 'Rotational analogue of linear momentum: L = I\u03C9 = mr\u00B2\u03C9', built: true, bg: 'from-green-500 to-emerald-600' },
   { id: 'p11_deriv_torque_inertia', classLevel: '11', subject: 'physics', title: 'Derivation: Torque and Angular Acceleration', desc: 'Rotational analogue of Newton\u2019s Second Law: \u03C4 = I\u03B1', built: true, bg: 'from-emerald-500 to-teal-600' },
@@ -661,5 +703,60 @@ export const LAB_MODULES = [
   { id: 'e12-5', classLevel: '12', subject: 'english', title: 'Unit 5: Tenses & Verbals', desc: 'Master all 12 tenses and verbal transformations.', built: true, bg: 'from-indigo-500 to-fuchsia-700' },
   { id: 'e12-6', classLevel: '12', subject: 'english', title: 'Unit 6: Phrases & Clauses', desc: 'Dissect sentences into dependent clauses and foundational phrases.', built: true, bg: 'from-cyan-500 to-blue-700' },
   { id: 'e12-7', classLevel: '12', subject: 'english', title: 'Unit 7: Sentence Structure', desc: 'Complex topologies and fixing dangling/misplaced modifiers.', built: true, bg: 'from-slate-600 to-zinc-800' },
-  { id: 'e12-8', classLevel: '12', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Denotation/connotation and rhetorical device synthesis.', built: true, bg: 'from-pink-600 to-rose-800' }
+  { id: 'e12-8', classLevel: '12', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Denotation/connotation and rhetorical device synthesis.', built: true, bg: 'from-pink-600 to-rose-800' },  // Class 10 Math Theorems
+  // English Learning Labs (Level-based)
+  { id: 'm10_theorem_quadratic_formula', classLevel: '10', subject: 'math', title: 'Theorem: Quadratic Formula', desc: 'Derive x = [−b ± √(b²−4ac)]/2a with an interactive parabolic arch simulation.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm10_theorem_vector_diff', classLevel: '10', subject: 'math', title: 'Theorem: Vector from Position Vectors', desc: 'Prove AB = b − a with an interactive drone tracking simulation.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm10_theorem_law_cosines', classLevel: '10', subject: 'math', title: 'Theorem: Law of Cosines', desc: 'Prove a² = b² + c² − 2bc cos α with an interactive land surveyor simulation.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'm10_theorem_law_sines', classLevel: '10', subject: 'math', title: 'Theorem: Law of Sines', desc: 'Prove a/sin α = b/sin β = c/sin γ with an interactive mountain expedition simulation.', built: true, bg: 'from-sky-500 to-cyan-600' },
+  { id: 'm10_theorem_law_tangents', classLevel: '10', subject: 'math', title: 'Theorem: Law of Tangents', desc: 'Prove (a+b)/(a−b) = tan[(α+β)/2]/tan[(α−β)/2] with interactive navigation.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'm10_theorem_half_angle_cos', classLevel: '10', subject: 'math', title: 'Theorem: Half Angle Cosine Formula', desc: 'Prove cos(α/2) = √[S(S−a)/bc] using Law of Cosines and double-angle identity.', built: true, bg: 'from-emerald-500 to-green-600' },
+  { id: 'm10_theorem_half_angle_sin', classLevel: '10', subject: 'math', title: 'Theorem: Half Angle Sine Formula', desc: 'Prove sin(α/2) = √[(S−b)(S−c)/bc] and connect to Heros formula.', built: true, bg: 'from-emerald-600 to-teal-700' },
+  { id: 'm10_theorem_area_sas', classLevel: '10', subject: 'math', title: 'Theorem: Area of Triangle (SAS)', desc: 'Prove Δ = ½ bc sin α with an interactive surveyor plot simulation.', built: true, bg: 'from-violet-500 to-purple-700' },
+  { id: 'm10_theorem_area_aas', classLevel: '10', subject: 'math', title: 'Theorem: Area of Triangle (AAS)', desc: 'Prove Δ = ½ a² sin β sin γ / sin α for mountain profile measurements.', built: true, bg: 'from-violet-600 to-fuchsia-700' },
+  { id: 'm10_theorem_heros', classLevel: '10', subject: 'math', title: "Theorem: Hero's Formula (SSS)", desc: 'Prove Δ = √[S(S−a)(S−b)(S−c)] with an interactive triangular garden simulation.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm10_theorem_circum_radius', classLevel: '10', subject: 'math', title: 'Theorem: Circum-Radius', desc: 'Prove R = abc/(4Δ) with an interactive circumcircle construction.', built: true, bg: 'from-orange-500 to-amber-600' },
+  { id: 'm10_theorem_in_radius', classLevel: '10', subject: 'math', title: 'Theorem: In-Radius', desc: 'Prove r = Δ/S with an interactive incircle construction.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'm10_theorem_ex_radius', classLevel: '10', subject: 'math', title: 'Theorem: Ex-Radius', desc: 'Prove r₁ = Δ/(S−a) with an interactive excircle demonstration.', built: true, bg: 'from-teal-600 to-cyan-700' },
+  { id: 'm10_theorem_three_point_circle', classLevel: '10', subject: 'math', title: 'Theorem 9.1: Three Points Determine a Circle', desc: 'Prove one and only one circle passes through three non-collinear points.', built: true, bg: 'from-indigo-400 to-indigo-600' },
+  { id: 'm10_theorem_centre_bisects', classLevel: '10', subject: 'math', title: 'Theorem 9.2: Centre to Midpoint ⟂ Chord', desc: 'Prove the line from centre to the midpoint of a chord is perpendicular.', built: true, bg: 'from-indigo-500 to-indigo-700' },
+  { id: 'm10_theorem_perp_bisects', classLevel: '10', subject: 'math', title: 'Theorem 9.3: Perpendicular from Centre Bisects Chord', desc: 'Prove the perpendicular from centre to a chord bisects it.', built: true, bg: 'from-indigo-500 to-blue-700' },
+  { id: 'm10_theorem_equal_chords_equal_dist', classLevel: '10', subject: 'math', title: 'Theorem 9.4: Equal Chords Equidistant', desc: 'Prove equal chords are equidistant from the centre.', built: true, bg: 'from-indigo-500 to-purple-700' },
+  { id: 'm10_theorem_equidistant_chords', classLevel: '10', subject: 'math', title: 'Theorem 9.5: Equidistant Chords Congruent', desc: 'Prove chords equidistant from the centre are equal in length.', built: true, bg: 'from-indigo-500 to-cyan-700' },
+  { id: 'm10_theorem_congruent_arcs', classLevel: '10', subject: 'math', title: 'Theorem 9.6: Congruent Arcs → Equal Chords', desc: 'Prove congruent arcs subtend equal chords.', built: true, bg: 'from-indigo-500 to-teal-700' },
+  { id: 'm10_theorem_equal_chords_arcs', classLevel: '10', subject: 'math', title: 'Theorem 9.7: Equal Chords → Congruent Arcs', desc: 'Prove equal chords subtend congruent arcs.', built: true, bg: 'from-indigo-500 to-rose-700' },
+  { id: 'm10_theorem_equal_chords_angles', classLevel: '10', subject: 'math', title: 'Theorem 9.8: Equal Chords → Equal Angles', desc: 'Prove equal chords subtend equal angles at the centre.', built: true, bg: 'from-indigo-500 to-amber-700' },
+  { id: 'm10_theorem_equal_angles_chords', classLevel: '10', subject: 'math', title: 'Theorem 9.9: Equal Angles → Equal Chords', desc: 'Prove equal central angles subtend equal chords.', built: true, bg: 'from-indigo-500 to-orange-700' },
+  { id: 'm10_theorem_perp_radius_tangent', classLevel: '10', subject: 'math', title: 'Theorem 10.1: Perp to Radius = Tangent', desc: 'Prove a line perpendicular to a radius at its endpoint is a tangent.', built: true, bg: 'from-purple-500 to-violet-600' },
+  { id: 'm10_theorem_tangent_perp_radius', classLevel: '10', subject: 'math', title: 'Theorem 10.2: Tangent ⟂ Radius', desc: 'Prove the tangent is perpendicular to the radius at point of contact.', built: true, bg: 'from-purple-500 to-pink-600' },
+  { id: 'm10_theorem_equal_tangents', classLevel: '10', subject: 'math', title: 'Theorem 10.3: Two Tangents Equal', desc: 'Prove two tangents from an external point are equal in length.', built: true, bg: 'from-purple-500 to-indigo-600' },
+  { id: 'm10_theorem_external_touching', classLevel: '10', subject: 'math', title: 'Theorem 10.4: External Touching Circles', desc: 'Prove d = r₁ + r₂ when circles touch externally.', built: true, bg: 'from-purple-500 to-rose-600' },
+  { id: 'm10_theorem_internal_touching', classLevel: '10', subject: 'math', title: 'Theorem 10.5: Internal Touching Circles', desc: 'Prove d = |r₁ − r₂| when circles touch internally.', built: true, bg: 'from-purple-500 to-amber-600' },
+  { id: 'm10_theorem_alternate_segment', classLevel: '10', subject: 'math', title: 'Theorem 10.6: Alternate Segment Theorem', desc: 'Prove angle between tangent and chord equals angle in alternate segment.', built: true, bg: 'from-pink-500 to-rose-600' },
+  { id: 'm10_theorem_central_angle', classLevel: '10', subject: 'math', title: 'Theorem 10.7: Central Angle Theorem', desc: 'Prove the central angle is double the inscribed angle.', built: true, bg: 'from-cyan-500 to-sky-600' },
+  { id: 'm10_theorem_same_segment', classLevel: '10', subject: 'math', title: 'Theorem 10.8: Same Segment Angles Equal', desc: 'Prove all angles subtended by a chord in the same segment are equal.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'm10_theorem_semicircle', classLevel: '10', subject: 'math', title: 'Theorem 10.9: Angle in Semicircle', desc: 'Prove the angle in a semicircle is always a right angle (90°).', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm10_theorem_major_segment', classLevel: '10', subject: 'math', title: 'Theorem 10.10: Major Segment Angle < 90°', desc: 'Prove angles in a major segment are acute.', built: true, bg: 'from-cyan-500 to-teal-600' },
+  { id: 'm10_theorem_minor_segment', classLevel: '10', subject: 'math', title: 'Theorem 10.11: Minor Segment Angle > 90°', desc: 'Prove angles in a minor segment are obtuse.', built: true, bg: 'from-cyan-500 to-violet-600' },
+  { id: 'm10_theorem_cyclic_quad', classLevel: '10', subject: 'math', title: 'Theorem 10.12: Cyclic Quadrilateral', desc: 'Prove opposite angles of a cyclic quadrilateral sum to 180°.', built: true, bg: 'from-cyan-500 to-emerald-600' },
+
+  // Class 9 Math Theorems
+  { id: 'm9_theorem_product_log', classLevel: '12', subject: 'math', title: 'Theorem: Product Law of Logarithms', desc: 'Prove log_b(mn) = log_b m + log_b n with an interactive sound-engineering simulation.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'm9_theorem_quotient_log', classLevel: '12', subject: 'math', title: 'Theorem: Quotient Law of Logarithms', desc: 'Prove log_b(m/n) = log_b m - log_b n with an interactive chemistry dilution simulator.', built: true, bg: 'from-purple-500 to-violet-600' },
+  { id: 'm9_theorem_power_log', classLevel: '12', subject: 'math', title: 'Theorem: Power Law of Logarithms', desc: 'Prove log_b(m^n) = n log_b m with an interactive investment growth calculator.', built: true, bg: 'from-rose-500 to-pink-600' },
+  { id: 'm9_theorem_change_base', classLevel: '12', subject: 'math', title: 'Theorem: Change of Base Law', desc: 'Prove log_a m = log_b m * log_a b and convert between any bases.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'm9_theorem_union_assoc', classLevel: '12', subject: 'math', title: 'Theorem: Associative Property of Union', desc: 'Prove (A U B) U C = A U (B U C) with interactive Venn diagrams.', built: true, bg: 'from-indigo-500 to-indigo-600' },
+  { id: 'm9_theorem_intersection_assoc', classLevel: '12', subject: 'math', title: 'Theorem: Associative Property of Intersection', desc: 'Prove (A intersect B) intersect C = A intersect (B intersect C).', built: true, bg: 'from-indigo-500 to-violet-600' },
+  { id: 'm9_theorem_distributive_union', classLevel: '12', subject: 'math', title: 'Theorem: Distributive Union over Intersection', desc: 'Prove A U (B intersect C) = (A U B) intersect (A U C).', built: true, bg: 'from-sky-500 to-blue-600' },
+  { id: 'm9_theorem_distributive_intersection', classLevel: '12', subject: 'math', title: 'Theorem: Distributive Intersection over Union', desc: 'Prove A intersect (B U C) = (A intersect B) U (A intersect C).', built: true, bg: 'from-sky-500 to-indigo-600' },
+  { id: 'm9_theorem_quotient_identity', classLevel: '12', subject: 'math', title: 'Theorem: Quotient Trigonometric Identities', desc: 'Prove tan(theta) = sin(theta)/cos(theta) using right triangle geometry.', built: true, bg: 'from-yellow-500 to-amber-600' },
+  { id: 'm9_theorem_pythagorean_identity', classLevel: '12', subject: 'math', title: 'Theorem: Pythagorean Trigonometric Identity', desc: 'Prove sin^2(theta) + cos^2(theta) = 1 with a unit circle simulator.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'm9_theorem_distance_formula', classLevel: '12', subject: 'math', title: 'Theorem: Distance Formula', desc: 'Prove d = sqrt((x2-x1)^2 + (y2-y1)^2) using coordinate geometry.', built: true, bg: 'from-violet-500 to-purple-600' },
+  { id: 'm9_theorem_slope_intercept', classLevel: '12', subject: 'math', title: 'Theorem: Slope-Intercept Form', desc: 'Prove y = mx + c derived from slope definition with interactive graphing.', built: true, bg: 'from-amber-500 to-orange-600' },
+  { id: 'm9_theorem_point_slope', classLevel: '12', subject: 'math', title: 'Theorem: Point-Slope Form', desc: 'Prove y - y1 = m(x - x1) from the slope formula.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'm9_theorem_two_point', classLevel: '12', subject: 'math', title: 'Theorem: Two-Point Form', desc: 'Prove the equation of a line through two given points.', built: true, bg: 'from-pink-500 to-rose-600' },
+  { id: 'm9_theorem_two_intercept', classLevel: '12', subject: 'math', title: 'Theorem: Two-Intercept Form', desc: 'Prove x/a + y/b = 1 using x-intercept and y-intercept.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'm9_theorem_normal_form', classLevel: '12', subject: 'math', title: 'Theorem: Normal Form of a Line', desc: 'Prove x cos(alpha) + y sin(alpha) = p for perpendicular distance.', built: true, bg: 'from-orange-500 to-red-600' },
+  { id: 'm9_theorem_angle_between_lines', classLevel: '12', subject: 'math', title: 'Theorem: Angle Between Two Lines', desc: 'Prove tan(theta) = |(m2-m1)/(1+m1*m2)| for intersecting lines.', built: true, bg: 'from-rose-500 to-red-600' },
+
 ];

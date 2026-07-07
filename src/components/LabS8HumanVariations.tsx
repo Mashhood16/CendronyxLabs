@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Check} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabS8HumanVariationsProps {
  onExit?: () => void;
@@ -22,6 +23,7 @@ const TRAITS: Trait[] = [
 ];
 
 export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsProps) {
+    const { t } = useTranslate();
  const [items, setItems] = useState<Trait[]>(TRAITS);
  const [continuous, setContinuous] = useState<Trait[]>([]);
  const [discontinuous, setDiscontinuous] = useState<Trait[]>([]);
@@ -45,13 +47,13 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" />
+  <LabHeader onExit={onExit} title={t('lab.s8humanvariations_act_3_2_human_variations')} subtitle={t('lab.subtitle_sort_traits_their')} />
 
   <div className="flex-1 p-6 max-w-5xl mx-auto w-full flex flex-col">
   
   {/* Unsorted Items */}
   <div className="mb-8">
-   <h2 className="text-lg font-bold text-slate-700 dark:text-[#ffffff] mb-4 text-center">Unsorted Traits (Click to assign)</h2>
+   <h2 className="text-lg font-bold text-slate-700 dark:text-[#ffffff] mb-4 text-center">{t('lab.s8humanvariations_unsorted_traits_click_to_assig')}</h2>
    <div className="flex flex-wrap gap-3 justify-center">
    {items.map(trait => (
     <div 
@@ -64,21 +66,23 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
      onClick={() => handleDrop(trait, 'continuous')}
      className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 py-1 rounded text-xs font-bold transition-colors dark:bg-teal-950/20 dark:border-teal-900"
      >
-     Continuous
-     </button>
+     
+                        {t('lab.s8humanvariations_continuous')}
+                        </button>
      <button 
      onClick={() => handleDrop(trait, 'discontinuous')}
      className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 py-1 rounded text-xs font-bold transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
      >
-     Discontinuous
-     </button>
+     
+                        {t('lab.s8humanvariations_discontinuous')}
+                        </button>
     </div>
     </div>
    ))}
    {items.length === 0 && (
     <div className="text-green-600 font-bold text-lg flex items-center gap-2 bg-green-50 px-6 py-3 rounded-full border border-green-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <CheckCircle2 className="w-6 h-6" /> All traits sorted correctly!
-    </div>
+    <CheckCircle2 className="w-6 h-6" />  {t('lab.s8humanvariations_all_traits_sorted_correctly')}
+                                 </div>
    )}
    </div>
   </div>
@@ -94,8 +98,8 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
    
    {/* Continuous */}
    <div className="flex-1 bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-bold text-blue-900 text-xl mb-2 text-center border-b border-blue-200 pb-2 dark:text-[#ffffff]">Continuous Variation</h3>
-   <p className="text-sm text-blue-700 text-center mb-6">Traits that change gradually over a range of values (can be measured).</p>
+   <h3 className="font-bold text-blue-900 text-xl mb-2 text-center border-b border-blue-200 pb-2 dark:text-[#ffffff]">{t('lab.s8humanvariations_continuous_variation')}</h3>
+   <p className="text-sm text-blue-700 text-center mb-6">{t('lab.s8humanvariations_traits_that_change_gradually_o')}</p>
    
    <div className="flex-1 flex flex-col gap-3">
     {continuous.map(trait => (
@@ -108,8 +112,8 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
 
    {/* Discontinuous */}
    <div className="flex-1 bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-6 flex flex-col shadow-inner dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-indigo-900 text-xl mb-2 text-center border-b border-indigo-200 pb-2 dark:text-[#ffffff]">Discontinuous Variation</h3>
-   <p className="text-sm text-indigo-700 text-center mb-6">Traits that fall into distinct categories (you either have it or you don't).</p>
+   <h3 className="font-bold text-indigo-900 text-xl mb-2 text-center border-b border-indigo-200 pb-2 dark:text-[#ffffff]">{t('lab.s8humanvariations_discontinuous_variation')}</h3>
+   <p className="text-sm text-indigo-700 text-center mb-6">{t('lab.s8humanvariations_traits_that_fall_into_distinct')}</p>
    
    <div className="flex-1 flex flex-col gap-3">
     {discontinuous.map(trait => (

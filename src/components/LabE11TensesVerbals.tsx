@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, RefreshCw, Clock, Check } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 const STORY_PARTS = [
  {
@@ -65,6 +66,7 @@ const STORY_PARTS = [
 ];
 
 export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [answers, setAnswers] = useState<Record<number, string>>({});
  const [feedback, setFeedback] = useState<Record<number, boolean | null>>({});
@@ -128,24 +130,25 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    <button
    onClick={onExit}
    className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors"
-   title="Go Back"
+   title={t('lab.e11tensesverbals_go_back')}
    >
    <ArrowLeft className="w-6 h-6" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Lab: Tenses & Verbals</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.e11tensesverbals_lab_tenses_verbals')}</h1>
   </div>
   <div className="flex items-center gap-2">
    {score !== null && (
    <span className="font-semibold text-lg mr-4">
-    Score: {score} / {STORY_PARTS.length}
+    
+                             {t('lab.e11tensesverbals_score')} {score} / {STORY_PARTS.length}
    </span>
    )}
    <button
    onClick={reset}
    className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors whitespace-nowrap flex-shrink-0"
    >
-   <RefreshCw className="w-4 h-4" /> Reset
-   </button>
+   <RefreshCw className="w-4 h-4" />  {t('lab.e11tensesverbals_reset')}
+                        </button>
   </div>
   </header>
 
@@ -155,12 +158,13 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-lg transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e11tensesverbals_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-lg transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e11tensesverbals_lab')}</button>
   </div>
 
   {/* Main Content Area */}
@@ -168,66 +172,72 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
   
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">Grammar Theory</h2>
+   <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white">{t('lab.e11tensesverbals_grammar_theory')}</h2>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[calc(100vh-16rem)] pr-2">
    <p>
-    Mastering tenses and verbals helps ensure that your narrative timeline remains consistent and logical. Here's a breakdown of the concepts covered in this lab.
-   </p>
+    
+                             {t('lab.e11tensesverbals_mastering_tenses_and_verbals_h')}
+                            </p>
 
-   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">1. Past and Past Perfect</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">{t('lab.e11tensesverbals_1_past_and_past_perfect')}</h3>
    <p>
-    When narrating events in the past, it is important to distinguish the sequence of actions.
-   </p>
+    
+                             {t('lab.e11tensesverbals_when_narrating_events_in_the_p')}
+                            </p>
    <ul className="list-disc pl-5 mt-2 space-y-2">
     <li>
-    <strong>Simple Past:</strong> Used for an action that was completely finished in the past. <br/>
-    <em>Example: "The rescue team <strong>arrived</strong>."</em>
+    <strong>{t('lab.e11tensesverbals_simple_past')}</strong>  {t('lab.e11tensesverbals_used_for_an_action_that_was_co')} <br/>
+    <em>{t('lab.e11tensesverbals_example_the_rescue_team')} <strong>{t('lab.e11tensesverbals_arrived')}</strong>."</em>
     </li>
     <li>
-    <strong>Past Perfect Continuous:</strong> Emphasizes the ongoing nature of an action that happened <em>before</em> another action in the past. <br/>
-    <em>Example: "The hikers <strong>had been waiting</strong> for hours by the time the team arrived."</em>
+    <strong>{t('lab.e11tensesverbals_past_perfect_continuous')}</strong>  {t('lab.e11tensesverbals_emphasizes_the_ongoing_nature_')} <em>{t('lab.e11tensesverbals_before')}</em>  {t('lab.e11tensesverbals_another_action_in_the_past')} <br/>
+    <em>{t('lab.e11tensesverbals_example_the_hikers')} <strong>{t('lab.e11tensesverbals_had_been_waiting')}</strong>  {t('lab.e11tensesverbals_for_hours_by_the_time_the_team')}</em>
     </li>
    </ul>
 
-   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">2. Present Tenses</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">{t('lab.e11tensesverbals_2_present_tenses')}</h3>
    <p>
-    The <strong>Present Continuous</strong> tense describes actions happening right now or around the present moment. It is formed with the present tense of "to be" + present participle (-ing). <br/>
-    <em>Example: "Right now, they <strong>are resting</strong>."</em>
+    
+                             {t('lab.e11tensesverbals_the')} <strong>{t('lab.e11tensesverbals_present_continuous')}</strong>  {t('lab.e11tensesverbals_tense_describes_actions_happen')} <br/>
+    <em>{t('lab.e11tensesverbals_example_right_now_they')} <strong>{t('lab.e11tensesverbals_are_resting')}</strong>."</em>
    </p>
 
-   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">3. Verbals: Gerunds</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">{t('lab.e11tensesverbals_3_verbals_gerunds')}</h3>
    <p>
-    A <strong>Gerund</strong> is a verb ending in <em>-ing</em> that functions entirely as a noun.
-   </p>
+    A <strong>{t('lab.e11tensesverbals_gerund')}</strong>  {t('lab.e11tensesverbals_is_a_verb_ending_in')} <em>{t('lab.e11tensesverbals_ing')}</em>  {t('lab.e11tensesverbals_that_functions_entirely_as_a_n')}
+                            </p>
    <ul className="list-disc pl-5 mt-2 space-y-2">
     <li>
-    <strong>As a Subject:</strong> A gerund can act as the main subject of a sentence. <br/>
-    <em>Example: "<strong>Surviving</strong> such an ordeal requires resilience."</em>
+    <strong>{t('lab.e11tensesverbals_as_a_subject')}</strong>  {t('lab.e11tensesverbals_a_gerund_can_act_as_the_main_s')} <br/>
+    <em>{t('lab.e11tensesverbals_example')}<strong>{t('lab.e11tensesverbals_surviving')}</strong>  {t('lab.e11tensesverbals_such_an_ordeal_requires_resili')}</em>
     </li>
     <li>
-    <strong>Object of a Preposition:</strong> Gerunds must be used after prepositions or phrasal verbs ending in a preposition. <br/>
-    <em>Example: "Looking forward to <strong>settling</strong> down."</em> (Note: "to" is a preposition here, not an infinitive marker.)
-    </li>
+    <strong>{t('lab.e11tensesverbals_object_of_a_preposition')}</strong>  {t('lab.e11tensesverbals_gerunds_must_be_used_after_pre')} <br/>
+    <em>{t('lab.e11tensesverbals_example_looking_forward_to')} <strong>{t('lab.e11tensesverbals_settling')}</strong>  {t('lab.e11tensesverbals_down')}</em>  {t('lab.e11tensesverbals_note_to_is_a_preposition_here_')}
+                                 </li>
    </ul>
 
-   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">4. Future Tenses</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-lg mt-6">{t('lab.e11tensesverbals_4_future_tenses')}</h3>
    <p>
-    The <strong>Future Continuous</strong> tense describes an action that will be in progress at a specific time in the future. It is formed with <em>will be</em> + present participle. <br/>
-    <em>Example: "By this time tomorrow, they <strong>will be traveling</strong>."</em>
+    
+                             {t('lab.e11tensesverbals_the')} <strong>{t('lab.e11tensesverbals_future_continuous')}</strong>  {t('lab.e11tensesverbals_tense_describes_an_action_that')} <em>{t('lab.e11tensesverbals_will_be')}</em>  {t('lab.e11tensesverbals_present_participle')} <br/>
+    <em>{t('lab.e11tensesverbals_example_by_this_time_tomorrow_')} <strong>{t('lab.e11tensesverbals_will_be_traveling')}</strong>."</em>
    </p>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="mb-6">
    <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
     <Clock className="w-5 h-5 text-blue-500" />
-    Narrative Editor
-   </h2>
+    
+                             {t('lab.e11tensesverbals_narrative_editor')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Fix the tense inconsistencies and select the correct verbal forms in the story below.
-   </p>
+    
+                             {t('lab.e11tensesverbals_fix_the_tense_inconsistencies_')}
+                            </p>
    </div>
 
    <div className={`flex-1 text-lg leading-[2.5] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
@@ -240,7 +250,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
      value={answers[part.id] || ""}
      onChange={(e) => handleSelect(part.id, e.target.value)}
      >
-     <option value="" disabled>Select...</option>
+     <option value="" disabled>{t('lab.e11tensesverbals_select')}</option>
      {part.options.map(opt => (
       <option key={opt} value={opt}>{opt}</option>
      ))}
@@ -254,7 +264,8 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
     </span>
     {feedback[part.id] === false && (
      <span className="block text-xs text-red-600 dark:text-red-400 mt-1 font-medium bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded border border-red-200 dark:border-red-800/50 max-w-sm">
-     Hint: {part.hint}
+     
+                        {t('lab.e11tensesverbals_hint')} {part.hint}
      </span>
     )}
     </span>
@@ -266,18 +277,19 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
     onClick={checkAnswers}
     className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors shadow-sm dark:bg-blue-500 dark:hover:bg-blue-400 w-full justify-center md:w-auto"
    >
-    <Check className="w-5 h-5" /> Check Narrative
-   </button>
+    <Check className="w-5 h-5" />  {t('lab.e11tensesverbals_check_narrative')}
+                            </button>
    </div>
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex-col items-center justify-center p-4 md:p-8 lg:min-h-[300px] md:lg:min-h-[500px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex-col items-center justify-center p-4 md:p-8 lg:min-h-[300px] md:lg:min-h-[500px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full mb-8 z-10 self-start">
-   <h2 className="text-xl font-bold mb-2 text-slate-800 dark:text-white">Temporal Visualization</h2>
+   <h2 className="text-xl font-bold mb-2 text-slate-800 dark:text-white">{t('lab.e11tensesverbals_temporal_visualization')}</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    As you correct the tenses, the events will snap to their proper place on the timeline.
-   </p>
+    
+                             {t('lab.e11tensesverbals_as_you_correct_the_tenses_the_')}
+                            </p>
    </div>
    
    <div className={`flex-1 w-full relative rounded-xl border border-slate-200 dark:border-[#1c1b1b] items-center p-8 shadow-inner overflow-x-auto min-h-[300px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
@@ -285,16 +297,16 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    <div className="absolute left-8 right-8 h-1 bg-slate-300 dark:bg-slate-600 top-1/2 -translate-y-1/2 rounded-full min-w-[500px]"></div>
    
    {/* Markers */}
-   <div className="absolute left-[10%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-500 -translate-y-1/2 -ml-[1px]"></div>
-   <div className="absolute left-[30%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-500 -translate-y-1/2 -ml-[1px]"></div>
+   <div className="absolute left-[10%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 -translate-y-1/2 -ml-[1px]"></div>
+   <div className="absolute left-[30%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 -translate-y-1/2 -ml-[1px]"></div>
    <div className="absolute left-[50%] top-1/2 w-0.5 h-8 bg-blue-500 dark:bg-blue-400 -translate-y-1/2 -ml-[1px]"></div>
-   <div className="absolute left-[80%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-500 -translate-y-1/2 -ml-[1px]"></div>
+   <div className="absolute left-[80%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 -translate-y-1/2 -ml-[1px]"></div>
 
    {/* Axis Labels */}
-   <div className="absolute left-[10%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">Past Perfect</div>
-   <div className="absolute left-[30%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">Past</div>
-   <div className="absolute left-[50%] top-1/2 mt-8 -translate-x-1/2 text-sm font-bold text-blue-500 uppercase tracking-wider">Present</div>
-   <div className="absolute left-[80%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">Future</div>
+   <div className="absolute left-[10%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">{t('lab.e11tensesverbals_past_perfect')}</div>
+   <div className="absolute left-[30%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">{t('lab.e11tensesverbals_past')}</div>
+   <div className="absolute left-[50%] top-1/2 mt-8 -translate-x-1/2 text-sm font-bold text-blue-500 uppercase tracking-wider">{t('lab.e11tensesverbals_present')}</div>
+   <div className="absolute left-[80%] top-1/2 mt-6 -translate-x-1/2 text-xs font-bold text-slate-400 uppercase tracking-wider">{t('lab.e11tensesverbals_future')}</div>
 
    {/* Events */}
    {STORY_PARTS.map(renderTimelineEvent)}

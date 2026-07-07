@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../store';
+import { useTranslate } from '../i18n';
 import { Home, Clock, Settings, Search } from 'lucide-react';
 
 interface BottomNavProps {
@@ -11,6 +12,7 @@ export default function BottomNav({ onSearchOpen }: BottomNavProps) {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const { t } = useTranslate();
 
   const getActive = () => {
     if (location.pathname.startsWith('/history') || location.pathname.startsWith('/progress')) return 'history';
@@ -21,10 +23,10 @@ export default function BottomNav({ onSearchOpen }: BottomNavProps) {
   const active = getActive();
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: Home, action: () => navigate('/') },
-    { id: 'search', label: 'Search', icon: Search, action: onSearchOpen },
-    { id: 'history', label: 'History', icon: Clock, action: () => navigate('/history') },
-    { id: 'settings', label: 'Settings', icon: Settings, action: () => navigate('/settings') },
+    { id: 'home', label: t('nav.home'), icon: Home, action: () => navigate('/') },
+    { id: 'search', label: t('nav.search'), icon: Search, action: onSearchOpen },
+    { id: 'history', label: t('nav.history'), icon: Clock, action: () => navigate('/history') },
+    { id: 'settings', label: t('nav.settings'), icon: Settings, action: () => navigate('/settings') },
   ];
 
   return (

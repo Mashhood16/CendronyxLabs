@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Map, Compass } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8SkyMap({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [panX, setPanX] = useState(50);
  const [panY, setPanY] = useState(50);
  const [isScanning, setIsScanning] = useState(false);
@@ -34,7 +36,7 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-[#000000] dark:!bg-[#000000] font-sans select-none text-white overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="dark" title="Act 12.1: Sky Map Mobile App" />
+  <LabHeader onExit={onExit} variant="dark" title={t('lab.s8skymap_act_12_1_sky_map_mobile_app')} />
   <div className="bg-[#121212] dark:bg-[#121212]/80 backdrop-blur-md border-b border-[#1c1b1b] dark:border-[#1c1b1b] p-2 flex justify-end z-10">
   <div className="flex gap-2">
    <button 
@@ -86,9 +88,9 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
    {/* AR Overlay UI */}
    {isScanning && (
     <>
-    <div className="absolute top-4 left-4 text-xs font-mono text-blue-400">RA: {(panX * 0.24).toFixed(1)}h</div>
-    <div className="absolute top-4 right-4 text-xs font-mono text-blue-400">DEC: {(panY - 50).toFixed(1)}°</div>
-    <div className="absolute bottom-4 w-full text-center text-[10px] text-slate-400 tracking-widest uppercase">Point device at sky</div>
+    <div className="absolute top-4 left-4 text-xs font-mono text-blue-400">{t('lab.s8skymap_ra')} {(panX * 0.24).toFixed(1)}h</div>
+    <div className="absolute top-4 right-4 text-xs font-mono text-blue-400">{t('lab.s8skymap_dec')} {(panY - 50).toFixed(1)}°</div>
+    <div className="absolute bottom-4 w-full text-center text-[10px] text-slate-400 tracking-widest uppercase">{t('lab.s8skymap_point_device_at_sky')}</div>
     </>
    )}
   </div>
@@ -114,16 +116,16 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
 
   {/* Mission Panel */}
   <div className="absolute bottom-8 right-8 bg-[#121212] dark:bg-[#121212]/90 backdrop-blur border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 rounded-2xl shadow-2xl max-w-sm">
-   <h3 className="font-bold text-blue-400 mb-2 flex items-center gap-2"><Map className="w-5 h-5" /> Navigation Log</h3>
-   <p className="text-sm text-slate-300 mb-4">Click and hold <span className="bg-slate-700 dark:bg-[#121212] px-2 py-1 rounded text-xs">Hold to Scan</span> and move your cursor to explore the night sky.</p>
+   <h3 className="font-bold text-blue-400 mb-2 flex items-center gap-2"><Map className="w-5 h-5" />  {t('lab.s8skymap_navigation_log')}</h3>
+   <p className="text-sm text-slate-300 mb-4">{t('lab.s8skymap_click_and_hold')} <span className="bg-slate-700 dark:bg-[#121212] px-2 py-1 rounded text-xs">{t('lab.s8skymap_hold_to_scan')}</span>  {t('lab.s8skymap_and_move_your_cursor_to_explor')}</p>
    <div className="space-y-2">
     <div className="flex justify-between text-sm items-center border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-    <span className="text-slate-400">Target:</span>
-    <span className="font-bold text-yellow-300">Southern Cross</span>
+    <span className="text-slate-400">{t('lab.s8skymap_target')}</span>
+    <span className="font-bold text-yellow-300">{t('lab.s8skymap_southern_cross')}</span>
     </div>
     <div className="flex justify-between text-sm items-center border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-    <span className="text-slate-400">Target:</span>
-    <span className="font-bold text-white">Alpha Centauri</span>
+    <span className="text-slate-400">{t('lab.s8skymap_target')}</span>
+    <span className="font-bold text-white">{t('lab.s8skymap_alpha_centauri')}</span>
     </div>
    </div>
   </div>

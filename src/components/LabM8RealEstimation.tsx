@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ArrowLeft, Calculator, Ruler, CheckCircle2, XCircle, PieChart, Info } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM8RealEstimation({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'finance' | 'bounds'>('finance');
 
  // Finance State
@@ -76,22 +78,24 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
   <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">Class 8: Real Numbers & Estimation Labs</h1>
+  <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">{t('lab.m8realestimation_class_8_real_numbers_estimatio')}</h1>
   <div className="flex flex-wrap gap-2">
    <button 
    onClick={() => setActiveTab('finance')}
    className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'finance' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
    <PieChart className="w-4 h-4 inline-block mr-2" />
-   Budgeting (Fractions)
-   </button>
+   
+                        {t('lab.m8realestimation_budgeting_fractions')}
+                        </button>
    <button 
    onClick={() => setActiveTab('bounds')}
    className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'bounds' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
    <Ruler className="w-4 h-4 inline-block mr-2" />
-   Error Bounds
-   </button>
+   
+                        {t('lab.m8realestimation_error_bounds')}
+                        </button>
   </div>
   </header>
 
@@ -106,12 +110,13 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
      <Calculator className="w-5 h-5 text-blue-500" />
-     Personal Finance Setup
-    </h2>
+     
+                                      {t('lab.m8realestimation_personal_finance_setup')}
+                                     </h2>
     
     <div className="space-y-6">
      <div>
-     <label className="block text-sm font-medium mb-1">Total Paycheck ($)</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m8realestimation_total_paycheck')}</label>
      <input 
       type="range" min="1000" max="10000" step="100" 
       value={paycheck} onChange={(e) => setPaycheck(parseInt(e.target.value))}
@@ -122,7 +127,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
 
      <div className="grid grid-cols-3 gap-4">
      <div>
-      <label className="block text-sm font-medium mb-1 text-blue-600 dark:text-blue-400">Rent Fraction</label>
+      <label className="block text-sm font-medium mb-1 text-blue-600 dark:text-blue-400">{t('lab.m8realestimation_rent_fraction')}</label>
       <div className="flex items-center justify-center gap-1">
       <input type="number" min="0" max="10" value={rentN} onChange={e => setRentN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
       <span>/</span>
@@ -130,7 +135,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
       </div>
      </div>
      <div>
-      <label className="block text-sm font-medium mb-1 text-orange-600 dark:text-orange-400">Utilities Frac</label>
+      <label className="block text-sm font-medium mb-1 text-orange-600 dark:text-orange-400">{t('lab.m8realestimation_utilities_frac')}</label>
       <div className="flex items-center justify-center gap-1">
       <input type="number" min="0" max="10" value={utilN} onChange={e => setUtilN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
       <span>/</span>
@@ -138,7 +143,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
       </div>
      </div>
      <div>
-      <label className="block text-sm font-medium mb-1 text-green-600 dark:text-green-400">Savings Frac</label>
+      <label className="block text-sm font-medium mb-1 text-green-600 dark:text-green-400">{t('lab.m8realestimation_savings_frac')}</label>
       <div className="flex items-center justify-center gap-1">
       <input type="number" min="0" max="10" value={saveN} onChange={e => setSaveN(parseInt(e.target.value)||0)} className="w-10 p-1 border rounded dark:bg-[#121212] dark:border-[#1c1b1b] text-center" />
       <span>/</span>
@@ -148,30 +153,31 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
      </div>
      {isOverBudget && (
      <div className="text-red-500 text-sm flex items-center gap-1 p-2 bg-red-50 dark:bg-red-900/30 rounded-lg">
-      <Info className="w-4 h-4" /> Warning: Total fractions exceed 1 (100%)!
-     </div>
+      <Info className="w-4 h-4" />  {t('lab.m8realestimation_warning_total_fractions_exceed')}
+                                              </div>
      )}
     </div>
     </div>
 
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h2 className="text-lg font-bold mb-4">Assessment</h2>
+    <h2 className="text-lg font-bold mb-4">{t('lab.m8realestimation_assessment')}</h2>
     <p className="mb-4 text-sm">
-     The remaining fraction of the paycheck is allocated to <strong>Food</strong> (Purple). 
-     Calculate the exact dollar amount allocated to Food.
-    </p>
+     
+                                      {t('lab.m8realestimation_the_remaining_fraction_of_the_')} <strong>{t('lab.m8realestimation_food')}</strong>  {t('lab.m8realestimation_purple_calculate_the_exact_dol')}
+                                     </p>
     <div className="flex items-center gap-3">
      <span className="font-bold text-lg">$</span>
      <input 
      type="number" 
      value={financeAns} 
      onChange={e => setFinanceAns(e.target.value)}
-     placeholder="e.g. 1500"
+     placeholder={t('lab.m8realestimation_e_g_1500')}
      className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
      />
      <button onClick={checkFinance} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-     Check Answer
-     </button>
+     
+                                          {t('lab.m8realestimation_check_answer')}
+                                          </button>
     </div>
     {financeFeedback.status !== 'idle' && (
      <div className={`mt-4 p-3 rounded-lg flex items-start gap-2 ${financeFeedback.status === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'}`}>
@@ -188,14 +194,16 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
     <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
      <Ruler className="w-5 h-5 text-indigo-500" />
-     Construction Error Bounds
-    </h2>
+     
+                                      {t('lab.m8realestimation_construction_error_bounds')}
+                                     </h2>
     <p className="text-sm mb-6 text-slate-600 dark:text-[#71717a]">
-     A room is measured to 1 decimal place. This implies an absolute error of ±0.05m for each dimension due to rounding.
-    </p>
+     
+                                      {t('lab.m8realestimation_a_room_is_measured_to_1_decima')}
+                                     </p>
     <div className="space-y-6">
      <div>
-     <label className="block text-sm font-medium mb-1">Measured Length (m)</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m8realestimation_measured_length_m')}</label>
      <input 
       type="range" min="5" max="15" step="0.1" 
       value={length} onChange={(e) => setLength(parseFloat(e.target.value))}
@@ -204,7 +212,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
      <div className="text-right font-mono text-sm font-bold text-indigo-600 dark:text-indigo-400">{length.toFixed(1)} m</div>
      </div>
      <div>
-     <label className="block text-sm font-medium mb-1">Measured Width (m)</label>
+     <label className="block text-sm font-medium mb-1">{t('lab.m8realestimation_measured_width_m')}</label>
      <input 
       type="range" min="5" max="15" step="0.1" 
       value={width} onChange={(e) => setWidth(parseFloat(e.target.value))}
@@ -216,21 +224,23 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
     </div>
 
     <div className="bg-white dark:!bg-[#121212] rounded-xl p-5 shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <h2 className="text-lg font-bold mb-4">Assessment</h2>
+    <h2 className="text-lg font-bold mb-4">{t('lab.m8realestimation_assessment')}</h2>
     <p className="mb-4 text-sm">
-     Based on the measurements (±0.05m bounds), calculate the <strong>maximum possible area</strong> of the room in square meters (m²).
-    </p>
+     
+                                      {t('lab.m8realestimation_based_on_the_measurements_0_05')} <strong>{t('lab.m8realestimation_maximum_possible_area')}</strong>  {t('lab.m8realestimation_of_the_room_in_square_meters_m')}
+                                     </p>
     <div className="flex items-center gap-3">
      <input 
      type="number" 
      value={boundsAns} 
      onChange={e => setBoundsAns(e.target.value)}
-     placeholder="Max Area (m²)"
+     placeholder={t('lab.m8realestimation_max_area_m')}
      className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212]"
      />
      <button onClick={checkBounds} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium whitespace-nowrap flex-shrink-0 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-     Check Answer
-     </button>
+     
+                                          {t('lab.m8realestimation_check_answer')}
+                                          </button>
     </div>
     {boundsFeedback.status !== 'idle' && (
      <div className={`mt-4 p-3 rounded-lg flex items-start gap-2 ${boundsFeedback.status === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100'}`}>
@@ -249,7 +259,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
    
    {activeTab === 'finance' && (
    <div className="flex flex-col items-center w-full max-w-sm">
-    <h3 className="text-xl font-bold mb-8 text-center">Paycheck Distribution</h3>
+    <h3 className="text-xl font-bold mb-8 text-center">{t('lab.m8realestimation_paycheck_distribution')}</h3>
     <div className="relative w-64 h-64 shrink-0">
     <svg viewBox="-1 -1 2 2" className="w-full h-full transform -rotate-90 overflow-visible drop-shadow-xl">
      {/* Background base */}
@@ -266,29 +276,30 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
     </svg>
     {isOverBudget && (
      <div className="absolute inset-0 flex items-center justify-center text-red-500 font-bold rotate-0 text-center">
-     Exceeds<br/>100%
+     
+                                          {t('lab.m8realestimation_exceeds')}<br/>100%
      </div>
     )}
     {!isOverBudget && (
      <div className="absolute inset-0 flex items-center justify-center flex-col rounded-full w-24 h-24 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 shadow-lg border-2 border-slate-100 dark:border-[#1c1b1b]">
-     <span className="text-xs text-slate-500 dark:text-[#71717a]">Total</span>
+     <span className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.m8realestimation_total')}</span>
      <span className="font-bold text-slate-800 dark:text-[#ffffff]">${paycheck}</span>
      </div>
     )}
     </div>
     
     <div className="mt-8 grid grid-cols-2 gap-4 text-sm w-full bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-500 rounded-full shrink-0 dark:bg-teal-950/20 dark:border-teal-900"></div> <span className="truncate">Rent ({rentN}/{rentD})</span></div>
-    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-orange-500 rounded-full shrink-0"></div> <span className="truncate">Utilities ({utilN}/{utilD})</span></div>
-    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate">Savings ({saveN}/{saveD})</span></div>
-    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-indigo-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate text-indigo-600 dark:text-indigo-400 font-bold">Food (Rem.)</span></div>
+    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-blue-500 rounded-full shrink-0 dark:bg-teal-950/20 dark:border-teal-900"></div> <span className="truncate">{t('lab.m8realestimation_rent')}{rentN}/{rentD})</span></div>
+    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-orange-500 rounded-full shrink-0"></div> <span className="truncate">{t('lab.m8realestimation_utilities')}{utilN}/{utilD})</span></div>
+    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-green-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate">{t('lab.m8realestimation_savings')}{saveN}/{saveD})</span></div>
+    <div className="flex items-center gap-2"><div className="w-3 h-3 bg-indigo-500 rounded-full shrink-0 dark:bg-[#121212] dark:border-[#1c1b1b]"></div> <span className="truncate text-indigo-600 dark:text-indigo-400 font-bold">{t('lab.m8realestimation_food_rem')}</span></div>
     </div>
    </div>
    )}
 
    {activeTab === 'bounds' && (
    <div className="flex flex-col items-center w-full max-w-lg">
-    <h3 className="text-xl font-bold mb-4 text-center">Area Visualization (Max/Min Bounds)</h3>
+    <h3 className="text-xl font-bold mb-4 text-center">{t('lab.m8realestimation_area_visualization_max_min_bou')}</h3>
     
     <div className="w-full aspect-square relative bg-white dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] p-4 sm:p-8 flex items-center justify-center">
     <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
@@ -319,18 +330,20 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
      
      {/* Labels */}
      <text x="50" y={50 - (width * scale)/2 - 3} fontSize="3.5" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-[#a1a1aa] font-mono">
-     L = {length.toFixed(1)} ± 0.05
+     
+                                          {t('lab.m8realestimation_l')} {length.toFixed(1)} ± 0.05
      </text>
      <text x={50 + (length * scale)/2 + 3} y="50" fontSize="3.5" textAnchor="middle" fill="currentColor" transform={`rotate(90, ${50 + (length * scale)/2 + 3}, 50)`} className="text-slate-600 dark:text-[#a1a1aa] font-mono">
-     W = {width.toFixed(1)} ± 0.05
+     
+                                          {t('lab.m8realestimation_w')} {width.toFixed(1)} ± 0.05
      </text>
     </svg>
     </div>
 
     <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm bg-white dark:!bg-[#121212] p-3 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-50 dark:bg-indigo-900 border border-indigo-500 border-dashed"></div> Max Bounds</div>
-    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-200 dark:bg-indigo-800 border border-indigo-600"></div> Nominal Area</div>
-    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-300 dark:bg-indigo-700 border border-indigo-700 border-dotted"></div> Min Bounds</div>
+    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-50 dark:bg-indigo-900 border border-indigo-500 border-dashed"></div>  {t('lab.m8realestimation_max_bounds')}</div>
+    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-200 dark:bg-indigo-800 border border-indigo-600"></div>  {t('lab.m8realestimation_nominal_area')}</div>
+    <div className="flex items-center gap-2"><div className="w-4 h-4 bg-indigo-300 dark:bg-indigo-700 border border-indigo-700 border-dotted"></div>  {t('lab.m8realestimation_min_bounds')}</div>
     </div>
    </div>
    )}

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Settings, Calculator, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabM10TangentConstruction({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [radius, setRadius] = useState<number>(5);
@@ -50,7 +52,7 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Tangents to a Circle from an External Point" />
+  <LabHeader onExit={onExit} title={t('lab.m10tangentconstruction_tangents_to_a_circle_from_an_e')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -59,25 +61,27 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10tangentconstruction_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10tangentconstruction_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`flex items-center gap-2 mb-4 text-blue-800 dark:text-[#ffffff] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <Settings className="w-6 h-6" />
-   <h2 className="text-lg font-semibold">Construction Setup</h2>
+   <h2 className="text-lg font-semibold">{t('lab.m10tangentconstruction_construction_setup')}</h2>
    </div>
    
    <div className="space-y-6">
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    Circle Radius (r): {radius} cm
+    
+                                 {t('lab.m10tangentconstruction_circle_radius_r')} {radius} cm
     </label>
     <input 
     type="range" min="3" max="8" step="1" 
@@ -87,7 +91,8 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
    </div>
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    Distance to P (d): {distance} cm
+    
+                                 {t('lab.m10tangentconstruction_distance_to_p_d')} {distance} cm
     </label>
     <input 
     type="range" min={radius + 2} max="20" step="1" 
@@ -104,19 +109,19 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
    </button>
    
    <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-800 mt-4 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    <p><strong>Theory:</strong></p>
+    <p><strong>{t('lab.m10tangentconstruction_theory_1')}</strong></p>
     <ul className="list-disc ml-5 mt-2 space-y-1">
-    <li>The tangent to a circle is perpendicular to the radius at the point of contact.</li>
-    <li>Lengths of two tangents drawn from an external point to a circle are equal.</li>
-    <li>By Pythagoras theorem: PT = √(OP² - OT²)</li>
+    <li>{t('lab.m10tangentconstruction_the_tangent_to_a_circle_is_per')}</li>
+    <li>{t('lab.m10tangentconstruction_lengths_of_two_tangents_drawn_')}</li>
+    <li>{t('lab.m10tangentconstruction_by_pythagoras_theorem_pt_op_ot')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center lg:min-h-[35vh] lg:min-h-[400px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Interactive Canvas</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center lg:min-h-[35vh] lg:min-h-[400px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.m10tangentconstruction_interactive_canvas')}</h2>
    <svg width="450" height="400" className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-inner flex-col `}>
    {/* Grid */}
    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -158,27 +163,29 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
   </div>
 
   {/* Column 3: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-emerald-700">
    <Calculator className="w-6 h-6" />
-   <h2 className="text-lg font-semibold">Calculations</h2>
+   <h2 className="text-lg font-semibold">{t('lab.m10tangentconstruction_calculations')}</h2>
    </div>
    
    <div className="space-y-6">
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Based on the parameters set in the setup, solve the following questions.
-   </p>
+    
+                             {t('lab.m10tangentconstruction_based_on_the_parameters_set_in')}
+                            </p>
    
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-    1. What is the length of the tangent segment PT (in cm)? (1 decimal place)
-    </label>
+    
+                                 {t('lab.m10tangentconstruction_1_what_is_the_length_of_the_ta')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="number" step="0.1"
      value={ansLength} onChange={(e) => setAnsLength(e.target.value)}
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-     placeholder="e.g. 12.0"
+     placeholder={t('lab.m10tangentconstruction_e_g_12_0')}
     />
     {feedback.length === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
     {feedback.length === false && <XCircle className="text-red-500 w-6 h-6" />}
@@ -187,14 +194,15 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
 
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-    2. What is the angle between the two tangents (in degrees)? (1 decimal place)
-    </label>
+    
+                                 {t('lab.m10tangentconstruction_2_what_is_the_angle_between_th')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="number" step="0.1"
      value={ansAngle} onChange={(e) => setAnsAngle(e.target.value)}
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
-     placeholder="e.g. 45.0"
+     placeholder={t('lab.m10tangentconstruction_e_g_45_0')}
     />
     {feedback.angle === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
     {feedback.angle === false && <XCircle className="text-red-500 w-6 h-6" />}
@@ -205,8 +213,9 @@ export default function LabM10TangentConstruction({ onExit }: LabProps) {
     onClick={checkAnswers}
     className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
-    Check Answers
-   </button>
+    
+                             {t('lab.m10tangentconstruction_check_answers')}
+                            </button>
    </div>
   </div>
   </div>

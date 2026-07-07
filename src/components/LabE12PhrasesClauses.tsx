@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Columns, ArrowLeft, Braces, Code, CheckCircle, Network, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeMode, setActiveMode] = useState<'tree' | 'phrases'>('tree');
 
@@ -32,7 +34,7 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Syntax Dissector Lab" />
+   <LabHeader onExit={onExit} title={t('lab.e12phrasesclauses_syntax_dissector_lab')} />
 
    
    {/* Mobile Tab Navigation */}
@@ -41,66 +43,70 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e12phrasesclauses_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e12phrasesclauses_lab')}</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
-     </h2>
+      <BookOpen className="mr-2 text-indigo-500" />  {t('lab.e12phrasesclauses_grammar_theory')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
       <p>
-       <strong>Clauses and Phrases</strong> are the building blocks of sentence structure. Understanding how to deconstruct them is crucial for mastering syntax.
-      </p>
+       <strong>{t('lab.e12phrasesclauses_clauses_and_phrases')}</strong>  {t('lab.e12phrasesclauses_are_the_building_blocks_of_sen')}
+                               </p>
       
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Clauses (Subject + Verb)</h4>
-      <p className="mt-2">A clause is a group of words containing a subject and a predicate (verb).</p>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12phrasesclauses_clauses_subject_verb')}</h4>
+      <p className="mt-2">{t('lab.e12phrasesclauses_a_clause_is_a_group_of_words_c')}</p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Independent:</strong> Can stand alone as a complete sentence. (e.g., <em>The sun is shining.</em>)</li>
-       <li><strong>Dependent:</strong> Cannot stand alone because it begins with a subordinating conjunction. (e.g., <em>Because the sun is shining...</em>)</li>
+       <li><strong>{t('lab.e12phrasesclauses_independent')}</strong>  {t('lab.e12phrasesclauses_can_stand_alone_as_a_complete_')} <em>{t('lab.e12phrasesclauses_the_sun_is_shining')}</em>)</li>
+       <li><strong>{t('lab.e12phrasesclauses_dependent')}</strong>  {t('lab.e12phrasesclauses_cannot_stand_alone_because_it_')} <em>{t('lab.e12phrasesclauses_because_the_sun_is_shining')}</em>)</li>
       </ul>
 
       <hr className="my-6 border-slate-200 dark:border-gray-800" />
 
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Phrases (Lacking Subject/Verb logic)</h4>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12phrasesclauses_phrases_lacking_subject_verb_l')}</h4>
       <p className="mt-2">
-       A phrase acts as a single part of speech but lacks a subject-verb pairing.
-      </p>
+       
+                                {t('lab.e12phrasesclauses_a_phrase_acts_as_a_single_part')}
+                               </p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Prepositional:</strong> Begins with a preposition. (e.g., <em>On the table</em>).</li>
-       <li><strong>Adjectival:</strong> Modifies a noun. (e.g., The man <em>in the blue suit</em>).</li>
-       <li><strong>Adverbial:</strong> Modifies a verb. (e.g., She ran <em>with great speed</em>).</li>
-       <li><strong>Gerund:</strong> Acts as a noun. (e.g., <em>Running marathons</em> takes effort).</li>
+       <li><strong>{t('lab.e12phrasesclauses_prepositional')}</strong>  {t('lab.e12phrasesclauses_begins_with_a_preposition_e_g')} <em>{t('lab.e12phrasesclauses_on_the_table')}</em>).</li>
+       <li><strong>{t('lab.e12phrasesclauses_adjectival')}</strong>  {t('lab.e12phrasesclauses_modifies_a_noun_e_g_the_man')} <em>{t('lab.e12phrasesclauses_in_the_blue_suit')}</em>).</li>
+       <li><strong>{t('lab.e12phrasesclauses_adverbial')}</strong>  {t('lab.e12phrasesclauses_modifies_a_verb_e_g_she_ran')} <em>{t('lab.e12phrasesclauses_with_great_speed')}</em>).</li>
+       <li><strong>{t('lab.e12phrasesclauses_gerund')}</strong>  {t('lab.e12phrasesclauses_acts_as_a_noun_e_g')} <em>{t('lab.e12phrasesclauses_running_marathons')}</em>  {t('lab.e12phrasesclauses_takes_effort')}</li>
       </ul>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
-      <Columns className="text-[#4158D1]" /> Structural Decomposition
-     </h2>
+      <Columns className="text-[#4158D1]" />  {t('lab.e12phrasesclauses_structural_decomposition')}
+                          </h2>
      
      <div className="flex gap-2 mb-6">
       <button 
        onClick={() => setActiveMode('tree')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'tree' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Clause Tree
-      </button>
+       
+                                {t('lab.e12phrasesclauses_clause_tree')}
+                               </button>
       <button 
        onClick={() => setActiveMode('phrases')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'phrases' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Phrase Nodes
-      </button>
+       
+                                {t('lab.e12phrasesclauses_phrase_nodes')}
+                               </button>
      </div>
 
      <div className="flex-1 overflow-y-auto">
@@ -108,43 +114,43 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
        <div className="space-y-6">
         <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-4">
-          <Network className="w-5 h-5 text-indigo-500" /> Diagram Assigner
-         </h3>
+          <Network className="w-5 h-5 text-indigo-500" />  {t('lab.e12phrasesclauses_diagram_assigner')}
+                                              </h3>
          
          <div className="space-y-4">
           <div className={`p-3 border-2 border-slate-300 dark:border-gray-700 rounded-xl bg-slate-50 dark:bg-[#1a1a1a] flex-col `}>
-           <p className="text-sm font-bold text-slate-500 dark:text-gray-400 mb-2">Node 1: "{nodes[0].text}"</p>
+           <p className="text-sm font-bold text-slate-500 dark:text-gray-400 mb-2">{t('lab.e12phrasesclauses_node_1')}{nodes[0].text}"</p>
            <select 
             className={`w-full p-2 rounded-lg border dark:bg-[#111] dark:border-gray-600 dark:text-white flex-col `}
             value={node1Type || ''}
             onChange={e => setNode1Type(e.target.value)}
            >
-            <option value="" disabled>Select Classification...</option>
-            <option value="Independent Clause">Independent Clause</option>
-            <option value="Dependent Clause">Dependent Clause</option>
-            <option value="Relative Clause">Relative Clause</option>
+            <option value="" disabled>{t('lab.e12phrasesclauses_select_classification')}</option>
+            <option value="Independent Clause">{t('lab.e12phrasesclauses_independent_clause')}</option>
+            <option value="Dependent Clause">{t('lab.e12phrasesclauses_dependent_clause')}</option>
+            <option value="Relative Clause">{t('lab.e12phrasesclauses_relative_clause')}</option>
            </select>
           </div>
 
           <div className="p-3 border-2 border-slate-300 dark:border-gray-700 rounded-xl bg-slate-50 dark:bg-[#1a1a1a]">
-           <p className="text-sm font-bold text-slate-500 dark:text-gray-400 mb-2">Node 2: "{nodes[1].text}"</p>
+           <p className="text-sm font-bold text-slate-500 dark:text-gray-400 mb-2">{t('lab.e12phrasesclauses_node_2')}{nodes[1].text}"</p>
            <select 
             className="w-full p-2 rounded-lg border dark:bg-[#111] dark:border-gray-600 dark:text-white"
             value={node2Type || ''}
             onChange={e => setNode2Type(e.target.value)}
            >
-            <option value="" disabled>Select Classification...</option>
-            <option value="Independent Clause">Independent Clause</option>
-            <option value="Dependent Clause">Dependent Clause</option>
-            <option value="Relative Clause">Relative Clause</option>
+            <option value="" disabled>{t('lab.e12phrasesclauses_select_classification')}</option>
+            <option value="Independent Clause">{t('lab.e12phrasesclauses_independent_clause')}</option>
+            <option value="Dependent Clause">{t('lab.e12phrasesclauses_dependent_clause')}</option>
+            <option value="Relative Clause">{t('lab.e12phrasesclauses_relative_clause')}</option>
            </select>
           </div>
          </div>
 
          {treeComplete && (
           <div className="mt-6 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500 text-emerald-700 dark:text-emerald-400 font-bold text-center flex justify-center items-center gap-2">
-           <CheckCircle className="w-5 h-5" /> Hierarchy Validated
-          </div>
+           <CheckCircle className="w-5 h-5" />  {t('lab.e12phrasesclauses_hierarchy_validated')}
+                                                   </div>
          )}
         </div>
        </div>
@@ -154,8 +160,8 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
         <div className="space-y-6">
         <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
          <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-4">
-          <Braces className="w-5 h-5 text-blue-500" /> Sub-Node Parsing
-         </h3>
+          <Braces className="w-5 h-5 text-blue-500" />  {t('lab.e12phrasesclauses_sub_node_parsing')}
+                                              </h3>
          <p className="text-lg font-medium mb-6 text-center py-4 bg-slate-50 dark:bg-[#1a1a1a] rounded-lg border border-slate-200 dark:border-gray-800 dark:text-white">
           {phraseScenarios[phraseIndex].text}
          </p>
@@ -175,8 +181,9 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
            onClick={() => { setPhraseIndex(p => (p + 1) % phraseScenarios.length); setSelectedPhrase(null); }}
            className="mt-6 w-full py-3 bg-[#4158D1] text-white rounded-xl font-bold hover:bg-blue-700"
           >
-           Next Phrase
-          </button>
+           
+                                                    {t('lab.e12phrasesclauses_next_phrase')}
+                                                   </button>
          )}
         </div>
        </div>
@@ -185,15 +192,16 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-900 rounded-xl shadow-sm border border-slate-800 relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-900 rounded-xl shadow-sm border border-slate-800 relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at center, #ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
      {activeMode === 'tree' && (
       <div className="relative w-full max-w-3xl flex flex-col items-center justify-center z-10">
        {/* Root Node */}
        <div className="bg-[#4158D1] text-white px-8 py-4 rounded-xl font-black text-xl shadow-[0_0_30px_rgba(65,88,209,0.5)] z-10 mb-12 border-4 border-blue-400">
-        S (Sentence)
-        <div className="text-xs font-normal opacity-80 block text-center mt-1">"{sentence}"</div>
+        
+                                     {t('lab.e12phrasesclauses_s_sentence')}
+                                     <div className="text-xs font-normal opacity-80 block text-center mt-1">"{sentence}"</div>
        </div>
 
        {/* Lines */}
@@ -226,7 +234,7 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
        
        {treeComplete && (
         <div className="mt-8 p-4 bg-emerald-500/20 border border-emerald-500 rounded-xl animate-pulse">
-         <p className="text-emerald-400 font-bold text-xl tracking-widest uppercase">Hierarchy Stabilized</p>
+         <p className="text-emerald-400 font-bold text-xl tracking-widest uppercase">{t('lab.e12phrasesclauses_hierarchy_stabilized')}</p>
         </div>
        )}
       </div>
@@ -235,7 +243,7 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
      {activeMode === 'phrases' && (
       <div className="text-center opacity-20 z-10">
        <Columns className="w-32 h-32 text-white mx-auto mb-8" />
-       <h2 className="text-3xl font-black tracking-widest text-white uppercase">Hierarchy Viewer Offline</h2>
+       <h2 className="text-3xl font-black tracking-widest text-white uppercase">{t('lab.e12phrasesclauses_hierarchy_viewer_offline')}</h2>
       </div>
      )}
     </section>

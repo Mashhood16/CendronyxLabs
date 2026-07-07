@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import {Rocket } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8WaterRocket({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [pressure, setPressure] = useState(0); // 0 to 100
  const [launched, setLaunched] = useState(false);
  const [height, setHeight] = useState(0);
@@ -34,7 +36,7 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 8.3: Water Pressure Rocket" subtitle="Pump air to build pressure and launch" />
+  <LabHeader onExit={onExit} title={t('lab.s8waterrocket_act_8_3_water_pressure_rocket')} subtitle={t('lab.subtitle_pump_build_pressure')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-3xl mx-auto w-full">
   
@@ -83,7 +85,7 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
 
    {/* UI Controls */}
    <div className="absolute top-6 left-6 z-40 bg-slate-50 dark:bg-[#121212]/90 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] w-64 text-center">
-   <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">Air Pressure</div>
+   <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] mb-2 uppercase tracking-wider">{t('lab.s8waterrocket_air_pressure')}</div>
    <div className="w-full h-4 bg-slate-200 dark:bg-[#121212] rounded-full overflow-hidden mb-4 border border-slate-300 dark:border-[#1c1b1b]">
     <div className="h-full bg-red-500 transition-all duration-300" style={{ width: `${pressure}%` }} />
    </div>
@@ -93,8 +95,8 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
     disabled={launched}
     className="w-full bg-emerald-500 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-600 text-xl shadow-md transition-transform active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
-    <Rocket className="w-6 h-6" /> PUMP AIR
-   </button>
+    <Rocket className="w-6 h-6" />  {t('lab.s8waterrocket_pump_air')}
+                            </button>
    </div>
 
   </div>

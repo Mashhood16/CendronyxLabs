@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Thermometer, Droplet, CheckCircle, Info, Beaker, Play, RotateCcw, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [enzyme, setEnzyme] = useState<'Amylase' | 'Pepsin'>('Amylase');
  const [temp, setTemp] = useState<number>(37);
@@ -68,7 +70,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Enzyme Kinetics" />
+  <LabHeader onExit={onExit} title={t('lab.b9enzymes_virtual_lab_enzyme_kinetics')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -77,12 +79,13 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b9enzymes_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b9enzymes_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
@@ -90,40 +93,45 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
    <div>
    <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
     <Info className="w-5 h-5 mr-2 text-emerald-600" />
-    Theory & Context
-   </h2>
+    
+                             {t('lab.b9enzymes_theory_context')}
+                            </h2>
    <p className="text-gray-600 text-sm leading-relaxed mb-2">
-    Enzymes are biological catalysts that speed up chemical reactions without being consumed. Their activity is heavily influenced by <strong>Temperature</strong> and <strong>pH</strong>.
+    
+                             {t('lab.b9enzymes_enzymes_are_biological_catalys')} <strong>{t('lab.b9enzymes_temperature')}</strong>  {t('lab.b9enzymes_and')} <strong>pH</strong>.
    </p>
    <p className="text-gray-600 text-sm leading-relaxed">
-    Extreme heat or incorrect pH levels can break the internal bonds holding the enzyme's 3D structure together, causing <strong>denaturation</strong> and loss of function.
-   </p>
+    
+                             {t('lab.b9enzymes_extreme_heat_or_incorrect_ph_l')} <strong>{t('lab.b9enzymes_denaturation')}</strong>  {t('lab.b9enzymes_and_loss_of_function')}
+                            </p>
    </div>
 
    <div className="space-y-4 flex-1">
-   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Lab Setup</h3>
+   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">{t('lab.b9enzymes_lab_setup')}</h3>
    
    <div className="space-y-2">
-    <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff]">Select Enzyme</label>
+    <label className="text-sm font-medium text-gray-700 dark:text-[#ffffff]">{t('lab.b9enzymes_select_enzyme')}</label>
     <div className="flex space-x-2">
     <button 
      onClick={() => { setEnzyme('Amylase'); setProgress(0); setIsRunning(false); }}
      className={`flex-1 py-2 rounded-md text-sm font-semibold transition-colors ${enzyme === 'Amylase' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
     >
-     Amylase (Saliva)
-    </button>
+     
+                                      {t('lab.b9enzymes_amylase_saliva')}
+                                     </button>
     <button 
      onClick={() => { setEnzyme('Pepsin'); setProgress(0); setIsRunning(false); }}
      className={`flex-1 py-2 rounded-md text-sm font-semibold transition-colors ${enzyme === 'Pepsin' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
     >
-     Pepsin (Stomach)
-    </button>
+     
+                                      {t('lab.b9enzymes_pepsin_stomach')}
+                                     </button>
     </div>
    </div>
 
    <div className="space-y-2 pt-4">
     <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
-    <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> Temperature (°C)</span>
+    <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" />  {t('lab.b9enzymes_temperature_c')}</span>
     <span>{temp}°C</span>
     </label>
     <input type="range" min="0" max="80" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -131,7 +139,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
 
    <div className="space-y-2 pt-4">
     <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
-    <span className="flex items-center"><Droplet className="w-4 h-4 mr-1 text-blue-500" /> pH Level</span>
+    <span className="flex items-center"><Droplet className="w-4 h-4 mr-1 text-blue-500" />  {t('lab.b9enzymes_ph_level')}</span>
     <span>{ph}</span>
     </label>
     <input type="range" min="1" max="14" step="0.5" value={ph} onChange={(e) => setPh(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -141,11 +149,12 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Middle Column: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
    <Beaker className="w-5 h-5 mr-2 text-emerald-600" />
-   Interactive Simulation
-   </h2>
+   
+                        {t('lab.b9enzymes_interactive_simulation')}
+                        </h2>
    
    <div className={`relative bg-slate-100 dark:bg-[#121212] rounded-xl aspect-video overflow- border-2 border-slate-200 dark:border-[#1c1b1b] flex-1 flex-col `}>
    <svg viewBox="0 0 400 300" className="w-full h-full">
@@ -195,7 +204,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
 
     {/* Denatured Label */}
     {isDenatured && (
-    <text x="200" y="40" textAnchor="middle" fill="#ef4444" fontWeight="bold" fontSize="14">DENATURED</text>
+    <text x="200" y="40" textAnchor="middle" fill="#ef4444" fontWeight="bold" fontSize="14">{t('lab.b9enzymes_denatured')}</text>
     )}
    </svg>
    </div>
@@ -203,7 +212,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
    <div className="flex justify-between items-center mt-4 space-x-4">
    <div className="flex-1">
     <div className="flex justify-between text-xs mb-1 font-medium text-gray-500">
-    <span>Reaction Progress</span>
+    <span>{t('lab.b9enzymes_reaction_progress')}</span>
     <span>{Math.round(progress)}%</span>
     </div>
     <div className={`w-full bg-gray-200 rounded-full h-2 flex-col `}>
@@ -222,24 +231,25 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Right Column: Data & Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-4">
    <Save className="w-5 h-5 mr-2 text-emerald-600" />
-   Data Logging & Analysis
-   </h2>
+   
+                        {t('lab.b9enzymes_data_logging_analysis')}
+                        </h2>
    
    <button onClick={handleRecord} className="w-full py-2 mb-4 bg-blue-50 text-blue-600 font-semibold rounded-lg hover:bg-blue-100 transition-colors flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
-   <CheckCircle className="w-4 h-4 mr-2" /> Record Current State
-   </button>
+   <CheckCircle className="w-4 h-4 mr-2" />  {t('lab.b9enzymes_record_current_state')}
+                        </button>
 
    <div className="lg:overflow-y-auto max-h-40 mb-6 border rounded-lg">
    <table className="w-full text-sm text-left">
     <thead className="bg-gray-50 sticky top-0">
     <tr>
-     <th className="px-3 py-2">Enzyme</th>
-     <th className="px-3 py-2">Temp</th>
+     <th className="px-3 py-2">{t('lab.b9enzymes_enzyme')}</th>
+     <th className="px-3 py-2">{t('lab.b9enzymes_temp')}</th>
      <th className="px-3 py-2">pH</th>
-     <th className="px-3 py-2">Rate</th>
+     <th className="px-3 py-2">{t('lab.b9enzymes_rate')}</th>
     </tr>
     </thead>
     <tbody>
@@ -253,7 +263,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
     ))}
     {dataPoints.length === 0 && (
      <tr>
-     <td colSpan={4} className="px-3 py-4 text-center text-gray-400">No data recorded yet</td>
+     <td colSpan={4} className="px-3 py-4 text-center text-gray-400">{t('lab.b9enzymes_no_data_recorded_yet')}</td>
      </tr>
     )}
     </tbody>
@@ -261,24 +271,25 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
    </div>
 
    <div className="flex-1 space-y-4">
-   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">Assessment</h3>
+   <h3 className="font-bold text-gray-700 dark:text-[#ffffff]">{t('lab.b9enzymes_assessment')}</h3>
    <div className="space-y-3">
     <div>
-    <label className="text-sm text-gray-600 block mb-1">1. What is the optimal temperature (°C) for Amylase?</label>
-    <input type="text" value={q1} onChange={(e) => setQ1(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="e.g. 37" />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9enzymes_1_what_is_the_optimal_temperat')}</label>
+    <input type="text" value={q1} onChange={(e) => setQ1(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9enzymes_e_g_37')} />
     </div>
     <div>
-    <label className="text-sm text-gray-600 block mb-1">2. What is the optimal pH for Pepsin?</label>
-    <input type="text" value={q2} onChange={(e) => setQ2(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="e.g. 2" />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9enzymes_2_what_is_the_optimal_ph_for_p')}</label>
+    <input type="text" value={q2} onChange={(e) => setQ2(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9enzymes_e_g_2')} />
     </div>
     <div>
-    <label className="text-sm text-gray-600 block mb-1">3. What term describes an enzyme deformed by extreme heat?</label>
-    <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder="Term..." />
+    <label className="text-sm text-gray-600 block mb-1">{t('lab.b9enzymes_3_what_term_describes_an_enzym')}</label>
+    <input type="text" value={q3} onChange={(e) => setQ3(e.target.value)} className="w-full border rounded-md px-3 py-1.5 text-sm outline-none focus:border-emerald-500" placeholder={t('lab.b9enzymes_term')} />
     </div>
    </div>
    <button onClick={checkAnswers} className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors mt-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    Check Answers
-   </button>
+    
+                             {t('lab.b9enzymes_check_answers')}
+                            </button>
    {feedback && (
     <div className={`p-3 mt-2 rounded-lg text-sm font-medium ${feedback.includes('Excellent') ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
     {feedback}

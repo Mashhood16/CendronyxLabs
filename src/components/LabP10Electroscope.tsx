@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10Electroscope({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [qRod, setQRod] = useState<number>(5); // microCoulombs
@@ -75,7 +77,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 15: Gold-Leaf Electroscope" subtitle="Detect electric charge via induction and conduction." />
+  <LabHeader onExit={onExit} title={t('lab.p10_escope_title')} subtitle={t('lab.p10_escope_subtitle')} />
 
   {/* Main Grid */}
   
@@ -84,40 +86,33 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3">
-    An electroscope detects charge. When a charged rod is brought near the brass disc, it induces a charge separation (<strong>Induction</strong>). 
-    Electrons are repelled or attracted, leaving the gold leaf with a net charge that causes it to repel from the fixed brass stem.
-   </p>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3">
-    If the rod touches the disc (<strong>Conduction</strong>), electrons are transferred, leaving the electroscope permanently charged.
-   </p>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.theory')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_theory') }} />
+   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_induction') }} />
    <p className={`text-xs text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] p-2 rounded flex-col `}>
-    The angle of deflection θ is roughly proportional to the square of the charge on the leaf.
+    {t('lab.p10_escope_angle')}
    </p>
    </div>
 
    <div className="h-px bg-slate-200 dark:bg-[#121212]" />
 
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p10_escope_setup')}</h2>
    
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Rod Charge (Q_rod)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_rod_label')}</label>
     <span className={`text-sm font-mono ${qRod > 0 ? 'text-blue-600' : qRod < 0 ? 'text-red-600' : 'text-slate-600 dark:text-[#ffffff]'}`}>
      {qRod > 0 ? '+' : ''}{qRod} μC
     </span>
@@ -131,7 +126,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
 
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Rod Distance (d)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_dist_label')}</label>
     <span className="text-sm font-mono text-emerald-600">{distance} cm</span>
     </div>
     <input 
@@ -139,24 +134,24 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
     onChange={(e) => setDistance(parseFloat(e.target.value))}
     className="w-full accent-emerald-600"
     />
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">d = 0 means touching (Conduction).</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.p10_escope_dist_hint')}</p>
    </div>
 
    <button 
     onClick={handleGround}
     className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded font-medium hover:bg-slate-700 dark:bg-[#121212] transition-colors"
    >
-    Ground Electroscope (Reset Net Charge)
+    {t('lab.p10_escope_ground_btn')}
    </button>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    
    {/* Angle Display overlay */}
-   <div className={`w-full absolute top-4 right-4 bg-white lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Deflection Angle θ</span>
+   <div className={`w-full absolute top-4 right-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.p10_escope_angle_display')}</span>
    <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}°</span>
    </div>
 
@@ -176,7 +171,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
      {qRod > 0 ? '+' : qRod < 0 ? '-' : '0'}
      </span>
     ))}
-    <div className="absolute -right-16 text-slate-600 dark:text-[#a1a1aa] font-mono text-sm bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">Rod</div>
+    <div className="absolute -right-16 text-slate-600 dark:text-[#a1a1aa] font-mono text-sm bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{t('lab.10electroscope_rod')}</div>
    </div>
 
    {/* Electroscope Structure */}
@@ -184,7 +179,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
     
     {/* Brass Disc */}
     <div className={`w-20 h-6 bg-yellow-500 rounded-full border-2 border-yellow-600 z-20 flex justify-center items-center shadow-md relative flex-col `}>
-     <div className="absolute top-1/2 -translate-y-1/2 text-slate-800 dark:text-[#ffffff] text-xs font-bold mix-blend-overlay">Disc</div>
+     <div className="absolute top-1/2 -translate-y-1/2 text-slate-800 dark:text-[#ffffff] text-xs font-bold mix-blend-overlay">{t('lab.10electroscope_disc')}</div>
     </div>
     
     {/* Insulator plug */}
@@ -214,7 +209,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
 
    <div className="absolute bottom-4 left-4 flex gap-2">
    <div className="bg-slate-50 dark:bg-[#121212]/80 px-2 py-1 rounded text-xs border border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-mono shadow-sm">
-    Q_net: {qNet.toFixed(1)} μC
+    {t('lab.p10_escope_qnet_label', { q: qNet.toFixed(1) })}
    </div>
    </div>
   </div>
@@ -222,12 +217,12 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
   {/* Column 3: Data & Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col h-full overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p10_escope_data')}</h2>
    <button 
     onClick={recordData}
     className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <Plus className="w-4 h-4" /> Record
+    <Plus className="w-4 h-4" /> {t('lab.p10_escope_record')}
    </button>
    </div>
 
@@ -235,16 +230,16 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
    <table className="w-full text-sm text-left">
     <thead className="text-xs text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-2">Q_rod (μC)</th>
-     <th className="px-4 py-2">d (cm)</th>
-     <th className="px-4 py-2">Q_net (μC)</th>
-     <th className="px-4 py-2">Angle θ</th>
+     <th className="px-4 py-2">{t('lab.p10_escope_table_qrod')}</th>
+     <th className="px-4 py-2">{t('lab.p10_escope_table_d')}</th>
+     <th className="px-4 py-2">{t('lab.p10_escope_table_qnet')}</th>
+     <th className="px-4 py-2">{t('lab.p10_escope_table_angle')}</th>
     </tr>
     </thead>
     <tbody>
     {dataPoints.length === 0 ? (
      <tr>
-     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded yet.</td>
+     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.p10_escope_no_data')}</td>
      </tr>
     ) : (
      dataPoints.map((dp) => (
@@ -264,16 +259,14 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
 
    {/* Assessment Section */}
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Check</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p10_escope_analysis')}</h2>
    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
-    <strong>Problem:</strong> A neutral electroscope is touched by a negatively charged rod, then the rod is removed. A positively charged rod is then brought <em>near</em> the disc (not touching). Does the leaf angle increase, decrease, or remain the same? Explain why, or simply type <strong>decrease</strong>, <strong>increase</strong>, or <strong>repel</strong>.
-    </p>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">(Hint: What happens to the electrons on the leaf when a positive rod is brought near the disc?)</p>
+    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_q') }} />
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">({t('lab.p10_escope_hint')})</p>
     <div className="flex gap-2 items-center">
     <input 
      type="text" 
-     placeholder="e.g. decrease"
+     placeholder={t('lab.p10_escope_placeholder')}
      value={assessmentAnswer}
      onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
      className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -282,19 +275,21 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
      onClick={checkAnswer}
      className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10electroscope_check')}
+                                     </button>
     </div>
     {assessmentStatus === 'correct' && (
     <div className="mt-3 flex items-start gap-1 text-emerald-700 text-sm font-medium bg-emerald-100 p-2 rounded">
      <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" /> 
-     Correct! The positive rod attracts electrons up to the disc, leaving the leaf less negative, so the repulsion (and angle) decreases. (Or if it was neutral, it diverges/repels).
-    </div>
+      
+                                      {t('lab.p10electroscope_correct_the_positive_rod_attra')}
+                                     </div>
     )}
     {assessmentStatus === 'incorrect' && (
     <div className="mt-3 flex items-center gap-1 text-rose-600 text-sm font-medium">
-     <XCircle className="w-4 h-4" /> Incorrect. Try simulating it! Give the electroscope negative charge, then bring a positive rod near.
-    </div>
+     <XCircle className="w-4 h-4" />  {t('lab.p10electroscope_incorrect_try_simulating_it_gi')}
+                                     </div>
     )}
    </div>
    </div>

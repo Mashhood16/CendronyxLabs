@@ -1,0 +1,192 @@
+import fs from 'fs';
+
+const en = JSON.parse(fs.readFileSync('src/locales/en/translation.json', 'utf8'));
+const ur = JSON.parse(fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8'));
+
+const isFormula = (t) => {
+  if (!t) return true;
+  if (/[→⇌÷×±∞√∫∑πθρΩωΔ²³⁴⁺⁻°₀₁₂₃₄₅₆₇₈₉≈≠≤≥∂]/.test(t)) return true;
+  if (/^\d+\.?\d*/.test(t)) return true;
+  if (/^https?:\/\//.test(t)) return true;
+  if (/^\$/.test(t) || /^<[a-z]/.test(t)) return true;
+  if (/^[A-Z][a-z]?\d/.test(t)) return true;
+  if (/^[a-z]\s*=\s*/.test(t)) return true;
+  if (t.includes('&&') || t.includes('Math.') || /\\frac|\\sqrt/.test(t)) return true;
+  if (/^[A-Z0-9._-]+$/.test(t) && t.length < 40) return true;
+  return false;
+};
+
+// Find untranslated
+const same = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+const textStrs = same.filter(k => !isFormula(en[k]));
+const longTexts = textStrs.filter(k => en[k].length >= 20);
+
+console.log('Long text strings to translate:', longTexts.length);
+
+// Translation map for all remaining derivation step labels and descriptions
+const MAP = {
+  // Derivation titles
+  'Derivation: Force & Change in Momentum': 'Ikhtiyar: Force aur Momentum Mein Tabdeeli',
+  'Derivation: Recoil Velocity of a Gun': 'Ikhtiyar: Bandook ki Recoil Velocity',
+  'Derivation: Hydraulic Lift (Pascal\'s Principle)': 'Ikhtiyar: Hydraulic Lift (Pascal ka Usool)',
+  'Derivation: Kinetic Energy (Ek = ½mv²)': 'Ikhtiyar: Kinetic Energy (Ek = ½mv²)',
+  'Derivation: Gravitational PE (Ep = mgh)': 'Ikhtiyar: Gravitational PE (Ep = mgh)',
+  'Derivation: Liquid Pressure (P = ρgh)': 'Ikhtiyar: Liquid Pressure (P = ρgh)',
+
+  // Step labels for derivations
+  'Pressure = Force per Area': 'Pressure = Force per Area',
+  'Force = Weight of Liquid Column': 'Force = Liquid Column ka Weight',
+  'Volume = Area × Height': 'Volume = Area × Height',
+  'Cancel Area to Get P = ρgh': 'Area cancel karein, P = ρgh hasil karein',
+
+  // Common step label patterns
+  'Basic Speed Formula': 'Basic Speed Formula',
+  'Distance Double (There & Back)': 'Distance Double (Wahan aur Wapas)',
+  'Substitute for D': 'D ki jagah rakhein',
+  'Solve for Distance': 'Distance nikaln',
+  'Critical Angle Conditions': 'Critical Angle ki Shartein',
+  'sin 90° = 1': 'sin 90° = 1',
+  'Solve for Critical Angle': 'Critical Angle nikaln',
+  'Depth from Echo Time': 'Echo Time se Gahrai',
+  'Wave Speed = Distance / Time': 'Wave Speed = Distance / Time',
+  'One Wavelength in One Period': 'Ek Wavelength, Ek Period Mein',
+  'Frequency = 1 / Period': 'Frequency = 1 / Period',
+  'Final Wave Equation': 'Final Wave Equation',
+  "Light's Wave Equation": "Light ki Wave Equation",
+  'Photon Momentum': 'Photon Momentum',
+  'Power Definition': 'Power ki Tareef',
+  'Rearrange for Energy': 'Energy ke Liye Dobara Arrange Karein',
+  'Substitute P = VI': 'P = VI ki Jagah Rakhein',
+  'Final E = VIt': 'Final E = VIt',
+  'Ray Diagram Similar Triangles': 'Ray Diagram se Similar Triangles',
+  'Combined Formula': 'Combined Formula',
+  'Sign Convention Matters': 'Sign Convention Ahem Hai',
+  'Coefficient Definition': 'Coefficient ki Tareef',
+  'Physical Meaning': 'Tabeeghati Maani',
+  'Why It Matters': 'Yeh Kyun Ahem Hai',
+  'Length Change Proportional': 'Length Mein Tabdeeli Mutanasib',
+  'Introduce Constant α': 'Constant α Mutaarif Karayein',
+  'Rearrange for α': 'α ke Liye Dobara Arrange Karein',
+  'Final Formula': 'Final Formula',
+  'Volume Change Proportional': 'Volume Change Mutanasib',
+  'Introduce Constant β': 'Constant β Mutaarif Karayein',
+  'Solve for β': 'β Nikaln',
+  'β and α Relation': 'β aur α ka Talluq',
+  'Emitter Current = Sum': 'Emitter Current = Jumla',
+  'Current Gain β (Beta)': 'Current Gain β (Beta)',
+  'Current Gain α (Alpha)': 'Current Gain α (Alpha)',
+  'Amplification': 'Amplification',
+  'Ideal Transformer Assumption': 'Ideal Transformer ka Qayias',
+  'Substitute Power Formula': 'Power Formula Mein Jagah Rakhein',
+  'Solve for Secondary Current': 'Secondary Current Nikaln',
+  'Turns Ratio Relation': 'Turns Ratio ka Talluq',
+  '1 Half-Life After': '1 Half-Life Ke Baad',
+  '2 Half-Lives After': '2 Half-Lives Ke Baad',
+  'n Half-Lives After': 'n Half-Lives Ke Baad',
+  'Count the Half-Lives': 'Half-Lives Ginen',
+  'Series Circuit Current': 'Series Circuit Current',
+  'Substitute Current': 'Current Ki Jagah Rakhein',
+  'Potential Divider Formula': 'Potential Divider Formula',
+  'Branches Currents Add': 'Branches Mein Currents Jortay Hain',
+  'Factor Out Voltage': 'Voltage Ko Factor Karein',
+  'Resistance Depends on Geometry': 'Resistance Geometry Par Munsar Hai',
+  'Introduce Proportionality Constant': 'Proportionality Constant Mutaarif Karayein',
+  'Rearrange for Resistivity': 'Resistivity Ke Liye Dobara Arrange Karein',
+  'Voltage Drops Add Up': 'Voltage Drops Jortay Hain',
+  'Factor Out Current': 'Current Ko Factor Karein',
+  'Key Principle': 'Ahem Usool',
+  'Work-Energy Theorem': 'Work-Energy Theorem',
+  'Substitute F = ma': 'F = ma Ki Jagah Rakhein',
+  'Use Motion Equations': 'Motion Equations Istemal Karein',
+  'The t Cancels!': 't Kat Jata Hai!',
+  'Work Done Against Gravity': 'Gravity Ke Khilaf Kaam',
+  'Force = Weight of Object': 'Force = Cheez Ka Wazan',
+  'Distance = Height Lifted': 'Distance = Oonchai Jitna Uthaya',
+  'Gravitational PE Formula': 'Gravitational PE Formula',
+  'Conservation of Energy': 'Energy Ka Tahafuz',
+  'Solid Heat Loss': 'Solid Ka Heat Loss',
+  'Water + Calorimeter Heat Gain': 'Water aur Calorimeter Ka Heat Gain',
+  'Solve for c_s': 'c_s Nikaln',
+  'Conservation of Momentum': 'Momentum Ka Tahafuz',
+  'Before Firing: Rest': 'Firing Se Pehle: Khamoshi',
+  'After Firing: Bullet + Gun Move': 'Firing Ke Baad: Bullet aur Gun Harkat Karte Hain',
+  'Solve for Recoil Velocity': 'Recoil Velocity Nikaln',
+  'Average Speed Formula': 'Average Speed Formula',
+  'Distance = Circumference': 'Distance = Circumference',
+  'Time = Orbital Period T': 'Time = Orbital Period T',
+  'Substitute for Orbital Speed': 'Orbital Speed Ke Liye Jagah Rakhein',
+  "Newton's Second Law": "Newton Ka Doosra Qanoon",
+  'Acceleration = Rate of Velocity Change': 'Acceleration = Velocity Mein Tabdeeli Ki Sharh',
+  'Substitute a into F = ma': 'F = ma Mein a Ki Jagah Rakhein',
+  'Recognize Momentum p = mv': 'Momentum p = mv Ko Pehchanein',
+
+  // Lab subtitle patterns (non-specific ones)
+  'Tap to begin': 'Shuru karne ke liye tap karein',
+  'Tap to continue': 'Jari rakhne ke liye tap karein',
+  'Swipe to explore': 'Explore karne ke liye swipe karein',
+  'Loading lab...': 'Lab load ho rahi hai...',
+  'Preparing simulation...': 'Simulation tayyar ho rahi hai...',
+
+  // Assessment/quiz related
+  'Check your understanding': 'Apni samajh ko check karein',
+  'Answer the following questions': 'Neeche diye gaye sawalon ke jawab dein',
+  'Select the correct answer': 'Sahi jawab muntakhab karein',
+  'Multiple choice': 'Multiple choice',
+  'True or False': 'Sahi ya Ghalat',
+  'Fill in the blank': 'Khali jagah bharein',
+  'Match the following': 'Neeche diye gaye ko milayein',
+  'Drag and drop': 'Ghaseet kar girao',
+  'Sort the items': 'Items ko tarteeb dein',
+
+  // Score/result related
+  'Excellent!': 'Bohot khoob!',
+  'Great job!': 'Shabash!',
+  'Good effort!': 'Achi koshish!',
+  'Try again!': 'Dobara koshish karein!',
+  'Keep practicing!': 'Mashq karte rahein!',
+  'You scored': 'Aap ne score kiya',
+  'out of': 'mein se',
+  'points': 'number',
+  'Your score': 'Aap ka score',
+  'Time elapsed': 'Guzar-shuda waqt',
+  'Time remaining': 'Baaki waqt',
+  
+  // Instructions
+  'Read the instructions carefully': 'Hidayat ko ghaur se parhein',
+  'Follow the steps below': 'Neeche diye gaye steps par amal karein',
+  'Complete all tasks': 'Tamam tasks mukammal karein',
+  'Record your observations': 'Apne mushahidaat record karein',
+  'Analyze the results': 'Natijon ka tajzia karein',
+  'Draw a conclusion': 'Nateeja ikhaz karein',
+  'Submit your answers': 'Apne jawabat pesh karein',
+  'Verify your findings': 'Apne hasilat ki tasdeeq karein',
+};
+
+// Apply translations
+let matched = 0;
+longTexts.forEach(k => {
+  const text = en[k].trim();
+  const norm = text.replace(/\.$/, '').replace(/:$/, '').replace(/!$/, '').trim();
+  
+  if (MAP[text]) { ur[k] = MAP[text]; matched++; }
+  else if (MAP[norm]) { ur[k] = MAP[norm]; matched++; }
+});
+
+fs.writeFileSync('src/locales/roman-urdu/translation.json', JSON.stringify(ur, null, 2));
+
+const finalSame = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+const finalLong = finalSame.filter(k => !isFormula(en[k]) && en[k].length >= 20);
+const finalShort = finalSame.filter(k => !isFormula(en[k]) && en[k].length < 20);
+
+console.log('Matched this run:', matched);
+console.log('Remaining long text:', finalLong.length);
+console.log('Remaining short labels:', finalShort.length);
+console.log('Remaining total (all):', finalSame.length);

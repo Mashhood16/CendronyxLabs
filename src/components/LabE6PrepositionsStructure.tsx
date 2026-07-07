@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, RefreshCw, Navigation, Box, MousePointer2 , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [prep, setPrep] = useState('over');
  const [animating, setAnimating] = useState(false);
@@ -101,12 +103,12 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
    <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
    <ArrowLeft className="w-5 h-5" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Prepositions & Structure Lab</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.e6prepositionsstructure_prepositions_structure_lab')}</h1>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -120,8 +122,9 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
    <section className="w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b] lg:block">
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Navigation className="w-5 h-5 text-blue-500" />
-    Prepositions of Direction
-   </h2>
+    
+                             {t('lab.e6prepositionsstructure_prepositions_of_direction')}
+                            </h2>
    <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
     {['over', 'under', 'through', 'around', 'into'].map(p => (
     <button
@@ -138,17 +141,18 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
     disabled={animating}
     className={`w-full py-3 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 disabled: disabled:cursor-not-allowed text-white font-bold rounded-xl transition-colors whitespace-nowrap flex-shrink-0 flex justify-center items-center gap-2 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 flex-col `}
    >
-    <Box className="w-5 h-5" /> Simulate Movement
-   </button>
+    <Box className="w-5 h-5" />  {t('lab.e6prepositionsstructure_simulate_movement')}
+                            </button>
    </section>
 
    <section className={`w-full bg-blue-50 dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#1c1b1b] lg:flex-1 flex flex-col  'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300 flex items-center gap-2">
-    <MousePointer2 className="w-5 h-5" /> Sentence Parser
-   </h2>
+    <MousePointer2 className="w-5 h-5" />  {t('lab.e6prepositionsstructure_sentence_parser')}
+                            </h2>
    <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
-    Click a word below, then select its grammatical tag to map the sentence structure.
-   </p>
+    
+                             {t('lab.e6prepositionsstructure_click_a_word_below_then_select')}
+                            </p>
 
    <div className="flex flex-wrap gap-2 mb-6">
     {tokens.map((t, i) => (
@@ -165,7 +169,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
 
    {selectedToken !== null && (
     <div className={`mb-6 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] animate-in fade-in slide-in-from-top-2 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <p className="text-sm font-bold text-slate-500 mb-3">Tag for "{tokens[selectedToken].word}":</p>
+    <p className="text-sm font-bold text-slate-500 mb-3">{t('lab.e6prepositionsstructure_tag_for')}{tokens[selectedToken].word}":</p>
     <div className="grid grid-cols-2 gap-2">
      {availableTags.map(tag => (
      <button
@@ -185,8 +189,8 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
     onClick={checkParser}
     className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    <Check className="w-5 h-5" /> Check Structure
-    </button>
+    <Check className="w-5 h-5" />  {t('lab.e6prepositionsstructure_check_structure')}
+                                 </button>
     {parserFeedback && (
     <div className="flex items-center gap-3">
      <span className={`text-sm font-bold max-w-[150px] leading-tight ${parserFeedback.includes('Perfect') ? 'text-green-600 dark:text-green-400' : 'text-red-500 dark:text-red-400'}`}>
@@ -225,15 +229,16 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
     />
    </svg>
    <div className="absolute bottom-4 left-0 w-full text-center pointer-events-none">
-    <span className="bg-white/90 dark:bg-[#121212]/90 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-[#ffffff] shadow-sm">
-    The ball goes <span className="text-blue-500">{prep}</span> the box.
-    </span>
+    <span className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/90 dark:bg-[#121212]/90 px-4 py-2 rounded-full text-sm font-bold text-slate-700 dark:text-[#ffffff] shadow-sm">
+    
+                                 {t('lab.e6prepositionsstructure_the_ball_goes')} <span className="text-blue-500">{prep}</span>  {t('lab.e6prepositionsstructure_the_box')}
+                                 </span>
    </div>
    </div>
 
    {/* Structural Diagram */}
    <div className={`w-full max-w-lg bg-white dark:!bg-[#121212] p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block`}>
-   <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">Sentence Map</h3>
+   <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">{t('lab.e6prepositionsstructure_sentence_map')}</h3>
    <div className="flex flex-wrap gap-2 justify-center">
     {tokens.map((t, i) => (
     <div key={i} className="flex flex-col items-center">

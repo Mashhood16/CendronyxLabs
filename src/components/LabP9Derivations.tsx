@@ -4,6 +4,8 @@ import {
   ArrowRight, Lightbulb, Sigma, Rocket, Target, Satellite,
   Waves, Flower2, Zap, Mountain, GraduationCap
 } from 'lucide-react';
+import MathFormula from './MathFormula';
+import { useTranslate } from "../i18n";
 
 // ========== Types ==========
 interface DerivationModule {
@@ -20,6 +22,7 @@ interface DerivationModule {
 // ========== Interactive Components ==========
 
 function ForceMomentumInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [mass, setMass] = useState(2);
   const [vi, setVi] = useState(0);
   const [vf, setVf] = useState(10);
@@ -42,46 +45,48 @@ function ForceMomentumInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Mass (kg)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_mass_kg')}</label>
           <input type="range" min="1" max="10" step="0.5" value={mass} onChange={e => { setMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
           <span className="text-sm font-mono text-blue-600">{mass} kg</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Initial Velocity (m/s)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_initial_velocity_m_s')}</label>
           <input type="range" min="0" max="20" step="1" value={vi} onChange={e => { setVi(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
-          <span className="text-sm font-mono text-blue-600">{vi} m/s</span>
+          <span className="text-sm font-mono text-blue-600">{vi}  {t('lab.p9derivations_m_s')}</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Final Velocity (m/s)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_final_velocity_m_s')}</label>
           <input type="range" min="0" max="30" step="1" value={vf} onChange={e => { setVf(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
-          <span className="text-sm font-mono text-blue-600">{vf} m/s</span>
+          <span className="text-sm font-mono text-blue-600">{vf}  {t('lab.p9derivations_m_s')}</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Time (s)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_time_s')}</label>
           <input type="range" min="0.5" max="5" step="0.5" value={time} onChange={e => { setTime(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" />
           <span className="text-sm font-mono text-blue-600">{time} s</span>
         </div>
       </div>
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
-        <p className="text-xs font-semibold text-blue-700 dark:text-blue-300">Momentum Change: Δp = m(vf − vi) = {mass} × ({vf} − {vi}) = <strong>{deltaP} kg·m/s</strong></p>
-        <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mt-1">Net Force: F = Δp/Δt = {deltaP}/{time} = <strong>{force.toFixed(1)} N</strong></p>
+        <p className="text-xs font-semibold text-blue-700 dark:text-blue-300">{t('lab.p9derivations_momentum_change_p_m_vf_vi')} {mass} × ({vf} − {vi}) = <strong>{deltaP}  {t('lab.p9derivations_kg_m_s')}</strong></p>
+        <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mt-1">{t('lab.p9derivations_net_force_f_p_t')} {deltaP}/{time} = <strong>{force.toFixed(1)} N</strong></p>
       </div>
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Calculate the force..."
+          placeholder={t('lab.p9derivations_calculate_the_force')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-blue-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Great! F = Δp/Δt = {force.toFixed(1)} N</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try again. Force = m(vf − vi) / t</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_great_f_p_t')} {force.toFixed(1)} N</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_again_force_m_vf_vi_t')}</p>}
     </div>
   );
 }
 
 function RecoilInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [bulletMass, setBulletMass] = useState(10);
   const [bulletVel, setBulletVel] = useState(400);
   const [gunMass, setGunMass] = useState(5);
@@ -108,17 +113,17 @@ function RecoilInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void 
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Bullet Mass (g)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_bullet_mass_g')}</label>
           <input type="range" min="2" max="50" step="1" value={bulletMass} onChange={e => { setBulletMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
           <span className="text-sm font-mono text-amber-600">{bulletMass} g</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Bullet Velocity (m/s)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_bullet_velocity_m_s')}</label>
           <input type="range" min="100" max="800" step="10" value={bulletVel} onChange={e => { setBulletVel(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
-          <span className="text-sm font-mono text-amber-600">{bulletVel} m/s</span>
+          <span className="text-sm font-mono text-amber-600">{bulletVel}  {t('lab.p9derivations_m_s')}</span>
         </div>
         <div className="col-span-2">
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Gun Mass (kg)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_gun_mass_kg')}</label>
           <input type="range" min="1" max="10" step="0.5" value={gunMass} onChange={e => { setGunMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-amber-500" />
           <span className="text-sm font-mono text-amber-600">{gunMass} kg</span>
         </div>
@@ -128,12 +133,13 @@ function RecoilInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void 
       <div className="relative h-24 bg-slate-100 dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-200 dark:border-[#2a2a2a]">
         {/* Gun */}
         <div className={`absolute bottom-4 left-4 w-20 h-8 bg-slate-600 rounded-sm flex items-center justify-center text-white text-xs font-bold transition-all duration-200 ${fired ? 'translate-x-4' : ''}`}>
-          GUN
-        </div>
+          
+                            {t('lab.p9derivations_gun')}
+                          </div>
         {/* Bullet */}
         <div className={`absolute bottom-4 w-3 h-3 bg-amber-500 rounded-full transition-all duration-200 ${fired ? 'left-[70%]' : 'left-[25%]'}`} />
         {/* Recoil arrow */}
-        {fired && <div className="absolute top-2 left-10 text-red-500 text-xs font-bold animate-pulse">← Recoil!</div>}
+        {fired && <div className="absolute top-2 left-10 text-red-500 text-xs font-bold animate-pulse">{t('lab.p9derivations_recoil')}</div>}
         <button onClick={handleFire}
           className="absolute top-2 right-2 px-3 py-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded transition-colors">
           {fired ? 'FIRE!' : 'FIRE!'}
@@ -142,26 +148,29 @@ function RecoilInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void 
 
       <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
-          v_g = −(m_b × v_b) / m_g = −({bMassKg} × {bulletVel}) / {gunMass} = <strong>{recoilV.toFixed(2)} m/s</strong> (opposite direction)
-        </p>
+          
+                            {t('lab.p9derivations_v_g_m_b_v_b_m_g')}{bMassKg} × {bulletVel}) / {gunMass} = <strong>{recoilV.toFixed(2)}  {t('lab.p9derivations_m_s')}</strong>  {t('lab.p9derivations_opposite_direction')}
+                          </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Recoil velocity (m/s)..."
+          placeholder={t('lab.p9derivations_recoil_velocity_m_s')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-amber-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! The gun recoils at {recoilV.toFixed(2)} m/s</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try v_g = m_b·v_b / m_g. Remember mass in kg!</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_the_gun_recoils_at')} {recoilV.toFixed(2)}  {t('lab.p9derivations_m_s')}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_v_g_m_b_v_b_m_g_remember_m')}</p>}
     </div>
   );
 }
 
 function OrbitalSpeedInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [radius, setRadius] = useState(7000);
   const [userAns, setUserAns] = useState('');
   const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
@@ -193,7 +202,7 @@ function OrbitalSpeedInteractive({ onAnswer }: { onAnswer: (correct: boolean) =>
   return (
     <div className="space-y-4">
       <div>
-        <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Orbit Radius (km)</label>
+        <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_orbit_radius_km')}</label>
         <input type="range" min="6400" max="42000" step="100" value={radius} onChange={e => { setRadius(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" />
         <span className="text-sm font-mono text-indigo-600">{rKm.toLocaleString()} km</span>
       </div>
@@ -208,32 +217,34 @@ function OrbitalSpeedInteractive({ onAnswer }: { onAnswer: (correct: boolean) =>
         <div className="absolute left-1/2 top-1/2 w-28 h-28 border border-indigo-400/30 rounded-full -translate-x-1/2 -translate-y-1/2" />
         {/* Satellite */}
         <div className="absolute w-3 h-3 bg-indigo-400 rounded-full shadow-lg shadow-indigo-500/50" style={{ top: '50%', left: '50%', transform: `translate(-50%, -50%) translate(${56 * Math.cos(angle)}px, ${56 * Math.sin(angle)}px)` }} />
-        <div className="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">{speed.toFixed(0)} m/s</div>
+        <div className="absolute bottom-2 left-2 text-[10px] text-slate-400 font-mono">{speed.toFixed(0)}  {t('lab.p9derivations_m_s')}</div>
       </div>
 
       <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800">
         <p className="text-xs text-indigo-700 dark:text-indigo-300">
-          <strong>Orbital Period:</strong> T = 2π√(r³/GM) = {period.toFixed(0)} s ≈ {(period/60).toFixed(1)} min<br />
-          <strong>Orbital Speed:</strong> v = 2πr/T = {speed.toFixed(0)} m/s ≈ {(speed/1000).toFixed(1)} km/s
-        </p>
+          <strong>{t('lab.p9derivations_orbital_period')}</strong>  {t('lab.p9derivations_t_2_r_gm')} {period.toFixed(0)}  {t('lab.p9derivations_s')} {(period/60).toFixed(1)}  {t('lab.p9derivations_min')}<br />
+          <strong>{t('lab.p9derivations_orbital_speed')}</strong>  {t('lab.p9derivations_v_2_r_t')} {speed.toFixed(0)}  {t('lab.p9derivations_m_s_1')} {(speed/1000).toFixed(1)}  {t('lab.p9derivations_km_s')}
+                          </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Orbital speed (m/s)..."
+          placeholder={t('lab.p9derivations_orbital_speed_m_s')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! v = {speed.toFixed(0)} m/s</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try v = 2πr/T</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_v')} {speed.toFixed(0)}  {t('lab.p9derivations_m_s')}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_v_2_r_t')}</p>}
     </div>
   );
 }
 
 function LiquidPressureInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [depth, setDepth] = useState(5);
   const [density, setDensity] = useState(1000);
   const [userAns, setUserAns] = useState('');
@@ -268,14 +279,14 @@ function LiquidPressureInteractive({ onAnswer }: { onAnswer: (correct: boolean) 
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Depth (m)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_depth_m')}</label>
           <input type="range" min="1" max="50" step="1" value={depth} onChange={e => { setDepth(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
           <span className="text-sm font-mono text-cyan-600">{depth} m</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Density (kg/m³)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_density_kg_m')}</label>
           <input type="range" min="800" max="13600" step="100" value={density} onChange={e => { setDensity(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
-          <span className="text-sm font-mono text-cyan-600">{density} kg/m³</span>
+          <span className="text-sm font-mono text-cyan-600">{density}  {t('lab.p9derivations_kg_m')}</span>
         </div>
       </div>
 
@@ -284,12 +295,12 @@ function LiquidPressureInteractive({ onAnswer }: { onAnswer: (correct: boolean) 
         {/* Water column */}
         <div className={`absolute bottom-0 left-4 right-4 bg-gradient-to-t ${density <= 1000 ? 'from-blue-400 to-blue-200' : density <= 5000 ? 'from-amber-400 to-amber-200' : 'from-red-400 to-red-200'} opacity-70`}
           style={{ height: `${(depth / 50) * 100}%` }}>
-          <span className="absolute top-1 left-2 text-[10px] font-bold text-slate-800">{getLiquid()}</span>
+          <span className="absolute top-1 left-2 text-[10px] font-bold text-slate-800 dark:text-[#f8fafc]">{getLiquid()}</span>
         </div>
         {/* Pressure gauge */}
         <div className="absolute top-2 right-2 bg-white dark:bg-[#121212] rounded px-2 py-1 border border-slate-200 dark:border-[#2a2a2a]">
-          <div className="text-[9px] text-slate-500">Pressure</div>
-          <div className="text-xs font-bold text-cyan-600 font-mono">{(pressure / 1000).toFixed(1)} kPa</div>
+          <div className="text-[9px] text-slate-500">{t('lab.p9derivations_pressure')}</div>
+          <div className="text-xs font-bold text-cyan-600 font-mono">{(pressure / 1000).toFixed(1)}  {t('lab.p9derivations_kpa')}</div>
         </div>
         {/* Depth marker */}
         <div className="absolute left-1 bottom-0 text-[9px] text-slate-500 font-mono">{depth}m</div>
@@ -297,26 +308,29 @@ function LiquidPressureInteractive({ onAnswer }: { onAnswer: (correct: boolean) 
 
       <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-3 border border-cyan-200 dark:border-cyan-800">
         <p className="text-xs text-cyan-700 dark:text-cyan-300">
-          P = ρgh = {density} × 9.8 × {depth} = <strong>{pressure.toLocaleString()} Pa</strong> = <strong>{(pressure/1000).toFixed(1)} kPa</strong>
+          
+                            {t('lab.p9derivations_p_gh')} {density} × 9.8 × {depth} = <strong>{pressure.toLocaleString()} Pa</strong> = <strong>{(pressure/1000).toFixed(1)}  {t('lab.p9derivations_kpa')}</strong>
         </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Pressure in Pa..."
+          placeholder={t('lab.p9derivations_pressure_in_pa')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-cyan-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! P = {pressure.toLocaleString()} Pa</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try P = ρgh. Use ρ = {density}, g = 9.8, h = {depth}</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_p')} {pressure.toLocaleString()} Pa</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_p_gh_use')} {density}{t('lab.p9derivations_g_9_8_h')} {depth}</p>}
     </div>
   );
 }
 
 function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [area1, setArea1] = useState(0.01);
   const [area2, setArea2] = useState(0.5);
   const [force1, setForce1] = useState(100);
@@ -337,17 +351,17 @@ function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Small Piston Area (m²)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_small_piston_area_m')}</label>
           <input type="range" min="0.001" max="0.1" step="0.001" value={area1} onChange={e => { setArea1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
           <span className="text-sm font-mono text-emerald-600">{area1.toFixed(3)} m²</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Large Piston Area (m²)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_large_piston_area_m')}</label>
           <input type="range" min="0.05" max="2" step="0.05" value={area2} onChange={e => { setArea2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
           <span className="text-sm font-mono text-emerald-600">{area2.toFixed(2)} m²</span>
         </div>
         <div className="col-span-2">
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Input Force F₁ (N)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_input_force_f_n')}</label>
           <input type="range" min="10" max="500" step="10" value={force1} onChange={e => { setForce1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
           <span className="text-sm font-mono text-emerald-600">{force1} N</span>
         </div>
@@ -368,35 +382,38 @@ function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
           <div className="w-14 h-4 bg-emerald-600 rounded-b-lg" />
         </div>
         {/* Arrow on small piston */}
-        <div className="absolute bottom-[55%] left-[15%] text-blue-600 text-[10px] animate-bounce">↓ F₁</div>
+        <div className="absolute bottom-[55%] left-[15%] text-blue-600 text-[10px] animate-bounce">{t('lab.p9derivations_f')}</div>
         {/* Arrow on large piston */}
-        <div className="absolute bottom-[55%] right-[15%] text-emerald-600 text-[10px]">↑ F₂</div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[8px] text-slate-500">{mechAdv.toFixed(0)}× Mechanical Advantage</div>
+        <div className="absolute bottom-[55%] right-[15%] text-emerald-600 text-[10px]">{t('lab.p9derivations_f_1')}</div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[8px] text-slate-500">{mechAdv.toFixed(0)}{t('lab.p9derivations_mechanical_advantage')}</div>
       </div>
 
       <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
         <p className="text-xs text-emerald-700 dark:text-emerald-300">
-          F₂ = (A₂/A₁) × F₁ = ({area2.toFixed(2)}/{area1.toFixed(3)}) × {force1} = <strong>{force2.toFixed(0)} N</strong><br />
-          <strong>Mechanical Advantage:</strong> {mechAdv.toFixed(0)}×
+          
+                            {t('lab.p9derivations_f_a_a_f')}{area2.toFixed(2)}/{area1.toFixed(3)}) × {force1} = <strong>{force2.toFixed(0)} N</strong><br />
+          <strong>{t('lab.p9derivations_mechanical_advantage_1')}</strong> {mechAdv.toFixed(0)}×
         </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Output force (N)..."
+          placeholder={t('lab.p9derivations_output_force_n')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-emerald-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! F₂ = {force2.toFixed(0)} N</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try F₂ = (A₂/A₁) × F₁</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_f')} {force2.toFixed(0)} N</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_f_a_a_f')}</p>}
     </div>
   );
 }
 
 function KEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [mass, setMass] = useState(2);
   const [vel, setVel] = useState(10);
   const [userAns, setUserAns] = useState('');
@@ -417,21 +434,21 @@ function KEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Mass (kg)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_mass_kg')}</label>
           <input type="range" min="0.5" max="10" step="0.5" value={mass} onChange={e => { setMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" />
           <span className="text-sm font-mono text-yellow-600">{mass} kg</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Velocity (m/s)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_velocity_m_s')}</label>
           <input type="range" min="1" max="30" step="1" value={vel} onChange={e => { setVel(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" />
-          <span className="text-sm font-mono text-yellow-600">{vel} m/s</span>
+          <span className="text-sm font-mono text-yellow-600">{vel}  {t('lab.p9derivations_m_s')}</span>
         </div>
       </div>
 
       {/* Energy Bar */}
       <div className="bg-slate-100 dark:bg-[#1c1b1b] rounded-lg p-3 border border-slate-200 dark:border-[#2a2a2a]">
         <div className="flex justify-between text-[10px] text-slate-500 mb-1">
-          <span>Kinetic Energy</span>
+          <span>{t('lab.p9derivations_kinetic_energy')}</span>
           <span className="font-mono font-bold text-yellow-600">{ke.toFixed(0)} J</span>
         </div>
         <div className="w-full h-6 bg-slate-200 dark:bg-[#121212] rounded-full overflow-hidden">
@@ -441,32 +458,36 @@ function KEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
           </div>
         </div>
         <p className="text-[10px] text-slate-400 mt-1">
-          Notice: Doubling velocity <strong>quadruples</strong> the energy! (KE ∝ v²)
-        </p>
+          
+                            {t('lab.p9derivations_notice_doubling_velocity')} <strong>{t('lab.p9derivations_quadruples')}</strong>  {t('lab.p9derivations_the_energy_ke_v')}
+                          </p>
       </div>
 
       <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-800">
         <p className="text-xs text-yellow-700 dark:text-yellow-300">
-          E_k = ½mv² = ½ × {mass} × {vel}² = ½ × {mass} × {vel * vel} = <strong>{ke.toFixed(0)} J</strong>
+          
+                            {t('lab.p9derivations_e_k_mv')} {mass} × {vel}² = ½ × {mass} × {vel * vel} = <strong>{ke.toFixed(0)} J</strong>
         </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Kinetic energy (J)..."
+          placeholder={t('lab.p9derivations_kinetic_energy_j')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-yellow-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! E_k = {ke.toFixed(0)} J</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try E_k = ½mv²</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_e_k')} {ke.toFixed(0)} J</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_e_k_mv')}</p>}
     </div>
   );
 }
 
 function GPEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [mass, setMass] = useState(5);
   const [height, setHeight] = useState(10);
   const [userAns, setUserAns] = useState('');
@@ -486,12 +507,12 @@ function GPEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Mass (kg)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_mass_kg')}</label>
           <input type="range" min="1" max="20" step="1" value={mass} onChange={e => { setMass(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" />
           <span className="text-sm font-mono text-purple-600">{mass} kg</span>
         </div>
         <div>
-          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Height (m)</label>
+          <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_height_m')}</label>
           <input type="range" min="1" max="50" step="1" value={height} onChange={e => { setHeight(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" />
           <span className="text-sm font-mono text-purple-600">{height} m</span>
         </div>
@@ -520,21 +541,23 @@ function GPEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
 
       <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3 border border-purple-200 dark:border-purple-800">
         <p className="text-xs text-purple-700 dark:text-purple-300">
-          E_p = mgh = {mass} × 9.8 × {height} = <strong>{gpe.toFixed(0)} J</strong>
+          
+                            {t('lab.p9derivations_e_p_mgh')} {mass} × 9.8 × {height} = <strong>{gpe.toFixed(0)} J</strong>
         </p>
       </div>
 
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)}
-          placeholder="Potential energy (J)..."
+          placeholder={t('lab.p9derivations_potential_energy_j')}
           className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-purple-500 outline-none" />
         <button onClick={handleCheck}
           className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg transition-colors">
-          Check
-        </button>
+          
+                            {t('lab.p9derivations_check')}
+                          </button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct! E_p = {gpe.toFixed(0)} J</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try E_p = mgh. g = 9.8 m/s²</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_correct_e_p')} {gpe.toFixed(0)} J</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" />  {t('lab.p9derivations_try_e_p_mgh_g_9_8_m_s')}</p>}
     </div>
   );
 }
@@ -652,6 +675,7 @@ const DERIVATIONS: DerivationModule[] = [
 // ========== Main Component ==========
 
 export default function LabP9Derivations() {
+    const { t } = useTranslate();
   const [activeDerivation, setActiveDerivation] = useState(DERIVATIONS[0].id);
   const [expandedSteps, setExpandedSteps] = useState<Record<string, boolean>>({});
   const [score, setScore] = useState(0);
@@ -691,9 +715,10 @@ export default function LabP9Derivations() {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-4 shrink-0">
         <h1 className="text-xl font-bold flex items-center gap-2">
           <GraduationCap className="w-6 h-6" />
-          Class 9 Physics — Interactive Derivations
-        </h1>
-        <p className="text-sm text-white/80 mt-1">Master 7 essential derivations through step-by-step walkthroughs and hands-on interactive controls</p>
+          
+                            Class 9 Physics Interactive Derivations
+                          </h1>
+        <p className="text-sm text-white/80 mt-1">{t('lab.p9derivations_master_7_essential_derivations')}</p>
       </div>
 
       <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
@@ -701,7 +726,7 @@ export default function LabP9Derivations() {
         <div className="lg:w-64 shrink-0 bg-white dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b] overflow-y-auto">
           <div className="p-3 border-b border-slate-100 dark:border-[#1c1b1b]">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Progress</span>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t('lab.p9derivations_progress')}</span>
               <span className="text-xs font-bold text-indigo-600">{score}/{DERIVATIONS.length}</span>
             </div>
             <div className="w-full h-1.5 bg-slate-100 dark:bg-[#1c1b1b] rounded-full mt-1 overflow-hidden">
@@ -753,14 +778,14 @@ export default function LabP9Derivations() {
 
             {/* Formula Card */}
             <div className={`${cc.light} ${cc.dark} rounded-xl p-4 border ${cc.border} text-center`}>
-              <div className={`text-2xl font-bold font-mono ${cc.text}`}>{current.formula}</div>
+              <div className={`text-2xl font-bold ${cc.text}`}><MathFormula formula={current.formula} className="text-2xl font-bold" /></div>
             </div>
 
             {/* Step-by-step Walkthrough */}
             <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
               <div className="px-4 py-3 border-b border-slate-100 dark:border-[#1c1b1b] flex items-center gap-2">
                 <Sigma className="w-4 h-4 text-indigo-500" />
-                <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Step-by-Step Derivation</span>
+                <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">{t('lab.p9derivations_step_by_step_derivation')}</span>
               </div>
               <div className="p-4">
                 {current.steps.map((step, idx) => {
@@ -795,11 +820,11 @@ export default function LabP9Derivations() {
             <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
               <div className="px-4 py-3 border-b border-slate-100 dark:border-[#1c1b1b] flex items-center gap-2">
                 <Lightbulb className="w-4 h-4 text-amber-500" />
-                <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">Try It Yourself</span>
+                <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">{t('lab.p9derivations_try_it_yourself')}</span>
                 {completed[current.id] && (
                   <span className="ml-auto text-[10px] font-semibold text-emerald-600 flex items-center gap-1">
-                    <CheckCircle className="w-3 h-3" /> Completed
-                  </span>
+                    <CheckCircle className="w-3 h-3" />  {t('lab.p9derivations_completed')}
+                                                        </span>
                 )}
               </div>
               <div className="p-4">

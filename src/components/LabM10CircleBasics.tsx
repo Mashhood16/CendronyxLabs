@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { RefreshCw, CheckCircle2, XCircle, Calculator, Info, Settings2, Compass, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabM10CircleBasics({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'construction' | 'chord'>('construction');
@@ -111,7 +113,7 @@ export default function LabM10CircleBasics({ onExit }: Props) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="bg-slate-50 dark:bg-[#121212] shadow-sm px-6 py-4 flex items-center justify-between z-10">
-  <LabHeader onExit={onExit} title="Lab: Circle Basics & Construction" />
+  <LabHeader onExit={onExit} title={t('lab.m10circlebasics_lab_circle_basics_construction')} />
   </div>
 
   
@@ -121,88 +123,94 @@ export default function LabM10CircleBasics({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10circlebasics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10circlebasics_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
-    <Info className="w-5 h-5 text-blue-500" /> Concepts
-   </h2>
+    <Info className="w-5 h-5 text-blue-500" />  {t('lab.m10circlebasics_concepts')}
+                            </h2>
    <div className="prose prose-slate text-sm space-y-3">
-    <p><strong>1. Finding the Center:</strong> The perpendicular bisector of any chord passes through the center. Using 3 points on an arc, we can find the center by drawing bisectors of two chords.</p>
-    <p><strong>2. Distance to Chord:</strong> The perpendicular from the center to a chord bisects the chord. This forms a right triangle where <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">d² + (L/2)² = r²</code>.</p>
+    <p><strong>{t('lab.m10circlebasics_1_finding_the_center')}</strong>  {t('lab.m10circlebasics_the_perpendicular_bisector_of_')}</p>
+    <p><strong>{t('lab.m10circlebasics_2_distance_to_chord')}</strong>  {t('lab.m10circlebasics_the_perpendicular_from_the_cen')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10circlebasics_d_l_2_r')}</code>.</p>
    </div>
    </div>
 
    <div>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Settings2 className="w-5 h-5 text-blue-500" /> Interactive Modes
-   </h2>
+    <Settings2 className="w-5 h-5 text-blue-500" />  {t('lab.m10circlebasics_interactive_modes')}
+                            </h2>
    
    <div className={`flex flex-col gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-4 `}>
     <button 
     onClick={() => { setMode('construction'); setStep(0); }} 
     className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'construction' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
     >
-    Find Center & Circle
-    </button>
+    
+                                 {t('lab.m10circlebasics_find_center_circle')}
+                                 </button>
     <button 
     onClick={() => setMode('chord')} 
     className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'chord' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
     >
-    Chord Distance Properties
-    </button>
+    
+                                 {t('lab.m10circlebasics_chord_distance_properties')}
+                                 </button>
    </div>
 
    {mode === 'construction' && (
     <div className={`space-y-4 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
     <div className="flex justify-between items-center">
-     <span className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Construction Steps</span>
-     <button onClick={() => setStep(0)} className="text-xs text-blue-600 hover:underline">Reset</button>
+     <span className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m10circlebasics_construction_steps')}</span>
+     <button onClick={() => setStep(0)} className="text-xs text-blue-600 hover:underline">{t('lab.m10circlebasics_reset')}</button>
     </div>
     <div className="space-y-2">
      <div className={`text-sm flex items-center gap-2 ${step >= 1 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-[#a1a1aa]'}`}>
      <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 1 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-[#1c1b1b]'}`}>1</div>
-     Draw Chords AB and BC
-     </div>
+     
+                                          {t('lab.m10circlebasics_draw_chords_ab_and_bc')}
+                                          </div>
      <div className={`text-sm flex items-center gap-2 ${step >= 2 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-[#a1a1aa]'}`}>
      <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 2 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-[#1c1b1b]'}`}>2</div>
-     Perpendicular Bisectors
-     </div>
+     
+                                          {t('lab.m10circlebasics_perpendicular_bisectors')}
+                                          </div>
      <div className={`text-sm flex items-center gap-2 ${step >= 3 ? 'text-green-600 font-medium' : 'text-slate-500 dark:text-[#a1a1aa]'}`}>
      <div className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${step >= 3 ? 'bg-green-500 border-green-500 text-white' : 'border-slate-300 dark:border-[#1c1b1b]'}`}>3</div>
-     Locate Center & Draw Circle
-     </div>
+     
+                                          {t('lab.m10circlebasics_locate_center_draw_circle')}
+                                          </div>
     </div>
     {step < 3 && (
      <button 
      onClick={() => setStep(s => s + 1)}
      className={`w-full mt-4 flex items-center justify-center gap-2 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
      >
-     <Play className="w-4 h-4" /> Next Step
-     </button>
+     <Play className="w-4 h-4" />  {t('lab.m10circlebasics_next_step')}
+                                          </button>
     )}
     </div>
    )}
    
    {mode === 'chord' && (
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">Drag the horizontal chord up and down to observe the relationship between distance to center, chord length, and radius.</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10circlebasics_drag_the_horizontal_chord_up_a')}</p>
    )}
    </div>
   </div>
 
   {/* Middle Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
-   <Compass className="w-5 h-5 text-indigo-500" /> Interactive Canvas
-   </h2>
+   <Compass className="w-5 h-5 text-indigo-500" />  {t('lab.m10circlebasics_interactive_canvas')}
+                        </h2>
 
    <svg 
    ref={svgRef}
@@ -278,12 +286,12 @@ export default function LabM10CircleBasics({ onExit }: Props) {
     {/* Right angle marker */}
     <path d={`M ${cCenter.x} ${chordY + (dy < 0 ? 10 : -10)} L ${cCenter.x + 10} ${chordY + (dy < 0 ? 10 : -10)} L ${cCenter.x + 10} ${chordY}`} fill="none" stroke="#64748b" strokeWidth="1.5" />
 
-    <text x={10} y={30} className="text-sm fill-slate-700 font-medium">Radius (r) = {cRadius}</text>
-    <text x={10} y={50} className="text-sm fill-slate-700 font-medium">Distance (d) = {Math.abs(dy).toFixed(1)}</text>
-    <text x={10} y={70} className="text-sm fill-slate-700 font-medium">Chord (L) = {(halfX * 2).toFixed(1)}</text>
+    <text x={10} y={30} className="text-sm fill-slate-700 font-medium">{t('lab.m10circlebasics_radius_r')} {cRadius}</text>
+    <text x={10} y={50} className="text-sm fill-slate-700 font-medium">{t('lab.m10circlebasics_distance_d')} {Math.abs(dy).toFixed(1)}</text>
+    <text x={10} y={70} className="text-sm fill-slate-700 font-medium">{t('lab.m10circlebasics_chord_l')} {(halfX * 2).toFixed(1)}</text>
     
     <text x={cCenter.x + 5} y={(cCenter.y + chordY)/2} className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa]">d</text>
-    <text x={cCenter.x + halfX/2} y={chordY - 5} className="text-xs font-bold text-red-500">L/2</text>
+    <text x={cCenter.x + halfX/2} y={chordY - 5} className="text-xs font-bold text-red-500">{t('lab.m10circlebasics_l_2')}</text>
     <text x={cCenter.x + halfX/2 + 5} y={(cCenter.y + chordY)/2 - 5} className="text-xs font-bold text-blue-600">r</text>
     </>
    )}
@@ -291,10 +299,10 @@ export default function LabM10CircleBasics({ onExit }: Props) {
   </div>
 
   {/* Right Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Calculator className="w-5 h-5 text-green-500" /> Assessment
-   </h2>
+   <Calculator className="w-5 h-5 text-green-500" />  {t('lab.m10circlebasics_assessment')}
+                        </h2>
    
    <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
    <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
@@ -314,26 +322,27 @@ export default function LabM10CircleBasics({ onExit }: Props) {
     type="number" 
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder="Enter answer (cm)"
+    placeholder={t('lab.m10circlebasics_enter_answer_cm')}
     className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <button 
     onClick={checkAnswer}
     className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.m10circlebasics_check')}
+                                 </button>
    </div>
    
    {feedback === 'correct' && (
     <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <CheckCircle2 className="w-4 h-4" /> Correct! Great job.
-    </div>
+    <CheckCircle2 className="w-4 h-4" />  {t('lab.m10circlebasics_correct_great_job')}
+                                 </div>
    )}
    {feedback === 'incorrect' && (
     <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
-    <XCircle className="w-4 h-4" /> Incorrect. Try again!
-    </div>
+    <XCircle className="w-4 h-4" />  {t('lab.m10circlebasics_incorrect_try_again')}
+                                 </div>
    )}
    </div>
 
@@ -341,8 +350,8 @@ export default function LabM10CircleBasics({ onExit }: Props) {
    onClick={generateQuestion}
    className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
    >
-   <RefreshCw className="w-4 h-4" /> Next Question
-   </button>
+   <RefreshCw className="w-4 h-4" />  {t('lab.m10circlebasics_next_question')}
+                        </button>
   </div>
   </div>
  </div>

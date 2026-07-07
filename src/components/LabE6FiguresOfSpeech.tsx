@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, Activity, Brain , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const questions = [
  {
@@ -61,6 +62,7 @@ const questions = [
 ];
 
 export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [currentIndex, setCurrentIndex] = useState(0);
  const [selectedType, setSelectedType] = useState<string | null>(null);
@@ -128,20 +130,22 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
     className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
    >
     <ArrowLeft className="w-5 h-5" />
-    Go Back
-   </button>
+    
+                             {t('lab.e6figuresofspeech_go_back')}
+                            </button>
    )}
-   <h1 className="text-lg md:text-xl font-bold">Class 6: Figures of Speech</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.e6figuresofspeech_class_6_figures_of_speech')}</h1>
   </div>
   <div className="flex items-center gap-4">
    <div className="text-sm font-medium bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-full">
-   Score: {score}/{questions.length}
+   
+                        {t('lab.e6figuresofspeech_score')} {score}/{questions.length}
    </div>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -153,15 +157,15 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
   {/* Left Column: Interactive Controls */}
   <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-6">
    <div>
-   <h2 className="text-2xl font-bold mb-2">Rhetorical Analyzer</h2>
-   <p className="text-slate-600 dark:text-[#71717a]">Decode the non-literal language to find its true meaning.</p>
+   <h2 className="text-2xl font-bold mb-2">{t('lab.e6figuresofspeech_rhetorical_analyzer')}</h2>
+   <p className="text-slate-600 dark:text-[#71717a]">{t('lab.e6figuresofspeech_decode_the_non_literal_languag')}</p>
    </div>
 
    <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <div className="mb-6">
     <h3 className="text-lg font-semibold mb-3 flex items-center justify-between">
-    <span>1. Identify the Figure of Speech</span>
-    <span className="text-sm font-normal text-slate-500">Question {currentIndex + 1} of {questions.length}</span>
+    <span>{t('lab.e6figuresofspeech_1_identify_the_figure_of_speec')}</span>
+    <span className="text-sm font-normal text-slate-500">{t('lab.e6figuresofspeech_question')} {currentIndex + 1} of {questions.length}</span>
     </h3>
     <div className="grid grid-cols-2 gap-3">
     {['Simile', 'Metaphor', 'Personification', 'Hyperbole'].map(type => (
@@ -169,7 +173,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
      key={type}
      onClick={() => setSelectedType(type)}
      disabled={analyzerState === 'analyzing' || analyzerState === 'success'}
-     className={`w-full p-3 rounded-lg text-sm font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedType === type ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50' } flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}
+     className={`w-full p-3 rounded-lg text-sm font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedType === type ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50' } flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}
      >
      {type}
      </button>
@@ -178,14 +182,14 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
    </div>
 
    <div className="mb-6">
-    <h3 className="text-lg font-semibold mb-3">2. Match the Literal Meaning</h3>
+    <h3 className="text-lg font-semibold mb-3">{t('lab.e6figuresofspeech_2_match_the_literal_meaning')}</h3>
     <div className="space-y-3">
     {currentQ.options.map(opt => (
      <button
      key={opt}
      onClick={() => setSelectedLiteral(opt)}
      disabled={analyzerState === 'analyzing' || analyzerState === 'success'}
-     className={`w-full text-left p-3 rounded-lg text-sm font-medium transition-colors border ${ selectedLiteral === opt ? 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-500 text-emerald-800 dark:text-emerald-200' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50' }  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
+     className={`w-full text-left p-3 rounded-lg text-sm font-medium transition-colors border ${ selectedLiteral === opt ? 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-500 text-emerald-800 dark:text-emerald-200' : 'bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50' }  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
      >
      {opt}
      </button>
@@ -233,7 +237,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
     </div>
 
     <div className="z-10 relative">
-    <p className="text-cyan-600 font-mono text-xs uppercase tracking-widest mb-3">Input Signal</p>
+    <p className="text-cyan-600 font-mono text-xs uppercase tracking-widest mb-3">{t('lab.e6figuresofspeech_input_signal')}</p>
     <p className={`text-xl font-medium ${analyzerState === 'analyzing' ? 'text-cyan-200 animate-pulse' : 'text-white'}`}>
      "{currentQ.sentence}"
     </p>
@@ -243,16 +247,16 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
    {/* Control Panel */}
    <div className="w-full h-20 mt-4 bg-slate-700 rounded-xl border border-slate-600 flex items-center justify-around px-8">
     <div className="flex flex-col items-center gap-2">
-     <div className={`w-4 h-4 rounded-full ${analyzerState === 'analyzing' ? 'bg-yellow-400 animate-ping' : 'bg-slate-500'}`} />
-     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">Process</span>
+     <div className={`w-4 h-4 rounded-full ${analyzerState === 'analyzing' ? 'bg-yellow-400 animate-ping' : 'bg-slate-50 dark:bg-[#000000]0'}`} />
+     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">{t('lab.e6figuresofspeech_process')}</span>
     </div>
     <div className="flex flex-col items-center gap-2">
-     <div className={`w-4 h-4 rounded-full ${analyzerState === 'success' ? 'bg-green-400 shadow-[0_0_10px_rgba(74,222,128,1)]' : 'bg-slate-500'}`} />
-     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">Valid</span>
+     <div className={`w-4 h-4 rounded-full ${analyzerState === 'success' ? 'bg-green-400 shadow-[0_0_10px_rgba(74,222,128,1)]' : 'bg-slate-50 dark:bg-[#000000]0'}`} />
+     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">{t('lab.e6figuresofspeech_valid')}</span>
     </div>
     <div className="flex flex-col items-center gap-2">
-     <div className={`w-4 h-4 rounded-full ${analyzerState === 'error' ? 'bg-red-400 shadow-[0_0_10px_rgba(248,113,113,1)]' : 'bg-slate-500'}`} />
-     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">Error</span>
+     <div className={`w-4 h-4 rounded-full ${analyzerState === 'error' ? 'bg-red-400 shadow-[0_0_10px_rgba(248,113,113,1)]' : 'bg-slate-50 dark:bg-[#000000]0'}`} />
+     <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider">{t('lab.e6figuresofspeech_error')}</span>
     </div>
    </div>
    </div>

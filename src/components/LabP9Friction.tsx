@@ -3,8 +3,10 @@ import { Info, Play, RotateCcw, CheckCircle, XCircle, Lightbulb } from 'lucide-r
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 import PredictionChallenge from './PredictionChallenge';
+import { useTranslate } from '../i18n';
 
 export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -91,7 +93,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Friction Lab" subtitle="Investigate Static, Kinetic, and Rolling Friction" />
+   <LabHeader onExit={onExit} title={t('lab.p9friction_friction_lab')} subtitle={t('lab.subtitle_investigate_static_kinetic')} />
 
    <div className="px-4 pt-2 lg:pt-0">
     
@@ -102,30 +104,26 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
           <div className={`flex items-center gap-2 mb-4 mt-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
       <Info className="w-5 h-5 text-blue-600" />
-      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
+      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p9_friction_section1')}</h2>
      </div>
      <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-      Friction is the force resisting the relative motion of solid surfaces. 
-      <strong> Static friction</strong> must be overcome to start moving. Once moving, a lower <strong>kinetic friction</strong> applies. 
-      <strong> Rolling friction</strong> is generally much less than sliding friction.
+      {t('lab.p9_friction_theory')}
      </p>
 
      <div className="space-y-6">
       <div>
-       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Block Mass: {mass} kg</label>
+       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p9friction_block_mass')} {mass} kg</label>
        <input
         type="range"
         min="1" max="5" step="0.5"
@@ -137,16 +135,16 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
       </div>
 
       <div>
-       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Surface Mode</label>
+       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p9friction_surface_mode')}</label>
        <select
         value={mode}
         onChange={(e) => { setMode(e.target.value as any); handleReset(); }}
         className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-blue-500"
         disabled={pulling}
        >
-        <option value="sliding">Wood on Wood (Sliding)</option>
-        <option value="rolling">Wood on Pencils (Rolling)</option>
-        <option value="unknown">Unknown Material (Sliding)</option>
+        <option value="sliding">{t('lab.p9friction_wood_on_wood_sliding')}</option>
+        <option value="rolling">{t('lab.p9friction_wood_on_pencils_rolling')}</option>
+        <option value="unknown">{t('lab.p9friction_unknown_material_sliding')}</option>
        </select>
       </div>
 
@@ -156,8 +154,8 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
         disabled={pulling || time > 0}
         className={`flex-1 bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 `}
        >
-        <Play className="w-4 h-4" /> Start Pulling
-       </button>
+        <Play className="w-4 h-4" />  {t('lab.p9friction_start_pulling')}
+                                    </button>
        <button
         onClick={handleReset}
         className={`px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:bg-[#121212] flex items-center justify-center flex-col `}
@@ -170,20 +168,21 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
        disabled={time < t_break + 1}
        className={`w-full border-2 border-emerald-500 text-emerald-600 py-2 rounded-md hover:bg-emerald-50 disabled:opacity-50 font-medium flex-col `}
       >
-       Record Max & Kinetic Forces
-      </button>
+       
+                                {t('lab.p9friction_record_max_kinetic_forces')}
+                               </button>
      </div>
     </div>
 
     {/* Column 2: Simulation */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {config.showHints && (
       <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
        <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-       <span><strong>Hint:</strong> F_max = μ_s × m × g. Kinetic friction is usually lower than static. Try the rolling mode to compare!</span>
+       <span><strong>{t('lab.p9friction_hint')}</strong>  {t('lab.p9friction_f_max_s_m_g_kinetic_friction_i')}</span>
       </div>
      )}
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">2. Interactive Simulation</h2>
+     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p9friction_2_interactive_simulation')}</h2>
      <div className={`flex-1 border rounded-lg bg-slate-50 dark:bg-[#121212] relative flex flex-col justify-between lg:overflow- `}>
       <svg viewBox="0 0 400 450" className="w-full h-full">
        {/* Table */}
@@ -211,9 +210,9 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
        <g transform="translate(40, 400)">
         {/* Axes */}
         <line x1="0" y1="0" x2="340" y2="0" stroke="black" strokeWidth="2" />
-        <text x="310" y="-10" fontSize="12" fill="#475569">Time (s)</text>
+        <text x="310" y="-10" fontSize="12" fill="#475569">{t('lab.p9friction_time_s')}</text>
         <line x1="0" y1="0" x2="0" y2="-180" stroke="black" strokeWidth="2" />
-        <text x="10" y="-170" fontSize="12" fill="#475569">Force (N)</text>
+        <text x="10" y="-170" fontSize="12" fill="#475569">{t('lab.p9friction_force_n')}</text>
 
         {/* Y-axis ticks */}
         <line x1="-3" y1="-70" x2="0" y2="-70" stroke="black" />
@@ -240,7 +239,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
     </div>
 
     {/* Column 3: Analysis */}
-    <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {config.predictionPhase && (
       <div className="mb-4">
        <PredictionChallenge
@@ -254,21 +253,21 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
        />
       </div>
      )}
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">3. Data & Analysis</h2>
+     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p9friction_3_data_analysis')}</h2>
      
      <div className="overflow-x-auto mb-6">
       <table className="w-full text-sm text-left border-collapse">
        <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
         <tr>
-         <th className="p-2 border">Mode</th>
-         <th className="p-2 border">Mass (kg)</th>
-         <th className="p-2 border">Peak (N)</th>
-         <th className="p-2 border">Kinetic (N)</th>
+         <th className="p-2 border">{t('lab.p9friction_mode')}</th>
+         <th className="p-2 border">{t('lab.p9friction_mass_kg')}</th>
+         <th className="p-2 border">{t('lab.p9friction_peak_n')}</th>
+         <th className="p-2 border">{t('lab.p9friction_kinetic_n')}</th>
         </tr>
        </thead>
        <tbody>
         {logs.length === 0 ? (
-         <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet.</td></tr>
+         <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.p9friction_no_data_recorded_yet')}</td></tr>
         ) : (
          logs.map((log, i) => (
           <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -284,17 +283,17 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
      </div>
 
      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-      <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+      <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.p9friction_assessment')}</h3>
       <p className="text-sm text-blue-800 mb-4 dark:text-[#ffffff]">
-       Select the "Unknown Material" mode, run the simulation, and record the Peak Force. 
-       Calculate its coefficient of static friction (<span className="italic">μ<sub>s</sub></span>). 
-       <br/><span className="text-xs">(Assume g = 9.8 m/s²)</span>
+       
+                                {t('lab.p9friction_select_the_unknown_material_mo')}<span className="italic">μ<sub>s</sub></span>). 
+       <br/><span className="text-xs">{t('lab.p9friction_assume_g_9_8_m_s')}</span>
       </p>
       
       <div className="flex gap-2 mb-2">
        <input 
         type="number" 
-        placeholder="Enter μs..."
+        placeholder={t('lab.p9friction_enter_s')}
         value={userMu}
         onChange={(e) => setUserMu(e.target.value)}
         className="flex-1 p-2 border rounded-md"
@@ -303,19 +302,20 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
         onClick={checkMu}
         className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
        >
-        Check
-       </button>
+        
+                                     {t('lab.p9friction_check')}
+                                    </button>
       </div>
       
       {assessmentResult === 'correct' && (
        <div className="flex items-center gap-2 text-emerald-600 text-sm mt-2">
-        <CheckCircle className="w-4 h-4" /> Correct! Excellent calculation.
-       </div>
+        <CheckCircle className="w-4 h-4" />  {t('lab.p9friction_correct_excellent_calculation')}
+                                    </div>
       )}
       {assessmentResult === 'incorrect' && (
        <div className="flex items-center gap-2 text-red-600 text-sm mt-2">
-        <XCircle className="w-4 h-4" /> Incorrect. Use formula: μs = Peak Force / (Mass × 9.8)
-       </div>
+        <XCircle className="w-4 h-4" />  {t('lab.p9friction_incorrect_use_formula_s_peak_f')}
+                                    </div>
       )}
      </div>
     </div>

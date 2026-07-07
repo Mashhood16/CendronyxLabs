@@ -1,0 +1,72 @@
+import fs from 'fs';
+
+const enRaw = fs.readFileSync('src/locales/en/translation.json', 'utf8');
+const en = JSON.parse(enRaw);
+const urRaw = fs.readFileSync('src/locales/roman-urdu/translation.json', 'utf8');
+
+// Fix the known broken line first
+let fixed = urRaw;
+
+// Find each key:value pair in the roman-urdu file
+// For any value containing Urdu script, replace it with the English original
+const URDU = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+// Process line by line
+const lines = fixed.split('\n');
+let result = [];
+let matchCount = 0;
+
+for (const line of lines) {
+  if (URDU.test(line)) {
+    // Extract the key
+    const keyMatch = line.match(/"([^"]+)":\s*"/);
+    if (keyMatch) {
+      const key = keyMatch[1];
+      if (en[key] !== undefined) {
+        // Replace the entire value with the English original
+        const indent = line.match(/^(\s*)/)[1];
+        const enVal = JSON.stringify(en[key]);
+        result.push(`${indent}"${key}": ${enVal},`);
+        matchCount++;
+        continue;
+      }
+    }
+  }
+  result.push(line);
+}
+
+let output = result.join('\n');
+
+// Also fix the specific known issues
+output = output.replace('Eₖ = ½ × 1000 × 20² = خبر؟', 'Eₖ = ½ × 1000 × 20² = ?');
+output = output.replace('"مسمیت (م)"', '"Mass (m)"');
+output = output.replace('"عدم کار (v)"', '"Velocity (v)"');
+output = output.replace('"Tawanai (J)...', '"Energy (J)...');
+
+fs.writeFileSync('src/locales/roman-urdu/translation.json', output);
+
+// Verify JSON is valid
+try {
+  const parsed = JSON.parse(output);
+  console.log('JSON is VALID');
+  
+  // Check for remaining Urdu
+  let remaining = 0;
+  Object.values(parsed).forEach(v => { if (v && URDU.test(v)) remaining++; });
+  console.log(`Lines fixed: ${matchCount}`);
+  console.log(`Remaining Urdu entries: ${remaining}`);
+  
+  // If any remain, show them
+  if (remaining > 0) {
+    Object.entries(parsed).forEach(([k, v]) => {
+      if (v && URDU.test(v)) {
+        console.log(`  REMAINING: ${k} = ${v.substring(0, 60)}`);
+      }
+    });
+  } else {
+    console.log('ALL URDU SCRIPT REMOVED!');
+  }
+} catch (e) {
+  console.log('JSON ERROR:', e.message.substring(0, 200));
+  console.log('Around position:', e.message.match(/position (\d+)/)?.[1]);
+}

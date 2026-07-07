@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import type { MouseEvent } from 'react';
 import { ArrowLeft, RefreshCcw, MapPin, Move, RotateCw, CheckCircle2 } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM7Transformations({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'coordinates' | 'translation' | 'rotation'>('coordinates');
 
  // Coordinates State
@@ -53,7 +55,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-2xl font-bold">Unit 7: Transformations & Coordinates</h1>
+  <h1 className="text-2xl font-bold">{t('lab.m7transformations_unit_7_transformations_coordin')}</h1>
   </div>
 
   <div className="flex flex-1 overflow-hidden">
@@ -64,31 +66,33 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
     className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'coordinates' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
     onClick={() => setActiveTab('coordinates')}
    >
-    <MapPin className="w-4 h-4" /> Coordinates
-   </button>
+    <MapPin className="w-4 h-4" />  {t('lab.m7transformations_coordinates')}
+                            </button>
    <button 
     className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'translation' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
     onClick={() => setActiveTab('translation')}
    >
-    <Move className="w-4 h-4" /> Translate
-   </button>
+    <Move className="w-4 h-4" />  {t('lab.m7transformations_translate')}
+                            </button>
    <button 
     className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'rotation' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
     onClick={() => setActiveTab('rotation')}
    >
-    <RotateCw className="w-4 h-4" /> Rotate
-   </button>
+    <RotateCw className="w-4 h-4" />  {t('lab.m7transformations_rotate')}
+                            </button>
    </div>
 
    {activeTab === 'coordinates' && (
    <div className="space-y-4">
-    <h2 className="text-xl font-bold">City Map Coordinates</h2>
+    <h2 className="text-xl font-bold">{t('lab.m7transformations_city_map_coordinates')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Click on the grid to locate the following place:
-    </p>
+    
+                                 {t('lab.m7transformations_click_on_the_grid_to_locate_th')}
+                                 </p>
     <div className="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
     <span className="block text-lg font-bold text-blue-700 dark:text-blue-300">
-     Find the {targetPoint.name} at ({targetPoint.x}, {targetPoint.y})
+     
+                                      {t('lab.m7transformations_find_the')} {targetPoint.name}  {t('lab.m7transformations_at')}{targetPoint.x}, {targetPoint.y})
     </span>
     </div>
     
@@ -103,22 +107,23 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
     onClick={generateNewTarget}
     className="flex items-center justify-center gap-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    <RefreshCcw className="w-4 h-4" /> New Target
-    </button>
+    <RefreshCcw className="w-4 h-4" />  {t('lab.m7transformations_new_target')}
+                                 </button>
    </div>
    )}
 
    {activeTab === 'translation' && (
    <div className="space-y-4">
-    <h2 className="text-xl font-bold">Sliding Shapes</h2>
+    <h2 className="text-xl font-bold">{t('lab.m7transformations_sliding_shapes')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Translate the triangle by changing the x and y offsets. Notice how the shape slides without rotating or changing size.
-    </p>
+    
+                                 {t('lab.m7transformations_translate_the_triangle_by_chan')}
+                                 </p>
     
     <div className="space-y-6 bg-slate-100 dark:bg-slate-700 p-4 rounded-lg">
     <div>
      <div className="flex justify-between mb-1">
-     <label className="font-medium text-sm">Horizontal Shift (x)</label>
+     <label className="font-medium text-sm">{t('lab.m7transformations_horizontal_shift_x')}</label>
      <span className="font-bold">{transX}</span>
      </div>
      <input 
@@ -129,7 +134,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="font-medium text-sm">Vertical Shift (y)</label>
+     <label className="font-medium text-sm">{t('lab.m7transformations_vertical_shift_y')}</label>
      <span className="font-bold">{transY}</span>
      </div>
      <input 
@@ -144,14 +149,15 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
 
    {activeTab === 'rotation' && (
    <div className="space-y-4">
-    <h2 className="text-xl font-bold">Rotational Symmetry</h2>
+    <h2 className="text-xl font-bold">{t('lab.m7transformations_rotational_symmetry')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Rotate the windmill to see its order of rotational symmetry. How many times does it look exactly the same in one full turn (360°)?
-    </p>
+    
+                                 {t('lab.m7transformations_rotate_the_windmill_to_see_its')}
+                                 </p>
     
     <div className="bg-slate-100 dark:bg-slate-700 p-4 rounded-lg">
     <div className="flex justify-between mb-1">
-     <label className="font-medium text-sm">Angle of Rotation</label>
+     <label className="font-medium text-sm">{t('lab.m7transformations_angle_of_rotation')}</label>
      <span className="font-bold text-indigo-600 dark:text-indigo-400">{angle}°</span>
     </div>
     <input 
@@ -162,7 +168,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
     </div>
 
     <div className="border border-slate-200 dark:border-[#1c1b1b] p-4 rounded-lg">
-    <p className="text-sm font-medium">Matches original shape at:</p>
+    <p className="text-sm font-medium">{t('lab.m7transformations_matches_original_shape_at')}</p>
     <div className="flex gap-2 mt-3">
      {[90, 180, 270, 360].map(a => (
      <span key={a} className={`px-2 py-1 rounded text-xs font-bold transition-colors ${angle >= a ? 'bg-green-500 text-white' : 'bg-slate-200 dark:bg-slate-600'}`}>
@@ -170,7 +176,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
      </span>
      ))}
     </div>
-    <p className="text-xs mt-4 text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">Order of symmetry: 4</p>
+    <p className="text-xs mt-4 text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">{t('lab.m7transformations_order_of_symmetry_4')}</p>
     </div>
    </div>
    )}
@@ -185,7 +191,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
    onClick={activeTab === 'coordinates' ? handleGridClick : undefined}
    >
    {/* Grid Lines */}
-   <g className="text-slate-200 dark:text-slate-700" stroke="currentColor" strokeWidth="1">
+   <g className="text-slate-200 dark:text-slate-700 dark:text-slate-300" stroke="currentColor" strokeWidth="1">
     {Array.from({ length: 11 }).map((_, i) => (
     <line key={`v-${i}`} x1={i * 40} y1="0" x2={i * 40} y2="400" />
     ))}

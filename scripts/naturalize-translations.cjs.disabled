@@ -1,0 +1,183 @@
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+// RARE/FORMAL Urdu words that should be REPLACED with natural alternatives
+const REPLACEMENTS = [
+  { pattern: 'Asbaaq', replacement: 'Modules' },
+  { pattern: 'Mazameen', replacement: 'Subjects' },
+  { pattern: 'Unwan', replacement: 'Title' },
+  { pattern: 'Khatam Karein', replacement: 'Delete' },
+  { pattern: 'Mehfooz Karein', replacement: 'Save' },
+  { pattern: 'Tarmeem Karein', replacement: 'Edit' },
+  { pattern: 'Tasdeeq Karein', replacement: 'Confirm' },
+  { pattern: 'Pesh Karein', replacement: 'Submit' },
+  { pattern: 'Mansookh Karein', replacement: 'Cancel' },
+  { pattern: 'Band Karein', replacement: 'Close' },
+  { pattern: 'Janch Karein', replacement: 'Check' },
+  { pattern: 'Janch', replacement: 'Check' },
+  { pattern: 'Dobara Set Karein', replacement: 'Reset' },
+  { pattern: 'Shamil Karein', replacement: 'Add' },
+  { pattern: 'Talash Karein', replacement: 'Search' },
+  { pattern: 'Record Karein', replacement: 'Record' },
+  { pattern: 'Hisab Karein', replacement: 'Calculate' },
+  { pattern: 'Pehchan Karein', replacement: 'Identify' },
+  { pattern: 'Tajurba', replacement: 'Experiment' },
+  { pattern: 'Tajziya', replacement: 'Analysis' },
+  { pattern: 'Tajzia', replacement: 'Analysis' },
+  { pattern: 'Mushahida', replacement: 'Observation' },
+  { pattern: 'Darja Hararat', replacement: 'Temperature' },
+  { pattern: 'Dabao', replacement: 'Pressure' },
+  { pattern: 'Kasaafat', replacement: 'Density' },
+  { pattern: 'Tawanai', replacement: 'Energy' },
+  { pattern: 'Tawanayi', replacement: 'Energy' },
+  { pattern: 'Muzahmat', replacement: 'Resistance' },
+  { pattern: 'Tawaddud', replacement: 'Frequency' },
+  { pattern: 'Tarkeeb', replacement: 'Concentration' },
+  { pattern: 'Halool', replacement: 'Solution' },
+  { pattern: 'Amezish', replacement: 'Mixture' },
+  { pattern: 'Murakkab', replacement: 'Compound' },
+  { pattern: 'Ansar', replacement: 'Element' },
+  { pattern: 'Salmiya', replacement: 'Molecule' },
+  { pattern: 'Joher', replacement: 'Atom' },
+  { pattern: 'Muharrak', replacement: 'Catalyst' },
+  { pattern: 'Pawar', replacement: 'Yield' },
+  { pattern: 'Sharh', replacement: 'Rate' },
+  { pattern: 'Natija', replacement: 'Result' },
+  { pattern: 'Waqt', replacement: 'Time' },
+  { pattern: 'Qeemat', replacement: 'Value' },
+  { pattern: 'Tariqa', replacement: 'Method' },
+  { pattern: 'Nateeja', replacement: 'Conclusion' },
+  { pattern: 'Mufroza', replacement: 'Hypothesis' },
+  { pattern: 'Paimaish', replacement: 'Measurement' },
+  { pattern: 'Jaiza', replacement: 'Assessment' },
+  { pattern: 'Mawazna', replacement: 'Comparison' },
+  { pattern: 'Tareef', replacement: 'Definition' },
+  { pattern: 'Fehrist', replacement: 'List' },
+  { pattern: 'Tashreeh', replacement: 'Description' },
+  { pattern: 'Wazahat', replacement: 'Explanation' },
+  { pattern: 'Quwwat', replacement: 'Force' },
+  { pattern: 'Baha', replacement: 'Current' },
+  { pattern: 'Zaban', replacement: 'Language' },
+  { pattern: 'Nap', replacement: 'Size' },
+  { pattern: 'Ikhtiyar', replacement: 'Option' },
+  { pattern: 'Halat', replacement: 'Status' },
+  { pattern: 'Taraqqi', replacement: 'Progress' },
+  { pattern: 'Khabardar', replacement: 'Warning' },
+  { pattern: 'Khata', replacement: 'Error' },
+  { pattern: 'Kamyabi', replacement: 'Success' },
+  { pattern: 'Nakam', replacement: 'Fail' },
+  { pattern: 'Intibah', replacement: 'Notifications' },
+  { pattern: 'Maqsood', replacement: 'Objective' },
+  { pattern: 'Satah', replacement: 'Surface' },
+  { pattern: 'Ufqi', replacement: 'Horizontal' },
+  { pattern: 'Amoodi', replacement: 'Vertical' },
+  { pattern: 'Rokain', replacement: 'Stop' },
+  { pattern: 'Kholen', replacement: 'Open' },
+  { pattern: 'Bahir Niklein', replacement: 'Exit' },
+  { pattern: 'Tawaqquf', replacement: 'Pause' },
+  { pattern: 'Jari Rakhein', replacement: 'Continue' },
+  { pattern: 'Misaal', replacement: 'Example' },
+  { pattern: 'Muntakhab', replacement: 'Selected' },
+  { pattern: 'Tahleel', replacement: 'Analysis' },
+  { pattern: 'Tahlil', replacement: 'Analysis' },
+  { pattern: 'Tashkhees', replacement: 'Diagnosis' },
+  { pattern: 'Zawaal', replacement: 'Decay' },
+  { pattern: 'Ikhtitami', replacement: 'Final' },
+  { pattern: 'Izmitisab', replacement: 'Learning' },
+  { pattern: 'Jeewatiyat', replacement: 'Biology' },
+  { pattern: 'Hawalajati', replacement: 'Reference' },
+  { pattern: 'Khusoosiyaat', replacement: 'Characteristics' },
+  { pattern: 'Masawatain', replacement: 'Equations' },
+  { pattern: 'Mutaghayyiraat', replacement: 'Variables' },
+  { pattern: 'Roshnishiddat', replacement: 'Light Intensity' },
+  { pattern: 'Tafael', replacement: 'Reaction' },
+  { pattern: 'Uzv', replacement: 'Organ' },
+  { pattern: 'Hajam', replacement: 'Volume' },
+];
+
+// Patterns to detect any remaining unnatural words (fallback safety net)
+const RARE_WORD_PATTERNS = [
+  /\bTa'amul\b/i, /\bTaamul\b/i,
+  /\bTalash\b/i, /\bTawanai\b/i, /\bTawanayi\b/i,
+  /\bQuwwat\b/i, /\bDabao\b/i, /\bDabaa\b/i,
+  /\bMuzahmat\b/i, /\bTawaddud\b/i,
+  /\bTarkeeb\b/i, /\bHalool\b/i,
+  /\bAmezish\b/i, /\bMurakkab\b/i, /\bAnsar\b/i,
+  /\bSalmiya\b/i, /\bJoher\b/i, /\bMuharrak\b/i,
+  /\bPawar\b/i, /\bSharh\b/i, /\bManshoor\b/i,
+  /\bBabat\b/i, /\bTashreeh\b/i, /\bMawazna\b/i,
+  /\bTareef\b/i, /\bFehrist\b/i, /\bJaiza\b/i,
+  /\bTarmeem\b/i, /\bTawaqquf\b/i, /\bMansookh\b/i,
+  /\bIntibah\b/i, /\bMaqsood\b/i,
+  /\bMushahida\b/i, /\bNateeja\b/i, /\bMufroza\b/i,
+  /\bKasaafat\b/i, /\bWazahat\b/i, /\bUnwan\b/i,
+  /\bPaimaish\b/i, /\bTajziya\b/i, /\bTajzia\b/i,
+  /\bHalat\b/i, /\bTaraqqi\b/i,
+  /\bKhabardar\b/i, /\bKhata\b/i, /\bNatija\b/i,
+  /\bNumber\b/i, /\bMehfooz\b/i,
+  /\bShamil Karein\b/i, /\bTasdeeq\b/i, /\bPesh\b/i,
+  /\bBahir Niklein\b/i, /\bMadad\b/i, /\bIshara\b/i,
+  /\bSatah\b/i, /\bUfqi\b/i, /\bAmoodi\b/i,
+  /\bAsbaaq\b/i, /\bMazameen\b/i,
+  /\bMuntakhab\b/i, /\bTahleel\b/i, /\bTahlil\b/i,
+  /\bTashkhees\b/i, /\bZawaal\b/i,
+  /\bIkhtitami\b/i, /\bIzmitisab\b/i,
+  /\bJeewatiyat\b/i, /\bHawalajati\b/i,
+  /\bKhusoosiyaat\b/i, /\bMasawatain\b/i,
+  /\bMutaghayyiraat\b/i, /\bRoshnishiddat\b/i,
+  /\bTafael\b/i, /\bUzv\b/i,
+  /\bHajam\b/i,
+];
+
+function isNatural(text) {
+  if (!text) return true;
+  for (const pattern of RARE_WORD_PATTERNS) {
+    if (pattern.test(text)) return false;
+  }
+  return true;
+}
+
+// Apply replacements
+let wordReplacements = 0;
+let revertedToEnglish = 0;
+
+Object.keys(en).forEach(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  if (!ev || !uv || uv === ev) return;
+  
+  let updated = uv;
+  const sorted = [...REPLACEMENTS].sort((a, b) => b.pattern.length - a.pattern.length);
+  for (const { pattern, replacement } of sorted) {
+    const regex = new RegExp(pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    const before = updated;
+    updated = updated.replace(regex, replacement);
+    if (updated !== before) wordReplacements++;
+  }
+  
+  if (!isNatural(updated)) {
+    ur[k] = ev;
+    revertedToEnglish++;
+  } else {
+    ur[k] = updated;
+  }
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+
+console.log('Word replacements:', wordReplacements);
+console.log('Reverted to English:', revertedToEnglish);
+
+const translated = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && uv && uv !== ev;
+});
+console.log('Total translations:', translated.length);
+
+let remaining = 0;
+translated.forEach(k => { if (!isNatural(ur[k])) remaining++; });
+console.log('Remaining unnatural:', remaining);

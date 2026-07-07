@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { Compass } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6Magnetism({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [view, setView] = useState<'field' | 'alignment'>('field');
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 10: Magnetism" />
+  <LabHeader onExit={onExit} title={t('lab.s6magnetism_unit_10_magnetism')} />
 
   <div className="flex-1 flex flex-col p-6 items-center">
   
@@ -20,20 +22,22 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
    onClick={() => setView('field')}
    className={`px-6 py-2 rounded font-bold border-2 ${view === 'field' ? 'border-red-500 bg-red-50 text-red-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-red-300'}`}
    >
-   Activity 10.1: Magnetic Field Lines
-   </button>
+   
+                        {t('lab.s6magnetism_activity_10_1_magnetic_field_l')}
+                        </button>
    <button 
    onClick={() => setView('alignment')}
    className={`px-6 py-2 rounded font-bold border-2 ${view === 'alignment' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-blue-300'}`}
    >
-   Activity 10.3: Natural Pole Alignment
-   </button>
+   
+                        {t('lab.s6magnetism_activity_10_3_natural_pole_ali')}
+                        </button>
   </div>
 
   {view === 'field' && (
    <div className="w-full max-w-4xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center relative overflow-hidden">
-   <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Plotting Magnetic Fields</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-12 max-w-xl text-center">Iron filings or plotting compasses align with the invisible magnetic field lines. Notice how lines always emerge from the North pole and curve towards the South pole.</p>
+   <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.s6magnetism_plotting_magnetic_fields')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-12 max-w-xl text-center">{t('lab.s6magnetism_iron_filings_or_plotting_compa')}</p>
    
    <div className="relative w-[600px] h-[400px] flex items-center justify-center">
     
@@ -80,15 +84,15 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
 
   {view === 'alignment' && (
    <div className="w-full max-w-4xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center">
-   <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Earth's Magnetic Alignment</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-12 max-w-xl text-center">A freely suspended bar magnet will always come to rest aligning itself with the Earth's geographic North-South axis.</p>
+   <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.s6magnetism_earth_s_magnetic_alignment')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-12 max-w-xl text-center">{t('lab.s6magnetism_a_freely_suspended_bar_magnet_')}</p>
    
    <div className="relative w-96 h-96 border-4 border-slate-200 dark:border-[#1c1b1b] rounded-full bg-slate-50 dark:bg-[#121212] flex items-center justify-center overflow-hidden">
     {/* Compass directions */}
-    <div className="absolute top-4 font-bold text-red-600">Earth North</div>
-    <div className="absolute bottom-4 font-bold text-blue-600">Earth South</div>
-    <div className="absolute left-4 font-bold text-slate-400 rotate-[-90deg]">West</div>
-    <div className="absolute right-4 font-bold text-slate-400 rotate-90">East</div>
+    <div className="absolute top-4 font-bold text-red-600">{t('lab.s6magnetism_earth_north')}</div>
+    <div className="absolute bottom-4 font-bold text-blue-600">{t('lab.s6magnetism_earth_south')}</div>
+    <div className="absolute left-4 font-bold text-slate-400 rotate-[-90deg]">{t('lab.s6magnetism_west')}</div>
+    <div className="absolute right-4 font-bold text-slate-400 rotate-90">{t('lab.s6magnetism_east')}</div>
 
     {/* Stand */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-amber-800 z-20"></div>

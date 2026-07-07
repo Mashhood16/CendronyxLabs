@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [temp, setTemp] = useState(300); 
  const [pressure, setPressure] = useState(60); 
@@ -75,7 +77,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Hydration of Ethene" />
+  <LabHeader onExit={onExit} title={t('lab.c10ethanolhydration_virtual_lab_hydration_of_ethen')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -84,67 +86,69 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10ethanolhydration_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10ethanolhydration_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:flex-1 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10ethanolhydration_theory_setup')}</h2>
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-2 text-sm">
-   <p><strong>Hydration</strong> of ethene is an addition reaction used for the industrial manufacture of ethanol.</p>
+   <p><strong>{t('lab.c10ethanolhydration_hydration')}</strong>  {t('lab.c10ethanolhydration_of_ethene_is_an_addition_react')}</p>
    <div className={`bg-indigo-50 p-3 rounded font-mono text-center text-indigo-900 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff] flex-col `}>
-    C₂H₄(g) + H₂O(g) ⇌ C₂H₅OH(g)
-   </div>
-   <p><strong>Conditions:</strong> Concentrated phosphoric acid (H₃PO₄) catalyst, high temperature (300°C), and high pressure (60 atm).</p>
-   <p><strong>Kinetics vs Equilibrium:</strong> The reaction is exothermic. A lower temperature favors the yield of ethanol, but lowers the rate. 300°C is a compromise temperature.</p>
+    
+                             {t('lab.c10ethanolhydration_c_h_g_h_o_g_c_h_oh_g')}
+                            </div>
+   <p><strong>{t('lab.c10ethanolhydration_conditions')}</strong>  {t('lab.c10ethanolhydration_concentrated_phosphoric_acid_h')}</p>
+   <p><strong>{t('lab.c10ethanolhydration_kinetics_vs_equilibrium')}</strong>  {t('lab.c10ethanolhydration_the_reaction_is_exothermic_a_l')}</p>
    </div>
    
    <div className="flex-1 overflow-auto">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">Experiment Controls</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">{t('lab.c10ethanolhydration_experiment_controls')}</h3>
    <div className="space-y-4">
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Temperature (°C)</span>
+     <span>{t('lab.c10ethanolhydration_temperature_c')}</span>
      <span>{temp} °C</span>
     </label>
     <input type="range" min="100" max="500" value={temp} onChange={(e) => { setTemp(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Pressure (atm)</span>
-     <span>{pressure} atm</span>
+     <span>{t('lab.c10ethanolhydration_pressure_atm')}</span>
+     <span>{pressure}  {t('lab.c10ethanolhydration_atm')}</span>
     </label>
     <input type="range" min="10" max="100" value={pressure} onChange={(e) => { setPressure(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
     <div className="flex items-center gap-2 mt-2">
     <input type="checkbox" id="catalyst" checked={catalyst} onChange={(e) => { setCatalyst(e.target.checked); setTime(0); }} disabled={running} className="w-4 h-4" />
-    <label htmlFor="catalyst" className="text-sm font-semibold">H₃PO₄ Catalyst Present</label>
+    <label htmlFor="catalyst" className="text-sm font-semibold">{t('lab.c10ethanolhydration_h_po_catalyst_present')}</label>
     </div>
    </div>
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">Simulation</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">{t('lab.c10ethanolhydration_simulation')}</h2>
    
    <div className="flex-1 w-full flex flex-col items-center justify-center relative">
    <svg viewBox="0 0 300 200" className="w-full h-auto max-h-full drop-shadow-xl">
     <rect x="100" y="50" width="100" height="100" rx="10" fill="#ddd" stroke="#333" strokeWidth="2" />
     <path d="M 20 70 L 100 70" stroke="#333" strokeWidth="4" />
-    <text x="20" y="60" fontSize="12">Ethene</text>
+    <text x="20" y="60" fontSize="12">{t('lab.c10ethanolhydration_ethene')}</text>
     <path d="M 20 130 L 100 130" stroke="#333" strokeWidth="4" />
-    <text x="20" y="120" fontSize="12">Steam</text>
+    <text x="20" y="120" fontSize="12">{t('lab.c10ethanolhydration_steam')}</text>
     
     <path d="M 200 100 L 280 100" stroke="#333" strokeWidth="4" />
-    <text x="220" y="90" fontSize="12">Ethanol</text>
+    <text x="220" y="90" fontSize="12">{t('lab.c10ethanolhydration_ethanol')}</text>
     
     <rect x="110" y="60" width="80" height="80" fill={catalyst ? "rgba(255, 200, 0, 0.3)" : "rgba(100, 100, 100, 0.1)"} />
     <text x="150" y="105" textAnchor="middle" fontSize="14" fontWeight="bold">{temp}°C</text>
-    <text x="150" y="125" textAnchor="middle" fontSize="12">{pressure} atm</text>
+    <text x="150" y="125" textAnchor="middle" fontSize="12">{pressure}  {t('lab.c10ethanolhydration_atm')}</text>
     
     {running && time > 0 && Array.from({length: 6}).map((_, i) => (
     <circle key={i} cx={200 + (time % 20)*4} cy={95 + (i%2)*10} r="3" fill="blue" opacity="0.5" />
@@ -153,11 +157,11 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
 
    <div className="w-full mt-4 text-xs text-slate-600 dark:text-[#a1a1aa] space-y-1">
     <div className="flex justify-between">
-    <span className="font-bold text-slate-800 dark:text-[#ffffff]">Reaction Rate (rel):</span>
+    <span className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.c10ethanolhydration_reaction_rate_rel')}</span>
     <span className="font-mono">{rate.toFixed(2)}</span>
     </div>
     <div className="flex justify-between">
-    <span className="font-bold text-slate-800 dark:text-[#ffffff]">Single-Pass Yield:</span>
+    <span className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.c10ethanolhydration_single_pass_yield')}</span>
     <span className="font-mono text-indigo-700 font-bold">{yieldPercent.toFixed(1)} %</span>
     </div>
    </div>
@@ -175,34 +179,35 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Data & Analysis</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10ethanolhydration_data_analysis')}</h2>
    
    <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded flex justify-between items-center">
    <div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Eq Yield</div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10ethanolhydration_eq_yield')}</div>
     <div className="text-2xl font-mono text-indigo-700">{yieldPercent.toFixed(1)}%</div>
    </div>
    <button onClick={handleLog} disabled={time === 0} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    Record Data
-   </button>
+    
+                             {t('lab.c10ethanolhydration_record_data')}
+                            </button>
    </div>
 
    <div className="flex-1 overflow-auto border rounded bg-slate-50 dark:bg-[#121212]">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-200 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="p-2">Run</th>
-     <th className="p-2">T(°C)</th>
-     <th className="p-2">P(atm)</th>
-     <th className="p-2">Cat</th>
-     <th className="p-2">Rate</th>
-     <th className="p-2">Yield(%)</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_run')}</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_t_c')}</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_p_atm')}</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_cat')}</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_rate')}</th>
+     <th className="p-2">{t('lab.c10ethanolhydration_yield')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
-     <tr><td colSpan={6} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet.</td></tr>
+     <tr><td colSpan={6} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.c10ethanolhydration_no_data_recorded_yet')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="border-b">
@@ -221,11 +226,12 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
 
    <div className="bg-indigo-50 border border-indigo-200 rounded p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
    <h3 className="font-bold text-indigo-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
-    <CheckCircle size={18} /> Knowledge Check
-   </h3>
+    <CheckCircle size={18} />  {t('lab.c10ethanolhydration_knowledge_check')}
+                            </h3>
    <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    What is the <strong>atom economy (%)</strong> for the hydration of ethene to produce ethanol?
-   </p>
+    
+                             {t('lab.c10ethanolhydration_what_is_the')} <strong>{t('lab.c10ethanolhydration_atom_economy')}</strong>  {t('lab.c10ethanolhydration_for_the_hydration_of_ethene_to')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
@@ -235,8 +241,9 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
     className="flex-1 px-3 py-1 border rounded"
     />
     <button onClick={checkAnswer} className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-    Check
-    </button>
+    
+                                 {t('lab.c10ethanolhydration_check')}
+                                 </button>
    </div>
    {feedback && (
     <p className={`mt-2 text-sm font-semibold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>

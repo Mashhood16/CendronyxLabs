@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { User, Users, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [chatLog, setChatLog] = useState<{sender: 'teacher' | 'student', text: string}[]>([
  { sender: 'teacher', text: "Class, today we're discussing deviant behavior online, like cyberbullying or spreading rumors. Imagine you see a classmate making hurtful comments about someone else on social media. What is your first reaction?" }
  ]);
@@ -64,10 +66,10 @@ export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Class Discussion on Deviance" />
+  <LabHeader onExit={onExit} title={t('lab.c7deviancediscussion_class_discussion_on_deviance')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Participate in the dialogue by choosing responses that demonstrate empathy, tolerance, and conflict resolution.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7deviancediscussion_participate_in_the_dialogue_by')}</p>
 
   <div className="max-w-3xl mx-auto w-full flex flex-col h-[700px] bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
    
@@ -96,15 +98,15 @@ export default function LabC7DevianceDiscussion({ onExit }: LabProps) {
    {isComplete && (
     <div className="mt-8 bg-emerald-100 text-emerald-800 p-4 rounded-xl flex items-center justify-center border border-emerald-300 shadow-sm animate-in zoom-in">
      <CheckCircle className="w-6 h-6 mr-3" />
-     <span className="font-bold">Discussion Complete!</span> You've mastered digital conflict resolution.
-    </div>
+     <span className="font-bold">{t('lab.c7deviancediscussion_discussion_complete')}</span>  {t('lab.c7deviancediscussion_you_ve_mastered_digital_confli')}
+                                 </div>
    )}
    </div>
 
    {/* Response Options */}
    {!isComplete && chatLog[chatLog.length - 1].sender === 'teacher' && (
    <div className="p-6 bg-slate-50 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-3">
-    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Select your response:</h3>
+    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{t('lab.c7deviancediscussion_select_your_response')}</h3>
     {scenarios[scenarioIndex].options.map((opt, i) => (
     <button
      key={i}

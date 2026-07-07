@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { Utensils, Scissors as KnifeIcon } from 'lucide-react'; // Using Scissors for Knife
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6DigestionMechanics({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [bananaState, setBananaState] = useState<'whole' | 'pieces' | 'crushed' | 'mashed'>('whole');
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-orange-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 4: Physical Digestion Mechanics" />
+  <LabHeader onExit={onExit} title={t('lab.s6digestionmechanics_unit_4_physical_digestion_mech')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-900 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-4">Relating Tools to Digestion</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Physical digestion involves breaking down food into smaller pieces without chemical changes. Apply the tools to the banana to simulate this process.</p>
+   <h2 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-4">{t('lab.s6digestionmechanics_relating_tools_to_digestion')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s6digestionmechanics_physical_digestion_involves_br')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -25,8 +27,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
     className="flex flex-col items-center gap-3 p-4 bg-orange-100 dark:bg-[#121212] rounded-xl hover:bg-orange-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-orange-200 dark:border-[#1c1b1b]"
    >
     <KnifeIcon className="w-8 h-8 text-orange-700" />
-    <span className="font-bold text-orange-900 dark:text-orange-200">Knife</span>
-    <span className="text-xs text-orange-700 dark:text-orange-300 font-medium">(Incisors)</span>
+    <span className="font-bold text-orange-900 dark:text-orange-200">{t('lab.s6digestionmechanics_knife')}</span>
+    <span className="text-xs text-orange-700 dark:text-orange-300 font-medium">{t('lab.s6digestionmechanics_incisors')}</span>
    </button>
    <button 
     onClick={() => setBananaState('crushed')}
@@ -34,8 +36,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
     className="flex flex-col items-center gap-3 p-4 bg-amber-100 dark:bg-[#121212] rounded-xl hover:bg-amber-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-amber-200 dark:border-[#1c1b1b]"
    >
     <Utensils className="w-8 h-8 text-amber-700" />
-    <span className="font-bold text-amber-900 dark:text-amber-200">Spoon</span>
-    <span className="text-xs text-amber-700 dark:text-amber-300 font-medium">(Premolars)</span>
+    <span className="font-bold text-amber-900 dark:text-amber-200">{t('lab.s6digestionmechanics_spoon')}</span>
+    <span className="text-xs text-amber-700 dark:text-amber-300 font-medium">{t('lab.s6digestionmechanics_premolars')}</span>
    </button>
    <button 
     onClick={() => setBananaState('mashed')}
@@ -43,8 +45,8 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
     className="flex flex-col items-center gap-3 p-4 bg-yellow-100 dark:bg-[#121212] rounded-xl hover:bg-yellow-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-yellow-200 dark:border-[#1c1b1b]"
    >
     <Utensils className="w-8 h-8 text-yellow-700 rotate-180" />
-    <span className="font-bold text-yellow-900 dark:text-yellow-200">Fork</span>
-    <span className="text-xs text-yellow-700 dark:text-yellow-300 font-medium">(Molars/Tongue)</span>
+    <span className="font-bold text-yellow-900 dark:text-yellow-200">{t('lab.s6digestionmechanics_fork')}</span>
+    <span className="text-xs text-yellow-700 dark:text-yellow-300 font-medium">{t('lab.s6digestionmechanics_molars_tongue')}</span>
    </button>
    </div>
   </div>
@@ -92,8 +94,9 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
 
   {bananaState === 'mashed' && (
    <div className="mt-8 p-4 bg-green-100 dark:bg-emerald-900/50 text-green-800 dark:text-emerald-200 rounded-xl border border-green-200 dark:border-emerald-800 text-center font-medium max-w-xl">
-   You successfully simulated physical digestion! The knife acted as incisors to cut, the spoon acted as premolars to crush, and the fork (with milk/saliva) acted as molars and the tongue to mash it into a swallowable bolus.
-   <button onClick={() => setBananaState('whole')} className="block mx-auto mt-4 px-4 py-2 bg-green-600 text-white rounded font-bold hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">Reset</button>
+   
+                        {t('lab.s6digestionmechanics_you_successfully_simulated_phy')}
+                        <button onClick={() => setBananaState('whole')} className="block mx-auto mt-4 px-4 py-2 bg-green-600 text-white rounded font-bold hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">{t('lab.s6digestionmechanics_reset')}</button>
    </div>
   )}
 

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Wind } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7MeasuringLungCapacity({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [breathing, setBreathing] = useState(false);
  const [capacity, setCapacity] = useState(0); // 0 to 100
  const [done, setDone] = useState(false);
@@ -38,12 +40,12 @@ export default function LabS7MeasuringLungCapacity({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-blue-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 2: Measuring Lung Capacity" />
+  <LabHeader onExit={onExit} title={t('lab.s7measuringlungcapacity_unit_2_measuring_lung_capacity')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-blue-800 mb-4 dark:text-[#ffffff]">Water Displacement Method</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Take a deep breath and blow into the tube. The air from your lungs will travel into the inverted bottle and push the water out. The volume of displaced water equals your lung capacity.</p>
+   <h2 className="text-2xl font-bold text-blue-800 mb-4 dark:text-[#ffffff]">{t('lab.s7measuringlungcapacity_water_displacement_method')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7measuringlungcapacity_take_a_deep_breath_and_blow_in')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -58,8 +60,9 @@ export default function LabS7MeasuringLungCapacity({ onExit }: LabProps) {
     onClick={reset}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7measuringlungcapacity_reset')}
+                            </button>
    </div>
   </div>
 
@@ -101,13 +104,13 @@ export default function LabS7MeasuringLungCapacity({ onExit }: LabProps) {
 
    {/* Rubber Tube */}
    <div className="absolute bottom-4 -left-16 w-48 h-32 border-b-8 border-r-8 border-amber-600/80 rounded-br-3xl z-30 pointer-events-none" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 80% 0, 80% 80%, 0 80%)' }}></div>
-   <div className="absolute bottom-24 -left-20 text-slate-500 dark:text-[#71717a] font-bold bg-slate-50 dark:bg-[#121212] p-2 rounded shadow-sm z-40 border">Blow Here <Wind className="inline w-4 h-4" /></div>
+   <div className="absolute bottom-24 -left-20 text-slate-500 dark:text-[#71717a] font-bold bg-slate-50 dark:bg-[#121212] p-2 rounded shadow-sm z-40 border">{t('lab.s7measuringlungcapacity_blow_here')} <Wind className="inline w-4 h-4" /></div>
   </div>
 
   {done && (
    <div className="mt-12 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-l-4 border-blue-500 max-w-xl animate-fade-in">
-   <h4 className="font-bold text-lg mb-2">Measurement Complete</h4>
-   <p>You displaced <strong>{capacity * 30} mL</strong> of water! The average human lung capacity is around 3000 to 4000 mL, but taking a single deep breath and exhaling completely measures your <em>vital capacity</em>.</p>
+   <h4 className="font-bold text-lg mb-2">{t('lab.s7measuringlungcapacity_measurement_complete')}</h4>
+   <p>{t('lab.s7measuringlungcapacity_you_displaced')} <strong>{capacity * 30} mL</strong>  {t('lab.s7measuringlungcapacity_of_water_the_average_human_lun')} <em>{t('lab.s7measuringlungcapacity_vital_capacity')}</em>.</p>
    </div>
   )}
   </div>

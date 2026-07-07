@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Shield, Waves, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'pharma' | 'ecology'>('pharma');
  
@@ -34,18 +36,18 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Pharmacology & Ecosystems" subtitle="Antibiotic Mechanisms & Ocean Acidification" />
+  <LabHeader onExit={onExit} title={t('lab.b12pharmacologyecology_pharmacology_ecosystems')} subtitle={t('lab.subtitle_antibiotic_mechanisms_ocean')} />
   <div className="flex gap-2 px-6 py-2 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
   <button 
    onClick={() => setActiveTab('pharma')}
    className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
-   <Shield className="w-4 h-4" /> Pharma
-  </button>
+   <Shield className="w-4 h-4" />  {t('lab.b12pharmacologyecology_pharma')}
+                   </button>
   <button 
    onClick={() => setActiveTab('ecology')}
    className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
-   <Waves className="w-4 h-4" /> Ecology
-  </button>
+   <Waves className="w-4 h-4" />  {t('lab.b12pharmacologyecology_ecology')}
+                   </button>
   </div>
 
   
@@ -55,12 +57,13 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b12pharmacologyecology_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b12pharmacologyecology_lab')}</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:min-h-0 lg:overflow-visible">
   {/* Theory */}
@@ -71,30 +74,31 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
    
    {activeTab === 'pharma' ? (
    <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
-    <p><strong>Penicillin Mechanism:</strong> Beta-lactam antibiotics irreversibly inhibit the enzyme <em>transpeptidase</em>, which forms cross-links in the bacterial peptidoglycan cell wall.</p>
-    <p>Without cross-links, the cell wall weakens. Due to high internal osmotic pressure, water rushes into the bacterium, causing it to lyse (burst).</p>
-    <p><strong>Clinical Trials:</strong></p>
+    <p><strong>{t('lab.b12pharmacologyecology_penicillin_mechanism')}</strong>  {t('lab.b12pharmacologyecology_beta_lactam_antibiotics_irreve')} <em>{t('lab.b12pharmacologyecology_transpeptidase')}</em>{t('lab.b12pharmacologyecology_which_forms_cross_links_in_the')}</p>
+    <p>{t('lab.b12pharmacologyecology_without_cross_links_the_cell_w')}</p>
+    <p><strong>{t('lab.b12pharmacologyecology_clinical_trials')}</strong></p>
     <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Phase 1:</strong> Safety, dosage, and pharmacokinetics in healthy volunteers (20-100 people).</li>
-    <li><strong>Phase 2:</strong> Efficacy and side effects in patients with the disease (100-300).</li>
-    <li><strong>Phase 3:</strong> Large-scale comparison with standard treatments (1000+ patients).</li>
-    <li><strong>Phase 4:</strong> Post-marketing surveillance.</li>
+    <li><strong>{t('lab.b12pharmacologyecology_phase_1')}</strong>  {t('lab.b12pharmacologyecology_safety_dosage_and_pharmacokine')}</li>
+    <li><strong>{t('lab.b12pharmacologyecology_phase_2')}</strong>  {t('lab.b12pharmacologyecology_efficacy_and_side_effects_in_p')}</li>
+    <li><strong>{t('lab.b12pharmacologyecology_phase_3')}</strong>  {t('lab.b12pharmacologyecology_large_scale_comparison_with_st')}</li>
+    <li><strong>{t('lab.b12pharmacologyecology_phase_4')}</strong>  {t('lab.b12pharmacologyecology_post_marketing_surveillance')}</li>
     </ul>
    </div>
    ) : (
    <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
-    <p><strong>Ocean Acidification:</strong> Increased atmospheric carbon dioxide dissolves into ocean water, forming carbonic acid:</p>
+    <p><strong>{t('lab.b12pharmacologyecology_ocean_acidification')}</strong>  {t('lab.b12pharmacologyecology_increased_atmospheric_carbon_d')}</p>
     <p className={`font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-center text-xs border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    CO₂ + H₂O ⇌ H₂CO₃ ⇌ HCO₃⁻ + H⁺
-    </p>
-    <p>This increases the concentration of hydrogen ions [H⁺], lowering the pH.</p>
-    <p><strong>Coral Bleaching:</strong> Corals live in symbiosis with photosynthetic algae (zooxanthellae). Environmental stress (low pH, high temp) causes corals to expel these algae, leaving their white calcium carbonate (CaCO₃) skeletons visible.</p>
+    
+                                     {t('lab.b12pharmacologyecology_co_h_o_h_co_hco_h')}
+                                     </p>
+    <p>{t('lab.b12pharmacologyecology_this_increases_the_concentrati')}</p>
+    <p><strong>{t('lab.b12pharmacologyecology_coral_bleaching')}</strong>  {t('lab.b12pharmacologyecology_corals_live_in_symbiosis_with_')}</p>
    </div>
    )}
   </div>
 
   {/* Interactive */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">
    {activeTab === 'pharma' ? 'Bacterial Lysis Simulator' : 'Coral Reef Simulator'}
    </h2>
@@ -103,7 +107,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
    <div className="flex-1 flex flex-col items-center">
     <div className="w-full mb-6">
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Penicillin Concentration (mg/L)</span>
+     <span>{t('lab.b12pharmacologyecology_penicillin_concentration_mg_l')}</span>
      <span className="font-bold text-teal-600">{penicillinDose}</span>
     </label>
     <input 
@@ -136,8 +140,9 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
     </svg>
     {isBurst && (
      <div className="absolute inset-0 flex items-center justify-center font-bold text-red-600 text-xl tracking-widest bg-red-50/80 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
-     CELL LYSED
-     </div>
+     
+                                          {t('lab.b12pharmacologyecology_cell_lysed')}
+                                          </div>
     )}
     </div>
    </div>
@@ -145,7 +150,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
    <div className="flex-1 flex flex-col items-center">
     <div className="w-full mb-6">
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Atmospheric pCO₂ (ppm)</span>
+     <span>{t('lab.b12pharmacologyecology_atmospheric_pco_ppm')}</span>
      <span className="font-bold text-blue-600">{pCO2}</span>
     </label>
     <input 
@@ -153,7 +158,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
      onChange={(e) => setPCO2(Number(e.target.value))}
      className="w-full accent-blue-600"
     />
-    <div className={`text-center text-xs mt-2 font-mono bg-blue-50 p-1 rounded border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>Ocean pH: {currentPH}</div>
+    <div className={`text-center text-xs mt-2 font-mono bg-blue-50 p-1 rounded border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>{t('lab.b12pharmacologyecology_ocean_ph')} {currentPH}</div>
     </div>
 
     <div className="relative w-64 h-64 bg-cyan-900 rounded-lg flex items-center justify-center border-4 border-cyan-800 overflow-hidden shadow-inner">
@@ -186,8 +191,9 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
     </svg>
     {isBleached && (
      <div className="absolute top-4 bg-slate-50 dark:bg-[#121212]/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
-     Bleaching Event
-     </div>
+     
+                                              {t('lab.b12pharmacologyecology_bleaching_event')}
+                                              </div>
     )}
     </div>
    </div>
@@ -196,26 +202,28 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
   {/* Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Comprehensive Assessment</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.b12pharmacologyecology_comprehensive_assessment')}</h2>
    
    <div className="space-y-4 text-sm">
    <div className="space-y-1">
     <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
-    1. Which specific bacterial enzyme does Penicillin irreversibly inhibit?
-    </label>
+    
+                                 {t('lab.b12pharmacologyecology_1_which_specific_bacterial_enz')}
+                                 </label>
     <input 
     type="text" 
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
     value={ans1}
     onChange={e => setAns1(e.target.value)}
-    placeholder="e.g. amylase"
+    placeholder={t('lab.b12pharmacologyecology_e_g_amylase')}
     />
    </div>
 
    <div className="space-y-1">
     <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
-    2. Which phase of a clinical trial involves a large-scale comparison (1000+ patients) to standard treatments? (Enter 1, 2, 3, or 4)
-    </label>
+    
+                                 {t('lab.b12pharmacologyecology_2_which_phase_of_a_clinical_tr')}
+                                 </label>
     <input 
     type="number" min="1" max="4"
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
@@ -226,22 +234,23 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
    <div className="space-y-1">
     <label className="block font-medium text-slate-700 dark:text-[#ffffff]">
-    3. If the concentration of [H⁺] ions in ocean water is measured at 1.0 × 10⁻⁸.¹ M, what is the pH of the water?
-    </label>
+    
+                                 {t('lab.b12pharmacologyecology_3_if_the_concentration_of_h_io')}
+                                 </label>
     <input 
     type="number" step="0.1"
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-teal-500 outline-none"
     value={ans3}
     onChange={e => setAns3(e.target.value)}
-    placeholder="e.g. 7.5"
+    placeholder={t('lab.b12pharmacologyecology_e_g_7_5')}
     />
    </div>
 
    <button 
     onClick={checkAnswers}
     className="w-full bg-[#121212] dark:bg-[#121212] text-white font-semibold py-2 mt-4 rounded hover:bg-[#000000] dark:bg-[#121212] transition-colors flex items-center justify-center gap-2">
-    <CheckCircle className="w-5 h-5" /> Submit Assessment
-   </button>
+    <CheckCircle className="w-5 h-5" />  {t('lab.b12pharmacologyecology_submit_assessment')}
+                            </button>
 
    {feedback && (
     <div className={`p-3 mt-2 rounded text-sm font-medium ${feedback.includes('Excellent') ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>

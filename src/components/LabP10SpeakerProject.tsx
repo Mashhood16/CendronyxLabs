@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle, Music } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
@@ -13,7 +14,8 @@ const MAGNETS = [
 ];
 
 export default function LabP10SpeakerProject({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [turns, setTurns] = useState(50); // N
  const [current, setCurrent] = useState(0.5); // A
@@ -80,7 +82,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 13: Making a Speaker (Motor Effect)" subtitle="Investigate the electromagnetic forces that drive a DIY speaker." />
+  <LabHeader onExit={onExit} title={t('lab.p10speakerproject_unit_13_making_a_speaker_motor')} subtitle={t('lab.subtitle_investigate_electromagnetic_forces')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -89,34 +91,38 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10speakerproject_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10speakerproject_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10speakerproject_theory_andsetup')}</h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    A speaker works using the <strong>Motor Effect</strong>. When an alternating current <span className="font-mono">I</span> flows through a coil of wire in a magnetic field <span className="font-mono">B</span>, a force is exerted on the wire.
-   </p>
+    
+                             {t('lab.p10speakerproject_a_speaker_works_using_the')} <strong>{t('lab.10speakerproject_motoreffect')}</strong>{t('lab.10speakerproject_whenanalternatingcurrent')}<span className="font-mono">I</span>{t('lab.10speakerproject_flowsthroughacoilofwireinamagneticf')}<span className="font-mono">B</span>{t('lab.p10speakerproject_a_force_is_exerted_on_the_wire')}
+                            </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono font-bold text-lg flex-col `}>
-    F = B · I · L
-   </div>
+    
+                             {t('lab.p10speakerproject_f_b_i_l')}
+                            </div>
    <p className="mt-2">
-    For a circular coil, the total length <span className="font-mono">L</span> of wire in the magnetic field is <span className="font-mono">N × 2πr</span>, where <span className="font-mono">N</span> is the number of turns and <span className="font-mono">r</span> is the radius. The alternating force vibrates the cup, creating sound waves.
-   </p>
+    
+                             {t('lab.p10speakerproject_for_a_circular_coil_the_total_')} <span className="font-mono">L</span>{t('lab.10speakerproject_ofwireinthemagneticfieldis')}<span className="font-mono">{t('lab.10speakerproject_n2r')}</span>{t('lab.10speakerproject_where')}<span className="font-mono">N</span>{t('lab.10speakerproject_isthenumberofturnsand')}<span className="font-mono">r</span>  {t('lab.p10speakerproject_is_the_radius_the_alternating_')}
+                            </p>
    </div>
 
    <div className={`space-y-6 flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Magnet Type</span>
+    <span>{t('lab.10speakerproject_magnettype')}</span>
     </label>
     <select 
     value={magnetId} 
@@ -131,8 +137,8 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Coil Turns (N)</span>
-    <span className="text-orange-600 font-bold">{turns} turns</span>
+    <span>{t('lab.p10speakerproject_coil_turns_n')}</span>
+    <span className="text-orange-600 font-bold">{turns}  {t('lab.p10speakerproject_turns')}</span>
     </label>
     <input 
     type="range" min="10" max="200" step="10"
@@ -144,7 +150,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Peak Current (I)</span>
+    <span>{t('lab.p10speakerproject_peak_current_i')}</span>
     <span className="text-blue-600 font-bold">{current.toFixed(2)} A</span>
     </label>
     <input 
@@ -159,7 +165,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
   {/* Column 2: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
+   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">{t('lab.10speakerproject_simulation')}</h2>
    
    <div className={`flex-1 w-full flex flex-col items-center justify-center relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    
@@ -198,7 +204,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
     onClick={() => setIsPlaying(!isPlaying)}
     className={`flex items-center gap-2 px-8 py-3 rounded-full font-bold shadow-lg transition-all active:scale-95 ${isPlaying ? 'bg-red-600 hover:bg-red-500 text-white' : 'bg-indigo-600 hover:bg-indigo-500 text-white'}`}
     >
-    {isPlaying ? 'Stop Audio' : <><Music className="w-5 h-5" /> Play Audio</>}
+    {isPlaying ? 'Stop Audio' : <><Music className="w-5 h-5" />{t('lab.10speakerproject_playaudio')}</>}
     </button>
    </div>
    </div>
@@ -215,14 +221,14 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
   {/* Column 3: Data & Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logger</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10speakerproject_datalogger')}</h2>
    <button 
     onClick={recordData}
     disabled={measuredForce === null}
     className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-300 text-white rounded text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Save className="w-4 h-4" /> Record Data
-   </button>
+    <Save className="w-4 h-4" />  {t('lab.p10speakerproject_record_data')}
+                            </button>
    </div>
 
    <div className="overflow-auto max-h-40 border border-slate-200 dark:border-[#1c1b1b] rounded-lg mb-4">
@@ -230,15 +236,15 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
      <th className="px-3 py-2 border-b">N</th>
-     <th className="px-3 py-2 border-b">I (A)</th>
-     <th className="px-3 py-2 border-b">Mag B</th>
-     <th className="px-3 py-2 border-b">F (N)</th>
+     <th className="px-3 py-2 border-b">{t('lab.p10speakerproject_i_a')}</th>
+     <th className="px-3 py-2 border-b">{t('lab.10speakerproject_magb')}</th>
+     <th className="px-3 py-2 border-b">{t('lab.p10speakerproject_f_n')}</th>
     </tr>
     </thead>
     <tbody>
     {data.length === 0 && (
      <tr>
-     <td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">No data recorded yet</td>
+     <td colSpan={4} className="px-3 py-4 text-center text-slate-400 italic">{t('lab.10speakerproject_no_data')}</td>
      </tr>
     )}
     {data.map(d => (
@@ -254,7 +260,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
    </div>
 
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">Force vs Current (I)</h3>
+   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">{t('lab.p10speakerproject_force_vs_current_i')}</h3>
    <div className="w-full h-full pt-6">
     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
      <line x1="10" y1="90" x2="100" y2="90" stroke="#cbd5e1" strokeWidth="1" />
@@ -271,15 +277,16 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
    </div>
 
    <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-indigo-800 text-sm mb-2 dark:text-[#ffffff]">Assessment: Mystery Magnet</h3>
+   <h3 className="font-bold text-indigo-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10speakerproject_assessmentmysterymagnet')}</h3>
    <p className="text-xs text-indigo-700 mb-3">
-    Use the Mystery Magnet. Assume <span className="font-mono">r = 0.02 m</span>. Record peak force for a known <span className="font-mono">I</span> and <span className="font-mono">N</span>, then calculate the magnetic field strength <span className="font-mono">B</span> in Tesla using <span className="font-mono">B = F / (I · N · 2πr)</span>.
+    
+                             {t('lab.p10speakerproject_use_the_mystery_magnet_assume')} <span className="font-mono">{t('lab.10speakerproject_r002m')}</span>{t('lab.10speakerproject_recordpeakforceforaknown')}<span className="font-mono">I</span>{t('lab.10speakerproject_and')}<span className="font-mono">N</span>{t('lab.10speakerproject_thencalculatethemagneticfieldstreng')}<span className="font-mono">B</span>{t('lab.10speakerproject_inteslausing')}<span className="font-mono">{t('lab.p10speakerproject_b_f_i_n_2_r')}</span>.
    </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     step="0.01"
-    placeholder="e.g. 0.15"
+    placeholder={t('lab.p10speakerproject_t_lab_10speakerproject_eg015')}
     value={assessmentInput}
     onChange={(e) => { setAssessmentInput(e.target.value); setAssessmentStatus('idle'); }}
     className="flex-1 px-3 py-1.5 border border-indigo-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -289,18 +296,19 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
     onClick={checkAssessment}
     className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10speakerproject_check')}
+                                 </button>
    </div>
    {assessmentStatus === 'correct' && (
     <div className="mt-2 flex items-center gap-1 text-emerald-600 text-sm font-bold">
-    <CheckCircle className="w-4 h-4" /> Correct! B ≈ 0.12 T.
-    </div>
+    <CheckCircle className="w-4 h-4" />  {t('lab.p10speakerproject_correct_b_0_12_t')}
+                                 </div>
    )}
    {assessmentStatus === 'incorrect' && (
     <div className="mt-2 flex items-center gap-1 text-red-600 text-sm font-bold">
-    <XCircle className="w-4 h-4" /> Incorrect. Check your formula!
-    </div>
+    <XCircle className="w-4 h-4" />  {t('lab.p10speakerproject_incorrect_check_your_formula')}
+                                 </div>
    )}
    </div>
   </div>

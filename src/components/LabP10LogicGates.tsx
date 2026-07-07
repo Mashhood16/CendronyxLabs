@@ -1,12 +1,14 @@
 import { useState, useMemo } from 'react';
 import { Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 type GateType = 'AND' | 'OR' | 'NAND' | 'NOR' | 'MYSTERY';
 
 export default function LabP10LogicGates({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [gate, setGate] = useState<GateType>('AND');
@@ -58,7 +60,7 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 18: Logic Gates" subtitle="Test different logic gates and observe their truth tables with continuous voltages." />
+  <LabHeader onExit={onExit} title={t('lab.p10_logic_title')} subtitle={t('lab.p10_logic_subtitle')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -66,44 +68,42 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">In real electronic circuits, logic gates process continuous voltages. TTL (Transistor-Transistor Logic) defines specific voltage thresholds.</p>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.theory')}</h2>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.p10_logic_theory')}</p>
    <ul className="text-sm text-slate-600 dark:text-[#a1a1aa] list-disc pl-5 mb-4">
-    <li><b>HIGH (1):</b> Between 2.0V and 5.0V</li>
-    <li><b>LOW (0):</b> Between 0.0V and 0.8V</li>
-    <li><b>Undefined:</b> Between 0.8V and 2.0V</li>
+    <li><b>{t('lab.p10_logic_high')}</b></li>
+    <li><b>{t('lab.p10_logic_low')}</b></li>
+    <li><b>{t('lab.p10_logic_undef')}</b></li>
    </ul>
    </div>
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p10_logic_setup')}</h2>
    <div className="mb-4">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Gate Type</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10_logic_gate_label')}</label>
     <select value={gate} onChange={e => {setGate(e.target.value as GateType); setData([]); setIsCorrect(null);}} className="w-full p-2 border rounded text-sm">
-    <option value="AND">AND</option>
-    <option value="OR">OR</option>
-    <option value="NAND">NAND</option>
-    <option value="NOR">NOR</option>
-    <option value="MYSTERY">MYSTERY GATE</option>
+    <option value="AND">{t('lab.10logicgates_and')}</option>
+    <option value="OR">{t('lab.10logicgates_or')}</option>
+    <option value="NAND">{t('lab.10logicgates_nand')}</option>
+    <option value="NOR">{t('lab.10logicgates_nor')}</option>
+    <option value="MYSTERY">{t('lab.10logicgates_mysterygate')}</option>
     </select>
    </div>
    <div className="mb-4">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Input A Voltage: {vA.toFixed(2)} V</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10_logic_input_a', { v: vA.toFixed(2) })}</label>
     <input type="range" min="0" max="5" step="0.1" value={vA} onChange={e => setVa(parseFloat(e.target.value))} className="w-full accent-blue-600" />
    </div>
    <div className="mb-4">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Input B Voltage: {vB.toFixed(2)} V</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10_logic_input_b', { v: vB.toFixed(2) })}</label>
     <input type="range" min="0" max="5" step="0.1" value={vB} onChange={e => setVb(parseFloat(e.target.value))} className="w-full accent-blue-600" />
    </div>
    </div>
@@ -112,7 +112,7 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
   {/* Center Column: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <div className={`relative w-full aspect-square max-w-sm bg-green-900 border-4 border-green-800 rounded-lg p-4 shadow-xl flex flex-col justify-between `}>
-   <div className="text-white/50 text-xs font-mono absolute top-2 left-2">IC 74HCXX</div>
+   <div className="text-white/50 text-xs font-mono absolute top-2 left-2">{t('lab.10logicgates_ic74hcxx')}</div>
    
    <div className="flex flex-col gap-8 mt-8">
     <div className="flex items-center gap-4">
@@ -136,34 +136,34 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
    </div>
 
    <div className="mt-8 w-full flex justify-center">
-   <button onClick={handleRecord} className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-2 rounded-md font-sans font-bold shadow-lg active:scale-95 transition-all dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Record Data</button>
+   <button onClick={handleRecord} className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-2 rounded-md font-sans font-bold shadow-lg active:scale-95 transition-all">{t('lab.p10_logic_record_btn')}</button>
    </div>
   </div>
 
   {/* Right Column: Analysis */}
-  <div className="bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
    <div className="p-4 border-b bg-slate-50 dark:bg-[#121212]">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p10_logic_data')}</h2>
    </div>
    
    <div className="p-4 flex-1 lg:overflow-y-auto">
    <div className="mb-6">
     <div className="flex justify-between items-center mb-2">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm">Measurements</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm">{t('lab.p10_logic_data')}</h3>
     <button onClick={() => setData([])} className="text-slate-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></button>
     </div>
     <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded">
     <table className="w-full text-sm text-center">
      <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
      <tr>
-      <th className="py-2 border-b">V_A (V)</th>
-      <th className="py-2 border-b">V_B (V)</th>
-      <th className="py-2 border-b">V_out (V)</th>
+      <th className="py-2 border-b">{t('lab.p10_logic_table_va')}</th>
+      <th className="py-2 border-b">{t('lab.p10_logic_table_vb')}</th>
+      <th className="py-2 border-b">{t('lab.p10_logic_table_vout')}</th>
      </tr>
      </thead>
      <tbody>
      {data.length === 0 ? (
-      <tr><td colSpan={3} className="py-4 text-slate-400 italic">No data recorded.</td></tr>
+      <tr><td colSpan={3} className="py-4 text-slate-400 italic">{t('lab.p10_logic_no_data')}</td></tr>
      ) : (
       data.map(d => (
       <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
@@ -179,7 +179,7 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
    </div>
 
    <div className="mb-6">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm mb-2">Graph: V_out vs V_A</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm mb-2">{t('lab.p10_logic_graph_title')}</h3>
     <div className="w-full aspect-video bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
     <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible p-4">
      <line x1="10" y1="90" x2="90" y2="90" stroke="#94a3b8" strokeWidth="1" />
@@ -190,22 +190,20 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
      return <circle key={d.id} cx={cx} cy={cy} r="2" fill="#4158D1" />;
      })}
     </svg>
-    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 dark:text-[#71717a]">V_A (Volts)</div>
-    <div className="absolute top-1/2 -left-2 -translate-y-1/2 -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a]">V_out (Volts)</div>
+    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 dark:text-[#71717a]">{t('lab.p10_logic_graph_x')}</div>
+    <div className="absolute top-1/2 -left-2 -translate-y-1/2 -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a]">{t('lab.p10_logic_graph_y')}</div>
     </div>
    </div>
 
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-    <h3 className="font-semibold text-blue-800 text-sm mb-2 dark:text-[#ffffff]">Analysis</h3>
-    <p className="text-xs text-blue-700 mb-3">
-    Select the "MYSTERY GATE" and test different inputs to construct its truth table. Identify the Boolean function.
-    </p>
+    <h3 className="font-semibold text-blue-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.p10_logic_analysis')}</h3>
+    <p className="text-xs text-blue-700 mb-3">{t('lab.p10_logic_desc')}</p>
     <div className="flex gap-2 items-center">
-    <input type="text" value={answer} onChange={(e) => { setAnswer(e.target.value); setIsCorrect(null); }} placeholder="e.g. AND" className="w-24 px-2 py-1 border rounded text-sm uppercase" />
-    <button onClick={handleCheck} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Check</button>
+    <input type="text" value={answer} onChange={(e) => { setAnswer(e.target.value); setIsCorrect(null); }} placeholder={t('lab.p10_logic_placeholder')} className="w-24 px-2 py-1 border rounded text-sm uppercase" />
+    <button onClick={handleCheck} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.10logicgates_check')}</button>
     </div>
-    {isCorrect === true && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle className="w-4 h-4"/> Correct! It's an XOR gate.</div>}
-    {isCorrect === false && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/> Incorrect, try testing combinations.</div>}
+    {isCorrect === true && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle className="w-4 h-4"/> {t('lab.p10_logic_correct_fb')}</div>}
+    {isCorrect === false && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/> {t('lab.p10_logic_incorrect_fb')}</div>}
    </div>
    </div>
   </div>

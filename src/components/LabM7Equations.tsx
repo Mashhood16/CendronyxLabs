@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ArrowLeft, Scale, Calculator, RefreshCcw, CheckCircle2 } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'balance' | 'formula'>('balance');
 
  // Balance Scale State
@@ -106,7 +108,7 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-2xl font-bold">Unit 8: Linear Equations & Formulas</h1>
+  <h1 className="text-2xl font-bold">{t('lab.m7equations_unit_8_linear_equations_formul')}</h1>
   </div>
 
   {/* Main Content */}
@@ -118,22 +120,23 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
     className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'balance' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
     onClick={() => setActiveTab('balance')}
    >
-    <Scale className="w-4 h-4" /> Balance Scale
-   </button>
+    <Scale className="w-4 h-4" />  {t('lab.m7equations_balance_scale')}
+                            </button>
    <button 
     className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'formula' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
     onClick={() => setActiveTab('formula')}
    >
-    <Calculator className="w-4 h-4" /> Formulas
-   </button>
+    <Calculator className="w-4 h-4" />  {t('lab.m7equations_formulas')}
+                            </button>
    </div>
 
    {activeTab === 'balance' && (
    <div className="space-y-6">
     <div>
-    <h2 className="text-xl font-bold">Solve for x</h2>
+    <h2 className="text-xl font-bold">{t('lab.m7equations_solve_for_x')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
-     Keep the equation balanced! Do the same operation to both sides until you isolate <span className="font-bold">x</span>.
+     
+                                      {t('lab.m7equations_keep_the_equation_balanced_do_')} <span className="font-bold">x</span>.
     </p>
     </div>
 
@@ -146,20 +149,21 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
     {isSolved ? (
     <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg border border-green-200 dark:border-green-800">
      <CheckCircle2 className="w-6 h-6" />
-     Equation Solved!
-    </div>
+     
+                                      {t('lab.m7equations_equation_solved')}
+                                     </div>
     ) : (
     <div className="space-y-4">
      <div className="grid grid-cols-2 gap-3">
-     <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">+ Add 1</button>
-     <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">- Subtract 1</button>
-     <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">+ Add x</button>
-     <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">- Subtract x</button>
+     <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_1')}</button>
+     <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_1')}</button>
+     <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_x')}</button>
+     <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_x')}</button>
      </div>
      
      <div className="grid grid-cols-2 gap-3">
-     <button onClick={() => handleDivide(2)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">÷ Divide by 2</button>
-     <button onClick={() => handleDivide(3)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">÷ Divide by 3</button>
+     <button onClick={() => handleDivide(2)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_2')}</button>
+     <button onClick={() => handleDivide(3)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_3')}</button>
      </div>
 
      {divError && <div className="text-red-500 dark:text-red-400 text-sm font-medium">{divError}</div>}
@@ -170,18 +174,19 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
     onClick={resetBalance}
     className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
     >
-    <RefreshCcw className="w-4 h-4" /> Reset Equation
-    </button>
+    <RefreshCcw className="w-4 h-4" />  {t('lab.m7equations_reset_equation')}
+                                 </button>
    </div>
    )}
 
    {activeTab === 'formula' && (
    <div className="space-y-6">
     <div>
-    <h2 className="text-xl font-bold">Literal Formulas</h2>
+    <h2 className="text-xl font-bold">{t('lab.m7equations_literal_formulas')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
-     Rearrange the temperature conversion formula to make <b>F</b> the subject.
-    </p>
+     
+                                      {t('lab.m7equations_rearrange_the_temperature_conv')} <b>F</b>  {t('lab.m7equations_the_subject')}
+                                     </p>
     </div>
 
     <div className="bg-slate-100 dark:bg-slate-700 p-6 rounded-lg text-center shadow-inner border border-slate-200 dark:border-[#1c1b1b]">
@@ -191,38 +196,44 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
     </div>
     
     <div className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-100 dark:border-blue-800/50">
-    💡 Hint: {formulaSteps[fStep].hint}
+    
+                                 {t('lab.m7equations_hint')} {formulaSteps[fStep].hint}
     </div>
 
     {fStep < 3 ? (
     <div className="space-y-3">
-     <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">Choose an operation:</h3>
+     <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">{t('lab.m7equations_choose_an_operation')}</h3>
      <button onClick={() => handleFormulaAction('mult9')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     Multiply both sides by 9
-     </button>
+     
+                                          {t('lab.m7equations_multiply_both_sides_by_9')}
+                                          </button>
      <button onClick={() => handleFormulaAction('div5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     Divide both sides by 5
-     </button>
+     
+                                          {t('lab.m7equations_divide_both_sides_by_5')}
+                                          </button>
      <button onClick={() => handleFormulaAction('add32')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     Add 32 to both sides
-     </button>
+     
+                                          {t('lab.m7equations_add_32_to_both_sides')}
+                                          </button>
      <button onClick={() => handleFormulaAction('mult5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     Multiply both sides by 5
-     </button>
+     
+                                          {t('lab.m7equations_multiply_both_sides_by_5')}
+                                          </button>
     </div>
     ) : (
     <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg mt-4 border border-green-200 dark:border-green-800">
      <CheckCircle2 className="w-6 h-6" />
-     Formula Rearranged!
-    </div>
+     
+                                          {t('lab.m7equations_formula_rearranged')}
+                                         </div>
     )}
     
     <button 
     onClick={() => setFStep(0)}
     className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
     >
-    <RefreshCcw className="w-4 h-4" /> Start Over
-    </button>
+    <RefreshCcw className="w-4 h-4" />  {t('lab.m7equations_start_over')}
+                                 </button>
    </div>
    )}
   </div>
@@ -256,10 +267,11 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
    {activeTab === 'formula' && (
    <div className="text-center w-full max-w-lg bg-white dark:!bg-[#121212] p-12 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b]">
     <div className="text-[100px] mb-6">🌡️</div>
-    <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Celsius to Fahrenheit</h3>
+    <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m7equations_celsius_to_fahrenheit')}</h3>
     <p className="text-slate-600 dark:text-[#71717a] leading-relaxed">
-    Rearranging formulas is just like solving equations! We do the same operations on both sides of the equal sign to isolate the variable we want.
-    </p>
+    
+                                 {t('lab.m7equations_rearranging_formulas_is_just_l')}
+                                 </p>
    </div>
    )}
   </div>

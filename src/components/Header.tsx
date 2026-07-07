@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X } from 'lucide-react';
+import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X, Languages, RefreshCw } from 'lucide-react';
 import { useAuth, useTheme } from '../store';
+import { useTranslate } from '../i18n';
+import type { Language } from '../i18n/types';
 import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES, formatSubject } from '../data/labModules';
 
@@ -17,6 +19,7 @@ interface HeaderProps {
 export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSearchOpen: externalMobileSearchOpen, onMobileSearchClose }: HeaderProps) {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const { t, language, setLanguage } = useTranslate();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -108,6 +111,24 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
     navigate(`/class/${lab.classLevel}/${lab.subject}/lab/${lab.id}`);
   };
 
+  const handleHardReload = async () => {
+    try {
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (let registration of registrations) {
+          await registration.unregister();
+        }
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(key => caches.delete(key)));
+      }
+    } catch (e) {
+      console.error('Failed to clear cache', e);
+    }
+    window.location.reload();
+  };
+
   return (
     <header className={`${isDark ? 'bg-[#121212] border-b border-[#1c1b1b]' : 'bg-[#faf8ff] border-b border-slate-200'} px-5 md:px-10 h-[72px] flex items-center justify-between sticky top-0 z-50 shrink-0`}>
       <div className="flex items-center gap-4 flex-1 min-w-0">
@@ -135,7 +156,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
               value={query}
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
-              placeholder="Search modules..."
+              placeholder={t('search.placeholder')}
               autoComplete="off"
               className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full font-medium ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-900 placeholder:text-slate-500'}`}
             />
@@ -168,7 +189,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                 </ul>
               ) : (
                 <div className={`p-6 text-center text-sm ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>
-                  No labs found matching "{query}"
+                  {t('search.no_results', { query })}
                 </div>
               )}
             </div>
@@ -185,6 +206,45 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         >
           <Search className="w-5 h-5" />
         </button>
+
+        {/* Reload / Clear Cache */}
+        <button
+          onClick={handleHardReload}
+          className={`p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+          title="Clear Cache & Reload"
+        >
+          <RefreshCw className="w-5 h-5" />
+        </button>
+
+        {/* Language Switcher */}
+        <div className="relative group">
+          <button
+            className={`p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+            title={t('settings.language')}
+          >
+            <Languages className="w-5 h-5" />
+          </button>
+          <div className={`absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl overflow-hidden z-50 min-w-[160px] ${
+            isDark ? 'bg-[#121212] border border-[#1c1b1b]' : 'bg-white border border-slate-200'
+          }`}>
+            {[
+              { value: 'en' as Language, label: 'English' },
+              { value: 'roman-urdu' as Language, label: 'Roman Urdu' },
+            ].map((lang) => (
+              <button
+                key={lang.value}
+                onClick={() => setLanguage(lang.value)}
+                className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors ${
+                  language === lang.value
+                    ? isDark ? 'bg-[#1c1b1b] text-[#5560F1]' : 'bg-indigo-50 text-indigo-600'
+                    : isDark ? 'text-[#a1a1aa] hover:bg-[#1c1b1b]' : 'text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                {lang.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <button
           onClick={toggleTheme}
@@ -214,7 +274,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
               className={`absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 font-semibold text-sm min-w-[150px] ${isDark ? 'bg-[#121212] border border-[#1c1b1b] text-rose-400 hover:bg-[#1a1515]' : 'bg-white border border-slate-200 text-rose-600 hover:bg-rose-50'}`}
             >
               <LogOut className="w-4 h-4" />
-              Sign Out
+              {t('auth.sign_out')}
             </button>
           </div>
         ) : (
@@ -223,7 +283,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
             className="flex items-center gap-2 px-5 py-2 bg-[#6366f1] text-white font-semibold rounded-lg hover:bg-[#4f46e5] transition-colors"
           >
             <LogIn className="w-4 h-4" />
-            <span className="hidden sm:block">Log In</span>
+            <span className="hidden sm:block">{t('auth.log_in')}</span>
           </button>
         )}
       </div>
@@ -247,7 +307,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search modules..."
+                placeholder={t('search.placeholder')}
                 autoComplete="off"
                 className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full font-medium ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-900 placeholder:text-slate-500'}`}
               />
@@ -266,7 +326,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                     : isDark ? 'bg-[#1c1b1b] text-[#71717a] hover:text-[#a1a1aa]' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
                 }`}
               >
-                {filter === 'all' ? 'All' : formatSubject(filter)}
+                {filter === 'all' ? t('search.filter_all') : formatSubject(filter)}
               </button>
             ))}
           </div>
@@ -293,7 +353,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                 </ul>
               ) : (
                 <div className={`p-10 text-center text-sm ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>
-                  No labs found matching "{query}"
+                  {t('search.no_results', { query })}
                 </div>
               )
             ) : (
@@ -301,12 +361,12 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                 {recentSearches.length > 0 && (
                   <div className="mb-4">
                     <div className="flex items-center justify-between mb-2 px-1">
-                      <span className={`text-xs font-semibold ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>Recent Searches</span>
+                      <span className={`text-xs font-semibold ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>{t('search.recent')}</span>
                       <button
                         onClick={clearRecentSearches}
                         className="text-xs text-indigo-500 hover:text-indigo-600 font-medium"
                       >
-                        Clear
+                        {t('search.clear')}
                       </button>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -328,7 +388,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                 
                 <div className={`p-8 text-center text-sm ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`}>
                   <Search className="w-8 h-8 mx-auto mb-3 opacity-30" />
-                  <p>Type to search across all labs...</p>
+                  <p>{t('search.type_hint')}</p>
                 </div>
               </div>
             )}

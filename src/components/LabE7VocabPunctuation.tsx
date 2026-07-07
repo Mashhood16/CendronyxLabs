@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, Edit3, Award, Zap, AlertCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 type Token = {
  id: string;
@@ -74,6 +75,7 @@ const DOCUMENT_TASKS: { title: string, tokens: Token[] }[] = [
 ];
 
 export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [taskIndex, setTaskIndex] = useState(0);
  const [colons, setColons] = useState<Set<string>>(new Set());
@@ -162,17 +164,18 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
    {/* Header */}
    <div className="flex items-center justify-between p-4 bg-teal-600 text-white shadow-md">
     <div className="flex items-center gap-3">
-     <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
+     <button onClick={onExit} className="p-2 hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
       <ArrowLeft className="w-6 h-6" />
      </button>
      <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
       <Edit3 className="w-6 h-6" />
-      Editor's Desk: Punctuation & Vocab
-     </h1>
+      
+                           {t('lab.e7vocabpunctuation_editor_s_desk_punctuation_voca')}
+                          </h1>
     </div>
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -180,7 +183,8 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
     <div className="flex items-center gap-4">
      <div className="flex items-center gap-2 bg-teal-800 px-4 py-2 rounded-full font-bold">
       <Award className="w-5 h-5 text-yellow-400" />
-      Score: {score}
+      
+                           {t('lab.e7vocabpunctuation_score')} {score}
      </div>
     </div>
    </div>
@@ -192,29 +196,30 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
     <div className={`w-full lg:col-span-1 flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]  ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
       <Zap className="w-5 h-5 text-teal-500" />
-      Editor's Brief
-     </h2>
+      
+                           {t('lab.e7vocabpunctuation_editor_s_brief')}
+                          </h2>
      
      <div className="prose dark:prose-invert text-sm text-slate-700 dark:text-[#a1a1aa]">
-      <p>We have a messy manuscript that needs your keen eye!</p>
+      <p>{t('lab.e7vocabpunctuation_we_have_a_messy_manuscript_tha')}</p>
       <ul className="space-y-3">
        <li className="flex items-start gap-2">
         <span className="font-bold text-teal-600 dark:text-teal-400 mt-0.5">•</span>
         <div>
-         <strong className="text-slate-800 dark:text-[#ffffff]">Colons:</strong> Find where a colon should introduce a list or explanation. Click the space between words to insert a colon.
-        </div>
+         <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_colons')}</strong>  {t('lab.e7vocabpunctuation_find_where_a_colon_should_intr')}
+                                         </div>
        </li>
        <li className="flex items-start gap-2">
         <span className="font-bold text-blue-600 dark:text-blue-400 mt-0.5">•</span>
         <div>
-         <strong className="text-slate-800 dark:text-[#ffffff]">Homophones:</strong> Some <i>there/their/they're</i> mix-ups occurred. Click the blue words to swap them out.
-        </div>
+         <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_homophones')}</strong>  {t('lab.e7vocabpunctuation_some')} <i>{t('lab.e7vocabpunctuation_there_their_they_re')}</i>  {t('lab.e7vocabpunctuation_mix_ups_occurred_click_the_blu')}
+                                         </div>
        </li>
        <li className="flex items-start gap-2">
         <span className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">•</span>
         <div>
-         <strong className="text-slate-800 dark:text-[#ffffff]">Modal Adverbs:</strong> The tone is off. Adjust the modal adverbs to match the required certainty level (hint provided on hover).
-        </div>
+         <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_modal_adverbs')}</strong>  {t('lab.e7vocabpunctuation_the_tone_is_off_adjust_the_mod')}
+                                         </div>
        </li>
       </ul>
      </div>
@@ -224,8 +229,9 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
       className={`mt-6 w-full py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold transition-colors whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40 flex-col `}
      >
       <CheckCircle className="w-5 h-5" />
-      Submit Proofread
-     </button>
+      
+                           {t('lab.e7vocabpunctuation_submit_proofread')}
+                          </button>
 
      {feedback && (
       <div className={`w-full mt-auto p-4 rounded-lg flex items-start gap-3 ${feedback.includes('Perfect') ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200'} flex-col  'flex' : 'hidden'} lg:flex`}>
@@ -277,7 +283,8 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
              {token.modalOptions?.map(opt => <option key={opt} value={opt}>{opt}</option>)}
             </select>
             <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#121212] text-white text-xs px-3 py-1.5 rounded opacity-0 group-hover/modal:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg z-10 font-sans">
-             Target: {token.modalHint}
+             
+                                             {t('lab.e7vocabpunctuation_target')} {token.modalHint}
              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#121212] rotate-45"></div>
             </div>
            </div>
@@ -292,7 +299,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
           <div 
            className="w-3 h-6 cursor-pointer hover:bg-teal-200 dark:hover:bg-teal-900/50 rounded flex items-center justify-center transition-colors mx-0.5"
            onClick={() => toggleColon(token.id)}
-           title="Click to insert colon"
+           title={t('lab.e7vocabpunctuation_click_to_insert_colon')}
           >
            {/* invisible hover zone */}
            <div className="w-1 h-full bg-teal-400/0 group-hover/token:bg-teal-400/20 rounded-full dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"></div>

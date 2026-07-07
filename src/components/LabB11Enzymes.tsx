@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Beaker, Play, Pause, Activity, ClipboardList, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [beadCount, setBeadCount] = useState(0);
  const [isPouringMilk, setIsPouringMilk] = useState(false);
@@ -64,7 +66,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 11: Enzyme Immobilization & Diagnostics" />
+  <LabHeader onExit={onExit} title={t('lab.b11enzymes_grade_11_enzyme_immobilization')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -73,39 +75,40 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b11enzymes_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b11enzymes_lab')}</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Principles</h2>
+   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.b11enzymes_theory_principles')}</h2>
    
    <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
    <div>
-    <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">Immobilized Enzymes</h3>
+    <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">{t('lab.b11enzymes_immobilized_enzymes')}</h3>
     <p className="mt-1">
-    Enzymes (like Lactase) can be trapped in an inert matrix, such as alginate beads.
-    This provides structural stability, prevents contamination of the product, and allows the enzyme to be <strong>reused</strong>.
+    
+                                 {t('lab.b11enzymes_enzymes_like_lactase_can_be_tr')} <strong>{t('lab.b11enzymes_reused')}</strong>.
     </p>
    </div>
 
    <div className={`bg-indigo-50 p-3 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <p className="font-mono text-xs">Sodium Alginate + Lactase + CaCl₂ ➔ Insoluble Calcium Alginate Beads (Trapping Lactase)</p>
+    <p className="font-mono text-xs">{t('lab.b11enzymes_sodium_alginate_lactase_cacl_i')}</p>
    </div>
 
    <div>
-    <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">Enzymes in Diagnostics</h3>
-    <p className="mt-1">Specific enzymes leak into the blood when certain tissues are damaged. Blood tests measure these biomarkers:</p>
+    <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">{t('lab.b11enzymes_enzymes_in_diagnostics')}</h3>
+    <p className="mt-1">{t('lab.b11enzymes_specific_enzymes_leak_into_the')}</p>
     <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li><strong>Amylase / Lipase:</strong> Pancreas (Pancreatitis)</li>
-    <li><strong>ALT / AST:</strong> Liver (Hepatitis / Cirrhosis)</li>
-    <li><strong>Creatine Kinase (CK-MB):</strong> Heart (Myocardial Infarction)</li>
+    <li><strong>{t('lab.b11enzymes_amylase_lipase')}</strong>  {t('lab.b11enzymes_pancreas_pancreatitis')}</li>
+    <li><strong>{t('lab.b11enzymes_alt_ast')}</strong>  {t('lab.b11enzymes_liver_hepatitis_cirrhosis')}</li>
+    <li><strong>{t('lab.b11enzymes_creatine_kinase_ck_mb')}</strong>  {t('lab.b11enzymes_heart_myocardial_infarction')}</li>
     </ul>
    </div>
    </div>
@@ -114,14 +117,14 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
   {/* Column 2: Interactive Simulator */}
   <section className={`w-full bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-   <Activity className="text-indigo-400" /> Bioreactor Simulation
-   </h3>
+   <Activity className="text-indigo-400" />  {t('lab.b11enzymes_bioreactor_simulation')}
+                        </h3>
 
    <div className="flex-1 flex flex-col items-center justify-end relative w-full mb-4">
    
    {/* Milk Pouring Animation */}
    {isPouringMilk && (
-    <div className={`w-full absolute top-0 w-8 h-32 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
+    <div className={`w-full absolute top-0 w-8 h-32 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
    )}
 
    {/* The Column / Beaker */}
@@ -150,8 +153,9 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     style={{ height: `${glucoseLevel}%` }}
     ></div>
     <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white -rotate-90 whitespace-nowrap drop-shadow-md">
-    Glucose %
-    </div>
+    
+                                 {t('lab.b11enzymes_glucose')}
+                                 </div>
    </div>
    </div>
 
@@ -162,8 +166,8 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     disabled={beadCount >= 20 || isPouringMilk}
     className="py-2 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 text-white font-bold rounded flex items-center justify-center gap-2 dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
    >
-    <Beaker size={18} /> Drop Alginate Bead (+1)
-   </button>
+    <Beaker size={18} />  {t('lab.b11enzymes_drop_alginate_bead_1')}
+                            </button>
    <div className="flex gap-2">
     <button 
     onClick={toggleMilkPour}
@@ -175,10 +179,11 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     </button>
     <button 
     onClick={handleReset}
-    className="px-4 py-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-500 dark:bg-[#121212] text-white font-bold rounded dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
+    className="px-4 py-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212] text-white font-bold rounded dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
     >
-    Reset
-    </button>
+    
+                                 {t('lab.b11enzymes_reset')}
+                                 </button>
    </div>
    </div>
   </section>
@@ -186,47 +191,47 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
   {/* Column 3: Assessment */}
   <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <ClipboardList className="text-indigo-600" /> Clinical Assessment
-   </h2>
+   <ClipboardList className="text-indigo-600" />  {t('lab.b11enzymes_clinical_assessment')}
+                        </h2>
    
    <div className="space-y-6 mt-2">
    
    <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg space-y-3 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-red-500"/> Patient A</h4>
-    <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">Blood panel reveals severely elevated levels of <strong>Amylase</strong> and <strong>Lipase</strong>. Patient complains of upper abdominal pain.</p>
+    <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-red-500"/>  {t('lab.b11enzymes_patient_a')}</h4>
+    <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">{t('lab.b11enzymes_blood_panel_reveals_severely_e')} <strong>{t('lab.b11enzymes_amylase')}</strong>  {t('lab.b11enzymes_and')} <strong>{t('lab.b11enzymes_lipase')}</strong>{t('lab.b11enzymes_patient_complains_of_upper_abd')}</p>
     <input 
     type="text" 
     value={diag1}
     onChange={e => setDiag1(e.target.value)}
-    placeholder="Likely Diagnosis (Organ affected)..."
+    placeholder={t('lab.b11enzymes_likely_diagnosis_organ_affecte')}
     className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
     />
    </div>
 
    <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg space-y-3 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-orange-500"/> Patient B</h4>
-    <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">Routine physical shows elevated <strong>ALT</strong> (Alanine transaminase) and <strong>AST</strong>. Patient exhibits mild jaundice.</p>
+    <h4 className="font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2"><Activity size={16} className="text-orange-500"/>  {t('lab.b11enzymes_patient_b')}</h4>
+    <p className="text-xs text-slate-600 dark:text-[#a1a1aa]">{t('lab.b11enzymes_routine_physical_shows_elevate')} <strong>{t('lab.b11enzymes_alt')}</strong>  {t('lab.b11enzymes_alanine_transaminase_and')} <strong>{t('lab.b11enzymes_ast')}</strong>{t('lab.b11enzymes_patient_exhibits_mild_jaundice')}</p>
     <input 
     type="text" 
     value={diag2}
     onChange={e => setDiag2(e.target.value)}
-    placeholder="Likely Diagnosis (Organ affected)..."
+    placeholder={t('lab.b11enzymes_likely_diagnosis_organ_affecte')}
     className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
     />
    </div>
 
    <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-lg space-y-3 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h4 className="font-bold text-indigo-800 dark:text-[#ffffff]">Bioreactor Analytics</h4>
-    <p className="text-xs text-slate-700 dark:text-[#ffffff]">If your column of 10 lactase beads converts 100 mmol of lactose into glucose in 200 seconds, what is the rate of reaction in <strong>mmol/s</strong>?</p>
+    <h4 className="font-bold text-indigo-800 dark:text-[#ffffff]">{t('lab.b11enzymes_bioreactor_analytics')}</h4>
+    <p className="text-xs text-slate-700 dark:text-[#ffffff]">{t('lab.b11enzymes_if_your_column_of_10_lactase_b')} <strong>{t('lab.b11enzymes_mmol_s')}</strong>?</p>
     <div className="flex items-center gap-2">
     <input 
      type="text" 
      value={rateCalc}
      onChange={e => setRateCalc(e.target.value)}
-     placeholder="e.g. 1.5"
+     placeholder={t('lab.b11enzymes_e_g_1_5')}
      className="w-full p-2 border rounded text-sm outline-none focus:ring-2 focus:ring-indigo-400"
     />
-    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a]">mmol/s</span>
+    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a]">{t('lab.b11enzymes_mmol_s')}</span>
     </div>
    </div>
 
@@ -234,8 +239,8 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     onClick={checkAnswers}
     className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <CheckCircle size={20} /> Submit Evaluation
-   </button>
+    <CheckCircle size={20} />  {t('lab.b11enzymes_submit_evaluation')}
+                            </button>
 
    {feedback && (
     <div className={`p-4 rounded-lg font-medium text-sm text-center ${feedback.includes('Superb') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

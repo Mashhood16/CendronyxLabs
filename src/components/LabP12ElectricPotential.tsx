@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP12ElectricPotential({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -104,7 +106,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   {isShocking && (
    <circle cx="200" cy="150" r="100" fill="#fef08a" opacity="0.2" className="animate-ping" />
   )}
-  <text x="10" y="30" fill="white" fontSize="14" fontWeight="bold">Electrophorus electricus</text>
+  <text x="10" y="30" fill="white" fontSize="14" fontWeight="bold">{t('lab.12electricpotential_electrophoruselectricus')}</text>
   <path d={`M 30,160 Q 40,150 50,150`} stroke="#1e3a8a" fill="none" strokeWidth="20" strokeLinecap="round" />
   {bodyParts}
   {isShocking && (
@@ -112,10 +114,10 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
     <path d="M 200,50 L 220,90 L 190,100 L 230,140" stroke="#fde047" fill="none" strokeWidth="4" />
     <path d="M 100,250 L 120,210 L 90,200 L 130,160" stroke="#fde047" fill="none" strokeWidth="4" />
     <path d="M 300,100 L 320,140 L 290,150 L 330,190" stroke="#fde047" fill="none" strokeWidth="4" />
-    <text x="140" y="80" fill="#fde047" fontSize="24" fontWeight="bold" className="animate-pulse">{totalEelVoltage.toFixed(0)} V SHOCK!</text>
+    <text x="140" y="80" fill="#fde047" fontSize="24" fontWeight="bold" className="animate-pulse">{totalEelVoltage.toFixed(0)}  {t('lab.p12electricpotential_v_shock')}</text>
    </>
   )}
-  <text x="10" y="280" fill="#aaa" fontSize="12">Internal Bio-Capacitors Series Connection</text>
+  <text x="10" y="280" fill="#aaa" fontSize="12">{t('lab.12electricpotential_internalbiocapacitorsseriesconnecti')}</text>
   </svg>
  );
  };
@@ -127,14 +129,14 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  
  return (
   <svg viewBox="0 0 400 300" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-  <text x="10" y="30" fill="white" fontSize="14" fontWeight="bold">Voltage Across Capacitor (V vs Time)</text>
+  <text x="10" y="30" fill="white" fontSize="14" fontWeight="bold">{t('lab.p12electricpotential_voltage_across_capacitor_v_vs_')}</text>
   
   {/* Graph background/grid */}
   <line x1="0" y1="250" x2="400" y2="250" stroke="#555" />
   <line x1="0" y1="183.3" x2="400" y2="183.3" stroke="#333" strokeDasharray="4" />
-  <text x="5" y="178" fill="#666" fontSize="10">100V</text>
+  <text x="5" y="178" fill="#666" fontSize="10">{t('lab.p12electricpotential_100v')}</text>
   <line x1="0" y1="50" x2="400" y2="50" stroke="#333" strokeDasharray="4" />
-  <text x="5" y="45" fill="#666" fontSize="10">300V</text>
+  <text x="5" y="45" fill="#666" fontSize="10">{t('lab.p12electricpotential_300v')}</text>
 
   {/* Live Graph Line */}
   {points.length > 0 && (
@@ -145,20 +147,20 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   <g transform="translate(320, 50)">
    <circle cx="0" cy="0" r="30" fill={!isCharging && vCap > 10 ? `rgba(255, 255, 255, ${bulbBrightness})` : '#111'} stroke="#555" strokeWidth="2" />
    <path d="M -10,15 L -10,35 L 10,35 L 10,15" fill="#333" />
-   <text x="-45" y="55" fill="white" fontSize="10">Camera Flash</text>
+   <text x="-45" y="55" fill="white" fontSize="10">{t('lab.12electricpotential_cameraflash')}</text>
    {!isCharging && vCap > 10 && (
     <circle cx="0" cy="0" r={30 + bulbBrightness * 20} fill="#fde047" opacity={bulbBrightness * 0.5} className="animate-ping" />
    )}
   </g>
   
-  <text x="10" y="280" fill="#22c55e" fontSize="14" fontWeight="bold">Current: {vCap.toFixed(1)} V</text>
+  <text x="10" y="280" fill="#22c55e" fontSize="14" fontWeight="bold">{t('lab.p12electricpotential_current')} {vCap.toFixed(1)} V</text>
   </svg>
  );
  };
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab P12.2: Capacitors & Bioelectricity" />
+  <LabHeader onExit={onExit} title={t('lab.p12electricpotential_lab_p12_2_capacitors_bioelectr')} />
 
   <div className="px-4 pt-2 lg:pt-0">
    
@@ -170,12 +172,13 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p12electricpotential_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.12electricpotential_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   
@@ -183,35 +186,36 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
       <div className="flex items-center mb-4 text-emerald-700">
    <Activity className="w-6 h-6 mr-2" />
-   <h2 className="text-lg font-bold">Theory & Context {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500 ml-2" />}</h2>
+   <h2 className="text-lg font-bold">{t('lab.p12electricpotential_theory_context')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500 ml-2" />}</h2>
    </div>
    <div className={`text-slate-700 dark:text-[#ffffff] space-y-4 text-sm leading-relaxed lg:overflow-y-auto flex-1 pr-2 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    A <strong>Capacitor</strong> is a device that stores electrical energy in an electric field. 
-    The amount of charge <em>Q</em> it stores depends on its capacitance <em>C</em> and voltage <em>V</em>:
+    A <strong>{t('lab.12electricpotential_capacitor')}</strong>  {t('lab.p12electricpotential_is_a_device_that_stores_electr')} <em>Q</em>{t('lab.12electricpotential_itstoresdependsonitscapacitance')}<em>C</em>{t('lab.12electricpotential_andvoltage')}<em>V</em>:
    </p>
    <div className={`bg-emerald-50 p-3 rounded-lg font-mono text-center border border-emerald-100 flex-col `}>
-    Q = C · V
-   </div>
+    
+                             {t('lab.p12electricpotential_q_c_v')}
+                            </div>
    
-   <h3 className="font-bold text-emerald-800 mt-4">Bioelectricity (The Eel)</h3>
+   <h3 className="font-bold text-emerald-800 mt-4">{t('lab.p12electricpotential_bioelectricity_the_eel')}</h3>
    <p>
-    The electric eel creates shocks using specialized cells called <em>electrocytes</em>. 
-    Each cell acts like a tiny battery/capacitor. By connecting thousands in <strong>series</strong>, 
-    the voltages add up, generating lethal shocks of over 800V!
-   </p>
+    
+                             {t('lab.p12electricpotential_the_electric_eel_creates_shock')} <em>{t('lab.12electricpotential_electrocytes')}</em>{t('lab.p12electricpotential_each_cell_acts_like_a_tiny_bat')} <strong>{t('lab.12electricpotential_series')}</strong>{t('lab.p12electricpotential_the_voltages_add_up_generating')}
+                            </p>
    
-   <h3 className="font-bold text-emerald-800 mt-4">RC Circuits (Camera Flash)</h3>
+   <h3 className="font-bold text-emerald-800 mt-4">{t('lab.p12electricpotential_rc_circuits_camera_flash')}</h3>
    <p>
-    In circuits, charging or discharging a capacitor through a resistor <em>R</em> takes time. 
-    The rate is determined by the time constant <strong>τ (tau)</strong>:
+    
+                             {t('lab.p12electricpotential_in_circuits_charging_or_discha')} <em>R</em>  {t('lab.p12electricpotential_takes_time_the_rate_is_determi')} <strong>{t('lab.p12electricpotential_tau')}</strong>:
    </p>
    <div className={`bg-emerald-50 p-3 rounded-lg font-mono text-center border border-emerald-100 flex-col `}>
-    τ = R · C
-   </div>
+    
+                             {t('lab.p12electricpotential_r_c')}
+                            </div>
    <p>
-    A camera flash slowly charges a capacitor (taking seconds) and then rapidly discharges it through a low-resistance bulb (taking milliseconds), releasing an intense burst of light.
-   </p>
+    
+                             {t('lab.p12electricpotential_a_camera_flash_slowly_charges_')}
+                            </p>
    </div>
 
    {config.showDerivations && (
@@ -250,25 +254,25 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   </div>
 
   {/* Middle Column: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
    <div className="flex items-center text-emerald-700">
     <Settings2 className="w-6 h-6 mr-2" />
-    <h2 className="text-lg font-bold">Interactive Simulator</h2>
+    <h2 className="text-lg font-bold">{t('lab.12electricpotential_interactivesimulator')}</h2>
    </div>
    <div className={`flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1 `}>
     <button 
     onClick={() => setMode('eel')}
     className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-500 dark:text-[#a1a1aa]'}`}
     >
-    <Zap className="w-4 h-4 mr-1" /> Eel
-    </button>
+    <Zap className="w-4 h-4 mr-1" />  {t('lab.p12electricpotential_eel')}
+                                 </button>
     <button 
     onClick={() => setMode('rc')}
     className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'rc' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-500 dark:text-[#a1a1aa]'}`}
     >
-    <Camera className="w-4 h-4 mr-1" /> RC Flash
-    </button>
+    <Camera className="w-4 h-4 mr-1" />  {t('lab.p12electricpotential_rc_flash')}
+                                 </button>
    </div>
    </div>
 
@@ -281,41 +285,41 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
     <div className={`space-y-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Number of Electrocytes</span>
+     <span>{t('lab.12electricpotential_numberofelectrocytes')}</span>
      <span className="text-emerald-600 font-bold">{electrocytes}</span>
      </label>
      <input type="range" min="1000" max="10000" step="100" value={electrocytes} onChange={(e) => setElectrocytes(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Voltage per Cell</span>
+     <span>{t('lab.12electricpotential_voltagepercell')}</span>
      <span className="text-emerald-600 font-bold">{voltPerCell.toFixed(2)} V</span>
      </label>
      <input type="range" min="0.10" max="0.20" step="0.01" value={voltPerCell} onChange={(e) => setVoltPerCell(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <button onClick={handleShock} className="w-full bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold py-2 rounded shadow-sm transition-colors flex justify-center items-center dark:text-white dark:text-white dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
-     <Zap className="w-5 h-5 mr-2" /> Trigger Shock!
-    </button>
+     <Zap className="w-5 h-5 mr-2" />  {t('lab.p12electricpotential_trigger_shock')}
+                                     </button>
     </div>
    ) : (
     <div className={`space-y-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Capacitance (C)</span>
+     <span>{t('lab.p12electricpotential_capacitance_c')}</span>
      <span className="text-emerald-600 font-bold">{capacitance} μF</span>
      </label>
      <input type="range" min="10" max="1000" step="10" value={capacitance} onChange={(e) => setCapacitance(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Resistance (R)</span>
+     <span>{t('lab.p12electricpotential_resistance_r')}</span>
      <span className="text-emerald-600 font-bold">{resistance} Ω</span>
      </label>
      <input type="range" min="10" max="2000" step="50" value={resistance} onChange={(e) => setResistance(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Supply Voltage</span>
+     <span>{t('lab.12electricpotential_supplyvoltage')}</span>
      <span className="text-emerald-600 font-bold">{supplyVoltage} V</span>
      </label>
      <input type="range" min="10" max="300" step="10" value={supplyVoltage} onChange={(e) => setSupplyVoltage(Number(e.target.value))} className="w-full accent-emerald-600" />
@@ -327,8 +331,9 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
      onMouseLeave={() => setIsCharging(false)}
      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-sm transition-colors select-none dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     Hold to Charge
-     </button>
+     
+                                              {t('lab.p12electricpotential_hold_to_charge')}
+                                              </button>
     </div>
     </div>
    )}
@@ -336,30 +341,31 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   </div>
 
   {/* Right Column: Assessment & Data */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between mb-4 text-emerald-700">
    <div className="flex items-center">
     <Database className="w-6 h-6 mr-2" />
-    <h2 className="text-lg font-bold">Data Log & Analysis</h2>
+    <h2 className="text-lg font-bold">{t('lab.12electricpotential_datalog_andanalysis')}</h2>
    </div>
    <button onClick={handleRecord} className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded hover:bg-emerald-200 text-sm font-semibold transition-colors">
-    Record Data
-   </button>
+    
+                             {t('lab.p12electricpotential_record_data')}
+                            </button>
    </div>
 
    <div className="max-h-40 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
    <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
     <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-3 py-2">System</th>
-     <th className="px-3 py-2">Parameters</th>
-     <th className="px-3 py-2">Input</th>
-     <th className="px-3 py-2 font-bold text-emerald-700">Output</th>
+     <th className="px-3 py-2">{t('lab.12electricpotential_system')}</th>
+     <th className="px-3 py-2">{t('lab.12electricpotential_parameters')}</th>
+     <th className="px-3 py-2">{t('lab.12electricpotential_input')}</th>
+     <th className="px-3 py-2 font-bold text-emerald-700">{t('lab.12electricpotential_output')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
-     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400">No data recorded yet.</td></tr>
+     <tr><td colSpan={4} className="px-3 py-4 text-center text-slate-400">{t('lab.12electricpotential_nodatarecordedyet')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="border-t border-slate-100">
@@ -377,32 +383,34 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
    <div className={`flex-1 flex-col bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center mb-3 text-slate-800 dark:text-[#ffffff]">
     <Calculator className="w-5 h-5 mr-2 text-emerald-600" />
-    <h3 className="font-bold">Knowledge Check</h3>
+    <h3 className="font-bold">{t('lab.12electricpotential_q_title')}</h3>
    </div>
    
    <div className="space-y-4 flex-1">
     <div>
     <label className="block text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-     1. An eel has exactly 5000 electrocytes connected in series, each producing 0.15V. What is the total voltage output (in V)?
-    </label>
+     
+                                      {t('lab.p12electricpotential_1_an_eel_has_exactly_5000_elec')}
+                                     </label>
     <input 
      type="text" 
      value={ans1} 
      onChange={e => setAns1(e.target.value)} 
-     placeholder="e.g. 500" 
+     placeholder={t('lab.p12electricpotential_t_lab_12electricpotential_eg50')} 
      className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
     />
     </div>
     
     <div>
     <label className="block text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-     2. In an RC circuit, if C = 200 μF and R = 500 Ω, calculate the time constant τ in seconds.
-    </label>
+     
+                                      {t('lab.p12electricpotential_2_in_an_rc_circuit_if_c_200_f_')}
+                                     </label>
     <input 
      type="text" 
      value={ans2} 
      onChange={e => setAns2(e.target.value)} 
-     placeholder="e.g. 0.5" 
+     placeholder={t('lab.p12electricpotential_t_lab_12electricpotential_eg05')} 
      className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
     />
     </div>
@@ -416,8 +424,9 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
    )}
 
    <button onClick={checkAnswers} className="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    Check Answers
-   </button>
+    
+                             {t('lab.p12electricpotential_check_answers')}
+                            </button>
    </div>
 
    {config.showResearchConnections && (

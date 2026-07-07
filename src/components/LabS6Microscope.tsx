@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { ArrowLeft, ZoomIn, Droplets } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6Microscope({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [slide, setSlide] = useState<'none' | 'onion' | 'cheek'>('none');
  const [stainAdded, setStainAdded] = useState(false);
  const [coverSlipAdded, setCoverSlipAdded] = useState(false);
@@ -32,27 +34,29 @@ export default function LabS6Microscope({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-100 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 1: Microscope Slide Preparation" />
+  <LabHeader onExit={onExit} title={t('lab.s6microscope_unit_1_microscope_slide_prepar')} />
 
   <div className="flex-1 flex flex-col p-6 items-center">
   {viewMode === 'bench' && (
    <div className="w-full max-w-4xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center">
-   <h2 className="text-2xl font-bold mb-6">Preparation Bench</h2>
+   <h2 className="text-2xl font-bold mb-6">{t('lab.s6microscope_preparation_bench')}</h2>
    
    <div className="flex gap-4 mb-8">
     <button onClick={() => { setSlide('onion'); setStainAdded(false); setCoverSlipAdded(false); }} className={`px-6 py-3 rounded-lg border-2 font-bold ${slide === 'onion' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-blue-300'}`}>
-    1. Select Onion Membrane
-    </button>
+    
+                                 {t('lab.s6microscope_1_select_onion_membrane')}
+                                 </button>
     <button onClick={() => { setSlide('cheek'); setStainAdded(false); setCoverSlipAdded(false); }} className={`px-6 py-3 rounded-lg border-2 font-bold ${slide === 'cheek' ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300'}`}>
-    1. Select Cheek Swab
-    </button>
+    
+                                 {t('lab.s6microscope_1_select_cheek_swab')}
+                                 </button>
    </div>
 
    <div className="w-96 h-48 bg-slate-50 dark:bg-[#121212] border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-xl flex items-center justify-center relative mb-8">
-    {slide === 'none' && <p className="text-slate-400 font-medium">Select a sample to place on the glass slide</p>}
+    {slide === 'none' && <p className="text-slate-400 font-medium">{t('lab.s6microscope_select_a_sample_to_place_on_th')}</p>}
     {slide !== 'none' && (
     <div className="w-64 h-24 bg-blue-50 border border-blue-200 shadow-sm relative flex items-center justify-center dark:bg-teal-950/20 dark:border-teal-900">
-     <span className="text-xs text-blue-400 absolute top-1 left-2">Glass Slide</span>
+     <span className="text-xs text-blue-400 absolute top-1 left-2">{t('lab.s6microscope_glass_slide')}</span>
      <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${stainAdded ? 'bg-blue-200/50' : 'bg-amber-100/30'}`}>
      {coverSlipAdded && <div className="absolute w-14 h-14 border border-slate-400 dark:border-[#1c1b1b]/50 bg-slate-50 dark:bg-[#121212]/20"></div>}
      </div>
@@ -66,22 +70,23 @@ export default function LabS6Microscope({ onExit }: LabProps) {
     disabled={slide === 'none' || coverSlipAdded}
     className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-bold disabled:opacity-50 hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    <Droplets className="w-5 h-5 mr-2" /> 2. Add Methylene Blue Stain
-    </button>
+    <Droplets className="w-5 h-5 mr-2" />  {t('lab.s6microscope_2_add_methylene_blue_stain')}
+                                 </button>
     <button 
     onClick={handleCoverSlip}
     disabled={!stainAdded || coverSlipAdded}
     className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold disabled:opacity-50 hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    3. Place Cover Slip
-    </button>
+    
+                                 {t('lab.s6microscope_3_place_cover_slip')}
+                                 </button>
     <button 
     onClick={handleView}
     disabled={!coverSlipAdded}
     className="flex items-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-bold disabled:opacity-50 hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
-    <ZoomIn className="w-5 h-5 mr-2" /> 4. Observe under Microscope
-    </button>
+    <ZoomIn className="w-5 h-5 mr-2" />  {t('lab.s6microscope_4_observe_under_microscope')}
+                                 </button>
    </div>
    </div>
   )}
@@ -89,9 +94,9 @@ export default function LabS6Microscope({ onExit }: LabProps) {
   {viewMode === 'microscope' && (
    <div className="w-full max-w-4xl bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-xl overflow-hidden flex flex-col items-center p-8 text-white relative">
    <button onClick={() => setViewMode('bench')} className="absolute top-4 left-4 text-slate-400 hover:text-white flex items-center">
-    <ArrowLeft className="w-4 h-4 mr-1" /> Back to Bench
-   </button>
-   <h2 className="text-2xl font-bold mb-6">Microscope View (400x)</h2>
+    <ArrowLeft className="w-4 h-4 mr-1" />  {t('lab.s6microscope_back_to_bench')}
+                            </button>
+   <h2 className="text-2xl font-bold mb-6">{t('lab.s6microscope_microscope_view_400x')}</h2>
    
    <div className="w-96 h-96 rounded-full bg-blue-50 overflow-hidden relative border-8 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-inner flex flex-wrap content-start dark:bg-teal-950/20 dark:border-teal-900">
     {slide === 'onion' ? (

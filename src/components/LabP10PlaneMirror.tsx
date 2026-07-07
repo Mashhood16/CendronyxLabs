@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10PlaneMirror({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [objectDist, setObjectDist] = useState(20); // cm
  const [rayAngle, setRayAngle] = useState(15); // degrees
@@ -94,7 +96,7 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
  
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 14: Plane Mirror & Ray Tracing" subtitle="Investigate virtual images using the parallax pin method with real-world noise." />
+  <LabHeader onExit={onExit} title={t('lab.p10planemirror_unit_14_plane_mirror_ray_traci')} subtitle={t('lab.subtitle_investigate_virtual_images')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -103,49 +105,53 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10planemirror_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10planemirror_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10planemirror_theory_andsetup')}</h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    An image formed by a plane mirror is <strong>virtual</strong>, <strong>upright</strong>, and <strong>laterally inverted</strong>.
+    
+                             {t('lab.p10planemirror_an_image_formed_by_a_plane_mir')} <strong>{t('lab.10planemirror_virtual')}</strong>, <strong>{t('lab.10planemirror_upright')}</strong>{t('lab.10planemirror_and')}<strong>{t('lab.10planemirror_laterallyinverted')}</strong>.
    </p>
    <p>
-    In a real lab, students use pins to trace reflected rays and locate the image. Because measuring angles is prone to human error (e.g., ±1°), the calculated image distance <span className="font-mono">d_i</span> can vary from the true object distance <span className="font-mono">d_o</span>.
+    
+                             {t('lab.p10planemirror_in_a_real_lab_students_use_pin')} <span className="font-mono">{t('lab.10planemirror_d_i')}</span>{t('lab.10planemirror_canvaryfromthetrueobjectdistance')}<span className="font-mono">{t('lab.10planemirror_d_o')}</span>.
    </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono font-bold text-sm flex-col `}>
-    Law of Reflection: θ_incident = θ_reflected
-   </div>
+    
+                             {t('lab.p10planemirror_law_of_reflection_incident_ref')}
+                            </div>
    </div>
 
    <div className={`space-y-6 flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Object Type</span>
+    <span>{t('lab.10planemirror_objecttype')}</span>
     </label>
     <select 
     value={isMystery ? 'mystery' : 'standard'} 
     onChange={(e) => setIsMystery(e.target.value === 'mystery')}
     className={`w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-slate-50 dark:bg-[#121212] flex-col `}
     >
-    <option value="standard">Standard Object (Known Distance)</option>
-    <option value="mystery">Mystery Object (Unknown Distance)</option>
+    <option value="standard">{t('lab.p10planemirror_standard_object_known_distance')}</option>
+    <option value="mystery">{t('lab.p10planemirror_mystery_object_unknown_distanc')}</option>
     </select>
    </div>
 
    {!isMystery && (
     <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Object Distance (d_o)</span>
+     <span>{t('lab.p10planemirror_object_distance_d_o')}</span>
      <span className="text-blue-600 font-bold">{objectDist} cm</span>
     </label>
     <input 
@@ -159,7 +165,7 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Tracing Angle (θ)</span>
+    <span>{t('lab.p10planemirror_tracing_angle')}</span>
     <span className="text-emerald-600 font-bold">{rayAngle}°</span>
     </label>
     <input 
@@ -168,14 +174,14 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
     onChange={(e) => setRayAngle(Number(e.target.value))}
     className="w-full accent-emerald-600"
     />
-    <p className="text-xs text-slate-400 mt-1">Adjusting the angle changes where the rays hit the mirror, amplifying or reducing measurement noise!</p>
+    <p className="text-xs text-slate-400 mt-1">{t('lab.p10planemirror_adjusting_the_angle_changes_wh')}</p>
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">Simulation</h2>
+   <h2 className="text-lg font-bold text-white mb-4 w-full text-left">{t('lab.10planemirror_simulation')}</h2>
    
    <div className={`flex-1 w-full flex items-center justify-center relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <svg width="100%" height="100%" viewBox={`0 0 ${svgW} ${svgH}`} className={`bg-[#121212] dark:bg-[#121212] rounded-lg shadow-inner flex-col `}>
@@ -215,13 +221,15 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
     {/* Virtual Image Intersection */}
     <circle cx={x_img} cy={cy} r="6" fill="#5560F1" opacity="0.8" />
     <text x={x_img} y={cy - 12} fill="#5560F1" fontSize="12" textAnchor="middle" fontWeight="bold">
-    Image
-    </text>
+    
+                                 {t('lab.p10planemirror_image')}
+                                 </text>
    </svg>
 
    {/* Error visualization floating text */}
    <div className="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] text-xs text-slate-300 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    Noise: {(noise1 > 0 ? '+' : '')}{noise1.toFixed(1)}°, {(noise2 > 0 ? '+' : '')}{noise2.toFixed(1)}°
+    
+                             {t('lab.p10planemirror_noise')} {(noise1 > 0 ? '+' : '')}{noise1.toFixed(1)}°, {(noise2 > 0 ? '+' : '')}{noise2.toFixed(1)}°
    </div>
    </div>
   </div>
@@ -229,28 +237,28 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
   {/* Column 3: Data & Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logger</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10planemirror_datalogger')}</h2>
    <button 
     onClick={recordData}
     className="flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <Save className="w-4 h-4" /> Record Data
-   </button>
+    <Save className="w-4 h-4" />  {t('lab.p10planemirror_record_data')}
+                            </button>
    </div>
 
    <div className="overflow-auto max-h-40 border border-slate-200 dark:border-[#1c1b1b] rounded-lg mb-4">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-3 py-2 border-b">d_o (cm)</th>
+     <th className="px-3 py-2 border-b">{t('lab.p10planemirror_d_o_cm')}</th>
      <th className="px-3 py-2 border-b">θ (°)</th>
-     <th className="px-3 py-2 border-b">Measured d_i (cm)</th>
+     <th className="px-3 py-2 border-b">{t('lab.p10planemirror_measured_d_i_cm')}</th>
     </tr>
     </thead>
     <tbody>
     {data.length === 0 && (
      <tr>
-     <td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">No data recorded yet</td>
+     <td colSpan={3} className="px-3 py-4 text-center text-slate-400 italic">{t('lab.10planemirror_no_data')}</td>
      </tr>
     )}
     {data.map(d => (
@@ -265,7 +273,7 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
    </div>
 
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">Measured d_i vs θ</h3>
+   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase absolute top-2 left-3">{t('lab.10planemirror_measuredd_ivs')}</h3>
    <div className="w-full h-full pt-6">
     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
      <line x1="10" y1="90" x2="100" y2="90" stroke="#cbd5e1" strokeWidth="1" />
@@ -279,19 +287,20 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
      })}
     </svg>
    </div>
-   <p className="absolute bottom-1 right-2 text-[10px] text-slate-400">Notice how error grows at smaller angles!</p>
+   <p className="absolute bottom-1 right-2 text-[10px] text-slate-400">{t('lab.10planemirror_noticehowerrorgrowsatsmallerangles')}</p>
    </div>
 
    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-amber-800 text-sm mb-2 dark:text-[#ffffff]">Assessment: Find Mystery Object</h3>
+   <h3 className="font-bold text-amber-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10planemirror_assessmentfindmysteryobject')}</h3>
    <p className="text-xs text-amber-700 mb-3">
-    Switch to the "Mystery Object". Record the measured image distance <span className="font-mono">d_i</span> at multiple tracing angles <span className="font-mono">θ</span>. Average your results to estimate the true object distance <span className="font-mono">d_o</span>.
+    
+                             {t('lab.p10planemirror_switch_to_the_mystery_object_r')} <span className="font-mono">{t('lab.10planemirror_d_i')}</span>{t('lab.10planemirror_atmultipletracingangles')}<span className="font-mono">θ</span>{t('lab.10planemirror_averageyourresultstoestimatethetrue')}<span className="font-mono">{t('lab.10planemirror_d_o')}</span>.
    </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     step="0.1"
-    placeholder="e.g. 25.5"
+    placeholder={t('lab.p10planemirror_t_lab_10planemirror_eg255')}
     value={assessmentInput}
     onChange={(e) => { setAssessmentInput(e.target.value); setAssessmentStatus('idle'); }}
     className="flex-1 px-3 py-1.5 border border-amber-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
@@ -301,18 +310,19 @@ export default function LabP10PlaneMirror({ onExit }: LabProps) {
     onClick={checkAssessment}
     className="px-4 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10planemirror_check')}
+                                 </button>
    </div>
    {assessmentStatus === 'correct' && (
     <div className="mt-2 flex items-center gap-1 text-emerald-600 text-sm font-bold">
-    <CheckCircle className="w-4 h-4" /> Correct! The mystery distance is {mysteryDist} cm.
-    </div>
+    <CheckCircle className="w-4 h-4" />  {t('lab.p10planemirror_correct_the_mystery_distance_i')} {mysteryDist}  {t('lab.p10planemirror_cm')}
+                                 </div>
    )}
    {assessmentStatus === 'incorrect' && (
     <div className="mt-2 flex items-center gap-1 text-red-600 text-sm font-bold">
-    <XCircle className="w-4 h-4" /> Incorrect. Try taking more measurements!
-    </div>
+    <XCircle className="w-4 h-4" />  {t('lab.p10planemirror_incorrect_try_taking_more_meas')}
+                                 </div>
    )}
    </div>
   </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Layers, ArrowLeft, ShieldAlert, CheckCircle, Target, Shield, AlertTriangle, Zap, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface NounWord {
  id: number;
@@ -9,6 +10,7 @@ interface NounWord {
 }
 
 export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeMode, setActiveMode] = useState<'sorter' | 'resolver'>('sorter');
 
@@ -93,7 +95,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Identity Matrix Lab" />
+   <LabHeader onExit={onExit} title={t('lab.e12nounspronouns_identity_matrix_lab')} />
 
    
    {/* Mobile Tab Navigation */}
@@ -102,66 +104,70 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e12nounspronouns_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e12nounspronouns_lab')}</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
-     </h2>
+      <BookOpen className="mr-2 text-indigo-500" />  {t('lab.e12nounspronouns_grammar_theory')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
       <p>
-       <strong>Nouns</strong> are the structural anchors of language, identifying people, places, concepts, and objects. They are broken down into specific taxonomies.
-      </p>
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Noun Taxonomies</h4>
+       <strong>{t('lab.e12nounspronouns_nouns')}</strong>  {t('lab.e12nounspronouns_are_the_structural_anchors_of_')}
+                               </p>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12nounspronouns_noun_taxonomies')}</h4>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Abstract:</strong> Concepts or ideas you cannot physically touch (e.g., Justice, Wisdom).</li>
-       <li><strong>Collective:</strong> A word referring to a group as a single entity (e.g., Flock, Jury, Team).</li>
-       <li><strong>Proper:</strong> Specific names of entities, always capitalized (e.g., London, Einstein).</li>
-       <li><strong>Concrete:</strong> Physical objects you can perceive with your senses (e.g., Apple, Brick).</li>
-       <li><strong>Compound:</strong> Two words joined to create a new noun (e.g., Toothbrush, Keyboard).</li>
+       <li><strong>{t('lab.e12nounspronouns_abstract')}</strong>  {t('lab.e12nounspronouns_concepts_or_ideas_you_cannot_p')}</li>
+       <li><strong>{t('lab.e12nounspronouns_collective')}</strong>  {t('lab.e12nounspronouns_a_word_referring_to_a_group_as')}</li>
+       <li><strong>{t('lab.e12nounspronouns_proper')}</strong>  {t('lab.e12nounspronouns_specific_names_of_entities_alw')}</li>
+       <li><strong>{t('lab.e12nounspronouns_concrete')}</strong>  {t('lab.e12nounspronouns_physical_objects_you_can_perce')}</li>
+       <li><strong>{t('lab.e12nounspronouns_compound')}</strong>  {t('lab.e12nounspronouns_two_words_joined_to_create_a_n')}</li>
       </ul>
 
       <hr className="my-6 border-slate-200 dark:border-gray-800" />
 
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Pronoun Antecedents</h4>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12nounspronouns_pronoun_antecedents')}</h4>
       <p className="mt-2">
-       Pronouns must agree with their antecedents (the noun they replace) in number, person, and gender.
-      </p>
+       
+                                {t('lab.e12nounspronouns_pronouns_must_agree_with_their')}
+                               </p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Collective Agreement:</strong> When a collective noun acts as a single unit, it requires a singular pronoun: <em>"The jury reached <strong>its</strong> verdict."</em></li>
-       <li><strong>Indefinite Pronouns:</strong> Words like 'Each', 'Everyone', and 'Someone' are singular and require singular pronouns (e.g., his or her).</li>
-       <li><strong>Intensive vs. Reflexive:</strong> Intensive pronouns (himself, itself) emphasize the subject (<em>"I did it myself"</em>), while reflexive pronouns receive the action (<em>"She hurt herself"</em>).</li>
+       <li><strong>{t('lab.e12nounspronouns_collective_agreement')}</strong>  {t('lab.e12nounspronouns_when_a_collective_noun_acts_as')} <em>{t('lab.e12nounspronouns_the_jury_reached')} <strong>{t('lab.e12nounspronouns_its')}</strong>  {t('lab.e12nounspronouns_verdict')}</em></li>
+       <li><strong>{t('lab.e12nounspronouns_indefinite_pronouns')}</strong>  {t('lab.e12nounspronouns_words_like_each_everyone_and_s')}</li>
+       <li><strong>{t('lab.e12nounspronouns_intensive_vs_reflexive')}</strong>  {t('lab.e12nounspronouns_intensive_pronouns_himself_its')}<em>{t('lab.e12nounspronouns_i_did_it_myself')}</em>{t('lab.e12nounspronouns_while_reflexive_pronouns_recei')}<em>{t('lab.e12nounspronouns_she_hurt_herself')}</em>).</li>
       </ul>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
-      <Layers className="text-[#4158D1]" /> System Controls
-     </h2>
+      <Layers className="text-[#4158D1]" />  {t('lab.e12nounspronouns_system_controls')}
+                          </h2>
      
      <div className="flex gap-2 mb-6">
       <button 
        onClick={() => setActiveMode('sorter')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'sorter' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Noun Sorter
-      </button>
+       
+                                {t('lab.e12nounspronouns_noun_sorter')}
+                               </button>
       <button 
        onClick={() => setActiveMode('resolver')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'resolver' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Resolver
-      </button>
+       
+                                {t('lab.e12nounspronouns_resolver')}
+                               </button>
      </div>
 
      <div className="flex-1 overflow-y-auto">
@@ -169,22 +175,23 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
        <div className="space-y-4">
         <div className={`p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 flex-col `}>
          <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
-          <Target className="w-4 h-4" /> Telemetry
-         </h3>
+          <Target className="w-4 h-4" />  {t('lab.e12nounspronouns_telemetry')}
+                                              </h3>
          <div className="grid grid-cols-2 gap-4">
           <div>
-           <p className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">Score</p>
+           <p className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">{t('lab.e12nounspronouns_score')}</p>
            <p className="text-2xl font-black text-blue-900 dark:text-blue-200">{score}</p>
           </div>
           <div>
-           <p className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">Combo</p>
+           <p className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider font-bold">{t('lab.e12nounspronouns_combo')}</p>
            <p className="text-2xl font-black text-orange-500">x{combo}</p>
           </div>
          </div>
         </div>
         <p className="text-sm text-slate-600 dark:text-gray-400 italic">
-         "Watch the conveyor belt in the Simulation Space. When a word drops, click the correct bin below to sort it."
-        </p>
+         
+                                          {t('lab.e12nounspronouns_watch_the_conveyor_belt_in_the')}
+                                         </p>
         <div className="grid grid-cols-2 gap-3 mt-4">
          {bins.map(bin => (
           <button 
@@ -206,7 +213,8 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
           {systemState === 'stable' && <Shield className="w-5 h-5 text-blue-500" />}
           {systemState === 'shorted' && <Zap className="w-5 h-5 text-red-500 animate-pulse" />}
           {systemState === 'fixed' && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-          System Status: {systemState.toUpperCase()}
+          
+                                               {t('lab.e12nounspronouns_system_status')} {systemState.toUpperCase()}
          </h3>
          
          <div className="text-lg font-medium leading-relaxed mb-6 dark:text-white">
@@ -242,8 +250,9 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
             onClick={() => { setResIndex(p => (p + 1) % resolverScenarios.length); setSystemState('stable'); }}
             className="w-full py-3 bg-[#4158D1] text-white font-bold rounded-xl hover:bg-[#5560F1]"
            >
-            Next Sequence
-           </button>
+            
+                                                         {t('lab.e12nounspronouns_next_sequence')}
+                                                        </button>
           </div>
          )}
         </div>
@@ -253,7 +262,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {/* Background Grid */}
      <div className="absolute inset-0 opacity-10 dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#4158D1 1px, transparent 1px), linear-gradient(90deg, #4158D1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
      
@@ -275,7 +284,7 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
 
        {/* Scanner Zone */}
        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#4158D1]/20 to-transparent pointer-events-none border-t border-[#4158D1]/30">
-        <p className="text-center absolute bottom-2 w-full text-xs font-bold text-[#4158D1] uppercase tracking-widest">Scanner Active</p>
+        <p className="text-center absolute bottom-2 w-full text-xs font-bold text-[#4158D1] uppercase tracking-widest">{t('lab.e12nounspronouns_scanner_active')}</p>
        </div>
       </div>
      )}

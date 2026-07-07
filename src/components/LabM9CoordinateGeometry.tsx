@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -12,6 +13,7 @@ interface Point {
 }
 
 export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'midpoint' | 'distance'>('midpoint');
@@ -110,7 +112,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Coordinate Geometry" />
+  <LabHeader onExit={onExit} title={t('lab.m9coordinategeometry_virtual_lab_coordinate_geometr')} />
   
 
   
@@ -120,63 +122,68 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m9coordinategeometry_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m9coordinategeometry_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
-   <BookOpen className="mr-2" /> Theory & Context
-   </h2>
+   <BookOpen className="mr-2" />  {t('lab.m9coordinategeometry_theory_context')}
+                        </h2>
    
    <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0 flex-col `}>
    <button
     className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'midpoint' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setMode('midpoint')}
    >
-    Lamp Post Midpoint
-   </button>
+    
+                             {t('lab.m9coordinategeometry_lamp_post_midpoint')}
+                            </button>
    <button
     className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'distance' ? 'bg-slate-50 dark:bg-[#121212] shadow text-emerald-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setMode('distance')}
    >
-    Running Distance
-   </button>
+    
+                             {t('lab.m9coordinategeometry_running_distance')}
+                            </button>
    </div>
 
    <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    {mode === 'midpoint' ? (
     <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Midpoint Formula</h3>
-    <p>The midpoint divides a line segment connecting two points into two equal halves. It is equidistant from both endpoints.</p>
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9coordinategeometry_midpoint_formula')}</h3>
+    <p>{t('lab.m9coordinategeometry_the_midpoint_divides_a_line_se')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-     M = ( (x₁+x₂)/2 , (y₁+y₂)/2 )
-    </div>
-    <p><strong>Task:</strong> Click on the Cartesian plane to correctly place a lamp post exactly halfway between point A and point B.</p>
+     
+                                      {t('lab.m9coordinategeometry_m_x_x_2_y_y_2')}
+                                     </div>
+    <p><strong>{t('lab.m9coordinategeometry_task')}</strong>  {t('lab.m9coordinategeometry_click_on_the_cartesian_plane_t')}</p>
     </>
    ) : (
     <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Distance Formula</h3>
-    <p>The distance between two points on a Cartesian plane is derived from the Pythagorean theorem.</p>
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9coordinategeometry_distance_formula')}</h3>
+    <p>{t('lab.m9coordinategeometry_the_distance_between_two_point')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-     d = √[ (x₂-x₁)² + (y₂-y₁)² ]
-    </div>
-    <p><strong>Task:</strong> Click to plot an athlete's running route. Calculate the total distance covered across multiple straight segments.</p>
+     
+                                          {t('lab.m9coordinategeometry_d_x_x_y_y')}
+                                         </div>
+    <p><strong>{t('lab.m9coordinategeometry_task')}</strong>  {t('lab.m9coordinategeometry_click_to_plot_an_athlete_s_run')}</p>
     </>
    )}
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
-   <Activity className="mr-2" /> Interactive Cartesian Map
-   </h2>
+   <Activity className="mr-2" />  {t('lab.m9coordinategeometry_interactive_cartesian_map')}
+                        </h2>
 
    <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg flex-1 flex flex-col mb-4 items-center justify-center relative overflow-hidden">
    <svg width="300" height="300" viewBox="0 0 300 300" onClick={handleSVGClick} className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] cursor-crosshair">
@@ -202,7 +209,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
      {userMid && (
      <g>
       <circle cx={sx(userMid.x)} cy={sy(userMid.y)} r="6" fill="#ef4444" />
-      <text x={sx(userMid.x)+10} y={sy(userMid.y)+15} fontSize="12" fill="#ef4444" fontWeight="bold">Lamp</text>
+      <text x={sx(userMid.x)+10} y={sy(userMid.y)+15} fontSize="12" fill="#ef4444" fontWeight="bold">{t('lab.m9coordinategeometry_lamp')}</text>
      </g>
      )}
     </>
@@ -218,9 +225,10 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
     </>
     )}
    </svg>
-   <div className="absolute top-2 right-2 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    1 unit = 1 km
-   </div>
+   <div className="absolute top-2 right-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    
+                             {t('lab.m9coordinategeometry_1_unit_1_km')}
+                            </div>
    </div>
 
    <div className="space-y-3 flex gap-2">
@@ -229,43 +237,46 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
     onClick={handleRandomize}
     className="flex-1 min-w-0 py-2 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded-md font-medium transition active:scale-95"
     >
-    Randomize A & B
-    </button>
+    
+                                 {t('lab.m9coordinategeometry_randomize_a_b')}
+                                 </button>
    ) : (
     <button 
     onClick={() => setRoute([])}
     className="flex-1 min-w-0 py-2 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded-md font-medium transition active:scale-95"
     >
-    Clear Route
-    </button>
+    
+                                     {t('lab.m9coordinategeometry_clear_route')}
+                                     </button>
    )}
    <button 
     onClick={handleRecord}
     className="flex-1 min-w-0 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
-    Record Data
-   </button>
+    
+                             {t('lab.m9coordinategeometry_record_data')}
+                            </button>
    </div>
   </div>
 
   {/* Column 3: Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
-   <TableIcon className="mr-2" /> Analysis & Data
-   </h2>
+   <TableIcon className="mr-2" />  {t('lab.m9coordinategeometry_analysis_data')}
+                        </h2>
 
    <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
    <table className="w-full text-sm text-left">
     <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
     <tr>
-     <th className="pb-2">Type</th>
-     <th className="pb-2">Inputs</th>
-     <th className="pb-2">Result</th>
+     <th className="pb-2">{t('lab.m9coordinategeometry_type')}</th>
+     <th className="pb-2">{t('lab.m9coordinategeometry_inputs')}</th>
+     <th className="pb-2">{t('lab.m9coordinategeometry_result')}</th>
     </tr>
     </thead>
     <tbody className="divide-y divide-slate-100 font-mono text-xs">
     {logs.length === 0 ? (
-     <tr><td colSpan={3} className="py-4 text-center text-slate-400">No data recorded</td></tr>
+     <tr><td colSpan={3} className="py-4 text-center text-slate-400">{t('lab.m9coordinategeometry_no_data_recorded')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
@@ -280,15 +291,16 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
    </div>
 
    <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">Knowledge Check</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.m9coordinategeometry_knowledge_check')}</h3>
    
    {mode === 'midpoint' ? (
     <div className="space-y-4">
     <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     Find exact midpoint between <br/><strong>({qMidX1}, {qMidY1})</strong> and <strong>({qMidX2}, {qMidY2})</strong>.
+     
+                                      {t('lab.m9coordinategeometry_find_exact_midpoint_between')} <br/><strong>({qMidX1}, {qMidY1})</strong>  {t('lab.m9coordinategeometry_and')} <strong>({qMidX2}, {qMidY2})</strong>.
     </p>
     <div className="flex items-center gap-2">
-     <span>M = (</span>
+     <span>{t('lab.m9coordinategeometry_m')}</span>
      <input 
      type="number" 
      value={ansMidX} 
@@ -308,8 +320,9 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
     </div>
     <div className="flex items-center gap-4 mt-4">
      <button onClick={checkMid} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     Verify
-     </button>
+     
+                                          {t('lab.m9coordinategeometry_verify')}
+                                          </button>
      {statusMid === true && <CheckCircle2 className="text-emerald-500" />}
      {statusMid === false && <XCircle className="text-red-500" />}
     </div>
@@ -317,10 +330,11 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
    ) : (
     <div className="space-y-4">
     <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     Find distance between <br/><strong>({qDistX1}, {qDistY1})</strong> and <strong>({qDistX2}, {qDistY2})</strong>.
+     
+                                          {t('lab.m9coordinategeometry_find_distance_between')} <br/><strong>({qDistX1}, {qDistY1})</strong>  {t('lab.m9coordinategeometry_and')} <strong>({qDistX2}, {qDistY2})</strong>.
     </p>
     <div className="flex items-center gap-2">
-     <span>d = </span>
+     <span>{t('lab.m9coordinategeometry_d')} </span>
      <input 
      type="number" 
      value={ansDist} 
@@ -328,12 +342,13 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
      className="w-20 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-emerald-500 outline-none"
      placeholder="0.0"
      />
-     <span>units</span>
+     <span>{t('lab.m9coordinategeometry_units')}</span>
     </div>
     <div className="flex items-center gap-4 mt-4">
      <button onClick={checkDist} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     Verify
-     </button>
+     
+                                              {t('lab.m9coordinategeometry_verify')}
+                                              </button>
      {statusDist === true && <CheckCircle2 className="text-emerald-500" />}
      {statusDist === false && <XCircle className="text-red-500" />}
     </div>

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Clock, Search } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7CleaningCoins({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [hours, setHours] = useState(0);
  const [running, setRunning] = useState(false);
 
@@ -30,12 +32,12 @@ export default function LabS7CleaningCoins({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-amber-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 7: Cleaning Coins with Solutions" />
+  <LabHeader onExit={onExit} title={t('lab.s7cleaningcoins_unit_7_cleaning_coins_with_sol')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-amber-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">Removing Copper Oxide Tarnish</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Four heavily tarnished copper pennies are soaked in different everyday solutions for 24 hours. The weak acids react with the copper oxide tarnish, dissolving it.</p>
+   <h2 className="text-2xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">{t('lab.s7cleaningcoins_removing_copper_oxide_tarnish')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7cleaningcoins_four_heavily_tarnished_copper_')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -50,10 +52,11 @@ export default function LabS7CleaningCoins({ onExit }: LabProps) {
     onClick={() => { setHours(0); setRunning(false); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7cleaningcoins_reset')}
+                            </button>
    </div>
-   <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">Time Elapsed: {hours} Hours</div>
+   <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">{t('lab.s7cleaningcoins_time_elapsed')} {hours}  {t('lab.s7cleaningcoins_hours')}</div>
   </div>
 
   <div className="flex gap-8 justify-center mt-12 w-full flex-wrap max-w-6xl">
@@ -94,8 +97,8 @@ export default function LabS7CleaningCoins({ onExit }: LabProps) {
 
   {hours === 24 && (
    <div className="mt-12 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-amber-500 max-w-2xl text-center">
-   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Search className="w-5 h-5 mr-2 text-amber-500" /> Conclusion</h4>
-   <p>The <strong>Vinegar and Salt</strong> solution cleaned the coin completely! Vinegar (acetic acid) dissolves the copper oxide, but adding salt provides chloride ions which drastically speeds up the chemical reaction. Lemon juice and Ketchup also worked well due to their acidic nature (citric acid and vinegar content).</p>
+   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Search className="w-5 h-5 mr-2 text-amber-500" />  {t('lab.s7cleaningcoins_conclusion')}</h4>
+   <p>{t('lab.s7cleaningcoins_the')} <strong>{t('lab.s7cleaningcoins_vinegar_and_salt')}</strong>  {t('lab.s7cleaningcoins_solution_cleaned_the_coin_comp')}</p>
    </div>
   )}
   </div>

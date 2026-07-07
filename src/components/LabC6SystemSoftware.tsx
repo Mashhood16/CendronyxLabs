@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Usb, Disc, Cpu, Printer, Mouse, Terminal, Shield, FolderSearch } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6SystemSoftware({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const devices = [
  { id: 'usb', name: 'USB Flash Drive', icon: Usb, isPnP: true },
  { id: 'mouse', name: 'USB Mouse', icon: Mouse, isPnP: true },
@@ -37,17 +39,17 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="System Software & Devices" />
+  <LabHeader onExit={onExit} title={t('lab.c6systemsoftware_system_software_devices')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Identify Plug and Play (PnP) devices and explore common utility programs.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6systemsoftware_identify_plug_and_play_pnp_dev')}</p>
 
   <div className="flex gap-8 flex-1 min-h-[500px]">
    {/* Left Column: PnP */}
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-2">1. Plug and Play Devices</h2>
-   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">Select all the devices below that are "Plug and Play" (devices that work immediately when connected without manual configuration).</p>
+   <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_1_plug_and_play_devices')}</h2>
+   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_select_all_the_devices_below_t')}</p>
 
    <div className="flex flex-col gap-3 flex-1">
     {devices.map(device => {
@@ -76,8 +78,8 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
 
    {/* Right Column: Utilities */}
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-2">2. Utility Programs</h2>
-   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">Review these essential system software utilities used to maintain and manage a computer.</p>
+   <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_2_utility_programs')}</h2>
+   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_review_these_essential_system_')}</p>
 
    <div className="grid grid-cols-2 gap-4 flex-1">
     {utilities.map(util => {

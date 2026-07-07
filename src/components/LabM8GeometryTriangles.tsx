@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { ArrowLeft, Triangle, Compass, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import type { ChangeEvent } from 'react';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 type GeometryMode = 'similar-triangles' | 'compass-constructions';
 
@@ -11,6 +13,7 @@ interface Ring {
 }
 
 export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [mode, setMode] = useState<GeometryMode>('similar-triangles');
 
  // Similar Triangles State
@@ -47,20 +50,20 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
   case 'similar-triangles':
   return (
    <div className="space-y-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <h3 className="text-xl font-semibold dark:text-[#ffffff]">Navigational Distance</h3>
+   <h3 className="text-xl font-semibold dark:text-[#ffffff]">{t('lab.m8geometrytriangles_navigational_distance')}</h3>
    <p className="text-slate-700 dark:text-[#a1a1aa] text-sm">
-    Use properties of similar triangles to find the true height of the tower. 
-    The sun casts shadows at the same angle for both the person and the tower.
-   </p>
+    
+                  {t('lab.m8geometrytriangles_use_properties_of_similar_tria')}
+                 </p>
    
    <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm text-blue-800 dark:text-blue-300">
     <ul className="list-disc list-inside">
-    <li>Person Height ($h_1$): <strong>{personHeight} m</strong></li>
+    <li><MathText>{t('lab.m8geometrytriangles_person_height_h_1')}</MathText> <strong>{personHeight} m</strong></li>
     </ul>
    </div>
 
    <div className="flex flex-col gap-2">
-    <label className="text-sm font-medium dark:text-[#ffffff]">Person's Shadow ($s_1$): {personShadow} m</label>
+     <label className="text-sm font-medium dark:text-[#ffffff]"><MathText>{t('lab.m8geometrytriangles_person_s_shadow_s_1')}</MathText> {personShadow} m</label>
     <input 
     type="range" min="1" max="5" step="0.5" 
     value={personShadow} onChange={(e) => setPersonShadow(Number(e.target.value))}
@@ -69,7 +72,7 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    </div>
    
    <div className="flex flex-col gap-2">
-    <label className="text-sm font-medium dark:text-[#ffffff]">Tower's Shadow ($s_2$): {towerShadow} m</label>
+     <label className="text-sm font-medium dark:text-[#ffffff]"><MathText>{t('lab.m8geometrytriangles_tower_s_shadow_s_2')}</MathText> {towerShadow} m</label>
     <input 
     type="range" min="5" max="30" step="1" 
     value={towerShadow} onChange={(e) => setTowerShadow(Number(e.target.value))}
@@ -78,17 +81,17 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    </div>
 
    <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] space-y-3">
-    <label className="text-sm font-medium dark:text-[#ffffff]">Calculate Tower Height ($h_2$):</label>
+     <label className="text-sm font-medium dark:text-[#ffffff]"><MathText>{t('lab.m8geometrytriangles_calculate_tower_height_h_2')}</MathText></label>
     <div className="flex flex-wrap gap-2">
     <input
      type="number"
      step="0.1"
      value={studentAnswer}
      onChange={(e: ChangeEvent<HTMLInputElement>) => setStudentAnswer(e.target.value)}
-     placeholder="e.g. 9.0"
+     placeholder={t('lab.m8geometrytriangles_e_g_9_0')}
      className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-slate-900 dark:text-[#ffffff]"
     />
-    <span className="self-center font-medium text-slate-600 dark:text-[#71717a]">meters</span>
+    <span className="self-center font-medium text-slate-600 dark:text-[#71717a]">{t('lab.m8geometrytriangles_meters')}</span>
     </div>
    </div>
    </div>
@@ -96,14 +99,14 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
   case 'compass-constructions':
   return (
    <div className="space-y-4">
-   <h3 className="text-xl font-semibold dark:text-[#ffffff]">Compass Constructions</h3>
+   <h3 className="text-xl font-semibold dark:text-[#ffffff]">{t('lab.m8geometrytriangles_compass_constructions')}</h3>
    <p className="text-slate-700 dark:text-[#a1a1aa] text-sm">
-    Construct intersecting concentric rings from Points A and B. 
-    Use intersections of circles with equal radii to form a rhombus or other quadrilaterals.
-   </p>
+    
+                  {t('lab.m8geometrytriangles_construct_intersecting_concent')}
+                 </p>
 
    <div className="flex flex-col gap-2 mt-4">
-    <label className="text-sm font-medium dark:text-[#ffffff]">Compass Radius: {compassRadius} units</label>
+    <label className="text-sm font-medium dark:text-[#ffffff]">{t('lab.m8geometrytriangles_compass_radius')} {compassRadius}  {t('lab.m8geometrytriangles_units')}</label>
     <input 
     type="range" min="20" max="100" step="5" 
     value={compassRadius} onChange={(e) => setCompassRadius(Number(e.target.value))}
@@ -116,20 +119,22 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
     onClick={() => handleAddRing('A')}
     className="w-full py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#ffffff] font-medium rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
     >
-    Draw Arc from Center A
-    </button>
+    
+                      {t('lab.m8geometrytriangles_draw_arc_from_center_a')}
+                      </button>
     <button
     onClick={() => handleAddRing('B')}
     className="w-full py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#ffffff] font-medium rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
     >
-    Draw Arc from Center B
-    </button>
+    
+                      {t('lab.m8geometrytriangles_draw_arc_from_center_b')}
+                      </button>
     <button
     onClick={() => setRings([])}
     className="w-full py-2 mt-2 bg-rose-100 hover:bg-rose-200 dark:bg-rose-900/30 dark:hover:bg-rose-800/40 text-rose-700 dark:text-rose-300 font-medium rounded-lg transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0"
     >
-    <RotateCcw size={16} /> Clear Canvas
-    </button>
+    <RotateCcw size={16} />  {t('lab.m8geometrytriangles_clear_canvas')}
+                      </button>
    </div>
    </div>
   );
@@ -182,11 +187,11 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    <line x1={tx} y1={groundY - t_height_px} x2={tx - t_shadow_px} y2={groundY} stroke="#f59e0b" strokeWidth="1" strokeDasharray="2" />
 
    {/* Labels */}
-   <text x={px - 5} y={groundY - p_height_px - 5} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">h1={personHeight}m</text>
-   <text x={px - p_shadow_px/2 - 5} y={groundY + 8} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">s1={personShadow}m</text>
+   <text x={px - 5} y={groundY - p_height_px - 5} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">{t('lab.m8geometrytriangles_h1')}{personHeight}m</text>
+   <text x={px - p_shadow_px/2 - 5} y={groundY + 8} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">{t('lab.m8geometrytriangles_s1')}{personShadow}m</text>
    
-   <text x={tx - 8} y={groundY - t_height_px - 5} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">h2=?</text>
-   <text x={tx - t_shadow_px/2 - 5} y={groundY + 8} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">s2={towerShadow}m</text>
+   <text x={tx - 8} y={groundY - t_height_px - 5} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">{t('lab.m8geometrytriangles_h2')}</text>
+   <text x={tx - t_shadow_px/2 - 5} y={groundY + 8} fontSize="6" fill="currentColor" className="dark:text-[#a1a1aa]">{t('lab.m8geometrytriangles_s2')}{towerShadow}m</text>
 
    {/* Similar Triangles Highlight */}
    <path d={`M ${px} ${groundY} L ${px} ${groundY - p_height_px} L ${px - p_shadow_px} ${groundY} Z`} fill="#ef4444" opacity="0.1" />
@@ -201,7 +206,7 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    <svg viewBox="-100 -100 200 200" className="w-full h-full max-h-[60vh] rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
    <defs>
     <pattern id="gridC" width="10" height="10" patternUnits="userSpaceOnUse">
-    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-slate-200 dark:text-slate-700" />
+    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.2" className="text-slate-200 dark:text-slate-700 dark:text-slate-300" />
     </pattern>
    </defs>
    <rect x="-100" y="-100" width="200" height="200" fill="url(#gridC)" />
@@ -230,14 +235,14 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    <text x={ptB.x + 5} y={ptB.y - 5} fontSize="8" fill="currentColor" className="dark:text-[#ffffff] font-bold">B</text>
 
    <line x1={ptA.x} y1={ptA.y} x2={ptB.x} y2={ptB.y} stroke="#94a3b8" strokeWidth="1" strokeDasharray="4" />
-   <text x="0" y="8" fontSize="6" fill="#64748b" textAnchor="middle">Distance = 60 units</text>
+   <text x="0" y="8" fontSize="6" fill="#64748b" textAnchor="middle">{t('lab.m8geometrytriangles_distance_60_units')}</text>
 
    {/* Current Compass Preview */}
    <circle 
     cx={0} cy={0} r={compassRadius} 
     fill="none" stroke="#10b981" strokeWidth="1" strokeDasharray="2" opacity="0.3" 
    />
-   <text x={0} y={compassRadius + 8} fontSize="6" fill="#10b981" textAnchor="middle">Current r={compassRadius}</text>
+   <text x={0} y={compassRadius + 8} fontSize="6" fill="#10b981" textAnchor="middle">{t('lab.m8geometrytriangles_current_r')}{compassRadius}</text>
    </svg>
   );
  }
@@ -253,28 +258,29 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
    <ArrowLeft size={24} />
   </button>
   <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">
-   Unit 9 & 10: Geometry & Similar Triangles
-  </h1>
+   
+                    {t('lab.m8geometrytriangles_unit_9_10_geometry_similar_tri')}
+                   </h1>
   </header>
 
   <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
   {/* Left Column: Controls */}
   <div className="w-full lg:w-1/3 p-6 shadow-lg lg:overflow-y-auto flex flex-col gap-6 border-r border-slate-200 dark:border-[#1c1b1b]">
    <div className="space-y-4">
-   <h2 className="text-lg font-semibold dark:text-[#ffffff]">Select Lab</h2>
+   <h2 className="text-lg font-semibold dark:text-[#ffffff]">{t('lab.m8geometrytriangles_select_lab')}</h2>
    <div className="flex flex-wrap gap-2">
     <button
     onClick={() => setMode('similar-triangles')}
     className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${ mode === 'similar-triangles' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600' }`}
     >
-    <Triangle size={18} /> Triangles
-    </button>
+    <Triangle size={18} />  {t('lab.m8geometrytriangles_triangles')}
+                                 </button>
     <button
     onClick={() => setMode('compass-constructions')}
     className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${ mode === 'compass-constructions' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-200 dark:hover:bg-slate-600' }`}
     >
-    <Compass size={18} /> Compass
-    </button>
+    <Compass size={18} />  {t('lab.m8geometrytriangles_compass')}
+                                 </button>
    </div>
    </div>
 
@@ -289,17 +295,18 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
     className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition-colors whitespace-nowrap flex-shrink-0 flex justify-center items-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
     <CheckCircle size={20} />
-    Check Height
-    </button>
+    
+                                 {t('lab.m8geometrytriangles_check_height')}
+                                 </button>
     
     {simFeedback === 'correct' && (
     <div className="p-4 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-lg flex items-center gap-2">
-     <CheckCircle size={20} /> Correct! The tower height matches.
-    </div>
+     <CheckCircle size={20} />  {t('lab.m8geometrytriangles_correct_the_tower_height_match')}
+                                     </div>
     )}
     {simFeedback === 'incorrect' && (
     <div className="p-4 bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 rounded-lg flex items-center gap-2">
-     <XCircle size={20} /> Incorrect. Use $h_1 / s_1 = h_2 / s_2$ to find the correct height.
+     <XCircle size={20} /> <MathText>{t('lab.m8geometrytriangles_incorrect_use_h_1_s_1_h_2_s_2_')}</MathText>
     </div>
     )}
    </div>
@@ -308,8 +315,9 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
 
   {/* Right Column: Stage */}
   <div className="w-full lg:w-2/3 p-6 bg-slate-100 dark:bg-[#121212] flex flex-col items-center justify-center relative overflow-hidden">
-   <div className="absolute top-4 left-4 text-slate-500 dark:text-[#71717a] font-mono text-sm bg-white/80 dark:bg-[#121212]/80 px-3 py-1 rounded shadow-sm backdrop-blur">
-   Simulation Stage: {mode === 'similar-triangles' ? 'Navigational Simulator' : 'Construction Canvas'}
+   <div className="absolute top-4 left-4 text-slate-500 dark:text-[#71717a] font-mono text-sm bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/80 dark:bg-[#121212]/80 px-3 py-1 rounded shadow-sm backdrop-blur">
+   
+                        {t('lab.m8geometrytriangles_simulation_stage')} {mode === 'similar-triangles' ? 'Navigational Simulator' : 'Construction Canvas'}
    </div>
    <div className="w-full max-w-3xl aspect-video bg-white dark:!bg-[#121212] rounded-2xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] p-2 flex items-center justify-center overflow-hidden">
    {renderSimulation()}

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Save, Palette, Type, Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7MothersDay({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [bgClass, setBgClass] = useState('bg-pink-100');
  const [message, setMessage] = useState('Happy Mother\'s Day!');
  const [image, setImage] = useState<string | null>(null);
@@ -18,16 +20,16 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Mother's Day Card Competition" />
+  <LabHeader onExit={onExit} title={t('lab.c7mothersday_mother_s_day_card_competition')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Design a creative greeting card applying your digital art skills.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7mothersday_design_a_creative_greeting_car')}</p>
 
   <div className="flex gap-8 max-w-5xl mx-auto w-full flex-1">
    {/* Toolbar */}
    <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col gap-8">
    <div>
-    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Palette className="w-4 h-4 mr-2" /> Card Color</h3>
+    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Palette className="w-4 h-4 mr-2" />  {t('lab.c7mothersday_card_color')}</h3>
     <div className="flex gap-2">
     {backgrounds.map(bg => (
      <button 
@@ -40,7 +42,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
    </div>
 
    <div>
-    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Type className="w-4 h-4 mr-2" /> Message</h3>
+    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Type className="w-4 h-4 mr-2" />  {t('lab.c7mothersday_message')}</h3>
     <textarea 
     className="w-full h-24 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 outline-none focus:border-pink-500 resize-none font-serif"
     value={message}
@@ -49,7 +51,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
    </div>
 
    <div>
-    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><ImageIcon className="w-4 h-4 mr-2" /> Sticker</h3>
+    <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><ImageIcon className="w-4 h-4 mr-2" />  {t('lab.c7mothersday_sticker')}</h3>
     <div className="grid grid-cols-3 gap-2">
     {images.map(img => (
      <button 
@@ -65,8 +67,8 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
 
    <div className="mt-auto pt-6 border-t border-slate-200 dark:border-[#1c1b1b]">
     <button className="w-full bg-rose-500 text-white font-bold py-3 rounded-lg flex items-center justify-center hover:bg-rose-600 transition-colors shadow-md dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">
-    <Save className="w-5 h-5 mr-2" /> Submit Design
-    </button>
+    <Save className="w-5 h-5 mr-2" />  {t('lab.c7mothersday_submit_design')}
+                                 </button>
    </div>
    </div>
 

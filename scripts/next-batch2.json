@@ -1,0 +1,23 @@
+{
+  "lab.c10electroplating_theory_setup": "Theory & Setup",
+  "lab.c10electroplating_electroplating_uses_an_electri": "Electroplating uses an electric current to reduce dissolved metal cations so that they form a coherent metal coating on an electrode. The mass of metal deposited is proportional to the current and time (Faraday's First Law).",
+  "lab.c10electroplating_m_i_t_m_z_f": "m = (I × t × M) / (z × F)",
+  "lab.c10electroplating_plating_metal_anode": "Plating Metal (Anode)",
+  "lab.c10electroplating_zinc_zn": "Zinc (Zn²⁺)",
+  "lab.c10electroplating_tin_sn": "Tin (Sn²⁺)",
+  "lab.c10electroplating_chromium_cr": "Chromium (Cr³⁺)",
+  "lab.c10electroplating_current": "Current:",
+  "lab.c10electroplating_simulation_viewer": "Simulation Viewer",
+  "lab.c10electroplating_reset": "Reset",
+  "lab.c10electroplating_simulated_time": "Simulated Time",
+  "lab.c10electroplating_mass_deposited": "Mass Deposited",
+  "lab.c10electroplating_data_analysis": "Data & Analysis",
+  "lab.c10electroplating_record": "Record",
+  "lab.c10electroplating_sim_time_s": "Sim. Time (s)",
+  "lab.c10electroplating_current_a": "Current (A)",
+  "lab.c10electroplating_assessment": "Assessment",
+  "lab.c10electroplating_calculate_the_theoretical_mass": "Calculate the theoretical mass of",
+  "lab.c10electroplating_deposited_after": "deposited after",
+  "lab.c10electroplating_seconds_at": "seconds at",
+  "lab.c10electroplating_amps_provide_answer_to_4_decim": "Amps. (Provide answer to 4 decimal places)."
+}

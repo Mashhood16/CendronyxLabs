@@ -4,6 +4,7 @@ import {
  History, HelpCircle
 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface ForgeRule {
  base: string;
@@ -42,6 +43,7 @@ const ASSESSMENT_QUESTIONS = [
 ];
 
 export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [selectedBase, setSelectedBase] = useState<string>('');
@@ -91,7 +93,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
 
  return (
  <div className="min-min- lg: bg-slate-50 dark:bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Parts of Speech: Word Forge" onExit={onExit} />
+  <LabHeader title={t('lab.e9partsofspeech_parts_of_speech_word_forge')} onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -99,12 +101,13 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e9partsofspeech_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e9partsofspeech_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -115,83 +118,86 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    <div className={`p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex-col `}>
     <BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
    </div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Morphology Theory</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9partsofspeech_morphology_theory')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
     <BookA className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
-    What is Morphology?
-   </h3>
+    
+                             {t('lab.e9partsofspeech_what_is_morphology')}
+                            </h3>
    <p className="mb-4 text-sm leading-relaxed">
-    Morphology is the study of words, how they are formed, and their relationship to other words in the same language. 
-    It analyzes the structure of words and parts of words, such as stems, root words, prefixes, and suffixes.
-   </p>
+    
+                             {t('lab.e9partsofspeech_morphology_is_the_study_of_wor')}
+                            </p>
 
    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2 mt-6">
     <Layers className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
-    Derivational Suffixes
-   </h3>
+    
+                             {t('lab.e9partsofspeech_derivational_suffixes')}
+                            </h3>
    <p className="mb-4 text-sm leading-relaxed">
-    A derivational suffix is added to a base word to create a new word with a different meaning or part of speech. 
-    For example, adding "-ness" to "happy" creates "happiness", changing an adjective to a noun.
-   </p>
+    
+                             {t('lab.e9partsofspeech_a_derivational_suffix_is_added')}
+                            </p>
 
    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2 mt-6">
     <Info className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
-    Common Adjective Suffixes
-   </h3>
+    
+                             {t('lab.e9partsofspeech_common_adjective_suffixes')}
+                            </h3>
    <ul className="space-y-2 mb-4 text-sm">
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-ful</strong> (full of): beauty → beautiful</span>
+    <span><strong>{t('lab.e9partsofspeech_ful')}</strong>  {t('lab.e9partsofspeech_full_of_beauty_beautiful')}</span>
     </li>
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-ous</strong> (possessing): danger → dangerous</span>
+    <span><strong>{t('lab.e9partsofspeech_ous')}</strong>  {t('lab.e9partsofspeech_possessing_danger_dangerous')}</span>
     </li>
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-ive</strong> (tending to): create → creative</span>
+    <span><strong>{t('lab.e9partsofspeech_ive')}</strong>  {t('lab.e9partsofspeech_tending_to_create_creative')}</span>
     </li>
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-ish</strong> (characteristic of): child → childish</span>
+    <span><strong>{t('lab.e9partsofspeech_ish')}</strong>  {t('lab.e9partsofspeech_characteristic_of_child_childi')}</span>
     </li>
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-able / -ible</strong> (capable of): rely → reliable</span>
+    <span><strong>{t('lab.e9partsofspeech_able_ible')}</strong>  {t('lab.e9partsofspeech_capable_of_rely_reliable')}</span>
     </li>
     <li className="flex items-start gap-2">
     <ChevronRight className="w-4 h-4 mt-0.5 text-blue-500 dark:text-blue-400 flex-shrink-0" />
-    <span><strong>-al</strong> (relating to): magic → magical</span>
+    <span><strong>{t('lab.e9partsofspeech_al')}</strong>  {t('lab.e9partsofspeech_relating_to_magic_magical')}</span>
     </li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 mt-6">Spelling Rules for Suffixes</h3>
-   <p className="mb-2 text-sm leading-relaxed">When adding suffixes, spelling changes often occur in the base word:</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 mt-6">{t('lab.e9partsofspeech_spelling_rules_for_suffixes')}</h3>
+   <p className="mb-2 text-sm leading-relaxed">{t('lab.e9partsofspeech_when_adding_suffixes_spelling_')}</p>
    <ul className="space-y-3 text-sm">
     <li className={`bg-slate-50 dark:bg-[#1c1b1b] p-3 rounded-lg border border-slate-100 dark:border-[#2a2a2a] flex-col `}>
-    <strong>Change Y to I:</strong> If a word ends in a consonant + y, change the 'y' to 'i' before adding a suffix. <br/><em className="text-slate-500 dark:text-slate-400">Example: beauty + ful = beautiful</em>.
+    <strong>{t('lab.e9partsofspeech_change_y_to_i')}</strong>  {t('lab.e9partsofspeech_if_a_word_ends_in_a_consonant_')} <br/><em className="text-slate-500 dark:text-slate-400">{t('lab.e9partsofspeech_example_beauty_ful_beautiful')}</em>.
     </li>
     <li className={`bg-slate-50 dark:bg-[#1c1b1b] p-3 rounded-lg border border-slate-100 dark:border-[#2a2a2a] flex-col `}>
-    <strong>Drop the Silent E:</strong> Drop the silent 'e' before adding a suffix that begins with a vowel. <br/><em className="text-slate-500 dark:text-slate-400">Example: create + ive = creative</em>.
+    <strong>{t('lab.e9partsofspeech_drop_the_silent_e')}</strong>  {t('lab.e9partsofspeech_drop_the_silent_e_before_addin')} <br/><em className="text-slate-500 dark:text-slate-400">{t('lab.e9partsofspeech_example_create_ive_creative')}</em>.
     </li>
     <li className="bg-slate-50 dark:bg-[#1c1b1b] p-3 rounded-lg border border-slate-100 dark:border-[#2a2a2a]">
-    <strong>Double the Consonant:</strong> If a word ends in a single consonant preceded by a single vowel, double the consonant before adding a suffix starting with a vowel. <br/><em className="text-slate-500 dark:text-slate-400">Example: run + er = runner</em>.
+    <strong>{t('lab.e9partsofspeech_double_the_consonant')}</strong>  {t('lab.e9partsofspeech_if_a_word_ends_in_a_single_con')} <br/><em className="text-slate-500 dark:text-slate-400">{t('lab.e9partsofspeech_example_run_er_runner')}</em>.
     </li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl">
     <Hammer className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
    </div>
    <div>
-    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Word Forge</h2>
-    <p className="text-sm text-slate-500 dark:text-[#a1a1aa]">Combine bases and suffixes to craft adjectives</p>
+    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9partsofspeech_word_forge')}</h2>
+    <p className="text-sm text-slate-500 dark:text-[#a1a1aa]">{t('lab.e9partsofspeech_combine_bases_and_suffixes_to_')}</p>
    </div>
    </div>
 
@@ -199,7 +205,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    <div className="space-y-6">
     {/* Base Selector */}
     <div className="space-y-3">
-    <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">1. Select Base Word</label>
+    <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.e9partsofspeech_1_select_base_word')}</label>
     <div className="grid grid-cols-2 gap-3">
      {bases.map(b => (
      <button
@@ -218,7 +224,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
 
     {/* Suffix Selector */}
     <div className="space-y-3">
-    <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">2. Select Suffix</label>
+    <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.e9partsofspeech_2_select_suffix')}</label>
     <div className="grid grid-cols-2 gap-3">
      {suffixes.map(s => (
      <button
@@ -250,8 +256,9 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
     className="w-full py-4 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
     >
     <Hammer className="w-5 h-5" />
-    FORGE WORD
-    </button>
+    
+                                 {t('lab.e9partsofspeech_forge_word')}
+                                 </button>
 
     {forgeError && (
     <div className="mt-4 text-sm text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/30 px-4 py-3 rounded-lg text-center w-full">
@@ -268,7 +275,7 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl">
     <CheckCircle className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
    </div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Results & Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9partsofspeech_results_assessment')}</h2>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2 space-y-6 h-[500px]">
@@ -276,12 +283,12 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    {forgeResult && (
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
     <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 text-center shadow-sm">
-     <div className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">Success! Adjective Formed:</div>
+     <div className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">{t('lab.e9partsofspeech_success_adjective_formed')}</div>
      <div className="text-4xl font-black text-green-700 dark:text-green-300 tracking-tight">
      {forgeResult.result}
      </div>
      <div className="mt-4 pt-4 border-t border-green-200 dark:border-green-800/50 text-sm text-green-700 dark:text-green-400">
-     <strong>Rule applied:</strong> {forgeResult.rule}
+     <strong>{t('lab.e9partsofspeech_rule_applied')}</strong> {forgeResult.rule}
      </div>
     </div>
     </div>
@@ -291,12 +298,14 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    <section>
     <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
     <History className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-    Forged Dictionary
-    </h3>
+    
+                                 {t('lab.e9partsofspeech_forged_dictionary')}
+                                 </h3>
     {forgedLog.length === 0 ? (
     <div className={`text-sm text-slate-500 dark:text-[#a1a1aa] italic p-4 rounded-xl text-center border border-dashed border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     No words forged yet. Use the Word Forge to create adjectives!
-    </div>
+     
+                                      {t('lab.e9partsofspeech_no_words_forged_yet_use_the_wo')}
+                                     </div>
     ) : (
     <div className="space-y-2">
      {forgedLog.map((log, idx) => (
@@ -316,8 +325,9 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
    <section className="pt-6 border-t border-slate-200 dark:border-[#2a2a2a]">
     <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
     <HelpCircle className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-    Knowledge Check
-    </h3>
+    
+                                 {t('lab.e9partsofspeech_knowledge_check')}
+                                 </h3>
     
     <div className="space-y-6">
     {ASSESSMENT_QUESTIONS.map((q, qIndex) => (
@@ -364,8 +374,9 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
      disabled={assessmentScores.includes(-1)}
      className={`w-full py-3 rounded-xl font-bold transition-all ${ assessmentScores.includes(-1) ? 'bg-slate-200 dark:bg-[#2a2a2a] text-slate-400 dark:text-[#71717a] cursor-not-allowed' : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md' }`}
      >
-     Check Answers
-     </button>
+     
+                                          {t('lab.e9partsofspeech_check_answers')}
+                                          </button>
     ) : (
      <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] text-center space-y-3 shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="text-2xl font-black text-slate-800 dark:text-[#ffffff]">
@@ -384,8 +395,9 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
       className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
      >
       <RefreshCcw className="w-4 h-4" />
-      Retry Assessment
-     </button>
+      
+                                                   {t('lab.e9partsofspeech_retry_assessment')}
+                                                  </button>
      </div>
     )}
     </div>

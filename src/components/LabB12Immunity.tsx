@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Shield, FlaskConical, Stethoscope, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [elisaStep, setElisaStep] = useState<number>(0);
  const [absorbance, setAbsorbance] = useState<number>(0);
@@ -51,7 +53,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Interactive Immunology" />
+  <LabHeader onExit={onExit} title={t('lab.b12immunity_interactive_immunology')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -60,44 +62,46 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b12immunity_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b12immunity_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <Shield className="mr-2 text-blue-500" /> Theory & Mechanisms
-   </h2>
+   <Shield className="mr-2 text-blue-500" />  {t('lab.b12immunity_theory_mechanisms')}
+                        </h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
    <div className={`p-4 bg-indigo-50 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Monoclonal Antibodies (mAbs)</h3>
+    <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.b12immunity_monoclonal_antibodies_mabs')}</h3>
     <p>
-    mAbs are laboratory-produced molecules engineered to serve as substitute antibodies that can restore, enhance, or mimic the immune system's attack on cells. 
-    They are crucial in diagnostics, such as <strong>ELISA</strong> (Enzyme-Linked Immunosorbent Assay).
-    </p>
+    
+                                 {t('lab.b12immunity_mabs_are_laboratory_produced_m')} <strong>{t('lab.b12immunity_elisa')}</strong>  {t('lab.b12immunity_enzyme_linked_immunosorbent_as')}
+                                 </p>
    </div>
    
    <div className={`p-4 bg-teal-50 rounded-lg border border-teal-100 flex-col `}>
-    <h3 className="font-semibold text-teal-800 mb-2">Organ Transplant & Rejection</h3>
+    <h3 className="font-semibold text-teal-800 mb-2">{t('lab.b12immunity_organ_transplant_rejection')}</h3>
     <p>
-    After an organ transplant, the recipient's immune system may recognize the donor organ as foreign and attack it, primarily via cytotoxic T-cells.
-    <strong>Immunosuppressants</strong> like Cyclosporine inhibit T-cell activation, preventing organ rejection.
-    </p>
+    
+                                 {t('lab.b12immunity_after_an_organ_transplant_the_')}
+                                 <strong>{t('lab.b12immunity_immunosuppressants')}</strong>  {t('lab.b12immunity_like_cyclosporine_inhibit_t_ce')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Simulation Column */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex w-full">
-   <FlaskConical className="mr-2 text-indigo-500" /> ELISA Simulator
-   </h2>
+   <FlaskConical className="mr-2 text-indigo-500" />  {t('lab.b12immunity_elisa_simulator')}
+                        </h2>
    
    <div className="flex-grow flex flex-col items-center justify-center w-full space-y-6">
    <div className="text-center h-16">
@@ -106,7 +110,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
    </div>
 
    {/* SVG ELISA Well */}
-   <div className="relative w-48 h-48 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-4 border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-b-3xl shadow-inner flex flex-col justify-end ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+   <div className="relative w-48 h-48 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-4 border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-b-3xl shadow-inner flex flex-col justify-end ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     
     {/* Colored liquid */}
     <div 
@@ -156,19 +160,22 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
     disabled={elisaStep === 4}
     className="px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Next Step
-    </button>
+    
+                                 {t('lab.b12immunity_next_step')}
+                                 </button>
     <button 
     onClick={handleReset}
     className="px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-semibold hover:bg-slate-300 dark:bg-[#121212]"
     >
-    Reset
-    </button>
+    
+                                 {t('lab.b12immunity_reset')}
+                                 </button>
    </div>
    
    {elisaStep === 4 && (
     <div className="p-3 bg-yellow-50 border border-yellow-200 rounded text-yellow-800 font-bold">
-    Spectrophotometer Reading: {absorbance} AU
+    
+                                 {t('lab.b12immunity_spectrophotometer_reading')} {absorbance} AU
     </div>
    )}
    </div>
@@ -177,42 +184,47 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
   {/* Assessment Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <Stethoscope className="mr-2 text-rose-500" /> Clinical Assessment
-   </h2>
+   <Stethoscope className="mr-2 text-rose-500" />  {t('lab.b12immunity_clinical_assessment')}
+                        </h2>
    
    <div className="flex-grow space-y-6">
    <div className="p-4 bg-slate-100 dark:bg-[#121212] rounded-lg text-sm text-slate-700 dark:text-[#ffffff]">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Determine Antigen Concentration</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b12immunity_determine_antigen_concentratio')}</h3>
     <p className="mb-2">
-    A standard curve was generated using known concentrations of the transplant rejection biomarker. The linear regression equation is:
-    </p>
+    
+                                 {t('lab.b12immunity_a_standard_curve_was_generated')}
+                                 </p>
     <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-300 dark:border-[#1c1b1b] font-mono text-center my-2 text-indigo-700">
-    Absorbance (A) = 0.15 × C + 0.05
-    </div>
-    <p>Where <strong>C</strong> is the concentration of the biomarker in ng/mL.</p>
+    
+                                 {t('lab.b12immunity_absorbance_a_0_15_c_0_05')}
+                                 </div>
+    <p>{t('lab.b12immunity_where')} <strong>C</strong>  {t('lab.b12immunity_is_the_concentration_of_the_bi')}</p>
     
     {elisaStep === 4 ? (
     <p className="mt-3 font-semibold text-rose-700">
-     Given the patient's absorbance reading of {absorbance} AU, calculate C.
-    </p>
+     
+                                      {t('lab.b12immunity_given_the_patient_s_absorbance')} {absorbance}  {t('lab.b12immunity_au_calculate_c')}
+                                     </p>
     ) : (
     <p className="mt-3 text-slate-500 dark:text-[#71717a] italic">
-     Complete the ELISA simulation to get the patient's absorbance reading.
-    </p>
+     
+                                          {t('lab.b12immunity_complete_the_elisa_simulation_')}
+                                         </p>
     )}
    </div>
 
    <div className="space-y-4">
     <div>
     <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wide mb-1">
-     Concentration (ng/mL)
-    </label>
+     
+                                      {t('lab.b12immunity_concentration_ng_ml')}
+                                     </label>
     <div className="flex space-x-2">
      <input 
      type="number"
      step="0.01"
      className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-     placeholder="e.g. 5.2"
+     placeholder={t('lab.b12immunity_e_g_5_2')}
      value={assessmentConc}
      onChange={(e) => setAssessmentConc(e.target.value)}
      disabled={elisaStep < 4}
@@ -222,8 +234,9 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
      disabled={elisaStep < 4 || !assessmentConc}
      className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.b12immunity_check')}
+                                          </button>
     </div>
     </div>
 

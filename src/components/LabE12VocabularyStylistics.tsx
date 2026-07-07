@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Scale, MessageCircle, Feather, Eye, Lightbulb, TrendingDown, TrendingUp, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeMode, setActiveMode] = useState<'connotation' | 'rhetoric'>('connotation');
 
@@ -54,7 +56,7 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Rhetoric Synthesizer Lab" />
+   <LabHeader onExit={onExit} title={t('lab.e12vocabularystylistics_rhetoric_synthesizer_lab')} />
 
    
    {/* Mobile Tab Navigation */}
@@ -63,65 +65,69 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
      onClick={() => setActiveMobileTab('theory')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
-     Theory
-    </button>
+     
+                      {t('lab.e12vocabularystylistics_theory')}
+                     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
      className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-    >Lab</button>
+    >{t('lab.e12vocabularystylistics_lab')}</button>
   </div>
    
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Window 1: Theory */}
     <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <BookOpen className="mr-2 text-indigo-500" /> Grammar Theory
-     </h2>
+      <BookOpen className="mr-2 text-indigo-500" />  {t('lab.e12vocabularystylistics_grammar_theory')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
       <p>
-       <strong>Stylistics</strong> explores how writers use vocabulary and rhetorical devices to evoke specific emotions and craft meaning beyond literal definitions.
-      </p>
+       <strong>{t('lab.e12vocabularystylistics_stylistics')}</strong>  {t('lab.e12vocabularystylistics_explores_how_writers_use_vocab')}
+                               </p>
       
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Denotation vs. Connotation</h4>
-      <p className="mt-2">Words often have a literal meaning and an emotional meaning.</p>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12vocabularystylistics_denotation_vs_connotation')}</h4>
+      <p className="mt-2">{t('lab.e12vocabularystylistics_words_often_have_a_literal_mea')}</p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Denotation:</strong> The literal, dictionary definition of a word.</li>
-       <li><strong>Connotation:</strong> The emotional or cultural weight a word carries (positive, negative, or neutral). For example, "Cheap" and "Inexpensive" have the same denotation, but "Cheap" has a negative connotation.</li>
+       <li><strong>{t('lab.e12vocabularystylistics_denotation')}</strong>  {t('lab.e12vocabularystylistics_the_literal_dictionary_definit')}</li>
+       <li><strong>{t('lab.e12vocabularystylistics_connotation')}</strong>  {t('lab.e12vocabularystylistics_the_emotional_or_cultural_weig')}</li>
       </ul>
 
       <hr className="my-6 border-slate-200 dark:border-gray-800" />
 
-      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">Rhetorical Devices</h4>
+      <h4 className="font-bold text-slate-800 dark:text-gray-200 mt-4">{t('lab.e12vocabularystylistics_rhetorical_devices')}</h4>
       <p className="mt-2">
-       Figurative language used to make writing more persuasive or impactful.
-      </p>
+       
+                                {t('lab.e12vocabularystylistics_figurative_language_used_to_ma')}
+                               </p>
       <ul className="list-disc pl-5 space-y-2 mt-2">
-       <li><strong>Personification:</strong> Giving human qualities to non-human things. (e.g., <em>The wind whispered.</em>)</li>
-       <li><strong>Metonymy:</strong> Using a related object to represent a larger concept. (e.g., <em>The Crown</em> referring to the monarchy).</li>
-       <li><strong>Hyperbole:</strong> Extreme exaggeration for effect. (e.g., <em>I am starving to death.</em>)</li>
+       <li><strong>{t('lab.e12vocabularystylistics_personification')}</strong>  {t('lab.e12vocabularystylistics_giving_human_qualities_to_non_')} <em>{t('lab.e12vocabularystylistics_the_wind_whispered')}</em>)</li>
+       <li><strong>{t('lab.e12vocabularystylistics_metonymy')}</strong>  {t('lab.e12vocabularystylistics_using_a_related_object_to_repr')} <em>{t('lab.e12vocabularystylistics_the_crown')}</em>  {t('lab.e12vocabularystylistics_referring_to_the_monarchy')}</li>
+       <li><strong>{t('lab.e12vocabularystylistics_hyperbole')}</strong>  {t('lab.e12vocabularystylistics_extreme_exaggeration_for_effec')} <em>{t('lab.e12vocabularystylistics_i_am_starving_to_death')}</em>)</li>
       </ul>
      </div>
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-6">
-      <Feather className="text-[#4158D1]" /> Stylistic Synthesizer
-     </h2>
+      <Feather className="text-[#4158D1]" />  {t('lab.e12vocabularystylistics_stylistic_synthesizer')}
+                          </h2>
 
      <div className="flex gap-2 mb-6">
       <button 
        onClick={() => setActiveMode('connotation')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'connotation' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Connotation Scale
-      </button>
+       
+                                {t('lab.e12vocabularystylistics_connotation_scale')}
+                               </button>
       <button 
        onClick={() => setActiveMode('rhetoric')}
        className={`flex-1 py-2 rounded-lg font-bold transition-all ${activeMode === 'rhetoric' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#2a2a2a] text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
       >
-       Rhetoric Decoder
-      </button>
+       
+                                {t('lab.e12vocabularystylistics_rhetoric_decoder')}
+                               </button>
      </div>
 
      <div className="flex-1 overflow-y-auto">
@@ -129,12 +135,13 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
        <div className="space-y-6">
         <div className={`p-4 rounded-xl border border-blue-200 dark:border-[#2a2a2a] flex-col `}>
          <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-4">
-          <Scale className="w-5 h-5 text-blue-500" /> Vocabulary Weights
-         </h3>
+          <Scale className="w-5 h-5 text-blue-500" />  {t('lab.e12vocabularystylistics_vocabulary_weights')}
+                                              </h3>
          
          <p className="text-sm text-slate-600 dark:text-gray-400 mb-4 italic">
-          Select two words to place them on the scale. Observe how their emotional connotation tips the balance.
-         </p>
+          
+                                               {t('lab.e12vocabularystylistics_select_two_words_to_place_them')}
+                                              </p>
 
          <div className="grid grid-cols-2 gap-3">
           {words.map((w, index) => (
@@ -151,17 +158,18 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
          <div className="mt-6 flex justify-between gap-4">
           <div className={`flex-1 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg text-center border border-red-200 dark:border-red-800 flex-col `}>
            <TrendingDown className="w-5 h-5 text-red-500 mx-auto mb-1" />
-           <span className="text-xs font-bold text-red-700 dark:text-red-400">Negative Bias</span>
+           <span className="text-xs font-bold text-red-700 dark:text-red-400">{t('lab.e12vocabularystylistics_negative_bias')}</span>
           </div>
           <button 
            onClick={() => { setLeftPan(null); setRightPan(null); }}
            className={`px-4 bg-slate-200 dark:bg-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#333] text-slate-700 dark:text-gray-300 rounded-lg font-bold text-sm flex-col `}
           >
-           Reset
-          </button>
+           
+                                                    {t('lab.e12vocabularystylistics_reset')}
+                                                   </button>
           <div className="flex-1 p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg text-center border border-emerald-200 dark:border-emerald-800">
            <TrendingUp className="w-5 h-5 text-emerald-500 mx-auto mb-1" />
-           <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">Positive Bias</span>
+           <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">{t('lab.e12vocabularystylistics_positive_bias')}</span>
           </div>
          </div>
         </div>
@@ -172,8 +180,8 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
         <div className="space-y-6">
         <div className="p-4 rounded-xl border border-purple-200 dark:border-[#2a2a2a]">
          <h3 className="font-bold text-purple-800 dark:text-white flex items-center gap-2 mb-4">
-          <Eye className="w-5 h-5 text-purple-500" /> Device Recognition
-         </h3>
+          <Eye className="w-5 h-5 text-purple-500" />  {t('lab.e12vocabularystylistics_device_recognition')}
+                                              </h3>
          
          <div className="relative p-6 bg-slate-900 rounded-xl border-l-4 border-purple-500 mb-6 shadow-xl">
           <MessageCircle className="absolute -left-3 -top-3 w-8 h-8 text-purple-400 bg-slate-900 rounded-full border-4 border-white dark:border-[#121212]" />
@@ -198,8 +206,9 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
            onClick={() => { setRhetoricIndex(p => (p + 1) % rhetoricScenarios.length); setSelectedDevice(null); }}
            className="mt-6 w-full py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700"
           >
-           Next Phrase
-          </button>
+           
+                                                    {t('lab.e12vocabularystylistics_next_phrase')}
+                                                   </button>
          )}
         </div>
        </div>
@@ -208,7 +217,7 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="absolute inset-0 opacity-10 dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#4158D1 1px, transparent 1px), linear-gradient(90deg, #4158D1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
      {activeMode === 'connotation' && (
@@ -252,15 +261,16 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
        </div>
        
        <div className="mt-16 text-center font-bold tracking-widest uppercase text-slate-500 dark:text-gray-400">
-        Connotation Weight Scale
-       </div>
+        
+                                     {t('lab.e12vocabularystylistics_connotation_weight_scale')}
+                                    </div>
       </div>
      )}
 
      {activeMode === 'rhetoric' && (
       <div className="text-center opacity-30 z-10">
        <Lightbulb className="w-32 h-32 text-purple-600 dark:text-purple-400 mx-auto mb-8" />
-       <h2 className="text-3xl font-black tracking-widest text-purple-900 dark:text-purple-300 uppercase">Analysis Awaiting</h2>
+       <h2 className="text-3xl font-black tracking-widest text-purple-900 dark:text-purple-300 uppercase">{t('lab.e12vocabularystylistics_analysis_awaiting')}</h2>
       </div>
      )}
     </section>

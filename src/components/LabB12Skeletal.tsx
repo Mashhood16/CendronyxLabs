@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Bone, Activity, PenTool, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [fractureStage, setFractureStage] = useState<number>(1);
  const [jointState, setJointState] = useState<'healthy' | 'damaged' | 'prosthetic'>('healthy');
@@ -30,7 +32,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Interactive Orthopedics" subtitle="Arthroplasty & Bone Fracture Repair" />
+  <LabHeader onExit={onExit} title={t('lab.b12skeletal_interactive_orthopedics')} subtitle={t('lab.subtitle_arthroplasty_bone_fracture')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -39,50 +41,52 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b12skeletal_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b12skeletal_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <Bone className="mr-2 text-blue-500" /> Theory & Context
-   </h2>
+   <Bone className="mr-2 text-blue-500" />  {t('lab.b12skeletal_theory_context')}
+                        </h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
    <div className={`p-4 bg-orange-50 rounded-lg border border-orange-100 flex-col `}>
-    <h3 className="font-semibold text-orange-800 mb-2">The 4 Steps of Fracture Repair</h3>
+    <h3 className="font-semibold text-orange-800 mb-2">{t('lab.b12skeletal_the_4_steps_of_fracture_repair')}</h3>
     <ol className="list-decimal pl-5 space-y-2">
-    <li><strong>Hematoma:</strong> Clotted blood forms at the fracture site within hours.</li>
-    <li><strong>Fibrocartilaginous Callus:</strong> Soft callus forms within days.</li>
-    <li><strong>Bony Callus:</strong> Trabecular bone replaces soft callus over weeks.</li>
-    <li><strong>Remodeling:</strong> Compact bone replaces spongy bone over months.</li>
+    <li><strong>{t('lab.b12skeletal_hematoma')}</strong>  {t('lab.b12skeletal_clotted_blood_forms_at_the_fra')}</li>
+    <li><strong>{t('lab.b12skeletal_fibrocartilaginous_callus')}</strong>  {t('lab.b12skeletal_soft_callus_forms_within_days')}</li>
+    <li><strong>{t('lab.b12skeletal_bony_callus')}</strong>  {t('lab.b12skeletal_trabecular_bone_replaces_soft_')}</li>
+    <li><strong>{t('lab.b12skeletal_remodeling')}</strong>  {t('lab.b12skeletal_compact_bone_replaces_spongy_b')}</li>
     </ol>
    </div>
    
    <div className={`p-4 bg-zinc-50 rounded-lg border border-zinc-200 flex-col `}>
-    <h3 className="font-semibold text-zinc-800 mb-2">Arthroplasty</h3>
+    <h3 className="font-semibold text-zinc-800 mb-2">{t('lab.b12skeletal_arthroplasty')}</h3>
     <p>
-    Joint replacement surgery involves removing damaged articular cartilage and bone, replacing it with prosthetic components. 
-    <strong> Titanium</strong> is highly biocompatible, meaning it integrates well with bone (osseointegration) without causing an immune response.
-    </p>
+    
+                                 {t('lab.b12skeletal_joint_replacement_surgery_invo')} 
+                                 <strong>  {t('lab.b12skeletal_titanium')}</strong>  {t('lab.b12skeletal_is_highly_biocompatible_meanin')}
+                                 </p>
    </div>
    </div>
   </div>
 
   {/* Simulation Column */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex">
-   <Activity className="mr-2 text-indigo-500" /> Clinical Simulators
-   </h2>
+   <Activity className="mr-2 text-indigo-500" />  {t('lab.b12skeletal_clinical_simulators')}
+                        </h2>
    
    {/* Fracture Timeline */}
    <div className="mb-8">
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-center">Fracture Repair Timeline</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-center">{t('lab.b12skeletal_fracture_repair_timeline')}</h3>
    <div className="flex justify-between items-center mb-4">
     {stages.map((st) => (
     <button
@@ -129,7 +133,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
 
    {/* Arthroplasty */}
    <div>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-center">Hip Arthroplasty (Joint Replacement)</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-center">{t('lab.b12skeletal_hip_arthroplasty_joint_replace')}</h3>
    <div className="flex justify-center space-x-2 mb-4">
     {['healthy', 'damaged', 'prosthetic'].map(state => (
      <button
@@ -181,37 +185,39 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Assessment Column */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <PenTool className="mr-2 text-green-500" /> Computing Task
-   </h2>
+   <PenTool className="mr-2 text-green-500" />  {t('lab.b12skeletal_computing_task')}
+                        </h2>
    
    <div className="flex-grow space-y-6">
    <div className="p-4 bg-slate-100 dark:bg-[#121212] rounded-lg text-sm text-slate-700 dark:text-[#ffffff]">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Biomechanical Stress on Prosthetic</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b12skeletal_biomechanical_stress_on_prosth')}</h3>
     <p className="mb-2">
-    A patient weighing <strong>100 kg</strong> receives a titanium hip implant. When walking, the force on the hip joint can peak at roughly <strong>3 times body weight</strong>.
+    
+                                 {t('lab.b12skeletal_a_patient_weighing')} <strong>{t('lab.b12skeletal_100_kg')}</strong>  {t('lab.b12skeletal_receives_a_titanium_hip_implan')} <strong>{t('lab.b12skeletal_3_times_body_weight')}</strong>.
     </p>
     <ul className="list-disc pl-5 mb-2">
-    <li>Gravity: g = 9.8 m/s²</li>
-    <li>Force = 3 × mass × g = 3 × 100 × 9.8 = <strong>2940 N</strong></li>
-    <li>Cross-sectional area of prosthetic stem: <strong>0.0049 m²</strong></li>
+    <li>{t('lab.b12skeletal_gravity_g_9_8_m_s')}</li>
+    <li>{t('lab.b12skeletal_force_3_mass_g_3_100_9_8')} <strong>{t('lab.b12skeletal_2940_n')}</strong></li>
+    <li>{t('lab.b12skeletal_cross_sectional_area_of_prosth')} <strong>{t('lab.b12skeletal_0_0049_m')}</strong></li>
     </ul>
-    <p>Calculate the compressive stress applied to the prosthetic stem in Megapascals (MPa). <em>(Stress = Force / Area)</em></p>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Note: 1 MPa = 1,000,000 Pa = 1,000,000 N/m².</p>
+    <p>{t('lab.b12skeletal_calculate_the_compressive_stre')} <em>{t('lab.b12skeletal_stress_force_area')}</em></p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">{t('lab.b12skeletal_note_1_mpa_1_000_000_pa_1_000_')}</p>
    </div>
 
    <div className="space-y-4">
     <div>
     <label className="block text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wide mb-1">
-     Compressive Stress (MPa)
-    </label>
+     
+                                      {t('lab.b12skeletal_compressive_stress_mpa')}
+                                     </label>
     <div className="flex space-x-2">
      <input 
      type="number"
      step="0.01"
      className="flex-grow p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-     placeholder="e.g. 1.5"
+     placeholder={t('lab.b12skeletal_e_g_1_5')}
      value={assessmentStress}
      onChange={(e) => setAssessmentStress(e.target.value)}
      />
@@ -220,8 +226,9 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
      disabled={!assessmentStress}
      className="px-4 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.b12skeletal_check')}
+                                          </button>
     </div>
     </div>
 

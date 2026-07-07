@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
@@ -14,7 +15,8 @@ interface DataPoint {
 }
 
 export default function LabP10SoundProduction({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [force, setForce] = useState<number>(5);
  const [frequency, setFrequency] = useState<number>(256);
@@ -83,7 +85,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Production of Sound" subtitle="Visualize mechanical vibrations of a tuning fork in fluids" />
+  <LabHeader onExit={onExit} title={t('lab.p10soundproduction_production_of_sound')} subtitle={t('lab.subtitle_visualize_mechanical_vibrations')} />
 
   {/* Main Grid */}
   
@@ -93,37 +95,41 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10soundproduction_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10soundproduction_lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory and Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-  ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Theory & Setup</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10soundproduction_theory_andsetup')}</h2>
    </div>
    <div className={`p-5 flex-1 lg:overflow-y-auto space-y-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <div className="space-y-2 text-sm text-slate-600 dark:text-[#a1a1aa]">
     <p>
-    Sound is produced by the mechanical vibration of objects. When a tuning fork is struck, its prongs vibrate rapidly back and forth.
-    </p>
+    
+                                 {t('lab.p10soundproduction_sound_is_produced_by_the_mecha')}
+                                 </p>
     <p>
-    Because the vibrations are often too fast and small to see clearly, dipping the vibrating fork into a fluid provides visual evidence. The kinetic energy of the prongs is transferred to the fluid, creating a splash.
-    </p>
+    
+                                 {t('lab.p10soundproduction_because_the_vibrations_are_oft')}
+                                 </p>
     <p>
-    The <strong>splash height (H)</strong> is proportional to the strike force (F) and frequency (f), and inversely proportional to the fluid's density (ρ).
-    </p>
+    
+                                 {t('lab.p10soundproduction_the')} <strong>{t('lab.p10soundproduction_splash_height_h')}</strong>  {t('lab.p10soundproduction_is_proportional_to_the_strike_')}
+                                 </p>
    </div>
 
    <div className="border-t border-slate-100 pt-4 space-y-4">
     <div className="space-y-2">
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     <span>Strike Force (N)</span>
+     <span>{t('lab.p10soundproduction_strike_force_n')}</span>
      <span>{force}</span>
     </label>
     <input
@@ -140,8 +146,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     Tuning Fork Frequency (Hz)
-    </label>
+     
+                                      {t('lab.p10soundproduction_tuning_fork_frequency_hz')}
+                                     </label>
     <div className="flex gap-2">
      {[256, 440, 512].map(freq => (
      <button
@@ -158,8 +165,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
     <div className="space-y-2">
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     Fluid Medium
-    </label>
+     
+                                      {t('lab.p10soundproduction_fluid_medium')}
+                                     </label>
     <select
      value={fluid}
      onChange={(e) => setFluid(e.target.value)}
@@ -187,9 +195,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
   </div>
 
   {/* Column 2: Simulation */}
-  <div className="bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col lg:col-span-1 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col lg:col-span-1 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 justify-between items-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Simulation View</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10soundproduction_simulationview')}</h2>
    </div>
    <div className="p-4 flex-1 flex flex-col items-center justify-end bg-[#000000] dark:bg-[#121212] relative overflow-hidden">
    
@@ -201,7 +209,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
     {[30, 25, 20, 15, 10, 5, 0].map(val => (
      <div key={val} className="flex items-center gap-1">
      <span className="text-[10px] text-slate-400">{val}</span>
-     <div className="w-2 h-px bg-slate-500 dark:bg-[#121212]"></div>
+     <div className="w-2 h-px bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212]"></div>
      </div>
     ))}
     </div>
@@ -289,7 +297,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
    {/* Readout */}
    <div className="mt-4 w-full bg-[#121212] dark:bg-[#121212] p-3 rounded-xl border border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center justify-between px-6">
-    <span className="text-slate-400 text-sm font-medium">Splash Height:</span>
+    <span className="text-slate-400 text-sm font-medium">{t('lab.10soundproduction_splashheight')}</span>
     <span className="text-2xl font-mono text-emerald-400">
     {splashHeight !== null ? `${splashHeight.toFixed(1)} cm` : '--'}
     </span>
@@ -301,21 +309,21 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
   {/* Column 3: Data & Analysis */}
   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden">
    <div className={`bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 justify-between items-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.10soundproduction_data_andanalysis')}</h2>
    <div className="flex gap-2">
     <button
     onClick={handleRecordData}
     disabled={splashHeight === null || isStriking}
     className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded-md hover:bg-indigo-700 disabled:bg-slate-300 transition-colors text-sm font-medium dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    <Plus className="w-4 h-4" /> Record
-    </button>
+    <Plus className="w-4 h-4" />  {t('lab.p10soundproduction_record')}
+                                 </button>
     <button
     onClick={handleClearData}
     className="flex items-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-3 py-1.5 rounded-md hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm font-medium"
     >
-    <Trash2 className="w-4 h-4" /> Clear
-    </button>
+    <Trash2 className="w-4 h-4" />  {t('lab.p10soundproduction_clear')}
+                                 </button>
    </div>
    </div>
    
@@ -326,17 +334,18 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-medium border-b border-slate-200 dark:border-[#1c1b1b]">
      <tr>
-     <th className="px-3 py-2 text-center">Force (N)</th>
-     <th className="px-3 py-2 text-center">Freq (Hz)</th>
-     <th className="px-3 py-2 text-center">Height (cm)</th>
+     <th className="px-3 py-2 text-center">{t('lab.p10soundproduction_force_n')}</th>
+     <th className="px-3 py-2 text-center">{t('lab.p10soundproduction_freq_hz')}</th>
+     <th className="px-3 py-2 text-center">{t('lab.p10soundproduction_height_cm')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
      <tr>
       <td colSpan={3} className="px-3 py-6 text-center text-slate-400 italic">
-      No data recorded yet.
-      </td>
+      
+                                                   {t('lab.p10soundproduction_no_data_recorded_yet')}
+                                                   </td>
      </tr>
      ) : (
      data.map((point) => (
@@ -353,7 +362,7 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
    {/* Graph */}
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">Graph of Force vs Splash Height</h3>
+    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">{t('lab.10soundproduction_graphofforcevssplashheight')}</h3>
     <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 dark:bg-[#121212] border-l-2 border-b-2 border-slate-600 dark:border-[#1c1b1b]">
     {/* Grid lines */}
     {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
@@ -364,9 +373,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
     ))}
     
     {/* Axis Labels */}
-    <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-[#71717a] font-medium">Force (N)</div>
+    <div className="absolute -bottom-6 left-0 right-0 text-center text-[10px] text-slate-500 dark:text-[#71717a] font-medium">{t('lab.p10soundproduction_force_n')}</div>
     <div className="absolute top-0 bottom-0 -left-6 flex items-center">
-     <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a] font-medium whitespace-nowrap">Height (cm)</div>
+     <div className="transform -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a] font-medium whitespace-nowrap">{t('lab.p10soundproduction_height_cm')}</div>
     </div>
 
     {/* Data Points */}
@@ -385,15 +394,16 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
 
    {/* Assessment */}
    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.10soundproduction_analysis')}</h3>
     <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Based on your measurements with the <strong>Unknown Fluid</strong>, compare its splash height to Water (ρ=1.0) for the same force and frequency. What is its approximate density (g/cm³)?
-    </p>
+    
+                                 {t('lab.p10soundproduction_based_on_your_measurements_wit')} <strong>{t('lab.10soundproduction_unknownfluid')}</strong>{t('lab.p10soundproduction_compare_its_splash_height_to_w')}
+                                 </p>
     <div className="flex gap-2 items-center">
     <input
      type="number"
      step="0.1"
-     placeholder="Estimated ρ"
+     placeholder={t('lab.p10soundproduction_t_lab_10soundproduction_estima')}
      value={assessmentAnswer}
      onChange={(e) => setAssessmentAnswer(e.target.value)}
      className="w-full p-2 rounded border border-indigo-200 text-sm focus:ring-2 focus:ring-indigo-500"
@@ -402,20 +412,21 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
      onClick={checkAssessment}
      className="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-700 transition-colors whitespace-nowrap dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10soundproduction_check')}
+                                     </button>
     </div>
     
     {assessmentResult === 'correct' && (
     <div className="mt-3 flex items-center gap-2 text-emerald-600 bg-emerald-50 p-2 rounded border border-emerald-200">
      <CheckCircle className="w-5 h-5" />
-     <span className="text-sm font-medium">Correct! The density is ≈ 1.5 g/cm³.</span>
+     <span className="text-sm font-medium">{t('lab.10soundproduction_correctthedensityis15gcm')}</span>
     </div>
     )}
     {assessmentResult === 'incorrect' && (
     <div className="mt-3 flex items-center gap-2 text-rose-600 bg-rose-50 p-2 rounded border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
      <XCircle className="w-5 h-5" />
-     <span className="text-sm font-medium">Incorrect. Remember, higher density means a smaller splash for the same energy.</span>
+     <span className="text-sm font-medium">{t('lab.p10soundproduction_incorrect_remember_higher_dens')}</span>
     </div>
     )}
    </div>

@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { Search, Shield, Globe, ShieldCheck, UserCheck, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6CyberScout({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [query, setQuery] = useState('');
  const [hasSearched, setHasSearched] = useState(false);
  const [joined, setJoined] = useState(false);
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Cyber Scout Exploration" />
+  <LabHeader onExit={onExit} title={t('lab.c6cyberscout_cyber_scout_exploration')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-hidden min-h-0">
   
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 shrink-0">Search the internet simulator to find out how to become a Cyber Scout and join the program.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 shrink-0">{t('lab.c6cyberscout_search_the_internet_simulator_')}</p>
 
   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex flex-col min-h-0">
    {/* Browser Chrome */}
@@ -28,7 +30,7 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
    </div>
    <div className="flex-1 bg-slate-50 dark:bg-[#121212] rounded-md flex items-center px-3 py-1.5 shadow-inner">
     <Globe className="w-4 h-4 text-slate-400 mr-2" />
-    <span className="text-sm text-slate-500 dark:text-[#71717a]">https://www.search-simulator.edu</span>
+    <span className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.c6cyberscout_https_www_search_simulator_edu')}</span>
    </div>
    </div>
 
@@ -42,7 +44,7 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
      value={query}
      onChange={e => setQuery(e.target.value)}
      onKeyDown={e => e.key === 'Enter' && setHasSearched(true)}
-     placeholder="Search 'how to become a Cyber Scout'..."
+     placeholder={t('lab.c6cyberscout_search_how_to_become_a_cyber_s')}
      className="w-full text-xl py-4 pl-16 pr-8 rounded-full border-2 border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 outline-none transition-colors"
     />
     </div>
@@ -51,8 +53,9 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
     disabled={query.trim().length === 0}
     className="mt-8 px-8 py-3 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg disabled:opacity-50"
     >
-    Simulated Search
-    </button>
+    
+                                 {t('lab.c6cyberscout_simulated_search')}
+                                 </button>
    </div>
    ) : (
    <div className="flex-1 flex bg-slate-50 dark:bg-[#121212] lg:overflow-hidden min-h-0">
@@ -65,45 +68,48 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
      onChange={e => setQuery(e.target.value)}
      className="flex-1 text-lg py-2 px-4 rounded-lg border border-slate-300 dark:border-[#1c1b1b]"
      />
-     <button onClick={() => setHasSearched(false)} className="px-4 py-2 bg-blue-600 text-white rounded font-bold dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Search</button>
+     <button onClick={() => setHasSearched(false)} className="px-4 py-2 bg-blue-600 text-white rounded font-bold dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.c6cyberscout_search')}</button>
     </div>
 
-    <div className="text-sm text-slate-500 dark:text-[#71717a] mb-6">About 1 results (0.02 seconds)</div>
+    <div className="text-sm text-slate-500 dark:text-[#71717a] mb-6">{t('lab.c6cyberscout_about_1_results_0_02_seconds')}</div>
 
     <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-3xl">
      <div className="text-sm text-slate-500 dark:text-[#71717a] mb-1 flex items-center gap-2">
      <ShieldCheck className="w-4 h-4 text-green-600" />
-     https://www.national-cyber-scouts.gov.pk
-     </div>
+     
+                                              {t('lab.c6cyberscout_https_www_national_cyber_scout')}
+                                              </div>
      <h2 className="text-2xl font-bold text-blue-800 hover:underline cursor-pointer mb-3 dark:text-[#ffffff]">
-     Become a Cyber Scout - Official Portal
-     </h2>
+     
+                                              {t('lab.c6cyberscout_become_a_cyber_scout_official_')}
+                                              </h2>
      <p className="text-slate-600 dark:text-[#a1a1aa] mb-6 leading-relaxed">
-     A Cyber Scout is a responsible digital citizen who promotes online safety, practices ethical computing, and helps protect their community from cyber threats. Learn the 5 principles of digital safety and take the pledge today.
-     </p>
+     
+                                              {t('lab.c6cyberscout_a_cyber_scout_is_a_responsible')}
+                                              </p>
 
      {!joined ? (
      <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-      <h3 className="font-bold text-lg mb-4">Registration Requirements:</h3>
+      <h3 className="font-bold text-lg mb-4">{t('lab.c6cyberscout_registration_requirements')}</h3>
       <ul className="list-disc pl-5 mb-6 space-y-2 text-slate-700 dark:text-[#ffffff]">
-      <li>Understand basic internet safety and privacy.</li>
-      <li>Commit to reporting cyberbullying.</li>
-      <li>Respect copyright and avoid plagiarism.</li>
+      <li>{t('lab.c6cyberscout_understand_basic_internet_safe')}</li>
+      <li>{t('lab.c6cyberscout_commit_to_reporting_cyberbully')}</li>
+      <li>{t('lab.c6cyberscout_respect_copyright_and_avoid_pl')}</li>
       </ul>
       <button 
       onClick={() => setJoined(true)}
       className="flex items-center justify-center gap-2 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-sm dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
       >
-      <UserCheck className="w-5 h-5" /> Take the Pledge & Join Now
-      </button>
+      <UserCheck className="w-5 h-5" />  {t('lab.c6cyberscout_take_the_pledge_join_now')}
+                                                       </button>
      </div>
      ) : (
      <div className="bg-green-50 p-6 rounded-lg border border-green-200 text-center dark:bg-[#121212] dark:border-[#1c1b1b]">
       <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
       <CheckCircle className="w-8 h-8" />
       </div>
-      <h3 className="font-bold text-2xl text-green-800 mb-2 dark:text-[#ffffff]">Congratulations, Cyber Scout!</h3>
-      <p className="text-green-700 font-medium">You have successfully explored the process and registered as a Cyber Scout.</p>
+      <h3 className="font-bold text-2xl text-green-800 mb-2 dark:text-[#ffffff]">{t('lab.c6cyberscout_congratulations_cyber_scout')}</h3>
+      <p className="text-green-700 font-medium">{t('lab.c6cyberscout_you_have_successfully_explored')}</p>
      </div>
      )}
     </div>

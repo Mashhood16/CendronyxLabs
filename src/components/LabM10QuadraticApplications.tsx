@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { Target, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabM10QuadraticApplications({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Simulator State
@@ -97,7 +99,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Quadratic Applications: Projectile Motion" />
+  <LabHeader onExit={onExit} title={t('lab.m10quadraticapplications_quadratic_applications_project')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -106,55 +108,58 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10quadraticapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10quadraticapplications_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   {/* LEFT: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
-   <Target /> Theory & Context
-   </h2>
+   <Target />  {t('lab.m10quadraticapplications_theory_context')}
+                        </h2>
    <div className="prose text-slate-700 dark:text-[#ffffff]">
    <p>
-    Projectile motion traces a <strong>parabola</strong>, which is the graph of a quadratic function.
-    The height of a projectile over time is modeled by the equation:
-   </p>
+    
+                             {t('lab.m10quadraticapplications_projectile_motion_traces_a')} <strong>{t('lab.m10quadraticapplications_parabola')}</strong>{t('lab.m10quadraticapplications_which_is_the_graph_of_a_quadra')}
+                            </p>
    <div className={`bg-emerald-50 p-3 rounded-lg text-center font-mono my-4 border border-emerald-100 flex-col `}>
-    h(t) = -½gt² + v₀_yt + h₀
-   </div>
+    
+                             {t('lab.m10quadraticapplications_h_t_gt_v_yt_h')}
+                            </div>
    <ul className="list-disc pl-5 space-y-2">
-    <li><strong>h(t):</strong> Height at time t</li>
-    <li><strong>g:</strong> Gravity (9.81 m/s²)</li>
-    <li><strong>v₀_y:</strong> Initial vertical velocity (v₀·sin(θ))</li>
-    <li><strong>h₀:</strong> Initial height</li>
+    <li><strong>{t('lab.m10quadraticapplications_h_t')}</strong>  {t('lab.m10quadraticapplications_height_at_time_t')}</li>
+    <li><strong>g:</strong>  {t('lab.m10quadraticapplications_gravity_9_81_m_s')}</li>
+    <li><strong>{t('lab.m10quadraticapplications_v_y')}</strong>  {t('lab.m10quadraticapplications_initial_vertical_velocity_v_si')}</li>
+    <li><strong>{t('lab.m10quadraticapplications_h')}</strong>  {t('lab.m10quadraticapplications_initial_height')}</li>
    </ul>
-   <h3 className="font-semibold text-emerald-800 mt-4">Finding Maximum Height</h3>
+   <h3 className="font-semibold text-emerald-800 mt-4">{t('lab.m10quadraticapplications_finding_maximum_height')}</h3>
    <p>
-    The maximum height occurs at the vertex of the parabola. The time it takes to reach the peak is <code>t = -b / (2a)</code>, where <code>a = -½g</code> and <code>b = v₀_y</code>.
+    
+                             {t('lab.m10quadraticapplications_the_maximum_height_occurs_at_t')} <code>{t('lab.m10quadraticapplications_t_b_2a')}</code>{t('lab.m10quadraticapplications_where')} <code>{t('lab.m10quadraticapplications_a_g')}</code>  {t('lab.m10quadraticapplications_and')} <code>{t('lab.m10quadraticapplications_b_v_y')}</code>.
    </p>
    </div>
   </div>
 
   {/* MIDDLE: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-emerald-800 mb-4">Physics Cannon Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold text-emerald-800 mb-4">{t('lab.m10quadraticapplications_physics_cannon_simulator')}</h2>
    
    <div className={`w-full max-w-md grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-    <label className="block text-xs font-semibold mb-1">Velocity: {velocity} m/s</label>
+    <label className="block text-xs font-semibold mb-1">{t('lab.m10quadraticapplications_velocity')} {velocity}  {t('lab.m10quadraticapplications_m_s')}</label>
     <input type="range" min="10" max="40" value={velocity} onChange={e => {setVelocity(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
    </div>
    <div>
-    <label className="block text-xs font-semibold mb-1">Angle: {angle}°</label>
+    <label className="block text-xs font-semibold mb-1">{t('lab.m10quadraticapplications_angle')} {angle}°</label>
     <input type="range" min="10" max="85" value={angle} onChange={e => {setAngle(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
    </div>
    <div>
-    <label className="block text-xs font-semibold mb-1">Height: {height} m</label>
+    <label className="block text-xs font-semibold mb-1">{t('lab.m10quadraticapplications_height')} {height} m</label>
     <input type="range" min="0" max="30" value={height} onChange={e => {setHeight(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
    </div>
    </div>
@@ -175,47 +180,50 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
    </svg>
 
    {/* Telemetry overlay */}
-   <div className="absolute top-2 left-2 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded text-xs font-mono border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    <div>Time: {time.toFixed(2)} s</div>
-    <div>Height: {Math.max(0, height + v0y * time - 0.5 * g * time * time).toFixed(1)} m</div>
-    <div>Distance: {(v0x * time).toFixed(1)} m</div>
+   <div className="absolute top-2 left-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded text-xs font-mono border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div>{t('lab.m10quadraticapplications_time')} {time.toFixed(2)} s</div>
+    <div>{t('lab.m10quadraticapplications_height')} {Math.max(0, height + v0y * time - 0.5 * g * time * time).toFixed(1)} m</div>
+    <div>{t('lab.m10quadraticapplications_distance')} {(v0x * time).toFixed(1)} m</div>
    </div>
    </div>
    
    <div className="flex gap-4 mt-4 w-full max-w-md">
     <button onClick={fireCannon} disabled={isFiring} className="flex-1 min-w-0 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    Fire Cannon
-    </button>
+    
+                             {t('lab.m10quadraticapplications_fire_cannon')}
+                             </button>
     <button onClick={resetCannon} className="flex-1 min-w-0 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold py-2 px-4 rounded transition-colors">
-    Reset
-    </button>
+    
+                             {t('lab.m10quadraticapplications_reset')}
+                             </button>
    </div>
   </div>
 
   {/* RIGHT: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-emerald-800 mb-4">Laboratory Assessment</h2>
+   <h2 className="text-xl font-bold text-emerald-800 mb-4">{t('lab.m10quadraticapplications_laboratory_assessment')}</h2>
    
    <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-6">
-   <h3 className="font-semibold text-emerald-900 mb-2">Calculate Maximum Height</h3>
+   <h3 className="font-semibold text-emerald-900 mb-2">{t('lab.m10quadraticapplications_calculate_maximum_height')}</h3>
    <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm">
-    Using the current simulator parameters, write the quadratic equation and determine the peak altitude of the projectile.
-   </p>
+    
+                             {t('lab.m10quadraticapplications_using_the_current_simulator_pa')}
+                            </p>
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 font-mono text-xs">
-    <p>v₀ = {velocity} m/s, θ = {angle}°</p>
-    <p>v₀_y = {velocity} × sin({angle}°) ≈ {v0y.toFixed(2)} m/s</p>
-    <p>h₀ = {height} m</p>
-    <p className="mt-2 text-emerald-700">h(t) = -4.905t² + {v0y.toFixed(2)}t + {height}</p>
+    <p>{t('lab.m10quadraticapplications_v')} {velocity}  {t('lab.m10quadraticapplications_m_s_1')} {angle}°</p>
+    <p>{t('lab.m10quadraticapplications_v_y_1')} {velocity}  {t('lab.m10quadraticapplications_sin')}{angle}°) ≈ {v0y.toFixed(2)}  {t('lab.m10quadraticapplications_m_s')}</p>
+    <p>{t('lab.m10quadraticapplications_h_1')} {height} m</p>
+    <p className="mt-2 text-emerald-700">{t('lab.m10quadraticapplications_h_t_4_905t')} {v0y.toFixed(2)}{t('lab.m10quadraticapplications_t')} {height}</p>
    </div>
    
    <div className="mb-4">
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">Max Height (m):</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10quadraticapplications_max_height_m')}</label>
     <input 
     type="number" 
     value={ansMaxHeight} 
     onChange={e => setAnsMaxHeight(e.target.value)}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-emerald-500 outline-none"
-    placeholder="e.g. 25.5"
+    placeholder={t('lab.m10quadraticapplications_e_g_25_5')}
     />
    </div>
 
@@ -223,8 +231,9 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
     onClick={checkAnswer}
     className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
-    Verify Calculation
-   </button>
+    
+                             {t('lab.m10quadraticapplications_verify_calculation')}
+                            </button>
 
    {feedback && (
     <div className={`mt-4 p-3 rounded text-sm flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

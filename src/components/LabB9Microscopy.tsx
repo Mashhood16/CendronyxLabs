@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { ZoomIn, Eye, Move, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [selectedSlide, setSelectedSlide] = useState('onion');
  const [focus, setFocus] = useState(0);
@@ -73,7 +75,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Microscopy & Cell Biology Lab" />
+  <LabHeader onExit={onExit} title={t('lab.b9microscopy_microscopy_cell_biology_lab')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -82,45 +84,47 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b9microscopy_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b9microscopy_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 grow lg:overflow-visible">
   {/* Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <Info className="mr-2 text-indigo-600" /> Microscope Basics
-   </h2>
+   <Info className="mr-2 text-indigo-600" />  {t('lab.b9microscopy_microscope_basics')}
+                        </h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
    <p>
-    Light microscopes allow us to see cellular structures that are invisible to the naked eye.
-   </p>
+    
+                             {t('lab.b9microscopy_light_microscopes_allow_us_to_')}
+                            </p>
    <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">Key Plant vs Animal Differences</h3>
+    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.b9microscopy_key_plant_vs_animal_difference')}</h3>
     <ul className="list-disc pl-5 space-y-2">
-    <li><strong>Plant Cells (Onion):</strong> Have a rigid cell wall providing a rectangular shape, and a large central vacuole.</li>
-    <li><strong>Animal Cells (Cheek):</strong> Only have a flexible cell membrane, resulting in irregular shapes.</li>
+    <li><strong>{t('lab.b9microscopy_plant_cells_onion')}</strong>  {t('lab.b9microscopy_have_a_rigid_cell_wall_providi')}</li>
+    <li><strong>{t('lab.b9microscopy_animal_cells_cheek')}</strong>  {t('lab.b9microscopy_only_have_a_flexible_cell_memb')}</li>
     </ul>
    </div>
    <div className={`bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100 text-fuchsia-900 flex-col `}>
-    <h3 className="font-bold text-fuchsia-800 mb-2">Mitosis in Onion Root Tip</h3>
-    <p>Root tips grow rapidly via cell division (mitosis).</p>
+    <h3 className="font-bold text-fuchsia-800 mb-2">{t('lab.b9microscopy_mitosis_in_onion_root_tip')}</h3>
+    <p>{t('lab.b9microscopy_root_tips_grow_rapidly_via_cel')}</p>
     <ul className="list-disc pl-5 space-y-1 mt-2">
-    <li><strong>Prophase:</strong> Chromosomes condense.</li>
-    <li><strong>Metaphase:</strong> Chromosomes align in the middle.</li>
-    <li><strong>Anaphase:</strong> Sister chromatids pull apart.</li>
+    <li><strong>{t('lab.b9microscopy_prophase')}</strong>  {t('lab.b9microscopy_chromosomes_condense')}</li>
+    <li><strong>{t('lab.b9microscopy_metaphase')}</strong>  {t('lab.b9microscopy_chromosomes_align_in_the_middl')}</li>
+    <li><strong>{t('lab.b9microscopy_anaphase')}</strong>  {t('lab.b9microscopy_sister_chromatids_pull_apart')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Simulation */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 w-full text-left">Microscope Viewport</h2>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 w-full text-left">{t('lab.b9microscopy_microscope_viewport')}</h2>
    
    <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-[12px] border-[#1c1b1b] dark:border-[#1c1b1b] bg-black overflow-hidden shadow-2xl flex items-center justify-center mb-6">
    <div 
@@ -144,7 +148,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
    <div className="w-full space-y-4 mt-auto">
    <div>
     <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex justify-between">
-    <span><Eye className="inline w-4 h-4 mr-1"/> Coarse/Fine Focus</span>
+    <span><Eye className="inline w-4 h-4 mr-1"/>  {t('lab.b9microscopy_coarse_fine_focus')}</span>
     <span>{focus === 5 ? 'Perfect' : 'Blurry'}</span>
     </label>
     <input 
@@ -157,8 +161,8 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
    <div className="flex gap-4">
     <div className="flex-1">
     <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center mb-1">
-     <ZoomIn className="inline w-4 h-4 mr-1"/> Magnification
-    </label>
+     <ZoomIn className="inline w-4 h-4 mr-1"/>  {t('lab.b9microscopy_magnification')}
+                                     </label>
     <div className={`flex overflow-x-auto hide-scrollbar bg-slate-100 dark:bg-[#121212] rounded-lg p-1 `}>
      {[10, 40, 100].map(m => (
      <button 
@@ -173,8 +177,8 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
     </div>
     <div className="flex-1">
     <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center mb-1">
-     <Move className="inline w-4 h-4 mr-1"/> Pan X/Y
-    </label>
+     <Move className="inline w-4 h-4 mr-1"/>  {t('lab.b9microscopy_pan_x_y')}
+                                     </label>
     <div className="flex gap-2">
      <input type="range" min="-50" max="50" value={panX} onChange={e=>setPanX(Number(e.target.value))} className="w-full accent-slate-500" />
      <input type="range" min="-50" max="50" value={panY} onChange={e=>setPanY(Number(e.target.value))} className="w-full accent-slate-500" />
@@ -183,7 +187,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
    </div>
 
    <div>
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase mb-1 block">Slide Selector</label>
+    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase mb-1 block">{t('lab.b9microscopy_slide_selector')}</label>
     <div className="grid grid-cols-3 gap-2">
     {slides.map(s => (
      <button 
@@ -200,41 +204,43 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
   </div>
 
   {/* Assessment */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-   <CheckCircle className="mr-2 text-indigo-600" /> Observations & Analysis
-   </h2>
+   <CheckCircle className="mr-2 text-indigo-600" />  {t('lab.b9microscopy_observations_analysis')}
+                        </h2>
    
    <div className="space-y-6">
    <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
-    1. What structure gives the onion skin cells their distinct, grid-like rectangular shape?
-    </label>
+    
+                                 {t('lab.b9microscopy_1_what_structure_gives_the_oni')}
+                                 </label>
     <select 
     value={q1} 
     onChange={(e) => setQ1(e.target.value)}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
     >
-    <option value="">Select...</option>
-    <option value="membrane">Cell Membrane</option>
-    <option value="wall">Cell Wall</option>
-    <option value="nucleus">Nucleus</option>
+    <option value="">{t('lab.b9microscopy_select')}</option>
+    <option value="membrane">{t('lab.b9microscopy_cell_membrane')}</option>
+    <option value="wall">{t('lab.b9microscopy_cell_wall')}</option>
+    <option value="nucleus">{t('lab.b9microscopy_nucleus')}</option>
     </select>
    </div>
 
    <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
-    2. In the Onion Root Tip slide, finding cells with chromosomes aligned in the middle means they are in:
-    </label>
+    
+                                 {t('lab.b9microscopy_2_in_the_onion_root_tip_slide_')}
+                                 </label>
     <select 
     value={q2} 
     onChange={(e) => setQ2(e.target.value)}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
     >
-    <option value="">Select phase...</option>
-    <option value="prophase">Prophase</option>
-    <option value="metaphase">Metaphase</option>
-    <option value="anaphase">Anaphase</option>
+    <option value="">{t('lab.b9microscopy_select_phase')}</option>
+    <option value="prophase">{t('lab.b9microscopy_prophase_1')}</option>
+    <option value="metaphase">{t('lab.b9microscopy_metaphase_1')}</option>
+    <option value="anaphase">{t('lab.b9microscopy_anaphase_1')}</option>
     </select>
    </div>
 
@@ -242,15 +248,16 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
     onClick={() => setShowResults(true)}
     className="w-full bg-indigo-600 text-white font-bold py-3 rounded-lg hover:bg-indigo-700 transition-colors mt-auto dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Check Analysis
-   </button>
+    
+                             {t('lab.b9microscopy_check_analysis')}
+                            </button>
 
    {showResults && (
     <div className="p-4 rounded-lg bg-indigo-50 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <p className="font-bold text-indigo-800 dark:text-[#ffffff]">Feedback:</p>
+    <p className="font-bold text-indigo-800 dark:text-[#ffffff]">{t('lab.b9microscopy_feedback')}</p>
     <ul className="text-sm space-y-2 mt-2">
-     <li>Question 1: {q1 === 'wall' ? '✅ Correct (Plant cells have rigid cell walls)' : '❌ Incorrect'}</li>
-     <li>Question 2: {q2 === 'metaphase' ? '✅ Correct (Metaphase = Middle)' : '❌ Incorrect'}</li>
+     <li>{t('lab.b9microscopy_question_1')} {q1 === 'wall' ? '✅ Correct (Plant cells have rigid cell walls)' : '❌ Incorrect'}</li>
+     <li>{t('lab.b9microscopy_question_2')} {q2 === 'metaphase' ? '✅ Correct (Metaphase = Middle)' : '❌ Incorrect'}</li>
     </ul>
     </div>
    )}

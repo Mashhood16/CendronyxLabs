@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Scissors, MousePointer2, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 const EXTERNAL_PARTS = [
  { id: 'renal_vein', name: 'Renal Vein' },
@@ -15,6 +16,7 @@ const INTERNAL_PARTS = [
 ];
 
 export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTool, setActiveTool] = useState<'pointer' | 'scalpel'>('pointer');
  const [cutProgress, setCutProgress] = useState(0); 
@@ -93,7 +95,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Biology Lab: Kidney Dissection" subtitle="Examine the external and internal macroscopic structures of a mammalian kidney." />
+  <LabHeader onExit={onExit} title={t('lab.b10kidneydissection_biology_lab_kidney_dissection')} subtitle={t('lab.subtitle_examine_external_internal')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -102,56 +104,58 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b10kidneydissection_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b10kidneydissection_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Anatomy of the Kidney</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10kidneydissection_anatomy_of_the_kidney')}</h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
    <p>
-    The kidney is a bean-shaped organ responsible for filtering blood, removing waste, and regulating fluid balance.
-   </p>
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">External Structures</h3>
+    
+                             {t('lab.b10kidneydissection_the_kidney_is_a_bean_shaped_or')}
+                            </p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.b10kidneydissection_external_structures')}</h3>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Renal Artery:</strong> Supplies oxygenated, unfiltered blood to the kidney.</li>
-    <li><strong>Renal Vein:</strong> Transports filtered, deoxygenated blood away from the kidney.</li>
-    <li><strong>Ureter:</strong> A tube that carries urine from the kidney down to the bladder.</li>
+    <li><strong>{t('lab.b10kidneydissection_renal_artery')}</strong>  {t('lab.b10kidneydissection_supplies_oxygenated_unfiltered')}</li>
+    <li><strong>{t('lab.b10kidneydissection_renal_vein')}</strong>  {t('lab.b10kidneydissection_transports_filtered_deoxygenat')}</li>
+    <li><strong>{t('lab.b10kidneydissection_ureter')}</strong>  {t('lab.b10kidneydissection_a_tube_that_carries_urine_from')}</li>
    </ul>
    
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Internal Structures</h3>
-   <p>When sectioned longitudinally, three distinct regions are visible:</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.b10kidneydissection_internal_structures')}</h3>
+   <p>{t('lab.b10kidneydissection_when_sectioned_longitudinally_')}</p>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Renal Cortex:</strong> The lighter outer layer containing the filtering units (nephrons).</li>
-    <li><strong>Renal Medulla:</strong> The inner region consisting of cone-shaped masses called renal pyramids.</li>
-    <li><strong>Renal Pelvis:</strong> A funnel-like dilated chamber that collects urine and funnels it into the ureter.</li>
+    <li><strong>{t('lab.b10kidneydissection_renal_cortex')}</strong>  {t('lab.b10kidneydissection_the_lighter_outer_layer_contai')}</li>
+    <li><strong>{t('lab.b10kidneydissection_renal_medulla')}</strong>  {t('lab.b10kidneydissection_the_inner_region_consisting_of')}</li>
+    <li><strong>{t('lab.b10kidneydissection_renal_pelvis')}</strong>  {t('lab.b10kidneydissection_a_funnel_like_dilated_chamber_')}</li>
    </ul>
    </div>
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between w-full mb-4">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Dissection Tray</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10kidneydissection_dissection_tray')}</h2>
    <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
     <button
     onClick={() => setActiveTool('pointer')}
     className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'pointer' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
     >
-    <MousePointer2 className="w-4 h-4 mr-2" /> Pointer
-    </button>
+    <MousePointer2 className="w-4 h-4 mr-2" />  {t('lab.b10kidneydissection_pointer')}
+                                 </button>
     <button
     onClick={() => setActiveTool('scalpel')}
     disabled={!externalDone || isDissected}
     className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'scalpel' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-red-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff] disabled:opacity-50 disabled:cursor-not-allowed'}`}
     >
-    <Scissors className="w-4 h-4 mr-2" /> Scalpel
-    </button>
+    <Scissors className="w-4 h-4 mr-2" />  {t('lab.b10kidneydissection_scalpel')}
+                                 </button>
    </div>
    </div>
 
@@ -254,30 +258,33 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
 
    {!externalDone && (
     <div className={`absolute top-4 bg-[#000000] dark:bg-[#121212]/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none flex-col `}>
-    Phase 1: Identify all external structures
-    </div>
+    
+                                 {t('lab.b10kidneydissection_phase_1_identify_all_external_')}
+                                 </div>
    )}
    {externalDone && !isDissected && (
     <div className="absolute top-4 bg-blue-600/90 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    Phase 2: Use the scalpel to dissect along the dotted line
-    </div>
+    
+                                 {t('lab.b10kidneydissection_phase_2_use_the_scalpel_to_dis')}
+                                 </div>
    )}
    {isDissected && !internalDone && (
     <div className="absolute top-4 bg-[#000000] dark:bg-[#121212]/80 text-white px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm pointer-events-none">
-    Phase 3: Identify internal structures
-    </div>
+    
+                                 {t('lab.b10kidneydissection_phase_3_identify_internal_stru')}
+                                 </div>
    )}
    </div>
   </div>
 
   {/* Right Column: Assessment & Identification */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="mb-6">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Identification Log</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10kidneydissection_identification_log')}</h2>
    
    {selectedRegion ? (
     <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
-    <p className="text-sm font-medium text-yellow-800 mb-3">Identify the highlighted region:</p>
+    <p className="text-sm font-medium text-yellow-800 mb-3">{t('lab.b10kidneydissection_identify_the_highlighted_regio')}</p>
     <div className="grid grid-cols-2 gap-2">
      {(!isDissected ? EXTERNAL_PARTS : INTERNAL_PARTS).map(part => (
      <button
@@ -292,11 +299,11 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
     </div>
     </div>
    ) : (
-    <p className="text-sm text-slate-500 dark:text-[#71717a] italic mb-4">Select a region on the kidney diagram to identify it.</p>
+    <p className="text-sm text-slate-500 dark:text-[#71717a] italic mb-4">{t('lab.b10kidneydissection_select_a_region_on_the_kidney_')}</p>
    )}
 
    <div className="space-y-2">
-    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider">External</h3>
+    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider">{t('lab.b10kidneydissection_external')}</h3>
     {EXTERNAL_PARTS.map(part => (
     <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-[#121212] rounded border border-slate-100">
      <span className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{part.name}</span>
@@ -308,7 +315,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
     </div>
     ))}
 
-    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider mt-4">Internal</h3>
+    <h3 className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider mt-4">{t('lab.b10kidneydissection_internal')}</h3>
     {INTERNAL_PARTS.map(part => (
     <div key={part.id} className="flex items-center justify-between p-2 bg-slate-50 dark:bg-[#121212] rounded border border-slate-100">
      <span className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{part.name}</span>
@@ -323,19 +330,20 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
    </div>
 
    <div className="flex-1 mt-6 pt-6 border-t border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10kidneydissection_assessment')}</h2>
    
    <div className="space-y-4">
     <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     1. If the kidney filters 120 mL of fluid per minute, how many liters does it filter in one day (24 hours)?
-    </label>
+     
+                                      {t('lab.b10kidneydissection_1_if_the_kidney_filters_120_ml')}
+                                     </label>
     <div className="flex space-x-2">
      <input
      type="number"
      value={q1Answer}
      onChange={(e) => setQ1Answer(e.target.value)}
-     placeholder="Enter value"
+     placeholder={t('lab.b10kidneydissection_enter_value')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
      />
      <span className="flex items-center text-slate-600 dark:text-[#a1a1aa] font-medium">L</span>
@@ -349,17 +357,18 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
 
     <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     2. What is the primary function of the renal pelvis?
-    </label>
+     
+                                      {t('lab.b10kidneydissection_2_what_is_the_primary_function')}
+                                     </label>
     <select
      value={q2Answer}
      onChange={(e) => setQ2Answer(e.target.value)}
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50 dark:bg-[#121212]"
     >
-     <option value="">Select an option...</option>
-     <option value="filter">Filter toxins from the blood</option>
-     <option value="collect">Collect urine and funnel it to the ureter</option>
-     <option value="hormones">Produce hormones like EPO</option>
+     <option value="">{t('lab.b10kidneydissection_select_an_option')}</option>
+     <option value="filter">{t('lab.b10kidneydissection_filter_toxins_from_the_blood')}</option>
+     <option value="collect">{t('lab.b10kidneydissection_collect_urine_and_funnel_it_to')}</option>
+     <option value="hormones">{t('lab.b10kidneydissection_produce_hormones_like_epo')}</option>
     </select>
     {q2Correct !== null && (
      <p className={`text-sm mt-1 font-medium ${q2Correct ? 'text-green-600' : 'text-red-600'}`}>
@@ -372,8 +381,9 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
     onClick={checkAnswers}
     className="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check Answers
-    </button>
+    
+                                 {t('lab.b10kidneydissection_check_answers')}
+                                 </button>
    </div>
    </div>
   </div>

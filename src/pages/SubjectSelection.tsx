@@ -4,6 +4,7 @@ import { formatSubject } from '../data/labModules';
 import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { LAB_MODULES } from '../data/labModules';
+import { useTranslate } from '../i18n';
 
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
@@ -27,6 +28,8 @@ const SUBJECT_CONFIG: Record<string, { gradient: string; icon: typeof Atom; desc
 export default function SubjectSelection() {
   const { classId } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslate();
+
   if (!classId) return null;
   const subjects = getSubjectsForClass(classId);
 
@@ -35,8 +38,8 @@ export default function SubjectSelection() {
       <div className="flex flex-col">
         <Breadcrumbs />
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Select Subject</h2>
-          <p className="text-slate-500 mt-1 mb-6">Class {classId} Curriculum</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">{t('subject.select')}</h2>
+          <p className="text-slate-500 mt-1 mb-6">{t('subject.curriculum', { classId: classId! })}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {subjects.map(subject => {

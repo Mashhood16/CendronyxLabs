@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Beaker, Sun, ThermometerSun, AlertCircle, CheckSquare, Zap, Moon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface ComponentProps {
  onExit?: () => void;
@@ -16,6 +17,7 @@ interface ReactorState {
 }
 
 export default function LabC9OrganicChem({ onExit }: ComponentProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [reactor, setReactor] = useState<ReactorState>({
@@ -135,7 +137,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 9 Chemistry: Organic Reactions" />
+  <LabHeader onExit={onExit} title={t('lab.c9organicchem_grade_9_chemistry_organic_reac')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -144,46 +146,47 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c9organicchem_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c9organicchem_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <Beaker className="w-5 h-5 text-indigo-600" /> Reaction Theory
-   </h2>
+   <Beaker className="w-5 h-5 text-indigo-600" />  {t('lab.c9organicchem_reaction_theory')}
+                        </h2>
    
    <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
    <div className={`bg-indigo-50 p-4 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">1. Hydrogenation of Alkenes</h3>
-    <p className="mb-2">Alkenes (like Ethene, C₂H₄) are unsaturated. They can undergo <b>Addition Reactions</b> with Hydrogen gas to form saturated alkanes (Ethane, C₂H₆).</p>
+    <h3 className="font-bold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.c9organicchem_1_hydrogenation_of_alkenes')}</h3>
+    <p className="mb-2">{t('lab.c9organicchem_alkenes_like_ethene_c_h_are_un')} <b>{t('lab.c9organicchem_addition_reactions')}</b>  {t('lab.c9organicchem_with_hydrogen_gas_to_form_satu')}</p>
     <ul className={`list-disc pl-5 font-mono text-xs text-indigo-900 bg-slate-50 dark:bg-[#121212] p-2 rounded dark:text-[#ffffff] flex-col `}>
-    <li>Condition 1: Nickel (Ni) Catalyst</li>
-    <li>Condition 2: Heat (around 150°C - 200°C)</li>
+    <li>{t('lab.c9organicchem_condition_1_nickel_ni_catalyst')}</li>
+    <li>{t('lab.c9organicchem_condition_2_heat_around_150_c_')}</li>
     </ul>
    </div>
 
    <div className={`bg-orange-50 p-4 rounded-lg flex-col `}>
-    <h3 className="font-bold text-orange-800 mb-2">2. Halogenation of Alkanes</h3>
-    <p className="mb-2">Alkanes (like Methane, CH₄) are saturated. They undergo <b>Substitution Reactions</b> with halogens (like Chlorine, Cl₂).</p>
+    <h3 className="font-bold text-orange-800 mb-2">{t('lab.c9organicchem_2_halogenation_of_alkanes')}</h3>
+    <p className="mb-2">{t('lab.c9organicchem_alkanes_like_methane_ch_are_sa')} <b>{t('lab.c9organicchem_substitution_reactions')}</b>  {t('lab.c9organicchem_with_halogens_like_chlorine_cl')}</p>
     <ul className="list-disc pl-5 font-mono text-xs text-orange-900 bg-slate-50 dark:bg-[#121212] p-2 rounded">
-    <li>Requires UV light (Sunlight) to break Cl-Cl bonds.</li>
-    <li><b>Direct Sunlight:</b> Explosive reaction, forms Carbon and HCl.</li>
-    <li><b>Diffused Sunlight:</b> Controlled substitution, forms Chloromethane (CH₃Cl).</li>
+    <li>{t('lab.c9organicchem_requires_uv_light_sunlight_to_')}</li>
+    <li><b>{t('lab.c9organicchem_direct_sunlight')}</b>  {t('lab.c9organicchem_explosive_reaction_forms_carbo')}</li>
+    <li><b>{t('lab.c9organicchem_diffused_sunlight')}</b>  {t('lab.c9organicchem_controlled_substitution_forms_')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Column 2: Interactive Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Chemical Reactor</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.c9organicchem_chemical_reactor')}</h2>
    
    <div className="flex-1 flex flex-col gap-6">
    
@@ -212,7 +215,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
    </div>
 
    {/* Reactor Vessel */}
-   <div className={`relative w-full h-48 rounded-2xl border-4 flex items-center justify-center flex-col transition-colors ${reactionStatus === 'explosive' ? 'bg-orange-500 border-red-600 animate-pulse' : reactionStatus === 'success' ? 'bg-emerald-50 border-emerald-400' : 'bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]'}  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className={`relative w-full h-48 rounded-2xl border-4 flex items-center justify-center flex-col transition-colors ${reactionStatus === 'explosive' ? 'bg-orange-500 border-red-600 animate-pulse' : reactionStatus === 'success' ? 'bg-emerald-50 border-emerald-400' : 'bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]'}  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
     
     {/* Environment Indicators */}
     <div className="absolute top-2 right-2 flex gap-2">
@@ -235,33 +238,33 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
    {/* Controls */}
    <div className="grid grid-cols-2 gap-4 bg-slate-50 dark:bg-[#121212] p-4 rounded-xl">
     <div>
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Catalyst</label>
+    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c9organicchem_catalyst')}</label>
     <select 
      value={reactor.catalyst} 
      onChange={(e) => setReactor(prev => ({ ...prev, catalyst: e.target.value as any }))}
      className="w-full mt-1 p-2 rounded border text-sm"
     >
-     <option value="None">None</option>
-     <option value="Nickel">Nickel (Ni)</option>
+     <option value="None">{t('lab.c9organicchem_none')}</option>
+     <option value="Nickel">{t('lab.c9organicchem_nickel_ni')}</option>
     </select>
     </div>
     
     <div>
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Light Condition</label>
+    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c9organicchem_light_condition')}</label>
     <select 
      value={reactor.sunlight} 
      onChange={(e) => setReactor(prev => ({ ...prev, sunlight: e.target.value as any }))}
      className="w-full mt-1 p-2 rounded border text-sm"
     >
-     <option value="Dark">Dark</option>
-     <option value="Diffused">Diffused Sunlight</option>
-     <option value="Direct">Direct Sunlight</option>
+     <option value="Dark">{t('lab.c9organicchem_dark')}</option>
+     <option value="Diffused">{t('lab.c9organicchem_diffused_sunlight_1')}</option>
+     <option value="Direct">{t('lab.c9organicchem_direct_sunlight_1')}</option>
     </select>
     </div>
 
     <div className="col-span-2">
     <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex justify-between">
-     <span>Temperature</span>
+     <span>{t('lab.c9organicchem_temperature')}</span>
      <span>{reactor.temperature}°C</span>
     </label>
     <input 
@@ -279,14 +282,16 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
     disabled={reactor.reagents.length < 2 || reactionStatus !== 'idle'}
     className="flex-1 py-3 bg-indigo-600 disabled:bg-slate-300 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Start Reaction
-    </button>
+    
+                                 {t('lab.c9organicchem_start_reaction')}
+                                 </button>
     <button 
     onClick={clearReactor}
     className="px-4 py-3 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors"
     >
-    Clear
-    </button>
+    
+                                 {t('lab.c9organicchem_clear')}
+                                 </button>
    </div>
 
    </div>
@@ -298,8 +303,9 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
    <div className="p-4 border-b bg-slate-50 dark:bg-[#121212]">
    <h2 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] uppercase flex items-center gap-2">
     <CheckSquare className="w-4 h-4 text-indigo-600" /> 
-    Assessment & Data
-   </h2>
+     
+                             {t('lab.c9organicchem_assessment_data')}
+                            </h2>
    </div>
 
    <div className="flex-1 lg:overflow-y-auto p-4 space-y-6">
@@ -307,26 +313,28 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
    <div className="space-y-4">
     <div className="space-y-1">
     <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
-     1. What type of reaction occurs between Ethene and Hydrogen?
-    </label>
+     
+                                      {t('lab.c9organicchem_1_what_type_of_reaction_occurs')}
+                                     </label>
     <input 
      type="text" 
      value={q1}
      onChange={(e) => setQ1(e.target.value)}
-     placeholder="e.g. Addition"
+     placeholder={t('lab.c9organicchem_e_g_addition')}
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
     />
     </div>
 
     <div className="space-y-1">
     <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
-     2. What type of reaction occurs between Methane and Chlorine in diffused light?
-    </label>
+     
+                                      {t('lab.c9organicchem_2_what_type_of_reaction_occurs')}
+                                     </label>
     <input 
      type="text" 
      value={q2}
      onChange={(e) => setQ2(e.target.value)}
-     placeholder="e.g. Substitution"
+     placeholder={t('lab.c9organicchem_e_g_substitution')}
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
     />
     </div>
@@ -335,8 +343,9 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
     onClick={checkAssessment}
     className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check Answers
-    </button>
+    
+                                 {t('lab.c9organicchem_check_answers')}
+                                 </button>
 
     {feedback && (
     <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
@@ -346,15 +355,15 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
    </div>
 
    <div>
-    <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase mb-2">Reaction Log</h3>
+    <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase mb-2">{t('lab.c9organicchem_reaction_log')}</h3>
     <div className="space-y-2">
     {logs.length === 0 ? (
-     <div className="text-xs text-slate-400 italic">No reactions logged yet.</div>
+     <div className="text-xs text-slate-400 italic">{t('lab.c9organicchem_no_reactions_logged_yet')}</div>
     ) : (
      logs.map(log => (
      <div key={log.id} className="bg-slate-50 dark:bg-[#121212] border p-2 rounded text-xs">
       <div className="flex justify-between text-slate-400 mb-1">
-      <span>Log #{log.id}</span>
+      <span>{t('lab.c9organicchem_log')}{log.id}</span>
       <span>{log.time}</span>
       </div>
       <div className="font-mono text-indigo-800 mb-1 dark:text-[#ffffff]">{log.eq}</div>

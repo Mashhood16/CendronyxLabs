@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Beaker, Play, ClipboardList, CheckCircle, Flame, Thermometer, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit: () => void;
@@ -16,16 +17,16 @@ const ChemicalBottle = ({ label, color, onClick }: { label: string, color: strin
  </button>
 );
 
-const EquationDisplay = ({ equation }: { equation: string[] }) => (
+const EquationDisplay = ({ equation, t }: { equation: string[], t: any }) => (
  <div className="h-16 flex items-center justify-center bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-lg rounded px-4 shadow-inner mb-4 overflow-x-auto whitespace-nowrap">
- {equation.length === 0 ? <span className="text-gray-500">Awaiting chemicals...</span> : 
+ {equation.length === 0 ? <span className="text-gray-500">{t('lab.c9statesofmatter_awaiting_chemicals')}</span> : 
   equation.map((part, i) => <span key={i} className="mx-1 animate-pulse">{part}</span>)
  }
  </div>
 );
 
-const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel }: any) => {
- if (data.length === 0) return <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">No Data Logged</div>;
+const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel, t }: any) => {
+ if (data.length === 0) return <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">{t('lab.c9statesofmatter_no_data_logged')}</div>;
  
  const minX = Math.min(...data.map((d: any) => d[xKey]));
  const maxX = Math.max(...data.map((d: any) => d[xKey]), minX + 10);
@@ -57,6 +58,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 };
 
 export default function LabC9StatesOfMatter({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const config = DIFFICULTY_CONFIGS['deep-dive'];
 
@@ -163,7 +165,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
-  <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: States of Matter & Solutions" />
+  <LabHeader onExit={onExit} variant="blue" title={t('lab.c9statesofmatter_grade_9_chemistry_states_of_ma')} />
 
   <div className="px-4 pt-2 lg:pt-0">
    
@@ -175,61 +177,62 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c9statesofmatter_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c9statesofmatter_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-blue-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-blue-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" />  {t('lab.c9statesofmatter_theory_setup')}</h2>
    {activeTab === 'sugar' ? (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Solutions:</strong> A solution is formed when a solute dissolves in a solvent. The maximum amount of solute that can dissolve at a given temperature is its solubility.</p>
+    <p><strong>{t('lab.c9statesofmatter_solutions')}</strong>  {t('lab.c9statesofmatter_a_solution_is_formed_when_a_so')}</p>
     <ul className="list-disc pl-5">
-    <li><strong>Unsaturated:</strong> Can dissolve more solute.</li>
-    <li><strong>Saturated:</strong> Contains the maximum dissolved solute.</li>
-    <li><strong>Supersaturated:</strong> Contains more dissolved solute than theoretically possible at that temperature (highly unstable).</li>
+    <li><strong>{t('lab.c9statesofmatter_unsaturated')}</strong>  {t('lab.c9statesofmatter_can_dissolve_more_solute')}</li>
+    <li><strong>{t('lab.c9statesofmatter_saturated')}</strong>  {t('lab.c9statesofmatter_contains_the_maximum_dissolved')}</li>
+    <li><strong>{t('lab.c9statesofmatter_supersaturated')}</strong>  {t('lab.c9statesofmatter_contains_more_dissolved_solute')}</li>
     </ul>
-    <p><strong>Experiment:</strong> Add sugar to 100mL of water. Heat the water to dissolve more sugar, then cool it slowly. Notice what happens when you add a seed crystal to a supersaturated solution!</p>
+    <p><strong>{t('lab.c9statesofmatter_experiment')}</strong>  {t('lab.c9statesofmatter_add_sugar_to_100ml_of_water_he')}</p>
    </div>
    ) : (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Water of Crystallization:</strong> Many salts form hydrated crystals containing trapped water molecules (e.g., Copper(II) Sulfate Pentahydrate, CuSO₄·5H₂O).</p>
-    <p>When heated above 100°C, the water evaporates, leaving behind the anhydrous salt, which often has a different color (blue to white for CuSO₄).</p>
-    <p><strong>Experiment:</strong> Heat 249.5g (1 mole) of hydrated Copper Sulfate. Observe the mass change as water escapes as steam.</p>
+    <p><strong>{t('lab.c9statesofmatter_water_of_crystallization')}</strong>  {t('lab.c9statesofmatter_many_salts_form_hydrated_cryst')}</p>
+    <p>{t('lab.c9statesofmatter_when_heated_above_100_c_the_wa')}</p>
+    <p><strong>{t('lab.c9statesofmatter_experiment')}</strong>  {t('lab.c9statesofmatter_heat_249_5g_1_mole_of_hydrated')}</p>
    </div>
    )}
   </div>
 
   {/* Simulation Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {config.showHints && (
     <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
      <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-     <span><strong>Hint:</strong> Solubility increases with temperature. The formula is S = 200 + 2T. Try heating the water to dissolve more sugar!</span>
+     <span><strong>{t('lab.c9statesofmatter_hint')}</strong>  {t('lab.c9statesofmatter_solubility_increases_with_temp')}</span>
     </div>
    )}
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 w-full dark:text-[#ffffff]"><Beaker className="mr-2" /> Interactive Simulator</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 w-full dark:text-[#ffffff]"><Beaker className="mr-2" />  {t('lab.c9statesofmatter_interactive_simulator')}</h2>
    
-   <EquationDisplay equation={equation} />
+   <EquationDisplay equation={equation} t={t} />
 
    {activeTab === 'sugar' ? (
    <div className="flex flex-col items-center w-full">
     <div className="flex gap-4 mb-8">
-    <ChemicalBottle label="Sugar (Sucrose)" color="#e2e8f0" onClick={addSugar} />
+    <ChemicalBottle label={t('lab.c9statesofmatter_sugar_sucrose')} color="#e2e8f0" onClick={addSugar} />
     </div>
     
     <div className={`relative w-48 h-64 border-4 border-gray-300 rounded-b-3xl rounded-t-sm flex items-end justify-center bg-blue-50 overflow- shadow-inner dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <div className="absolute top-2 text-xs font-bold text-gray-500">100 mL Water</div>
+    <div className="absolute top-2 text-xs font-bold text-gray-500">{t('lab.c9statesofmatter_100_ml_water')}</div>
     {/* Dissolved sugar indicated by color darkness */}
     <div className="w-full transition-all duration-1000" style={{ height: '80%', backgroundColor: `rgba(59, 130, 246, ${0.2 + (sugarDissolved/400)*0.5})` }}></div>
     {/* Solid sugar at bottom */}
     {(sugarAdded > sugarDissolved) && (
-     <div className="absolute bottom-0 w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] opacity-90 border-t border-gray-200 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t" style={{ height: `${Math.min((sugarAdded - sugarDissolved)/2, 20)}%` }}></div>
+     <div className="absolute bottom-0 w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] opacity-90 border-t border-gray-200 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t" style={{ height: `${Math.min((sugarAdded - sugarDissolved)/2, 20)}%` }}></div>
     )}
     <Thermometer className="absolute right-2 top-10 text-red-500" size={32} />
     <div className="absolute right-10 top-12 text-sm font-bold text-red-600">{waterTemp}°C</div>
@@ -237,11 +240,11 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
 
     <div className="mt-6 w-full max-w-xs space-y-4">
     <div>
-     <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff]">Water Temperature: {waterTemp}°C</label>
+     <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff]">{t('lab.c9statesofmatter_water_temperature')} {waterTemp}°C</label>
      <input type="range" min="20" max="100" value={waterTemp} onChange={(e) => setWaterTemp(Number(e.target.value))} className="w-full" />
     </div>
     {isSupersaturated && (
-     <button onClick={triggerCrystallization} className="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 animate-pulse font-bold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Add Seed Crystal</button>
+     <button onClick={triggerCrystallization} className="w-full py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 animate-pulse font-bold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.c9statesofmatter_add_seed_crystal')}</button>
     )}
     </div>
    </div>
@@ -260,7 +263,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
     
     <div className="mt-8 text-center bg-gray-100 p-4 rounded border border-gray-300 w-full max-w-xs">
      <div className="text-2xl font-mono text-green-700">{cuso4Mass.toFixed(1)} g</div>
-     <div className="text-sm text-gray-500">Digital Balance</div>
+     <div className="text-sm text-gray-500">{t('lab.c9statesofmatter_digital_balance')}</div>
      <div className="text-md font-bold text-red-600 mt-2">{Math.round(cuso4Temp)} °C</div>
     </div>
 
@@ -275,17 +278,17 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
 
   {/* Data & Assessment Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" /> Data & Assessment</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" />  {t('lab.c9statesofmatter_data_assessment')}</h2>
    
    <button onClick={activeTab === 'sugar' ? logSugarData : logCuso4Data} className="mb-4 w-full py-2 bg-blue-100 text-blue-800 rounded font-bold hover:bg-blue-200 flex items-center justify-center dark:text-[#ffffff]">
-   <Play className="mr-2" size={16} /> Record Measurement
-   </button>
+   <Play className="mr-2" size={16} />  {t('lab.c9statesofmatter_record_measurement')}
+                        </button>
 
    <div className="flex-grow lg:overflow-y-auto mb-4 border rounded overflow-x-auto">
    {activeTab === 'sugar' ? (
     <table className="w-full text-sm text-left">
     <thead className="bg-gray-50 sticky top-0">
-     <tr><th className="p-2">Temp (°C)</th><th className="p-2">Dissolved (g)</th><th className="p-2">State</th></tr>
+     <tr><th className="p-2">{t('lab.c9statesofmatter_temp_c')}</th><th className="p-2">{t('lab.c9statesofmatter_dissolved_g')}</th><th className="p-2">{t('lab.c9statesofmatter_state')}</th></tr>
     </thead>
     <tbody>
      {sugarData.map(d => (
@@ -296,7 +299,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
    ) : (
     <table className="w-full text-sm text-left">
     <thead className="bg-gray-50 sticky top-0">
-     <tr><th className="p-2">Temp (°C)</th><th className="p-2">Mass (g)</th></tr>
+     <tr><th className="p-2">{t('lab.c9statesofmatter_temp_c')}</th><th className="p-2">{t('lab.c9statesofmatter_mass_g')}</th></tr>
     </thead>
     <tbody>
      {cuso4Data.map(d => (
@@ -314,19 +317,20 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
     yKey={activeTab === 'sugar' ? 'dissolved' : 'mass'} 
     xLabel="Temperature (°C)" 
     yLabel={activeTab === 'sugar' ? 'Dissolved Sugar (g)' : 'Mass (g)'} 
+    t={t}
     />
    </div>
 
    <div className="bg-blue-50 p-4 rounded border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Analysis</h3>
+   <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c9statesofmatter_analysis')}</h3>
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
     {activeTab === 'sugar' 
     ? "Based on the linear trend of your data, calculate the theoretical solubility of sugar at 50 °C (in g)." 
     : "Calculate the theoretical percentage by mass of water in CuSO₄·5H₂O. (Cu=63.5, S=32, O=16, H=1)."}
    </p>
    <div className="flex gap-2">
-    <input type="number" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter value..." className="flex-grow p-2 border rounded" />
-    <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Check</button>
+    <input type="number" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder={t('lab.c9statesofmatter_enter_value')} className="flex-grow p-2 border rounded" />
+    <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded font-bold hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.c9statesofmatter_check')}</button>
    </div>
    {feedback && <div className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>}
    </div>

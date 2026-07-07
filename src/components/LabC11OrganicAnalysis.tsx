@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Info, FlaskConical, Beaker, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
@@ -33,6 +34,7 @@ interface LogEntry {
 }
 
 export default function LabC11OrganicAnalysis({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [unknownIndex, setUnknownIndex] = useState<number>(0);
@@ -100,7 +102,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Organic Qualitative Analysis" />
+  <LabHeader onExit={onExit} title={t('lab.c11organicanalysis_organic_qualitative_analysis')} />
 
   {/* Main Grid */}
   
@@ -110,44 +112,45 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c11organicanalysis_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c11organicanalysis_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <Info className="w-5 h-5 text-indigo-600" /> Test Reagents
-   </h2>
+   <Info className="w-5 h-5 text-indigo-600" />  {t('lab.c11organicanalysis_test_reagents')}
+                        </h2>
    
    <div className="space-y-3 text-sm text-slate-700 dark:text-[#ffffff]">
    <div className={`p-3 border-l-4 border-orange-500 bg-orange-50 flex-col `}>
-    <span className="font-bold">Bromine Water:</span> Tests for unsaturation (C=C). Brown/orange color decolorizes.
-   </div>
+    <span className="font-bold">{t('lab.c11organicanalysis_bromine_water')}</span>  {t('lab.c11organicanalysis_tests_for_unsaturation_c_c_bro')}
+                            </div>
    <div className={`p-3 border-l-4 border-slate-400 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] flex-col `}>
-    <span className="font-bold">Tollens' Reagent:</span> Ammoniacal silver nitrate. Aldehydes reduce Ag+ to Ag(s), forming a silver mirror.
-   </div>
+    <span className="font-bold">{t('lab.c11organicanalysis_tollens_reagent')}</span>  {t('lab.c11organicanalysis_ammoniacal_silver_nitrate_alde')}
+                            </div>
    <div className={`p-3 border-l-4 border-orange-600 bg-orange-50 flex-col `}>
-    <span className="font-bold">2,4-DNPH:</span> Brady's reagent. Tests for carbonyls (aldehydes/ketones). Forms orange precipitate.
-   </div>
+    <span className="font-bold">{t('lab.c11organicanalysis_2_4_dnph')}</span>  {t('lab.c11organicanalysis_brady_s_reagent_tests_for_carb')}
+                            </div>
    <div className="p-3 border-l-4 border-yellow-400 bg-yellow-50">
-    <span className="font-bold">Iodoform Test:</span> I2 in NaOH. Tests for methyl ketones (CH3CO-) or alcohols that oxidize to them. Forms yellow precipitate (CHI3).
-   </div>
+    <span className="font-bold">{t('lab.c11organicanalysis_iodoform_test')}</span>  {t('lab.c11organicanalysis_i2_in_naoh_tests_for_methyl_ke')}
+                            </div>
    <div className="p-3 border-l-4 border-zinc-400 bg-zinc-50">
-    <span className="font-bold">Lucas Test:</span> ZnCl2 in HCl. Differentiates alcohols. 3° react immediately (cloudy), 2° in 5 mins, 1° no reaction at room temp.
-   </div>
+    <span className="font-bold">{t('lab.c11organicanalysis_lucas_test')}</span>  {t('lab.c11organicanalysis_zncl2_in_hcl_differentiates_al')}
+                            </div>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 w-full text-center">Interactive Test Rack</h2>
-   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6 text-center">Select a reagent to add to Unknown {currentCompound.id}</p>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2 w-full text-center">{t('lab.c11organicanalysis_interactive_test_rack')}</h2>
+   <p className="text-sm text-slate-500 dark:text-[#71717a] mb-6 text-center">{t('lab.c11organicanalysis_select_a_reagent_to_add_to_unk')} {currentCompound.id}</p>
 
    {/* Test Tube Graphic */}
    <div className="relative w-32 h-64 mb-8 shrink-0">
@@ -181,27 +184,27 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
    </div>
    
    <button onClick={() => setActiveReagent('None')} className="mt-4 text-xs text-slate-500 dark:text-[#71717a] hover:text-slate-700 dark:text-[#ffffff] flex items-center gap-1 shrink-0">
-   <RefreshCw className="w-3 h-3" /> Wash Tube
-   </button>
+   <RefreshCw className="w-3 h-3" />  {t('lab.c11organicanalysis_wash_tube')}
+                        </button>
   </div>
 
   {/* Column 3: Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <Beaker className="w-5 h-5 text-indigo-600" /> Data Logging
-   </h2>
+   <Beaker className="w-5 h-5 text-indigo-600" />  {t('lab.c11organicanalysis_data_logging')}
+                        </h2>
 
    <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-4 min-h-[150px] lg:overflow-y-auto">
    <table className="w-full text-sm text-left">
     <thead>
     <tr className="border-b border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa]">
-     <th className="py-1">Reagent Added</th>
-     <th className="py-1">Observation</th>
+     <th className="py-1">{t('lab.c11organicanalysis_reagent_added')}</th>
+     <th className="py-1">{t('lab.c11organicanalysis_observation')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
-     <tr><td colSpan={2} className="py-4 text-center text-slate-400 italic">No tests performed yet.</td></tr>
+     <tr><td colSpan={2} className="py-4 text-center text-slate-400 italic">{t('lab.c11organicanalysis_no_tests_performed_yet')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="border-b border-slate-100">
@@ -215,15 +218,15 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
    </div>
 
    <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b] shrink-0">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Identify the Unknown</h3>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">Based on your observations, what functional group class is present?</p>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c11organicanalysis_identify_the_unknown')}</h3>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">{t('lab.c11organicanalysis_based_on_your_observations_wha')}</p>
    
    <select 
     value={selectedType}
     onChange={(e) => setSelectedType(e.target.value)}
     className="w-full p-2 mb-3 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
    >
-    <option value="">Select class...</option>
+    <option value="">{t('lab.c11organicanalysis_select_class')}</option>
     {Array.from(new Set(compounds.map(c => c.type))).map(t => (
     <option key={t} value={t}>{t}</option>
     ))}
@@ -234,8 +237,8 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
     disabled={!selectedType || logs.length === 0}
     className="w-full bg-indigo-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <CheckCircle className="w-4 h-4" /> Submit Identification
-   </button>
+    <CheckCircle className="w-4 h-4" />  {t('lab.c11organicanalysis_submit_identification')}
+                            </button>
 
    {feedback && (
     <div className={`mt-3 p-3 rounded text-sm font-medium ${feedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
@@ -244,8 +247,8 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
    )}
 
    <button onClick={newUnknown} className="mt-4 w-full text-sm text-indigo-600 font-medium hover:underline flex justify-center items-center gap-1">
-    <RefreshCw className="w-4 h-4" /> Load New Unknown
-   </button>
+    <RefreshCw className="w-4 h-4" />  {t('lab.c11organicanalysis_load_new_unknown')}
+                            </button>
    </div>
   </div>
 

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Search, Image as ImageIcon, Send, Paperclip, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7WondersResearch({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(1);
  const [searchQuery, setSearchQuery] = useState('');
  const [hasSearched, setHasSearched] = useState(false);
@@ -18,10 +20,10 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Seven Wonders Research" />
+  <LabHeader onExit={onExit} title={t('lab.c7wondersresearch_seven_wonders_research')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Complete the 3-step project: Research the internet, compile a document with pictures, and email it to your teacher.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.c7wondersresearch_complete_the_3_step_project_re')}</p>
 
   {/* Progress Tracker */}
   <div className="flex items-center gap-4 mb-8 max-w-4xl mx-auto w-full">
@@ -29,7 +31,8 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
    <div key={s} className="flex-1">
     <div className={`h-2 rounded-full mb-2 ${step >= s ? 'bg-blue-600' : 'bg-slate-200 dark:bg-[#121212]'}`} />
     <p className={`text-sm font-bold ${step >= s ? 'text-blue-600' : 'text-slate-400'}`}>
-    Step {s}: {s === 1 ? 'Research' : s === 2 ? 'Document' : 'Email'}
+    
+                   {t('lab.c7wondersresearch_step')} {s}: {s === 1 ? 'Research' : s === 2 ? 'Document' : 'Email'}
     </p>
    </div>
    ))}
@@ -54,7 +57,7 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
     <input 
      type="text" 
      className="w-full border border-slate-300 dark:border-[#1c1b1b] rounded-full py-3 pl-12 pr-4 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 shadow-sm"
-     placeholder="Search for Seven Wonders..."
+     placeholder={t('lab.c7wondersresearch_search_for_seven_wonders')}
      value={searchQuery}
      onChange={e => setSearchQuery(e.target.value)}
      onKeyDown={e => {
@@ -65,19 +68,20 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
      onClick={() => { if (searchQuery.toLowerCase().includes('wonder')) setHasSearched(true) }}
      className="ml-2 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] px-6 rounded-full font-medium"
     >
-     Search
-    </button>
+     
+                                      {t('lab.c7wondersresearch_search')}
+                                     </button>
     </div>
 
     {hasSearched && (
     <div className="mt-8 max-w-2xl mx-auto animate-in fade-in">
-     <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">About 3,000,000 results</p>
+     <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">{t('lab.c7wondersresearch_about_3_000_000_results')}</p>
      <div className="mb-6">
-     <h3 className="text-xl text-blue-700 hover:underline cursor-pointer">New Seven Wonders of the World - Wikipedia</h3>
-     <p className="text-sm text-emerald-700 mb-1">https://en.wikipedia.org/wiki/New_seven_wonders</p>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">The New7Wonders of the World was a campaign started in 2000 to choose Wonders of the World from a selection of 200 existing monuments: Great Wall, Petra, Colosseum...</p>
+     <h3 className="text-xl text-blue-700 hover:underline cursor-pointer">{t('lab.c7wondersresearch_new_seven_wonders_of_the_world')}</h3>
+     <p className="text-sm text-emerald-700 mb-1">{t('lab.c7wondersresearch_https_en_wikipedia_org_wiki_ne')}</p>
+     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.c7wondersresearch_the_new7wonders_of_the_world_w')}</p>
      </div>
-     <button onClick={() => setStep(2)} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold mt-4 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Compile Research in Word &rarr;</button>
+     <button onClick={() => setStep(2)} className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold mt-4 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.c7wondersresearch_compile_research_in_word_rarr')}</button>
     </div>
     )}
    </div>
@@ -86,29 +90,29 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
    {step === 2 && (
    <div className="flex flex-col h-full bg-slate-50 dark:bg-[#121212]">
     <div className="bg-blue-600 text-white p-2 flex justify-between items-center px-4">
-    <span className="font-bold text-sm">Seven_Wonders_Research.docx - Microsoft Word</span>
-    <button onClick={() => setStep(3)} disabled={!hasImages} className="bg-slate-50 dark:bg-[#121212] text-blue-600 px-4 py-1 text-sm font-bold rounded disabled:opacity-50">Proceed to Email &rarr;</button>
+    <span className="font-bold text-sm">{t('lab.c7wondersresearch_seven_wonders_research_docx_mi')}</span>
+    <button onClick={() => setStep(3)} disabled={!hasImages} className="bg-slate-50 dark:bg-[#121212] text-blue-600 px-4 py-1 text-sm font-bold rounded disabled:opacity-50">{t('lab.c7wondersresearch_proceed_to_email_rarr')}</button>
     </div>
     <div className="bg-slate-200 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] p-2 flex gap-2">
     <button onClick={() => setHasImages(true)} className="flex items-center text-sm bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded hover:bg-slate-50 dark:bg-[#121212]">
-     <ImageIcon className="w-4 h-4 mr-2 text-rose-500" /> Insert 7 Wonder Pictures
-    </button>
+     <ImageIcon className="w-4 h-4 mr-2 text-rose-500" />  {t('lab.c7wondersresearch_insert_7_wonder_pictures')}
+                                     </button>
     </div>
     <div className="flex-1 px-8 pb-8 lg:overflow-y-auto flex justify-center">
     <div className="w-full max-w-xl bg-slate-50 dark:bg-[#121212] shadow-lg border border-slate-200 dark:border-[#1c1b1b] min-h-full p-8 outline-none" contentEditable onInput={(e) => setDocContent(e.currentTarget.textContent || '')}>
-     <h1 className="text-2xl font-bold mb-4">The Seven Wonders of the World</h1>
+     <h1 className="text-2xl font-bold mb-4">{t('lab.c7wondersresearch_the_seven_wonders_of_the_world')}</h1>
      {hasImages ? (
      <div className="grid grid-cols-2 gap-4 my-4">
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Taj Mahal</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Colosseum</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Machu Picchu</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Christ the Redeemer</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Chichen Itza</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Petra</div>
-      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">Great Wall</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_taj_mahal')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_colosseum')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_machu_picchu')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_christ_the_redeemer')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_chichen_itza')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_petra')}</div>
+      <div className="bg-slate-200 dark:bg-[#121212] aspect-video rounded border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.c7wondersresearch_great_wall')}</div>
      </div>
      ) : (
-     <p className="text-slate-400 italic">Type descriptions here and insert pictures using the toolbar...</p>
+     <p className="text-slate-400 italic">{t('lab.c7wondersresearch_type_descriptions_here_and_ins')}</p>
      )}
     </div>
     </div>
@@ -122,19 +126,19 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
      <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
      <CheckCircle className="w-10 h-10 text-emerald-600" />
      </div>
-     <h2 className="text-3xl font-bold mb-2">Email Sent Successfully!</h2>
-     <p className="text-slate-600 dark:text-[#a1a1aa] max-w-sm">Your teacher has received your research document on the Seven Wonders.</p>
+     <h2 className="text-3xl font-bold mb-2">{t('lab.c7wondersresearch_email_sent_successfully')}</h2>
+     <p className="text-slate-600 dark:text-[#a1a1aa] max-w-sm">{t('lab.c7wondersresearch_your_teacher_has_received_your')}</p>
     </div>
     ) : (
     <>
-     <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 font-bold text-slate-700 dark:text-[#ffffff]">New Message</div>
+     <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-4 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c7wondersresearch_new_message')}</div>
      <div className="p-6 flex-1 flex flex-col gap-4">
      <div className="flex border-b border-slate-200 dark:border-[#1c1b1b] pb-2 items-center">
-      <span className="text-slate-500 dark:text-[#71717a] w-16">To:</span>
-      <input type="text" className="flex-1 outline-none font-medium" placeholder="teacher@school.com" value={emailTo} onChange={e => setEmailTo(e.target.value)} />
+      <span className="text-slate-500 dark:text-[#71717a] w-16">{t('lab.c7wondersresearch_to')}</span>
+      <input type="text" className="flex-1 outline-none font-medium" placeholder={t('lab.c7wondersresearch_teacher_school_com')} value={emailTo} onChange={e => setEmailTo(e.target.value)} />
      </div>
      <div className="flex border-b border-slate-200 dark:border-[#1c1b1b] pb-2 items-center">
-      <span className="text-slate-500 dark:text-[#71717a] w-16">Subject:</span>
+      <span className="text-slate-500 dark:text-[#71717a] w-16">{t('lab.c7wondersresearch_subject')}</span>
       <input type="text" className="flex-1 outline-none font-medium" defaultValue="My Seven Wonders Research Project" />
      </div>
      
@@ -148,7 +152,7 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
 
      <textarea 
       className="flex-1 w-full outline-none resize-none pt-4" 
-      placeholder="Respected Teacher,&#10;Please find attached my research project on the Seven Wonders of the World..."
+      placeholder={t('lab.c7wondersresearch_respected_teacher_10_please_fi')}
      />
      </div>
      <div className="bg-slate-50 dark:bg-[#121212] p-4 border-t border-slate-200 dark:border-[#1c1b1b] flex justify-end">
@@ -157,8 +161,8 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
       onClick={() => setIsSent(true)}
       className="bg-blue-600 text-white px-8 py-2 rounded-lg font-bold flex items-center disabled:opacity-50 hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-      <Send className="w-4 h-4 mr-2" /> Send Email
-     </button>
+      <Send className="w-4 h-4 mr-2" />  {t('lab.c7wondersresearch_send_email')}
+                                                  </button>
      </div>
     </>
     )}

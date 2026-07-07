@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7LithiumBonding({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [isIon, setIsIon] = useState(false);
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 6: Chemical Bonds (Atoms vs. Ions)" />
+  <LabHeader onExit={onExit} title={t('lab.s7lithiumbonding_unit_6_chemical_bonds_atoms_vs')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="p-6 rounded-2xl shadow-xl max-w-3xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
-   <h2 className="text-2xl font-bold text-indigo-400 mb-4">Lithium Atom vs. Lithium Ion</h2>
-   <p className="text-slate-300 mb-6">Compare a neutral Lithium atom (Li) with a Lithium ion (Li⁺). Observe what happens to its valence electron during ionization.</p>
+   <h2 className="text-2xl font-bold text-indigo-400 mb-4">{t('lab.s7lithiumbonding_lithium_atom_vs_lithium_ion')}</h2>
+   <p className="text-slate-300 mb-6">{t('lab.s7lithiumbonding_compare_a_neutral_lithium_atom')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -24,7 +26,8 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
     className="flex items-center px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-bold transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
     <RefreshCw className="w-5 h-5 mr-2" />
-    Toggle: {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Li⁺)'}
+    
+                             {t('lab.s7lithiumbonding_toggle')} {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Li⁺)'}
    </button>
    </div>
   </div>
@@ -64,19 +67,19 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
     
     <div className="space-y-4">
     <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-     <span className="text-slate-400">Protons (Positive)</span>
+     <span className="text-slate-400">{t('lab.s7lithiumbonding_protons_positive')}</span>
      <span className="text-white font-bold text-lg">3</span>
     </div>
     <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-     <span className="text-slate-400">Electrons (Negative)</span>
+     <span className="text-slate-400">{t('lab.s7lithiumbonding_electrons_negative')}</span>
      <span className="text-white font-bold text-lg">{isIon ? '2' : '3'}</span>
     </div>
     <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-     <span className="text-slate-400">Net Charge</span>
+     <span className="text-slate-400">{t('lab.s7lithiumbonding_net_charge')}</span>
      <span className={`font-bold text-lg ${isIon ? 'text-red-400' : 'text-slate-300'}`}>{isIon ? '+1' : '0'}</span>
     </div>
     <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
-     <span className="text-slate-400">Valence Shell</span>
+     <span className="text-slate-400">{t('lab.s7lithiumbonding_valence_shell')}</span>
      <span className="text-white font-bold text-lg">{isIon ? 'Empty (Lost e⁻)' : '1 Electron'}</span>
     </div>
     </div>

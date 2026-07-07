@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [q1, setQ1] = useState<number>(5); // microCoulombs
@@ -52,7 +54,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 15: Coulomb's Law & Electrostatics" subtitle="Investigate the electric force between two point charges." />
+  <LabHeader onExit={onExit} title={t('lab.p10_coulomb_title')} subtitle={t('lab.p10_coulomb_subtitle')} />
 
   {/* Main Grid */}
   
@@ -61,39 +63,33 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-    Coulomb's Law states that the electrical force between two charged objects is directly proportional to the product of the quantity of charge on the objects and inversely proportional to the square of the separation distance between the two objects.
-   </p>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.theory')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">{t('lab.p10_coulomb_theory')}</p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-serif text-lg text-slate-800 dark:text-[#ffffff] mb-2 flex-col `}>
-    F = k · |q₁q₂| / r²
+    {t('lab.p10_coulomb_formula')}
    </div>
-   <p className="text-xs text-slate-500 dark:text-[#71717a]">
-    Where k ≈ 8.99 × 10⁹ N·m²/C² (Coulomb's constant). Measurements include realistic sensor noise (±2%).
-   </p>
+   <p className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.p10_coulomb_formula_desc')}</p>
    </div>
 
    <div className="h-px bg-slate-200 dark:bg-[#121212]" />
 
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Experiment Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p10_coulomb_setup')}</h2>
    
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Charge 1 (q₁)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_coulomb_q1_label')}</label>
     <span className="text-sm font-mono text-blue-600">{q1 > 0 ? '+' : ''}{q1} μC</span>
     </div>
     <input 
@@ -105,7 +101,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Charge 2 (q₂)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_coulomb_q2_label')}</label>
     <span className="text-sm font-mono text-red-600">{q2 > 0 ? '+' : ''}{q2} μC</span>
     </div>
     <input 
@@ -117,7 +113,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
    <div className="mb-5">
     <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Separation Distance (r)</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_coulomb_r_label')}</label>
     <span className="text-sm font-mono text-emerald-600">{distance} cm</span>
     </div>
     <input 
@@ -131,7 +127,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
   {/* Column 2: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">Simulation</h2>
+   <h2 className="text-lg font-bold text-white mb-4 absolute top-6 left-6 z-10">{t('lab.p10_coulomb_sim')}</h2>
    
    <div className={`flex-1 flex items-center justify-center relative ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <svg viewBox="0 0 400 200" className="w-full h-full max-h-[300px] overflow-visible">
@@ -149,7 +145,7 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
      <text x="0" y="20" fill="#94a3b8" fontSize="10" textAnchor="middle">{tick}</text>
     </g>
     ))}
-    <text x="200" y="185" fill="#94a3b8" fontSize="12" textAnchor="middle">Distance (cm)</text>
+    <text x="200" y="185" fill="#94a3b8" fontSize="12" textAnchor="middle">{t('lab.p10electrostaticcharges_distance_cm')}</text>
 
     {/* Charges */}
     {(() => {
@@ -199,23 +195,23 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
    </div>
 
    <div className={`w-full bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col items-center  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <span className="text-slate-400 text-sm font-medium mb-1">Force Sensor Output</span>
+   <span className="text-slate-400 text-sm font-medium mb-1">{t('lab.p10_coulomb_force_output')}</span>
    <div className="font-mono text-3xl font-bold text-amber-400 tracking-wider">
     {F_measured.toFixed(1)} <span className="text-xl">N</span>
    </div>
-   <span className="text-slate-500 dark:text-[#71717a] text-xs mt-1">± 2% environmental noise</span>
+   <span className="text-slate-500 dark:text-[#71717a] text-xs mt-1">{t('lab.p10_coulomb_noise')}</span>
    </div>
   </div>
 
   {/* Column 3: Data & Analysis */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col h-full overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p10_coulomb_data')}</h2>
    <button 
     onClick={recordData}
     className={`flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}
    >
-    <Plus className="w-4 h-4" /> Record
+    <Plus className="w-4 h-4" /> {t('lab.p10_coulomb_record')}
    </button>
    </div>
 
@@ -223,16 +219,16 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
    <table className="w-full text-sm text-left">
     <thead className="text-xs text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-2">q₁ (μC)</th>
-     <th className="px-4 py-2">q₂ (μC)</th>
-     <th className="px-4 py-2">r (cm)</th>
-     <th className="px-4 py-2">F (N)</th>
+     <th className="px-4 py-2">{t('lab.p10_coulomb_table_q1')}</th>
+     <th className="px-4 py-2">{t('lab.p10_coulomb_table_q2')}</th>
+     <th className="px-4 py-2">{t('lab.p10_coulomb_table_r')}</th>
+     <th className="px-4 py-2">{t('lab.p10_coulomb_table_f')}</th>
     </tr>
     </thead>
     <tbody>
     {dataPoints.length === 0 ? (
      <tr>
-     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded yet.</td>
+     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.p10_coulomb_no_data')}</td>
      </tr>
     ) : (
      dataPoints.map((dp) => (
@@ -252,17 +248,14 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
 
    {/* Assessment Section */}
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Check</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p10_coulomb_analysis')}</h2>
    <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
-    <strong>Problem:</strong> In a separate experiment, charge q₁ is fixed at +4 μC. A force sensor measures 90.0 N of repulsive force when charge q₂ is placed exactly 2.0 cm away. 
-    What is the magnitude of q₂ in μC?
-    </p>
+    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">{t('lab.p10_coulomb_q')}</p>
     <div className="flex gap-2 items-center">
     <input 
      type="number" 
      step="0.1"
-     placeholder="e.g. 5.0"
+     placeholder={t('lab.p10_coulomb_placeholder')}
      value={assessmentAnswer}
      onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
      className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -272,17 +265,17 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
      onClick={checkAnswer}
      className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-     Check Answer
+     {t('lab.check_answer')}
     </button>
     </div>
     {assessmentStatus === 'correct' && (
     <div className="mt-3 flex items-center gap-1 text-emerald-600 text-sm font-medium">
-     <CheckCircle className="w-4 h-4" /> Correct! q₂ ≈ 1.0 μC.
+     <CheckCircle className="w-4 h-4" /> {t('lab.p10_coulomb_correct_fb')}
     </div>
     )}
     {assessmentStatus === 'incorrect' && (
     <div className="mt-3 flex items-center gap-1 text-rose-600 text-sm font-medium">
-     <XCircle className="w-4 h-4" /> Incorrect. Try rearranging the Coulomb's Law formula for q₂.
+     <XCircle className="w-4 h-4" /> {t('lab.p10_coulomb_incorrect_fb')}
     </div>
     )}
    </div>

@@ -1,0 +1,47 @@
+/**
+ * Auto-preserves formula/technical strings as English in the roman-urdu file.
+ * Run this BEFORE creating translation batches.
+ */
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+const PRESERVE_PATTERNS = [
+  /^\d+\.?\d*\s*(V|W|A|Ω|Hz|F|H|T|N|J|Pa|m|cm|mm|km|g|kg|mL|L|mol|M|°C|°F|K|%|ppm|ms|s|h|min|yr|hr)\b/i,
+  /^pH\s*\d+(\.\d+)?$/i,
+  /^\d+\s*[×x]\s*\d+/,
+  /^\d+\.?\d*\s*%\s*$/,
+  /^~?\d+\.?\d*\s*(m\/s|km\/h|J\/kg|N\/m|Pa|W\/m)/i,
+  /^[A-Z][a-z]?\d*(?:[·.][A-Z][a-z]?\d*)*\s*(?:\([sgl]\))?$/,
+  /^[A-Z][a-z]?\d*(?:\s*\+\s*[A-Z][a-z]?\d*)*\s*(?:→|⇌|=)\s*/,
+  /^https?:\/\//,
+  /°\s*[CFK]/,
+  /\\frac|\\sqrt|\\sum|\\int|\\lim/,
+  /^[a-z][A-Z][a-zA-Z]+$/,
+  /^[a-z]+_[a-z_]+$/,
+  /^[A-Z][A-Z_]+$/,
+  /^\d+:\d+/,
+];
+
+function isFormula(text) {
+  if (!text || !text.trim()) return false;
+  const t = text.trim();
+  if (t.length <= 3 && /[^a-zA-Z]/.test(t)) return true;
+  for (const p of PRESERVE_PATTERNS) { if (p.test(t)) return true; }
+  if (/[→⇌÷×±∞√∫∑πθρΩωΔ²³⁴⁺⁻°₀₁₂₃₄₅₆₇₈₉≈≠≤≥∂]/.test(t)) return true;
+  return false;
+}
+
+let preserved = 0;
+Object.keys(en).forEach(k => {
+  if (isFormula(en[k])) {
+    ur[k] = en[k]; // Set to English (preserved)
+    preserved++;
+  }
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+console.log(`Preserved ${preserved} formula/technical strings as English`);

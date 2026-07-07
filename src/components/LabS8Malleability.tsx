@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -19,6 +20,7 @@ const MATERIALS: Material[] = [
 ];
 
 export default function LabS8Malleability({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState<Material>(MATERIALS[0]);
  const [hits, setHits] = useState(0);
 
@@ -28,12 +30,12 @@ export default function LabS8Malleability({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 5.3: Malleability" subtitle="Hit materials with a hammer to test malleability" />
+  <LabHeader onExit={onExit} title={t('lab.s8malleability_act_5_3_malleability')} subtitle={t('lab.subtitle_materials_with_hammer')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Material</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8malleability_select_material')}</h3>
    {MATERIALS.map(m => (
    <button 
     key={m.id}
@@ -60,7 +62,7 @@ export default function LabS8Malleability({ onExit }: LabProps) {
      height: `${60 - hits * 15}px`,
     }}
     >
-    {hits === 0 && <span className="text-xs text-white mix-blend-difference font-bold">Thick</span>}
+    {hits === 0 && <span className="text-xs text-white mix-blend-difference font-bold">{t('lab.s8malleability_thick')}</span>}
     </div>
    ) : (
     // Non-metal breaks apart
@@ -101,14 +103,15 @@ export default function LabS8Malleability({ onExit }: LabProps) {
     disabled={hits >= 3}
     className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 text-xl shadow-lg flex items-center gap-2 mx-auto transition-transform active:scale-95 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    🔨 Hit with Hammer
-   </button>
-   <p className="mt-4 text-slate-500 dark:text-[#71717a] font-medium">Hits: {hits}/3</p>
+    
+                             {t('lab.s8malleability_hit_with_hammer')}
+                            </button>
+   <p className="mt-4 text-slate-500 dark:text-[#71717a] font-medium">{t('lab.s8malleability_hits')} {hits}/3</p>
    </div>
 
    {hits >= 3 && (
    <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.type === 'metal' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
-    <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
+    <h3 className="font-bold text-lg mb-1">{selected.name}  {t('lab.s8malleability_is_a')} {selected.type.toUpperCase()}</h3>
     <p className="text-sm">
     {selected.type === 'metal' 
      ? "It flattened into a thin sheet. This property is called MALLEABILITY." 

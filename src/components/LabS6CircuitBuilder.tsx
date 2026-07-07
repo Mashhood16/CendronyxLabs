@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Lightbulb, Battery, Zap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6CircuitBuilder({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [circuitType, setCircuitType] = useState<'series' | 'parallel'>('series');
  const [batteries, setBatteries] = useState(1);
  const [bulbs, setBulbs] = useState(2);
@@ -29,47 +31,47 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 9: Electricity - Circuit Builder" />
+  <LabHeader onExit={onExit} title={t('lab.s6circuitbuilder_unit_9_electricity_circuit_bui')} />
 
   <div className="flex-1 flex p-6 gap-6">
   
   {/* Controls */}
   <div className="w-80 bg-slate-100 dark:bg-[#121212] rounded-2xl border border-slate-300 dark:border-[#1c1b1b] p-6 flex flex-col">
-   <h2 className="text-lg font-bold mb-6 text-yellow-500 dark:text-yellow-400 flex items-center gap-2"><Zap /> Circuit Properties</h2>
+   <h2 className="text-lg font-bold mb-6 text-yellow-500 dark:text-yellow-400 flex items-center gap-2"><Zap />  {t('lab.s6circuitbuilder_circuit_properties')}</h2>
    
    <div className="space-y-6">
    <div>
-    <label className="block text-sm font-bold text-slate-400 mb-2">Circuit Type</label>
+    <label className="block text-sm font-bold text-slate-400 mb-2">{t('lab.s6circuitbuilder_circuit_type')}</label>
     <div className="flex bg-slate-200 dark:bg-[#121212] rounded-lg p-1 border border-slate-300 dark:border-[#1c1b1b]">
     <button 
      onClick={() => { setCircuitType('series'); setSwitchClosed(false); }}
      className={`w-full py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
-    >Series</button>
+    >{t('lab.s6circuitbuilder_series')}</button>
     <button 
      onClick={() => { setCircuitType('parallel'); setSwitchClosed(false); }}
      className={`w-full py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
-    >Parallel</button>
+    >{t('lab.s6circuitbuilder_parallel')}</button>
     </div>
    </div>
 
    <div>
-    <label className="block text-sm font-bold text-slate-400 mb-2">Number of Batteries (Voltage)</label>
+    <label className="block text-sm font-bold text-slate-400 mb-2">{t('lab.s6circuitbuilder_number_of_batteries_voltage')}</label>
     <input 
     type="range" min="1" max="4" value={batteries} 
     onChange={e => setBatteries(parseInt(e.target.value))}
     className="w-full accent-yellow-500"
     />
-    <div className="text-right text-yellow-500 font-bold">{batteries} Cells ({batteries * 1.5}V)</div>
+    <div className="text-right text-yellow-500 font-bold">{batteries}  {t('lab.s6circuitbuilder_cells')}{batteries * 1.5}V)</div>
    </div>
 
    <div>
-    <label className="block text-sm font-bold text-slate-400 mb-2">Number of Bulbs (Resistance)</label>
+    <label className="block text-sm font-bold text-slate-400 mb-2">{t('lab.s6circuitbuilder_number_of_bulbs_resistance')}</label>
     <input 
     type="range" min="1" max="3" value={bulbs} 
     onChange={e => setBulbs(parseInt(e.target.value))}
     className="w-full accent-yellow-500"
     />
-    <div className="text-right text-yellow-500 font-bold">{bulbs} Bulbs</div>
+    <div className="text-right text-yellow-500 font-bold">{bulbs}  {t('lab.s6circuitbuilder_bulbs')}</div>
    </div>
 
    <div className="pt-6 border-t border-[#1c1b1b] dark:border-[#1c1b1b]">
@@ -83,14 +85,14 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
    </div>
 
    <div className="mt-auto p-4 rounded-xl border border-slate-300 dark:border-[#1c1b1b] text-sm text-slate-600 dark:text-[#71717a] bg-slate-200 dark:bg-[#121212]">
-   <strong>Observations:</strong>
+   <strong>{t('lab.s6circuitbuilder_observations')}</strong>
    <ul className="list-disc pl-4 mt-2 space-y-1">
     {circuitType === 'series' ? (
-    <li>Adding bulbs decreases overall brightness (resistance increases).</li>
+    <li>{t('lab.s6circuitbuilder_adding_bulbs_decreases_overall')}</li>
     ) : (
-    <li>Adding branches does not decrease brightness (each gets full voltage).</li>
+    <li>{t('lab.s6circuitbuilder_adding_branches_does_not_decre')}</li>
     )}
-    <li>Adding batteries increases overall brightness.</li>
+    <li>{t('lab.s6circuitbuilder_adding_batteries_increases_ove')}</li>
    </ul>
    </div>
   </div>

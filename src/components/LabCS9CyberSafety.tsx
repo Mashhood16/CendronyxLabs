@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Smartphone, Shield, ShieldAlert, CheckCircle, Activity, AlertTriangle, MessageSquare, AlertOctagon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
@@ -48,6 +49,7 @@ const scenarios: Message[] = [
 ];
 
 export default function LabCS9CyberSafety({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [currentScenario, setCurrentScenario] = useState<number>(0);
@@ -97,7 +99,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Cyber Safety & Digital Footprint" />
+   <LabHeader onExit={onExit} title={t('lab.cs9cybersafety_cyber_safety_digital_footprint')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -106,46 +108,49 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs9cybersafety_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs9cybersafety_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
     {/* Column 1: Theory */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100  ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
       <AlertOctagon className="w-6 h-6 text-teal-600" />
-      Digital Threats
-     </h2>
+      
+                           {t('lab.cs9cybersafety_digital_threats')}
+                          </h2>
      <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
-      <p>In the digital world, every action you take contributes to your <strong>Digital Footprint</strong>. Being aware of online threats is crucial for maintaining your privacy and safety.</p>
+      <p>{t('lab.cs9cybersafety_in_the_digital_world_every_act')} <strong>{t('lab.cs9cybersafety_digital_footprint')}</strong>{t('lab.cs9cybersafety_being_aware_of_online_threats_')}</p>
       
       <div className="space-y-2">
-       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><ShieldAlert className="w-4 h-4 text-red-500"/> Phishing</h3>
-       <p className="pl-6 border-l-2 border-red-200">Deceptive attempts to steal sensitive information by masquerading as a trustworthy entity (e.g., fake login links, urgent warnings).</p>
+       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><ShieldAlert className="w-4 h-4 text-red-500"/>  {t('lab.cs9cybersafety_phishing')}</h3>
+       <p className="pl-6 border-l-2 border-red-200">{t('lab.cs9cybersafety_deceptive_attempts_to_steal_se')}</p>
       </div>
       
       <div className="space-y-2">
-       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><MessageSquare className="w-4 h-4 text-orange-500"/> Cyberbullying</h3>
-       <p className="pl-6 border-l-2 border-orange-200">Using digital platforms to harass, embarrass, or target individuals. Sharing harmful content makes you a participant.</p>
+       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><MessageSquare className="w-4 h-4 text-orange-500"/>  {t('lab.cs9cybersafety_cyberbullying')}</h3>
+       <p className="pl-6 border-l-2 border-orange-200">{t('lab.cs9cybersafety_using_digital_platforms_to_har')}</p>
       </div>
 
       <div className="space-y-2">
-       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-yellow-500"/> Fake News</h3>
-       <p className="pl-6 border-l-2 border-yellow-200">False or misleading information presented as news. Always verify the source before clicking "Share".</p>
+       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-yellow-500"/>  {t('lab.cs9cybersafety_fake_news')}</h3>
+       <p className="pl-6 border-l-2 border-yellow-200">{t('lab.cs9cybersafety_false_or_misleading_informatio')}</p>
       </div>
      </div>
     </div>
 
     {/* Column 2: Simulator */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
       <Smartphone className="w-6 h-6 text-teal-600" />
-      Device Simulator
-     </h2>
+      
+                           {t('lab.cs9cybersafety_device_simulator')}
+                          </h2>
      
      <div className={`w-full max-w-xs bg-[#000000] dark:!bg-[#121212] rounded-[2.5rem] p-3 shadow-2xl border-4 border-[#1c1b1b] dark:border-[#1c1b1b] relative mt-4 h-[500px] flex flex-col `}>
       <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-10">
@@ -155,7 +160,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
       <div className="flex-1 bg-slate-100 dark:bg-[#121212] rounded-3xl overflow-hidden flex flex-col relative">
        {/* Screen Header */}
        <div className="bg-teal-600 p-4 pt-8 text-white shadow dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-        <p className="text-center font-semibold text-sm">Messages</p>
+        <p className="text-center font-semibold text-sm">{t('lab.cs9cybersafety_messages')}</p>
        </div>
 
        {/* Screen Body */}
@@ -182,8 +187,8 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
         ) : (
          <div className="flex flex-col items-center justify-center h-full text-center p-4">
           <Shield className="w-12 h-12 text-teal-500 mb-2" />
-          <h3 className="font-bold text-lg text-slate-800 dark:text-[#ffffff]">Simulation Complete</h3>
-          <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">Check the Analysis panel for your results.</p>
+          <h3 className="font-bold text-lg text-slate-800 dark:text-[#ffffff]">{t('lab.cs9cybersafety_simulation_complete')}</h3>
+          <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">{t('lab.cs9cybersafety_check_the_analysis_panel_for_y')}</p>
          </div>
         )}
        </div>
@@ -195,12 +200,13 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
     <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
       <Activity className="w-6 h-6 text-teal-600" />
-      Safety Log & Analysis
-     </h2>
+      
+                           {t('lab.cs9cybersafety_safety_log_analysis')}
+                          </h2>
 
      <div className="mb-6">
       <div className="flex justify-between items-end mb-2">
-       <span className="font-semibold text-sm text-slate-700 dark:text-[#ffffff]">Overall Safety Score</span>
+       <span className="font-semibold text-sm text-slate-700 dark:text-[#ffffff]">{t('lab.cs9cybersafety_overall_safety_score')}</span>
        <span className="font-bold text-lg text-teal-700">{safetyScore}%</span>
       </div>
       <div className="w-full bg-slate-200 dark:bg-[#121212] rounded-full h-3 overflow-hidden shadow-inner">
@@ -209,17 +215,18 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
      </div>
      
      <div className={`flex-1 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner space-y-3 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-      <h3 className="font-semibold text-sm text-slate-700 dark:text-[#ffffff] border-b pb-1 border-slate-200 dark:border-[#1c1b1b]">Action History</h3>
+      <h3 className="font-semibold text-sm text-slate-700 dark:text-[#ffffff] border-b pb-1 border-slate-200 dark:border-[#1c1b1b]">{t('lab.cs9cybersafety_action_history')}</h3>
       {chatLog.length === 0 ? (
-       <p className="text-xs text-slate-500 dark:text-[#71717a] italic text-center mt-4">Make choices on the device to log data.</p>
+       <p className="text-xs text-slate-500 dark:text-[#71717a] italic text-center mt-4">{t('lab.cs9cybersafety_make_choices_on_the_device_to_')}</p>
       ) : (
        chatLog.map((log, i) => (
         <div key={i} className={`p-3 rounded border text-xs shadow-sm ${log.safe ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
          <p className="font-semibold mb-1 flex items-center gap-1">
           {log.safe ? <CheckCircle className="w-3 h-3 text-green-600"/> : <ShieldAlert className="w-3 h-3 text-red-600"/>}
-          Scenario: {log.sender}
+          
+                             {t('lab.cs9cybersafety_scenario')} {log.sender}
          </p>
-         <p className="text-slate-600 dark:text-[#a1a1aa] mb-2">You chose: "{log.userAction}"</p>
+         <p className="text-slate-600 dark:text-[#a1a1aa] mb-2">{t('lab.cs9cybersafety_you_chose')}{log.userAction}"</p>
          <p className={`font-semibold ${log.safe ? 'text-green-700' : 'text-red-700'}`}>{log.impact}</p>
         </div>
        ))
@@ -227,20 +234,21 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
      </div>
 
      <div className="bg-teal-50 p-5 rounded-lg border border-teal-200 shadow-sm">
-      <h3 className="font-bold text-teal-900 mb-2 text-sm">Final Assessment</h3>
-      <p className="text-xs text-teal-800 mb-4">Complete all scenarios to generate your final safety report.</p>
+      <h3 className="font-bold text-teal-900 mb-2 text-sm">{t('lab.cs9cybersafety_final_assessment')}</h3>
+      <p className="text-xs text-teal-800 mb-4">{t('lab.cs9cybersafety_complete_all_scenarios_to_gene')}</p>
       
       <button 
        onClick={calculateFinalAssessment}
        disabled={currentScenario !== -1}
        className={`w-full py-2 rounded-md transition-colors text-sm font-semibold shadow-sm ${currentScenario === -1 ? 'bg-teal-600 text-white hover:bg-teal-700' : 'bg-slate-300 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa] cursor-not-allowed'}`}
       >
-       Generate Report
-      </button>
+       
+                                {t('lab.cs9cybersafety_generate_report')}
+                               </button>
       
       {assessmentScore !== null && (
        <div className="mt-4 p-3 bg-slate-50 dark:bg-[#121212] rounded border border-teal-100 shadow-sm">
-        <p className="text-sm font-bold text-slate-800 dark:text-[#ffffff]">Score: {assessmentScore}/100</p>
+        <p className="text-sm font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.cs9cybersafety_score')} {assessmentScore}/100</p>
         <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mt-1">{finalFeedback}</p>
        </div>
       )}

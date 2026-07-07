@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, RotateCcw, Target } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [objectWidth, setObjectWidth] = useState<number>(0);
  const [jawX, setJawX] = useState<number>(50); // 0 to 50 mm
@@ -58,7 +60,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Physics Grade 9: Vernier Caliper" />
+  <LabHeader onExit={onExit} title={t('lab.p9measurementtools_physics_grade_9_vernier_calipe')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -66,44 +68,43 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Theory: Measurement</h2>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9measurementtools_theory_measurement')}</h2>
    <div className="prose prose-sm">
    <p>
-    A <strong>Vernier Caliper</strong> is an instrument used to measure internal and external dimensions accurately.
-   </p>
+    A <strong>{t('lab.p9measurementtools_vernier_caliper')}</strong>  {t('lab.p9measurementtools_is_an_instrument_used_to_measu')}
+                            </p>
    <ul className="list-disc pl-4 space-y-2">
-    <li><strong>Main Scale:</strong> Reads in millimeters (mm). Read the mark just to the left of the zero on the Vernier scale.</li>
-    <li><strong>Vernier Scale:</strong> Provides precision up to 0.1 mm. Find the Vernier mark that perfectly aligns with any mark on the Main scale.</li>
+    <li><strong>{t('lab.p9measurementtools_main_scale')}</strong>  {t('lab.p9measurementtools_reads_in_millimeters_mm_read_t')}</li>
+    <li><strong>{t('lab.p9measurementtools_vernier_scale')}</strong>  {t('lab.p9measurementtools_provides_precision_up_to_0_1_m')}</li>
    </ul>
    <div className={`bg-blue-50 p-3 rounded-lg border border-blue-100 mt-4 text-blue-900 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    <strong>Formula:</strong><br />
-    Total Reading = Main Scale Reading + (Vernier Division &times; Least Count)<br />
-    <em>Here, Least Count = 0.1 mm</em>
+    <strong>{t('lab.p9measurementtools_formula')}</strong><br />
+    
+                             {t('lab.p9measurementtools_total_reading_main_scale_readi')}<br />
+    <em>{t('lab.p9measurementtools_here_least_count_0_1_mm')}</em>
    </div>
-   <h3 className="font-semibold mt-4">Instructions:</h3>
+   <h3 className="font-semibold mt-4">{t('lab.p9measurementtools_instructions')}</h3>
    <ol className="list-decimal pl-4 space-y-1">
-    <li>Click <strong>Place Object</strong>.</li>
-    <li>Drag the slider to close the jaws onto the object.</li>
-    <li>Zoom in on the scales mentally and read the value.</li>
-    <li>Enter your reading and check.</li>
+    <li>{t('lab.p9measurementtools_click')} <strong>{t('lab.p9measurementtools_place_object')}</strong>.</li>
+    <li>{t('lab.p9measurementtools_drag_the_slider_to_close_the_j')}</li>
+    <li>{t('lab.p9measurementtools_zoom_in_on_the_scales_mentally')}</li>
+    <li>{t('lab.p9measurementtools_enter_your_reading_and_check')}</li>
    </ol>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">Interactive Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-4">{t('lab.p9measurementtools_interactive_simulator')}</h2>
    
    <div className="flex gap-4 mb-6">
    <button
@@ -114,14 +115,14 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
     disabled={objectPlaced}
     className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors flex items-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 `}
    >
-    <Target size={18} /> Place Object
-   </button>
+    <Target size={18} />  {t('lab.p9measurementtools_place_object')}
+                            </button>
    <button
     onClick={generateNewObject}
     className={`px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors flex items-center gap-2 flex-col `}
    >
-    <RotateCcw size={18} /> New Object
-   </button>
+    <RotateCcw size={18} />  {t('lab.p9measurementtools_new_object')}
+                            </button>
    </div>
 
    <div className={`relative w-full max-w-lg bg-slate-100 dark:bg-[#121212] rounded-lg p-4 border overflow- flex justify-center mb-6 flex-col `}>
@@ -172,7 +173,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
 
    <div className="w-full max-w-lg space-y-2">
    <label className="text-sm font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
-    <span>Adjust Jaw Position</span>
+    <span>{t('lab.p9measurementtools_adjust_jaw_position')}</span>
     <span>{jawX.toFixed(1)} mm</span>
    </label>
    <input 
@@ -188,16 +189,16 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
   </div>
 
   {/* Column 3: Analysis */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-4 rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">Analysis & Record</h2>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-4 rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9measurementtools_analysis_record')}</h2>
    
    <div className="bg-slate-50 dark:bg-[#121212] border rounded-lg p-4 space-y-4">
    <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Enter Reading (mm)</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p9measurementtools_enter_reading_mm')}</label>
     <input 
     type="number" 
     step="0.1"
-    placeholder="e.g. 15.3"
+    placeholder={t('lab.p9measurementtools_e_g_15_3')}
     value={readingInput}
     onChange={(e) => setReadingInput(e.target.value)}
     className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -209,26 +210,27 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
     disabled={!readingInput || !objectPlaced || jawX !== objectWidth}
     className="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
    >
-    Check Answer
-   </button>
+    
+                             {t('lab.p9measurementtools_check_answer')}
+                            </button>
 
    {(!objectPlaced || jawX !== objectWidth) && readingInput && (
     <p className="text-xs text-orange-600 flex items-center gap-1">
-    <Target size={14} /> Please clamp the object tightly before measuring.
-    </p>
+    <Target size={14} />  {t('lab.p9measurementtools_please_clamp_the_object_tightl')}
+                                 </p>
    )}
 
    {feedback === 'correct' && (
     <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 border border-green-200 dark:text-[#ffffff]">
     <CheckCircle size={20} />
-    <span>Correct! The object is exactly {objectWidth.toFixed(1)} mm wide.</span>
+    <span>{t('lab.p9measurementtools_correct_the_object_is_exactly')} {objectWidth.toFixed(1)}  {t('lab.p9measurementtools_mm_wide')}</span>
     </div>
    )}
    
    {feedback === 'incorrect' && (
     <div className="p-3 bg-red-100 text-red-800 rounded-lg flex items-center gap-2 border border-red-200">
     <XCircle size={20} />
-    <span>Incorrect. Check the main scale before the vernier zero, then find the matching vernier line.</span>
+    <span>{t('lab.p9measurementtools_incorrect_check_the_main_scale')}</span>
     </div>
    )}
    </div>

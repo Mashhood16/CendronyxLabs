@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Beaker, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7HandSanitizer({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [alcohol, setAlcohol] = useState(0); // target 2/3 cup (say 60)
  const [aloe, setAloe] = useState(0); // target 1/3 cup (say 30)
  const [essentialOil, setEssentialOil] = useState(0); // target 10 drops
@@ -28,12 +30,12 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-emerald-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 11: Make a Hand Sanitizer" />
+  <LabHeader onExit={onExit} title={t('lab.s7handsanitizer_unit_11_make_a_hand_sanitizer')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-emerald-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-emerald-800 mb-4">Homemade Hygiene Product</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">Create an effective hand sanitizer by combining the correct ratio of ingredients. You need exactly 60ml (2/3 part) Rubbing Alcohol, 30ml (1/3 part) Aloe Vera Gel, and 10 drops of Essential Oil.</p>
+   <h2 className="text-2xl font-bold text-emerald-800 mb-4">{t('lab.s7handsanitizer_homemade_hygiene_product')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7handsanitizer_create_an_effective_hand_sanit')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -42,14 +44,16 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
     className="flex items-center px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 disabled:opacity-50 font-bold dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
     <Beaker className="w-5 h-5 mr-2" />
-    Blend Mixture
-   </button>
+    
+                             {t('lab.s7handsanitizer_blend_mixture')}
+                            </button>
    <button 
     onClick={reset}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Empty Bowl
-   </button>
+    
+                             {t('lab.s7handsanitizer_empty_bowl')}
+                            </button>
    </div>
   </div>
 
@@ -59,22 +63,22 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
    <div className="flex-1 space-y-4">
     <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-between">
     <div>
-     <h4 className="font-bold text-blue-600">Rubbing Alcohol (99%)</h4>
-     <div className="text-sm text-slate-500 dark:text-[#71717a]">Current: {alcohol} ml</div>
+     <h4 className="font-bold text-blue-600">{t('lab.s7handsanitizer_rubbing_alcohol_99')}</h4>
+     <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.s7handsanitizer_current')} {alcohol} ml</div>
     </div>
     <button onClick={addAlcohol} disabled={mixed} className="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
     </div>
     <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-between">
     <div>
-     <h4 className="font-bold text-green-600">Aloe Vera Gel</h4>
-     <div className="text-sm text-slate-500 dark:text-[#71717a]">Current: {aloe} ml</div>
+     <h4 className="font-bold text-green-600">{t('lab.s7handsanitizer_aloe_vera_gel')}</h4>
+     <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.s7handsanitizer_current')} {aloe} ml</div>
     </div>
     <button onClick={addAloe} disabled={mixed} className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
     </div>
     <div className="bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-between">
     <div>
-     <h4 className="font-bold text-yellow-600">Essential Oil</h4>
-     <div className="text-sm text-slate-500 dark:text-[#71717a]">Current: {essentialOil} drops</div>
+     <h4 className="font-bold text-yellow-600">{t('lab.s7handsanitizer_essential_oil')}</h4>
+     <div className="text-sm text-slate-500 dark:text-[#71717a]">{t('lab.s7handsanitizer_current')} {essentialOil}  {t('lab.s7handsanitizer_drops')}</div>
     </div>
     <button onClick={addOil} disabled={mixed} className="p-2 bg-yellow-100 text-yellow-600 rounded-lg hover:bg-yellow-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
     </div>
@@ -95,7 +99,7 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
     
     {mixed ? (
      <div className="w-full h-[90px] bg-emerald-300/80 border-t-4 border-emerald-400/50 flex items-center justify-center">
-     <span className="font-bold text-emerald-800 text-lg uppercase tracking-widest drop-shadow-sm">Sanitizer Gel</span>
+     <span className="font-bold text-emerald-800 text-lg uppercase tracking-widest drop-shadow-sm">{t('lab.s7handsanitizer_sanitizer_gel')}</span>
      </div>
     ) : (
      <>
@@ -129,8 +133,8 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
    <div className="mt-8 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-l-4 border-emerald-500 max-w-2xl flex items-start">
     <CheckCircle className="w-8 h-8 text-emerald-500 mr-4 shrink-0" />
     <div>
-    <h4 className="font-bold text-lg mb-2">Sanitizer Ready!</h4>
-    <p>The rubbing alcohol provides the active ingredient to kill bacteria and viruses (it must be at least 60% of the total volume to be effective). The aloe vera gel prevents your hands from drying out, and the essential oil provides a pleasant fragrance.</p>
+    <h4 className="font-bold text-lg mb-2">{t('lab.s7handsanitizer_sanitizer_ready')}</h4>
+    <p>{t('lab.s7handsanitizer_the_rubbing_alcohol_provides_t')}</p>
     </div>
    </div>
   )}

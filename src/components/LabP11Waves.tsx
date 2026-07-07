@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Activity, CheckCircle2, XCircle, Save, Radio, Waves } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<'doppler' | 'ligo'>('doppler');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -84,7 +86,7 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
    {circles}
    <rect x={50 + vSourcePx * tCycle - 10} y={115} width={20} height={20} fill="#ef4444" rx={4} />
    <circle cx={350} cy={125} r={8} fill="#10b981" />
-   <text x={350} y={145} fill="white" fontSize={12} textAnchor="middle">Observer</text>
+   <text x={350} y={145} fill="white" fontSize={12} textAnchor="middle">{t('lab.p12_waves_observer')}</text>
   </svg>
   );
  } else {
@@ -117,7 +119,7 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 11 Physics: Wave Phenomena" />
+  <LabHeader onExit={onExit} title={t('lab.p11waves_grade_11_physics_wave_phenomen')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -126,62 +128,67 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p11waves_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.p12_waves_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   {/* Theory & Controls */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Radio className="text-blue-500" /> Theory & Setup
-   </h2>
+   <Radio className="text-blue-500" />  {t('lab.p11waves_theory_setup')}
+                        </h2>
    
    <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <button 
     className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'doppler' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => { setMode('doppler'); setIsPlaying(false); }}
    >
-    Doppler Effect
-   </button>
+    
+                             {t('lab.p11waves_doppler_effect')}
+                            </button>
    <button 
     className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'ligo' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => { setMode('ligo'); setIsPlaying(false); }}
    >
-    LIGO Interferometer
-   </button>
+    
+                             {t('lab.p11waves_ligo_interferometer')}
+                            </button>
    </div>
 
    <div className="flex-grow space-y-4">
    {mode === 'doppler' ? (
     <>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     The Doppler effect is the change in frequency of a wave in relation to an observer who is moving relative to the wave source. 
-     {"$$f' = f \\left(\\frac{v}{v - v_s}\\right)$$"}
+     
+                                      {t('lab.p11waves_the_doppler_effect_is_the_chan')} 
+                                      {"$$f' = f \\left(\\frac{v}{v - v_s}\\right)$$"}
     </p>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Source Velocity: {sourceVelocity} m/s</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11waves_source_velocity')} {sourceVelocity}  {t('lab.p11waves_m_s')}</label>
      <input type="range" min="0" max="100" value={sourceVelocity} onChange={(e) => setSourceVelocity(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Source Frequency: {sourceFrequency} Hz</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11waves_source_frequency')} {sourceFrequency} Hz</label>
      <input type="range" min="300" max="800" step="50" value={sourceFrequency} onChange={(e) => setSourceFrequency(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     </>
    ) : (
     <>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     LIGO uses a Michelson interferometer to detect gravitational waves. As a wave passes, space itself stretches and compresses, changing the relative lengths of the 4km arms and shifting the interference pattern.
-    </p>
+     
+                                          {t('lab.p11waves_ligo_uses_a_michelson_interfer')}
+                                         </p>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">GW Strain ($h$): {strain} {"$\\times 10^{-21}$"}</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11waves_gw_strain_h')} {strain} {"$\\times 10^{-21}$"}</label>
      <input type="range" min="1" max="20" value={strain} onChange={(e) => setStrain(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">GW Frequency: {gwFreq} Hz</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11waves_gw_frequency')} {gwFreq} Hz</label>
      <input type="range" min="10" max="200" step="10" value={gwFreq} onChange={(e) => setGwFreq(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     </>
@@ -190,16 +197,16 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <Waves className="text-blue-500" /> Interactive Simulator
-   </h2>
+    <Waves className="text-blue-500" />  {t('lab.p11waves_interactive_simulator')}
+                            </h2>
    <button 
     onClick={() => setIsPlaying(!isPlaying)} 
     className={`flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
    >
-    {isPlaying ? <><Pause size={18}/> Pause</> : <><Play size={18}/> Play</>}
+    {isPlaying ? <><Pause size={18}/>{t('lab.p12_waves_pause')}</> : <><Play size={18}/>{t('lab.p12_waves_play')}</>}
    </button>
    </div>
    <div className="flex-grow flex items-center justify-center">
@@ -208,26 +215,26 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Assessment & Data */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Activity className="text-blue-500" /> Analysis & Assessment
-   </h2>
+   <Activity className="text-blue-500" />  {t('lab.p11waves_analysis_assessment')}
+                        </h2>
    
    <div className="space-y-4">
    <button 
     onClick={mode === 'doppler' ? logDoppler : logLigo}
     className={`w-full flex items-center justify-center gap-2 px-4 py-2 bg-[#121212] dark:bg-[#121212] hover:bg-[#000000] dark:bg-[#121212] text-white rounded-lg font-medium transition-colors flex-col `}
    >
-    <Save size={18} /> Record Data Point
-   </button>
+    <Save size={18} />  {t('lab.p11waves_record_data_point')}
+                            </button>
    
    <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
     <thead className="bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] sticky top-0">
      {mode === 'doppler' ? (
-     <tr><th className="p-2">v_s (m/s)</th><th className="p-2">f_s (Hz)</th><th className="p-2">f_obs (Hz)</th></tr>
+     <tr><th className="p-2">{t('lab.p11waves_v_s_m_s')}</th><th className="p-2">{t('lab.p11waves_f_s_hz')}</th><th className="p-2">{t('lab.p11waves_f_obs_hz')}</th></tr>
      ) : (
-     <tr><th className="p-2">Strain (x10^-21)</th><th className="p-2">f (Hz)</th><th className="p-2">ΔL (m)</th></tr>
+     <tr><th className="p-2">{t('lab.p11waves_strain_x10_21')}</th><th className="p-2">{t('lab.p11waves_f_hz')}</th><th className="p-2">{t('lab.p11waves_l_m')}</th></tr>
      )}
     </thead>
     <tbody>
@@ -242,27 +249,27 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
    </div>
 
    <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Knowledge Check</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p12_waves_q_title')}</h3>
    {mode === 'doppler' ? (
     <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">A police car moves towards you at 50 m/s emitting a 500 Hz siren. Speed of sound is 343 m/s. What is the observed frequency? (Hz)</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11waves_a_police_car_moves_towards_you')}</p>
     <div className="flex gap-2">
-     <input type="number" value={dopplerAns} onChange={e => {setDopplerAns(e.target.value); setDopplerStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 585" />
-     <button onClick={checkDoppler} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
+     <input type="number" value={dopplerAns} onChange={e => {setDopplerAns(e.target.value); setDopplerStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11waves_t_lab_p12_waves_eg585')} />
+     <button onClick={checkDoppler} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p12_waves_check')}</button>
     </div>
-    {dopplerStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}
-    {dopplerStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/> Incorrect. Try again.</p>}
+    {dopplerStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p12_waves_correct')}</p>}
+    {dopplerStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p12_waves_incorrecttryagain')}</p>}
     </div>
    ) : (
     <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">A gravitational wave causes a strain of {"$h = 4 \\times 10^{-21}$"}. If the LIGO arms are $L = 4000$ m, what is the change in arm length {"$\\Delta L$"} in meters? (Format: X.X, answer will be in {"$\\times 10^{-17}$"})</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11waves_a_gravitational_wave_causes_a_')} {"$h = 4 \\times 10^{-21}$"}{t('lab.p11waves_if_the_ligo_arms_are_l_4000_m_')} {"$\\Delta L$"}  {t('lab.p11waves_in_meters_format_x_x_answer_wi')} {"$\\times 10^{-17}$"})</p>
     <div className="flex gap-2">
-     <input type="number" value={ligoAns} onChange={e => {setLigoAns(e.target.value); setLigoStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 1.6" />
-     <span className="self-center font-mono text-sm">e-17</span>
-     <button onClick={checkLigo} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
+     <input type="number" value={ligoAns} onChange={e => {setLigoAns(e.target.value); setLigoStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11waves_t_lab_p12_waves_eg16')} />
+     <span className="self-center font-mono text-sm">{t('lab.p12_waves_e17')}</span>
+     <button onClick={checkLigo} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p12_waves_check')}</button>
     </div>
-    {ligoStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}
-    {ligoStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/> Incorrect. Use $\Delta L = h \times L$.</p>}
+    {ligoStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p12_waves_correct')}</p>}
+    {ligoStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p12_waves_incorrectusedeltalhtimesl')}</p>}
     </div>
    )}
    </div>

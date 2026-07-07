@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8RefractionPencil({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [liquid, setLiquid] = useState<'none' | 'water' | 'oil'>('water');
 
  const liquids = {
@@ -16,13 +18,13 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 9.4: The Bending Pencil" subtitle="Observe refraction in different liquids" />
+  <LabHeader onExit={onExit} title={t('lab.s8refractionpencil_act_9_4_the_bending_pencil')} subtitle={t('lab.subtitle_observe_refraction_different')} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
   
   {/* Liquid Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Fluid</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8refractionpencil_select_fluid')}</h3>
    {(Object.keys(liquids) as Array<keyof typeof liquids>).map(k => (
    <button 
     key={k}
@@ -30,7 +32,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
     className={`p-3 text-left rounded-lg font-bold border-2 transition-colors ${liquid === k ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
    >
     {liquids[k].name}
-    <div className="text-xs font-normal opacity-70">Refractive Index: {liquids[k].index}</div>
+    <div className="text-xs font-normal opacity-70">{t('lab.s8refractionpencil_refractive_index')} {liquids[k].index}</div>
    </button>
    ))}
   </div>
@@ -78,7 +80,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
    </div>
 
    <div className="text-center w-full max-w-md">
-   <h3 className="font-bold text-xl mb-2 text-slate-800 dark:text-[#ffffff]">Refraction</h3>
+   <h3 className="font-bold text-xl mb-2 text-slate-800 dark:text-[#ffffff]">{t('lab.s8refractionpencil_refraction')}</h3>
    <p className="text-slate-600 dark:text-[#a1a1aa]">
     {liquid === 'none' 
     ? "In air, light travels in a straight line, so the pencil looks straight." 
@@ -86,8 +88,9 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
    </p>
    {liquid !== 'none' && (
     <p className="text-sm text-sky-600 font-bold mt-2 animate-pulse">
-    Higher Refractive Index = More Bending!
-    </p>
+    
+                                 {t('lab.s8refractionpencil_higher_refractive_index_more_b')}
+                                 </p>
    )}
    </div>
 

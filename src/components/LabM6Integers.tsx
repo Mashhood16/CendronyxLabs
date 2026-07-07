@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, X, Info } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'TEMP' | 'DEPTH'>('TEMP');
 
  // Temp State
@@ -35,24 +37,26 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
   {/* Header */}
   <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
   <div className="flex items-center gap-4">
-   <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title="Go Back">
+   <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title={t('lab.m6integers_go_back')}>
    <ArrowLeft className="w-6 h-6" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Integers</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.m6integers_class_6_math_integers')}</h1>
   </div>
   <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
    <button
    onClick={() => setActiveTab('TEMP')}
    className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'TEMP' ? ' shadow-sm text-red-600 dark:text-red-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
    >
-   Temperature
-   </button>
+   
+                        {t('lab.m6integers_temperature')}
+                        </button>
    <button
    onClick={() => setActiveTab('DEPTH')}
    className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'DEPTH' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
    >
-   Depth Gauge
-   </button>
+   
+                        {t('lab.m6integers_depth_gauge')}
+                        </button>
   </div>
   </header>
 
@@ -65,52 +69,54 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
    <>
     <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-xl border border-orange-100 dark:border-orange-800/50">
     <h2 className="text-lg font-bold text-orange-800 dark:text-orange-300 flex items-center gap-2 mb-2">
-     <Info className="w-5 h-5" /> Mission: Lunar Extremes
-    </h2>
+     <Info className="w-5 h-5" />  {t('lab.m6integers_mission_lunar_extremes')}
+                                     </h2>
     <p className="text-sm text-orange-700 dark:text-orange-400">
-     Temperatures on the Moon can be extremely hot or cold since there is no atmosphere. Use the thermometer to explore positive and negative integers!
-    </p>
+     
+                                      {t('lab.m6integers_temperatures_on_the_moon_can_b')}
+                                     </p>
     </div>
 
     <div className="space-y-4">
-    <h3 className="font-semibold text-lg">Interactive Thermometer</h3>
+    <h3 className="font-semibold text-lg">{t('lab.m6integers_interactive_thermometer')}</h3>
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Temperature: {tempValue}°C</label>
+     <label className="text-sm font-medium">{t('lab.m6integers_temperature_1')} {tempValue}°C</label>
      <input 
      type="range" min="-150" max="150" value={tempValue} 
      onChange={(e) => setTempValue(parseInt(e.target.value))}
      className="w-full accent-red-500"
      />
      <div className="flex justify-between text-xs text-slate-500 dark:text-[#71717a]">
-     <span>-150°C</span>
-     <span>0°C</span>
-     <span>150°C</span>
+     <span>{t('lab.m6integers_150_c')}</span>
+     <span>{t('lab.m6integers_0_c')}</span>
+     <span>{t('lab.m6integers_150_c_1')}</span>
      </div>
     </div>
     <div className="flex gap-2 mt-4">
-     <button onClick={() => setTempValue(120)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Moon Day (120°C)</button>
-     <button onClick={() => setTempValue(0)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Freezing (0°C)</button>
-     <button onClick={() => setTempValue(-130)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Moon Night (-130°C)</button>
+     <button onClick={() => setTempValue(120)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_moon_day_120_c')}</button>
+     <button onClick={() => setTempValue(0)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_freezing_0_c')}</button>
+     <button onClick={() => setTempValue(-130)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_moon_night_130_c')}</button>
     </div>
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
-    <h3 className="font-semibold text-lg mb-3">Solve</h3>
-    <p className="text-sm mb-4">What is the difference in temperature between a Moon Day (120°C) and a Moon Night (-130°C)?</p>
+    <h3 className="font-semibold text-lg mb-3">{t('lab.m6integers_solve')}</h3>
+    <p className="text-sm mb-4">{t('lab.m6integers_what_is_the_difference_in_temp')}</p>
     <div className="flex gap-3">
      <input 
      type="number"
      value={tempAns}
      onChange={(e) => setTempAns(e.target.value)}
-     placeholder="Difference in °C"
+     placeholder={t('lab.m6integers_difference_in_c')}
      className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-red-500 outline-none"
      />
      <button 
      onClick={handleTempCheck}
      className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.m6integers_check')}
+                                          </button>
     </div>
 
     {tempFeedback.status && (
@@ -125,52 +131,54 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
    <>
     <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800/50">
     <h2 className="text-lg font-bold text-blue-800 dark:text-blue-300 flex items-center gap-2 mb-2">
-     <Info className="w-5 h-5" /> Mission: Deep Sea Exploration
-    </h2>
+     <Info className="w-5 h-5" />  {t('lab.m6integers_mission_deep_sea_exploration')}
+                                         </h2>
     <p className="text-sm text-blue-700 dark:text-blue-400">
-     Sea level is represented by <strong>0</strong>. Anything above sea level is positive (e.g., a flying drone), and anything below is negative (e.g., a submarine).
-    </p>
+     
+                                          {t('lab.m6integers_sea_level_is_represented_by')} <strong>0</strong>{t('lab.m6integers_anything_above_sea_level_is_po')}
+                                         </p>
     </div>
 
     <div className="space-y-4">
-    <h3 className="font-semibold text-lg">Altitude / Depth Gauge</h3>
+    <h3 className="font-semibold text-lg">{t('lab.m6integers_altitude_depth_gauge')}</h3>
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Position: {depthValue} m</label>
+     <label className="text-sm font-medium">{t('lab.m6integers_position')} {depthValue} m</label>
      <input 
      type="range" min="-100" max="100" value={depthValue} 
      onChange={(e) => setDepthValue(parseInt(e.target.value))}
      className="w-full accent-blue-600"
      />
      <div className="flex justify-between text-xs text-slate-500 dark:text-[#71717a]">
-     <span>-100m</span>
+     <span>{t('lab.m6integers_100m')}</span>
      <span>0m</span>
-     <span>+100m</span>
+     <span>{t('lab.m6integers_100m_1')}</span>
      </div>
     </div>
     <div className="flex gap-2 mt-4">
-     <button onClick={() => setDepthValue(50)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Drone (+50m)</button>
-     <button onClick={() => setDepthValue(0)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Sea Level (0m)</button>
-     <button onClick={() => setDepthValue(-40)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">Submarine (-40m)</button>
+     <button onClick={() => setDepthValue(50)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_drone_50m')}</button>
+     <button onClick={() => setDepthValue(0)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_sea_level_0m')}</button>
+     <button onClick={() => setDepthValue(-40)} className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-sm hover:bg-slate-200 dark:hover:bg-slate-600 font-medium">{t('lab.m6integers_submarine_40m')}</button>
     </div>
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
-    <h3 className="font-semibold text-lg mb-3">Solve</h3>
-    <p className="text-sm mb-4">A submarine is initially at <strong>-40m</strong>. It ascends (moves up) by <strong>15m</strong>. What is its new position?</p>
+    <h3 className="font-semibold text-lg mb-3">{t('lab.m6integers_solve')}</h3>
+    <p className="text-sm mb-4">{t('lab.m6integers_a_submarine_is_initially_at')} <strong>{t('lab.m6integers_40m')}</strong>{t('lab.m6integers_it_ascends_moves_up_by')} <strong>{t('lab.m6integers_15m')}</strong>{t('lab.m6integers_what_is_its_new_position')}</p>
     <div className="flex gap-3">
      <input 
      type="number"
      value={depthAns}
      onChange={(e) => setDepthAns(e.target.value)}
-     placeholder="New depth in m"
+     placeholder={t('lab.m6integers_new_depth_in_m')}
      className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-blue-500 outline-none"
      />
      <button 
      onClick={handleDepthCheck}
      className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     Check
-     </button>
+     
+                                              {t('lab.m6integers_check')}
+                                              </button>
     </div>
 
     {depthFeedback.status && (
@@ -204,7 +212,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
     </div>
     
     {/* Thermometer Body */}
-    <div className="w-12 h-96 bg-white/20 backdrop-blur-md rounded-t-full rounded-b-full border-4 border-white/50 p-1 relative flex flex-col justify-end shadow-2xl z-10 overflow-hidden dark:!bg-[#121212]">
+    <div className="w-12 h-96 bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 backdrop-blur-md rounded-t-full rounded-b-full border-4 border-white/50 p-1 relative flex flex-col justify-end shadow-2xl z-10 overflow-hidden dark:!bg-[#121212]">
      {/* Liquid */}
      <div 
      className="w-full bg-red-500 rounded-t-full rounded-b-full transition-all duration-500 ease-out origin-bottom dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
@@ -222,7 +230,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
     {/* Environment effects */}
     {tempValue <= -100 && (
     <div className="absolute bottom-0 w-full h-48 bg-[#121212] rounded-t-[100px] opacity-80 backdrop-blur-sm shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex items-center justify-center">
-     <span className="text-slate-400 font-bold tracking-widest uppercase">Moon Surface (Night)</span>
+     <span className="text-slate-400 font-bold tracking-widest uppercase">{t('lab.m6integers_moon_surface_night')}</span>
     </div>
     )}
     {tempValue >= 100 && (
@@ -238,7 +246,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
     
     {/* Sea Level Line */}
     <div className="absolute top-1/2 w-full border-t-2 border-dashed border-white/50 flex items-center justify-start px-4 z-10">
-    <span className="text-white font-bold bg-blue-600/80 px-2 py-1 rounded shadow-md text-xs -mt-8 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Sea Level (0m)</span>
+    <span className="text-white font-bold bg-blue-600/80 px-2 py-1 rounded shadow-md text-xs -mt-8 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.m6integers_sea_level_0m')}</span>
     </div>
     
     {/* Ruler Ticks */}
@@ -259,8 +267,8 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
      // Drone SVG
      <div className="flex flex-col items-center">
      <div className="w-16 h-4 bg-[#121212] dark:bg-slate-200 rounded-full flex justify-between px-1 items-center">
-      <div className="w-4 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse"></div>
-      <div className="w-4 h-1 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse"></div>
+      <div className="w-4 h-1 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 rounded-full animate-pulse"></div>
+      <div className="w-4 h-1 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 rounded-full animate-pulse"></div>
      </div>
      <div className="w-8 h-6 bg-slate-700 dark:bg-slate-300 rounded-b-xl flex items-center justify-center">
       <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>

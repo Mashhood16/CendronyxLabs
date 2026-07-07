@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { BarChart3, Calculator, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabM10StatisticsWheels({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [sectorsConfig, setSectorsConfig] = useState<number>(8);
@@ -139,7 +141,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Experimental Probability & Statistics" />
+  <LabHeader onExit={onExit} title={t('lab.m10statisticswheels_experimental_probability_stati')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -148,24 +150,26 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10statisticswheels_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10statisticswheels_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Setup & Data */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`flex items-center gap-2 mb-4 text-teal-800 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <BarChart3 className="w-6 h-6" />
-   <h2 className="text-lg font-semibold">Data Logging</h2>
+   <h2 className="text-lg font-semibold">{t('lab.m10statisticswheels_data_logging')}</h2>
    </div>
    
    <div className="mb-4">
    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    Number of Sectors: {sectorsConfig}
+    
+                             {t('lab.m10statisticswheels_number_of_sectors')} {sectorsConfig}
    </label>
    <input 
     type="range" min="4" max="8" step="2" 
@@ -173,7 +177,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     disabled={isSpinning || outcomes.length > 0}
     className="w-full accent-teal-600 disabled:opacity-50"
    />
-   {outcomes.length > 0 && <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">Clear data to change wheel config.</p>}
+   {outcomes.length > 0 && <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.m10statisticswheels_clear_data_to_change_wheel_con')}</p>}
    </div>
 
    <div className="flex gap-2 mb-4">
@@ -189,21 +193,22 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     disabled={isSpinning}
     className={`py-2 px-4 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] disabled:opacity-50 text-slate-800 dark:text-[#ffffff] font-medium rounded-lg transition-colors flex-col `}
    >
-    Clear
-   </button>
+    
+                             {t('lab.m10statisticswheels_clear')}
+                            </button>
    </div>
 
    <div className={`flex-1 min-w-0 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[300px] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <table className="w-full text-sm text-left">
     <thead className={`bg-slate-50 dark:bg-[#121212] sticky top-0 flex-col `}>
     <tr>
-     <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">Spin #</th>
-     <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">Outcome</th>
+     <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">{t('lab.m10statisticswheels_spin')}</th>
+     <th className="px-4 py-2 border-b font-medium text-slate-600 dark:text-[#a1a1aa]">{t('lab.m10statisticswheels_outcome')}</th>
     </tr>
     </thead>
     <tbody>
     {outcomes.length === 0 ? (
-     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet. Spin the wheel!</td></tr>
+     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.m10statisticswheels_no_data_recorded_yet_spin_the_')}</td></tr>
     ) : (
      outcomes.map((val, i) => (
      <tr key={i} className="border-b last:border-b-0 hover:bg-slate-50 dark:bg-[#121212]">
@@ -216,13 +221,14 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
    </table>
    </div>
    <div className="mt-2 text-sm text-slate-600 dark:text-[#a1a1aa]">
-   Total Spins: <strong>{outcomes.length}</strong>
+   
+                        {t('lab.m10statisticswheels_total_spins')} <strong>{outcomes.length}</strong>
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center lg:min-h-[35vh] lg:min-h-[400px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Physics Wheel Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center justify-center lg:min-h-[35vh] lg:min-h-[400px] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.m10statisticswheels_physics_wheel_simulator')}</h2>
    
    <div className="relative" style={{ width: 400, height: 400 }}>
    {/* Flapper (Pointer) */}
@@ -251,18 +257,20 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-rose-700">
    <Calculator className="w-6 h-6" />
-   <h2 className="text-lg font-semibold">Data Analysis</h2>
+   <h2 className="text-lg font-semibold">{t('lab.m10statisticswheels_data_analysis')}</h2>
    </div>
    
    <div className="space-y-6">
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    Spin the wheel at least 5 times to generate a meaningful dataset. Then calculate the statistics for your <strong>{outcomes.length}</strong> recorded outcomes.
-   </p>
+    
+                             {t('lab.m10statisticswheels_spin_the_wheel_at_least_5_time')} <strong>{outcomes.length}</strong>  {t('lab.m10statisticswheels_recorded_outcomes')}
+                            </p>
    
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-    1. What is the Median of your dataset?
-    </label>
+    
+                                 {t('lab.m10statisticswheels_1_what_is_the_median_of_your_d')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="number" step="0.1"
@@ -277,8 +285,9 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
 
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-    2. What is the First Quartile (Q1)?
-    </label>
+    
+                                 {t('lab.m10statisticswheels_2_what_is_the_first_quartile_q')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="number" step="0.1"
@@ -293,8 +302,9 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
 
    <div>
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
-    3. What is the Experimental Probability of landing on {probTarget}? (Decimal 0.0 - 1.0)
-    </label>
+    
+                                 {t('lab.m10statisticswheels_3_what_is_the_experimental_pro')} {probTarget}{t('lab.m10statisticswheels_decimal_0_0_1_0')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="number" step="0.01"
@@ -312,8 +322,9 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
     disabled={outcomes.length === 0}
     className="w-full py-2 px-4 bg-rose-600 hover:bg-rose-700 disabled:bg-rose-300 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
    >
-    Check Analysis
-   </button>
+    
+                             {t('lab.m10statisticswheels_check_analysis')}
+                            </button>
    </div>
   </div>
   </div>

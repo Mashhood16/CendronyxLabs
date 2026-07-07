@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,6 +12,7 @@ const SOLUTIONS = [
 ];
 
 export default function LabS8AcidLitmus({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState(SOLUTIONS[0]);
  const [testedBlue, setTestedBlue] = useState<'idle'|'dipping'|'tested'>('idle');
  const [testedRed, setTestedRed] = useState<'idle'|'dipping'|'tested'>('idle');
@@ -31,12 +33,12 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 7.1: Effects of Acids on Litmus" subtitle="Test different materials with litmus paper" rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-[#121212]"><RefreshCw className="w-4 h-4" /> Reset</button>} />
+  <LabHeader onExit={onExit} title={t('lab.s8acidlitmus_act_7_1_effects_of_acids_on_li')} subtitle={t('lab.subtitle_test_different_materials')} rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-[#121212]"><RefreshCw className="w-4 h-4" />  {t('lab.s8acidlitmus_reset')}</button>} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
   {/* Solution Select */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Material</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8acidlitmus_select_material')}</h3>
    {SOLUTIONS.map(s => (
    <button 
     key={s.id}
@@ -61,13 +63,13 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
     {/* Blue Litmus */}
     <div className={`w-8 h-32 bg-blue-300 border border-blue-400 rounded-sm shadow-md transition-all duration-700 ease-out ${testedBlue === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
     <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedBlue !== 'idle' ? 'bg-red-400' : 'bg-blue-300'}`} />
-    {testedBlue === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">RED</div>}
+    {testedBlue === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">{t('lab.s8acidlitmus_red')}</div>}
     </div>
 
     {/* Red Litmus */}
     <div className={`w-8 h-32 bg-red-400 border border-red-500 rounded-sm shadow-md transition-all duration-700 ease-out ${testedRed === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
     <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedRed !== 'idle' ? 'bg-red-400' : 'bg-red-400'}`} />
-    {testedRed === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">STAYS RED</div>}
+    {testedRed === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">{t('lab.s8acidlitmus_stays_red')}</div>}
     </div>
    </div>
    </div>
@@ -78,23 +80,25 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
     disabled={testedBlue !== 'idle'}
     className="flex-1 bg-blue-500 text-white py-3 rounded-lg font-bold hover:bg-blue-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    Dip Blue Litmus
-   </button>
+    
+                             {t('lab.s8acidlitmus_dip_blue_litmus')}
+                            </button>
    <button 
     onClick={dipRed}
     disabled={testedRed !== 'idle'}
     className="flex-1 bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
    >
-    Dip Red Litmus
-   </button>
+    
+                             {t('lab.s8acidlitmus_dip_red_litmus')}
+                            </button>
    </div>
 
    {(testedBlue === 'tested' || testedRed === 'tested') && (
    <div className="mt-8 px-6 py-4 bg-slate-100 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-xl max-w-md text-center animate-fade-in">
-    <h3 className="font-bold text-lg mb-2">Observation</h3>
-    {testedBlue === 'tested' && <p className="mb-1 text-red-600 font-medium">Blue Litmus turned RED.</p>}
-    {testedRed === 'tested' && <p className="mb-1 text-red-600 font-medium">Red Litmus stayed RED.</p>}
-    <p className="text-sm mt-2 text-slate-600 dark:text-[#a1a1aa]">This indicates that <strong>{selected.name}</strong> contains an ACID.</p>
+    <h3 className="font-bold text-lg mb-2">{t('lab.s8acidlitmus_observation')}</h3>
+    {testedBlue === 'tested' && <p className="mb-1 text-red-600 font-medium">{t('lab.s8acidlitmus_blue_litmus_turned_red')}</p>}
+    {testedRed === 'tested' && <p className="mb-1 text-red-600 font-medium">{t('lab.s8acidlitmus_red_litmus_stayed_red')}</p>}
+    <p className="text-sm mt-2 text-slate-600 dark:text-[#a1a1aa]">{t('lab.s8acidlitmus_this_indicates_that')} <strong>{selected.name}</strong>  {t('lab.s8acidlitmus_contains_an_acid')}</p>
    </div>
    )}
 

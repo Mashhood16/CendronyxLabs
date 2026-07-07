@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { GitMerge, CheckCircle2, XCircle, BookOpen, Terminal, Shield, Combine, MoveRight } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 const COLLIDER_DATA = [
  {
@@ -59,6 +60,7 @@ const ASSESSMENT_QUESTIONS = [
 ];
 
 export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentIndex, setCurrentIndex] = useState(0);
  const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -101,7 +103,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
 
  return (
  <div className="min-min- lg: flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#a1a1aa] selection:bg-indigo-200 dark:selection:bg-indigo-900 min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Clause Collider: Conditionals & Structure" variant="blue" onExit={onExit} />
+  <LabHeader title={t('lab.e9sentencestructure_clause_collider_conditionals_s')} variant="blue" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -109,12 +111,13 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e9sentencestructure_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e9sentencestructure_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -123,79 +126,87 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-6">
    <BookOpen className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
-   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">Grammar Manual</h2>
+   <h2 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_grammar_manual')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">1. Dependent vs Independent Clauses</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_1_dependent_vs_independent_cla')}</h3>
    <p>
-    An <strong>independent clause</strong> can stand alone as a complete sentence. A <strong>dependent clause</strong> has a subject and a verb but cannot stand alone because it begins with a subordinating conjunction (e.g., if, when, because).
-   </p>
+    An <strong>{t('lab.e9sentencestructure_independent_clause')}</strong>  {t('lab.e9sentencestructure_can_stand_alone_as_a_complete_')} <strong>{t('lab.e9sentencestructure_dependent_clause')}</strong>  {t('lab.e9sentencestructure_has_a_subject_and_a_verb_but_c')}
+                            </p>
    <div className={`bg-indigo-50 dark:bg-indigo-900/30 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800/50 mb-6 mt-2 flex-col `}>
     <p className="font-mono text-xs text-indigo-800 dark:text-indigo-300">
-    Dep: If you study hard,<br/>Ind: you will pass the exam.
-    </p>
+    
+                                 {t('lab.e9sentencestructure_dep_if_you_study_hard')}<br/>{t('lab.e9sentencestructure_ind_you_will_pass_the_exam')}
+                                 </p>
    </div>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">2. Zero Conditional</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_2_zero_conditional')}</h3>
    <p>
-    Used to express general truths, scientific facts, or habits. The condition always has the same result.
-   </p>
+    
+                             {t('lab.e9sentencestructure_used_to_express_general_truths')}
+                            </p>
    <ul className="list-disc pl-5 my-2">
-    <li><strong>Structure:</strong> If + Present Simple, Present Simple</li>
+    <li><strong>{t('lab.e9sentencestructure_structure')}</strong>  {t('lab.e9sentencestructure_if_present_simple_present_simp')}</li>
    </ul>
    <div className={`bg-indigo-50 dark:bg-indigo-900/30 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800/50 mb-6 mt-2 flex-col `}>
     <p className="font-mono text-xs text-indigo-800 dark:text-indigo-300">
-    Example: If you heat ice, it melts.
-    </p>
+    
+                                 {t('lab.e9sentencestructure_example_if_you_heat_ice_it_mel')}
+                                 </p>
    </div>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">3. Type 1 Conditional</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_3_type_1_conditional')}</h3>
    <p>
-    Used to express real or very probable situations in the present or future.
-   </p>
+    
+                             {t('lab.e9sentencestructure_used_to_express_real_or_very_p')}
+                            </p>
    <ul className="list-disc pl-5 my-2">
-    <li><strong>Structure:</strong> If + Present Simple, Will + Base Verb</li>
+    <li><strong>{t('lab.e9sentencestructure_structure')}</strong>  {t('lab.e9sentencestructure_if_present_simple_will_base_ve')}</li>
    </ul>
    <div className={`bg-indigo-50 dark:bg-indigo-900/30 p-3 rounded-lg border border-indigo-100 dark:border-indigo-800/50 mb-6 mt-2 flex-col `}>
     <p className="font-mono text-xs text-indigo-800 dark:text-indigo-300">
-    Example: If it rains, I will stay at home.
-    </p>
+    
+                                 {t('lab.e9sentencestructure_example_if_it_rains_i_will_sta')}
+                                 </p>
    </div>
    
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">4. Conjunctions & Logic</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_4_conjunctions_logic')}</h3>
    <p>
-    Words like <strong>although</strong>, <strong>unless</strong>, and <strong>because</strong> set up specific logical relationships:
-   </p>
+    
+                             {t('lab.e9sentencestructure_words_like')} <strong>{t('lab.e9sentencestructure_although')}</strong>, <strong>{t('lab.e9sentencestructure_unless')}</strong>{t('lab.e9sentencestructure_and')} <strong>{t('lab.e9sentencestructure_because')}</strong>  {t('lab.e9sentencestructure_set_up_specific_logical_relati')}
+                            </p>
    <ul className="list-disc pl-5 my-2">
-    <li><strong>Although:</strong> Contrast or unexpected result.</li>
-    <li><strong>Unless:</strong> Means "if not".</li>
-    <li><strong>Because:</strong> Shows cause and effect.</li>
+    <li><strong>{t('lab.e9sentencestructure_although_1')}</strong>  {t('lab.e9sentencestructure_contrast_or_unexpected_result')}</li>
+    <li><strong>{t('lab.e9sentencestructure_unless_1')}</strong>  {t('lab.e9sentencestructure_means_if_not')}</li>
+    <li><strong>{t('lab.e9sentencestructure_because_1')}</strong>  {t('lab.e9sentencestructure_shows_cause_and_effect')}</li>
    </ul>
    </div>
   </section>
 
   {/* Window 2 (Controls) */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex gap-2 mb-6">
    <button 
     onClick={() => setControlView('options')}
     className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors flex-1 ${controlView === 'options' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-200 dark:hover:bg-[#2a2a2a]'}`}
    >
-    Clause Options
-   </button>
+    
+                             {t('lab.e9sentencestructure_clause_options')}
+                            </button>
    <button 
     onClick={() => setControlView('assessment')}
     className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors flex-1 ${controlView === 'assessment' ? 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300' : 'text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-200 dark:hover:bg-[#2a2a2a]'}`}
    >
-    Assessment
-   </button>
+    
+                             {t('lab.e9sentencestructure_assessment')}
+                            </button>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2">
    {controlView === 'options' ? (
     <div className="space-y-6">
     <div>
-     <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-3 uppercase tracking-wider">Select Independent Clause</h3>
+     <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-3 uppercase tracking-wider">{t('lab.e9sentencestructure_select_independent_clause')}</h3>
      <div className="grid grid-cols-1 gap-3">
      {options.map(opt => (
       <button
@@ -213,8 +224,8 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
     {logs.length > 0 && (
      <div>
      <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-3 uppercase tracking-wider flex items-center gap-2">
-      <Terminal className="w-4 h-4" /> Collision Logs
-     </h3>
+      <Terminal className="w-4 h-4" />  {t('lab.e9sentencestructure_collision_logs')}
+                                              </h3>
      <div className="space-y-2 font-mono text-xs max-h-48 overflow-y-auto pr-2">
       {logs.map(log => (
       <div key={log.id} className={`p-2 rounded border-l-2 ${log.success ? 'bg-indigo-50 dark:bg-indigo-900/30 border-indigo-500 text-slate-700 dark:text-[#a1a1aa]' : 'bg-red-50 dark:bg-red-900/30 border-red-500 text-red-700 dark:text-red-300'}`}>
@@ -253,21 +264,23 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
       disabled={Object.keys(assessmentAnswers).length < ASSESSMENT_QUESTIONS.length}
       className="w-full py-3 mt-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 disabled:dark:bg-slate-700 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors"
      >
-      Submit Assessment
-     </button>
+      
+                                                   {t('lab.e9sentencestructure_submit_assessment')}
+                                                  </button>
      </>
     ) : (
      <div className="flex flex-col items-center justify-center py-12 space-y-4">
      <div className="text-5xl font-bold text-indigo-500 dark:text-indigo-400">
       {calculateScore()} / {ASSESSMENT_QUESTIONS.length}
      </div>
-     <p className="text-slate-600 dark:text-[#a1a1aa] font-medium">Assessment Completed</p>
+     <p className="text-slate-600 dark:text-[#a1a1aa] font-medium">{t('lab.e9sentencestructure_assessment_completed')}</p>
      <button
       onClick={() => { setAssessmentSubmitted(false); setAssessmentAnswers({}); }}
       className="px-6 py-2 mt-4 text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
      >
-      Retake
-     </button>
+      
+                                                       {t('lab.e9sentencestructure_retake')}
+                                                      </button>
      </div>
     )}
     </div>
@@ -276,17 +289,17 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
   </section>
 
   {/* Window 3 (Simulation) */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 dark:from-indigo-900/20 dark:to-purple-900/20 z-0"></div>
    
    <div className="relative z-10 w-full max-w-lg flex flex-col items-center gap-6">
    <div className="flex items-center gap-2 mb-4">
     <Combine className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Clause Collider</h2>
+    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e9sentencestructure_clause_collider')}</h2>
    </div>
    
    <div className="w-full border-2 border-slate-300 dark:border-[#2a2a2a] rounded-2xl p-6 flex flex-col justify-center text-center shadow-sm relative">
-    <span className="text-xs font-bold text-slate-400 dark:text-[#71717a] uppercase tracking-widest absolute top-3 left-0 w-full">Dependent Clause</span>
+    <span className="text-xs font-bold text-slate-400 dark:text-[#71717a] uppercase tracking-widest absolute top-3 left-0 w-full">{t('lab.e9sentencestructure_dependent_clause_1')}</span>
     <span className="text-xl md:text-2xl font-medium mt-4 text-slate-800 dark:text-[#ffffff]">{currentData.clause1}</span>
    </div>
    
@@ -295,7 +308,7 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
    </div>
 
    <div className={`w-full border-2 rounded-2xl p-6 flex flex-col justify-center text-center relative transition-colors ${ selectedOption ? result === 'success' ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 shadow-lg' : 'border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 shadow-md' : 'border-dashed border-indigo-300 dark:border-indigo-700 text-slate-400 dark:text-[#71717a]' }`}>
-    <span className="text-xs font-bold opacity-60 uppercase tracking-widest absolute top-3 left-0 w-full">Independent Clause</span>
+    <span className="text-xs font-bold opacity-60 uppercase tracking-widest absolute top-3 left-0 w-full">{t('lab.e9sentencestructure_independent_clause_1')}</span>
     <span className="text-xl md:text-2xl font-medium mt-4">{selectedOption || "Awaiting Selection..."}</span>
    </div>
 
@@ -312,7 +325,8 @@ export default function LabE9SentenceStructure({ onExit }: { onExit?: () => void
     </div>
     {result === 'success' && (
      <button onClick={nextCollider} className="mt-2 px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
-     Next Sentence <MoveRight className="w-4 h-4" />
+     
+                                          {t('lab.e9sentencestructure_next_sentence')} <MoveRight className="w-4 h-4" />
      </button>
     )}
     </div>

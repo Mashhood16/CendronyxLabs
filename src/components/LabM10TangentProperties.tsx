@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { RefreshCw, CheckCircle2, XCircle, Calculator, Crosshair, Info, Settings2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabM10TangentProperties({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'tangent' | 'touching'>('tangent');
@@ -96,7 +98,7 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
   <div className="bg-slate-50 dark:bg-[#121212] shadow-sm px-6 py-4 flex items-center justify-between z-10">
-  <LabHeader onExit={onExit} title="Lab: Tangent & Circle Properties" />
+  <LabHeader onExit={onExit} title={t('lab.m10tangentproperties_lab_tangent_circle_properties')} />
   </div>
 
   
@@ -106,69 +108,72 @@ export default function LabM10TangentProperties({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10tangentproperties_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10tangentproperties_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
-    <Info className="w-5 h-5 text-blue-500" /> Theory
-   </h2>
+    <Info className="w-5 h-5 text-blue-500" />  {t('lab.m10tangentproperties_theory')}
+                            </h2>
    <div className="prose prose-slate text-sm">
-    <p><strong>1. Tangent Perpendicularity:</strong> A tangent to a circle is perpendicular to the radius at the point of tangency. This creates a right-angled triangle between the radius, tangent, and any secant line to the center.</p>
-    <p><strong>2. Touching Circles:</strong> If two circles touch externally, the distance between their centers is <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">R₁ + R₂</code>. If they touch internally, the distance is <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">|R₁ - R₂|</code>.</p>
+    <p><strong>{t('lab.m10tangentproperties_1_tangent_perpendicularity')}</strong>  {t('lab.m10tangentproperties_a_tangent_to_a_circle_is_perpe')}</p>
+    <p><strong>{t('lab.m10tangentproperties_2_touching_circles')}</strong>  {t('lab.m10tangentproperties_if_two_circles_touch_externall')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r')}</code>{t('lab.m10tangentproperties_if_they_touch_internally_the_d')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r_1')}</code>.</p>
    </div>
    </div>
 
    <div>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Settings2 className="w-5 h-5 text-blue-500" /> Simulation Controls
-   </h2>
+    <Settings2 className="w-5 h-5 text-blue-500" />  {t('lab.m10tangentproperties_simulation_controls')}
+                            </h2>
    
    <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-6 flex-col `}>
     <button 
     onClick={() => setMode('tangent')}
     className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
     >
-    Tangent to Radius
-    </button>
+    
+                                 {t('lab.m10tangentproperties_tangent_to_radius')}
+                                 </button>
     <button 
     onClick={() => setMode('touching')}
     className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
     >
-    Touching Circles
-    </button>
+    
+                                 {t('lab.m10tangentproperties_touching_circles')}
+                                 </button>
    </div>
 
    {mode === 'touching' && (
     <div className="space-y-4">
     <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Circle 1 Radius ({r1})</label>
+     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_1_radius')}{r1})</label>
      <input type="range" min="30" max="120" value={r1} onChange={e => setR1(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Circle 2 Radius ({r2})</label>
+     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_2_radius')}{r2})</label>
      <input type="range" min="30" max="120" value={r2} onChange={e => setR2(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     </div>
    )}
    {mode === 'tangent' && (
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">Drag the red point on the circle circumference to see the tangent adjust dynamically.</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10tangentproperties_drag_the_red_point_on_the_circ')}</p>
    )}
    </div>
   </div>
 
   {/* Middle Column: Interactive Canvas */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
-   <Crosshair className="w-5 h-5 text-indigo-500" /> Interactive Simulation
-   </h2>
+   <Crosshair className="w-5 h-5 text-indigo-500" />  {t('lab.m10tangentproperties_interactive_simulation')}
+                        </h2>
 
    <svg 
    ref={svgRef}
@@ -222,8 +227,8 @@ export default function LabM10TangentProperties({ onExit }: Props) {
      
      <text x={c1.x - 15} y={c1.y + 15} className="text-xs fill-slate-600 font-bold">O</text>
      <text x={px + 10} y={py + 10} className="text-xs fill-slate-600 font-bold">P</text>
-     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">Radius ⊥ Tangent</text>
-     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">Angle = 90°</text>
+     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_radius_tangent')}</text>
+     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_angle_90')}</text>
     </>
     );
    })()}
@@ -249,12 +254,12 @@ export default function LabM10TangentProperties({ onExit }: Props) {
      onPointerDown={(e) => handlePointerDown(e, 'C2')}
      />
      
-     <text x={10} y={330} className="text-sm fill-slate-700 font-medium">Distance (d) = {distCenters.toFixed(1)}</text>
-     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">R₁ + R₂ = {r1 + r2}</text>
-     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">|R₁ - R₂| = {Math.abs(r1 - r2)}</text>
+     <text x={10} y={330} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_distance_d')} {distCenters.toFixed(1)}</text>
+     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_2')} {r1 + r2}</text>
+     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_3')} {Math.abs(r1 - r2)}</text>
      
-     {isExt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-green-600 font-bold">Touches Externally (d = R₁ + R₂)</text>}
-     {isInt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-orange-600 font-bold">Touches Internally (d = |R₁ - R₂|)</text>}
+     {isExt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-green-600 font-bold">{t('lab.m10tangentproperties_touches_externally_d_r_r')}</text>}
+     {isInt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-orange-600 font-bold">{t('lab.m10tangentproperties_touches_internally_d_r_r')}</text>}
     </>
     );
    })()}
@@ -262,10 +267,10 @@ export default function LabM10TangentProperties({ onExit }: Props) {
   </div>
 
   {/* Right Column: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Calculator className="w-5 h-5 text-green-500" /> Assessment
-   </h2>
+   <Calculator className="w-5 h-5 text-green-500" />  {t('lab.m10tangentproperties_assessment')}
+                        </h2>
    
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
    <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
@@ -285,26 +290,27 @@ export default function LabM10TangentProperties({ onExit }: Props) {
     type="number" 
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder="Enter answer (cm)"
+    placeholder={t('lab.m10tangentproperties_enter_answer_cm')}
     className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <button 
     onClick={checkAnswer}
     className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.m10tangentproperties_check')}
+                                 </button>
    </div>
    
    {feedback === 'correct' && (
     <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <CheckCircle2 className="w-4 h-4" /> Correct! Great job.
-    </div>
+    <CheckCircle2 className="w-4 h-4" />  {t('lab.m10tangentproperties_correct_great_job')}
+                                 </div>
    )}
    {feedback === 'incorrect' && (
     <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
-    <XCircle className="w-4 h-4" /> Incorrect. Try again!
-    </div>
+    <XCircle className="w-4 h-4" />  {t('lab.m10tangentproperties_incorrect_try_again')}
+                                 </div>
    )}
    </div>
 
@@ -312,8 +318,8 @@ export default function LabM10TangentProperties({ onExit }: Props) {
    onClick={generateQuestion}
    className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
    >
-   <RefreshCw className="w-4 h-4" /> Next Question
-   </button>
+   <RefreshCw className="w-4 h-4" />  {t('lab.m10tangentproperties_next_question')}
+                        </button>
   </div>
   </div>
  </div>

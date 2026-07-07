@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, CheckCircle2, XCircle, Edit3, User, BookOpen, Snowflake, Thermometer, Award, Ticket, Home, Droplet, RefreshCw, Undo , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const notepadQuestions = [
  {
@@ -72,6 +73,7 @@ const conditionalQuestions = [
 ];
 
 export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'notepad'|'conditionals'>('notepad');
 
@@ -124,11 +126,11 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center justify-between p-4 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <h1 className="text-lg md:text-xl font-bold">Class 8 English: Narration & Conditionals</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.e8narrationconditionals_class_8_english_narration_cond')}</h1>
   {onExit && (
    <button onClick={onExit} className="whitespace-nowrap flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors">
-   <Undo className="w-4 h-4" /> Go Back
-   </button>
+   <Undo className="w-4 h-4" />  {t('lab.e8narrationconditionals_go_back')}
+                        </button>
   )}
   
   <button
@@ -150,30 +152,34 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
     onClick={() => setActiveTab('notepad')}
     className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'notepad' ? ' dark:bg-slate-700 shadow-sm text-yellow-600 dark:text-yellow-400 dark:text-yellow-500' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
     >
-    Reporter's Notepad
-    </button>
+    
+                                 {t('lab.e8narrationconditionals_reporter_s_notepad')}
+                                 </button>
     <button 
     onClick={() => setActiveTab('conditionals')}
     className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'conditionals' ? ' dark:bg-slate-700 shadow-sm text-indigo-600 dark:text-indigo-400 dark:text-indigo-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
     >
-    Conditional Loops
-    </button>
+    
+                                 {t('lab.e8narrationconditionals_conditional_loops')}
+                                 </button>
    </div>
 
    {activeTab === 'notepad' ? (
     <div className={`w-full bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:flex-1 flex-col  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4">
      <Edit3 className="w-6 h-6 text-yellow-500 dark:text-yellow-400" />
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Reporter's Notepad</h2>
+     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8narrationconditionals_reporter_s_notepad')}</h2>
      </div>
      <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
-     Convert the direct quote into reported (indirect) speech.
-     </p>
+     
+                                      {t('lab.e8narrationconditionals_convert_the_direct_quote_into_')}
+                                      </p>
 
-     <div className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white lg:bg-slate-700 p-4 rounded-xl mb-6 flex flex-col items-start gap-3  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+     <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 p-4 rounded-xl mb-6 flex flex-col items-start gap-3  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
       <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] block">
-      Direct Speech
-      </span>
+      
+                                           {t('lab.e8narrationconditionals_direct_speech')}
+                                           </span>
       <div className="flex gap-3 items-center">
       <div className={`w-full bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 p-3 rounded-full shrink-0  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
        <User className="w-6 h-6 text-blue-600 dark:text-blue-400 dark:text-blue-300" />
@@ -186,19 +192,20 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
 
      <div className="mb-4">
       <label className="block text-sm font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">
-      Reported Speech:
-      </label>
+      
+                                           {t('lab.e8narrationconditionals_reported_speech')}
+                                           </label>
       <textarea 
       value={nInput}
       onChange={(e) => { setNInput(e.target.value); setNFeedback(null); }}
-      placeholder="e.g. He said that..."
+      placeholder={t('lab.e8narrationconditionals_e_g_he_said_that')}
       className="w-full px-4 py-3 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-yellow-500 resize-none h-24 font-medium"
       />
      </div>
 
      {/* hints */}
      <div className="mb-6 space-y-2 bg-yellow-50 dark:bg-yellow-900/50 dark:bg-yellow-900/20 p-4 rounded-lg">
-     <span className="text-xs font-bold uppercase text-yellow-700 dark:text-yellow-300 dark:text-yellow-500 mb-1 block">Hints</span>
+     <span className="text-xs font-bold uppercase text-yellow-700 dark:text-yellow-300 dark:text-yellow-500 mb-1 block">{t('lab.e8narrationconditionals_hints')}</span>
      {nQ.hints.map((h, i) => (
       <p key={i} className="text-sm text-yellow-800 dark:text-yellow-200 dark:text-yellow-400 flex items-center gap-2">
        <ArrowRight className="w-4 h-4 shrink-0" /> {h}
@@ -208,23 +215,25 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
 
      <div className="flex gap-4">
       <button onClick={handleNCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
-      Check Notes
-      </button>
+      
+                                           {t('lab.e8narrationconditionals_check_notes')}
+                                           </button>
       <button onClick={handleNNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
-      Next <ArrowRight className="w-5 h-5"/>
+      
+                                           {t('lab.e8narrationconditionals_next')} <ArrowRight className="w-5 h-5"/>
       </button>
      </div>
      
      {nFeedback === 'correct' && (
      <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
       <CheckCircle2 className="w-5 h-5" />
-      <span className="font-semibold">Correct! Great reporting.</span>
+      <span className="font-semibold">{t('lab.e8narrationconditionals_correct_great_reporting')}</span>
      </div>
      )}
      {nFeedback === 'incorrect' && (
      <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/50 dark:bg-red-900/60 dark:bg-red-900/30 text-red-700 dark:text-red-300 dark:text-red-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
       <XCircle className="w-5 h-5" />
-      <span className="font-semibold">Not quite. Check the pronouns and tense changes!</span>
+      <span className="font-semibold">{t('lab.e8narrationconditionals_not_quite_check_the_pronouns_a')}</span>
      </div>
      )}
     </div>
@@ -232,11 +241,12 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
     <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-1">
      <div className="flex items-center gap-2 mb-4">
      <RefreshCw className="w-6 h-6 text-indigo-500 dark:text-indigo-400" />
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Conditional Loops</h2>
+     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8narrationconditionals_conditional_loops')}</h2>
      </div>
      <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
-     Fill in the correct verb forms to complete the conditional logic loop.
-     </p>
+     
+                                          {t('lab.e8narrationconditionals_fill_in_the_correct_verb_forms')}
+                                          </p>
 
      <div className="bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 p-4 rounded-xl mb-6">
       <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 dark:text-indigo-400 mb-1 block">
@@ -271,23 +281,25 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
 
      <div className="flex gap-4">
       <button onClick={handleCCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-      Run Logic Loop
-      </button>
+      
+                                               {t('lab.e8narrationconditionals_run_logic_loop')}
+                                               </button>
       <button onClick={handleCNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
-      Next <ArrowRight className="w-5 h-5"/>
+      
+                                               {t('lab.e8narrationconditionals_next')} <ArrowRight className="w-5 h-5"/>
       </button>
      </div>
      
      {cFeedback === 'correct' && (
      <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
       <CheckCircle2 className="w-5 h-5" />
-      <span className="font-semibold">Correct! The logic loop executes.</span>
+      <span className="font-semibold">{t('lab.e8narrationconditionals_correct_the_logic_loop_execute')}</span>
      </div>
      )}
      {cFeedback === 'incorrect' && (
      <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/50 dark:bg-red-900/60 dark:bg-red-900/30 text-red-700 dark:text-red-300 dark:text-red-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
       <XCircle className="w-5 h-5" />
-      <span className="font-semibold">Logic Error. Check your tenses!</span>
+      <span className="font-semibold">{t('lab.e8narrationconditionals_logic_error_check_your_tenses')}</span>
      </div>
      )}
     </div>
@@ -320,7 +332,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
      <div className="bg-yellow-100 dark:bg-yellow-900/50 dark:bg-yellow-900/60 dark:bg-yellow-900/40 p-6 rounded-xl shadow-md border-t-8 border-yellow-400 relative z-10 w-64 md:w-80">
       <div className="flex items-center gap-2 mb-3 border-b border-yellow-300 dark:border-yellow-700/50 pb-2">
        <Edit3 className="w-5 h-5 text-yellow-600 dark:text-yellow-400 dark:text-yellow-500" />
-       <span className="font-bold text-yellow-800 dark:text-yellow-200 dark:text-yellow-500 text-sm uppercase tracking-wider">Reporter's Notes</span>
+       <span className="font-bold text-yellow-800 dark:text-yellow-200 dark:text-yellow-500 text-sm uppercase tracking-wider">{t('lab.e8narrationconditionals_reporter_s_notes')}</span>
       </div>
       <p className="text-yellow-900 dark:text-yellow-100 dark:text-yellow-200 font-medium italic min-h-[60px]">
        {nFeedback === 'correct' ? nInput : "Waiting for correct notes..."}
@@ -354,7 +366,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
       <>
        <div className="flex flex-col items-center w-32">
         <BookOpen className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-colors duration-700`} />
-        <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">Studying Hard</span>
+        <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{t('lab.e8narrationconditionals_studying_hard')}</span>
        </div>
        <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
        <div className="flex flex-col items-center w-32">
@@ -368,7 +380,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
       <>
        <div className="flex flex-col items-center w-32">
         <Ticket className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'} transition-colors duration-700`} />
-        <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">Winning Ticket</span>
+        <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{t('lab.e8narrationconditionals_winning_ticket')}</span>
        </div>
        <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
        <div className="flex flex-col items-center w-32">
@@ -383,7 +395,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
      <div className="/80 dark:bg-[#121212]/80 backdrop-blur px-6 py-3 rounded-full border border-slate-200 dark:border-[#1c1b1b] shadow-sm transition-all w-full max-w-sm text-center">
      <p className="font-mono text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] flex items-center justify-center gap-2">
       <RefreshCw className={`w-4 h-4 shrink-0 ${cFeedback === 'correct' ? 'animate-spin text-green-500 dark:text-green-400' : ''}`} />
-      <span className="truncate">IF ( {cInput1 || '...'} ) THEN ( {cInput2 || '...'} )</span>
+      <span className="truncate">{t('lab.e8narrationconditionals_if')} {cInput1 || '...'}  {t('lab.e8narrationconditionals_then')} {cInput2 || '...'} )</span>
      </p>
      </div>
     </div>

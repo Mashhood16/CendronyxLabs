@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import {Layers, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabM10InequalityApplications({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Budget Constraint: a*x + b*y <= C
@@ -50,7 +52,7 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Inequality Applications: Feasible Budgets" />
+  <LabHeader onExit={onExit} title={t('lab.m10inequalityapplications_inequality_applications_feasib')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -59,55 +61,59 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10inequalityapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10inequalityapplications_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   {/* LEFT: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-amber-800 mb-4 flex items-center gap-2 dark:text-[#ffffff]">
-   <Layers /> Theory & Context
-   </h2>
+   <Layers />  {t('lab.m10inequalityapplications_theory_context')}
+                        </h2>
    <div className="prose text-slate-700 dark:text-[#ffffff]">
    <p>
-    Linear inequalities are used in business to model constraints, such as budgets. 
-    The area containing all possible solutions is called the <strong>Feasible Region</strong>.
+    
+                             {t('lab.m10inequalityapplications_linear_inequalities_are_used_i')} <strong>{t('lab.m10inequalityapplications_feasible_region')}</strong>.
    </p>
    <p className="mt-2">
-    Suppose a company needs to rent vehicles. 
-   </p>
+    
+                             {t('lab.m10inequalityapplications_suppose_a_company_needs_to_ren')} 
+                            </p>
    <ul className="list-disc pl-5 space-y-2 mt-2">
-    <li><strong>x:</strong> Number of Compact Cars (Car A)</li>
-    <li><strong>y:</strong> Number of SUVs (Car B)</li>
+    <li><strong>x:</strong>  {t('lab.m10inequalityapplications_number_of_compact_cars_car_a')}</li>
+    <li><strong>y:</strong>  {t('lab.m10inequalityapplications_number_of_suvs_car_b')}</li>
    </ul>
    <div className={`bg-amber-50 p-4 rounded-lg mt-4 border border-amber-200 font-mono text-center dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    P_A(x) + P_B(y) ≤ Budget
-   </div>
+    
+                             {t('lab.m10inequalityapplications_p_a_x_p_b_y_budget')}
+                            </div>
    <p className="mt-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
-    The shaded region under the line represents all combinations of cars the company can afford. Note that x ≥ 0 and y ≥ 0 because you cannot rent negative cars!
-   </p>
+    
+                             {t('lab.m10inequalityapplications_the_shaded_region_under_the_li')}
+                            </p>
    </div>
   </div>
 
   {/* MIDDLE: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">Feasible Region Explorer</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">{t('lab.m10inequalityapplications_feasible_region_explorer')}</h2>
    
    <div className={`w-full max-w-md space-y-4 mb-6 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] text-sm font-semibold flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-    <label className="block mb-1">Car A Price ($): {priceA}</label>
+    <label className="block mb-1">{t('lab.m10inequalityapplications_car_a_price')} {priceA}</label>
     <input type="range" min="10" max="50" step="5" value={priceA} onChange={e => setPriceA(Number(e.target.value))} className="w-full accent-amber-600" />
    </div>
    <div>
-    <label className="block mb-1">Car B Price ($): {priceB}</label>
+    <label className="block mb-1">{t('lab.m10inequalityapplications_car_b_price')} {priceB}</label>
     <input type="range" min="20" max="80" step="5" value={priceB} onChange={e => setPriceB(Number(e.target.value))} className="w-full accent-amber-600" />
    </div>
    <div>
-    <label className="block mb-1">Total Budget ($): {budget}</label>
+    <label className="block mb-1">{t('lab.m10inequalityapplications_total_budget')} {budget}</label>
     <input type="range" min="200" max="1200" step="50" value={budget} onChange={e => setBudget(Number(e.target.value))} className="w-full accent-amber-600" />
    </div>
    </div>
@@ -137,33 +143,36 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
     <circle cx={mapCoord(10)} cy={invMapY(mapCoord(10))} r="3" fill="#64748b" />
     <text x={mapCoord(10) + 5} y={invMapY(mapCoord(10)) - 5} fontSize="10" fill="#64748b">(10,10)</text>
    </svg>
-   <div className="absolute top-2 right-2 text-xs bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-1 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded text-slate-600 dark:text-[#a1a1aa] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    Graph domain/range: 0 to {MAX_CARS} cars
-   </div>
+   <div className="absolute top-2 right-2 text-xs bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-1 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded text-slate-600 dark:text-[#a1a1aa] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    
+                             {t('lab.m10inequalityapplications_graph_domain_range_0_to')} {MAX_CARS}  {t('lab.m10inequalityapplications_cars')}
+                            </div>
    </div>
   </div>
 
   {/* RIGHT: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">Laboratory Assessment</h2>
+   <h2 className="text-xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">{t('lab.m10inequalityapplications_laboratory_assessment')}</h2>
    
    <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">Resource Allocation Check</h3>
+   <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">{t('lab.m10inequalityapplications_resource_allocation_check')}</h3>
    <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm">
-    The company has decided they absolutely must rent exactly <strong>10 units of Car A</strong>. 
+    
+                             {t('lab.m10inequalityapplications_the_company_has_decided_they_a')} <strong>{t('lab.m10inequalityapplications_10_units_of_car_a')}</strong>. 
    </p>
    <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm font-semibold">
-    Based on the current budget of ${budget} and prices (Car A: ${priceA}, Car B: ${priceB}), what is the maximum whole number of Car B's they can afford?
-   </p>
+    
+                             {t('lab.m10inequalityapplications_based_on_the_current_budget_of')}{budget}  {t('lab.m10inequalityapplications_and_prices_car_a')}{priceA}{t('lab.m10inequalityapplications_car_b')}{priceB}{t('lab.m10inequalityapplications_what_is_the_maximum_whole_numb')}
+                            </p>
    
    <div className="mb-4">
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">Max Car B units:</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10inequalityapplications_max_car_b_units')}</label>
     <input 
     type="number" 
     value={ansMaxB} 
     onChange={e => setAnsMaxB(e.target.value)}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-amber-500 outline-none"
-    placeholder="Integer value"
+    placeholder={t('lab.m10inequalityapplications_integer_value')}
     />
    </div>
 
@@ -171,8 +180,9 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
     onClick={checkAnswer}
     className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
    >
-    Check Feasibility
-   </button>
+    
+                             {t('lab.m10inequalityapplications_check_feasibility')}
+                            </button>
 
    {feedback && (
     <div className={`mt-4 p-3 rounded text-sm flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, RefreshCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const steps = [
  { id: '1', title: 'Define the Problem', text: 'Need to cross the busy road safely.' },
  { id: '2', title: 'Analyze the Problem', text: 'Cars are moving fast. There is no traffic light here. It is dangerous.' },
@@ -20,11 +22,11 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Problem Solving Process" />
+  <LabHeader onExit={onExit} title={t('lab.c6roadsafetyprocess_problem_solving_process')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Apply the 6-step problem-solving model to the everyday scenario of safely crossing a road.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6roadsafetyprocess_apply_the_6_step_problem_solvi')}</p>
 
   <div className="flex gap-8 flex-1">
    {/* Step List */}
@@ -74,16 +76,17 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
    ) : (
     <div className="animate-in fade-in zoom-in duration-500">
     <CheckCircle className="w-32 h-32 text-green-500 mx-auto mb-6 drop-shadow-md" />
-    <h2 className="text-4xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Process Complete!</h2>
+    <h2 className="text-4xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.c6roadsafetyprocess_process_complete')}</h2>
     <p className="text-xl text-slate-600 dark:text-[#a1a1aa] max-w-md mx-auto mb-8">
-     You successfully applied the 6-step problem-solving model. By thinking algorithmically, you guaranteed a safe outcome.
-    </p>
+     
+                                          {t('lab.c6roadsafetyprocess_you_successfully_applied_the_6')}
+                                         </p>
     <button 
      onClick={() => setCurrentStep(0)}
      className="px-6 py-3 bg-slate-100 dark:bg-[#121212] hover:bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] font-bold rounded-lg transition-colors flex items-center gap-2 mx-auto"
     >
-     <RefreshCcw className="w-5 h-5" /> Start Over
-    </button>
+     <RefreshCcw className="w-5 h-5" />  {t('lab.c6roadsafetyprocess_start_over')}
+                                         </button>
     </div>
    )}
    </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Play, ClipboardList, CheckCircle, Flame } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit: () => void;
@@ -15,16 +16,16 @@ const ChemicalBottle = ({ label, color, onClick }: { label: string, color: strin
  </button>
 );
 
-const EquationDisplay = ({ equation }: { equation: string[] }) => (
+const EquationDisplay = ({ equation, t }: { equation: string[], t: any }) => (
  <div className="min-h-[4rem] flex flex-wrap items-center justify-center bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-sm md:text-lg rounded p-4 shadow-inner mb-4 overflow-hidden gap-y-2 text-center">
- {equation.length === 0 ? <span className="text-gray-500">Awaiting reaction...</span> : 
+ {equation.length === 0 ? <span className="text-gray-500">{t('lab.c9electrochemistry_awaiting_reaction')}</span> : 
   equation.map((part, i) => part === 'NEWLINE' ? <div key={i} className="w-full h-1"></div> : <span key={i} className="mx-1 animate-pulse">{part}</span>)
  }
  </div>
 );
 
-const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel }: any) => {
- if (data.length === 0) return <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">No Data Logged</div>;
+const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel, t }: any) => {
+ if (data.length === 0) return <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center text-gray-500">{t('lab.c9electrochemistry_no_data_logged')}</div>;
  
  const minX = Math.min(...data.map((d: any) => d[xKey]));
  const maxX = Math.max(...data.map((d: any) => d[xKey]), minX + 5);
@@ -56,6 +57,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 };
 
 export default function LabC9Electrochemistry({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeTab] = useState<'redox' | 'rust'>('redox');
@@ -139,7 +141,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
-  <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Electrochemistry & Redox" />
+  <LabHeader onExit={onExit} variant="blue" title={t('lab.c9electrochemistry_grade_9_chemistry_electrochemi')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -148,68 +150,69 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c9electrochemistry_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c9electrochemistry_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><ClipboardList className="mr-2" />  {t('lab.c9electrochemistry_theory_setup')}</h2>
    {activeTab === 'redox' ? (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Redox Reactions:</strong> A reaction involving the transfer of electrons. Potassium Permanganate (KMnO₄) is a strong oxidizing agent that is deep purple, but turns colorless (Mn²⁺) when reduced by Fe²⁺.</p>
-    <p><strong>Thermochemistry:</strong> This redox reaction is exothermic. By tracking temperature changes as we add titrant, we can locate the equivalence point where temperature peaks.</p>
-    <p><strong>Experiment:</strong> Add 10mL increments of KMnO₄ to the FeSO₄ beaker. Record volume and temperature, then find the equivalence point.</p>
+    <p><strong>{t('lab.c9electrochemistry_redox_reactions')}</strong>  {t('lab.c9electrochemistry_a_reaction_involving_the_trans')}</p>
+    <p><strong>{t('lab.c9electrochemistry_thermochemistry')}</strong>  {t('lab.c9electrochemistry_this_redox_reaction_is_exother')}</p>
+    <p><strong>{t('lab.c9electrochemistry_experiment')}</strong>  {t('lab.c9electrochemistry_add_10ml_increments_of_kmno_to')}</p>
    </div>
    ) : (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Corrosion of Iron (Rusting):</strong> Rusting is an electrochemical redox process. Iron oxidizes to form hydrated iron(III) oxide.</p>
-    <p><strong>Conditions for Rusting:</strong> Both water (H₂O) and oxygen (O₂) must be present. Electrolytes like salt (NaCl) accelerate the rate of corrosion.</p>
-    <p><strong>Experiment:</strong> Subject an iron nail to different conditions and observe the rate of rust formation over simulated days.</p>
+    <p><strong>{t('lab.c9electrochemistry_corrosion_of_iron_rusting')}</strong>  {t('lab.c9electrochemistry_rusting_is_an_electrochemical_')}</p>
+    <p><strong>{t('lab.c9electrochemistry_conditions_for_rusting')}</strong>  {t('lab.c9electrochemistry_both_water_h_o_and_oxygen_o_mu')}</p>
+    <p><strong>{t('lab.c9electrochemistry_experiment')}</strong>  {t('lab.c9electrochemistry_subject_an_iron_nail_to_differ')}</p>
    </div>
    )}
   </div>
 
   {/* Simulation Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800 w-full"><Flame className="mr-2" /> Interactive Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800 w-full"><Flame className="mr-2" />  {t('lab.c9electrochemistry_interactive_simulator')}</h2>
    
-   <EquationDisplay equation={equation} />
+   <EquationDisplay equation={equation} t={t} />
 
    {activeTab === 'redox' ? (
    <div className="flex flex-col w-full items-center">
     <div className="mb-4">
-    <ChemicalBottle label="Add 10mL KMnO₄" color="#800080" onClick={addTitrant} />
+    <ChemicalBottle label={t('lab.c9electrochemistry_add_10ml_kmno')} color="#800080" onClick={addTitrant} />
     </div>
 
     <div className={`relative w-48 h-64 border-4 border-gray-300 rounded-b-3xl rounded-t-sm flex items-end justify-center bg-gray-50 overflow- shadow-inner mb-4 flex-col `}>
     <div className="w-full transition-all duration-1000" style={{ height: `${40 + volAdded/2}%`, backgroundColor: beakerColor }}></div>
     
     {/* SVG Thermometer */}
-    <div className="absolute right-4 top-10 w-6 h-32 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-2 border-gray-400 rounded-full flex flex-col justify-end items-center pb-1 z-10 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div className="absolute right-4 top-10 w-6 h-32 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-2 border-gray-400 rounded-full flex flex-col justify-end items-center pb-1 z-10 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
      <div className="w-2 rounded-t-full bg-red-500 transition-all duration-500" style={{ height: `${(temp - 20) * 8}px` }}></div>
      <div className="w-4 h-4 bg-red-500 rounded-full absolute bottom-1"></div>
     </div>
     <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}°C</div>
     </div>
-    <div className="text-sm font-bold text-gray-600">Total Volume Added: {volAdded} mL</div>
+    <div className="text-sm font-bold text-gray-600">{t('lab.c9electrochemistry_total_volume_added')} {volAdded} mL</div>
    </div>
    ) : (
    <div className="flex flex-col w-full items-center">
     <div className="flex gap-4 mb-8">
-    <button onClick={() => setHasWater(!hasWater)} className={`px-4 py-2 text-white rounded font-bold ${hasWater ? 'bg-blue-600' : 'bg-gray-400'}`}>Toggle Water</button>
-    <button onClick={() => setHasOxygen(!hasOxygen)} className={`px-4 py-2 text-white rounded font-bold ${hasOxygen ? 'bg-green-600' : 'bg-gray-400'}`}>Toggle Oxygen</button>
-    <button onClick={() => setHasSalt(!hasSalt)} className={`px-4 py-2 text-white rounded font-bold ${hasSalt ? 'bg-yellow-500' : 'bg-gray-400'}`}>Toggle Salt</button>
+    <button onClick={() => setHasWater(!hasWater)} className={`px-4 py-2 text-white rounded font-bold ${hasWater ? 'bg-blue-600' : 'bg-gray-400'}`}>{t('lab.c9electrochemistry_toggle_water')}</button>
+    <button onClick={() => setHasOxygen(!hasOxygen)} className={`px-4 py-2 text-white rounded font-bold ${hasOxygen ? 'bg-green-600' : 'bg-gray-400'}`}>{t('lab.c9electrochemistry_toggle_oxygen')}</button>
+    <button onClick={() => setHasSalt(!hasSalt)} className={`px-4 py-2 text-white rounded font-bold ${hasSalt ? 'bg-yellow-500' : 'bg-gray-400'}`}>{t('lab.c9electrochemistry_toggle_salt')}</button>
     </div>
 
     <div className="relative w-64 h-32 border-b-4 border-gray-400 flex items-center justify-center bg-sky-50 overflow-hidden">
     {/* Iron Nail */}
     <div className="relative w-48 h-6 bg-slate-400 dark:bg-[#121212] rounded flex items-center justify-end shadow-inner border border-slate-500 dark:border-[#1c1b1b]">
-     <div className="w-4 h-8 bg-slate-500 dark:bg-[#121212] rounded-r-sm mr-[-4px]"></div>
+     <div className="w-4 h-8 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212] rounded-r-sm mr-[-4px]"></div>
      {/* Rust Overlay */}
      <div className="absolute inset-0 bg-orange-800 mix-blend-color-burn" style={{ opacity: rustLevel / 100 }}></div>
     </div>
@@ -218,8 +221,8 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
     </div>
     
     <div className="mt-4 text-center">
-    <div className="text-xl font-mono text-gray-700 dark:text-[#ffffff]">Day: {timeDays}</div>
-    <div className="text-sm text-orange-800 font-bold">Rust Level: {rustLevel.toFixed(0)}%</div>
+    <div className="text-xl font-mono text-gray-700 dark:text-[#ffffff]">{t('lab.c9electrochemistry_day')} {timeDays}</div>
+    <div className="text-sm text-orange-800 font-bold">{t('lab.c9electrochemistry_rust_level')} {rustLevel.toFixed(0)}%</div>
     </div>
    </div>
    )}
@@ -227,18 +230,18 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
 
   {/* Data & Assessment Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><CheckCircle className="mr-2" /> Data & Analysis</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-orange-800"><CheckCircle className="mr-2" />  {t('lab.c9electrochemistry_data_analysis')}</h2>
    
    {activeTab === 'redox' && (
    <>
     <button onClick={recordRedoxData} className="mb-4 w-full py-2 bg-orange-100 text-orange-800 rounded font-bold hover:bg-orange-200 flex items-center justify-center">
-    <Play className="mr-2" size={16} /> Record Measurement
-    </button>
+    <Play className="mr-2" size={16} />  {t('lab.c9electrochemistry_record_measurement')}
+                                 </button>
 
     <div className="flex-grow lg:overflow-y-auto mb-4 border rounded overflow-x-auto">
     <table className="w-full text-sm text-left">
      <thead className="bg-gray-50 sticky top-0">
-     <tr><th className="p-2">KMnO₄ Added (mL)</th><th className="p-2">Temp (°C)</th></tr>
+     <tr><th className="p-2">{t('lab.c9electrochemistry_kmno_added_ml')}</th><th className="p-2">{t('lab.c9electrochemistry_temp_c')}</th></tr>
      </thead>
      <tbody>
      {titrationData.map(d => (
@@ -249,13 +252,13 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
     </div>
 
     <div className="mb-4">
-     <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (°C)" />
+     <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (°C)" t={t} />
     </div>
    </>
    )}
 
    <div className={`bg-orange-50 p-4 rounded border border-orange-100 ${activeTab === 'rust' ? 'mt-auto' : ''}`}>
-   <h3 className="font-bold text-orange-900 mb-2">Assessment</h3>
+   <h3 className="font-bold text-orange-900 mb-2">{t('lab.c9electrochemistry_assessment')}</h3>
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
     {activeTab === 'redox' 
     ? "Based on the thermometric data graph, what volume of KMnO₄ corresponds to the equivalence point?" 
@@ -263,7 +266,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
    </p>
    <div className="flex gap-2">
     <input type="text" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder={activeTab === 'redox' ? "Enter volume..." : "Enter chemical..."} className="flex-grow p-2 border rounded" />
-    <button onClick={checkAnswer} className="px-4 py-2 bg-orange-600 text-white rounded font-bold hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">Check</button>
+    <button onClick={checkAnswer} className="px-4 py-2 bg-orange-600 text-white rounded font-bold hover:bg-orange-700 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">{t('lab.c9electrochemistry_check')}</button>
    </div>
    {feedback && <div className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>}
    </div>

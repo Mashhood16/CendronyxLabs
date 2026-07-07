@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Rocket } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7BalloonRocket({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [launched, setLaunched] = useState(false);
  const [position, setPosition] = useState(0); // 0 to 100
  const [air, setAir] = useState(100);
@@ -30,12 +32,12 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 8: Force and Motion (Balloon Rocket)" />
+  <LabHeader onExit={onExit} title={t('lab.s7balloonrocket_unit_8_force_and_motion_balloo')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
-   <h2 className="text-2xl font-bold text-red-400 mb-4">Action and Reaction Forces</h2>
-   <p className="text-slate-300 mb-6">A balloon is taped to a straw threaded on a string. Release the pinched neck of the balloon and observe Newton's Third Law of Motion in action.</p>
+   <h2 className="text-2xl font-bold text-red-400 mb-4">{t('lab.s7balloonrocket_action_and_reaction_forces')}</h2>
+   <p className="text-slate-300 mb-6">{t('lab.s7balloonrocket_a_balloon_is_taped_to_a_straw_')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -44,14 +46,16 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
     className="flex items-center px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 font-medium dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
    >
     <Rocket className="w-5 h-5 mr-2" />
-    Release Balloon
-   </button>
+    
+                             {t('lab.s7balloonrocket_release_balloon')}
+                            </button>
    <button 
     onClick={reset}
     className="flex items-center px-6 py-2 text-slate-300 rounded-lg font-medium" style={{backgroundColor: '#334155'}}
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7balloonrocket_reset')}
+                            </button>
    </div>
   </div>
 
@@ -74,7 +78,7 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
      <>
      {/* Action Force (Air pushing back) */}
      <div className="absolute top-1/2 left-[-60px] flex items-center">
-      <span className="text-cyan-400 font-bold mr-2 whitespace-nowrap text-sm drop-shadow-md">Action (Air)</span>
+      <span className="text-cyan-400 font-bold mr-2 whitespace-nowrap text-sm drop-shadow-md">{t('lab.s7balloonrocket_action_air')}</span>
       <div className="w-12 h-1 bg-cyan-400 relative">
       <div className="absolute left-0 top-1/2 -mt-1.5 w-3 h-3 border-l-2 border-b-2 border-cyan-400 transform rotate-45"></div>
       </div>
@@ -84,7 +88,7 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
       <div className="w-12 h-1 bg-red-400 relative">
       <div className="absolute right-0 top-1/2 -mt-1.5 w-3 h-3 border-t-2 border-r-2 border-red-400 transform rotate-45"></div>
       </div>
-      <span className="text-red-400 font-bold ml-2 whitespace-nowrap text-sm drop-shadow-md">Reaction (Thrust)</span>
+      <span className="text-red-400 font-bold ml-2 whitespace-nowrap text-sm drop-shadow-md">{t('lab.s7balloonrocket_reaction_thrust')}</span>
      </div>
      </>
     )}
@@ -125,8 +129,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
 
   {position === 100 && (
    <div className="mt-32 p-6 shadow-xl rounded-xl max-w-2xl text-center" style={{backgroundColor: '#1e293b', color: '#e2e8f0', borderTop: '4px solid #ef4444'}}>
-   <h3 className="text-red-400 font-bold text-lg mb-2">Newton's Third Law</h3>
-   <p><strong>"For every action, there is an equal and opposite reaction."</strong><br/><br/>The <em>action</em> is the balloon pushing the air out backwards. The <em>reaction</em> is the air pushing the balloon forwards with an equal amount of force!</p>
+   <h3 className="text-red-400 font-bold text-lg mb-2">{t('lab.s7balloonrocket_newton_s_third_law')}</h3>
+   <p><strong>{t('lab.s7balloonrocket_for_every_action_there_is_an_e')}</strong><br/><br/>{t('lab.s7balloonrocket_the')} <em>{t('lab.s7balloonrocket_action')}</em>  {t('lab.s7balloonrocket_is_the_balloon_pushing_the_air')} <em>{t('lab.s7balloonrocket_reaction')}</em>  {t('lab.s7balloonrocket_is_the_air_pushing_the_balloon')}</p>
    </div>
   )}
   </div>

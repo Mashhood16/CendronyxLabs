@@ -159,6 +159,13 @@
     color: rgb(var(--slate-800));
   }
 
+  /* Ensure text wraps properly */
+  div, p, h1, h2, h3, h4, h5, h6, li, td, th, label, button, a, span, strong, em, small, code,
+  blockquote, figcaption, caption, summary, textarea, input, select, option {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
   .dark body {
     color: #a1a1aa;
     background-color: #000000;
@@ -1341,4 +1348,104 @@
 .dark *:focus-visible {
   outline: 2px solid #818cf8;
   outline-offset: 2px;
+}
+
+/* Light mode overrides for English Labs */
+/* Light mode overrides for English Labs */
+html:not(.dark) .english-lab-runner,
+html:not(.dark) .english-lab-runner .min-h-screen,
+html:not(.dark) .english-lab-runner .bg-\[\#0a0a0f\],
+html:not(.dark) .english-lab-runner [class*="bg-gradient-to-br"] {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="bg-white/"],
+html:not(.dark) .english-lab-runner [class*="bg-white/["] {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="bg-slate-900"],
+html:not(.dark) .english-lab-runner [class*="bg-slate-850"],
+html:not(.dark) .english-lab-runner [class*="bg-slate-800"],
+html:not(.dark) .english-lab-runner [class*="bg-\[\#1a1a2e\]"],
+html:not(.dark) .english-lab-runner [class*="bg-\[\#0f0f23\]"] {
+  background-color: #f1f5f9 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="bg-black/"] {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="bg-gradient-to-b"],
+html:not(.dark) .english-lab-runner [class*="bg-gradient-to-t"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="border-white/"] {
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-white"],
+html:not(.dark) .english-lab-runner [class*="text-slate-100"] {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-slate-300"],
+html:not(.dark) .english-lab-runner [class*="text-slate-400"] {
+  color: #475569 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-slate-500"] {
+  color: #64748b !important;
+}
+
+/* Vibrant colored texts in light mode */
+html:not(.dark) .english-lab-runner [class*="text-cyan-"] {
+  color: #0891b2 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-amber-"] {
+  color: #d97706 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-emerald-"] {
+  color: #059669 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-red-"] {
+  color: #dc2626 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-rose-"] {
+  color: #e11d48 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-indigo-"] {
+  color: #4f46e5 !important;
+}
+
+html:not(.dark) .english-lab-runner [class*="text-fuchsia-"] {
+  color: #c026d3 !important;
+}
+
+/* Translucent colored backgrounds in light mode */
+html:not(.dark) .english-lab-runner [class*="bg-cyan-"][class*="/"] {
+  background-color: rgba(6, 182, 212, 0.1) !important;
+}
+html:not(.dark) .english-lab-runner [class*="bg-amber-"][class*="/"] {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+html:not(.dark) .english-lab-runner [class*="bg-emerald-"][class*="/"] {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+html:not(.dark) .english-lab-runner [class*="bg-red-"][class*="/"] {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+html:not(.dark) .english-lab-runner .glass {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
 }

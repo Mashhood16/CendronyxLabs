@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, Bug } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 type DrugType = 'Cisplatin' | 'Aspirin' | 'Penicillin';
 
 export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [drug] = useState<DrugType>('Cisplatin');
  const [dosage, setDosage] = useState<number>(50);
@@ -75,7 +77,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
   const crosslinks = Math.floor(effectValue / 10);
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">Tumor DNA Cross-linking: {effectValue.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12medicine_tumor_dna_cross_linking')} {effectValue.toFixed(1)}%</text>
    {/* DNA Backbone */}
    <path d="M 50 100 Q 100 50, 150 100 T 250 100 T 350 100" fill="none" stroke="#4ade80" strokeWidth="4" />
    <path d="M 50 200 Q 100 250, 150 200 T 250 200 T 350 200" fill="none" stroke="#4ade80" strokeWidth="4" />
@@ -95,7 +97,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     </g>
    );
    })}
-   {crosslinks > 0 && <text x="20" y="280" fill="#f43f5e" className="text-xs font-bold">Pt-Cl complex binding to Guanine!</text>}
+   {crosslinks > 0 && <text x="20" y="280" fill="#f43f5e" className="text-xs font-bold">{t('lab.c12medicine_pt_cl_complex_binding_to_guani')}</text>}
   </svg>
   );
  } else if (drug === 'Aspirin') {
@@ -103,26 +105,26 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
   const acetylPositionY = 150 + (effectValue / 100) * 20;
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">COX Enzyme Inhibition: {effectValue.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12medicine_cox_enzyme_inhibition')} {effectValue.toFixed(1)}%</text>
    {/* Enzyme */}
    <path d="M 200 100 C 250 50, 350 80, 320 180 C 300 250, 200 280, 180 200 C 160 120, 250 150, 200 100" fill="#3b82f6" opacity="0.8"/>
-   <text x="230" y="150" fill="white" className="text-xs font-bold">COX Active Site</text>
+   <text x="230" y="150" fill="white" className="text-xs font-bold">{t('lab.c12medicine_cox_active_site')}</text>
    
    {/* Arachidonic Acid blocked */}
    <path d="M 350 250 Q 330 200, 280 180" fill="none" stroke="#fbbf24" strokeWidth="4" opacity={effectValue > 80 ? 0.2 : 1} />
    
    {/* Aspirin Acetyl Group */}
    <circle cx={acetylPositionX} cy={acetylPositionY} r="10" fill="#ef4444" />
-   <text x={acetylPositionX - 10} y={acetylPositionY - 15} fill="#ef4444" className="text-xs">Acetyl</text>
+   <text x={acetylPositionX - 10} y={acetylPositionY - 15} fill="#ef4444" className="text-xs">{t('lab.c12medicine_acetyl')}</text>
    
-   {effectValue > 90 && <text x="20" y="280" fill="#ef4444" className="text-xs font-bold">Serine residue acetylated! Pathway blocked.</text>}
+   {effectValue > 90 && <text x="20" y="280" fill="#ef4444" className="text-xs font-bold">{t('lab.c12medicine_serine_residue_acetylated_path')}</text>}
   </svg>
   );
  } else {
   const integrity = 100 - effectValue;
   return (
   <svg viewBox="0 0 400 300" className="w-full h-64 bg-[#000000] dark:bg-[#121212] rounded-lg shadow-inner">
-   <text x="20" y="30" fill="white" className="text-sm">Cell Wall Integrity: {integrity.toFixed(1)}%</text>
+   <text x="20" y="30" fill="white" className="text-sm">{t('lab.c12medicine_cell_wall_integrity')} {integrity.toFixed(1)}%</text>
    
    {/* Peptidoglycan Grid */}
    {[1, 2, 3, 4, 5].map((row) => (
@@ -133,7 +135,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     ))}
    </g>
    ))}
-   {integrity < 20 && <text x="120" y="150" fill="#ef4444" className="text-2xl font-bold rotate-12">LYSIS!</text>}
+   {integrity < 20 && <text x="120" y="150" fill="#ef4444" className="text-2xl font-bold rotate-12">{t('lab.c12medicine_lysis')}</text>}
   </svg>
   );
  }
@@ -142,7 +144,7 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Interactive Pharmacology Lab" />
+  <LabHeader onExit={onExit} title={t('lab.c12medicine_interactive_pharmacology_lab')} />
 
   {/* Main Content */}
   
@@ -152,12 +154,13 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c12medicine_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c12medicine_lab')}</button>
   </div>
   <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
@@ -166,29 +169,31 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2 flex items-center gap-2">
     <ShieldAlert className="text-slate-500 dark:text-[#71717a]" size={20} />
-    Mechanism of Action
-   </h2>
+    
+                             {t('lab.c12medicine_mechanism_of_action')}
+                            </h2>
    {drug === 'Cisplatin' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Cisplatin</strong> [Pt(NH₃)₂Cl₂] is a chemotherapy medication. It cross-links DNA in tumor cells, primarily at guanine bases. This disrupts DNA replication and transcription, ultimately leading to apoptosis.
-    </p>
+    <strong>{t('lab.c12medicine_cisplatin')}</strong>  {t('lab.c12medicine_pt_nh_cl_is_a_chemotherapy_med')}
+                                 </p>
    )}
    {drug === 'Aspirin' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Aspirin</strong> (acetylsalicylic acid) irreversibly inhibits Cyclooxygenase (COX) enzymes. It transfers its acetyl group to a serine residue in the active site, blocking arachidonic acid and stopping prostaglandin synthesis.
-    </p>
+    <strong>{t('lab.c12medicine_aspirin')}</strong>  {t('lab.c12medicine_acetylsalicylic_acid_irreversi')}
+                                 </p>
    )}
    {drug === 'Penicillin' && (
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2 leading-relaxed">
-    <strong>Penicillin</strong> contains a beta-lactam ring that binds to and competitively inhibits the transpeptidase enzyme (PBP). This prevents the cross-linking of peptidoglycan in bacterial cell walls, leading to osmotic lysis.
-    </p>
+    <strong>{t('lab.c12medicine_penicillin')}</strong>  {t('lab.c12medicine_contains_a_beta_lactam_ring_th')}
+                                 </p>
    )}
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Experimental Setup</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.c12medicine_experimental_setup')}</h3>
    <label className="block text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mb-1">
-    Dosage: {dosage} mg
+    
+                             {t('lab.c12medicine_dosage')} {dosage} mg
    </label>
    <input
     type="range"
@@ -202,11 +207,11 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
    
    <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-lg items-center justify-between border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="flex flex-col">
-    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Elapsed Time</span>
+    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.c12medicine_elapsed_time')}</span>
     <span className="text-2xl font-mono text-slate-800 dark:text-[#ffffff]">{time.toFixed(1)} s</span>
     </div>
     <div className="flex flex-col text-right">
-    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Effect %</span>
+    <span className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.c12medicine_effect')}</span>
     <span className="text-2xl font-mono text-blue-600">{effectValue.toFixed(1)}%</span>
     </div>
    </div>
@@ -214,11 +219,12 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Middle Column: Interactive Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
    <Bug className="text-slate-500 dark:text-[#71717a]" size={20} />
-   Molecular Visualizer
-   </h2>
+   
+                        {t('lab.c12medicine_molecular_visualizer')}
+                        </h2>
    
    <div className="w-full mt-10">
    {renderSimulation()}
@@ -237,47 +243,53 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     className="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-300 dark:bg-[#121212] transition-colors"
    >
     <RotateCcw size={18} />
-    Reset
-   </button>
+    
+                             {t('lab.c12medicine_reset')}
+                            </button>
    </div>
   </div>
 
   {/* Right Column: Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-2 border-b pb-2">
-   Data Analysis
-   </h2>
+   
+                        {t('lab.c12medicine_data_analysis')}
+                        </h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
-   Use the simulation data to calculate pharmacological parameters. Assume the relationship follows zero-order kinetics in this model: <code className="bg-slate-100 dark:bg-[#121212] px-1 py-0.5 rounded">Effect = k × dosage × time</code> (where k = 0.1).
-   </p>
+   
+                        {t('lab.c12medicine_use_the_simulation_data_to_cal')} <code className="bg-slate-100 dark:bg-[#121212] px-1 py-0.5 rounded">{t('lab.c12medicine_effect_k_dosage_time')}</code>  {t('lab.c12medicine_where_k_0_1')}
+                        </p>
 
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Assignment Question</h3>
+   <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c12medicine_assignment_question')}</h3>
    {drug === 'Cisplatin' && (
     <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    At a <strong>40 mg</strong> dosage, what will be the percentage of DNA crosslinking at exactly <strong>t = 5.0 s</strong>?
+    
+                                 {t('lab.c12medicine_at_a')} <strong>{t('lab.c12medicine_40_mg')}</strong>  {t('lab.c12medicine_dosage_what_will_be_the_percen')} <strong>{t('lab.c12medicine_t_5_0_s')}</strong>?
     </p>
    )}
    {drug === 'Aspirin' && (
     <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    Calculate the constant rate of inhibition (%/s) when the dosage is set to <strong>60 mg</strong>.
+    
+                                 {t('lab.c12medicine_calculate_the_constant_rate_of')} <strong>{t('lab.c12medicine_60_mg')}</strong>.
     </p>
    )}
    {drug === 'Penicillin' && (
     <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    At what exact time (in seconds) will the cell wall integrity drop to <strong>0%</strong> if the dosage is <strong>100 mg</strong>?
+    
+                                 {t('lab.c12medicine_at_what_exact_time_in_seconds_')} <strong>0%</strong>  {t('lab.c12medicine_if_the_dosage_is')} <strong>{t('lab.c12medicine_100_mg')}</strong>?
     </p>
    )}
    </div>
 
    <div className="flex flex-col gap-4">
    <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Your Answer</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.c12medicine_your_answer')}</label>
     <input
     type="number"
     value={answer}
     onChange={(e) => setAnswer(e.target.value)}
-    placeholder="Enter numerical value"
+    placeholder={t('lab.c12medicine_enter_numerical_value')}
     className="w-full px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
     />
    </div>
@@ -285,8 +297,9 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     onClick={checkAnswer}
     className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg font-medium hover:bg-[#000000] dark:bg-[#121212] transition-colors"
    >
-    Check Answer
-   </button>
+    
+                             {t('lab.c12medicine_check_answer')}
+                            </button>
    
    {feedback && (
     <div className={`p-4 rounded-lg flex items-start gap-3 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

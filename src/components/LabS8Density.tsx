@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {Droplets } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -21,17 +22,18 @@ const OBJECTS: ObjectToDrop[] = [
 ];
 
 export default function LabS8Density({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState<ObjectToDrop | null>(null);
  const [dropped, setDropped] = useState(false);
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 5.5: Density" subtitle="Drop objects in water to test their density" />
+  <LabHeader onExit={onExit} title={t('lab.s8density_act_5_5_density')} subtitle={t('lab.subtitle_drop_objects_water')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Object</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8density_select_object')}</h3>
    {OBJECTS.map(o => (
    <button 
     key={o.id}
@@ -84,12 +86,12 @@ export default function LabS8Density({ onExit }: LabProps) {
     disabled={!selected}
     className="bg-cyan-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-cyan-700 disabled:opacity-50 text-xl shadow-lg flex items-center gap-2 mx-auto transition-transform active:scale-95 dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
     >
-    <Droplets className="w-6 h-6" /> Drop in Water
-    </button>
+    <Droplets className="w-6 h-6" />  {t('lab.s8density_drop_in_water')}
+                                 </button>
    ) : (
     selected && (
     <div className={`px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.density === 'high' ? 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-slate-100' : 'bg-cyan-50 border-cyan-200 text-cyan-800'}`}>
-     <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
+     <h3 className="font-bold text-lg mb-1">{selected.name}  {t('lab.s8density_is_a')} {selected.type.toUpperCase()}</h3>
      <p className="text-sm">
      {selected.density === 'high' 
       ? "It SANK! Most metals have HIGH density and sink in water." 

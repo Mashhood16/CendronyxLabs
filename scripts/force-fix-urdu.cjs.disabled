@@ -1,0 +1,65 @@
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const URDU = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+// Read as raw text to find ALL occurrences
+let raw = fs.readFileSync(UR_FILE, 'utf8');
+
+// Find all keys with Urdu script values using regex
+const regex = /"([^"]+)":\s*"([^"]*[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF][^"]*)"/g;
+let match;
+let count = 0;
+
+while ((match = regex.exec(raw)) !== null) {
+  count++;
+  const key = match[1];
+  const urduValue = match[2];
+  
+  // Find English original
+  if (en[key]) {
+    // Replace in raw text - this value has Urdu script
+    const escapedUrdu = urduValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const enValue = en[key].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    
+    // Replace the quote-wrapped value
+    const searchPattern = '"' + key + '": "' + escapedUrdu + '"';
+    const replaceWith = '"' + key + '": "' + enValue + '"';
+    
+    if (raw.includes(searchPattern)) {
+      raw = raw.replace(searchPattern, replaceWith);
+    } else {
+      console.log('COULD NOT MATCH: ' + key);
+    }
+  } else {
+    console.log('NO ENGLISH ORIGINAL: ' + key + ' = ' + urduValue.substring(0, 40));
+    // Remove this entry since no English version exists
+    const escapedValue = urduValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const searchPattern = ',\n  "' + key + '": "' + escapedValue + '"';
+    if (raw.includes(searchPattern)) {
+      raw = raw.replace(searchPattern, '');
+    } else {
+      const altPattern = '"' + key + '": "' + escapedValue + '"';
+      raw = raw.replace(altPattern, '');
+    }
+  }
+}
+
+console.log('Total Urdu script entries found:', count);
+
+fs.writeFileSync(UR_FILE, raw, 'utf8');
+
+// Verify
+const final = fs.readFileSync(UR_FILE, 'utf8');
+const remaining = final.match(/[\u0600-\u06FF\u0750-\u077F]/g);
+console.log('Remaining Urdu characters:', remaining ? remaining.length : 0);
+
+// Also verify JSON is still valid
+try {
+  JSON.parse(final);
+  console.log('JSON is VALID');
+} catch (e) {
+  console.log('JSON ERROR:', e.message.substring(0, 100));
+}

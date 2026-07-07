@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Beaker, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6FatDetection({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(0);
 
  const nextStep = () => {
@@ -23,49 +25,49 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 3: Fat Detection in Food" />
+  <LabHeader onExit={onExit} title={t('lab.s6fatdetection_unit_3_fat_detection_in_food')} />
 
   <div className="flex-1 flex p-8 items-center justify-center gap-16">
   
   <div className="w-96 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-2xl font-bold mb-6 text-amber-700">Lab Procedure</h2>
+   <h2 className="text-2xl font-bold mb-6 text-amber-700">{t('lab.s6fatdetection_lab_procedure')}</h2>
    
    <div className="space-y-4">
    <button 
     onClick={nextStep} disabled={step !== 0}
     className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 0 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 0 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
    >
-    <span>1. Add crushed food sample to test tube</span>
+    <span>{t('lab.s6fatdetection_1_add_crushed_food_sample_to_t')}</span>
     {step > 0 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
    </button>
    <button 
     onClick={nextStep} disabled={step !== 1}
     className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 1 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 1 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
    >
-    <span>2. Add Ethanol above food level</span>
+    <span>{t('lab.s6fatdetection_2_add_ethanol_above_food_level')}</span>
     {step > 1 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
    </button>
    <button 
     onClick={nextStep} disabled={step !== 2}
     className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 2 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 2 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
    >
-    <span>3. Shake test tube well</span>
+    <span>{t('lab.s6fatdetection_3_shake_test_tube_well')}</span>
     {step > 2 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
    </button>
    <button 
     onClick={nextStep} disabled={step !== 3}
     className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 3 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 3 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
    >
-    <span>4. Add Water and observe</span>
+    <span>{t('lab.s6fatdetection_4_add_water_and_observe')}</span>
     {step > 3 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
    </button>
    </div>
 
    {step === 4 && (
    <div className="mt-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800">
-    <h3 className="font-bold flex items-center gap-2 mb-2"><CheckCircle className="w-5 h-5" /> Test Complete</h3>
-    <p className="text-sm">A cloudy, milky-white emulsion has formed at the top of the liquid. This positive result indicates the presence of lipids (fats) in the food sample.</p>
-    <button onClick={() => setStep(0)} className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded font-bold text-sm hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Reset Experiment</button>
+    <h3 className="font-bold flex items-center gap-2 mb-2"><CheckCircle className="w-5 h-5" />  {t('lab.s6fatdetection_test_complete')}</h3>
+    <p className="text-sm">{t('lab.s6fatdetection_a_cloudy_milky_white_emulsion_')}</p>
+    <button onClick={() => setStep(0)} className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded font-bold text-sm hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.s6fatdetection_reset_experiment')}</button>
    </div>
    )}
   </div>
@@ -100,7 +102,7 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
    </div>
    <div className="mt-4 flex flex-col items-center">
    <Beaker className="w-8 h-8 text-slate-400 mb-2" />
-   <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider text-sm">Test Tube</span>
+   <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider text-sm">{t('lab.s6fatdetection_test_tube')}</span>
    </div>
 
    <style dangerouslySetInnerHTML={{__html: `

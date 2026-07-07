@@ -10,6 +10,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'F\u2091 = G \u00D7 m\u2081 \u00D7 m\u2082 / r\u00B2',
     finalFormulaDesc: 'Force of gravity between any two masses',
+    keyInsight: 'The gravitational force between two 1 kg masses 1 m apart is just 6.67×10⁻¹¹ N — a billionth of a Newton. Gravity is by far the weakest fundamental force, yet it dominates the cosmos at large scales.',
     steps: [
       { label: 'Force Proportional to Masses', formula: 'F\u2091 \u221D m\u2081 \u00D7 m\u2082', detail: '🍎 It\'s 1666, and Isaac Newton sits under an apple tree at Woolsthorpe Manor. An apple falls — but what if the same force that pulls the apple extends to the Moon? Newton realized the gravitational force between any two masses depends on how much matter each has: F_g ∝ m₁ × m₂. Double one mass = double the pull. A 50 kg person and a 70 kg friend feel 1.4× the force of two 50 kg people.' },
       { label: 'Force Inversely Proportional to Distance\u00B2', formula: 'F\u2091 \u221D 1 / r\u00B2', detail: '📏 But as objects get farther apart, gravity weakens rapidly. Newton figured: F_g ∝ 1/r². If you double the distance, the force drops to 1/4. This inverse-square law explains why astronauts on the ISS (400 km up) feel about 90% of Earth\'s surface gravity despite appearing weightless — they\'re in free fall!' },
@@ -50,6 +51,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-emerald-600',
     finalFormula: 'g = G \u00D7 M_E / R_E\u00B2',
     finalFormulaDesc: 'Acceleration due to gravity on Earth\'s surface',
+    keyInsight: 'A 70 kg person weighs 686 N on Earth but only 262 N on Mars — g depends only on the planet\'s mass and radius, not on the object\'s mass. This is why Galileo\'s feather and hammer fell together on the Moon.',
     steps: [
       { label: 'Weight = Gravitational Force', formula: 'm\u2092 \u00D7 g = G \u00D7 m\u2092 \u00D7 M_E / R_E\u00B2', detail: '⚖️ You step on a bathroom scale. It reads your weight mg. But why does a 70 kg person weigh 686 N? The answer lies in equating weight with Newton\'s law: mg = G × m × M_E / R_E². Your mass m appears on both sides — cancel it! This means the acceleration due to gravity doesn\'t depend on your mass at all.' },
       { label: 'Cancel Object Mass', formula: 'g = G \u00D7 M_E / R_E\u00B2', detail: '🧮 Cancel mass m: g = G × M_E / R_E². This is why Galileo\'s legendary Leaning Tower of Pisa experiment works — a feather and a hammer fall at the same rate in vacuum. Mass doesn\'t matter!' },
@@ -88,6 +90,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'g_h = G \u00D7 M_E / (R_E + h)\u00B2',
     finalFormulaDesc: 'Gravity decreases with height above Earth\'s surface',
+    keyInsight: 'Astronauts on the ISS (400 km up) still feel 89% of Earth\'s gravity — they float not because gravity is absent, but because they\'re in continuous free fall around Earth at 7.66 km/s.',
     steps: [
       { label: 'Replace R with R + h', formula: 'g_h = G \u00D7 M_E / (R_E + h)\u00B2', detail: '🏔️ You\'re climbing Mount Everest. At the summit (8,848 m), you\'d expect gravity to be weaker because you\'re farther from Earth\'s center. Indeed: g_h = G × M_E / (R_E + h)². At the top of Everest: g_h = 6.67×10⁻¹¹ × 5.97×10²⁴ / (6.37×10⁶ + 8848)² = 9.79 m/s² — just a bit less than sea level\'s 9.81.' },
       { label: 'Compare to Surface g', formula: 'g_h / g = R_E\u00B2 / (R_E + h)\u00B2', detail: '📐 Divide by surface g: g_h/g = R_E²/(R_E + h)². As h increases, the ratio drops. For small heights compared to R_E (6370 km), we can approximate using binomial expansion.' },
@@ -128,6 +131,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-violet-600',
     finalFormula: 'v_o = \u221A(G \u00D7 M_E / r)',
     finalFormulaDesc: 'Minimum velocity to stay in circular orbit',
+    keyInsight: 'The ISS orbits at 7.66 km/s, completing one lap every 90 minutes — astronauts see 16 sunrises and sunsets every 24 hours. At this speed, Earth\'s gravity provides exactly the centripetal force needed.',
     steps: [
       { label: 'Centripetal = Gravitational Force', formula: 'm v_o\u00B2 / r = G m M_E / r\u00B2', detail: '🚀 You\'re a SpaceX engineer preparing a Falcon 9 launch. The satellite needs to reach Low Earth Orbit. But how fast must it go? For a satellite in circular orbit, the centripetal force (mv²/r) must exactly equal the gravitational force (GMm/r²). If it\'s too slow, it falls back to Earth. Too fast, it flies away.' },
       { label: 'Cancel Satellite Mass m', formula: 'v_o\u00B2 / r = G M_E / r\u00B2', detail: '🧮 Set mv²/r = GMm/r². The satellite\'s mass m cancels out completely — orbital velocity doesn\'t depend on the satellite\'s mass! A tiny CubeSat and a massive ISS need the same speed at the same altitude. Cancel m: v²/r = GM/r².' },
@@ -167,6 +171,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'r = (G\u00D7M_E\u00D7T\u00B2 / 4\u03C0\u00B2)^(1/3)',
     finalFormulaDesc: 'Radius at which satellite orbits at same rate as Earth rotates',
+    keyInsight: 'Satellite TV dishes never need to move because geostationary satellites orbit at 35,786 km — exactly where the orbital period matches Earth\'s 24-hour rotation. Just 3 satellites can cover the entire globe.',
     steps: [
       { label: 'Orbital Velocity Formula', formula: 'v_o = \u221A(G M_E / r)', detail: '📡 You\'re designing a communications satellite for satellite TV. It needs to stay fixed above the same point on Earth so your dish never has to move. This requires a geostationary orbit — the satellite\'s orbital period must equal Earth\'s rotation period: 24 hours exactly.' },
       { label: 'Orbital Period Formula', formula: 'v_o = 2\u03C0r / T', detail: '📐 Orbital speed: v = 2πr/T (circumference ÷ period). For geostationary, T = 86,400 s (24 hours). From orbital velocity: v = √(GM/r). Set them equal: 2πr/T = √(GM/r).' },
@@ -206,6 +211,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-teal-600',
     finalFormula: 'U = \u2212G\u00D7M_E\u00D7m / r',
     finalFormulaDesc: 'Gravitational potential energy is always negative',
+    keyInsight: 'A 1000 kg satellite at 7000 km has −5.69×10¹⁰ J of gravitational PE — it needs that much kinetic energy to escape Earth. This is why reaching escape velocity (11.2 km/s) is far harder than orbital velocity (7.9 km/s).',
     steps: [
       { label: 'Work Against Gravity', formula: 'W = F_av \u00D7 \u0394r', detail: '🌍 You\'re calculating how much energy is needed to launch a rocket to infinity — to escape Earth\'s gravity completely. But there\'s a catch: gravity weakens with distance (1/r²), so the force isn\'t constant. You can\'t just use W = Fd. You need calculus to sum up the work over an infinite path.' },
       { label: 'Integrate from R to \u221E', formula: 'U = \u222B_R^\u221E G M_E m / r\u00B2 dr', detail: '📐 The work done against gravity from Earth\'s surface R to infinity is the integral: U = ∫ₚ^∞ (GMm/r²) dr. This integral sums up the tiny bits of work at each distance, where the force gets weaker and weaker the farther you go.' },
@@ -245,6 +251,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'V = \u2212G\u00D7M_E / r',
     finalFormulaDesc: 'Gravitational potential = potential energy per unit mass',
+    keyInsight: 'To escape Earth, each kilogram of you needs 62.5 MJ of energy — that\'s the energy in 1.5 liters of gasoline. A black hole\'s potential well is 700 million times deeper, which is why not even light can escape.',
     steps: [
       { label: 'Definition of Potential', formula: 'V = U / m', detail: '🕳️ You\'re studying black holes — regions where gravity is so intense that nothing, not even light, can escape. Gravitational potential V = U/m tells you the \'gravitational energy per kilogram\' at any point in space, independent of the test mass.' },
       { label: 'Substitute U = \u2212GMM_E/r', formula: 'V = (\u2212G M_E m / r) / m', detail: '📐 By definition: V = U/m. Substitute U = −GMm/r. The mass m cancels: V = (−GMm/r)/m = −GM/r. Potential depends only on Earth\'s mass and distance, not on the object you\'re considering.' },
@@ -284,11 +291,12 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-red-600',
     finalFormula: 'P = (1/3) \u00D7 \u03C1 \u00D7 <v\u00B2>',
     finalFormulaDesc: 'Gas pressure from molecular collisions with walls',
+    keyInsight: 'Each square centimeter of a bicycle tire wall is struck by 2.5×10²³ molecules per second — 250 billion billion impacts every second, which is what we feel as 2 atmospheres of pressure.',
     steps: [
       { label: 'Momentum Change per Collision', formula: '\u0394p = \u22122mv_x', detail: '🚲 You\'re pumping up a bicycle tire. With each pump stroke, you compress more air molecules into the tire, and the pressure increases. But what is pressure, really? It\'s the collective effect of billions of trillions of gas molecules slamming into the tire walls billions of times per second!' },
       { label: 'Force from One Molecule', formula: 'F = \u0394p / \u0394t = 2mv_x / (2L/v_x)', detail: '📐 When a molecule of mass m hits the wall with x-velocity v_x, it bounces back with −v_x. Momentum change per collision: Δp = −2mv_x. The force from one molecule = Δp/Δt. Time between hits on the same wall: Δt = 2L/v_x. So F_one = mv_x²/L.' },
       { label: 'Sum Over All Molecules', formula: 'F_total = m/L \u00D7 \u03A3(v_x\u00B2)', detail: '🧮 Summing over all N molecules: F_total = (m/L) × Σv_x². Since motion is random, <v_x²> = <v_y²> = <v_z²> = <v²>/3. So Σv_x² = N<v²>/3. Total force F = (Nm<v²>)/(3L). Pressure P = F/A = (Nm<v²>)/(3LA) = (Nm<v²>)/(3V).' },
-      { label: 'Pressure = Force/Area', formula: 'P = (1/3) (N/V) m <v\u00B2> = (1/3) \u03C1 <v\u00B2>', detail: '✅ P = (1/3)(N/V)m<v²> = (1/3)ρ<v²>. For air at sea level (ρ = 1.2 kg/m³, <v²> = (483 m/s)²): P = (1/3)×1.2×233,000 = 93,200 Pa ≈ 0.92 atm. Close to 1 atm! Each square centimeter of your tire wall is struck by about 2.5×10²³ molecules per second. That\'s 250 billion billion impacts — every single second!' },
+      { label: 'Pressure = Force/Area', formula: 'P = \\frac{1}{3} (N/V) m <v\u00B2> = \\frac{1}{3} \u03C1 <v\u00B2>', detail: '✅ P = (1/3)(N/V)m<v²> = (1/3)ρ<v²>. For air at sea level (ρ = 1.2 kg/m³, <v²> = (483 m/s)²): P = (1/3)×1.2×233,000 = 93,200 Pa ≈ 0.92 atm. Close to 1 atm! Each square centimeter of your tire wall is struck by about 2.5×10²³ molecules per second. That\'s 250 billion billion impacts — every single second!' },
     ],
     sliders: [
       { label: 'Number of Molecules (N)', key: 'N', min: 1e23, max: 1e25, step: 1e23, default: 2.5e24, unit: '' },
@@ -323,11 +331,12 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-orange-600',
     finalFormula: 'P = (2/3) \u00D7 N \u00D7 KE_avg / V',
     finalFormulaDesc: 'Gas pressure is proportional to average kinetic energy per molecule',
+    keyInsight: 'In a pressure cooker, heating increases molecular KE, which directly raises pressure — the safety valve is critical because at 120°C the pressure is 2 atm, enough to burst a sealed container.',
     steps: [
-      { label: 'Start with Pressure Formula', formula: 'P = (1/3) N m <v\u00B2> / V', detail: '🍲 You\'re cooking with a pressure cooker. The lid seals tight, trapping steam inside. The pressure builds up because the gas molecules are moving faster (heated) in the same volume. Let\'s connect pressure to the microscopic kinetic energy of individual molecules.' },
-      { label: 'Multiply and Divide by 2', formula: 'P = (2/3) (N/V) (1/2) m <v\u00B2>', detail: '📐 From kinetic theory: P = (1/3)(N/V)m<v²>. Multiply and divide by 2: P = (2/3)(N/V)×(½)m<v²>. The term (½)m<v²> is the average translational kinetic energy per molecule!' },
-      { label: 'Recognize Translational KE', formula: 'P = (2/3) (N/V) \u00D7 KE_avg', detail: '🧮 P = (2/3)(N/V)×KE_avg. Pressure is directly proportional to both the number density of molecules and their average kinetic energy. In a pressure cooker, as you heat the contents, KE_avg increases, so pressure rises — that\'s why the safety valve is critical!' },
-      { label: 'Final Relation', formula: 'P \u221D (2/3) \u00D7 n \u00D7 KE_avg', detail: '✅ P ∝ (2/3) × (number density) × KE_avg. At room temperature (KE_avg = 6.2×10⁻²¹ J, N/V = 2.5×10²⁵ m⁻³): P = (2/3)×2.5×10²⁵×6.2×10⁻²¹ = 103,000 Pa ≈ 1 atm. The pressure doubles if you double either the density or the temperature!' },
+      { label: 'Start with Pressure Formula', formula: 'P = \\frac{1}{3} N m <v\u00B2> / V', detail: '🍲 You\'re cooking with a pressure cooker. The lid seals tight, trapping steam inside. The pressure builds up because the gas molecules are moving faster (heated) in the same volume. Let\'s connect pressure to the microscopic kinetic energy of individual molecules.' },
+      { label: 'Multiply and Divide by 2', formula: 'P = \\frac{2}{3} (N/V) \\frac{1}{2} m <v\u00B2>', detail: '📐 From kinetic theory: P = (1/3)(N/V)m<v²>. Multiply and divide by 2: P = (2/3)(N/V)×(½)m<v²>. The term (½)m<v²> is the average translational kinetic energy per molecule!' },
+      { label: 'Recognize Translational KE', formula: 'P = \\frac{2}{3} (N/V) \u00D7 KE_avg', detail: '🧮 P = (2/3)(N/V)×KE_avg. Pressure is directly proportional to both the number density of molecules and their average kinetic energy. In a pressure cooker, as you heat the contents, KE_avg increases, so pressure rises — that\'s why the safety valve is critical!' },
+      { label: 'Final Relation', formula: 'P \u221D \\frac{2}{3} \u00D7 n \u00D7 KE_avg', detail: '✅ P ∝ (2/3) × (number density) × KE_avg. At room temperature (KE_avg = 6.2×10⁻²¹ J, N/V = 2.5×10²⁵ m⁻³): P = (2/3)×2.5×10²⁵×6.2×10⁻²¹ = 103,000 Pa ≈ 1 atm. The pressure doubles if you double either the density or the temperature!' },
     ],
     sliders: [
       { label: 'Avg KE per Molecule', key: 'ke', min: 1e-21, max: 1e-20, step: 1e-22, default: 6.2e-21, unit: ' J' },
@@ -359,11 +368,12 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-amber-600',
     finalFormula: 'KE_avg = (3/2) kT',
     finalFormulaDesc: 'Absolute temperature is proportional to average KE per molecule',
+    keyInsight: 'At absolute zero (0 K), all molecular motion stops — but you can never reach it because extracting the last bit of kinetic energy requires infinite work. The coldest lab temperature achieved is 100 pK.',
     steps: [
       { label: 'Ideal Gas Law', formula: 'PV = NkT', detail: '🌡️ You\'re checking a fever with a thermometer. Mercury rises — but what does temperature really measure at the molecular level? The ideal gas law PV = NkT relates macroscopic pressure/volume/temperature. Combine this with the microscopic kinetic theory result PV = (2/3)N×KE_avg.' },
-      { label: 'Kinetic Theory Pressure', formula: 'PV = (2/3) N KE_avg', detail: '📐 PV from ideal gas law: PV = NkT. PV from kinetic theory: PV = (2/3)N×KE_avg. Here k = 1.38×10⁻²³ J/K is Boltzmann\'s constant — it connects the macroscopic world (temperature) to the microscopic world (molecular energy).' },
-      { label: 'Equate Both Expressions', formula: 'NkT = (2/3) N KE_avg', detail: '🧮 Equate: NkT = (2/3)N×KE_avg. The number N cancels! Temperature is directly proportional to average kinetic energy per molecule, independent of how many molecules there are.' },
-      { label: 'Solve for KE_avg', formula: 'KE_avg = (3/2) kT', detail: '✅ KE_avg = (3/2)kT. At 300 K (room temp): KE_avg = (3/2)×1.38×10⁻²³×300 = 6.21×10⁻²¹ J. At 0 K (−273°C), all molecular motion stops — absolute zero! This is why you can\'t reach absolute zero: to extract that last bit of kinetic energy would require infinite work. The coldest temperature ever achieved in a lab is about 100 pK (picokelvin)!' },
+      { label: 'Kinetic Theory Pressure', formula: 'PV = \\frac{2}{3} N KE_avg', detail: '📐 PV from ideal gas law: PV = NkT. PV from kinetic theory: PV = (2/3)N×KE_avg. Here k = 1.38×10⁻²³ J/K is Boltzmann\'s constant — it connects the macroscopic world (temperature) to the microscopic world (molecular energy).' },
+      { label: 'Equate Both Expressions', formula: 'NkT = \\frac{2}{3} N KE_avg', detail: '🧮 Equate: NkT = (2/3)N×KE_avg. The number N cancels! Temperature is directly proportional to average kinetic energy per molecule, independent of how many molecules there are.' },
+      { label: 'Solve for KE_avg', formula: 'KE_avg = \\frac{3}{2} kT', detail: '✅ KE_avg = (3/2)kT. At 300 K (room temp): KE_avg = (3/2)×1.38×10⁻²³×300 = 6.21×10⁻²¹ J. At 0 K (−273°C), all molecular motion stops — absolute zero! This is why you can\'t reach absolute zero: to extract that last bit of kinetic energy would require infinite work. The coldest temperature ever achieved in a lab is about 100 pK (picokelvin)!' },
     ],
     sliders: [
       { label: 'Temperature (T)', key: 'T', min: 50, max: 500, step: 10, default: 300, unit: ' K' },
@@ -396,8 +406,9 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-yellow-600',
     finalFormula: 'v_rms = \u221A(3kT / m)',
     finalFormulaDesc: 'RMS speed of gas molecules from temperature and mass',
+    keyInsight: 'Oxygen molecules zip around at 483 m/s (1,740 km/h) at room temperature — faster than a jet fighter! But they collide 7 billion times per second, which is why smells take seconds, not milliseconds, to cross a room.',
     steps: [
-      { label: 'Start with KE-Temperature Relation', formula: '(1/2) m <v\u00B2> = (3/2) kT', detail: '👃 You walk into a room and smell freshly baked bread. The aroma molecules travel from the kitchen to your nose — but how fast are individual molecules actually moving? Start with KE_avg = (3/2)kT = (½)m<v²>. This relates temperature to molecular motion.' },
+      { label: 'Start with KE-Temperature Relation', formula: '\\frac{1}{2} m <v\u00B2> = \\frac{3}{2} kT', detail: '👃 You walk into a room and smell freshly baked bread. The aroma molecules travel from the kitchen to your nose — but how fast are individual molecules actually moving? Start with KE_avg = (3/2)kT = (½)m<v²>. This relates temperature to molecular motion.' },
       { label: 'Solve for <v\u00B2>', formula: '<v\u00B2> = 3kT / m', detail: '📐 Solve for mean square speed: <v²> = 3kT/m. The mean square speed is 3kT divided by molecular mass. Lighter molecules move faster at the same temperature. Hydrogen (H₂) molecules at room temperature have about 16× the mean square speed of oxygen (O₂)!' },
       { label: 'Take Square Root', formula: 'v_rms = \u221A(3kT / m)', detail: '🧮 RMS speed v_rms = √(3kT/m). For oxygen (m = 5.3×10⁻²⁶ kg) at 300 K: v_rms = √(3×1.38×10⁻²³×300/5.3×10⁻²⁶) = √(2.34×10⁵) = 483 m/s.' },
       { label: 'Using Molar Mass', formula: 'v_rms = \u221A(3RT / M)', detail: '✅ v_rms = √(3kT/m) = √(3RT/M). Oxygen molecules zip around at 483 m/s = 1,740 km/h — faster than a jet fighter! But they don\'t travel far in a straight line; they collide with other molecules about 7 billion times per second, each collision changing direction. This zigzag path (diffusion) is why smell takes seconds to cross a room, not milliseconds.' },
@@ -436,6 +447,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-green-600',
     finalFormula: '\u03C9 = \u221A(k/m), T = 2\u03C0\u221A(m/k)',
     finalFormulaDesc: 'Angular frequency and period of a mass-spring oscillator',
+    keyInsight: 'Your car suspension uses springs with k≈40,000 N/m total, giving a bounce period of about 1 second. Race cars use stiffer springs for sharper handling — that\'s why they feel harsh on bumps.',
     steps: [
       { label: 'Hooke\'s Law', formula: 'F = \u2212kx', detail: '🚗 Your car hits a bump and the suspension bounces. The spring pushes back with a force proportional to how much it\'s compressed — Hooke\'s Law: F = −kx. The negative sign means the force always pushes toward equilibrium. This restoring force is the heart of Simple Harmonic Motion.' },
       { label: 'Newton\'s Second Law', formula: 'ma = \u2212kx', detail: '📐 Newton\'s Second Law: F = ma. So ma = −kx. But for SHM, acceleration is proportional to displacement in the opposite direction: a = −ω²x (ω is angular frequency). Substitute: m(−ω²x) = −kx.' },
@@ -474,6 +486,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-emerald-600',
     finalFormula: 'x = x_o cos(\u03C9t), v = \u03C9\u221A(x_o\u00B2\u2212x\u00B2), a = \u2212\u03C9\u00B2x',
     finalFormulaDesc: 'Kinematics of simple harmonic motion',
+    keyInsight: 'Earthquakes cause buildings to oscillate in SHM — engineers tune a building\'s natural frequency away from typical earthquake frequencies (0.5-5 Hz) to prevent resonant collapse.',
     steps: [
       { label: 'Projection of Circular Motion', formula: 'x = x_o cos(\u03B8) = x_o cos(\u03C9t)', detail: '🎵 A metronome ticks back and forth, marking time for a pianist. Its motion is SHM — the projection of uniform circular motion onto a diameter. Imagine a point moving around a circle at constant angular speed ω. Its x-coordinate traces out a cosine wave over time.' },
       { label: 'Velocity from Derivative', formula: 'v = \u2212\u03C9 x_o sin(\u03C9t) = \u2212\u03C9\u221A(x_o\u00B2 \u2212 x\u00B2)', detail: '📐 Displacement: x = x₀ cos(ωt). At t = 0, x = x₀ (fully right). At t = π/(2ω), x = 0 (center). At t = π/ω, x = −x₀ (fully left). Velocity is the derivative: v = −ωx₀ sin(ωt). Using sin² + cos² = 1: v = ±ω√(x₀² − x²). At the center, speed is maximum. At extremes, speed is zero.' },
@@ -515,10 +528,11 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-teal-600',
     finalFormula: 'T = 2\u03C0 \u221A(l / g)',
     finalFormulaDesc: 'Period of a simple pendulum depends only on length and gravity',
+    keyInsight: 'Grandfather clocks use a ~1 m pendulum because it swings exactly once per second. On the Moon, the same pendulum would take 4.93 s — 2.5× slower due to the Moon\'s weaker gravity.',
     steps: [
       { label: 'Restoring Force on Bob', formula: 'F = \u2212mg sin\u03B8', detail: '🕰️ You\'re watching a grandfather clock. The pendulum swings majestically — and it keeps near-perfect time because its period doesn\'t depend on how wide it swings (for small angles). Galileo supposedly discovered this watching a swinging chandelier in Pisa Cathedral, timing it with his pulse.' },
       { label: 'Small Angle Approximation', formula: 'F \u2248 \u2212mg \u03B8 = \u2212mg (x/l)', detail: '📐 The restoring force is the component of gravity along the arc: F = −mg sin θ. For small angles (θ < 15°), sin θ ≈ θ. And arc length x = Lθ, so θ = x/L. Therefore F ≈ −mg(x/L) = −(mg/L)x. The force is proportional to displacement — SHM!' },
-      { label: 'Apply Newton\'s Second Law', formula: 'ma = \u2212(mg/l) x \u21D2 a = \u2212(g/l) x', detail: '🧮 Using F = ma: ma = −(mg/L)x. The mass m cancels! a = −(g/L)x. Comparing with a = −ω²x: ω² = g/L. The period depends only on length and gravity — not on mass or amplitude.' },
+      { label: 'Apply Newton\'s Second Law', formula: 'ma = \u2212(mg/l) \\times \u21D2 a = \u2212(g/l) x', detail: '🧮 Using F = ma: ma = −(mg/L)x. The mass m cancels! a = −(g/L)x. Comparing with a = −ω²x: ω² = g/L. The period depends only on length and gravity — not on mass or amplitude.' },
       { label: 'Solve for Period', formula: 'T = 2\u03C0 / \u03C9 = 2\u03C0 \u221A(l/g)', detail: '✅ T = 2π√(L/g). A 1 m pendulum: T = 2π√(1/9.81) = 2.01 s. This is why grandfather clocks have pendulums about 1 m long — each swing takes one second. On the Moon (g = 1.62 m/s²), the same pendulum would take T = 2π√(1/1.62) = 4.93 s — nearly 5 seconds per swing!' },
     ],
     sliders: [
@@ -553,11 +567,12 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'E_total = (1/2) k x_o\u00B2 = constant',
     finalFormulaDesc: 'Total mechanical energy is conserved in SHM',
+    keyInsight: 'A trampoline with k=5000 N/m bouncing 0.5 m stores 625 J — energy sloshes between elastic (at the bottom) and gravitational (at the top), with total energy always conserved.',
     steps: [
-      { label: 'Elastic Potential Energy', formula: 'PE = (1/2) k x\u00B2', detail: '🪃 You\'re bouncing on a trampoline. At the top, you\'re momentarily motionless — all your energy is gravitational potential. As you fall, PE converts to KE. At the bottom, the mat stretches and stores elastic energy. Then you\'re launched back up. Total mechanical energy is conserved throughout.' },
-      { label: 'Kinetic Energy', formula: 'KE = (1/2) m v\u00B2', detail: '📐 For a mass-spring system: Elastic PE = ½kx². KE = ½mv². At any point, total E = PE + KE = ½kx² + ½mv². Energy sloshes back and forth between these two forms.' },
+      { label: 'Elastic Potential Energy', formula: 'PE = \\frac{1}{2} k x\u00B2', detail: '🪃 You\'re bouncing on a trampoline. At the top, you\'re momentarily motionless — all your energy is gravitational potential. As you fall, PE converts to KE. At the bottom, the mat stretches and stores elastic energy. Then you\'re launched back up. Total mechanical energy is conserved throughout.' },
+      { label: 'Kinetic Energy', formula: 'KE = \\frac{1}{2} m v\u00B2', detail: '📐 For a mass-spring system: Elastic PE = ½kx². KE = ½mv². At any point, total E = PE + KE = ½kx² + ½mv². Energy sloshes back and forth between these two forms.' },
       { label: 'Substitute SHM Velocity', formula: 'v\u00B2 = \u03C9\u00B2(x_o\u00B2 \u2212 x\u00B2)', detail: '🧮 Substituting SHM velocity: v² = ω²(x₀² − x²) and ω² = k/m: KE = ½m × (k/m)(x₀² − x²) = ½k(x₀² − x²). Total E = PE + KE = ½kx² + ½k(x₀² − x²) = ½kx₀².' },
-      { label: 'Total Energy Constant', formula: 'E = (1/2)k x_o\u00B2', detail: '✅ E_total = ½kx₀² = constant! For a trampoline with k = 5000 N/m bouncing 0.5 m amplitude: E = ½×5000×0.25 = 625 J. This energy is always conserved — it just trades between potential at the extremes and kinetic at the center. A real trampoline loses energy to air resistance and internal friction, which is why you need to keep pumping your legs!' },
+      { label: 'Total Energy Constant', formula: 'E = \\frac{1}{2}k x_o\u00B2', detail: '✅ E_total = ½kx₀² = constant! For a trampoline with k = 5000 N/m bouncing 0.5 m amplitude: E = ½×5000×0.25 = 625 J. This energy is always conserved — it just trades between potential at the extremes and kinetic at the center. A real trampoline loses energy to air resistance and internal friction, which is why you need to keep pumping your legs!' },
     ],
     sliders: [
       { label: 'Spring Const (k)', key: 'k', min: 10, max: 200, step: 5, default: 100, unit: ' N/m' },
@@ -598,6 +613,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-fuchsia-600',
     finalFormula: '\u0394y = \u03BB L / d',
     finalFormulaDesc: 'Fringe spacing in double-slit interference',
+    keyInsight: 'Young\'s 1801 experiment settled the centuries-old debate: light is a wave. Today, the same principle is used in LIGO to detect gravitational waves by measuring shifts smaller than a proton\'s width.',
     steps: [
       { label: 'Path Difference', formula: '\u0394 = d sin\u03B8', detail: '💡 It\'s 1801. Thomas Young performs a revolutionary experiment that proves light is a wave. He shines light through two tiny slits and observes alternating bright and dark bands on a screen — interference! Water waves do the same thing when passing through two openings in a barrier.' },
       { label: 'Constructive Interference (Bright)', formula: 'd sin\u03B8 = m\u03BB, y = m\u03BBL/d', detail: '📐 The path difference from the two slits to a point on the screen is Δ = d sin θ. If this equals a whole number of wavelengths (mλ), the waves arrive in phase and interfere constructively — bright fringe. If it\'s a half-wavelength (m+½)λ, they cancel — dark fringe.' },
@@ -637,6 +653,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-pink-600',
     finalFormula: 'd sin\u03B8 = m\u03BB',
     finalFormulaDesc: 'Condition for maxima in diffraction grating',
+    keyInsight: 'A CD\'s spiral track has 625 lines/mm — it acts as a diffraction grating, splitting white light into the rainbow you see when tilting it. Spectrometers use this to identify chemical elements in stars.',
     steps: [
       { label: 'Grating Spacing', formula: 'd = 1 / N', detail: '💿 You hold a CD up to the light and see a rainbow of colors. The CD\'s surface has a spiral track with grooves spaced 1.6 μm apart — it acts as a diffraction grating! When white light hits it, different wavelengths (colors) bend at different angles, creating the rainbow.' },
       { label: 'Path Difference', formula: '\u0394 = d sin\u03B8', detail: '📐 The grating equation is the same as double-slit: d sin θ = mλ. But a grating has thousands of slits per mm, producing much sharper, brighter fringes. The grating spacing d = 1/N where N is the number of lines per unit length.' },
@@ -679,6 +696,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-purple-600',
     finalFormula: 'V = (1/4\u03C0\u03B5\u2080) Q / r',
     finalFormulaDesc: 'Potential due to a point charge at distance r',
+    keyInsight: 'A Van de Graaff generator dome at 1 μC charge creates 60,000 V — enough to make your hair stand on end. Near a proton at 1 Ångström, the potential is 14.4 V, enormous at atomic scale.',
     steps: [
       { label: 'Work Against Electric Field', formula: 'W = \u222B F dr = \u222B qE dr', detail: '⚡ You\'re standing near a lightning rod during a thunderstorm. The rod concentrates charge at its tip, creating a strong electric field that ionizes the air and safely conducts lightning to ground. The electric potential V at any point tells you the potential energy per unit charge.' },
       { label: 'Coulomb\'s Law Field', formula: 'E = (1/4\u03C0\u03B5\u2080) Q / r\u00B2', detail: '📐 To find V from a point charge Q, calculate the work to bring a test charge q from infinity to distance r: W = ∫_∞^r F dr = ∫_∞^r (kQq/r²) dr. The integral of 1/r² is −1/r.' },
@@ -716,6 +734,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-violet-600',
     finalFormula: 'C = \u03B5\u2080 A / d',
     finalFormulaDesc: 'Capacitance depends on area and plate separation',
+    keyInsight: 'Your phone touchscreen has thousands of tiny capacitors — when your finger (a conductor) approaches, it changes the capacitance at that point, and the phone detects exactly where you touched.',
     steps: [
       { label: 'Electric Field Between Plates', formula: 'E = V / d', detail: '📱 Your phone\'s touchscreen detects your finger\'s touch using capacitors. When you touch the screen, you change the capacitance at that point. A capacitor is two parallel plates separated by an insulator. The capacitance C tells you how much charge it stores per volt: C = Q/V.' },
       { label: 'Field from Surface Charge', formula: 'E = Q / (A \u03B5\u2080)', detail: '📐 Between parallel plates, the electric field is uniform: E = V/d. Also, from Gauss\'s law, E = σ/ε₀ = Q/(Aε₀), where σ is surface charge density. Set these equal: V/d = Q/(Aε₀).' },
@@ -753,6 +772,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'Series: 1/C_eq = \u03A3(1/C_i), Parallel: C_eq = \u03A3C_i',
     finalFormulaDesc: 'Capacitors combine opposite to resistors',
+    keyInsight: 'Camera flash units use capacitor banks in parallel: four 100 μF capacitors give 400 μF total, storing enough energy to fire a brilliant 9 J flash in milliseconds.',
     steps: [
       { label: 'Series: Charge is Constant', formula: 'Q = Q\u2081 = Q\u2082 = Q\u2083', detail: '⚡ Your camera\'s flash needs a sudden burst of energy. A large capacitor bank stores charge slowly, then releases it instantly. Sometimes capacitors are connected in series (to handle higher voltage) or parallel (to store more charge). Their equivalent capacitance is the opposite of resistors.' },
       { label: 'Series: Voltages Add', formula: 'V = V\u2081 + V\u2082 + V\u2083 = Q/C\u2081 + Q/C\u2082 + Q/C\u2083', detail: '📐 In SERIES: The same charge Q flows through each capacitor. Q = Q₁ = Q₂ = Q₃. Voltages add: V = V₁ + V₂ + V₃ = Q/C₁ + Q/C₂ + Q/C₃ = Q(1/C₁ + 1/C₂ + 1/C₃). Since V = Q/C_eq: 1/C_eq = 1/C₁ + 1/C₂ + 1/C₃. Series capacitance is LESS than the smallest individual — like making a thicker insulator.' },
@@ -793,11 +813,12 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'E = (1/2) C V\u00B2 = Q\u00B2 / 2C',
     finalFormulaDesc: 'Energy stored in electric field between plates',
+    keyInsight: 'A defibrillator stores 1250 J in a 100 μF capacitor charged to 5000 V — released in 5 ms, that\'s 250,000 W of power for an instant, enough to restart a stopped heart.',
     steps: [
       { label: 'Work to Charge Capacitor', formula: 'W = \u03A3 \u0394W = \u03A3 V \u0394q', detail: '❤️ A defibrillator delivers a life-saving electric shock to restart a heart. Inside, a capacitor stores energy and releases it in milliseconds. The energy stored in a capacitor comes from the work done to separate charges — building up positive charge on one plate and negative on the other against the growing electric field.' },
       { label: 'Voltage-Charge Graph', formula: 'Area under V-q graph', detail: '📐 To charge a capacitor from 0 to Q, you move small charge increments Δq. The voltage increases linearly: V = q/C. On a V-q graph, voltage rises from 0 to V as charge builds from 0 to Q. The work done is the area under this line.' },
-      { label: 'Area of Triangle', formula: 'E = (1/2) Q V', detail: '🧮 The area is a triangle: Area = ½ × base × height = ½ × Q × V. This area equals the stored energy E. Using Q = CV: E = ½QV = ½CV² = Q²/2C.' },
-      { label: 'Using Q = CV', formula: 'E = (1/2) C V\u00B2 = Q\u00B2 / 2C', detail: '✅ E = ½CV². A defibrillator capacitor: C = 100 μF, charged to 5000 V: E = ½×100×10⁻⁶×5000² = 1250 J. That 1250 J is delivered in about 5 ms — a power of 250,000 W for an instant! This is why the patient\'s chest jumps. The same physics powers camera flashes (E = ½×200×10⁻⁶×300² = 9 J per flash), delivering a brilliant burst of light.' },
+      { label: 'Area of Triangle', formula: 'E = \\frac{1}{2} Q V', detail: '🧮 The area is a triangle: Area = ½ × base × height = ½ × Q × V. This area equals the stored energy E. Using Q = CV: E = ½QV = ½CV² = Q²/2C.' },
+      { label: 'Using Q = CV', formula: 'E = \\frac{1}{2} C V\u00B2 = Q\u00B2 / 2C', detail: '✅ E = ½CV². A defibrillator capacitor: C = 100 μF, charged to 5000 V: E = ½×100×10⁻⁶×5000² = 1250 J. That 1250 J is delivered in about 5 ms — a power of 250,000 W for an instant! This is why the patient\'s chest jumps. The same physics powers camera flashes (E = ½×200×10⁻⁶×300² = 9 J per flash), delivering a brilliant burst of light.' },
     ],
     sliders: [
       { label: 'Capacitance (C)', key: 'C', min: 1, max: 100, step: 1, default: 10, unit: ' \u03BCF' },
@@ -831,6 +852,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'Q_charge = Q_o(1\u2212e\u207B\u1D56/\u1D43\u1D36), Q_discharge = Q_o e\u207B\u1D56/\u1D43\u1D36',
     finalFormulaDesc: 'Exponential charge/discharge in RC circuits',
+    keyInsight: 'Windshield wiper intermittent mode uses an RC circuit: R=100 kΩ and C=100 μF give τ=10 s, triggering a wipe about every 7 seconds. Pacemakers and keyboard debouncing use the same timing principle.',
     steps: [
       { label: 'Kirchhoff\'s Voltage Law', formula: 'V = IR + Q/C', detail: '🚗 Your car\'s windshield wipers have an intermittent setting — wipe, pause, wipe again. The timing is controlled by an RC circuit: a resistor and capacitor work together to create a precise time delay. The capacitor charges through the resistor, and when it reaches a threshold voltage, the wipers activate.' },
       { label: 'Solve Differential Equation', formula: 'R dQ/dt + Q/C = V', detail: '📐 Apply Kirchhoff\'s Voltage Law: V_battery = IR + Q/C. Since I = dQ/dt, we get a differential equation: R(dQ/dt) + Q/C = V. This describes how the charge builds up over time.' },
@@ -872,6 +894,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-rose-600',
     finalFormula: '<P> = (1/2) I_o\u00B2 R = I_rms V_rms',
     finalFormulaDesc: 'Average power dissipated in an AC resistive load',
+    keyInsight: 'Your "120 V" household outlet actually swings from +170 V to −170 V, 60 times per second. The 120 V is the RMS value — the DC voltage that would deliver the same average power to a heater.',
     steps: [
       { label: 'Instantaneous Power', formula: 'P(t) = I\u00B2R = (I_o sin\u03C9t)\u00B2 R', detail: '💡 You look at your electricity bill. It charges you for kilowatt-hours of energy used. But the voltage and current in your home are alternating — they reverse direction 50 or 60 times per second. How do you calculate the average power when voltage and current are constantly changing?' },
       { label: 'Using Trig Identity', formula: 'sin\u00B2\u03C9t = (1 \u2212 cos 2\u03C9t)/2', detail: '📐 Instantaneous power in a resistor: P(t) = I²R = (I₀ sin ωt)²R = I₀²R sin²ωt. The power pulses at twice the frequency — it\'s always positive (heating is the same regardless of current direction), but varies between 0 and I₀²R.' },
@@ -910,6 +933,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-orange-600',
     finalFormula: 'X_L = \u03C9L = 2\u03C0fL',
     finalFormulaDesc: 'Opposition to AC in an inductor',
+    keyInsight: 'Audio crossovers use inductors to block high frequencies from woofers — at 1000 Hz an inductor has 20× more reactance than at 50 Hz, naturally directing bass to the big speaker.',
     steps: [
       { label: 'Back EMF in Inductor', formula: 'V = L \u0394I/\u0394t', detail: '🌀 Your electric fan has an inductor (a coil of wire) inside. When AC passes through it, the inductor resists changes in current — creating back EMF. This opposition to AC is called inductive reactance X_L. Unlike a resistor, it doesn\'t dissipate energy — it stores and releases it in the magnetic field.' },
       { label: 'Sinusoidal Current', formula: 'I = I_o sin(\u03C9t)', detail: '📐 The voltage across an inductor: V = L(dI/dt). For sinusoidal current I = I₀ sin ωt: V = L × d(I₀ sin ωt)/dt = ωLI₀ cos ωt. Notice: voltage involves cos, current involves sin — they\'re 90° out of phase! Voltage LEADS current by 90°.' },
@@ -946,6 +970,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-red-600',
     finalFormula: 'X_C = 1/(\u03C9C) = 1/(2\u03C0fC)',
     finalFormulaDesc: 'Opposition to AC in a capacitor',
+    keyInsight: 'Radio tuners use variable capacitors: at 100 pF, FM frequencies (100 MHz) pass easily (X_C=16 Ω) while AM (1 MHz) is blocked (X_C=1592 Ω) — selecting exactly one station.',
     steps: [
       { label: 'Capacitor Current-Voltage', formula: 'I = C dV/dt', detail: '📻 Your radio tuner uses a variable capacitor to select different stations. When AC passes through a capacitor, the plates alternately charge and discharge. The capacitor resists voltage changes — this opposition is capacitive reactance X_C, which behaves opposite to inductors.' },
       { label: 'Sinusoidal Voltage', formula: 'V = V_o sin(\u03C9t)', detail: '📐 The current through a capacitor: I = C(dV/dt). For sinusoidal voltage V = V₀ sin ωt: I = C × d(V₀ sin ωt)/dt = ωCV₀ cos ωt. Current involves cos, voltage involves sin — also 90° out of phase, but current LEADS voltage (opposite of inductor)!' },
@@ -982,6 +1007,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-rose-600',
     finalFormula: 'Z_RL = \u221A(R\u00B2 + X_L\u00B2), Z_RC = \u221A(R\u00B2 + X_C\u00B2)',
     finalFormulaDesc: 'Total opposition to AC combining resistance and reactance',
+    keyInsight: 'Speaker crossovers split audio: at 1 kHz the woofer path (with inductor) has Z=32.5 Ω while the tweeter path (with capacitor) has Z=17.8 Ω — each driver gets the frequencies it handles best.',
     steps: [
       { label: 'Phasor Voltage Addition', formula: 'V\u00B2 = V_R\u00B2 + V_X\u00B2', detail: '🎵 Your stereo system has a crossover network that splits the audio signal: low frequencies go to the woofer, high frequencies to the tweeter. This uses the frequency-dependent behavior of inductors and capacitors. The total opposition to AC is impedance Z — a combination of resistance R and reactance X.' },
       { label: 'Using Ohm\'s Law for Each', formula: 'V_R = IR, V_X = IX_X', detail: '📐 In a series RL or RC circuit, the voltages across R and X are 90° out of phase. They add as vectors (Pythagorean theorem), not as simple numbers. The total voltage squared = V_R² + V_X².' },
@@ -1019,6 +1045,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-yellow-600',
     finalFormula: 'KE_max = hf \u2212 \u03A6',
     finalFormulaDesc: 'Maximum kinetic energy of photoelectrons',
+    keyInsight: 'Solar panels use the photoelectric effect: photons with energy above silicon\'s 1.1 eV work function knock electrons loose, creating current. This is why solar cells respond to visible and infrared but not radio waves.',
     steps: [
       { label: 'Photon Energy (Planck)', formula: 'E_photon = hf', detail: '☀️ You walk through automatic sliding doors at the supermarket. A light beam above the door is broken by your presence, triggering the mechanism. But here\'s the puzzle: shine dim blue light and it works fine; shine bright red light and nothing happens — even if the red light is 100× brighter! This baffled physicists until Einstein explained it in 1905.' },
       { label: 'Work Function (\u03A6)', formula: '\u03A6 = hf_o', detail: '📐 Planck proposed that light comes in discrete packets (quanta) called photons, each with energy E = hf. Here h = 6.63×10⁻³⁴ J·s is Planck\'s constant — a fundamental constant of nature. Blue light (f ≈ 6.5×10¹⁴ Hz) has more energy per photon than red light (f ≈ 4.5×10¹⁴ Hz).' },
@@ -1058,6 +1085,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: '\u03BB = h / mv = h / p',
     finalFormulaDesc: 'Matter has wave-like properties with wavelength = h/momentum',
+    keyInsight: 'Electron microscopes achieve 0.0037 nm resolution — 100,000× sharper than visible light — because high-energy electrons have wavelengths far smaller than atoms. A cricket ball\'s wavelength is 10⁻³⁴ m, undetectably tiny.',
     steps: [
       { label: 'Planck\'s Energy', formula: 'E = hf = hc/\u03BB', detail: '🔬 You\'re looking at an image from an electron microscope, showing individual atoms arranged like a crystal lattice. But how can a microscope see something smaller than the wavelength of visible light? The answer: use electrons instead of photons! In 1924, Louis de Broglie proposed that all matter has wave-like properties.' },
       { label: 'Einstein\'s Mass-Energy', formula: 'E = mc\u00B2', detail: '📐 For photons: E = hf = hc/λ (Planck-Einstein). Also E = pc (from special relativity for massless particles). Equate: hc/λ = pc. Cancel c: h/λ = p. So λ = h/p. For photons, wavelength = Planck\'s constant / momentum.' },
@@ -1096,6 +1124,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-emerald-600',
     finalFormula: '\u0394E = \u0394m \u00D7 c\u00B2',
     finalFormulaDesc: 'Energy released equals mass converted to energy',
+    keyInsight: '1 kg of uranium fuel releases 2.5 million times more energy than 1 kg of coal — the mass defect in nuclear fission, converted via E=mc², powers cities and submarines.',
     steps: [
       { label: 'Mass of Constituent Nucleons', formula: 'm_total = (A\u2212Z)m_n + Z m_p', detail: '☢️ A nuclear power plant generates electricity by splitting uranium atoms. When a uranium nucleus splits, the products have slightly less total mass than the original nucleus. Where does the mass go? It\'s converted to energy! E = mc². A small amount of mass releases an enormous amount of energy.' },
       { label: 'Actual Mass of Nucleus', formula: 'm_nucleus < m_total', detail: '📐 A nucleus is made of Z protons and (A−Z) neutrons. The total mass of these separate nucleons: m_total = Zm_p + (A−Z)m_n. For helium-4 (2 protons, 2 neutrons): m_total = 2×1.00728 + 2×1.00866 = 4.03188 amu.' },
@@ -1132,6 +1161,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-green-600',
     finalFormula: 'N = N_o e\u207B\u03BB\u1D56',
     finalFormulaDesc: 'Exponential decay of radioactive nuclei',
+    keyInsight: 'Carbon-14 dating works because after 5730 years (one half-life), exactly half the ¹⁴C remains. By measuring the ratio in ancient wood, archaeologists date samples up to 50,000 years old.',
     steps: [
       { label: 'Decay Rate Proportional to N', formula: 'dN/dt = \u2212\u03BB N', detail: '🦴 You\'re an archaeologist who\'s discovered an ancient wooden tool. How old is it? Carbon-14 dating tells you. Carbon-14 is radioactive — it decays over time. The rate of decay depends only on how many radioactive atoms remain: dN/dt = −λN, where λ is the decay constant. This differential equation describes exponential decay.' },
       { label: 'Separate Variables', formula: 'dN/N = \u2212\u03BB dt', detail: '📐 Separate variables: dN/N = −λ dt. Integrate both sides: ∫(dN/N) = −λ∫dt. ln N = −λt + C. At t = 0, N = N₀, so C = ln N₀. Therefore ln N = −λt + ln N₀.' },
@@ -1169,10 +1199,11 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-teal-600',
     finalFormula: 'T_{\u00BD} = ln(2) / \u03BB = 0.693 / \u03BB',
     finalFormulaDesc: 'Relationship between half-life and decay constant',
+    keyInsight: 'Fluorine-18 PET scan tracers have a 110-minute half-life — if prepared at 8 AM and injected at 10 AM, only 47% remains active. Nuclear medicine technicians must account for this decay during transport.',
     steps: [
       { label: 'Definition of Half-Life', formula: 'At t = T_{\u00BD}, N = N_o/2', detail: '🏥 You\'re a nuclear medicine technician preparing a radioactive tracer for a patient\'s PET scan. The tracer (fluorine-18) has a half-life of 110 minutes. You need to calculate how much remains active by the time it\'s injected. Half-life is the time for half the nuclei to decay — and it\'s related to the decay constant by a simple formula.' },
       { label: 'Substitute into Decay Law', formula: 'N_o/2 = N_o e\u207B\u03BB T_{\u00BD}', detail: '📐 By definition: at t = T_½, N = N₀/2. Substitute into the decay law: N₀/2 = N₀e⁻ˡᵀ_½. Cancel N₀: 1/2 = e⁻ˡᵀ_½.' },
-      { label: 'Cancel N_o and Take ln', formula: 'ln(1/2) = \u2212\u03BB T_{\u00BD}', detail: '🧮 Take natural log: ln(1/2) = −λT_½. Since ln(1/2) = −ln(2) = −0.693: −0.693 = −λT_½. So T_½ = 0.693/λ.' },
+      { label: 'Cancel N_o and Take ln', formula: 'ln\\frac{1}{2} = \u2212\u03BB T_{\u00BD}', detail: '🧮 Take natural log: ln(1/2) = −λT_½. Since ln(1/2) = −ln(2) = −0.693: −0.693 = −λT_½. So T_½ = 0.693/λ.' },
       { label: 'Solve for T_{\u00BD}', formula: 'T_{\u00BD} = ln(2)/\u03BB = 0.693/\u03BB', detail: '✅ T_½ = ln(2)/λ = 0.693/λ. For fluor-18 (T_½ = 110 min): λ = 0.693/110 = 0.00630 min⁻¹. If prepared at 8:00 AM and injected at 10:00 AM (2 hours later): N/N₀ = e⁻⁰·⁰⁰⁶³⁰×¹²⁰ = e⁻⁰·⁷⁵⁶ = 0.47. Only 47% of the tracer remains active! Different half-lives: uranium-238 (4.5 billion years — Earth\'s age), iodine-131 (8 days — medical treatment), polonium-214 (164 microseconds — barely exists!).' },
     ],
     sliders: [
@@ -1205,6 +1236,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-amber-600',
     finalFormula: '\u03BB_max \u00D7 T = 2.9\u00D710\u207B\u00B3 m\u00B7K',
     finalFormulaDesc: 'Peak wavelength is inversely proportional to temperature',
+    keyInsight: 'The Sun\'s 5800 K surface peaks at 500 nm (green light) — our eyes evolved maximum sensitivity at exactly this wavelength. Thermal cameras detect our bodies glowing at 9350 nm in the infrared.',
     steps: [
       { label: 'Blackbody Radiation', formula: 'Hot objects emit radiation across a spectrum', detail: '🔥 A blacksmith heats a piece of iron. First it glows dull red, then orange, then yellow, then white-hot — and would turn blue if it didn\'t melt first. The color of hot objects tells us their temperature. Wien\'s Displacement Law: the peak wavelength λ_max is inversely proportional to temperature T.' },
       { label: 'Wien\'s Observation', formula: '\u03BB_max \u221D 1/T', detail: '📐 All objects emit thermal radiation. The spectrum has a peak — the wavelength where most energy is emitted. As temperature increases, this peak shifts to shorter (bluer) wavelengths: λ_max ∝ 1/T.' },
@@ -1240,6 +1272,7 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-purple-600',
     finalFormula: 'v = H_o d, T_o = 1/H_o',
     finalFormulaDesc: 'Galaxies recede faster as distance increases',
+    keyInsight: 'Hubble\'s discovery that galaxies recede faster with distance revealed the expanding universe — and rewinding gives an age of 13.8 billion years. Everything was once at a single point: the Big Bang.',
     steps: [
       { label: 'Hubble\'s Observation', formula: 'v \u221D d', detail: '🌌 You\'re an astronomer at the Mount Wilson Observatory in 1929. Edwin Hubble makes a shocking discovery: every distant galaxy is moving away from us, and the farther away they are, the faster they recede. The universe is expanding! v ∝ d — recession velocity is proportional to distance.' },
       { label: 'Hubble\'s Law', formula: 'v = H_o \u00D7 d', detail: '📐 Hubble\'s Law: v = H₀ × d. H₀ (the Hubble constant) ≈ 70 km/s/Mpc. A galaxy at 100 Mpc (326 million light-years) recedes at 7000 km/s. A galaxy at 1000 Mpc recedes at 70,000 km/s — that\'s 23% of the speed of light!' },
@@ -1280,10 +1313,11 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'F_c = 2mv\u03C9 sin\u03B8',
     finalFormulaDesc: 'Apparent force deflecting moving objects on rotating Earth',
+    keyInsight: 'Hurricanes spin counterclockwise in the Northern Hemisphere and clockwise in the Southern — the Coriolis force deflects moving air right (north) or left (south), and is zero at the equator, which is why storms can\'t form there.',
     steps: [
       { label: 'Earth\'s Rotation', formula: '\u03C9 = 2\u03C0/T = 7.27\u00D710\u207B\u2075 rad/s', detail: '🌀 You\'re watching a weather forecast. The meteorologist points to a swirling cyclone spinning counterclockwise in the Northern Hemisphere. Why do storms spin? The Coriolis force — an apparent force that deflects moving objects on the rotating Earth. It\'s why winds don\'t blow straight from high to low pressure.' },
       { label: 'Velocity on Surface', formula: 'v = \u03C9 R cos(\u03B8)', detail: '📐 Earth rotates once per 24 hours: ω = 2π/86400 = 7.27×10⁻⁵ rad/s. A point on the equator moves at v = ωR = 7.27×10⁻⁵ × 6.37×10⁶ = 463 m/s (1670 km/h). At latitude 45°, the rotational speed is v = ωR cos 45° = 327 m/s.' },
-      { label: 'Conservation of Angular Momentum', formula: 'L = mvR = constant', detail: '🧮 When air moves toward the equator, it conserves angular momentum: L = mvR cos θ = constant. As latitude decreases, R cos θ increases, so v must decrease — but the air retains its higher eastward speed from higher latitudes, so it appears to deflect to the right in the Northern Hemisphere. The force: F_c = 2mvω sin θ.' },
+      { label: 'Conservation of Angular Momentum', formula: 'L = mvR = \\text{constant}', detail: '🧮 When air moves toward the equator, it conserves angular momentum: L = mvR cos θ = constant. As latitude decreases, R cos θ increases, so v must decrease — but the air retains its higher eastward speed from higher latitudes, so it appears to deflect to the right in the Northern Hemisphere. The force: F_c = 2mvω sin θ.' },
       { label: 'Coriolis Force', formula: 'F_c = 2 m v \u03C9 sin\u03B8', detail: '✅ F_c = 2mvω sin θ. For a hurricane-force wind (m = 1 kg of air, v = 50 m/s) at latitude 30°: F_c = 2×1×50×7.27×10⁻⁵×0.5 = 0.0036 N/kg. Tiny, but over hundreds of kilometers, it deflects air masses enough to create cyclones! Northern Hemisphere: deflection right. Southern: left. Zero at equator — hurricanes can\'t form there. This is why the Coriolis effect determines global wind patterns and ocean currents.' },
     ],
     sliders: [
@@ -1319,9 +1353,10 @@ export const CLASS12_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-slate-600',
     finalFormula: 'If a_c = v\u00B2/r = g, the cannonball orbits',
     finalFormulaDesc: 'Conceptual derivation of orbital motion',
+    keyInsight: 'Newton predicted in the 1680s that a cannonball fired at 7.9 km/s would orbit Earth — 270 years before Sputnik 1 proved him right in 1957. The ISS now orbits at 7.66 km/s, exactly as Newton calculated.',
     steps: [
       { label: 'Horizontal Motion', formula: 'x = vt', detail: '🛰️ Isaac Newton imagined a cannon on a mountaintop firing balls horizontally. A slow ball falls to Earth in a curve. A faster ball travels farther before hitting the ground. But what if you fire it so fast that the Earth curves away beneath it at exactly the same rate as the ball falls? The ball would circle Earth forever — it\'s in orbit!' },
-      { label: 'Vertical Fall', formula: 'y = (1/2)gt\u00B2', detail: '📐 Horizontal motion: x = vt. The ball moves at constant speed horizontally with no air resistance. Vertical motion: y = ½gt². It falls under gravity just like any dropped object. Combining: y = (g/2v²)x² — the path is a parabola.' },
+      { label: 'Vertical Fall', formula: 'y = \\frac{1}{2}gt\u00B2', detail: '📐 Horizontal motion: x = vt. The ball moves at constant speed horizontally with no air resistance. Vertical motion: y = ½gt². It falls under gravity just like any dropped object. Combining: y = (g/2v²)x² — the path is a parabola.' },
       { label: 'Curved Path', formula: 'y = (g/2v\u00B2) x\u00B2', detail: '🧮 But Earth is round! It curves away with drop = x²/(2R) over horizontal distance x. For the cannonball to stay at constant height, its fall must match Earth\'s curvature: ½gt² = x²/(2R). Using x = vt: ½gt² = (vt)²/(2R). Cancel ½t²: g = v²/R.' },
       { label: 'Orbital Condition', formula: 'v\u00B2/r = g', detail: '✅ Orbital condition: a_c = v²/r = g. Solving: v = √(gR) = √(9.81 × 6.37×10⁶) = 7905 m/s ≈ 7.9 km/s! Newton realized this in the 1680s — more than 250 years before the first rocket reached orbit in 1957 (Sputnik 1). Today, the ISS orbits at about 7.66 km/s, completing a lap around Earth every 90 minutes. Newton\'s thought experiment was the birth of orbital mechanics!' },
     ],

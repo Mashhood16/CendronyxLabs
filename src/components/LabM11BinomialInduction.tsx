@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM11BinomialInduction({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode] = useState<'induction' | 'pascal'>('induction');
 
@@ -95,7 +98,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
    {/* Header */}
-   <LabHeader onExit={onExit} title="Grade 11: Induction & Binomial Theorem" />
+   <LabHeader onExit={onExit} title={t('lab.m11binomialinduction_grade_11_induction_binomial_th')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -104,12 +107,13 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m11binomialinduction_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m11binomialinduction_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 lg: lg:overflow-visible">
     {/* Left Column: Theory */}
@@ -117,38 +121,38 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
      {mode === 'induction' ? (
       <>
        <div>
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">Mathematical Induction</h2>
-        <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">A method of mathematical proof typically used to establish that a given statement is true for all natural numbers.</p>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m11binomialinduction_mathematical_induction')}</h2>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.m11binomialinduction_a_method_of_mathematical_proof')}</p>
         
         <div className={`bg-amber-50 p-4 rounded-xl border border-amber-200 mb-4 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-         <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">The Domino Effect</h3>
+         <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">{t('lab.m11binomialinduction_the_domino_effect')}</h3>
          <ol className="list-decimal list-inside text-sm text-amber-800 space-y-2 dark:text-[#ffffff]">
-          <li><strong>Base Case:</strong> Prove the first domino falls (Prove true for $n=1$).</li>
-          <li><strong>Inductive Hypothesis:</strong> Assume some domino $k$ falls.</li>
-          <li><strong>Inductive Step:</strong> Show that if domino $k$ falls, it knocks over domino $k+1$.</li>
+          <li><strong>{t('lab.m11binomialinduction_base_case')}</strong> <MathText>{t('lab.m11binomialinduction_prove_the_first_domino_falls_p')}</MathText></li>
+          <li><strong>{t('lab.m11binomialinduction_inductive_hypothesis')}</strong> <MathText>{t('lab.m11binomialinduction_assume_some_domino_k_falls')}</MathText></li>
+          <li><strong>{t('lab.m11binomialinduction_inductive_step')}</strong> <MathText>{t('lab.m11binomialinduction_show_that_if_domino_k_falls_it')}</MathText></li>
          </ol>
         </div>
-        <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">If both conditions are met, the entire infinite line of dominoes will fall. If there is a gap (missing domino), the chain stops!</p>
+        <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.m11binomialinduction_if_both_conditions_are_met_the')}</p>
        </div>
       </>
      ) : (
       <>
        <div>
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">Pascal's& Binomial Theorem</h2>
-        <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">Pascal's Triangle gives the coefficients for binomial expansions, represented by combinations {"$\\binom{n}{k}$"}.</p>
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m11binomialinduction_pascal_s_binomial_theorem')}</h2>
+        <p className="text-slate-600 dark:text-[#a1a1aa] mb-4"><MathText>{t('lab.m11binomialinduction_pascal_s_triangle_gives_the_co')} {"$\\binom{n}{k}$"}.</MathText></p>
         
         <div className={`bg-indigo-50 p-4 rounded-xl border border-indigo-200 mb-4 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-         <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Binomial Theorem</h3>
+         <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.m11binomialinduction_binomial_theorem')}</h3>
          <p className="text-sm text-indigo-800 font-mono mb-2 dark:text-[#ffffff]">
-          {"$$ (x + y)^n = \\sum \\binom{n}{k} x^{n-k} y^k $$"}
+          <MathText>{"$$ (x + y)^n = \\sum \\binom{n}{k} x^{n-k} y^k $$"}</MathText>
          </p>
-         <p className="text-xs text-indigo-700">Where $nCk$ (or {"$\\binom{n}{k}$"}) is the number in the $n$-th row and $k$-th column of Pascal's triangle.</p>
+         <p className="text-xs text-indigo-700"><MathText>{t('lab.m11binomialinduction_where_nck_or')} {"$\\binom{n}{k}$"}{t('lab.m11binomialinduction_is_the_number_in_the_n_th_row_')}</MathText></p>
         </div>
         <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Formula for nCr</h3>
-         <p className="text-sm font-mono text-slate-700 dark:text-[#ffffff]">
-          {"$$ nCr = \\frac{n!}{r! (n-r)!} $$"}
-         </p>
+         <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m11binomialinduction_formula_for_ncr')}</h3>
+          <p className="text-sm font-mono text-slate-700 dark:text-[#ffffff]">
+           <MathText>{"$$ nCr = \\frac{n!}{r! (n-r)!} $$"}</MathText>
+          </p>
         </div>
        </div>
       </>
@@ -156,13 +160,13 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     </div>
 
     {/* Middle Column: Interactive Simulator */}
-    <div className="bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] relative flex flex-col p-6 lg: items-center justify-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 absolute top-6">Interactive Visualizer</h2>
+    <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] relative flex flex-col p-6 lg: items-center justify-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+     <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 absolute top-6">{t('lab.m11binomialinduction_interactive_visualizer')}</h2>
      
      {mode === 'induction' && (
       <div className="w-full flex flex-col items-center gap-12 mt-10">
        {/* Domino Track */}
-       <div className="w-full max-w-2xl bg-white lg:bg-slate-300 dark:bg-[#121212] lg:dark:bg-[#121212] h-4 rounded-full relative flex items-end justify-between px-4 pb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+       <div className="w-full max-w-2xl bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-300 dark:bg-[#121212] lg:dark:bg-[#121212] h-4 rounded-full relative flex items-end justify-between px-4 pb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
         {dominoesState.map((isFallen, idx) => (
          <div key={idx} className="relative w-8 flex justify-center">
           {idx !== missingDomino && (
@@ -172,16 +176,16 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
            </div>
           )}
           {idx === missingDomino && (
-           <div className="w-full absolute -top-6 text-center text-xs font-bold text-red-500">GAP</div>
+           <div className="w-full absolute -top-6 text-center text-xs font-bold text-red-500">{t('lab.m11binomialinduction_gap')}</div>
           )}
          </div>
         ))}
        </div>
 
        <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full max-w-md flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-        <p className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Experiment Controls</p>
+        <p className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.m11binomialinduction_experiment_controls')}</p>
         <div className="flex items-center justify-between">
-         <label className="text-sm text-slate-600 dark:text-[#a1a1aa]">Remove a domino (create a gap):</label>
+         <label className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.m11binomialinduction_remove_a_domino_create_a_gap')}</label>
          <select 
           className="border border-slate-300 dark:border-[#1c1b1b] rounded p-1"
           value={missingDomino === null ? 'none' : missingDomino}
@@ -192,18 +196,18 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
           }}
           disabled={isFalling}
          >
-          <option value="none">None (Perfect Induction)</option>
-          <option value="4">Domino 5</option>
-          <option value="9">Domino 10</option>
+          <option value="none">{t('lab.m11binomialinduction_none_perfect_induction')}</option>
+          <option value="4">{t('lab.m11binomialinduction_domino_5')}</option>
+          <option value="9">{t('lab.m11binomialinduction_domino_10')}</option>
          </select>
         </div>
         <div className="flex gap-4 mt-4">
          <button onClick={startFall} disabled={isFalling || dominoesState[0]} className={`flex-1 min-w-0 bg-amber-500 hover:bg-amber-600 text-indigo-950 font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40 `}>
-          <Play size={18} /> Push First Domino
-         </button>
+          <Play size={18} />  {t('lab.m11binomialinduction_push_first_domino')}
+                                              </button>
          <button onClick={resetDominoes} className={`flex-1 min-w-0 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors `}>
-          <RotateCcw size={18} /> Reset
-         </button>
+          <RotateCcw size={18} />  {t('lab.m11binomialinduction_reset')}
+                                              </button>
         </div>
         <div className="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-800 border border-indigo-100 mt-2 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
          {missingDomino === null ? 
@@ -234,14 +238,14 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
 
        <div className={`w-full max-w-md bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mt-4 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
         <div className="flex items-center justify-between">
-         <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Number of Rows:</label>
+         <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.m11binomialinduction_number_of_rows')}</label>
          <input type="range" min="3" max="10" value={pascalRows} onChange={e => {setPascalRows(parseInt(e.target.value)); setSelectedCell(null);}} className="w-1/2" />
          <span className="text-sm font-mono bg-slate-100 dark:bg-[#121212] px-2 rounded">{pascalRows}</span>
         </div>
 
         {selectedCell && (
          <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 flex flex-col items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
-          <div className="text-indigo-900 font-semibold mb-2 dark:text-[#ffffff]">Selected Coefficient</div>
+          <div className="text-indigo-900 font-semibold mb-2 dark:text-[#ffffff]">{t('lab.m11binomialinduction_selected_coefficient')}</div>
           <div className="flex items-center gap-4 text-xl font-mono text-indigo-800 dark:text-[#ffffff]">
            <div className="flex flex-col items-center justify-center">
             <span>{selectedCell.n}</span>
@@ -252,8 +256,9 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
            <span className="font-bold text-2xl">{nCr(selectedCell.n, selectedCell.k)}</span>
           </div>
           <div className="text-xs text-indigo-600 mt-3 text-center">
-           Row {selectedCell.n}, Item {selectedCell.k} (0-indexed)<br/>
-           Appears in expansion of {"$$ (x+y)^{" + selectedCell.n + "} $$"} as coefficient of {"$$ x^{" + (selectedCell.n - selectedCell.k) + "}y^{" + selectedCell.k + "} $$"}
+           
+                                                    {t('lab.m11binomialinduction_row')} {selectedCell.n}{t('lab.m11binomialinduction_item')} {selectedCell.k}  {t('lab.m11binomialinduction_0_indexed')}<br/>
+           <MathText>{t('lab.m11binomialinduction_appears_in_expansion_of')} {"$$ (x+y)^{" + selectedCell.n + "} $$"}  {t('lab.m11binomialinduction_as_coefficient_of')} {"$$ x^{" + (selectedCell.n - selectedCell.k) + "}y^{" + selectedCell.k + "} $$"}</MathText>
           </div>
          </div>
         )}
@@ -265,24 +270,25 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     {/* Right Column: Assessment */}
     <div className={`p-6 bg-slate-50 dark:bg-[#121212] border-l border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center gap-2">
-       Let's Solve
-     </h2>
+       
+                            {t('lab.m11binomialinduction_let_s_solve')}
+                          </h2>
 
      <div className="space-y-6">
       {mode === 'induction' && (
        <>
         <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. What is the name of the first step in Mathematical Induction, where you prove the statement holds for n=1?</p>
+         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">{t('lab.m11binomialinduction_q1_what_is_the_name_of_the_fir')}</p>
          <div className="flex items-center gap-3">
-          <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="e.g. Base step" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
+          <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder={t('lab.m11binomialinduction_e_g_base_step')} className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
           {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
         </div>
         <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. In the Inductive Step, you assume the statement is true for n = k. What do you then need to prove it is true for?</p>
+         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">{t('lab.m11binomialinduction_q2_in_the_inductive_step_you_a')}</p>
          <div className="flex items-center gap-3">
-          <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="e.g. k+1" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
+          <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder={t('lab.m11binomialinduction_e_g_k_1')} className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
           {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
           {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
          </div>
@@ -293,18 +299,18 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
       {mode === 'pascal' && (
        <>
         <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q1. What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4$?</p>
+         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium"><MathText>{t('lab.m11binomialinduction_q1_what_is_the_coefficient_of_')}</MathText></p>
          <div className="flex items-center gap-3">
-          <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
+          <input type="text" value={q1Ans} onChange={e => setQ1Ans(e.target.value)} placeholder={t('lab.m11binomialinduction_enter_number')} className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
           {feedback.q1 === true && <CheckCircle2 className="text-green-500" size={24} />}
           {feedback.q1 === false && <XCircle className="text-red-500" size={24} />}
          </div>
-         <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Hint: Look at Row 4 of Pascal's Triangle.</p>
+         <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">{t('lab.m11binomialinduction_hint_look_at_row_4_of_pascal_s')}</p>
         </div>
         <div className={`bg-slate-50 dark:bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium">Q2. Compute the value of $\binom{7}{3}$ (7 choose 3).</p>
+         <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 font-medium"><MathText>{t('lab.m11binomialinduction_q2_compute_the_value_of_binom')}{7}{3}{t('lab.m11binomialinduction_7_choose_3')}</MathText></p>
          <div className="flex items-center gap-3">
-          <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder="Enter number" className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
+          <input type="text" value={q2Ans} onChange={e => setQ2Ans(e.target.value)} placeholder={t('lab.m11binomialinduction_enter_number')} className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg p-2 text-sm" />
           {feedback.q2 === true && <CheckCircle2 className="text-green-500" size={24} />}
           {feedback.q2 === false && <XCircle className="text-red-500" size={24} />}
          </div>
@@ -313,8 +319,9 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
       )}
 
       <button onClick={checkAnswers} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl transition-colors shadow-md mt-4 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-       Check Answers
-      </button>
+       
+                                {t('lab.m11binomialinduction_check_answers')}
+                               </button>
      </div>
     </div>
    </div>

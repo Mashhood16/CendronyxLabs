@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { ArrowRight, Droplet, Sun, CheckCircle, AlertCircle, RefreshCw, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabC11EnvironmentalChem({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // State for Water Treatment
@@ -60,7 +62,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Environmental Chemistry Lab" />
+  <LabHeader onExit={onExit} title={t('lab.c11environmentalchem_environmental_chemistry_lab')} />
 
   {/* Main Grid */}
   
@@ -70,41 +72,45 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c11environmentalchem_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c11environmentalchem_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <Info className="w-5 h-5 text-emerald-600" /> Theory & Setup
-   </h2>
+   <Info className="w-5 h-5 text-emerald-600" />  {t('lab.c11environmentalchem_theory_setup')}
+                        </h2>
    
    <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
    <div className={`p-3 bg-emerald-50 rounded-lg border border-emerald-100 flex-col `}>
-    <h3 className="font-semibold text-emerald-800 mb-2">Water Treatment</h3>
-    <p>Municipal water treatment ensures safe drinking water through a specific sequence:</p>
+    <h3 className="font-semibold text-emerald-800 mb-2">{t('lab.c11environmentalchem_water_treatment')}</h3>
+    <p>{t('lab.c11environmentalchem_municipal_water_treatment_ensu')}</p>
     <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li><strong>Coagulation:</strong> Alum is added to neutralize charges on particles.</li>
-    <li><strong>Sedimentation:</strong> Flocs settle to the bottom due to gravity.</li>
-    <li><strong>Filtration:</strong> Water passes through sand/gravel beds.</li>
-    <li><strong>Chlorination:</strong> Disinfection kills remaining pathogens.</li>
+    <li><strong>{t('lab.c11environmentalchem_coagulation')}</strong>  {t('lab.c11environmentalchem_alum_is_added_to_neutralize_ch')}</li>
+    <li><strong>{t('lab.c11environmentalchem_sedimentation')}</strong>  {t('lab.c11environmentalchem_flocs_settle_to_the_bottom_due')}</li>
+    <li><strong>{t('lab.c11environmentalchem_filtration')}</strong>  {t('lab.c11environmentalchem_water_passes_through_sand_grav')}</li>
+    <li><strong>{t('lab.c11environmentalchem_chlorination')}</strong>  {t('lab.c11environmentalchem_disinfection_kills_remaining_p')}</li>
     </ul>
    </div>
 
    <div className={`p-3 bg-orange-50 rounded-lg border border-orange-100 flex-col `}>
-    <h3 className="font-semibold text-orange-800 mb-2">Photochemical Smog</h3>
-    <p>Smog forms when nitrogen oxides (NOx) and volatile organic compounds (VOCs) react in the presence of sunlight.</p>
+    <h3 className="font-semibold text-orange-800 mb-2">{t('lab.c11environmentalchem_photochemical_smog')}</h3>
+    <p>{t('lab.c11environmentalchem_smog_forms_when_nitrogen_oxide')}</p>
     <p className={`mt-2 text-xs font-mono bg-slate-50 dark:bg-[#121212] p-2 rounded flex-col `}>
-    NO2 + hv → NO + O<br/>
-    O + O2 → O3 (Ozone)<br/>
-    NO2 + VOCs → PAN (Peroxyacetyl nitrate)
-    </p>
+    
+                                 {t('lab.c11environmentalchem_no2_hv_no_o')}<br/>
+    
+                                 {t('lab.c11environmentalchem_o_o2_o3_ozone')}<br/>
+    
+                                 {t('lab.c11environmentalchem_no2_vocs_pan_peroxyacetyl_nitr')}
+                                 </p>
    </div>
    </div>
   </div>
@@ -116,20 +122,22 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
     onClick={() => setActiveTab('water')}
     className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${activeTab === 'water' ? 'bg-emerald-100 text-emerald-800 border-b-2 border-emerald-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
    >
-    Water Treatment
-   </button>
+    
+                             {t('lab.c11environmentalchem_water_treatment')}
+                            </button>
    <button 
     onClick={() => setActiveTab('smog')}
     className={`px-4 py-2 rounded-t-lg font-medium transition-colors ${activeTab === 'smog' ? 'bg-orange-100 text-orange-800 border-b-2 border-orange-600' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
    >
-    Smog Visualizer
-   </button>
+    
+                             {t('lab.c11environmentalchem_smog_visualizer')}
+                            </button>
    </div>
 
    {activeTab === 'water' && (
    <div className="flex-1 flex flex-col">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Sequence the Treatment Plant</h3>
-    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">Click the steps in the correct order to build the plant.</p>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c11environmentalchem_sequence_the_treatment_plant')}</h3>
+    <p className="text-sm text-slate-500 dark:text-[#71717a] mb-4">{t('lab.c11environmentalchem_click_the_steps_in_the_correct')}</p>
     
     <div className="flex gap-2 mb-6 flex-wrap">
     {availableSteps.map(step => (
@@ -146,7 +154,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
 
     <div className={`bg-slate-100 dark:bg-[#121212] rounded-xl p-4 flex-1 flex flex-col justify-center items-center relative overflow- border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] min-h-[200px] `}>
     {treatmentSteps.length === 0 ? (
-     <span className="text-slate-400">Plant sequence empty</span>
+     <span className="text-slate-400">{t('lab.c11environmentalchem_plant_sequence_empty')}</span>
     ) : (
      <div className="flex items-center gap-2 max-w-full overflow-x-auto p-4">
      <Droplet className="w-8 h-8 text-blue-400 animate-bounce shrink-0" />
@@ -164,11 +172,11 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
 
     <div className="mt-4 flex justify-between items-center">
     <button onClick={resetTreatment} className="flex items-center gap-1 text-slate-500 dark:text-[#71717a] hover:text-slate-700 dark:text-[#ffffff] text-sm">
-     <RefreshCw className="w-4 h-4" /> Reset
-    </button>
+     <RefreshCw className="w-4 h-4" />  {t('lab.c11environmentalchem_reset')}
+                                     </button>
     {treatmentSteps.length === 4 && (
      <div className={`flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-lg ${checkTreatment() ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-     {checkTreatment() ? <><CheckCircle className="w-4 h-4" /> Correct Sequence</> : <><AlertCircle className="w-4 h-4" /> Incorrect Sequence</>}
+     {checkTreatment() ? <><CheckCircle className="w-4 h-4" />  {t('lab.c11environmentalchem_correct_sequence')}</> : <><AlertCircle className="w-4 h-4" />  {t('lab.c11environmentalchem_incorrect_sequence')}</>}
      </div>
     )}
     </div>
@@ -177,26 +185,26 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
 
    {activeTab === 'smog' && (
    <div className="flex-1 flex flex-col">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">Photochemical Smog Simulator</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.c11environmentalchem_photochemical_smog_simulator')}</h3>
     
     <div className="space-y-4 mb-6">
      <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-      <span>Sunlight Intensity</span>
+      <span>{t('lab.c11environmentalchem_sunlight_intensity')}</span>
       <span>{sunlight}%</span>
      </label>
      <input type="range" min="0" max="100" value={sunlight} onChange={e => setSunlight(Number(e.target.value))} className="w-full accent-yellow-500" />
      </div>
      <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-      <span>VOCs (Unburned fuel, solvents)</span>
+      <span>{t('lab.c11environmentalchem_vocs_unburned_fuel_solvents')}</span>
       <span>{vocs}%</span>
      </label>
      <input type="range" min="0" max="100" value={vocs} onChange={e => setVocs(Number(e.target.value))} className="w-full accent-orange-500" />
      </div>
      <div>
      <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-      <span>NOx (Vehicle exhaust)</span>
+      <span>{t('lab.c11environmentalchem_nox_vehicle_exhaust')}</span>
       <span>{nox}%</span>
      </label>
      <input type="range" min="0" max="100" value={nox} onChange={e => setNox(Number(e.target.value))} className="w-full accent-red-500" />
@@ -214,7 +222,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
      <div className="w-8 h-24 bg-slate-700 dark:bg-[#121212]" />
      <div className="w-12 h-32 bg-slate-600 dark:bg-[#121212]" />
      <div className="w-10 h-16 bg-slate-700 dark:bg-[#121212]" />
-     <div className="w-16 h-20 bg-slate-500 dark:bg-[#121212]" />
+     <div className="w-16 h-20 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212]" />
      <div className="w-8 h-28 bg-slate-700 dark:bg-[#121212]" />
      </div>
 
@@ -226,8 +234,9 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
 
      {/* Indicator */}
      <div className="absolute top-4 left-4 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded shadow backdrop-blur-sm text-sm font-bold text-slate-800 dark:text-[#ffffff]">
-     Ozone / PAN Level: {calculateOzone().toFixed(0)} AQI
-     </div>
+     
+                                      {t('lab.c11environmentalchem_ozone_pan_level')} {calculateOzone().toFixed(0)}  {t('lab.c11environmentalchem_aqi')}
+                                      </div>
     </div>
    </div>
    )}
@@ -236,18 +245,18 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
   {/* Column 3: Analysis/Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <CheckCircle className="w-5 h-5 text-emerald-600" /> Analysis & Assessment
-   </h2>
+   <CheckCircle className="w-5 h-5 text-emerald-600" />  {t('lab.c11environmentalchem_analysis_assessment')}
+                        </h2>
    
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Water Plant Operations Log</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c11environmentalchem_water_plant_operations_log')}</h3>
    <div className="overflow-x-auto">
     <table className="w-full text-sm text-left">
     <thead>
      <tr className="border-b border-slate-300 dark:border-[#1c1b1b]">
-     <th className="py-2">Step</th>
-     <th className="py-2">Process</th>
-     <th className="py-2">Status</th>
+     <th className="py-2">{t('lab.c11environmentalchem_step')}</th>
+     <th className="py-2">{t('lab.c11environmentalchem_process')}</th>
+     <th className="py-2">{t('lab.c11environmentalchem_status')}</th>
      </tr>
     </thead>
     <tbody>
@@ -257,9 +266,9 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
       <td className="py-2">{treatmentSteps[i] || '-'}</td>
       <td className="py-2">
       {treatmentSteps[i] === correctSequence[i] ? (
-       <span className="text-green-600">Optimal</span>
+       <span className="text-green-600">{t('lab.c11environmentalchem_optimal')}</span>
       ) : treatmentSteps[i] ? (
-       <span className="text-red-500">Error</span>
+       <span className="text-red-500">{t('lab.c11environmentalchem_error')}</span>
       ) : '-'}
       </td>
      </tr>
@@ -270,26 +279,26 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
    </div>
 
    <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b] shrink-0">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Chlorination Calculation</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c11environmentalchem_chlorination_calculation')}</h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    A water treatment plant processes <strong>{waterVolume} ML</strong> (megaliters) of water per day. 
-    The target chlorine dose is <strong>{targetDose} mg/L</strong>. 
-    Calculate the mass of chlorine required in <strong>kg/day</strong>.
+    
+                             {t('lab.c11environmentalchem_a_water_treatment_plant_proces')} <strong>{waterVolume} ML</strong>  {t('lab.c11environmentalchem_megaliters_of_water_per_day_th')} <strong>{targetDose}  {t('lab.c11environmentalchem_mg_l')}</strong>{t('lab.c11environmentalchem_calculate_the_mass_of_chlorine')} <strong>{t('lab.c11environmentalchem_kg_day')}</strong>.
    </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     value={chlorineVolume}
     onChange={e => setChlorineVolume(e.target.value)}
-    placeholder="Mass in kg" 
+    placeholder={t('lab.c11environmentalchem_mass_in_kg')} 
     className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 min-w-0"
     />
     <button 
     onClick={checkAssessment}
     className="bg-emerald-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-emerald-700 transition-colors shrink-0 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.c11environmentalchem_check')}
+                                 </button>
    </div>
    {assessmentFeedback && (
     <div className={`mt-3 p-3 rounded text-sm font-medium ${assessmentFeedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>

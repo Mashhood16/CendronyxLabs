@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { Wind, Info, Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6LungModel({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [inhale, setInhale] = useState(false);
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 4: Working Model of Lungs" />
+  <LabHeader onExit={onExit} title={t('lab.s6lungmodel_unit_4_working_model_of_lungs')} />
 
   <div className="flex-1 flex flex-col p-8 items-center lg:overflow-y-auto">
   <div className="w-full max-w-5xl bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex gap-8">
@@ -20,32 +22,33 @@ export default function LabS6LungModel({ onExit }: LabProps) {
     <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-xl mb-8 flex gap-4">
     <Info className="w-8 h-8 shrink-0 mt-1" />
     <div>
-     <h2 className="font-bold text-lg mb-2">Build a Breathing Model</h2>
+     <h2 className="font-bold text-lg mb-2">{t('lab.s6lungmodel_build_a_breathing_model')}</h2>
      <p className="text-sm leading-relaxed mb-4">
-     In this project, you will build a functional model of the human respiratory system using a plastic bottle, a Y-shaped tube, and balloons. This demonstrates how the diaphragm controls breathing.
-     </p>
+     
+                                      {t('lab.s6lungmodel_in_this_project_you_will_build')}
+                                      </p>
      <ul className="list-disc pl-5 text-sm space-y-1 font-medium">
-     <li>Plastic Bottle = Chest Cavity</li>
-     <li>Y-Tube = Trachea & Bronchi</li>
-     <li>Small Balloons = Lungs</li>
-     <li>Rubber Sheet (Balloon) = Diaphragm</li>
+     <li>{t('lab.s6lungmodel_plastic_bottle_chest_cavity')}</li>
+     <li>{t('lab.s6lungmodel_y_tube_trachea_bronchi')}</li>
+     <li>{t('lab.s6lungmodel_small_balloons_lungs')}</li>
+     <li>{t('lab.s6lungmodel_rubber_sheet_balloon_diaphragm')}</li>
      </ul>
     </div>
     </div>
 
     <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-xl p-6">
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-4">Upload Assignment</h3>
+    <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.s6lungmodel_upload_assignment')}</h3>
     <div className="p-8 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-xl mb-4 bg-slate-50 dark:bg-[#121212] hover:bg-slate-100 dark:bg-[#121212] transition-colors cursor-pointer">
      <ImageIcon className="w-12 h-12 mx-auto mb-2 opacity-50" />
-     <span className="font-medium text-slate-600 dark:text-[#a1a1aa]">Upload a video or photo of your working model</span>
+     <span className="font-medium text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6lungmodel_upload_a_video_or_photo_of_you')}</span>
     </div>
-    <button className="w-full py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">Submit Project</button>
+    <button className="w-full py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">{t('lab.s6lungmodel_submit_project')}</button>
     </div>
    </div>
 
    <div className="w-96 bg-slate-100 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">Interactive Diagram</h3>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] text-center mb-8">Pull the diaphragm down to inhale.</p>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 text-center">{t('lab.s6lungmodel_interactive_diagram')}</h3>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] text-center mb-8">{t('lab.s6lungmodel_pull_the_diaphragm_down_to_inh')}</p>
 
     <div className="relative w-48 h-64 mb-8">
     {/* Trachea (Y-tube main) */}
@@ -77,7 +80,7 @@ export default function LabS6LungModel({ onExit }: LabProps) {
      onTouchStart={() => setInhale(true)}
      onTouchEnd={() => setInhale(false)}
      >
-     <span className="text-white text-xs font-bold pointer-events-none mt-2">Pull Me</span>
+     <span className="text-white text-xs font-bold pointer-events-none mt-2">{t('lab.s6lungmodel_pull_me')}</span>
      </div>
     </div>
     </div>

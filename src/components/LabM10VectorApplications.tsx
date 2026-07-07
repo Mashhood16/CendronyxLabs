@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle2, XCircle, Navigation, Anchor, Compass } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabM10VectorApplications({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [scenario, setScenario] = useState<'aviation' | 'river' | 'tractor'>('aviation');
 
@@ -58,7 +60,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Vector Applications Lab" />
+  <LabHeader onExit={onExit} title={t('lab.m10vectorapplications_vector_applications_lab')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -67,77 +69,85 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10vectorapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10vectorapplications_lab')}</button>
   </div>
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Formulas</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.m10vectorapplications_theory_formulas')}</h2>
    <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <p><strong>Vectors</strong> have both magnitude (size) and direction (angle).</p>
-   <p>To add two vectors, we resolve them into their horizontal (X) and vertical (Y) components:</p>
+   <p><strong>{t('lab.m10vectorapplications_vectors')}</strong>  {t('lab.m10vectorapplications_have_both_magnitude_size_and_d')}</p>
+   <p>{t('lab.m10vectorapplications_to_add_two_vectors_we_resolve_')}</p>
    <div className={`bg-blue-50 p-3 rounded-lg font-mono text-sm dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    X = Magnitude × cos(θ)<br/>
-    Y = Magnitude × sin(θ)
-   </div>
+    
+                             {t('lab.m10vectorapplications_x_magnitude_cos')}<br/>
+    
+                             {t('lab.m10vectorapplications_y_magnitude_sin')}
+                            </div>
    
-   <p><strong>Resultant Vector</strong></p>
-   <p>The sum of the vectors is the Resultant Vector, found by adding the individual components:</p>
+   <p><strong>{t('lab.m10vectorapplications_resultant_vector')}</strong></p>
+   <p>{t('lab.m10vectorapplications_the_sum_of_the_vectors_is_the_')}</p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg font-mono text-sm flex-col `}>
-    Rₓ = X₁ + X₂<br/>
-    Rₗ = Y₁ + Y₂
-   </div>
+    
+                             {t('lab.m10vectorapplications_r_x_x')}<br/>
+    
+                             {t('lab.m10vectorapplications_r_y_y')}
+                            </div>
    
-   <p>To find the Resultant Magnitude and Angle:</p>
+   <p>{t('lab.m10vectorapplications_to_find_the_resultant_magnitud')}</p>
    <div className={`bg-green-50 p-3 rounded-lg font-mono text-sm dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    |R| = √(Rₓ² + Rₗ²)<br/>
-    θ = tan⁻¹(Rₗ / Rₓ)
-   </div>
+    
+                             {t('lab.m10vectorapplications_r_r_r')}<br/>
+    
+                             {t('lab.m10vectorapplications_tan_r_r')}
+                            </div>
    
    <div className="text-xs text-slate-500 dark:text-[#71717a] mt-4">
-    * Note: In this lab, standard mathematical degrees are used (0° is East, 90° is North).
-   </div>
+    
+                             {t('lab.m10vectorapplications_note_in_this_lab_standard_math')}
+                            </div>
    </div>
   </div>
 
   {/* Interactive Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex space-x-2 mb-6 text-sm">
    <button 
     onClick={() => setScenario('aviation')}
     className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'aviation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
    >
-    <Navigation size={16} className="mr-1" /> Aviation
-   </button>
+    <Navigation size={16} className="mr-1" />  {t('lab.m10vectorapplications_aviation')}
+                            </button>
    <button 
     onClick={() => setScenario('river')}
     className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'river' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
    >
-    <Anchor size={16} className="mr-1" /> River
-   </button>
+    <Anchor size={16} className="mr-1" />  {t('lab.m10vectorapplications_river')}
+                            </button>
    <button 
     onClick={() => setScenario('tractor')}
     className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${scenario === 'tractor' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
    >
-    <Compass size={16} className="mr-1" /> Forces
-   </button>
+    <Compass size={16} className="mr-1" />  {t('lab.m10vectorapplications_forces')}
+                            </button>
    </div>
 
    {/* Visualizer */}
-   <div className="relative h-64 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl mb-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-inner flex items-center justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+   <div className="relative h-64 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl mb-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-inner flex items-center justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
    <svg viewBox="0 0 400 400" className="w-full h-full bg-slate-50 dark:bg-[#121212]">
     {/* Grid lines */}
     <line x1="0" y1="200" x2="400" y2="200" stroke="#cbd5e1" strokeWidth="1" />
     <line x1="200" y1="0" x2="200" y2="400" stroke="#cbd5e1" strokeWidth="1" />
     
     {/* Labels */}
-    <text x="380" y="215" fontSize="12" fill="#64748b">E(0°)</text>
-    <text x="210" y="20" fontSize="12" fill="#64748b">N(90°)</text>
+    <text x="380" y="215" fontSize="12" fill="#64748b">{t('lab.m10vectorapplications_e_0')}</text>
+    <text x="210" y="20" fontSize="12" fill="#64748b">{t('lab.m10vectorapplications_n_90')}</text>
     
     {/* Vector 1 */}
     <line x1={originX} y1={originY} x2={v1x} y2={v1y} stroke="#3b82f6" strokeWidth="3" markerEnd="url(#arrow-blue)" />
@@ -165,17 +175,17 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
    {/* Sliders */}
    <div className="grid grid-cols-2 gap-4">
    <div className="space-y-4">
-    <h3 className="text-sm font-bold text-blue-600 border-b pb-1">Vector 1 (Blue)</h3>
+    <h3 className="text-sm font-bold text-blue-600 border-b pb-1">{t('lab.m10vectorapplications_vector_1_blue')}</h3>
     <div>
     <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Magnitude</span>
+     <span>{t('lab.m10vectorapplications_magnitude')}</span>
      <span>{mag1}</span>
     </div>
     <input type="range" min="0" max={maxMag} step="1" value={mag1} onChange={e => setMag1(Number(e.target.value))} className="w-full accent-blue-600" />
     </div>
     <div>
     <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Angle (°)</span>
+     <span>{t('lab.m10vectorapplications_angle')}</span>
      <span>{ang1}°</span>
     </div>
     <input type="range" min="0" max="360" step="1" value={ang1} onChange={e => setAng1(Number(e.target.value))} className="w-full accent-blue-600" />
@@ -183,17 +193,17 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
    </div>
 
    <div className="space-y-4">
-    <h3 className="text-sm font-bold text-red-500 border-b pb-1">Vector 2 (Red)</h3>
+    <h3 className="text-sm font-bold text-red-500 border-b pb-1">{t('lab.m10vectorapplications_vector_2_red')}</h3>
     <div>
     <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Magnitude</span>
+     <span>{t('lab.m10vectorapplications_magnitude')}</span>
      <span>{mag2}</span>
     </div>
     <input type="range" min="0" max={maxMag} step="1" value={mag2} onChange={e => setMag2(Number(e.target.value))} className="w-full accent-red-500" />
     </div>
     <div>
     <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Angle (°)</span>
+     <span>{t('lab.m10vectorapplications_angle')}</span>
      <span>{ang2}°</span>
     </div>
     <input type="range" min="0" max="360" step="1" value={ang2} onChange={e => setAng2(Number(e.target.value))} className="w-full accent-red-500" />
@@ -204,11 +214,11 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
 
   {/* Assessment Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Data Analysis</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.m10vectorapplications_data_analysis')}</h2>
    <div className="flex-1 min-w-0 space-y-4">
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-2">Given the vectors, what is the magnitude of the resultant vector?</p>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">(Round to 1 decimal place)</p>
+    <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-2">{t('lab.m10vectorapplications_given_the_vectors_what_is_the_')}</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">{t('lab.m10vectorapplications_round_to_1_decimal_place')}</p>
     
     <div className="flex items-center space-x-3">
     <input 
@@ -224,8 +234,8 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-2">What is the angle (in standard degrees) of the resultant vector?</p>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">(Round to 1 decimal place, between 0 and 360)</p>
+    <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-2">{t('lab.m10vectorapplications_what_is_the_angle_in_standard_')}</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">{t('lab.m10vectorapplications_round_to_1_decimal_place_betwe')}</p>
     
     <div className="flex items-center space-x-3">
     <input 
@@ -244,8 +254,9 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
     onClick={checkAnswers}
     className="w-full mt-4 px-4 py-3 bg-[#121212] dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors font-medium"
    >
-    Check Answers
-   </button>
+    
+                             {t('lab.m10vectorapplications_check_answers')}
+                            </button>
    </div>
   </div>
   </div>

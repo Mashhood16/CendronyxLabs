@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, Anchor, CheckCircle2, XCircle, RefreshCw , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 interface Question {
  id: number;
@@ -61,6 +62,7 @@ const QUESTIONS: Question[] = [
 ];
 
 export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
  const [selectedConjunction, setSelectedConjunction] = useState<string | null>(null);
@@ -118,7 +120,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
    {/* Island A */}
    <div className="w-1/3 flex flex-col items-center">
    <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">Clause A</span>
+    <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">{t('lab.e7conjunctions_clause_a')}</span>
    </div>
    </div>
 
@@ -126,8 +128,9 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
    <div className="w-1/3 flex flex-col items-center justify-center relative h-full">
    {bridgeStatus === 'broken' && selectedConjunction && feedback !== 'incorrect' && (
     <div className="text-slate-400 dark:text-[#71717a] font-medium mb-2 animate-pulse text-sm">
-    Ready to build...
-    </div>
+    
+                             {t('lab.e7conjunctions_ready_to_build')}
+                             </div>
    )}
    
    {/* The Bridge */}
@@ -152,15 +155,16 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
 
    {bridgeStatus === 'building' && (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-12 text-amber-600 dark:text-amber-500 font-bold animate-bounce text-sm">
-    Building...
-    </div>
+    
+                             {t('lab.e7conjunctions_building')}
+                             </div>
    )}
    </div>
 
    {/* Island B */}
    <div className="w-1/3 flex flex-col items-center">
     <div className="w-24 h-24 sm:w-32 sm:h-32 bg-emerald-500 rounded-full border-b-8 border-emerald-700 shadow-lg flex items-center justify-center p-4 text-center transform transition-transform hover:scale-105 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">Clause B</span>
+    <span className="text-white font-bold text-sm sm:text-base drop-shadow-md">{t('lab.e7conjunctions_clause_b')}</span>
    </div>
    </div>
   </div>
@@ -182,22 +186,25 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
    </button>
    <div>
    <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-[#ffffff]">
-    Clause Bridge Builder
-   </h1>
+    
+                             {t('lab.e7conjunctions_clause_bridge_builder')}
+                            </h1>
    <p className="text-sm text-slate-500 dark:text-[#71717a]">
-    Class 7 English: Conjunctions & Connectives
-   </p>
+    
+                             {t('lab.e7conjunctions_class_7_english_conjunctions_c')}
+                            </p>
    </div>
   </div>
   <div className="flex items-center gap-2">
    <span className="font-semibold text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/30 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
-   Score: {score}
+   
+                        {t('lab.e7conjunctions_score')} {score}
    </span>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -211,18 +218,21 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
    <div className="mb-6">
    <h2 className="text-lg font-bold mb-2 flex items-center gap-2 text-amber-700 dark:text-amber-500">
     <Anchor className="w-5 h-5" />
-    Engineering Bay
-   </h2>
+    
+                             {t('lab.e7conjunctions_engineering_bay')}
+                            </h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm">
-    Connect the two sentence clauses by selecting the correct conjunction block to build a sturdy bridge.
-   </p>
+    
+                             {t('lab.e7conjunctions_connect_the_two_sentence_claus')}
+                            </p>
    </div>
 
    <div className="flex-1 flex flex-col justify-between">
    <div>
     {/* Type Badge */}
     <div className="inline-block mb-4 px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#1c1b1b]">
-    Type: {currentQ.conjunctionType}
+    
+                                 {t('lab.e7conjunctions_type')} {currentQ.conjunctionType}
     </div>
 
     {/* The Sentence */}
@@ -259,8 +269,9 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
     <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-lg">
      <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold mb-1">
      <CheckCircle2 className="w-5 h-5" />
-     Bridge built successfully!
-     </div>
+     
+                                          {t('lab.e7conjunctions_bridge_built_successfully')}
+                                          </div>
      <p className="text-sm text-emerald-600 dark:text-emerald-500">{currentQ.explanation}</p>
     </div>
     )}
@@ -268,7 +279,7 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
     {feedback === 'incorrect' && (
     <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-lg flex items-center gap-2">
      <XCircle className="w-5 h-5 text-red-500" />
-     <span className="text-red-700 dark:text-red-400 font-medium">The bridge collapsed! Wrong conjunction structure.</span>
+     <span className="text-red-700 dark:text-red-400 font-medium">{t('lab.e7conjunctions_the_bridge_collapsed_wrong_con')}</span>
     </div>
     )}
 
@@ -278,16 +289,18 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
      disabled={!selectedConjunction || bridgeStatus !== 'broken' || feedback === 'correct'}
      className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white font-bold rounded-xl shadow-md transition-all active:scale-95 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
     >
-     Build Bridge
-    </button>
+     
+                                      {t('lab.e7conjunctions_build_bridge')}
+                                     </button>
     
     {feedback === 'correct' && (
      <button
      onClick={handleNext}
      className="flex-1 whitespace-nowrap flex-shrink-0 py-3 sm:py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
      >
-     Next Challenge
-     <RefreshCw className="w-5 h-5" />
+     
+                                          {t('lab.e7conjunctions_next_challenge')}
+                                          <RefreshCw className="w-5 h-5" />
      </button>
     )}
     </div>
@@ -297,25 +310,25 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
 
   {/* Right Column: Simulation Canvas */}
   <section className="w-full lg:w-1/2 p-6 bg-slate-100 dark:bg-[#121212]/50 lg:overflow-y-auto flex flex-col">
-   <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Live Simulation</h2>
+   <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.e7conjunctions_live_simulation')}</h2>
    
    <div className="flex-1 flex flex-col justify-center">
    {renderSimulation()}
 
    <div className="mt-8 bg-white dark:!bg-[#121212] p-5 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Bridge Types (Conjunctions)</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.e7conjunctions_bridge_types_conjunctions')}</h3>
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
     <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
-     <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">Coordinating</strong>
-     <span className="text-slate-600 dark:text-[#71717a]">Connects equal parts (FANBOYS: for, and, nor, but, or, yet, so)</span>
+     <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">{t('lab.e7conjunctions_coordinating')}</strong>
+     <span className="text-slate-600 dark:text-[#71717a]">{t('lab.e7conjunctions_connects_equal_parts_fanboys_f')}</span>
     </div>
     <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
-     <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">Subordinating</strong>
-     <span className="text-slate-600 dark:text-[#71717a]">Connects a dependent clause to an independent one (because, although, if)</span>
+     <strong className="block text-indigo-600 dark:text-indigo-400 mb-1">{t('lab.e7conjunctions_subordinating')}</strong>
+     <span className="text-slate-600 dark:text-[#71717a]">{t('lab.e7conjunctions_connects_a_dependent_clause_to')}</span>
     </div>
     <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded">
-     <strong className="block text-rose-600 dark:text-rose-400 mb-1">Connective</strong>
-     <span className="text-slate-600 dark:text-[#71717a]">Transitions between ideas in separate sentences (however, therefore)</span>
+     <strong className="block text-rose-600 dark:text-rose-400 mb-1">{t('lab.e7conjunctions_connective')}</strong>
+     <span className="text-slate-600 dark:text-[#71717a]">{t('lab.e7conjunctions_transitions_between_ideas_in_s')}</span>
     </div>
     </div>
    </div>

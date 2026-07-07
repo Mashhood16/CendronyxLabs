@@ -1,55 +1,57 @@
 import { BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7Unit4Projects({ onExit }: LabProps) {
+    const { t } = useTranslate();
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 4: Physical and Chemical Changes Projects" />
+  <LabHeader onExit={onExit} title={t('lab.s7unit4projects_unit_4_physical_and_chemical_c')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-4xl w-full">
    <div className="flex items-center mb-8">
    <div className="bg-amber-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-amber-600" /></div>
    <div>
-    <h2 className="text-3xl font-bold text-slate-800 dark:text-[#ffffff]">Comparative Poster Assignment</h2>
-    <p className="text-slate-500 dark:text-[#71717a]">Project Work Submission Guide</p>
+    <h2 className="text-3xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.s7unit4projects_comparative_poster_assignment')}</h2>
+    <p className="text-slate-500 dark:text-[#71717a]">{t('lab.s7unit4projects_project_work_submission_guide')}</p>
    </div>
    </div>
 
    <div className="prose prose-slate dark:prose-invert max-w-none">
-   <h3>Objective</h3>
-   <p>Make a poster to visually compare physical and chemical changes in everyday life. Divide your chart paper down the middle.</p>
+   <h3>{t('lab.s7unit4projects_objective')}</h3>
+   <p>{t('lab.s7unit4projects_make_a_poster_to_visually_comp')}</p>
    
    <div className="grid grid-cols-2 gap-8 mt-6">
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <h4 className="mt-0">Physical Changes</h4>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">No new substance is formed. The change is usually reversible.</p>
+    <h4 className="mt-0">{t('lab.s7unit4projects_physical_changes')}</h4>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s7unit4projects_no_new_substance_is_formed_the')}</p>
     <ul>
-     <li>Melting ice</li>
-     <li>Tearing paper</li>
-     <li>Chopping wood</li>
-     <li>Boiling water</li>
+     <li>{t('lab.s7unit4projects_melting_ice')}</li>
+     <li>{t('lab.s7unit4projects_tearing_paper')}</li>
+     <li>{t('lab.s7unit4projects_chopping_wood')}</li>
+     <li>{t('lab.s7unit4projects_boiling_water')}</li>
     </ul>
     </div>
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <h4 className="mt-0">Chemical Changes</h4>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">A new substance with different properties is formed. Usually irreversible.</p>
+    <h4 className="mt-0">{t('lab.s7unit4projects_chemical_changes')}</h4>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s7unit4projects_a_new_substance_with_different')}</p>
     <ul>
-     <li>Burning wood</li>
-     <li>Rusting iron</li>
-     <li>Baking a cake</li>
-     <li>Digesting food</li>
+     <li>{t('lab.s7unit4projects_burning_wood')}</li>
+     <li>{t('lab.s7unit4projects_rusting_iron')}</li>
+     <li>{t('lab.s7unit4projects_baking_a_cake')}</li>
+     <li>{t('lab.s7unit4projects_digesting_food')}</li>
     </ul>
     </div>
    </div>
 
    <div className="bg-blue-50 p-6 rounded-xl border border-blue-200 mt-8 dark:bg-teal-950/20 dark:border-teal-900">
-    <h4 className="text-blue-800 font-bold mt-0 dark:text-[#ffffff]">Design Requirements</h4>
-    <p className="text-blue-700 mb-0">You must draw or paste pictures for at least 5 examples in each column. Ensure the definitions of both types of changes are clearly written at the top of the poster.</p>
+    <h4 className="text-blue-800 font-bold mt-0 dark:text-[#ffffff]">{t('lab.s7unit4projects_design_requirements')}</h4>
+    <p className="text-blue-700 mb-0">{t('lab.s7unit4projects_you_must_draw_or_paste_picture')}</p>
    </div>
    </div>
   </div>

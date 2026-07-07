@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {Flame } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,6 +12,7 @@ const MATERIALS = [
 ];
 
 export default function LabS8ThermalConductivity({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState(MATERIALS[0]);
  const [heating, setHeating] = useState(false);
  const [temp, setTemp] = useState(0); // 0 to 100
@@ -38,12 +40,12 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 5.6: Thermal Conductivity" subtitle="Observe how heat travels through materials" />
+  <LabHeader onExit={onExit} title={t('lab.s8thermalconductivity_act_5_6_thermal_conductivity')} subtitle={t('lab.subtitle_observe_heat_travels')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Rod</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8thermalconductivity_select_rod')}</h3>
    {MATERIALS.map(m => (
    <button 
     key={m.id}
@@ -117,11 +119,12 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
     onClick={() => setHeating(true)}
     className="bg-orange-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-orange-700 text-xl shadow-[0_0_20px_rgba(234,88,12,0.4)] flex items-center gap-2 mx-auto transition-transform active:scale-95 dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
     >
-    🔥 Turn on Burner
-    </button>
+    
+                                 {t('lab.s8thermalconductivity_turn_on_burner')}
+                                 </button>
    ) : (
     <div className={`px-6 py-4 rounded-xl border border-[#1c1b1b] dark:border-slate-500 animate-fade-in ${temp >= 95 ? (selected.conducts ? 'bg-red-900/50 text-red-200' : 'bg-[#121212] dark:bg-[#121212] text-slate-300') : 'bg-[#121212] dark:bg-[#121212] text-slate-300'}`}>
-    <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
+    <h3 className="font-bold text-lg mb-1">{selected.name}  {t('lab.s8thermalconductivity_is_a')} {selected.type.toUpperCase()}</h3>
     <p className="text-sm">
      {selected.conducts 
      ? "The heat traveled quickly! Metals are GOOD conductors of heat." 

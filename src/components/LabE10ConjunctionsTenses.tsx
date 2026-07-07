@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, Clock, Settings, Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10ConjunctionsTensesProps {
  onExit?: () => void;
@@ -17,6 +18,7 @@ const TENSES_TIMELINE = [
 ];
 
 export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10ConjunctionsTensesProps) {
+    const { t } = useTranslate();
  const [timelineIndex, setTimelineIndex] = useState(5); // Default to Present Indefinite
  
  const [assessmentAnswers, setAssessmentAnswers] = useState<Record<number, number>>({});
@@ -57,7 +59,7 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
 
  return (
  <div className="min-min- lg: flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 4: Chronology & Connections" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e10conjunctionstenses_unit_4_chronology_connections')} variant="dark" onExit={onExit} />
 
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -65,12 +67,13 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e10conjunctionstenses_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e10conjunctionstenses_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -79,69 +82,69 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-[#2a2a2a]">
    <BookOpen className="w-5 h-5 text-[#4158D1]" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Grammar Theory</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10conjunctionstenses_grammar_theory')}</h2>
    </div>
    
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-2 mb-2">1. Conjunctions</h3>
-   <p>Conjunctions are words that connect words, phrases, or clauses. Understanding how they function is crucial for creating coherent and structurally sound sentences.</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-2 mb-2">{t('lab.e10conjunctionstenses_1_conjunctions')}</h3>
+   <p>{t('lab.e10conjunctionstenses_conjunctions_are_words_that_co')}</p>
    
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Coordinating Conjunctions</h4>
-   <p>These join elements of equal grammatical rank. The most common ones can be remembered with the acronym <strong>FANBOYS</strong>: For, And, Nor, But, Or, Yet, So.</p>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_coordinating_conjunctions')}</h4>
+   <p>{t('lab.e10conjunctionstenses_these_join_elements_of_equal_g')} <strong>{t('lab.e10conjunctionstenses_fanboys')}</strong>{t('lab.e10conjunctionstenses_for_and_nor_but_or_yet_so')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>And:</strong> Adds information (e.g., "I like apples <em>and</em> oranges.")</li>
-    <li><strong>But:</strong> Shows contrast (e.g., "It is raining, <em>but</em> we will go.")</li>
+    <li><strong>{t('lab.e10conjunctionstenses_and')}</strong>  {t('lab.e10conjunctionstenses_adds_information_e_g_i_like_ap')} <em>{t('lab.e10conjunctionstenses_and_1')}</em>  {t('lab.e10conjunctionstenses_oranges')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_but')}</strong>  {t('lab.e10conjunctionstenses_shows_contrast_e_g_it_is_raini')} <em>{t('lab.e10conjunctionstenses_but_1')}</em>  {t('lab.e10conjunctionstenses_we_will_go')}</li>
    </ul>
 
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Correlative Conjunctions</h4>
-   <p>These work in pairs to join equal elements. Common pairs include:</p>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_correlative_conjunctions')}</h4>
+   <p>{t('lab.e10conjunctionstenses_these_work_in_pairs_to_join_eq')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><em>Either / Or:</em> Offers a choice between two options.</li>
-    <li><em>Neither / Nor:</em> Negates both options.</li>
-    <li><em>Not only / But also:</em> Emphasizes addition.</li>
+    <li><em>{t('lab.e10conjunctionstenses_either_or')}</em>  {t('lab.e10conjunctionstenses_offers_a_choice_between_two_op')}</li>
+    <li><em>{t('lab.e10conjunctionstenses_neither_nor')}</em>  {t('lab.e10conjunctionstenses_negates_both_options')}</li>
+    <li><em>{t('lab.e10conjunctionstenses_not_only_but_also')}</em>  {t('lab.e10conjunctionstenses_emphasizes_addition')}</li>
    </ul>
    
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Subordinating Conjunctions</h4>
-   <p>These introduce dependent clauses and show the relationship between the dependent and independent clauses.</p>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_subordinating_conjunctions')}</h4>
+   <p>{t('lab.e10conjunctionstenses_these_introduce_dependent_clau')}</p>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>Reason:</strong> Because, since, as (e.g., "We stayed in <em>because</em> it was raining.")</li>
-    <li><strong>Concession:</strong> Although, though, even though (e.g., "<em>Although</em> it was late, he kept working.")</li>
-    <li><strong>Condition:</strong> If, unless, provided that (e.g., "You will fail <em>unless</em> you study.")</li>
-    <li><strong>Time:</strong> When, while, before, after (e.g., "Call me <em>when</em> you arrive.")</li>
+    <li><strong>{t('lab.e10conjunctionstenses_reason')}</strong>  {t('lab.e10conjunctionstenses_because_since_as_e_g_we_stayed')} <em>{t('lab.e10conjunctionstenses_because')}</em>  {t('lab.e10conjunctionstenses_it_was_raining')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_concession')}</strong>  {t('lab.e10conjunctionstenses_although_though_even_though_e_')}<em>{t('lab.e10conjunctionstenses_although')}</em>  {t('lab.e10conjunctionstenses_it_was_late_he_kept_working')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_condition')}</strong>  {t('lab.e10conjunctionstenses_if_unless_provided_that_e_g_yo')} <em>{t('lab.e10conjunctionstenses_unless')}</em>  {t('lab.e10conjunctionstenses_you_study')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_time')}</strong>  {t('lab.e10conjunctionstenses_when_while_before_after_e_g_ca')} <em>{t('lab.e10conjunctionstenses_when')}</em>  {t('lab.e10conjunctionstenses_you_arrive')}</li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-8 mb-2">2. Tenses</h3>
-   <p>Tenses indicate the time of an action or state of being. English has three main time frames: Past, Present, and Future, each subdivided into four aspects.</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-8 mb-2">{t('lab.e10conjunctionstenses_2_tenses')}</h3>
+   <p>{t('lab.e10conjunctionstenses_tenses_indicate_the_time_of_an')}</p>
 
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Present Tense</h4>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_present_tense')}</h4>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>Indefinite (Simple):</strong> Habitual actions or general truths (e.g., "He <em>finishes</em> the report.")</li>
-    <li><strong>Continuous:</strong> Actions happening right now (e.g., "He <em>is finishing</em> the report.")</li>
-    <li><strong>Perfect:</strong> Actions completed in the past with a connection to the present (e.g., "He <em>has finished</em> the report.")</li>
-    <li><strong>Perfect Continuous:</strong> Actions that started in the past and continue into the present (e.g., "He <em>has been finishing</em> the report.")</li>
+    <li><strong>{t('lab.e10conjunctionstenses_indefinite_simple')}</strong>  {t('lab.e10conjunctionstenses_habitual_actions_or_general_tr')} <em>{t('lab.e10conjunctionstenses_finishes')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_continuous')}</strong>  {t('lab.e10conjunctionstenses_actions_happening_right_now_e_')} <em>{t('lab.e10conjunctionstenses_is_finishing')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_perfect')}</strong>  {t('lab.e10conjunctionstenses_actions_completed_in_the_past_')} <em>{t('lab.e10conjunctionstenses_has_finished')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_perfect_continuous')}</strong>  {t('lab.e10conjunctionstenses_actions_that_started_in_the_pa')} <em>{t('lab.e10conjunctionstenses_has_been_finishing')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
    </ul>
 
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Past Tense</h4>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_past_tense')}</h4>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>Indefinite (Simple):</strong> Completed actions in the past (e.g., "He <em>finished</em> the report.")</li>
-    <li><strong>Continuous:</strong> Actions ongoing at a specific time in the past (e.g., "He <em>was finishing</em> the report.")</li>
-    <li><strong>Perfect:</strong> Actions completed before another past action (e.g., "He <em>had finished</em> the report.")</li>
+    <li><strong>{t('lab.e10conjunctionstenses_indefinite_simple')}</strong>  {t('lab.e10conjunctionstenses_completed_actions_in_the_past_')} <em>{t('lab.e10conjunctionstenses_finished')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_continuous')}</strong>  {t('lab.e10conjunctionstenses_actions_ongoing_at_a_specific_')} <em>{t('lab.e10conjunctionstenses_was_finishing')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_perfect')}</strong>  {t('lab.e10conjunctionstenses_actions_completed_before_anoth')} <em>{t('lab.e10conjunctionstenses_had_finished')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
    </ul>
 
-   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Future Tense</h4>
+   <h4 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.e10conjunctionstenses_future_tense')}</h4>
    <ul className="list-disc pl-5 space-y-1 mb-4">
-    <li><strong>Indefinite (Simple):</strong> Actions that will happen (e.g., "He <em>will finish</em> the report.")</li>
-    <li><strong>Continuous:</strong> Actions that will be ongoing in the future.</li>
-    <li><strong>Perfect:</strong> Actions that will be completed by a certain future time.</li>
+    <li><strong>{t('lab.e10conjunctionstenses_indefinite_simple')}</strong>  {t('lab.e10conjunctionstenses_actions_that_will_happen_e_g_h')} <em>{t('lab.e10conjunctionstenses_will_finish')}</em>  {t('lab.e10conjunctionstenses_the_report')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_continuous')}</strong>  {t('lab.e10conjunctionstenses_actions_that_will_be_ongoing_i')}</li>
+    <li><strong>{t('lab.e10conjunctionstenses_perfect')}</strong>  {t('lab.e10conjunctionstenses_actions_that_will_be_completed')}</li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-[#2a2a2a]">
    <Settings className="w-5 h-5 text-[#4158D1]" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Interactive Controls</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10conjunctionstenses_interactive_controls')}</h2>
    </div>
    
    <div className="flex-1 overflow-y-auto pr-2 space-y-6">
@@ -149,9 +152,9 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
    <div className={`w-full p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] shadow-sm flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="flex items-center gap-2 mb-2">
     <Clock className="w-4 h-4 text-slate-500" />
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">Chronology Slider</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e10conjunctionstenses_chronology_slider')}</h3>
     </div>
-    <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">Move the slider to shift the sentence backwards and forwards in time.</p>
+    <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">{t('lab.e10conjunctionstenses_move_the_slider_to_shift_the_s')}</p>
     
     <div className="relative px-2">
     <input 
@@ -163,9 +166,9 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
      className={`w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-[#4158D1] flex-col `}
     />
     <div className="flex justify-between mt-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-     <span>Past</span>
-     <span>Present</span>
-     <span>Future</span>
+     <span>{t('lab.e10conjunctionstenses_past')}</span>
+     <span>{t('lab.e10conjunctionstenses_present')}</span>
+     <span>{t('lab.e10conjunctionstenses_future')}</span>
     </div>
     </div>
    </div>
@@ -174,7 +177,7 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="flex items-center gap-2 mb-4">
     <Target className="w-4 h-4 text-slate-500" />
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">Knowledge Check</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.e10conjunctionstenses_knowledge_check')}</h3>
     </div>
     
     {!assessmentSubmitted ? (
@@ -207,15 +210,16 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className="w-full mt-4 py-2.5 px-4 bg-[#4158D1] hover:bg-[#3144a5] disabled:bg-slate-200 disabled:text-slate-400 text-[#ffffff] rounded-lg font-medium transition-colors dark:disabled:bg-[#1c1b1b] dark:disabled:text-slate-600 shadow-sm"
      >
-     Submit Evaluation
-     </button>
+     
+                                          {t('lab.e10conjunctionstenses_submit_evaluation')}
+                                          </button>
     </div>
     ) : (
     <div className="text-center py-4">
      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 text-[#4158D1] dark:text-blue-400 mb-3 border border-blue-100 dark:border-blue-800/30">
      <span className="text-2xl font-bold">{calculateScore()}/{questions.length}</span>
      </div>
-     <h3 className="text-base font-bold text-slate-900 dark:text-[#ffffff] mb-2">Assessment Complete</h3>
+     <h3 className="text-base font-bold text-slate-900 dark:text-[#ffffff] mb-2">{t('lab.e10conjunctionstenses_assessment_complete')}</h3>
      <p className="text-sm text-slate-600 dark:text-[#71717a] mb-6 px-2">
      {calculateScore() === questions.length 
       ? "Perfect score! You've mastered conjunctions and tenses." 
@@ -228,8 +232,9 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
      }}
      className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 dark:hover:bg-[#2a2a2a] text-slate-700 dark:text-[#a1a1aa] rounded-lg font-medium transition-colors border border-slate-200 dark:border-[#2a2a2a]"
      >
-     Retry Lab
-     </button>
+     
+                                              {t('lab.e10conjunctionstenses_retry_lab')}
+                                              </button>
     </div>
     )}
    </div>
@@ -240,7 +245,7 @@ export default function LabE10ConjunctionsTenses({ onExit = () => {} }: LabE10Co
   <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute top-4 left-4 flex items-center gap-2">
    <Activity className="w-5 h-5 text-[#4158D1]" />
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Tense Visualization</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10conjunctionstenses_tense_visualization')}</h2>
    </div>
 
    <div className="w-full max-w-xl text-center">

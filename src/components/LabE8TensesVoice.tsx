@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, CheckCircle2, XCircle, ArrowLeftRight, Clock, RefreshCw, Undo , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const voiceQuestions = [
  {
@@ -114,6 +115,7 @@ const tensesInfo: Record<string, any> = {
 };
 
 export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'voice'|'timeline'>('voice');
  
@@ -143,11 +145,11 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <header className="flex items-center justify-between p-4 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <h1 className="text-lg md:text-xl font-bold">Class 8 English: Tenses & Voice</h1>
+  <h1 className="text-lg md:text-xl font-bold">{t('lab.e8tensesvoice_class_8_english_tenses_voice')}</h1>
   {onExit && (
    <button onClick={onExit} className="whitespace-nowrap flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors">
-   <Undo className="w-4 h-4" /> Go Back
-   </button>
+   <Undo className="w-4 h-4" />  {t('lab.e8tensesvoice_go_back')}
+                        </button>
   )}
   
   <button
@@ -169,27 +171,30 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveTab('voice')}
     className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'voice' ? ' dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
     >
-    Voice Transformer
-    </button>
+    
+                                 {t('lab.e8tensesvoice_voice_transformer')}
+                                 </button>
     <button 
     onClick={() => setActiveTab('timeline')}
     className={`flex-1 py-2 rounded-lg font-bold text-sm transition-colors ${activeTab === 'timeline' ? ' dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700/50'}`}
     >
-    Tenses Timeline
-    </button>
+    
+                                 {t('lab.e8tensesvoice_tenses_timeline')}
+                                 </button>
    </div>
 
    {activeTab === 'voice' ? (
     <div className={`w-full bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:flex-1 flex-col  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4">
      <ArrowLeftRight className="w-6 h-6 text-blue-500 dark:text-blue-400" />
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Voice Transformer</h2>
+     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8tensesvoice_voice_transformer')}</h2>
      </div>
      <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
-     Convert the given sentence into the target voice. Type the correct verb phrase.
-     </p>
+     
+                                      {t('lab.e8tensesvoice_convert_the_given_sentence_int')}
+                                      </p>
 
-     <div className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white lg:bg-slate-700 p-4 rounded-xl mb-6  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+     <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 p-4 rounded-xl mb-6  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
       <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] mb-2 block">
       {currentQ.originalContext}
       </span>
@@ -200,7 +205,8 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
 
      <div className="mb-4">
       <label className="block text-sm font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">
-      Convert to: <span className="text-blue-600 dark:text-blue-400 dark:text-blue-400">{currentQ.targetContext}</span>
+      
+                                           {t('lab.e8tensesvoice_convert_to')} <span className="text-blue-600 dark:text-blue-400 dark:text-blue-400">{currentQ.targetContext}</span>
       </label>
       <div className="flex items-center gap-2 flex-wrap">
        <span className="bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-600 px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{currentQ.targetSubj}</span>
@@ -208,7 +214,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
        type="text"
        value={vInput}
        onChange={(e) => { setVInput(e.target.value); setVFeedback(null); }}
-       placeholder="verb phrase..."
+       placeholder={t('lab.e8tensesvoice_verb_phrase')}
        className="flex-1 min-w-0 px-4 py-2 border-2 border-slate-300 dark:border-[#1c1b1b] rounded-lg dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] focus:outline-none focus:border-blue-500 font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 placeholder:font-normal placeholder:text-slate-400"
        />
        <span className="bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-600 px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{currentQ.targetObj}.</span>
@@ -217,23 +223,25 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
 
      <div className="flex gap-4 mt-6">
       <button onClick={handleCheck} className="flex-1 whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-      Check Answer
-      </button>
+      
+                                           {t('lab.e8tensesvoice_check_answer')}
+                                           </button>
       <button onClick={handleNext} className="whitespace-nowrap flex-shrink-0 bg-slate-200 dark:bg-[#121212]/50 hover:bg-slate-300 dark:bg-[#121212]/50 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] font-bold py-3 px-6 rounded-xl transition-colors flex items-center gap-2">
-      Next <ArrowRight className="w-5 h-5"/>
+      
+                                           {t('lab.e8tensesvoice_next')} <ArrowRight className="w-5 h-5"/>
       </button>
      </div>
      
      {vFeedback === 'correct' && (
      <div className={`w-full mt-4 p-4 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
       <CheckCircle2 className="w-5 h-5" />
-      <span className="font-semibold">Correct! Awesome job.</span>
+      <span className="font-semibold">{t('lab.e8tensesvoice_correct_awesome_job')}</span>
      </div>
      )}
      {vFeedback === 'incorrect' && (
      <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/50 dark:bg-red-900/60 dark:bg-red-900/30 text-red-700 dark:text-red-300 dark:text-red-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2">
       <XCircle className="w-5 h-5" />
-      <span className="font-semibold">Not quite. Try again!</span>
+      <span className="font-semibold">{t('lab.e8tensesvoice_not_quite_try_again')}</span>
      </div>
      )}
     </div>
@@ -241,11 +249,12 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
     <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-1 flex flex-col">
      <div className="flex items-center gap-2 mb-4">
      <Clock className="w-6 h-6 text-green-500 dark:text-green-400" />
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Tenses Timeline</h2>
+     <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8tensesvoice_tenses_timeline')}</h2>
      </div>
      <p className="text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] mb-6 text-sm">
-     Select a tense to visualize it on the timeline.
-     </p>
+     
+                                          {t('lab.e8tensesvoice_select_a_tense_to_visualize_it')}
+                                          </p>
 
      <div className="grid grid-cols-2 gap-2 lg:overflow-y-auto">
       {Object.keys(tensesInfo).map((tense) => (
@@ -269,15 +278,15 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
      {/* Top Sentence */}
      <div className="flex flex-wrap justify-center gap-3 w-full relative z-10">
      <div className="p-3 bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 rounded-lg text-center border-2 border-blue-300 dark:border-blue-700 min-w-[100px]">
-      <span className="text-[10px] text-blue-600 dark:text-blue-400 dark:text-blue-300 font-bold uppercase tracking-wider block mb-1">Subject</span>
+      <span className="text-[10px] text-blue-600 dark:text-blue-400 dark:text-blue-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_subject')}</span>
       <span className="font-semibold text-sm md:text-base">{currentQ.origSubj}</span>
      </div>
      <div className="p-3 bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900 rounded-lg text-center border-2 border-indigo-300 dark:border-indigo-700 min-w-[100px]">
-      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">Verb</span>
+      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_verb')}</span>
       <span className="font-semibold text-sm md:text-base">{currentQ.origVerb}</span>
      </div>
      <div className="p-3 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900 rounded-lg text-center border-2 border-green-300 dark:border-green-700 min-w-[100px]">
-      <span className="text-[10px] text-green-600 dark:text-green-400 dark:text-green-300 font-bold uppercase tracking-wider block mb-1">Object</span>
+      <span className="text-[10px] text-green-600 dark:text-green-400 dark:text-green-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_object')}</span>
       <span className="font-semibold text-sm md:text-base">{currentQ.origObj}</span>
      </div>
      </div>
@@ -309,17 +318,17 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
      {/* Bottom Sentence */}
      <div className="flex flex-wrap justify-center gap-3 w-full relative z-10">
      <div className="p-3 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900 rounded-lg text-center border-2 border-green-300 dark:border-green-700 min-w-[100px] transition-all">
-      <span className="text-[10px] text-green-600 dark:text-green-400 dark:text-green-300 font-bold uppercase tracking-wider block mb-1">New Subject</span>
+      <span className="text-[10px] text-green-600 dark:text-green-400 dark:text-green-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_new_subject')}</span>
       <span className="font-semibold text-sm md:text-base">{currentQ.targetSubj}</span>
      </div>
      <div className={`p-3 rounded-lg text-center border-2 transition-colors min-w-[100px] flex-1 ${vFeedback === 'correct' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900 border-indigo-400' : 'bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 border-dashed border-slate-300 dark:border-slate-600 dark:border-slate-500'}`}>
-      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">Transformed Verb</span>
+      <span className="text-[10px] text-indigo-600 dark:text-indigo-400 dark:text-indigo-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_transformed_verb')}</span>
       <span className={`font-semibold text-sm md:text-base ${vFeedback === 'correct' ? 'text-indigo-700 dark:text-indigo-300 dark:text-indigo-200' : 'text-slate-500 dark:text-[#a1a1aa] dark:text-[#ffffff]'}`}>
        {vFeedback === 'correct' ? currentQ.targetVerbBlank : (vInput || '???')}
       </span>
      </div>
      <div className="p-3 bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 dark:bg-blue-900 rounded-lg text-center border-2 border-blue-300 dark:border-blue-700 min-w-[100px] transition-all">
-      <span className="text-[10px] text-blue-600 dark:text-blue-400 dark:text-blue-300 font-bold uppercase tracking-wider block mb-1">New Object</span>
+      <span className="text-[10px] text-blue-600 dark:text-blue-400 dark:text-blue-300 font-bold uppercase tracking-wider block mb-1">{t('lab.e8tensesvoice_new_object')}</span>
       <span className="font-semibold text-sm md:text-base">{currentQ.targetObj}</span>
      </div>
      </div>
@@ -336,9 +345,9 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
        <line x1="50%" y1="45%" x2="50%" y2="55%" className="stroke-slate-400 dark:stroke-slate-400" strokeWidth="2" />
        <line x1="75%" y1="45%" x2="75%" y2="55%" className="stroke-slate-400 dark:stroke-slate-400" strokeWidth="2" />
        
-       <text x="25%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">Past</text>
-       <text x="50%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">Present</text>
-       <text x="75%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">Future</text>
+       <text x="25%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">{t('lab.e8tensesvoice_past')}</text>
+       <text x="50%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">{t('lab.e8tensesvoice_present')}</text>
+       <text x="75%" y="70%" textAnchor="middle" className="text-xs fill-slate-500 dark:fill-slate-400 font-bold uppercase">{t('lab.e8tensesvoice_future')}</text>
        
        {/* Selected Tense Visual */}
        {tensesInfo[selTense].visual}

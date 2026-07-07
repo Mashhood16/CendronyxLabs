@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { FastForward } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6PlantGrowth({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [day, setDay] = useState(0);
  const [running, setRunning] = useState(false);
 
@@ -48,19 +50,19 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] dark:border-[#1c1b1b] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 11: Effect of Fertilizers on Plant Growth" />
+  <LabHeader onExit={onExit} title={t('lab.s6plantgrowth_unit_11_effect_of_fertilizers_')} />
 
   <div className="flex-1 flex flex-col p-8 items-center">
   
   <div className="w-full max-w-4xl bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] mb-8 flex items-center justify-between">
    <div>
-    <h2 className="text-2xl font-bold text-green-800 dark:text-[#ffffff]">Time-Lapse Simulator</h2>
-    <p className="text-slate-600 dark:text-[#a1a1aa]">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
+    <h2 className="text-2xl font-bold text-green-800 dark:text-[#ffffff]">{t('lab.s6plantgrowth_time_lapse_simulator')}</h2>
+    <p className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6plantgrowth_observe_growth_over_4_weeks_28')}</p>
    </div>
    <div className="flex items-center gap-6">
    <div className="text-center">
     <div className="text-4xl font-black text-green-600">{day}</div>
-    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Days</div>
+    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">{t('lab.s6plantgrowth_days')}</div>
    </div>
    <button 
     onClick={handleStart}
@@ -85,10 +87,10 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
     </div>
    </div>
    <div className="w-32 h-24 bg-orange-800 rounded-b-xl border-t-8 border-orange-900 relative flex items-center justify-center">
-    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">POT A</div>
+    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">{t('lab.s6plantgrowth_pot_a')}</div>
     <div className="text-center text-white/80 mt-2">
-    <span className="font-bold block text-lg">0 mg</span>
-    <span className="text-xs">(Control)</span>
+    <span className="font-bold block text-lg">{t('lab.s6plantgrowth_0_mg')}</span>
+    <span className="text-xs">{t('lab.s6plantgrowth_control')}</span>
     </div>
    </div>
    </div>
@@ -103,10 +105,10 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
     </div>
    </div>
    <div className="w-32 h-24 bg-orange-800 rounded-b-xl border-t-8 border-orange-900 relative flex items-center justify-center">
-    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">POT B</div>
+    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">{t('lab.s6plantgrowth_pot_b')}</div>
     <div className="text-center text-white/80 mt-2">
-    <span className="font-bold block text-lg">5 mg</span>
-    <span className="text-xs">Fertilizer/Day</span>
+    <span className="font-bold block text-lg">{t('lab.s6plantgrowth_5_mg')}</span>
+    <span className="text-xs">{t('lab.s6plantgrowth_fertilizer_day')}</span>
     </div>
    </div>
    </div>
@@ -121,10 +123,10 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
     </div>
    </div>
    <div className="w-32 h-24 bg-orange-800 rounded-b-xl border-t-8 border-orange-900 relative flex items-center justify-center">
-    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">POT C</div>
+    <div className="absolute -top-1 w-full text-center font-bold text-orange-200 bg-orange-950/50 text-xs py-1">{t('lab.s6plantgrowth_pot_c')}</div>
     <div className="text-center text-white/80 mt-2">
-    <span className="font-bold block text-lg">10 mg</span>
-    <span className="text-xs">Fertilizer/Day</span>
+    <span className="font-bold block text-lg">{t('lab.s6plantgrowth_10_mg')}</span>
+    <span className="text-xs">{t('lab.s6plantgrowth_fertilizer_day')}</span>
     </div>
    </div>
    </div>
@@ -133,8 +135,8 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
 
   {day >= 28 && (
    <div className="mt-8 p-6 bg-slate-50 dark:!bg-[#121212] border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
-   <h3 className="font-bold text-lg text-green-800 mb-2 dark:text-[#ffffff]">Experiment Conclusion</h3>
-   <p className="text-slate-600 dark:text-[#a1a1aa]">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
+   <h3 className="font-bold text-lg text-green-800 mb-2 dark:text-[#ffffff]">{t('lab.s6plantgrowth_experiment_conclusion')}</h3>
+   <p className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6plantgrowth_the_plants_in_pot_c_10mg_ferti')}</p>
    </div>
   )}
 

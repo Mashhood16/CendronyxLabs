@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { BookOpen, Activity, Edit3, Wind, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [exhales, setExhales] = useState(0);
  const [diaphragmPull, setDiaphragmPull] = useState(0);
@@ -26,7 +28,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Top Header */}
-  <LabHeader onExit={onExit} title="Lab B10.3: Respiratory Mechanics" subtitle="Gas Exchange & Boyle's Law Model" />
+  <LabHeader onExit={onExit} title={t('lab.b10respiratorysystem_lab_b10_3_respiratory_mechanic')} subtitle={t('lab.subtitle_exchange_boyle_model')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -35,12 +37,13 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b10respiratorysystem_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b10respiratorysystem_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   
@@ -48,37 +51,35 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <div className={`p-2 bg-sky-100 text-sky-600 rounded-lg flex-col `}><BookOpen className="w-6 h-6" /></div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Theory & Context</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10respiratorysystem_theory_context')}</h2>
    </div>
    <div className="prose prose-slate text-sm flex-grow lg:overflow-y-auto pr-2">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">1. Testing Exhaled Air</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.b10respiratorysystem_1_testing_exhaled_air')}</h3>
    <p>
-    Cellular respiration produces Carbon Dioxide (CO₂) as a waste product, which is expelled from the body via the lungs. 
-    We can test for the presence of CO₂ using <strong>limewater</strong> (calcium hydroxide solution). 
-    When CO₂ bubbles through limewater, it reacts to form calcium carbonate (CaCO₃), an insoluble white precipitate that turns the clear solution "milky" or cloudy.
-   </p>
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">2. Mechanics of Breathing</h3>
+    
+                             {t('lab.b10respiratorysystem_cellular_respiration_produces_')} <strong>{t('lab.b10respiratorysystem_limewater')}</strong>  {t('lab.b10respiratorysystem_calcium_hydroxide_solution_whe')}
+                            </p>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.b10respiratorysystem_2_mechanics_of_breathing')}</h3>
    <p>
-    Breathing relies on <strong>Boyle's Law</strong>, which states that the pressure of a gas is inversely proportional to its volume (P ∝ 1/V) at a constant temperature.
-    When you inhale, the diaphragm muscle contracts and pulls downward. This increases the volume of the thoracic cavity (chest). 
-    Because volume increases, intrapulmonary pressure decreases below atmospheric pressure, forcing air into the lungs.
-   </p>
+    
+                             {t('lab.b10respiratorysystem_breathing_relies_on')} <strong>{t('lab.b10respiratorysystem_boyle_s_law')}</strong>{t('lab.b10respiratorysystem_which_states_that_the_pressure')}
+                            </p>
    </div>
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Activity className="w-6 h-6" /></div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Interactive Simulator</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10respiratorysystem_interactive_simulator')}</h2>
    </div>
    
    <div className="flex flex-col gap-6 flex-grow lg:overflow-y-auto pr-2 pb-8">
    
    {/* Station 1: Limewater */}
-   <div className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Station 1: CO₂ Indicator</h3>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">Exhale into the tube to bubble gas through clear limewater.</p>
+   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b10respiratorysystem_station_1_co_indicator')}</h3>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.b10respiratorysystem_exhale_into_the_tube_to_bubble')}</p>
     
     <div className="flex items-center justify-center gap-8">
     <div className="relative w-24 h-32 bg-slate-50 dark:bg-[#121212] border-b-4 border-x-4 border-slate-300 dark:border-[#1c1b1b] rounded-b-xl overflow-hidden flex flex-col justify-end">
@@ -107,31 +108,32 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
     
     <div className="flex flex-col gap-2">
      <button onClick={() => setExhales(prev => prev + 1)} className={`px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 text-sm font-medium transition-colors flex items-center justify-center gap-2 dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-sky-500/40 `}>
-      <Wind className="w-4 h-4"/> Exhale Gas
-     </button>
+      <Wind className="w-4 h-4"/>  {t('lab.b10respiratorysystem_exhale_gas')}
+                                          </button>
      <button onClick={() => setExhales(0)} className="px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] text-sm font-medium transition-colors">
-      Replace Limewater
-     </button>
+      
+                                           {t('lab.b10respiratorysystem_replace_limewater')}
+                                          </button>
     </div>
     </div>
    </div>
 
    {/* Station 2: Bell Jar Model */}
    <div className={`bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Station 2: Bell Jar Lung Model</h3>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">Pull the rubber diaphragm down to observe changes in volume and pressure.</p>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b10respiratorysystem_station_2_bell_jar_lung_model')}</h3>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.b10respiratorysystem_pull_the_rubber_diaphragm_down')}</p>
     
     <div className="flex items-start justify-between px-2 gap-4">
     
     {/* Stats Panel */}
     <div className="flex flex-col gap-4 text-xs font-mono bg-[#121212] dark:bg-[#121212] text-emerald-400 p-3 rounded-lg shadow-inner w-32">
      <div>
-     <span className="text-slate-400 block">Thoracic Vol</span>
+     <span className="text-slate-400 block">{t('lab.b10respiratorysystem_thoracic_vol')}</span>
      <span className="text-lg">{volume} mL</span>
      </div>
      <div>
-     <span className="text-slate-400 block">Intrapulmonary Pressure</span>
-     <span className="text-lg">{pressure} mmHg</span>
+     <span className="text-slate-400 block">{t('lab.b10respiratorysystem_intrapulmonary_pressure')}</span>
+     <span className="text-lg">{pressure}  {t('lab.b10respiratorysystem_mmhg')}</span>
      </div>
     </div>
 
@@ -176,7 +178,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
      />
     </div>
     </div>
-    <p className="text-center text-[10px] text-slate-400 mt-10">Slide to pull diaphragm</p>
+    <p className="text-center text-[10px] text-slate-400 mt-10">{t('lab.b10respiratorysystem_slide_to_pull_diaphragm')}</p>
    </div>
 
    </div>
@@ -186,18 +188,19 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><Edit3 className="w-6 h-6" /></div>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10respiratorysystem_assessment')}</h2>
    </div>
    
    <div className="flex-grow flex flex-col gap-6 lg:overflow-y-auto pr-2">
    <div className="flex flex-col gap-2">
     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    1. What specific chemical product causes the limewater to turn cloudy, and what does this prove about human exhaled air?
-    </label>
+    
+                                 {t('lab.b10respiratorysystem_1_what_specific_chemical_produ')}
+                                 </label>
     <textarea 
     value={q1}
     onChange={e => setQ1(e.target.value)}
-    placeholder="Name the gas and the resulting precipitate..."
+    placeholder={t('lab.b10respiratorysystem_name_the_gas_and_the_resulting')}
     className="w-full p-3 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none resize-none text-sm"
     rows={4}
     />
@@ -205,12 +208,13 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
    
    <div className="flex flex-col gap-2">
     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">
-    2. Explain how pulling the diaphragm down causes the balloons to inflate, making sure to reference Boyle's Law.
-    </label>
+    
+                                 {t('lab.b10respiratorysystem_2_explain_how_pulling_the_diap')}
+                                 </label>
     <textarea 
     value={q2}
     onChange={e => setQ2(e.target.value)}
-    placeholder="Relate volume and pressure..."
+    placeholder={t('lab.b10respiratorysystem_relate_volume_and_pressure')}
     className="w-full p-3 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-sm"
     rows={4}
     />
@@ -220,17 +224,17 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
     onClick={checkAnswers}
     className="w-full py-3 bg-[#121212] dark:bg-[#121212] text-white rounded-xl font-semibold hover:bg-slate-700 dark:bg-[#121212] transition-colors flex items-center justify-center gap-2"
    >
-    <CheckCircle className="w-5 h-5" /> Check Answers
-   </button>
+    <CheckCircle className="w-5 h-5" />  {t('lab.b10respiratorysystem_check_answers')}
+                            </button>
 
    {score !== null && (
     <div className={`p-4 rounded-xl border ${score === 100 ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'}`}>
-    <h3 className="font-bold mb-1">Score: {score}%</h3>
+    <h3 className="font-bold mb-1">{t('lab.b10respiratorysystem_score')} {score}%</h3>
     {score < 100 && (
-     <p className="text-sm">Make sure you identified Carbon Dioxide (CO2) for Q1 and discussed the inverse relationship of Volume and Pressure for Q2.</p>
+     <p className="text-sm">{t('lab.b10respiratorysystem_make_sure_you_identified_carbo')}</p>
     )}
     {score === 100 && (
-     <p className="text-sm">Excellent! You accurately linked chemical waste products and the physical gas laws driving respiration.</p>
+     <p className="text-sm">{t('lab.b10respiratorysystem_excellent_you_accurately_linke')}</p>
     )}
     </div>
    )}

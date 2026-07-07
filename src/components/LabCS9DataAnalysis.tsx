@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { BarChart3, PieChart, Plus, Trash2, Database, FileBarChart } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface DataRow {
  id: string;
@@ -13,6 +14,7 @@ interface LabProps {
 }
 
 export default function LabCS9DataAnalysis({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [data, setData] = useState<DataRow[]>([
@@ -63,7 +65,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   <div className="flex items-center justify-between bg-cyan-700 text-white p-4 shadow-md">
-  <LabHeader onExit={onExit} title="Data Visualization Dashboard" />
+  <LabHeader onExit={onExit} title={t('lab.cs9dataanalysis_data_visualization_dashboard')} />
   </div>
 
   
@@ -73,54 +75,58 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs9dataanalysis_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs9dataanalysis_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-700">
-   <FileBarChart size={24} /> Enterprise Survey Analysis
-   </h2>
+   <FileBarChart size={24} />  {t('lab.cs9dataanalysis_enterprise_survey_analysis')}
+                        </h2>
    <div className="prose prose-sm text-slate-700 dark:text-[#ffffff]">
    <p>
-    Data visualization helps in understanding complex data sets by representing them graphically.
-   </p>
-   <h3 className="font-bold text-lg mt-4 mb-1">Bar Charts</h3>
+    
+                             {t('lab.cs9dataanalysis_data_visualization_helps_in_un')}
+                            </p>
+   <h3 className="font-bold text-lg mt-4 mb-1">{t('lab.cs9dataanalysis_bar_charts')}</h3>
    <p>
-    Useful for comparing different categories. The length of the bar is proportional to the value it represents.
-   </p>
-   <h3 className="font-bold text-lg mt-4 mb-1">Pie Charts</h3>
+    
+                             {t('lab.cs9dataanalysis_useful_for_comparing_different')}
+                            </p>
+   <h3 className="font-bold text-lg mt-4 mb-1">{t('lab.cs9dataanalysis_pie_charts')}</h3>
    <p>
-    Useful for showing parts of a whole. The entire pie represents 100%, and each slice represents a percentage of the total.
-   </p>
+    
+                             {t('lab.cs9dataanalysis_useful_for_showing_parts_of_a_')}
+                            </p>
    <div className={`bg-cyan-50 border border-cyan-200 rounded-lg p-4 mt-6 `}>
-    <h4 className="font-bold text-cyan-800 mb-2">Instructions:</h4>
+    <h4 className="font-bold text-cyan-800 mb-2">{t('lab.cs9dataanalysis_instructions')}</h4>
     <ol className="list-decimal pl-5 space-y-2 text-cyan-900">
-    <li>Enter the enterprise survey data into the table.</li>
-    <li>Add or remove rows to see how the charts react dynamically.</li>
-    <li>Switch between Bar and Pie chart views.</li>
-    <li>Answer the assessment question based on your data.</li>
+    <li>{t('lab.cs9dataanalysis_enter_the_enterprise_survey_da')}</li>
+    <li>{t('lab.cs9dataanalysis_add_or_remove_rows_to_see_how_')}</li>
+    <li>{t('lab.cs9dataanalysis_switch_between_bar_and_pie_cha')}</li>
+    <li>{t('lab.cs9dataanalysis_answer_the_assessment_question')}</li>
     </ol>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Data Table */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-cyan-700">
-   <Database size={24} /> Data Entry
-   </h2>
+   <Database size={24} />  {t('lab.cs9dataanalysis_data_entry')}
+                        </h2>
    <div className="flex-1 lg:overflow-y-auto pr-2">
    <table className="w-full text-left border-collapse">
     <thead>
     <tr>
-     <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">Category</th>
-     <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">Value</th>
+     <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9dataanalysis_category')}</th>
+     <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9dataanalysis_value')}</th>
      <th className="border-b-2 border-slate-200 dark:border-[#1c1b1b] p-2 text-slate-600 dark:text-[#a1a1aa] w-10"></th>
     </tr>
     </thead>
@@ -157,35 +163,35 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
     onClick={addRow}
     className="mt-4 flex items-center gap-2 text-cyan-600 hover:text-cyan-800 font-semibold p-2 transition-colors"
    >
-    <Plus size={20} /> Add Category
-   </button>
+    <Plus size={20} />  {t('lab.cs9dataanalysis_add_category')}
+                            </button>
    </div>
    <div className="mt-4 pt-4 border-t border-slate-200 dark:border-[#1c1b1b] flex justify-between font-bold text-slate-700 dark:text-[#ffffff]">
-   <span>Total Value:</span>
+   <span>{t('lab.cs9dataanalysis_total_value')}</span>
    <span>{totalValue}</span>
    </div>
   </div>
 
   {/* Right Column: Visualization & Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`flex gap-2 mb-6 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
    <button
     onClick={() => setActiveTab('bar')}
     className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'bar' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-cyan-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
    >
-    <BarChart3 size={20} /> Bar Chart
-   </button>
+    <BarChart3 size={20} />  {t('lab.cs9dataanalysis_bar_chart')}
+                            </button>
    <button
     onClick={() => setActiveTab('pie')}
     className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'pie' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-cyan-700' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
    >
-    <PieChart size={20} /> Pie Chart
-   </button>
+    <PieChart size={20} />  {t('lab.cs9dataanalysis_pie_chart')}
+                            </button>
    </div>
 
    <div className={`flex-1 flex-col items-center justify-center border-2 border-dashed border-slate-200 dark:border-[#1c1b1b] rounded-xl p-4 bg-slate-50 dark:bg-[#121212] min-h-[250px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {data.length === 0 || totalValue === 0 ? (
-    <p className="text-slate-400">No data to display</p>
+    <p className="text-slate-400">{t('lab.cs9dataanalysis_no_data_to_display')}</p>
    ) : activeTab === 'bar' ? (
     <svg viewBox="0 0 400 300" className="w-full h-full max-h-64">
     {/* Y Axis */}
@@ -242,22 +248,23 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
    </div>
 
    <div className="mt-6 bg-cyan-50 p-4 rounded-xl border border-cyan-200">
-   <h3 className="font-bold text-cyan-800 mb-2">Assessment</h3>
-   <p className="text-sm text-cyan-900 mb-2">Based on the visualization, which category has the highest value?</p>
+   <h3 className="font-bold text-cyan-800 mb-2">{t('lab.cs9dataanalysis_assessment')}</h3>
+   <p className="text-sm text-cyan-900 mb-2">{t('lab.cs9dataanalysis_based_on_the_visualization_whi')}</p>
    <div className="flex gap-2">
     <input
     type="text"
     value={assessmentAnswer}
     onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder="Type category name..."
+    placeholder={t('lab.cs9dataanalysis_type_category_name')}
     className="flex-1 p-2 border border-cyan-300 rounded focus:outline-none focus:border-cyan-600"
     />
     <button
     onClick={checkAssessment}
     className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded font-bold transition-colors dark:text-white dark:text-white dark:bg-cyan-500 dark:hover:bg-cyan-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-cyan-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.cs9dataanalysis_check')}
+                                 </button>
    </div>
    {feedback && (
     <p className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>

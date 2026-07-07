@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -14,6 +15,7 @@ const SOLUTIONS = [
 ];
 
 export default function LabS8DeterminingPH({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState(SOLUTIONS[0]);
  const [isTested, setIsTested] = useState<'idle'|'dipping'|'tested'>('idle');
 
@@ -26,12 +28,12 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
+  <LabHeader onExit={onExit} title={t('lab.s8determiningph_act_7_4_determining_ph')} subtitle={t('lab.subtitle_test_different_solutions')} rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" />  {t('lab.s8determiningph_reset')}</button>} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
   {/* Solution Select */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Solution</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8determiningph_select_solution')}</h3>
    {SOLUTIONS.map(s => (
    <button 
     key={s.id}
@@ -47,7 +49,7 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
    
    {/* pH Color Chart */}
    <div className="w-full max-w-lg mb-8 border border-slate-200 dark:border-[#1c1b1b] rounded-xl overflow-hidden shadow-sm">
-   <div className="bg-[#121212] dark:bg-[#121212] text-white text-center py-1 text-xs font-bold uppercase tracking-wider">Universal pH Chart</div>
+   <div className="bg-[#121212] dark:bg-[#121212] text-white text-center py-1 text-xs font-bold uppercase tracking-wider">{t('lab.s8determiningph_universal_ph_chart')}</div>
    <div className="flex h-12 w-full text-xs font-bold text-white text-center leading-[3rem]">
     <div className="flex-1 bg-[#ef4444]">1</div>
     <div className="flex-1 bg-[#f97316]">3</div>
@@ -78,13 +80,14 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
     disabled={isTested !== 'idle'}
     className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 text-xl shadow-lg transition-transform active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    Dip pH Paper
-   </button>
+    
+                             {t('lab.s8determiningph_dip_ph_paper')}
+                            </button>
    </div>
 
    {isTested === 'tested' && (
    <div className="px-6 py-4 bg-slate-50 dark:bg-[#121212] border-2 border-slate-200 dark:border-[#1c1b1b] rounded-xl max-w-sm text-center animate-fade-in w-full">
-    <h3 className="font-bold text-xl mb-1 text-slate-800 dark:text-[#ffffff]">pH = {selected.ph}</h3>
+    <h3 className="font-bold text-xl mb-1 text-slate-800 dark:text-[#ffffff]">{t('lab.s8determiningph_ph')} {selected.ph}</h3>
     <p className="text-lg font-bold" style={{ color: `var(--tw-colors-${selected.color.split('-')[1]}-${selected.color.split('-')[2]})` }}>
     {selected.type.toUpperCase()}
     </p>

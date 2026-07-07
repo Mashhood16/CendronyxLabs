@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowLeft, Play, Pause, RotateCcw, Check, X, Info, Star, Timer, Lightbulb, Award } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 const PB_KEY = 'cendronyx-m6-pb';
 
@@ -21,6 +22,7 @@ function formatTime(seconds: number) {
 }
 
 export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'LCM' | 'HCF'>('LCM');
 
  // LCM State
@@ -179,25 +181,27 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    <button
    onClick={onExit}
    className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors"
-   title="Go Back"
+   title={t('lab.m6factors_go_back')}
    >
    <ArrowLeft className="w-6 h-6" />
    </button>
-   <h1 className="text-lg md:text-xl font-bold">Class 6 Math: Factors & Multiples</h1>
+   <h1 className="text-lg md:text-xl font-bold">{t('lab.m6factors_class_6_math_factors_multiples')}</h1>
   </div>
   <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
    <button
    onClick={() => setActiveTab('LCM')}
    className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'LCM' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
    >
-   LCM (Lighthouses)
-   </button>
+   
+                        {t('lab.m6factors_lcm_lighthouses')}
+                        </button>
    <button
    onClick={() => setActiveTab('HCF')}
    className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'HCF' ? ' shadow-sm text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
    >
-   HCF (Pipe Cutting)
-   </button>
+   
+                        {t('lab.m6factors_hcf_pipe_cutting')}
+                        </button>
   </div>
   </header>
 
@@ -210,25 +214,27 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    <>
     <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800/50">
     <h2 className="text-lg font-bold text-blue-800 dark:text-blue-300 flex items-center gap-2 mb-2">
-     <Info className="w-5 h-5" /> Mission: Synchronize Lighthouses
-    </h2>
+     <Info className="w-5 h-5" />  {t('lab.m6factors_mission_synchronize_lighthouse')}
+                                     </h2>
     <p className="text-sm text-blue-700 dark:text-blue-400">
-     Two lighthouses flash at different intervals. Find the time when they will flash together! This is the <strong>Least Common Multiple (LCM)</strong> of their intervals.
-    </p>
+     
+                                      {t('lab.m6factors_two_lighthouses_flash_at_diffe')} <strong>{t('lab.m6factors_least_common_multiple_lcm')}</strong>  {t('lab.m6factors_of_their_intervals')}
+                                     </p>
     <button
      onClick={runLcmDemo}
      className="mt-3 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2 dark:bg-indigo-500 dark:hover:bg-indigo-400"
     >
      <Lightbulb className="w-4 h-4" />
-     Show Me How (Step-by-Step Demo)
-    </button>
+     
+                                      {t('lab.m6factors_show_me_how_step_by_step_demo')}
+                                     </button>
     </div>
 
     <div className="space-y-4">
-    <h3 className="font-semibold text-lg">Settings</h3>
+    <h3 className="font-semibold text-lg">{t('lab.m6factors_settings')}</h3>
     
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Lighthouse A flashes every: {lh1} seconds</label>
+     <label className="text-sm font-medium">{t('lab.m6factors_lighthouse_a_flashes_every')} {lh1}  {t('lab.m6factors_seconds')}</label>
      <input 
      type="range" min="2" max="10" value={lh1} 
      onChange={(e) => {setLh1(parseInt(e.target.value)); setTime(0); setIsPlaying(false); setLcmFeedback({status:null,msg:''});}}
@@ -237,7 +243,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     </div>
 
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Lighthouse B flashes every: {lh2} seconds</label>
+     <label className="text-sm font-medium">{t('lab.m6factors_lighthouse_b_flashes_every')} {lh2}  {t('lab.m6factors_seconds')}</label>
      <input 
      type="range" min="2" max="10" value={lh2} 
      onChange={(e) => {setLh2(parseInt(e.target.value)); setTime(0); setIsPlaying(false); setLcmFeedback({status:null,msg:''});}}
@@ -258,33 +264,35 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
        <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
        <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
-         Best: {formatTime(personalBest.lcm)}
+         
+                                                  {t('lab.m6factors_best')} {formatTime(personalBest.lcm)}
        </span>
       </div>
      )}
      {lcmElapsed !== null && personalBest.lcm !== null && lcmElapsed === personalBest.lcm && (
-      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">New Record!</span>
+      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">{t('lab.m6factors_new_record')}</span>
      )}
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
-    <h3 className="font-semibold text-lg mb-3">Solve</h3>
-    <p className="text-sm mb-4">When will both lighthouses flash at the exactly same time next?</p>
+    <h3 className="font-semibold text-lg mb-3">{t('lab.m6factors_solve')}</h3>
+    <p className="text-sm mb-4">{t('lab.m6factors_when_will_both_lighthouses_fla')}</p>
     
     <div className="flex gap-3">
      <input 
      type="number"
      value={lcmInput}
      onChange={(e) => setLcmInput(e.target.value)}
-     placeholder="Enter time in sec"
+     placeholder={t('lab.m6factors_enter_time_in_sec')}
      className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-blue-500 outline-none"
      />
      <button 
      onClick={handleLcmCheck}
      className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.m6factors_check')}
+                                          </button>
     </div>
 
     {lcmFeedback.status && (
@@ -299,25 +307,27 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    <>
     <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl border border-green-100 dark:border-green-800/50">
     <h2 className="text-lg font-bold text-green-800 dark:text-green-300 flex items-center gap-2 mb-2">
-     <Info className="w-5 h-5" /> Mission: Cut the Pipes
-    </h2>
+     <Info className="w-5 h-5" />  {t('lab.m6factors_mission_cut_the_pipes')}
+                                         </h2>
     <p className="text-sm text-green-700 dark:text-green-400">
-     You have two pipes of different lengths. You need to cut them into smaller pieces of <strong>equal maximum length</strong> with no leftovers. This is the <strong>Highest Common Factor (HCF)</strong>.
+     
+                                          {t('lab.m6factors_you_have_two_pipes_of_differen')} <strong>{t('lab.m6factors_equal_maximum_length')}</strong>  {t('lab.m6factors_with_no_leftovers_this_is_the')} <strong>{t('lab.m6factors_highest_common_factor_hcf')}</strong>.
     </p>
     <button
      onClick={runHcfDemo}
      className="mt-3 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2 dark:bg-indigo-500 dark:hover:bg-indigo-400"
     >
      <Lightbulb className="w-4 h-4" />
-     Show Me How (Pipe Cutting Demo)
-    </button>
+     
+                                          {t('lab.m6factors_show_me_how_pipe_cutting_demo')}
+                                         </button>
     </div>
 
     <div className="space-y-4">
-    <h3 className="font-semibold text-lg">Settings</h3>
+    <h3 className="font-semibold text-lg">{t('lab.m6factors_settings')}</h3>
     
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Pipe A Length: {pipe1} m</label>
+     <label className="text-sm font-medium">{t('lab.m6factors_pipe_a_length')} {pipe1} m</label>
      <input 
      type="range" min="4" max="36" step="2" value={pipe1} 
      onChange={(e) => {setPipe1(parseInt(e.target.value)); setHcfFeedback({status:null,msg:''});}}
@@ -326,7 +336,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     </div>
 
     <div className="flex flex-col gap-2">
-     <label className="text-sm font-medium">Pipe B Length: {pipe2} m</label>
+     <label className="text-sm font-medium">{t('lab.m6factors_pipe_b_length')} {pipe2} m</label>
      <input 
      type="range" min="4" max="36" step="2" value={pipe2} 
      onChange={(e) => {setPipe2(parseInt(e.target.value)); setHcfFeedback({status:null,msg:''});}}
@@ -347,33 +357,35 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800">
        <Award className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
        <span className="text-xs font-bold text-indigo-700 dark:text-indigo-300">
-         Best: {formatTime(personalBest.hcf)}
+         
+                                                      {t('lab.m6factors_best')} {formatTime(personalBest.hcf)}
        </span>
       </div>
      )}
      {hcfElapsed !== null && personalBest.hcf !== null && hcfElapsed === personalBest.hcf && (
-      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">New Record!</span>
+      <span className="text-xs font-bold text-green-600 dark:text-green-400 animate-pulse">{t('lab.m6factors_new_record')}</span>
      )}
     </div>
 
     <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] mt-auto">
-    <h3 className="font-semibold text-lg mb-3">Solve</h3>
-    <p className="text-sm mb-4">What is the maximum equal length you can cut both pipes into?</p>
+    <h3 className="font-semibold text-lg mb-3">{t('lab.m6factors_solve')}</h3>
+    <p className="text-sm mb-4">{t('lab.m6factors_what_is_the_maximum_equal_leng')}</p>
     
     <div className="flex gap-3">
      <input 
      type="number"
      value={hcfInput}
      onChange={(e) => setHcfInput(e.target.value)}
-     placeholder="Enter length in m"
+     placeholder={t('lab.m6factors_enter_length_in_m')}
      className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:ring-2 focus:ring-green-500 outline-none"
      />
      <button 
      onClick={handleHcfCheck}
      className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
      >
-     Check
-     </button>
+     
+                                              {t('lab.m6factors_check')}
+                                              </button>
     </div>
 
     {hcfFeedback.status && (
@@ -399,12 +411,12 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    <div className="flex flex-col h-full">
     {/* LCM Step-by-Step Demo Overlay */}
     {showLcmDemo && (
-     <div className="absolute inset-0 z-20 bg-white/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowLcmDemo(false)}>
+     <div className="absolute inset-0 z-20 bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowLcmDemo(false)}>
       <div className="flex items-center justify-between mb-4" onClick={e => e.stopPropagation()}>
        <h3 className="text-lg font-bold flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
-        <Lightbulb className="w-5 h-5" /> How Lighthouses Sync
-       </h3>
-       <button onClick={() => setShowLcmDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">Close</button>
+        <Lightbulb className="w-5 h-5" />  {t('lab.m6factors_how_lighthouses_sync')}
+                                                </h3>
+       <button onClick={() => setShowLcmDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">{t('lab.m6factors_close')}</button>
       </div>
       
       <div className="flex-1 flex flex-col gap-4" onClick={e => e.stopPropagation()}>
@@ -412,8 +424,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {lcmDemoStep >= 1 && (
         <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 animate-fadeIn">
          <p className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">
-          1. Multiples of Lighthouse A (every {lh1}s):
-         </p>
+          
+                                                           {t('lab.m6factors_1_multiples_of_lighthouse_a_ev')} {lh1}{t('lab.m6factors_s')}
+                                                          </p>
          <div className="flex flex-wrap gap-1.5">
           {lcmMultiplesA.current.slice(0, 6).map((m, i) => (
            <span key={i} className={`px-2 py-1 rounded text-xs font-mono font-bold ${m === calcLcm(lh1, lh2) ? 'bg-yellow-300 text-yellow-900 ring-2 ring-yellow-500' : 'bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200'}`}>
@@ -428,8 +441,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {lcmDemoStep >= 2 && (
         <div className="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 animate-fadeIn">
          <p className="text-sm font-semibold text-red-800 dark:text-red-300 mb-2">
-          2. Multiples of Lighthouse B (every {lh2}s):
-         </p>
+          
+                                                           {t('lab.m6factors_2_multiples_of_lighthouse_b_ev')} {lh2}{t('lab.m6factors_s')}
+                                                          </p>
          <div className="flex flex-wrap gap-1.5">
           {lcmMultiplesB.current.slice(0, 6).map((m, i) => (
            <span key={i} className={`px-2 py-1 rounded text-xs font-mono font-bold ${m === calcLcm(lh1, lh2) ? 'bg-yellow-300 text-yellow-900 ring-2 ring-yellow-500' : 'bg-red-100 dark:bg-red-800 text-red-700 dark:text-red-200'}`}>
@@ -444,8 +458,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {lcmDemoStep >= 3 && (
         <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
          <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
-          3. Common multiples (appear in BOTH lists):
-         </p>
+          
+                                                           {t('lab.m6factors_3_common_multiples_appear_in_b')}
+                                                          </p>
          <div className="flex flex-wrap gap-2">
           {(() => {
            const common = lcmMultiplesA.current.filter(v => lcmMultiplesB.current.includes(v));
@@ -453,7 +468,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
             <span key={i} className="px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-green-200 dark:bg-green-700 text-green-800 dark:text-green-200 ring-2 ring-green-400">
              {m}
             </span>
-           )) : <span className="text-xs text-slate-500">None yet — keep looking!</span>;
+           )) : <span className="text-xs text-slate-500">{t('lab.m6factors_none_yet_keep_looking')}</span>;
           })()}
          </div>
         </div>
@@ -464,18 +479,20 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
         <div className="p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 dark:border-yellow-600 animate-bounce-in text-center">
          <Star className="w-6 h-6 text-yellow-500 mx-auto mb-1" />
          <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">
-          LCM = {calcLcm(lh1, lh2)}
+          
+                                                           {t('lab.m6factors_lcm')} {calcLcm(lh1, lh2)}
          </p>
          <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
-          Both lighthouses flash together every {calcLcm(lh1, lh2)} seconds!
-         </p>
+          
+                                                           {t('lab.m6factors_both_lighthouses_flash_togethe')} {calcLcm(lh1, lh2)}  {t('lab.m6factors_seconds_1')}
+                                                          </p>
         </div>
        )}
 
        {/* Step 5: Show timeline visualization */}
        {lcmDemoStep >= 5 && (
         <div className="p-3 rounded-lg bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] animate-fadeIn">
-         <p className="text-xs font-semibold text-slate-600 dark:text-[#71717a] mb-3 text-center">Timeline (seconds)</p>
+         <p className="text-xs font-semibold text-slate-600 dark:text-[#71717a] mb-3 text-center">{t('lab.m6factors_timeline_seconds')}</p>
          <div className="relative h-20">
           {/* Multiples of A */}
           <div className="absolute top-0 w-full h-6">
@@ -506,8 +523,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        )}
        
        <p className="text-xs text-center text-slate-400 dark:text-[#71717a] mt-2">
-        Demo auto-advances. Click anywhere or press Close to start solving.
-       </p>
+        
+                                                 {t('lab.m6factors_demo_auto_advances_click_anywh')}
+                                                </p>
       </div>
      </div>
     )}
@@ -516,7 +534,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     <div className="flex justify-center gap-4 mb-8">
     <button 
      onClick={() => {if (!isPlaying) setLcmStartTime(Date.now()); setIsPlaying(!isPlaying);}}
-     className="flex items-center gap-2 px-4 py-2 bg-[#121212] dark:bg-slate-200 text-white dark:text-slate-900 rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors shadow-sm"
+     className="flex items-center gap-2 px-4 py-2 bg-[#121212] dark:bg-slate-200 text-white dark:text-slate-900 dark:text-white rounded-lg font-medium hover:bg-slate-700 dark:hover:bg-slate-300 transition-colors shadow-sm"
     >
      {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
      {isPlaying ? 'Pause' : 'Start Timeline'}
@@ -525,14 +543,15 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      onClick={() => {setTime(0); setIsPlaying(false);}}
      className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-700 text-slate-800 dark:text-[#ffffff] rounded-lg font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors border border-slate-200 dark:border-[#1c1b1b] shadow-sm"
     >
-     <RotateCcw className="w-5 h-5" /> Reset
-    </button>
+     <RotateCcw className="w-5 h-5" />  {t('lab.m6factors_reset')}
+                                     </button>
     </div>
 
     {/* Timer */}
     <div className="text-center mb-12">
     <div className="inline-block bg-[#121212] dark:bg-[#121212] text-white font-mono text-3xl px-6 py-3 rounded-xl border-4 border-[#1c1b1b] shadow-inner">
-     T = {time}s
+     
+                                      {t('lab.m6factors_t')} {time}s
     </div>
     </div>
 
@@ -556,7 +575,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      <div className={`absolute top-[-16px] w-12 h-12 rounded-full z-10 border-2 border-slate-300 transition-colors duration-100 flex items-center justify-center ${ time > 0 && time % lh1 === 0 ? 'bg-yellow-100 shadow-[0_0_50px_rgba(253,224,71,1)]' : 'bg-slate-200 dark:bg-slate-700' }`}>
       <div className={`w-4 h-4 rounded-full ${time > 0 && time % lh1 === 0 ? 'bg-yellow-400' : 'bg-slate-400'}`}></div>
      </div>
-     <span className="mt-4 font-bold text-blue-700 dark:text-blue-400 bg-blue-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">Every {lh1}s</span>
+     <span className="mt-4 font-bold text-blue-700 dark:text-blue-400 bg-blue-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">{t('lab.m6factors_every')} {lh1}s</span>
      </div>
 
      {/* Lighthouse B */}
@@ -572,7 +591,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      <div className={`absolute top-[-16px] w-12 h-12 rounded-full z-10 border-2 border-slate-300 transition-colors duration-100 flex items-center justify-center ${ time > 0 && time % lh2 === 0 ? 'bg-yellow-100 shadow-[0_0_50px_rgba(253,224,71,1)]' : 'bg-slate-200 dark:bg-slate-700' }`}>
       <div className={`w-4 h-4 rounded-full ${time > 0 && time % lh2 === 0 ? 'bg-yellow-400' : 'bg-slate-400'}`}></div>
      </div>
-     <span className="mt-4 font-bold text-red-700 dark:text-red-400 bg-red-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">Every {lh2}s</span>
+     <span className="mt-4 font-bold text-red-700 dark:text-red-400 bg-red-100/50 dark:bg-[#121212] px-3 py-1 rounded-full shadow-sm">{t('lab.m6factors_every')} {lh2}s</span>
      </div>
     </div>
     </div>
@@ -582,7 +601,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     <div className="w-full flex justify-between px-8 border-t-2 border-slate-300 dark:border-[#1c1b1b] pt-2 relative">
      {[...Array(11)].map((_, i) => (
      <div key={i} className="flex flex-col items-center">
-      <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-500 mb-1"></div>
+      <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 mb-1"></div>
       <span className="text-xs font-medium text-slate-500 dark:text-[#71717a]">{i * 6}</span>
      </div>
      ))}
@@ -598,12 +617,12 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
    <div className="flex flex-col h-full justify-center">
     {/* HCF Step-by-Step Demo Overlay */}
     {showHcfDemo && (
-     <div className="absolute inset-0 z-20 bg-white/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowHcfDemo(false)}>
+     <div className="absolute inset-0 z-20 bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/95 dark:bg-[#121212]/95 p-6 flex flex-col overflow-y-auto" onClick={() => setShowHcfDemo(false)}>
       <div className="flex items-center justify-between mb-4" onClick={e => e.stopPropagation()}>
        <h3 className="text-lg font-bold flex items-center gap-2 text-indigo-700 dark:text-indigo-300">
-        <Lightbulb className="w-5 h-5" /> How Pipe Cutting Works
-       </h3>
-       <button onClick={() => setShowHcfDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">Close</button>
+        <Lightbulb className="w-5 h-5" />  {t('lab.m6factors_how_pipe_cutting_works')}
+                                                    </h3>
+       <button onClick={() => setShowHcfDemo(false)} className="text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 px-2 py-1 rounded bg-slate-100 dark:bg-slate-700">{t('lab.m6factors_close')}</button>
       </div>
       
       <div className="flex-1 flex flex-col gap-4" onClick={e => e.stopPropagation()}>
@@ -611,7 +630,8 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {hcfDemoStep >= 1 && (
         <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
          <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
-          1. We have two pipes: {pipe1}m and {pipe2}m
+          
+                                                               {t('lab.m6factors_1_we_have_two_pipes')} {pipe1}{t('lab.m6factors_m_and')} {pipe2}m
          </p>
          <div className="flex gap-4 items-center justify-center">
           <div className="h-6 bg-green-400 rounded" style={{ width: `${(pipe1/36)*200}px` }}></div>
@@ -628,15 +648,16 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {hcfDemoStep >= 2 && (
         <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 animate-fadeIn">
          <p className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">
-          2. Find all factors of each pipe length:
-         </p>
+          
+                                                               {t('lab.m6factors_2_find_all_factors_of_each_pip')}
+                                                              </p>
          <div className="space-y-2">
           <div>
-           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">Factors of {pipe1}: </span>
+           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">{t('lab.m6factors_factors_of')} {pipe1}: </span>
            <span className="text-xs font-mono">{[...Array(pipe1)].map((_, i) => i + 1).filter(f => pipe1 % f === 0).join(', ')}</span>
           </div>
           <div>
-           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">Factors of {pipe2}: </span>
+           <span className="text-xs font-medium text-blue-700 dark:text-blue-400">{t('lab.m6factors_factors_of')} {pipe2}: </span>
            <span className="text-xs font-mono">{[...Array(pipe2)].map((_, i) => i + 1).filter(f => pipe2 % f === 0).join(', ')}</span>
           </div>
          </div>
@@ -647,8 +668,9 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
        {hcfDemoStep >= 3 && (
         <div className="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 animate-fadeIn">
          <p className="text-sm font-semibold text-green-800 dark:text-green-300 mb-2">
-          3. Common factors (divides BOTH pipes):
-         </p>
+          
+                                                               {t('lab.m6factors_3_common_factors_divides_both_')}
+                                                              </p>
          <div className="flex flex-wrap gap-2">
           {[...Array(Math.min(pipe1, pipe2))].map((_, i) => {
            const f = i + 1;
@@ -668,20 +690,24 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
         <div className="p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400 dark:border-yellow-600 animate-bounce-in text-center">
          <Star className="w-6 h-6 text-yellow-500 mx-auto mb-1" />
          <p className="text-sm font-bold text-yellow-800 dark:text-yellow-300">
-          HCF = {gcd(pipe1, pipe2)}m
+          
+                                                               {t('lab.m6factors_hcf')} {gcd(pipe1, pipe2)}m
          </p>
          <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
-          Cut both pipes into {gcd(pipe1, pipe2)}m pieces — no leftovers!
-         </p>
+          
+                                                               {t('lab.m6factors_cut_both_pipes_into')} {gcd(pipe1, pipe2)}{t('lab.m6factors_m_pieces_no_leftovers')}
+                                                              </p>
          <p className="text-xs text-yellow-500 mt-1">
-          Pipe A: {pipe1 / gcd(pipe1, pipe2)} pieces &nbsp;|&nbsp; Pipe B: {pipe2 / gcd(pipe1, pipe2)} pieces
-         </p>
+          
+                                                               {t('lab.m6factors_pipe_a')} {pipe1 / gcd(pipe1, pipe2)}  {t('lab.m6factors_pieces_nbsp_nbsp_pipe_b')} {pipe2 / gcd(pipe1, pipe2)}  {t('lab.m6factors_pieces')}
+                                                              </p>
         </div>
        )}
        
        <p className="text-xs text-center text-slate-400 dark:text-[#71717a] mt-2">
-        Demo auto-advances. Click anywhere or press Close to start solving.
-       </p>
+        
+                                                     {t('lab.m6factors_demo_auto_advances_click_anywh')}
+                                                    </p>
       </div>
      </div>
     )}
@@ -691,7 +717,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     {/* Pipe 1 */}
     <div className="w-full">
      <div className="flex justify-between text-sm mb-2 font-bold text-green-700 dark:text-green-400">
-     <span>Pipe A</span>
+     <span>{t('lab.m6factors_pipe_a_1')}</span>
      <span>{pipe1} m</span>
      </div>
      <div className="relative h-14 bg-green-500/10 dark:bg-green-500/5 rounded-r-xl border-2 border-l-0 border-green-500 rounded-l-md overflow-hidden shadow-inner">
@@ -703,7 +729,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
       {hcfFeedback.status === 'correct' && hcfInput && (
       <div className="w-full h-full flex">
        {[...Array(pipe1 / parseInt(hcfInput))].map((_, i) => (
-       <div key={i} className="h-full border-r-2 border-green-800/40 dark:border-green-900/60 flex-1 flex items-center justify-center bg-white/10 dark:bg-[#121212]">
+       <div key={i} className="h-full border-r-2 border-green-800/40 dark:border-green-900/60 flex-1 flex items-center justify-center bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 dark:bg-[#121212]">
         <span className="text-sm font-bold text-white drop-shadow-md">{hcfInput}</span>
        </div>
        ))}
@@ -716,7 +742,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
     {/* Pipe 2 */}
     <div className="w-full">
      <div className="flex justify-between text-sm mb-2 font-bold text-emerald-700 dark:text-emerald-400">
-     <span>Pipe B</span>
+     <span>{t('lab.m6factors_pipe_b')}</span>
      <span>{pipe2} m</span>
      </div>
      <div className="relative h-14 bg-emerald-500/10 dark:bg-emerald-500/5 rounded-r-xl border-2 border-l-0 border-emerald-500 rounded-l-md overflow-hidden shadow-inner">
@@ -728,7 +754,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
       {hcfFeedback.status === 'correct' && hcfInput && (
       <div className="w-full h-full flex">
        {[...Array(pipe2 / parseInt(hcfInput))].map((_, i) => (
-       <div key={i} className="h-full border-r-2 border-emerald-800/40 dark:border-emerald-900/60 flex-1 flex items-center justify-center bg-white/10 dark:bg-[#121212]">
+       <div key={i} className="h-full border-r-2 border-emerald-800/40 dark:border-emerald-900/60 flex-1 flex items-center justify-center bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 dark:bg-[#121212]">
         <span className="text-sm font-bold text-white drop-shadow-md">{hcfInput}</span>
        </div>
        ))}
@@ -744,7 +770,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
      <div className="absolute top-0 w-full border-t-2 border-slate-300 dark:border-[#1c1b1b]"></div>
      {[...Array(10)].map((_, i) => (
       <div key={i} className="flex flex-col items-center -mt-2">
-      <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-500 mb-2"></div>
+      <div className="w-0.5 h-3 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 mb-2"></div>
       <span className="text-xs font-bold text-slate-500 dark:text-[#71717a]">{i * 4}</span>
       </div>
      ))}

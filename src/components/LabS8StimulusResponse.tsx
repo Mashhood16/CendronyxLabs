@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {Sun, Moon } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabS8StimulusResponseProps {
  onExit?: () => void;
@@ -15,6 +16,7 @@ interface Termite {
 }
 
 export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseProps) {
+    const { t } = useTranslate();
  const [isCovered, setIsCovered] = useState(false);
  const [termites, setTermites] = useState<Termite[]>([]);
 
@@ -79,7 +81,7 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 2.1: Stimulus Response" subtitle="Observe termite behavior towards light vs dark" />
+  <LabHeader onExit={onExit} title={t('lab.s8stimulusresponse_act_2_1_stimulus_response')} subtitle={t('lab.subtitle_observe_termite_behavior')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Left Column: Interactive */}
@@ -90,14 +92,14 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
     onClick={() => setIsCovered(false)}
     className={`px-6 py-2 rounded-lg font-bold flex items-center gap-2 transition-all ${!isCovered ? 'bg-amber-100 text-amber-700 border-2 border-amber-400' : 'bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa] border-2 border-transparent hover:bg-slate-200 dark:bg-[#121212]'}`}
    >
-    <Sun className="w-5 h-5" /> Uncovered (Full Light)
-   </button>
+    <Sun className="w-5 h-5" />  {t('lab.s8stimulusresponse_uncovered_full_light')}
+                            </button>
    <button 
     onClick={() => setIsCovered(true)}
     className={`px-6 py-2 rounded-lg font-bold flex items-center gap-2 transition-all ${isCovered ? 'bg-indigo-100 text-indigo-700 border-2 border-indigo-400' : 'bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa] border-2 border-transparent hover:bg-slate-200 dark:bg-[#121212]'}`}
    >
-    <Moon className="w-5 h-5" /> Cover Right Half
-   </button>
+    <Moon className="w-5 h-5" />  {t('lab.s8stimulusresponse_cover_right_half')}
+                            </button>
    </div>
 
    <div className="relative w-80 h-80 rounded-full border-4 border-slate-300 dark:border-[#1c1b1b] shadow-inner overflow-hidden mx-auto" style={{backgroundColor: 'rgba(251, 191, 36, 0.15)'}}>
@@ -105,7 +107,7 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
    {/* The petri dish division */}
    <div className="absolute inset-0 flex">
     <div className="w-1/2 h-full flex items-center justify-center">
-    <span className="text-amber-200 font-bold opacity-50 select-none">LIGHT</span>
+    <span className="text-amber-200 font-bold opacity-50 select-none">{t('lab.s8stimulusresponse_light')}</span>
     </div>
     <div className={`w-1/2 h-full flex items-center justify-center transition-colors duration-1000 ${isCovered ? 'bg-[#000000] dark:bg-[#121212]/90' : 'bg-transparent'}`}>
     <span className={`font-bold opacity-50 select-none ${isCovered ? 'text-slate-600 dark:text-[#ffffff]' : 'text-amber-200'}`}>
@@ -134,7 +136,7 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
 
    <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-sm">
    <div className="bg-amber-50 p-4 rounded-xl text-center border border-amber-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <div className="text-sm font-bold text-amber-700">Light Side</div>
+    <div className="text-sm font-bold text-amber-700">{t('lab.s8stimulusresponse_light_side')}</div>
     <div className="text-2xl font-bold text-amber-800 dark:text-[#ffffff]">
     {termites.filter(t => t.x <= 50).length}
     </div>
@@ -153,13 +155,15 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
   {/* Right Column: Info */}
   <div className="w-full md:w-80 flex flex-col gap-4">
    <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Biological Response</h3>
+   <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.s8stimulusresponse_biological_response')}</h3>
    <p className="text-sm text-blue-800 mb-4 dark:text-[#ffffff]">
-    Animals naturally respond to environmental changes (stimuli) to survive.
-   </p>
+    
+                             {t('lab.s8stimulusresponse_animals_naturally_respond_to_e')}
+                            </p>
    <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    When half the petri dish is covered, you will notice the termites gradually migrate to the darker side and stay there. Termites prefer dark, moist environments (negative phototaxis) to protect themselves from predators and dehydration.
-   </p>
+    
+                             {t('lab.s8stimulusresponse_when_half_the_petri_dish_is_co')}
+                            </p>
    </div>
   </div>
   </div>

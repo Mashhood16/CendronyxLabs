@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Square, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10Esterification({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [ethanoic, setEthanoic] = useState(10);
  const [methanol, setMethanol] = useState(10);
@@ -80,7 +82,7 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Esterification" subtitle="Synthesizing Methyl Ethanoate" />
+  <LabHeader onExit={onExit} title={t('lab.c10esterification_virtual_lab_esterification')} subtitle={t('lab.subtitle_synthesizing_methyl_ethanoate')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -89,53 +91,55 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10esterification_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10esterification_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:flex-1 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Setup</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10esterification_theory_setup')}</h2>
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-2 text-sm">
-   <p><strong>Esterification</strong> is the reaction between a carboxylic acid and an alcohol to produce an ester and water.</p>
+   <p><strong>{t('lab.c10esterification_esterification')}</strong>  {t('lab.c10esterification_is_the_reaction_between_a_carb')}</p>
    <div className={`bg-blue-50 p-3 rounded font-mono text-center text-blue-900 border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    CH₃COOH + CH₃OH ⇌ CH₃COOCH₃ + H₂O
-   </div>
-   <p><strong>Conditions:</strong> Concentrated sulfuric acid (H₂SO₄) is used as a catalyst, and the mixture is heated in a water bath.</p>
-   <p><strong>Observation:</strong> Esters have a characteristic fruity or sweet smell. The reaction mixture initially smells of vinegar (ethanoic acid).</p>
+    
+                             {t('lab.c10esterification_ch_cooh_ch_oh_ch_cooch_h_o')}
+                            </div>
+   <p><strong>{t('lab.c10esterification_conditions')}</strong>  {t('lab.c10esterification_concentrated_sulfuric_acid_h_s')}</p>
+   <p><strong>{t('lab.c10esterification_observation')}</strong>  {t('lab.c10esterification_esters_have_a_characteristic_f')}</p>
    </div>
    
    <div className="flex-1 overflow-auto">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">Experiment Controls</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2 mt-4">{t('lab.c10esterification_experiment_controls')}</h3>
    <div className="space-y-4">
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Ethanoic Acid Volume (mL)</span>
+     <span>{t('lab.c10esterification_ethanoic_acid_volume_ml')}</span>
      <span>{ethanoic} mL</span>
     </label>
     <input type="range" min="5" max="50" value={ethanoic} onChange={(e) => { setEthanoic(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Methanol Volume (mL)</span>
+     <span>{t('lab.c10esterification_methanol_volume_ml')}</span>
      <span>{methanol} mL</span>
     </label>
     <input type="range" min="5" max="50" value={methanol} onChange={(e) => { setMethanol(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Water Bath Temp (°C)</span>
+     <span>{t('lab.c10esterification_water_bath_temp_c')}</span>
      <span>{temp} °C</span>
     </label>
     <input type="range" min="20" max="80" value={temp} onChange={(e) => { setTemp(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
     <div>
     <label className="text-sm font-semibold flex justify-between">
-     <span>Conc. H₂SO₄ Catalyst (drops)</span>
-     <span>{catalyst} drops</span>
+     <span>{t('lab.c10esterification_conc_h_so_catalyst_drops')}</span>
+     <span>{catalyst}  {t('lab.c10esterification_drops')}</span>
     </label>
     <input type="range" min="0" max="10" value={catalyst} onChange={(e) => { setCatalyst(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
     </div>
@@ -143,13 +147,13 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">Simulation</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col items-center relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] w-full border-b pb-2 mb-4">{t('lab.c10esterification_simulation')}</h2>
    
    <div className="flex-1 w-full flex flex-col items-center justify-center relative">
    <svg viewBox="0 0 200 300" className="w-64 h-auto max-h-full drop-shadow-xl">
     <rect x="30" y="150" width="140" height="100" rx="10" fill="rgba(100,200,255,0.3)" stroke="#333" strokeWidth="2" />
-    <text x="100" y="240" textAnchor="middle" fill="#0066cc" fontSize="12">Water Bath</text>
+    <text x="100" y="240" textAnchor="middle" fill="#0066cc" fontSize="12">{t('lab.c10esterification_water_bath')}</text>
     <text x="100" y="225" textAnchor="middle" fill="#0066cc" fontSize="14" fontWeight="bold">{temp}°C</text>
     
     {temp > 30 && <path d="M 80 260 Q 100 250 120 260" stroke="red" strokeWidth="3" fill="none" opacity={(temp-30)/50} />}
@@ -168,20 +172,20 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
    </svg>
 
    <div className={`absolute top-4 right-4 bg-slate-100 dark:bg-[#121212] p-3 rounded border text-sm w-40 text-center flex-col `}>
-    <div className="font-bold text-slate-700 dark:text-[#ffffff]">Odor Detected:</div>
+    <div className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c10esterification_odor_detected')}</div>
     <div className={`font-semibold ${smell === 'None' ? 'text-slate-500 dark:text-[#a1a1aa]' : smell === 'Fruity (Sweet)' ? 'text-pink-600' : 'text-orange-500'}`}>
     {smell}
     </div>
    </div>
    
-   {catalyst > 0 && <div className={`absolute top-10 left-10 text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded flex-col `}>H₂SO₄ added</div>}
+   {catalyst > 0 && <div className={`absolute top-10 left-10 text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded flex-col `}>{t('lab.c10esterification_h_so_added')}</div>}
    </div>
 
    <div className="w-full mt-4 flex items-center justify-between gap-4">
    <div className="flex-1 bg-slate-200 dark:bg-[#121212] h-2 rounded-full lg:overflow-hidden">
     <div className="bg-blue-500 h-full transition-all duration-100 dark:bg-teal-950/20 dark:border-teal-900" style={{ width: `${(time/60)*100}%` }} />
    </div>
-   <div className="text-sm font-mono">{time}s / 60s</div>
+   <div className="text-sm font-mono">{time}{t('lab.c10esterification_s_60s')}</div>
    <button onClick={handleStart} className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
     {running ? <Square size={16} /> : <Play size={16} />}
     {running ? 'Stop' : 'Start'}
@@ -189,34 +193,35 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Data & Analysis</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-lg shadow-sm border p-4 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.c10esterification_data_analysis')}</h2>
    
    <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded flex justify-between items-center">
    <div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Ester Yield</div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10esterification_ester_yield')}</div>
     <div className="text-2xl font-mono text-blue-700">{yieldPercent.toFixed(1)}%</div>
    </div>
    <button onClick={handleLog} disabled={time === 0} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm disabled:opacity-50 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    Record Data
-   </button>
+    
+                             {t('lab.c10esterification_record_data')}
+                            </button>
    </div>
 
    <div className="flex-1 overflow-auto border rounded bg-slate-50 dark:bg-[#121212]">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-200 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="p-2">Run</th>
-     <th className="p-2">Eth(mL)</th>
-     <th className="p-2">Meth(mL)</th>
-     <th className="p-2">T(°C)</th>
-     <th className="p-2">Cat</th>
-     <th className="p-2">Yield(%)</th>
+     <th className="p-2">{t('lab.c10esterification_run')}</th>
+     <th className="p-2">{t('lab.c10esterification_eth_ml')}</th>
+     <th className="p-2">{t('lab.c10esterification_meth_ml')}</th>
+     <th className="p-2">{t('lab.c10esterification_t_c')}</th>
+     <th className="p-2">{t('lab.c10esterification_cat')}</th>
+     <th className="p-2">{t('lab.c10esterification_yield')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
-     <tr><td colSpan={6} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded yet.</td></tr>
+     <tr><td colSpan={6} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.c10esterification_no_data_recorded_yet')}</td></tr>
     ) : (
      logs.map((log, i) => (
      <tr key={i} className="border-b">
@@ -235,22 +240,24 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
 
    <div className="bg-blue-50 border border-blue-200 rounded p-4 dark:bg-teal-950/20 dark:border-teal-900">
    <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
-    <CheckCircle size={18} /> Knowledge Check
-   </h3>
+    <CheckCircle size={18} />  {t('lab.c10esterification_knowledge_check')}
+                            </h3>
    <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
-    Calculate the theoretical maximum mass of methyl ethanoate produced if you react <strong>{targetMass.current} g</strong> of ethanoic acid with excess methanol. (Aᵣ: H=1, C=12, O=16)
-   </p>
+    
+                             {t('lab.c10esterification_calculate_the_theoretical_maxi')} <strong>{targetMass.current} g</strong>  {t('lab.c10esterification_of_ethanoic_acid_with_excess_m')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     value={answer}
     onChange={e => setAnswer(e.target.value)}
-    placeholder="Mass (g)" 
+    placeholder={t('lab.c10esterification_mass_g')} 
     className="flex-1 px-3 py-1 border rounded"
     />
     <button onClick={checkAnswer} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    Check
-    </button>
+    
+                                 {t('lab.c10esterification_check')}
+                                 </button>
    </div>
    {feedback && (
     <p className={`mt-2 text-sm font-semibold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>

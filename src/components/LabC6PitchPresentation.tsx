@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle, ChevronRight, ChevronLeft, Lightbulb, Users, Target } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6PitchPresentation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [slide, setSlide] = useState(0);
  const [inputs, setInputs] = useState({
  problem: '',
@@ -20,11 +22,11 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
   icon: AlertTriangle,
   content: (
   <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">What specific agricultural problem are farmers in Pakistan facing today?</p>
+   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_what_specific_agricultural_pro')}</p>
    <textarea 
    value={inputs.problem}
    onChange={e => setInputs({...inputs, problem: e.target.value})}
-   placeholder="e.g., Lack of weather data leading to crop damage, poor market access..."
+   placeholder={t('lab.c6pitchpresentation_e_g_lack_of_weather_data_leadi')}
    className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
    />
   </div>
@@ -35,11 +37,11 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
   icon: Lightbulb,
   content: (
   <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">How will your technology (app, website, IoT) solve this problem?</p>
+   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_how_will_your_technology_app_w')}</p>
    <textarea 
    value={inputs.solution}
    onChange={e => setInputs({...inputs, solution: e.target.value})}
-   placeholder="e.g., A mobile app that sends SMS alerts about weather and crop prices..."
+   placeholder={t('lab.c6pitchpresentation_e_g_a_mobile_app_that_sends_sm')}
    className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
    />
   </div>
@@ -50,11 +52,11 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
   icon: Users,
   content: (
   <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">Who exactly will use this product and how will they benefit?</p>
+   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_who_exactly_will_use_this_prod')}</p>
    <textarea 
    value={inputs.audience}
    onChange={e => setInputs({...inputs, audience: e.target.value})}
-   placeholder="e.g., Small-scale farmers in Punjab. They will benefit by increasing yields..."
+   placeholder={t('lab.c6pitchpresentation_e_g_small_scale_farmers_in_pun')}
    className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
    />
   </div>
@@ -67,8 +69,9 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
   <div className="flex flex-col items-center text-center gap-6">
    <CheckCircle className="w-24 h-24 text-emerald-500" />
    <p className="text-xl text-slate-700 dark:text-[#ffffff] max-w-lg">
-   Your presentation is complete. You are ready to pitch your agricultural IT startup to the investors!
-   </p>
+   
+                 {t('lab.c6pitchpresentation_your_presentation_is_complete_')}
+                 </p>
   </div>
   )
  }
@@ -82,11 +85,11 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Tech Startup Pitch" />
+  <LabHeader onExit={onExit} title={t('lab.c6pitchpresentation_tech_startup_pitch')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Prepare a presentation to pitch a new IT solution addressing a problem in the agriculture sector.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6pitchpresentation_prepare_a_presentation_to_pitc')}</p>
 
   <div className="flex-1 flex flex-col items-center justify-center">
    
@@ -114,19 +117,21 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
     <button 
     onClick={() => setSlide(s => Math.max(0, s - 1))}
     disabled={slide === 0}
-    className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 disabled:opacity-30 font-bold transition-colors"
+    className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-white disabled:opacity-30 font-bold transition-colors"
     >
-    <ChevronLeft className="w-5 h-5" /> Previous
-    </button>
+    <ChevronLeft className="w-5 h-5" />  {t('lab.c6pitchpresentation_previous')}
+                                 </button>
     <div className="text-sm font-bold text-slate-400">
-    Slide {slide + 1} of {slides.length}
+    
+                                 {t('lab.c6pitchpresentation_slide')} {slide + 1} of {slides.length}
     </div>
     <button 
     onClick={() => setSlide(s => Math.min(slides.length - 1, s + 1))}
     disabled={slide === slides.length - 1}
     className="flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg disabled:opacity-30 font-bold transition-colors shadow-sm dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
-    Next <ChevronRight className="w-5 h-5" />
+    
+                                 {t('lab.c6pitchpresentation_next')} <ChevronRight className="w-5 h-5" />
     </button>
    </div>
    </div>

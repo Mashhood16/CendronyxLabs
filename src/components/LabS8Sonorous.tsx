@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { BellRing } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -115,6 +116,7 @@ function playPlasticThud() {
 }
 
 export default function LabS8Sonorous({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selected, setSelected] = useState(MATERIALS[0]);
  const [isStriking, setIsStriking] = useState(false);
  const [waves, setWaves] = useState<number[]>([]);
@@ -154,12 +156,12 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 5.7: Sonorous Nature" subtitle="Strike materials to hear if they produce a ringing sound" />
+  <LabHeader onExit={onExit} title={t('lab.s8sonorous_act_5_7_sonorous_nature')} subtitle={t('lab.subtitle_strike_materials_hear')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   {/* Selection */}
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">Select Material</h3>
+   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s8sonorous_select_material')}</h3>
    {MATERIALS.map(m => (
    <button 
     key={m.id}
@@ -217,12 +219,12 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
     disabled={isStriking || waves.length > 0}
     className="w-full bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 text-xl shadow-lg flex justify-center items-center gap-3 transition-transform active:scale-95 disabled:opacity-50 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    <BellRing className="w-6 h-6" /> Strike
-   </button>
+    <BellRing className="w-6 h-6" />  {t('lab.s8sonorous_strike')}
+                            </button>
 
    {waves.length > 0 && (
     <div className={`mt-6 px-6 py-4 rounded-xl border-2 animate-fade-in ${selected.soundType === 'ring' ? 'bg-indigo-50 border-indigo-200 text-indigo-800' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] text-slate-800 dark:text-slate-100'}`}>
-    <h3 className="font-bold text-lg mb-1">{selected.name} is a {selected.type.toUpperCase()}</h3>
+    <h3 className="font-bold text-lg mb-1">{selected.name}  {t('lab.s8sonorous_is_a')} {selected.type.toUpperCase()}</h3>
     <p className="text-sm">
      {selected.soundType === 'ring' 
      ? "TIIING! It produces a ringing sound. Metals are SONOROUS." 

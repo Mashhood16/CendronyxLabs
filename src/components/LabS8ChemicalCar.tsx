@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {FlaskConical } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8ChemicalCar({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [bakingSodaAdded, setBakingSodaAdded] = useState(false);
  const [vinegarAdded, setVinegarAdded] = useState(false);
  const [sealed, setSealed] = useState(false);
@@ -20,7 +22,7 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.8: Chemical Car" subtitle="Vinegar + Baking Soda propulsion" />
+  <LabHeader onExit={onExit} title={t('lab.s8chemicalcar_act_11_8_chemical_car')} subtitle={t('lab.subtitle_vinegar_baking_soda_1')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
   
@@ -31,22 +33,25 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
    disabled={vinegarAdded || carPos > 0}
    className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${vinegarAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-sky-300 text-slate-600 dark:text-[#ffffff]'}`}
    >
-   1. Pour Vinegar
-   </button>
+   
+                        {t('lab.s8chemicalcar_1_pour_vinegar')}
+                        </button>
    <button 
    onClick={() => setBakingSodaAdded(true)}
    disabled={bakingSodaAdded || !vinegarAdded || carPos > 0}
    className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${bakingSodaAdded ? 'bg-sky-50 border-sky-500 text-sky-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-sky-300 text-slate-600 dark:text-[#ffffff]'}`}
    >
-   2. Add Baking Soda
-   </button>
+   
+                        {t('lab.s8chemicalcar_2_add_baking_soda')}
+                        </button>
    <button 
    onClick={() => setSealed(true)}
    disabled={sealed || !bakingSodaAdded || carPos > 0}
    className={`flex-1 p-4 rounded-xl font-bold border-2 transition-all ${sealed ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300 text-slate-600 dark:text-[#ffffff]'}`}
    >
-   3. Seal Cap (with hole)
-   </button>
+   
+                        {t('lab.s8chemicalcar_3_seal_cap_with_hole')}
+                        </button>
   </div>
 
   {/* The Track */}
@@ -81,7 +86,7 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
      <div className={`absolute bottom-0 left-0 w-full bg-blue-400/40 transition-all ${carPos > 0 ? 'h-full animate-[pulse_0.1s_infinite]' : 'h-1/3'}`}>
      {bakingSodaAdded && (
       <div className="absolute inset-0 flex items-center justify-center">
-       <div className="text-xs font-bold text-white opacity-50">CO₂</div>
+       <div className="text-xs font-bold text-white opacity-50">{t('lab.s8chemicalcar_co')}</div>
       </div>
      )}
      </div>
@@ -113,8 +118,8 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
      onClick={launch}
      className="px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-black text-2xl tracking-widest uppercase rounded-2xl shadow-[0_10px_0_rgb(153,27,27)] active:shadow-[0_0px_0_rgb(153,27,27)] active:translate-y-2 transition-all flex items-center gap-2 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
     >
-     <FlaskConical className="w-8 h-8" /> Shake & Launch
-    </button>
+     <FlaskConical className="w-8 h-8" />  {t('lab.s8chemicalcar_shake_launch')}
+                                 </button>
    </div>
    )}
 

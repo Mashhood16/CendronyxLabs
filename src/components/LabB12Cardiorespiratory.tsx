@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Activity, Heart, CheckCircle2, RefreshCcw, Stethoscope, LineChart, Table2, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'ecg' | 'cpr'>('ecg');
  
@@ -127,7 +129,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab B12.2: Cardiorespiratory Systems" subtitle="Medical Diagnostics & Resuscitation Training" />
+  <LabHeader onExit={onExit} title={t('lab.b12cardiorespiratory_lab_b12_2_cardiorespiratory_sy')} subtitle={t('lab.subtitle_medical_diagnostics_resuscitation')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -136,72 +138,73 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b12cardiorespiratory_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b12cardiorespiratory_lab')}</button>
   </div>
   <main className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Stethoscope className="w-5 h-5 text-red-600"/> Theory & Context
-   </h2>
+   <Stethoscope className="w-5 h-5 text-red-600"/>  {t('lab.b12cardiorespiratory_theory_context')}
+                        </h2>
    <div className="prose text-slate-700 dark:text-[#ffffff] text-sm flex flex-col gap-3">
-   <p><strong>Electrocardiogram (ECG):</strong> A recording of the electrical activity of the heart over time. Key components include the P wave (atrial depolarization), QRS complex (ventricular depolarization), and T wave (ventricular repolarization).</p>
-   <p><strong>Heart Rate Calculation:</strong> Standard ECG paper moves at 25 mm/s. Each small square is 1 mm (0.04 seconds). Heart Rate (bpm) can be calculated by dividing 1500 by the number of small squares between two consecutive R peaks (the R-R interval).</p>
-   <p><strong>Cardiopulmonary Resuscitation (CPR):</strong> An emergency life-saving procedure performed when the heart stops beating. The optimal chest compression rate is 100 to 120 compressions per minute (CPM), allowing adequate cardiac output and perfusion.</p>
+   <p><strong>{t('lab.b12cardiorespiratory_electrocardiogram_ecg')}</strong>  {t('lab.b12cardiorespiratory_a_recording_of_the_electrical_')}</p>
+   <p><strong>{t('lab.b12cardiorespiratory_heart_rate_calculation')}</strong>  {t('lab.b12cardiorespiratory_standard_ecg_paper_moves_at_25')}</p>
+   <p><strong>{t('lab.b12cardiorespiratory_cardiopulmonary_resuscitation_')}</strong>  {t('lab.b12cardiorespiratory_an_emergency_life_saving_proce')}</p>
    <div className={`bg-red-50 p-3 rounded-lg border border-red-100 mt-2 flex-col `}>
-    <h3 className="font-semibold text-red-800 text-sm mb-1">Key Objectives:</h3>
+    <h3 className="font-semibold text-red-800 text-sm mb-1">{t('lab.b12cardiorespiratory_key_objectives')}</h3>
     <ul className="list-disc pl-4 text-red-900 text-xs flex flex-col gap-1">
-    <li>Read an ECG trace to determine R-R intervals.</li>
-    <li>Calculate exact heart rate mathematically from grid measurements.</li>
-    <li>Practice maintaining physiological compression rates in CPR.</li>
+    <li>{t('lab.b12cardiorespiratory_read_an_ecg_trace_to_determine')}</li>
+    <li>{t('lab.b12cardiorespiratory_calculate_exact_heart_rate_mat')}</li>
+    <li>{t('lab.b12cardiorespiratory_practice_maintaining_physiolog')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800 dark:text-[#ffffff]">
-   <Activity className="w-5 h-5 text-red-600"/> Interactive Simulator
-   </h2>
+   <Activity className="w-5 h-5 text-red-600"/>  {t('lab.b12cardiorespiratory_interactive_simulator')}
+                        </h2>
    
    <div className="flex gap-2 w-full mb-6">
-   <button onClick={() => { setActiveTab('ecg'); setIsSimulating(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'ecg' ? 'bg-red-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>ECG Diagnostic</button>
-   <button onClick={() => { setActiveTab('cpr'); setIsSimulating(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'cpr' ? 'bg-orange-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>CPR Training</button>
+   <button onClick={() => { setActiveTab('ecg'); setIsSimulating(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'ecg' ? 'bg-red-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>{t('lab.b12cardiorespiratory_ecg_diagnostic')}</button>
+   <button onClick={() => { setActiveTab('cpr'); setIsSimulating(false); }} className={`flex-1 py-2 rounded-lg font-medium transition-colors ${activeTab === 'cpr' ? 'bg-orange-600 text-white shadow-md' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}>{t('lab.b12cardiorespiratory_cpr_training')}</button>
    </div>
 
    {activeTab === 'ecg' ? (
    <div className="w-full flex flex-col items-center gap-4">
     <div className={`w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 mb-2 flex-col `}>
     <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff]">
-     <span className="flex items-center gap-1"><Heart className="w-4 h-4"/> Patient Stress Level</span>
+     <span className="flex items-center gap-1"><Heart className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_patient_stress_level')}</span>
      <span className="text-red-600">{stressLevel}%</span>
     </label>
     <input type="range" min="0" max="100" value={stressLevel} onChange={e => setStressLevel(Number(e.target.value))} className="w-full accent-red-600 cursor-pointer" />
     </div>
 
     {/* ECG Visualization */}
-    <div className="relative w-full h-48 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-2 border-red-200 rounded ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    <div className="relative w-full h-48 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-2 border-red-200 rounded ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     <svg viewBox="0 0 300 100" className="w-full h-full">
      {drawGrid()}
      {isSimulating && <path d={pathData} fill="none" stroke="#0f172a" strokeWidth="1.5" strokeLinejoin="round" />}
     </svg>
     {!isSimulating && (
      <div className="absolute inset-0 flex items-center justify-center bg-slate-50 dark:bg-[#121212]/80 backdrop-blur-sm">
-      <span className="text-sm font-semibold text-slate-500 dark:text-[#71717a]">Monitor Offline</span>
+      <span className="text-sm font-semibold text-slate-500 dark:text-[#71717a]">{t('lab.b12cardiorespiratory_monitor_offline')}</span>
      </div>
     )}
     </div>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] italic text-center w-full">Note: 1 small grid square = 0.04s. Speed = 25mm/s.</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] italic text-center w-full">{t('lab.b12cardiorespiratory_note_1_small_grid_square_0_04s')}</p>
 
     <div className="grid grid-cols-1 gap-3 w-full mt-2">
     <button onClick={() => setIsSimulating(!isSimulating)} className={`flex items-center justify-center gap-2 p-3 rounded-lg font-medium transition-colors ${isSimulating ? 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]' : 'bg-red-600 text-white hover:bg-red-700'}`}>
-     {isSimulating ? <><RefreshCcw className="w-4 h-4"/> Pause Monitor</> : <><Play className="w-4 h-4"/> Start Monitor</>}
+     {isSimulating ? <><RefreshCcw className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_pause_monitor')}</> : <><Play className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_start_monitor')}</>}
     </button>
     </div>
    </div>
@@ -215,19 +218,20 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
 
     <div className="w-full grid grid-cols-2 gap-3 text-sm">
     <div className="flex flex-col bg-orange-50 p-3 rounded border border-orange-100 text-center">
-     <span className="text-orange-700 font-semibold text-xs uppercase">Time Remaining</span>
+     <span className="text-orange-700 font-semibold text-xs uppercase">{t('lab.b12cardiorespiratory_time_remaining')}</span>
      <span className="font-mono font-bold text-2xl text-orange-900">{timeLeft} s</span>
     </div>
     <div className="flex flex-col bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] text-center">
-     <span className="text-slate-500 dark:text-[#71717a] font-semibold text-xs uppercase">Compressions</span>
+     <span className="text-slate-500 dark:text-[#71717a] font-semibold text-xs uppercase">{t('lab.b12cardiorespiratory_compressions')}</span>
      <span className="font-mono font-bold text-2xl text-slate-800 dark:text-[#ffffff]">{compressions.length}</span>
     </div>
     </div>
 
     {cpmResult !== null && (
      <div className={`w-full p-4 rounded-lg border text-center font-semibold ${cpmResult >= 100 && cpmResult <= 120 ? 'bg-green-100 border-green-300 text-green-800' : 'bg-red-100 border-red-300 text-red-800'}`}>
-     Result: {cpmResult} CPM
-     <p className="text-xs mt-1">{cpmResult >= 100 && cpmResult <= 120 ? 'Optimal Rate achieved!' : 'Rate must be between 100-120 CPM.'}</p>
+     
+                                          {t('lab.b12cardiorespiratory_result')} {cpmResult}  {t('lab.b12cardiorespiratory_cpm')}
+                                          <p className="text-xs mt-1">{cpmResult >= 100 && cpmResult <= 120 ? 'Optimal Rate achieved!' : 'Rate must be between 100-120 CPM.'}</p>
      </div>
     )}
 
@@ -240,8 +244,8 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
      <Activity className="w-6 h-6"/> {cprActive ? 'COMPRESS!' : 'START CPR'}
     </button>
     <button onClick={resetCpr} className="col-span-2 flex items-center justify-center gap-1 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] p-3 rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium transition-colors">
-     <RefreshCcw className="w-4 h-4"/> Reset Drill
-    </button>
+     <RefreshCcw className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_reset_drill')}
+                                         </button>
     </div>
    </div>
    )}
@@ -250,23 +254,24 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
   {/* Right Column: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <LineChart className="w-5 h-5 text-red-600"/> Data & Analysis
-   </h2>
+   <LineChart className="w-5 h-5 text-red-600"/>  {t('lab.b12cardiorespiratory_data_analysis')}
+                        </h2>
    
    <div className="flex justify-between items-center bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <span className="text-sm text-slate-600 dark:text-[#a1a1aa] font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/> Data Logger (ECG)</span>
+    <span className="text-sm text-slate-600 dark:text-[#a1a1aa] font-medium flex items-center gap-2"><Table2 className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_data_logger_ecg')}</span>
     <button onClick={recordData} disabled={activeTab !== 'ecg' || !isSimulating} className="bg-green-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    Log Patient Data
-    </button>
+    
+                             {t('lab.b12cardiorespiratory_log_patient_data')}
+                             </button>
    </div>
 
    <div className="overflow-x-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-40">
    <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
     <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-100 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-2 border-b">Trial</th>
-     <th className="px-4 py-2 border-b">Stress (%)</th>
-     <th className="px-4 py-2 border-b">HR (bpm)</th>
+     <th className="px-4 py-2 border-b">{t('lab.b12cardiorespiratory_trial')}</th>
+     <th className="px-4 py-2 border-b">{t('lab.b12cardiorespiratory_stress')}</th>
+     <th className="px-4 py-2 border-b">{t('lab.b12cardiorespiratory_hr_bpm')}</th>
     </tr>
     </thead>
     <tbody>
@@ -279,7 +284,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
     ))}
     {dataPoints.length === 0 && (
      <tr>
-     <td colSpan={3} className="px-4 py-4 text-center text-slate-400 italic">No ECG data recorded yet.</td>
+     <td colSpan={3} className="px-4 py-4 text-center text-slate-400 italic">{t('lab.b12cardiorespiratory_no_ecg_data_recorded_yet')}</td>
      </tr>
     )}
     </tbody>
@@ -288,7 +293,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
 
    {/* SVG Graph */}
    <div className="w-full h-48 bg-slate-50 dark:bg-[#121212] rounded-lg relative border border-slate-200 dark:border-[#1c1b1b] mt-2">
-   <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">Heart Rate vs Stress Level</h3>
+   <h3 className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">{t('lab.b12cardiorespiratory_heart_rate_vs_stress_level')}</h3>
    <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible p-6">
     <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1"/>
     <line x1="0" y1="100" x2="0" y2="0" stroke="#94a3b8" strokeWidth="1"/>
@@ -306,22 +311,23 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
     <circle key={i} cx={(dp.stress / maxStress) * 100} cy={100 - (dp.hr / maxHr) * 100} r="2.5" fill="#1e293b" />
     ))}
    </svg>
-   <span className="absolute bottom-1 right-2 text-[10px] text-slate-400">Stress (%)</span>
-   <span className="absolute top-2 left-1 text-[10px] text-slate-400 -rotate-90 origin-left">HR (bpm)</span>
+   <span className="absolute bottom-1 right-2 text-[10px] text-slate-400">{t('lab.b12cardiorespiratory_stress')}</span>
+   <span className="absolute top-2 left-1 text-[10px] text-slate-400 -rotate-90 origin-left">{t('lab.b12cardiorespiratory_hr_bpm')}</span>
    </div>
 
    {/* Assessment Section */}
    <div className={`bg-red-50 border border-red-200 rounded-lg p-4 mt-2 `}>
-   <h3 className="font-bold text-red-900 text-sm mb-2 flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/> Clinical Assessment</h3>
+   <h3 className="font-bold text-red-900 text-sm mb-2 flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/>  {t('lab.b12cardiorespiratory_clinical_assessment')}</h3>
    <p className="text-xs text-red-800 mb-3 leading-relaxed">
-    Based on the currently simulating ECG, count the small squares between two R peaks and calculate the exact Heart Rate.
-    <br/>
-    <span className="font-mono bg-red-100 px-1 rounded block mt-1">HR = 1500 / (number of small squares)</span>
+    
+                             {t('lab.b12cardiorespiratory_based_on_the_currently_simulat')}
+                             <br/>
+    <span className="font-mono bg-red-100 px-1 rounded block mt-1">{t('lab.b12cardiorespiratory_hr_1500_number_of_small_square')}</span>
    </p>
    <div className="flex gap-2">
     <input 
     type="number" 
-    placeholder="Enter calculated HR..." 
+    placeholder={t('lab.b12cardiorespiratory_enter_calculated_hr')} 
     value={calculatedHr} 
     onChange={e => { setCalculatedHr(e.target.value); setHrStatus(null); }}
     className="flex-1 px-3 py-2 text-sm border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50"
@@ -332,8 +338,9 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
     disabled={dataPoints.length === 0}
     className="bg-red-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-red-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
     >
-    Verify
-    </button>
+    
+                                 {t('lab.b12cardiorespiratory_verify')}
+                                 </button>
    </div>
    {hrStatus !== null && (
     <div className={`mt-3 text-sm font-medium p-2 rounded ${hrStatus ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

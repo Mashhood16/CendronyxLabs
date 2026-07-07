@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw, Play, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode] = useState<'1d' | '3d'>('1d');
 
@@ -114,7 +117,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab M12.3: Advanced Kinematics" />
+  <LabHeader onExit={onExit} title={t('lab.m12kinematics_lab_m12_3_advanced_kinematics')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -123,47 +126,48 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m12kinematics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m12kinematics_lab')}</button>
   </div>
   <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-indigo-700 mb-2">
    <BookOpen className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Theoretical Context</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12kinematics_theoretical_context')}</h2>
    </div>
    
    {mode === '1d' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p><strong>Rectilinear Motion</strong> involves particles moving along a straight line. The equations of kinematics connect acceleration (a), velocity (v), displacement (s), and time (t).</p>
+    <p><strong>{t('lab.m12kinematics_rectilinear_motion')}</strong>  {t('lab.m12kinematics_involves_particles_moving_alon')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono space-y-2 flex-col `}>
-    <div>{"$$v = u + at$$"}</div>
-    <div>{"$$s = ut + \\frac{1}{2}at^2$$"}</div>
+    <div><MathText>{"$$v = u + at$$"}</MathText></div>
+    <div><MathText>{"$$s = ut + \\frac{1}{2}at^2$$"}</MathText></div>
     </div>
-    <p><strong>Graphical Analysis:</strong> The slope of the s-t graph gives velocity, and the slope of the v-t graph gives acceleration. The area under the v-t graph represents displacement.</p>
+    <p><strong>{t('lab.m12kinematics_graphical_analysis')}</strong>  {t('lab.m12kinematics_the_slope_of_the_s_t_graph_giv')}</p>
    </div>
    )}
 
    {mode === '3d' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p><strong>Vector-Valued Functions</strong> describe trajectories in 3D space. A position vector {"$$r(t) = \\langle x(t), y(t), z(t) \\rangle$$"} tracks a particle over time.</p>
-    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono text-xs overflow-x-auto space-y-2 flex-col `}>
-    <div>{"$$v(t) = r'(t) = \\langle x'(t), y'(t), z'(t) \\rangle$$"}</div>
-    <div>{"$$Speed = |v(t)| = \\sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}$$"}</div>
-    </div>
-    <p><strong>Helical Trajectories</strong> combine circular motion in the xy-plane with linear motion along the z-axis, modeled by sine and cosine functions parameterized by t.</p>
+     <p><strong>{t('lab.m12kinematics_vector_valued_functions')}</strong>  {t('lab.m12kinematics_describe_trajectories_in_3d_sp')} <MathText>{"$$r(t) = \\langle x(t), y(t), z(t) \\rangle$$"}</MathText>  {t('lab.m12kinematics_tracks_a_particle_over_time')}</p>
+     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono text-xs overflow-x-auto space-y-2 flex-col `}>
+     <div><MathText>{"$$v(t) = r'(t) = \\langle x'(t), y'(t), z'(t) \\rangle$$"}</MathText></div>
+     <div><MathText>{"$$Speed = |v(t)| = \\sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}$$"}</MathText></div>
+     </div>
+    <p><strong>{t('lab.m12kinematics_helical_trajectories')}</strong>  {t('lab.m12kinematics_combine_circular_motion_in_the')}</p>
    </div>
    )}
   </div>
 
   {/* Visualizer Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 items-center justify-center relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">Live Simulation</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">{t('lab.m12kinematics_live_simulation')}</h2>
    
    {mode === '1d' ? (
     <div className="w-full flex flex-col gap-4 mt-8">
@@ -177,14 +181,14 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
     </div>
     <div className="grid grid-cols-2 gap-4 w-full h-40">
      <div className="flex flex-col items-center">
-      <span className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">Velocity (v) vs Time (t)</span>
+      <span className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">{t('lab.m12kinematics_velocity_v_vs_time_t')}</span>
       <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded">
       <polyline fill="none" stroke="#2563eb" strokeWidth="2"
        points={history.map(h => `${(h.t/10)*100},${100 - (h.v/50)*100}`).join(' ')} />
       </svg>
      </div>
      <div className="flex flex-col items-center">
-      <span className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">Displacement (s) vs Time (t)</span>
+      <span className="text-xs font-semibold text-slate-500 dark:text-[#71717a] mb-1">{t('lab.m12kinematics_displacement_s_vs_time_t')}</span>
       <svg viewBox="0 -10 100 110" className="w-full h-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded">
       <polyline fill="none" stroke="#10b981" strokeWidth="2"
        points={history.map(h => `${(h.t/10)*100},${100 - (h.s/250)*100}`).join(' ')} />
@@ -196,8 +200,8 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
       {isPlaying ? <Pause size={18} /> : <Play size={18} />} {isPlaying ? 'Pause' : 'Start'}
      </button>
      <button onClick={resetSim} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-4 py-2 rounded shadow hover:bg-slate-300 dark:bg-[#121212]">
-      <RotateCcw size={18} /> Reset
-     </button>
+      <RotateCcw size={18} />  {t('lab.m12kinematics_reset')}
+                                      </button>
     </div>
     </div>
    ) : (
@@ -219,25 +223,25 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-indigo-700 mb-2 shrink-0">
    <Settings2 className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Parameters & Assessment</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12kinematics_parameters_assessment')}</h2>
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] space-y-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Interactive Variables</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.m12kinematics_interactive_variables')}</h3>
    {mode === '1d' && (
     <div>
-    <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Acceleration a(t): {acceleration} m/s²</label>
+    <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12kinematics_acceleration_a_t')} {acceleration}  {t('lab.m12kinematics_m_s')}</label>
     <input type="range" min="1" max="5" step="0.5" value={acceleration} onChange={e => setAcceleration(Number(e.target.value))} className="w-full accent-indigo-600" />
     </div>
    )}
    {mode === '3d' && (
     <>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Radius (R): {R}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12kinematics_radius_r')} {R}</label>
      <input type="range" min="1" max="5" step="0.5" value={R} onChange={e => setR(Number(e.target.value))} className="w-full accent-indigo-600" />
     </div>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Vertical Velocity (v): {v}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12kinematics_vertical_velocity_v')} {v}</label>
      <input type="range" min="1" max="5" step="0.5" value={v} onChange={e => setV(Number(e.target.value))} className="w-full accent-indigo-600" />
     </div>
     </>
@@ -247,7 +251,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 flex-1 flex flex-col dark:bg-[#121212] dark:border-[#1c1b1b]">
    <div className="flex items-center gap-2 text-indigo-800 mb-3 shrink-0 dark:text-[#ffffff]">
     <Calculator className="w-5 h-5" />
-    <h3 className="font-semibold">Lab Computation Task</h3>
+    <h3 className="font-semibold">{t('lab.m12kinematics_lab_computation_task')}</h3>
    </div>
    
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 flex-1">
@@ -260,28 +264,29 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
      type="number" 
      value={userAnswer}
      onChange={e => setUserAnswer(e.target.value)}
-     placeholder="Enter answer" 
+     placeholder={t('lab.m12kinematics_enter_answer')} 
      className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Verify
-    </button>
+     
+                                      {t('lab.m12kinematics_verify')}
+                                     </button>
     </div>
 
     {feedback === "correct" && (
     <div className="flex items-center gap-2 text-green-700 bg-green-50 p-2 rounded border border-green-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
      <CheckCircle2 className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Excellent! Computation is accurate.</span>
+     <span className="font-medium text-sm">{t('lab.m12kinematics_excellent_computation_is_accur')}</span>
     </div>
     )}
 
     {feedback === "incorrect" && (
     <div className="flex items-center gap-2 text-red-700 bg-red-50 p-2 rounded border border-red-200">
      <XCircle className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Incorrect. Double-check your calculations.</span>
+     <span className="font-medium text-sm">{t('lab.m12kinematics_incorrect_double_check_your_ca')}</span>
     </div>
     )}
 
@@ -290,8 +295,9 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
     className="flex items-center justify-center gap-2 w-full text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-md transition-colors text-sm font-medium border border-transparent mt-2"
     >
     <RotateCcw className="w-4 h-4" />
-    Generate New Scenario
-    </button>
+    
+                                 {t('lab.m12kinematics_generate_new_scenario')}
+                                 </button>
    </div>
    </div>
   </div>

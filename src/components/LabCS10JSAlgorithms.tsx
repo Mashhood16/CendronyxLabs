@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Play, RotateCcw, CheckCircle, Search, FileText } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [array] = useState<number[]>([11, 23, 34, 45, 56, 67, 78, 89, 90]);
@@ -107,7 +109,7 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Algorithms Lab" />
+   <LabHeader onExit={onExit} title={t('lab.cs10jsalgorithms_algorithms_lab')} />
 
    
   {/* Mobile Tab Navigation */}
@@ -116,50 +118,52 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs10jsalgorithms_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs10jsalgorithms_lab')}</button>
   </div>
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
     {/* Theory Column */}
     <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <FileText className="mr-2 text-indigo-500" /> Theory & Setup
-     </h2>
+      <FileText className="mr-2 text-indigo-500" />  {t('lab.cs10jsalgorithms_theory_setup')}
+                          </h2>
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
       <p>
-       In computer science, searching algorithms are used to find a specific element within a data structure.
-      </p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Linear Search</h3>
+       
+                                {t('lab.cs10jsalgorithms_in_computer_science_searching_')}
+                               </p>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs10jsalgorithms_linear_search')}</h3>
       <p>
-       Checks each element in the array sequentially until the target is found.
-       Time complexity: <strong>O(n)</strong>.
+       
+                                {t('lab.cs10jsalgorithms_checks_each_element_in_the_arr')} <strong>{t('lab.cs10jsalgorithms_o_n')}</strong>.
       </p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">Binary Search</h3>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs10jsalgorithms_binary_search')}</h3>
       <p>
-       Works only on <strong>sorted</strong> arrays. It repeatedly divides the search interval in half.
-       Time complexity: <strong>O(log n)</strong>.
+       
+                                {t('lab.cs10jsalgorithms_works_only_on')} <strong>{t('lab.cs10jsalgorithms_sorted')}</strong>  {t('lab.cs10jsalgorithms_arrays_it_repeatedly_divides_t')} <strong>{t('lab.cs10jsalgorithms_o_log_n')}</strong>.
       </p>
       
       <div className={`mt-6 p-4 bg-indigo-50 rounded-lg dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-       <h4 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">Lab Setup</h4>
+       <h4 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.cs10jsalgorithms_lab_setup')}</h4>
        <div className="space-y-4">
         <div>
-         <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Search Type</label>
+         <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.cs10jsalgorithms_search_type')}</label>
          <select 
           className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500"
           value={searchType}
           onChange={(e) => setSearchType(e.target.value as 'linear' | 'binary')}
          >
-          <option value="linear">Linear Search</option>
-          <option value="binary">Binary Search</option>
+          <option value="linear">{t('lab.cs10jsalgorithms_linear_search')}</option>
+          <option value="binary">{t('lab.cs10jsalgorithms_binary_search')}</option>
          </select>
         </div>
         <div>
-         <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Target Value</label>
+         <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.cs10jsalgorithms_target_value')}</label>
          <input 
           type="number"
           className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500"
@@ -173,10 +177,10 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
     </section>
 
     {/* Simulation Column */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <Search className="mr-2 text-indigo-500" /> Simulation
-     </h2>
+      <Search className="mr-2 text-indigo-500" />  {t('lab.cs10jsalgorithms_simulation')}
+                          </h2>
      
      <div className="flex-grow flex flex-col items-center justify-center min-h-[300px]">
       <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -226,15 +230,17 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
         className={`flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}
        >
         <Play size={18} className="mr-2" />
-        Step
-       </button>
+        
+                                     {t('lab.cs10jsalgorithms_step')}
+                                    </button>
        <button 
         onClick={reset}
         className={`flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:bg-[#121212] transition-colors flex-col `}
        >
         <RotateCcw size={18} className="mr-2" />
-        Reset
-       </button>
+        
+                                     {t('lab.cs10jsalgorithms_reset')}
+                                    </button>
       </div>
       
       {found !== null && (
@@ -247,15 +253,15 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
     </section>
 
     {/* Analysis Column */}
-    <section className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center">
-      <FileText className="mr-2 text-indigo-500" /> Data & Assessment
-     </h2>
+      <FileText className="mr-2 text-indigo-500" />  {t('lab.cs10jsalgorithms_data_assessment')}
+                          </h2>
      
      <div className="mb-6 flex-grow">
-      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">Execution Log</h3>
+      <h3 className="text-sm font-semibold text-slate-500 dark:text-[#71717a] uppercase mb-2">{t('lab.cs10jsalgorithms_execution_log')}</h3>
       <div className="bg-[#000000] dark:bg-[#121212] rounded-lg p-3 h-48 lg:overflow-y-auto font-mono text-xs text-green-400">
-       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">Awaiting execution...</span>}
+       {logs.length === 0 && <span className="text-slate-500 dark:text-[#71717a]">{t('lab.cs10jsalgorithms_awaiting_execution')}</span>}
        {logs.map((log, i) => (
         <div key={i}>{`> ${log}`}</div>
        ))}
@@ -263,24 +269,26 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
      </div>
 
      <div className="bg-indigo-50 rounded-lg p-4 dark:bg-[#121212] dark:border-[#1c1b1b]">
-      <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">Knowledge Check</h3>
+      <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.cs10jsalgorithms_knowledge_check')}</h3>
       <p className="text-sm text-indigo-800 mb-4 dark:text-[#ffffff]">
-       How many steps would a <strong>Binary Search</strong> take to find the value <strong>{assessmentTarget}</strong> in the default array?
-      </p>
+       
+                                {t('lab.cs10jsalgorithms_how_many_steps_would_a')} <strong>{t('lab.cs10jsalgorithms_binary_search')}</strong>  {t('lab.cs10jsalgorithms_take_to_find_the_value')} <strong>{assessmentTarget}</strong>  {t('lab.cs10jsalgorithms_in_the_default_array')}
+                               </p>
       <div className="flex gap-2">
        <input 
         type="number" 
         value={assessmentAnswer}
         onChange={(e) => setAssessmentAnswer(e.target.value)}
         className="w-20 p-2 border border-indigo-200 rounded-md focus:ring-2 focus:ring-indigo-500"
-        placeholder="Steps"
+        placeholder={t('lab.cs10jsalgorithms_steps')}
        />
        <button 
         onClick={checkAssessment}
         className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
        >
-        Check
-       </button>
+        
+                                     {t('lab.cs10jsalgorithms_check')}
+                                    </button>
       </div>
       {assessmentResult !== null && (
        <p className={`mt-2 text-sm font-semibold ${assessmentResult ? 'text-green-600' : 'text-red-600'}`}>

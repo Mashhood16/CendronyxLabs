@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Zap, Play, Sun, Fan } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS6EnergyTransformation({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [tab, setTab] = useState<'bouncing' | 'solar'>('bouncing');
  
  // Bouncing Ball State
@@ -36,7 +38,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 8: Energy Transformations" />
+  <LabHeader onExit={onExit} title={t('lab.s6energytransformation_unit_8_energy_transformations')} />
 
   <div className="flex-1 flex flex-col p-6 items-center">
   
@@ -45,14 +47,16 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
    onClick={() => setTab('bouncing')}
    className={`px-6 py-2 rounded font-bold border-2 ${tab === 'bouncing' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-amber-300'}`}
    >
-   Activity 8.1: Bouncing Ball
-   </button>
+   
+                        {t('lab.s6energytransformation_activity_8_1_bouncing_ball')}
+                        </button>
    <button 
    onClick={() => setTab('solar')}
    className={`px-6 py-2 rounded font-bold border-2 ${tab === 'solar' ? 'border-yellow-500 bg-yellow-50 text-yellow-700' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-yellow-300'}`}
    >
-   Activity 8.3: Solar Fan
-   </button>
+   
+                        {t('lab.s6energytransformation_activity_8_3_solar_fan')}
+                        </button>
   </div>
 
   {tab === 'bouncing' && (
@@ -64,8 +68,8 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
     disabled={ballState === 'falling' || ballState === 'impact' || ballState === 'rising'}
     className="absolute top-6 px-4 py-2 bg-amber-600 text-white rounded font-bold disabled:opacity-50 flex items-center gap-2 dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"
     >
-    <Play className="w-4 h-4" /> Drop Ball
-    </button>
+    <Play className="w-4 h-4" />  {t('lab.s6energytransformation_drop_ball')}
+                                 </button>
 
     <div className="w-full h-full relative border-b-8 border-[#1c1b1b] dark:border-[#1c1b1b] mt-12">
      <div className={`absolute left-1/2 -translate-x-1/2 w-12 bg-red-500 rounded-full transition-all ease-linear ${ ballState === 'held' ? 'top-0 h-12 duration-0' : ballState === 'falling' ? 'top-[calc(100%-48px)] h-12 duration-1000' : ballState === 'impact' ? 'top-[calc(100%-36px)] h-9 w-16 duration-75' : ballState === 'rising' ? 'top-12 h-12 duration-1000' : 'top-12 h-12 duration-0' }`}></div>
@@ -74,31 +78,31 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
 
    {/* Energy Map */}
    <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col justify-center">
-    <h2 className="text-2xl font-bold mb-8 text-slate-800 dark:text-[#ffffff]">Energy State Analysis</h2>
+    <h2 className="text-2xl font-bold mb-8 text-slate-800 dark:text-[#ffffff]">{t('lab.s6energytransformation_energy_state_analysis')}</h2>
     
     <div className="space-y-4">
     <div className={`p-4 rounded-xl border-2 transition-colors ${ballState === 'held' || ballState === 'peak' ? 'border-amber-500 bg-amber-50' : 'border-slate-100'}`}>
-     <h3 className="font-bold text-amber-800 dark:text-[#ffffff]">1. Maximum Height (Held / Peak)</h3>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Maximum Gravitational Potential Energy (GPE). Zero Kinetic Energy (KE).</p>
+     <h3 className="font-bold text-amber-800 dark:text-[#ffffff]">{t('lab.s6energytransformation_1_maximum_height_held_peak')}</h3>
+     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6energytransformation_maximum_gravitational_potentia')}</p>
     </div>
     
     <div className={`p-4 rounded-xl border-2 transition-colors ${ballState === 'falling' ? 'border-blue-500 bg-blue-50' : 'border-slate-100'}`}>
-     <h3 className="font-bold text-blue-800 dark:text-[#ffffff]">2. Falling</h3>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">GPE is converting into Kinetic Energy (KE) as speed increases.</p>
+     <h3 className="font-bold text-blue-800 dark:text-[#ffffff]">{t('lab.s6energytransformation_2_falling')}</h3>
+     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6energytransformation_gpe_is_converting_into_kinetic')}</p>
     </div>
 
     <div className={`p-4 rounded-xl border-2 transition-colors ${ballState === 'impact' ? 'border-red-500 bg-red-50' : 'border-slate-100'}`}>
-     <h3 className="font-bold text-red-800">3. Impact</h3>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">KE converts into Elastic Potential Energy (EPE) as the ball squishes. Some energy is lost as Heat and Sound.</p>
+     <h3 className="font-bold text-red-800">{t('lab.s6energytransformation_3_impact')}</h3>
+     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6energytransformation_ke_converts_into_elastic_poten')}</p>
     </div>
 
     <div className={`p-4 rounded-xl border-2 transition-colors ${ballState === 'rising' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-100'}`}>
-     <h3 className="font-bold text-emerald-800">4. Rising</h3>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">EPE pushes the ball up, converting back to KE, which then converts back to GPE as it slows down.</p>
+     <h3 className="font-bold text-emerald-800">{t('lab.s6energytransformation_4_rising')}</h3>
+     <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6energytransformation_epe_pushes_the_ball_up_convert')}</p>
     </div>
     </div>
 
-    <button onClick={() => setBallState('held')} className="mt-8 text-slate-500 dark:text-[#71717a] font-bold hover:text-slate-800 dark:text-[#ffffff] self-start">Reset Simulation</button>
+    <button onClick={() => setBallState('held')} className="mt-8 text-slate-500 dark:text-[#71717a] font-bold hover:text-slate-800 dark:text-[#ffffff] self-start">{t('lab.s6energytransformation_reset_simulation')}</button>
    </div>
    </div>
   )}
@@ -125,7 +129,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
     >
      <div className={`w-8 h-8 rounded-full bg-slate-50 dark:bg-[#121212] shadow absolute top-1 transition-all ${switchOn ? 'left-11' : 'left-1'}`}></div>
     </button>
-    <span className="mt-4 font-bold text-slate-600 dark:text-[#a1a1aa]">Circuit {switchOn ? 'Closed' : 'Open'}</span>
+    <span className="mt-4 font-bold text-slate-600 dark:text-[#a1a1aa]">{t('lab.s6energytransformation_circuit')} {switchOn ? 'Closed' : 'Open'}</span>
     </div>
    </div>
 
@@ -160,15 +164,15 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
      <Fan className="w-full h-full" />
     </div>
     <div className="w-4 h-12 bg-slate-400 dark:bg-[#121212] mt-2 rounded-t"></div>
-    <div className="w-16 h-4 bg-slate-500 dark:bg-[#121212] rounded-t"></div>
+    <div className="w-16 h-4 bg-slate-50 dark:bg-[#000000]0 dark:bg-[#121212] rounded-t"></div>
     </div>
    </div>
 
    <div className="mt-8 p-4 bg-yellow-50 dark:bg-[#121212] border border-yellow-200 dark:border-[#1c1b1b] rounded-xl text-yellow-800 dark:text-yellow-200 text-center max-w-xl">
-    <h3 className="font-bold flex items-center justify-center gap-2 mb-2"><Zap className="w-5 h-5" /> Energy Conversion</h3>
+    <h3 className="font-bold flex items-center justify-center gap-2 mb-2"><Zap className="w-5 h-5" />  {t('lab.s6energytransformation_energy_conversion')}</h3>
     <p>
-    <strong>Light Energy</strong> (from the Sun) is converted into <strong>Electrical Energy</strong> by the solar panel. When the circuit is closed, this electrical energy flows to the motor, converting it into <strong>Mechanical (Kinetic) Energy</strong> to spin the fan blades.
-    </p>
+    <strong>{t('lab.s6energytransformation_light_energy')}</strong>  {t('lab.s6energytransformation_from_the_sun_is_converted_into')} <strong>{t('lab.s6energytransformation_electrical_energy')}</strong>  {t('lab.s6energytransformation_by_the_solar_panel_when_the_ci')} <strong>{t('lab.s6energytransformation_mechanical_kinetic_energy')}</strong>  {t('lab.s6energytransformation_to_spin_the_fan_blades')}
+                                 </p>
    </div>
    </div>
   )}

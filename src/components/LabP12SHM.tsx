@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Car, Waves, Activity, CheckCircle, XCircle, Volume2, GraduationCap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
 
 export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -107,7 +109,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Oscillations & Waves" />
+  <LabHeader onExit={onExit} title={t('lab.p12shm_oscillations_waves')} />
 
   <div className="px-4 pt-2 lg:pt-0">
    
@@ -119,12 +121,13 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p12shm_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.12shm_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   
@@ -133,22 +136,24 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
       {scenario === 'damping' ? (
    <>
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-    <Car className="text-blue-600"/> Damped Harmonic Motion {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
+    <Car className="text-blue-600"/>  {t('lab.p12shm_damped_harmonic_motion')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
     </h2>
     <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
-     A car suspension system uses springs and shock absorbers (dampers) to isolate the vehicle from road bumps.
-    </p>
+     
+                                      {t('lab.p12shm_a_car_suspension_system_uses_s')}
+                                     </p>
     <p>
-     Without dampers, the car would bounce endlessly (Simple Harmonic Motion). Dampers dissipate energy, usually as heat, reducing the amplitude over time.
-    </p>
+     
+                                      {t('lab.p12shm_without_dampers_the_car_would_')}
+                                     </p>
     <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-     <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">Critical Damping</h3>
-     <p className="font-mono text-center text-blue-800 dark:text-[#ffffff]">c_c = 2√(mk)</p>
+     <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.12shm_criticaldamping')}</h3>
+     <p className="font-mono text-center text-blue-800 dark:text-[#ffffff]">{t('lab.p12shm_c_c_2_mk')}</p>
      <ul className="text-sm text-blue-800 mt-2 list-disc pl-5 dark:text-[#ffffff]">
-     <li><strong>Underdamped (c &lt; c_c):</strong> System oscillates with decreasing amplitude.</li>
-     <li><strong>Critically Damped (c = c_c):</strong> System returns to equilibrium as fast as possible without oscillating. Ideal for cars!</li>
-     <li><strong>Overdamped (c &gt; c_c):</strong> System returns to equilibrium slowly without oscillating.</li>
+     <li><strong>{t('lab.p12shm_underdamped_c_lt_c_c')}</strong>{t('lab.12shm_systemoscillateswithdecreasingampli')}</li>
+     <li><strong>{t('lab.p12shm_critically_damped_c_c_c')}</strong>  {t('lab.p12shm_system_returns_to_equilibrium_')}</li>
+     <li><strong>{t('lab.p12shm_overdamped_c_gt_c_c')}</strong>{t('lab.12shm_systemreturnstoequilibriumslowlywit')}</li>
      </ul>
     </div>
     </div>
@@ -156,21 +161,23 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
    ) : (
    <>
     <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-    <Waves className="text-red-500"/> Standing Waves
-    </h2>
+    <Waves className="text-red-500"/>  {t('lab.p12shm_standing_waves')}
+                                     </h2>
     <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
-     When two identical waves traveling in opposite directions interfere, they can form a <strong>Standing Wave</strong>.
+     
+                                          {t('lab.p12shm_when_two_identical_waves_trave')} <strong>{t('lab.12shm_standingwave')}</strong>.
     </p>
     <p>
-     A <strong>Rubens Tube</strong> is a pipe filled with flammable gas, with holes drilled along its top. A speaker at one end creates sound waves. When driven at resonant frequencies, standing pressure waves form inside.
-    </p>
+     A <strong>{t('lab.12shm_rubenstube')}</strong>  {t('lab.p12shm_is_a_pipe_filled_with_flammabl')}
+                                         </p>
     <div className={`bg-red-50 p-4 rounded-lg border border-red-100 flex-col `}>
-     <h3 className="font-semibold text-red-900 mb-2">Resonance Condition (Closed Tube)</h3>
-     <p className="font-mono text-center text-red-800">f_n = n · v / (2L)</p>
+     <h3 className="font-semibold text-red-900 mb-2">{t('lab.p12shm_resonance_condition_closed_tub')}</h3>
+     <p className="font-mono text-center text-red-800">{t('lab.p12shm_f_n_n_v_2l')}</p>
      <p className="text-sm text-red-800 mt-2">
-     Where <em>n</em> is an integer (1, 2, 3...), <em>v</em> is the speed of sound (~340 m/s), and <em>L</em> is the tube length. At resonance, gas flows faster at pressure antinodes, creating taller flames!
-     </p>
+     
+                                              {t('lab.p12shm_where')} <em>n</em>  {t('lab.p12shm_is_an_integer_1_2_3')} <em>v</em>  {t('lab.p12shm_is_the_speed_of_sound_340_m_s_')} <em>L</em>  {t('lab.p12shm_is_the_tube_length_at_resonanc')}
+                                              </p>
     </div>
     </div>
     
@@ -212,11 +219,12 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Middle Column: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 w-full">
    {scenario === 'damping' ? <Car className="text-indigo-500"/> : <Volume2 className="text-indigo-500"/>}
-   Interactive Visualizer
-   </h2>
+   
+                        {t('lab.p12shm_interactive_visualizer')}
+                        </h2>
    
    <div className={`w-full aspect-square max-w-md bg-[#000000] dark:bg-[#121212] rounded-xl relative overflow- flex flex-col items-center justify-end border-4 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-inner pb-10 `}>
    {scenario === 'damping' ? (
@@ -259,8 +267,9 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
      onClick={() => setBumpTrigger(t => t + 1)}
      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
      >
-     HIT BUMP!
-     </button>
+     
+                                          {t('lab.p12shm_hit_bump')}
+                                          </button>
     </div>
     </div>
    ) : (
@@ -279,7 +288,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     <div className="w-full h-6 bg-slate-400 dark:bg-[#121212] rounded-sm border-2 border-slate-500 dark:border-[#1c1b1b] relative flex items-center">
      <div className="absolute left-[-10px] w-4 h-8 bg-[#121212] dark:bg-[#121212] rounded-l" /> {/* Speaker */}
      <div className="absolute right-[-10px] w-2 h-8 bg-slate-600 dark:bg-[#121212]" /> {/* Closed end */}
-     <span className="text-xs font-bold text-slate-800 dark:text-[#ffffff] w-full text-center">L = 1.0 m</span>
+     <span className="text-xs font-bold text-slate-800 dark:text-[#ffffff] w-full text-center">{t('lab.12shm_l10m')}</span>
     </div>
     </div>
    )}
@@ -290,7 +299,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     <>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Mass (m)</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12shm_mass_m')}</label>
      <span className="text-sm font-mono text-indigo-600">{mass} kg</span>
      </div>
      <input 
@@ -301,8 +310,8 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Spring Constant (k)</label>
-     <span className="text-sm font-mono text-indigo-600">{springK} N/m</span>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12shm_spring_constant_k')}</label>
+     <span className="text-sm font-mono text-indigo-600">{springK}  {t('lab.p12shm_n_m')}</span>
      </div>
      <input 
      type="range" min="10000" max="100000" step="1000" 
@@ -312,8 +321,8 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     </div>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Damping (c)</label>
-     <span className="text-sm font-mono text-indigo-600">{dampingC} Ns/m</span>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12shm_damping_c')}</label>
+     <span className="text-sm font-mono text-indigo-600">{dampingC}  {t('lab.p12shm_ns_m')}</span>
      </div>
      <input 
      type="range" min="0" max="30000" step="100" 
@@ -326,7 +335,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
     <>
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Speaker Frequency (f)</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p12shm_speaker_frequency_f')}</label>
      <span className="text-sm font-mono text-red-600">{frequency} Hz</span>
      </div>
      <input 
@@ -346,66 +355,70 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
    <Activity className="text-emerald-500" />
-   Engineering Tasks
-   </h2>
+   
+                        {t('lab.p12shm_engineering_tasks')}
+                        </h2>
 
    <div className="space-y-6">
    {scenario === 'damping' ? (
     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Tune the Suspension</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12shm_tunethesuspension')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-     A car has a mass of <strong>1000 kg</strong> and a combined spring constant of <strong>40,000 N/m</strong>.
-     Calculate the exact damping coefficient <em>c</em> required for <strong>Critical Damping</strong>.
+     
+                                      {t('lab.p12shm_a_car_has_a_mass_of')} <strong>{t('lab.p12shm_1000_kg')}</strong>{t('lab.12shm_andacombinedspringconstantof')}<strong>{t('lab.p12shm_40_000_n_m')}</strong>{t('lab.p12shm_calculate_the_exact_damping_co')} <em>c</em>{t('lab.12shm_requiredfor')}<strong>{t('lab.12shm_criticaldamping')}</strong>.
     </p>
     <div className="flex gap-2">
      <input 
      type="text" 
      value={dampingAns}
      onChange={(e) => setDampingAns(e.target.value)}
-     placeholder="e.g. 12000"
+     placeholder={t('lab.p12shm_t_lab_12shm_eg12000')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
      />
      <button 
      onClick={checkDamping}
      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
-     Check
-     </button>
+     
+                                          {t('lab.p12shm_check')}
+                                          </button>
     </div>
     {dampingStatus === 'correct' && (
      <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1">
-     <CheckCircle size={16}/> Correct! c ≈ 12,649 Ns/m. Try setting this in the simulator and hit the bump!
-     </p>
+     <CheckCircle size={16}/>  {t('lab.p12shm_correct_c_12_649_ns_m_try_sett')}
+                                          </p>
     )}
-    {dampingStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. Use c = 2√(mk).</p>}
+    {dampingStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/>  {t('lab.p12shm_try_again_use_c_2_mk')}</p>}
     </div>
    ) : (
     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Find the Harmonic</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12shm_findtheharmonic')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-     For a closed tube of length L = 1.0 m, calculate the frequency required to generate the <strong>3rd Harmonic (n=3)</strong> standing wave. Assume the speed of sound v = 340 m/s.
-    </p>
+     
+                                          {t('lab.p12shm_for_a_closed_tube_of_length_l_')} <strong>{t('lab.p12shm_3rd_harmonic_n_3')}</strong>  {t('lab.p12shm_standing_wave_assume_the_speed')}
+                                         </p>
     <div className="flex gap-2">
      <input 
      type="text" 
      value={waveAns}
      onChange={(e) => setWaveAns(e.target.value)}
-     placeholder="e.g. 400"
+     placeholder={t('lab.p12shm_t_lab_12shm_eg400')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
      />
      <button 
      onClick={checkWave}
      className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors font-medium dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"
      >
-     Check
-     </button>
+     
+                                              {t('lab.p12shm_check')}
+                                              </button>
     </div>
     {waveStatus === 'correct' && (
      <p className="text-emerald-600 text-sm mt-2 flex items-center gap-1">
-     <CheckCircle size={16}/> Correct! f = 510 Hz. Set the simulator to 510 Hz to see the 3 antinodes!
-     </p>
+     <CheckCircle size={16}/>  {t('lab.p12shm_correct_f_510_hz_set_the_simul')}
+                                              </p>
     )}
-    {waveStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/> Try again. f_n = n(v/2L).</p>}
+    {waveStatus === 'incorrect' && <p className="text-red-500 text-sm mt-2 flex items-center gap-1"><XCircle size={16}/>  {t('lab.p12shm_try_again_f_n_n_v_2l')}</p>}
     </div>
    )}
    </div>

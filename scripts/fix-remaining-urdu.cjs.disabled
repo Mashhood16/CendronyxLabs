@@ -1,0 +1,31 @@
+const fs = require('fs');
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+const urduRanges = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+
+const issues = Object.keys(ur).filter(k => ur[k] && urduRanges.test(ur[k]));
+console.log('Urdu script issues remaining:', issues.length);
+
+// Show first 20
+issues.slice(0, 20).forEach(k => {
+  console.log('[' + k + '] ' + ur[k].substring(0, 100));
+});
+
+// Fix: revert all to English
+let fixed = 0;
+issues.forEach(k => {
+  if (en[k]) {
+    ur[k] = en[k];
+    fixed++;
+  }
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+console.log('\nFixed (reverted to English):', fixed);
+
+// Count remaining
+const remaining = Object.keys(ur).filter(k => ur[k] && urduRanges.test(ur[k]));
+console.log('Remaining Urdu script:', remaining.length);

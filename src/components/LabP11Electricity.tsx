@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CheckCircle2, XCircle, Save, Lightbulb, Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<'sensor' | 'concrete'>('sensor');
  
@@ -62,21 +64,21 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
 
    {/* LDR R1 */}
    <rect x="150" y="70" width="60" height="20" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
-   <text x="180" y="105" fill="white" fontSize="12" textAnchor="middle">LDR ({R1} kΩ)</text>
+   <text x="180" y="105" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_ldr')}{R1}  {t('lab.p11electricity_k')}</text>
    {/* Light aura */}
    <circle cx="180" cy="80" r="25" fill="#eab308" opacity={lightIntensity / 150} />
 
    {/* Fixed R2 */}
    <rect x="290" y="120" width="20" height="60" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
-   <text x="340" y="150" fill="white" fontSize="12" textAnchor="middle">10 kΩ</text>
+   <text x="340" y="150" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_10_k')}</text>
 
    {/* Vout Node */}
    <circle cx="300" cy="100" r="5" fill="#ef4444" />
-   <text x="320" y="105" fill="#ef4444" fontSize="14" fontWeight="bold">V_out</text>
+   <text x="320" y="105" fill="#ef4444" fontSize="14" fontWeight="bold">{t('lab.p11_elec_v_out')}</text>
 
    {/* Alarm indicator */}
    <circle cx="300" cy="100" r={isAlarmOn ? 15 : 0} fill="red" opacity={0.5} className="animate-ping" />
-   {isAlarmOn && <text x="250" y="40" fill="red" fontSize="16" fontWeight="bold">ALARM TRIGGERED!</text>}
+   {isAlarmOn && <text x="250" y="40" fill="red" fontSize="16" fontWeight="bold">{t('lab.p11_elec_alarmtriggered')}</text>}
   </svg>
   );
  } else {
@@ -104,10 +106,11 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
    {/* Multimeter */}
    <rect x="140" y="210" width="120" height="30" fill="#1e293b" stroke="#64748b" strokeWidth={2} rx="4" />
    <text x="200" y="230" fill="#38bdf8" fontSize="16" textAnchor="middle" fontWeight="bold" className="font-mono">
-   V = {V_drop.toFixed(2)} V
+   
+                 {t('lab.p11electricity_v')} {V_drop.toFixed(2)} V
    </text>
    
-   <text x="200" y="30" fill="white" fontSize="14" textAnchor="middle">Carbon Fiber Concrete Bridge Support</text>
+   <text x="200" y="30" fill="white" fontSize="14" textAnchor="middle">{t('lab.p11_elec_carbonfiberconcretebridgesupport')}</text>
   </svg>
   );
  }
@@ -115,7 +118,7 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 11 Physics: Practical Electricity" />
+  <LabHeader onExit={onExit} title={t('lab.p11electricity_grade_11_physics_practical_ele')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -124,54 +127,59 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p11electricity_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.p11_elec_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   {/* Theory & Controls */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Lightbulb className="text-yellow-500" /> Circuit Builder
-   </h2>
+   <Lightbulb className="text-yellow-500" />  {t('lab.p11electricity_circuit_builder')}
+                        </h2>
    
    <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
    <button 
     className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'sensor' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setMode('sensor')}
    >
-    LDR Alarm Circuit
-   </button>
+    
+                             {t('lab.p11electricity_ldr_alarm_circuit')}
+                            </button>
    <button 
     className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'concrete' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setMode('concrete')}
    >
-    Smart Concrete
-   </button>
+    
+                             {t('lab.p11electricity_smart_concrete')}
+                            </button>
    </div>
 
    <div className="flex-grow space-y-4">
    {mode === 'sensor' ? (
     <>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     A potential divider uses two resistors in series to divide voltage. An LDR (Light Dependent Resistor) decreases its resistance as light intensity increases.
-     {"$$V_{out} = V_{in} \\times \\frac{R_2}{R_1 + R_2}$$"}
+     
+                                      {t('lab.p11electricity_a_potential_divider_uses_two_r')}
+                                      {"$$V_{out} = V_{in} \\times \\frac{R_2}{R_1 + R_2}$$"}
     </p>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Light Intensity: {lightIntensity}%</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_light_intensity')} {lightIntensity}%</label>
      <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-yellow-500" />
     </div>
     </>
    ) : (
     <>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     Carbon fiber is mixed into concrete to make it slightly conductive. As cracks form, the cross-sectional area $A$ decreases, increasing resistance $R = \rho L / A$. A constant current of 0.1A is applied to monitor the voltage drop.
-    </p>
+     
+                                          {t('lab.p11electricity_carbon_fiber_is_mixed_into_con')}
+                                         </p>
     <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">Crack Severity: {severity}%</label>
+     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_crack_severity')} {severity}%</label>
      <input type="range" min="0" max="100" value={severity} onChange={(e) => setSeverity(Number(e.target.value))} className="w-full accent-slate-800" />
     </div>
     </>
@@ -180,9 +188,9 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Interactive Board</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p11_elec_interactiveboard')}</h2>
    </div>
    <div className="flex-grow flex items-center justify-center">
    {renderSimulation()}
@@ -190,26 +198,26 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
   </div>
 
   {/* Assessment & Data */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Activity className="text-blue-500" /> Analysis & Assessment
-   </h2>
+   <Activity className="text-blue-500" />  {t('lab.p11electricity_analysis_assessment')}
+                        </h2>
    
    <div className="space-y-4">
    <button 
     onClick={mode === 'sensor' ? logSensor : logConcrete}
     className={`w-full flex items-center justify-center gap-2 px-4 py-2 bg-[#121212] dark:bg-[#121212] hover:bg-[#000000] dark:bg-[#121212] text-white rounded-lg font-medium transition-colors flex-col `}
    >
-    <Save size={18} /> Record Data
-   </button>
+    <Save size={18} />  {t('lab.p11electricity_record_data')}
+                            </button>
    
    <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
     <thead className={`bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] sticky top-0 flex-col `}>
      {mode === 'sensor' ? (
-     <tr><th className="p-2">Light (%)</th><th className="p-2">R_1 (kΩ)</th><th className="p-2">V_out (V)</th></tr>
+     <tr><th className="p-2">{t('lab.p11electricity_light')}</th><th className="p-2">{t('lab.p11electricity_r_1_k')}</th><th className="p-2">{t('lab.p11electricity_v_out_v')}</th></tr>
      ) : (
-     <tr><th className="p-2">Severity (%)</th><th className="p-2">R (Ω)</th><th className="p-2">V_drop (V)</th></tr>
+     <tr><th className="p-2">{t('lab.p11electricity_severity')}</th><th className="p-2">{t('lab.p11electricity_r')}</th><th className="p-2">{t('lab.p11electricity_v_drop_v')}</th></tr>
      )}
     </thead>
     <tbody>
@@ -224,26 +232,26 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
    </div>
 
    <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Knowledge Check</h3>
+   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p11_elec_q_title')}</h3>
    {mode === 'sensor' ? (
     <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">In a voltage divider, {"$V_{in} = 9V$"}, {"$R_1$"} (LDR) {"$= 2k\\Omega$"}, and {"$R_2 = 10k\\Omega$"}. Find {"$V_{out}$"}. (V)</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_in_a_voltage_divider')} {"$V_{in} = 9V$"}, {"$R_1$"}  {t('lab.p11electricity_ldr_1')} {"$= 2k\\Omega$"}{t('lab.p11electricity_and')} {"$R_2 = 10k\\Omega$"}{t('lab.p11electricity_find')} {"$V_{out}$"}{t('lab.p11electricity_v_1')}</p>
     <div className="flex gap-2">
-     <input type="number" step="0.1" value={sensorAns} onChange={e => {setSensorAns(e.target.value); setSensorStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 7.5" />
-     <button onClick={checkSensor} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
+     <input type="number" step="0.1" value={sensorAns} onChange={e => {setSensorAns(e.target.value); setSensorStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg75')} />
+     <button onClick={checkSensor} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
     </div>
-    {sensorStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}
-    {sensorStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/> Incorrect. Try again.</p>}
+    {sensorStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
+    {sensorStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrecttryagain')}</p>}
     </div>
    ) : (
     <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">A concrete beam has an initial resistance of $50\Omega$. If a crack reduces the cross-sectional area by 20% (so Area is now 0.8), what is the new resistance? ($\Omega$)</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_a_concrete_beam_has_an_initial')}</p>
     <div className="flex gap-2">
-     <input type="number" step="0.1" value={concreteAns} onChange={e => {setConcreteAns(e.target.value); setConcreteStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. 62.5" />
-     <button onClick={checkConcrete} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">Check</button>
+     <input type="number" step="0.1" value={concreteAns} onChange={e => {setConcreteAns(e.target.value); setConcreteStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg625')} />
+     <button onClick={checkConcrete} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
     </div>
-    {concreteStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/> Correct!</p>}
-    {concreteStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/> Incorrect. Remember $R \propto 1/A$.</p>}
+    {concreteStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
+    {concreteStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrectrememberrpropto1a')}</p>}
     </div>
    )}
    </div>

@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Activity, Zap, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 type SimState = 'idle' | 'striking' | 'sensory' | 'synapse' | 'motor' | 'kicking';
 
 export default function LabB10NervousSystem({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [simState, setSimState] = useState<SimState>('idle');
  const [bioTimeMs, setBioTimeMs] = useState(0);
@@ -91,7 +93,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Biology Lab: Nervous System & Reflex Arc" subtitle="Investigate the speed and pathways of a monosynaptic patellar reflex." />
+  <LabHeader onExit={onExit} title={t('lab.b10nervoussystem_biology_lab_nervous_system_ref')} subtitle={t('lab.subtitle_investigate_speed_pathways')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -100,57 +102,60 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b10nervoussystem_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b10nervoussystem_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   {/* Left Column: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">The Patellar Reflex Arc</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_the_patellar_reflex_arc')}</h2>
    <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
    <p>
-    A reflex arc is a neural pathway that controls a reflex. In vertebrates, most sensory neurons do not pass directly into the brain, but synapse in the spinal cord. This allows for faster reflex actions.
-   </p>
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Key Components</h3>
+    
+                             {t('lab.b10nervoussystem_a_reflex_arc_is_a_neural_pathw')}
+                            </p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_key_components')}</h3>
    <ul className="list-disc pl-5 space-y-2">
     <li>
-    <strong>Receptor:</strong> The muscle spindle in the patellar tendon detects the stretch from the hammer strike.
-    </li>
+    <strong>{t('lab.b10nervoussystem_receptor')}</strong>  {t('lab.b10nervoussystem_the_muscle_spindle_in_the_pate')}
+                                 </li>
     <li>
-    <strong>Sensory (Afferent) Neuron:</strong> Carries the electrical action potential towards the Central Nervous System (CNS) via the dorsal root.
-    </li>
+    <strong>{t('lab.b10nervoussystem_sensory_afferent_neuron')}</strong>  {t('lab.b10nervoussystem_carries_the_electrical_action_')}
+                                 </li>
     <li>
-    <strong>Integration Center:</strong> In a monosynaptic reflex like this one, the sensory neuron directly synapses with the motor neuron in the spinal cord (gray matter).
-    </li>
+    <strong>{t('lab.b10nervoussystem_integration_center')}</strong>  {t('lab.b10nervoussystem_in_a_monosynaptic_reflex_like_')}
+                                 </li>
     <li>
-    <strong>Motor (Efferent) Neuron:</strong> Carries the signal away from the CNS via the ventral root to the effector organ.
-    </li>
+    <strong>{t('lab.b10nervoussystem_motor_efferent_neuron')}</strong>  {t('lab.b10nervoussystem_carries_the_signal_away_from_t')}
+                                 </li>
     <li>
-    <strong>Effector:</strong> The quadriceps muscle contracts, causing the lower leg to kick forward.
-    </li>
+    <strong>{t('lab.b10nervoussystem_effector')}</strong>  {t('lab.b10nervoussystem_the_quadriceps_muscle_contract')}
+                                 </li>
    </ul>
    <div className={`bg-blue-50 border border-blue-100 rounded-lg p-4 mt-4 dark:bg-teal-950/20 dark:border-teal-900 `}>
-    <h4 className="font-semibold text-blue-900 flex items-center mb-1 dark:text-[#ffffff]"><Zap className="w-4 h-4 mr-2" /> Did you know?</h4>
-    <p className="text-sm text-blue-800 dark:text-[#ffffff]">The entire process, from hammer strike to muscle contraction, takes roughly 50 milliseconds (0.05 seconds).</p>
+    <h4 className="font-semibold text-blue-900 flex items-center mb-1 dark:text-[#ffffff]"><Zap className="w-4 h-4 mr-2" />  {t('lab.b10nervoussystem_did_you_know')}</h4>
+    <p className="text-sm text-blue-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_the_entire_process_from_hammer')}</p>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between w-full mb-4">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">Interactive Simulation</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_interactive_simulation')}</h2>
    <button
     onClick={triggerReflex}
     disabled={simState !== 'idle'}
     className={`bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}
    >
-    Strike Knee
-   </button>
+    
+                             {t('lab.b10nervoussystem_strike_knee')}
+                            </button>
    </div>
 
    <div className={`bg-[#121212] dark:bg-[#121212] w-full flex-1 rounded-xl flex items-center justify-center overflow- border-4 border-[#1c1b1b] dark:border-[#1c1b1b] relative flex-col `}>
@@ -206,15 +211,16 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
    <div className={`w-full absolute top-4 left-4 bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212]/80 text-white px-4 py-3 rounded-xl backdrop-blur-sm shadow-lg w-64 border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     <div className="flex items-center text-sm font-semibold mb-2">
     <Activity className="w-4 h-4 mr-2 text-indigo-400" />
-    Data Logger
-    </div>
+    
+                                 {t('lab.b10nervoussystem_data_logger')}
+                                 </div>
     <div className="space-y-1 text-sm font-mono text-slate-300">
     <div className="flex justify-between">
-     <span>State:</span>
+     <span>{t('lab.b10nervoussystem_state')}</span>
      <span className="text-white capitalize">{simState}</span>
     </div>
     <div className="flex justify-between">
-     <span>Time Elapsed:</span>
+     <span>{t('lab.b10nervoussystem_time_elapsed')}</span>
      <span className="text-white">{bioTimeMs.toFixed(1)} ms</span>
     </div>
     </div>
@@ -225,37 +231,39 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
   {/* Right Column: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="mb-6">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Laboratory Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_laboratory_assessment')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-    Observe the simulation data log. The hammer strikes at t=0ms. It takes ~24ms for the signal to reach the spinal cord and another ~26ms for the motor signal to reach the muscle and initiate contraction.
-   </p>
+    
+                             {t('lab.b10nervoussystem_observe_the_simulation_data_lo')}
+                            </p>
    </div>
 
    <div className="flex-1 border-t border-slate-200 dark:border-[#1c1b1b] pt-6">
    <div className="space-y-6">
     <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-     1. If the distance from the knee to the spinal cord is exactly 1.2 meters, and the sensory signal takes 24 ms to arrive, calculate the conduction velocity of the sensory neuron.
-    </label>
+     
+                                      {t('lab.b10nervoussystem_1_if_the_distance_from_the_kne')}
+                                     </label>
     <div className="flex space-x-2">
      <input
      type="number"
      value={q1Answer}
      onChange={(e) => setQ1Answer(e.target.value)}
-     placeholder="e.g. 10"
+     placeholder={t('lab.b10nervoussystem_e_g_10')}
      className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
      />
-     <span className="flex items-center text-slate-600 dark:text-[#a1a1aa] font-medium">m/s</span>
+     <span className="flex items-center text-slate-600 dark:text-[#a1a1aa] font-medium">{t('lab.b10nervoussystem_m_s')}</span>
     </div>
     {q1Correct !== null && (
      <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q1Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
      {q1Correct ? (
       <>
       <CheckCircle2 className="w-5 h-5 shrink-0" />
-      <span className="text-sm font-medium">Correct! v = d/t = 1.2 m / 0.024 s = 50 m/s.</span>
+      <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_v_d_t_1_2_m_0_024_s_50')}</span>
       </>
      ) : (
-      <span className="text-sm font-medium ml-7">Incorrect. Remember to convert milliseconds (ms) to seconds (s) before dividing distance by time.</span>
+      <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_remember_to_convert_')}</span>
      )}
      </div>
     )}
@@ -263,27 +271,28 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
 
     <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-     2. Which type of neuron carries the electrical signal <i>towards</i> the Central Nervous System?
-    </label>
+     
+                                      {t('lab.b10nervoussystem_2_which_type_of_neuron_carries')} <i>{t('lab.b10nervoussystem_towards')}</i>  {t('lab.b10nervoussystem_the_central_nervous_system')}
+                                     </label>
     <select
      value={q2Answer}
      onChange={(e) => setQ2Answer(e.target.value)}
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 dark:bg-[#121212]"
     >
-     <option value="">Select a neuron type...</option>
-     <option value="motor">Motor Neuron (Efferent)</option>
-     <option value="sensory">Sensory Neuron (Afferent)</option>
-     <option value="interneuron">Interneuron</option>
+     <option value="">{t('lab.b10nervoussystem_select_a_neuron_type')}</option>
+     <option value="motor">{t('lab.b10nervoussystem_motor_neuron_efferent')}</option>
+     <option value="sensory">{t('lab.b10nervoussystem_sensory_neuron_afferent')}</option>
+     <option value="interneuron">{t('lab.b10nervoussystem_interneuron')}</option>
     </select>
     {q2Correct !== null && (
      <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q2Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
      {q2Correct ? (
       <>
       <CheckCircle2 className="w-5 h-5 shrink-0" />
-      <span className="text-sm font-medium">Correct! Afferent sensory neurons transmit the signal to the CNS.</span>
+      <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_afferent_sensory_neuro')}</span>
       </>
      ) : (
-      <span className="text-sm font-medium ml-7">Incorrect. Try again.</span>
+      <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_try_again')}</span>
      )}
      </div>
     )}
@@ -293,8 +302,9 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
     onClick={checkAnswers}
     className="w-full bg-[#121212] dark:!bg-[#121212] hover:bg-[#000000] dark:!bg-[#121212] text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-sm flex justify-center items-center"
     >
-    Submit Answers
-    </button>
+    
+                                 {t('lab.b10nervoussystem_submit_answers')}
+                                 </button>
    </div>
    </div>
   </div>

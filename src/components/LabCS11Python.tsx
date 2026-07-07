@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
 import {Play, CheckCircle, XCircle, PenTool } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [code, set] = useState('FD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90');
  
@@ -63,7 +65,7 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="CS11: Python Turtle Graphics" />
+  <LabHeader onExit={onExit} title={t('lab.cs11python_cs11_python_turtle_graphics')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -72,47 +74,51 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs11python_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs11python_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <PenTool className="text-indigo-500" />
-   Turtle Engine Theory
-   </h2>
+   
+                        {t('lab.cs11python_turtle_engine_theory')}
+                        </h2>
    <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    <strong>Turtle Graphics</strong> is a popular way for introducing programming to kids. It was part of the original Logo programming language.
-   </p>
+    <strong>{t('lab.cs11python_turtle_graphics')}</strong>  {t('lab.cs11python_is_a_popular_way_for_introduci')}
+                            </p>
    <p className="mt-4">
-    Imagine a robotic turtle starting at the center of the screen. You can control it using simple text commands:
-   </p>
-   <ul className={`w-full space-y-2 mt-4 font-mono bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-md text-slate-800 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <li><strong>FD 50</strong> : Forward 50 pixels</li>
-    <li><strong>RT 90</strong> : Right Turn 90 degrees</li>
-    <li><strong>LT 45</strong> : Left Turn 45 degrees</li>
+    
+                             {t('lab.cs11python_imagine_a_robotic_turtle_start')}
+                            </p>
+   <ul className={`w-full space-y-2 mt-4 font-mono bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-md text-slate-800 dark:text-[#ffffff] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <li><strong>{t('lab.cs11python_fd_50')}</strong>  {t('lab.cs11python_forward_50_pixels')}</li>
+    <li><strong>{t('lab.cs11python_rt_90')}</strong>  {t('lab.cs11python_right_turn_90_degrees')}</li>
+    <li><strong>{t('lab.cs11python_lt_45')}</strong>  {t('lab.cs11python_left_turn_45_degrees')}</li>
    </ul>
    <p className="mt-4">
-    To draw regular polygons, you use the formula <strong>360 / N</strong> to find the turn angle, where N is the number of sides. 
-    For example, a square (4 sides) uses 90 degree turns (360/4).
-   </p>
+    
+                             {t('lab.cs11python_to_draw_regular_polygons_you_u')} <strong>{t('lab.cs11python_360_n')}</strong>  {t('lab.cs11python_to_find_the_turn_angle_where_n')}
+                            </p>
    </div>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <Play className="text-amber-500" />
-   Interactive Canvas Simulator
-   </h2>
+   
+                        {t('lab.cs11python_interactive_canvas_simulator')}
+                        </h2>
    
    <div className="w-full flex gap-4 h-full">
    <div className="w-1/3 flex flex-col">
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase">Command Trace</label>
+    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-1 uppercase">{t('lab.cs11python_command_trace')}</label>
     <textarea 
     value={code}
     onChange={e => set(e.target.value)}
@@ -166,25 +172,29 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <CheckCircle className="text-green-500" />
-   Programming Challenge
-   </h2>
+   
+                        {t('lab.cs11python_programming_challenge')}
+                        </h2>
    <div className="flex-1">
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-4">
-    Your task is to write a sequence of commands in the simulator to draw a perfect <strong>Equilateral Triangle</strong>.
+    
+                             {t('lab.cs11python_your_task_is_to_write_a_sequen')} <strong>{t('lab.cs11python_equilateral_triangle')}</strong>.
    </p>
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">
-    Requirements:
-    <br/>- Exactly 3 sides (use FD).
-    <br/>- Must return exactly to the starting position.
-    <br/>- Hint: The exterior angle of a triangle is 120 degrees.
-   </p>
+    
+                             {t('lab.cs11python_requirements')}
+                             <br/>{t('lab.cs11python_exactly_3_sides_use_fd')}
+                             <br/>{t('lab.cs11python_must_return_exactly_to_the_sta')}
+                             <br/>{t('lab.cs11python_hint_the_exterior_angle_of_a_t')}
+                            </p>
    
    <button
     onClick={checkAnswer}
     className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Verify Drawing
-   </button>
+    
+                             {t('lab.cs11python_verify_drawing')}
+                            </button>
 
    {feedback && (
     <div className={`mt-4 p-4 rounded-md flex items-start gap-3 ${feedback.includes('Correct') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../store';
-import { X, ArrowRight, Beaker, Sparkles } from 'lucide-react';
+import { X, ArrowRight, Beaker, Sparkles, Calculator } from 'lucide-react';
 
 const TOUR_KEY = 'cendronyx-tour-completed';
 
@@ -22,6 +22,12 @@ const TOUR_STEPS = [
     description: 'Each lab features interactive simulations, real-time data tracking, and hands-on experiments you can repeat anytime.',
     icon: ArrowRight,
     color: 'from-pink-500 to-rose-600',
+  },
+  {
+    title: 'Built-in Calculator',
+    description: 'Need to crunch numbers? Click the "Calculator" button in any lab header to open a full scientific calculator with trig, log, memory, and more.',
+    icon: Calculator,
+    color: 'from-cyan-500 to-blue-600',
   },
 ];
 

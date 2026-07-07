@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
 import { Activity, Battery, DollarSign, Target, UserCheck, AlertCircle, Play, Layers, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [foamDensity, setFoamDensity] = useState<number>(40);
  const [sensorCount, setSensorCount] = useState<number>(200);
@@ -42,7 +44,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab: Neuro-Mat Startup Simulator" />
+  <LabHeader onExit={onExit} title={t('lab.cs11productdev_lab_neuro_mat_startup_simulato')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -51,36 +53,39 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs11productdev_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs11productdev_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">1. Minimum Viable Product</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.cs11productdev_1_minimum_viable_product')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] mb-4 text-sm leading-relaxed">
-   In software and hardware product development, an MVP (Minimum Viable Product) is the version of a new product that allows a team to collect the maximum amount of validated learning about customers with the least effort.
-   </p>
+   
+                        {t('lab.cs11productdev_in_software_and_hardware_produ')}
+                        </p>
    <div className={`w-full bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-4 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h3 className="font-semibold text-emerald-800 mb-2">Trade-offs in Engineering:</h3>
+   <h3 className="font-semibold text-emerald-800 mb-2">{t('lab.cs11productdev_trade_offs_in_engineering')}</h3>
    <ul className="list-disc list-inside text-sm text-emerald-900 space-y-1">
-    <li><strong>Cost vs Quality:</strong> Premium materials cost more but yield higher user satisfaction.</li>
-    <li><strong>Performance vs Battery:</strong> High processing power drains battery faster.</li>
-    <li><strong>Resolution:</strong> More sensors give better data but increase complexity and cost.</li>
+    <li><strong>{t('lab.cs11productdev_cost_vs_quality')}</strong>  {t('lab.cs11productdev_premium_materials_cost_more_bu')}</li>
+    <li><strong>{t('lab.cs11productdev_performance_vs_battery')}</strong>  {t('lab.cs11productdev_high_processing_power_drains_b')}</li>
+    <li><strong>{t('lab.cs11productdev_resolution')}</strong>  {t('lab.cs11productdev_more_sensors_give_better_data_')}</li>
    </ul>
    </div>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
-   You are the lead engineer for <strong>Neuro-Mat</strong>, an e-health smart mattress pad. Adjust your design parameters to pass all user and investor requirements.
-   </p>
+   
+                        {t('lab.cs11productdev_you_are_the_lead_engineer_for')} <strong>{t('lab.cs11productdev_neuro_mat')}</strong>{t('lab.cs11productdev_an_e_health_smart_mattress_pad')}
+                        </p>
   </div>
 
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center">
-   <Layers className="mr-2 text-emerald-500" /> MVP Blueprint
-   </h2>
+   <Layers className="mr-2 text-emerald-500" />  {t('lab.cs11productdev_mvp_blueprint')}
+                        </h2>
    
    <div className={`flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 mb-6 relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <svg width="100%" height="200" viewBox="0 0 400 200" className="drop-shadow-md">
@@ -96,7 +101,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
     </defs>
     
     <rect x="50" y={150 - foamHeight} width="300" height={foamHeight} rx="8" fill="url(#foamGrad)" />
-    <text x="200" y={150 - foamHeight / 2} textAnchor="middle" alignmentBaseline="middle" fill="#64748b" fontSize="12" fontWeight="bold">Memory Foam ({foamDensity} kg/m³)</text>
+    <text x="200" y={150 - foamHeight / 2} textAnchor="middle" alignmentBaseline="middle" fill="#64748b" fontSize="12" fontWeight="bold">{t('lab.cs11productdev_memory_foam')}{foamDensity}  {t('lab.cs11productdev_kg_m')}</text>
     
     <g>
     {Array.from({ length: visualSensors }).map((_, i) => (
@@ -112,32 +117,32 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
     <rect x="50" y="150" width="300" height="20" rx="4" fill="url(#baseGrad)" />
     
     <rect x="175" y="155" width="50" height="10" rx="2" fill="#3b82f6" />
-    <text x="200" y="160" textAnchor="middle" alignmentBaseline="middle" fill="white" fontSize="8">CPU {processorClock}MHz</text>
+    <text x="200" y="160" textAnchor="middle" alignmentBaseline="middle" fill="white" fontSize="8">{t('lab.cs11productdev_cpu')} {processorClock}{t('lab.cs11productdev_mhz')}</text>
    </svg>
    </div>
 
    <div className="grid grid-cols-2 gap-4">
    <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
     <div className="flex justify-between items-center mb-1">
-    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><DollarSign size={14} className="mr-1"/> Unit Cost</span>
+    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><DollarSign size={14} className="mr-1"/>  {t('lab.cs11productdev_unit_cost')}</span>
     <span className={`text-sm font-bold ${metrics.cost <= 90 ? 'text-emerald-600' : 'text-red-500'}`}>${metrics.cost}</span>
     </div>
    </div>
    <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
     <div className="flex justify-between items-center mb-1">
-    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><UserCheck size={14} className="mr-1"/> Comfort</span>
+    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><UserCheck size={14} className="mr-1"/>  {t('lab.cs11productdev_comfort')}</span>
     <span className={`text-sm font-bold ${metrics.comfort >= 7 ? 'text-emerald-600' : 'text-amber-500'}`}>{metrics.comfort}/10</span>
     </div>
    </div>
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
     <div className="flex justify-between items-center mb-1">
-    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><Activity size={14} className="mr-1"/> Accuracy</span>
+    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><Activity size={14} className="mr-1"/>  {t('lab.cs11productdev_accuracy')}</span>
     <span className={`text-sm font-bold ${metrics.accuracy >= 8 ? 'text-emerald-600' : 'text-amber-500'}`}>{metrics.accuracy}/10</span>
     </div>
    </div>
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
     <div className="flex justify-between items-center mb-1">
-    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><Battery size={14} className="mr-1"/> Battery</span>
+    <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex items-center"><Battery size={14} className="mr-1"/>  {t('lab.cs11productdev_battery')}</span>
     <span className={`text-sm font-bold ${metrics.battery >= 24 ? 'text-emerald-600' : 'text-red-500'}`}>{metrics.battery}h</span>
     </div>
    </div>
@@ -145,42 +150,42 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">3. Prototyping Controls</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.cs11productdev_3_prototyping_controls')}</h2>
    
    <div className="space-y-6 flex-1">
    <div className="space-y-3">
     <div>
     <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Foam Density</span>
-     <span className="text-emerald-600">{foamDensity} kg/m³</span>
+     <span>{t('lab.cs11productdev_foam_density')}</span>
+     <span className="text-emerald-600">{foamDensity}  {t('lab.cs11productdev_kg_m_1')}</span>
     </label>
     <input type="range" min="10" max="100" step="5" value={foamDensity} onChange={(e) => setFoamDensity(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     
     <div>
     <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Sensor Grid Count</span>
-     <span className="text-emerald-600">{sensorCount} units</span>
+     <span>{t('lab.cs11productdev_sensor_grid_count')}</span>
+     <span className="text-emerald-600">{sensorCount}  {t('lab.cs11productdev_units')}</span>
     </label>
     <input type="range" min="50" max="500" step="10" value={sensorCount} onChange={(e) => setSensorCount(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     
     <div>
     <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-     <span>Processor Clock</span>
-     <span className="text-emerald-600">{processorClock} MHz</span>
+     <span>{t('lab.cs11productdev_processor_clock')}</span>
+     <span className="text-emerald-600">{processorClock}  {t('lab.cs11productdev_mhz')}</span>
     </label>
     <input type="range" min="10" max="100" step="5" value={processorClock} onChange={(e) => setProcessorClock(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
    </div>
 
    <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-lg text-sm text-slate-700 dark:text-[#ffffff] border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <strong>Target Specifications:</strong>
+    <strong>{t('lab.cs11productdev_target_specifications')}</strong>
     <ul className="mt-2 space-y-1 text-xs">
-    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" /> Cost ≤ $90.00</li>
-    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" /> Comfort ≥ 7.0/10</li>
-    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" /> Accuracy ≥ 8.0/10</li>
-    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" /> Battery Life ≥ 24.0h</li>
+    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" />  {t('lab.cs11productdev_cost_90_00')}</li>
+    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" />  {t('lab.cs11productdev_comfort_7_0_10')}</li>
+    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" />  {t('lab.cs11productdev_accuracy_8_0_10')}</li>
+    <li className="flex items-center"><Target size={12} className="mr-2 text-slate-400" />  {t('lab.cs11productdev_battery_life_24_0h')}</li>
     </ul>
    </div>
    
@@ -188,8 +193,8 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
     onClick={testMVP}
     className="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors shadow-sm flex justify-center items-center dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
    >
-    <Play size={18} className="mr-2" /> Run User Testing
-   </button>
+    <Play size={18} className="mr-2" />  {t('lab.cs11productdev_run_user_testing')}
+                            </button>
 
    {feedback && (
     <div className={`p-4 rounded-lg border text-sm ${feedback.success ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>

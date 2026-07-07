@@ -2,8 +2,10 @@ import { useState, useRef } from 'react';
 import { Info, Plus, Minus, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import { useTranslate } from '../i18n';
 
 export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -108,7 +110,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Springs in Series Lab" subtitle="Observe forces and extensions when springs are connected sequentially." />
+   <LabHeader onExit={onExit} title={t('lab.p9springs_springs_in_series_lab')} subtitle={t('lab.subtitle_observe_forces_extensions')} />
 
    <div className="px-4 pt-2 lg:pt-0">
     
@@ -119,30 +121,30 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
           <div className={`flex items-center gap-2 mb-4 mt-2 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
       <Info className="w-5 h-5 text-emerald-600" />
-      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
+      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.p9springs_1_setup_theory')}</h2>
      </div>
      <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-      When ideal (massless) spring balances are connected <strong>in series</strong>, the tension is the same throughout the chain. Thus, every spring reads the same force.
-      <br/><br/>
-      However, the total extension of the system is the <strong>sum</strong> of the extensions of each individual spring.
-     </p>
+      
+                           {t('lab.p9springs_when_ideal_massless_spring_bal')} <strong>{t('lab.p9springs_in_series')}</strong>{t('lab.p9springs_the_tension_is_the_same_throug')}
+                           <br/><br/>
+      
+                           {t('lab.p9springs_however_the_total_extension_of')} <strong>{t('lab.p9springs_sum')}</strong>  {t('lab.p9springs_of_the_extensions_of_each_indi')}
+                          </p>
 
      <div className="space-y-6">
       <div>
-       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Number of Springs: {numSprings}</label>
+       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9springs_number_of_springs')} {numSprings}</label>
        <div className="flex gap-2">
         <button 
          onClick={() => setNumSprings(Math.max(1, numSprings - 1))}
@@ -156,7 +158,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
       </div>
 
       <div>
-       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Hanging Mass: {mass} g</label>
+       <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9springs_hanging_mass')} {mass} g</label>
        <input
         type="range"
         min="100" max="500" step="100"
@@ -169,14 +171,14 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
     </div>
 
     {/* Column 2: Simulation */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {config.showHints && (
       <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
        <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-       <span><strong>Hint:</strong> Springs in series have the same tension. The total extension is the sum of each spring's extension. 1/k_eq = 1/k1 + 1/k2 + ...</span>
+       <span><strong>{t('lab.p9springs_hint')}</strong>  {t('lab.p9springs_springs_in_series_have_the_sam')}</span>
       </div>
      )}
-     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">2. Interactive Simulation</h2>
+     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">{t('lab.p9springs_2_interactive_simulation')}</h2>
      <svg 
       ref={svgRef} 
       viewBox="0 0 400 500" 
@@ -214,31 +216,31 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
     </div>
 
     {/* Column 3: Analysis */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">3. Data Logging & Assessment</h2>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p9springs_3_data_logging_assessment')}</h2>
      
      <div className="mb-6">
       <div className="grid grid-cols-2 gap-2 mb-3">
-       <input type="number" placeholder="Springs" value={inputSprings} onChange={(e) => setInputSprings(e.target.value)} className="p-2 border rounded text-sm"/>
-       <input type="number" placeholder="Mass (g)" value={inputMass} onChange={(e) => setInputMass(e.target.value)} className="p-2 border rounded text-sm"/>
-       <input type="number" placeholder="Top Reading (N)" value={inputTopReading} onChange={(e) => setInputTopReading(e.target.value)} className="p-2 border rounded text-sm"/>
-       <input type="number" placeholder="Total Ext (cm)" value={inputTotalExt} onChange={(e) => setInputTotalExt(e.target.value)} className="p-2 border rounded text-sm"/>
+       <input type="number" placeholder={t('lab.p9springs_springs')} value={inputSprings} onChange={(e) => setInputSprings(e.target.value)} className="p-2 border rounded text-sm"/>
+       <input type="number" placeholder={t('lab.p9springs_mass_g_1')} value={inputMass} onChange={(e) => setInputMass(e.target.value)} className="p-2 border rounded text-sm"/>
+       <input type="number" placeholder={t('lab.p9springs_top_reading_n')} value={inputTopReading} onChange={(e) => setInputTopReading(e.target.value)} className="p-2 border rounded text-sm"/>
+       <input type="number" placeholder={t('lab.p9springs_total_ext_cm')} value={inputTotalExt} onChange={(e) => setInputTotalExt(e.target.value)} className="p-2 border rounded text-sm"/>
       </div>
-      <button onClick={handleAddLog} className="w-full bg-emerald-600 text-white px-3 py-2 rounded text-sm hover:bg-emerald-700 mb-3 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Record Trial</button>
+      <button onClick={handleAddLog} className="w-full bg-emerald-600 text-white px-3 py-2 rounded text-sm hover:bg-emerald-700 mb-3 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.p9springs_record_trial')}</button>
       
       <div className="overflow-x-auto">
        <table className="w-full text-sm text-left border-collapse">
         <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
          <tr>
-          <th className="p-2 border">Springs</th>
-          <th className="p-2 border">Mass(g)</th>
-          <th className="p-2 border">Top(N)</th>
-          <th className="p-2 border">Ext(cm)</th>
+          <th className="p-2 border">{t('lab.p9springs_springs')}</th>
+          <th className="p-2 border">{t('lab.p9springs_mass_g')}</th>
+          <th className="p-2 border">{t('lab.p9springs_top_n')}</th>
+          <th className="p-2 border">{t('lab.p9springs_ext_cm')}</th>
          </tr>
         </thead>
         <tbody>
          {logs.length === 0 ? (
-          <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No data recorded.</td></tr>
+          <tr><td colSpan={4} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.p9springs_no_data_recorded')}</td></tr>
          ) : (
           logs.map((log, i) => (
            <tr key={i}>
@@ -255,25 +257,26 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
      </div>
 
      <div className={`bg-amber-50 p-4 rounded-lg border border-amber-100 mt-auto dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-      <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">Knowledge Check</h3>
+      <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">{t('lab.p9springs_knowledge_check')}</h3>
       
       <div className="mb-4">
-       <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">1. If 4 identical ideal springs hold a 200g mass, what does the top spring read (in N)?</label>
+       <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">{t('lab.p9springs_1_if_4_identical_ideal_springs')}</label>
        <input type="number" value={userForce} onChange={(e) => setUserForce(e.target.value)} className="w-full p-2 border rounded-md" />
-       {assessmentResult1 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/> Correct</span>}
-       {assessmentResult1 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/> Incorrect</span>}
+       {assessmentResult1 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/>  {t('lab.p9springs_correct')}</span>}
+       {assessmentResult1 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/>  {t('lab.p9springs_incorrect')}</span>}
       </div>
 
       <div className="mb-4">
-       <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">2. What is the equivalent spring constant (N/m) of 2 springs in series if a single spring has k=100 N/m?</label>
+       <label className="block text-sm text-amber-800 mb-1 dark:text-[#ffffff]">{t('lab.p9springs_2_what_is_the_equivalent_sprin')}</label>
        <input type="number" value={userK} onChange={(e) => setUserK(e.target.value)} className="w-full p-2 border rounded-md" />
-       {assessmentResult2 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/> Correct</span>}
-       {assessmentResult2 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/> Incorrect</span>}
+       {assessmentResult2 === 'correct' && <span className="text-emerald-600 text-xs flex items-center mt-1"><CheckCircle className="w-3 h-3 mr-1"/>  {t('lab.p9springs_correct')}</span>}
+       {assessmentResult2 === 'incorrect' && <span className="text-red-600 text-xs flex items-center mt-1"><XCircle className="w-3 h-3 mr-1"/>  {t('lab.p9springs_incorrect')}</span>}
       </div>
 
       <button onClick={checkAnswers} className="w-full bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
-       Submit Answers
-      </button>
+       
+                                {t('lab.p9springs_submit_answers')}
+                               </button>
      </div>
     </div>
    </div>

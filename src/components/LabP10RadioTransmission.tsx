@@ -1,11 +1,13 @@
 import { useState, useMemo } from 'react';
 import { Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10RadioTransmission({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [fS, setFs] = useState<number>(2); // Signal Frequency (kHz)
  const [aS, setAs] = useState<number>(2); // Signal Amplitude (V)
@@ -87,7 +89,7 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 19: Amplitude Modulation" subtitle="Analyze how a carrier wave is modulated by an information signal." />
+  <LabHeader onExit={onExit} title={t('lab.p10radiotransmission_unit_19_amplitude_modulation')} subtitle={t('lab.subtitle_analyze_carrier_wave')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -96,39 +98,41 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10radiotransmission_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10radiotransmission_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">In Amplitude Modulation (AM), the amplitude of a high-frequency carrier wave is varied in proportion to a low-frequency information signal.</p>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">The modulated voltage is given by:</p>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10radiotransmission_theory')}</h2>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.p10radiotransmission_in_amplitude_modulation_am_the')}</p>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.10radiotransmission_themodulatedvoltageisgivenby')}</p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm mb-4 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    V(t) = (A_c + A_s cos(2πf_s t)) cos(2πf_c t)
-   </div>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">The maximum peak voltage of the resulting wave is exactly <strong>A_c + A_s</strong>.</p>
+    
+                             {t('lab.p10radiotransmission_v_t_a_c_a_s_cos_2_f_s_t_cos_2_')}
+                            </div>
+   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">{t('lab.10radiotransmission_themaximumpeakvoltageoftheresulting')}<strong>{t('lab.10radiotransmission_a_ca_s')}</strong>.</p>
    </div>
 
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10radiotransmission_setup')}</h2>
    <div className="mb-4">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Signal Amplitude (A_s): {aS.toFixed(1)} V</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10radiotransmission_signal_amplitude_a_s')} {aS.toFixed(1)} V</label>
     <input type="range" min="0" max="5" step="0.5" value={aS} onChange={(e) => setAs(parseFloat(e.target.value))} className="w-full accent-blue-600" />
    </div>
    <div className="mb-4">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Signal Frequency (f_s): {fS.toFixed(1)} kHz</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10radiotransmission_signal_frequency_f_s')} {fS.toFixed(1)}  {t('lab.p10radiotransmission_khz')}</label>
     <input type="range" min="1" max="5" step="0.5" value={fS} onChange={(e) => setFs(parseFloat(e.target.value))} className="w-full accent-blue-600" />
    </div>
    <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-sm text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    <p>Carrier frequency (f_c) is fixed at 50 kHz.</p>
-    <p>Carrier amplitude (A_c) is constant but unknown.</p>
+    <p>{t('lab.p10radiotransmission_carrier_frequency_f_c_is_fixed')}</p>
+    <p>{t('lab.p10radiotransmission_carrier_amplitude_a_c_is_const')}</p>
    </div>
    </div>
   </div>
@@ -136,7 +140,7 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
   {/* Center Column: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <div className={`w-full h-64 bg-[#121212] dark:bg-[#121212] border-4 border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg shadow-inner relative flex items-center justify-center flex-col `}>
-   <div className="absolute top-2 left-2 text-green-500 font-mono text-xs">OSCILLOSCOPE</div>
+   <div className="absolute top-2 left-2 text-green-500 font-mono text-xs">{t('lab.10radiotransmission_oscilloscope')}</div>
    
    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
     {Array.from({length: 10}).map((_, i) => (
@@ -157,37 +161,37 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
    
    <div className="mt-8 flex gap-8 w-full justify-between items-center">
    <div className={`flex-1 bg-[#121212] dark:bg-[#121212] rounded p-4 border border-[#1c1b1b] dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <div className="text-slate-400 text-xs mb-1">V_MAX (Peak) Readout</div>
+    <div className="text-slate-400 text-xs mb-1">{t('lab.p10radiotransmission_v_max_peak_readout')}</div>
     <div className="text-green-400 font-mono text-xl">{displayedVmax.toFixed(2)} V</div>
    </div>
-   <button onClick={handleRecord} className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-md font-sans font-bold shadow-lg active:scale-95 transition-all dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Record Data</button>
+   <button onClick={handleRecord} className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-md font-sans font-bold shadow-lg active:scale-95 transition-all dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.10radiotransmission_record_btn')}</button>
    </div>
   </div>
 
   {/* Right Column: Analysis */}
-  <div className="bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
    <div className="p-4 border-b bg-slate-50 dark:bg-[#121212]">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10radiotransmission_data_andanalysis')}</h2>
    </div>
    
    <div className="p-4 flex-1 lg:overflow-y-auto">
    <div className="mb-6">
     <div className="flex justify-between items-center mb-2">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm">Measurements</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm">{t('lab.10radiotransmission_measurements')}</h3>
     <button onClick={() => setData([])} className="text-slate-400 hover:text-red-500"><Trash2 className="w-4 h-4" /></button>
     </div>
     <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded">
     <table className="w-full text-sm text-center">
      <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
      <tr>
-      <th className="py-2 border-b">A_s (V)</th>
-      <th className="py-2 border-b">V_max (V)</th>
-      <th className="py-2 border-b">V_min (V)</th>
+      <th className="py-2 border-b">{t('lab.p10radiotransmission_a_s_v')}</th>
+      <th className="py-2 border-b">{t('lab.p10radiotransmission_v_max_v')}</th>
+      <th className="py-2 border-b">{t('lab.p10radiotransmission_v_min_v')}</th>
      </tr>
      </thead>
      <tbody>
      {data.length === 0 ? (
-      <tr><td colSpan={3} className="py-4 text-slate-400 italic">No data recorded.</td></tr>
+      <tr><td colSpan={3} className="py-4 text-slate-400 italic">{t('lab.10radiotransmission_nodatarecorded')}</td></tr>
      ) : (
       data.map(d => (
       <tr key={d.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
@@ -203,7 +207,7 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
    </div>
 
    <div className="mb-6">
-    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm mb-2">Graph: V_max vs A_s</h3>
+    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] text-sm mb-2">{t('lab.10radiotransmission_graphv_maxvsa_s')}</h3>
     <div className="w-full aspect-video bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
     <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible p-4">
      <line x1="10" y1="90" x2="90" y2="90" stroke="#94a3b8" strokeWidth="1" />
@@ -217,28 +221,30 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
      <line x1={10} y1={90 - (intercept / 15) * 80} x2={90} y2={90 - ((slope * 5 + intercept) / 15) * 80} stroke="#f59e0b" strokeWidth="1" strokeDasharray="2" />
      )}
     </svg>
-    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 dark:text-[#71717a]">A_s (V)</div>
-    <div className="absolute top-1/2 -left-2 -translate-y-1/2 -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a]">V_max (V)</div>
+    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 dark:text-[#71717a]">{t('lab.p10radiotransmission_a_s_v')}</div>
+    <div className="absolute top-1/2 -left-2 -translate-y-1/2 -rotate-90 text-[10px] text-slate-500 dark:text-[#71717a]">{t('lab.p10radiotransmission_v_max_v')}</div>
     </div>
     {n > 1 && (
     <div className="text-xs text-slate-500 dark:text-[#71717a] mt-2 text-center">
-     Y-Intercept = {intercept.toFixed(2)} V
+     
+                                      {t('lab.p10radiotransmission_y_intercept')} {intercept.toFixed(2)} V
     </div>
     )}
    </div>
 
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-    <h3 className="font-semibold text-blue-800 text-sm mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-semibold text-blue-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10radiotransmission_analysis')}</h3>
     <p className="text-xs text-blue-700 mb-3">
-    Since V_max = A_c + A_s, the Y-intercept of your graph gives the Carrier Amplitude (A_c). What is A_c?
-    </p>
+    
+                                 {t('lab.p10radiotransmission_since_v_max_a_c_a_s_the_y_inte')}
+                                 </p>
     <div className="flex gap-2 items-center">
-    <input type="number" step="0.1" value={answer} onChange={(e) => { setAnswer(e.target.value); setIsCorrect(null); }} placeholder="e.g. 5.0" className="w-24 px-2 py-1 border rounded text-sm" />
+    <input type="number" step="0.1" value={answer} onChange={(e) => { setAnswer(e.target.value); setIsCorrect(null); }} placeholder={t('lab.p10radiotransmission_t_lab_10radiotransmission_eg50')} className="w-24 px-2 py-1 border rounded text-sm" />
     <span className="text-xs text-slate-600 dark:text-[#a1a1aa] font-mono">V</span>
-    <button onClick={handleCheck} className="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Check</button>
+    <button onClick={handleCheck} className="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.10radiotransmission_check')}</button>
     </div>
-    {isCorrect === true && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle className="w-4 h-4"/> Correct!</div>}
-    {isCorrect === false && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/> Incorrect. Check your Y-intercept.</div>}
+    {isCorrect === true && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle className="w-4 h-4"/>{t('lab.10radiotransmission_correct')}</div>}
+    {isCorrect === false && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/>{t('lab.10radiotransmission_incorrectcheckyouryintercept')}</div>}
    </div>
    </div>
   </div>

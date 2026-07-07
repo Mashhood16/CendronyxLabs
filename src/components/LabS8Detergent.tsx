@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8Detergent({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [ingredients, setIngredients] = useState<string[]>([]);
  const [isShaking, setIsShaking] = useState(false);
  const [isDone, setIsDone] = useState(false);
@@ -29,13 +31,13 @@ export default function LabS8Detergent({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.4: DIY Detergent" subtitle="Combine raw powders to make washing powder" />
+  <LabHeader onExit={onExit} title={t('lab.s8detergent_act_11_4_diy_detergent')} subtitle={t('lab.subtitle_combine_powders_make')} />
 
   <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
   
   {/* Ingredients Shelf */}
   <div className="w-full md:w-64 flex flex-col gap-3">
-   <h3 className="font-bold" style={{color: 'rgb(var(--slate-700))'}}>Ingredients (Select All)</h3>
+   <h3 className="font-bold" style={{color: 'rgb(var(--slate-700))'}}>{t('lab.s8detergent_ingredients_select_all')}</h3>
    {required.map(ing => (
    <button 
     key={ing}
@@ -76,8 +78,9 @@ export default function LabS8Detergent({ onExit }: LabProps) {
     {isDone && (
     <div className="absolute inset-0 flex items-center justify-center">
      <div className="bg-slate-50 dark:bg-[#121212]/80 px-4 py-2 rounded font-bold text-slate-800 dark:text-[#ffffff] rotate-[-15deg] border-2 border-slate-300 dark:border-[#1c1b1b]">
-     DETERGENT
-     </div>
+     
+                                      {t('lab.s8detergent_detergent')}
+                                      </div>
     </div>
     )}
    </div>
@@ -93,8 +96,8 @@ export default function LabS8Detergent({ onExit }: LabProps) {
     </button>
    ) : (
     <div className="text-emerald-600 font-bold text-xl flex items-center gap-2">
-    <CheckCircle2 className="w-6 h-6" /> Ready for Laundry!
-    </div>
+    <CheckCircle2 className="w-6 h-6" />  {t('lab.s8detergent_ready_for_laundry')}
+                                     </div>
    )}
    </div>
 

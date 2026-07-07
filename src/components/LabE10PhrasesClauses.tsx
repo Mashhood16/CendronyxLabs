@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, Scissors, CheckCircle2, ChevronRight, XCircle, FileText, CheckSquare, Layers } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10PhrasesClausesProps {
  onExit?: () => void;
@@ -39,6 +40,7 @@ const DISSECTION_SENTENCES = [
 ];
 
 export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10PhrasesClausesProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentSentence, setCurrentSentence] = useState(0);
  const [selectedSegment, setSelectedSegment] = useState<number | null>(null);
@@ -99,7 +101,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
 
  return (
  <div className="flex flex-col min-min- lg: bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 6: Syntactic Blueprints (Phrases & Clauses)" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e10phrasesclauses_unit_6_syntactic_blueprints_ph')} variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -107,12 +109,13 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e10phrasesclauses_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e10phrasesclauses_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -121,72 +124,74 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-6 h-6 text-[#4158D1]" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Theory: Phrases & Clauses</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10phrasesclauses_theory_phrases_clauses')}</h2>
    </div>
    
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-0 mb-2">The Building Blocks of Sentences</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-0 mb-2">{t('lab.e10phrasesclauses_the_building_blocks_of_sentenc')}</h3>
    <p>
-    In English grammar, both phrases and clauses serve as the foundational syntactic structures that compose a sentence. Understanding their differences is crucial for mastering sentence structure, preventing grammatical errors like fragments and run-ons, and enhancing writing style.
-   </p>
+    
+                             {t('lab.e10phrasesclauses_in_english_grammar_both_phrase')}
+                            </p>
 
    <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] my-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h4 className="font-bold text-[#4158D1] dark:text-[#4158D1] mb-2 mt-0">The Golden Rule</h4>
+    <h4 className="font-bold text-[#4158D1] dark:text-[#4158D1] mb-2 mt-0">{t('lab.e10phrasesclauses_the_golden_rule')}</h4>
     <p className="mb-0">
-    A <strong>Clause</strong> must contain both a subject and a verb. A <strong>Phrase</strong> does NOT contain both a subject and a verb.
-    </p>
+    A <strong>{t('lab.e10phrasesclauses_clause')}</strong>  {t('lab.e10phrasesclauses_must_contain_both_a_subject_an')} <strong>{t('lab.e10phrasesclauses_phrase')}</strong>  {t('lab.e10phrasesclauses_does_not_contain_both_a_subjec')}
+                                 </p>
    </div>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">Types of Phrases</h3>
-   <p>A phrase functions as a single part of speech within a sentence but lacks a subject-verb pair.</p>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e10phrasesclauses_types_of_phrases')}</h3>
+   <p>{t('lab.e10phrasesclauses_a_phrase_functions_as_a_single')}</p>
    <ul className="list-disc pl-5 space-y-2">
     <li>
-    <strong>Noun Phrase:</strong> Functions as a noun in the sentence. It consists of a noun and its modifiers.
-    <br /><em>Example: The remarkably intelligent dog barked loudly.</em>
+    <strong>{t('lab.e10phrasesclauses_noun_phrase')}</strong>  {t('lab.e10phrasesclauses_functions_as_a_noun_in_the_sen')}
+                                 <br /><em>{t('lab.e10phrasesclauses_example_the_remarkably_intelli')}</em>
     </li>
     <li>
-    <strong>Verb Phrase:</strong> Consists of a main verb and its helping verbs.
-    <br /><em>Example: She <strong>has been reading</strong> for hours.</em>
+    <strong>{t('lab.e10phrasesclauses_verb_phrase')}</strong>  {t('lab.e10phrasesclauses_consists_of_a_main_verb_and_it')}
+                                 <br /><em>{t('lab.e10phrasesclauses_example_she')} <strong>{t('lab.e10phrasesclauses_has_been_reading')}</strong>  {t('lab.e10phrasesclauses_for_hours')}</em>
     </li>
     <li>
-    <strong>Prepositional Phrase:</strong> Begins with a preposition and ends with an object (noun/pronoun).
-    <br /><em>Example: The keys are <strong>on the kitchen table</strong>.</em>
+    <strong>{t('lab.e10phrasesclauses_prepositional_phrase')}</strong>  {t('lab.e10phrasesclauses_begins_with_a_preposition_and_')}
+                                 <br /><em>{t('lab.e10phrasesclauses_example_the_keys_are')} <strong>{t('lab.e10phrasesclauses_on_the_kitchen_table')}</strong>.</em>
     </li>
     <li>
-    <strong>Gerund Phrase:</strong> Begins with an -ing verb and functions as a noun.
-    <br /><em>Example: <strong>Running in the park</strong> is relaxing.</em>
+    <strong>{t('lab.e10phrasesclauses_gerund_phrase')}</strong>  {t('lab.e10phrasesclauses_begins_with_an_ing_verb_and_fu')}
+                                 <br /><em>{t('lab.e10phrasesclauses_example')} <strong>{t('lab.e10phrasesclauses_running_in_the_park')}</strong>  {t('lab.e10phrasesclauses_is_relaxing')}</em>
     </li>
    </ul>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">Types of Clauses</h3>
-   <p>Clauses contain both a subject and a verb. They are divided into two primary categories:</p>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e10phrasesclauses_types_of_clauses')}</h3>
+   <p>{t('lab.e10phrasesclauses_clauses_contain_both_a_subject')}</p>
    <ul className="list-disc pl-5 space-y-2">
     <li>
-    <strong>Independent Clause:</strong> Expresses a complete thought and can stand alone as a sentence.
-    <br /><em>Example: The sun set behind the mountains.</em>
+    <strong>{t('lab.e10phrasesclauses_independent_clause')}</strong>  {t('lab.e10phrasesclauses_expresses_a_complete_thought_a')}
+                                 <br /><em>{t('lab.e10phrasesclauses_example_the_sun_set_behind_the')}</em>
     </li>
     <li>
-    <strong>Dependent (Subordinate) Clause:</strong> Contains a subject and a verb but does not express a complete thought. It relies on an independent clause to form a complete sentence. Dependent clauses are further categorized by their function:
-    <ul className="list-circle pl-5 mt-2 space-y-1">
-     <li><strong>Noun Clause:</strong> Acts as a noun. <br /><em>Example: I wonder <strong>what she is thinking</strong>.</em></li>
-     <li><strong>Adjective Clause:</strong> Acts as an adjective to modify a noun. Usually begins with relative pronouns (who, which, that). <br /><em>Example: The book <strong>that I borrowed</strong> is fascinating.</em></li>
-     <li><strong>Adverb Clause:</strong> Acts as an adverb to modify a verb, adjective, or another adverb. Usually begins with subordinating conjunctions (because, although, when). <br /><em>Example: We stayed inside <strong>because it was raining</strong>.</em></li>
+    <strong>{t('lab.e10phrasesclauses_dependent_subordinate_clause')}</strong>  {t('lab.e10phrasesclauses_contains_a_subject_and_a_verb_')}
+                                 <ul className="list-circle pl-5 mt-2 space-y-1">
+     <li><strong>{t('lab.e10phrasesclauses_noun_clause')}</strong>  {t('lab.e10phrasesclauses_acts_as_a_noun')} <br /><em>{t('lab.e10phrasesclauses_example_i_wonder')} <strong>{t('lab.e10phrasesclauses_what_she_is_thinking')}</strong>.</em></li>
+     <li><strong>{t('lab.e10phrasesclauses_adjective_clause')}</strong>  {t('lab.e10phrasesclauses_acts_as_an_adjective_to_modify')} <br /><em>{t('lab.e10phrasesclauses_example_the_book')} <strong>{t('lab.e10phrasesclauses_that_i_borrowed')}</strong>  {t('lab.e10phrasesclauses_is_fascinating')}</em></li>
+     <li><strong>{t('lab.e10phrasesclauses_adverb_clause')}</strong>  {t('lab.e10phrasesclauses_acts_as_an_adverb_to_modify_a_')} <br /><em>{t('lab.e10phrasesclauses_example_we_stayed_inside')} <strong>{t('lab.e10phrasesclauses_because_it_was_raining')}</strong>.</em></li>
     </ul>
     </li>
    </ul>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">Dissection Strategy</h3>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e10phrasesclauses_dissection_strategy')}</h3>
    <p>
-    When analyzing a sentence, look for the verbs first. For every main verb, there is usually a corresponding subject. If a group of words contains this pairing, it's a clause. If it lacks this pairing, it's a phrase. Notice how clauses can be nested inside other clauses!
-   </p>
+    
+                             {t('lab.e10phrasesclauses_when_analyzing_a_sentence_look')}
+                            </p>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <CheckSquare className="w-6 h-6 text-[#4158D1]" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Controls & Assessment</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10phrasesclauses_controls_assessment')}</h2>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2 space-y-6">
@@ -194,20 +199,23 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
    {/* Sentence Navigator */}
    <div className={`w-full p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
-    <FileText className="w-4 h-4" /> Dissection Engine Controls
-    </h3>
+    <FileText className="w-4 h-4" />  {t('lab.e10phrasesclauses_dissection_engine_controls')}
+                                 </h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    Use the engine in the simulation window to interactively break down sentences and identify syntactic blueprints.
-    </p>
+    
+                                 {t('lab.e10phrasesclauses_use_the_engine_in_the_simulati')}
+                                 </p>
     <div className="flex items-center justify-between">
     <span className="text-sm font-medium text-slate-700 dark:text-[#a1a1aa]">
-     Current Sentence: {currentSentence + 1} of {DISSECTION_SENTENCES.length}
+     
+                                      {t('lab.e10phrasesclauses_current_sentence')} {currentSentence + 1} of {DISSECTION_SENTENCES.length}
     </span>
     <button
      onClick={nextSentence}
      className={`flex items-center gap-2 px-4 py-2 bg-[#4158D1] hover:bg-[#3144a5] text-white rounded-lg font-bold transition-colors shadow-sm text-sm flex-col `}
     >
-     Skip / Next <ChevronRight className="w-4 h-4" />
+     
+                                      {t('lab.e10phrasesclauses_skip_next')} <ChevronRight className="w-4 h-4" />
     </button>
     </div>
    </div>
@@ -215,8 +223,8 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
    {/* Assessment Section */}
    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Target className="w-4 h-4" /> Knowledge Check
-    </h3>
+    <Target className="w-4 h-4" />  {t('lab.e10phrasesclauses_knowledge_check')}
+                                 </h3>
     
     {!assessmentSubmitted ? (
     <div className="space-y-6">
@@ -248,15 +256,16 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className="w-full mt-4 py-2.5 px-4 bg-[#4158D1] hover:bg-[#3144a5] disabled:bg-slate-300 disabled:dark:bg-slate-700 text-white rounded-lg font-medium transition-colors shadow-sm"
      >
-     Submit Evaluation
-     </button>
+     
+                                          {t('lab.e10phrasesclauses_submit_evaluation')}
+                                          </button>
     </div>
     ) : (
     <div className="text-center py-6">
      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#4158D1] dark:text-blue-400 mb-4 shadow-sm border border-blue-200 dark:border-blue-800/50">
      <span className="text-2xl font-bold">{calculateScore()}/{questions.length}</span>
      </div>
-     <h4 className="text-md font-bold text-slate-900 dark:text-[#ffffff] mb-2">Assessment Complete</h4>
+     <h4 className="text-md font-bold text-slate-900 dark:text-[#ffffff] mb-2">{t('lab.e10phrasesclauses_assessment_complete')}</h4>
      <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
      {calculateScore() === questions.length 
       ? "Perfect score! You have mastered identifying phrases and clauses." 
@@ -269,8 +278,9 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
      }}
      className="w-full py-2 px-4 bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-[#ffffff] border border-slate-200 dark:border-[#2a2a2a] rounded-lg font-medium transition-colors"
      >
-     Retry Assessment
-     </button>
+     
+                                              {t('lab.e10phrasesclauses_retry_assessment')}
+                                              </button>
     </div>
     )}
    </div>
@@ -282,7 +292,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
   <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex-col p-6 overflow- min-h-[500px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <Layers className="w-6 h-6 text-[#4158D1]" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Dissection Engine</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10phrasesclauses_dissection_engine')}</h2>
    </div>
 
    <div className="flex-1 flex flex-col items-center justify-center max-w-2xl mx-auto w-full">
@@ -290,10 +300,12 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
     
     <div className="text-center mb-8">
     <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-[#4158D1] dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
-     Target: {currentData.targetType}
+     
+                                      {t('lab.e10phrasesclauses_target')} {currentData.targetType}
     </span>
     <p className="text-md font-medium text-slate-600 dark:text-[#a1a1aa]">
-     Analyze the sentence below. Click on the segment that functions as a <strong className="text-slate-900 dark:text-[#ffffff]">{currentData.targetType}</strong>:
+     
+                                      {t('lab.e10phrasesclauses_analyze_the_sentence_below_cli')} <strong className="text-slate-900 dark:text-[#ffffff]">{currentData.targetType}</strong>:
     </p>
     </div>
     
@@ -337,7 +349,7 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
       {selectedSegment === currentData.correctIndex ? "Correct Identification!" : "Incorrect Identification"}
      </h4>
      <p className="text-sm opacity-90 leading-relaxed">
-      "<strong className="font-semibold">{currentData.segments[currentData.correctIndex].text}</strong>" is a {currentData.segments[currentData.correctIndex].type}.
+      "<strong className="font-semibold">{currentData.segments[currentData.correctIndex].text}</strong>{t('lab.e10phrasesclauses_is_a')} {currentData.segments[currentData.correctIndex].type}.
       {currentData.segments[currentData.correctIndex].isClause 
       ? " It forms a clause because it contains both a subject and a verb." 
       : " It is a phrase because it lacks a subject-verb pairing."}
@@ -352,7 +364,8 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
      onClick={nextSentence}
      className="flex items-center gap-2 px-6 py-3 bg-[#4158D1] hover:bg-[#3144a5] text-white rounded-lg font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
      >
-     Analyze Next Sentence <ChevronRight className="w-5 h-5" />
+     
+                                          {t('lab.e10phrasesclauses_analyze_next_sentence')} <ChevronRight className="w-5 h-5" />
      </button>
     </div>
     )}

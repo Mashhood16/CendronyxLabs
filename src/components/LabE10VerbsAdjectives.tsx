@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, CheckCircle2, Activity, ArrowRightLeft, Type, ListChecks } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10VerbsAdjectivesProps {
  onExit?: () => void;
@@ -39,6 +40,7 @@ const ADJECTIVE_ORDER_PUZZLE = [
 ];
 
 export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10VerbsAdjectivesProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeVoiceIndex, setActiveVoiceIndex] = useState(0);
  const [isPassive, setIsPassive] = useState(false);
@@ -111,7 +113,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 2: Action & Description" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e10verbsadjectives_unit_2_action_description')} variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -119,12 +121,13 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e10verbsadjectives_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e10verbsadjectives_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
@@ -135,69 +138,69 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    <div className={`p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex-col `}>
     <BookOpen className="w-5 h-5" />
    </div>
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Verbs & Adjectives</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_verbs_adjectives')}</h2>
    </div>
    
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">Verbs: Transitive and Intransitive</h3>
-   <p>Verbs are action words, but they behave differently depending on whether they transfer action to an object.</p>
+   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_verbs_transitive_and_intransit')}</h3>
+   <p>{t('lab.e10verbsadjectives_verbs_are_action_words_but_the')}</p>
    
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">Transitive Verbs</h4>
-   <p>A <strong>transitive verb</strong> requires a direct object to complete its meaning. The action passes from the subject to the receiver (object).</p>
+   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_transitive_verbs')}</h4>
+   <p>A <strong>{t('lab.e10verbsadjectives_transitive_verb')}</strong>  {t('lab.e10verbsadjectives_requires_a_direct_object_to_co')}</p>
    <ul className="list-disc pl-5 mb-4 space-y-1">
-    <li><em>The dog <strong>chased</strong> the ball.</em> (chased what? the ball)</li>
-    <li><em>She <strong>wrote</strong> a letter.</em> (wrote what? a letter)</li>
+    <li><em>{t('lab.e10verbsadjectives_the_dog')} <strong>{t('lab.e10verbsadjectives_chased')}</strong>  {t('lab.e10verbsadjectives_the_ball')}</em>  {t('lab.e10verbsadjectives_chased_what_the_ball')}</li>
+    <li><em>{t('lab.e10verbsadjectives_she')} <strong>{t('lab.e10verbsadjectives_wrote')}</strong>  {t('lab.e10verbsadjectives_a_letter')}</em>  {t('lab.e10verbsadjectives_wrote_what_a_letter')}</li>
    </ul>
 
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">Intransitive Verbs</h4>
-   <p>An <strong>intransitive verb</strong> does not require an object. The action simply occurs without being transferred to anything else.</p>
+   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_intransitive_verbs')}</h4>
+   <p>An <strong>{t('lab.e10verbsadjectives_intransitive_verb')}</strong>  {t('lab.e10verbsadjectives_does_not_require_an_object_the')}</p>
    <ul className="list-disc pl-5 mb-4 space-y-1">
-    <li><em>The baby <strong>slept</strong>.</em></li>
-    <li><em>The sun <strong>shines</strong> brightly.</em> ("brightly" is an adverb, not an object)</li>
+    <li><em>{t('lab.e10verbsadjectives_the_baby')} <strong>{t('lab.e10verbsadjectives_slept')}</strong>.</em></li>
+    <li><em>{t('lab.e10verbsadjectives_the_sun')} <strong>{t('lab.e10verbsadjectives_shines')}</strong>  {t('lab.e10verbsadjectives_brightly')}</em>  {t('lab.e10verbsadjectives_brightly_is_an_adverb_not_an_o')}</li>
    </ul>
 
    <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
 
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">Active vs. Passive Voice</h3>
-   <p>Voice determines whether the subject of the sentence is performing or receiving the action.</p>
+   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_active_vs_passive_voice')}</h3>
+   <p>{t('lab.e10verbsadjectives_voice_determines_whether_the_s')}</p>
    
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">Active Voice</h4>
-   <p>In active voice, the subject performs the action. It makes sentences clearer and more direct.</p>
-   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>Structure: Subject + Verb + Object</p>
-   <p><em>Example:</em> <strong>The chef</strong> (subject) <strong>cooked</strong> (verb) <strong>the meal</strong> (object).</p>
+   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_active_voice')}</h4>
+   <p>{t('lab.e10verbsadjectives_in_active_voice_the_subject_pe')}</p>
+   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_subject_verb_object')}</p>
+   <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_chef')}</strong>  {t('lab.e10verbsadjectives_subject')} <strong>{t('lab.e10verbsadjectives_cooked')}</strong>  {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_the_meal')}</strong>  {t('lab.e10verbsadjectives_object')}</p>
 
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">Passive Voice</h4>
-   <p>In passive voice, the subject receives the action. This is useful when the actor is unknown or less important than the action itself.</p>
-   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>Structure: Object + "to be" + Past Participle + "by" + Subject</p>
-   <p><em>Example:</em> <strong>The meal</strong> (object) <strong>was cooked</strong> (verb) <strong>by the chef</strong> (subject).</p>
+   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_passive_voice')}</h4>
+   <p>{t('lab.e10verbsadjectives_in_passive_voice_the_subject_r')}</p>
+   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_object_to_be_past_pa')}</p>
+   <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_meal_1')}</strong>  {t('lab.e10verbsadjectives_object_1')} <strong>{t('lab.e10verbsadjectives_was_cooked')}</strong>  {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_by_the_chef')}</strong>  {t('lab.e10verbsadjectives_subject_1')}</p>
 
    <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
 
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">The Royal Order of Adjectives</h3>
-   <p>When using multiple adjectives before a noun, English follows a strict, albeit often unspoken, sequence. Native speakers naturally use this order without thinking about it.</p>
+   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_the_royal_order_of_adjectives')}</h3>
+   <p>{t('lab.e10verbsadjectives_when_using_multiple_adjectives')}</p>
    
    <ol className="list-decimal pl-5 space-y-2 mb-4">
-    <li><strong>Opinion/Observation:</strong> beautiful, ugly, delicious</li>
-    <li><strong>Size:</strong> big, small, enormous</li>
-    <li><strong>Age:</strong> old, new, ancient</li>
-    <li><strong>Shape:</strong> round, square, flat</li>
-    <li><strong>Color:</strong> red, blue, green</li>
-    <li><strong>Origin:</strong> Italian, lunar, American</li>
-    <li><strong>Material:</strong> wooden, metal, plastic</li>
-    <li><strong>Purpose:</strong> sleeping (bag), roasting (pan)</li>
+    <li><strong>{t('lab.e10verbsadjectives_opinion_observation')}</strong>  {t('lab.e10verbsadjectives_beautiful_ugly_delicious')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_size')}</strong>  {t('lab.e10verbsadjectives_big_small_enormous')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_age')}</strong>  {t('lab.e10verbsadjectives_old_new_ancient')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_shape')}</strong>  {t('lab.e10verbsadjectives_round_square_flat')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_color')}</strong>  {t('lab.e10verbsadjectives_red_blue_green')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_origin')}</strong>  {t('lab.e10verbsadjectives_italian_lunar_american')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_material')}</strong>  {t('lab.e10verbsadjectives_wooden_metal_plastic')}</li>
+    <li><strong>{t('lab.e10verbsadjectives_purpose')}</strong>  {t('lab.e10verbsadjectives_sleeping_bag_roasting_pan')}</li>
    </ol>
    
-   <p><em>Example:</em> "A beautiful (opinion) little (size) old (age) round (shape) red (color) Italian (origin) wooden (material) mixing (purpose) bowl (noun)."</p>
+   <p><em>{t('lab.e10verbsadjectives_example')}</em>  {t('lab.e10verbsadjectives_a_beautiful_opinion_little_siz')}</p>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
     <Activity className="w-5 h-5" />
    </div>
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Interactive Controls</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_interactive_controls')}</h2>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2 space-y-8">
@@ -205,8 +208,8 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    {/* Voice Controls */}
    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <ArrowRightLeft className="w-4 h-4 text-indigo-500" /> Voice Conversion
-    </h3>
+    <ArrowRightLeft className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_voice_conversion')}
+                                 </h3>
     
     <div className="flex flex-col gap-4">
     <button 
@@ -217,13 +220,13 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
     </button>
 
     <div className="flex justify-between items-center text-sm font-medium text-slate-600 dark:text-[#a1a1aa]">
-     <span>Sentence {activeVoiceIndex + 1} of {VOICE_EXERCISES.length}</span>
+     <span>{t('lab.e10verbsadjectives_sentence')} {activeVoiceIndex + 1} of {VOICE_EXERCISES.length}</span>
      <div className="flex gap-2">
      {VOICE_EXERCISES.map((_, i) => (
       <button 
       key={i}
       onClick={() => setActiveVoiceIndex(i)}
-      className={`w-6 h-6 rounded-md flex items-center justify-center text-xs transition-colors ${activeVoiceIndex === i ? 'bg-[#4158D1] text-white font-bold' : 'bg-slate-100 hover:bg-slate-200 text-slate-600 dark:bg-[#1c1b1b] dark:hover:bg-[#2a2a2a] dark:text-[#71717a]'}`}
+      className={`w-6 h-6 rounded-md flex items-center justify-center text-xs transition-colors ${activeVoiceIndex === i ? 'bg-[#4158D1] text-white font-bold' : 'bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 text-slate-600 dark:bg-[#1c1b1b] dark:hover:bg-[#2a2a2a] dark:text-[#71717a]'}`}
       >
       {i + 1}
       </button>
@@ -236,9 +239,9 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    {/* Adjective Pool Controls */}
    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
-    <Type className="w-4 h-4 text-indigo-500" /> Adjective Pool
-    </h3>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">Click words to add them to the sentence in the Simulation window.</p>
+    <Type className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_adjective_pool')}
+                                 </h3>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.e10verbsadjectives_click_words_to_add_them_to_the')}</p>
     
     <div className="flex flex-wrap gap-2">
     {availableAdjectives.length > 0 ? (
@@ -252,7 +255,7 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
      </button>
      ))
     ) : (
-     <p className="text-sm text-slate-400 italic">No words left in pool.</p>
+     <p className="text-sm text-slate-400 italic">{t('lab.e10verbsadjectives_no_words_left_in_pool')}</p>
     )}
     </div>
    </div>
@@ -260,8 +263,8 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
    {/* Assessment Component */}
    <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <ListChecks className="w-4 h-4 text-indigo-500" /> Knowledge Check
-    </h3>
+    <ListChecks className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_knowledge_check')}
+                                 </h3>
 
     {!assessmentSubmitted ? (
     <div className="space-y-6">
@@ -293,15 +296,16 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className="w-full mt-4 py-2 px-4 bg-[#4158D1] hover:bg-[#3142a3] disabled:bg-slate-300 disabled:text-slate-500 text-white rounded-lg font-bold transition-colors shadow-sm disabled:shadow-none dark:disabled:bg-[#2a2a2a] dark:disabled:text-[#71717a]"
      >
-     Submit Evaluation
-     </button>
+     
+                                          {t('lab.e10verbsadjectives_submit_evaluation')}
+                                          </button>
     </div>
     ) : (
     <div className="text-center py-6">
      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4">
      <span className="text-2xl font-bold">{calculateScore()}/{questions.length}</span>
      </div>
-     <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">Assessment Complete</h3>
+     <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">{t('lab.e10verbsadjectives_assessment_complete')}</h3>
      <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
      {calculateScore() === questions.length 
       ? "Perfect score! You've mastered verbs and adjectives." 
@@ -314,8 +318,9 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
      }}
      className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 dark:hover:bg-[#2a2a2a] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors border border-slate-200 dark:border-[#2a2a2a]"
      >
-     Retry Quiz
-     </button>
+     
+                                              {t('lab.e10verbsadjectives_retry_quiz')}
+                                              </button>
     </div>
     )}
    </div>
@@ -339,19 +344,19 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
      
      <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs md:text-sm font-medium">
       <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">Subject</span>
+      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_subject_2')}</span>
       <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg text-blue-700 dark:text-blue-300">
        {VOICE_EXERCISES[activeVoiceIndex].subject}
       </span>
       </div>
       <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">Verb</span>
+      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_verb_1')}</span>
       <span className="px-3 py-1 bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800/50 rounded-lg text-rose-700 dark:text-rose-300">
        {VOICE_EXERCISES[activeVoiceIndex].verb}
       </span>
       </div>
       <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">Object</span>
+      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_object_2')}</span>
       <span className="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg text-amber-700 dark:text-amber-300">
        {VOICE_EXERCISES[activeVoiceIndex].object}
       </span>
@@ -363,12 +368,13 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
     <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center min-h-[220px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4">
      <Target className="w-5 h-5 text-indigo-500" />
-     <h4 className="text-md font-bold text-slate-800 dark:text-[#ffffff]">Target Sentence</h4>
+     <h4 className="text-md font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_target_sentence')}</h4>
      </div>
      
      <p className="text-sm text-slate-500 dark:text-[#a1a1aa] mb-4 text-center">
-     Arrange the adjectives in the correct order to describe the noun. Click to remove.
-     </p>
+     
+                                  {t('lab.e10verbsadjectives_arrange_the_adjectives_in_the_')}
+                                  </p>
 
      <div className="w-full min-h-[100px] p-4 border-2 border-dashed border-indigo-200 dark:border-[#2a2a2a] rounded-xl flex flex-wrap gap-2 justify-center items-center bg-indigo-50/30 dark:bg-[#1c1b1b]">
       {adjectiveOrder.map((item, i) => (
@@ -382,16 +388,16 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
       </button>
       ))}
       {adjectiveOrder.length === 0 && (
-      <span className="text-sm text-slate-400 dark:text-[#71717a]">Empty sentence...</span>
+      <span className="text-sm text-slate-400 dark:text-[#71717a]">{t('lab.e10verbsadjectives_empty_sentence')}</span>
       )}
      </div>
 
      {adjectiveOrder.length === ADJECTIVE_ORDER_PUZZLE.length && (
       <div className={`mt-6 w-full p-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 ${checkAdjectiveOrder() ? 'bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800/50 dark:text-emerald-400' : 'bg-rose-50 border border-rose-200 text-rose-700 dark:bg-rose-900/20 dark:border-rose-800/50 dark:text-rose-400'}`}>
       {checkAdjectiveOrder() ? (
-       <><CheckCircle2 className="w-5 h-5" /> Perfect adjective order!</>
+       <><CheckCircle2 className="w-5 h-5" />  {t('lab.e10verbsadjectives_perfect_adjective_order')}</>
       ) : (
-       <>Incorrect order. Remember the rule!</>
+       <>{t('lab.e10verbsadjectives_incorrect_order_remember_the_r')}</>
       )}
       </div>
      )}

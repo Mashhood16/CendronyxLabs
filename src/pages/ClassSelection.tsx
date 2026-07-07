@@ -4,6 +4,7 @@ import { LAB_MODULES } from '../data/labModules';
 import Layout from '../components/Layout';
 import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, LayoutGrid, List, Rocket, Sparkles, ArrowRight, Beaker } from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from '../i18n';
 
 const CLASS_CONFIG: Record<string, { color: string; icon: typeof FlaskConical; iconBg: string; textColor: string; label: string; desc: string }> = {
   '6':  { color: '#f97316', icon: FlaskConical, iconBg: 'bg-orange-500/20', textColor: 'text-orange-500', label: 'Science', desc: 'Foundations of Science. Introduction to basic concepts and principles.' },
@@ -19,6 +20,7 @@ export default function ClassSelection() {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const { t } = useTranslate();
   
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
@@ -40,11 +42,11 @@ export default function ClassSelection() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white/90 text-xs font-semibold mb-3 border border-white/20">
                 <Sparkles className="w-3.5 h-3.5" />
-                Interactive Learning Platform
+                {t('class.platform_tagline')}
               </div>
               
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 font-outfit tracking-tight leading-tight">
-                Cendronyx Labs
+                {t('class.platform_name')}
               </h1>
               
               <p className="text-white/85 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
@@ -62,7 +64,7 @@ export default function ClassSelection() {
                 onClick={() => document.getElementById('class-grid')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
               >
-                Start Exploring
+                {t('class.start_exploring')}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -72,7 +74,7 @@ export default function ClassSelection() {
         {/* Section Header */}
         <div id="class-grid" className="flex items-center justify-between mb-6 scroll-mt-20">
           <h2 className={`text-xl md:text-2xl font-bold tracking-tight ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
-            Select Class
+            {t('class.select')}
           </h2>
           <div className="flex items-center gap-2">
             <button 
@@ -117,7 +119,7 @@ export default function ClassSelection() {
                         <Icon className="w-5 h-5" strokeWidth={2.5} />
                       </div>
                       <div className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
-                        {classModuleCount} Modules
+                        {t('class.modules_count', { count: classModuleCount })}
                       </div>
                     </div>
 
@@ -130,7 +132,7 @@ export default function ClassSelection() {
                     </p>
 
                     <div className={`text-sm font-bold flex items-center gap-1 ${config.textColor} transition-transform group-hover:translate-x-1`}>
-                      Enter curriculum <span>→</span>
+                      {t('class.enter_curriculum')}
                     </div>
                   </>
                 ) : (
@@ -140,18 +142,18 @@ export default function ClassSelection() {
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col justify-center py-1">
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className={`text-xl font-bold font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>Class {cls}</h3>
+                        <h3 className={`text-xl font-bold font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{t('class.title', { number: cls })}</h3>
                         <div className={`text-[10px] font-semibold px-2 py-0.5 rounded-full sm:hidden ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
-                          {classModuleCount} Mod
+                          {classModuleCount} {t('class.modules')}
                         </div>
                       </div>
                       <p className={`text-sm truncate ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>{config.desc}</p>
                     </div>
                     <div className={`text-xs font-semibold px-3 py-1.5 rounded-full shrink-0 hidden sm:block ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
-                      {classModuleCount} Modules
+                      {t('class.modules_count', { count: classModuleCount })}
                     </div>
                     <div className={`text-sm font-bold flex items-center gap-1 ${config.textColor} transition-transform group-hover:translate-x-1 shrink-0 ml-2 hidden md:flex`}>
-                      Enter curriculum <span>→</span>
+                      {t('class.enter_curriculum')}
                     </div>
                   </>
                 )}
@@ -159,6 +161,7 @@ export default function ClassSelection() {
             );
           })}
         </div>
+
       </div>
     </Layout>
   );

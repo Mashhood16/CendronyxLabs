@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10RippleTank({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [angleI, setAngleI] = useState(30);
  const [medium, setMedium] = useState('Shallow');
@@ -108,8 +110,8 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
   <svg viewBox="0 0 200 200" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-md shadow-inner mt-4">
   <line x1="30" y1="170" x2="180" y2="170" stroke="#94a3b8" strokeWidth="2" />
   <line x1="30" y1="170" x2="30" y2="20" stroke="#94a3b8" strokeWidth="2" />
-  <text x="90" y="195" fontSize="10" fill="#64748b" fontWeight="bold">sin(θ_r)</text>
-  <text x="-120" y="15" fontSize="10" fill="#64748b" fontWeight="bold" transform="rotate(-90)">sin(θ_i)</text>
+  <text x="90" y="195" fontSize="10" fill="#64748b" fontWeight="bold">{t('lab.p10rippletank_sin_r')}</text>
+  <text x="-120" y="15" fontSize="10" fill="#64748b" fontWeight="bold" transform="rotate(-90)">{t('lab.p10rippletank_sin_i')}</text>
   
   {/* Unit markers */}
   <text x="180" y="185" fontSize="8" fill="#94a3b8" textAnchor="middle">1.0</text>
@@ -126,7 +128,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 12: Ripple Tank" subtitle="Investigate wave refraction and Snell's Law quantitatively." />
+  <LabHeader onExit={onExit} title={t('lab.p10rippletank_unit_12_ripple_tank')} subtitle={t('lab.subtitle_investigate_wave_refraction')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -135,30 +137,33 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10rippletank_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10rippletank_lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10rippletank_theory_andsetup')}</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    When water waves travel from deep to shallow water, they slow down and their path bends. This is <strong>refraction</strong>.
+    
+                             {t('lab.p10rippletank_when_water_waves_travel_from_d')} <strong>{t('lab.10rippletank_refraction')}</strong>.
    </p>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    According to Snell's Law:
-    <br/><span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block `}>sin(θ_i) / sin(θ_r) = v₁ / v₂ = n</span>
+    
+                             {t('lab.p10rippletank_according_to_snell_s_law')}
+                             <br/><span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block `}>{t('lab.p10rippletank_sin_i_sin_r_v_v_n')}</span>
    </p>
    </div>
 
    <div className="space-y-4">
    <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Incident Angle (θ_i): {angleI}°</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10rippletank_incident_angle_i')} {angleI}°</label>
     <input
     type="range" min="10" max="80" step="1"
     value={angleI}
@@ -168,20 +173,20 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
    </div>
 
    <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">Medium 2 (Bottom Region)</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10rippletank_medium_2_bottom_region')}</label>
     <select
     value={medium}
     onChange={(e) => setMedium(e.target.value)}
     className={`w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-cyan-500 outline-none flex-col `}
     >
-    <option value="Shallow">Shallow Water (v₂ = 15 cm/s)</option>
-    <option value="VeryShallow">Very Shallow Water (v₂ = 10 cm/s)</option>
-    <option value="Mystery">Mystery Liquid (Unknown v₂)</option>
+    <option value="Shallow">{t('lab.p10rippletank_shallow_water_v_15_cm_s')}</option>
+    <option value="VeryShallow">{t('lab.p10rippletank_very_shallow_water_v_10_cm_s')}</option>
+    <option value="Mystery">{t('lab.p10rippletank_mystery_liquid_unknown_v')}</option>
     </select>
    </div>
    
    <div className={`bg-cyan-50 p-3 rounded-lg border border-cyan-100 mt-4 flex-col `}>
-    <span className="text-sm text-cyan-800">Fixed: Deep Water Speed v₁ = 20 cm/s</span>
+    <span className="text-sm text-cyan-800">{t('lab.10rippletank_fixeddeepwaterspeedv20cms')}</span>
    </div>
    </div>
   </div>
@@ -226,43 +231,44 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
     />
     
     {/* Labels */}
-    <text x="10" y="20" fill="white" fontSize="12" fontWeight="bold">Medium 1 (Deep)</text>
-    <text x="10" y="290" fill="white" fontSize="12" fontWeight="bold">Medium 2 ({medium})</text>
+    <text x="10" y="20" fill="white" fontSize="12" fontWeight="bold">{t('lab.p10rippletank_medium_1_deep')}</text>
+    <text x="10" y="290" fill="white" fontSize="12" fontWeight="bold">{t('lab.p10rippletank_medium_2')}{medium})</text>
     
     {/* Sensor Display */}
     <rect x="230" y="240" width="160" height="45" fill="rgba(0,0,0,0.8)" rx="6" stroke="#38bdf8" strokeWidth="1" />
     <text x="245" y="268" fill="#38bdf8" fontSize="14" fontWeight="bold">
-    Sensor: {getSensorReading()}°
+    
+                                 {t('lab.p10rippletank_sensor')} {getSensorReading()}°
     </text>
    </svg>
    </div>
   </div>
 
   {/* Column 3: Data & Analysis */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.10rippletank_datalogging')}</h2>
    
    <button
     onClick={handleRecord}
     className="w-full flex justify-center items-center gap-2 bg-cyan-100 hover:bg-cyan-200 text-cyan-700 px-4 py-2 rounded-md font-bold transition-colors mb-4"
    >
-    <Plus className="w-4 h-4" /> Record (θ_i, θ_r)
-   </button>
+    <Plus className="w-4 h-4" />  {t('lab.p10rippletank_record_i_r')}
+                            </button>
    
    <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md mb-2">
     <table className="w-full text-xs text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
      <tr>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">θ_i (°)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">θ_r (°)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">sin(θ_i)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">sin(θ_r)</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10rippletank_i')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10rippletank_r')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10rippletank_sin_i')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10rippletank_sin_r')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
-     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">No data recorded</td></tr>
+     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">{t('lab.10rippletank_no_data')}</td></tr>
      ) : (
      data.map((d, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -281,14 +287,15 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10rippletank_analysis')}</h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    Calculate the speed <span className="italic">v₂</span> of the <strong>Mystery Liquid</strong> using Snell's Law and your graph slope.
-   </p>
+    
+                             {t('lab.p10rippletank_calculate_the_speed')} <span className="italic">{t('lab.10rippletank_v')}</span>{t('lab.10rippletank_ofthe')}<strong>{t('lab.10rippletank_mysteryliquid')}</strong>  {t('lab.p10rippletank_using_snell_s_law_and_your_gra')}
+                            </p>
    <div className="flex gap-2">
     <input
     type="text"
-    placeholder="v₂ (cm/s)..."
+    placeholder={t('lab.p10rippletank_t_lab_10rippletank_vcms')}
     value={answer}
     onChange={(e) => setAnswer(e.target.value)}
     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-cyan-500 font-mono"
@@ -297,8 +304,9 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
     onClick={checkAnswer}
     className="bg-[#121212] dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-md font-bold transition-colors"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10rippletank_check')}
+                                 </button>
    </div>
    {feedback && (
     <div className={`mt-3 p-3 rounded-md text-sm flex items-center gap-2 ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

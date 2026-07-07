@@ -10,11 +10,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'lambda = h / mv',
     finalFormulaDesc: 'Wavelength of matter waves from dimensional analysis',
+    keyInsight: 'Electron microscopes achieve 0.05 nm resolution — enough to image individual atoms — because electrons at high voltage have wavelengths 100,000× shorter than visible light.',
     steps: [
       { label: 'Identify Dependencies', formula: 'lambda = f(h, m, v) => h^a m^b v^c', detail: '🔬 You\'re an electron microscope designer trying to see individual atoms. You know electrons behave like waves — but what determines their wavelength? You guess it depends on Planck\'s constant h (the quantum world\'s ruler), the electron\'s mass m (heavier = shorter wavelength), and its velocity v (faster = shorter wavelength). You write: λ = h^a m^b v^c, where a, b, c are unknown powers you must find.' },
-      { label: 'Write Dimensions', formula: '[L] = [ML^2T^-1]^a [M]^b [LT^-1]^c', detail: '📏 You pull out your dimensional analysis toolkit. Planck\'s constant h has dimensions [ML²T⁻¹] (energy × time), mass m has [M], velocity v has [LT⁻¹]. The wavelength λ has [L]. You set up: [L] = [ML²T⁻¹]^a [M]^b [LT⁻¹]^c. It\'s like a puzzle where each dimension M, L, T must match on both sides.' },
+      { label: 'Write Dimensions', formula: '[L] = [ML^{2}T^{-1}]^a [M]^b [LT^{-1}]^c', detail: '📏 You pull out your dimensional analysis toolkit. Planck\'s constant h has dimensions [ML²T⁻¹] (energy × time), mass m has [M], velocity v has [LT⁻¹]. The wavelength λ has [L]. You set up: [L] = [ML²T⁻¹]^a [M]^b [LT⁻¹]^c. It\'s like a puzzle where each dimension M, L, T must match on both sides.' },
       { label: 'Solve Power Equations', formula: 'M: a+b=0, L: 2a+c=1, T: -a-c=0', detail: '🧩 You solve three simultaneous equations: For M: a+b=0, for L: 2a+c=1, for T: -a-c=0. Working through: from T: c=-a, from L: 2a-a=1 so a=1, from M: 1+b=0 so b=-1. Three equations, three unknowns — perfectly determined!' },
-      { label: 'Final Formula', formula: 'lambda = constant x h^1 m^-1 v^-1 = h/mv', detail: '✨ Substituting back: λ = constant × h¹ m⁻¹ v⁻¹ = h/(mv). When physicist Louis de Broglie proposed this in 1924, it was revolutionary — particles like electrons have wave nature! Today, electron microscopes use this exact principle, achieving resolutions of 0.05 nm — enough to image individual atoms!' },
+      { label: 'Final Formula', formula: 'lambda = \\text{constant} \\times h^{1} m^{-1} v^{-1} = h/mv', detail: '✨ Substituting back: λ = constant × h¹ m⁻¹ v⁻¹ = h/(mv). When physicist Louis de Broglie proposed this in 1924, it was revolutionary — particles like electrons have wave nature! Today, electron microscopes use this exact principle, achieving resolutions of 0.05 nm — enough to image individual atoms!' },
     ],
     sliders: [
       { label: 'Mass (m)', key: 'm', min: 1e-31, max: 1e-27, step: 1e-31, default: 9.11e-31, unit: ' kg' },
@@ -35,11 +36,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-emerald-600',
     finalFormula: 'T = 2pi sqrt(l/g)',
     finalFormulaDesc: 'Period depends on length and gravity, not mass',
+    keyInsight: 'A 1-meter pendulum takes exactly 2 seconds per swing — this is why grandfather clocks use pendulums of this length to keep perfect time.',
     steps: [
       { label: 'Identify Dependencies', formula: 'T = f(m, l, theta, g) => m^a l^b theta^c g^d', detail: '🕰️ You\'re a clockmaker in the 1600s, inspired by Galileo\'s observation of a swinging chandelier in a cathedral. You want to design a pendulum clock that keeps perfect time. But what determines the period T? Maybe mass m of the bob, length l of the string, angle θ of swing, or gravity g? You write T = m^a l^b θ^c g^d.' },
-      { label: 'Write Dimensions', formula: '[T] = [M]^a [L]^b [1]^c [LT^-2]^d', detail: '📐 You write dimensions: [T] = [M]^a [L]^b [1]^c [LT⁻²]^d. Angle θ is dimensionless (ratio of arc to radius). Time T has dimension T. Equating: M: a=0 (mass doesn\'t matter!), L: b+d=0, T: -2d=1. The angle\'s power c=0 too!' },
+      { label: 'Write Dimensions', formula: '[T] = [M]^a [L]^b [1]^c [LT^{-2}]^d', detail: '📐 You write dimensions: [T] = [M]^a [L]^b [1]^c [LT⁻²]^d. Angle θ is dimensionless (ratio of arc to radius). Time T has dimension T. Equating: M: a=0 (mass doesn\'t matter!), L: b+d=0, T: -2d=1. The angle\'s power c=0 too!' },
       { label: 'Solve Power Equations', formula: 'a=0, d=-1/2, b=1/2, c=0', detail: '🎯 Solving: a=0, d=-1/2, b=1/2, c=0. The period doesn\'t depend on mass at all — Galileo was right! A heavier bob doesn\'t swing faster or slower. Length has power 1/2, gravity has power -1/2. The angle doesn\'t matter (for small swings).' },
-      { label: 'Final Formula', formula: 'T = constant x l^(1/2) g^(-1/2) = 2pi sqrt(l/g)', detail: '⏰ Final formula: T = constant × √(l/g). The constant turns out to be 2π (from solving the SHM equation for small angles). T = 2π√(l/g). In 1656, Christiaan Huygens built the first pendulum clock using this formula. A 1-meter pendulum gives T ≈ 2 seconds — perfect for a clock\'s tick-tock!' },
+      { label: 'Final Formula', formula: 'T = \\text{constant} \\times l^{1/2} g^{-1/2} = 2\\pi \\sqrt{l/g}', detail: '⏰ Final formula: T = constant × √(l/g). The constant turns out to be 2π (from solving the SHM equation for small angles). T = 2π√(l/g). In 1656, Christiaan Huygens built the first pendulum clock using this formula. A 1-meter pendulum gives T ≈ 2 seconds — perfect for a clock\'s tick-tock!' },
     ],
     sliders: [
       { label: 'Length (l)', key: 'l', min: 0.2, max: 5, step: 0.1, default: 1, unit: ' m' },
@@ -59,11 +61,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'A_x = A cos theta, A_y = A sin theta',
     finalFormulaDesc: 'Components from magnitude and direction',
+    keyInsight: 'GPS navigation resolves your position using vector components from satellite signals — the same trigonometry pilots use to break flight paths into east-west and north-south directions.',
     steps: [
       { label: 'Right Triangle Formed', formula: 'Angle theta between A and x-axis', detail: '🗺️ You\'re a pilot navigating from New York to London. Your flight path forms a 3,000 km vector at 30° north of east. But your navigation system works in east-west (x) and north-south (y) components. You need to break this vector apart — just like resolving forces on an inclined plane or calculating the effective wind component on a runway.' },
       { label: 'Cosine for Adjacent (Ax)', formula: 'cos theta = A_x / A => A_x = A cos theta', detail: '📐 The vector A makes angle θ with the x-axis. Dropping a perpendicular to the x-axis creates a right triangle. The x-component is the adjacent side: Ax = A cos θ. For your flight: Ax = 3000 × cos 30° = 2598 km eastward.' },
       { label: 'Sine for Opposite (Ay)', formula: 'sin theta = A_y / A => A_y = A sin theta', detail: '📐 The y-component is the opposite side: Ay = A sin θ. For your flight: Ay = 3000 × sin 30° = 1500 km northward. These two perpendicular components are independent — you can adjust east-west and north-speed speeds separately without affecting each other.' },
-      { label: 'Vector from Components', formula: 'A = sqrt(A_x^2 + A_y^2), tan theta = A_y/A_x', detail: '🔄 Given components, you can always reconstruct the original vector: magnitude A = √(Ax² + Ay²) (Pythagoras) and direction θ = tan⁻¹(Ay/Ax). This works for forces, velocities, electric fields — any vector quantity. GPS uses this to calculate your precise position from satellite signals!' },
+      { label: 'Vector from Components', formula: 'A = \\sqrt{A_x^{2} + A_y^{2}}, tan theta = A_y/A_x', detail: '🔄 Given components, you can always reconstruct the original vector: magnitude A = √(Ax² + Ay²) (Pythagoras) and direction θ = tan⁻¹(Ay/Ax). This works for forces, velocities, electric fields — any vector quantity. GPS uses this to calculate your precise position from satellite signals!' },
     ],
     sliders: [
       { label: 'Magnitude (A)', key: 'A', min: 1, max: 20, step: 1, default: 10, unit: '' },
@@ -86,9 +89,10 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'v_f = v_i + at',
     finalFormulaDesc: 'Final velocity = initial velocity + acceleration x time',
+    keyInsight: 'Drag racers use this equation to calculate the 0-100 km/h time: from 0 to 27.8 m/s in 3 seconds means 9.27 m/s² — nearly 1g of acceleration.',
     steps: [
       { label: 'Acceleration Definition', formula: 'a = (v_f - v_i) / t', detail: '🚗 You\'re at a traffic light in your car. The light turns green and you slam the accelerator. Your speed increases steadily from 0 to 60 km/h (16.7 m/s) — your phone\'s GPS shows it takes exactly 5 seconds. Acceleration is simply the rate at which velocity changes: how many m/s you gain each second.' },
-      { label: 'Multiply Both Sides by t', formula: 'a x t = v_f - v_i', detail: '📊 By definition: a = (vf - vi)/t. In your car: a = (16.7 - 0)/5 = 3.33 m/s². Your speed increases by 3.33 m/s every second. Cross-multiplying: a × t = vf - vi. The change in velocity equals acceleration multiplied by time.' },
+      { label: 'Multiply Both Sides by t', formula: 'a \\times t = v_f - v_i', detail: '📊 By definition: a = (vf - vi)/t. In your car: a = (16.7 - 0)/5 = 3.33 m/s². Your speed increases by 3.33 m/s every second. Cross-multiplying: a × t = vf - vi. The change in velocity equals acceleration multiplied by time.' },
       { label: 'Add v_i to Both Sides', formula: 'v_f = v_i + a t', detail: '➗ Rearranging: vf = vi + at. This is the first equation of motion. For your car: vf = 0 + 3.33 × 5 = 16.7 m/s. Simple but powerful — it tells you your final speed after any acceleration for any duration.' },
       { label: 'Graphical Meaning', formula: 'Slope of v-t graph = a', detail: '📈 On a velocity-time graph, this equation gives a straight line. The slope is acceleration, the y-intercept is initial velocity. Drag racers use this: from 0 to 100 km/h (27.8 m/s) in 3 seconds means a = 9.27 m/s² — nearly 1 g of acceleration!' },
     ],
@@ -111,11 +115,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'S = v_i t + (1/2) a t^2',
     finalFormulaDesc: 'Distance = initial velocity x time + half acceleration x time squared',
+    keyInsight: 'Airbag deployment systems use this equation to calculate stopping distance — the car\'s ECU computes how far the occupant will travel during a crash to time the airbag inflation.',
     steps: [
       { label: 'Area Under v-t Graph', formula: 'S = Area of trapezium', detail: '🏎️ You\'re a Formula 1 engineer calculating exactly where your driver will be after accelerating out of a corner. Final velocity isn\'t enough — you need the distance traveled. On a velocity-time graph, the area under the line equals displacement. The shape is a trapezoid (rectangle + triangle).' },
-      { label: 'Rectangle Area', formula: 'S_rect = v_i x t', detail: '📐 The rectangle part: initial velocity × time. If you start the corner at 15 m/s and take 4 seconds, the rectangle area = 15 × 4 = 60 m. This is how far you\'d go at constant speed.' },
-      { label: 'Triangle Area', formula: 'S_tri = (1/2) x (vf - vi) x t = (1/2) x (at) x t', detail: '📐 The triangle part: the extra distance from acceleration. Area = ½ × (vf - vi) × t = ½ × (at) × t = ½at². For acceleration 5 m/s² over 4 s: ½ × 5 × 16 = 40 m. The triangle sits on top of the rectangle.' },
-      { label: 'Add Both Areas', formula: 'S = v_i t + (1/2) a t^2', detail: '✅ Total distance S = vit + ½at². For your F1 car: S = 15×4 + ½×5×16 = 60 + 40 = 100 m. You precisely know where the car will be. This equation is used everywhere — from calculating stopping distances to launching rockets!' },
+      { label: 'Rectangle Area', formula: 'S_rect = v_i \\times t', detail: '📐 The rectangle part: initial velocity × time. If you start the corner at 15 m/s and take 4 seconds, the rectangle area = 15 × 4 = 60 m. This is how far you\'d go at constant speed.' },
+      { label: 'Triangle Area', formula: 'S_tri = \\frac{1}{2} \\times (vf - vi) \\times t = \\frac{1}{2} \\times (at) \\times t', detail: '📐 The triangle part: the extra distance from acceleration. Area = ½ × (vf - vi) × t = ½ × (at) × t = ½at². For acceleration 5 m/s² over 4 s: ½ × 5 × 16 = 40 m. The triangle sits on top of the rectangle.' },
+      { label: 'Add Both Areas', formula: 'S = v_i t + \\frac{1}{2} a t^{2}', detail: '✅ Total distance S = vit + ½at². For your F1 car: S = 15×4 + ½×5×16 = 60 + 40 = 100 m. You precisely know where the car will be. This equation is used everywhere — from calculating stopping distances to launching rockets!' },
     ],
     sliders: [
       { label: 'Initial Velocity (vi)', key: 'vi', min: 0, max: 30, step: 1, default: 5, unit: ' m/s' },
@@ -136,11 +141,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-violet-600',
     finalFormula: '2aS = v_f^2 - v_i^2',
     finalFormulaDesc: 'Acceleration x distance = change in velocity squared / 2',
+    keyInsight: 'Highway engineers use this to set speed limits: braking from 120 km/h needs about 100 m, which is why the safe following distance at highway speed is 100+ meters.',
     steps: [
-      { label: 'Start with Trapezium Area', formula: 'S = (1/2)(vi + vf) x t', detail: '🛑 You\'re a safety engineer designing brake systems. You need to know: given a certain braking deceleration, how much distance does a car need to stop? The challenge: you know initial speed and braking force, but you don\'t know the stopping time. You need an equation without t.' },
-      { label: 'Multiply Both Sides by a/a', formula: 'S = (1/2)(vi + vf) x (vf - vi)/a', detail: '📐 Start with the trapezoid area: S = ½(vi + vf) × t. This is distance = average velocity × time. Smart — it doesn\'t assume constant velocity, just constant acceleration.' },
-      { label: 'Difference of Squares', formula: '2aS = (vi + vf)(vf - vi) = vf^2 - vi^2', detail: '🧮 Eliminate t using the first equation: t = (vf - vi)/a. Substitute: S = ½(vi + vf) × (vf - vi)/a. Multiply both sides by 2a: 2aS = (vi + vf)(vf - vi) = vf² - vi² (difference of squares).' },
-      { label: 'Final Form', formula: '2aS = vf^2 - vi^2', detail: '✅ 2aS = vf² - vi². For braking from 30 m/s to 0 with deceleration 5 m/s²: 2×5×S = 0 - 900, so S = 90 m. That\'s your stopping distance! This equation powers everything from airbag deployment calculations to roller coaster safety systems.' },
+      { label: 'Start with Trapezium Area', formula: 'S = \\frac{1}{2}(vi + vf) \\times t', detail: '🛑 You\'re a safety engineer designing brake systems. You need to know: given a certain braking deceleration, how much distance does a car need to stop? The challenge: you know initial speed and braking force, but you don\'t know the stopping time. You need an equation without t.' },
+      { label: 'Multiply Both Sides by a/a', formula: 'S = \\frac{1}{2}(vi + vf) \\times (vf - vi)/a', detail: '📐 Start with the trapezoid area: S = ½(vi + vf) × t. This is distance = average velocity × time. Smart — it doesn\'t assume constant velocity, just constant acceleration.' },
+      { label: 'Difference of Squares', formula: '2aS = (vi + vf)(vf - vi) = vf^{2} - vi^{2}', detail: '🧮 Eliminate t using the first equation: t = (vf - vi)/a. Substitute: S = ½(vi + vf) × (vf - vi)/a. Multiply both sides by 2a: 2aS = (vi + vf)(vf - vi) = vf² - vi² (difference of squares).' },
+      { label: 'Final Form', formula: '2aS = vf^{2} - vi^{2}', detail: '✅ 2aS = vf² - vi². For braking from 30 m/s to 0 with deceleration 5 m/s²: 2×5×S = 0 - 900, so S = 90 m. That\'s your stopping distance! This equation powers everything from airbag deployment calculations to roller coaster safety systems.' },
     ],
     sliders: [
       { label: 'Initial Velocity (vi)', key: 'vi', min: 0, max: 20, step: 1, default: 0, unit: ' m/s' },
@@ -161,11 +167,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-rose-600',
     finalFormula: 'H = (v_i^2 sin^2 theta) / 2g',
     finalFormulaDesc: 'Maximum vertical height depends on launch angle',
+    keyInsight: 'Basketball players instinctively launch at 45-55° to balance height and reach — the arc must clear the defender\'s outstretched hand while reaching the 3.05 m rim.',
     steps: [
       { label: 'Initial Vertical Velocity', formula: 'v_iy = v_i sin theta', detail: '🏀 You\'re a basketball player taking a jump shot. You launch the ball at 10 m/s at 60° above horizontal. How high will the ball go? The vertical component determines the height: v_iy = vi sin θ = 10 × sin 60° = 10 × 0.866 = 8.66 m/s. The horizontal component (5 m/s) doesn\'t affect how high the ball goes — it just carries it forward.' },
       { label: 'At Maximum Height', formula: 'v_fy = 0', detail: '📈 At the maximum height, the ball\'s vertical velocity is momentarily zero — it\'s the turning point between going up and coming down. v_fy = 0. This is the peak of the parabolic arc.' },
-      { label: 'Use Third Equation', formula: 'v_fy^2 = v_iy^2 + 2a_y H', detail: '🧮 Use the third equation of motion in the vertical direction: v_fy² = v_iy² + 2a_yH. Here a_y = -g (gravity pulls down). Substituting: 0 = (vi sin θ)² - 2gH. Rearranging: 2gH = (vi sin θ)².' },
-      { label: 'Solve for H', formula: '0 = (v_i sin theta)^2 - 2gH => H = v_i^2 sin^2 theta / 2g', detail: '✅ H = (vi² sin²θ)/(2g). For your shot: H = 100 × 0.75 / 19.62 = 3.82 m. Add release height of 2.5 m, and the ball peaks at 6.32 m — well above the 3.05 m rim! The maximum height for a given speed occurs at θ = 90° (straight up): H_max = vi²/(2g).' },
+      { label: 'Use Third Equation', formula: 'v_fy^{2} = v_iy^{2} + 2a_y H', detail: '🧮 Use the third equation of motion in the vertical direction: v_fy² = v_iy² + 2a_yH. Here a_y = -g (gravity pulls down). Substituting: 0 = (vi sin θ)² - 2gH. Rearranging: 2gH = (vi sin θ)².' },
+      { label: 'Solve for H', formula: '0 = (v_i sin theta)^2 - 2gH => H = v_i^{2} sin^{2} theta / 2g', detail: '✅ H = (vi² sin²θ)/(2g). For your shot: H = 100 × 0.75 / 19.62 = 3.82 m. Add release height of 2.5 m, and the ball peaks at 6.32 m — well above the 3.05 m rim! The maximum height for a given speed occurs at θ = 90° (straight up): H_max = vi²/(2g).' },
     ],
     sliders: [
       { label: 'Initial Velocity (vi)', key: 'vi', min: 5, max: 50, step: 1, default: 20, unit: ' m/s' },
@@ -186,11 +193,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-pink-600',
     finalFormula: 'R = (v_i^2 sin 2theta) / g',
     finalFormulaDesc: 'Horizontal range depends on launch angle (max at 45 deg)',
+    keyInsight: 'Soccer players like Messi use launch angles of 25-30° rather than 45° for precision shots — the slight loss in range gives much better accuracy for targeting the goal corner.',
     steps: [
       { label: 'Horizontal Velocity', formula: 'v_x = v_i cos theta', detail: '⚽ You\'re a soccer player lining up a free kick 30 m from goal. You need the ball to clear the wall and dip into the top corner. The range R is how far the ball travels horizontally. You know the horizontal velocity is constant (ignoring air resistance): v_x = vi cos θ. If you kick at 25 m/s and 30°: v_x = 25 × 0.866 = 21.65 m/s.' },
       { label: 'Time of Flight', formula: 'T = 2 v_i sin theta / g', detail: '⏱️ The ball stays in the air for time T = 2vi sin θ / g (twice the time to reach max height). For your kick: T = 2 × 25 × 0.5 / 9.81 = 25/9.81 = 2.55 seconds. That\'s your hang time — you need it to clear the wall.' },
-      { label: 'Range = v_x x T', formula: 'R = (v_i cos theta) x (2 v_i sin theta / g)', detail: '📐 Range = horizontal velocity × time of flight: R = (vi cos θ) × (2vi sin θ / g) = 2vi² sin θ cos θ / g. For your kick: R = 2 × 625 × 0.866 × 0.5 / 9.81 = 541.25/9.81 = 55.2 m.' },
-      { label: 'Use sin 2theta = 2 sin theta cos theta', formula: 'R = v_i^2 sin 2theta / g', detail: '🎯 Using 2 sin θ cos θ = sin 2θ: R = vi² sin 2θ / g. For θ = 45°: sin 90° = 1, R_max = vi²/g = 625/9.81 = 63.7 m. That\'s the maximum range at this speed. But in soccer, you want accuracy, not just distance — top players like Messi use angles around 25-30° for precision!' },
+      { label: 'Range = v_x x T', formula: 'R = (v_i cos theta) \\times (2 v_i sin theta / g)', detail: '📐 Range = horizontal velocity × time of flight: R = (vi cos θ) × (2vi sin θ / g) = 2vi² sin θ cos θ / g. For your kick: R = 2 × 625 × 0.866 × 0.5 / 9.81 = 541.25/9.81 = 55.2 m.' },
+      { label: 'Use sin 2theta = 2 sin theta cos theta', formula: 'R = v_i^{2} sin 2theta / g', detail: '🎯 Using 2 sin θ cos θ = sin 2θ: R = vi² sin 2θ / g. For θ = 45°: sin 90° = 1, R_max = vi²/g = 625/9.81 = 63.7 m. That\'s the maximum range at this speed. But in soccer, you want accuracy, not just distance — top players like Messi use angles around 25-30° for precision!' },
     ],
     sliders: [
       { label: 'Initial Velocity (vi)', key: 'vi', min: 5, max: 50, step: 1, default: 20, unit: ' m/s' },
@@ -211,6 +219,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-amber-600',
     finalFormula: 'v1 = (m1-m2)/(m1+m2) u1 + 2m2/(m1+m2) u2',
     finalFormulaDesc: 'Final velocities after an elastic collision',
+    keyInsight: 'Nuclear reactor moderators use elastic collisions: a neutron hitting a hydrogen proton (equal mass) transfers nearly all its energy, slowing it enough to sustain the chain reaction.',
     steps: [
       { label: 'Conservation of Momentum', formula: 'm1 u1 + m2 u2 = m1 v1 + m2 v2', detail: '🎱 You\'re playing pool. The cue ball (m₁ = 0.17 kg) rolls at 3 m/s toward the 8-ball (m₂ = 0.17 kg) at rest. After the crash, what happens? In the ideal case (elastic collision), both balls bounce perfectly — no energy lost to heat or deformation. Two laws govern this: conservation of momentum and conservation of kinetic energy.' },
       { label: 'Conservation of KE', formula: '0.5m1 u1^2 + 0.5m2 u2^2 = 0.5m1 v1^2 + 0.5m2 v2^2', detail: '⚡ Momentum conservation: m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂. With u₁=3, u₂=0, m₁=m₂: 0.17×3 = 0.17v₁ + 0.17v₂, so v₁ + v₂ = 3. But one equation, two unknowns — you need more information.' },
@@ -239,11 +248,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-teal-600',
     finalFormula: 'S = r theta, v = r omega, a_t = r alpha',
     finalFormulaDesc: 'Relating linear and angular variables',
+    keyInsight: 'A Ferris wheel rider at the outer edge moves twice as fast as someone at half the radius — this is why amusement park rides place seats at the maximum radius for maximum thrill.',
     steps: [
       { label: 'Arc Length', formula: 'S = r theta', detail: '🎡 You\'re at an amusement park on the Ferris wheel. The wheel rotates at a constant angular speed ω, but you\'re moving much faster at the outer edge than someone near the center. The same angular motion produces very different linear speeds depending on your distance from the axis — this is the fundamental link between rotation and straight-line motion.' },
       { label: 'Linear Velocity', formula: 'v = S/t = r theta/t = r omega', detail: '📐 When a point at radius r rotates through angle θ (in radians), it travels arc length S = rθ. On a Ferris wheel with radius 20 m, a half rotation (θ = π rad) means you travel S = 20π ≈ 62.8 m through the air!' },
       { label: 'Tangential Acceleration', formula: 'a_t = v/t = r omega/t = r alpha', detail: '🔄 Linear speed v = S/t = rθ/t = rω. If the Ferris wheel completes a rotation (2π rad) in 40 seconds: ω = π/20 ≈ 0.157 rad/s, and your speed v = 20 × 0.157 = 3.14 m/s. The kid at half the radius (10 m) moves at only 1.57 m/s.' },
-      { label: 'Direction Matters', formula: 'a_c = v^2/r (centripetal)', detail: '🎯 Tangential acceleration a_t = rα (where α is angular acceleration). But there\'s also centripetal acceleration a_c = v²/r pulling you toward the center. Total acceleration is the vector sum of these two perpendicular components — your Ferris wheel seat experiences both changing speed and changing direction!' },
+      { label: 'Direction Matters', formula: 'a_c = v^{2}/r (centripetal)', detail: '🎯 Tangential acceleration a_t = rα (where α is angular acceleration). But there\'s also centripetal acceleration a_c = v²/r pulling you toward the center. Total acceleration is the vector sum of these two perpendicular components — your Ferris wheel seat experiences both changing speed and changing direction!' },
     ],
     sliders: [
       { label: 'Radius (r)', key: 'r', min: 0.1, max: 5, step: 0.1, default: 1, unit: ' m' },
@@ -263,11 +273,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'a_c = v^2/r = r omega^2',
     finalFormulaDesc: 'Acceleration toward the center of circular motion',
+    keyInsight: 'Banked curves on highways are tilted so that the horizontal component of the normal force provides the centripetal acceleration — at the design speed, no friction is needed to turn.',
     steps: [
       { label: 'Similar Triangles (Position)', formula: 'delta r / r = delta theta', detail: '🎢 You\'re riding a roller coaster through a sharp curve. You feel pushed sideways — that\'s centripetal acceleration pulling you toward the center. But where does this formula come from? Imagine a particle moving in a circle: in a small time Δt, it moves through a small angle Δθ. The position vectors before and after make a small triangle — similar to the velocity vectors before and after.' },
       { label: 'Similar Triangles (Velocity)', formula: 'delta v / v = delta theta', detail: '📐 From the position triangle: Δr/r ≈ Δθ (for small angles). From the velocity triangle: Δv/v ≈ Δθ (same Δθ). Since the triangles are similar: Δv/v = Δr/r. The change in velocity is proportional to the original velocity and the angular change.' },
       { label: 'Acceleration = delta v / delta t', formula: 'a = v (delta theta/delta t) = v omega', detail: '🧮 Acceleration a = Δv/Δt = v(Δθ/Δt) = vω. Since Δv = vΔθ (from similar triangles), dividing by Δt: a = v(Δθ/Δt) = vω. The direction of a is perpendicular to v — toward the center of the circle.' },
-      { label: 'Substitute v = r omega', formula: 'a_c = v^2/r = r omega^2', detail: '✅ Substituting ω = v/r: a_c = v(v/r) = v²/r. Or a_c = (rω)ω = rω². For a car taking a curve of radius 50 m at 20 m/s: a_c = 400/50 = 8 m/s² ≈ 0.8g. This is why you feel thrown outward — your inertia wants to go straight while the road pushes you centripetally!' },
+      { label: 'Substitute v = r omega', formula: 'a_c = v^{2}/r = r omega^{2}', detail: '✅ Substituting ω = v/r: a_c = v(v/r) = v²/r. Or a_c = (rω)ω = rω². For a car taking a curve of radius 50 m at 20 m/s: a_c = 400/50 = 8 m/s² ≈ 0.8g. This is why you feel thrown outward — your inertia wants to go straight while the road pushes you centripetally!' },
     ],
     sliders: [
       { label: 'Velocity (v)', key: 'v', min: 1, max: 30, step: 0.5, default: 10, unit: ' m/s' },
@@ -288,11 +299,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-yellow-600',
     finalFormula: 'KE = (1/2) m v^2',
     finalFormulaDesc: 'Energy due to motion',
+    keyInsight: 'Crumple zones in cars are designed to absorb the 300,000 J of kinetic energy over 0.5 m of deformation, keeping the force on occupants below lethal levels.',
     steps: [
-      { label: 'Work-Energy Theorem', formula: 'W = F x d = KE', detail: '🚗 You\'re a crash test engineer analyzing vehicle safety. A car of mass 1500 kg traveling at 20 m/s (72 km/h) carries enormous energy that must be dissipated in a crash. Work = force × distance, and this work equals the change in kinetic energy — the work-energy theorem.' },
-      { label: 'Substitute F = ma', formula: 'W = m x a x d', detail: '📐 Work W = F × d. From Newton\'s Second Law: F = ma. So W = (ma) × d. The force that stops you does work over the crumple zone distance.' },
-      { label: 'Use Third Equation of Motion', formula: 'd = (vf^2 - vi^2) / 2a', detail: '🧮 Use the third equation of motion: 2ad = vf² - vi². If stopping from vi to 0: 2ad = -vi², so d = -vi²/(2a). Substituting into W: W = ma × (-vi²/(2a)) = -½mvi². The work is negative — energy is being removed from the car.' },
-      { label: 'Final Result', formula: 'KE = (1/2) m (vf^2 - vi^2) or (1/2) mv^2', detail: '✅ KE = ½mv². Your 1500 kg car at 20 m/s: KE = ½ × 1500 × 400 = 300,000 J. That\'s enough to lift a 1000 kg car 30 m in the air! Modern crumple zones absorb this energy over about 0.5 m of deformation, requiring an average force of 600,000 N — about 60 tons of force!' },
+      { label: 'Work-Energy Theorem', formula: 'W = F \\times d = KE', detail: '🚗 You\'re a crash test engineer analyzing vehicle safety. A car of mass 1500 kg traveling at 20 m/s (72 km/h) carries enormous energy that must be dissipated in a crash. Work = force × distance, and this work equals the change in kinetic energy — the work-energy theorem.' },
+      { label: 'Substitute F = ma', formula: 'W = m \\times a \\times d', detail: '📐 Work W = F × d. From Newton\'s Second Law: F = ma. So W = (ma) × d. The force that stops you does work over the crumple zone distance.' },
+      { label: 'Use Third Equation of Motion', formula: 'd = (vf^{2} - vi^{2}) / 2a', detail: '🧮 Use the third equation of motion: 2ad = vf² - vi². If stopping from vi to 0: 2ad = -vi², so d = -vi²/(2a). Substituting into W: W = ma × (-vi²/(2a)) = -½mvi². The work is negative — energy is being removed from the car.' },
+      { label: 'Final Result', formula: 'KE = \\frac{1}{2} m (vf^{2} - vi^{2}) or \\frac{1}{2} mv^{2}', detail: '✅ KE = ½mv². Your 1500 kg car at 20 m/s: KE = ½ × 1500 × 400 = 300,000 J. That\'s enough to lift a 1000 kg car 30 m in the air! Modern crumple zones absorb this energy over about 0.5 m of deformation, requiring an average force of 600,000 N — about 60 tons of force!' },
     ],
     sliders: [
       { label: 'Mass (m)', key: 'm', min: 1, max: 50, step: 1, default: 10, unit: ' kg' },
@@ -313,6 +325,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'F_upthrust = rho g V',
     finalFormulaDesc: 'Buoyant force equals weight of displaced fluid',
+    keyInsight: 'Cargo ships displacing 50,000 tons of seawater float effortlessly — the hull shape maximizes displaced volume while keeping steel mass low.',
     steps: [
       { label: 'Pressure at Top Surface', formula: 'F1 = P1 A = rho g h1 A', detail: '🛳️ You\'re designing a cargo ship. A massive steel vessel weighing 50,000 tons floats effortlessly while a tiny steel nail sinks. Why? Archimedes\' principle: the buoyant force equals the weight of fluid displaced. Imagine a cylinder of height h submerged in water of density ρ.' },
       { label: 'Pressure at Bottom Surface', formula: 'F2 = P2 A = rho g h2 A', detail: '📐 Pressure at the top: P₁ = ρgh₁. Force at top: F₁ = P₁A = ρgh₁A. Pressure at bottom: P₂ = ρgh₂. Force at bottom: F₂ = ρgh₂A. Since h₂ > h₁, the upward force from the bottom is larger than the downward force from the top.' },
@@ -337,11 +350,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'A1 v1 = A2 v2',
     finalFormulaDesc: 'Flow rate is constant: Av = constant for ideal fluids',
+    keyInsight: 'A garden hose nozzle squeezes the opening from 1 cm² to 0.1 cm², making water shoot 10× faster — the same mass of water must pass through every point each second.',
     steps: [
       { label: 'Mass Entering Pipe', formula: 'delta m1 = rho1 A1 v1 delta t', detail: '🌊 You\'re standing by a river. The river is wide and slow upstream, but narrows into a fast-flowing rapids downstream. The same amount of water must pass every point each second — water is incompressible. Mass entering = mass leaving.' },
       { label: 'Mass Leaving Pipe', formula: 'delta m2 = rho2 A2 v2 delta t', detail: '📐 Mass entering in time Δt: Δm₁ = ρA₁v₁Δt. Density ρ × area A₁ × velocity v₁ × time Δt. This is the mass of water flowing through cross-section A₁ in time Δt.' },
       { label: 'Mass Conservation', formula: 'delta m1 = delta m2', detail: '📐 Mass leaving: Δm₂ = ρA₂v₂Δt. For incompressible flow (ρ₁ = ρ₂), conservation of mass means Δm₁ = Δm₂. Cancel density and time: A₁v₁ = A₂v₂.' },
-      { label: 'Cancel Common Terms', formula: 'A1 v1 = A2 v2 = constant', detail: '✅ Flow rate is constant: Av = constant. If the river is 10 m wide and 2 m deep (A₁ = 20 m²) flowing at 1 m/s, then through a narrows of 5 m²: v₂ = 20 × 1 / 5 = 4 m/s — four times faster! This explains how garden hose nozzles work: squeezing the opening makes the water shoot farther.' },
+      { label: 'Cancel Common Terms', formula: 'A1 v1 = A2 v2 = \\text{constant}', detail: '✅ Flow rate is constant: Av = constant. If the river is 10 m wide and 2 m deep (A₁ = 20 m²) flowing at 1 m/s, then through a narrows of 5 m²: v₂ = 20 × 1 / 5 = 4 m/s — four times faster! This explains how garden hose nozzles work: squeezing the opening makes the water shoot farther.' },
     ],
     sliders: [
       { label: 'Area 1 (A1)', key: 'A1', min: 0.01, max: 0.1, step: 0.005, default: 0.05, unit: ' m2' },
@@ -362,6 +376,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'P + 0.5 rho v^2 + rho g h = constant',
     finalFormulaDesc: 'Energy conservation in fluid flow',
+    keyInsight: 'A Boeing 747 wing generates 170,000 N/m² of lift by making air travel faster over the curved top surface, creating lower pressure above than below the wing.',
     steps: [
       { label: 'Work at Lower End', formula: 'W1 = P1 A1 delta x1 = P1 V', detail: '✈️ You\'re an aerospace engineer designing an airplane wing. How does a 380-ton Airbus lift off the ground? Bernoulli\'s principle: faster-moving fluid has lower pressure. The wing is curved on top, making air travel faster there — creating lower pressure above than below.' },
       { label: 'Work at Upper End', formula: 'W2 = -P2 A2 delta x2 = -P2 V', detail: '📐 Work done on the fluid at the lower end: W₁ = P₁A₁Δx₁ = P₁V. The pressure pushes fluid in. Work done by the fluid at the upper end: W₂ = -P₂A₂Δx₂ = -P₂V. The negative sign means the fluid does work on its surroundings to exit.' },
@@ -388,6 +403,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-red-600',
     finalFormula: 'eta = 1 - T2/T1',
     finalFormulaDesc: 'Maximum possible efficiency of a heat engine',
+    keyInsight: 'Modern gas turbines operate at 1600 K to maximize efficiency — every 100 K increase in turbine inlet temperature improves efficiency by 5-8%, saving millions in fuel costs.',
     steps: [
       { label: 'Efficiency Definition', formula: 'eta = Work output / Heat input = (Q1 - Q2) / Q1', detail: '🏭 You\'re a power plant engineer trying to maximize electricity generation. Your steam turbine operates between 800 K (steam from boiler) and 300 K (cooling water). What\'s the maximum possible efficiency? French engineer Sadi Carnot discovered the answer in 1824, laying the foundation of thermodynamics.' },
       { label: 'Carnot Cycle Property', formula: 'Q2/Q1 = T2/T1', detail: '📐 Efficiency η = Work output / Heat input = (Q₁ - Q₂)/Q₁ = 1 - Q₂/Q₁. Here Q₁ is heat absorbed from the hot reservoir, Q₂ is heat rejected to the cold reservoir. No engine can be more efficient than this fundamental limit.' },
@@ -414,6 +430,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-fuchsia-600',
     finalFormula: "f' = (v + v_L)/v x f",
     finalFormulaDesc: 'Apparent frequency when listener moves toward source',
+    keyInsight: 'Police radar guns use the Doppler shift of radio waves bouncing off your car to measure speed — a 1 m/s speed change shifts the frequency by a measurable amount.',
     steps: [
       { label: 'Relative Speed of Sound', formula: 'v_relative = v + v_L', detail: '🚶 You\'re walking toward a stationary speaker playing a 440 Hz note (A4). As you approach, the pitch sounds higher. Why? Sound travels at v = 340 m/s in air. When you walk toward it at vL = 2 m/s, the sound waves reach you faster — the effective speed increases to v + vL = 342 m/s.' },
       { label: 'Apparent Wavelength', formula: "lambda = v/f (unchanged)", detail: '📐 The wavelength is determined by the stationary source: λ = v/f = 340/440 = 0.773 m. The source isn\'t moving, so the wave pattern in air is unchanged — peaks are still 0.773 m apart.' },
@@ -438,11 +455,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-pink-600',
     finalFormula: 'f_n = n x v / 2L',
     finalFormulaDesc: 'Harmonics of a stretched string',
+    keyInsight: 'The 12th fret on a guitar sits exactly at the midpoint — pressing it halves the string length, doubling the frequency to produce a note one octave higher.',
     steps: [
-      { label: 'Nodes at Both Ends', formula: 'L = n x lambda_n / 2', detail: '🎸 You\'re tuning your guitar before a concert. When you pluck a string, it vibrates at specific frequencies determined by its length, tension, and mass. The string is fixed at both ends — these are nodes (points of zero vibration). The vibration pattern must fit an integer number of half-wavelengths between the fixed ends.' },
+      { label: 'Nodes at Both Ends', formula: 'L = n \\times lambda_n / 2', detail: '🎸 You\'re tuning your guitar before a concert. When you pluck a string, it vibrates at specific frequencies determined by its length, tension, and mass. The string is fixed at both ends — these are nodes (points of zero vibration). The vibration pattern must fit an integer number of half-wavelengths between the fixed ends.' },
       { label: 'Wavelength of nth Harmonic', formula: 'lambda_n = 2L / n', detail: '📐 For a string of length L, the nth harmonic has n half-wavelengths: L = n(λ_n/2). The fundamental (n=1): λ₁ = 2L (the whole string vibrates in one loop). The second harmonic (n=2): λ₂ = L (two loops), and so on.' },
-      { label: 'Wave Equation', formula: 'v = f_n x lambda_n', detail: '🧮 Wave speed v = f_n × λ_n. The wave speed on a string depends on tension and linear density: v = √(T/μ). For a typical guitar string: v ≈ 100 m/s. Longer strings produce lower fundamental frequencies.' },
-      { label: 'Frequency Formula', formula: 'f_n = n x v / 2L', detail: '✅ f_n = nv/(2L). For a guitar string L = 0.65 m, v = 100 m/s: f₁ = 100/(2×0.65) = 76.9 Hz. The harmonics: f₂ = 153.8 Hz, f₃ = 230.7 Hz... These overtones give each instrument its unique timbre. The 12th fret sits exactly at the midpoint — pressing it halves the effective string length, doubling the frequency — that\'s an octave higher!' },
+      { label: 'Wave Equation', formula: 'v = f_n \\times lambda_n', detail: '🧮 Wave speed v = f_n × λ_n. The wave speed on a string depends on tension and linear density: v = √(T/μ). For a typical guitar string: v ≈ 100 m/s. Longer strings produce lower fundamental frequencies.' },
+      { label: 'Frequency Formula', formula: 'f_n = n \\times v / 2L', detail: '✅ f_n = nv/(2L). For a guitar string L = 0.65 m, v = 100 m/s: f₁ = 100/(2×0.65) = 76.9 Hz. The harmonics: f₂ = 153.8 Hz, f₃ = 230.7 Hz... These overtones give each instrument its unique timbre. The 12th fret sits exactly at the midpoint — pressing it halves the effective string length, doubling the frequency — that\'s an octave higher!' },
     ],
     sliders: [
       { label: 'String Length (L)', key: 'L', min: 0.5, max: 3, step: 0.1, default: 1, unit: ' m' },
@@ -464,11 +482,12 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-violet-600',
     finalFormula: 'E = k Q / r^2',
     finalFormulaDesc: 'Electric field intensity from a point charge',
+    keyInsight: 'Lightning forms when the electric field between storm clouds and ground exceeds 3 million V/m — strong enough to ionize air and create a conducting path.',
     steps: [
       { label: 'Definition of Electric Field', formula: 'E = F / q', detail: '⚡ You\'re investigating a Van de Graaff generator in a science museum. As you bring your hand near the metal dome, you feel a crackling sensation — the electric field. A charged object creates an invisible \'force field\' around it that pushes or pulls on other charges. The field E at any point is defined as the force per unit test charge: E = F/q.' },
-      { label: 'Coulomb\'s Law', formula: 'F = k Q q / r^2', detail: '📐 Coulomb\'s Law: the force between two charges Q and q separated by distance r is F = kQq/r², where k = 9×10⁹ N·m²/C². For the Van de Graaff dome (Q = 1×10⁻⁶ C) and your hand with induced charge: the force is proportional to both charges and inversely proportional to distance squared.' },
-      { label: 'Substitute F into E', formula: 'E = (k Q q / r^2) / q', detail: '🧮 Substituting F into E = F/q: E = (kQq/r²)/q = kQ/r². The test charge q cancels! The electric field depends only on the source charge Q, not on whatever you use to measure it. A larger Q or closer distance = stronger field.' },
-      { label: 'Final Formula', formula: 'E = k Q / r^2', detail: '✅ E = kQ/r². Near the Van de Graaff dome (r = 0.1 m, Q = 1×10⁻⁶ C): E = 9×10⁹ × 1×10⁻⁶ / 0.01 = 9×10⁵ N/C. That\'s 900,000 N/C — strong enough to ionize air molecules, creating the crackling sparks! Lightning is the same physics on a massive scale.' },
+      { label: 'Coulomb\'s Law', formula: 'F = k Q q / r^{2}', detail: '📐 Coulomb\'s Law: the force between two charges Q and q separated by distance r is F = kQq/r², where k = 9×10⁹ N·m²/C². For the Van de Graaff dome (Q = 1×10⁻⁶ C) and your hand with induced charge: the force is proportional to both charges and inversely proportional to distance squared.' },
+      { label: 'Substitute F into E', formula: 'E = (k Q q / r^{2}) / q', detail: '🧮 Substituting F into E = F/q: E = (kQq/r²)/q = kQ/r². The test charge q cancels! The electric field depends only on the source charge Q, not on whatever you use to measure it. A larger Q or closer distance = stronger field.' },
+      { label: 'Final Formula', formula: 'E = k Q / r^{2}', detail: '✅ E = kQ/r². Near the Van de Graaff dome (r = 0.1 m, Q = 1×10⁻⁶ C): E = 9×10⁹ × 1×10⁻⁶ / 0.01 = 9×10⁵ N/C. That\'s 900,000 N/C — strong enough to ionize air molecules, creating the crackling sparks! Lightning is the same physics on a massive scale.' },
     ],
     sliders: [
       { label: 'Charge (Q)', key: 'Q', min: 1e-9, max: 1e-6, step: 1e-9, default: 1e-8, unit: ' C' },
@@ -489,6 +508,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-amber-600',
     finalFormula: 'I = n e A v_d',
     finalFormulaDesc: 'Current from charge carrier density and drift velocity',
+    keyInsight: 'Electrons drift at only 0.074 mm/s in a wire, yet your light turns on instantly because the electric field propagates at near light speed — like pushing marbles in a filled tube.',
     steps: [
       { label: 'Total Charge in Conductor', formula: 'Q = n A L e', detail: '💡 You flip a light switch, and the bulb turns on instantly. But the electrons themselves move incredibly slowly through the wire. How can a light turn on instantly if electrons crawl? The answer: the signal propagates at near light speed through the electric field, while individual electrons drift at a snail\'s pace.' },
       { label: 'Current = Charge / Time', formula: 'I = Q/t = (n A L e) / t', detail: '📐 In a copper wire, there are n = 8.5×10²⁸ free electrons per cubic meter. Each has charge e = 1.6×10⁻¹⁹ C. In a wire of cross-sectional area A, a length L contains total charge Q = nALe. That\'s a staggering number of electrons!' },
@@ -515,10 +535,11 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'F = B I L sin theta',
     finalFormulaDesc: 'Force = mag field x current x length x sin(angle)',
+    keyInsight: 'Electric motors in Tesla vehicles use this principle: 14,000 rpm with B=1.5 T coils producing 400 kW of mechanical power from the F=BIL interaction.',
     steps: [
       { label: 'Force on Moving Charges', formula: 'F = q v B sin theta', detail: '🔌 You\'re building an electric motor. A wire carrying current I placed in a magnetic field B experiences a force. This is the fundamental principle behind all electric motors — from the tiny vibration motor in your phone to the massive traction motors in electric trains.' },
       { label: 'Current = Moving Charges', formula: 'I = q/t so q = I t', detail: '📐 A single charge q moving at velocity v through field B experiences force F = qvB sin θ (perpendicular to both v and B). In a wire, many charges move together. Total charge q = I × t (current × time).' },
-      { label: 'Velocity = L/t', formula: 'F = (I t) x (L/t) x B sin theta = I L B sin theta', detail: '🧮 The average velocity of charges is v = L/t (length of wire per unit time). Substituting: F = (It) × (L/t) × B sin θ = ILB sin θ. The time cancels! The force depends on current, not on how long it flows.' },
+      { label: 'Velocity = L/t', formula: 'F = (I t) \\times (L/t) \\times B sin theta = I L B sin theta', detail: '🧮 The average velocity of charges is v = L/t (length of wire per unit time). Substituting: F = (It) × (L/t) × B sin θ = ILB sin θ. The time cancels! The force depends on current, not on how long it flows.' },
       { label: 'Direction: Right Hand Rule', formula: 'F perpendicular to both I and B', detail: '✅ F = BIL sin θ. Maximum force when θ = 90° (current perpendicular to field). For a motor coil: B = 0.5 T, I = 3 A, L = 0.2 m (per turn), N = 50 turns: F = 0.5 × 3 × (0.2×50) × 1 = 15 N. The right-hand rule gives the direction — it\'s the basis of every electric motor!' },
     ],
     sliders: [
@@ -542,6 +563,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-fuchsia-600',
     finalFormula: 'epsilon = -N d(Phi)/dt',
     finalFormulaDesc: 'Induced EMF equals negative rate of change of flux',
+    keyInsight: 'Induction cooktops generate 20-100 kHz oscillating magnetic fields that induce eddy currents in the metal pan — the pan itself becomes the heating element, with no flame or hot coil.',
     steps: [
       { label: 'Faraday\'s Observation', formula: 'epsilon proportional to N dPhi/dt', detail: '🍳 You\'re cooking with an induction cooktop. It generates heat WITHOUT any visible flame or glowing element — just a magnetic field that changes thousands of times per second. How? Michael Faraday discovered in 1831 that a changing magnetic field induces an electric current in nearby conductors — electromagnetic induction.' },
       { label: 'Magnetic Flux', formula: 'Phi = B A cos theta', detail: '📐 Magnetic flux Φ = BA cos θ — the amount of magnetic field passing through a surface. Think of it like the number of field lines piercing the area. A stronger field B, larger area A, or better alignment (θ = 0) all increase flux.' },
@@ -568,6 +590,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-rose-600',
     finalFormula: 'T = 2v_i sin\u03B8 / g',
     finalFormulaDesc: 'Total time projectile stays in the air',
+    keyInsight: 'World-class long jumpers achieve about 1 second of hang time with takeoff speeds near 10 m/s at 22° — that airborne second feels like an eternity to the athlete.',
     steps: [
       { label: 'Vertical Motion Only', formula: 'Vertical motion determines time', detail: '🏃 You\'re a long jump athlete running down the track. Your takeoff speed is 9 m/s at 20° above horizontal. How long will you be airborne before hitting the sand pit? The answer depends only on vertical motion — your horizontal speed doesn\'t affect hang time at all.' },
       { label: 'Initial Vertical Velocity', formula: 'v_iy = v_i sin\u03B8', detail: '📏 Your initial vertical velocity: v_iy = vi sin θ = 9 × sin 20° = 9 × 0.342 = 3.08 m/s. This upward component is what keeps you off the ground. The higher your launch angle, the longer you stay up — but too high and you lose horizontal distance.' },
@@ -594,6 +617,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-green-600',
     finalFormula: 'L = I\u03C9 = mr\u00B2\u03C9',
     finalFormulaDesc: 'Rotational analogue of linear momentum',
+    keyInsight: 'Figure skaters spin 11× faster when pulling arms from 1 m to 0.3 m radius — the same conservation law explains why neutron stars spin hundreds of times per second.',
     steps: [
       { label: 'Definition of Angular Momentum', formula: 'L = r \u00D7 p = rmv sin90\u00B0 = rmv', detail: '⛸️ You\'re watching an Olympic figure skater. She starts spinning with arms extended, then pulls her arms in — and suddenly spins much faster! This is conservation of angular momentum in action. Angular momentum L is the rotational equivalent of linear momentum (p = mv), and it\'s defined as L = r × p (position vector cross linear momentum).' },
       { label: 'Substitute Linear Momentum', formula: 'L = r \u00D7 (mv) = rmv', detail: '📐 For an object moving in a circle of radius r: L = r × mv. Since r and v are perpendicular (circular motion): L = rmv. If a skater with mass 50 kg spins at radius 1 m with speed 3 m/s: L = 1 × 50 × 3 = 150 kg·m²/s.' },
@@ -621,6 +645,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-emerald-600',
     finalFormula: '\u03C4 = I\u03B1',
     finalFormulaDesc: 'Rotational analogue of Newton\u2019s Second Law',
+    keyInsight: 'Mechanics use 0.5 m breaker bars on stubborn bolts — doubling the lever arm doubles the torque, making it possible to loosen rusted fasteners that a standard wrench cannot.',
     steps: [
       { label: 'Definition of Torque', formula: '\u03C4 = r F sin90\u00B0 = rF', detail: '🚪 You\'re trying to open a heavy door. You instinctively push as far from the hinges as possible. Why? Torque τ = rF depends on both the force F and the lever arm distance r. Pushing at the door edge (r = 0.8 m) with 20 N gives τ = 16 N·m. Pushing near the hinge (r = 0.1 m) with the same force gives only τ = 2 N·m — eight times less effective!' },
       { label: 'Apply Newton\u2019s Second Law', formula: '\u03C4 = r \u00D7 (ma)', detail: '🏗️ Newton\'s Second Law says F = ma for linear motion. For rotation: τ = rF = r(ma_t). The tangential acceleration a_t = rα, where α is angular acceleration. Substituting: τ = r × m × (rα) = mr²α.' },
@@ -649,6 +674,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-teal-600',
     finalFormula: 'v = \u221A(gR), \u03C9 = \u221A(g/R)',
     finalFormulaDesc: 'Creating artificial gravity via rotation',
+    keyInsight: 'NASA\'s proposed Nautilus-X space station uses a 9 m rotating section to provide partial gravity for Mars astronauts, preventing the bone loss seen in zero gravity.',
     steps: [
       { label: 'Centripetal Equals Gravity', formula: 'a_c = g', detail: '🛸 You\'re the engineer designing a rotating space station for a Mars mission, like the one from \'2001: A Space Odyssey\'. Astronauts in zero gravity suffer bone loss and muscle atrophy. Your solution: spin the station to create artificial gravity using centripetal acceleration. The target: a_c = 9.81 m/s² — Earth-normal gravity.' },
       { label: 'Substitute a_c = v\u00B2/R', formula: 'v\u00B2/R = g', detail: '📐 Centripetal acceleration a_c = v²/R. Set this equal to Earth\'s gravity: v²/R = g = 9.81 m/s². Multiply both sides by R: v² = gR. The required linear speed v = √(gR). For a station with radius R = 50 m: v = √(9.81 × 50) = √490.5 = 22.1 m/s ≈ 80 km/h.' },
@@ -675,6 +701,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-sky-600',
     finalFormula: 'v_t = 2\u03C1gr\u00B2 / 9\u03B7',
     finalFormulaDesc: 'Maximum speed reached by a falling object through a fluid',
+    keyInsight: 'Skydivers in belly-down position fall at 55 m/s (200 km/h); going head-down they reach 90 m/s — body position controls drag area and thus terminal speed.',
     steps: [
       { label: 'Forces at Terminal Velocity', formula: 'Weight = Drag: mg = F_drag', detail: '🌧️ You\'re a meteorologist studying raindrops. Why don\'t raindrops keep accelerating until they hit the ground? Because air drag increases with speed until it balances gravity. At that point, net force = 0, acceleration = 0, and the drop falls at constant terminal velocity.' },
       { label: 'Stokes\u2019 Law for Drag', formula: 'F_drag = 6\u03C0\u03B7 r v_t', detail: '📐 For a small sphere in a viscous fluid, Stokes\' Law gives drag force: F_drag = 6πηrv_t, where η is fluid viscosity, r is radius. A tiny raindrop (r = 0.5 mm) in air (η = 1.8×10⁻⁵ Pa·s) experiences drag proportional to its speed and radius.' },
@@ -701,6 +728,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'R_eq = R\u2081 + R\u2082 + R\u2083',
     finalFormulaDesc: 'Total resistance in series = sum of individual resistances',
+    keyInsight: 'Old Christmas lights wired in series go dark when one bulb fails — the broken bulb breaks the only current path. Modern lights use parallel wiring so the rest stay lit.',
     steps: [
       { label: 'KVL: Voltages Add', formula: 'V_total = V\u2081 + V\u2082 + V\u2083', detail: '🎄 You\'re decorating a Christmas tree with old-style incandescent fairy lights connected in series. If one bulb burns out, the whole string goes dark. In a series circuit, the same current I flows through every component. By Kirchhoff\'s Voltage Law, the total voltage equals the sum of individual voltage drops.' },
       { label: 'Ohm\u2019s Law for Each', formula: 'IR_eq = IR\u2081 + IR\u2082 + IR\u2083', detail: '📐 For three resistors in series: V_total = V₁ + V₂ + V₃. Each voltage drop follows Ohm\'s Law: V = IR. So: V_total = IR₁ + IR₂ + IR₃ = I(R₁ + R₂ + R₃).' },
@@ -727,6 +755,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: '1/R_eq = 1/R\u2081 + 1/R\u2082 + 1/R\u2083',
     finalFormulaDesc: 'Total resistance in parallel = reciprocal of sum of reciprocals',
+    keyInsight: 'House wiring is parallel so unplugging one appliance doesn\'t cut power to others — each outlet gets the full 230 V independently.',
     steps: [
       { label: 'KCL: Currents Add', formula: 'I_total = I\u2081 + I\u2082 + I\u2083', detail: '🏠 You\'re wiring your house. Every outlet, light, and appliance is connected in parallel across the 230 V mains. This is crucial: if you unplug your toaster, the rest of the house stays on. In parallel, each branch has the SAME voltage but carries its own current. By Kirchhoff\'s Current Law, total current = sum of branch currents.' },
       { label: 'Ohm\u2019s Law for Each', formula: 'V/R_eq = V/R\u2081 + V/R\u2082 + V/R\u2083', detail: '📐 For three resistors in parallel: I_total = I₁ + I₂ + I₃. Each branch follows Ohm\'s Law: I = V/R. So: V/R_eq = V/R₁ + V/R₂ + V/R₃. The voltage V is the same across all parallel branches.' },
@@ -753,6 +782,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'v\u2081 = \u221A(2gh / ((A\u2081/A\u2082)\u00B2 \u2212 1))',
     finalFormulaDesc: 'Fluid velocity from pressure difference in a Venturi tube',
+    keyInsight: 'Carburetors use the Venturi effect: a constriction in the air passage drops pressure, sucking fuel into the airstream to create the combustible mixture the engine needs.',
     steps: [
       { label: 'Bernoulli\u2019s Equation (Horizontal)', formula: 'P\u2081 + \u00BD\u03C1v\u2081\u00B2 = P\u2082 + \u00BD\u03C1v\u2082\u00B2', detail: '🧪 You\'re a plumber diagnosing a clogged pipe. You attach a Venturi meter — a tube that narrows in the middle — to measure flow rate. The constriction makes the fluid speed up, which drops its pressure. The pressure difference tells you the flow velocity.' },
       { label: 'Pressure Difference', formula: 'P\u2081 \u2212 P\u2082 = \u00BD\u03C1(v\u2082\u00B2 \u2212 v\u2081\u00B2)', detail: '📐 In a horizontal pipe (h₁ = h₂), Bernoulli simplifies: P₁ + ½ρv₁² = P₂ + ½ρv₂². Rearranging: P₁ - P₂ = ½ρ(v₂² - v₁²). The pressure drop between the wide and narrow sections equals the change in dynamic pressure.' },
@@ -780,10 +810,11 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-yellow-600',
     finalFormula: 'U = \u00BD k x\u00B2',
     finalFormulaDesc: 'Energy stored in a deformed spring',
+    keyInsight: 'A bow stores 25 J of elastic energy when drawn 0.5 m — when released, this converts to kinetic energy, launching the arrow at 147 km/h toward the target.',
     steps: [
       { label: 'Force-Extension Graph', formula: 'Area under F-x graph = Work done', detail: '🏹 You\'re an archer drawing a bow. The more you pull back the string, the harder it becomes to pull further — Robert Hooke discovered this in 1660: F = kx, where k is the spring constant. A typical bow has k = 200 N/m. Pulling back 0.5 m requires 100 N of force.' },
       { label: 'Work = Area of Triangle', formula: 'W = \u00BD \u00D7 F \u00D7 x', detail: '📐 On a force-extension graph, F = kx is a straight line through the origin. The work done to stretch the spring equals the area under this line — which is a triangle! Area = ½ × base × height = ½ × x × F.' },
-      { label: 'Substitute F = kx', formula: 'W = \u00BD \u00D7 (kx) \u00D7 x = \u00BD k x\u00B2', detail: '🧮 Substitute F = kx: W = ½ × x × kx = ½kx². If you pull your bow 0.5 m with k = 200 N/m: W = ½ × 200 × 0.25 = 25 J. That 25 joules of work is stored as elastic potential energy.' },
+      { label: 'Substitute F = kx', formula: 'W = \u00BD \u00D7 (kx) \u00D7 \\times = \u00BD k x\u00B2', detail: '🧮 Substitute F = kx: W = ½ × x × kx = ½kx². If you pull your bow 0.5 m with k = 200 N/m: W = ½ × 200 × 0.25 = 25 J. That 25 joules of work is stored as elastic potential energy.' },
       { label: 'Elastic Potential Energy', formula: 'U = \u00BD k x\u00B2', detail: '✅ U = ½kx². When released, this energy converts to kinetic energy of the arrow: ½mv² = ½kx². An arrow of mass 0.03 kg: v = √(kx²/m) = √(200×0.25/0.03) = √1667 = 40.8 m/s (147 km/h)! This same principle powers everything from trampolines to vehicle suspension systems.' },
     ],
     sliders: [
@@ -805,6 +836,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-orange-600',
     finalFormula: 'W = P\u0394V',
     finalFormulaDesc: 'Work done during expansion or compression',
+    keyInsight: 'A 4-cylinder engine at 3000 RPM produces 6000 power strokes per minute — each delivering 250 J from expanding gas, totaling 25,000 W (33 horsepower) of mechanical output.',
     steps: [
       { label: 'Force on Piston', formula: 'F = P \u00D7 A', detail: '🔧 You\'re a mechanical engineer designing a car engine. Inside each cylinder, burning gasoline expands, pushing a piston that turns the crankshaft. The work done by the expanding gas is what propels your car forward. Think of a piston of area A being pushed by gas pressure P.' },
       { label: 'Work = Force \u00D7 Distance', formula: 'W = F \u00D7 \u0394y', detail: '📐 The gas exerts force F = P × A on the piston. Work = force × distance: W = F × Δy = (PA) × Δy. The piston moves a distance Δy as the gas expands.' },
@@ -830,6 +862,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'COP = T\u2082 / (T\u2081 \u2212 T\u2082)',
     finalFormulaDesc: 'Efficiency measure for a refrigerator (reverse Carnot cycle)',
+    keyInsight: 'Your kitchen fridge achieves COP 3-4: for every 1 J of electricity, it removes 3-4 J of heat from your food — and dumps all of it plus the electrical energy as heat out the back.',
     steps: [
       { label: 'Definition of COP (Cooling)', formula: 'COP = Q\u2082 / W', detail: '❄️ You\'re designing a refrigerator. Your goal: remove as much heat as possible from the inside (cold reservoir at 270 K) while doing minimum work. The compressor does work W, heat Q₂ is extracted from the food compartment, and Q₁ is rejected to the kitchen (at 310 K).' },
       { label: 'Work Input', formula: 'W = Q\u2081 \u2212 Q\u2082', detail: '📐 COP (Coefficient of Performance) = Q₂/W (for cooling) — the heat removed per unit work input. A COP of 6 means you remove 6 J of heat for every 1 J of electrical work. Better than 100% \'efficiency\' because you\'re moving heat, not creating it!' },
@@ -856,6 +889,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-pink-600',
     finalFormula: "f' = (v \u2212 v_L)/v \u00D7 f",
     finalFormulaDesc: 'Apparent frequency when listener moves away from source',
+    keyInsight: 'Doppler echocardiography measures blood flow velocity by comparing ultrasound frequency shifts from moving red blood cells — non-invasive heart diagnostics.',
     steps: [
       { label: 'Relative Speed of Sound', formula: 'v_relative = v \u2212 v_L', detail: '🚶 You\'re walking away from a fixed speaker playing the same 440 Hz note. Now the pitch drops! Walking away at vL = 2 m/s, the sound waves reach you slower — effective speed decreases to v - vL = 338 m/s.' },
       { label: 'Apparent Wavelength', formula: '\u03BB = v/f (unchanged)', detail: '📐 The wavelength is still unchanged: λ = v/f = 340/440 = 0.773 m. The source is stationary, so the spatial pattern of compressions and rarefactions in the air doesn\'t change regardless of your motion.' },
@@ -881,6 +915,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-rose-600',
     finalFormula: "f' = v/(v \u2212 v_S) \u00D7 f",
     finalFormulaDesc: 'Apparent frequency when source moves toward listener',
+    keyInsight: 'An ambulance at 30 m/s shifts its siren pitch by 42 Hz as it approaches — the classic rising-then-falling wail you hear as it passes by at speed.',
     steps: [
       { label: 'Compressed Wavelength', formula: "\u03BB' = \u03BB \u2212 \u0394\u03BB = (v \u2212 v_S)/f", detail: '🚑 You\'re standing still as an ambulance races toward you with its siren blaring at 440 Hz. The pitch sounds much higher than when it\'s stationary. But the physics is different here: the source is moving, compressing the sound waves ahead of it.' },
       { label: 'Wave Compression', formula: '\u0394\u03BB = v_S/f', detail: '📐 In one period T = 1/f, the source moves distance vS × T toward you while the wave travels v × T. The new wavelength: λ\' = vT - vST = (v - vS)/f. The waves are bunched up — compressed!' },
@@ -906,6 +941,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-violet-600',
     finalFormula: 'f_n = n v / 2L',
     finalFormulaDesc: 'Harmonics of an open pipe (both ends antinodes)',
+    keyInsight: 'Clarinets sound different from flutes because they\'re closed pipes (only odd harmonics) while flutes are open pipes (all harmonics) — same length, different timbre.',
     steps: [
       { label: 'Antinodes at Both Ends', formula: 'L = n(\u03BB_n/2)', detail: '🎵 You\'re a flute player in an orchestra. When you blow across the mouthpiece, the air column inside vibrates producing musical notes. An open pipe (open at both ends) has antinodes (maximum vibration) at both ends. The air must vibrate freely at the openings.' },
       { label: 'Wavelength of nth Harmonic', formula: '\u03BB_n = 2L/n', detail: '📐 For an open pipe of length L: L = n(λ_n/2). Same formula as the string! The fundamental (n=1): λ₁ = 2L. Second harmonic (n=2): λ₂ = L. All harmonics are present in an open pipe, giving it a rich, bright sound.' },
@@ -932,6 +968,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-purple-600',
     finalFormula: 'E = \u2212\u0394V/\u0394r',
     finalFormulaDesc: 'Electric field equals negative potential gradient',
+    keyInsight: 'Lightning rods concentrate charge at their sharp tips, creating field gradients exceeding 3 million V/m that ionize air and safely conduct strikes to ground.',
     steps: [
       { label: 'Work Done Moving Test Charge', formula: 'W = F \u0394r = qE \u0394r', detail: '🔋 You\'re working with a parallel plate capacitor — two metal plates with a voltage difference across them. The electric field between the plates is uniform. If you move a test charge q from one plate to the other, you do work against the field. How does this work relate to voltage?' },
       { label: 'Work = Change in PE', formula: 'W = \u2212q \u0394V', detail: '📐 Work = force × displacement: W = FΔr = (qE)Δr. Moving a charge through a uniform field E over distance Δr requires force qE (overcoming the field\'s push).' },
@@ -957,6 +994,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-amber-600',
     finalFormula: 'P_max = \u03B5\u00B2 / 4r',
     finalFormulaDesc: 'Maximum power delivered when load = internal resistance',
+    keyInsight: 'Solar panels are matched to their inverter\'s input impedance using this theorem — matching resistance maximizes power transfer from panel to grid.',
     steps: [
       { label: 'Power Delivered to Load', formula: 'P_out = I\u00B2 R', detail: '🔊 You\'re an audio engineer matching a speaker to an amplifier. An amplifier has internal resistance r = 4 Ω and EMF ε = 20 V. The speaker has resistance R. To get the loudest sound, you need to maximize the power delivered to R. But what value of R gives maximum power?' },
       { label: 'Current with Internal Resistance', formula: 'I = \u03B5 / (R + r)', detail: '📐 Power delivered to load R: P_out = I²R. Using Ohm\'s Law with internal resistance: I = ε/(R + r). So P_out = ε²R/(R + r)².' },
@@ -985,6 +1023,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-lime-600',
     finalFormula: 'R = PS/Q',
     finalFormulaDesc: 'Balance condition: P/Q = R/S',
+    keyInsight: 'Strain gauges in bathroom scales and structural monitors use Wheatstone bridges to detect resistance changes as small as 0.01% — precision that a multimeter cannot match.',
     steps: [
       { label: 'At Balance, No Current Through Galvanometer', formula: 'I_g = 0', detail: '🔬 You\'re in a physics lab needing to measure an unknown resistance R precisely. A multimeter gives approximate values, but you need higher accuracy. Samuel Hunter Christie (1833) and later Charles Wheatstone created a bridge circuit that compares unknown to known resistors — and it\'s incredibly precise because it uses a null measurement (zero current through the galvanometer).' },
       { label: 'Voltage Drops in Upper Branch', formula: 'V_P = V_R (I\u2081P = I\u2082R)', detail: '📐 At balance, no current flows through the galvanometer — points B and D are at the same potential. In the upper branch: voltage across P = voltage across R. Since B and D are at same potential: I₁P = I₂R.' },
@@ -1011,6 +1050,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-blue-600',
     finalFormula: 'F/L = \u03BC\u2080 I\u2081 I\u2082 / 2\u03C0r',
     finalFormulaDesc: 'Force per unit length between parallel conductors',
+    keyInsight: 'High-voltage transmission lines spaced 0.5 m apart exert 0.4 N/m of force at 1000 A — parallel currents attract, which is why power company bundles them in specific geometries.',
     steps: [
       { label: 'Magnetic Field of First Wire', formula: 'B\u2081 = \u03BC\u2080 I\u2081 / 2\u03C0r', detail: '🔌 You\'re designing a high-voltage transmission line. When two parallel wires carry current, they exert force on each other — like tiny electromagnets attracting or repelling. This interaction is the basis of the definition of the ampere, the fundamental unit of electric current.' },
       { label: 'Force on Second Wire', formula: 'F = B\u2081 I\u2082 L', detail: '📐 A long straight wire carrying current I₁ produces a magnetic field at distance r: B₁ = μ₀I₁/(2πr), where μ₀ = 4π×10⁻⁷ T·m/A is the permeability of free space. This field circulates around the wire like concentric rings.' },
@@ -1038,6 +1078,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'r = mv/qB',
     finalFormulaDesc: 'Radius of circular path of a charge in a magnetic field',
+    keyInsight: 'The aurora borealis occurs when solar wind charged particles spiral along Earth\'s magnetic field lines, creating curtains of light at the poles — same physics as CRT electron beams.',
     steps: [
       { label: 'Magnetic Force', formula: 'F_B = qvB (when v \u22A5 B)', detail: '📺 You\'re fixing an old CRT television. Inside the glass tube, electrons are fired at the screen to create the picture. A magnetic field bends their path — the electron beam scans across the screen 60 times per second. The force qvB acts perpendicular to the velocity, creating circular motion.' },
       { label: 'Centripetal Acceleration', formula: 'F_c = mv\u00B2 / r', detail: '📐 The magnetic force F_B = qvB (when v ⟂ B) acts as a centripetal force: it\'s always perpendicular to velocity, pulling the electron into a circular path. No work is done (force ⟂ displacement), so speed stays constant.' },
@@ -1065,6 +1106,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-cyan-600',
     finalFormula: 'v = E/B',
     finalFormulaDesc: 'Velocity for undeflected motion through crossed fields',
+    keyInsight: 'Mass spectrometers identify molecules by first filtering them through crossed E and B fields — only particles with velocity v=E/B pass through to the mass analyzer, detecting everything from drug metabolites to explosives.',
     steps: [
       { label: 'Electric Force', formula: 'F_E = qE', detail: '🧪 You\'re operating a mass spectrometer — a device that identifies molecules by their mass. But first, you need a beam of particles all moving at the same velocity. Enter the velocity selector: crossed electric and magnetic fields that filter particles by speed.' },
       { label: 'Magnetic Force', formula: 'F_B = qvB', detail: '📐 An electric field exerts force F_E = qE in the direction of the field. The particles are pulled one way by the electric field.' },
@@ -1090,6 +1132,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-red-600',
     finalFormula: "f' = v/(v + v_S) \u00D7 f",
     finalFormulaDesc: 'Apparent frequency when source moves away from listener',
+    keyInsight: 'Astronomers measure galaxy recession velocities using this formula — redshift of spectral lines tells us how fast distant galaxies are moving away, revealing the expanding universe.',
     steps: [
       { label: 'Expanded Wavelength', formula: "\u03BB' = \u03BB + \u0394\u03BB = (v + v_S)/f", detail: '🚑 The ambulance passes you and races away. The pitch drops dramatically. Now the source is moving away, stretching the sound waves behind it — like a boat creating longer waves behind it as it moves forward.' },
       { label: 'Wave Expansion', formula: '\u0394\u03BB = v_S/f', detail: '📐 In one period, the source moves vS × T away from you. The wave travels v × T. The new wavelength behind: λ\' = vT + vST = (v + vS)/f. The waves are stretched — longer wavelength means lower frequency!' },
@@ -1115,8 +1158,9 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-green-600',
     finalFormula: '\u03B5\u2082/\u03B5\u2081 = l\u2082/l\u2081',
     finalFormulaDesc: 'Ratio of EMFs equals ratio of balancing lengths',
+    keyInsight: 'Calibrating a voltmeter requires a potentiometer because it draws zero current at balance — measuring true EMF without loading the cell being tested.',
     steps: [
-      { label: 'Potential Gradient Along Wire', formula: 'V/L = constant', detail: '🔋 You\'re comparing two batteries to find the EMF of an unknown cell. You can\'t use a voltmeter directly because it draws some current and gives inaccurate readings. Instead, use a potentiometer — a long uniform wire with a sliding contact. The wire has a constant potential gradient (voltage per unit length is uniform).' },
+      { label: 'Potential Gradient Along Wire', formula: 'V/L = \\text{constant}', detail: '🔋 You\'re comparing two batteries to find the EMF of an unknown cell. You can\'t use a voltmeter directly because it draws some current and gives inaccurate readings. Instead, use a potentiometer — a long uniform wire with a sliding contact. The wire has a constant potential gradient (voltage per unit length is uniform).' },
       { label: 'Fall of Potential', formula: '\u03B5 \u221D l', detail: '📐 The potential difference across any length l of the wire is proportional to l: V ∝ l. If the wire is 1 m long with a 2 V battery across it, the gradient is 2 V/m. Every centimeter gives exactly 0.02 V.' },
       { label: 'For Two Cells', formula: '\u03B5\u2081 \u221D l\u2081, \u03B5\u2082 \u221D l\u2082', detail: '📐 For cell 1 with known EMF ε₁: you slide the contact until the galvanometer reads zero (no current drawn). Balancing length = l₁. For cell 2: balancing length = l₂. Since the gradient is constant: ε₁ ∝ l₁, ε₂ ∝ l₂.' },
       { label: 'Divide Equations', formula: '\u03B5\u2082/\u03B5\u2081 = l\u2082/l\u2081', detail: '✅ ε₂/ε₁ = l₂/l₁. If ε₁ = 1.5 V gives l₁ = 60 cm, and unknown cell gives l₂ = 40 cm: ε₂ = 1.5 × 40/60 = 1.0 V. The beauty: at balance, the cell draws ZERO current — you measure the true EMF!' },
@@ -1141,6 +1185,7 @@ export const CLASS11_DERIVATIONS: Record<string, DerivationConfig> = {
     accentColor: 'bg-indigo-600',
     finalFormula: 'p = \u221A(E\u00B2 \u2212 m\u00B2c\u2074)/c',
     finalFormulaDesc: 'Relativistic momentum from Einstein\u2019s energy relation',
+    keyInsight: 'PET scanners in hospitals use positron annihilation — the antimatter that Dirac predicted from the ± sign in this equation — to detect cancer tumors with millimeter precision.',
     steps: [
       { label: "Einstein's Energy Relation", formula: 'E = \u00B1\u221A(m\u00B2c\u2074 + p\u00B2c\u00B2)', detail: '🔬 You\'re analyzing data from the Large Hadron Collider at CERN. Particles smash together at nearly light speed, and Einstein\'s special relativity governs their behavior. For a particle with rest mass m and momentum p, the total energy E includes both rest energy and kinetic energy.' },
       { label: 'Square Both Sides', formula: 'E\u00B2 = m\u00B2c\u2074 + p\u00B2c\u00B2', detail: '📐 Einstein\'s energy-momentum relation: E² = (mc²)² + (pc)². This is the relativistic Pythagorean theorem — rest energy and momentum energy are perpendicular legs, total energy is the hypotenuse. For a stationary particle (p=0): E = mc². For a massless photon (m=0): E = pc.' },

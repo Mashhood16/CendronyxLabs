@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Database, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB12StructuralStats({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [humidity, setHumidity] = useState(92);
  const [measurements, setMeasurements] = useState<number[]>([]);
@@ -52,7 +54,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Structural Biophysics & Stats" subtitle="X-Ray Crystallography & DNA Conformations" />
+  <LabHeader onExit={onExit} title={t('lab.b12structuralstats_structural_biophysics_stats')} subtitle={t('lab.subtitle_crystallography_conformations')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -61,51 +63,53 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b12structuralstats_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b12structuralstats_lab')}</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:min-h-0 lg:overflow-visible">
   {/* Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Theory & Context</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.b12structuralstats_theory_context')}</h2>
    <div className="space-y-4 text-sm text-slate-600 dark:text-[#a1a1aa]">
    <p>
-    <strong>X-Ray Crystallography:</strong> Used by Rosalind Franklin to deduce the helical structure of DNA (Photo 51). The "X" pattern indicates a helix, while the distance between layer lines reveals the helical pitch.
-   </p>
+    <strong>{t('lab.b12structuralstats_x_ray_crystallography')}</strong>  {t('lab.b12structuralstats_used_by_rosalind_franklin_to_d')}
+                            </p>
    <p>
-    <strong>DNA Conformations:</strong>
+    <strong>{t('lab.b12structuralstats_dna_conformations')}</strong>
     <ul className="list-disc pl-5 mt-1 space-y-1">
-    <li><strong>B-form:</strong> High hydration (&gt;80%), pitch ~3.4 nm (10 bp/turn).</li>
-    <li><strong>A-form:</strong> Low hydration, more compact, pitch ~2.8 nm (11 bp/turn).</li>
+    <li><strong>{t('lab.b12structuralstats_b_form')}</strong>  {t('lab.b12structuralstats_high_hydration_gt_80_pitch_3_4')}</li>
+    <li><strong>{t('lab.b12structuralstats_a_form')}</strong>  {t('lab.b12structuralstats_low_hydration_more_compact_pit')}</li>
     </ul>
    </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg mt-4 flex-col `}>
-    <strong>Biostatistics: Standard Deviation</strong>
-    <p className="mt-2">Formula for sample SD (<em>s</em>):</p>
+    <strong>{t('lab.b12structuralstats_biostatistics_standard_deviati')}</strong>
+    <p className="mt-2">{t('lab.b12structuralstats_formula_for_sample_sd')}<em>s</em>):</p>
     <div className="text-center font-serif text-lg mt-2 mb-2">
-    s = √[ Σ(x - x̄)² / (n - 1) ]
-    </div>
+    
+                                 {t('lab.b12structuralstats_s_x_x_n_1')}
+                                 </div>
     <ul className="list-disc pl-5 text-xs">
-    <li>x̄ = sample mean</li>
-    <li>n = sample size (degrees of freedom = n-1)</li>
-    <li>x = individual measurement</li>
+    <li>{t('lab.b12structuralstats_x_sample_mean')}</li>
+    <li>{t('lab.b12structuralstats_n_sample_size_degrees_of_freed')}</li>
+    <li>{t('lab.b12structuralstats_x_individual_measurement')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Interactive */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Diffraction Simulator</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.b12structuralstats_diffraction_simulator')}</h2>
    
    <div className="flex-1 flex flex-col items-center">
    <div className="mb-4 w-full">
     <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-    <span>Fiber Hydration: {humidity}%</span>
+    <span>{t('lab.b12structuralstats_fiber_hydration')} {humidity}%</span>
     <span>{isBForm ? 'B-Form DNA' : 'A-Form DNA'}</span>
     </label>
     <input 
@@ -144,18 +148,18 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
    <button 
     onClick={takeMeasurements}
     className={`mt-6 flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 font-semibold transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}>
-    <Database className="w-5 h-5" /> Collect Experimental Data
-   </button>
+    <Database className="w-5 h-5" />  {t('lab.b12structuralstats_collect_experimental_data')}
+                            </button>
    </div>
   </div>
 
   {/* Assessment */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">Data Analysis</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-4">{t('lab.b12structuralstats_data_analysis')}</h2>
    
    <div className="space-y-6">
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">Raw Measurements (Pitch in nm)</h3>
+    <h3 className="text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.b12structuralstats_raw_measurements_pitch_in_nm')}</h3>
     {measurements.length > 0 ? (
     <div className="flex flex-wrap gap-2">
      {measurements.map((m, i) => (
@@ -165,15 +169,16 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
      ))}
     </div>
     ) : (
-    <p className="text-sm text-slate-400 italic">Click "Collect Data" to begin.</p>
+    <p className="text-sm text-slate-400 italic">{t('lab.b12structuralstats_click_collect_data_to_begin')}</p>
     )}
    </div>
 
    <div className="space-y-4">
     <div className="space-y-2">
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     Calculate the Mean (x̄):
-    </label>
+     
+                                      {t('lab.b12structuralstats_calculate_the_mean_x')}
+                                     </label>
     <input 
      type="number" step="0.01"
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-indigo-500 outline-none font-mono"
@@ -185,8 +190,9 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
     <div className="space-y-2">
     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-     Calculate the Sample Standard Deviation (s):
-    </label>
+     
+                                      {t('lab.b12structuralstats_calculate_the_sample_standard_')}
+                                     </label>
     <input 
      type="number" step="0.01"
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-indigo-500 outline-none font-mono"
@@ -201,8 +207,8 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
     onClick={checkAnswers}
     disabled={measurements.length === 0}
     className="w-full bg-[#121212] dark:bg-[#121212] text-white font-semibold py-2 rounded hover:bg-[#000000] dark:bg-[#121212] transition-colors flex items-center justify-center gap-2 disabled:opacity-50">
-    <CheckCircle className="w-5 h-5" /> Verify Calculations
-   </button>
+    <CheckCircle className="w-5 h-5" />  {t('lab.b12structuralstats_verify_calculations')}
+                            </button>
 
    {feedback && (
     <div className={`p-3 rounded text-sm font-medium ${feedback.includes('Perfect') ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>

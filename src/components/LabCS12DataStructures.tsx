@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import {CheckCircle, XCircle, Play, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabCS12DataStructures({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeTab, setActiveTab] = useState<'Stack' | 'Queue' | 'Tree'>('Tree');
@@ -59,7 +61,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="dark" title="Interactive Memory Management" />
+  <LabHeader onExit={onExit} variant="dark" title={t('lab.cs12datastructures_interactive_memory_management')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -68,47 +70,51 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.cs12datastructures_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs12datastructures_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Theory & Context</h2>
+   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_theory_context')}</h2>
    <div className={`space-y-4 text-slate-700 dark:text-[#ffffff] lg:overflow-y-auto pr-2 flex-1 text-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <p>
-    <strong>Data Structures</strong> organize and store data to enable efficient access and modification.
-   </p>
-   <h3 className="font-semibold text-teal-700 mt-2">Stacks (LIFO)</h3>
+    <strong>{t('lab.cs12datastructures_data_structures')}</strong>  {t('lab.cs12datastructures_organize_and_store_data_to_ena')}
+                            </p>
+   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_stacks_lifo')}</h3>
    <p>
-    A Stack follows the Last-In-First-Out principle. Operations like <code>Push</code> (add to top) and <code>Pop</code> (remove from top) execute in O(1) time. Used in undo mechanisms and call stacks.
-   </p>
-   <h3 className="font-semibold text-teal-700 mt-2">Queues (FIFO)</h3>
+    
+                             {t('lab.cs12datastructures_a_stack_follows_the_last_in_fi')} <code>{t('lab.cs12datastructures_push')}</code>  {t('lab.cs12datastructures_add_to_top_and')} <code>{t('lab.cs12datastructures_pop')}</code>  {t('lab.cs12datastructures_remove_from_top_execute_in_o_1')}
+                            </p>
+   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_queues_fifo')}</h3>
    <p>
-    A Queue follows the First-In-First-Out principle. <code>Enqueue</code> adds to the back, <code>Dequeue</code> removes from the front. Used in task scheduling and breadth-first search.
-   </p>
-   <h3 className="font-semibold text-teal-700 mt-2">Binary Trees</h3>
+    
+                             {t('lab.cs12datastructures_a_queue_follows_the_first_in_f')} <code>{t('lab.cs12datastructures_enqueue')}</code>  {t('lab.cs12datastructures_adds_to_the_back')} <code>{t('lab.cs12datastructures_dequeue')}</code>  {t('lab.cs12datastructures_removes_from_the_front_used_in')}
+                            </p>
+   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_binary_trees')}</h3>
    <p>
-    A hierarchical structure where each node has at most two children. 
-    <br/>- <strong>Pre-Order:</strong> Root, Left, Right
-    <br/>- <strong>In-Order:</strong> Left, Root, Right
-    <br/>- <strong>Post-Order:</strong> Left, Right, Root
-   </p>
+    
+                             {t('lab.cs12datastructures_a_hierarchical_structure_where')} 
+                             <br/>- <strong>{t('lab.cs12datastructures_pre_order')}</strong>  {t('lab.cs12datastructures_root_left_right')}
+                             <br/>- <strong>{t('lab.cs12datastructures_in_order')}</strong>  {t('lab.cs12datastructures_left_root_right')}
+                             <br/>- <strong>{t('lab.cs12datastructures_post_order')}</strong>  {t('lab.cs12datastructures_left_right_root')}
+                            </p>
    </div>
   </div>
 
   {/* Simulation Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Visualizer</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_visualizer')}</h2>
    
    <div className="flex gap-2 mb-4">
-   <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>Tree</button>
-   <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>Stack</button>
-   <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>Queue</button>
+   <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_tree')}</button>
+   <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_stack')}</button>
+   <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_queue')}</button>
    </div>
 
    <div className={`flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative lg:overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
@@ -139,9 +145,9 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
      })}
     </svg>
     <div className="flex gap-2 mt-4">
-     <button onClick={() => animateTraversal(preOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> Pre-Order</button>
-     <button onClick={() => animateTraversal(inOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> In-Order</button>
-     <button onClick={() => animateTraversal(postOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> Post-Order</button>
+     <button onClick={() => animateTraversal(preOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_pre_order_1')}</button>
+     <button onClick={() => animateTraversal(inOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_in_order_1')}</button>
+     <button onClick={() => animateTraversal(postOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_post_order_1')}</button>
     </div>
     </div>
    )}
@@ -149,8 +155,8 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
    {activeTab === 'Stack' && (
     <div className="w-full flex flex-col items-center h-full justify-end pb-4">
     <div className="flex gap-2 mb-6">
-     <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">Push</button>
-     <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">Pop</button>
+     <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_push')}</button>
+     <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_pop')}</button>
     </div>
     <div className="w-32 border-x-4 border-b-4 border-[#1c1b1b] dark:border-[#1c1b1b] min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50 dark:bg-[#121212]">
      {stack.map((val, idx) => (
@@ -158,7 +164,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
       {val}
      </div>
      ))}
-     {stack.length === 0 && <span className="text-slate-400 text-sm mt-auto mb-2">Empty Stack</span>}
+     {stack.length === 0 && <span className="text-slate-400 text-sm mt-auto mb-2">{t('lab.cs12datastructures_empty_stack')}</span>}
     </div>
     </div>
    )}
@@ -166,11 +172,11 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
    {activeTab === 'Queue' && (
     <div className="w-full flex flex-col items-center h-full justify-center">
     <div className="flex gap-2 mb-6">
-     <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">Enqueue</button>
-     <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">Dequeue</button>
+     <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_enqueue')}</button>
+     <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_dequeue')}</button>
     </div>
     <div className="w-full max-w-sm h-20 border-y-4 border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center p-1 bg-slate-50 dark:bg-[#121212] overflow-x-auto gap-1">
-     {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">Empty Queue</span>}
+     {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">{t('lab.cs12datastructures_empty_queue')}</span>}
      {queue.map((val, idx) => (
      <div key={idx} className="min-w-[3rem] h-full bg-teal-500 text-white flex items-center justify-center font-bold rounded border border-teal-700">
       {val}
@@ -178,8 +184,8 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
      ))}
     </div>
     <div className="w-full max-w-sm flex justify-between mt-2 text-xs font-bold text-slate-500 dark:text-[#71717a]">
-     <span>← Front (Dequeue)</span>
-     <span>Back (Enqueue) ←</span>
+     <span>{t('lab.cs12datastructures_front_dequeue')}</span>
+     <span>{t('lab.cs12datastructures_back_enqueue')}</span>
     </div>
     </div>
    )}
@@ -187,38 +193,38 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
   </div>
 
   {/* Assessment Column */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Analysis & Assessment</h2>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_analysis_assessment')}</h2>
    
    <div className="space-y-4 lg:overflow-y-auto pr-2">
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Q1: If an empty Stack performs Push(5), Push(10), Pop(), Push(3), what is the top element?</label>
+    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q1_if_an_empty_stack_performs_')}</label>
     <div className="flex gap-2">
-    <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="Enter number..." />
-    <button onClick={() => setQ1Status(q1.trim() === '3')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">Check</button>
+    <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_enter_number')} />
+    <button onClick={() => setQ1Status(q1.trim() === '3')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
     </div>
-    {q1Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> Correct</p>}
-    {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
+    {q1Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
+    {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
    </div>
 
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Q2: Based on the visualizer Tree, what is the exact Pre-Order traversal sequence? (e.g. A,B,C...)</label>
+    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q2_based_on_the_visualizer_tre')}</label>
     <div className="flex gap-2">
-    <input type="text" value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="A,B,D,E,C,F,G" />
-    <button onClick={() => setQ2Status(q2.replace(/\s/g, '').toUpperCase() === 'A,B,D,E,C,F,G')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">Check</button>
+    <input type="text" value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_a_b_d_e_c_f_g')} />
+    <button onClick={() => setQ2Status(q2.replace(/\s/g, '').toUpperCase() === 'A,B,D,E,C,F,G')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
     </div>
-    {q2Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> Correct</p>}
-    {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
+    {q2Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
+    {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
    </div>
 
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Q3: Which data structure operates on a FIFO (First-In-First-Out) principle?</label>
+    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q3_which_data_structure_operat')}</label>
     <div className="flex gap-2">
-    <input type="text" value={q3} onChange={e => setQ3(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder="e.g. Stack or Queue" />
-    <button onClick={() => setQ3Status(q3.trim().toLowerCase() === 'queue')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">Check</button>
+    <input type="text" value={q3} onChange={e => setQ3(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_e_g_stack_or_queue')} />
+    <button onClick={() => setQ3Status(q3.trim().toLowerCase() === 'queue')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
     </div>
-    {q3Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> Correct</p>}
-    {q3Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> Incorrect</p>}
+    {q3Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
+    {q3Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
    </div>
 
    <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] mt-6">
@@ -229,8 +235,9 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
     className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
     <Save size={20} />
-    Submit Results & Exit
-    </button>
+    
+                                 {t('lab.cs12datastructures_submit_results_exit')}
+                                 </button>
    </div>
    </div>
   </div>

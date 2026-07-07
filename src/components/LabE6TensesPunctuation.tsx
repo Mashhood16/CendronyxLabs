@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, Clock, Search, Check, AlertCircle, FastForward , Sun, Moon} from 'lucide-react';
 import type { ChangeEvent } from 'react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 // Data
 const TENSES = [
@@ -56,6 +57,7 @@ const GERUND_TASKS = [
 ];
 
 export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'tenses' | 'gerunds'>('tenses');
 
@@ -127,13 +129,14 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
    </button>
    <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
    <Clock className="w-6 h-6 text-blue-500" />
-   Tenses & Punctuation Lab
-   </h1>
+   
+                        {t('lab.e6tensespunctuation_tenses_punctuation_lab')}
+                        </h1>
   </div>
   
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -149,33 +152,36 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
     onClick={() => setActiveTab('tenses')}
     className={`w-full py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'tenses' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
-    Time Machine (Tenses)
-   </button>
+    
+                             {t('lab.e6tensespunctuation_time_machine_tenses')}
+                            </button>
    <button 
     onClick={() => setActiveTab('gerunds')}
     className={`w-full py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'gerunds' ? ' shadow-sm text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
-    Gerund Scanner
-   </button>
+    
+                             {t('lab.e6tensespunctuation_gerund_scanner')}
+                            </button>
    </div>
 
    {activeTab === 'tenses' && (
    <div className="space-y-8 animate-in fade-in slide-in-from-left-4">
     <div>
-    <h2 className="text-lg font-semibold mb-2">Configure Time Machine</h2>
+    <h2 className="text-lg font-semibold mb-2">{t('lab.e6tensespunctuation_configure_time_machine')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#71717a]">
-     Select a base verb and a destination time period. Then conjugate the verb correctly to power the machine.
-    </p>
+     
+                                      {t('lab.e6tensespunctuation_select_a_base_verb_and_a_desti')}
+                                     </p>
     </div>
 
     <div className="space-y-4">
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa]">1. Base Verb</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa]">{t('lab.e6tensespunctuation_1_base_verb')}</label>
     <div className="grid grid-cols-2 gap-2">
      {VERBS.map((v, i) => (
      <button
       key={v.base}
       onClick={() => setSelectedVerbIdx(i)}
-      className={`py-2 px-3 rounded-lg border font-mono text-center transition-colors whitespace-nowrap flex-shrink-0 ${ selectedVerbIdx === i ? 'bg-blue-100 border-blue-500 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 dark:border-blue-400' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
+      className={`py-2 px-3 rounded-lg border font-mono text-center transition-colors whitespace-nowrap flex-shrink-0 ${ selectedVerbIdx === i ? 'bg-blue-100 border-blue-500 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 dark:border-blue-400' : 'bg-slate-50 dark:bg-[#000000] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212] dark:border-[#1c1b1b] dark:hover:bg-slate-700' }`}
      >
       to {v.base}
      </button>
@@ -185,7 +191,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
 
     <div className="space-y-4">
     <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa] flex items-center justify-between">
-     <span>2. Target Timeline (Tense)</span>
+     <span>{t('lab.e6tensespunctuation_2_target_timeline_tense')}</span>
      <span className={`text-xs px-2 py-1 rounded-full text-white ${TENSES[timelineIndex].bg}`}>
      {TENSES[timelineIndex].name}
      </span>
@@ -199,15 +205,16 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
      className="w-full accent-blue-600"
     />
     <div className="flex justify-between text-xs text-slate-400">
-     <span>Distant Past</span>
-     <span>Recent</span>
+     <span>{t('lab.e6tensespunctuation_distant_past')}</span>
+     <span>{t('lab.e6tensespunctuation_recent')}</span>
     </div>
     </div>
 
     <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
     <label className="block text-sm font-bold text-slate-700 dark:text-[#a1a1aa]">
-     3. Input Conjugation
-    </label>
+     
+                                      {t('lab.e6tensespunctuation_3_input_conjugation')}
+                                     </label>
     <div className="flex gap-2">
      <input
      type="text"
@@ -221,20 +228,21 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-bold transition-colors flex items-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
      >
      <Check className="w-4 h-4" />
-     Verify
-     </button>
+     
+                                          {t('lab.e6tensespunctuation_verify')}
+                                          </button>
     </div>
     
     {conjFeedback === 'success' && (
      <div className="p-3 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-lg flex items-start gap-2">
      <Check className="w-5 h-5 shrink-0 mt-0.5" />
-     <p className="text-sm">Time Machine charged! The conjugation is correct.</p>
+     <p className="text-sm">{t('lab.e6tensespunctuation_time_machine_charged_the_conju')}</p>
      </div>
     )}
     {conjFeedback === 'error' && (
      <div className="p-3 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 rounded-lg flex items-start gap-2">
      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-     <p className="text-sm">Incorrect conjugation. Check your auxiliary verbs and spelling!</p>
+     <p className="text-sm">{t('lab.e6tensespunctuation_incorrect_conjugation_check_yo')}</p>
      </div>
     )}
     </div>
@@ -244,25 +252,26 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
    {activeTab === 'gerunds' && (
    <div className="space-y-8 animate-in fade-in slide-in-from-right-4">
     <div>
-    <h2 className="text-lg font-semibold mb-2">Gerund Scanner</h2>
+    <h2 className="text-lg font-semibold mb-2">{t('lab.e6tensespunctuation_gerund_scanner')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#71717a]">
-     A <strong>gerund</strong> is a verb ending in <em>-ing</em> that acts as a <strong>noun</strong>. Don't confuse it with a present participle used in continuous tenses!
-    </p>
+     A <strong>{t('lab.e6tensespunctuation_gerund')}</strong>  {t('lab.e6tensespunctuation_is_a_verb_ending_in')} <em>{t('lab.e6tensespunctuation_ing')}</em>  {t('lab.e6tensespunctuation_that_acts_as_a')} <strong>{t('lab.e6tensespunctuation_noun')}</strong>{t('lab.e6tensespunctuation_don_t_confuse_it_with_a_presen')}
+                                     </p>
     </div>
 
     <div className="space-y-4">
     <div className="flex items-center justify-between">
-     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">Task {activeSentenceIdx + 1} of {GERUND_TASKS.length}</h3>
+     <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e6tensespunctuation_task')} {activeSentenceIdx + 1} of {GERUND_TASKS.length}</h3>
      <button 
      onClick={() => setActiveSentenceIdx((prev) => (prev + 1) % GERUND_TASKS.length)}
      className="text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-1 hover:underline whitespace-nowrap flex-shrink-0"
      >
-     Next Sentence <FastForward className="w-4 h-4" />
+     
+                                          {t('lab.e6tensespunctuation_next_sentence')} <FastForward className="w-4 h-4" />
      </button>
     </div>
     
     <div className="p-4 bg-slate-100 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-xl">
-     <p className="text-sm text-slate-500 mb-3">Click on the gerund(s) in the sentence below:</p>
+     <p className="text-sm text-slate-500 mb-3">{t('lab.e6tensespunctuation_click_on_the_gerund_s_in_the_s')}</p>
      <div className="flex flex-wrap gap-2 text-lg">
      {GERUND_TASKS[activeSentenceIdx].words.map((w, idx) => (
       <button
@@ -281,19 +290,20 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold transition-colors flex items-center justify-center gap-2 whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
      <Search className="w-5 h-5" />
-     Scan Selection
-    </button>
+     
+                                      {t('lab.e6tensespunctuation_scan_selection')}
+                                     </button>
 
     {gerundFeedback === 'success' && (
      <div className="p-3 bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 rounded-lg flex items-start gap-2">
      <Check className="w-5 h-5 shrink-0 mt-0.5" />
-     <p className="text-sm">Correct! You identified the gerund(s) perfectly.</p>
+     <p className="text-sm">{t('lab.e6tensespunctuation_correct_you_identified_the_ger')}</p>
      </div>
     )}
     {gerundFeedback === 'error' && (
      <div className="p-3 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 rounded-lg flex items-start gap-2">
      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-     <p className="text-sm">Scan failed. Remember, a gerund acts as a noun (subject or object), NOT as part of a continuous verb tense like "was running".</p>
+     <p className="text-sm">{t('lab.e6tensespunctuation_scan_failed_remember_a_gerund_')}</p>
      </div>
     )}
     </div>
@@ -329,7 +339,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
 
     {/* Readout Display */}
     <div className="mt-16 bg-black/60 border border-white/10 rounded-xl p-4 w-3/4 max-w-md backdrop-blur-md text-center z-10">
-    <div className="text-xs text-slate-400 uppercase tracking-widest mb-2 font-mono">System Status</div>
+    <div className="text-xs text-slate-400 uppercase tracking-widest mb-2 font-mono">{t('lab.e6tensespunctuation_system_status')}</div>
     {conjFeedback === 'success' ? (
      <div className="text-xl md:text-2xl font-mono text-emerald-400">
      <span className="opacity-50 mr-2">{"=>"}</span>
@@ -338,8 +348,9 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
     ) : (
      <div className="text-xl md:text-2xl font-mono text-slate-500">
      <span className="opacity-50 mr-2">{"=>"}</span>
-     AWAITING CONJUGATION
-     </div>
+     
+                                              {t('lab.e6tensespunctuation_awaiting_conjugation')}
+                                              </div>
     )}
     </div>
    </div>
@@ -348,7 +359,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
     
     <div className="absolute top-4 left-4 flex items-center gap-2">
      <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
-     <span className="text-emerald-500 font-mono text-xs uppercase tracking-widest">Scanner UI Online</span>
+     <span className="text-emerald-500 font-mono text-xs uppercase tracking-widest">{t('lab.e6tensespunctuation_scanner_ui_online')}</span>
     </div>
 
     <div className="w-full bg-[#000000]/80 border border-emerald-500/30 rounded-xl p-8 relative font-mono shadow-[0_0_30px_rgba(16,185,129,0.05)] backdrop-blur-sm">
@@ -371,8 +382,9 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
        {w.text}
        {isCorrectlyGuessed && (
        <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-emerald-400 font-bold tracking-widest uppercase">
-        Gerund
-       </span>
+        
+                              {t('lab.e6tensespunctuation_gerund_1')}
+                             </span>
        )}
       </span>
       );
@@ -382,7 +394,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
      {gerundFeedback === 'success' && (
       <div className="mt-12 text-center text-emerald-400 animate-pulse flex flex-col items-center gap-2">
       <Check className="w-8 h-8" />
-      <span className="uppercase tracking-widest text-sm">Target Identified</span>
+      <span className="uppercase tracking-widest text-sm">{t('lab.e6tensespunctuation_target_identified')}</span>
       </div>
      )}
     </div>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import {Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab] = useState<'sem' | 'stem'>('sem');
  const [magIndex, setMagIndex] = useState<number>(0);
@@ -85,7 +87,7 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Grade 11: Advanced Cytology & Stem Cells" />
+  <LabHeader onExit={onExit} title={t('lab.b11cytology_grade_11_advanced_cytology_ste')} />
 
   {/* Main Grid */}
   
@@ -95,36 +97,37 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b11cytology_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b11cytology_lab')}</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Context</h2>
+   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.b11cytology_theory_context')}</h2>
    {activeTab === 'sem' ? (
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
-    <p><strong>Scanning Electron Microscopy (SEM)</strong> allows biologists to observe the surface of cellular structures at incredibly high magnifications.</p>
-    <p>Using an electron beam instead of light, modern electron microscopes can achieve magnifications up to <strong>50,000,000x</strong>.</p>
+    <p><strong>{t('lab.b11cytology_scanning_electron_microscopy_s')}</strong>  {t('lab.b11cytology_allows_biologists_to_observe_t')}</p>
+    <p>{t('lab.b11cytology_using_an_electron_beam_instead')} <strong>{t('lab.b11cytology_50_000_000x')}</strong>.</p>
     <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h3 className="font-bold text-blue-800 mb-2 dark:text-[#ffffff]">Magnification Formula</h3>
-    <p className={`font-mono text-sm bg-slate-50 dark:bg-[#121212] p-2 rounded border border-blue-200 text-center flex-col `}>Magnification (M) = Image Size (I) / Actual Size (A)</p>
-    <p className="text-sm mt-2 text-blue-700">Remember to convert your units! 1 mm = 1000 µm = 1,000,000 nm.</p>
+    <h3 className="font-bold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.b11cytology_magnification_formula')}</h3>
+    <p className={`font-mono text-sm bg-slate-50 dark:bg-[#121212] p-2 rounded border border-blue-200 text-center flex-col `}>{t('lab.b11cytology_magnification_m_image_size_i_a')}</p>
+    <p className="text-sm mt-2 text-blue-700">{t('lab.b11cytology_remember_to_convert_your_units')}</p>
     </div>
    </div>
    ) : (
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4">
-    <p><strong>Induced Pluripotent Stem Cells (iPSCs)</strong> are adult cells genetically reprogrammed to an embryonic stem cell-like state.</p>
-    <p>Because they are pluripotent, they can differentiate into any cell type in the body, offering massive potential for regenerative medicine.</p>
+    <p><strong>{t('lab.b11cytology_induced_pluripotent_stem_cells')}</strong>  {t('lab.b11cytology_are_adult_cells_genetically_re')}</p>
+    <p>{t('lab.b11cytology_because_they_are_pluripotent_t')}</p>
     <ul className="list-disc pl-5 space-y-2">
-    <li><strong>Pancreas:</strong> Beta cells for Type 1 Diabetes.</li>
-    <li><strong>Heart:</strong> Cardiomyocytes for myocardial infarction.</li>
-    <li><strong>Brain:</strong> Dopaminergic neurons for Parkinson's Disease.</li>
+    <li><strong>{t('lab.b11cytology_pancreas')}</strong>  {t('lab.b11cytology_beta_cells_for_type_1_diabetes')}</li>
+    <li><strong>{t('lab.b11cytology_heart')}</strong>  {t('lab.b11cytology_cardiomyocytes_for_myocardial_')}</li>
+    <li><strong>{t('lab.b11cytology_brain')}</strong>  {t('lab.b11cytology_dopaminergic_neurons_for_parki')}</li>
     </ul>
    </div>
    )}
@@ -135,7 +138,8 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
    {activeTab === 'sem' ? (
    <>
     <div className={`absolute top-4 left-4 text-green-400 font-mono text-sm bg-black/50 px-3 py-1 rounded flex-col `}>
-    MAG: {currentMag.toLocaleString()}x
+    
+                                 {t('lab.b11cytology_mag')} {currentMag.toLocaleString()}x
     </div>
     <div className="flex-1 flex items-center justify-center relative">
     <div className={`w-64 h-64 border-2 border-[#1c1b1b] dark:border-[#1c1b1b] rounded-full bg-slate-950 p-4 shadow-2xl flex items-center justify-center overflow- relative `}>
@@ -146,7 +150,7 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     </div>
     <div className="mt-6 bg-[#121212] dark:bg-[#121212] p-4 rounded-lg flex flex-col gap-3">
     <label className="text-slate-300 font-semibold text-sm flex justify-between">
-     <span>Adjust Focus & Magnification</span>
+     <span>{t('lab.b11cytology_adjust_focus_magnification')}</span>
      <Search size={16} />
     </label>
     <input 
@@ -160,23 +164,23 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     />
     <div className="flex justify-between text-xs text-slate-400 font-mono">
      <span>1x</span>
-     <span>10³x</span>
-     <span>10⁵x</span>
-     <span>10⁷x</span>
-     <span>5x10⁷x</span>
+     <span>{t('lab.b11cytology_10_x')}</span>
+     <span>{t('lab.b11cytology_10_x_1')}</span>
+     <span>{t('lab.b11cytology_10_x_2')}</span>
+     <span>{t('lab.b11cytology_5x10_x')}</span>
     </div>
     </div>
    </>
    ) : (
    <>
-    <h3 className="text-white text-center font-bold mb-4">iPSC Differentiation Protocol</h3>
+    <h3 className="text-white text-center font-bold mb-4">{t('lab.b11cytology_ipsc_differentiation_protocol')}</h3>
     <div className="flex-1 flex flex-col items-center justify-center gap-8">
     {/* iPSC Source */}
     <div className="bg-[#121212] dark:bg-[#121212] p-4 rounded-xl border border-slate-600 dark:border-[#1c1b1b] flex flex-col items-center gap-2 cursor-pointer hover:bg-slate-700 dark:bg-[#121212] transition-colors">
      <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(52,211,153,0.5)]">
      <RefreshCw className="text-white animate-spin-slow" size={24} />
      </div>
-     <span className="text-emerald-100 font-semibold">Patient iPSCs</span>
+     <span className="text-emerald-100 font-semibold">{t('lab.b11cytology_patient_ipscs')}</span>
     </div>
     
     {/* Arrows & Targets */}
@@ -201,8 +205,9 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     </div>
     {selectedOrgan && (
     <div className="mt-4 p-3 bg-emerald-900/30 border border-emerald-800 rounded text-emerald-200 text-sm text-center animate-pulse">
-     Differentiating iPSCs to {selectedOrgan} lineage... Protocol complete.
-    </div>
+     
+                                          {t('lab.b11cytology_differentiating_ipscs_to')} {selectedOrgan}  {t('lab.b11cytology_lineage_protocol_complete')}
+                                         </div>
     )}
    </>
    )}
@@ -211,48 +216,51 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
   {/* Column 3: Assessment */}
   <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <CheckCircle className="text-blue-600" /> Lab Assessment
-   </h2>
+   <CheckCircle className="text-blue-600" />  {t('lab.b11cytology_lab_assessment')}
+                        </h2>
    
    <div className="space-y-6 mt-2">
    <div className="space-y-2">
     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-    1. An electron micrograph shows a mitochondrion measuring 50 mm in length. The actual size of the mitochondrion is 10 µm. What is the magnification? (Enter just the number in thousands, e.g., if 5000, enter 5)
-    </label>
+    
+                                 {t('lab.b11cytology_1_an_electron_micrograph_shows')}
+                                 </label>
     <div className="flex items-center gap-2">
     <input 
      type="text" 
      value={q1Ans}
      onChange={(e) => setQ1Ans(e.target.value)}
-     placeholder="e.g. 5"
+     placeholder={t('lab.b11cytology_e_g_5')}
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-blue-500 outline-none"
     />
-    <span className="text-slate-500 dark:text-[#71717a] font-mono">x10³</span>
+    <span className="text-slate-500 dark:text-[#71717a] font-mono">{t('lab.b11cytology_x10')}</span>
     </div>
    </div>
 
    <div className="space-y-2">
     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-    2. Which organ target requires differentiation into Beta Cells to treat Type 1 Diabetes?
-    </label>
+    
+                                 {t('lab.b11cytology_2_which_organ_target_requires_')}
+                                 </label>
     <input 
     type="text" 
     value={q2Ans}
     onChange={(e) => setQ2Ans(e.target.value)}
-    placeholder="Organ name..."
+    placeholder={t('lab.b11cytology_organ_name')}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-blue-500 outline-none"
     />
    </div>
 
    <div className="space-y-2">
     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-    3. What term describes the potency of iPSCs, allowing them to form any of the three germ layers?
-    </label>
+    
+                                 {t('lab.b11cytology_3_what_term_describes_the_pote')}
+                                 </label>
     <input 
     type="text" 
     value={q3Ans}
     onChange={(e) => setQ3Ans(e.target.value)}
-    placeholder="Potency type..."
+    placeholder={t('lab.b11cytology_potency_type')}
     className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-blue-500 outline-none"
     />
    </div>
@@ -261,8 +269,8 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     onClick={handleCheckAnswers}
     className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors flex justify-center items-center gap-2 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-    <CheckCircle size={20} /> Verify Results
-   </button>
+    <CheckCircle size={20} />  {t('lab.b11cytology_verify_results')}
+                            </button>
 
    {feedback && (
     <div className={`p-4 rounded-lg font-medium text-sm ${feedback.includes('Excellent') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [amplitude, setAmplitude] = useState<number>(5);
  const [omega, setOmega] = useState<number>(1);
@@ -89,7 +92,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Complex Numbers & Phasors Lab" />
+  <LabHeader onExit={onExit} title={t('lab.m11complexnumbers_complex_numbers_phasors_lab')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -98,43 +101,45 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m11complexnumbers_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m11complexnumbers_lab')}</button>
   </div>
   <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:overflow-visible">
   {/* LEFT: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 lg:overflow-y-auto border-t-4 border-blue-500  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">Theory: Euler's Formula</h2>
+   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.m11complexnumbers_theory_euler_s_formula')}</h2>
    <p className="text-gray-600 text-sm">
-   A complex number can be written in polar form using Euler's formula:
-   <br />
+   
+                        {t('lab.m11complexnumbers_a_complex_number_can_be_writte')}
+                        <br />
    <span className="font-mono text-blue-600 font-semibold text-center block my-2">
-    {"$$ z(t) = A e^{i(\\omega t + \\phi)} = A(\\cos(\\omega t + \\phi) + i\\sin(\\omega t + \\phi)) $$"}
+    <MathText>{"$$ z(t) = A e^{i(\\omega t + \\phi)} = A(\\cos(\\omega t + \\phi) + i\\sin(\\omega t + \\phi)) $$"}</MathText>
    </span>
    </p>
    <ul className="list-disc list-inside text-sm text-gray-700 dark:text-[#ffffff] space-y-1">
-   <li><b>A</b>: Amplitude (radius of the circle)</li>
-   <li><b>{"$$\\omega$$"}</b>: Angular frequency (rad/s)</li>
-   <li><b>{"$$\\phi$$"}</b>: Initial phase angle (rad)</li>
-   <li><b>Real Part</b>: Models AC Voltage or Position in SHM</li>
+   <li><b>A</b>{t('lab.m11complexnumbers_amplitude_radius_of_the_circle')}</li>
+   <li><b><MathText>{"$$\\omega$$"}</MathText></b>{t('lab.m11complexnumbers_angular_frequency_rad_s')}</li>
+   <li><b><MathText>{"$$\\phi$$"}</MathText></b>{t('lab.m11complexnumbers_initial_phase_angle_rad')}</li>
+   <li><b>{t('lab.m11complexnumbers_real_part')}</b>{t('lab.m11complexnumbers_models_ac_voltage_or_position_')}</li>
    </ul>
 
    <div className="mt-4 space-y-4">
-   <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1">Control Panel</h3>
+   <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1">{t('lab.m11complexnumbers_control_panel')}</h3>
    <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">Amplitude (A): {amplitude.toFixed(1)}</label>
+    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11complexnumbers_amplitude_a')} {amplitude.toFixed(1)}</label>
     <input type="range" min="1" max="10" step="0.5" value={amplitude} onChange={(e) => setAmplitude(parseFloat(e.target.value))} className="w-full" />
    </div>
    <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">Angular Freq ({"$$\\omega$$"}): {omega.toFixed(1)} rad/s</label>
+    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11complexnumbers_angular_freq')}<MathText>{"$$\\omega$$"}</MathText>): {omega.toFixed(1)}  {t('lab.m11complexnumbers_rad_s')}</label>
     <input type="range" min="0.5" max="5" step="0.1" value={omega} onChange={(e) => setOmega(parseFloat(e.target.value))} className="w-full" />
    </div>
    <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">Phase ({"$$\\phi$$"}): {phase.toFixed(2)} rad</label>
+    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11complexnumbers_phase')}<MathText>{"$$\\phi$$"}</MathText>): {phase.toFixed(2)}  {t('lab.m11complexnumbers_rad')}</label>
     <input type="range" min="0" max="6.28" step="0.1" value={phase} onChange={(e) => setPhase(parseFloat(e.target.value))} className="w-full" />
    </div>
 
@@ -143,7 +148,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
     onClick={() => setIsPlaying(!isPlaying)}
     className={`flex-1 min-w-0 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
     >
-    {isPlaying ? <><Pause size={18} /> Pause</> : <><Play size={18} /> Play</>}
+    {isPlaying ? <><Pause size={18} />  {t('lab.m11complexnumbers_pause')}</> : <><Play size={18} />  {t('lab.m11complexnumbers_play')}</>}
     </button>
     <button
     onClick={resetSimulation}
@@ -156,9 +161,9 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
   </div>
 
   {/* MIDDLE: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow- relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] absolute top-4 left-6">Phasor Simulation</h2>
-   <div className="text-sm text-gray-500 absolute top-10 left-6">t = {time.toFixed(2)} s</div>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow- relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] absolute top-4 left-6">{t('lab.m11complexnumbers_phasor_simulation')}</h2>
+   <div className="text-sm text-gray-500 absolute top-10 left-6">{t('lab.m11complexnumbers_t')} {time.toFixed(2)} s</div>
    
    <svg viewBox="-15 -15 30 30" className={`w-full h-64 max-w-sm mt-8 border border-gray-100 rounded-lg shadow-inner bg-slate-50 dark:bg-[#121212] flex-col `}>
    {/* Axes */}
@@ -198,62 +203,63 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
     )}
     </svg>
     <div className="flex justify-center gap-4 mt-2 text-xs flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    <span className="text-red-500 font-bold">Real (Cos)</span>
-    <span className="text-blue-500 font-bold">Imaginary (Sin)</span>
+    <span className="text-red-500 font-bold">{t('lab.m11complexnumbers_real_cos')}</span>
+    <span className="text-blue-500 font-bold">{t('lab.m11complexnumbers_imaginary_sin')}</span>
     </div>
    </div>
   </div>
 
   {/* RIGHT: Assessment */}
   <div className={`bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500 `}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">Analysis & Assessment</h2>
-   <p className="text-sm text-gray-600 mb-2">Use the simulation parameters to solve the following problems.</p>
+   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.m11complexnumbers_analysis_assessment')}</h2>
+   <p className="text-sm text-gray-600 mb-2">{t('lab.m11complexnumbers_use_the_simulation_parameters_')}</p>
 
    {/* Question 1 */}
    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">1. Initial Real Value</p>
+   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11complexnumbers_1_initial_real_value')}</p>
    <p className="text-sm text-gray-600 mb-3">
-    Given A = {amplitude.toFixed(1)}, {"$$\\phi$$"} = {phase.toFixed(2)} rad, calculate the <b>Real Part</b> at t = 0.
+    <MathText>{t('lab.m11complexnumbers_given_a')} {amplitude.toFixed(1)}, {"$$\\phi$$"} = {phase.toFixed(2)}  {t('lab.m11complexnumbers_rad_calculate_the')} <b>{t('lab.m11complexnumbers_real_part')}</b>  {t('lab.m11complexnumbers_at_t_0')}</MathText>
    </p>
    <div className="flex items-center gap-2">
     <input 
     type="number" 
     className="flex-1 min-w-0 p-2 border rounded text-sm" 
-    placeholder="Enter value..."
+    placeholder={t('lab.m11complexnumbers_enter_value')}
     value={q1Answer}
     onChange={(e) => { setQ1Answer(e.target.value); setQ1Status("idle"); }}
     />
-    <button onClick={checkQ1} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Check</button>
+    <button onClick={checkQ1} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11complexnumbers_check')}</button>
    </div>
-   {q1Status === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> Correct! {"$$ A \\cos(\\phi) $$"} matches.</p>}
-   {q1Status === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} /> Incorrect. Try again.</p>}
+   {q1Status === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> <MathText>{t('lab.m11complexnumbers_correct')} {"$$ A \\cos(\\phi) $$"}  {t('lab.m11complexnumbers_matches')}</MathText></p>}
+   {q1Status === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} />  {t('lab.m11complexnumbers_incorrect_try_again')}</p>}
    </div>
 
    {/* Question 2 */}
    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">2. Wave Period</p>
+   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11complexnumbers_2_wave_period')}</p>
    <p className="text-sm text-gray-600 mb-3">
-    Given angular frequency {"$$\\omega$$"} = {omega.toFixed(1)} rad/s, calculate the <b>Period T</b> in seconds.
+    <MathText>{t('lab.m11complexnumbers_given_angular_frequency')} {"$$\\omega$$"} = {omega.toFixed(1)}  {t('lab.m11complexnumbers_rad_s_calculate_the')} <b>{t('lab.m11complexnumbers_period_t')}</b>  {t('lab.m11complexnumbers_in_seconds')}</MathText>
    </p>
    <div className="flex items-center gap-2">
     <input 
     type="number" 
     className="flex-1 min-w-0 p-2 border rounded text-sm" 
-    placeholder="Enter period T..."
+    placeholder={t('lab.m11complexnumbers_enter_period_t')}
     value={q2Answer}
     onChange={(e) => { setQ2Answer(e.target.value); setQ2Status("idle"); }}
     />
-    <button onClick={checkQ2} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">Check</button>
+    <button onClick={checkQ2} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11complexnumbers_check')}</button>
    </div>
-   {q2Status === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> Correct! {"$$ T = 2\\pi / \\omega $$"}.</p>}
-   {q2Status === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} /> Incorrect. Remember {"$$ T = \\frac{2\\pi}{\\omega} $$"}.</p>}
+   {q2Status === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> <MathText>{t('lab.m11complexnumbers_correct')} {"$$ T = 2\\pi / \\omega $$"}.</MathText></p>}
+   {q2Status === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} /> <MathText>{t('lab.m11complexnumbers_incorrect_remember')} {"$$ T = \\frac{2\\pi}{\\omega} $$"}.</MathText></p>}
    </div>
    
    <div className="mt-auto bg-blue-50 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
-    <h3 className="text-sm font-bold text-blue-800 mb-1 dark:text-[#ffffff]">Did you know?</h3>
+    <h3 className="text-sm font-bold text-blue-800 mb-1 dark:text-[#ffffff]">{t('lab.m11complexnumbers_did_you_know')}</h3>
     <p className="text-xs text-blue-700">
-    In Electrical Engineering, alternating currents (AC) and voltages are represented as complex numbers called <b>phasors</b>. This turns differential equations into simple algebra!
-    </p>
+    
+                             {t('lab.m11complexnumbers_in_electrical_engineering_alte')} <b>{t('lab.m11complexnumbers_phasors')}</b>{t('lab.m11complexnumbers_this_turns_differential_equati')}
+                             </p>
    </div>
   </div>
   </main>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, BookOpen, Feather, Info, Target, RefreshCcw } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 type Mode = 'vocab' | 'stylistics';
 
@@ -83,6 +84,7 @@ const LITERARY_DEVICES = [
 ];
 
 export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<Mode>('vocab');
  
@@ -140,7 +142,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
     <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
    </button>
    )}
-   <h1 className="text-lg md:text-xl font-bold text-emerald-700 dark:text-emerald-400">Lab E11: Vocabulary & Stylistics</h1>
+   <h1 className="text-lg md:text-xl font-bold text-emerald-700 dark:text-emerald-400">{t('lab.e11vocabularystylistics_lab_e11_vocabulary_stylistics')}</h1>
   </div>
   </header>
 
@@ -150,12 +152,13 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e11vocabularystylistics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e11vocabularystylistics_lab')}</button>
   </div>
 
   {/* Main Layout */}
@@ -164,54 +167,54 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
   {/* Window 1: Theory */}
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">Vocabulary & Stylistics</h2>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.e11vocabularystylistics_vocabulary_stylistics')}</h2>
    
-   <p className="mb-4">Understanding vocabulary nuances and rhetorical stylistics is essential for advanced English comprehension and eloquent expression. This guide explores distinct facets of word choice and literary devices.</p>
+   <p className="mb-4">{t('lab.e11vocabularystylistics_understanding_vocabulary_nuanc')}</p>
    
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">1. Vocabulary Nuances</h3>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e11vocabularystylistics_1_vocabulary_nuances')}</h3>
    <ul className="list-disc pl-5 space-y-2 mb-6">
-    <li><strong>Silent Letters:</strong> Many English words contain letters that are not pronounced (e.g., the 'm' in <em>mnemonic</em>, 'k' in <em>knight</em>, 'b' in <em>subtle</em>).</li>
-    <li><strong>Idioms:</strong> Phrases whose meanings cannot be deduced from the literal definitions of their words. Example: <em>"Beat around the bush"</em> means to avoid the main topic.</li>
-    <li><strong>Connotation vs. Denotation:</strong> 
+    <li><strong>{t('lab.e11vocabularystylistics_silent_letters')}</strong>  {t('lab.e11vocabularystylistics_many_english_words_contain_let')} <em>{t('lab.e11vocabularystylistics_mnemonic')}</em>{t('lab.e11vocabularystylistics_k_in')} <em>{t('lab.e11vocabularystylistics_knight')}</em>{t('lab.e11vocabularystylistics_b_in')} <em>{t('lab.e11vocabularystylistics_subtle')}</em>).</li>
+    <li><strong>{t('lab.e11vocabularystylistics_idioms')}</strong>  {t('lab.e11vocabularystylistics_phrases_whose_meanings_cannot_')} <em>{t('lab.e11vocabularystylistics_beat_around_the_bush')}</em>  {t('lab.e11vocabularystylistics_means_to_avoid_the_main_topic')}</li>
+    <li><strong>{t('lab.e11vocabularystylistics_connotation_vs_denotation')}</strong> 
     <ul className="list-circle pl-5 mt-1">
-     <li><em>Denotation:</em> The literal dictionary definition.</li>
-     <li><em>Connotation:</em> The emotional or cultural associations a word carries. Example: <em>Inquisitive</em> (positive) vs. <em>Nosy</em> (negative).</li>
+     <li><em>{t('lab.e11vocabularystylistics_denotation')}</em>  {t('lab.e11vocabularystylistics_the_literal_dictionary_definit')}</li>
+     <li><em>{t('lab.e11vocabularystylistics_connotation')}</em>  {t('lab.e11vocabularystylistics_the_emotional_or_cultural_asso')} <em>{t('lab.e11vocabularystylistics_inquisitive')}</em>  {t('lab.e11vocabularystylistics_positive_vs')} <em>{t('lab.e11vocabularystylistics_nosy')}</em>  {t('lab.e11vocabularystylistics_negative')}</li>
     </ul>
     </li>
-    <li><strong>Transitional Devices:</strong> Words or phrases that bridge ideas. Example: <em>Furthermore</em> (addition), <em>Nevertheless</em> (contrast), <em>Consequently</em> (result).</li>
+    <li><strong>{t('lab.e11vocabularystylistics_transitional_devices')}</strong>  {t('lab.e11vocabularystylistics_words_or_phrases_that_bridge_i')} <em>{t('lab.e11vocabularystylistics_furthermore')}</em>  {t('lab.e11vocabularystylistics_addition')} <em>{t('lab.e11vocabularystylistics_nevertheless')}</em>  {t('lab.e11vocabularystylistics_contrast')} <em>{t('lab.e11vocabularystylistics_consequently')}</em>  {t('lab.e11vocabularystylistics_result')}</li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">2. Literary Devices (Stylistics)</h3>
-   <p className="mb-2">Stylistics involves analyzing how writers use language for effect. Key figures of speech include:</p>
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e11vocabularystylistics_2_literary_devices_stylistics')}</h3>
+   <p className="mb-2">{t('lab.e11vocabularystylistics_stylistics_involves_analyzing_')}</p>
    <ul className="list-disc pl-5 space-y-2">
-    <li><strong>Simile:</strong> A comparison using "like" or "as". (<em>"I wandered lonely as a cloud."</em>)</li>
-    <li><strong>Metaphor:</strong> A direct comparison asserting one thing is another. (<em>"All the world's a stage."</em>)</li>
-    <li><strong>Personification:</strong> Giving human traits to non-human entities. (<em>"The leaves danced in the wind."</em>)</li>
-    <li><strong>Hyperbole:</strong> Extreme exaggeration for emphasis. (<em>"I've told you a million times!"</em>)</li>
-    <li><strong>Alliteration:</strong> Repetition of initial consonant sounds. (<em>"Peter Piper picked a peck..."</em>)</li>
-    <li><strong>Oxymoron:</strong> Combining contradictory terms. (<em>"Parting is such sweet sorrow."</em>)</li>
-    <li><strong>Synecdoche:</strong> Using a part to represent the whole. (<em>"The pen is mightier than the sword."</em> - 'pen' for writing, 'sword' for violence.)</li>
-    <li><strong>Anaphora:</strong> Repetition of a word or phrase at the beginning of successive clauses. (<em>"It was the best of times, it was the worst of times."</em>)</li>
-    <li><strong>Irony:</strong> A contrast between expectation and reality. (<em>"Water, water, everywhere, nor any drop to drink."</em>)</li>
-    <li><strong>Paradox:</strong> A statement that appears contradictory but holds truth.</li>
+    <li><strong>{t('lab.e11vocabularystylistics_simile')}</strong>  {t('lab.e11vocabularystylistics_a_comparison_using_like_or_as')}<em>{t('lab.e11vocabularystylistics_i_wandered_lonely_as_a_cloud')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_metaphor')}</strong>  {t('lab.e11vocabularystylistics_a_direct_comparison_asserting_')}<em>{t('lab.e11vocabularystylistics_all_the_world_s_a_stage')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_personification')}</strong>  {t('lab.e11vocabularystylistics_giving_human_traits_to_non_hum')}<em>{t('lab.e11vocabularystylistics_the_leaves_danced_in_the_wind')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_hyperbole')}</strong>  {t('lab.e11vocabularystylistics_extreme_exaggeration_for_empha')}<em>{t('lab.e11vocabularystylistics_i_ve_told_you_a_million_times')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_alliteration')}</strong>  {t('lab.e11vocabularystylistics_repetition_of_initial_consonan')}<em>{t('lab.e11vocabularystylistics_peter_piper_picked_a_peck')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_oxymoron')}</strong>  {t('lab.e11vocabularystylistics_combining_contradictory_terms')}<em>{t('lab.e11vocabularystylistics_parting_is_such_sweet_sorrow')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_synecdoche')}</strong>  {t('lab.e11vocabularystylistics_using_a_part_to_represent_the_')}<em>{t('lab.e11vocabularystylistics_the_pen_is_mightier_than_the_s')}</em>  {t('lab.e11vocabularystylistics_pen_for_writing_sword_for_viol')}</li>
+    <li><strong>{t('lab.e11vocabularystylistics_anaphora')}</strong>  {t('lab.e11vocabularystylistics_repetition_of_a_word_or_phrase')}<em>{t('lab.e11vocabularystylistics_it_was_the_best_of_times_it_wa')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_irony')}</strong>  {t('lab.e11vocabularystylistics_a_contrast_between_expectation')}<em>{t('lab.e11vocabularystylistics_water_water_everywhere_nor_any')}</em>)</li>
+    <li><strong>{t('lab.e11vocabularystylistics_paradox')}</strong>  {t('lab.e11vocabularystylistics_a_statement_that_appears_contr')}</li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Target className="w-5 h-5 text-emerald-500" /> Lab Modes
-   </h2>
+   <Target className="w-5 h-5 text-emerald-500" />  {t('lab.e11vocabularystylistics_lab_modes')}
+                        </h2>
    <div className="flex flex-col gap-3">
    <button
     onClick={() => handleModeSwitch('vocab')}
     className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${ mode === 'vocab' ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/40 shadow-sm' : 'border-slate-200 dark:border-[#2a2a2a] hover:border-emerald-300 hover:bg-white dark:hover:bg-[#121212]' }`}
    >
     <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1 flex items-center gap-2">
-    <BookOpen className="w-4 h-4" /> Comprehensive Vocabulary
-    </div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a]">Test dictionary skills, connotation vs denotation, idioms, and transitions.</div>
+    <BookOpen className="w-4 h-4" />  {t('lab.e11vocabularystylistics_comprehensive_vocabulary')}
+                                 </div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.e11vocabularystylistics_test_dictionary_skills_connota')}</div>
    </button>
    
    <button
@@ -219,16 +222,16 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
     className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${ mode === 'stylistics' ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/40 shadow-sm' : 'border-slate-200 dark:border-[#2a2a2a] hover:border-emerald-300 hover:bg-white dark:hover:bg-[#121212]' }`}
    >
     <div className="font-semibold text-slate-800 dark:text-[#ffffff] mb-1 flex items-center gap-2">
-    <Feather className="w-4 h-4" /> Literary Devices
-    </div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a]">Map poetic and rhetorical devices to famous literary quotes.</div>
+    <Feather className="w-4 h-4" />  {t('lab.e11vocabularystylistics_literary_devices')}
+                                 </div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.e11vocabularystylistics_map_poetic_and_rhetorical_devi')}</div>
    </button>
    </div>
 
    <div className={`bg-emerald-50/50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 p-5 rounded-xl mt-auto flex-col `}>
    <h3 className="font-semibold flex items-center gap-2 mb-3 text-emerald-700 dark:text-emerald-300">
-    <Info className="w-4 h-4" /> Lab Instructions
-   </h3>
+    <Info className="w-4 h-4" />  {t('lab.e11vocabularystylistics_lab_instructions')}
+                            </h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
     {mode === 'vocab' 
     ? "Read the vocabulary question carefully. It may test your knowledge of silent letters, idiomatic expressions, nuanced connotations, or sentence flow using transitional devices. Select the best option."
@@ -239,7 +242,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`w-full max-w-2xl rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-[#1c1b1b] transition-all flex-col `}>
    
    {/* Vocab Mode */}
@@ -247,10 +250,12 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
     <div className="flex flex-col items-center animate-in fade-in zoom-in duration-300">
     <div className="flex w-full justify-between items-center mb-8">
      <span className={`px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 rounded-full text-xs font-semibold uppercase tracking-wider flex-col `}>
-     Drill: {VOCAB_QUESTIONS[vocabIndex].type}
+     
+                                          {t('lab.e11vocabularystylistics_drill')} {VOCAB_QUESTIONS[vocabIndex].type}
      </span>
      <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
-     Question {vocabIndex + 1} of {VOCAB_QUESTIONS.length}
+     
+                                          {t('lab.e11vocabularystylistics_question')} {vocabIndex + 1} of {VOCAB_QUESTIONS.length}
      </span>
     </div>
     
@@ -279,9 +284,10 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
       <p className="opacity-90">{vocabFeedback.message}</p>
       <button
       onClick={nextVocab}
-      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-[#121212]/50 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-[#121212]/80 transition-colors whitespace-nowrap flex-shrink-0"
+      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:bg-[#121212]/50 px-4 py-2 rounded-lg hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/80 dark:hover:bg-[#121212]/80 transition-colors whitespace-nowrap flex-shrink-0"
       >
-      Next Question <RefreshCcw className="w-4 h-4" />
+      
+                                                   {t('lab.e11vocabularystylistics_next_question')} <RefreshCcw className="w-4 h-4" />
       </button>
      </div>
      </div>
@@ -294,10 +300,12 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
     <div className="flex flex-col items-center animate-in fade-in zoom-in duration-300">
     <div className="flex w-full justify-between items-center mb-6">
      <span className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 rounded-full text-xs font-semibold uppercase tracking-wider">
-     Literary Devices
-     </span>
+     
+                                          {t('lab.e11vocabularystylistics_literary_devices')}
+                                          </span>
      <span className="text-sm font-medium text-slate-500 dark:text-[#71717a]">
-     Quote {quoteIndex + 1} of {LITERARY_QUOTES.length}
+     
+                                          {t('lab.e11vocabularystylistics_quote')} {quoteIndex + 1} of {LITERARY_QUOTES.length}
      </span>
     </div>
     
@@ -312,8 +320,9 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
 
     <div className="w-full">
      <label className="block text-sm font-medium text-slate-700 dark:text-[#a1a1aa] mb-4 text-center">
-     Identify the primary literary device used:
-     </label>
+     
+                                          {t('lab.e11vocabularystylistics_identify_the_primary_literary_')}
+                                          </label>
      <div className="flex flex-wrap justify-center gap-3">
      {LITERARY_DEVICES.map(device => (
       <button
@@ -336,7 +345,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
       <p className="opacity-90">{stylisticsFeedback.message}</p>
       <button
       onClick={nextQuote}
-      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white/50 dark:bg-[#121212]/50 px-4 py-2 rounded-lg hover:bg-white/80 dark:hover:bg-[#121212]/80 transition-colors whitespace-nowrap flex-shrink-0"
+      className="mt-4 flex items-center gap-2 text-sm font-bold bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:bg-[#121212]/50 px-4 py-2 rounded-lg hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/80 dark:hover:bg-[#121212]/80 transition-colors whitespace-nowrap flex-shrink-0"
       >
       {stylisticsFeedback.isCorrect ? 'Analyze Next Quote' : 'Skip to Next'} <RefreshCcw className="w-4 h-4" />
       </button>

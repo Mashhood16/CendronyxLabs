@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ClipboardList, CheckCircle, Activity, Zap, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit: () => void;
@@ -16,15 +17,16 @@ const ChemicalBottle = ({ label, color, onClick, selected }: { label: string, co
  </button>
 );
 
-const EquationDisplay = ({ equation }: { equation: string[] }) => (
+const EquationDisplay = ({ equation, t }: { equation: string[], t: any }) => (
  <div className="h-16 flex items-center justify-center bg-[#000000] dark:bg-[#121212] text-green-400 font-mono text-lg rounded px-4 shadow-inner mb-4 overflow-x-auto whitespace-nowrap">
- {equation.length === 0 ? <span className="text-gray-500">Awaiting reaction...</span> : 
+ {equation.length === 0 ? <span className="text-gray-500">{t('lab.c9atomicstructure_awaiting_reaction')}</span> : 
   equation.map((part, i) => <span key={i} className="mx-1 animate-pulse">{part}</span>)
  }
  </div>
 );
 
 export default function LabC9AtomicStructure({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const config = DIFFICULTY_CONFIGS['deep-dive'];
 
@@ -115,7 +117,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Atomic Structure & Reactivity" />
+  <LabHeader onExit={onExit} variant="blue" title={t('lab.c9atomicstructure_grade_9_chemistry_atomic_struc')} />
 
   <div className="px-4 pt-2 lg:pt-0">
    
@@ -127,67 +129,68 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c9atomicstructure_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c9atomicstructure_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 flex-grow lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-indigo-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" /> Theory & Setup</h2>
+      <h2 className="text-xl font-bold mb-4 mt-2 flex items-center text-indigo-800 dark:text-[#ffffff]"><ClipboardList className="mr-2" />  {t('lab.c9atomicstructure_theory_setup')}</h2>
    {activeTab === 'halogen' ? (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Halogen Displacement:</strong> Group 7 elements (Halogens) become less reactive as you go down the group. A more reactive halogen will displace a less reactive halogen from an aqueous solution of its halide salt.</p>
+    <p><strong>{t('lab.c9atomicstructure_halogen_displacement')}</strong>  {t('lab.c9atomicstructure_group_7_elements_halogens_beco')}</p>
     <ul className={`list-disc pl-5 font-mono text-sm bg-slate-50 dark:bg-[#121212] p-2 rounded flex-col `}>
-    <li>F₂ (Pale yellow)</li>
-    <li>Cl₂ (Pale green)</li>
-    <li>Br₂ (Orange)</li>
-    <li>I₂ (Brown)</li>
+    <li>{t('lab.c9atomicstructure_f_pale_yellow')}</li>
+    <li>{t('lab.c9atomicstructure_cl_pale_green')}</li>
+    <li>{t('lab.c9atomicstructure_br_orange')}</li>
+    <li>{t('lab.c9atomicstructure_i_brown')}</li>
     </ul>
-    <p><strong>Experiment:</strong> Select a Halogen water and a Halide salt solution. Mix them to see if a displacement reaction occurs and note the color changes.</p>
+    <p><strong>{t('lab.c9atomicstructure_experiment')}</strong>  {t('lab.c9atomicstructure_select_a_halogen_water_and_a_h')}</p>
    </div>
    ) : (
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-    <p><strong>Alpha Decay:</strong> Unstable, heavy nuclei can achieve stability by emitting an alpha particle (2 protons, 2 neutrons).</p>
-    <p>This changes the atomic number by -2 and the mass number by -4, creating a new element entirely.</p>
-    <p><strong>Experiment:</strong> Observe a sample of Uranium-238 decaying into Thorium-234. Track the number of parent nuclei over time to understand half-life behavior.</p>
+    <p><strong>{t('lab.c9atomicstructure_alpha_decay')}</strong>  {t('lab.c9atomicstructure_unstable_heavy_nuclei_can_achi')}</p>
+    <p>{t('lab.c9atomicstructure_this_changes_the_atomic_number')}</p>
+    <p><strong>{t('lab.c9atomicstructure_experiment')}</strong>  {t('lab.c9atomicstructure_observe_a_sample_of_uranium_23')}</p>
    </div>
    )}
   </div>
 
   {/* Simulation Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {config.showHints && (
     <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
      <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-     <span><strong>Hint:</strong> In displacement reactions, a more reactive halogen can replace a less reactive one. Reactivity: F &gt; Cl &gt; Br &gt; I.</span>
+     <span><strong>{t('lab.c9atomicstructure_hint')}</strong>  {t('lab.c9atomicstructure_in_displacement_reactions_a_mo')}</span>
     </div>
    )}
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 w-full dark:text-[#ffffff]"><Activity className="mr-2" /> Interactive Simulator</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 w-full dark:text-[#ffffff]"><Activity className="mr-2" />  {t('lab.c9atomicstructure_interactive_simulator')}</h2>
    
-   <EquationDisplay equation={equation} />
+   <EquationDisplay equation={equation} t={t} />
 
    {activeTab === 'halogen' ? (
    <div className="flex flex-col w-full items-center">
     <div className="flex gap-8 mb-6">
     <div>
-     <div className="text-sm font-bold text-gray-500 mb-2 text-center">Halogen Waters</div>
+     <div className="text-sm font-bold text-gray-500 mb-2 text-center">{t('lab.c9atomicstructure_halogen_waters')}</div>
      <div className="flex gap-2">
      <ChemicalBottle label="F₂" color="#ffffcc" selected={selHalogen === 'F2'} onClick={() => setSelHalogen('F2')} />
-     <ChemicalBottle label="Cl₂" color="#ccffcc" selected={selHalogen === 'Cl2'} onClick={() => setSelHalogen('Cl2')} />
-     <ChemicalBottle label="Br₂" color="#ffcc99" selected={selHalogen === 'Br2'} onClick={() => setSelHalogen('Br2')} />
+     <ChemicalBottle label={t('lab.c9atomicstructure_cl')} color="#ccffcc" selected={selHalogen === 'Cl2'} onClick={() => setSelHalogen('Cl2')} />
+     <ChemicalBottle label={t('lab.c9atomicstructure_br')} color="#ffcc99" selected={selHalogen === 'Br2'} onClick={() => setSelHalogen('Br2')} />
      <ChemicalBottle label="I₂" color="#e6ccff" selected={selHalogen === 'I2'} onClick={() => setSelHalogen('I2')} />
      </div>
     </div>
     <div>
-     <div className="text-sm font-bold text-gray-500 mb-2 text-center">Halide Salts</div>
+     <div className="text-sm font-bold text-gray-500 mb-2 text-center">{t('lab.c9atomicstructure_halide_salts')}</div>
      <div className="flex gap-2">
-     <ChemicalBottle label="NaCl" color="#f0f0f0" selected={selHalide === 'NaCl'} onClick={() => setSelHalide('NaCl')} />
-     <ChemicalBottle label="NaBr" color="#f0f0f0" selected={selHalide === 'NaBr'} onClick={() => setSelHalide('NaBr')} />
-     <ChemicalBottle label="NaI" color="#f0f0f0" selected={selHalide === 'NaI'} onClick={() => setSelHalide('NaI')} />
+     <ChemicalBottle label={t('lab.c9atomicstructure_nacl')} color="#f0f0f0" selected={selHalide === 'NaCl'} onClick={() => setSelHalide('NaCl')} />
+     <ChemicalBottle label={t('lab.c9atomicstructure_nabr')} color="#f0f0f0" selected={selHalide === 'NaBr'} onClick={() => setSelHalide('NaBr')} />
+     <ChemicalBottle label={t('lab.c9atomicstructure_nai')} color="#f0f0f0" selected={selHalide === 'NaI'} onClick={() => setSelHalide('NaI')} />
      </div>
     </div>
     </div>
@@ -197,23 +200,25 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
     </div>
 
     <button onClick={mixHalogens} disabled={!selHalogen || !selHalide} className="px-6 py-3 bg-indigo-600 text-white font-bold rounded hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-    Mix Chemicals
-    </button>
+    
+                                 {t('lab.c9atomicstructure_mix_chemicals')}
+                                 </button>
    </div>
    ) : (
    <div className="flex flex-col w-full items-center">
     <div className="relative w-64 h-64 border-2 border-dashed border-gray-300 rounded-full flex items-center justify-center bg-slate-50 dark:bg-[#121212] overflow-hidden mb-6">
     {/* Nucleus visualizer */}
-    <div className="text-center z-10 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded font-bold text-indigo-900 border border-indigo-200 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-     Parent: {u238Count} <br/> Daughter: {th234Count}
+    <div className="text-center z-10 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 p-2 rounded font-bold text-indigo-900 border border-indigo-200 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+     
+                                          {t('lab.c9atomicstructure_parent')} {u238Count} <br/>  {t('lab.c9atomicstructure_daughter')} {th234Count}
     </div>
     {/* Abstract representation of radiation */}
     {decaying && <Zap className="absolute text-yellow-400 opacity-50 animate-ping" size={100} />}
     </div>
 
     <div className="flex gap-4">
-    <button onClick={() => setDecaying(true)} disabled={decaying || u238Count === 0} className="px-6 py-2 bg-green-600 text-white font-bold rounded hover:bg-green-700 disabled:opacity-50 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">Start Decay</button>
-    <button onClick={() => setDecaying(false)} disabled={!decaying} className="px-6 py-2 bg-red-600 text-white font-bold rounded hover:bg-red-700 disabled:opacity-50 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">Pause Decay</button>
+    <button onClick={() => setDecaying(true)} disabled={decaying || u238Count === 0} className="px-6 py-2 bg-green-600 text-white font-bold rounded hover:bg-green-700 disabled:opacity-50 dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">{t('lab.c9atomicstructure_start_decay')}</button>
+    <button onClick={() => setDecaying(false)} disabled={!decaying} className="px-6 py-2 bg-red-600 text-white font-bold rounded hover:bg-red-700 disabled:opacity-50 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">{t('lab.c9atomicstructure_pause_decay')}</button>
     </div>
    </div>
    )}
@@ -221,13 +226,13 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
   {/* Data & Assessment Column */}
   <div className={`bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" /> Data & Analysis</h2>
+   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]"><CheckCircle className="mr-2" />  {t('lab.c9atomicstructure_data_analysis')}</h2>
    
    <div className="flex-grow lg:overflow-y-auto mb-4 border rounded overflow-x-auto">
    {activeTab === 'halogen' ? (
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
-     <tr><th className="p-2">Halogen</th><th className="p-2">Halide</th><th className="p-2">Result</th></tr>
+     <tr><th className="p-2">{t('lab.c9atomicstructure_halogen')}</th><th className="p-2">{t('lab.c9atomicstructure_halide')}</th><th className="p-2">{t('lab.c9atomicstructure_result')}</th></tr>
     </thead>
     <tbody>
      {displacementData.map(d => (
@@ -238,7 +243,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
    ) : (
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
-     <tr><th className="p-2">Time (s)</th><th className="p-2">Parent (U-238)</th><th className="p-2">Daughter (Th-234)</th></tr>
+     <tr><th className="p-2">{t('lab.c9atomicstructure_time_s')}</th><th className="p-2">{t('lab.c9atomicstructure_parent_u_238')}</th><th className="p-2">{t('lab.c9atomicstructure_daughter_th_234')}</th></tr>
     </thead>
     <tbody>
      {decayData.map(d => (
@@ -250,15 +255,15 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
    </div>
 
    <div className="bg-indigo-50 p-4 rounded border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+   <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c9atomicstructure_assessment')}</h3>
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
     {activeTab === 'halogen' 
     ? "Based on your mixing data, which halogen is the most reactive and capable of displacing all others?" 
     : "What is the mass number of the resulting Thorium isotope after U-238 emits an alpha particle?"}
    </p>
    <div className="flex gap-2">
-    <input type="text" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="Enter answer..." className="flex-grow p-2 border rounded" />
-    <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">Check</button>
+    <input type="text" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder={t('lab.c9atomicstructure_enter_answer')} className="flex-grow p-2 border rounded" />
+    <button onClick={checkAnswer} className="px-4 py-2 bg-indigo-600 text-white rounded font-bold hover:bg-indigo-700 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.c9atomicstructure_check')}</button>
    </div>
    {feedback && <div className={`mt-2 text-sm font-bold ${feedback.includes('Correct') ? 'text-green-600' : 'text-red-600'}`}>{feedback}</div>}
    </div>

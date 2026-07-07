@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Thermometer, Mountain, Users, Calculator, Check, RefreshCw } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'rational' | 'squares'>('rational');
 
  // Rational Numbers State
@@ -117,7 +119,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
    <ArrowLeft className="w-6 h-6" />
    </button>
   )}
-  <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">Class 7 Labs: Rational Numbers & Perfect Squares</h1>
+  <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">{t('lab.m7rationalsquares_class_7_labs_rational_numbers_')}</h1>
   </header>
   
   {/* Main Content */}
@@ -130,47 +132,49 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
     className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'rational' ? ' text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
     onClick={() => setActiveTab('rational')}
    >
-    Rational Numbers
-   </button>
+    
+                             {t('lab.m7rationalsquares_rational_numbers')}
+                            </button>
    <button 
     className={`flex-1 py-2 px-4 rounded-md text-sm font-semibold transition-colors ${activeTab === 'squares' ? ' text-blue-600 dark:text-blue-400 shadow' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:hover:text-white'}`}
     onClick={() => setActiveTab('squares')}
    >
-    Perfect Squares
-   </button>
+    
+                             {t('lab.m7rationalsquares_perfect_squares')}
+                            </button>
    </div>
 
    {activeTab === 'rational' && (
    <div className="space-y-6 flex-1 pr-2">
     <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
-     <Thermometer className="w-5 h-5 text-red-500" /> Temperature Control
-    </h3>
+     <Thermometer className="w-5 h-5 text-red-500" />  {t('lab.m7rationalsquares_temperature_control')}
+                                     </h3>
     <input type="range" min="-50" max="50" value={temperature} onChange={(e) => setTemperature(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
     <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
-     <span>-50°C</span>
+     <span>{t('lab.m7rationalsquares_50_c')}</span>
      <span className="text-blue-600 dark:text-blue-400 font-bold">{temperature}°C</span>
-     <span>50°C</span>
+     <span>{t('lab.m7rationalsquares_50_c_1')}</span>
     </div>
     </div>
 
     <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
-     <Mountain className="w-5 h-5 text-emerald-500" /> Altitude Control
-    </h3>
+     <Mountain className="w-5 h-5 text-emerald-500" />  {t('lab.m7rationalsquares_altitude_control')}
+                                     </h3>
     <input type="range" min="-500" max="5000" step="100" value={altitude} onChange={(e) => setAltitude(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
     <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
-     <span>-500m</span>
+     <span>{t('lab.m7rationalsquares_500m')}</span>
      <span className="text-emerald-600 dark:text-emerald-400 font-bold">{altitude}m</span>
-     <span>5000m</span>
+     <span>{t('lab.m7rationalsquares_5000m')}</span>
     </div>
     </div>
 
     {/* Question Box */}
     <div className="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
     <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
-     <Calculator className="w-5 h-5" /> Calculate
-    </h3>
+     <Calculator className="w-5 h-5" />  {t('lab.m7rationalsquares_calculate')}
+                                     </h3>
     <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
      {ratQ.type === 'temp' ? 
      `The temperature is ${ratQ.start}°C. It ${ratQ.change > 0 ? 'rises' : 'drops'} by ${Math.abs(ratQ.change)}°C. What is the new temperature?` : 
@@ -183,17 +187,17 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
      value={ratInput} 
      onChange={(e) => setRatInput(e.target.value)}
      className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-     placeholder="Your answer..."
+     placeholder={t('lab.m7rationalsquares_your_answer')}
      />
      <button onClick={checkRatAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     <Check className="w-5 h-5" /> Check
-     </button>
+     <Check className="w-5 h-5" />  {t('lab.m7rationalsquares_check')}
+                                          </button>
     </div>
     {ratFeedback !== 'idle' && (
      <div className={`mt-3 p-3 rounded-lg font-bold flex items-center justify-between ${ratFeedback === 'correct' ? 'bg-green-100 text-green-800 border border-green-300 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/30 dark:text-red-400'}`}>
      <span>{ratFeedback === 'correct' ? 'Correct! Well done.' : 'Incorrect. Try again using the sliders!'}</span>
      {ratFeedback === 'correct' && (
-      <button onClick={generateRatQ} className="p-1 hover:bg-green-200 dark:hover:bg-green-800 rounded-md transition-colors" title="Next Question">
+      <button onClick={generateRatQ} className="p-1 hover:bg-green-200 dark:hover:bg-green-800 rounded-md transition-colors" title={t('lab.m7rationalsquares_next_question')}>
       <RefreshCw className="w-5 h-5" />
       </button>
      )}
@@ -207,12 +211,12 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
    <div className="space-y-6 flex-1 pr-2">
     <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
     <h3 className="font-bold text-lg mb-4 text-slate-800 dark:text-white flex items-center gap-2">
-     <Users className="w-5 h-5 text-blue-500" /> Soldier Formation
-    </h3>
+     <Users className="w-5 h-5 text-blue-500" />  {t('lab.m7rationalsquares_soldier_formation')}
+                                     </h3>
     <input type="range" min="1" max="100" value={soldiers} onChange={(e) => setSoldiers(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
     <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
      <span>1</span>
-     <span className="text-blue-600 dark:text-blue-400 font-bold">{soldiers} soldiers</span>
+     <span className="text-blue-600 dark:text-blue-400 font-bold">{soldiers}  {t('lab.m7rationalsquares_soldiers')}</span>
      <span>100</span>
     </div>
     </div>
@@ -220,28 +224,29 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
     {/* Question Box */}
     <div className="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-xl border border-blue-200 dark:border-blue-800">
     <h3 className="font-bold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-2">
-     <Calculator className="w-5 h-5" /> Calculate
-    </h3>
+     <Calculator className="w-5 h-5" />  {t('lab.m7rationalsquares_calculate')}
+                                     </h3>
     <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
-     A general wants to form a perfect square with <strong className="text-slate-900 dark:text-white">{sqQ.total}</strong> soldiers. How many soldiers will be left out of the largest possible square?
-    </p>
+     
+                                      {t('lab.m7rationalsquares_a_general_wants_to_form_a_perf')} <strong className="text-slate-900 dark:text-white">{sqQ.total}</strong>  {t('lab.m7rationalsquares_soldiers_how_many_soldiers_wil')}
+                                     </p>
     <div className="flex flex-wrap gap-2">
      <input 
      type="number" 
      value={sqInput} 
      onChange={(e) => setSqInput(e.target.value)}
      className="flex-1 min-w-0 border border-slate-300 dark:border-[#1c1b1b] rounded-lg px-4 py-2 font-bold text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-     placeholder="Your answer..."
+     placeholder={t('lab.m7rationalsquares_your_answer')}
      />
      <button onClick={checkSqAnswer} className="whitespace-nowrap flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     <Check className="w-5 h-5" /> Check
-     </button>
+     <Check className="w-5 h-5" />  {t('lab.m7rationalsquares_check')}
+                                          </button>
     </div>
     {sqFeedback !== 'idle' && (
      <div className={`mt-3 p-3 rounded-lg font-bold flex items-center justify-between ${sqFeedback === 'correct' ? 'bg-green-100 text-green-800 border border-green-300 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/30 dark:text-red-400'}`}>
      <span>{sqFeedback === 'correct' ? 'Correct! Excellent.' : 'Incorrect. Check the orange dots!'}</span>
      {sqFeedback === 'correct' && (
-      <button onClick={generateSqQ} className="p-1 hover:bg-green-200 dark:hover:bg-green-800 rounded-md transition-colors" title="Next Question">
+      <button onClick={generateSqQ} className="p-1 hover:bg-green-200 dark:hover:bg-green-800 rounded-md transition-colors" title={t('lab.m7rationalsquares_next_question')}>
       <RefreshCw className="w-5 h-5" />
       </button>
      )}
@@ -260,8 +265,8 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
     
     {/* Thermometer Display */}
     <div className="flex flex-col items-center h-full max-h-[500px]">
-    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Thermometer</h3>
-    <svg viewBox="0 0 100 400" className="h-full w-24 drop-shadow-lg bg-white/50 dark:bg-[#121212]/50 rounded-full border border-slate-200 dark:border-[#1c1b1b]">
+    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">{t('lab.m7rationalsquares_thermometer')}</h3>
+    <svg viewBox="0 0 100 400" className="h-full w-24 drop-shadow-lg bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:bg-[#121212]/50 rounded-full border border-slate-200 dark:border-[#1c1b1b]">
      <rect x="35" y="20" width="30" height="340" rx="15" className="fill-slate-200 dark:fill-slate-700" />
      <rect 
      x="40" 
@@ -284,7 +289,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
 
     {/* Altitude Display */}
     <div className="flex flex-col items-center h-full max-h-[500px] flex-1">
-    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Altitude</h3>
+    <h3 className="font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">{t('lab.m7rationalsquares_altitude')}</h3>
     <svg viewBox="0 0 300 400" className="h-full w-full drop-shadow-md rounded-2xl bg-sky-100 dark:bg-sky-900/40 overflow-hidden relative border border-slate-200 dark:border-[#1c1b1b]">
      <path d="M -50 300 L 150 50 L 350 300 Z" className="fill-slate-400 dark:fill-slate-600" />
      <rect x="0" y="300" width="300" height="100" className="fill-blue-500/80 dark:fill-blue-700/80" />
@@ -321,8 +326,9 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
    {activeTab === 'squares' && (
    <div className="flex flex-col items-center justify-center w-full h-full">
     <h2 className="text-2xl font-bold mb-8 text-slate-700 dark:text-[#a1a1aa]">
-     Formation Preview
-    </h2>
+     
+                                  {t('lab.m7rationalsquares_formation_preview')}
+                                 </h2>
     <div className="bg-white dark:!bg-[#121212] p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-[#1c1b1b] inline-block">
      <svg width="400" height="400" className="overflow-visible">
      {renderSoldiers()}
@@ -331,11 +337,11 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
     <div className="mt-8 flex gap-8">
      <div className="flex items-center gap-3">
      <div className="w-4 h-4 rounded-full bg-blue-600 dark:bg-blue-400 shadow"></div>
-     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">In Perfect Square</span>
+     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">{t('lab.m7rationalsquares_in_perfect_square')}</span>
      </div>
      <div className="flex items-center gap-3">
      <div className="w-4 h-4 rounded-full bg-orange-500 dark:bg-orange-400 shadow"></div>
-     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">Left Out</span>
+     <span className="font-bold text-slate-700 dark:text-[#a1a1aa]">{t('lab.m7rationalsquares_left_out')}</span>
      </div>
     </div>
    </div>

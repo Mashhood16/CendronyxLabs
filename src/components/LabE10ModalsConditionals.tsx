@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, Cpu, CheckCircle2, ChevronRight, AlertCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10ModalsConditionalsProps {
  onExit?: () => void;
@@ -37,6 +38,7 @@ const LOGIC_GATES = [
 ];
 
 export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10ModalsConditionalsProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentGate, setCurrentGate] = useState(0);
  const [selectedMatch, setSelectedMatch] = useState<number | null>(null);
@@ -93,7 +95,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 5: Possibility Engine (Modals & Conditionals)" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e10modalsconditionals_unit_5_possibility_engine_moda')} variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -101,12 +103,13 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e10modalsconditionals_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e10modalsconditionals_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
@@ -114,63 +117,63 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow- flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <BookOpen className="w-6 h-6 text-[#4158D1] dark:text-blue-400" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Modals & Conditionals</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10modalsconditionals_modals_conditionals')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto flex-1 pr-2">
-   <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">Modal Verbs</h3>
-   <p>Modal verbs are auxiliary verbs that express necessity or possibility. English modal verbs include must, shall, will, should, would, can, could, may, and might.</p>
+   <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10modalsconditionals_modal_verbs')}</h3>
+   <p>{t('lab.e10modalsconditionals_modal_verbs_are_auxiliary_verb')}</p>
    
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">Necessity and Obligation</h4>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_necessity_and_obligation')}</h4>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Must:</strong> Expresses strong obligation or logical conclusion. (e.g., <em>"You must wear a seatbelt."</em>)</li>
-    <li><strong>Have to:</strong> Often used interchangeably with must, but usually implies external obligation. (e.g., <em>"I have to work tomorrow."</em>)</li>
-    <li><strong>Should:</strong> Expresses advice or a weaker obligation. (e.g., <em>"You should see a doctor."</em>)</li>
+    <li><strong>{t('lab.e10modalsconditionals_must')}</strong>  {t('lab.e10modalsconditionals_expresses_strong_obligation_or')} <em>{t('lab.e10modalsconditionals_you_must_wear_a_seatbelt')}</em>)</li>
+    <li><strong>{t('lab.e10modalsconditionals_have_to')}</strong>  {t('lab.e10modalsconditionals_often_used_interchangeably_wit')} <em>{t('lab.e10modalsconditionals_i_have_to_work_tomorrow')}</em>)</li>
+    <li><strong>{t('lab.e10modalsconditionals_should')}</strong>  {t('lab.e10modalsconditionals_expresses_advice_or_a_weaker_o')} <em>{t('lab.e10modalsconditionals_you_should_see_a_doctor')}</em>)</li>
    </ul>
 
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">Ability and Permission</h4>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_ability_and_permission')}</h4>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Can / Could:</strong> Expresses ability or polite requests. (e.g., <em>"Can you help me?"</em>, <em>"She could play the piano well."</em>)</li>
-    <li><strong>May:</strong> Expresses formal permission. (e.g., <em>"May I leave the room?"</em>)</li>
+    <li><strong>{t('lab.e10modalsconditionals_can_could')}</strong>  {t('lab.e10modalsconditionals_expresses_ability_or_polite_re')} <em>{t('lab.e10modalsconditionals_can_you_help_me')}</em>, <em>{t('lab.e10modalsconditionals_she_could_play_the_piano_well')}</em>)</li>
+    <li><strong>{t('lab.e10modalsconditionals_may')}</strong>  {t('lab.e10modalsconditionals_expresses_formal_permission_e_')} <em>{t('lab.e10modalsconditionals_may_i_leave_the_room')}</em>)</li>
    </ul>
 
-   <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mt-6">Conditional Sentences</h3>
-   <p>Conditionals describe the result of a certain condition. They usually begin with "if".</p>
+   <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mt-6">{t('lab.e10modalsconditionals_conditional_sentences')}</h3>
+   <p>{t('lab.e10modalsconditionals_conditionals_describe_the_resu')}</p>
 
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">Zero Conditional</h4>
-   <p>Used for general truths and facts.</p>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_zero_conditional')}</h4>
+   <p>{t('lab.e10modalsconditionals_used_for_general_truths_and_fa')}</p>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Structure:</strong> If + Present Simple, ... Present Simple</li>
-    <li><strong>Example:</strong> <em>"If you heat ice, it melts."</em></li>
+    <li><strong>{t('lab.e10modalsconditionals_structure')}</strong>  {t('lab.e10modalsconditionals_if_present_simple_present_simp')}</li>
+    <li><strong>{t('lab.e10modalsconditionals_example')}</strong> <em>{t('lab.e10modalsconditionals_if_you_heat_ice_it_melts')}</em></li>
    </ul>
 
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">First Conditional</h4>
-   <p>Used for real or highly possible situations in the present or future.</p>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_first_conditional')}</h4>
+   <p>{t('lab.e10modalsconditionals_used_for_real_or_highly_possib')}</p>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Structure:</strong> If + Present Simple, ... will + infinitive</li>
-    <li><strong>Example:</strong> <em>"If it rains, I will stay home."</em></li>
+    <li><strong>{t('lab.e10modalsconditionals_structure')}</strong>  {t('lab.e10modalsconditionals_if_present_simple_will_infinit')}</li>
+    <li><strong>{t('lab.e10modalsconditionals_example')}</strong> <em>{t('lab.e10modalsconditionals_if_it_rains_i_will_stay_home')}</em></li>
    </ul>
 
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">Second Conditional</h4>
-   <p>Used for imaginary, unlikely, or impossible situations in the present or future.</p>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_second_conditional')}</h4>
+   <p>{t('lab.e10modalsconditionals_used_for_imaginary_unlikely_or')}</p>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Structure:</strong> If + Past Simple, ... would + infinitive</li>
-    <li><strong>Example:</strong> <em>"If I won the lottery, I would buy a boat."</em></li>
+    <li><strong>{t('lab.e10modalsconditionals_structure')}</strong>  {t('lab.e10modalsconditionals_if_past_simple_would_infinitiv')}</li>
+    <li><strong>{t('lab.e10modalsconditionals_example')}</strong> <em>{t('lab.e10modalsconditionals_if_i_won_the_lottery_i_would_b')}</em></li>
    </ul>
 
-   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">Third Conditional</h4>
-   <p>Used for imaginary situations in the past (regrets or unfulfilled conditions).</p>
+   <h4 className="text-md font-semibold text-slate-800 dark:text-[#e4e4e7] mt-4">{t('lab.e10modalsconditionals_third_conditional')}</h4>
+   <p>{t('lab.e10modalsconditionals_used_for_imaginary_situations_')}</p>
    <ul className="list-disc pl-5 space-y-1">
-    <li><strong>Structure:</strong> If + Past Perfect, ... would have + past participle</li>
-    <li><strong>Example:</strong> <em>"If I had studied harder, I would have passed."</em></li>
+    <li><strong>{t('lab.e10modalsconditionals_structure')}</strong>  {t('lab.e10modalsconditionals_if_past_perfect_would_have_pas')}</li>
+    <li><strong>{t('lab.e10modalsconditionals_example')}</strong> <em>{t('lab.e10modalsconditionals_if_i_had_studied_harder_i_woul')}</em></li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls (Knowledge Check) */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <Target className="w-6 h-6 text-[#4158D1] dark:text-blue-400" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Knowledge Check</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10modalsconditionals_knowledge_check')}</h2>
    </div>
    
    <div className="flex-1 overflow-y-auto pr-2">
@@ -204,15 +207,16 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className={`w-full mt-4 py-2 px-4 bg-[#4158D1] hover:bg-blue-700 disabled:bg-slate-300 dark:disabled:bg-slate-700 text-white rounded-lg font-medium transition-colors flex-col `}
     >
-     Submit Evaluation
-    </button>
+     
+                                      {t('lab.e10modalsconditionals_submit_evaluation')}
+                                     </button>
     </div>
    ) : (
     <div className="text-center py-8">
     <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/50 text-[#4158D1] dark:text-blue-400 mb-4 flex-col `}>
      <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
     </div>
-    <h3 className="text-lg font-bold text-slate-900 dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>
+    <h3 className="text-lg font-bold text-slate-900 dark:text-[#a1a1aa] mb-2">{t('lab.e10modalsconditionals_assessment_complete')}</h3>
     <p className="text-slate-600 dark:text-[#71717a] mb-6">
      {calculateScore() === questions.length 
      ? "Perfect score! You've mastered modals and conditionals." 
@@ -225,27 +229,29 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
      }}
      className={`flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-200 dark:bg-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#333333] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors flex-col `}
     >
-     Retry Lab
-    </button>
+     
+                                          {t('lab.e10modalsconditionals_retry_lab')}
+                                         </button>
     </div>
    )}
    </div>
   </section>
 
   {/* Window 3: Simulation (Logic Engine) */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`w-full max-w-xl flex-col h-full rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] p-6 overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#2a2a2a] shrink-0">
     <div className="p-2 bg-blue-100 dark:bg-blue-900/50 text-[#4158D1] dark:text-blue-400 rounded-lg">
     <Cpu className="w-6 h-6" />
     </div>
-    <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">Logic Engine</h2>
+    <h2 className="text-xl font-bold text-slate-900 dark:text-[#a1a1aa]">{t('lab.e10modalsconditionals_logic_engine')}</h2>
    </div>
    
    <div className="flex-1 flex flex-col overflow-hidden">
     <div className="mb-6 flex justify-between items-center shrink-0">
     <span className="text-sm font-medium text-slate-600 dark:text-[#71717a]">
-     Scenario {currentGate + 1} of {LOGIC_GATES.length}
+     
+                                      {t('lab.e10modalsconditionals_scenario')} {currentGate + 1} of {LOGIC_GATES.length}
     </span>
     <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-[#4158D1] dark:text-blue-300 text-xs font-bold rounded-full">
      {LOGIC_GATES[currentGate].type}
@@ -259,7 +265,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
     </div>
 
     <div className="space-y-3 flex-1 overflow-y-auto pr-2">
-    <p className="text-sm font-medium text-slate-600 dark:text-[#71717a] mb-2">Select the correct continuation:</p>
+    <p className="text-sm font-medium text-slate-600 dark:text-[#71717a] mb-2">{t('lab.e10modalsconditionals_select_the_correct_continuatio')}</p>
     {LOGIC_GATES[currentGate].matches.map((match, idx) => {
      const isSelected = selectedMatch === idx;
      const isAnswered = selectedMatch !== null;
@@ -280,7 +286,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
       </div>
       
       {isAnswered && (isSelected || match.isCorrect) && (
-      <div className={`text-sm mt-2 p-2 rounded bg-white/50 dark:bg-[#1c1b1b] ${ match.isCorrect ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400' }`}>
+      <div className={`text-sm mt-2 p-2 rounded bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:bg-[#1c1b1b] ${ match.isCorrect ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400' }`}>
        {match.explanation}
       </div>
       )}
@@ -295,7 +301,8 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
      onClick={nextGate}
      className="flex items-center gap-2 px-6 py-2 bg-[#4158D1] hover:bg-blue-700 text-white rounded-lg font-bold transition-colors shadow-md"
      >
-     Next Scenario <ChevronRight className="w-5 h-5" />
+     
+                                          {t('lab.e10modalsconditionals_next_scenario')} <ChevronRight className="w-5 h-5" />
      </button>
     </div>
     )}

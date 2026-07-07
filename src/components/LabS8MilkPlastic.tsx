@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8MilkPlastic({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [vinegarDrops, setVinegarDrops] = useState(0);
 
  // Separation happens after 4 drops (cups) of vinegar
@@ -14,7 +16,7 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 11.3: Plastic from Milk" subtitle="Casein polymer extraction" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
+  <LabHeader onExit={onExit} title={t('lab.s8milkplastic_act_11_3_plastic_from_milk')} subtitle={t('lab.subtitle_casein_polymer_extraction')} rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" />  {t('lab.s8milkplastic_reset')}</button>} />
 
   <div className="flex-1 flex flex-col items-center justify-center p-6 max-w-4xl mx-auto w-full">
   
@@ -50,13 +52,14 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
     disabled={isSeparated}
     className={`w-full py-4 rounded-xl font-bold text-lg shadow-md transition-transform active:scale-95 ${isSeparated ? 'bg-slate-200 dark:bg-[#121212] text-slate-400' : 'bg-amber-100 hover:bg-amber-200 text-amber-800 border border-amber-300'}`}
    >
-    Add Vinegar ({vinegarDrops}/4 cups)
-   </button>
+    
+                             {t('lab.s8milkplastic_add_vinegar')}{vinegarDrops}{t('lab.s8milkplastic_4_cups')}
+                            </button>
 
    {isSeparated && (
     <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl w-full">
-    <h3 className="font-bold text-emerald-800 mb-2">Reaction Complete!</h3>
-    <p className="text-sm text-emerald-700">The acid in the vinegar separated the milk into liquid whey and solid curds (Casein). These curds can be strained, dried, and kneaded into a natural, moldable plastic!</p>
+    <h3 className="font-bold text-emerald-800 mb-2">{t('lab.s8milkplastic_reaction_complete')}</h3>
+    <p className="text-sm text-emerald-700">{t('lab.s8milkplastic_the_acid_in_the_vinegar_separa')}</p>
     </div>
    )}
    </div>

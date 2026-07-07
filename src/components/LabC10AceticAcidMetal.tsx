@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle, Cylinder } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [acidAdded, setAcidAdded] = useState(false);
  const [naMass, setNaMass] = useState<number>(0.1);
@@ -87,7 +89,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Acid-Metal Reaction: Acetic Acid & Sodium" />
+  <LabHeader onExit={onExit} title={t('lab.c10aceticacidmetal_acid_metal_reaction_acetic_aci')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -96,33 +98,37 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c10aceticacidmetal_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c10aceticacidmetal_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
   {/* Theory Section */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Info className="w-5 h-5 text-blue-500" /> Theory & Setup
-   </h2>
+   <Info className="w-5 h-5 text-blue-500" />  {t('lab.c10aceticacidmetal_theory_setup')}
+                        </h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
-   Acids react with reactive metals to produce a salt and hydrogen gas. 
-   Acetic acid (CH₃COOH) is a weak acid, but it still reacts vigorously with a highly reactive metal like Sodium (Na).
-   </p>
+   
+                        {t('lab.c10aceticacidmetal_acids_react_with_reactive_meta')}
+                        </p>
    <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff] flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   2CH₃COOH + 2Na → 2CH₃COONa + H₂
-   </div>
+   
+                        {t('lab.c10aceticacidmetal_2ch_cooh_2na_2ch_coona_h')}
+                        </div>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mt-2">
-   The volume of Hydrogen gas produced is directly proportional to the mass of Sodium added, assuming Acetic acid is in excess.
-   </p>
+   
+                        {t('lab.c10aceticacidmetal_the_volume_of_hydrogen_gas_pro')}
+                        </p>
    
    <div className={`bg-blue-50 p-4 rounded-lg mt-4 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    Chunk Size of Sodium (g): {naMass.toFixed(1)} g
+    
+                             {t('lab.c10aceticacidmetal_chunk_size_of_sodium_g')} {naMass.toFixed(1)} g
    </label>
    <input 
     type="range" 
@@ -136,29 +142,29 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
   </div>
 
   {/* Simulation Section */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`flex justify-around w-full mb-6 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg flex-col `}>
    <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-blue-50 disabled:opacity-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900">
     <Beaker className="text-blue-500 w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">Add Acid (Excess)</span>
+    <span className="text-xs font-semibold">{t('lab.c10aceticacidmetal_add_acid_excess')}</span>
    </button>
    <button onClick={addNa} disabled={!acidAdded || isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50 transition-colors">
     <Cylinder className="text-slate-600 dark:text-[#a1a1aa] w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">+ {naMass.toFixed(1)}g Na</span>
+    <span className="text-xs font-semibold">+ {naMass.toFixed(1)}{t('lab.c10aceticacidmetal_g_na')}</span>
    </button>
    <button onClick={resetFlask} disabled={isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-red-50 disabled:opacity-50 transition-colors">
     <RefreshCw className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">Reset</span>
+    <span className="text-xs font-semibold">{t('lab.c10aceticacidmetal_reset')}</span>
    </button>
    </div>
 
    <div className={`relative w-full max-w-[300px] h-64 flex-col items-center justify-end bg-slate-50 dark:bg-[#121212] rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {/* Gas Syringe */}
-   <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-sm flex bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+   <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-sm flex bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
     <div className="h-full bg-blue-100 transition-all" style={{ width: `${(gasVolume / 600) * 100}%` }}></div>
     <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-[#ffffff]">
-     {gasVolume.toFixed(1)} mL H₂
-    </div>
+     {gasVolume.toFixed(1)}  {t('lab.c10aceticacidmetal_ml_h')}
+                                 </div>
    </div>
    {/* Tube from flask to syringe */}
    <svg className="absolute inset-0 w-full h-full pointer-events-none">
@@ -205,26 +211,27 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
    className="mt-4 flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors font-semibold dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
    <Plus className="w-5 h-5" />
-   Record Data Point
-   </button>
+   
+                        {t('lab.c10aceticacidmetal_record_data_point')}
+                        </button>
   </div>
 
   {/* Data Section */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Activity className="w-5 h-5 text-green-500" /> Data & Analysis
-   </h2>
+   <Activity className="w-5 h-5 text-green-500" />  {t('lab.c10aceticacidmetal_data_analysis')}
+                        </h2>
    
    <div className="overflow-x-auto">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
     <tr>
-     <th className="px-3 py-2 rounded-tl-lg">Total Na (g)</th>
-     <th className="px-3 py-2 rounded-tr-lg">Vol H₂ (mL)</th>
+     <th className="px-3 py-2 rounded-tl-lg">{t('lab.c10aceticacidmetal_total_na_g')}</th>
+     <th className="px-3 py-2 rounded-tr-lg">{t('lab.c10aceticacidmetal_vol_h_ml')}</th>
     </tr>
     </thead>
     <tbody>
-    {logs.length === 0 && <tr><td colSpan={2} className="text-center p-3 text-slate-400">No data recorded</td></tr>}
+    {logs.length === 0 && <tr><td colSpan={2} className="text-center p-3 text-slate-400">{t('lab.c10aceticacidmetal_no_data_recorded')}</td></tr>}
     {logs.map((log) => (
      <tr key={log.id} className="border-b border-slate-100">
      <td className="px-3 py-2">{log.mass.toFixed(1)}</td>
@@ -236,7 +243,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
    </div>
 
    <div className="h-48 w-full border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-2 bg-slate-50 dark:bg-[#121212] relative mt-2">
-   <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">Vol H₂ vs Mass Na</div>
+   <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">{t('lab.c10aceticacidmetal_vol_h_vs_mass_na')}</div>
    <svg viewBox="0 0 100 100" className="w-full h-full transform scale-y-[-1] overflow-visible pb-6 pl-8">
     <line x1="0" y1="0" x2="100" y2="0" stroke="#94a3b8" strokeWidth="1" />
     <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
@@ -260,27 +267,29 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
    </div>
 
    <div className="bg-blue-50 p-4 rounded-lg mt-auto border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-bold text-sm text-slate-800 dark:text-[#ffffff] mb-2">Assessment</h3>
+   <h3 className="font-bold text-sm text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c10aceticacidmetal_assessment')}</h3>
    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
-    Calculate the theoretical volume of H₂ produced (at RTP, 24000 mL/mol) if {targetMass} g of Sodium completely reacts. (Na = 23g/mol).
-   </p>
+    
+                             {t('lab.c10aceticacidmetal_calculate_the_theoretical_volu')} {targetMass}  {t('lab.c10aceticacidmetal_g_of_sodium_completely_reacts_')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" 
     value={assessmentAns} 
     onChange={(e) => setAssessmentAns(e.target.value)}
-    placeholder="Vol (mL)" 
+    placeholder={t('lab.c10aceticacidmetal_vol_ml')} 
     className="w-24 px-2 py-1 text-sm border rounded"
     />
     <button 
     onClick={checkAns}
     className="bg-blue-600 text-white px-3 py-1 text-sm rounded hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.c10aceticacidmetal_check')}
+                                 </button>
    </div>
-   {assessmentStatus === 'correct' && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/> Correct!</div>}
-   {assessmentStatus === 'incorrect' && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/> Incorrect. Use: Vol = (Mass/23) * 0.5 * 24000</div>}
+   {assessmentStatus === 'correct' && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/>  {t('lab.c10aceticacidmetal_correct')}</div>}
+   {assessmentStatus === 'incorrect' && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/>  {t('lab.c10aceticacidmetal_incorrect_use_vol_mass_23_0_5_')}</div>}
    </div>
   </div>
   </div>

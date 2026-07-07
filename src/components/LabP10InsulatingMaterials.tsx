@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Simulation Controls
  const [material, setMaterial] = useState<string>('Newspaper');
@@ -107,7 +109,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Insulating Materials & Cooling Curves" subtitle="Investigate how different materials and thicknesses affect the rate of heat transfer." />
+  <LabHeader onExit={onExit} title={t('lab.p10insulatingmaterials_insulating_materials_cooling_c')} subtitle={t('lab.subtitle_investigate_different_materials')} />
 
   {/* 3-Column Grid */}
   
@@ -117,35 +119,35 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10insulatingmaterials_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10insulatingmaterials_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Column 1: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10insulatingmaterials_theory_andsetup')}</h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mb-4">
-    Heat transfers from hotter objects to colder environments until thermal equilibrium is reached. 
-    According to Newton's Law of Cooling, the rate of heat loss is proportional to the temperature difference. 
-    Good insulators reduce the rate of thermal energy transfer.
-   </p>
+    
+                             {t('lab.p10insulatingmaterials_heat_transfers_from_hotter_obj')}
+                            </p>
    <div className={`bg-blue-50 p-3 rounded-lg flex items-start gap-2 border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 `}>
     <Info className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
     <p className="text-xs text-blue-800 dark:text-[#ffffff]">
-    <strong>Experiment:</strong> Select an insulating material and thickness. Measure the temperature of the water over 60 minutes. Compare cooling curves.
-    </p>
+    <strong>{t('lab.10insulatingmaterials_experiment')}</strong>  {t('lab.p10insulatingmaterials_select_an_insulating_material_')}
+                                 </p>
    </div>
    </div>
 
    <div className="space-y-5">
    <div>
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">Insulating Material</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.10insulatingmaterials_insulatingmaterial')}</label>
     <select 
     value={material} 
     onChange={(e) => { setMaterial(e.target.value); reset(); }}
@@ -160,7 +162,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    <span>Insulation Thickness</span>
+    <span>{t('lab.10insulatingmaterials_insulationthickness')}</span>
     <span className="text-blue-600">{thickness} cm</span>
     </label>
     <input 
@@ -174,7 +176,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
 
    <div>
     <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    <span>Initial Water Temperature</span>
+    <span>{t('lab.10insulatingmaterials_initialwatertemperature')}</span>
     <span className="text-blue-600">{initialTemp} °C</span>
     </label>
     <input 
@@ -188,14 +190,15 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
    </div>
    
    <div className="mt-auto">
-   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis Task</h3>
+   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10insulatingmaterials_analysistask')}</h3>
    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
-    Run the experiment and record data. Calculate the <strong>average rate of cooling</strong> (°C/min) during the first 10 minutes.
-   </p>
+    
+                             {t('lab.p10insulatingmaterials_run_the_experiment_and_record_')} <strong>{t('lab.10insulatingmaterials_averagerateofcooling')}</strong>  {t('lab.p10insulatingmaterials_c_min_during_the_first_10_minu')}
+                            </p>
    <div className="flex gap-2">
     <input 
     type="number" step="0.1"
-    placeholder="e.g. 1.5"
+    placeholder={t('lab.p10insulatingmaterials_t_lab_10insulatingmaterials_eg')}
     value={studentAnswer}
     onChange={(e) => setStudentAnswer(e.target.value)}
     className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-sm"
@@ -204,23 +207,24 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
     onClick={checkAnswer}
     className={`px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg text-sm font-medium hover:bg-slate-700 dark:bg-[#121212] flex-col `}
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10insulatingmaterials_check')}
+                                 </button>
    </div>
-   {isCorrect === true && <p className="text-green-600 text-xs mt-2 flex items-center gap-1"><CheckCircle className="w-3 h-3"/> Correct! Excellent calculation.</p>}
-   {isCorrect === false && <p className="text-red-500 text-xs mt-2">Incorrect. Hint: Rate = (Change in Temp) / Time.</p>}
+   {isCorrect === true && <p className="text-green-600 text-xs mt-2 flex items-center gap-1"><CheckCircle className="w-3 h-3"/>{t('lab.10insulatingmaterials_correctexcellentcalculation')}</p>}
+   {isCorrect === false && <p className="text-red-500 text-xs mt-2">{t('lab.p10insulatingmaterials_incorrect_hint_rate_change_in_')}</p>}
    </div>
   </div>
 
   {/* Column 2: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-between '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-between '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full flex justify-between items-center mb-4">
     <div className={`text-center bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Clock Time</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.10insulatingmaterials_clocktime')}</p>
     <p className="text-2xl font-mono text-slate-800 dark:text-[#ffffff]">{time.toString().padStart(2, '0')}:00</p>
     </div>
     <div className="text-center bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">Thermometer</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.10insulatingmaterials_thermometer')}</p>
     <p className="text-2xl font-mono text-blue-600">{temperature.toFixed(1)} °C</p>
     </div>
    </div>
@@ -238,8 +242,8 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
      <circle cx="6" cy="6" r="2" fill="rgba(255,255,255,0.6)" />
     </pattern>
     <pattern id="newsPattern" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
-     <text x="2" y="10" fontSize="8" fill="rgba(0,0,0,0.2)" fontFamily="serif">NEWS</text>
-     <text x="18" y="18" fontSize="6" fill="rgba(0,0,0,0.2)" fontFamily="serif">Text</text>
+     <text x="2" y="10" fontSize="8" fill="rgba(0,0,0,0.2)" fontFamily="serif">{t('lab.10insulatingmaterials_news')}</text>
+     <text x="18" y="18" fontSize="6" fill="rgba(0,0,0,0.2)" fontFamily="serif">{t('lab.10insulatingmaterials_text')}</text>
     </pattern>
     <pattern id="foamPattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
      <circle cx="5" cy="5" r="3" fill="rgba(0,0,0,0.05)" />
@@ -302,32 +306,32 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
     disabled={time >= 60}
     className={`flex flex-1 items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-all ${ isRunning ? 'bg-amber-500 hover:bg-amber-600' : 'bg-emerald-600 hover:bg-emerald-700' } disabled:opacity-50`}
    >
-    {isRunning ? <><Pause className="w-5 h-5"/> Pause</> : <><Play className="w-5 h-5"/> {time === 0 ? 'Start' : 'Resume'}</>}
+    {isRunning ? <><Pause className="w-5 h-5"/>{t('lab.10insulatingmaterials_pause')}</> : <><Play className="w-5 h-5"/> {time === 0 ? 'Start' : 'Resume'}</>}
    </button>
    <button 
     onClick={handleRecord}
     className="flex flex-1 items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-blue-700 bg-blue-100 hover:bg-blue-200 transition-all"
    >
-    <Plus className="w-5 h-5"/> Record
-   </button>
+    <Plus className="w-5 h-5"/>  {t('lab.p10insulatingmaterials_record')}
+                            </button>
    </div>
   </div>
 
   {/* Column 3: Data & Graph */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Results & Graph</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10insulatingmaterials_results_andgraph')}</h2>
    
    <div className="h-48 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
    <table className="w-full text-sm text-left">
     <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0 shadow-sm">
     <tr>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Time (min)</th>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Temperature (°C)</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10insulatingmaterials_time_min')}</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10insulatingmaterials_temperature_c')}</th>
     </tr>
     </thead>
     <tbody>
     {dataLog.length === 0 ? (
-     <tr><td colSpan={2} className="px-4 py-8 text-center text-slate-400 italic">No data recorded yet. Record points to plot graph.</td></tr>
+     <tr><td colSpan={2} className="px-4 py-8 text-center text-slate-400 italic">{t('lab.10insulatingmaterials_nodatarecordedyetrecordpointstoplot')}</td></tr>
     ) : (
      dataLog.map((row, i) => (
      <tr key={i} className="border-b border-slate-100 hover:bg-slate-100 dark:bg-[#121212] transition-colors">
@@ -356,8 +360,8 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
     <line x1="0" y1="0" x2="0" y2="100" stroke="#64748b" strokeWidth="1" />
 
     {/* Labels */}
-    <text x="50" y="115" fontSize="4" textAnchor="middle" fill="#64748b">Time (min)</text>
-    <text x="-5" y="50" fontSize="4" textAnchor="middle" fill="#64748b" transform="rotate(-90 -5 50)">Temp (°C)</text>
+    <text x="50" y="115" fontSize="4" textAnchor="middle" fill="#64748b">{t('lab.p10insulatingmaterials_time_min')}</text>
+    <text x="-5" y="50" fontSize="4" textAnchor="middle" fill="#64748b" transform="rotate(-90 -5 50)">{t('lab.p10insulatingmaterials_temp_c')}</text>
 
     {/* Data Points */}
     {dataLog.map((pt, i) => {

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Box, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabM10MatrixApplications({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // System: 
@@ -56,7 +58,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Matrix Applications: Chemical Mixing & Cramer's Rule" />
+  <LabHeader onExit={onExit} title={t('lab.m10matrixapplications_matrix_applications_chemical_m')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -65,64 +67,68 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m10matrixapplications_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m10matrixapplications_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
   {/* LEFT: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-fuchsia-800 mb-4 flex items-center gap-2">
-   <Box /> Theory & Context
-   </h2>
+   <Box />  {t('lab.m10matrixapplications_theory_context')}
+                        </h2>
    <div className="prose text-slate-700 dark:text-[#ffffff]">
    <p>
-    Linear systems often model real-world scenarios, such as mixing two chemical solutions (Solution X and Solution Y) to achieve a target concentration and volume.
-   </p>
+    
+                             {t('lab.m10matrixapplications_linear_systems_often_model_rea')}
+                            </p>
    <p>
-    We can represent a system of equations using a <strong>Matrix</strong> and solve it using <strong>Cramer's Rule</strong>.
+    
+                             {t('lab.m10matrixapplications_we_can_represent_a_system_of_e')} <strong>{t('lab.m10matrixapplications_matrix')}</strong>  {t('lab.m10matrixapplications_and_solve_it_using')} <strong>{t('lab.m10matrixapplications_cramer_s_rule')}</strong>.
    </p>
    <div className={`bg-fuchsia-50 p-4 rounded-lg my-4 font-mono text-sm border border-fuchsia-200 flex-col `}>
-    <p>ax + by = e</p>
-    <p>cx + dy = f</p>
+    <p>{t('lab.m10matrixapplications_ax_by_e')}</p>
+    <p>{t('lab.m10matrixapplications_cx_dy_f')}</p>
     <hr className="my-2 border-fuchsia-200" />
-    <p>Δ = ad - bc</p>
-    <p>Δx = ed - bf</p>
-    <p>Δy = af - ec</p>
-    <p>x = Δx / Δ, y = Δy / Δ</p>
+    <p>{t('lab.m10matrixapplications_ad_bc')}</p>
+    <p>{t('lab.m10matrixapplications_x_ed_bf')}</p>
+    <p>{t('lab.m10matrixapplications_y_af_ec')}</p>
+    <p>{t('lab.m10matrixapplications_x_x_y_y')}</p>
    </div>
    <p className="text-sm">
-    If the determinant (Δ) is 0, the lines are parallel or coincident, meaning there is no unique solution.
-   </p>
+    
+                             {t('lab.m10matrixapplications_if_the_determinant_is_0_the_li')}
+                            </p>
    </div>
   </div>
 
   {/* MIDDLE: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-fuchsia-800 mb-4">System Visualizer</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-xl font-bold text-fuchsia-800 mb-4">{t('lab.m10matrixapplications_system_visualizer')}</h2>
    
    <div className={`w-full max-w-md bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-4 font-mono flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex gap-2 items-center mb-2">
     <input type="number" value={a} onChange={e=>setA(Number(e.target.value))} className="w-16 p-1 border rounded" />
-    <span>x +</span>
+    <span>{t('lab.m10matrixapplications_x')}</span>
     <input type="number" value={b} onChange={e=>setB(Number(e.target.value))} className="w-16 p-1 border rounded" />
-    <span>y =</span>
+    <span>{t('lab.m10matrixapplications_y')}</span>
     <input type="number" value={eVal} onChange={e=>setE(Number(e.target.value))} className="w-16 p-1 border rounded" />
    </div>
    <div className="flex gap-2 items-center">
     <input type="number" value={c} onChange={e=>setC(Number(e.target.value))} className="w-16 p-1 border rounded" />
-    <span>x +</span>
+    <span>{t('lab.m10matrixapplications_x')}</span>
     <input type="number" value={d} onChange={e=>setD(Number(e.target.value))} className="w-16 p-1 border rounded" />
-    <span>y =</span>
+    <span>{t('lab.m10matrixapplications_y')}</span>
     <input type="number" value={fVal} onChange={e=>setF(Number(e.target.value))} className="w-16 p-1 border rounded" />
    </div>
    </div>
 
    {/* Graphing Area */}
-   <div className={`relative w-full max-w-sm aspect-square bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg overflow- border-2 border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`relative w-full max-w-sm aspect-square bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg overflow- border-2 border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <svg viewBox="0 0 300 300" className="w-full h-full">
     {/* Grid */}
     {[...Array(21)].map((_, i) => (
@@ -162,7 +168,8 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
    
    {delta !== 0 && (
     <div className="absolute top-2 left-2 bg-slate-50 dark:bg-[#121212]/90 p-1 rounded border border-slate-300 dark:border-[#1c1b1b] text-xs font-mono shadow">
-    Solution: ({actualX.toFixed(2)}, {actualY.toFixed(2)})
+    
+                                 {t('lab.m10matrixapplications_solution')}{actualX.toFixed(2)}, {actualY.toFixed(2)})
     </div>
    )}
    </div>
@@ -170,39 +177,40 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
 
   {/* RIGHT: Assessment */}
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-fuchsia-800 mb-4">Laboratory Assessment</h2>
+   <h2 className="text-xl font-bold text-fuchsia-800 mb-4">{t('lab.m10matrixapplications_laboratory_assessment')}</h2>
    
    <div className="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100 mb-6">
-   <h3 className="font-semibold text-fuchsia-900 mb-2">Calculate the Solution</h3>
+   <h3 className="font-semibold text-fuchsia-900 mb-2">{t('lab.m10matrixapplications_calculate_the_solution')}</h3>
    <p className="text-slate-700 dark:text-[#ffffff] mb-4 text-sm">
-    Use Cramer's rule to find the precise values of x and y for the system currently displayed in the simulator.
-   </p>
+    
+                             {t('lab.m10matrixapplications_use_cramer_s_rule_to_find_the_')}
+                            </p>
    
    <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 flex justify-between text-sm">
     <div>Δ = {delta}</div>
-    <div>Δx = {deltaX}</div>
-    <div>Δy = {deltaY}</div>
+    <div>{t('lab.m10matrixapplications_x_1')} {deltaX}</div>
+    <div>{t('lab.m10matrixapplications_y_1')} {deltaY}</div>
    </div>
    
    <div className="flex items-center gap-4 mb-4">
     <div className="flex-1">
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">x value:</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10matrixapplications_x_value')}</label>
     <input 
      type="number" 
      value={ansX} 
      onChange={e => setAnsX(e.target.value)}
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
-     placeholder="e.g. 2.5"
+     placeholder={t('lab.m10matrixapplications_e_g_2_5')}
     />
     </div>
     <div className="flex-1">
-    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">y value:</label>
+    <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10matrixapplications_y_value')}</label>
     <input 
      type="number" 
      value={ansY} 
      onChange={e => setAnsY(e.target.value)}
      className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:ring-2 focus:ring-fuchsia-500 outline-none"
-     placeholder="e.g. -1"
+     placeholder={t('lab.m10matrixapplications_e_g_1')}
     />
     </div>
    </div>
@@ -211,8 +219,9 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
     onClick={checkAnswer}
     className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold py-2 px-4 rounded transition-colors dark:text-white dark:text-white dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-fuchsia-500/40"
    >
-    Verify Calculations
-   </button>
+    
+                             {t('lab.m10matrixapplications_verify_calculations')}
+                            </button>
 
    {feedback && (
     <div className={`mt-4 p-3 rounded text-sm flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

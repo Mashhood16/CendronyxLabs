@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LogEntry {
  id: number;
@@ -10,6 +11,7 @@ interface LogEntry {
 }
 
 export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [temperature, setTemperature] = useState<number>(20);
  const [glucose, setGlucose] = useState<number>(0.5);
@@ -79,7 +81,7 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="amber" title="Fungi: Yeast Fermentation" />
+  <LabHeader onExit={onExit} variant="amber" title={t('lab.b11fungi_fungi_yeast_fermentation')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -88,32 +90,33 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b11fungi_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b11fungi_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 mb-3">
-    <BookOpen className="text-amber-600" /> Theory & Variables
-   </h2>
+    <BookOpen className="text-amber-600" />  {t('lab.b11fungi_theory_variables')}
+                            </h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4 leading-relaxed">
-    Yeast (<i>Saccharomyces cerevisiae</i>) perform anaerobic respiration (fermentation) converting glucose into ethanol and carbon dioxide gas (CO₂).
-    Enzyme activity regulates this reaction, heavily influenced by temperature.
-   </p>
+    
+                             {t('lab.b11fungi_yeast')}<i>{t('lab.b11fungi_saccharomyces_cerevisiae')}</i>{t('lab.b11fungi_perform_anaerobic_respiration_')}
+                            </p>
    </div>
 
    <div className={`space-y-5 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Environmental Controls</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.b11fungi_environmental_controls')}</h3>
    
    <div className="space-y-2">
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-    <span>Incubator Temperature</span>
+    <span>{t('lab.b11fungi_incubator_temperature')}</span>
     <span className="text-amber-600 font-mono font-bold">{temperature}°C</span>
     </label>
     <input 
@@ -126,7 +129,7 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
 
    <div className="space-y-2">
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-    <span>Glucose Concentration</span>
+    <span>{t('lab.b11fungi_glucose_concentration')}</span>
     <span className="text-amber-600 font-mono font-bold">{glucose} M</span>
     </label>
     <input 
@@ -140,33 +143,33 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
    <div className="pt-4 flex gap-2 justify-center border-t border-slate-200 dark:border-[#1c1b1b]">
     {!running && time === 0 && (
     <button onClick={() => setRunning(true)} className={`flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40 flex-col `}>
-     <Play size={16} /> Start
-    </button>
+     <Play size={16} />  {t('lab.b11fungi_start')}
+                                     </button>
     )}
     {!running && time > 0 && time < 60 && (
     <button onClick={() => setRunning(true)} className={`flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40 flex-col `}>
-     <Play size={16} /> Resume
-    </button>
+     <Play size={16} />  {t('lab.b11fungi_resume')}
+                                     </button>
     )}
     {running && (
     <button onClick={() => setRunning(false)} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 font-semibold text-sm shadow-sm transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
-     <Pause size={16} /> Pause
-    </button>
+     <Pause size={16} />  {t('lab.b11fungi_pause')}
+                                     </button>
     )}
     <button onClick={handleReset} className="flex-1 flex justify-center items-center gap-2 px-4 py-2 bg-slate-200 dark:!bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-md hover:bg-slate-300 dark:!bg-[#121212] font-semibold text-sm shadow-sm transition-colors">
-    <RotateCcw size={16} /> Reset
-    </button>
+    <RotateCcw size={16} />  {t('lab.b11fungi_reset')}
+                                 </button>
    </div>
    </div>
   </div>
 
   {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <Activity className="text-amber-600" /> Respirometer
-   </h2>
-   <div className="bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] text-xs font-bold px-2 py-1 rounded">Interactive Model</div>
+    <Activity className="text-amber-600" />  {t('lab.b11fungi_respirometer')}
+                            </h2>
+   <div className="bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] text-xs font-bold px-2 py-1 rounded">{t('lab.b11fungi_interactive_model')}</div>
    </div>
    
    <div className="w-full max-w-sm aspect-square relative bg-slate-50 dark:bg-[#121212] rounded-2xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mt-12 overflow-hidden flex items-center justify-center">
@@ -204,12 +207,13 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
     ))}
    </svg>
    
-   <div className="absolute top-4 left-4 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 dark:text-[#ffffff] border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] backdrop-blur ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    Vol: {volume.toFixed(1)} mL
+   <div className="absolute top-4 left-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 dark:text-[#ffffff] border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] backdrop-blur ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+    
+                             {t('lab.b11fungi_vol')} {volume.toFixed(1)} mL
    </div>
    <div className="absolute top-4 right-4 bg-slate-50 dark:bg-[#121212]/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-amber-700 border border-slate-200 dark:border-[#1c1b1b] backdrop-blur">
-    {time} min
-   </div>
+    {time}  {t('lab.b11fungi_min')}
+                            </div>
    </div>
   </div>
 
@@ -217,29 +221,30 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <LineChart className="text-amber-600" /> Data Logging
-   </h2>
+    <LineChart className="text-amber-600" />  {t('lab.b11fungi_data_logging')}
+                            </h2>
    <button 
     onClick={handleLog}
     className="bg-amber-100 text-amber-700 px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-amber-200 flex items-center gap-1 transition-colors"
    >
-    Log Final Data
-   </button>
+    
+                             {t('lab.b11fungi_log_final_data')}
+                            </button>
    </div>
 
    <div className="bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg overflow-hidden h-40 lg:overflow-y-auto">
    <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
     <thead className="text-xs text-slate-700 dark:text-[#ffffff] uppercase bg-slate-100 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-2">Temp (°C)</th>
-     <th className="px-4 py-2">Glucose (M)</th>
-     <th className="px-4 py-2">Vol (mL)</th>
+     <th className="px-4 py-2">{t('lab.b11fungi_temp_c')}</th>
+     <th className="px-4 py-2">{t('lab.b11fungi_glucose_m')}</th>
+     <th className="px-4 py-2">{t('lab.b11fungi_vol_ml')}</th>
     </tr>
     </thead>
     <tbody>
     {logs.length === 0 ? (
      <tr>
-     <td colSpan={3} className="px-4 py-6 text-center text-slate-400">No data logged yet</td>
+     <td colSpan={3} className="px-4 py-6 text-center text-slate-400">{t('lab.b11fungi_no_data_logged_yet')}</td>
      </tr>
     ) : (
      logs.map(log => (
@@ -256,15 +261,16 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-1 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] flex items-center gap-2 mb-3">
-    <Target size={18} /> Analysis
-   </h3>
+    <Target size={18} />  {t('lab.b11fungi_analysis')}
+                            </h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    Determine the optimal temperature for yeast fermentation based on your logged CO₂ data points.
-   </p>
+    
+                             {t('lab.b11fungi_determine_the_optimal_temperat')}
+                            </p>
    <div className="flex gap-2 mb-4">
     <input 
     type="number"
-    placeholder="Optimal Temp (°C)" 
+    placeholder={t('lab.b11fungi_optimal_temp_c')} 
     value={answer} onChange={(e) => setAnswer(e.target.value)}
     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-amber-500"
     />
@@ -272,8 +278,9 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
     onClick={checkAnswer}
     className="bg-[#121212] dark:bg-[#121212] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-slate-700 dark:bg-[#121212] transition-colors shadow-sm"
     >
-    Check
-    </button>
+    
+                                 {t('lab.b11fungi_check')}
+                                 </button>
    </div>
    {feedback && (
     <div className={`text-sm p-3 rounded-lg flex items-start gap-2 border ${feedback.includes('Correct') ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-rose-50 text-rose-800 border-rose-200'}`}>

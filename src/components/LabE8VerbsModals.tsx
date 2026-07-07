@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle2, Activity, Play, Gauge, Settings , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const verbData = [
  { id: 1, sentence: "The dog (barked) loudly.", verb: "barked", options: ["Transitive", "Intransitive", "Linking", "Helping", "Infinitive"], answer: "Intransitive" },
@@ -18,6 +19,7 @@ const modalData = [
 ];
 
 export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'verbs' | 'modals'>('verbs');
  const [verbIndex, setVerbIndex] = useState(0);
@@ -51,8 +53,9 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
    </button>
    <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
    <Activity className="text-indigo-500 dark:text-indigo-400" />
-   Verb Action Stage & Modal Machine
-   </h1>
+   
+                    {t('lab.e8verbsmodals_verb_action_stage_modal_machin')}
+                    </h1>
   
   <button
    onClick={toggleTheme}
@@ -71,27 +74,27 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
      onClick={() => setActiveTab('verbs')}
      className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'verbs' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
     >
-     <Play size={18} /> Verb Types
-    </button>
+     <Play size={18} />  {t('lab.e8verbsmodals_verb_types')}
+                             </button>
     <button
      onClick={() => setActiveTab('modals')}
      className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'modals' ? 'bg-emerald-100 dark:bg-emerald-900/50 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-900/40 dark:text-emerald-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
     >
-     <Gauge size={18} /> Modal Machine
-    </button>
+     <Gauge size={18} />  {t('lab.e8verbsmodals_modal_machine')}
+                             </button>
     </div>
 
     <div className="p-4">
     {activeTab === 'verbs' ? (
      <div className="space-y-6">
      <div className="flex justify-between items-center bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212]/50 p-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-      <button onClick={() => setVerbIndex(Math.max(0, verbIndex - 1))} disabled={verbIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Prev</button>
-      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Verb {verbIndex + 1} of {verbData.length}</span>
-      <button onClick={() => setVerbIndex(Math.min(verbData.length - 1, verbIndex + 1))} disabled={verbIndex === verbData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Next</button>
+      <button onClick={() => setVerbIndex(Math.max(0, verbIndex - 1))} disabled={verbIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8verbsmodals_prev')}</button>
+      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8verbsmodals_verb')} {verbIndex + 1} of {verbData.length}</span>
+      <button onClick={() => setVerbIndex(Math.min(verbData.length - 1, verbIndex + 1))} disabled={verbIndex === verbData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8verbsmodals_next')}</button>
      </div>
 
      <div className="bg-white dark:!bg-[#121212] dark:bg-slate-700/50 p-5 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-      <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4">Identify the Verb Type</h3>
+      <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4">{t('lab.e8verbsmodals_identify_the_verb_type')}</h3>
       
       <p className="text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] text-lg mb-6 p-4 bg-indigo-50 dark:bg-indigo-900/50 dark:bg-indigo-900/20 rounded-lg border border-indigo-100 dark:border-indigo-800/50 text-center">
        {currentV.sentence.split(new RegExp(`\\(.*?\\)`, 'gi')).map((part, i, arr) => (
@@ -132,15 +135,16 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
     ) : (
     <div className="space-y-6">
      <div className="flex justify-between items-center bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212]/50 p-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-      <button onClick={() => setModalIndex(Math.max(0, modalIndex - 1))} disabled={modalIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Prev</button>
-      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Scenario {modalIndex + 1} of {modalData.length}</span>
-      <button onClick={() => setModalIndex(Math.min(modalData.length - 1, modalIndex + 1))} disabled={modalIndex === modalData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Next</button>
+      <button onClick={() => setModalIndex(Math.max(0, modalIndex - 1))} disabled={modalIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8verbsmodals_prev')}</button>
+      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8verbsmodals_scenario')} {modalIndex + 1} of {modalData.length}</span>
+      <button onClick={() => setModalIndex(Math.min(modalData.length - 1, modalIndex + 1))} disabled={modalIndex === modalData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8verbsmodals_next')}</button>
      </div>
 
      <div className="bg-white dark:!bg-[#121212] dark:bg-slate-700/50 p-5 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-      <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Choose the Right Modal</h3>
+      <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">{t('lab.e8verbsmodals_choose_the_right_modal')}</h3>
       <div className="inline-block px-2 py-1 mb-4 text-xs font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/50 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 dark:bg-emerald-900/40 dark:text-emerald-300 rounded">
-       Type: {currentM.type}
+       
+                                                {t('lab.e8verbsmodals_type')} {currentM.type}
       </div>
       
       <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-r shadow-sm">
@@ -184,51 +188,54 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
     <div className="w-full max-w-lg bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-xl border-4 border-indigo-200 dark:border-indigo-900/50 overflow-hidden">
      <div className="bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 dark:bg-indigo-900/50 p-4 text-center font-bold text-indigo-800 dark:text-indigo-200 dark:text-indigo-300 uppercase tracking-widest border-b-4 border-indigo-200 dark:border-indigo-900/50 flex items-center justify-center gap-2">
       <Settings className="animate-spin-slow" size={20} />
-      Verb Action Stage
-     </div>
+      
+                                   {t('lab.e8verbsmodals_verb_action_stage')}
+                                  </div>
      
      <div className="h-72 flex flex-col items-center justify-center relative bg-gradient-to-b from-slate-50 to-slate-200 dark:from-slate-800 dark:to-slate-900 p-6 overflow-hidden">
       {displayMode === 'idle' && (
        <div className="text-slate-400 dark:text-[#a1a1aa] font-medium text-xl animate-pulse flex flex-col items-center gap-4">
         <Play size={48} className="opacity-50" />
-        Waiting for categorization...
-       </div>
+        
+                                             {t('lab.e8verbsmodals_waiting_for_categorization')}
+                                            </div>
       )}
       
       {displayMode === 'Transitive' && (
        <div className="flex items-center space-x-6 animate-[bounce_1s_ease-in-out_infinite]">
-        <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Subject</div>
+        <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.e8verbsmodals_subject')}</div>
         <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">→</div>
         <div className="bg-indigo-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-         <span className="text-xs opacity-75 uppercase tracking-wider mb-1">Verb</span>
+         <span className="text-xs opacity-75 uppercase tracking-wider mb-1">{t('lab.e8verbsmodals_verb')}</span>
          {currentV.verb}
         </div>
         <div className="text-3xl font-bold text-indigo-600 dark:text-indigo-400 dark:text-indigo-400">→</div>
-        <div className="bg-green-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">Object</div>
+        <div className="bg-green-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">{t('lab.e8verbsmodals_object')}</div>
        </div>
       )}
       
       {displayMode === 'Intransitive' && (
        <div className="flex flex-col items-center space-y-6">
         <div className="flex items-center space-x-6 animate-pulse">
-         <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Subject</div>
+         <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.e8verbsmodals_subject')}</div>
          <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">→</div>
          <div className="bg-indigo-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg flex flex-col items-center dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-          <span className="text-xs opacity-75 uppercase tracking-wider mb-1">Verb</span>
+          <span className="text-xs opacity-75 uppercase tracking-wider mb-1">{t('lab.e8verbsmodals_verb')}</span>
           {currentV.verb}
          </div>
         </div>
         <div className="text-xl text-rose-500 dark:text-rose-400 dark:text-rose-400 font-bold bg-rose-100 dark:bg-rose-900/50 dark:bg-rose-900/60 dark:bg-rose-900/30 px-4 py-2 rounded-lg border border-rose-200 dark:border-rose-800">
-         No Object Needed!
-        </div>
+         
+                                                  {t('lab.e8verbsmodals_no_object_needed')}
+                                                 </div>
        </div>
       )}
       
       {displayMode === 'Linking' && (
        <div className="flex items-center space-x-6">
-        <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Subject</div>
+        <div className="bg-blue-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg /20 dark:border-teal-900 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.e8verbsmodals_subject')}</div>
         <div className="text-5xl font-bold text-pink-500 dark:text-pink-400 animate-pulse">=</div>
-        <div className="bg-orange-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">Subject Complement</div>
+        <div className="bg-orange-500 text-white p-4 rounded-xl font-bold shadow-lg text-lg dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40">{t('lab.e8verbsmodals_subject_complement')}</div>
        </div>
       )}
       
@@ -236,19 +243,20 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
        <div className="flex items-center space-x-4">
         <div className="bg-teal-500 text-white p-5 rounded-full font-bold shadow-lg flex flex-col items-center animate-[spin_4s_linear_infinite] dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">
          <Settings size={24} />
-         <span className="text-xs mt-1">AUX</span>
+         <span className="text-xs mt-1">{t('lab.e8verbsmodals_aux')}</span>
         </div>
         <div className="text-3xl font-bold text-teal-500 dark:text-teal-400">+</div>
         <div className="bg-indigo-500 text-white p-5 rounded-xl font-bold shadow-lg text-lg dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-         Main Verb
-        </div>
+         
+                                                  {t('lab.e8verbsmodals_main_verb')}
+                                                 </div>
        </div>
       )}
       
       {displayMode === 'Infinitive' && (
        <div className="flex items-center bg-yellow-400 text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] p-6 rounded-2xl font-bold shadow-xl border-4 border-yellow-500 text-2xl transform hover:scale-105 transition-transform dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
-        <span className="mr-3 opacity-70">to +</span> 
-        <span>Base Verb</span>
+        <span className="mr-3 opacity-70">{t('lab.e8verbsmodals_to')}</span> 
+        <span>{t('lab.e8verbsmodals_base_verb')}</span>
        </div>
       )}
      </div>
@@ -257,8 +265,9 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
     <div className="w-full max-w-md flex flex-col items-center bg-white dark:!bg-[#121212] dark:!bg-[#121212] p-10 rounded-2xl shadow-xl border border-slate-200 dark:border-[#1c1b1b]">
      <h2 className="text-2xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-10 flex items-center gap-2">
       <Gauge className="text-emerald-500 dark:text-emerald-400" />
-      Modal Strength Gauge
-     </h2>
+      
+                                       {t('lab.e8verbsmodals_modal_strength_gauge')}
+                                      </h2>
      
      <div className="relative w-72 h-36 overflow-hidden bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212] rounded-t-full border-t-8 border-l-8 border-r-8 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
       {/* gradient arc */}
@@ -277,14 +286,15 @@ export default function LabE8VerbsModals({ onExit }: { onExit?: () => void }) {
      </div>
      
      <div className="flex justify-between w-72 mt-4 text-sm font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] uppercase tracking-wider">
-      <span>0% (Might)</span>
-      <span>100% (Must)</span>
+      <span>{t('lab.e8verbsmodals_0_might')}</span>
+      <span>{t('lab.e8verbsmodals_100_must')}</span>
      </div>
 
      {currentMAnswer === currentM.answer && (
       <div className="mt-10 text-lg font-bold text-emerald-600 dark:text-emerald-400 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/50 dark:bg-emerald-900/60 dark:bg-emerald-900/30 px-6 py-3 rounded-xl border border-emerald-300 dark:border-emerald-700 animate-fade-in-up flex items-center gap-2 shadow-sm">
        <CheckCircle2 size={24} />
-       Perfect Match! Strength: {currentM.strength}%
+       
+                                            {t('lab.e8verbsmodals_perfect_match_strength')} {currentM.strength}%
       </div>
      )}
     </div>

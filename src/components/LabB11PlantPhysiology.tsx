@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Droplets, FlaskConical, Activity, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'water' | 'xylem'>('water');
  
@@ -113,7 +115,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} variant="amber" title="Plant Physiology Virtual Lab" />
+  <LabHeader onExit={onExit} variant="amber" title={t('lab.b11plantphysiology_plant_physiology_virtual_lab')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -122,82 +124,90 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b11plantphysiology_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b11plantphysiology_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 lg:flex-1 lg: lg:overflow-visible">
   
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 border-r lg:overflow-y-auto flex-col  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Background Theory</h2>
+   <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">{t('lab.b11plantphysiology_background_theory')}</h2>
    
    <div className="space-y-6 text-gray-600">
    <section>
     <h3 className="text-lg font-semibold text-emerald-700 flex items-center gap-2 mb-2">
-    <FlaskConical size={18} /> Water Potential (Ψ)
-    </h3>
+    <FlaskConical size={18} />  {t('lab.b11plantphysiology_water_potential')}
+                                 </h3>
     <p className="mb-2">
-    Water potential is a measure of the potential energy in water, driving the movement of water through plants. Water always moves from an area of higher water potential to an area of lower water potential.
-    </p>
+    
+                                 {t('lab.b11plantphysiology_water_potential_is_a_measure_o')}
+                                 </p>
     <div className={`bg-emerald-50 p-3 rounded-lg text-sm text-emerald-900 mb-2 border border-emerald-200 flex-col `}>
-    <span className="font-bold">Formula:</span> Ψ = Ψs + Ψp
-    <br/>Ψs = Solute Potential
-    <br/>Ψp = Pressure Potential
-    </div>
+    <span className="font-bold">{t('lab.b11plantphysiology_formula')}</span>  {t('lab.b11plantphysiology_s_p')}
+                                 <br/>{t('lab.b11plantphysiology_s_solute_potential')}
+                                 <br/>{t('lab.b11plantphysiology_p_pressure_potential')}
+                                 </div>
     <p>
-    The solute potential (Ψs) can be calculated using: <strong>Ψs = -iCRT</strong>
+    
+                                 {t('lab.b11plantphysiology_the_solute_potential_s_can_be_')} <strong>{t('lab.b11plantphysiology_s_icrt')}</strong>
     </p>
     <ul className="list-disc pl-5 mt-2 space-y-1 text-sm">
-    <li>i = Ionization constant (1.0 for sucrose)</li>
-    <li>C = Molar concentration</li>
-    <li>R = Pressure constant (0.0831 L·bars/mol·K)</li>
-    <li>T = Temperature in Kelvin (273 + °C)</li>
+    <li>{t('lab.b11plantphysiology_i_ionization_constant_1_0_for_')}</li>
+    <li>{t('lab.b11plantphysiology_c_molar_concentration')}</li>
+    <li>{t('lab.b11plantphysiology_r_pressure_constant_0_0831_l_b')}</li>
+    <li>{t('lab.b11plantphysiology_t_temperature_in_kelvin_273_c')}</li>
     </ul>
    </section>
 
    <section>
     <h3 className="text-lg font-semibold text-emerald-700 flex items-center gap-2 mb-2">
-    <Droplets size={18} /> Transpiration & Xylem
-    </h3>
+    <Droplets size={18} />  {t('lab.b11plantphysiology_transpiration_xylem')}
+                                 </h3>
     <p>
-    Water is pulled up through the xylem by capillary action and the cohesive/adhesive properties of water, driven by transpiration from the leaves. 
-    </p>
+    
+                                 {t('lab.b11plantphysiology_water_is_pulled_up_through_the')} 
+                                 </p>
     <p className="mt-2">
-    Environmental factors like temperature and humidity heavily influence the rate of transpiration. Higher temperatures increase evaporation, while high humidity decreases the concentration gradient, slowing it down.
-    </p>
+    
+                                 {t('lab.b11plantphysiology_environmental_factors_like_tem')}
+                                 </p>
    </section>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 flex flex-col lg:  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 flex flex-col lg:  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <div className={`flex bg-slate-50 dark:!bg-[#121212] rounded-lg p-1 shadow-sm mb-6 shrink-0 `}>
    <button 
     className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'water' ? 'bg-emerald-100 text-emerald-800' : 'text-gray-500 hover:bg-gray-50'}`}
     onClick={() => setActiveTab('water')}
    >
-    Water Potential Lab
-   </button>
+    
+                             {t('lab.b11plantphysiology_water_potential_lab')}
+                            </button>
    <button 
     className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'xylem' ? 'bg-emerald-100 text-emerald-800' : 'text-gray-500 hover:bg-gray-50'}`}
     onClick={() => setActiveTab('xylem')}
    >
-    Transpiration Lab
-   </button>
+    
+                             {t('lab.b11plantphysiology_transpiration_lab')}
+                            </button>
    </div>
 
    {activeTab === 'water' && (
    <div className="flex-1 flex flex-col">
     <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col `}>
     <div className="flex justify-between items-center mb-6">
-     <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">Potato Core Plasmolysis</h3>
+     <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.b11plantphysiology_potato_core_plasmolysis')}</h3>
      <div className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium dark:bg-teal-950/20 dark:border-teal-900">
-     Initial Mass: 5.00g
-     </div>
+     
+                                          {t('lab.b11plantphysiology_initial_mass_5_00g')}
+                                          </div>
     </div>
     
     <div className="flex flex-col items-center justify-center flex-1 relative mb-6">
@@ -220,7 +230,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
      )}
      </svg>
      <div className="mt-4 text-center">
-     <p className="text-sm font-medium text-gray-600">Current Mass</p>
+     <p className="text-sm font-medium text-gray-600">{t('lab.b11plantphysiology_current_mass')}</p>
      <p className="text-3xl font-bold text-gray-800 dark:text-[#ffffff]">{currentMass.toFixed(2)}g</p>
      </div>
     </div>
@@ -228,7 +238,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
     <div className="space-y-4">
      <div>
      <div className="flex justify-between text-sm mb-1">
-      <label className="font-medium text-gray-700 dark:text-[#ffffff]">Sucrose Molarity</label>
+      <label className="font-medium text-gray-700 dark:text-[#ffffff]">{t('lab.b11plantphysiology_sucrose_molarity')}</label>
       <span className="text-emerald-700 font-bold">{sucroseMolarity.toFixed(1)} M</span>
      </div>
      <input 
@@ -253,8 +263,9 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
       disabled={isSimulatingWP || dataPoints.length === 0}
       className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors disabled:opacity-50"
      >
-      Clear Data
-     </button>
+      
+                                               {t('lab.b11plantphysiology_clear_data')}
+                                              </button>
      </div>
     </div>
     </div>
@@ -265,10 +276,11 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
    <div className="flex-1 flex flex-col">
     <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-6 flex-1 flex flex-col `}>
     <div className="flex justify-between items-center mb-6">
-     <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">Celery Transpiration</h3>
+     <h3 className="font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.b11plantphysiology_celery_transpiration')}</h3>
      <div className="text-sm bg-amber-50 text-amber-700 px-3 py-1 rounded-full font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
-     Time: {timePassed.toFixed(0)} min
-     </div>
+     
+                                          {t('lab.b11plantphysiology_time')} {timePassed.toFixed(0)}  {t('lab.b11plantphysiology_min')}
+                                          </div>
     </div>
 
     <div className="flex flex-col items-center justify-center flex-1 mb-6">
@@ -292,7 +304,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
     <div className="space-y-4">
      <div>
      <div className="flex justify-between text-sm mb-1">
-      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Activity size={14}/> Temperature (°C)</label>
+      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Activity size={14}/>  {t('lab.b11plantphysiology_temperature_c')}</label>
       <span className="text-emerald-700 font-bold">{temperature}°C</span>
      </div>
      <input 
@@ -304,7 +316,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
      </div>
      <div>
      <div className="flex justify-between text-sm mb-1">
-      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Droplets size={14}/> Humidity (%)</label>
+      <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Droplets size={14}/>  {t('lab.b11plantphysiology_humidity')}</label>
       <span className="text-emerald-700 font-bold">{humidity}%</span>
      </div>
      <input 
@@ -328,22 +340,22 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
   </div>
 
   {/* Column 3: Assessment & Data */}
-  <div className="bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 border-l flex flex-col lg: ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">Data Analysis</h2>
+  <div className="bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 border-l flex flex-col lg: ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+   <h2 className="text-2xl font-bold text-gray-800 dark:text-[#ffffff] mb-4">{t('lab.b11plantphysiology_data_analysis')}</h2>
    
    {activeTab === 'water' && (
    <>
     <div className="bg-slate-50 dark:bg-[#121212] border rounded-xl p-4 mb-6">
-    <h3 className="font-semibold text-sm text-gray-700 dark:text-[#ffffff] mb-2">Recorded Measurements</h3>
+    <h3 className="font-semibold text-sm text-gray-700 dark:text-[#ffffff] mb-2">{t('lab.b11plantphysiology_recorded_measurements')}</h3>
     {dataPoints.length === 0 ? (
-     <p className="text-sm text-gray-400 italic text-center py-4">No data collected yet. Run the simulation.</p>
+     <p className="text-sm text-gray-400 italic text-center py-4">{t('lab.b11plantphysiology_no_data_collected_yet_run_the_')}</p>
     ) : (
      <div className="overflow-x-auto">
      <table className="w-full text-sm text-left">
       <thead className="text-xs text-gray-600 bg-gray-100">
       <tr>
-       <th className="px-3 py-2 rounded-tl-lg">Molarity (M)</th>
-       <th className="px-3 py-2">% Change</th>
+       <th className="px-3 py-2 rounded-tl-lg">{t('lab.b11plantphysiology_molarity_m')}</th>
+       <th className="px-3 py-2">{t('lab.b11plantphysiology_change')}</th>
       </tr>
       </thead>
       <tbody>
@@ -363,7 +375,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
     {/* Graph plotting */}
     {dataPoints.length > 1 && (
      <div className="mt-4 border-t pt-4">
-     <h4 className="text-xs font-semibold text-center mb-2">Mass Change vs Molarity</h4>
+     <h4 className="text-xs font-semibold text-center mb-2">{t('lab.b11plantphysiology_mass_change_vs_molarity')}</h4>
      <div className="h-32 w-full relative">
       <svg width="100%" height="100%" viewBox="0 0 200 100" preserveAspectRatio="none" className="overflow-visible">
       {/* Axes */}
@@ -394,7 +406,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
       </svg>
       <div className="absolute top-0 left-0 text-[10px] text-gray-400">-%</div>
       <div className="absolute bottom-0 left-0 text-[10px] text-gray-400">+%</div>
-      <div className="absolute bottom-0 right-0 text-[10px] text-gray-400">1.0M</div>
+      <div className="absolute bottom-0 right-0 text-[10px] text-gray-400">{t('lab.b11plantphysiology_1_0m')}</div>
      </div>
      </div>
     )}
@@ -403,35 +415,37 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
    )}
 
    <div className="bg-emerald-50 rounded-xl p-5 border border-emerald-100 flex-1 flex flex-col">
-   <h3 className="font-bold text-emerald-900 mb-4">Assessment</h3>
+   <h3 className="font-bold text-emerald-900 mb-4">{t('lab.b11plantphysiology_assessment')}</h3>
    
    <div className="space-y-4 flex-1">
     <div>
     <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">
-     1. Based on your data, what is the isotonic sucrose concentration? (M)
-    </label>
+     
+                                      {t('lab.b11plantphysiology_1_based_on_your_data_what_is_t')}
+                                     </label>
     <input 
      type="number" step="0.01"
      value={q1Answer}
      onChange={(e) => setQ1Answer(e.target.value)}
-     placeholder="e.g. 0.25"
+     placeholder={t('lab.b11plantphysiology_e_g_0_25')}
      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
     />
-    <p className="text-xs text-gray-500 mt-1">Hint: Look for the point where % mass change is 0.</p>
+    <p className="text-xs text-gray-500 mt-1">{t('lab.b11plantphysiology_hint_look_for_the_point_where_')}</p>
     </div>
 
     <div>
     <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">
-     2. Calculate the solute potential (Ψs) of the potato cells at 20°C in bars.
-    </label>
+     
+                                      {t('lab.b11plantphysiology_2_calculate_the_solute_potenti')}
+                                     </label>
     <input 
      type="number" step="0.1"
      value={q2Answer}
      onChange={(e) => setQ2Answer(e.target.value)}
-     placeholder="e.g. -5.2"
+     placeholder={t('lab.b11plantphysiology_e_g_5_2')}
      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
     />
-    <p className="text-xs text-gray-500 mt-1">Use Ψs = -iCRT. Assume i=1, R=0.0831. T must be in Kelvin.</p>
+    <p className="text-xs text-gray-500 mt-1">{t('lab.b11plantphysiology_use_s_icrt_assume_i_1_r_0_0831')}</p>
     </div>
    </div>
 
@@ -446,13 +460,13 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
     {assessmentStatus === 'passed' && (
     <div className="mt-3 p-3 bg-green-100 text-green-800 rounded-lg flex items-center gap-2 text-sm font-medium dark:text-[#ffffff]">
-     <CheckCircle size={18} /> Correct! The isotonic point is ~0.3M and Ψs is -7.3 bars.
-    </div>
+     <CheckCircle size={18} />  {t('lab.b11plantphysiology_correct_the_isotonic_point_is_')}
+                                     </div>
     )}
     {assessmentStatus === 'failed' && (
     <div className="mt-3 p-3 bg-red-100 text-red-800 rounded-lg flex items-center gap-2 text-sm font-medium">
-     <XCircle size={18} /> Incorrect. Check your graph for where it crosses 0%, and ensure T = 293K.
-    </div>
+     <XCircle size={18} />  {t('lab.b11plantphysiology_incorrect_check_your_graph_for')}
+                                     </div>
     )}
    </div>
    </div>

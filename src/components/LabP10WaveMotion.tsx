@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10WaveMotion({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [stringType, setStringType] = useState('Cotton');
  const [tension, setTension] = useState(10); // N
@@ -86,8 +88,8 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
   <svg viewBox="0 0 300 200" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-md shadow-inner mt-4">
   <line x1="40" y1="160" x2="280" y2="160" stroke="#94a3b8" strokeWidth="2" />
   <line x1="40" y1="160" x2="40" y2="20" stroke="#94a3b8" strokeWidth="2" />
-  <text x="130" y="190" fontSize="12" fill="#64748b" fontWeight="bold">Tension T (N)</text>
-  <text x="-140" y="20" fontSize="12" fill="#64748b" fontWeight="bold" transform="rotate(-90)">Velocity² (m²/s²)</text>
+  <text x="130" y="190" fontSize="12" fill="#64748b" fontWeight="bold">{t('lab.p10wavemotion_tension_t_n')}</text>
+  <text x="-140" y="20" fontSize="12" fill="#64748b" fontWeight="bold" transform="rotate(-90)">{t('lab.p10wavemotion_velocity_m_s')}</text>
   
   <text x="35" y="165" fontSize="10" fill="#94a3b8" textAnchor="end">0</text>
   <text x="35" y="25" fontSize="10" fill="#94a3b8" textAnchor="end">{maxY.toFixed(0)}</text>
@@ -104,7 +106,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 12: Wave Motion" subtitle="Investigate the relationship between wave speed, tension, and linear density." />
+  <LabHeader onExit={onExit} title={t('lab.p10wavemotion_unit_12_wave_motion')} subtitle={t('lab.subtitle_investigate_relationship_between_1')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -113,44 +115,48 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10wavemotion_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10wavemotion_lab')}</button>
   </div>
   <div className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   {/* Column 1: Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory & Setup</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10wavemotion_theory_andsetup')}</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    The speed <span className="italic">v</span> of a transverse wave on a string depends on the tension <span className="italic">T</span> and the linear mass density <span className="italic">μ</span> (kg/m):
-    <br/><span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block `}>v = √(T / μ)</span>
+    
+                             {t('lab.p10wavemotion_the_speed')} <span className="italic">v</span>{t('lab.10wavemotion_ofatransversewaveonastringdependson')}<span className="italic">T</span>{t('lab.10wavemotion_andthelinearmassdensity')}<span className="italic">μ</span>  {t('lab.p10wavemotion_kg_m')}
+                             <br/><span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block `}>{t('lab.p10wavemotion_v_t')}</span>
    </p>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    Using the wave equation <span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>v = f · λ</span>, you can determine <span className="italic">μ</span> experimentally by measuring the wavelength λ for different frequencies or tensions.
-   </p>
+    
+                             {t('lab.p10wavemotion_using_the_wave_equation')} <span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.10wavemotion_vf')}</span>{t('lab.10wavemotion_youcandetermine')}<span className="italic">μ</span>  {t('lab.p10wavemotion_experimentally_by_measuring_th')}
+                            </p>
    </div>
 
    <div className="space-y-4">
    <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">String Material</label>
+    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10wavemotion_stringmaterial')}</label>
     <select
     value={stringType}
     onChange={(e) => setStringType(e.target.value)}
     className={`w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-slate-50 dark:bg-[#121212] focus:ring-2 focus:ring-blue-500 outline-none flex-col `}
     >
-    <option value="Cotton">Cotton (μ = 0.05 kg/m)</option>
-    <option value="Nylon">Nylon (μ = 0.02 kg/m)</option>
-    <option value="Mystery">Mystery String</option>
+    <option value="Cotton">{t('lab.p10wavemotion_cotton_0_05_kg_m')}</option>
+    <option value="Nylon">{t('lab.p10wavemotion_nylon_0_02_kg_m')}</option>
+    <option value="Mystery">{t('lab.10wavemotion_mysterystring')}</option>
     </select>
    </div>
    
    <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
-    Tension (T): {tension.toFixed(1)} N
+    
+                                 {t('lab.p10wavemotion_tension_t')} {tension.toFixed(1)} N
     </label>
     <input
     type="range" min="2" max="20" step="0.5"
@@ -162,7 +168,8 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
 
    <div>
     <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
-    Oscillator Frequency (f): {frequency.toFixed(1)} Hz
+    
+                                 {t('lab.p10wavemotion_oscillator_frequency_f')} {frequency.toFixed(1)} Hz
     </label>
     <input
     type="range" min="1" max="5" step="0.1"
@@ -185,7 +192,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     {isPaused ? 'Resume' : 'Pause & Measure'}
    </button>
    </div>
-   <p className="text-center text-slate-400 text-xs mb-2">Pause to measure λ. Hover over grid to see precise position.</p>
+   <p className="text-center text-slate-400 text-xs mb-2">{t('lab.10wavemotion_pausetomeasurehoverovergridtoseepre')}</p>
 
    <div className={`flex-1 w-full relative border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg overflow-hidden bg-slate-950 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
    <svg 
@@ -226,15 +233,15 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
   </div>
 
   {/* Column 3: Data & Analysis */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.10wavemotion_datalogging')}</h2>
    
    <div className="flex gap-2 mb-4">
     <input
     type="number"
     step="0.01"
-    placeholder="Measured λ (m)..."
+    placeholder={t('lab.p10wavemotion_t_lab_10wavemotion_measuredm')}
     value={measuredL}
     onChange={(e) => setMeasuredL(e.target.value)}
     className="w-1/2 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono text-sm"
@@ -243,23 +250,23 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     onClick={handleRecord}
     className="w-1/2 flex justify-center items-center gap-2 bg-violet-100 hover:bg-violet-200 text-violet-700 px-2 py-2 rounded-md font-bold transition-colors text-sm"
     >
-    <Plus className="w-4 h-4" /> Record Data
-    </button>
+    <Plus className="w-4 h-4" />  {t('lab.p10wavemotion_record_data')}
+                                 </button>
    </div>
    
    <div className="max-h-32 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-md mb-2">
     <table className="w-full text-xs text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
      <tr>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">T (N)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">f (Hz)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">λ (m)</th>
-     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">v² (m²/s²)</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10wavemotion_t_n')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10wavemotion_f_hz')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10wavemotion_m')}</th>
+     <th className="px-2 py-2 font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.p10wavemotion_v_m_s')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {data.length === 0 ? (
-     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">Measure & log λ data points</td></tr>
+     <tr><td colSpan={4} className="px-2 py-4 text-center text-slate-400 italic">{t('lab.10wavemotion_measure_andlogdatapoints')}</td></tr>
      ) : (
      data.map((d, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -278,14 +285,15 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Analysis: Mystery String</h3>
+   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10wavemotion_analysismysterystring')}</h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    Calculate the linear mass density <span className="italic">μ</span> of the Mystery String in kg/m.
-   </p>
+    
+                             {t('lab.p10wavemotion_calculate_the_linear_mass_dens')} <span className="italic">μ</span>  {t('lab.p10wavemotion_of_the_mystery_string_in_kg_m')}
+                            </p>
    <div className="flex gap-2">
     <input
     type="text"
-    placeholder="Calculated μ..."
+    placeholder={t('lab.p10wavemotion_t_lab_10wavemotion_calculated')}
     value={answer}
     onChange={(e) => setAnswer(e.target.value)}
     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md outline-none focus:ring-2 focus:ring-violet-500 font-mono"
@@ -294,8 +302,9 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     onClick={checkAnswer}
     className="bg-[#121212] dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-md font-bold transition-colors"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10wavemotion_check')}
+                                 </button>
    </div>
    {feedback && (
     <div className={`mt-3 p-3 rounded-md text-sm flex items-center gap-2 ${feedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>

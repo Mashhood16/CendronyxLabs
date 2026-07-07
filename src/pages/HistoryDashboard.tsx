@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useHistory } from '../store';
+import { useTranslate } from '../i18n';
 import Layout from '../components/Layout';
 import { Clock, Trophy, Timer, Beaker } from 'lucide-react';
 
@@ -14,6 +15,7 @@ const SUBJECT_COLORS: Record<string, string> = {
 
 export default function HistoryDashboard() {
   const { history, refreshHistory } = useHistory();
+  const { t } = useTranslate();
 
   // Always fetch fresh history from IndexedDB when this page mounts
   useEffect(() => {
@@ -28,8 +30,8 @@ export default function HistoryDashboard() {
             <Clock className="w-6 h-6 md:w-7 md:h-7 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 font-outfit tracking-tight">Lab History</h2>
-            <p className="text-slate-500 text-sm md:text-base">Verified telemetry and performance metrics from your completed labs.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 font-outfit tracking-tight">{t('history.title')}</h2>
+            <p className="text-slate-500 text-sm md:text-base">{t('history.subtitle')}</p>
           </div>
         </div>
 
@@ -38,8 +40,8 @@ export default function HistoryDashboard() {
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center mb-4">
               <Beaker className="w-10 h-10 text-slate-300" />
             </div>
-            <h3 className="text-xl font-bold text-slate-700 mb-2">No Labs Visited Yet</h3>
-            <p className="text-slate-500 max-w-sm text-center">Your completed labs and measured results will appear here automatically.</p>
+            <h3 className="text-xl font-bold text-slate-700 mb-2">{t('history.empty_title')}</h3>
+            <p className="text-slate-500 max-w-sm text-center">{t('history.empty_desc')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -57,7 +59,7 @@ export default function HistoryDashboard() {
 
                   {record.experimentData && Object.keys(record.experimentData).length > 0 && (
                     <div className="mb-4 bg-slate-50 rounded-xl p-3 border border-slate-100 dark:bg-[#000000] dark:border-[#1c1b1b]">
-                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Experiment Data</h4>
+                      <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">{t('history.experiment_data')}</h4>
                       <div className="grid grid-cols-2 gap-2">
                         {Object.entries(record.experimentData).map(([key, value]) => (
                           <div key={key} className="flex flex-col">

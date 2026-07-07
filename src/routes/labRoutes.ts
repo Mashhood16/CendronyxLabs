@@ -644,7 +644,15 @@ const labComponents: Record<string, React.LazyExoticComponent<React.ComponentTyp
   LabE11SentenceStructure: lazy(() => import('../components/LabE11SentenceStructure')),
   LabE11VocabularyStylistics: lazy(() => import('../components/LabE11VocabularyStylistics')),
 
-  // Class 12 English
+  // Class 9 Math Theorems
+  LabM9TheoremViewer: lazy(() => import('../components/LabM9TheoremViewer')),
+  LabM9Theorems: lazy(() => import('../components/LabM9Theorems')),
+  LabM10Theorems: lazy(() => import('../components/LabM10Theorems')),
+  LabM10TheoremViewer: lazy(() => import('../components/LabM10TheoremViewer')),
+  LabM11TheoremViewer: lazy(() => import('../components/LabM11TheoremViewer')),
+  LabM12TheoremViewer: lazy(() => import('../components/LabM12TheoremViewer')),
+
+    // Class 12 English
   LabE12NounsPronouns: lazy(() => import('../components/LabE12NounsPronouns')),
   LabE12AdjectivesAdverbs: lazy(() => import('../components/LabE12AdjectivesAdverbs')),
   LabE12PrepositionsConjunctions: lazy(() => import('../components/LabE12PrepositionsConjunctions')),
@@ -653,6 +661,8 @@ const labComponents: Record<string, React.LazyExoticComponent<React.ComponentTyp
   LabE12PhrasesClauses: lazy(() => import('../components/LabE12PhrasesClauses')),
   LabE12SentenceStructure: lazy(() => import('../components/LabE12SentenceStructure')),
   LabE12VocabularyStylistics: lazy(() => import('../components/LabE12VocabularyStylistics')),
+
+
 };
 
 // Module ID to component name mapping
@@ -911,6 +921,61 @@ const moduleIdToComponent: Record<string, string> = {
 
   // Class 9 Mathematics
 
+
+  // Class 9 Math Theorems
+  'm9_theorem_product_log': 'LabM9TheoremViewer',
+  'm9_theorem_quotient_log': 'LabM9TheoremViewer',
+  'm9_theorem_power_log': 'LabM9TheoremViewer',
+  'm9_theorem_change_base': 'LabM9TheoremViewer',
+  'm9_theorem_union_assoc': 'LabM9TheoremViewer',
+  'm9_theorem_intersection_assoc': 'LabM9TheoremViewer',
+  'm9_theorem_distributive_union': 'LabM9TheoremViewer',
+  'm9_theorem_distributive_intersection': 'LabM9TheoremViewer',
+  'm9_theorem_quotient_identity': 'LabM9TheoremViewer',
+  'm9_theorem_pythagorean_identity': 'LabM9TheoremViewer',
+  'm9_theorem_distance_formula': 'LabM9TheoremViewer',
+  'm9_theorem_slope_intercept': 'LabM9TheoremViewer',
+  'm9_theorem_point_slope': 'LabM9TheoremViewer',
+  'm9_theorem_two_point': 'LabM9TheoremViewer',
+  'm9_theorem_two_intercept': 'LabM9TheoremViewer',
+  'm9_theorem_normal_form': 'LabM9TheoremViewer',
+  'm9_theorem_angle_between_lines': 'LabM9TheoremViewer',
+
+  // Class 10 Math Theorems
+  'm10_theorem_quadratic_formula': 'LabM10TheoremViewer',
+  'm10_theorem_vector_diff': 'LabM10TheoremViewer',
+  'm10_theorem_law_cosines': 'LabM10TheoremViewer',
+  'm10_theorem_law_sines': 'LabM10TheoremViewer',
+  'm10_theorem_law_tangents': 'LabM10TheoremViewer',
+  'm10_theorem_half_angle_cos': 'LabM10TheoremViewer',
+  'm10_theorem_half_angle_sin': 'LabM10TheoremViewer',
+  'm10_theorem_area_sas': 'LabM10TheoremViewer',
+  'm10_theorem_area_aas': 'LabM10TheoremViewer',
+  'm10_theorem_heros': 'LabM10TheoremViewer',
+  'm10_theorem_circum_radius': 'LabM10TheoremViewer',
+  'm10_theorem_in_radius': 'LabM10TheoremViewer',
+  'm10_theorem_ex_radius': 'LabM10TheoremViewer',
+  'm10_theorem_three_point_circle': 'LabM10TheoremViewer',
+  'm10_theorem_centre_bisects': 'LabM10TheoremViewer',
+  'm10_theorem_perp_bisects': 'LabM10TheoremViewer',
+  'm10_theorem_equal_chords_equal_dist': 'LabM10TheoremViewer',
+  'm10_theorem_equidistant_chords': 'LabM10TheoremViewer',
+  'm10_theorem_congruent_arcs': 'LabM10TheoremViewer',
+  'm10_theorem_equal_chords_arcs': 'LabM10TheoremViewer',
+  'm10_theorem_equal_chords_angles': 'LabM10TheoremViewer',
+  'm10_theorem_equal_angles_chords': 'LabM10TheoremViewer',
+  'm10_theorem_perp_radius_tangent': 'LabM10TheoremViewer',
+  'm10_theorem_tangent_perp_radius': 'LabM10TheoremViewer',
+  'm10_theorem_equal_tangents': 'LabM10TheoremViewer',
+  'm10_theorem_external_touching': 'LabM10TheoremViewer',
+  'm10_theorem_internal_touching': 'LabM10TheoremViewer',
+  'm10_theorem_alternate_segment': 'LabM10TheoremViewer',
+  'm10_theorem_central_angle': 'LabM10TheoremViewer',
+  'm10_theorem_same_segment': 'LabM10TheoremViewer',
+  'm10_theorem_semicircle': 'LabM10TheoremViewer',
+  'm10_theorem_major_segment': 'LabM10TheoremViewer',
+  'm10_theorem_minor_segment': 'LabM10TheoremViewer',
+  'm10_theorem_cyclic_quad': 'LabM10TheoremViewer',
   // Class 11 Chemistry
 
   // Class 11 Physics
@@ -927,7 +992,42 @@ const moduleIdToComponent: Record<string, string> = {
 
   // Class 12 Computer Science
 
-  // Class 11 Mathematics
+  // Class 11 Mathematics Theorems
+  'm11_theorem_complex_magnitude': 'LabM11TheoremViewer',
+  'm11_theorem_complex_inverse_polar': 'LabM11TheoremViewer',
+  'm11_theorem_complex_division_polar': 'LabM11TheoremViewer',
+  'm11_theorem_determinant_transpose': 'LabM11TheoremViewer',
+  'm11_theorem_determinant_interchange': 'LabM11TheoremViewer',
+  'm11_theorem_determinant_identical': 'LabM11TheoremViewer',
+  'm11_theorem_parallelogram_diagonals': 'LabM11TheoremViewer',
+  'm11_theorem_triangle_midpoint': 'LabM11TheoremViewer',
+  'm11_theorem_trapezium_midpoint': 'LabM11TheoremViewer',
+  'm11_theorem_geometric_sum': 'LabM11TheoremViewer',
+  'm11_theorem_arithmetico_geometric_sum': 'LabM11TheoremViewer',
+  'm11_theorem_remainder': 'LabM11TheoremViewer',
+  'm11_theorem_factor': 'LabM11TheoremViewer',
+  'm11_theorem_combination': 'LabM11TheoremViewer',
+  'm11_theorem_binomial': 'LabM11TheoremViewer',
+  'm11_theorem_fundamental_trig': 'LabM11TheoremViewer',
+  'm11_theorem_trig_identities': 'LabM11TheoremViewer',
+
+  // Class 12 Mathematics Theorems
+  'm12_theorem_power_rule': 'LabM12TheoremViewer',
+  'm12_theorem_sin_derivative': 'LabM12TheoremViewer',
+  'm12_theorem_inverse_trig_derivatives': 'LabM12TheoremViewer',
+  'm12_theorem_basic_integrals': 'LabM12TheoremViewer',
+  'm12_theorem_substitution_integrals': 'LabM12TheoremViewer',
+  'm12_theorem_fundamental_theorem_calc': 'LabM12TheoremViewer',
+  'm12_theorem_concurrency_altitudes': 'LabM12TheoremViewer',
+  'm12_theorem_concurrency_bisectors': 'LabM12TheoremViewer',
+  'm12_theorem_concurrency_medians': 'LabM12TheoremViewer',
+  'm12_theorem_homogeneous_second_degree': 'LabM12TheoremViewer',
+  'm12_theorem_circle_general': 'LabM12TheoremViewer',
+  'm12_theorem_circle_tangent': 'LabM12TheoremViewer',
+  'm12_theorem_parabola_standard': 'LabM12TheoremViewer',
+  'm12_theorem_parabola_tangent': 'LabM12TheoremViewer',
+  'm12_theorem_ellipse_standard': 'LabM12TheoremViewer',
+  'm12_theorem_hyperbola_standard': 'LabM12TheoremViewer',
 
   // Class 12 Mathematics
 
@@ -1307,6 +1407,8 @@ const moduleIdToComponent: Record<string, string> = {
   'e12-6': 'LabE12PhrasesClauses',
   'e12-7': 'LabE12SentenceStructure',
   'e12-8': 'LabE12VocabularyStylistics',
+
+
 };
 
 // Get component by module ID

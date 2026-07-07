@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import type { DragEvent } from 'react';
 import { ArrowLeft, Shapes, CircleDot } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'sets' | 'algebra'>('sets');
  
  // Sets State
@@ -68,10 +70,10 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
   >
    <ArrowLeft className="w-6 h-6" />
   </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1">Unit 5 & 6: Sets & Algebra Lab</h1>
+  <h1 className="text-lg md:text-xl font-bold flex-1">{t('lab.m7setsalgebra_unit_5_6_sets_algebra_lab')}</h1>
   <div className="flex space-x-2">
-   <button onClick={() => setActiveTab('sets')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'sets' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Sets</button>
-   <button onClick={() => setActiveTab('algebra')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'algebra' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>Algebra</button>
+   <button onClick={() => setActiveTab('sets')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'sets' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7setsalgebra_sets')}</button>
+   <button onClick={() => setActiveTab('algebra')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'algebra' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7setsalgebra_algebra')}</button>
   </div>
   </header>
 
@@ -82,17 +84,18 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
    <div className="space-y-6 animate-in fade-in duration-300">
     <h2 className="text-lg font-semibold flex items-center">
     <CircleDot className="w-5 h-5 mr-2 text-indigo-500" />
-    Venn Diagram Workspace
-    </h2>
-    <div className={`w-full bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-100 dark:border-indigo-800  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <p className="font-semibold mb-2">Given Sets:</p>
-    <p className="font-mono mb-1">Universal Set (U) = {'{1, 2, 3, 4, 5, 6, 7, 8}'}</p>
-    <p className="font-mono mb-1">A = {'{1, 2, 3, 4}'}</p>
-    <p className="font-mono mb-1">B = {'{3, 4, 5, 6}'}</p>
-    </div>
-    <p className="text-sm text-slate-600 dark:text-[#71717a]">Drag the elements into the correct regions on the Venn diagram.</p>
     
-    <div className={`w-full lg:min-h-[80px] p-4 bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
+                                 {t('lab.m7setsalgebra_venn_diagram_workspace')}
+                                 </h2>
+    <div className={`w-full bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-100 dark:border-indigo-800  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <p className="font-semibold mb-2">{t('lab.m7setsalgebra_given_sets')}</p>
+    <p className="font-mono mb-1">{t('lab.m7setsalgebra_universal_set_u')} {'{1, 2, 3, 4, 5, 6, 7, 8}'}</p>
+    <p className="font-mono mb-1">{t('lab.m7setsalgebra_a')} {'{1, 2, 3, 4}'}</p>
+    <p className="font-mono mb-1">{t('lab.m7setsalgebra_b')} {'{3, 4, 5, 6}'}</p>
+    </div>
+    <p className="text-sm text-slate-600 dark:text-[#71717a]">{t('lab.m7setsalgebra_drag_the_elements_into_the_cor')}</p>
+    
+    <div className={`w-full lg:min-h-[80px] p-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
      onDrop={(e) => handleDrop(e, 'unassigned')}
      onDragOver={handleDragOver}>
     {elements.filter(e => e.region === 'unassigned').map(el => (
@@ -102,7 +105,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
      </div>
     ))}
     {elements.filter(e => e.region === 'unassigned').length === 0 && (
-     <span className="text-slate-400 dark:text-[#71717a] italic text-sm self-center">All elements placed!</span>
+     <span className="text-slate-400 dark:text-[#71717a] italic text-sm self-center">{t('lab.m7setsalgebra_all_elements_placed')}</span>
     )}
     </div>
 
@@ -110,8 +113,9 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
     onClick={() => alert(checkSets() ? 'Perfect! You placed all elements correctly.' : 'Not quite. Check your placement and try again.')}
     className="w-full py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors shadow-sm dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-    Check Answer
-    </button>
+    
+                                 {t('lab.m7setsalgebra_check_answer')}
+                                 </button>
    </div>
    )}
 
@@ -119,21 +123,22 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
    <div className="space-y-6 animate-in fade-in duration-300">
     <h2 className="text-lg font-semibold flex items-center">
     <Shapes className="w-5 h-5 mr-2 text-amber-500" />
-    Algebraic Patterns
-    </h2>
-    <p className="text-sm text-slate-600 dark:text-[#71717a]">Observe the sequence of matchstick squares on the right.</p>
+    
+                                 {t('lab.m7setsalgebra_algebraic_patterns')}
+                                 </h2>
+    <p className="text-sm text-slate-600 dark:text-[#71717a]">{t('lab.m7setsalgebra_observe_the_sequence_of_matchs')}</p>
     
     <div>
-    <label className="block text-sm font-medium mb-1">Number of Squares (n): {term}</label>
+    <label className="block text-sm font-medium mb-1">{t('lab.m7setsalgebra_number_of_squares_n')} {term}</label>
     <input type="range" min="1" max="10" step="1" value={term} onChange={(e) => setTerm(Number(e.target.value))} className="w-full accent-amber-600" />
     </div>
 
     <div className="bg-amber-50 dark:bg-amber-900/30 p-5 rounded-lg border border-amber-100 dark:border-amber-800 mt-4">
-    <h3 className="font-semibold mb-2 text-amber-900 dark:text-amber-100">Deduce the Pattern</h3>
-    <p className="text-sm mb-4">Let <span className="font-mono font-bold">n</span> be the number of squares. Write an algebraic expression for the total number of matchsticks required.</p>
+    <h3 className="font-semibold mb-2 text-amber-900 dark:text-amber-100">{t('lab.m7setsalgebra_deduce_the_pattern')}</h3>
+    <p className="text-sm mb-4">{t('lab.m7setsalgebra_let')} <span className="font-mono font-bold">n</span>  {t('lab.m7setsalgebra_be_the_number_of_squares_write')}</p>
     <div className="flex space-x-2">
-     <input type="text" value={userPattern} onChange={(e) => setUserPattern(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g., 2n + 1" />
-     <button onClick={checkAlgebra} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors shadow-sm dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">Check</button>
+     <input type="text" value={userPattern} onChange={(e) => setUserPattern(e.target.value)} className="flex-1 min-w-0 px-3 py-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder={t('lab.m7setsalgebra_e_g_2n_1')} />
+     <button onClick={checkAlgebra} className="whitespace-nowrap flex-shrink-0 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition-colors shadow-sm dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">{t('lab.m7setsalgebra_check')}</button>
     </div>
     {algebraFeedback && <p className={`mt-3 text-sm font-medium ${algebraFeedback.includes('Correct') ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>{algebraFeedback}</p>}
     </div>
@@ -214,7 +219,8 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
    {activeTab === 'algebra' && (
    <div className="w-full h-full flex flex-col items-center justify-center space-y-12 animate-in zoom-in duration-300">
     <div className="text-3xl font-bold bg-slate-100 dark:bg-slate-700 px-6 py-2 rounded-full shadow-inner text-amber-600 dark:text-amber-400">
-    n = {term}
+    
+                                 {t('lab.m7setsalgebra_n')} {term}
     </div>
     <div className="flex justify-center items-center py-8">
     {Array.from({ length: term }).map((_, i) => (
@@ -222,11 +228,12 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
     ))}
     </div>
     <div className="text-xl">
-    Total Matchsticks = <span className="font-bold text-2xl text-amber-600 dark:text-amber-400">{term * 3 + 1}</span>
+    
+                                 {t('lab.m7setsalgebra_total_matchsticks')} <span className="font-bold text-2xl text-amber-600 dark:text-amber-400">{term * 3 + 1}</span>
     </div>
     <div className="text-sm text-slate-500 dark:text-[#71717a] max-w-sm text-center bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    💡 <strong>Hint:</strong> The first square requires 4 sticks. Each additional square shares one side with the previous square, so it only requires 3 more sticks!
-    </div>
+    💡 <strong>{t('lab.m7setsalgebra_hint')}</strong>  {t('lab.m7setsalgebra_the_first_square_requires_4_st')}
+                                 </div>
    </div>
    )}
 

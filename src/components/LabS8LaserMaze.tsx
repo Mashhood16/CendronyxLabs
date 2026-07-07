@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import {Zap } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8LaserMaze({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [mirrors, setMirrors] = useState([
  { id: 1, x: 100, y: 150, angle: 45, active: false },
  { id: 2, x: 250, y: 50, angle: 135, active: false },
@@ -30,7 +32,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 9.1: Tracing Mirror Reflections" subtitle="Navigate the laser through the maze" />
+  <LabHeader onExit={onExit} title={t('lab.s8lasermaze_act_9_1_tracing_mirror_reflect')} subtitle={t('lab.subtitle_navigate_laser_through')} />
 
   <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
   
@@ -124,14 +126,14 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
     {laserOn ? 'Laser ON' : 'Laser OFF'}
    </button>
 
-   <p className="text-slate-400 text-sm font-medium">Click the blue mirrors to rotate them and guide the beam to the green targets.</p>
+   <p className="text-slate-400 text-sm font-medium">{t('lab.s8lasermaze_click_the_blue_mirrors_to_rota')}</p>
    </div>
 
    {/* Success message */}
    {laserOn && isSolved && (
    <div className="absolute top-6 px-6 py-4 bg-emerald-500/90 backdrop-blur border border-emerald-400 text-white rounded-xl shadow-2xl animate-bounce z-50 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    <h3 className="font-bold text-xl mb-1 text-center">Maze Solved!</h3>
-    <p className="text-sm font-medium">Light reflects off mirrors according to the law of reflection.</p>
+    <h3 className="font-bold text-xl mb-1 text-center">{t('lab.s8lasermaze_maze_solved')}</h3>
+    <p className="text-sm font-medium">{t('lab.s8lasermaze_light_reflects_off_mirrors_acc')}</p>
    </div>
    )}
 

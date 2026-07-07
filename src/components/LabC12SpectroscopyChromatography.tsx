@@ -4,8 +4,10 @@ import LabHeader from './LabHeader';
 import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
+import { useTranslate } from "../i18n";
 
 export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const config = DIFFICULTY_CONFIGS['deep-dive'];
  const [sample, setSample] = useState<'Ethanol' | 'Acetone'>('Ethanol');
@@ -85,7 +87,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
  };
 
  return (
-  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">   <LabHeader onExit={onExit} title="Analytical Chemistry: Spectrometry & Chromatography" />
+  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">   <LabHeader onExit={onExit} title={t('lab.c12spectroscopychromatography_analytical_chemistry_spectrome')} />
 
   <div className="px-4 pt-2">
    
@@ -101,19 +103,21 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c12spectroscopychromatography_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c12spectroscopychromatography_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
     {/* Theory */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
       <BookOpen size={20} className="text-yellow-600" />
-      Analytical Theory {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
+      
+                           {t('lab.c12spectroscopychromatography_analytical_theory')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
      </h2>
 
      {config.showDerivations && (
@@ -146,34 +150,35 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
 
      
      <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">IR Spectroscopy</h3>
-      <p>Identifies functional groups. O-H bonds show a broad peak ~3300 cm⁻¹. C=O bonds show a sharp, strong peak ~1715 cm⁻¹. C-H bonds show sharp peaks ~2900 cm⁻¹.</p>
+      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.c12spectroscopychromatography_ir_spectroscopy')}</h3>
+      <p>{t('lab.c12spectroscopychromatography_identifies_functional_groups_o')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">1H NMR</h3>
-      <p>Identifies hydrogen environments. Splitting (n+1 rule) indicates neighboring protons. Chemical shift (ppm) indicates shielding (e.g., closer to O is more deshielded/higher ppm).</p>
+      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_1h_nmr')}</h3>
+      <p>{t('lab.c12spectroscopychromatography_identifies_hydrogen_environmen')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">Mass Spectrometry (MS)</h3>
-      <p>Determines molecular weight (M+ peak) and structure via fragmentation. The base peak (tallest) represents the most stable fragment ion.</p>
+      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_mass_spectrometry_ms')}</h3>
+      <p>{t('lab.c12spectroscopychromatography_determines_molecular_weight_m_')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">Thin Layer Chromatography (TLC)</h3>
-      <p>Separates compounds by polarity. A polar stationary phase (silica) holds back polar compounds. Using a more polar solvent increases the Rf (Retention factor) of all compounds.</p>
+      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_thin_layer_chromatography_tlc')}</h3>
+      <p>{t('lab.c12spectroscopychromatography_separates_compounds_by_polarit')}</p>
      </div>
     </div>
 
     {/* Simulation */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center justify-between mb-2">
       <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
        <Activity size={20} className="text-indigo-600" />
-       Instrument Panel
-      </h2>
+       
+                                {t('lab.c12spectroscopychromatography_instrument_panel')}
+                               </h2>
       <select 
        value={sample} 
        onChange={(e) => {setSample(e.target.value as any); resetTLC();}}
        className={`bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm rounded p-1 font-medium dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}
       >
-       <option value="Ethanol">Sample A (Unknown)</option>
-       <option value="Acetone">Sample B (Unknown)</option>
+       <option value="Ethanol">{t('lab.c12spectroscopychromatography_sample_a_unknown')}</option>
+       <option value="Acetone">{t('lab.c12spectroscopychromatography_sample_b_unknown')}</option>
       </select>
      </div>
 
@@ -193,16 +198,16 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
       {tab === 'IR' && (
        <svg viewBox="0 0 350 150" className="w-full h-full">
         <line x1="0" y1="10" x2="350" y2="10" stroke="#cbd5e1" strokeDasharray="2" />
-        <text x="5" y="140" fontSize="10" fill="#94a3b8">4000 cm⁻¹</text>
-        <text x="310" y="140" fontSize="10" fill="#94a3b8">500 cm⁻¹</text>
+        <text x="5" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_4000_cm')}</text>
+        <text x="310" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_500_cm')}</text>
         <path d={sample === 'Ethanol' ? ethanolIR : acetoneIR} fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinejoin="round" />
        </svg>
       )}
       {tab === 'NMR' && (
        <svg viewBox="0 0 350 150" className="w-full h-full">
         <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
-        <text x="5" y="145" fontSize="10" fill="#94a3b8">10 ppm</text>
-        <text x="330" y="145" fontSize="10" fill="#94a3b8">0 ppm</text>
+        <text x="5" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_10_ppm')}</text>
+        <text x="330" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_0_ppm')}</text>
         {nmrPeaks[sample].map((peak, i) => (
          <g key={i}>
           <line x1={peak.x} y1={130} x2={peak.x} y2={130 - peak.h} stroke="#0ea5e9" strokeWidth="2" />
@@ -215,7 +220,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
       {tab === 'MS' && (
        <svg viewBox="0 0 350 150" className="w-full h-full">
         <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
-        <text x="170" y="145" fontSize="10" fill="#94a3b8">m/z</text>
+        <text x="170" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_m_z')}</text>
         {msPeaks[sample].map((peak, i) => (
          <g key={i}>
           <line x1={peak.mz * 3.5} y1={130} x2={peak.mz * 3.5} y2={130 - peak.h} stroke="#ef4444" strokeWidth="3" />
@@ -227,7 +232,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
       {tab === 'TLC' && (
        <div className="w-full h-full flex items-center justify-around">
         <div className="flex flex-col items-center gap-2 w-1/2">
-         <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa]">Solvent Polarity</label>
+         <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa]">{t('lab.c12spectroscopychromatography_solvent_polarity')}</label>
          <input 
           type="range" min="0" max="100" 
           value={solventPolarity} 
@@ -236,7 +241,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
           className="w-full accent-indigo-500"
          />
          <div className="flex gap-2 w-full mt-2">
-          <button onClick={runTLC} disabled={isRunning} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><Play size={14} className="inline"/> Run</button>
+          <button onClick={runTLC} disabled={isRunning} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><Play size={14} className="inline"/>  {t('lab.c12spectroscopychromatography_run')}</button>
           <button onClick={resetTLC} className="px-2 py-1 bg-slate-300 dark:bg-[#121212] rounded text-xs hover:bg-slate-400 dark:bg-[#121212]"><RefreshCw size={14}/></button>
          </div>
         </div>
@@ -262,8 +267,9 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
     <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
       <Layers size={20} className="text-emerald-600" />
-      Structure Elucidation
-     </h2>
+      
+                           {t('lab.c12spectroscopychromatography_structure_elucidation')}
+                          </h2>
 
      {config.showResearchConnections && (
       <div className="mb-2">
@@ -276,27 +282,29 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
      <div className="flex-1 lg:overflow-y-auto pr-2 space-y-5">
       <div className="space-y-2">
        <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-        1. Based on the IR broad peak at 3300 cm⁻¹ and the MS base peak at m/z=31, identify Sample A. (Ethanol or Acetone?)
-       </label>
+        
+                                     {t('lab.c12spectroscopychromatography_1_based_on_the_ir_broad_peak_a')}
+                                    </label>
        <input 
         type="text" 
         value={q1} 
         onChange={(e) => setQ1(e.target.value)}
         className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
-        placeholder="Enter compound name"
+        placeholder={t('lab.c12spectroscopychromatography_enter_compound_name')}
        />
       </div>
 
       <div className="space-y-2">
        <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-        2. For Sample B, the 1H NMR shows a single peak (singlet). What is the m/z value of the base peak in its Mass Spectrum?
-       </label>
+        
+                                     {t('lab.c12spectroscopychromatography_2_for_sample_b_the_1h_nmr_show')}
+                                    </label>
        <input 
         type="number" 
         value={q2} 
         onChange={(e) => setQ2(e.target.value)}
         className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
-        placeholder="Enter m/z value"
+        placeholder={t('lab.c12spectroscopychromatography_enter_m_z_value')}
        />
       </div>
      </div>
@@ -306,12 +314,13 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
        onClick={checkAnswers}
        className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
       >
-       <CheckCircle size={18} /> Verify Results
-      </button>
+       <CheckCircle size={18} />  {t('lab.c12spectroscopychromatography_verify_results')}
+                               </button>
 
       {score !== null && (
        <div className={`mt-4 p-3 rounded-md text-center font-bold ${score === 2 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-        Score: {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review data and retry.'}
+        
+                                     {t('lab.c12spectroscopychromatography_score')} {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review data and retry.'}
        </div>
       )}
      </div>

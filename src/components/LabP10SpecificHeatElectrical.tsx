@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import {Play, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
+import MathText from './MathText';
 
 interface LabProps {
  onExit?: () => void;
@@ -27,7 +29,8 @@ const getBlockFill = (mat: string) => {
 };
 
 export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [material, setMaterial] = useState('Aluminum');
  const [mass, setMass] = useState(1.0);
@@ -140,7 +143,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Specific Heat Capacity" subtitle="Determine specific heat using the electrical method" />
+  <LabHeader onExit={onExit} title={t('lab.p10specificheatelectrical_specific_heat_capacity')} subtitle={t('lab.subtitle_determine_specific_heat_1')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -149,52 +152,53 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.p10specificheatelectrical_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10specificheatelectrical_lab')}</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
   
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border p-5 flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">Theory</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10specificheatelectrical_theory')}</h2>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    Specific heat capacity ($c$) is the amount of energy required to raise the temperature of 1 kg of a substance by 1°C.
+    <MathText>{t('lab.p10specificheatelectrical_specific_heat_capacity_c_is_th')}</MathText>
    </p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm text-center font-mono text-slate-800 dark:text-[#ffffff] font-bold mb-3 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-    c = ΔE / (m × ΔT)
+    <MathText>{"$c = \\Delta E / (m \\times \\Delta T)$"}</MathText>
    </div>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    In this experiment, electrical energy supplied is $E = V \times I \times t$. By recording Temperature and Energy, you can calculate the specific heat of the block.
+    <MathText>{t('lab.p10specificheatelectrical_in_this_experiment_electrical_')}</MathText>
    </p>
    </div>
 
    <div className="border-t pt-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">Setup Parameters</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.10specificheatelectrical_setupparameters')}</h2>
    
    <div className="space-y-5">
     <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Block Material</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10specificheatelectrical_blockmaterial')}</label>
     <select 
      className={`w-full p-2 border rounded-md bg-slate-50 dark:bg-[#121212] disabled:opacity-50 outline-none focus:border-blue-500 flex-col `}
      value={material}
      onChange={(e) => setMaterial(e.target.value)}
      disabled={time > 0}
     >
-     <option value="Aluminum">Aluminum (Al)</option>
-     <option value="Copper">Copper (Cu)</option>
-     <option value="Iron">Iron (Fe)</option>
-     <option value="Unknown">Unknown Alloy</option>
+     <option value="Aluminum">{t('lab.p10specificheatelectrical_aluminum_al')}</option>
+     <option value="Copper">{t('lab.p10specificheatelectrical_copper_cu')}</option>
+     <option value="Iron">{t('lab.p10specificheatelectrical_iron_fe')}</option>
+     <option value="Unknown">{t('lab.10specificheatelectrical_unknownalloy')}</option>
     </select>
     </div>
 
     <div>
     <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Block Mass</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.10specificheatelectrical_blockmass')}</label>
      <span className="text-sm text-blue-600 font-bold">{mass.toFixed(2)} kg</span>
     </div>
     <input 
@@ -207,7 +211,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
 
     <div>
     <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Power Supply Voltage</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.10specificheatelectrical_powersupplyvoltage')}</label>
      <span className="text-sm text-blue-600 font-bold">{voltage.toFixed(1)} V</span>
     </div>
     <input 
@@ -219,15 +223,15 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     </div>
 
     <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">Insulation Level</label>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.10specificheatelectrical_insulationlevel')}</label>
     <select 
      className={`w-full p-2 border rounded-md bg-slate-50 dark:bg-[#121212] disabled:opacity-50 outline-none focus:border-blue-500 flex-col `}
      value={insulation}
      onChange={(e) => setInsulation(e.target.value)}
      disabled={time > 0}
     >
-     <option value="Foam">Foam (Low Heat Loss)</option>
-     <option value="None">None (High Heat Loss)</option>
+     <option value="Foam">{t('lab.p10specificheatelectrical_foam_low_heat_loss')}</option>
+     <option value="None">{t('lab.p10specificheatelectrical_none_high_heat_loss')}</option>
     </select>
     </div>
    </div>
@@ -238,15 +242,15 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     onClick={() => setIsHeating(!isHeating)}
     className={`w-full py-3 rounded-lg font-bold flex justify-center items-center gap-2 text-white transition-colors ${ isHeating ? 'bg-amber-500 hover:bg-amber-600' : 'bg-blue-600 hover:bg-blue-700' }`}
    >
-    {isHeating ? <><Pause className="w-5 h-5"/> Pause Heating</> : <><Play className="w-5 h-5"/> {time > 0 ? 'Resume Heating' : 'Start Heating'}</>}
+    {isHeating ? <><Pause className="w-5 h-5"/>{t('lab.10specificheatelectrical_pauseheating')}</> : <><Play className="w-5 h-5"/> {time > 0 ? 'Resume Heating' : 'Start Heating'}</>}
    </button>
    </div>
   </div>
 
   {/* Center Column: Simulation */}
   <div className={`w-full bg-[#000000] dark:!bg-[#121212] rounded-2xl shadow-sm border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex flex-col relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-lg font-bold text-white mb-2 z-10">Live Simulation</h2>
-   <p className="text-slate-400 text-xs mb-4 z-10">Watch the thermometer and instruments as the block heats up.</p>
+   <h2 className="text-lg font-bold text-white mb-2 z-10">{t('lab.10specificheatelectrical_livesimulation')}</h2>
+   <p className="text-slate-400 text-xs mb-4 z-10">{t('lab.10specificheatelectrical_watchthethermometerandinstrumentsas')}</p>
    
    <div className="flex-1 flex items-center justify-center relative">
    <svg viewBox="0 0 500 400" className="w-full max-w-md">
@@ -285,18 +289,18 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     <text x="380" y="92" fill="#60a5fa" fontSize="20" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
     {displayVals.I.toFixed(2)}A
     </text>
-    <text x="380" y="75" fill="#94a3b8" fontSize="10" fontFamily="sans-serif" textAnchor="middle">AMMETER</text>
+    <text x="380" y="75" fill="#94a3b8" fontSize="10" fontFamily="sans-serif" textAnchor="middle">{t('lab.10specificheatelectrical_ammeter')}</text>
 
     {/* Voltmeter box */}
     <rect x="70" y="60" width="100" height="50" fill="#0f172a" rx="4" stroke="#475569" strokeWidth="2" />
     <text x="120" y="92" fill="#4ade80" fontSize="20" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
     {displayVals.V.toFixed(2)}V
     </text>
-    <text x="120" y="75" fill="#94a3b8" fontSize="10" fontFamily="sans-serif" textAnchor="middle">VOLTMETER</text>
+    <text x="120" y="75" fill="#94a3b8" fontSize="10" fontFamily="sans-serif" textAnchor="middle">{t('lab.10specificheatelectrical_voltmeter')}</text>
 
     {/* Power Supply Box */}
     <rect x="210" y="20" width="80" height="60" fill="#0f172a" rx="4" stroke="#334155" strokeWidth="3" />
-    <text x="250" y="45" fill="#f8fafc" fontSize="14" fontFamily="sans-serif" textAnchor="middle" fontWeight="bold">SUPPLY</text>
+    <text x="250" y="45" fill="#f8fafc" fontSize="14" fontFamily="sans-serif" textAnchor="middle" fontWeight="bold">{t('lab.10specificheatelectrical_supply')}</text>
     <circle cx="230" cy="65" r="4" fill="#ef4444" />
     <circle cx="270" cy="65" r="4" fill="#3b82f6" />
 
@@ -333,7 +337,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
    </div>
 
    <div className="absolute bottom-6 left-6 bg-black/60 px-4 py-2 rounded-lg border border-white/10 backdrop-blur-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Stopwatch</div>
+   <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">{t('lab.10specificheatelectrical_stopwatch')}</div>
    <div className="text-white font-mono text-2xl font-bold">{time} s</div>
    </div>
   </div>
@@ -343,23 +347,24 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
    
    {/* Data Table Section */}
    <div className="p-4 border-b bg-slate-50 dark:bg-[#121212] flex justify-between items-center shrink-0">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Logging</h2>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10specificheatelectrical_datalogging')}</h2>
    <button 
     onClick={recordPoint}
     disabled={time === 0 && recordedData.length === 0}
     className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
    >
-    Record Point
-   </button>
+    
+                             {t('lab.p10specificheatelectrical_record_point')}
+                            </button>
    </div>
    
    <div className="flex-1 lg:overflow-y-auto p-0 bg-slate-50 dark:bg-[#121212]">
    <table className="w-full text-sm text-left">
     <thead className="text-xs text-slate-500 dark:text-[#71717a] uppercase bg-slate-100 dark:bg-[#121212] sticky top-0">
     <tr>
-     <th className="px-4 py-2">Time (s)</th>
-     <th className="px-4 py-2">Energy (J)</th>
-     <th className="px-4 py-2">Temp (°C)</th>
+     <th className="px-4 py-2">{t('lab.p10specificheatelectrical_time_s')}</th>
+     <th className="px-4 py-2">{t('lab.p10specificheatelectrical_energy_j')}</th>
+     <th className="px-4 py-2">{t('lab.p10specificheatelectrical_temp_c')}</th>
     </tr>
     </thead>
     <tbody>
@@ -372,7 +377,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     ))}
     {recordedData.length === 0 && (
      <tr>
-     <td colSpan={3} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">No data recorded. Start heating and click "Record Point".</td>
+     <td colSpan={3} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.10specificheatelectrical_nodatarecordedstartheatingandclickr')}</td>
      </tr>
     )}
     </tbody>
@@ -387,8 +392,8 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     <line x1="30" y1="10" x2="30" y2="130" stroke="#94a3b8" strokeWidth="2" />
     
     <text x="20" y="140" fontSize="8" fill="#64748b">0</text>
-    <text x="250" y="145" fontSize="8" fill="#64748b">Energy (J)</text>
-    <text x="5" y="20" fontSize="8" fill="#64748b" transform="rotate(-90 5,20)">Temp (°C)</text>
+    <text x="250" y="145" fontSize="8" fill="#64748b">{t('lab.p10specificheatelectrical_energy_j')}</text>
+    <text x="5" y="20" fontSize="8" fill="#64748b" transform="rotate(-90 5,20)">{t('lab.p10specificheatelectrical_temp_c')}</text>
     
     {recordedData.map((d, i) => {
      const cx = 30 + (d.energy / maxEnergy) * 250;
@@ -407,29 +412,30 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
     )}
     </svg>
    ) : (
-    <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">Graph will appear here</div>
+    <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">{t('lab.10specificheatelectrical_graphwillappearhere')}</div>
    )}
    </div>
 
    {/* Assessment Section */}
    <div className="p-4 bg-slate-100 dark:bg-[#121212] shrink-0">
-   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-1">Analysis</h3>
-   <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">Hint: Pick two data points to find ΔE and ΔT. Then use $c = \Delta E / (m \times \Delta T)$.</p>
+   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-1">{t('lab.10specificheatelectrical_analysis')}</h3>
+   <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3"><MathText>{t('lab.p10specificheatelectrical_hint_pick_two_data_points_to_f')}</MathText></p>
    <div className="flex gap-2 mb-2">
     <input 
     type="number" 
     value={userAnswer}
     onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder="Specific Heat (c)"
+    placeholder={t('lab.p10specificheatelectrical_t_lab_10specificheatelectrical')}
     className="flex-1 px-3 py-2 text-sm border rounded-md outline-none focus:border-blue-500"
     />
-    <span className="self-center text-xs text-slate-500 dark:text-[#71717a] font-medium w-12">J/kg°C</span>
+    <span className="self-center text-xs text-slate-500 dark:text-[#71717a] font-medium w-12">{t('lab.10specificheatelectrical_jkgc')}</span>
     <button 
     onClick={checkAnswer}
     className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-md transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
-    Check
-    </button>
+    
+                                 {t('lab.p10specificheatelectrical_check')}
+                                 </button>
    </div>
    {feedback.message && (
     <div className={`p-2 rounded text-xs font-medium ${feedback.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>

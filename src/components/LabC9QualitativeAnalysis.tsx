@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, BookOpen, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 type BottleId = 'zn' | 'caco3' | 'h2o2' | 'mno2' | 'hcl' | 'cu' | 'na' | 'k';
 
@@ -31,6 +32,7 @@ interface Props {
 }
 
 export default function LabC9QualitativeAnalysis({ onExit }: Props) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeTab, setActiveTab] = useState<'gas' | 'flame'>('gas');
@@ -137,7 +139,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grade 9 Chemistry: Qualitative Analysis" subtitle="Gas Tests & Flame Tests" variant="emerald" />
+  <LabHeader onExit={onExit} title={t('lab.c9qualitativeanalysis_grade_9_chemistry_qualitative_')} subtitle={t('lab.subtitle_tests_flame_tests')} variant="emerald" />
 
   
   {/* Mobile Tab Navigation */}
@@ -146,70 +148,75 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c9qualitativeanalysis_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c9qualitativeanalysis_lab')}</button>
   </div>
   <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
   {/* Column 1: Theory */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-emerald-800">
    <BookOpen size={24} />
-   <h2 className="text-xl font-semibold">Theory & Context</h2>
+   <h2 className="text-xl font-semibold">{t('lab.c9qualitativeanalysis_theory_context')}</h2>
    </div>
    
    <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
    <p>
-    Qualitative analysis is used to identify unknown ions or gases in a substance, rather than measuring how much is present.
-   </p>
+    
+                             {t('lab.c9qualitativeanalysis_qualitative_analysis_is_used_t')}
+                            </p>
    
    <div className={`bg-emerald-50 p-4 rounded-lg border border-emerald-100 flex-col `}>
-    <h3 className="font-bold text-emerald-900 mb-2">1. Testing for Gases</h3>
+    <h3 className="font-bold text-emerald-900 mb-2">{t('lab.c9qualitativeanalysis_1_testing_for_gases')}</h3>
     <ul className="list-disc pl-5 text-sm space-y-2">
-    <li><strong>Hydrogen (H₂):</strong> Ignites with a squeaky "pop" sound when exposed to a lit splint.</li>
-    <li><strong>Oxygen (O₂):</strong> Relights a glowing splint due to supporting combustion.</li>
-    <li><strong>Carbon Dioxide (CO₂):</strong> Reacts with limewater (calcium hydroxide solution) to form a cloudy white precipitate of calcium carbonate.</li>
+    <li><strong>{t('lab.c9qualitativeanalysis_hydrogen_h')}</strong>  {t('lab.c9qualitativeanalysis_ignites_with_a_squeaky_pop_sou')}</li>
+    <li><strong>{t('lab.c9qualitativeanalysis_oxygen_o')}</strong>  {t('lab.c9qualitativeanalysis_relights_a_glowing_splint_due_')}</li>
+    <li><strong>{t('lab.c9qualitativeanalysis_carbon_dioxide_co')}</strong>  {t('lab.c9qualitativeanalysis_reacts_with_limewater_calcium_')}</li>
     </ul>
    </div>
 
    <div className={`bg-orange-50 p-4 rounded-lg border border-orange-100 flex-col `}>
-    <h3 className="font-bold text-orange-900 mb-2">2. Flame Tests</h3>
+    <h3 className="font-bold text-orange-900 mb-2">{t('lab.c9qualitativeanalysis_2_flame_tests')}</h3>
     <p className="text-sm mb-2">
-    Metal ions emit specific wavelengths of light when heated, producing characteristic flame colors:
-    </p>
+    
+                                 {t('lab.c9qualitativeanalysis_metal_ions_emit_specific_wavel')}
+                                 </p>
     <ul className="list-disc pl-5 text-sm space-y-1">
-    <li><span className="font-semibold text-yellow-600">Sodium (Na⁺):</span> Yellow / Orange</li>
-    <li><span className="font-semibold text-emerald-600">Copper (Cu²⁺):</span> Blue-Green</li>
-    <li><span className="font-semibold text-indigo-600">Potassium (K⁺):</span> Lilac / Pale Purple</li>
+    <li><span className="font-semibold text-yellow-600">{t('lab.c9qualitativeanalysis_sodium_na')}</span>  {t('lab.c9qualitativeanalysis_yellow_orange')}</li>
+    <li><span className="font-semibold text-emerald-600">{t('lab.c9qualitativeanalysis_copper_cu')}</span>  {t('lab.c9qualitativeanalysis_blue_green')}</li>
+    <li><span className="font-semibold text-indigo-600">{t('lab.c9qualitativeanalysis_potassium_k')}</span>  {t('lab.c9qualitativeanalysis_lilac_pale_purple')}</li>
     </ul>
    </div>
    </div>
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col lg:h-[600px] lg:h-auto rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col lg:h-[600px] lg:h-auto rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex gap-4 mb-4 shrink-0">
    <button 
     className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'gas' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setActiveTab('gas')}
    >
-    Gas Tests
-   </button>
+    
+                             {t('lab.c9qualitativeanalysis_gas_tests')}
+                            </button>
    <button 
     className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'flame' ? 'bg-orange-500 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
     onClick={() => setActiveTab('flame')}
    >
-    Flame Tests
-   </button>
+    
+                             {t('lab.c9qualitativeanalysis_flame_tests')}
+                            </button>
    </div>
 
    <div className={`flex-1 relative flex-col bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {activeTab === 'gas' && (
     <>
-    <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">Chemical Shelf</p>
+    <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">{t('lab.c9qualitativeanalysis_chemical_shelf')}</p>
     <div className="flex flex-wrap justify-center gap-3 mb-6">
      {GAS_BOTTLES.map(b => (
      <button 
@@ -233,7 +240,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
      {reactionEquation ? (
      <span className="text-sm md:text-base font-bold tracking-wider">{reactionEquation}</span>
      ) : (
-     <span className="text-slate-500 dark:text-[#71717a] italic text-sm">Mix chemicals to build an equation...</span>
+     <span className="text-slate-500 dark:text-[#71717a] italic text-sm">{t('lab.c9qualitativeanalysis_mix_chemicals_to_build_an_equa')}</span>
      )}
     </div>
 
@@ -268,9 +275,9 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
      
      {/* Test Tools */}
      <div className="flex flex-wrap justify-center gap-2 mt-4">
-     <button onClick={() => performGasTest('lit_splint')} className="px-3 py-1.5 bg-red-100 text-red-800 text-xs font-semibold rounded-md border border-red-200 hover:bg-red-200 transition-colors">🔥 Lit Splint</button>
-     <button onClick={() => performGasTest('glowing_splint')} className="px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-semibold rounded-md border border-orange-200 hover:bg-orange-200 transition-colors">✨ Glowing Splint</button>
-     <button onClick={() => performGasTest('limewater')} className="px-3 py-1.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-md border border-blue-200 hover:bg-blue-200 transition-colors dark:text-[#ffffff]">💧 Limewater</button>
+     <button onClick={() => performGasTest('lit_splint')} className="px-3 py-1.5 bg-red-100 text-red-800 text-xs font-semibold rounded-md border border-red-200 hover:bg-red-200 transition-colors">{t('lab.c9qualitativeanalysis_lit_splint')}</button>
+     <button onClick={() => performGasTest('glowing_splint')} className="px-3 py-1.5 bg-orange-100 text-orange-800 text-xs font-semibold rounded-md border border-orange-200 hover:bg-orange-200 transition-colors">{t('lab.c9qualitativeanalysis_glowing_splint')}</button>
+     <button onClick={() => performGasTest('limewater')} className="px-3 py-1.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-md border border-blue-200 hover:bg-blue-200 transition-colors dark:text-[#ffffff]">{t('lab.c9qualitativeanalysis_limewater')}</button>
      </div>
 
      {testResult && (
@@ -283,15 +290,15 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
      className="flex items-center gap-2 px-4 py-2 mt-4 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors text-sm dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
      onClick={resetFlask}
      >
-     <RotateCcw size={16} /> Empty Flask
-     </button>
+     <RotateCcw size={16} />  {t('lab.c9qualitativeanalysis_empty_flask')}
+                                          </button>
     </div>
     </>
    )}
 
    {activeTab === 'flame' && (
     <div className="w-full h-full flex flex-col items-center p-2">
-    <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">Salt Samples</p>
+    <p className="text-center text-sm font-semibold text-slate-500 dark:text-[#71717a] mb-4 uppercase tracking-wider">{t('lab.c9qualitativeanalysis_salt_samples')}</p>
     <div className="flex justify-center gap-6 mb-8">
      {FLAME_BOTTLES.map(b => (
      <button 
@@ -309,7 +316,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
     </div>
     
     <div className="flex-1 flex flex-col items-center justify-center relative w-full">
-     <p className="text-sm text-slate-500 dark:text-[#71717a] italic mb-4">Click the flame to insert the wire loop</p>
+     <p className="text-sm text-slate-500 dark:text-[#71717a] italic mb-4">{t('lab.c9qualitativeanalysis_click_the_flame_to_insert_the_')}</p>
      {/* Bunsen Burner SVG */}
      <svg viewBox="0 0 100 150" className="w-24 h-36 cursor-pointer hover:scale-105 transition-transform" onClick={putInFlame}>
       {/* burner base */}
@@ -338,8 +345,9 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
      onClick={cleanWire} 
      className="mt-6 px-5 py-2 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-semibold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors text-sm"
     >
-     Clean Wire
-    </button>
+     
+                                      {t('lab.c9qualitativeanalysis_clean_wire')}
+                                     </button>
     </div>
    )}
    </div>
@@ -349,37 +357,40 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
   <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-emerald-800">
    <CheckCircle size={24} />
-   <h2 className="text-xl font-semibold">Assessment</h2>
+   <h2 className="text-xl font-semibold">{t('lab.c9qualitativeanalysis_assessment')}</h2>
    </div>
 
    <div className="space-y-6">
    <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">Unknown Sample Analysis</h3>
+    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c9qualitativeanalysis_unknown_sample_analysis')}</h3>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    You are given an unknown solid. When reacted with Hydrochloric Acid (HCl), it bubbles rapidly. The gas turns limewater cloudy. When the solid undergoes a flame test, a blue-green flame is observed.
-    </p>
+    
+                                 {t('lab.c9qualitativeanalysis_you_are_given_an_unknown_solid')}
+                                 </p>
     
     <div className="space-y-4">
     <div>
      <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-     1. What gas was produced?
-     </label>
+     
+                                          {t('lab.c9qualitativeanalysis_1_what_gas_was_produced')}
+                                          </label>
      <input 
      type="text"
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-     placeholder="Enter gas name or formula"
+     placeholder={t('lab.c9qualitativeanalysis_enter_gas_name_or_formula')}
      value={gasAnswer}
      onChange={e => setGasAnswer(e.target.value)}
      />
     </div>
     <div>
      <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-     2. What metal ion is present?
-     </label>
+     
+                                          {t('lab.c9qualitativeanalysis_2_what_metal_ion_is_present')}
+                                          </label>
      <input 
      type="text"
      className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-     placeholder="Enter metal name or formula"
+     placeholder={t('lab.c9qualitativeanalysis_enter_metal_name_or_formula')}
      value={flameAnswer}
      onChange={e => setFlameAnswer(e.target.value)}
      />
@@ -389,8 +400,9 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
      onClick={checkAnswers}
      className="w-full py-2 bg-emerald-600 text-white font-semibold rounded-md hover:bg-emerald-700 transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
-     Verify Findings
-    </button>
+     
+                                      {t('lab.c9qualitativeanalysis_verify_findings')}
+                                     </button>
     </div>
     
     {feedback && (

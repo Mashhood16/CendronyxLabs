@@ -1,8 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import MathText from './MathText';
+import { useTranslate } from "../i18n";
 
 export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<'concurrency' | 'landscaping'>('concurrency');
 
@@ -74,21 +77,23 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Lab M12.2: Analytical Geometry" />
+  <LabHeader onExit={onExit} title={t('lab.m12analyticalgeometry_lab_m12_2_analytical_geometry')} />
   <div className="bg-emerald-900 text-white p-2 flex justify-end shrink-0">
   <div className="flex bg-emerald-800 rounded-lg p-1">
    <button
    onClick={() => setMode('concurrency')}
    className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'concurrency' ? 'bg-slate-50 dark:bg-[#121212] text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
    >
-   Line Concurrency
-   </button>
+   
+                        {t('lab.m12analyticalgeometry_line_concurrency')}
+                        </button>
    <button
    onClick={() => setMode('landscaping')}
    className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'landscaping' ? 'bg-slate-50 dark:bg-[#121212] text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
    >
-   Polygonal Landscaping
-   </button>
+   
+                        {t('lab.m12analyticalgeometry_polygonal_landscaping')}
+                        </button>
   </div>
   </div>
 
@@ -99,48 +104,49 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.m12analyticalgeometry_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.m12analyticalgeometry_lab')}</button>
   </div>
   <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
   {/* Theory Column */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-emerald-700 mb-2">
    <BookOpen className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Theoretical Context</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12analyticalgeometry_theoretical_context')}</h2>
    </div>
    
    {mode === 'concurrency' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p><strong>Concurrent Lines</strong> are three or more lines that intersect at a single common point.</p>
-    <p>In urban planning, multi-way intersections (like roundabouts) require the centerlines of incoming roads to be concurrent to avoid staggered junctions.</p>
+    <p><strong>{t('lab.m12analyticalgeometry_concurrent_lines')}</strong>  {t('lab.m12analyticalgeometry_are_three_or_more_lines_that_i')}</p>
+    <p>{t('lab.m12analyticalgeometry_in_urban_planning_multi_way_in')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono flex-col `}>
-    {"$$L_1: a_1 x + b_1 y + c_1 = 0$$"} <br/>
-    {"$$L_2: a_2 x + b_2 y + c_2 = 0$$"} <br/>
-    {"$$L_3: a_3 x + b_3 y + c_3 = 0$$"}
+    <MathText>{"$$L_1: a_1 x + b_1 y + c_1 = 0$$"}</MathText> <br/>
+    <MathText>{"$$L_2: a_2 x + b_2 y + c_2 = 0$$"}</MathText> <br/>
+    <MathText>{"$$L_3: a_3 x + b_3 y + c_3 = 0$$"}</MathText>
     </div>
-    <p>Condition for concurrency is that the lines share a common intersection coordinate (x, y).</p>
+    <p>{t('lab.m12analyticalgeometry_condition_for_concurrency_is_t')}</p>
    </div>
    )}
 
    {mode === 'landscaping' && (
    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-3">
-    <p>The <strong>Shoelace Formula</strong> (Surveyor's formula) is used to find the area of a polygon whose vertices are described by Cartesian coordinates in the plane.</p>
+    <p>{t('lab.m12analyticalgeometry_the')} <strong>{t('lab.m12analyticalgeometry_shoelace_formula')}</strong>  {t('lab.m12analyticalgeometry_surveyor_s_formula_is_used_to_')}</p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center overflow-x-auto font-mono text-xs flex-col `}>
-    {"$$A = \\frac{1}{2} |(x_1 y_2 + x_2 y_3 + ... + x_n y_1) - (y_1 x_2 + y_2 x_3 + ... + y_n x_1)|$$"}
+    <MathText>{"$$A = \\frac{1}{2} |(x_1 y_2 + x_2 y_3 + ... + x_n y_1) - (y_1 x_2 + y_2 x_3 + ... + y_n x_1)|$$"}</MathText>
     </div>
-    <p><strong>Applications:</strong> Calculating area for irregular land plots to estimate the cost of materials (soil, grass, paving).</p>
+    <p><strong>{t('lab.m12analyticalgeometry_applications')}</strong>  {t('lab.m12analyticalgeometry_calculating_area_for_irregular')}</p>
    </div>
    )}
   </div>
 
   {/* Visualizer Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 items-center justify-center relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">Live Visualization</h2>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 items-center justify-center relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] self-start absolute top-5 left-5 z-10">{t('lab.m12analyticalgeometry_live_visualization')}</h2>
    
    <svg viewBox="-30 -30 60 60" className={`w-full max-w-md aspect-square bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg shadow-inner mt-8 flex-col `}>
    <g transform="scale(1, -1)">
@@ -197,32 +203,32 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
   </div>
 
   {/* Assessment Column */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 text-emerald-700 mb-2 shrink-0">
    <Settings2 className="w-5 h-5" />
-   <h2 className="text-lg font-bold">Parameters & Assessment</h2>
+   <h2 className="text-lg font-bold">{t('lab.m12analyticalgeometry_parameters_assessment')}</h2>
    </div>
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] space-y-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Interactive Variables</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.m12analyticalgeometry_interactive_variables')}</h3>
    {mode === 'concurrency' && (
     <>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Line 3 Slope (m3): {m3.toFixed(1)}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12analyticalgeometry_line_3_slope_m3')} {m3.toFixed(1)}</label>
      <input type="range" min="-3" max="3" step="0.1" value={m3} onChange={e => setM3(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Line 3 Intercept (c3): {c3.toFixed(1)}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12analyticalgeometry_line_3_intercept_c3')} {c3.toFixed(1)}</label>
      <input type="range" min="-15" max="15" step="0.5" value={c3} onChange={e => setC3(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
     </>
    )}
    {mode === 'landscaping' && (
     <>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">Select a vertex on the map to edit.</p>
+    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.m12analyticalgeometry_select_a_vertex_on_the_map_to_')}</p>
     <div className="grid grid-cols-2 gap-4">
      <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Vertex {selectedVertex+1} X: {vertices[selectedVertex].x}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12analyticalgeometry_vertex')} {selectedVertex+1} X: {vertices[selectedVertex].x}</label>
      <input type="range" min="-25" max="25" step="1" value={vertices[selectedVertex].x} onChange={e => {
       const newV = [...vertices];
       newV[selectedVertex].x = Number(e.target.value);
@@ -230,7 +236,7 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
      }} className="w-full accent-emerald-600" />
      </div>
      <div>
-     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">Vertex {selectedVertex+1} Y: {vertices[selectedVertex].y}</label>
+     <label className="block text-sm text-slate-600 dark:text-[#a1a1aa] mb-1">{t('lab.m12analyticalgeometry_vertex')} {selectedVertex+1} Y: {vertices[selectedVertex].y}</label>
      <input type="range" min="-25" max="25" step="1" value={vertices[selectedVertex].y} onChange={e => {
       const newV = [...vertices];
       newV[selectedVertex].y = Number(e.target.value);
@@ -245,7 +251,7 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
    <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 flex-1 flex flex-col">
    <div className="flex items-center gap-2 text-emerald-800 mb-3 shrink-0">
     <Calculator className="w-5 h-5" />
-    <h3 className="font-semibold">Lab Computation Task</h3>
+    <h3 className="font-semibold">{t('lab.m12analyticalgeometry_lab_computation_task')}</h3>
    </div>
    
    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 flex-1">
@@ -258,28 +264,29 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
      type="number" 
      value={userAnswer}
      onChange={e => setUserAnswer(e.target.value)}
-     placeholder="Enter answer" 
+     placeholder={t('lab.m12analyticalgeometry_enter_answer')} 
      className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-medium transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
     >
-     Verify
-    </button>
+     
+                                      {t('lab.m12analyticalgeometry_verify')}
+                                     </button>
     </div>
 
     {feedback === "correct" && (
     <div className="flex items-center gap-2 text-green-700 bg-green-50 p-2 rounded border border-green-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
      <CheckCircle2 className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Excellent! Computation is accurate.</span>
+     <span className="font-medium text-sm">{t('lab.m12analyticalgeometry_excellent_computation_is_accur')}</span>
     </div>
     )}
 
     {feedback === "incorrect" && (
     <div className="flex items-center gap-2 text-red-700 bg-red-50 p-2 rounded border border-red-200">
      <XCircle className="w-5 h-5 shrink-0" />
-     <span className="font-medium text-sm">Incorrect. Double-check your calculations.</span>
+     <span className="font-medium text-sm">{t('lab.m12analyticalgeometry_incorrect_double_check_your_ca')}</span>
     </div>
     )}
 
@@ -288,8 +295,9 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
     className="flex items-center justify-center gap-2 w-full text-emerald-600 hover:bg-emerald-100 px-4 py-2 rounded-md transition-colors text-sm font-medium border border-transparent mt-2"
     >
     <RotateCcw className="w-4 h-4" />
-    Generate New Scenario
-    </button>
+    
+                                 {t('lab.m12analyticalgeometry_generate_new_scenario')}
+                                 </button>
    </div>
    </div>
   </div>

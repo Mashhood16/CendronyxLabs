@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [task, setTask] = useState<'task1' | 'task2'>('task1'); // task1: number check, task2: color logic
  const [inputVal, setInputVal] = useState('');
  const [outputLines, setOutputLines] = useState<string[]>(['System Ready...']);
@@ -76,7 +78,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
 
  return (
  <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
-  <LabHeader onExit={onExit} title="Act 3.1: Pseudocode Interpreter" variant="dark" />
+  <LabHeader onExit={onExit} title={t('lab.pseudocodeinterpreter_act_3_1_pseudocode_interpreter')} variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
@@ -87,14 +89,14 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
     <button 
     className={`flex-1 py-2 rounded text-xs font-bold transition-colors ${task === 'task1' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-white'}`}
     onClick={() => { setTask('task1'); clearCode(); }}
-    >Task 1: Num Check</button>
+    >{t('lab.pseudocodeinterpreter_task_1_num_check')}</button>
     <button 
     className={`flex-1 py-2 rounded text-xs font-bold transition-colors ${task === 'task2' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-white'}`}
     onClick={() => { setTask('task2'); clearCode(); }}
-    >Task 2: Color Logic</button>
+    >{t('lab.pseudocodeinterpreter_task_2_color_logic')}</button>
    </div>
 
-   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">Logic Blocks</h3>
+   <h3 className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest mb-4">{t('lab.pseudocodeinterpreter_logic_blocks')}</h3>
    
    <div className="flex flex-col gap-2 lg:overflow-y-auto">
     {(task === 'task1' ? blocksTask1 : blocksTask2).map((block, i) => (
@@ -113,8 +115,8 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
   <div className="flex-1 bg-[#1e1e1e] flex flex-col relative">
    
    <div className="h-10 bg-[#2d2d2d] flex items-center px-4 justify-between border-b border-black">
-    <span className="text-slate-400 font-mono text-sm">main.pseudo</span>
-    <button onClick={clearCode} className="text-xs text-slate-400 hover:text-red-400">Clear</button>
+    <span className="text-slate-400 font-mono text-sm">{t('lab.pseudocodeinterpreter_main_pseudo')}</span>
+    <button onClick={clearCode} className="text-xs text-slate-400 hover:text-red-400">{t('lab.pseudocodeinterpreter_clear')}</button>
    </div>
 
    <div className="flex-1 p-6 lg:overflow-y-auto font-mono text-slate-300 text-lg">
@@ -133,7 +135,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
   <div className="w-96 bg-black flex flex-col border-l border-[#1c1b1b] dark:border-[#1c1b1b] shadow-xl z-10 lg:overflow-y-auto">
    
    <div className="h-10 bg-[#2d2d2d] flex items-center px-4 border-b border-black">
-    <span className="text-slate-400 font-mono text-sm">Terminal</span>
+    <span className="text-slate-400 font-mono text-sm">{t('lab.pseudocodeinterpreter_terminal')}</span>
    </div>
 
    <div className="flex-1 p-4 font-mono text-sm flex flex-col">
@@ -147,7 +149,7 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
      value={inputVal}
      onChange={(e) => setInputVal(e.target.value)}
      className="bg-transparent text-white outline-none flex-1 border-b border-[#1c1b1b] dark:border-[#1c1b1b] focus:border-green-500"
-     placeholder="e.g. 15"
+     placeholder={t('lab.pseudocodeinterpreter_e_g_15')}
      />
     </div>
     </div>
@@ -165,8 +167,9 @@ export default function LabPseudocodeInterpreter({ onExit }: LabProps) {
     className="mt-4 w-full py-4 bg-green-600 hover:bg-green-500 text-white font-bold font-sans uppercase tracking-widest rounded-xl transition-colors active:scale-95 flex justify-center items-center gap-2 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
     >
     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" /></svg>
-    Execute Code
-    </button>
+    
+                             {t('lab.pseudocodeinterpreter_execute_code')}
+                             </button>
    </div>
 
   </div>

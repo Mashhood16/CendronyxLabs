@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
@@ -16,6 +17,7 @@ type Planet = {
 };
 
 export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [planets, setPlanets] = useState<Planet[]>([]);
  const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
 
@@ -43,14 +45,14 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-white min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 12: 3-D Solar System Model" />
+  <LabHeader onExit={onExit} title={t('lab.s6solarsystembuilder_unit_12_3_d_solar_system_model')} />
 
   <div className="flex-1 flex lg:overflow-hidden">
   
   {/* Sidebar */}
   <div className="w-80 bg-slate-100 dark:bg-[#121212] border-r border-slate-300 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col">
-   <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">Planet Inventory</h2>
-   <p className="text-xs text-slate-600 dark:text-[#71717a] mb-6">Click to add planets to your 3D model. They will automatically be placed at their relative distances from the Sun.</p>
+   <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.s6solarsystembuilder_planet_inventory')}</h2>
+   <p className="text-xs text-slate-600 dark:text-[#71717a] mb-6">{t('lab.s6solarsystembuilder_click_to_add_planets_to_your_3')}</p>
 
    <div className="space-y-3 flex-1">
    {predefinedPlanets.map(p => {
@@ -73,7 +75,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
    <div className="mt-4 pt-4 border-t border-[#1c1b1b] dark:border-[#1c1b1b] text-center">
     <div className="text-2xl font-bold text-slate-800 dark:text-[#a1a1aa]">{planets.length} / 8</div>
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Planets Added</div>
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider">{t('lab.s6solarsystembuilder_planets_added')}</div>
    </div>
   </div>
 
@@ -85,8 +87,9 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
    {/* The Sun */}
    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-yellow-500 rounded-full shadow-[0_0_80px_rgba(234,179,8,0.6)] z-10 flex items-center justify-center font-bold text-yellow-900 shadow-inner dark:bg-yellow-500 dark:hover:bg-yellow-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-yellow-500/40">
-   SUN
-   </div>
+   
+                        {t('lab.s6solarsystembuilder_sun')}
+                        </div>
 
    {/* Orbits and Planets */}
    {planets.map(planet => (
@@ -121,11 +124,12 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
      <div className={`w-4 h-4 rounded-full ${planets.find(p=>p.id===selectedPlanet)?.color}`}></div>
      {selectedPlanet}
      </h3>
-     <button onClick={() => setSelectedPlanet(null)} className="text-slate-400 hover:text-white">&times;</button>
+     <button onClick={() => setSelectedPlanet(null)} className="text-slate-400 hover:text-white">{t('lab.s6solarsystembuilder_times')}</button>
     </div>
     <p className="text-sm text-slate-300 leading-relaxed">
-     You have successfully added {selectedPlanet} to the physical model! In a real classroom, you would build this using painted styrofoam balls and wire. Notice its relative size and distance from the central star.
-    </p>
+     
+                                  {t('lab.s6solarsystembuilder_you_have_successfully_added')} {selectedPlanet}  {t('lab.s6solarsystembuilder_to_the_physical_model_in_a_rea')}
+                                 </p>
    </div>
    )}
 

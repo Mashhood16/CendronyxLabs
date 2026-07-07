@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Activity, Plus, LineChart, Target, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface DataPoint {
  id: number;
@@ -10,6 +11,7 @@ interface DataPoint {
 }
 
 export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [wavelength, setWavelength] = useState<number>(400);
  const [concentration, setConcentration] = useState<number>(5);
@@ -77,7 +79,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="emerald" title="Bioenergetics: Chlorophyll Spectrophotometry" />
+  <LabHeader onExit={onExit} variant="emerald" title={t('lab.b11bioenergetics_bioenergetics_chlorophyll_spec')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -86,33 +88,33 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.b11bioenergetics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.b11bioenergetics_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   {/* Left Column: Theory & Controls */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div>
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 mb-3">
-    <BookOpen className="text-emerald-600" /> Theory & Setup
-   </h2>
+    <BookOpen className="text-emerald-600" />  {t('lab.b11bioenergetics_theory_setup')}
+                            </h2>
    <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4 leading-relaxed">
-    Chlorophyll extracts absorb light at specific wavelengths. The spectrophotometer measures the 
-    amount of light absorbed. According to the <strong>Beer-Lambert Law</strong>, absorbance is directly proportional 
-    to the concentration of the solution.
-   </p>
+    
+                             {t('lab.b11bioenergetics_chlorophyll_extracts_absorb_li')} <strong>{t('lab.b11bioenergetics_beer_lambert_law')}</strong>{t('lab.b11bioenergetics_absorbance_is_directly_proport')}
+                            </p>
    </div>
 
    <div className={`space-y-5 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">Spectrophotometer Controls</h3>
+   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.b11bioenergetics_spectrophotometer_controls')}</h3>
    
    <div className="space-y-2">
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-    <span>Wavelength (λ)</span>
+    <span>{t('lab.b11bioenergetics_wavelength')}</span>
     <span className="text-emerald-600 font-mono">{wavelength} nm</span>
     </label>
     <input 
@@ -123,27 +125,29 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
    </div>
 
    <div className="space-y-2">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Sample Selection</label>
+    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.b11bioenergetics_sample_selection')}</label>
     <div className="flex gap-2">
     <button 
      onClick={() => setIsUnknown(false)}
      className={`flex-1 py-2 text-sm rounded border transition-colors ${!isUnknown ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
     >
-     Known Standard
-    </button>
+     
+                                      {t('lab.b11bioenergetics_known_standard')}
+                                     </button>
     <button 
      onClick={() => setIsUnknown(true)}
      className={`flex-1 py-2 text-sm rounded border transition-colors ${isUnknown ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]'}`}
     >
-     Unknown Sample
-    </button>
+     
+                                      {t('lab.b11bioenergetics_unknown_sample')}
+                                     </button>
     </div>
    </div>
 
    {!isUnknown && (
     <div className="space-y-2">
     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
-     <span>Known Concentration</span>
+     <span>{t('lab.b11bioenergetics_known_concentration')}</span>
      <span className="text-emerald-600 font-mono">{concentration} μM</span>
     </label>
     <input 
@@ -157,17 +161,17 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
   </div>
 
   {/* Middle Column: Simulation */}
-  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center justify-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute top-5 left-5 right-5 flex justify-between items-center">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <Activity className="text-emerald-600" /> Virtual Spectrometer
-   </h2>
-   <div className="bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] text-xs font-bold px-2 py-1 rounded">Interactive Model</div>
+    <Activity className="text-emerald-600" />  {t('lab.b11bioenergetics_virtual_spectrometer')}
+                            </h2>
+   <div className="bg-slate-100 dark:bg-[#121212] text-slate-500 dark:text-[#71717a] text-xs font-bold px-2 py-1 rounded">{t('lab.b11bioenergetics_interactive_model')}</div>
    </div>
    
    <div className={`w-full max-w-md aspect-video bg-[#000000] dark:bg-[#121212] rounded-xl overflow- relative shadow-inner mt-8 flex-col `}>
    {/* Light Source */}
-   <div className={`w-full absolute left-4 top-1/2 -translate-y-1/2 w-12 h-16 bg-white lg:bg-slate-700 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-sm border-2 border-slate-500 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex items-center justify-center flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full absolute left-4 top-1/2 -translate-y-1/2 w-12 h-16 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-sm border-2 border-slate-500 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex items-center justify-center flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     <div className="w-6 h-6 rounded-full bg-yellow-100 shadow-[0_0_15px_rgba(255,255,255,0.8)]" />
    </div>
 
@@ -200,12 +204,12 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
 
    <div className="mt-8 grid grid-cols-2 gap-6 w-full max-w-md">
    <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] text-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">Transmittance</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">{t('lab.b11bioenergetics_transmittance')}</p>
     <p className="text-3xl font-mono text-slate-800 dark:text-[#ffffff] mt-1">{(transmittance * 100).toFixed(1)}%</p>
    </div>
    <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] text-center relative overflow- flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500" />
-    <p className="text-xs text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">Absorbance (A)</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider">{t('lab.b11bioenergetics_absorbance_a')}</p>
     <p className="text-3xl font-mono text-emerald-700 mt-1">{absorbance.toFixed(3)}</p>
    </div>
    </div>
@@ -215,29 +219,30 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex justify-between items-center">
    <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <LineChart className="text-emerald-600" /> Data Analysis
-   </h2>
+    <LineChart className="text-emerald-600" />  {t('lab.b11bioenergetics_data_analysis')}
+                            </h2>
    <button 
     onClick={handleRecord}
     className="bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-emerald-200 flex items-center gap-1 transition-colors"
    >
-    <Plus size={16} /> Record Point
-   </button>
+    <Plus size={16} />  {t('lab.b11bioenergetics_record_point')}
+                            </button>
    </div>
 
    <div className="h-48 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg relative overflow-hidden flex flex-col justify-end pb-6 pl-8 pr-4">
    {data.length === 0 ? (
     <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">
-    No data recorded yet
-    </div>
+    
+                                 {t('lab.b11bioenergetics_no_data_recorded_yet')}
+                                 </div>
    ) : (
     <div className="w-full h-full relative">
     <svg viewBox="0 0 300 150" className="w-full h-full absolute inset-0 overflow-visible">
      {/* Axes */}
      <line x1="0" y1="150" x2="300" y2="150" stroke="#cbd5e1" strokeWidth="2" />
      <line x1="0" y1="0" x2="0" y2="150" stroke="#cbd5e1" strokeWidth="2" />
-     <text x="150" y="170" fontSize="10" textAnchor="middle" fill="#64748b">Wavelength (nm)</text>
-     <text x="-75" y="-15" fontSize="10" textAnchor="middle" fill="#64748b" transform="rotate(-90)">Absorbance</text>
+     <text x="150" y="170" fontSize="10" textAnchor="middle" fill="#64748b">{t('lab.b11bioenergetics_wavelength_nm')}</text>
+     <text x="-75" y="-15" fontSize="10" textAnchor="middle" fill="#64748b" transform="rotate(-90)">{t('lab.b11bioenergetics_absorbance')}</text>
      
      {data.map(d => (
      <circle 
@@ -255,15 +260,16 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
 
    <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-1 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] flex items-center gap-2 mb-3">
-    <Target size={18} /> Assessment
-   </h3>
+    <Target size={18} />  {t('lab.b11bioenergetics_assessment')}
+                            </h3>
    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-    Using the Beer-Lambert Law and your recorded data, determine the concentration of the unknown sample.
-   </p>
+    
+                             {t('lab.b11bioenergetics_using_the_beer_lambert_law_and')}
+                            </p>
    <div className="flex gap-2 mb-4">
     <input 
     type="number" step="0.1"
-    placeholder="Calculated μM" 
+    placeholder={t('lab.b11bioenergetics_calculated_m')} 
     value={answer} onChange={(e) => setAnswer(e.target.value)}
     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm focus:outline-emerald-500"
     />
@@ -271,8 +277,9 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
     onClick={checkAnswer}
     className="bg-[#121212] dark:bg-[#121212] text-white px-4 py-2 rounded text-sm font-semibold hover:bg-slate-700 dark:bg-[#121212] transition-colors"
     >
-    Check
-    </button>
+    
+                                 {t('lab.b11bioenergetics_check')}
+                                 </button>
    </div>
    {feedback && (
     <div className={`text-sm p-3 rounded-md flex items-start gap-2 ${feedback.includes('Correct') ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>

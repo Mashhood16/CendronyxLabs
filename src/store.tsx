@@ -189,15 +189,34 @@ export const useTheme = () => {
   return context;
 };
 
+// --- Lab Context (for hiding calculator, English lab mode, and module ID) ---
+interface LabContextType {
+  hideCalculator: boolean;
+  isEnglishLab: boolean;
+  moduleId?: string;
+}
+
+const LabContext = createContext<LabContextType>({ hideCalculator: false, isEnglishLab: false });
+
+export function LabProvider({ children, value }: { children: React.ReactNode, value?: any }) {
+  // Pass value through if provided, else use default context value
+  return <LabContext.Provider value={value || { hideCalculator: false, isEnglishLab: false }}>{children}</LabContext.Provider>;
+}
+export const useLab = () => useContext(LabContext);
+
 // --- Unified Store Provider ---
+import { LanguageProvider } from './i18n';
+
 export function StoreProvider({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
-      <AuthProvider>
-        <HistoryProvider>
-          {children}
-        </HistoryProvider>
-      </AuthProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <HistoryProvider>
+            {children}
+          </HistoryProvider>
+        </AuthProvider>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
- const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const { t } = useTranslate();
+  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // --- Constants and Types ---
  // V = k * T, where T is in Kelvin.
@@ -133,7 +135,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <LabHeader onExit={onExit} title="Unit 11: Charles's Law (Volume and Temperature)" subtitle="Investigate the relationship between gas volume and temperature at constant pressure." />
+  <LabHeader onExit={onExit} title={t('lab.p10gaspressureballoon_unit_11_charles_s_law_volume_a')} subtitle={t('lab.subtitle_investigate_relationship_between')} />
 
   {/* Main Grid */}
   <div className="flex-1 lg:overflow-y-auto p-4 md:p-6">
@@ -144,38 +146,40 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                         {t('lab.p10gaspressureballoon_theory')}
+                        </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.10gaspressureballoon_lab')}</button>
   </div>
   <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:min-h-[600px] lg:overflow-visible">
    
    {/* Column 1: Theory & Setup */}
    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
    <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Theory</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10gaspressureballoon_theory')}</h2>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-2">
-    <strong>Charles's Law</strong> states that the volume of an ideal gas is directly proportional to its absolute temperature, assuming constant pressure.
-    </p>
+    <strong>{t('lab.10gaspressureballoon_charlesslaw')}</strong>  {t('lab.p10gaspressureballoon_states_that_the_volume_of_an_i')}
+                                 </p>
     <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm font-mono text-slate-700 dark:text-[#ffffff] space-y-1 flex-col `}>
-    <p>V ∝ T</p>
-    <p>V / T = constant</p>
-    <p>V = V₀(1 + αT_celsius)</p>
+    <p>{t('lab.10gaspressureballoon_vt')}</p>
+    <p>{t('lab.10gaspressureballoon_vtconstant')}</p>
+    <p>{t('lab.p10gaspressureballoon_v_v_1_t_celsius')}</p>
     </div>
     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
-    By extrapolating the Volume vs Temperature graph to V = 0, we can estimate absolute zero.
-    </p>
+    
+                                 {t('lab.p10gaspressureballoon_by_extrapolating_the_volume_vs')}
+                                 </p>
    </div>
 
    <div className={`flex-1 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">Setup Parameters</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 mb-3">{t('lab.10gaspressureballoon_setupparameters')}</h2>
     <div className="space-y-6">
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Gas Amount (Moles)</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10gaspressureballoon_gas_amount_moles')}</label>
      <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{gasMoles.toFixed(1)}</span>
      </div>
      <input 
@@ -188,12 +192,12 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
      disabled={isRunning && time > 0}
      className="w-full"
      />
-     <p className="text-xs text-slate-400 mt-1">Changing amount resets experiment.</p>
+     <p className="text-xs text-slate-400 mt-1">{t('lab.10gaspressureballoon_changingamountresetsexperiment')}</p>
     </div>
 
     <div>
      <div className="flex justify-between mb-1">
-     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">Bath Temperature</label>
+     <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.10gaspressureballoon_bathtemperature')}</label>
      <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{targetTemp}°C</span>
      </div>
      <input 
@@ -203,15 +207,15 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
      className="w-full"
      />
      <div className="flex justify-between text-xs text-slate-400 mt-1">
-     <span>-20°C (Ice/Salt)</span>
-     <span>100°C (Boiling)</span>
+     <span>{t('lab.p10gaspressureballoon_20_c_ice_salt')}</span>
+     <span>{t('lab.p10gaspressureballoon_100_c_boiling')}</span>
      </div>
     </div>
     </div>
    </div>
 
    <div className={`bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-center justify-between dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <div className="text-sm font-bold text-blue-900 dark:text-[#ffffff]">Simulation Time</div>
+    <div className="text-sm font-bold text-blue-900 dark:text-[#ffffff]">{t('lab.10gaspressureballoon_simulationtime')}</div>
     <div className="font-mono text-blue-800 text-lg dark:text-[#ffffff]">{time.toFixed(1)}s</div>
    </div>
    </div>
@@ -228,9 +232,9 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
    </div>
    
    <div className={`absolute top-4 right-4 text-white text-xs font-mono text-right bg-black/50 p-2 rounded flex-col `}>
-    <div>Bath Temp: {bathTemp.toFixed(1)}°C</div>
-    <div>Gas Temp: {gasTemp.toFixed(1)}°C</div>
-    <div>Gas Volume: {syringeVolume.toFixed(1)} mL</div>
+    <div>{t('lab.p10gaspressureballoon_bath_temp')} {bathTemp.toFixed(1)}°C</div>
+    <div>{t('lab.p10gaspressureballoon_gas_temp')} {gasTemp.toFixed(1)}°C</div>
+    <div>{t('lab.p10gaspressureballoon_gas_volume')} {syringeVolume.toFixed(1)} mL</div>
    </div>
 
    <div className={`flex-1 w-full flex flex-col items-center justify-center relative p-8 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
@@ -238,7 +242,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
     {/* Syringe Setup */}
     <div className="w-full max-w-sm relative z-20 h-24 mb-10 mt-10">
     {/* Syringe barrel */}
-    <div className={`absolute top-0 left-0 w-full h-16 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow- backdrop-blur-sm flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`absolute top-0 left-0 w-full h-16 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow- backdrop-blur-sm flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
      {/* Gas inside */}
      <div 
      className="h-full bg-blue-300/30 transition-all duration-300 ease-out flex items-center justify-end border-r-2 border-[#1c1b1b] dark:border-[#1c1b1b]/50"
@@ -295,8 +299,9 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
     {bathTemp < 10 && <div className="absolute inset-0 bg-slate-50 dark:bg-[#121212]/20 rounded-t-[50%] border-t-[4px] border-white/50" />}
     
     <div className="text-white/60 font-bold text-xl uppercase tracking-widest">
-     Water Bath ({bathTemp.toFixed(1)}°C)
-    </div>
+     
+                                      {t('lab.p10gaspressureballoon_water_bath')}{bathTemp.toFixed(1)}{t('lab.p10gaspressureballoon_c')}
+                                     </div>
     </div>
 
    </div>
@@ -305,28 +310,28 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
    {/* Column 3: Data & Analysis */}
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between border-b pb-2">
-    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Data Recording</h2>
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.10gaspressureballoon_datarecording')}</h2>
     <button 
     onClick={recordData}
     disabled={Math.abs(gasTemp - bathTemp) > 0.5} // disable if not in thermal eq
     className="flex items-center gap-2 bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     title={Math.abs(gasTemp - bathTemp) > 0.5 ? "Wait for thermal equilibrium" : ""}
     >
-    <ClipboardList className="w-4 h-4" /> Record Data
-    </button>
+    <ClipboardList className="w-4 h-4" />  {t('lab.p10gaspressureballoon_record_data')}
+                                 </button>
    </div>
 
    <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
     <table className="w-full text-sm text-left">
     <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
      <tr>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Temperature (°C)</th>
-     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">Volume (mL)</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10gaspressureballoon_temperature_c')}</th>
+     <th className="px-4 py-2 font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p10gaspressureballoon_volume_ml')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-100">
      {logs.length === 0 ? (
-     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-400">No data recorded. Adjust temp and record.</td></tr>
+     <tr><td colSpan={2} className="px-4 py-4 text-center text-slate-400">{t('lab.10gaspressureballoon_nodatarecordedadjusttempandrecord')}</td></tr>
      ) : (
      logs.map((log, i) => (
       <tr key={i} className="hover:bg-slate-50 dark:bg-[#121212]">
@@ -341,8 +346,8 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
 
    {/* Graph area: V vs T */}
    <div className={`flex-1 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative min-h-[150px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">Volume (mL)</div>
-    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">Temperature (°C)</div>
+    <div className="absolute -left-8 top-1/2 -rotate-90 text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10gaspressureballoon_volume_ml')}</div>
+    <div className="absolute bottom-1 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">{t('lab.p10gaspressureballoon_temperature_c')}</div>
     
     <svg className="w-full h-[calc(100%-20px)] overflow-visible" viewBox="-300 0 400 100" preserveAspectRatio="none">
      {/* X Axis Range: -300 to 100 -> total width 400 */}
@@ -389,24 +394,26 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
 
    {/* Assessment */}
    <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">Analysis</h3>
+    <h3 className="font-bold text-indigo-900 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10gaspressureballoon_analysis')}</h3>
     <p className="text-xs text-indigo-800 mb-3 dark:text-[#ffffff]">
-    Extrapolate your Volume vs. Temperature (°C) graph backwards to where Volume is zero. Enter your estimate for absolute zero (°C).
-    </p>
+    
+                                 {t('lab.p10gaspressureballoon_extrapolate_your_volume_vs_tem')}
+                                 </p>
     <div className="flex gap-2">
     <input 
      type="text" 
      value={answer}
      onChange={(e) => setAnswer(e.target.value)}
-     placeholder="e.g., -270"
+     placeholder={t('lab.p10gaspressureballoon_t_lab_10gaspressureballoon_eg2')}
      className="flex-1 px-3 py-1.5 text-sm border border-indigo-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
     <button 
      onClick={checkAnswer}
      className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-md text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
     >
-     Check
-    </button>
+     
+                                      {t('lab.p10gaspressureballoon_check')}
+                                     </button>
     </div>
     {feedback && (
     <div className={`mt-2 text-xs font-medium ${feedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>

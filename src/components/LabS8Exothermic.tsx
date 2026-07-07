@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Flame, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8Exothermic({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [stage, setStage] = useState<'initial' | 'adding' | 'reaction'>('initial');
  const [temp, setTemp] = useState(20); // Celsius
  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -29,7 +31,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
+  <LabHeader onExit={onExit} title={t('lab.s8exothermic_act_6_4_exothermic_reaction')} subtitle={t('lab.subtitle_water_calcium_chloride')} rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-[#121212] px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" />  {t('lab.s8exothermic_reset')}</button>} />
 
   <div className="flex-1 flex flex-col items-center justify-center p-6">
   <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-3xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] max-w-2xl w-full flex flex-col items-center min-h-[500px]">
@@ -93,13 +95,14 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
     onClick={handleAdd}
     className="w-full bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 text-xl shadow-lg transition-transform active:scale-95 dark:text-white dark:text-white dark:bg-orange-500 dark:hover:bg-orange-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-orange-500/40"
     >
-    Add Calcium Chloride
-    </button>
+    
+                                 {t('lab.s8exothermic_add_calcium_chloride')}
+                                 </button>
    ) : (
     <>
     <div className="bg-orange-50 border-2 border-orange-200 px-6 py-4 rounded-xl text-orange-900 animate-fade-in">
-     <h3 className="font-bold text-lg mb-1">Temperature Increased!</h3>
-     <p className="text-sm">This is an <strong>Exothermic</strong> reaction. It releases energy as heat into its surroundings.</p>
+     <h3 className="font-bold text-lg mb-1">{t('lab.s8exothermic_temperature_increased')}</h3>
+     <p className="text-sm">{t('lab.s8exothermic_this_is_an')} <strong>{t('lab.s8exothermic_exothermic')}</strong>  {t('lab.s8exothermic_reaction_it_releases_energy_as')}</p>
     </div>
     </>
    )}

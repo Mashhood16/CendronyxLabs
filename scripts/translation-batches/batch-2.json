@@ -1,0 +1,2002 @@
+{
+  "lab.c12equilibriumacidbase_ph_14": {
+    "original": "pH 14",
+    "protected_terms": false
+  },
+  "lab.c12equilibriumacidbase_ph_7": {
+    "original": "pH 7",
+    "protected_terms": false
+  },
+  "lab.c12equilibriumacidbase_unknown_identification": {
+    "original": "Unknown Identification",
+    "protected_terms": false
+  },
+  "lab.c12equilibriumacidbase_observe_the_ph_curve_estimate_": {
+    "original": "Observe the pH curve. Estimate the pKa of the weak acid from the graph at the half-equivalence point.",
+    "protected_terms": false
+  },
+  "lab.c12equilibriumacidbase_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.c12equilibriumacidbase_virtual_lab_equilibrium_acid_b": {
+    "original": "Virtual Lab: Equilibrium & Acid-Base",
+    "protected_terms": true
+  },
+  "lab.c12equilibriumacidbase_enter_pka_value": {
+    "original": "Enter pKa value...",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_clinker_yield": {
+    "original": "Clinker Yield:",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_high_quality_clinker_formed": {
+    "original": "High Quality Clinker Formed!",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_conversion": {
+    "original": "Conversion:",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_high_thermal_energy": {
+    "original": "High Thermal Energy",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_c_c_bonds_cleaved": {
+    "original": "C-C Bonds Cleaved!",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_emulsion_stability": {
+    "original": "Emulsion Stability:",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_stable_micelles": {
+    "original": "Stable Micelles",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_process_theory": {
+    "original": "Process Theory",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_cement_production": {
+    "original": "Cement Production",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_requires_heating_limestone_cac": {
+    "original": "requires heating limestone (CaCO₃) and clay in a rotary kiln up to 1450°C. The intense heat causes calcination and fusion, forming solid clinker nodules (mostly tricalcium silicate).",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_catalytic_cracking": {
+    "original": "Catalytic Cracking",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_breaks_down_large_low_value_hy": {
+    "original": "breaks down large, low-value hydrocarbon molecules into lighter, higher-value products (like gasoline components) using heat and a zeolite catalyst.",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_cosmetics_formulation": {
+    "original": "Cosmetics Formulation",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_relies_heavily_on_creating_sta": {
+    "original": "relies heavily on creating stable emulsions. Emulsifiers (surfactants) reduce the surface tension between oil and water, forming stable micelles that prevent phase separation.",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_operating_parameters": {
+    "original": "Operating Parameters",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_elapsed_time": {
+    "original": "Elapsed Time",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_plant_simulator": {
+    "original": "Plant Simulator",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_production_engineering_analysi": {
+    "original": "Production Engineering Analysis",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_compute_the_industrial_yields_": {
+    "original": "Compute the industrial yields and rates based on the plant simulator's operational data.",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_assignment_question": {
+    "original": "Assignment Question",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_at_a_kiln_temperature_of": {
+    "original": "At a kiln temperature of",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_1350_c": {
+    "original": "1350°C",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_what_is_the_exact_clinker_yiel": {
+    "original": ", what is the exact clinker yield (%) precisely at",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_t_10_0_s": {
+    "original": "t = 10.0 s",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_rate_temp_1200_300_yield_rate_": {
+    "original": "(Rate = (Temp - 1200) / 300. Yield = Rate × time × 10)",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_at_a_cracking_temperature_of": {
+    "original": "At a cracking temperature of",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_550_c": {
+    "original": "550°C",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_calculate_the_exact_conversion": {
+    "original": ", calculate the exact % conversion at precisely",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_t_5_0_s": {
+    "original": "t = 5.0 s",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_rate_temp_300_500_conv_rate_ti": {
+    "original": "(Rate = (Temp - 300) / 500. Conv = Rate × time × 10)",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_with_an_emulsifier_concentrati": {
+    "original": "With an emulsifier concentration of",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_at_what_exact_time_in_seconds_": {
+    "original": ", at what exact time (in seconds) does the emulsion stability reach",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_rate_emulsifier_10_stability_r": {
+    "original": "(Rate = Emulsifier / 10. Stability = Rate × time × 20)",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_your_answer": {
+    "original": "Your Answer",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.c12industrymaterials_interactive_industry_materials": {
+    "original": "Interactive Industry Materials Lab",
+    "protected_terms": true
+  },
+  "lab.c12industrymaterials_enter_numerical_value": {
+    "original": "Enter numerical value",
+    "protected_terms": false
+  },
+  "lab.c12medicine_tumor_dna_cross_linking": {
+    "original": "Tumor DNA Cross-linking:",
+    "protected_terms": false
+  },
+  "lab.c12medicine_pt_cl_complex_binding_to_guani": {
+    "original": "Pt-Cl complex binding to Guanine!",
+    "protected_terms": false
+  },
+  "lab.c12medicine_cox_enzyme_inhibition": {
+    "original": "COX Enzyme Inhibition:",
+    "protected_terms": false
+  },
+  "lab.c12medicine_cox_active_site": {
+    "original": "COX Active Site",
+    "protected_terms": false
+  },
+  "lab.c12medicine_acetyl": {
+    "original": "Acetyl",
+    "protected_terms": false
+  },
+  "lab.c12medicine_serine_residue_acetylated_path": {
+    "original": "Serine residue acetylated! Pathway blocked.",
+    "protected_terms": false
+  },
+  "lab.c12medicine_cell_wall_integrity": {
+    "original": "Cell Wall Integrity:",
+    "protected_terms": false
+  },
+  "lab.c12medicine_lysis": {
+    "original": "LYSIS!",
+    "protected_terms": false
+  },
+  "lab.c12medicine_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.c12medicine_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.c12medicine_mechanism_of_action": {
+    "original": "Mechanism of Action",
+    "protected_terms": false
+  },
+  "lab.c12medicine_cisplatin": {
+    "original": "Cisplatin",
+    "protected_terms": false
+  },
+  "lab.c12medicine_pt_nh_cl_is_a_chemotherapy_med": {
+    "original": "[Pt(NH₃)₂Cl₂] is a chemotherapy medication. It cross-links DNA in tumor cells, primarily at guanine bases. This disrupts DNA replication and transcription, ultimately leading to apoptosis.",
+    "protected_terms": false
+  },
+  "lab.c12medicine_aspirin": {
+    "original": "Aspirin",
+    "protected_terms": false
+  },
+  "lab.c12medicine_acetylsalicylic_acid_irreversi": {
+    "original": "(acetylsalicylic acid) irreversibly inhibits Cyclooxygenase (COX) enzymes. It transfers its acetyl group to a serine residue in the active site, blocking arachidonic acid and stopping prostaglandin synthesis.",
+    "protected_terms": false
+  },
+  "lab.c12medicine_penicillin": {
+    "original": "Penicillin",
+    "protected_terms": false
+  },
+  "lab.c12medicine_contains_a_beta_lactam_ring_th": {
+    "original": "contains a beta-lactam ring that binds to and competitively inhibits the transpeptidase enzyme (PBP). This prevents the cross-linking of peptidoglycan in bacterial cell walls, leading to osmotic lysis.",
+    "protected_terms": false
+  },
+  "lab.c12medicine_experimental_setup": {
+    "original": "Experimental Setup",
+    "protected_terms": false
+  },
+  "lab.c12medicine_dosage": {
+    "original": "Dosage:",
+    "protected_terms": false
+  },
+  "lab.c12medicine_elapsed_time": {
+    "original": "Elapsed Time",
+    "protected_terms": true
+  },
+  "lab.c12medicine_effect": {
+    "original": "Effect %",
+    "protected_terms": false
+  },
+  "lab.c12medicine_molecular_visualizer": {
+    "original": "Molecular Visualizer",
+    "protected_terms": false
+  },
+  "lab.c12medicine_reset": {
+    "original": "Reset",
+    "protected_terms": false
+  },
+  "lab.c12medicine_data_analysis": {
+    "original": "Data Analysis",
+    "protected_terms": true
+  },
+  "lab.c12medicine_use_the_simulation_data_to_cal": {
+    "original": "Use the simulation data to calculate pharmacological parameters. Assume the relationship follows zero-order kinetics in this model:",
+    "protected_terms": true
+  },
+  "lab.c12medicine_effect_k_dosage_time": {
+    "original": "Effect = k × dosage × time",
+    "protected_terms": true
+  },
+  "lab.c12medicine_where_k_0_1": {
+    "original": "(where k = 0.1).",
+    "protected_terms": false
+  },
+  "lab.c12medicine_assignment_question": {
+    "original": "Assignment Question",
+    "protected_terms": false
+  },
+  "lab.c12medicine_at_a": {
+    "original": "At a",
+    "protected_terms": false
+  },
+  "lab.c12medicine_40_mg": {
+    "original": "40 mg",
+    "protected_terms": false
+  },
+  "lab.c12medicine_dosage_what_will_be_the_percen": {
+    "original": "dosage, what will be the percentage of DNA crosslinking at exactly",
+    "protected_terms": false
+  },
+  "lab.c12medicine_t_5_0_s": {
+    "original": "t = 5.0 s",
+    "protected_terms": false
+  },
+  "lab.c12medicine_calculate_the_constant_rate_of": {
+    "original": "Calculate the constant rate of inhibition (%/s) when the dosage is set to",
+    "protected_terms": false
+  },
+  "lab.c12medicine_60_mg": {
+    "original": "60 mg",
+    "protected_terms": false
+  },
+  "lab.c12medicine_at_what_exact_time_in_seconds_": {
+    "original": "At what exact time (in seconds) will the cell wall integrity drop to",
+    "protected_terms": true
+  },
+  "lab.c12medicine_if_the_dosage_is": {
+    "original": "if the dosage is",
+    "protected_terms": false
+  },
+  "lab.c12medicine_100_mg": {
+    "original": "100 mg",
+    "protected_terms": false
+  },
+  "lab.c12medicine_your_answer": {
+    "original": "Your Answer",
+    "protected_terms": false
+  },
+  "lab.c12medicine_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.c12medicine_interactive_pharmacology_lab": {
+    "original": "Interactive Pharmacology Lab",
+    "protected_terms": true
+  },
+  "lab.c12medicine_enter_numerical_value": {
+    "original": "Enter numerical value",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.c12organicsynthesis_reaction_theory": {
+    "original": "Reaction Theory",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_azo_dye_synthesis": {
+    "original": "Azo Dye Synthesis",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_azo_dyes_are_manufactured_via_": {
+    "original": "Azo dyes are manufactured via a two-step process:",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_diazotization": {
+    "original": "Diazotization",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_and": {
+    "original": "and",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_coupling": {
+    "original": "Coupling",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_first_a_primary_aromatic_amine": {
+    "original": ". First, a primary aromatic amine (e.g., Aniline) is reacted with nitrous acid (NaNO2 + HCl) at cold temperatures (0-5°C) to form a diazonium salt. If the temperature exceeds 10°C, the unstable diazonium salt decomposes into a phenol, releasing nitrogen gas. Coupling with a phenol like 2-Naphthol then yields the brightly colored Azo Dye.",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_asymmetric_synthesis_thalidomi": {
+    "original": "Asymmetric Synthesis (Thalidomide)",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_thalidomide_possesses_a_chiral": {
+    "original": "Thalidomide possesses a chiral center, existing as (R) and (S) enantiomers. Historically, it was administered as a racemic mixture, leading to tragic teratogenic effects caused by the (S)-isomer, while the (R)-isomer was therapeutic. Modern asymmetric synthesis employs chiral catalysts to direct the formation of a single desired enantiomer, achieving a high",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_enantiomeric_excess_ee": {
+    "original": "enantiomeric excess (ee)",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_synthesis_workspace": {
+    "original": "Synthesis Workspace",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_temp": {
+    "original": "Temp:",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_wash_flask": {
+    "original": "Wash Flask",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_data_analysis": {
+    "original": "Data Analysis",
+    "protected_terms": true
+  },
+  "lab.c12organicsynthesis_1_what_is_the_maximum_safe_tem": {
+    "original": "1. What is the maximum safe temperature (°C) to maintain the diazonium intermediate before it decomposes?",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_2_in_an_asymmetric_synthesis_y": {
+    "original": "2. In an asymmetric synthesis, you obtain a mixture of 90% (S)-Thalidomide and 10% (R)-Thalidomide. Calculate the Enantiomeric Excess (% ee).",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_hint_ee_r_s": {
+    "original": "Hint: %ee = |%R - %S|",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_verify_results": {
+    "original": "Verify Results",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_score": {
+    "original": "Score:",
+    "protected_terms": true
+  },
+  "lab.c12organicsynthesis_organic_synthesis_asymmetric_c": {
+    "original": "Organic Synthesis & Asymmetric Catalysis",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_enter_value_in_c": {
+    "original": "Enter value in °C",
+    "protected_terms": false
+  },
+  "lab.c12organicsynthesis_enter_ee": {
+    "original": "Enter % ee",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_analytical_theory": {
+    "original": "Analytical Theory",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_ir_spectroscopy": {
+    "original": "IR Spectroscopy",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_identifies_functional_groups_o": {
+    "original": "Identifies functional groups. O-H bonds show a broad peak ~3300 cm⁻¹. C=O bonds show a sharp, strong peak ~1715 cm⁻¹. C-H bonds show sharp peaks ~2900 cm⁻¹.",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_1h_nmr": {
+    "original": "1H NMR",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_identifies_hydrogen_environmen": {
+    "original": "Identifies hydrogen environments. Splitting (n+1 rule) indicates neighboring protons. Chemical shift (ppm) indicates shielding (e.g., closer to O is more deshielded/higher ppm).",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_mass_spectrometry_ms": {
+    "original": "Mass Spectrometry (MS)",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_determines_molecular_weight_m_": {
+    "original": "Determines molecular weight (M+ peak) and structure via fragmentation. The base peak (tallest) represents the most stable fragment ion.",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_thin_layer_chromatography_tlc": {
+    "original": "Thin Layer Chromatography (TLC)",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_separates_compounds_by_polarit": {
+    "original": "Separates compounds by polarity. A polar stationary phase (silica) holds back polar compounds. Using a more polar solvent increases the Rf (Retention factor) of all compounds.",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_instrument_panel": {
+    "original": "Instrument Panel",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_sample_a_unknown": {
+    "original": "Sample A (Unknown)",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_sample_b_unknown": {
+    "original": "Sample B (Unknown)",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_4000_cm": {
+    "original": "4000 cm⁻¹",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_500_cm": {
+    "original": "500 cm⁻¹",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_10_ppm": {
+    "original": "10 ppm",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_0_ppm": {
+    "original": "0 ppm",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_m_z": {
+    "original": "m/z",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_solvent_polarity": {
+    "original": "Solvent Polarity",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_run": {
+    "original": "Run",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_structure_elucidation": {
+    "original": "Structure Elucidation",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_1_based_on_the_ir_broad_peak_a": {
+    "original": "1. Based on the IR broad peak at 3300 cm⁻¹ and the MS base peak at m/z=31, identify Sample A. (Ethanol or Acetone?)",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_2_for_sample_b_the_1h_nmr_show": {
+    "original": "2. For Sample B, the 1H NMR shows a single peak (singlet). What is the m/z value of the base peak in its Mass Spectrum?",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_verify_results": {
+    "original": "Verify Results",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_score": {
+    "original": "Score:",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_analytical_chemistry_spectrome": {
+    "original": "Analytical Chemistry: Spectrometry & Chromatography",
+    "protected_terms": true
+  },
+  "lab.c12spectroscopychromatography_enter_compound_name": {
+    "original": "Enter compound name",
+    "protected_terms": false
+  },
+  "lab.c12spectroscopychromatography_enter_m_z_value": {
+    "original": "Enter m/z value",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_theory": {
+    "original": "Theory",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_lab": {
+    "original": "Lab",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_transition_metals": {
+    "original": "Transition Metals",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_form_complex_ions_with_ligands": {
+    "original": "form complex ions with ligands. The ligands cause the d-orbitals of the central metal ion to split into different energy levels (e.g., e_g and t_2g in octahedral fields).",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_crystal_field_theory_colors": {
+    "original": "Crystal Field Theory & Colors",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_the_energy_gap_between_split_d": {
+    "original": "The energy gap (Δ) between split d-orbitals corresponds to the wavelength of light absorbed:",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_e_hc": {
+    "original": "ΔE = hc / λ",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_the_observed_color_is_the": {
+    "original": "The observed color is the",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_complementary_color": {
+    "original": "complementary color",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_of_the_absorbed_light": {
+    "original": "of the absorbed light.",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_spectrochemical_series": {
+    "original": "Spectrochemical Series",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_ligands_split_d_orbitals_by_di": {
+    "original": "Ligands split d-orbitals by different amounts:",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_i_lt_cl_lt_f_lt_oh_lt_h_o_lt_n": {
+    "original": "I⁻ &lt; Cl⁻ &lt; F⁻ &lt; OH⁻ &lt; H₂O &lt; NH₃ &lt; CN⁻ &lt; CO",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_industrial_catalysis": {
+    "original": "Industrial Catalysis",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_haber_process_nh": {
+    "original": "Haber Process (NH₃):",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_uses_iron_fe_catalyst": {
+    "original": "Uses Iron (Fe) catalyst.",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_contact_process_h_so": {
+    "original": "Contact Process (H₂SO₄):",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_uses_vanadium_v_oxide_v_o": {
+    "original": "Uses Vanadium(V) oxide (V₂O₅).",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_transition_metals_make_good_ca": {
+    "original": "Transition metals make good catalysts due to their variable oxidation states and ability to adsorb reactants on their surface.",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_ligand_swapping_simulator": {
+    "original": "Ligand Swapping Simulator",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_solution_color": {
+    "original": "Solution Color",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_absorbs": {
+    "original": "Absorbs ~",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_d_orbital_splitting": {
+    "original": "d-Orbital Splitting",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_assessment": {
+    "original": "Assessment",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_calculate_crystal_field_splitt": {
+    "original": "Calculate Crystal Field Splitting",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_the_complex": {
+    "original": "The complex",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_absorbs_light_at": {
+    "original": "absorbs light at",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_calculate_the_crystal_field_sp": {
+    "original": "Calculate the crystal field splitting energy (Δ) in",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_kj_mol": {
+    "original": "kJ/mol",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_h_6_626_10_j_s": {
+    "original": "h = 6.626 × 10⁻³⁴ J·s",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_c_3_00_10_m_s": {
+    "original": "c = 3.00 × 10⁸ m/s",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_n_a_6_022_10_mol": {
+    "original": "N_A = 6.022 × 10²³ mol⁻¹",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_check_answer": {
+    "original": "Check Answer",
+    "protected_terms": false
+  },
+  "lab.c12transitionmetals_virtual_lab_transition_metals_": {
+    "original": "Virtual Lab: Transition Metals & Complexes",
+    "protected_terms": true
+  },
+  "lab.c12transitionmetals_enter_value_in_kj_mol": {
+    "original": "Enter value in kJ/mol...",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_relocate_the_rocket_sprite_to_": {
+    "original": "Relocate the Rocket sprite to different coordinates on the Cartesian plane stage.",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_blocks": {
+    "original": "Blocks",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_go_to_x": {
+    "original": "go to x:",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_execute_block": {
+    "original": "Execute Block",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_scratch_stage": {
+    "original": "Scratch Stage",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_y_180": {
+    "original": "y = 180",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_y_180_1": {
+    "original": "y = -180",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_x_240": {
+    "original": "x = 240",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_x_240_1": {
+    "original": "x = -240",
+    "protected_terms": false
+  },
+  "lab.c6coordinateexp_coordinate_experimentation": {
+    "original": "Coordinate Experimentation",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_press_the_c_key_on_your_keyboa": {
+    "original": "Press the 'c' key on your keyboard to trigger the event and change the Rocket's costume.",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_events_looks": {
+    "original": "Events & Looks",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_when_c_key_pressed": {
+    "original": "when [ c ] key pressed",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_next_costume": {
+    "original": "next costume",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_scratch_stage": {
+    "original": "Scratch Stage",
+    "protected_terms": false
+  },
+  "lab.c6costumechange_current_costume": {
+    "original": "Current Costume:",
+    "protected_terms": true
+  },
+  "lab.c6costumechange_costume_change_event": {
+    "original": "Costume Change Event",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_search_the_internet_simulator_": {
+    "original": "Search the internet simulator to find out how to become a Cyber Scout and join the program.",
+    "protected_terms": true
+  },
+  "lab.c6cyberscout_https_www_search_simulator_edu": {
+    "original": "https://www.search-simulator.edu",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_simulated_search": {
+    "original": "Simulated Search",
+    "protected_terms": true
+  },
+  "lab.c6cyberscout_search": {
+    "original": "Search",
+    "protected_terms": true
+  },
+  "lab.c6cyberscout_about_1_results_0_02_seconds": {
+    "original": "About 1 results (0.02 seconds)",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_https_www_national_cyber_scout": {
+    "original": "https://www.national-cyber-scouts.gov.pk",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_become_a_cyber_scout_official_": {
+    "original": "Become a Cyber Scout - Official Portal",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_a_cyber_scout_is_a_responsible": {
+    "original": "A Cyber Scout is a responsible digital citizen who promotes online safety, practices ethical computing, and helps protect their community from cyber threats. Learn the 5 principles of digital safety and take the pledge today.",
+    "protected_terms": true
+  },
+  "lab.c6cyberscout_registration_requirements": {
+    "original": "Registration Requirements:",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_understand_basic_internet_safe": {
+    "original": "Understand basic internet safety and privacy.",
+    "protected_terms": true
+  },
+  "lab.c6cyberscout_commit_to_reporting_cyberbully": {
+    "original": "Commit to reporting cyberbullying.",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_respect_copyright_and_avoid_pl": {
+    "original": "Respect copyright and avoid plagiarism.",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_take_the_pledge_join_now": {
+    "original": "Take the Pledge & Join Now",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_congratulations_cyber_scout": {
+    "original": "Congratulations, Cyber Scout!",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_you_have_successfully_explored": {
+    "original": "You have successfully explored the process and registered as a Cyber Scout.",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_cyber_scout_exploration": {
+    "original": "Cyber Scout Exploration",
+    "protected_terms": false
+  },
+  "lab.c6cyberscout_search_how_to_become_a_cyber_s": {
+    "original": "Search 'how to become a Cyber Scout'...",
+    "protected_terms": true
+  },
+  "lab.c6dietexercise_investigate_the_relationship_b": {
+    "original": "Investigate the relationship between calories consumed and calories burned.",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_consumed_food": {
+    "original": "Consumed (Food)",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_kcal": {
+    "original": "kcal",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_reset_to_base_bmr_2000": {
+    "original": "Reset to Base BMR (2000)",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_burned_exercise": {
+    "original": "Burned (Exercise)",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_science_analysis": {
+    "original": "Science Analysis",
+    "protected_terms": true
+  },
+  "lab.c6dietexercise_out": {
+    "original": "OUT",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_net_calories": {
+    "original": "Net Calories",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_result": {
+    "original": "Result:",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_concept_summary": {
+    "original": "Concept Summary",
+    "protected_terms": false
+  },
+  "lab.c6dietexercise_the_human_body_follows_the_law": {
+    "original": "The human body follows the law of conservation of energy. If the energy consumed (calories from food) is greater than the energy expended (basal metabolic rate + physical activity), the excess energy is stored as fat. If expended energy is greater, the body burns stored fat to compensate.",
+    "protected_terms": true
+  },
+  "lab.c6dietexercise_eating_and_exercise_research": {
+    "original": "Eating and Exercise Research",
+    "protected_terms": false
+  },
+  "lab.c6ethicschart_drag_rules_from_the_bank_onto_": {
+    "original": "Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.",
+    "protected_terms": false
+  },
+  "lab.c6ethicschart_rule_bank": {
+    "original": "Rule Bank",
+    "protected_terms": false
+  },
+  "lab.c6ethicschart_classroom_cyber_ethics": {
+    "original": "Classroom Cyber Ethics",
+    "protected_terms": false
+  },
+  "lab.c6ethicschart_drag_rules_here_to_build_the_c": {
+    "original": "Drag rules here to build the chart",
+    "protected_terms": false
+  },
+  "lab.c6ethicschart_chart_is_looking_great_this_co": {
+    "original": "Chart is looking great! This covers enough rules to be displayed in the lab.",
+    "protected_terms": true
+  },
+  "lab.c6ethicschart_cyber_ethics_chart_builder": {
+    "original": "Cyber Ethics Chart Builder",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_tasks_to_complete": {
+    "original": "Tasks to Complete:",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_create_a_folder_in_drive_d_sav": {
+    "original": "Create a folder in Drive D: saved by your roll number (e.g., \"Roll 42\").",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_open_it_and_create_a_sub_folde": {
+    "original": "Open it and create a sub-folder named 'homework'.",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_copy_this_folder_to_the_deskto": {
+    "original": "Copy this folder to the Desktop and rename it to 'assignment'. (Use Copy & Paste)",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_all_tasks_completed_successful": {
+    "original": "All tasks completed successfully!",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_desktop": {
+    "original": "Desktop",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_drive_d": {
+    "original": "Drive D:",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_new_folder": {
+    "original": "New Folder",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_rename": {
+    "original": "Rename",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_copy": {
+    "original": "Copy",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_paste": {
+    "original": "Paste",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_new_folder_name": {
+    "original": "New Folder Name",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_cancel": {
+    "original": "Cancel",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_rename_1": {
+    "original": "Rename '",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_this_folder_is_empty": {
+    "original": "This folder is empty.",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement1_items": {
+    "original": "items |",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement1_file_and_folder_management_1": {
+    "original": "File and Folder Management 1",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_editing": {
+    "original": "Editing",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_txt": {
+    "original": ".txt",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_save_close": {
+    "original": "Save & Close",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_write_down_the_names_of_the_su": {
+    "original": "Write down the names of the subjects you are currently studying.",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_tasks_to_complete": {
+    "original": "Tasks to Complete:",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_create_a_folder_saved_by_your_": {
+    "original": "Create a folder saved by your name on the Desktop.",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_open_it_create_a_file_named_ac": {
+    "original": "Open it, create a file named 'activity', and write subjects inside.",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_delete_the_folder_and_practice": {
+    "original": "Delete the folder and practice recovering the 'activity' file from the Recycle Bin.",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_desktop": {
+    "original": "Desktop",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_recycle_bin": {
+    "original": "Recycle Bin",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_new_folder": {
+    "original": "New Folder",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_new_file": {
+    "original": "New File",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_delete": {
+    "original": "Delete",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_recover": {
+    "original": "Recover",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_new_folder_name": {
+    "original": "New Folder Name",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_cancel": {
+    "original": "Cancel",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_new_file_name_txt": {
+    "original": "New File Name (.txt)",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_items": {
+    "original": "items |",
+    "protected_terms": false
+  },
+  "lab.c6filemanagement2_e_g_mathematics_english_comput": {
+    "original": "e.g. Mathematics, English, Computer Science...",
+    "protected_terms": true
+  },
+  "lab.c6filemanagement2_file_and_folder_management_2": {
+    "original": "File and Folder Management 2",
+    "protected_terms": true
+  },
+  "lab.c6financespreadsheet_use_the_spreadsheet_applicatio": {
+    "original": "Use the spreadsheet application to calculate the profit of your product. Hint: Profit = Selling Price - Cost Price.",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_spreadsheet_application_startu": {
+    "original": "Spreadsheet Application - Startup Finances.xlsx",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_selling_price_rs": {
+    "original": "Selling Price (Rs)",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_cost_price_rs": {
+    "original": "Cost Price (Rs)",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_profit_rs": {
+    "original": "Profit (Rs)",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_ready": {
+    "original": "Ready",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_correct_formula_applied": {
+    "original": "Correct Formula Applied!",
+    "protected_terms": false
+  },
+  "lab.c6financespreadsheet_startup_finances": {
+    "original": "Startup Finances",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_end_show": {
+    "original": "End Show",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_previous": {
+    "original": "Previous",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_slide": {
+    "original": "Slide",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_next": {
+    "original": "Next",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_select_a_hardware_topic_and_pr": {
+    "original": "Select a hardware topic and prepare your slides.",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_present": {
+    "original": "Present",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_1_select_topic": {
+    "original": "1. Select Topic",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_2_slides": {
+    "original": "2. Slides",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_text": {
+    "original": "Text",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_image": {
+    "original": "Image",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_layout": {
+    "original": "Layout",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_please_select_a_hardware_topic": {
+    "original": "Please select a hardware topic first.",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_unit_1_group_presentations": {
+    "original": "Unit 1: Group Presentations",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_add_slide": {
+    "original": "Add Slide",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_click_to_add_title": {
+    "original": "Click to add title",
+    "protected_terms": false
+  },
+  "lab.c6grouppresentations_click_to_add_text": {
+    "original": "Click to add text",
+    "protected_terms": false
+  },
+  "lab.c6hardwarecharts_click_a_label_from_the_word_ba": {
+    "original": "Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.",
+    "protected_terms": false
+  },
+  "lab.c6hardwarecharts_hardware_components": {
+    "original": "Hardware Components",
+    "protected_terms": false
+  },
+  "lab.c6hardwarecharts_all_components_labeled_correct": {
+    "original": "All components labeled correctly! Excellent work.",
+    "protected_terms": false
+  },
+  "lab.c6hardwarecharts_word_bank": {
+    "original": "Word Bank",
+    "protected_terms": false
+  },
+  "lab.c6hardwarecharts_hardware_identification_charts": {
+    "original": "Hardware Identification Charts",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_design_a_community_awareness_c": {
+    "original": "Design a community awareness campaign about the adverse health effects of ICT use.",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_create_another_campaign": {
+    "original": "Create Another Campaign",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_step_1_choose_a_health_issue": {
+    "original": "Step 1: Choose a Health Issue",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_step_2_design_campaign_message": {
+    "original": "Step 2: Design Campaign Message",
+    "protected_terms": true
+  },
+  "lab.c6healthcampaign_campaign_title": {
+    "original": "Campaign Title",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_awareness_message": {
+    "original": "Awareness Message",
+    "protected_terms": true
+  },
+  "lab.c6healthcampaign_publish_campaign": {
+    "original": "Publish Campaign",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_health_awareness_campaign": {
+    "original": "Health Awareness Campaign",
+    "protected_terms": false
+  },
+  "lab.c6healthcampaign_e_g_save_your_eyes": {
+    "original": "e.g. Save Your Eyes!",
+    "protected_terms": true
+  },
+  "lab.c6healthcampaign_write_a_catchy_slogan_or_advic": {
+    "original": "Write a catchy slogan or advice...",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_choose_a_hobby_plan_your_start": {
+    "original": "Choose a hobby, plan your startup idea, and calculate your potential profit.",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_1_select_your_startup_idea": {
+    "original": "1. Select Your Startup Idea",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_your_pitch": {
+    "original": "Your Pitch",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_my_startup_transforms_my_passi": {
+    "original": "\"My startup transforms my passion for",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_into_a_profitable_business_by": {
+    "original": "into a profitable business by",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_select_a_hobby_above_to_genera": {
+    "original": "Select a hobby above to generate your pitch.",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_2_calculate_profit": {
+    "original": "2. Calculate Profit",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_selling_price_per_item_service": {
+    "original": "Selling Price per item/service (Rs)",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_cost_price_per_item_service_rs": {
+    "original": "Cost Price per item/service (Rs)",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_estimated_sales_quantity": {
+    "original": "Estimated Sales (Quantity)",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_financial_summary": {
+    "original": "Financial Summary",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_profit_per_item_selling_cost": {
+    "original": "Profit Per Item (Selling - Cost):",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_total_estimated_profit": {
+    "original": "Total Estimated Profit:",
+    "protected_terms": false
+  },
+  "lab.c6hobbymonetization_hobby_monetization_business_pl": {
+    "original": "Hobby Monetization Business Plan",
+    "protected_terms": false
+  },
+  "lab.c6labrules_click_a_rule_from_the_list_the": {
+    "original": "Click a rule from the list, then click either the \"Do\" or \"Don't\" button to sort it onto the chart.",
+    "protected_terms": false
+  },
+  "lab.c6labrules_unsorted_rules": {
+    "original": "Unsorted Rules (",
+    "protected_terms": false
+  },
+  "lab.c6labrules_all_rules_sorted": {
+    "original": "All rules sorted!",
+    "protected_terms": false
+  },
+  "lab.c6labrules_don_t": {
+    "original": "DON'T",
+    "protected_terms": false
+  },
+  "lab.c6labrules_do_s": {
+    "original": "Do's",
+    "protected_terms": false
+  },
+  "lab.c6labrules_don_ts": {
+    "original": "Don'ts",
+    "protected_terms": false
+  },
+  "lab.c6labrules_perfect_the_ict_lab_rules_char": {
+    "original": "Perfect! The ICT Lab Rules chart is ready to be displayed.",
+    "protected_terms": true
+  },
+  "lab.c6labrules_some_rules_are_in_the_wrong_co": {
+    "original": "Some rules are in the wrong columns. Refresh and try again!",
+    "protected_terms": false
+  },
+  "lab.c6labrules_ict_lab_rules_chart": {
+    "original": "ICT Lab Rules Chart",
+    "protected_terms": true
+  },
+  "lab.c6loopadjustments_swap_out_the_block_inside_the_": {
+    "original": "Swap out the block inside the repeat loop and observe the different experimental outputs.",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_control_motion_looks": {
+    "original": "Control & Motion/Looks",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_repeat": {
+    "original": "repeat",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_turn": {
+    "original": "turn",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_15_degrees": {
+    "original": "15 degrees",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_change_size_by_10": {
+    "original": "change size by 10",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_available_blocks_click_to_swap": {
+    "original": "Available Blocks (Click to Swap):",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_reset_sprite": {
+    "original": "Reset Sprite",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_scratch_stage": {
+    "original": "Scratch Stage",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_iteration": {
+    "original": "Iteration:",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_size": {
+    "original": "Size:",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_dir": {
+    "original": "Dir:",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_deg": {
+    "original": "&deg;",
+    "protected_terms": false
+  },
+  "lab.c6loopadjustments_loop_adjustments": {
+    "original": "Loop Adjustments",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_use_the_left_and_right_arrow_k": {
+    "original": "Use the Left and Right Arrow keys. Watch how the 'counter' variable tracks the movement.",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_variables_events": {
+    "original": "Variables & Events",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_when_right_arrow_key_pressed": {
+    "original": "when [ right arrow ] key pressed",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_change_counter_by_1": {
+    "original": "change [ counter ] by (1)",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_change_x_by_20": {
+    "original": "change x by (20)",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_when_left_arrow_key_pressed": {
+    "original": "when [ left arrow ] key pressed",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_change_counter_by_1_1": {
+    "original": "change [ counter ] by (-1)",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_change_x_by_20_1": {
+    "original": "change x by (-20)",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_scratch_stage": {
+    "original": "Scratch Stage",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_counter": {
+    "original": "counter",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_larr_left": {
+    "original": "&larr; Left",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_right_rarr": {
+    "original": "Right &rarr;",
+    "protected_terms": false
+  },
+  "lab.c6movementtracking_tracking_movement_with_variabl": {
+    "original": "Tracking Movement with Variables",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_select_a_3d_or_curve_tool_from": {
+    "original": "Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_3d_tools": {
+    "original": "3D Tools",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_undo": {
+    "original": "Undo",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_clear": {
+    "original": "Clear",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_select_a_tool_to_start_drawing": {
+    "original": "Select a tool to start drawing",
+    "protected_terms": false
+  },
+  "lab.c6paint3dface_paint_3d_face_design": {
+    "original": "Paint 3D Face Design",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_what_specific_agricultural_pro": {
+    "original": "What specific agricultural problem are farmers in Pakistan facing today?",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_how_will_your_technology_app_w": {
+    "original": "How will your technology (app, website, IoT) solve this problem?",
+    "protected_terms": true
+  },
+  "lab.c6pitchpresentation_who_exactly_will_use_this_prod": {
+    "original": "Who exactly will use this product and how will they benefit?",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_your_presentation_is_complete_": {
+    "original": "Your presentation is complete. You are ready to pitch your agricultural IT startup to the investors!",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_prepare_a_presentation_to_pitc": {
+    "original": "Prepare a presentation to pitch a new IT solution addressing a problem in the agriculture sector.",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_previous": {
+    "original": "Previous",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_slide": {
+    "original": "Slide",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_next": {
+    "original": "Next",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_e_g_lack_of_weather_data_leadi": {
+    "original": "e.g., Lack of weather data leading to crop damage, poor market access...",
+    "protected_terms": true
+  },
+  "lab.c6pitchpresentation_e_g_a_mobile_app_that_sends_sm": {
+    "original": "e.g., A mobile app that sends SMS alerts about weather and crop prices...",
+    "protected_terms": true
+  },
+  "lab.c6pitchpresentation_e_g_small_scale_farmers_in_pun": {
+    "original": "e.g., Small-scale farmers in Punjab. They will benefit by increasing yields...",
+    "protected_terms": false
+  },
+  "lab.c6pitchpresentation_tech_startup_pitch": {
+    "original": "Tech Startup Pitch",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_work_with_your_virtual_group_t": {
+    "original": "Work with your virtual group to prepare a poster for the lab competition.",
+    "protected_terms": true
+  },
+  "lab.c6postercompetition_1_select_theme": {
+    "original": "1. Select Theme",
+    "protected_terms": true
+  },
+  "lab.c6postercompetition_2_headline": {
+    "original": "2. Headline",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_color_scheme": {
+    "original": "Color Scheme",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_submit_poster_entry": {
+    "original": "Submit Poster Entry",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_poster_submitted": {
+    "original": "Poster Submitted!",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_your_group_s_poster_is_now_ent": {
+    "original": "Your group's poster is now entered into the competition. It looks fantastic!",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_edit_poster": {
+    "original": "Edit Poster",
+    "protected_terms": true
+  },
+  "lab.c6postercompetition_group_poster_competition": {
+    "original": "Group Poster Competition",
+    "protected_terms": false
+  },
+  "lab.c6postercompetition_enter_catchy_headline": {
+    "original": "Enter catchy headline...",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_break_down_the_main_problem_ho": {
+    "original": "Break down the main problem (\"How to do grocery shopping?\") into smaller, manageable sub-problems.",
+    "protected_terms": true
+  },
+  "lab.c6problemdecomposition_main_problem": {
+    "original": "Main Problem:",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_how_to_do_grocery_shopping_for": {
+    "original": "\"How to do grocery shopping for Uncle?\"",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_add_a_sub_problem": {
+    "original": "Add a Sub-Problem",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_add": {
+    "original": "Add",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_great_job_you_have_successfull": {
+    "original": "Great job! You have successfully decomposed the problem into manageable steps.",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_problem_decomposition": {
+    "original": "Problem Decomposition",
+    "protected_terms": false
+  },
+  "lab.c6problemdecomposition_e_g_go_to_the_supermarket": {
+    "original": "e.g. Go to the supermarket...",
+    "protected_terms": false
+  },
+  "lab.c6roadsafetyprocess_apply_the_6_step_problem_solvi": {
+    "original": "Apply the 6-step problem-solving model to the everyday scenario of safely crossing a road.",
+    "protected_terms": false
+  },
+  "lab.c6roadsafetyprocess_process_complete": {
+    "original": "Process Complete!",
+    "protected_terms": false
+  },
+  "lab.c6roadsafetyprocess_you_successfully_applied_the_6": {
+    "original": "You successfully applied the 6-step problem-solving model. By thinking algorithmically, you guaranteed a safe outcome.",
+    "protected_terms": false
+  },
+  "lab.c6roadsafetyprocess_start_over": {
+    "original": "Start Over",
+    "protected_terms": false
+  },
+  "lab.c6roadsafetyprocess_problem_solving_process": {
+    "original": "Problem Solving Process",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_draw_planets_using_3d_shapes_f": {
+    "original": "Draw planets using 3D shapes, fill them with colors, draw orbits, and label them.",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_tools": {
+    "original": "Tools",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_3d_planet_shape": {
+    "original": "3D Planet Shape",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_draw_orbit": {
+    "original": "Draw Orbit",
+    "protected_terms": true
+  },
+  "lab.c6solarsystem_text_label": {
+    "original": "Text Label",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_colors": {
+    "original": "Colors",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_size": {
+    "original": "Size:",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_undo": {
+    "original": "Undo",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_clear": {
+    "original": "Clear",
+    "protected_terms": false
+  },
+  "lab.c6solarsystem_select_a_tool_to_start_drawing": {
+    "original": "Select a tool to start drawing the Solar System",
+    "protected_terms": true
+  },
+  "lab.c6solarsystem_solar_system_3d_creator": {
+    "original": "Solar System 3D Creator",
+    "protected_terms": true
+  },
+  "lab.c6systemsoftware_identify_plug_and_play_pnp_dev": {
+    "original": "Identify Plug and Play (PnP) devices and explore common utility programs.",
+    "protected_terms": false
+  },
+  "lab.c6systemsoftware_1_plug_and_play_devices": {
+    "original": "1. Plug and Play Devices",
+    "protected_terms": false
+  },
+  "lab.c6systemsoftware_select_all_the_devices_below_t": {
+    "original": "Select all the devices below that are \"Plug and Play\" (devices that work immediately when connected without manual configuration).",
+    "protected_terms": false
+  },
+  "lab.c6systemsoftware_2_utility_programs": {
+    "original": "2. Utility Programs",
+    "protected_terms": false
+  },
+  "lab.c6systemsoftware_review_these_essential_system_": {
+    "original": "Review these essential system software utilities used to maintain and manage a computer.",
+    "protected_terms": true
+  },
+  "lab.c6systemsoftware_system_software_devices": {
+    "original": "System Software & Devices",
+    "protected_terms": true
+  },
+  "lab.c7animateddialogue_set_the_stage_background_and_r": {
+    "original": "Set the stage background and run the dialogue script between two sprites.",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_background": {
+    "original": "Background",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_script_outline": {
+    "original": "Script Outline",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_sprite_1": {
+    "original": "Sprite 1:",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_say_hello_for_2_secs": {
+    "original": "say \"Hello!\" for 2 secs",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_sprite_2": {
+    "original": "Sprite 2:",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_wait_2_secs": {
+    "original": "wait 2 secs",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_say_hi_there_for_2_secs": {
+    "original": "say \"Hi there!\" for 2 secs",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_play_scene": {
+    "original": "Play Scene",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_select_background_first": {
+    "original": "Select Background First",
+    "protected_terms": false
+  },
+  "lab.c7animateddialogue_animated_dialogue": {
+    "original": "Animated Dialogue",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_assemble_the_correct_scratch_b": {
+    "original": "Assemble the correct Scratch blocks to make the ball continuously bounce off the stage edges.",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_correct_code": {
+    "original": "Correct Code!",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_the_ball_is_now_bouncing_forev": {
+    "original": "The ball is now bouncing forever.",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_palette": {
+    "original": "Palette",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_script": {
+    "original": "Script",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_when_clicked": {
+    "original": "When 🏁 clicked",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_forever": {
+    "original": "forever",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_add_motion_blocks_inside": {
+    "original": "Add motion blocks inside",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_click_blocks_from_palette_to_a": {
+    "original": "Click blocks from palette to add them to your script.",
+    "protected_terms": false
+  },
+  "lab.c7bouncingball_bouncing_ball_project": {
+    "original": "Bouncing Ball Project",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_translate_the_english_scenario": {
+    "original": "Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.",
+    "protected_terms": true
+  },
+  "lab.c7conditionallogic_great_job": {
+    "original": "Great Job!",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_you_translated_all_three_logic": {
+    "original": "You translated all three logical scenarios correctly.",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_scenario": {
+    "original": "Scenario",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_of_3": {
+    "original": "of 3",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_logic_blocks": {
+    "original": "Logic Blocks",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_translation_workspace": {
+    "original": "Translation Workspace",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_click_logic_blocks_to_add_them": {
+    "original": "Click logic blocks to add them here",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_clear": {
+    "original": "Clear",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_check_code": {
+    "original": "Check Code",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_correct_logic_structure": {
+    "original": "Correct Logic Structure!",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_next_scenario_rarr": {
+    "original": "Next Scenario &rarr;",
+    "protected_terms": false
+  },
+  "lab.c7conditionallogic_conditional_logic_translation": {
+    "original": "Conditional Logic Translation",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_build_a_professional_cv_by_ins": {
+    "original": "Build a professional CV by inserting your picture, an academic qualifications table, and your interests.",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_cv_ready": {
+    "original": "CV Ready!",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_your_curriculum_vitae_is_compl": {
+    "original": "Your Curriculum Vitae is complete and ready to print.",
+    "protected_terms": true
+  },
+  "lab.c7cvcreation_insert_picture": {
+    "original": "Insert Picture",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_insert_table": {
+    "original": "Insert Table",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_print_document": {
+    "original": "Print Document",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_student_future_tech_leader": {
+    "original": "STUDENT • FUTURE TECH LEADER",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_click_insert_picture": {
+    "original": "Click 'Insert Picture'",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_academic_details": {
+    "original": "Academic Details",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_degree_class": {
+    "original": "Degree/Class",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_institution": {
+    "original": "Institution",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_year": {
+    "original": "Year",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_grade": {
+    "original": "Grade",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_class_7": {
+    "original": "Class 7",
+    "protected_terms": true
+  },
+  "lab.c7cvcreation_model_high_school": {
+    "original": "Model High School",
+    "protected_terms": true
+  },
+  "lab.c7cvcreation_class_6": {
+    "original": "Class 6",
+    "protected_terms": true
+  },
+  "lab.c7cvcreation_click_insert_table_in_toolbar": {
+    "original": "Click 'Insert Table' in toolbar",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_personal_interests": {
+    "original": "Personal Interests",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_cv_resume_creation": {
+    "original": "CV / Resume Creation",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_your_full_name": {
+    "original": "YOUR FULL NAME",
+    "protected_terms": false
+  },
+  "lab.c7cvcreation_list_your_hobbies_and_interest": {
+    "original": "List your hobbies and interests here (e.g. Reading, Coding, Sports)...",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_larr_previous": {
+    "original": "&larr; Previous",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_slide": {
+    "original": "Slide",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_click_anywhere_to_exit": {
+    "original": "Click anywhere to exit",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_prepare_a_presentation_based_o": {
+    "original": "Prepare a presentation based on a movie or story about cybercrime.",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_slides": {
+    "original": "Slides",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_slide_editor": {
+    "original": "Slide Editor",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_select_movie_reference": {
+    "original": "Select Movie Reference",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_cybercrime_presentation": {
+    "original": "Cybercrime Presentation",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_click_to_add_title": {
+    "original": "Click to add title...",
+    "protected_terms": false
+  },
+  "lab.c7cybercrime_click_to_add_summary_points_et": {
+    "original": "Click to add summary points, ethical takeaways, or story details...",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_design_a_prototype_to_carry_wa": {
+    "original": "Design a prototype to carry water from Point A to Point B without using standard kitchen tools.",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_available_materials": {
+    "original": "Available Materials",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_point_a": {
+    "original": "POINT A",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_point_b": {
+    "original": "POINT B",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_no_materials_selected_for_prot": {
+    "original": "No materials selected for prototype.",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_success": {
+    "original": "Success!",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_your_prototype_successfully_tr": {
+    "original": "Your prototype successfully transported the water.",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_prototype_failed": {
+    "original": "Prototype Failed!",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_remember_you_cannot_use_standa": {
+    "original": "Remember: You cannot use standard kitchen tools like cups or spoons for this challenge. Think outside the box!",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_try_again": {
+    "original": "Try Again",
+    "protected_terms": false
+  },
+  "lab.c7designprototype_design_thinking_prototype": {
+    "original": "Design Thinking Prototype",
+    "protected_terms": false
+  },
+  "lab.c7deviancediscussion_participate_in_the_dialogue_by": {
+    "original": "Participate in the dialogue by choosing responses that demonstrate empathy, tolerance, and conflict resolution.",
+    "protected_terms": false
+  },
+  "lab.c7deviancediscussion_discussion_complete": {
+    "original": "Discussion Complete!",
+    "protected_terms": false
+  },
+  "lab.c7deviancediscussion_you_ve_mastered_digital_confli": {
+    "original": "You've mastered digital conflict resolution.",
+    "protected_terms": false
+  },
+  "lab.c7deviancediscussion_select_your_response": {
+    "original": "Select your response:",
+    "protected_terms": false
+  },
+  "lab.c7deviancediscussion_class_discussion_on_deviance": {
+    "original": "Class Discussion on Deviance",
+    "protected_terms": true
+  },
+  "lab.c7emergingtech_watch_the_presentation_on_emer": {
+    "original": "Watch the presentation on emerging tech, then select one to build your mini-project.",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_click_to_watch_the_future_of_t": {
+    "original": "Click to Watch: The Future of Tech",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_video_completed_now_select_an_": {
+    "original": "Video completed! Now, select an emerging technology for your mini-project.",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_project_proposal": {
+    "original": "Project Proposal",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_submit_mini_project": {
+    "original": "Submit Mini-Project",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_project_submitted": {
+    "original": "Project Submitted!",
+    "protected_terms": false
+  },
+  "lab.c7emergingtech_your_proposal_for_the": {
+    "original": "Your proposal for the",
+    "protected_terms": false
+  }
+}

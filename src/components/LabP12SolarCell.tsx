@@ -4,6 +4,7 @@ import {
   Droplets, BarChart3, Lightbulb, BookOpen, ArrowRight
 } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import FrontierApplicationsPanel from './FrontierApplicationsPanel';
 import type { FrontierTopic } from './FrontierApplicationsPanel';
@@ -21,6 +22,7 @@ const MATERIALS = [
 const SHOCKLEY_QUEISSER_LIMIT = 33.7; // Single-junction max efficiency %
 
 export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
+  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
   const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
   const config = DIFFICULTY_CONFIGS[difficulty];
@@ -131,7 +133,7 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-      <LabHeader onExit={onExit} title="Capstone: Design a Solar Cell" />
+      <LabHeader onExit={onExit} title={t('lab.p12solarcell_capstone_design_a_solar_cell')} />
 
       <div className="px-4 pt-2">
         
@@ -146,14 +148,16 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
           onClick={() => setActiveMobileTab('theory')}
           className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
         >
-          Design Brief
-        </button>
+          
+                            {t('lab.p12solarcell_design_brief')}
+                          </button>
         <button
           onClick={() => setActiveMobileTab('lab')}
           className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
         >
-          Lab Bench
-        </button>
+          
+                            {t('lab.p12solarcell_lab_bench')}
+                          </button>
       </div>
 
       <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
@@ -161,54 +165,57 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
         <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-amber-500" />
-            Solar Cell Design Brief
-          </h2>
+            
+                                  {t('lab.p12solarcell_solar_cell_design_brief')}
+                                </h2>
 
           <div className="space-y-4 text-sm">
             <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30 rounded-lg p-3">
               <div className="flex items-start gap-2">
                 <Lightbulb className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
                 <p className="text-xs text-slate-700 dark:text-[#ffffff]">
-                  <strong>Your Mission:</strong> Design a solar cell that maximizes efficiency while considering cost, temperature stability, and environmental impact. Balance the physics of photon absorption with real-world engineering constraints.
-                </p>
+                  <strong>{t('lab.12solarcell_yourmission')}</strong>  {t('lab.p12solarcell_design_a_solar_cell_that_maxim')}
+                                                  </p>
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-sm mb-2">The Physics of Solar Cells</h3>
+              <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-sm mb-2">{t('lab.12solarcell_thephysicsofsolarcells')}</h3>
               <ol className="list-decimal pl-5 space-y-2 text-xs text-slate-600 dark:text-[#a1a1aa]">
-                <li><strong>Photon Absorption:</strong> A photon with energy E ≥ E<sub>g</sub> (band gap) is absorbed, exciting an electron from the valence to conduction band. E = hc/λ, so λ ≤ 1240/E<sub>g</sub> nm.</li>
-                <li><strong>Charge Separation:</strong> The built-in electric field at the p-n junction separates the electron-hole pair before they recombine.</li>
-                <li><strong>Current Collection:</strong> Electrons flow through the external circuit, doing electrical work. The voltage is limited by the band gap.</li>
+                <li><strong>{t('lab.12solarcell_photonabsorption')}</strong>{t('lab.12solarcell_aphotonwithenergyee')}<sub>g</sub>  {t('lab.p12solarcell_band_gap_is_absorbed_exciting_')}<sub>g</sub>{t('lab.12solarcell_nm')}</li>
+                <li><strong>{t('lab.12solarcell_chargeseparation')}</strong>  {t('lab.p12solarcell_the_built_in_electric_field_at')}</li>
+                <li><strong>{t('lab.12solarcell_currentcollection')}</strong>  {t('lab.p12solarcell_electrons_flow_through_the_ext')}</li>
               </ol>
             </div>
 
             <div className={`bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800/30 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
               <p className="text-xs font-mono text-blue-800 dark:text-blue-300">
-                Shockley-Queisser Limit: η<sub>max</sub> ≈ E<sub>g</sub> × 24%<br />
-                Fill Factor: FF = P<sub>max</sub> / (V<sub>OC</sub> × I<sub>SC</sub>)
+                
+                                              {t('lab.p12solarcell_shockley_queisser_limit')}<sub>{t('lab.12solarcell_max')}</sub>{t('lab.12solarcell_e')}<sub>g</sub>{t('lab.12solarcell_24_percent')}<br />
+                
+                                              {t('lab.p12solarcell_fill_factor_ff_p')}<sub>{t('lab.12solarcell_max')}</sub>  {t('lab.p12solarcell_v')}<sub>{t('lab.12solarcell_oc')}</sub>{t('lab.12solarcell_i')}<sub>{t('lab.12solarcell_sc')}</sub>)
               </p>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-500">Band Gap (E<sub>g</sub>)</span>
+                <span className="text-slate-500">{t('lab.p12solarcell_band_gap_e')}<sub>g</sub>)</span>
                 <span className="font-mono font-bold text-indigo-600">{effectiveBandGap.toFixed(2)} eV</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-slate-500">λ Threshold</span>
+                <span className="text-slate-500">{t('lab.12solarcell_threshold')}</span>
                 <span className="font-mono font-bold text-indigo-600">{lambdaThreshold.toFixed(0)} nm</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-slate-500">V<sub>OC</sub></span>
+                <span className="text-slate-500">V<sub>{t('lab.12solarcell_oc')}</sub></span>
                 <span className="font-mono font-bold text-indigo-600">{effectiveVoc.toFixed(3)} V</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-slate-500">I<sub>SC</sub></span>
+                <span className="text-slate-500">I<sub>{t('lab.12solarcell_sc')}</sub></span>
                 <span className="font-mono font-bold text-indigo-600">{(iSC * 1000).toFixed(1)} mA</span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-slate-500">Efficiency</span>
+                <span className="text-slate-500">{t('lab.12solarcell_efficiency')}</span>
                 <span className="font-mono font-bold text-emerald-600">{efficiency.toFixed(1)}%</span>
               </div>
             </div>
@@ -247,17 +254,19 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Interactive Lab Bench */}
-        <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+        <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
             <Activity className="w-5 h-5 text-amber-500" />
-            Photovoltaic Lab Bench
-          </h2>
+            
+                                  {t('lab.p12solarcell_photovoltaic_lab_bench')}
+                                </h2>
 
           {/* Material Selector */}
           <div className="mb-4">
             <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-2">
-              Semiconductor Material
-            </label>
+              
+                                        {t('lab.p12solarcell_semiconductor_material')}
+                                      </label>
             <div className="grid grid-cols-5 gap-1.5">
               {MATERIALS.map((m, i) => (
                 <button
@@ -280,28 +289,28 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
           <div className="space-y-3 mb-4">
             <div>
               <div className="flex justify-between text-xs">
-                <label className="text-slate-600 dark:text-[#a1a1aa]">Thickness</label>
+                <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_thickness')}</label>
                 <span className="font-mono text-indigo-600">{thickness} μm</span>
               </div>
               <input type="range" min="10" max="500" value={thickness} onChange={e => setThickness(Number(e.target.value))} className="w-full accent-indigo-600" />
             </div>
             <div>
               <div className="flex justify-between text-xs">
-                <label className="text-slate-600 dark:text-[#a1a1aa]">Temperature</label>
+                <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_temperature')}</label>
                 <span className="font-mono text-red-500">{temperature}°C</span>
               </div>
               <input type="range" min="0" max="100" value={temperature} onChange={e => setTemperature(Number(e.target.value))} className="w-full accent-red-500" />
             </div>
             <div>
               <div className="flex justify-between text-xs">
-                <label className="text-slate-600 dark:text-[#a1a1aa]">Irradiance</label>
-                <span className="font-mono text-yellow-500">{irradiance} W/m²</span>
+                <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_irradiance')}</label>
+                <span className="font-mono text-yellow-500">{irradiance}  {t('lab.p12solarcell_w_m')}</span>
               </div>
               <input type="range" min="100" max="1500" value={irradiance} onChange={e => setIrradiance(Number(e.target.value))} className="w-full accent-yellow-500" />
             </div>
             <div>
               <div className="flex justify-between text-xs">
-                <label className="text-slate-600 dark:text-[#a1a1aa]">Recombination</label>
+                <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_recombination')}</label>
                 <span className="font-mono text-rose-500">{recombinationRate}%</span>
               </div>
               <input type="range" min="0" max="100" value={recombinationRate} onChange={e => setRecombinationRate(Number(e.target.value))} className="w-full accent-rose-500" />
@@ -333,7 +342,7 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
               
               {/* Max Power Point */}
               <circle cx={20 + (vMax / effectiveVoc) * 165} cy={130 - (iMax / iSC) * 110} r="3" fill="#facc15" />
-              <text x="150" y="25" fontSize="6" fill="#facc15">MPP</text>
+              <text x="150" y="25" fontSize="6" fill="#facc15">{t('lab.12solarcell_mpp')}</text>
               
               {/* Fill Factor Box */}
               <rect
@@ -353,19 +362,19 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
           <div className="grid grid-cols-4 gap-2 text-center">
             <div className="bg-slate-100 dark:bg-[#121212] rounded-lg p-2">
               <div className="text-[18px] font-bold text-emerald-500">{efficiency.toFixed(1)}%</div>
-              <div className="text-[8px] text-slate-500">Efficiency</div>
+              <div className="text-[8px] text-slate-500">{t('lab.12solarcell_efficiency')}</div>
             </div>
             <div className="bg-slate-100 dark:bg-[#121212] rounded-lg p-2">
               <div className="text-[18px] font-bold text-blue-500">{maxPower.toFixed(0)}</div>
-              <div className="text-[8px] text-slate-500">mW/cm²</div>
+              <div className="text-[8px] text-slate-500">{t('lab.12solarcell_mwcm')}</div>
             </div>
             <div className="bg-slate-100 dark:bg-[#121212] rounded-lg p-2">
               <div className="text-[18px] font-bold text-amber-500">{absorption.toFixed(0)}%</div>
-              <div className="text-[8px] text-slate-500">Absorption</div>
+              <div className="text-[8px] text-slate-500">{t('lab.12solarcell_absorption')}</div>
             </div>
             <div className="bg-slate-100 dark:bg-[#121212] rounded-lg p-2">
               <div className="text-[18px] font-bold text-rose-500">{recombinationRate}%</div>
-              <div className="text-[8px] text-slate-500">Recomb.</div>
+              <div className="text-[8px] text-slate-500">{t('lab.12solarcell_recomb')}</div>
             </div>
           </div>
         </div>
@@ -374,28 +383,30 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
         <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
           <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-amber-500" />
-            Design Analysis
-          </h2>
+            
+                                  {t('lab.p12solarcell_design_analysis')}
+                                </h2>
 
           <div className="space-y-6">
             <div className="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg border border-indigo-200 dark:border-indigo-800/30">
-              <h3 className="text-xs font-bold text-indigo-700 dark:text-indigo-300 mb-1">Material Properties</h3>
+              <h3 className="text-xs font-bold text-indigo-700 dark:text-indigo-300 mb-1">{t('lab.12solarcell_materialproperties')}</h3>
               <div className="text-xs text-indigo-600 dark:text-indigo-400">
-                <p>{materialData.name} | Type: {materialData.type} Band Gap | Cost: {materialData.cost}</p>
-                <p>Record efficiency: {materialData.efficiency}% | SQ Limit: {SHOCKLEY_QUEISSER_LIMIT}%</p>
+                <p>{materialData.name}  {t('lab.p12solarcell_type')} {materialData.type}  {t('lab.p12solarcell_band_gap_cost')} {materialData.cost}</p>
+                <p>{t('lab.p12solarcell_record_efficiency')} {materialData.efficiency}{t('lab.p12solarcell_sq_limit')} {SHOCKLEY_QUEISSER_LIMIT}%</p>
               </div>
             </div>
 
             <div className="space-y-3">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-                  Q1: Calculate the maximum wavelength (nm) this solar cell can absorb.
-                </label>
+                  
+                                                    {t('lab.p12solarcell_q1_calculate_the_maximum_wavel')}
+                                                  </label>
                 <input
                   type="number"
                   value={ansWavelength}
                   onChange={e => setAnsWavelength(e.target.value)}
-                  placeholder="e.g. 1100"
+                  placeholder={t('lab.p12solarcell_t_lab_12solarcell_eg1100')}
                   className="w-full px-3 py-1.5 text-xs border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
                 {feedback.q1 && (
@@ -407,13 +418,14 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-[#ffffff] mb-1">
-                  Q2: Estimate the maximum theoretical efficiency (%) for your chosen material.
-                </label>
+                  
+                                                    {t('lab.p12solarcell_q2_estimate_the_maximum_theore')}
+                                                  </label>
                 <input
                   type="number"
                   value={ansEfficiency}
                   onChange={e => setAnsEfficiency(e.target.value)}
-                  placeholder="e.g. 26.9"
+                  placeholder={t('lab.p12solarcell_t_lab_12solarcell_eg269')}
                   className="w-full px-3 py-1.5 text-xs border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
                 {feedback.q2 && (
@@ -427,8 +439,8 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
                 onClick={checkAnswers}
                 className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center justify-center gap-1"
               >
-                <CheckCircle className="w-3.5 h-3.5" /> Verify Calculations
-              </button>
+                <CheckCircle className="w-3.5 h-3.5" />  {t('lab.p12solarcell_verify_calculations')}
+                                            </button>
             </div>
 
             {/* Research Challenge */}
@@ -436,23 +448,25 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
               <div className="border-t border-slate-200 dark:border-[#1c1b1b] pt-4 mt-4">
                 <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
                   <Lightbulb className="w-4 h-4 text-amber-500" />
-                  Research Challenge
-                </h3>
+                  
+                                                    {t('lab.p12solarcell_research_challenge')}
+                                                  </h3>
                 <div className="bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800/30">
                   <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">
-                    <strong>Design Challenge:</strong> Your solar cell company needs to choose ONE material for mass production. 
-                    Consider efficiency, cost, temperature stability, and environmental impact.
-                  </p>
+                    <strong>{t('lab.12solarcell_designchallenge')}</strong>  {t('lab.p12solarcell_your_solar_cell_company_needs_')}
+                                                        </p>
                   <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
-                    Which material would you choose, and what optimizations would you apply (thickness, anti-reflective coating, tandem structure)?
-                  </p>
+                    
+                                                          {t('lab.p12solarcell_which_material_would_you_choos')}
+                                                        </p>
                   <textarea
                     className="w-full text-xs p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md bg-white dark:bg-[#121212] min-h-[80px] resize-none"
-                    placeholder="Write your design proposal..."
+                    placeholder={t('lab.p12solarcell_t_lab_12solarcell_writeyourdes')}
                   />
                   <p className="text-[10px] text-slate-400 mt-1 italic">
-                    In deep-dive mode, consider real research papers on perovskite-silicon tandems or thin-film CIGS optimization.
-                  </p>
+                    
+                                                          {t('lab.p12solarcell_in_deep_dive_mode_consider_rea')}
+                                                        </p>
                 </div>
               </div>
             )}

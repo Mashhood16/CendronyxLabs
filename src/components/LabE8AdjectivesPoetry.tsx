@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, BookOpen, Feather, CheckCircle2, XCircle, Award, Sparkles, Type , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const poetryData = [
  {
@@ -33,6 +34,7 @@ const adjectiveData = [
 ];
 
 export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [activeTab, setActiveTab] = useState<'poetry' | 'adjectives'>('poetry');
  const [poemIndex, setPoemIndex] = useState(0);
@@ -90,8 +92,9 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
    </button>
    <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
    <Feather className="text-blue-500 dark:text-blue-400" />
-   Poet's Workshop & Adjective Studio
-   </h1>
+   
+                    {t('lab.e8adjectivespoetry_poet_s_workshop_adjective_stud')}
+                    </h1>
   
   <button
    onClick={toggleTheme}
@@ -110,29 +113,29 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
      onClick={() => setActiveTab('poetry')}
      className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'poetry' ? 'bg-blue-100 dark:bg-blue-900/50 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 dark:bg-blue-900/40 dark:text-blue-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
     >
-     <BookOpen size={18} /> Poetry Analysis
-    </button>
+     <BookOpen size={18} />  {t('lab.e8adjectivespoetry_poetry_analysis')}
+                             </button>
     <button
      onClick={() => setActiveTab('adjectives')}
      className={`flex-1 whitespace-nowrap flex-shrink-0 py-2 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors ${activeTab === 'adjectives' ? 'bg-indigo-100 dark:bg-indigo-900/50 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-900/40 dark:text-indigo-300' : 'hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] dark:hover:bg-slate-700'}`}
     >
-     <Type size={18} /> Adjective Upgrade
-    </button>
+     <Type size={18} />  {t('lab.e8adjectivespoetry_adjective_upgrade')}
+                             </button>
     </div>
 
     <div className="p-4">
     {activeTab === 'poetry' ? (
      <div className="space-y-6">
      <div className="flex justify-between items-center bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212]/50 p-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-      <button onClick={() => setPoemIndex(Math.max(0, poemIndex - 1))} disabled={poemIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Prev Poem</button>
-      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Poem {poemIndex + 1} of {poetryData.length}</span>
-      <button onClick={() => setPoemIndex(Math.min(poetryData.length - 1, poemIndex + 1))} disabled={poemIndex === poetryData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Next Poem</button>
+      <button onClick={() => setPoemIndex(Math.max(0, poemIndex - 1))} disabled={poemIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8adjectivespoetry_prev_poem')}</button>
+      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8adjectivespoetry_poem')} {poemIndex + 1} of {poetryData.length}</span>
+      <button onClick={() => setPoemIndex(Math.min(poetryData.length - 1, poemIndex + 1))} disabled={poemIndex === poetryData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8adjectivespoetry_next_poem')}</button>
      </div>
 
      <div className="space-y-4">
       <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] flex items-center gap-2">
-       <Feather size={20} className="text-indigo-500 dark:text-indigo-400"/> Literary Analysis
-      </h3>
+       <Feather size={20} className="text-indigo-500 dark:text-indigo-400"/>  {t('lab.e8adjectivespoetry_literary_analysis')}
+                                           </h3>
       {currentPoem.questions.map((q, i) => {
        const isAnswered = poetryAnswers[poemIndex]?.[i] !== undefined;
        const isCorrect = isPoetryCorrect(i);
@@ -153,7 +156,7 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
          </div>
          {isAnswered && (
           <div className={`mt-3 text-sm flex items-center font-medium ${isCorrect ? 'text-green-600 dark:text-green-400 dark:text-green-400' : 'text-red-600 dark:text-red-400 dark:text-red-400'}`}>
-           {isCorrect ? <><CheckCircle2 size={16} className="mr-1"/> Correct!</> : <><XCircle size={16} className="mr-1"/> Incorrect. The answer is {q.answer}.</>}
+           {isCorrect ? <><CheckCircle2 size={16} className="mr-1"/>  {t('lab.e8adjectivespoetry_correct')}</> : <><XCircle size={16} className="mr-1"/>  {t('lab.e8adjectivespoetry_incorrect_the_answer_is')} {q.answer}.</>}
           </div>
          )}
         </div>
@@ -164,27 +167,27 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
     ) : (
     <div className="space-y-6">
      <div className="flex justify-between items-center bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-[#121212]/50 p-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-      <button onClick={() => setAdjIndex(Math.max(0, adjIndex - 1))} disabled={adjIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Prev</button>
-      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Exercise {adjIndex + 1} of {adjectiveData.length}</span>
-      <button onClick={() => setAdjIndex(Math.min(adjectiveData.length - 1, adjIndex + 1))} disabled={adjIndex === adjectiveData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">Next</button>
+      <button onClick={() => setAdjIndex(Math.max(0, adjIndex - 1))} disabled={adjIndex === 0} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8adjectivespoetry_prev')}</button>
+      <span className="font-semibold text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">{t('lab.e8adjectivespoetry_exercise')} {adjIndex + 1} of {adjectiveData.length}</span>
+      <button onClick={() => setAdjIndex(Math.min(adjectiveData.length - 1, adjIndex + 1))} disabled={adjIndex === adjectiveData.length - 1} className="whitespace-nowrap flex-shrink-0 px-3 py-1 rounded dark:bg-slate-700 shadow disabled:opacity-50 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] transition-opacity">{t('lab.e8adjectivespoetry_next')}</button>
      </div>
 
      <div className="bg-white dark:!bg-[#121212] dark:bg-slate-700/50 p-5 rounded-lg shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
       <h3 className="font-bold text-lg text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4 flex items-center gap-2">
-       <Type size={20} className="text-indigo-500 dark:text-indigo-400" /> Adjectives & Phrases
-      </h3>
+       <Type size={20} className="text-indigo-500 dark:text-indigo-400" />  {t('lab.e8adjectivespoetry_adjectives_phrases')}
+                                               </h3>
       <p className="text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] text-lg mb-6 italic bg-slate-50 dark:bg-[#121212]/50 dark:bg-[#121212] dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">"{currentAdj.sentence}"</p>
       
       {currentAdj.type === 'fill' ? (
        <div>
-        <p className="mb-3 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] font-medium">Upgrade the adjective <span className="font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">({currentAdj.base})</span> to the correct degree:</p>
+        <p className="mb-3 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] font-medium">{t('lab.e8adjectivespoetry_upgrade_the_adjective')} <span className="font-bold text-blue-600 dark:text-blue-400 dark:text-blue-400">({currentAdj.base})</span>  {t('lab.e8adjectivespoetry_to_the_correct_degree')}</p>
         <div className="flex gap-2 items-center">
          <input
           type="text"
           value={adjAnswers[adjIndex] || ''}
           onChange={(e) => handleAdjAnswer(e.target.value)}
           className="flex-1 min-w-0 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded dark:bg-[#121212] text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
-          placeholder="Type comparative/superlative..."
+          placeholder={t('lab.e8adjectivespoetry_type_comparative_superlative')}
           disabled={isAdjCorrect()}
          />
          {isAdjCorrect() && <CheckCircle2 className="text-green-500 dark:text-green-400 flex-shrink-0" size={24} />}
@@ -242,16 +245,17 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
      
      {poetryScore === totalPoetry && (
       <div className="mt-10 flex items-center justify-center text-green-600 dark:text-green-400 dark:text-green-400 font-bold bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/40 p-3 rounded-lg border border-green-200 dark:border-green-800 animate-fade-in-up">
-       <Award className="mr-2" size={24} /> Master Poet Unlocked!
-      </div>
+       <Award className="mr-2" size={24} />  {t('lab.e8adjectivespoetry_master_poet_unlocked')}
+                                       </div>
      )}
     </div>
    ) : (
     <div className="flex flex-col items-center justify-center w-full max-w-md bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-lg p-10 border border-slate-200 dark:border-[#1c1b1b]">
      <h2 className="text-2xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-10 flex items-center gap-3">
       <Sparkles className="text-indigo-500 dark:text-indigo-400" />
-      Descriptive Power Meter
-     </h2>
+      
+                                       {t('lab.e8adjectivespoetry_descriptive_power_meter')}
+                                      </h2>
      
      <div className="relative w-32 h-64 bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-700/50 rounded-full overflow-hidden border-4 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
       <div 
@@ -259,20 +263,22 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
        style={{ height: `${fillPercentage}%` }}
       />
       <div className="absolute inset-0 flex flex-col items-center justify-between py-4 text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] drop-shadow-[0_2px_2px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] text-sm font-bold z-10">
-       <span>MAX</span>
-       <span>MID</span>
-       <span>MIN</span>
+       <span>{t('lab.e8adjectivespoetry_max')}</span>
+       <span>{t('lab.e8adjectivespoetry_mid')}</span>
+       <span>{t('lab.e8adjectivespoetry_min')}</span>
       </div>
      </div>
      
      <div className="mt-8 text-center">
       <p className="text-xl font-medium text-slate-700 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">
-       Vocabulary Strength: {currentPower} / {totalPower}
+       
+                                            {t('lab.e8adjectivespoetry_vocabulary_strength')} {currentPower} / {totalPower}
       </p>
       {currentPower === totalPower && (
        <p className="text-green-500 dark:text-green-400 font-bold animate-pulse text-lg">
-        Maximum Eloquence Achieved!
-       </p>
+        
+                                                 {t('lab.e8adjectivespoetry_maximum_eloquence_achieved')}
+                                                </p>
       )}
      </div>
     </div>

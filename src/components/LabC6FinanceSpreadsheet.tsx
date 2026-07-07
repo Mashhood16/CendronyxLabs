@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Calculator, Table, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [sellingPrice, setSellingPrice] = useState('1500');
  const [costPrice, setCostPrice] = useState('800');
  const [activeCell, setActiveCell] = useState<string | null>('C2');
@@ -27,11 +29,11 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Startup Finances" />
+  <LabHeader onExit={onExit} title={t('lab.c6financespreadsheet_startup_finances')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Use the spreadsheet application to calculate the profit of your product. Hint: Profit = Selling Price - Cost Price.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6financespreadsheet_use_the_spreadsheet_applicatio')}</p>
 
   <div className="flex-1 flex flex-col">
    {/* Mock Excel App */}
@@ -40,7 +42,7 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
    {/* Ribbon */}
    <div className="bg-green-700 text-white p-2 flex items-center gap-3">
     <Table className="w-5 h-5" />
-    <span className="font-medium text-sm">Spreadsheet Application - Startup Finances.xlsx</span>
+    <span className="font-medium text-sm">{t('lab.c6financespreadsheet_spreadsheet_application_startu')}</span>
    </div>
    
    <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] p-2 flex items-center gap-4 text-sm shadow-inner">
@@ -84,20 +86,23 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
       onClick={() => setActiveCell('A1')}
       className={`border border-slate-300 dark:border-[#1c1b1b] p-2 font-bold bg-slate-100 dark:bg-[#121212] ${activeCell === 'A1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
      >
-      Selling Price (Rs)
-     </td>
+      
+                                               {t('lab.c6financespreadsheet_selling_price_rs')}
+                                              </td>
      <td 
       onClick={() => setActiveCell('B1')}
       className={`border border-slate-300 dark:border-[#1c1b1b] p-2 font-bold bg-slate-100 dark:bg-[#121212] ${activeCell === 'B1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
      >
-      Cost Price (Rs)
-     </td>
+      
+                                               {t('lab.c6financespreadsheet_cost_price_rs')}
+                                              </td>
      <td 
       onClick={() => setActiveCell('C1')}
       className={`border border-slate-300 dark:border-[#1c1b1b] p-2 font-bold bg-slate-100 dark:bg-[#121212] text-green-800 ${activeCell === 'C1' ? 'ring-2 ring-green-500 ring-inset relative z-10' : ''}`}
      >
-      Profit (Rs)
-     </td>
+      
+                                               {t('lab.c6financespreadsheet_profit_rs')}
+                                              </td>
      </tr>
      {/* Row 2 - Data */}
      <tr>
@@ -136,13 +141,13 @@ export default function LabC6FinanceSpreadsheet({ onExit }: LabProps) {
 
    <div className="bg-slate-100 dark:bg-[#121212] p-4 border-t border-slate-300 dark:border-[#1c1b1b] flex justify-between items-center">
     <div className="text-sm text-slate-500 dark:text-[#71717a] flex items-center gap-2">
-     <Calculator className="w-4 h-4" /> Ready
-    </div>
+     <Calculator className="w-4 h-4" />  {t('lab.c6financespreadsheet_ready')}
+                                 </div>
     
     {isSuccess && (
      <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg font-bold flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 dark:text-[#ffffff]">
-     <CheckCircle className="w-5 h-5" /> Correct Formula Applied!
-     </div>
+     <CheckCircle className="w-5 h-5" />  {t('lab.c6financespreadsheet_correct_formula_applied')}
+                                      </div>
     )}
    </div>
    </div>

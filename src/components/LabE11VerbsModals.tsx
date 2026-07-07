@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, BookOpen, List, Activity, HelpCircle, AlertCircle } from 'lucide-react';
+import { useTranslate } from "../i18n";
 
 const SCENARIOS = [
  {
@@ -59,6 +60,7 @@ const SCENARIOS = [
 ];
 
 export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentScenarioIndex, setCurrentScenarioIndex] = useState(0);
  const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -91,8 +93,9 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
   </button>
   <h1 className="text-2xl font-bold flex-1 flex items-center gap-2">
    <Activity className="text-indigo-500" />
-   Verbs & Modals
-  </h1>
+   
+                    {t('lab.e11verbsmodals_verbs_modals')}
+                   </h1>
   </header>
 
   {/* Mobile Tab Navigation */}
@@ -101,12 +104,13 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e11verbsmodals_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e11verbsmodals_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
@@ -114,63 +118,65 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:h-full ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2">
    <BookOpen size={20} className="text-[#4158D1]" />
-   Study Notes
-   </h2>
+   
+                        {t('lab.e11verbsmodals_study_notes')}
+                        </h2>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Introduction to Verbs</h3>
-   <p className="mb-4">Verbs describe an action, state, or occurrence. They form the main part of the predicate of a sentence.</p>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">{t('lab.e11verbsmodals_introduction_to_verbs')}</h3>
+   <p className="mb-4">{t('lab.e11verbsmodals_verbs_describe_an_action_state')}</p>
 
-   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">Action vs. Linking Verbs</h4>
+   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">{t('lab.e11verbsmodals_action_vs_linking_verbs')}</h4>
    <ul className="list-disc pl-5 mb-4 space-y-2">
-    <li><strong>Action verbs</strong> express physical or mental actions (e.g., run, think, jump). <em>Example: She runs every morning.</em></li>
-    <li><strong>Linking verbs</strong> connect the subject to a complement that describes it (e.g., is, seems, tastes). <em>Example: The soup tastes delicious.</em></li>
+    <li><strong>{t('lab.e11verbsmodals_action_verbs')}</strong>  {t('lab.e11verbsmodals_express_physical_or_mental_act')} <em>{t('lab.e11verbsmodals_example_she_runs_every_morning')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_linking_verbs')}</strong>  {t('lab.e11verbsmodals_connect_the_subject_to_a_compl')} <em>{t('lab.e11verbsmodals_example_the_soup_tastes_delici')}</em></li>
    </ul>
 
-   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">Transitive vs. Intransitive Verbs</h4>
+   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">{t('lab.e11verbsmodals_transitive_vs_intransitive_ver')}</h4>
    <ul className="list-disc pl-5 mb-4 space-y-2">
-    <li><strong>Transitive verbs</strong> require a direct object to complete their meaning. <em>Example: She wrote a letter. (Object: a letter)</em></li>
-    <li><strong>Intransitive verbs</strong> do not take an object. <em>Example: He slept peacefully.</em></li>
+    <li><strong>{t('lab.e11verbsmodals_transitive_verbs')}</strong>  {t('lab.e11verbsmodals_require_a_direct_object_to_com')} <em>{t('lab.e11verbsmodals_example_she_wrote_a_letter_obj')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_intransitive_verbs')}</strong>  {t('lab.e11verbsmodals_do_not_take_an_object')} <em>{t('lab.e11verbsmodals_example_he_slept_peacefully')}</em></li>
    </ul>
 
-   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">Finite vs. Non-finite Verbs</h4>
+   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">{t('lab.e11verbsmodals_finite_vs_non_finite_verbs')}</h4>
    <ul className="list-disc pl-5 mb-4 space-y-2">
-    <li><strong>Finite verbs</strong> change their form according to tense, person, and number. <em>Example: I walk. He walks.</em></li>
-    <li><strong>Non-finite verbs</strong> (infinitives, participles, gerunds) do not change form. <em>Example: I want to walk. He wants to walk.</em></li>
+    <li><strong>{t('lab.e11verbsmodals_finite_verbs')}</strong>  {t('lab.e11verbsmodals_change_their_form_according_to')} <em>{t('lab.e11verbsmodals_example_i_walk_he_walks')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_non_finite_verbs')}</strong>  {t('lab.e11verbsmodals_infinitives_participles_gerund')} <em>{t('lab.e11verbsmodals_example_i_want_to_walk_he_want')}</em></li>
    </ul>
 
-   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">Regular vs. Irregular Verbs</h4>
+   <h4 className="text-md font-bold text-slate-800 dark:text-white mb-2 mt-4">{t('lab.e11verbsmodals_regular_vs_irregular_verbs')}</h4>
    <ul className="list-disc pl-5 mb-4 space-y-2">
-    <li><strong>Regular verbs</strong> form their past tense by adding '-ed' or '-d'. <em>Example: play → played.</em></li>
-    <li><strong>Irregular verbs</strong> have unique past tense forms that don't follow the regular rule. <em>Example: catch → caught, go → went.</em></li>
+    <li><strong>{t('lab.e11verbsmodals_regular_verbs')}</strong>  {t('lab.e11verbsmodals_form_their_past_tense_by_addin')} <em>{t('lab.e11verbsmodals_example_play_played')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_irregular_verbs')}</strong>  {t('lab.e11verbsmodals_have_unique_past_tense_forms_t')} <em>{t('lab.e11verbsmodals_example_catch_caught_go_went')}</em></li>
    </ul>
 
-   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2 mt-6">Modal Verbs</h3>
-   <p className="mb-4">Modal verbs are helping verbs that express necessity, possibility, permission, or ability. They are never used alone and are always followed by the base form of the verb.</p>
+   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2 mt-6">{t('lab.e11verbsmodals_modal_verbs')}</h3>
+   <p className="mb-4">{t('lab.e11verbsmodals_modal_verbs_are_helping_verbs_')}</p>
    <ul className="list-disc pl-5 space-y-3">
-    <li><strong>Must:</strong> Expresses strong obligation or a logical deduction based on clear evidence. <em>Example: It must be raining.</em></li>
-    <li><strong>Might / May:</strong> Expresses possibility or is used to ask for formal permission. <em>Example: It might rain later.</em></li>
-    <li><strong>Should / Ought to:</strong> Used for giving advice, recommendation, or expressing expectation. <em>Example: You should study more.</em></li>
-    <li><strong>Can / Could:</strong> Expresses ability, possibility, or is used for polite requests. <em>Example: Could you help me?</em></li>
-    <li><strong>Will / Would:</strong> Used for future intentions, conditionals, or polite offers. <em>Example: I will go to the store.</em></li>
+    <li><strong>{t('lab.e11verbsmodals_must')}</strong>  {t('lab.e11verbsmodals_expresses_strong_obligation_or')} <em>{t('lab.e11verbsmodals_example_it_must_be_raining')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_might_may')}</strong>  {t('lab.e11verbsmodals_expresses_possibility_or_is_us')} <em>{t('lab.e11verbsmodals_example_it_might_rain_later')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_should_ought_to')}</strong>  {t('lab.e11verbsmodals_used_for_giving_advice_recomme')} <em>{t('lab.e11verbsmodals_example_you_should_study_more')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_can_could')}</strong>  {t('lab.e11verbsmodals_expresses_ability_possibility_')} <em>{t('lab.e11verbsmodals_example_could_you_help_me')}</em></li>
+    <li><strong>{t('lab.e11verbsmodals_will_would')}</strong>  {t('lab.e11verbsmodals_used_for_future_intentions_con')} <em>{t('lab.e11verbsmodals_example_i_will_go_to_the_store')}</em></li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-white flex items-center gap-2">
    <List size={20} className="text-[#4158D1]" />
-   Scenario Simulator
-   </h2>
+   
+                        {t('lab.e11verbsmodals_scenario_simulator')}
+                        </h2>
    
    <div className="flex-grow flex flex-col justify-between overflow-y-auto pr-2">
    <div>
     <div className="mb-6">
-    <p className="text-sm font-semibold text-slate-500 dark:text-[#a1a1aa] mb-1">Scenario {currentScenarioIndex + 1} of {SCENARIOS.length}</p>
+    <p className="text-sm font-semibold text-slate-500 dark:text-[#a1a1aa] mb-1">{t('lab.e11verbsmodals_scenario')} {currentScenarioIndex + 1} of {SCENARIOS.length}</p>
     <p className="text-lg font-medium text-slate-800 dark:text-white">{scenario.type}</p>
     </div>
     
-    <p className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3 uppercase tracking-wider">Select the best answer:</p>
+    <p className="text-sm font-bold text-slate-700 dark:text-[#a1a1aa] mb-3 uppercase tracking-wider">{t('lab.e11verbsmodals_select_the_best_answer')}</p>
     <div className="space-y-3 mb-6">
     {scenario.options.map(opt => (
      <button
@@ -182,7 +188,7 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
       setIsCorrect(null);
       }
      }}
-     className={`w-full p-4 rounded-xl font-semibold text-base text-left transition-all border-2 flex items-center justify-between group ${ selectedOption === opt ? 'bg-indigo-50 border-[#4158D1] text-[#4158D1] dark:bg-[#4158D1]/20 dark:border-[#4158D1] dark:text-indigo-300' : 'bg-white border-slate-200 text-slate-700 hover:border-[#4158D1]/50 hover:bg-slate-50 dark:bg-[#121212] dark:border-[#2a2a2a] dark:text-[#ffffff] dark:hover:bg-[#2a2a2a]' } ${isCorrect === true ? 'opacity-60 cursor-not-allowed' : ''}`}
+     className={`w-full p-4 rounded-xl font-semibold text-base text-left transition-all border-2 flex items-center justify-between group ${ selectedOption === opt ? 'bg-indigo-50 border-[#4158D1] text-[#4158D1] dark:bg-[#4158D1]/20 dark:border-[#4158D1] dark:text-indigo-300' : 'bg-white dark:bg-[#121212] dark:border-[#1c1b1b] border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-slate-300 hover:border-[#4158D1]/50 hover:bg-slate-50 dark:bg-[#121212] dark:border-[#2a2a2a] dark:text-[#ffffff] dark:hover:bg-[#2a2a2a]' } ${isCorrect === true ? 'opacity-60 cursor-not-allowed' : ''}`}
      >
      <span>{opt}</span>
      <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${selectedOption === opt ? 'border-[#4158D1]' : 'border-slate-300 dark:border-slate-600 group-hover:border-[#4158D1]/50'}`}>
@@ -197,8 +203,9 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
     {isCorrect === false && (
     <div className="mb-4 text-rose-500 font-medium flex items-center gap-2">
      <AlertCircle size={20} />
-     Incorrect, review the options.
-    </div>
+     
+                                      {t('lab.e11verbsmodals_incorrect_review_the_options')}
+                                     </div>
     )}
     
     {isCorrect === null || isCorrect === false ? (
@@ -207,27 +214,29 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
      disabled={!selectedOption}
      className={`w-full py-3 rounded-xl font-bold shadow-md transition-all flex items-center justify-center gap-2 ${ selectedOption ? 'bg-[#4158D1] hover:bg-indigo-700 text-white' : 'bg-slate-200 text-slate-400 cursor-not-allowed dark:bg-slate-800 dark:text-[#71717a]' }`}
     >
-     Verify Answer <Check size={20} />
+     
+                                      {t('lab.e11verbsmodals_verify_answer')} <Check size={20} />
     </button>
     ) : (
     <button 
      onClick={handleNext}
      className={`w-full py-3 bg-[#4158D1] hover:bg-indigo-700 text-white rounded-xl font-bold shadow-md transition-all flex items-center justify-center gap-2 flex-col `}
     >
-     Next Scenario
-    </button>
+     
+                                          {t('lab.e11verbsmodals_next_scenario')}
+                                         </button>
     )}
    </div>
    </div>
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    
    <div className={`p-8 rounded-2xl shadow-xl w-full max-w-2xl border border-slate-200 dark:border-[#1c1b1b] flex-col relative ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    
    <div className="mb-8">
-    <p className="text-lg text-slate-600 dark:text-[#71717a] mb-2 font-medium">Situation:</p>
+    <p className="text-lg text-slate-600 dark:text-[#71717a] mb-2 font-medium">{t('lab.e11verbsmodals_situation')}</p>
     <p className="text-xl md:text-2xl font-semibold text-slate-800 dark:text-[#ffffff] mb-6 italic border-l-4 border-[#4158D1] pl-4">"{scenario.situation}"</p>
     
     <div className="flex items-start gap-3 mt-6 bg-slate-50 dark:bg-[#1c1b1b] p-6 rounded-xl border border-slate-100 dark:border-[#2a2a2a]">
@@ -239,8 +248,8 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
    {isCorrect === true && (
     <div className="mt-4 p-6 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-xl animate-in fade-in slide-in-from-bottom-4">
     <div className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 mb-2">
-     <Check size={20} /> Correct!
-    </div>
+     <Check size={20} />  {t('lab.e11verbsmodals_correct')}
+                                     </div>
     <p className="text-slate-700 dark:text-[#a1a1aa] leading-relaxed">
      {scenario.feedback}
     </p>

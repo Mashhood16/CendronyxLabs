@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,6 +12,7 @@ const EXPERIMENTS = [
 ];
 
 export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [selectedExp, setSelectedExp] = useState(EXPERIMENTS[0]);
  const [stage, setStage] = useState<'initial' | 'adding' | 'final'>('initial');
 
@@ -23,11 +25,11 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
 
  return (
  <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 6.1: Signs of Chemical Reaction" subtitle="Observe color changes, precipitates, and gas" />
+  <LabHeader onExit={onExit} title={t('lab.s8chemicalreactionsigns_act_6_1_signs_of_chemical_reac')} subtitle={t('lab.subtitle_observe_color_changes')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   <div className="w-full md:w-64 flex flex-col gap-2">
-   <h3 className="font-bold mb-2" style={{color: 'rgb(var(--slate-700))'}}>Select Experiment</h3>
+   <h3 className="font-bold mb-2" style={{color: 'rgb(var(--slate-700))'}}>{t('lab.s8chemicalreactionsigns_select_experiment')}</h3>
    {EXPERIMENTS.map(e => (
    <button 
     key={e.id}
@@ -62,8 +64,9 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
     {/* Precipitate */}
     {selectedExp.hasPrecipitate && stage === 'final' && (
      <div className="absolute bottom-0 w-full h-8 bg-blue-500 animate-[rise_2s_ease-out_reverse] opacity-80 mix-blend-multiply flex items-center justify-center text-xs text-white dark:bg-teal-950/20 dark:border-teal-900">
-     Solid Precipitate
-     </div>
+     
+                                          {t('lab.s8chemicalreactionsigns_solid_precipitate')}
+                                          </div>
     )}
     
     {/* Bubbles */}
@@ -80,19 +83,22 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
 
    <div className="mt-8 text-center flex gap-4">
    <button onClick={handleMix} disabled={stage !== 'initial'} className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-    Mix Reactants
-   </button>
+    
+                             {t('lab.s8chemicalreactionsigns_mix_reactants')}
+                            </button>
    <button onClick={reset} className="bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] px-6 py-2 rounded-lg font-bold hover:bg-slate-300 dark:bg-[#121212]">
-    Reset
-   </button>
+    
+                             {t('lab.s8chemicalreactionsigns_reset')}
+                            </button>
    </div>
 
    {stage === 'final' && (
    <div className="mt-6 px-6 py-4 rounded-xl bg-indigo-50 border-indigo-200 border text-indigo-800 text-center animate-fade-in max-w-sm dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
-    <h3 className="font-bold mb-1">Sign Observed: {selectedExp.resultType}</h3>
+    <h3 className="font-bold mb-1">{t('lab.s8chemicalreactionsigns_sign_observed')} {selectedExp.resultType}</h3>
     <p className="text-sm">
-    This physical change indicates that a chemical reaction has taken place, forming new substances!
-    </p>
+    
+                                 {t('lab.s8chemicalreactionsigns_this_physical_change_indicates')}
+                                 </p>
    </div>
    )}
   </div>

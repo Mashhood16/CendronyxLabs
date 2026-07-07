@@ -4,12 +4,14 @@ import LabHeader from './LabHeader';
 import DataChart from './DataChart';
 import ProgressionPath from './ProgressionPath';
 import { addMeasurementNoise } from '../utils/measurementNoise';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabS7ThermalConduction({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [running, setRunning] = useState(false);
  const [time, setTime] = useState(0);
  const lastLogIdx = useRef(0);
@@ -56,12 +58,12 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-amber-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Unit 4: Thermal Conduction" />
+  <LabHeader onExit={onExit} title={t('lab.s7thermalconduction_unit_4_thermal_conduction')} />
 
   <div className="flex-1 p-8 flex flex-col items-center">
   <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-amber-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">Heat Transfer via Conduction</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">A metal spoon, a plastic spoon, and a wooden spoon each have a solid cube of butter placed on their handles. Their bowls are immersed in boiling water. Watch to see which material conducts heat the fastest to melt the butter.</p>
+   <h2 className="text-2xl font-bold text-amber-800 mb-4 dark:text-[#ffffff]">{t('lab.s7thermalconduction_heat_transfer_via_conduction')}</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7thermalconduction_a_metal_spoon_a_plastic_spoon_')}</p>
    
    <div className="flex justify-center gap-4">
    <button 
@@ -76,8 +78,9 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
     onClick={() => { setTime(0); setRunning(false); resetTempData(); }}
     className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
    >
-    Reset
-   </button>
+    
+                             {t('lab.s7thermalconduction_reset')}
+                            </button>
    </div>
   </div>
 
@@ -103,7 +106,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
     
     {/* Metal Spoon */}
     <div className="flex flex-col items-center relative transform -rotate-12 translate-y-8">
-    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">Metal</div>
+    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">{t('lab.s7thermalconduction_metal')}</div>
     <div className="relative">
      {/* Butter */}
      <div 
@@ -116,7 +119,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
     {/* Plastic Spoon */}
     <div className="flex flex-col items-center relative translate-y-12 z-30">
-    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">Plastic</div>
+    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">{t('lab.s7thermalconduction_plastic')}</div>
     <div className="relative">
      {/* Butter */}
      <div 
@@ -129,7 +132,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
     {/* Wooden Spoon */}
     <div className="flex flex-col items-center relative transform rotate-12 translate-y-8 z-10">
-    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">Wood</div>
+    <div className="font-bold text-slate-700 dark:text-[#ffffff] absolute -top-8 bg-slate-50 dark:bg-[#121212]/80 px-2 rounded z-20">{t('lab.s7thermalconduction_wood')}</div>
     <div className="relative">
      {/* Butter */}
      <div 
@@ -147,8 +150,8 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
   {time === 100 && (
    <div className="mt-4 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-red-500 max-w-2xl text-center">
-   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><ThermometerSun className="w-5 h-5 mr-2 text-red-500" /> Conclusion</h4>
-   <p>The butter on the <strong>Metal Spoon</strong> melted very quickly! Metal is an excellent thermal conductor, allowing heat to rapidly travel up the handle. Plastic is a poor conductor (an insulator), so its butter melted slowly. Wood is a very strong insulator, so its butter didn't melt at all during the timeframe.</p>
+   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><ThermometerSun className="w-5 h-5 mr-2 text-red-500" />  {t('lab.s7thermalconduction_conclusion')}</h4>
+   <p>{t('lab.s7thermalconduction_the_butter_on_the')} <strong>{t('lab.s7thermalconduction_metal_spoon')}</strong>  {t('lab.s7thermalconduction_melted_very_quickly_metal_is_a')}</p>
    </div>
   )}
 
@@ -156,7 +159,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
   {tempLog.length >= 2 && (
    <div className="mt-8 w-full max-w-2xl space-y-4">
     <DataChart
-     title="Temperature Data Logger"
+     title={t('lab.s7thermalconduction_temperature_data_logger')}
      xAxisKey="time"
      xAxisLabel="Time (s)"
      series={[
@@ -174,14 +177,16 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
     {time === 100 && (
      <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
       <h4 className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-2 mb-2">
-       <Gauge className="w-4 h-4" /> Analysis
-      </h4>
+       <Gauge className="w-4 h-4" />  {t('lab.s7thermalconduction_analysis')}
+                                       </h4>
       <p className="text-sm text-amber-700 dark:text-amber-300">
-       Metal conducted heat fastest (temperature rose quickly), plastic was moderate (insulator), and wood barely conducted at all (strong insulator). The graph clearly shows the different rates of thermal conduction.
-      </p>
+       
+                                        {t('lab.s7thermalconduction_metal_conducted_heat_fastest_t')}
+                                       </p>
       <p className="text-xs mt-2 text-amber-500">
-       Real experiments show small variations due to <strong>measurement uncertainty</strong>. That's why scientists take multiple readings!
-      </p>
+       
+                                        {t('lab.s7thermalconduction_real_experiments_show_small_va')} <strong>{t('lab.s7thermalconduction_measurement_uncertainty')}</strong>{t('lab.s7thermalconduction_that_s_why_scientists_take_mul')}
+                                       </p>
      </div>
     )}
 

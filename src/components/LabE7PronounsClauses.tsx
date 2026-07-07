@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, Search, ShieldAlert, Award, Zap , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
+import { useTranslate } from "../i18n";
 
 const PRONOUN_TYPES = [
  "Personal", "Possessive", "Reflexive", "Relative", 
@@ -30,6 +31,7 @@ const SYNTAX_TASKS = [
 ];
 
 export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const { theme, toggleTheme } = useTheme();
  const [mode, setMode] = useState<'pronouns' | 'syntax'>('pronouns');
  const [taskIndex, setTaskIndex] = useState(0);
@@ -108,17 +110,18 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
    {/* Header */}
    <div className="flex items-center justify-between p-4 bg-indigo-600 text-white shadow-md">
     <div className="flex items-center gap-3">
-     <button onClick={onExit} className="p-2 hover:bg-white/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
+     <button onClick={onExit} className="p-2 hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
       <ArrowLeft className="w-6 h-6" />
      </button>
      <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
       <Search className="w-6 h-6" />
-      Syntax Scanner: Pronouns & Clauses
-     </h1>
+      
+                           {t('lab.e7pronounsclauses_syntax_scanner_pronouns_clause')}
+                          </h1>
     </div>
   <button
    onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
+   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
   >
    {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -126,7 +129,8 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
     <div className="flex items-center gap-4">
      <div className="flex items-center gap-2 bg-indigo-800 px-4 py-2 rounded-full font-bold">
       <Award className="w-5 h-5 text-yellow-400" />
-      Score: {score}
+      
+                           {t('lab.e7pronounsclauses_score')} {score}
      </div>
     </div>
    </div>
@@ -138,29 +142,32 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
     <div className={`w-full flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]  ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
       <Zap className="w-5 h-5 text-indigo-500" />
-      Mission Control
-     </h2>
+      
+                           {t('lab.e7pronounsclauses_mission_control')}
+                          </h2>
      
      <div className="flex gap-2 mb-4 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
       <button 
-       className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'pronouns' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
+       className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'pronouns' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:hover:bg-slate-600/50'}`}
        onClick={() => setMode('pronouns')}
       >
-       Pronoun Scanner
-      </button>
+       
+                                {t('lab.e7pronounsclauses_pronoun_scanner')}
+                               </button>
       <button 
-       className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'syntax' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white/50 dark:hover:bg-slate-600/50'}`}
+       className={`flex-1 min-w-0 py-2 rounded-md font-semibold transition-colors whitespace-nowrap flex-shrink-0 ${mode === 'syntax' ? 'bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/50 dark:hover:bg-slate-600/50'}`}
        onClick={() => setMode('syntax')}
       >
-       Clause Identifier
-      </button>
+       
+                                {t('lab.e7pronounsclauses_clause_identifier')}
+                               </button>
      </div>
 
      <div className="prose dark:prose-invert text-sm mb-6 text-slate-700 dark:text-[#a1a1aa]">
       {mode === 'pronouns' ? (
        <>
-        <h3 className="text-slate-800 dark:text-[#ffffff]">Target Profile: Pronouns</h3>
-        <p>Scan the sentence and identify all pronouns. Select a word in the scanner, then classify it here.</p>
+        <h3 className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7pronounsclauses_target_profile_pronouns')}</h3>
+        <p>{t('lab.e7pronounsclauses_scan_the_sentence_and_identify')}</p>
         <ul className="grid grid-cols-2 gap-2 list-none p-0 mt-4">
          {PRONOUN_TYPES.map(type => (
           <li key={type} className="m-0">
@@ -177,21 +184,23 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
        </>
       ) : (
        <>
-        <h3 className="text-slate-800 dark:text-[#ffffff]">Target Profile: Clauses & Phrases</h3>
-        <p>Analyze the highlighted segment. Does it contain BOTH a subject and a working verb? If so, it's a clause!</p>
+        <h3 className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7pronounsclauses_target_profile_clauses_phrases')}</h3>
+        <p>{t('lab.e7pronounsclauses_analyze_the_highlighted_segmen')}</p>
         <div className="flex gap-4 mt-6">
          <button 
           onClick={() => handleSyntaxGuess('Phrase')}
           className="flex-1 min-w-0 py-4 bg-emerald-100 dark:bg-emerald-900/40 hover:bg-emerald-200 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 rounded-xl font-bold transition-colors border border-emerald-300 dark:border-emerald-700 whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2"
          >
-          It's a Phrase
-         </button>
+          
+                                                   {t('lab.e7pronounsclauses_it_s_a_phrase')}
+                                                  </button>
          <button 
           onClick={() => handleSyntaxGuess('Clause')}
           className="flex-1 min-w-0 py-4 bg-indigo-100 dark:bg-indigo-900/40 hover:bg-indigo-200 dark:hover:bg-indigo-900/60 text-indigo-800 dark:text-indigo-300 rounded-xl font-bold transition-colors border border-indigo-300 dark:border-indigo-700 whitespace-nowrap flex-shrink-0 flex items-center justify-center gap-2"
          >
-          It's a Clause
-         </button>
+          
+                                                   {t('lab.e7pronounsclauses_it_s_a_clause')}
+                                                  </button>
         </div>
        </>
       )}
@@ -212,9 +221,9 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
      <div className={`w-full bg-black/50 p-3 rounded-t-xl border-b border-[#1c1b1b] flex items-center justify-between z-20 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
       <div className="flex items-center gap-2">
        <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-       <span className="text-emerald-500 font-mono text-sm tracking-wider">SCANNER_ACTIVE</span>
+       <span className="text-emerald-500 font-mono text-sm tracking-wider">{t('lab.e7pronounsclauses_scanner_active')}</span>
       </div>
-      <span className="text-slate-500 font-mono text-xs">V. 7.0.2</span>
+      <span className="text-slate-500 font-mono text-xs">{t('lab.e7pronounsclauses_v_7_0_2')}</span>
      </div>
 
      <div className="flex-1 p-8 flex items-center justify-center relative z-20">
@@ -247,8 +256,9 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
       ) : (
        <div className="flex flex-col items-center justify-center gap-8 w-full max-w-xl">
         <div className="text-center font-mono text-slate-400 mb-4 uppercase tracking-widest text-sm">
-         Analyzing target string...
-        </div>
+         
+                                              {t('lab.e7pronounsclauses_analyzing_target_string')}
+                                             </div>
         <div className="relative p-8 border-2 border-emerald-500/30 rounded-xl bg-emerald-900/10 w-full text-center">
          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-500 rounded-tl"></div>
          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-emerald-500 rounded-tr"></div>

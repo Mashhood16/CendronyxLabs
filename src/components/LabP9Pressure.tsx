@@ -2,8 +2,10 @@ import { useState, useRef } from 'react';
 import { Info, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import { useTranslate } from '../i18n';
 
 export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [difficulty, setDifficulty] = useState<DifficultyLevel>('understand');
  const config = DIFFICULTY_CONFIGS[difficulty];
@@ -76,7 +78,7 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
 
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title="Liquid Pressure Lab" subtitle="Investigate the relationship between liquid depth and pressure." />
+   <LabHeader onExit={onExit} title={t('lab.p9pressure_liquid_pressure_lab')} subtitle={t('lab.subtitle_investigate_relationship_between_2')} />
 
    <div className="px-4 pt-2 lg:pt-0">
     
@@ -87,50 +89,38 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
    <button 
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    Theory
-   </button>
+   >{t('lab.tab.theory')}</button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.tab.lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
     {/* Column 1: Setup */}
     <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
           <div className="flex items-center gap-2 mb-4 mt-2">
       <Info className="w-5 h-5 text-blue-600" />
-      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">1. Setup & Theory</h2>
+      <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.p9_pressure_section1')}</h2>
      </div>
      <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
-      Fluid pressure increases with depth due to the weight of the fluid above. 
-      The pressure <strong>P</strong> at depth <strong>h</strong> in a liquid of density <strong>ρ</strong> is: 
-      <br/><br/>
-      <span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>P = ρ × g × h</span>
-      <br/><br/>
-      Higher pressure results in a higher ejection velocity (v) from a hole, causing the water to spurt further.
+            {t('lab.p9_pressure_theory')}
      </p>
 
      <div className={`p-4 bg-amber-50 rounded-lg border border-amber-200 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-      <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">Instructions</h3>
-      <ol className="list-decimal pl-5 text-sm text-amber-800 space-y-2 dark:text-[#ffffff]">
-       <li>Click on the black plugs on the side of the can to let water spurt out.</li>
-       <li>Notice how far the stream travels from the base.</li>
-       <li><strong>Drag the red measuring tool</strong> on the ground to precisely measure the distance of the splash point.</li>
-       <li>Record your readings in the Data table.</li>
-      </ol>
+      <h3 className="font-semibold text-amber-900 mb-2 dark:text-[#ffffff]">{t('lab.instructions')}</h3>
+      <p className="text-sm text-amber-800 dark:text-[#ffffff] whitespace-pre-line">{t('lab.p9_pressure_instructions')}</p>
      </div>
     </div>
 
     {/* Column 2: Simulation */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {config.showHints && (
       <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
        <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-       <span><strong>Hint:</strong> P = ρgh. Use ρ = 1000 kg/m³, g = 9.8 m/s². Convert 80cm to 0.8m!</span>
+       <span><strong>{t('lab.hint')}:</strong> {t('lab.p9_pressure_hint')}</span>
       </div>
      )}
-     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">2. Interactive Simulation</h2>
+     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 w-full">{t('lab.p9_pressure_section2')}</h2>
      <svg 
       ref={svgRef} 
       viewBox="0 0 400 400" 
@@ -173,8 +163,8 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
 
       {/* Ruler Base line */}
       <line x1="130" y1="345" x2="380" y2="345" stroke="#334155" strokeWidth="2" />
-      <text x="130" y="340" fontSize="10" fill="#334155">0 cm</text>
-      <text x="380" y="340" fontSize="10" fill="#334155" textAnchor="end">250 cm</text>
+      <text x="130" y="340" fontSize="10" fill="#334155">{t('lab.p9pressure_0_cm')}</text>
+      <text x="380" y="340" fontSize="10" fill="#334155" textAnchor="end">{t('lab.p9pressure_250_cm')}</text>
       
       {/* Ruler Marker */}
       <g transform={`translate(${rulerX}, 350)`} onPointerDown={handlePointerDown} className="cursor-ew-resize">
@@ -187,33 +177,33 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
     </div>
 
     {/* Column 3: Analysis */}
-    <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">3. Data Logging & Assessment</h2>
+    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-5 lg: border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+     <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p9_pressure_section3')}</h2>
      
      <div className="mb-6">
       <div className="flex gap-2 mb-3">
        <input 
-        type="number" placeholder="Depth (cm)" 
+        type="number" placeholder={t('lab.p9_pressure_placeholder_depth')} 
         value={inputDepth} onChange={(e) => setInputDepth(e.target.value)}
         className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm"
        />
        <input 
-        type="number" placeholder="Range (cm)" 
+        type="number" placeholder={t('lab.p9_pressure_placeholder_range')} 
         value={inputRange} onChange={(e) => setInputRange(e.target.value)}
         className="flex-1 p-2 border border-slate-300 dark:border-[#1c1b1b] rounded text-sm"
        />
-       <button onClick={handleAddLog} className="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">Add</button>
+       <button onClick={handleAddLog} className="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.p9_pressure_add')}</button>
       </div>
       <table className="w-full text-sm text-left border-collapse">
        <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
         <tr>
-         <th className="p-2 border">Hole Depth (cm)</th>
-         <th className="p-2 border">Splash Range (cm)</th>
+         <th className="p-2 border">{t('lab.p9_pressure_depth_header')}</th>
+         <th className="p-2 border">{t('lab.p9_pressure_range_header')}</th>
         </tr>
        </thead>
        <tbody>
         {logs.length === 0 ? (
-         <tr><td colSpan={2} className="p-4 text-center text-slate-500 dark:text-[#71717a]">No measurements recorded.</td></tr>
+         <tr>        <td colSpan={2} className="p-4 text-center text-slate-500 dark:text-[#71717a]">{t('lab.p9_pressure_no_data')}</td></tr>
         ) : (
          logs.map((log, i) => (
           <tr key={i}>
@@ -227,15 +217,15 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
      </div>
 
      <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-auto dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-      <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+      <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.p9pressure_assessment')}</h3>
       <p className="text-sm text-indigo-800 mb-4 dark:text-[#ffffff]">
-       Assuming the density of water is 1000 kg/m³ and g = 9.8 m/s², calculate the theoretical <strong>fluid pressure</strong> (in Pascals) at the lowest hole (depth = 80 cm).
+       {t('lab.p9_pressure_assessment_q')}
       </p>
       
       <div className="flex gap-2 mb-2">
        <input 
         type="number" 
-        placeholder="Pressure in Pa..."
+        placeholder={t('lab.p9_pressure_placeholder_pressure')}
         value={userPressure}
         onChange={(e) => setUserPressure(e.target.value)}
         className="flex-1 p-2 border rounded-md"
@@ -243,19 +233,17 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
        <button 
         onClick={checkPressure}
         className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-       >
-        Check
-       </button>
+       >{t('lab.check')}</button>
       </div>
       
       {assessmentResult === 'correct' && (
        <div className="flex items-center gap-2 text-emerald-600 text-sm mt-2">
-        <CheckCircle className="w-4 h-4" /> Correct! (7840 Pa)
+        <CheckCircle className="w-4 h-4" /> {t('lab.p9_pressure_correct_fb')}
        </div>
       )}
       {assessmentResult === 'incorrect' && (
        <div className="flex items-center gap-2 text-red-600 text-sm mt-2">
-        <XCircle className="w-4 h-4" /> Incorrect. Try again.
+        <XCircle className="w-4 h-4" /> {t('lab.p9_pressure_incorrect_fb')}
        </div>
       )}
      </div>

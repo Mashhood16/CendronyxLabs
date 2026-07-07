@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, CheckCircle2, XCircle, FileEdit, History, ArrowRight, PenTool } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 const EDITOR_DATA = [
  {
@@ -51,6 +52,7 @@ const EDITOR_DATA = [
 ];
 
 export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentIndex, setCurrentIndex] = useState(0);
  const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -126,7 +128,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
 
  return (
  <div className="min-min- lg: bg-slate-50 dark:bg-[#000000] font-sans flex flex-col min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Editor's Desk: Vocabulary & Punctuation" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e9punctuationvocabulary_editor_s_desk_vocabulary_punct')} variant="dark" onExit={onExit} />
 
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -134,12 +136,13 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
    onClick={() => setActiveMobileTab('theory')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
-   Theory
-  </button>
+   
+                    {t('lab.e9punctuationvocabulary_theory')}
+                   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-  >Lab</button>
+  >{t('lab.e9punctuationvocabulary_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -148,66 +151,69 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-6 h-6 text-[#4158D1] dark:text-[#4158D1]" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">The Style Guide</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e9punctuationvocabulary_the_style_guide')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
    
    <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2 flex items-center gap-2 mb-3">
     <PenTool className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-    Euphemisms
-   </h3>
-   <p className="mb-3">A <strong>euphemism</strong> is a polite, mild, or indirect word or expression substituted for one considered to be too harsh, blunt, or unpleasant. While euphemisms are polite in everyday conversation, editors often remove them to ensure clarity, objectivity, and directness in academic or journalistic writing.</p>
+    
+                             {t('lab.e9punctuationvocabulary_euphemisms')}
+                            </h3>
+   <p className="mb-3">A <strong>{t('lab.e9punctuationvocabulary_euphemism')}</strong>  {t('lab.e9punctuationvocabulary_is_a_polite_mild_or_indirect_w')}</p>
    <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <ul className="space-y-3 m-0 p-0 list-none">
     <li className="flex items-center gap-3">
-     <span className="line-through text-rose-500 dark:text-rose-400 w-24">Died</span> 
+     <span className="line-through text-rose-500 dark:text-rose-400 w-24">{t('lab.e9punctuationvocabulary_died')}</span> 
      <ArrowRight className="w-4 h-4 text-slate-400" /> 
-     <span className="text-emerald-600 dark:text-emerald-400 font-medium">Passed away</span>
+     <span className="text-emerald-600 dark:text-emerald-400 font-medium">{t('lab.e9punctuationvocabulary_passed_away')}</span>
     </li>
     <li className="flex items-center gap-3">
-     <span className="line-through text-rose-500 dark:text-rose-400 w-24">Fired</span> 
+     <span className="line-through text-rose-500 dark:text-rose-400 w-24">{t('lab.e9punctuationvocabulary_fired')}</span> 
      <ArrowRight className="w-4 h-4 text-slate-400" /> 
-     <span className="text-emerald-600 dark:text-emerald-400 font-medium">Let go</span>
+     <span className="text-emerald-600 dark:text-emerald-400 font-medium">{t('lab.e9punctuationvocabulary_let_go')}</span>
     </li>
     <li className="flex items-center gap-3">
-     <span className="line-through text-rose-500 dark:text-rose-400 w-24">Used cars</span> 
+     <span className="line-through text-rose-500 dark:text-rose-400 w-24">{t('lab.e9punctuationvocabulary_used_cars')}</span> 
      <ArrowRight className="w-4 h-4 text-slate-400" /> 
-     <span className="text-emerald-600 dark:text-emerald-400 font-medium">Pre-owned</span>
+     <span className="text-emerald-600 dark:text-emerald-400 font-medium">{t('lab.e9punctuationvocabulary_pre_owned')}</span>
     </li>
     </ul>
    </div>
 
    <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2 flex items-center gap-2 mb-3">
     <PenTool className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-    Oxymorons
-   </h3>
-   <p className="mb-3">An <strong>oxymoron</strong> is a figure of speech that places two seemingly contradictory or opposite words side by side to create a rhetorical effect or reveal a paradox. They can add stylistic flair but should be used intentionally rather than accidentally.</p>
+    
+                             {t('lab.e9punctuationvocabulary_oxymorons')}
+                            </h3>
+   <p className="mb-3">An <strong>{t('lab.e9punctuationvocabulary_oxymoron')}</strong>  {t('lab.e9punctuationvocabulary_is_a_figure_of_speech_that_pla')}</p>
    <div className={`bg-slate-50 dark:bg-[#1c1b1b] p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] mb-6 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
     <ul className="list-disc pl-5 m-0 space-y-1">
-    <li><strong>Deafening silence:</strong> A silence so noticeable that it feels loud.</li>
-    <li><strong>Open secret:</strong> A fact that is supposed to be hidden but is known to many.</li>
-    <li><strong>Awfully good:</strong> Using a negative intensifier for a positive word.</li>
-    <li><strong>Living dead:</strong> Zombies or the undead.</li>
+    <li><strong>{t('lab.e9punctuationvocabulary_deafening_silence')}</strong>  {t('lab.e9punctuationvocabulary_a_silence_so_noticeable_that_i')}</li>
+    <li><strong>{t('lab.e9punctuationvocabulary_open_secret')}</strong>  {t('lab.e9punctuationvocabulary_a_fact_that_is_supposed_to_be_')}</li>
+    <li><strong>{t('lab.e9punctuationvocabulary_awfully_good')}</strong>  {t('lab.e9punctuationvocabulary_using_a_negative_intensifier_f')}</li>
+    <li><strong>{t('lab.e9punctuationvocabulary_living_dead')}</strong>  {t('lab.e9punctuationvocabulary_zombies_or_the_undead')}</li>
     </ul>
    </div>
 
    <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2 flex items-center gap-2 mb-3">
     <PenTool className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-    Hyphenation Rules
-   </h3>
-   <p className="mb-3">Use a hyphen to join two or more words serving as a <strong>single adjective</strong> before a noun. This is known as a compound adjective. Hyphenation prevents ambiguity for the reader.</p>
+    
+                             {t('lab.e9punctuationvocabulary_hyphenation_rules')}
+                            </h3>
+   <p className="mb-3">{t('lab.e9punctuationvocabulary_use_a_hyphen_to_join_two_or_mo')} <strong>{t('lab.e9punctuationvocabulary_single_adjective')}</strong>  {t('lab.e9punctuationvocabulary_before_a_noun_this_is_known_as')}</p>
    <ul className="list-disc pl-5 m-0 space-y-3">
     <li>
-    <strong>Hyphenate before the noun:</strong><br/>
-    <span className="text-slate-500 dark:text-[#71717a] italic">"He is a well-known author."</span>
+    <strong>{t('lab.e9punctuationvocabulary_hyphenate_before_the_noun')}</strong><br/>
+    <span className="text-slate-500 dark:text-[#71717a] italic">{t('lab.e9punctuationvocabulary_he_is_a_well_known_author')}</span>
     </li>
     <li>
-    <strong>Do NOT hyphenate after the noun:</strong><br/>
-    <span className="text-slate-500 dark:text-[#71717a] italic">"The author is well known."</span>
+    <strong>{t('lab.e9punctuationvocabulary_do_not_hyphenate_after_the_nou')}</strong><br/>
+    <span className="text-slate-500 dark:text-[#71717a] italic">{t('lab.e9punctuationvocabulary_the_author_is_well_known')}</span>
     </li>
     <li>
-    <strong>Do NOT hyphenate with '-ly' adverbs:</strong><br/>
-    <span className="text-slate-500 dark:text-[#71717a] italic">"A highly regarded expert."</span>
+    <strong>{t('lab.e9punctuationvocabulary_do_not_hyphenate_with_ly_adver')}</strong><br/>
+    <span className="text-slate-500 dark:text-[#71717a] italic">{t('lab.e9punctuationvocabulary_a_highly_regarded_expert')}</span>
     </li>
    </ul>
 
@@ -215,10 +221,10 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <FileEdit className="w-6 h-6 text-amber-600 dark:text-amber-400" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Proofreading Desk</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e9punctuationvocabulary_proofreading_desk')}</h2>
    </div>
    
    <div className="flex-1 overflow-y-auto pr-2">
@@ -226,7 +232,8 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     
     <div className="space-y-3">
     <div className={`inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-400 text-xs font-bold uppercase tracking-wider rounded-full border border-amber-200 dark:border-amber-800 `}>
-     Target: {currentData.issue}
+     
+                                      {t('lab.e9punctuationvocabulary_target')} {currentData.issue}
     </div>
     
     <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
@@ -268,7 +275,8 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
      </div>
      {result === 'success' && (
      <button onClick={nextTask} className="mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#4158D1] hover:bg-[#3142a3] text-white font-bold rounded-lg transition-colors">
-      Next Assignment <ArrowRight className="w-4 h-4" />
+      
+                                               {t('lab.e9punctuationvocabulary_next_assignment')} <ArrowRight className="w-4 h-4" />
      </button>
      )}
     </div>
@@ -278,19 +286,19 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full h-full flex flex-col">
    <div className="flex items-center gap-3 mb-6 w-full">
     <History className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-    <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Revision Logs & Assessment</h2>
+    <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e9punctuationvocabulary_revision_logs_assessment')}</h2>
    </div>
    
    <div className="flex-1 w-full overflow-y-auto pr-2 space-y-8 text-left">
     
     <div className="space-y-4">
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2">Recent Edits</h3>
+    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2">{t('lab.e9punctuationvocabulary_recent_edits')}</h3>
     {logs.length === 0 ? (
-     <p className="text-sm text-slate-500 dark:text-[#71717a] italic">No revisions made yet.</p>
+     <p className="text-sm text-slate-500 dark:text-[#71717a] italic">{t('lab.e9punctuationvocabulary_no_revisions_made_yet')}</p>
     ) : (
      <div className="space-y-3">
      {logs.map(log => (
@@ -298,7 +306,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
       <div className="text-slate-600 dark:text-[#a1a1aa] mb-2 italic line-clamp-2">"{log.original}"</div>
       <div className={`font-medium flex items-center gap-2 ${log.status === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
        {log.status === 'success' ? <CheckCircle2 className="w-4 h-4 shrink-0" /> : <XCircle className="w-4 h-4 shrink-0" />}
-       <span className="line-clamp-2">Selected: {log.choice}</span>
+       <span className="line-clamp-2">{t('lab.e9punctuationvocabulary_selected')} {log.choice}</span>
       </div>
       </div>
      ))}
@@ -307,7 +315,7 @@ export default function LabE9PunctuationVocabulary({ onExit }: { onExit?: () => 
     </div>
 
     <div className="space-y-4 pt-4">
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2">Style Guide Assessment</h3>
+    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] border-b border-slate-200 dark:border-[#2a2a2a] pb-2">{t('lab.e9punctuationvocabulary_style_guide_assessment')}</h3>
     
     {assessmentQuestions.map((q, i) => (
      <div key={q.id} className={`space-y-3 p-4 rounded-lg border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>

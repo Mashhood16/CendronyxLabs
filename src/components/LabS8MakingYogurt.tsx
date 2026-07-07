@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import {ThermometerSun, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8MakingYogurt({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [step, setStep] = useState(0);
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Act 4.1: Making of Yogurt" subtitle="Observe bacterial fermentation of milk" />
+  <LabHeader onExit={onExit} title={t('lab.s8makingyogurt_act_4_1_making_of_yogurt')} subtitle={t('lab.subtitle_observe_bacterial_fermentation')} />
 
   <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center">
@@ -74,17 +76,17 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
   <div className="w-full md:w-80 flex flex-col gap-4">
    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 dark:bg-teal-950/20 dark:border-teal-900">
    <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
-    <Info className="w-5 h-5" /> The Biology
-   </h3>
+    <Info className="w-5 h-5" />  {t('lab.s8makingyogurt_the_biology')}
+                            </h3>
    <p className="text-sm text-blue-800 mb-2 dark:text-[#ffffff]">
-    <strong>Boiling:</strong> Kills off unwanted, naturally occurring bacteria in the milk.
-   </p>
+    <strong>{t('lab.s8makingyogurt_boiling')}</strong>  {t('lab.s8makingyogurt_kills_off_unwanted_naturally_o')}
+                            </p>
    <p className="text-sm text-blue-800 mb-2 dark:text-[#ffffff]">
-    <strong>Starter:</strong> We add existing yogurt because it contains living <em>Lactobacillus</em> bacteria.
-   </p>
+    <strong>{t('lab.s8makingyogurt_starter')}</strong>  {t('lab.s8makingyogurt_we_add_existing_yogurt_because')} <em>{t('lab.s8makingyogurt_lactobacillus')}</em>  {t('lab.s8makingyogurt_bacteria')}
+                            </p>
    <p className="text-sm text-blue-800 dark:text-[#ffffff]">
-    <strong>Fermentation:</strong> The bacteria eat the milk sugars (lactose) and excrete lactic acid. This acid makes the milk curdle and thicken into yogurt!
-   </p>
+    <strong>{t('lab.s8makingyogurt_fermentation')}</strong>  {t('lab.s8makingyogurt_the_bacteria_eat_the_milk_suga')}
+                            </p>
    </div>
   </div>
   </div>

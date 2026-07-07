@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, Target, PenTool, ChevronRight, Hash } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabE10VocabularyStylisticsProps {
  onExit?: () => void;
@@ -38,6 +39,7 @@ const STYLISTIC_CHALLENGES = [
 ];
 
 export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10VocabularyStylisticsProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  
  const [currentChallenge, setCurrentChallenge] = useState(0);
@@ -90,7 +92,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
 
  return (
  <div className="min-min- lg: flex flex-col bg-slate-50 dark:bg-[#000000] text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Unit 8: Vocabulary & Stylistics" onExit={onExit} />
+  <LabHeader title={t('lab.e10vocabularystylistics_unit_8_vocabulary_stylistics')} onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -98,12 +100,13 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e10vocabularystylistics_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e10vocabularystylistics_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -112,58 +115,61 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
     <BookOpen className="w-5 h-5 text-[#4158D1]" />
-    Vocabulary & Stylistics
-   </h2>
-   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-    <p>Stylistics is a branch of applied linguistics concerned with the study of style in texts. In English grammar and composition, understanding stylistics allows you to make deliberate choices about words, sentence structures, and figures of speech to achieve a specific effect on the reader.</p>
     
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">1. Figures of Speech</h3>
-    <p>Figures of speech enhance meaning by taking language beyond its literal definition:</p>
+                         {t('lab.e10vocabularystylistics_vocabulary_stylistics')}
+                        </h2>
+   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
+    <p>{t('lab.e10vocabularystylistics_stylistics_is_a_branch_of_appl')}</p>
+    
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">{t('lab.e10vocabularystylistics_1_figures_of_speech')}</h3>
+    <p>{t('lab.e10vocabularystylistics_figures_of_speech_enhance_mean')}</p>
     <ul className="list-disc pl-5 space-y-1 mb-4">
-     <li><strong>Simile:</strong> A comparison between two unlike things using "like" or "as" (e.g., <em>"as brave as a lion"</em>).</li>
-     <li><strong>Metaphor:</strong> A direct comparison between two unlike things without using "like" or "as" (e.g., <em>"he is a shining star"</em>).</li>
-     <li><strong>Personification:</strong> Attributing human characteristics to non-human entities or inanimate objects (e.g., <em>"the wind whispered"</em>).</li>
-     <li><strong>Alliteration:</strong> The repetition of initial consonant sounds in neighboring words (e.g., <em>"she sells seashells"</em>).</li>
-     <li><strong>Oxymoron:</strong> A figure of speech that combines contradictory terms (e.g., <em>"deafening silence"</em>, <em>"jumbo shrimp"</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_simile')}</strong>  {t('lab.e10vocabularystylistics_a_comparison_between_two_unlik')} <em>{t('lab.e10vocabularystylistics_as_brave_as_a_lion')}</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_metaphor')}</strong>  {t('lab.e10vocabularystylistics_a_direct_comparison_between_tw')} <em>{t('lab.e10vocabularystylistics_he_is_a_shining_star')}</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_personification')}</strong>  {t('lab.e10vocabularystylistics_attributing_human_characterist')} <em>{t('lab.e10vocabularystylistics_the_wind_whispered')}</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_alliteration')}</strong>  {t('lab.e10vocabularystylistics_the_repetition_of_initial_cons')} <em>{t('lab.e10vocabularystylistics_she_sells_seashells')}</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_oxymoron')}</strong>  {t('lab.e10vocabularystylistics_a_figure_of_speech_that_combin')} <em>{t('lab.e10vocabularystylistics_deafening_silence')}</em>, <em>{t('lab.e10vocabularystylistics_jumbo_shrimp')}</em>).</li>
     </ul>
 
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">2. Vocabulary Choices</h3>
-    <p>Words carry both literal meanings and associated feelings:</p>
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">{t('lab.e10vocabularystylistics_2_vocabulary_choices')}</h3>
+    <p>{t('lab.e10vocabularystylistics_words_carry_both_literal_meani')}</p>
     <ul className="list-disc pl-5 space-y-1 mb-4">
-     <li><strong>Denotation:</strong> The literal, dictionary definition of a word.</li>
-     <li><strong>Connotation:</strong> The emotional, cultural, or social associations a word carries. For example, "inexpensive" has a positive connotation (good value), while "cheap" has a negative connotation (poor quality).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_denotation')}</strong>  {t('lab.e10vocabularystylistics_the_literal_dictionary_definit')}</li>
+     <li><strong>{t('lab.e10vocabularystylistics_connotation')}</strong>  {t('lab.e10vocabularystylistics_the_emotional_cultural_or_soci')}</li>
     </ul>
 
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">3. Morphology (Word Origins)</h3>
-    <p>Understanding word parts helps deduce the meaning of unfamiliar vocabulary:</p>
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">{t('lab.e10vocabularystylistics_3_morphology_word_origins')}</h3>
+    <p>{t('lab.e10vocabularystylistics_understanding_word_parts_helps')}</p>
     <ul className="list-disc pl-5 space-y-1 mb-4">
-     <li><strong>Prefixes:</strong> Added to the beginning of a root word to alter its meaning (e.g., <em>un-</em> meaning "not", as in <em>unbelievable</em>).</li>
-     <li><strong>Suffixes:</strong> Added to the end of a word to change its grammatical function or meaning (e.g., <em>-able</em> meaning "capable of").</li>
-     <li><strong>Root Words:</strong> The core meaning of a word, often derived from Latin or Greek.</li>
+     <li><strong>{t('lab.e10vocabularystylistics_prefixes')}</strong>  {t('lab.e10vocabularystylistics_added_to_the_beginning_of_a_ro')} <em>{t('lab.e10vocabularystylistics_un')}</em>  {t('lab.e10vocabularystylistics_meaning_not_as_in')} <em>{t('lab.e10vocabularystylistics_unbelievable')}</em>).</li>
+     <li><strong>{t('lab.e10vocabularystylistics_suffixes')}</strong>  {t('lab.e10vocabularystylistics_added_to_the_end_of_a_word_to_')} <em>{t('lab.e10vocabularystylistics_able')}</em>  {t('lab.e10vocabularystylistics_meaning_capable_of')}</li>
+     <li><strong>{t('lab.e10vocabularystylistics_root_words')}</strong>  {t('lab.e10vocabularystylistics_the_core_meaning_of_a_word_oft')}</li>
     </ul>
 
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">4. Punctuation for Style</h3>
-    <p>Punctuation guides the reader and affects the pacing of the text:</p>
+    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mt-4 mb-2">{t('lab.e10vocabularystylistics_4_punctuation_for_style')}</h3>
+    <p>{t('lab.e10vocabularystylistics_punctuation_guides_the_reader_')}</p>
     <ul className="list-disc pl-5 space-y-1 mb-4">
-     <li><strong>Period (.):</strong> Ends a declarative sentence, establishing a firm stop.</li>
-     <li><strong>Comma (,):</strong> Indicates a brief pause, separates items in a list, or joins clauses with a conjunction.</li>
-     <li><strong>Semicolon (;):</strong> Links two related independent clauses without a conjunction, showing a close relationship between the ideas.</li>
-     <li><strong>Colon (:):</strong> Introduces a list, a quotation, or an explanation, drawing attention to what follows.</li>
+     <li><strong>{t('lab.e10vocabularystylistics_period')}</strong>  {t('lab.e10vocabularystylistics_ends_a_declarative_sentence_es')}</li>
+     <li><strong>{t('lab.e10vocabularystylistics_comma')}</strong>  {t('lab.e10vocabularystylistics_indicates_a_brief_pause_separa')}</li>
+     <li><strong>{t('lab.e10vocabularystylistics_semicolon')}</strong>  {t('lab.e10vocabularystylistics_links_two_related_independent_')}</li>
+     <li><strong>{t('lab.e10vocabularystylistics_colon')}</strong>  {t('lab.e10vocabularystylistics_introduces_a_list_a_quotation_')}</li>
     </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
     <PenTool className="w-5 h-5 text-[#4158D1]" />
-    Stylist's Workbench
-   </h2>
+    
+                         {t('lab.e10vocabularystylistics_stylist_s_workbench')}
+                        </h2>
    
    <div className="flex-1 flex flex-col">
    <div className="mb-4 flex justify-between items-center">
     <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa]">
-    Challenge {currentChallenge + 1} of {STYLISTIC_CHALLENGES.length}
+    
+                                 {t('lab.e10vocabularystylistics_challenge')} {currentChallenge + 1} of {STYLISTIC_CHALLENGES.length}
     </span>
     <span className={`px-3 py-1 bg-[#4158D1]/10 text-[#4158D1] dark:text-[#889cf6] text-xs font-bold rounded-full flex-col `}>
     {STYLISTIC_CHALLENGES[currentChallenge].type}
@@ -205,7 +211,8 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
      onClick={nextChallenge}
      className={`flex items-center justify-center gap-2 w-full py-3 bg-[#4158D1] hover:bg-[#3144a5] text-white rounded-lg font-bold transition-colors shadow-sm flex-col `}
     >
-     Next Challenge <ChevronRight className="w-5 h-5" />
+     
+                                      {t('lab.e10vocabularystylistics_next_challenge')} <ChevronRight className="w-5 h-5" />
     </button>
     </div>
    )}
@@ -213,11 +220,11 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full max-w-md h-full flex flex-col">
    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-300 dark:border-[#1c1b1b]">
     <Target className="w-6 h-6 text-[#4158D1]" />
-    <h2 className="text-xl font-bold text-slate-900 dark:text-white">Knowledge Check</h2>
+    <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t('lab.e10vocabularystylistics_knowledge_check')}</h2>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2">
@@ -251,15 +258,16 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
      disabled={Object.keys(assessmentAnswers).length < questions.length}
      className="w-full mt-6 py-3 px-4 bg-[#4158D1] hover:bg-[#3144a5] disabled:bg-slate-300 disabled:dark:bg-slate-800 disabled:text-slate-500 disabled:dark:text-slate-500 text-white rounded-lg font-bold transition-colors"
      >
-     Submit Evaluation
-     </button>
+     
+                                          {t('lab.e10vocabularystylistics_submit_evaluation')}
+                                          </button>
     </div>
     ) : (
     <div className="text-center py-8 h-full flex flex-col justify-center">
      <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-[#4158D1]/10 text-[#4158D1] mb-6 mx-auto">
      <span className="text-4xl font-bold">{calculateScore()}/{questions.length}</span>
      </div>
-     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Assessment Complete</h3>
+     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('lab.e10vocabularystylistics_assessment_complete')}</h3>
      <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">
      {calculateScore() === questions.length 
       ? "Perfect score! Your stylistic skills are top-notch." 
@@ -272,8 +280,9 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
      }}
      className="flex items-center justify-center gap-2 w-full py-3 px-4 hover:bg-slate-50 dark:hover:bg-[#1c1b1b] text-slate-800 dark:text-white border border-slate-200 dark:border-[#2a2a2a] rounded-lg font-bold transition-colors"
      >
-     Retry Assessment
-     </button>
+     
+                                              {t('lab.e10vocabularystylistics_retry_assessment')}
+                                              </button>
     </div>
     )}
    </div>

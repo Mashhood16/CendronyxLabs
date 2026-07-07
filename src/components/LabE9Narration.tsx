@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookOpen, CheckCircle2, XCircle, Mic, NotebookPen, History, FileText, ArrowRight } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 const NARRATION_DATA = [
  {
@@ -46,6 +47,7 @@ const NARRATION_DATA = [
 ];
 
 export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [currentIndex, setCurrentIndex] = useState(0);
  const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -117,7 +119,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min-min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title="Reporter's Notepad: Narration" variant="dark" onExit={onExit} />
+  <LabHeader title={t('lab.e9narration_reporter_s_notepad_narration')} variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
@@ -125,12 +127,13 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.e9narration_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.e9narration_lab')}</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
@@ -139,88 +142,88 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
   <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-4">
    <BookOpen className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Narration Rules</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e9narration_narration_rules')}</h2>
    </div>
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
    <p>
-    <strong>Direct Speech</strong> quotes the exact words spoken by a person. It is enclosed in quotation marks.
-    <br/><em className="text-slate-500 dark:text-[#71717a]">Example: She said, "I am happy."</em>
+    <strong>{t('lab.e9narration_direct_speech')}</strong>  {t('lab.e9narration_quotes_the_exact_words_spoken_')}
+                             <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e9narration_example_she_said_i_am_happy')}</em>
    </p>
    <p className="mt-4">
-    <strong>Indirect Speech</strong> (or Reported Speech) conveys the meaning of what was said without using the exact words. Quotation marks are removed, and a conjunction like "that" is often used.
-    <br/><em className="text-slate-500 dark:text-[#71717a]">Example: She said that she was happy.</em>
+    <strong>{t('lab.e9narration_indirect_speech')}</strong>  {t('lab.e9narration_or_reported_speech_conveys_the')}
+                             <br/><em className="text-slate-500 dark:text-[#71717a]">{t('lab.e9narration_example_she_said_that_she_was_')}</em>
    </p>
 
-   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">1. The SON Rule for Pronouns</h3>
-   <p>Pronouns in the reported speech change according to the <strong>SON</strong> (Subject, Object, No change) rule:</p>
+   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e9narration_1_the_son_rule_for_pronouns')}</h3>
+   <p>{t('lab.e9narration_pronouns_in_the_reported_speec')} <strong>{t('lab.e9narration_son')}</strong>  {t('lab.e9narration_subject_object_no_change_rule')}</p>
    <ul className="list-disc pl-5 space-y-2 mt-2">
-    <li><strong>First Person (I, we, me, us, my, our):</strong> Changes according to the <strong>Subject</strong> of the reporting verb.
-    <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>Direct: He said, "I like coffee." &rarr; Indirect: He said that he liked coffee.</em></span>
+    <li><strong>{t('lab.e9narration_first_person_i_we_me_us_my_our')}</strong>  {t('lab.e9narration_changes_according_to_the')} <strong>{t('lab.e9narration_subject')}</strong>  {t('lab.e9narration_of_the_reporting_verb')}
+                             <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>{t('lab.e9narration_direct_he_said_i_like_coffee_r')}</em></span>
     </li>
-    <li><strong>Second Person (you, your):</strong> Changes according to the <strong>Object</strong> of the reporting verb.
-    <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>Direct: She said to me, "You are late." &rarr; Indirect: She told me that I was late.</em></span>
+    <li><strong>{t('lab.e9narration_second_person_you_your')}</strong>  {t('lab.e9narration_changes_according_to_the')} <strong>{t('lab.e9narration_object')}</strong>  {t('lab.e9narration_of_the_reporting_verb')}
+                             <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>{t('lab.e9narration_direct_she_said_to_me_you_are_')}</em></span>
     </li>
-    <li><strong>Third Person (he, she, it, they, his, her, their):</strong> <strong>No</strong> change.
-    <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>Direct: I said, "He is busy." &rarr; Indirect: I said that he was busy.</em></span>
+    <li><strong>{t('lab.e9narration_third_person_he_she_it_they_hi')}</strong> <strong>No</strong>  {t('lab.e9narration_change')}
+                             <br/><span className="text-xs text-slate-500 dark:text-[#71717a]"><em>{t('lab.e9narration_direct_i_said_he_is_busy_rarr_')}</em></span>
     </li>
    </ul>
 
-   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">2. Tense Step-Backs</h3>
-   <p>If the reporting verb (e.g., <em>said</em>, <em>told</em>) is in the past tense, the tense of the reported speech usually "steps back" one tense into the past:</p>
+   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e9narration_2_tense_step_backs')}</h3>
+   <p>{t('lab.e9narration_if_the_reporting_verb_e_g')} <em>{t('lab.e9narration_said')}</em>, <em>{t('lab.e9narration_told')}</em>{t('lab.e9narration_is_in_the_past_tense_the_tense')}</p>
    <div className="overflow-x-auto mt-2">
     <table className="w-full text-left text-sm border-collapse">
     <thead>
      <tr className="border-b border-slate-200 dark:border-[#1c1b1b]">
-     <th className="py-2">Direct Speech Tense</th>
-     <th className="py-2">Indirect Speech Tense</th>
+     <th className="py-2">{t('lab.e9narration_direct_speech_tense')}</th>
+     <th className="py-2">{t('lab.e9narration_indirect_speech_tense')}</th>
      </tr>
     </thead>
     <tbody className="divide-y divide-slate-200 dark:divide-[#1c1b1b]">
-     <tr><td className="py-2">Simple Present</td><td className="py-2">Simple Past</td></tr>
-     <tr><td className="py-2">Present Continuous</td><td className="py-2">Past Continuous</td></tr>
-     <tr><td className="py-2">Present Perfect</td><td className="py-2">Past Perfect</td></tr>
-     <tr><td className="py-2">Simple Past</td><td className="py-2">Past Perfect</td></tr>
-     <tr><td className="py-2">will / can / may</td><td className="py-2">would / could / might</td></tr>
+     <tr><td className="py-2">{t('lab.e9narration_simple_present')}</td><td className="py-2">{t('lab.e9narration_simple_past')}</td></tr>
+     <tr><td className="py-2">{t('lab.e9narration_present_continuous')}</td><td className="py-2">{t('lab.e9narration_past_continuous')}</td></tr>
+     <tr><td className="py-2">{t('lab.e9narration_present_perfect')}</td><td className="py-2">{t('lab.e9narration_past_perfect')}</td></tr>
+     <tr><td className="py-2">{t('lab.e9narration_simple_past')}</td><td className="py-2">{t('lab.e9narration_past_perfect')}</td></tr>
+     <tr><td className="py-2">{t('lab.e9narration_will_can_may')}</td><td className="py-2">{t('lab.e9narration_would_could_might')}</td></tr>
     </tbody>
     </table>
    </div>
    
    <div className={`bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-3 mt-4 text-sm rounded-r-md text-slate-800 dark:text-[#a1a1aa] flex-col `}>
-    <strong>Exception:</strong> If the reported speech states a <strong>universal truth</strong>, <strong>habitual fact</strong>, or <strong>scientific principle</strong>, the tense does NOT change, even if the reporting verb is in the past tense.
-    <br/><span className="text-xs"><em>Direct: The teacher said, "The earth revolves around the sun."<br/>Indirect: The teacher said that the earth revolves around the sun.</em></span>
+    <strong>{t('lab.e9narration_exception')}</strong>  {t('lab.e9narration_if_the_reported_speech_states_')} <strong>{t('lab.e9narration_universal_truth')}</strong>, <strong>{t('lab.e9narration_habitual_fact')}</strong>{t('lab.e9narration_or')} <strong>{t('lab.e9narration_scientific_principle')}</strong>{t('lab.e9narration_the_tense_does_not_change_even')}
+                             <br/><span className="text-xs"><em>{t('lab.e9narration_direct_the_teacher_said_the_ea')}<br/>{t('lab.e9narration_indirect_the_teacher_said_that')}</em></span>
    </div>
 
-   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">3. Changes in Time and Place Words</h3>
-   <p>Words expressing nearness in time and place change into words expressing distance:</p>
+   <h3 className="text-lg font-semibold text-slate-900 dark:text-[#ffffff] mt-6 mb-2">{t('lab.e9narration_3_changes_in_time_and_place_wo')}</h3>
+   <p>{t('lab.e9narration_words_expressing_nearness_in_t')}</p>
    <ul className="list-disc pl-5 space-y-1 mt-2">
-    <li><strong>Now</strong> &rarr; Then</li>
-    <li><strong>Here</strong> &rarr; There</li>
-    <li><strong>Today</strong> &rarr; That day</li>
-    <li><strong>Tomorrow</strong> &rarr; The next day</li>
-    <li><strong>Yesterday</strong> &rarr; The previous day</li>
-    <li><strong>This</strong> &rarr; That</li>
-    <li><strong>These</strong> &rarr; Those</li>
+    <li><strong>{t('lab.e9narration_now')}</strong>  {t('lab.e9narration_rarr_then')}</li>
+    <li><strong>{t('lab.e9narration_here')}</strong>  {t('lab.e9narration_rarr_there')}</li>
+    <li><strong>{t('lab.e9narration_today')}</strong>  {t('lab.e9narration_rarr_that_day')}</li>
+    <li><strong>{t('lab.e9narration_tomorrow')}</strong>  {t('lab.e9narration_rarr_the_next_day')}</li>
+    <li><strong>{t('lab.e9narration_yesterday')}</strong>  {t('lab.e9narration_rarr_the_previous_day')}</li>
+    <li><strong>{t('lab.e9narration_this')}</strong>  {t('lab.e9narration_rarr_that')}</li>
+    <li><strong>{t('lab.e9narration_these')}</strong>  {t('lab.e9narration_rarr_those')}</li>
    </ul>
    </div>
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6">
    <Mic className="w-6 h-6 text-rose-500 dark:text-rose-400" />
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">Live Interview</h2>
+   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e9narration_live_interview')}</h2>
    </div>
 
    <div className="flex-1 overflow-y-auto pr-2 space-y-6">
    <div className="space-y-2">
-    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Direct Quote</span>
+    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">{t('lab.e9narration_direct_quote')}</span>
     <div className={`text-xl font-serif font-medium text-slate-800 dark:text-[#ffffff] italic p-5 rounded-r-xl border-l-4 border-rose-400 shadow-sm flex-col `}>
     {currentData.direct}
     </div>
    </div>
 
    <div className="space-y-3">
-    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Select Completion</span>
+    <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">{t('lab.e9narration_select_completion')}</span>
     {currentData.options.map(opt => (
     <button
      key={opt}
@@ -247,8 +250,9 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
      </div>
     </div>
     {result === 'success' && (
-     <button onClick={nextQuote} className={`mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#000000] dark:bg-white text-white dark:text-black font-bold rounded-lg hover:bg-[#121212] dark:hover:bg-gray-200 transition-colors flex-col `}>
-     Next Interview <ArrowRight className="w-4 h-4" />
+     <button onClick={nextQuote} className={`mt-4 flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#000000] dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] text-white dark:text-black font-bold rounded-lg hover:bg-[#121212] dark:hover:bg-gray-200 transition-colors flex-col `}>
+     
+                                          {t('lab.e9narration_next_interview')} <ArrowRight className="w-4 h-4" />
      </button>
     )}
     </div>
@@ -257,7 +261,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="absolute inset-0 bg-[#faf9f6] dark:bg-[#121212] overflow-y-auto">
    <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #94a3b8 31px, #94a3b8 32px)', backgroundPositionY: '32px' }}></div>
    <div className="absolute top-0 bottom-0 left-12 w-px bg-red-400 opacity-40 pointer-events-none"></div>
@@ -267,7 +271,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
     <div>
     <div className="flex items-center gap-2 mb-4">
      <NotebookPen className="w-5 h-5 text-slate-500 dark:text-[#71717a]" />
-     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Reported Draft</span>
+     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">{t('lab.e9narration_reported_draft')}</span>
     </div>
     <div className="flex flex-wrap items-baseline gap-2 text-xl font-serif text-slate-800 dark:text-[#ffffff]">
      <span>{currentData.indirectStart}</span>
@@ -281,10 +285,10 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
     <div className="space-y-4">
     <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-2">
      <History className="w-5 h-5 text-slate-500 dark:text-[#71717a]" />
-     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Editorial Log</span>
+     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">{t('lab.e9narration_editorial_log')}</span>
     </div>
     {logs.length === 0 ? (
-     <p className="text-sm text-slate-500 dark:text-[#71717a] italic">No drafts submitted yet.</p>
+     <p className="text-sm text-slate-500 dark:text-[#71717a] italic">{t('lab.e9narration_no_drafts_submitted_yet')}</p>
     ) : (
      <div className="space-y-3">
      {logs.map(log => (
@@ -304,7 +308,7 @@ export default function LabE9Narration({ onExit }: { onExit?: () => void }) {
     <div className="space-y-4 pt-4">
     <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-2">
      <FileText className="w-5 h-5 text-slate-500 dark:text-[#71717a]" />
-     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">Knowledge Check</span>
+     <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-widest">{t('lab.e9narration_knowledge_check')}</span>
     </div>
     
     {assessmentQuestions.map((q, i) => (

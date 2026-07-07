@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { ArrowLeft, Play, Presentation, Image as ImageIcon, Type, PlusCircle, Monitor, HardDrive, Cpu, Radio, Mouse } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC6GroupPresentations({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const topics = [
  { id: 'input', label: 'Input Devices', icon: Mouse, color: 'text-indigo-500' },
  { id: 'output', label: 'Output Devices', icon: Monitor, color: 'text-pink-500' },
@@ -39,8 +41,8 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
    onClick={() => setIsPlaying(false)} 
    className="absolute top-8 left-8 text-slate-400 hover:text-white flex items-center"
   >
-   <ArrowLeft className="w-5 h-5 mr-2" /> End Show
-  </button>
+   <ArrowLeft className="w-5 h-5 mr-2" />  {t('lab.c6grouppresentations_end_show')}
+               </button>
   
   <div className="w-full max-w-5xl aspect-video bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-2xl p-16 flex flex-col justify-center items-center text-center relative border border-[#1c1b1b] dark:border-[#1c1b1b]">
    <div className="absolute top-8 right-8 flex items-center gap-3 text-slate-500 dark:text-[#71717a]">
@@ -65,18 +67,21 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
    onClick={() => setCurrentSlide(c => c - 1)}
    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold transition-colors text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-   Previous
-   </button>
+   
+                    {t('lab.c6grouppresentations_previous')}
+                    </button>
    <div className="px-6 py-3 font-bold text-slate-400">
-   Slide {currentSlide + 1} of {slides.length}
+   
+                    {t('lab.c6grouppresentations_slide')} {currentSlide + 1} of {slides.length}
    </div>
    <button 
    disabled={currentSlide === slides.length - 1}
    onClick={() => setCurrentSlide(c => c + 1)}
    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold transition-colors text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
-   Next
-   </button>
+   
+                    {t('lab.c6grouppresentations_next')}
+                    </button>
   </div>
   </div>
  );
@@ -84,13 +89,13 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-  <LabHeader onExit={onExit} title="Unit 1: Group Presentations" subtitle={selectedTopic ? `Presenting: ${topics.find(t => t.id === selectedTopic)?.label}` : undefined} />
+  <LabHeader onExit={onExit} title={t('lab.c6grouppresentations_unit_1_group_presentations')} subtitle={selectedTopic ? `Presenting: ${topics.find(t => t.id === selectedTopic)?.label}` : undefined} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
   
 
   <div className="flex justify-between items-end mb-6">
    <div>
-   <p className="text-slate-600 dark:text-[#a1a1aa]">Select a hardware topic and prepare your slides.</p>
+   <p className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6grouppresentations_select_a_hardware_topic_and_pr')}</p>
    </div>
    
    <button 
@@ -104,15 +109,16 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
    className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-blue-500/20 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
    >
    <Play className="w-5 h-5" fill="currentColor" />
-   Present
-   </button>
+   
+                        {t('lab.c6grouppresentations_present')}
+                        </button>
   </div>
 
   <div className="flex gap-8 flex-1 h-[600px]">
    {/* Sidebar */}
    <div className="w-64 flex flex-col gap-6">
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-3 text-sm tracking-wider uppercase">1. Select Topic</h3>
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-3 text-sm tracking-wider uppercase">{t('lab.c6grouppresentations_1_select_topic')}</h3>
     <div className="flex flex-col gap-2">
     {topics.map(topic => {
      const Icon = topic.icon;
@@ -132,8 +138,8 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
 
    <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-1 flex flex-col overflow-hidden">
     <div className="flex justify-between items-center mb-4">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] text-sm tracking-wider uppercase">2. Slides</h3>
-    <button onClick={addSlide} className="text-blue-600 hover:text-blue-700" title="Add Slide">
+    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] text-sm tracking-wider uppercase">{t('lab.c6grouppresentations_2_slides')}</h3>
+    <button onClick={addSlide} className="text-blue-600 hover:text-blue-700" title={t('lab.c6grouppresentations_add_slide')}>
      <PlusCircle className="w-5 h-5" />
     </button>
     </div>
@@ -161,15 +167,15 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
    <div className="border-b border-slate-200 dark:border-[#1c1b1b] p-4 flex gap-4 bg-slate-50 dark:bg-[#121212] rounded-t-xl">
     <button onClick={() => setActiveFormat('text')} className={`flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors ${activeFormat === 'text' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/50' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-[#121212]'}`}>
     <Type className="w-5 h-5" />
-    <span className="text-[10px] font-bold">Text</span>
+    <span className="text-[10px] font-bold">{t('lab.c6grouppresentations_text')}</span>
     </button>
     <button onClick={() => alert("Image format simulation not available in this demo.")} className="flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors text-slate-500 dark:text-[#71717a] hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-neutral-800 dark:bg-teal-950/20 dark:border-teal-900">
     <ImageIcon className="w-5 h-5" />
-    <span className="text-[10px] font-bold">Image</span>
+    <span className="text-[10px] font-bold">{t('lab.c6grouppresentations_image')}</span>
     </button>
     <button onClick={() => alert("Layout formatting not available in this demo.")} className="flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors text-slate-500 dark:text-[#71717a] hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-neutral-800 dark:bg-teal-950/20 dark:border-teal-900">
     <Presentation className="w-5 h-5" />
-    <span className="text-[10px] font-bold">Layout</span>
+    <span className="text-[10px] font-bold">{t('lab.c6grouppresentations_layout')}</span>
     </button>
    </div>
 
@@ -177,7 +183,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
     {!selectedTopic ? (
     <div className="m-auto text-center p-12 text-slate-400">
      <Presentation className="w-24 h-24 mx-auto mb-6 opacity-20" />
-     <p className="text-xl font-medium">Please select a hardware topic first.</p>
+     <p className="text-xl font-medium">{t('lab.c6grouppresentations_please_select_a_hardware_topic')}</p>
     </div>
     ) : (
     <div className="w-full max-w-3xl mx-auto aspect-video bg-slate-50 dark:bg-[#121212] shadow-lg border border-slate-200 dark:border-[#1c1b1b] p-12 flex flex-col justify-center">
@@ -185,13 +191,13 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
      type="text"
      value={slides[currentSlide].title}
      onChange={(e) => updateSlide('title', e.target.value)}
-     placeholder="Click to add title"
+     placeholder={t('lab.c6grouppresentations_click_to_add_title')}
      className="text-4xl font-bold text-center mb-8 outline-none border-b-2 border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 bg-transparent transition-colors placeholder:text-slate-300"
      />
      <textarea
      value={slides[currentSlide].content}
      onChange={(e) => updateSlide('content', e.target.value)}
-     placeholder="Click to add text"
+     placeholder={t('lab.c6grouppresentations_click_to_add_text')}
      className="text-xl text-center flex-1 outline-none border-2 border-transparent hover:border-slate-200 dark:border-[#1c1b1b] focus:border-blue-500 rounded-xl p-4 bg-transparent transition-colors resize-none placeholder:text-slate-300"
      />
     </div>

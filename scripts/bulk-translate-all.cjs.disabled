@@ -1,0 +1,131 @@
+/**
+ * Bulk translates ALL remaining untranslated strings to Roman Urdu.
+ * Usage: node scripts/bulk-translate-all.cjs
+ */
+const fs = require('fs');
+
+const EN_FILE = 'src/locales/en/translation.json';
+const UR_FILE = 'src/locales/roman-urdu/translation.json';
+
+const en = JSON.parse(fs.readFileSync(EN_FILE, 'utf8'));
+const ur = JSON.parse(fs.readFileSync(UR_FILE, 'utf8'));
+
+const WORD_MAP = {
+  'theory': 'Theory', 'lab': 'Lab', 'setup': 'Setup',
+  'simulation': 'Simulation', 'assessment': 'Assessment',
+  'check': 'Janch', 'reset': 'Dobara Set Karein',
+  'record': 'Record', 'verify': 'Tasdeeq Karein',
+  'select': 'Intikhab Karein', 'submit': 'Pesh Karein',
+  'cancel': 'Mansookh Karein', 'save': 'Mehfooz Karein',
+  'delete': 'Khatam Karein', 'add': 'Shamil Karein',
+  'search': 'Talash', 'start': 'Shuru', 'stop': 'Rokain',
+  'pause': 'Tawaqquf', 'continue': 'Jari Rakhein',
+  'next': 'Agla', 'previous': 'Pehla', 'back': 'Wapas',
+  'done': 'Mukammal', 'exit': 'Bahir Niklein',
+  'close': 'Band Karein', 'open': 'Kholen', 'help': 'Madad',
+  'hint': 'Ishara', 'note': 'Note', 'warning': 'Khabardar',
+  'error': 'Khata', 'correct': 'Sahi', 'incorrect': 'Ghalat',
+  'success': 'Kamyabi', 'result': 'Natija', 'score': 'Number',
+  'status': 'Halat', 'progress': 'Taraqqi',
+  'loading': 'Load ho raha hai', 'ready': 'Tayar',
+  'option': 'Ikhtiyar', 'choice': 'Intikhab',
+  'example': 'Misaal', 'sample': 'Namuna', 'value': 'Qeemat',
+  'data': 'Data', 'time': 'Waqt', 'name': 'Naam',
+  'title': 'Unwan', 'type': 'Qisam', 'size': 'Nap',
+  'color': 'Rang', 'language': 'Zaban', 'theme': 'Theme',
+  'experiment': 'Tajurba', 'observation': 'Mushahida',
+  'conclusion': 'Nateeja', 'method': 'Tariqa',
+  'procedure': 'Tariqa-e-Kaar', 'reaction': 'Reaction',
+  'equation': 'Musawat', 'formula': 'Formula',
+  'calculation': 'Hisab', 'temperature': 'Darja Hararat',
+  'pressure': 'Dabao', 'volume': 'Hajam', 'mass': 'Wazan',
+  'velocity': 'Raftar', 'force': 'Quwwat', 'energy': 'Tawanai',
+  'power': 'Taaqat', 'current': 'Baha', 'voltage': 'Voltage',
+  'resistance': 'Muzahmat', 'frequency': 'Tawaddud',
+  'concentration': 'Tarkeeb', 'solution': 'Halool',
+  'mixture': 'Amezish', 'compound': 'Murakkab',
+  'element': 'Ansar', 'molecule': 'Salmiya',
+  'product': 'Hasil', 'yield': 'Pawar', 'rate': 'Sharh',
+  'table': 'Table', 'label': 'Label',
+  'question': 'Sawal', 'answer': 'Jawab',
+  'select...': 'Intikhab Karein...',
+  'no data': 'Koi data nahi', 'no results': 'Koi natija nahi',
+  'are you sure': 'Kya aap ko Yaqeen hai',
+  'click here': 'Yahan Click Karein',
+  'read more': 'Mazeed Parhein', 'show more': 'Mazeed Dikhaein',
+};
+
+function isFormula(text) {
+  if (!text || !text.trim()) return false;
+  const t = text.trim();
+  if (t.includes('$$') || t.includes('$')) return true;
+  if (/[→⇌÷×±∞√∫∑πθρΩωΔ²³⁴⁺⁻°₀₁₂₃₄₅₆₇₈₉≈≠≤≥∂]/.test(t)) return true;
+  if (/^[-+]?\d+\.?\d*\s*[×x]\s*[-+]?\d+/.test(t)) return true;
+  if (/^[-+]?\d+\.?\d*\s*[%°CFKVWAhzΩHkgmLJNPmμ]/.test(t)) return true;
+  if (/^https?:\/\//.test(t)) return true;
+  if (/^[A-Z][a-z]?\d+(?:[·.][A-Z][a-z]?\d+)*/.test(t)) return true;
+  if (/^[A-Z][a-z]?\d+\s*[+]\s*[A-Z]/.test(t)) return true;
+  if (/^[a-z]\s*=\s*/.test(t) && !/[A-Z]/.test(t) && t.length < 30) return true;
+  if (/^<[/]?[a-zA-Z]/.test(t)) return true;
+  if (t.includes('&&') || /Math\./.test(t)) return true;
+  if (/^\([sgl]\)/.test(t)) return true;
+  if (/^[-+]?\d+\.?\d*$/.test(t) && t.length < 20) return true;
+  if (/^[A-Z0-9._]+$/.test(t) && t.length < 30) return true;
+  if (/\\frac|\\sqrt|\\sum|\\int/.test(t)) return true;
+  if (/^[a-z]+\s*:\s*\d/.test(t)) return true;
+  if (/^[a-z]_\{[a-z]+\}\s*=/.test(t)) return true;
+  return false;
+}
+
+function toRomanUrdu(text) {
+  if (!text) return text;
+  const trimmed = text.trim();
+  if (!trimmed) return text;
+  if (isFormula(trimmed)) return text;
+  if (!/[a-zA-Z]{3,}/.test(trimmed)) return text;
+
+  let result = trimmed;
+  const entries = Object.entries(WORD_MAP).sort((a, b) => b[0].length - a[0].length);
+  for (const [enWord, urWord] of entries) {
+    if (!urWord) continue;
+    const regex = new RegExp('\\b' + enWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    result = result.replace(regex, urWord);
+  }
+  return result;
+}
+
+let untranslated = [];
+let formulas = 0;
+Object.keys(en).forEach(k => {
+  const enVal = (en[k] || '').trim();
+  const urVal = (ur[k] || '').trim();
+  if (!enVal) return;
+  if (!urVal || urVal === enVal) {
+    if (isFormula(enVal)) {
+      ur[k] = enVal;
+      formulas++;
+    } else {
+      untranslated.push({ key: k, text: enVal });
+    }
+  }
+});
+
+console.log(`Untranslated text strings: ${untranslated.length}`);
+console.log(`Formula/technical preserved: ${formulas}`);
+
+let translated = 0;
+untranslated.forEach(({ key, text }) => {
+  ur[key] = toRomanUrdu(text);
+  translated++;
+});
+
+fs.writeFileSync(UR_FILE, JSON.stringify(ur, null, 2));
+console.log(`Translated: ${translated}`);
+
+const remaining = Object.keys(en).filter(k => {
+  const ev = (en[k] || '').trim();
+  const uv = (ur[k] || '').trim();
+  return ev && (!uv || uv === ev);
+});
+console.log(`Still untranslated (all): ${remaining.length}`);
+console.log(`Total keys: ${Object.keys(ur).length}`);

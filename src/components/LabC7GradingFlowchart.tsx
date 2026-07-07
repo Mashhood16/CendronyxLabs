@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit: () => void;
 }
 
 export default function LabC7GradingFlowchart({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [nodes, setNodes] = useState<{id: string, label: string, shape: string, placedAt: number | null}[]>([
  { id: 'n1', label: 'Start', shape: 'pill', placedAt: null },
  { id: 'n2', label: 'Input Marks', shape: 'parallelogram', placedAt: null },
@@ -47,22 +49,22 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Grading Flowchart Builder" />
+  <LabHeader onExit={onExit} title={t('lab.c7gradingflowchart_grading_flowchart_builder')} />
   <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Drag and drop the flowchart shapes to construct the logic for determining a Pass or Fail grade.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7gradingflowchart_drag_and_drop_the_flowchart_sh')}</p>
 
   {isComplete && (
    <div className="bg-emerald-100 text-emerald-800 p-4 rounded-xl mb-6 flex items-center border border-emerald-300 shadow-sm w-fit">
    <CheckCircle className="w-6 h-6 mr-3" />
-   <span className="font-bold">Flowchart Complete!</span> The logic flows correctly.
-   </div>
+   <span className="font-bold">{t('lab.c7gradingflowchart_flowchart_complete')}</span>  {t('lab.c7gradingflowchart_the_logic_flows_correctly')}
+                        </div>
   )}
 
   <div className="flex gap-8 max-w-5xl mx-auto w-full">
    {/* Palette */}
    <div className="w-64 bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">Flowchart Nodes</h2>
+   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase tracking-wider text-sm">{t('lab.c7gradingflowchart_flowchart_nodes')}</h2>
    <div className="flex flex-col gap-4">
     {nodes.filter(n => n.placedAt === null).map(node => (
     <div 
@@ -78,7 +80,7 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
     </div>
     ))}
     {nodes.filter(n => n.placedAt === null).length === 0 && !isComplete && (
-    <div className="text-rose-500 font-medium text-sm text-center">Some nodes are placed incorrectly.</div>
+    <div className="text-rose-500 font-medium text-sm text-center">{t('lab.c7gradingflowchart_some_nodes_are_placed_incorrec')}</div>
     )}
    </div>
    </div>
@@ -101,7 +103,7 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
     {/* True Branch */}
     <div className="flex flex-col items-end mr-8 mt-4">
     <div className="flex items-center h-1 bg-slate-300 dark:bg-[#121212] w-32 relative">
-     <span className="absolute -top-6 left-1/2 font-bold text-emerald-600 text-sm">Yes (True)</span>
+     <span className="absolute -top-6 left-1/2 font-bold text-emerald-600 text-sm">{t('lab.c7gradingflowchart_yes_true')}</span>
     </div>
     <div className="w-1 h-8 bg-slate-300 dark:bg-[#121212] relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
     <Slot id={3} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(3)} />
@@ -111,7 +113,7 @@ export default function LabC7GradingFlowchart({ onExit }: LabProps) {
     {/* False Branch */}
     <div className="flex flex-col items-start ml-8 mt-4">
     <div className="flex items-center h-1 bg-slate-300 dark:bg-[#121212] w-32 relative">
-     <span className="absolute -top-6 left-1/2 font-bold text-rose-600 text-sm">No (False)</span>
+     <span className="absolute -top-6 left-1/2 font-bold text-rose-600 text-sm">{t('lab.c7gradingflowchart_no_false')}</span>
     </div>
     <div className="w-1 h-8 bg-slate-300 dark:bg-[#121212] relative"><div className="absolute -bottom-2 -left-2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-slate-400"/></div>
     <Slot id={4} nodes={nodes} setNodes={setNodes} onDrop={() => handleDrop(4)} />

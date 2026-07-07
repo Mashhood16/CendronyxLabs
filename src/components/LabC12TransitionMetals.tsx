@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Flame, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface MetalComplex {
  metal: string;
@@ -21,6 +22,7 @@ const complexes: MetalComplex[] = [
 ];
 
 export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void }) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [complexIdx, setComplexIdx] = useState<number>(0);
  const [ansEnergy, setAnsEnergy] = useState<string>('');
@@ -44,7 +46,7 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Virtual Lab: Transition Metals & Complexes" />
+  <LabHeader onExit={onExit} title={t('lab.c12transitionmetals_virtual_lab_transition_metals_')} />
 
   
   {/* Mobile Tab Navigation */}
@@ -53,44 +55,47 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                     {t('lab.c12transitionmetals_theory')}
+                    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.c12transitionmetals_lab')}</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-teal-900 mb-4 flex items-center">
-   <Flame className="mr-2" /> Theory
-   </h2>
+   <Flame className="mr-2" />  {t('lab.c12transitionmetals_theory')}
+                        </h2>
    <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
-   <p><strong>Transition Metals</strong> form complex ions with ligands. The ligands cause the d-orbitals of the central metal ion to split into different energy levels (e.g., e_g and t_2g in octahedral fields).</p>
+   <p><strong>{t('lab.c12transitionmetals_transition_metals')}</strong>  {t('lab.c12transitionmetals_form_complex_ions_with_ligands')}</p>
    
-   <h3 className="text-md font-semibold mt-4">Crystal Field Theory & Colors</h3>
-   <p>The energy gap (Δ) between split d-orbitals corresponds to the wavelength of light absorbed:</p>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12transitionmetals_crystal_field_theory_colors')}</h3>
+   <p>{t('lab.c12transitionmetals_the_energy_gap_between_split_d')}</p>
    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>
-    ΔE = hc / λ
-   </div>
-   <p>The observed color is the <strong>complementary color</strong> of the absorbed light.</p>
+    
+                             {t('lab.c12transitionmetals_e_hc')}
+                            </div>
+   <p>{t('lab.c12transitionmetals_the_observed_color_is_the')} <strong>{t('lab.c12transitionmetals_complementary_color')}</strong>  {t('lab.c12transitionmetals_of_the_absorbed_light')}</p>
    
-   <h3 className="text-md font-semibold mt-4">Spectrochemical Series</h3>
-   <p>Ligands split d-orbitals by different amounts:<br/>
-    I⁻ &lt; Cl⁻ &lt; F⁻ &lt; OH⁻ &lt; H₂O &lt; NH₃ &lt; CN⁻ &lt; CO
-   </p>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12transitionmetals_spectrochemical_series')}</h3>
+   <p>{t('lab.c12transitionmetals_ligands_split_d_orbitals_by_di')}<br/>
+    
+                             {t('lab.c12transitionmetals_i_lt_cl_lt_f_lt_oh_lt_h_o_lt_n')}
+                            </p>
 
-   <h3 className="text-md font-semibold mt-4">Industrial Catalysis</h3>
+   <h3 className="text-md font-semibold mt-4">{t('lab.c12transitionmetals_industrial_catalysis')}</h3>
    <ul className="list-disc pl-5">
-    <li><strong>Haber Process (NH₃):</strong> Uses Iron (Fe) catalyst.</li>
-    <li><strong>Contact Process (H₂SO₄):</strong> Uses Vanadium(V) oxide (V₂O₅).</li>
+    <li><strong>{t('lab.c12transitionmetals_haber_process_nh')}</strong>  {t('lab.c12transitionmetals_uses_iron_fe_catalyst')}</li>
+    <li><strong>{t('lab.c12transitionmetals_contact_process_h_so')}</strong>  {t('lab.c12transitionmetals_uses_vanadium_v_oxide_v_o')}</li>
    </ul>
-   <p>Transition metals make good catalysts due to their variable oxidation states and ability to adsorb reactants on their surface.</p>
+   <p>{t('lab.c12transitionmetals_transition_metals_make_good_ca')}</p>
    </div>
   </div>
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col items-center border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-teal-900 mb-4">Ligand Swapping Simulator</h2>
+   <h2 className="text-xl font-bold text-teal-900 mb-4">{t('lab.c12transitionmetals_ligand_swapping_simulator')}</h2>
    
    <select 
    className={`w-full max-w-sm p-2 border rounded bg-slate-50 dark:bg-[#121212] mb-6 font-mono font-bold text-center flex-col `}
@@ -102,18 +107,18 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
 
    <div className="w-full flex gap-4">
    <div className="w-1/2 flex flex-col items-center">
-    <h3 className="text-sm font-semibold mb-2">Solution Color</h3>
+    <h3 className="text-sm font-semibold mb-2">{t('lab.c12transitionmetals_solution_color')}</h3>
     <div 
     className="w-24 h-32 rounded-b-xl border-x-4 border-b-4 border-slate-300 dark:border-[#1c1b1b] relative overflow-hidden transition-colors duration-500"
     style={{ backgroundColor: activeComplex.color }}
     >
     <div className={`absolute top-0 w-full h-4 bg-slate-50 dark:bg-[#121212]/30 flex-col `}></div>
     </div>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">Absorbs ~{activeComplex.lambda} nm</p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2">{t('lab.c12transitionmetals_absorbs')}{activeComplex.lambda} nm</p>
    </div>
    
    <div className="w-1/2 flex flex-col items-center">
-    <h3 className="text-sm font-semibold mb-2">d-Orbital Splitting</h3>
+    <h3 className="text-sm font-semibold mb-2">{t('lab.c12transitionmetals_d_orbital_splitting')}</h3>
     <div className="w-full h-32 bg-slate-100 dark:bg-[#121212] rounded border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-2">
     {/* Render Octahedral Splitting Diagram symbolically */}
     <div className="flex flex-col items-center w-full h-full justify-around">
@@ -153,25 +158,30 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
 
   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-xl font-bold text-teal-900 mb-4 flex items-center">
-   <Activity className="mr-2" /> Assessment
-   </h2>
+   <Activity className="mr-2" />  {t('lab.c12transitionmetals_assessment')}
+                        </h2>
    
    <div className="bg-teal-50 p-4 rounded-xl border border-teal-100 flex-1">
-   <h3 className="font-semibold text-teal-900 mb-2">Calculate Crystal Field Splitting</h3>
+   <h3 className="font-semibold text-teal-900 mb-2">{t('lab.c12transitionmetals_calculate_crystal_field_splitt')}</h3>
    <p className="text-sm text-teal-800 mb-3">
-    The complex <strong>{activeComplex.name}</strong> absorbs light at <strong>{activeComplex.lambda} nm</strong>.
+    
+                             {t('lab.c12transitionmetals_the_complex')} <strong>{activeComplex.name}</strong>  {t('lab.c12transitionmetals_absorbs_light_at')} <strong>{activeComplex.lambda} nm</strong>.
     <br/><br/>
-    Calculate the crystal field splitting energy (Δ) in <strong>kJ/mol</strong>.
+    
+                             {t('lab.c12transitionmetals_calculate_the_crystal_field_sp')} <strong>{t('lab.c12transitionmetals_kj_mol')}</strong>.
     <br/><br/>
     <span className="text-xs text-slate-500 dark:text-[#71717a]">
-    h = 6.626 × 10⁻³⁴ J·s <br/>
-    c = 3.00 × 10⁸ m/s <br/>
-    N_A = 6.022 × 10²³ mol⁻¹
-    </span>
+    
+                                 {t('lab.c12transitionmetals_h_6_626_10_j_s')} <br/>
+    
+                                 {t('lab.c12transitionmetals_c_3_00_10_m_s')} <br/>
+    
+                                 {t('lab.c12transitionmetals_n_a_6_022_10_mol')}
+                                 </span>
    </p>
    <input 
     type="text" 
-    placeholder="Enter value in kJ/mol..." 
+    placeholder={t('lab.c12transitionmetals_enter_value_in_kj_mol')} 
     value={ansEnergy}
     onChange={e => setAnsEnergy(e.target.value)}
     className="w-full p-2 border border-teal-200 rounded focus:outline-none focus:ring-2 focus:ring-teal-500 mb-3"
@@ -180,8 +190,8 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
     onClick={checkAnswer}
     className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
    >
-    <CheckCircle className="mr-2" size={18} /> Check Answer
-   </button>
+    <CheckCircle className="mr-2" size={18} />  {t('lab.c12transitionmetals_check_answer')}
+                            </button>
    {feedback && (
     <p className={`mt-3 text-sm font-semibold p-2 rounded ${feedback.includes('Correct') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
     {feedback}

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { BookOpen, Map, Settings, Activity, CheckCircle2, XCircle, Grid } from 'lucide-react';
 import LabHeader from './LabHeader';
+import { useTranslate } from "../i18n";
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
+    const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Map Abstraction State
@@ -100,7 +102,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title="Computational Thinking Lab" />
+  <LabHeader onExit={onExit} title={t('lab.cs10computationalthinking_computational_thinking_lab')} />
 
   <div className="flex-1 p-6">
   
@@ -110,12 +112,13 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
     onClick={() => setActiveMobileTab('theory')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
-    Theory
-   </button>
+    
+                         {t('lab.cs10computationalthinking_theory')}
+                        </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >Lab</button>
+   >{t('lab.cs10computationalthinking_lab')}</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full lg:overflow-visible">
    
@@ -123,37 +126,40 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col lg:h-full lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-rose-600">
     <BookOpen className="w-5 h-5" />
-    <h2 className="text-lg font-semibold">Theory: Core Concepts</h2>
+    <h2 className="text-lg font-semibold">{t('lab.cs10computationalthinking_theory_core_concepts')}</h2>
    </div>
    
    <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
     <p>
-    <strong>Computational Thinking</strong> involves solving problems, designing systems, and understanding human behavior by drawing on the concepts fundamental to computer science.
-    </p>
-    <h3 className="text-slate-800 dark:text-[#ffffff] font-semibold mt-4">1. Abstraction</h3>
+    <strong>{t('lab.cs10computationalthinking_computational_thinking')}</strong>  {t('lab.cs10computationalthinking_involves_solving_problems_desi')}
+                                 </p>
+    <h3 className="text-slate-800 dark:text-[#ffffff] font-semibold mt-4">{t('lab.cs10computationalthinking_1_abstraction')}</h3>
     <p>
-    Abstraction is the process of filtering out – ignoring – the characteristics that we don't need in order to concentrate on those that we do. It simplifies complex systems.
-    </p>
-    <p>
-    <em>Example:</em> A subway map ignores exact geographical curves and above-ground details like trees, showing only stations and connecting lines.
-    </p>
     
-    <h3 className="text-slate-800 dark:text-[#ffffff] font-semibold mt-4">2. Modular Design</h3>
+                                 {t('lab.cs10computationalthinking_abstraction_is_the_process_of_')}
+                                 </p>
     <p>
-    Modular programming is a software design technique that separates the functionality of a program into independent, interchangeable modules.
-    </p>
+    <em>{t('lab.cs10computationalthinking_example')}</em>  {t('lab.cs10computationalthinking_a_subway_map_ignores_exact_geo')}
+                                 </p>
+    
+    <h3 className="text-slate-800 dark:text-[#ffffff] font-semibold mt-4">{t('lab.cs10computationalthinking_2_modular_design')}</h3>
     <p>
-    Each module contains everything necessary to execute only one aspect of the desired functionality.
-    </p>
+    
+                                 {t('lab.cs10computationalthinking_modular_programming_is_a_softw')}
+                                 </p>
+    <p>
+    
+                                 {t('lab.cs10computationalthinking_each_module_contains_everythin')}
+                                 </p>
    </div>
    </div>
 
    {/* Column 2: Simulation */}
-   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col lg:h-full '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center justify-between mb-4">
     <div className="flex items-center gap-2 text-cyan-600">
     <Settings className="w-5 h-5" />
-    <h2 className="text-lg font-semibold">Interactive Exercises</h2>
+    <h2 className="text-lg font-semibold">{t('lab.cs10computationalthinking_interactive_exercises')}</h2>
     </div>
    </div>
 
@@ -162,22 +168,25 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
     onClick={() => setActiveTab('abstraction')}
     className={`px-3 py-1 rounded ${activeTab === 'abstraction' ? 'bg-cyan-100 text-cyan-800 font-medium' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
     >
-    Map Abstraction
-    </button>
+    
+                                 {t('lab.cs10computationalthinking_map_abstraction')}
+                                 </button>
     <button 
     onClick={() => setActiveTab('modular')}
     className={`px-3 py-1 rounded ${activeTab === 'modular' ? 'bg-cyan-100 text-cyan-800 font-medium' : 'text-slate-500 dark:text-[#a1a1aa] hover:bg-slate-100 dark:bg-[#121212]'}`}
     >
-    Modular Design
-    </button>
+    
+                                 {t('lab.cs10computationalthinking_modular_design')}
+                                 </button>
    </div>
 
    <div className="flex-1 flex flex-col relative">
     {activeTab === 'abstraction' && (
     <div className="flex flex-col h-full gap-4">
      <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm text-slate-700 dark:text-[#ffffff] flex-col `}>
-     Click the buttons below to remove details from the map, increasing its level of abstraction.
-     </div>
+     
+                                          {t('lab.cs10computationalthinking_click_the_buttons_below_to_rem')}
+                                          </div>
      <div className="flex gap-2 flex-wrap">
      {Object.keys(mapDetails).map((key) => (
       <button
@@ -190,8 +199,9 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
      ))}
      </div>
      <div className="flex items-center gap-4 text-sm font-medium">
-     Abstraction Level: 
-     <div className={`flex-1 h-3 bg-slate-200 dark:bg-[#121212] rounded-full lg:overflow- flex-col `}>
+     
+                                          {t('lab.cs10computationalthinking_abstraction_level')} 
+                                          <div className={`flex-1 h-3 bg-slate-200 dark:bg-[#121212] rounded-full lg:overflow- flex-col `}>
       <div className="h-full bg-cyan-500 transition-all" style={{ width: `${abstractionLevel}%` }}></div>
      </div>
      {abstractionLevel}%
@@ -201,8 +211,9 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
      <div className={`w-full lg:flex-1 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-xl relative overflow- bg-amber-50 mt-2 p-4 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      {mapDetails.roads && (
       <div className={`absolute top-1/2 left-0 right-0 h-8 bg-slate-400 dark:bg-[#121212] transform -translate-y-1/2 flex items-center justify-center text-white text-xs font-bold tracking-widest opacity-80 flex-col `}>
-      MAIN ROAD
-      </div>
+      
+                                                   {t('lab.cs10computationalthinking_main_road')}
+                                                   </div>
      )}
      {mapDetails.parks && (
       <div className="absolute top-4 right-4 w-32 h-32 bg-green-200 rounded-full border-4 border-green-300 opacity-60"></div>
@@ -228,8 +239,9 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
      )}
      {abstractionLevel === 100 && (
       <div className="absolute inset-0 flex items-center justify-center text-slate-400 font-bold text-xl uppercase tracking-wider">
-      Pure Abstraction
-      </div>
+      
+                                                   {t('lab.cs10computationalthinking_pure_abstraction')}
+                                                   </div>
      )}
      </div>
     </div>
@@ -238,8 +250,9 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
     {activeTab === 'modular' && (
     <div className="flex flex-col h-full gap-4">
      <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-sm text-slate-700 dark:text-[#ffffff]">
-     Drag and arrange the program modules to structure the application visually.
-     </div>
+     
+                                          {t('lab.cs10computationalthinking_drag_and_arrange_the_program_m')}
+                                          </div>
      
      <div 
      className="flex-1 border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-xl relative bg-blue-50 mt-2 dark:bg-teal-950/20 dark:border-teal-900"
@@ -283,14 +296,15 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col h-full ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-blue-600">
     <Activity className="w-5 h-5" />
-    <h2 className="text-lg font-semibold">Assessment & Logs</h2>
+    <h2 className="text-lg font-semibold">{t('lab.cs10computationalthinking_assessment_logs')}</h2>
    </div>
 
    <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6 dark:bg-teal-950/20 dark:border-teal-900">
     <h3 className="font-medium text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
     <Map className="w-4 h-4" />
-    Knowledge Check
-    </h3>
+    
+                                 {t('lab.cs10computationalthinking_knowledge_check')}
+                                 </h3>
     <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
     {question.q}
     </p>
@@ -300,14 +314,15 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
      value={answer}
      onChange={(e) => setAnswer(e.target.value)}
      className="border rounded px-3 py-2 flex-1 outline-none focus:border-blue-400 text-sm"
-     placeholder="Type your answer..."
+     placeholder={t('lab.cs10computationalthinking_type_your_answer')}
     />
     <button
      onClick={checkAnswer}
      className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
     >
-     Verify Answer
-    </button>
+     
+                                      {t('lab.cs10computationalthinking_verify_answer')}
+                                     </button>
     </div>
     {isCorrect !== null && (
     <div className={`mt-3 p-2 rounded flex items-center gap-2 ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -318,9 +333,9 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
    </div>
 
    <div className="flex-1 flex flex-col">
-    <h3 className="font-medium text-slate-700 dark:text-[#ffffff] mb-2">Activity Tracker</h3>
+    <h3 className="font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.cs10computationalthinking_activity_tracker')}</h3>
     <div className="flex-1 bg-slate-50 dark:bg-[#121212] border rounded p-3 lg:overflow-y-auto text-sm font-mono text-slate-600 dark:text-[#a1a1aa]">
-    {logs.length === 0 && <span className="text-slate-400">No actions recorded.</span>}
+    {logs.length === 0 && <span className="text-slate-400">{t('lab.cs10computationalthinking_no_actions_recorded')}</span>}
     {logs.map((log, i) => (
      <div key={i} className="mb-1 border-b border-slate-100 pb-1">
      <span className="text-slate-400 mr-2">[{i + 1}]</span>
