@@ -8,7 +8,6 @@ import { useAuth, LabProvider } from '../store';
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
 
-
 interface LabRunnerInnerProps {
   moduleId: string | undefined;
   onExit: () => void;
@@ -74,7 +73,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
 
   return (
     <LabProvider value={{ hideCalculator, isEnglishLab, moduleId }}>
-      <div className="english-lab-runner text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen">
+      <div className={`${isEnglishLab ? 'english-lab-runner' : ''} text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen`}>
         <LabComponent onExit={handleExit} />
       </div>
     </LabProvider>
