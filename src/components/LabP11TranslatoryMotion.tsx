@@ -6,6 +6,7 @@ import { useLab } from '../store';
 
 export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [velocity, setVelocity] = useState(30);
  const [angle, setAngle] = useState(45);

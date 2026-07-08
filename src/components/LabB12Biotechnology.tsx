@@ -5,6 +5,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabB12Biotechnology({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [plasmidState, setPlasmidState] = useState<'intact' | 'cut' | 'inserted' | 'ligated'>('intact');
@@ -58,8 +59,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
    <button 
     onClick={() => setActiveMobileTab('lab')}
     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.b12
-biotechnology_lab')}</button>
+   >{t('lab.b12biotechnology_lab')}</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:min-h-0 lg:overflow-visible">
   {/* Theory */}

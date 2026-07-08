@@ -186,8 +186,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
      <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" />  {t('lab.b9plantphysiology_light_intensity')}</span>
      <span>{lightIntensity}%</span>
     </label>
-    <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) 
-=> setLightIntensity(Number(e.target.value))} className="w-full accent-emerald-600" />
+    <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
    )}
 

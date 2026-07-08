@@ -9,6 +9,7 @@ interface LabProps {
 }
 
 export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 

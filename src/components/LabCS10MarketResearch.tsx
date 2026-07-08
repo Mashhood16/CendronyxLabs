@@ -41,15 +41,16 @@ const { recordLabData } = useLab();
  }, []);
 
  const handleRecordData = () => {
+ const newId = logs.length + 1;
  setLogs(prev => [...prev, {
-  id: prev.length + 1,
+  id: newId,
   mkt: marketingSpend,
   sales: salesSpend,
   cust: newCustomers,
   cac
  }]);
    recordLabData({ timestamp: Date.now(), 
-  id: prev.length + 1,
+  id: newId,
   mkt: marketingSpend,
   sales: salesSpend,
   cust: newCustomers,

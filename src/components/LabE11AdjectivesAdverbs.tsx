@@ -6,6 +6,7 @@ import { useLab } from '../store';
 interface WordItem { id: string; text: string; category: string; }
 
 export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  
@@ -76,7 +77,6 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
   if (sentence.length < currentLevel.correct.length) {
    setFeedback("Please use all the words from the bank first.");
    return;
-    setLabScore(score, 1);
   }
 
   let isCorrect = true;

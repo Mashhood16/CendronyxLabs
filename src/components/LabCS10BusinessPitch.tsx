@@ -10,7 +10,7 @@ interface Props {
 
 export default function LabCS10BusinessPitch({ onExit }: Props) {
 
-const { recordLabData } = useLab();
+const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -81,7 +81,7 @@ const { recordLabData } = useLab();
   stageCompleted: pitchStage
  }]);
    recordLabData({ timestamp: Date.now(), 
-  id: prev.length + 1,
+  id: logs.length + 1,
   timeLogged: 60 - timeLeft,
   stageCompleted: pitchStage
  });

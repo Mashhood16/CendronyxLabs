@@ -5,6 +5,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'pharma' | 'ecology'>('pharma');

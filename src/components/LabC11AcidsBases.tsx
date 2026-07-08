@@ -10,6 +10,7 @@ interface TitrationLog {
 }
 
 export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [analyteVol] = useState<number>(25.0);

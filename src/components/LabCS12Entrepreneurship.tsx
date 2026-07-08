@@ -5,6 +5,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [phase, setPhase] = useState<'build' | 'analyze'>('build');

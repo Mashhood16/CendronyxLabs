@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 

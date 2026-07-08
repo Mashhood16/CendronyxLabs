@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [stockConcentration] = useState(2.0);
@@ -39,8 +40,9 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
 
  const checkAns = () => {
  const correctV1 = (parseFloat(randomTarget) * 100) / stockConcentration;
- setAssessmentStatus(Math.abs(parseFloat(assessmentAns) - correctV1) < 1.0);
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ const isCorrect = Math.abs(parseFloat(assessmentAns) - correctV1) < 1.0;
+ setAssessmentStatus(isCorrect);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  return (

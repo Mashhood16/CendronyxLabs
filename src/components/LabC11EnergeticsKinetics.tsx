@@ -10,6 +10,7 @@ interface LoggedData {
 }
 
 export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [reactionType, setReactionType] = useState<'exo' | 'endo'>('exo');

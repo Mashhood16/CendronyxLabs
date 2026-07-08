@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabC10SaltTitration({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [naohAdded, setNaohAdded] = useState(false);
@@ -34,8 +35,9 @@ export default function LabC10SaltTitration({ onExit }: { onExit?: () => void })
  const reset = () => { setNaohAdded(false); setHclAdded(false); setHeating(false); setWaterLevel(100); setAssessmentStatus(null); setAssessmentAns(""); };
 
  const checkAns = () => {
- setAssessmentStatus(assessmentAns.trim().toLowerCase() === "evaporation" || assessmentAns.trim().toLowerCase() === "crystallization");
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ const isCorrect = assessmentAns.trim().toLowerCase() === "evaporation" || assessmentAns.trim().toLowerCase() === "crystallization";
+ setAssessmentStatus(isCorrect);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  return (

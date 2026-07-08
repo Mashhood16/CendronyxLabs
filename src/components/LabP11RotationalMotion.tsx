@@ -6,6 +6,7 @@ import { useLab } from '../store';
 
 export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [armRadius, setArmRadius] = useState(1.0); // 0.2 to 1.0 m
  const [initialOmega, setInitialOmega] = useState(2.0); // rad/s

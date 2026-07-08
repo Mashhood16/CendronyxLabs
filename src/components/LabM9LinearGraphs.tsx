@@ -10,6 +10,7 @@ interface LabProps {
 
 export default function LabM9LinearGraphs({ onExit }: LabProps) {
     const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [rate, setRate] = useState<number>(2);

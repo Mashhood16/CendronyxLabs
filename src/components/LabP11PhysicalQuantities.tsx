@@ -8,6 +8,7 @@ interface Point { x: number; y: number }
 
 export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [shots, setShots] = useState<Point[]>([]);
  const [meanGuess, setMeanGuess] = useState('');

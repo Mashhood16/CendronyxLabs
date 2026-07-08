@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabC10StandardizationTitration({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [hclMolarity] = useState(() => (Math.random() * 0.04 + 0.08).toFixed(3));
@@ -67,8 +68,9 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
 
  const checkAns = () => {
  const correctM = (naohAdded * naohMolarity) / hclVolume;
- setAssessmentStatus(Math.abs(parseFloat(assessmentAns) - correctM) < 0.005);
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ const isCorrect = Math.abs(parseFloat(assessmentAns) - correctM) < 0.005;
+ setAssessmentStatus(isCorrect);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  return (

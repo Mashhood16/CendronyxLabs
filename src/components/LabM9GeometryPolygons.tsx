@@ -9,6 +9,7 @@ interface LabProps { onExit?: () => void; }
 
 export default function LabM9GeometryPolygons({ onExit }: LabProps) {
     const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [points, setPoints] = useState<Point[]>([]);

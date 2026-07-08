@@ -14,6 +14,7 @@ interface Point {
 }
 
 export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -121,8 +122,7 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                           </h2>
      <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-4">
       <p>{t('lab.cs12machinelearning_in_machine_learning_we_evaluat')} <strong>{t('lab.cs12machinelearning_training')}</strong>  {t('lab.cs12machinelearning_and')} <strong>{t('lab.cs12machinelearning_testing')}</strong>  {t('lab.cs12machinelearning_subsets_to_prevent_overfitting')}</p>
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab
-.cs12machinelearning_confusion_matrix')}</h3>
+      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12machinelearning_confusion_matrix')}</h3>
       <ul className="list-disc pl-5 space-y-1">
        <li><strong>TP</strong>  {t('lab.cs12machinelearning_true_positives_actual_positive')}</li>
        <li><strong>TN</strong>  {t('lab.cs12machinelearning_true_negatives_actual_negative')}</li>

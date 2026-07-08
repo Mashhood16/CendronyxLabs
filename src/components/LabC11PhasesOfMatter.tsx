@@ -5,6 +5,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [liquidType, setLiquidType] = useState<'water'|'ethanol'>('water');

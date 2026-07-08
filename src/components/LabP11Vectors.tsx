@@ -6,6 +6,7 @@ import { useLab } from '../store';
 
 export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [fMag, setFMag] = useState(50);
  const [fAngle, setFAngle] = useState(30);

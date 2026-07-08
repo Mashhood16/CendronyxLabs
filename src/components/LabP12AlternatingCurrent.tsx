@@ -6,6 +6,7 @@ import { useLab } from '../store';
 
 export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [frequency, setFrequency] = useState<number>(50);
  const [peakVoltage, setPeakVoltage] = useState<number>(100);

@@ -62,8 +62,9 @@ const { recordLabData } = useLab();
 
  const handleRecordData = () => {
  const totalYear1Profit = projectionData.reduce((acc, curr) => acc + curr.prof, 0);
+ const newId = logs.length + 1;
  setLogs(prev => [...prev, {
-  id: prev.length + 1,
+  id: newId,
   price: pricePerUnit,
   units: unitsSoldPerMonth,
   fixed: fixedCosts,
@@ -71,7 +72,7 @@ const { recordLabData } = useLab();
   profit: totalYear1Profit
  }]);
    recordLabData({ timestamp: Date.now(), 
-  id: prev.length + 1,
+  id: newId,
   price: pricePerUnit,
   units: unitsSoldPerMonth,
   fixed: fixedCosts,

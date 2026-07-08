@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [acidAdded, setAcidAdded] = useState(false);
@@ -47,8 +48,9 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
  const reset = () => { setAcidAdded(false); setZnScoops(0); setReactedZn(0); setIsFiltered(false); setIsEvaporated(false); setWaterLevel(100); setAssessmentStatus(null); setAssessmentAns(""); };
 
  const checkAns = () => {
- setAssessmentStatus(assessmentAns.trim().toLowerCase() === "hydrogen" || assessmentAns.trim().toLowerCase() === "h2");
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ const isCorrect = assessmentAns.trim().toLowerCase() === "hydrogen" || assessmentAns.trim().toLowerCase() === "h2";
+ setAssessmentStatus(isCorrect);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  return (

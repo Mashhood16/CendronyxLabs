@@ -5,6 +5,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [enzyme, setEnzyme] = useState<'Amylase' | 'Pepsin'>('Amylase');
@@ -104,8 +105,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
    </p>
    <p className="text-gray-600 text-sm leading-relaxed">
     
-                             {t('lab.b9en
-zymes_extreme_heat_or_incorrect_ph_l')} <strong>{t('lab.b9enzymes_denaturation')}</strong>  {t('lab.b9enzymes_and_loss_of_function')}
+                             {t('lab.b9enzymes_extreme_heat_or_incorrect_ph_l')} <strong>{t('lab.b9enzymes_denaturation')}</strong>  {t('lab.b9enzymes_and_loss_of_function')}
                             </p>
    </div>
 

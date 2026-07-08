@@ -8,6 +8,7 @@ interface LabProps { onExit?: () => void; }
 
 export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
  const { t } = useTranslate();
+ const { setLabScore } = useLab();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Simulation Controls

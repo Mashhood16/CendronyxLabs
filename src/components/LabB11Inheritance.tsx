@@ -5,6 +5,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'transfusion' | 'hdn'>('transfusion');
@@ -76,9 +77,10 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
   if (isQ1Correct && isQ2Correct && isQ3Correct) {
   setAssessmentStatus('passed');
+  setLabScore(100, 100);
   } else {
   setAssessmentStatus('failed');
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+  setLabScore(0, 100);
   }
  }, 800);
  };

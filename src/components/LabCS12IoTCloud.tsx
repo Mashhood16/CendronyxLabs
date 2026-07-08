@@ -14,6 +14,7 @@ interface Block {
 }
 
 export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
+ const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
