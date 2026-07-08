@@ -126,7 +126,10 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
     } catch (e) {
       console.error('Failed to clear cache', e);
     }
-    window.location.reload();
+    // Use a cache-busting query param to bypass browser HTTP cache & Vercel CDN cache
+    const url = new URL(window.location.href);
+    url.searchParams.set('_cb', Date.now().toString());
+    window.location.href = url.toString();
   };
 
   return (
