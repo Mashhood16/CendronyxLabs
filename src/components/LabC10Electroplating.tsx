@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const METALS = {
  Zn: { name: 'Zinc', mass: 65.38, z: 2, color: '#e2e8f0', electrolyte: '#bfdbfe' },
@@ -10,6 +11,7 @@ const METALS = {
 };
 
 export default function LabC10Electroplating({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -38,6 +40,7 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
 
  const recordData = () => {
  setData(prev => [...prev, { t: time, mass: parseFloat(massDeposited.toFixed(4)), current }]);
+   recordLabData({ timestamp: Date.now(),  t: time, mass: parseFloat(massDeposited.toFixed(4)), current });
  };
 
  const [assQ] = useState({ i: Math.floor(Math.random() * 3) + 2, t: Math.floor(Math.random() * 30) + 10 });
@@ -48,6 +51,7 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
  const expected = (assQ.i * assQ.t * mData.mass) / (mData.z * F);
  if (Math.abs(parseFloat(answer) - expected) < 0.005) setIsCorrect(true);
  else setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {

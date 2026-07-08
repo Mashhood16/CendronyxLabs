@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Settings, Activity, Calculator, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -126,6 +127,7 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
   addLog(`Assessment Passed: ${questionVal.toString(questionBaseIn).toUpperCase()} (Base ${questionBaseIn}) = ${correctVal} (Base ${questionBaseOut})`);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

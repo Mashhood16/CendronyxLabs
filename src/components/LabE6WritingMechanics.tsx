@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeft, ArrowRight, RotateCw, Globe, Star, Image as ImageIcon, DownloadCloud, CheckCircle, XCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const tasks = [
  { 

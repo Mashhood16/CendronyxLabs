@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Beaker, Thermometer, CheckCircle2, Droplets, ArrowRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface ComponentProps {
  onExit?: () => void;

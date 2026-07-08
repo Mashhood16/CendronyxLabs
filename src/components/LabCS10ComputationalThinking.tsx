@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Map, Settings, Activity, CheckCircle2, XCircle, Grid } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -90,6 +91,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
   addLog(`Assessment Passed: Correctly identified ${question.a}`);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

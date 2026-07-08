@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Activity, Edit3, Droplet, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB10DigestiveSystem({ onExit }: { onExit: () => void }) {
     const { t } = useTranslate();

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface WordItem { id: string; text: string; category: string; }
 
@@ -75,6 +76,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
   if (sentence.length < currentLevel.correct.length) {
    setFeedback("Please use all the words from the bank first.");
    return;
+    setLabScore(score, 1);
   }
 
   let isCorrect = true;
@@ -164,7 +166,8 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
        {w.text}
       </span>
      ))}
-     {adjPart.length === 0 && <span className="inline-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"></span>}
+     {adjPart.length === 0 && <span className="in
+line-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b1b]"></span>}
      <span>{currentLevel.templateParts[1]}</span>
      {advPart.map(w => (
       <span key={w.id} onClick={() => handleSentenceClick(w)} className="cursor-pointer px-3 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-900 dark:text-sky-100 rounded-lg shadow-sm border border-sky-200 dark:border-sky-700 hover:bg-sky-200 dark:hover:bg-sky-800 transition-colors">

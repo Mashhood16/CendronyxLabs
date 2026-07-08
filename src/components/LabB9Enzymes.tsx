@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Thermometer, Droplet, CheckCircle, Info, Beaker, Play, RotateCcw, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -66,6 +67,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
  
  if (correct === 3) setFeedback('Excellent! All answers are correct.');
  else setFeedback(`You got ${correct} out of 3 correct. Keep analyzing the data!`);
+    setLabScore(correct, 3);
  };
 
  return (
@@ -102,7 +104,8 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
    </p>
    <p className="text-gray-600 text-sm leading-relaxed">
     
-                             {t('lab.b9enzymes_extreme_heat_or_incorrect_ph_l')} <strong>{t('lab.b9enzymes_denaturation')}</strong>  {t('lab.b9enzymes_and_loss_of_function')}
+                             {t('lab.b9en
+zymes_extreme_heat_or_incorrect_ph_l')} <strong>{t('lab.b9enzymes_denaturation')}</strong>  {t('lab.b9enzymes_and_loss_of_function')}
                             </p>
    </div>
 

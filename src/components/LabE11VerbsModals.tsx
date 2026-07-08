@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, Check, BookOpen, List, Activity, HelpCircle, AlertCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const SCENARIOS = [
  {

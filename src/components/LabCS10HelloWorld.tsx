@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { BookOpen, Code, Activity, RefreshCw, CheckCircle2, XCircle, Terminal } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -81,6 +82,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
   addLog(`Assessment Q${questionIndex + 1} passed.`);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

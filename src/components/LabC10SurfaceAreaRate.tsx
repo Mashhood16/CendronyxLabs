@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const MAX_VOL = 50;
 
 export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -34,6 +36,7 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
 
  const recordData = () => {
  setData(prev => [...prev, { t: time, vol: parseFloat(currentVol.toFixed(1)), form }]);
+   recordLabData({ timestamp: Date.now(),  t: time, vol: parseFloat(currentVol.toFixed(1)), form });
  };
 
  const [assQ] = useState({ v10: Math.floor(Math.random() * 20) + 10 });
@@ -44,6 +47,7 @@ export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void 
  const expected = assQ.v10 / 10;
  if (Math.abs(parseFloat(answer) - expected) < 0.1) setIsCorrect(true);
  else setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {

@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -39,6 +41,13 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
   i: parseFloat(current.toFixed(2)), 
   r: resistance 
  }]);
+   recordLabData({ timestamp: Date.now(),  
+  t: time, 
+  p: parseFloat(power.toFixed(3)), 
+  v: parseFloat(voltage.toFixed(2)), 
+  i: parseFloat(current.toFixed(2)), 
+  r: resistance 
+ });
  };
 
  const [assQ] = useState({ r: Math.floor(Math.random() * 8) + 2 });
@@ -49,6 +58,7 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  const expected = 1.23 / (assQ.r + R_int);
  if (Math.abs(parseFloat(answer) - expected) < 0.05) setIsCorrect(true);
  else setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {

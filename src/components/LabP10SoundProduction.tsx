@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -15,6 +16,8 @@ interface DataPoint {
 }
 
 export default function LabP10SoundProduction({ onExit }: LabProps) {
+
+const { recordLabData } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -67,7 +70,9 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
   splash: parseFloat(splashHeight.toFixed(1)),
  };
  setData([...data, newPoint]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const handleClearData = () => {
  setData([]);

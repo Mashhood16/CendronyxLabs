@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Activity, Brain, CheckCircle, XCircle, Beaker } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

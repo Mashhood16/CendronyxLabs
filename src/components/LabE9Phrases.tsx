@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type PhraseType = "Adjectival Phrase" | "Adverbial Phrase" | "Noun Phrase" | "Verb Phrase";
 

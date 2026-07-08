@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLab } from '../store';
 import { Dna, TestTube, Bug, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -71,6 +72,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
   setAssessmentStatus('passed');
   } else {
   setAssessmentStatus('failed');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
   }
  }, 800);
  };

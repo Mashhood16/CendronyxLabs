@@ -1,9 +1,10 @@
 import { useTranslate } from '../i18n';
-import { useRef, useCallback, useMemo } from 'react';
+import { useRef, useCallback, useMemo, useEffect } from 'react';
 import { getLabComponent } from '../routes/labRoutes';
 import { LAB_MODULES } from '../data/labModules';
 import { historyDB } from '../services/dbService';
-import { useAuth, LabProvider } from '../store';
+import type { LabDataEntry } from '../store';
+import { useAuth, useLab, LabProvider } from '../store';
 
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
@@ -13,36 +14,105 @@ interface LabRunnerInnerProps {
   onExit: () => void;
 }
 
+/** Build a flat experimentData object from lab context data entries */
+function buildExperimentData(
+  entries: LabDataEntry[]
+): Record<string, string | number> | undefined {
+  if (!entries || entries.length === 0) return undefined;
+
+  const result: Record<string, string | number> = {
+    _dataPoints: entries.length,
+  };
+
+  // Summarize the last 5 entries as key-value pairs
+  const recent = entries.slice(-5);
+  recent.forEach((entry, i) => {
+    for (const [key, val] of Object.entries(entry)) {
+      if (key === 'timestamp') continue;
+      const label = `${key}_${i + 1}`;
+      if (typeof val === 'string' || typeof val === 'number') {
+        result[label] = val;
+      }
+    }
+  });
+
+  return result;
+}
+
 export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps) {
   const { t } = useTranslate();
   const LabComponent = moduleId ? getLabComponent(moduleId) : null;
   const { user } = useAuth();
+  const labCtx = useLab();
   const startTime = useRef(Date.now());
   const exiting = useRef(false);
 
-  const handleExit = useCallback(() => {
+  // Keep refs for labData and labScore so the unmount cleanup always sees latest data
+  const labDataRef = useRef(labCtx.labData);
+  labDataRef.current = labCtx.labData;
+  const labScoreRef = useRef(labCtx.labScore);
+  labScoreRef.current = labCtx.labScore;
+
+  // Save history on unmount (catches browser back button, keyboard nav, etc.)
+  useEffect(() => {
+    return () => {
+      if (exiting.current) return;
+      if (!moduleId) return;
+      const mod = LAB_MODULES.find(m => m.id === moduleId);
+      if (!mod) return;
+      const userId = user?.id || getAnonymousId();
+      const elapsed = Math.round((Date.now() - startTime.current) / 1000);
+      const experimentData = buildExperimentData(labDataRef.current);
+      const ls = labScoreRef.current;
+      const score = ls?.score ?? 0;
+      const maxScore = ls?.maxScore ?? 100;
+      historyDB.addRecord(userId, {
+        labId: mod.id,
+        title: mod.title,
+        subject: mod.subject,
+        score,
+        maxScore,
+        timeSpentSeconds: elapsed,
+        experimentData,
+      }).catch(err => console.error('Unmount save failed', err));
+    };
+  }, [moduleId, user]);
+
+  const saveRecord = useCallback(async (experimentData?: Record<string, string | number>, scoreOverride?: { score: number; maxScore: number }) => {
+    if (!moduleId) return;
+    const mod = LAB_MODULES.find(m => m.id === moduleId);
+    if (!mod) return;
+    const userId = user?.id || getAnonymousId();
+    const elapsed = Math.round((Date.now() - startTime.current) / 1000);
+    const { score, maxScore } = scoreOverride || { score: 0, maxScore: 100 };
+    await historyDB.addRecord(userId, {
+      labId: mod.id,
+      title: mod.title,
+      subject: mod.subject,
+      score,
+      maxScore,
+      timeSpentSeconds: elapsed,
+      experimentData,
+    });
+  }, [moduleId, user]);
+
+  const handleExit = useCallback(async () => {
     if (exiting.current) return;
     exiting.current = true;
 
-    // Save history to IndexedDB (fire-and-forget — don't block navigation)
     if (moduleId) {
-      const mod = LAB_MODULES.find(m => m.id === moduleId);
-      if (mod) {
-        const userId = user?.id || getAnonymousId();
-        const elapsed = Math.round((Date.now() - startTime.current) / 1000);
-        historyDB.addRecord(userId, {
-          labId: mod.id,
-          title: mod.title,
-          subject: mod.subject,
-          score: 0,
-          maxScore: 100,
-          timeSpentSeconds: elapsed,
-        }).catch((err) => console.error('Failed to save lab history', err));
+      try {
+        const experimentData = buildExperimentData(labCtx.labData);
+        // Use score from lab context if set, otherwise default to 0/100
+        const scoreOverride = labCtx.labScore ?? undefined;
+        await saveRecord(experimentData, scoreOverride);
+      } catch (err) {
+        console.error('Failed to save lab history', err);
       }
     }
 
     onExit();
-  }, [moduleId, user, onExit]);
+  }, [moduleId, onExit, labCtx.labData, labCtx.labScore, saveRecord]);
 
   const hideCalculator = useMemo(() => {
     const mod = LAB_MODULES.find(m => m.id === moduleId);
@@ -50,7 +120,6 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     return mod.subject === 'english' || ['6', '7', '8'].includes(mod.classLevel);
   }, [moduleId]);
 
-  // English labs should not be translated
   const isEnglishLab = useMemo(() => {
     if (!moduleId) return false;
     const mod = LAB_MODULES.find(m => m.id === moduleId);

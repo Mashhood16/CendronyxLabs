@@ -3,12 +3,15 @@ import {Box, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
 import MathText from './MathText';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
 const SURFACES = ['Matt Black', 'Shiny Black', 'Matt White', 'Shiny Silver'];
 
 export default function LabP10LeslieCube({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -29,6 +32,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
 
  const recordData = () => {
  setData(prev => [...prev, { surface, distance, intensity }]);
+   recordLabData({ timestamp: Date.now(),  surface, distance, intensity });
  };
 
  const checkAssessment = () => {

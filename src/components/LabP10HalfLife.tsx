@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {Play, Pause, Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 

@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Droplets, Info, FlaskConical, Activity, Plus, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [flaskSample, setFlaskSample] = useState<'Oil' | 'Butter' | null>(null);
@@ -55,6 +57,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
  const recordData = () => {
  if (flaskSample && isBrown) {
   setLogs((prev) => [...prev, { id: Date.now(), mass: sampleMass, volume: br2Volume, type: flaskSample }]);
+    recordLabData({ timestamp: Date.now(),  mass: sampleMass, volume: br2Volume, type: flaskSample });
   resetFlask();
  }
  };
@@ -65,6 +68,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
   setAssessmentStatus('correct');
  } else {
   setAssessmentStatus('incorrect');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 

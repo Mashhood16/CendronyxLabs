@@ -49,43 +49,40 @@ interface VirtualLabDB extends DBSchema {
 }
 
 const DB_NAME = 'VirtualLabDB';
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
 export const initDB = () => {
   if (!dbPromise) {
     dbPromise = openDB<VirtualLabDB>(DB_NAME, DB_VERSION, {
-      async upgrade(db, oldVersion) {
+      async upgrade(db, oldVersion, _newVersion, transaction) {
+        // --- Version 1: Create progress store with all indexes ---
         if (oldVersion < 1) {
-          if (!db.objectStoreNames.contains('progress')) {
-            const store = db.createObjectStore('progress', {
-              keyPath: 'id',
-              autoIncrement: true,
-            });
-            store.createIndex('by-experiment', 'experimentId');
-            store.createIndex('by-sync-status', 'synced');
-          }
+          const store = db.createObjectStore('progress', {
+            keyPath: 'id',
+            autoIncrement: true,
+          });
+          store.createIndex('by-experiment', 'experimentId');
+          store.createIndex('by-sync-status', 'synced');
+          store.createIndex('by-user', 'userId');
         }
-        if (oldVersion < 2) {
-          // Add userId index for per-user queries
-          const tx = db.transaction('progress', 'readwrite');
-          const store = tx.objectStore('progress');
+
+        // --- Version 2: Ensure 'by-user' index exists on progress ---
+        if (oldVersion < 2 && oldVersion >= 1) {
+          const store = transaction.objectStore('progress');
           if (!store.indexNames.contains('by-user')) {
-            // @ts-expect-error - createIndex exists on native IDBObjectStore but idb's typed store doesn't expose it
             store.createIndex('by-user', 'userId');
           }
-          await tx.done;
         }
-        if (oldVersion < 3 || !db.objectStoreNames.contains('history')) {
-          // Add history object store for per-user lab history
-          if (!db.objectStoreNames.contains('history')) {
-            const historyStore = db.createObjectStore('history', {
-              keyPath: 'id',
-              autoIncrement: true,
-            });
-            historyStore.createIndex('by-history-user', 'userId');
-          }
+
+        // --- Version 3+: Create history store ---
+        if (!db.objectStoreNames.contains('history')) {
+          const historyStore = db.createObjectStore('history', {
+            keyPath: 'id',
+            autoIncrement: true,
+          });
+          historyStore.createIndex('by-history-user', 'userId');
         }
       },
     }).catch((err) => {

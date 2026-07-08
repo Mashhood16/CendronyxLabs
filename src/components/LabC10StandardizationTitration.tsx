@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLab } from '../store';
 import { RotateCcw, Check, Plus } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -67,6 +68,7 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
  const checkAns = () => {
  const correctM = (naohAdded * naohMolarity) / hclVolume;
  setAssessmentStatus(Math.abs(parseFloat(assessmentAns) - correctM) < 0.005);
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  };
 
  return (

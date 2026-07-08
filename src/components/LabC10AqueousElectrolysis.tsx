@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isRunning, setIsRunning] = useState(false);
@@ -57,7 +59,9 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
   volC: Number(noiseC.toFixed(1)),
   volA: Number(noiseA.toFixed(1))
  }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const handleSolutionChange = (type: 'conc' | 'dilute') => {
  setSolutionType(type);
@@ -81,6 +85,7 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLab } from '../store';
 import { Droplets, FlaskConical, Activity, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -108,6 +109,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
   setAssessmentStatus('passed');
   } else {
   setAssessmentStatus('failed');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
   }
  }, 800);
  };

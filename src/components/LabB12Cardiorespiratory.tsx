@@ -2,8 +2,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Activity, Heart, CheckCircle2, RefreshCcw, Stethoscope, LineChart, Table2, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => void }) {
+  const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'ecg' | 'cpr'>('ecg');
@@ -107,6 +109,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
   const actualPeriod = 250 - stressLevel * 1.5;
   const actualHr = 1500 / (actualPeriod / 10);
   setDataPoints(prev => [...prev, { stress: stressLevel, hr: actualHr }]);
+    recordLabData({ timestamp: Date.now(),  stress: stressLevel, hr: actualHr });
  }
  };
 

@@ -1,6 +1,7 @@
 import { useState, MouseEvent } from 'react';
 import { ArrowLeft, Check, RefreshCw, Layers } from 'lucide-react';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type ChunkType = 'independent' | 'dependent' | 'prep_phrase' | 'noun_clause' | 'relative_clause' | 'adverb_clause' | 'none';
 

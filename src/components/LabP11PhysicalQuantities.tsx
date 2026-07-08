@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface Point { x: number; y: number }
 
@@ -34,6 +35,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
   setFeedbackType('correct');
  } else {
   setFeedbackType('incorrect');
+    setLabScore(feedbackType === 'correct' ? 100 : 0, 100);
  }
  };
 

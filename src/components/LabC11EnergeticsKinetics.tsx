@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {Beaker, Play, Square, Info, Activity, Database, CheckCircle, RefreshCw, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LoggedData {
  time: number;
@@ -117,6 +118,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

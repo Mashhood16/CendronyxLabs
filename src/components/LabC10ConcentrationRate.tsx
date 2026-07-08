@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -33,6 +35,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
 
  const recordData = () => {
  setData(prev => [...prev, { t: time, vol: parseFloat(currentVol.toFixed(1)), tabs: tablets }]);
+   recordLabData({ timestamp: Date.now(),  t: time, vol: parseFloat(currentVol.toFixed(1)), tabs: tablets });
  };
 
  const [assQ] = useState({ moles: Math.floor(Math.random() * 5 + 1) * 0.005 });
@@ -43,6 +46,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
  const expected = assQ.moles * 24000;
  if (Math.abs(parseFloat(answer) - expected) < 1) setIsCorrect(true);
  else setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {

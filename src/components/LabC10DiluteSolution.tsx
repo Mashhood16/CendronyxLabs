@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLab } from '../store';
 import { Plus, RotateCcw, Check, Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -39,6 +40,7 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
  const checkAns = () => {
  const correctV1 = (parseFloat(randomTarget) * 100) / stockConcentration;
  setAssessmentStatus(Math.abs(parseFloat(assessmentAns) - correctV1) < 1.0);
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  };
 
  return (

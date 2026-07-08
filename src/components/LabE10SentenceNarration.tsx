@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Target, Mic, CheckCircle2, ChevronRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabE10SentenceNarrationProps {
  onExit?: () => void;

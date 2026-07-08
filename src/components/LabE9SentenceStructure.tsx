@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { GitMerge, CheckCircle2, XCircle, BookOpen, Terminal, Shield, Combine, MoveRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const COLLIDER_DATA = [
  {

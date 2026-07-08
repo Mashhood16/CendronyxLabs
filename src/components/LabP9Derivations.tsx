@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import MathFormula from './MathFormula';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 // ========== Types ==========
 interface DerivationModule {

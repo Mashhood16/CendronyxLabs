@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -16,6 +17,8 @@ interface DataPoint {
 }
 
 export default function LabP10RefractionIllusion({ onExit }: LabProps) {
+
+const { recordLabData } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -53,7 +56,9 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
   sinR: parseFloat(Math.sin((measuredR * Math.PI) / 180).toFixed(3)),
  };
  setData([...data, newPoint]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const handleClearData = () => {
  setData([]);

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Target, Scissors, CheckCircle2, ChevronRight, XCircle, FileText, CheckSquare, Layers } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabE10PhrasesClausesProps {
  onExit?: () => void;

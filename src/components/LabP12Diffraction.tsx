@@ -5,6 +5,7 @@ import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import { useLab } from '../store';
 
 export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
@@ -77,6 +78,7 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  if (ans2.trim() === '0.67') score++;
  if (score === 2) setFeedback('Perfect! You have mastered wave interference.');
  else setFeedback('Keep trying! Check your math (use two decimal places for Q2).');
+    setLabScore(score, 2);
  };
 
  const renderNoiseSVG = () => {
@@ -137,7 +139,8 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
    <>
    <line x1={gratingX} y1={centerY} x2={screenX} y2={centerY - y1Svg} stroke={laserColor} strokeWidth="2" opacity="0.6" strokeDasharray="4" />
    <line x1={gratingX} y1={centerY} x2={screenX} y2={centerY + y1Svg} stroke={laserColor} strokeWidth="2" opacity="0.6" strokeDasharray="4" />
-   <circle cx={screenX} cy={centerY - y1Svg} r="5" fill={laserColor} />
+ 
+<circle cx={screenX} cy={centerY - y1Svg} r="5" fill={laserColor} />
    <circle cx={screenX} cy={centerY + y1Svg} r="5" fill={laserColor} />
    <text x={screenX + 10} y={centerY - y1Svg + 4} fill="white" fontSize="12">{t('lab.12diffraction_m1')}</text>
    <text x={screenX + 10} y={centerY + y1Svg + 4} fill="white" fontSize="12">{t('lab.12diffraction_m1')}</text>

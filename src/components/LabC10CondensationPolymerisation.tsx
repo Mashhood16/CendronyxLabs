@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -75,7 +78,9 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
    waterMass: parseFloat(waterMass.toFixed(2)),
    petMoles: parseFloat((limitingMoles * (progress / 100)).toFixed(2))
   }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
   const expected = 2 * unknownMoles * 18.015;
@@ -83,6 +88,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
    setIsCorrect(true);
   } else {
    setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
   }
  };
 

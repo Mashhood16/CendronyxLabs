@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, Calculator, BarChart2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabCS10MarketResearch({ onExit }: Props) {
+
+const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -45,6 +48,13 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
   cust: newCustomers,
   cac
  }]);
+   recordLabData({ timestamp: Date.now(), 
+  id: prev.length + 1,
+  mkt: marketingSpend,
+  sales: salesSpend,
+  cust: newCustomers,
+  cac
+ });
  };
 
  const checkAnswer = () => {

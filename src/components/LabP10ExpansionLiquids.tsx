@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
+
+const { recordLabData } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -136,7 +139,9 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
 
  const recordData = () => {
  setLogs([...logs, { t: targetTemp, h: parseFloat(h_apparent.toFixed(2)) }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
  const val = parseFloat(answer);

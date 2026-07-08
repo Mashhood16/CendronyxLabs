@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLab } from '../store';
 import { Flame, Filter, RotateCcw, Check} from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -47,6 +48,7 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
 
  const checkAns = () => {
  setAssessmentStatus(assessmentAns.trim().toLowerCase() === "hydrogen" || assessmentAns.trim().toLowerCase() === "h2");
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  };
 
  return (

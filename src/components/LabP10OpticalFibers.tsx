@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,6 +12,8 @@ interface DataPoint {
 }
 
 export default function LabP10OpticalFibers({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -47,6 +50,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
  const recordData = () => {
  if (isLaserOn) {
   setLoggedData(prev => [...prev, { bendRadius, measuredPower: Number(measuredPower.toFixed(2)) }]);
+    recordLabData({ timestamp: Date.now(),  bendRadius, measuredPower: Number(measuredPower.toFixed(2)) });
  }
  };
 

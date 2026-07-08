@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Activity, Target, Save, Info, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();

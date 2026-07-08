@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -103,6 +104,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Target, Users, BarChart3, Lightbulb, Play, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -89,6 +90,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
   setAssessmentStatus('Success! You understand Lean Startup principles. Keep iterating!');
  } else {
   setAssessmentStatus('Some answers are incorrect. Hint: MVPs maximize learning, and AI Chat is very buggy.');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 
@@ -135,7 +137,8 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
     <p className="mb-2">{t('lab.cs12entrepreneurship_an_mvp_is_a_version_of_a_new_p')}</p>
     <ul className="list-disc pl-4 space-y-2">
     <li><strong>{t('lab.cs12entrepreneurship_core_features_first')}</strong>  {t('lab.cs12entrepreneurship_only_build_what_is_absolutely_')}</li>
-    <li><strong>{t('lab.cs12entrepreneurship_avoid_feature_creep')}</strong>  {t('lab.cs12entrepreneurship_adding_flashy_or_complex_featu')}</li>
+    <li><strong>{t('lab.cs12entrepreneurship_avoid_feature_creep')}</strong>  {t(
+'lab.cs12entrepreneurship_adding_flashy_or_complex_featu')}</li>
     </ul>
    </section>
    

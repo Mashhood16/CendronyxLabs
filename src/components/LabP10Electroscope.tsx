@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10Electroscope({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -59,7 +62,9 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
   ...prev,
   { id: Date.now(), qRod, d: distance, qNet: parseFloat(qNet.toFixed(1)), angle: measuredAngle }
  ]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  // Assessment
  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
@@ -71,6 +76,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
   setAssessmentStatus('correct');
  } else {
   setAssessmentStatus('incorrect');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 

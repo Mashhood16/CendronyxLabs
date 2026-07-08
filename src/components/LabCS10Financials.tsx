@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, DollarSign, LineChart } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabCS10Financials({ onExit }: Props) {
+
+const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -67,6 +70,14 @@ export default function LabCS10Financials({ onExit }: Props) {
   vc: variableCostPerUnit,
   profit: totalYear1Profit
  }]);
+   recordLabData({ timestamp: Date.now(), 
+  id: prev.length + 1,
+  price: pricePerUnit,
+  units: unitsSoldPerMonth,
+  fixed: fixedCosts,
+  vc: variableCostPerUnit,
+  profit: totalYear1Profit
+ });
  };
 
  const checkAnswer = () => {

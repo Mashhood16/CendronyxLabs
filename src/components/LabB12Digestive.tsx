@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { TestTube, Thermometer, Droplets, Play, CheckCircle2, RotateCcw, Activity, LineChart, Table2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
+  const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'starch' | 'protein'>('starch');
@@ -84,6 +86,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
  const recordData = () => {
  if (digestionLevel >= 100) {
   setDataPoints(prev => [...prev, { temp: temperature, time: timeElapsed }]);
+    recordLabData({ timestamp: Date.now(),  temp: temperature, time: timeElapsed });
  }
  };
 

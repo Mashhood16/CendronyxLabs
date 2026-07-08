@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type VerbalType = 'Gerund' | 'Participle' | 'Infinitive';
 

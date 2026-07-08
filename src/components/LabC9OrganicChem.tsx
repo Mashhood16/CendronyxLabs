@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { Beaker, Sun, ThermometerSun, AlertCircle, CheckSquare, Zap, Moon } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface ComponentProps {
  onExit?: () => void;

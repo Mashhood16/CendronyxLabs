@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
@@ -32,6 +34,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
 
  const recordData = () => {
  setData(prev => [...prev, { t: time, v: parseFloat(voltage.toFixed(3)), zn: znConc, cu: cuConc }]);
+   recordLabData({ timestamp: Date.now(),  t: time, v: parseFloat(voltage.toFixed(3)), zn: znConc, cu: cuConc });
  };
 
  const [assQ] = useState({ zn: 0.1, cu: 2.0 });
@@ -42,6 +45,7 @@ export default function LabC10DanielCell({ onExit }: { onExit?: () => void }) {
  const expected = E0 - (0.0592 / 2) * Math.log10(assQ.zn / assQ.cu);
  if (Math.abs(parseFloat(answer) - expected) < 0.01) setIsCorrect(true);
  else setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {

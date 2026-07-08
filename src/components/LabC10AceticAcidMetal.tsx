@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle, Cylinder } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [acidAdded, setAcidAdded] = useState(false);
@@ -72,6 +74,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  const recordData = () => {
  if (acidAdded && totalNaAdded > 0 && !isReacting) {
   setLogs((prev) => [...prev, { id: Date.now(), mass: totalNaAdded, volume: gasVolume }]);
+    recordLabData({ timestamp: Date.now(),  mass: totalNaAdded, volume: gasVolume });
  }
  };
 
@@ -81,6 +84,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
   setAssessmentStatus('correct');
  } else {
   setAssessmentStatus('incorrect');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { ArrowLeft, Calculator, Coins, Landmark, FileText } from 'lucide-react';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => void }) {
+    const { setLabScore } = useLab();
     const { t } = useTranslate();
  // Tabs: Profit/Loss, Zakat, Ushr
  const [activeTab, setActiveTab] = useState<'business' | 'zakat' | 'ushr'>('business');
@@ -46,8 +48,10 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
 
  if (parseFloat(userAnswer) === correct) {
   setFeedback('Correct! Well done.');
+  setLabScore(100, 100);
  } else {
   setFeedback(`Incorrect. Try again!`);
+  setLabScore(0, 100);
  }
  };
 

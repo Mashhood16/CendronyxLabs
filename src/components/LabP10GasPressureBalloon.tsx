@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
+
+const { recordLabData } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -110,7 +113,9 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
 
  const recordData = () => {
  setLogs([...logs, { t: parseFloat(gasTemp.toFixed(1)), v: parseFloat(syringeVolume.toFixed(1)) }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
  const val = parseFloat(answer);

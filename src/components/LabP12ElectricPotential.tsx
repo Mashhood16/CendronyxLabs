@@ -5,6 +5,7 @@ import { useTranslate } from '../i18n';
 import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../utils/labScaffolding';
+import { useLab } from '../store';
 
 export default function LabP12ElectricPotential({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
@@ -85,6 +86,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  if (ans2.trim() === '0.1') score++;
  if (score === 2) setFeedback('Excellent work! Both calculations are correct.');
  else setFeedback('Please check your calculations and try again.');
+    setLabScore(score, 2);
  };
 
  const handleShock = () => {
@@ -147,7 +149,8 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
   <g transform="translate(320, 50)">
    <circle cx="0" cy="0" r="30" fill={!isCharging && vCap > 10 ? `rgba(255, 255, 255, ${bulbBrightness})` : '#111'} stroke="#555" strokeWidth="2" />
    <path d="M -10,15 L -10,35 L 10,35 L 10,15" fill="#333" />
-   <text x="-45" y="55" fill="white" fontSize="10">{t('lab.12electricpotential_cameraflash')}</text>
+   <text x="-45" y="55" fill="white" fontSize="10">{t('lab.12electricpotential_ca
+meraflash')}</text>
    {!isCharging && vCap > 10 && (
     <circle cx="0" cy="0" r={30 + bulbBrightness * 20} fill="#fde047" opacity={bulbBrightness * 0.5} className="animate-ping" />
    )}

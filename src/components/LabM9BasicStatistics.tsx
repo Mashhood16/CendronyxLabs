@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { CheckCircle, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -46,6 +47,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

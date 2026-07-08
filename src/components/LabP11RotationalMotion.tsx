@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
@@ -53,6 +54,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
   setFeedbackType('correct');
  } else {
   setFeedbackType('incorrect');
+    setLabScore(feedbackType === 'correct' ? 100 : 0, 100);
  }
  };
 

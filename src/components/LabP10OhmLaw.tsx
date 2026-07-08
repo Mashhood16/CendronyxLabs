@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -13,6 +14,7 @@ const RESISTORS = [
 
 export default function LabP10OhmLaw({ onExit }: LabProps) {
  const { t } = useTranslate();
+ const { recordLabData, setLabScore } = useLab();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [resistor, setResistor] = useState(RESISTORS[0]);
@@ -38,8 +40,13 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
  const recordData = () => {
  // Avoid duplicates
  if (dataPoints.find(p => p.V === voltage)) return;
- setDataPoints(prev => [...prev, {V: voltage, I: measuredCurrent}].sort((a,b) => a.V - b.V));
- }; const reset = () => {
+ const newPoint = {V: voltage, I: measuredCurrent};
+ setDataPoints(prev => [...prev, newPoint].sort((a,b) => a.V - b.V));
+ // Push to shared lab context so it's saved to history on exit
+ recordLabData({ timestamp: Date.now(), resistor: resistor.id, voltage: parseFloat(voltage.toFixed(1)), current: parseFloat(measuredCurrent.toFixed(3)) });
+ };
+
+ const reset = () => {
   setVoltage(0);
   setDataPoints([]);
   setAnswerR('');
@@ -54,6 +61,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
   setFeedback(t('lab.p10_ohm_valid_number'));
   setFeedbackType(null);
   return;
+    setLabScore(feedbackType === 'correct' ? 100 : 0, 100);
  }
  const error = Math.abs((userR - resistor.value) / resistor.value) * 100;
  if (error < 5) {

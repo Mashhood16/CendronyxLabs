@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layers, ArrowLeft, ShieldAlert, CheckCircle, Target, Shield, AlertTriangle, Zap, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface NounWord {
  id: number;

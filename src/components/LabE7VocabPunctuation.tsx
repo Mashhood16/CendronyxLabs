@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, Edit3, Award, Zap, AlertCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type Token = {
  id: string;

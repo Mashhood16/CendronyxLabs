@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit: () => void;

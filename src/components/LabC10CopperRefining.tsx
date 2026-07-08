@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10CopperRefining({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const initialAnode = 100.0;
@@ -60,7 +62,9 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
   mAnode: Number(massAnode.toFixed(2)),
   mCathode: Number(massCathode.toFixed(2))
  }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const reset = () => {
  setIsRunning(false);
@@ -80,6 +84,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

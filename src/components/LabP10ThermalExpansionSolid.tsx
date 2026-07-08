@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 import {Plus, CheckCircle, Info, Lock } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -82,6 +83,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

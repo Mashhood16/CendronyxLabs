@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isRunning, setIsRunning] = useState(false);
@@ -54,7 +56,9 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
   massPb: Number(noiseMass.toFixed(2)),
   volCl2: Number(noiseVol.toFixed(0))
  }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
  const q = assessmentCurrent * assessmentTime * 60;
@@ -65,6 +69,7 @@ export default function LabC10MoltenLeadChloride({ onExit }: { onExit: () => voi
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

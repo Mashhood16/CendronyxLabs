@@ -3,6 +3,7 @@ import { useState, } from 'react';
 import { ArrowLeft, RefreshCw, BookOpen, Type, Target, ShieldCheck, AlertCircle , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface WordItem {
  id: string;

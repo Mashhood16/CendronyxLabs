@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Server, Box, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface ComponentItem { id: string; type: string; name: string; }
 interface SlotItem { id: string; name: string; expected: string; filledBy: ComponentItem | null; }

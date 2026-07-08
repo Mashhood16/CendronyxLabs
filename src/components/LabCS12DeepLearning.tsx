@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Play, CheckCircle, Sliders, BookOpen, Network, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -38,6 +39,7 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
 
   if (score === 4) setFeedback('Excellent! You manually traced the network correctly.');
   else setFeedback(`Score: ${score}/4. Check your calculations! (They change based on the weights you set)`);
+    setLabScore(score, 4);
  };
 
  const renderControls = () => {
@@ -59,7 +61,8 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
      onChange={(e) => {
       setVal(parseFloat(e.target.value));
       setIsForwarded(false);
-     }}
+ 
+}}
      className="w-full"
     />
    </div>

@@ -3,10 +3,13 @@ import {Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
 import MathText from './MathText';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -38,6 +41,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
  const recordData = () => {
  if (finished) {
   setData(prev => [...prev, { power, time: timeElapsed, velocity: currentV }]);
+    recordLabData({ timestamp: Date.now(),  power, time: timeElapsed, velocity: currentV });
  }
  };
 

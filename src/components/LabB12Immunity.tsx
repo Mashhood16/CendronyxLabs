@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Shield, FlaskConical, Stethoscope, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

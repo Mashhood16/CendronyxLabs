@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {Info, Activity, Database, CheckCircle, RefreshCw, FlaskConical, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface TitrationLog {
  v: number;
@@ -120,6 +121,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

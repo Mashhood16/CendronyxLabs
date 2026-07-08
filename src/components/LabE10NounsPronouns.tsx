@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Target, CheckCircle2, Check } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabE10NounsPronounsProps {
  onExit?: () => void;

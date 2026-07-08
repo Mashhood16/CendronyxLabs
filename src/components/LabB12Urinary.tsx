@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { Droplet, Target, Zap, Activity, CheckCircle2, RotateCcw, LineChart, Table2, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type Particle = { id: number; x: number; y: number; vx: number; vy: number; type: 'urea' | 'rbc' };
 
 export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
+  const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'dialysis' | 'eswl'>('dialysis');
@@ -116,6 +118,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
  const recordData = () => {
  if (equilibriumReached) {
   setDataPoints(prev => [...prev, { poreSize, clearanceTime: timeElapsed }]);
+    recordLabData({ timestamp: Date.now(),  poreSize, clearanceTime: timeElapsed });
  }
  };
 

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useLab } from '../store';
 import { Search, Table, EyeOff, CheckCircle, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -76,6 +77,7 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
   setAssessmentStatus('Query is incorrect. Ensure you use both country: and condition: operators.');
  } else {
   setAssessmentStatus('Data is not fully anonymized. Review GDPR PII definitions.');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 

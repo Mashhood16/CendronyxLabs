@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TestTube, Flame, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 type Sample = 'glucose' | 'starch' | 'protein' | 'lipid' | null;
 type Reagent = 'benedict' | 'iodine' | 'biuret' | 'sudan' | null;

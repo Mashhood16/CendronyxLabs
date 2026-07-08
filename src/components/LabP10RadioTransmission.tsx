@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 

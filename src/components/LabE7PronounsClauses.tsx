@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle, Search, ShieldAlert, Award, Zap , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const PRONOUN_TYPES = [
  "Personal", "Possessive", "Reflexive", "Relative", 

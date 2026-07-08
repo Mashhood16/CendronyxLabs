@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Target, Navigation, ChevronRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabE10AdverbsPrepositionsProps {
  onExit?: () => void;

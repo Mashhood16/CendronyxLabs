@@ -5,6 +5,7 @@ import DeepDivePanel from './DeepDivePanel';
 import ResearchPaperAnalysis, { RESEARCH_PAPERS } from './ResearchPaperAnalysis';
 import { DIFFICULTY_CONFIGS } from '../utils/labScaffolding';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

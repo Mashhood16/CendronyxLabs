@@ -189,19 +189,69 @@ export const useTheme = () => {
   return context;
 };
 
-// --- Lab Context (for hiding calculator, English lab mode, and module ID) ---
+// --- Lab Context (for hiding calculator, English lab mode, module ID, recorded data, and score) ---
+export interface LabDataEntry {
+  timestamp: number;
+  [key: string]: string | number | boolean;
+}
+
+export interface LabScore {
+  score: number;
+  maxScore: number;
+}
+
 interface LabContextType {
   hideCalculator: boolean;
   isEnglishLab: boolean;
   moduleId?: string;
+  labData: LabDataEntry[];
+  recordLabData: (entry: LabDataEntry) => void;
+  clearLabData: () => void;
+  labScore: LabScore | null;
+  setLabScore: (score: number, maxScore: number) => void;
 }
 
-const LabContext = createContext<LabContextType>({ hideCalculator: false, isEnglishLab: false });
+const LabContext = createContext<LabContextType>({
+  hideCalculator: false,
+  isEnglishLab: false,
+  labData: [],
+  recordLabData: () => {},
+  clearLabData: () => {},
+  labScore: null,
+  setLabScore: () => {},
+});
 
 export function LabProvider({ children, value }: { children: React.ReactNode, value?: any }) {
-  // Pass value through if provided, else use default context value
-  return <LabContext.Provider value={value || { hideCalculator: false, isEnglishLab: false }}>{children}</LabContext.Provider>;
+  const [labData, setLabData] = useState<LabDataEntry[]>([]);
+  const [labScore, setLabScoreState] = useState<LabScore | null>(null);
+
+  const recordLabData = useCallback((entry: LabDataEntry) => {
+    setLabData(prev => [...prev, { ...entry, timestamp: entry.timestamp || Date.now() }]);
+  }, []);
+
+  const clearLabData = useCallback(() => {
+    setLabData([]);
+    setLabScoreState(null);
+  }, []);
+
+  const setLabScore = useCallback((score: number, maxScore: number) => {
+    setLabScoreState({ score, maxScore });
+  }, []);
+
+  const contextValue = {
+    hideCalculator: value?.hideCalculator ?? false,
+    isEnglishLab: value?.isEnglishLab ?? false,
+    moduleId: value?.moduleId,
+    labData,
+    recordLabData,
+    clearLabData,
+    labScore,
+    setLabScore,
+  };
+
+  return <LabContext.Provider value={contextValue}>{children}</LabContext.Provider>;
 }
+
 export const useLab = () => useContext(LabContext);
 
 // --- Unified Store Provider ---

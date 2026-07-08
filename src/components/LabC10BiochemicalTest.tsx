@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabC10BiochemicalTest({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -70,7 +73,9 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
    concentration: hCGConc,
    testLineIntensity: parseFloat(testIntensity.toFixed(1))
   }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
   const expected = unknownOD / 2;
@@ -78,6 +83,7 @@ export default function LabC10BiochemicalTest({ onExit }: LabProps) {
    setIsCorrect(true);
   } else {
    setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
   }
  };
 

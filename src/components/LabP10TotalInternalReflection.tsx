@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -15,6 +16,8 @@ const MATERIALS = [
 ];
 
 export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -60,7 +63,9 @@ export default function LabP10TotalInternalReflection({ onExit }: LabProps) {
   n1: materialId === 'mystery' ? NaN : n1
   }
  ]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAssessment = () => {
  const userAns = parseFloat(assessmentInput);

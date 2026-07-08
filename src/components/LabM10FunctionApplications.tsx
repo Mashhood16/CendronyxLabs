@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { CheckCircle2, XCircle, TrendingDown, Biohazard } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabM10FunctionApplications({ onExit }: { onExit: () => void }) {
+    const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<'virus' | 'depreciation'>('virus');
@@ -52,8 +54,10 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
  
  if (Math.abs(parseFloat(ans) - correct) <= 1.0) {
   setStatus('correct');
+  setLabScore(100, 100);
  } else {
   setStatus('incorrect');
+  setLabScore(0, 100);
  }
  };
 

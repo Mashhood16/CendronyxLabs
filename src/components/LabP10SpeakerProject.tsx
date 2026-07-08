@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle, Music } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -14,6 +15,8 @@ const MAGNETS = [
 ];
 
 export default function LabP10SpeakerProject({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -66,7 +69,9 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
   F: Number(measuredForce.toFixed(4))
   }
  ]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAssessment = () => {
  const userB = parseFloat(assessmentInput);

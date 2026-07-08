@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Beaker, Play, Pause, Activity, ClipboardList, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -62,6 +63,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
 
  if (score === 3) setFeedback("Superb! You've mastered enzyme applications.");
  else setFeedback(`Score: ${score}/3. Check the medical indicators and math.`);
+    setLabScore(score, 3);
  };
 
  return (
@@ -91,7 +93,8 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
    
    <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
    <div>
-    <h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">{t('lab.b11enzymes_immobilized_enzymes')}</h3>
+   
+<h3 className="font-bold text-indigo-800 text-lg dark:text-[#ffffff]">{t('lab.b11enzymes_immobilized_enzymes')}</h3>
     <p className="mt-1">
     
                                  {t('lab.b11enzymes_enzymes_like_lactase_can_be_tr')} <strong>{t('lab.b11enzymes_reused')}</strong>.

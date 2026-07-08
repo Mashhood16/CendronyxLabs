@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Activity, Play, CheckCircle, RefreshCw} from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

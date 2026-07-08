@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeft, Anchor, CheckCircle2, XCircle, RefreshCw , Sun, Moon} from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Question {
  id: number;

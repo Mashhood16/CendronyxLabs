@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Database, ShieldAlert, Cpu, Link as LinkIcon, CheckCircle, BookOpen, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Block {
  index: number;
@@ -80,6 +81,7 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
 
   if (score === 3) setFeedback('Superb! You understand Blockchain immutability.');
   else setFeedback(`Score: ${score}/3. Review how hash linking secures data.`);
+    setLabScore(score, 3);
  };
 
  return (
@@ -114,7 +116,8 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
       <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12iotcloud_the_trust_problem')}</h3>
       <p>{t('lab.cs12iotcloud_how_do_we_ensure_that_collecte')} <strong>{t('lab.cs12iotcloud_blockchain_ledger')}</strong>.</p>
       
-      <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12iotcloud_blockchain_mechanics')}</h3>
+      <h3 className="font-semibold t
+ext-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12iotcloud_blockchain_mechanics')}</h3>
       <p>{t('lab.cs12iotcloud_each_time_data_is_logged_it_is')}</p>
       <ul className="list-disc pl-5 space-y-1">
        <li>{t('lab.cs12iotcloud_each_block_calculates_a_crypto')} <strong>{t('lab.cs12iotcloud_hash')}</strong>  {t('lab.cs12iotcloud_based_on_its_data_and_the_prev')}</li>

@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, CheckCircle2, XCircle, Car, Train, Clock, Hammer } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabM10FractionApplications({ onExit }: { onExit: () => void }) {
+    const { setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [mode, setMode] = useState<'travel' | 'work'>('travel');
@@ -68,8 +70,10 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
  
  if (Math.abs(parseFloat(ans) - correct) <= 0.05) {
   setStatus('correct');
+  setLabScore(100, 100);
  } else {
   setStatus('incorrect');
+  setLabScore(0, 100);
  }
  };
 

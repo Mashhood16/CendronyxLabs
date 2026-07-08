@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Point { x: number; y: number; }
 interface LabProps { onExit?: () => void; }
@@ -65,6 +66,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Beaker, Terminal, CheckCircle2, XCircle, Shield, MoveRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const BRIDGE_DATA = [
  {

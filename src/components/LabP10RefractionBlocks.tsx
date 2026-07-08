@@ -3,6 +3,7 @@ import {Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
 import MathText from './MathText';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -14,6 +15,8 @@ const MATERIALS = [
 ];
 
 export default function LabP10RefractionBlocks({ onExit }: LabProps) {
+
+const { recordLabData } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -44,7 +47,9 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
  const sinI = Math.sin(angle * Math.PI / 180);
  const sinR = Math.sin(measuredRefractedDeg * Math.PI / 180);
  setDataPoints(prev => [...prev, {i: angle, r: measuredRefractedDeg, sinI, sinR}].sort((a,b) => a.i - b.i));
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const reset = () => {
  setAngle(45);

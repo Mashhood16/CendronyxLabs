@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Play, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -14,6 +15,8 @@ const MATERIALS = [
 ];
 
 export default function LabP10StringTelephone({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -62,7 +65,9 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
   v2: Number((v * v).toFixed(2))
   }
  ]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAssessment = () => {
  const userMu = parseFloat(assessmentInput);

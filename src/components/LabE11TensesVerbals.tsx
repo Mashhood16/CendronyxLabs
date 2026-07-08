@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, RefreshCw, Clock, Check } from 'lucide-react';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const STORY_PARTS = [
  {

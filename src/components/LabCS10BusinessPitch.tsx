@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { CheckCircle, Layout, Clock, Play, Square } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface Props {
  onExit?: () => void;
 }
 
 export default function LabCS10BusinessPitch({ onExit }: Props) {
+
+const { recordLabData } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -77,6 +80,11 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
   timeLogged: 60 - timeLeft,
   stageCompleted: pitchStage
  }]);
+   recordLabData({ timestamp: Date.now(), 
+  id: prev.length + 1,
+  timeLogged: 60 - timeLeft,
+  stageCompleted: pitchStage
+ });
  };
 
  const addNote = () => {

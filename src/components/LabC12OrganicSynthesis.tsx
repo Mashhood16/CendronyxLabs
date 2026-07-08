@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Beaker, BookOpen, CheckCircle, Thermometer, RefreshCw, Layers } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

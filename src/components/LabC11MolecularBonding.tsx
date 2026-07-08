@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Database, Calculator, Box, Target } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -49,6 +50,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

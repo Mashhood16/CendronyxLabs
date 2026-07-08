@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Calendar, Scissors, Info, Sprout, Flower2, Save} from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -48,6 +49,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
  
  if (correct === 2) setFeedback('Perfect! You correctly identified the plant parts.');
  else setFeedback(`You got ${correct} out of 2. Keep exploring!`);
+    setLabScore(correct, 2);
  };
 
  return (
@@ -73,7 +75,8 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
   {/* Left Column: Theory & Setup */}
   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col space-y-6  ? 'flex' : 'hidden'} lg:flex`}>
    <div>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center mb-2">
+   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-ce
+nter mb-2">
     <Info className="w-5 h-5 mr-2 text-emerald-600" />
     
                              {t('lab.b9plantreproduction_theory_context')}

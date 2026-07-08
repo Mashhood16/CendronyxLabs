@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
 }
 
 export default function LabP10SeriesCircuit({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -51,6 +54,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
   setAssessmentStatus('correct');
  } else {
   setAssessmentStatus('incorrect');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 
@@ -67,7 +71,9 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
   i: currentMA 
   }
  ]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">

@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Thermometer, Wind, Sun, Moon, Play, RotateCcw, CheckCircle, Info, Flame, Droplet, Activity, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeTab, setActiveTab] = useState<'Potometer' | 'Hydrilla' | 'Indicator'>('Potometer');
@@ -107,7 +109,9 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
   newDp = { id: Date.now(), type: 'Respiration', val1: isLight ? 'Light' : 'Dark', val2: '-', result: `Time: ${Math.round(indicatorTime)}s` };
  }
  setDataPoints(prev => [...prev, newDp]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswers = () => {
  let correct = 0;
@@ -117,6 +121,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
  
  if (correct === 3) setFeedback('Excellent! All correct.');
  else setFeedback(`You got ${correct} out of 3 correct. Review your simulations.`);
+    setLabScore(correct, 3);
  };
 
  return (
@@ -181,7 +186,8 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
      <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" />  {t('lab.b9plantphysiology_light_intensity')}</span>
      <span>{lightIntensity}%</span>
     </label>
-    <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-emerald-600" />
+    <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) 
+=> setLightIntensity(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
    )}
 

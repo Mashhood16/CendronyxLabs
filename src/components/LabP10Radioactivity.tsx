@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
@@ -16,6 +17,8 @@ interface DataPoint {
 }
 
 export default function LabP10Radioactivity({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -66,6 +69,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
  const recordData = () => {
  setLoggedData(prev => [...prev, { source, absorber, thickness, cpm: currentCPM }]);
+   recordLabData({ timestamp: Date.now(),  source, absorber, thickness, cpm: currentCPM });
  };
 
  const checkAssessment = () => {

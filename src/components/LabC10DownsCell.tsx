@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
+  const { recordLabData, setLabScore } = useLab();
     const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isRunning, setIsRunning] = useState(false);
@@ -52,7 +54,9 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
   massNa: Number(noiseMass.toFixed(3)),
   volCl2: Number(noiseVol.toFixed(0))
  }]);
- };
+ 
+  recordLabData({ timestamp: Date.now() });
+};
 
  const checkAnswer = () => {
  const q = assessmentCurrent * assessmentTime * 60;
@@ -63,6 +67,7 @@ export default function LabC10DownsCell({ onExit }: { onExit: () => void }) {
   setIsCorrect(true);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import {Thermometer, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
+
+const { recordLabData, setLabScore } = useLab();
  const { t } = useTranslate();
   const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
@@ -40,6 +43,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
 
  const recordData = () => {
  setData(prev => [...prev, { time, power, tBlack, tSilver }]);
+   recordLabData({ timestamp: Date.now(),  time, power, tBlack, tSilver });
  };
 
  const checkAssessment = () => {

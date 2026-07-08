@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Power, CheckCircle, XCircle, Settings2, Database, Calculator } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../i18n';
+import { useLab } from '../store';
 
 export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
@@ -27,6 +28,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
  if (ans2.trim() === '10.0') score++;
  if (score === 2) setFeedback('Spot on! You understand AC to DC conversion.');
  else setFeedback('Not quite. Review the ripple formulas and try again.');
+    setLabScore(score, 2);
  };
 
  const renderSimulationSVG = () => {
@@ -62,7 +64,8 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
   {/* Grid lines */}
   <line x1="0" y1="50" x2="400" y2="50" stroke="#333" strokeDasharray="4" />
   <text x="5" y="45" fill="#666" fontSize="10">{t('lab.p12alternatingcurrent_250v')}</text>
-  <line x1="0" y1="150" x2="400" y2="150" stroke="#333" strokeDasharray="4" />
+  <line x1="0" y1="150" x2="400" y2="150" stroke
+="#333" strokeDasharray="4" />
   <text x="5" y="145" fill="#666" fontSize="10">{t('lab.p12alternatingcurrent_125v')}</text>
   <line x1="0" y1="250" x2="400" y2="250" stroke="#555" />
   <text x="5" y="265" fill="#666" fontSize="10">0V</text>

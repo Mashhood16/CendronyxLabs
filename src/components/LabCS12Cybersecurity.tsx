@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLab } from '../store';
 import { Shield, Lock, Server, Activity, FileWarning, Key, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
@@ -65,6 +66,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
   setAssessmentStatus('Success! You have secured the network and decrypted the message.');
  } else {
   setAssessmentStatus('Some answers are incorrect. Review the concepts and try again.');
+    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 

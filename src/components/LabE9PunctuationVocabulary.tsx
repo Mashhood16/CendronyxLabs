@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, CheckCircle2, XCircle, FileEdit, History, ArrowRight, PenTool } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const EDITOR_DATA = [
  {

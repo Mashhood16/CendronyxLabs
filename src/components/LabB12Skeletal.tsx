@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Bone, Activity, PenTool, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();

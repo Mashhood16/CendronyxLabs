@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { BookOpen, CheckCircle2, XCircle, Mic, NotebookPen, History, FileText, ArrowRight } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 const NARRATION_DATA = [
  {

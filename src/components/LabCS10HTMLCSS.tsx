@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Layout, Activity, CheckCircle2, XCircle, Code2, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 interface LabProps {
  onExit?: () => void;
@@ -64,6 +65,7 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
   addLog(`Assessment Passed for ${activeTab}`);
  } else {
   setIsCorrect(false);
+    setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 

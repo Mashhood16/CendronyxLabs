@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Shield, Waves, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
+import { useLab } from '../store';
 
 export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
@@ -32,6 +33,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
  
  if (score === 3) setFeedback('Excellent! All systems analyzed correctly.');
  else setFeedback(`You scored ${score}/3. Review the theory sections and try again.`);
+    setLabScore(score, 3);
  };
 
  return (
@@ -45,7 +47,8 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                    </button>
   <button 
    onClick={() => setActiveTab('ecology')}
-   className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+   className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 dark:bg-[#121212] text-teal-800' : 
+'bg-teal-700 text-white hover:bg-teal-600'}`}>
    <Waves className="w-4 h-4" />  {t('lab.b12pharmacologyecology_ecology')}
                    </button>
   </div>
