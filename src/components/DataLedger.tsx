@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import type { PhysicsDataPoint } from '../physics/gravitation';
 
@@ -7,6 +8,7 @@ interface DataLedgerProps {
 }
 
 export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
+  const { t } = useTranslate();
   return (
     <div className="overflow-y-auto h-screen bg-[#000000]/80 backdrop-blur-md rounded-xl border border-[#1c1b1b] overflow-hidden flex flex-col h-full shadow-xl">
       <div className="px-4 py-3 border-b border-[#1c1b1b] flex justify-between items-center bg-[#121212]/50">
@@ -14,19 +16,19 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
           <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
-          Data Ledger
+          {t("Data Ledger")}
         </h3>
         <button
           onClick={onRecordData}
           className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg transition-colors shadow-sm focus:ring-2 focus:ring-blue-400 focus:outline-none dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
         >
-          Record Point
+          {t("Record Point")}
         </button>
       </div>
       
       <div className="flex-1 overflow-auto p-4 flex flex-col gap-6">
         <div className="h-48 bg-[#121212]/30 p-2 rounded-xl border border-[#1c1b1b]/50">
-          <h4 className="text-[10px] text-slate-400 font-semibold mb-2 uppercase tracking-wider text-center">Gravity vs Altitude (km)</h4>
+          <h4 className="text-[10px] text-slate-400 font-semibold mb-2 uppercase tracking-wider text-center">{t("Gravity vs Altitude (km)")}</h4>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -45,16 +47,16 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
           <table className="w-full text-left text-xs text-slate-300">
             <thead className="bg-[#121212]/80 text-slate-400 sticky top-0 backdrop-blur-md">
               <tr>
-                <th className="px-3 py-2 font-medium">Time (m)</th>
-                <th className="px-3 py-2 font-medium">Alt (km)</th>
-                <th className="px-3 py-2 font-medium">Vel (m/s)</th>
-                <th className="px-3 py-2 font-medium text-blue-400">g (m/s²)</th>
+                <th className="px-3 py-2 font-medium">{t("Time (m)")}</th>
+                <th className="px-3 py-2 font-medium">{t("Alt (km)")}</th>
+                <th className="px-3 py-2 font-medium">{t("Vel (m/s)")}</th>
+                <th className="px-3 py-2 font-medium text-blue-400">{t("g (m/s²)")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/50">
               {data.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-3 py-6 text-center text-slate-500 italic">Click 'Record Point' to log data.</td>
+                  <td colSpan={4} className="px-3 py-6 text-center text-slate-500 italic">{t("Click 'Record Point' to log data.")}</td>
                 </tr>
               ) : (
                 data.map((pt, i) => (

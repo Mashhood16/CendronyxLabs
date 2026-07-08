@@ -8,6 +8,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { Rocket, GraduationCap, Beaker, Atom, ArrowRight, BookOpen } from 'lucide-react';
 
 export default function Class10Physics() {
+  const { t } = useTranslate();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const classId = '10';
@@ -64,8 +65,8 @@ export default function Class10Physics() {
                 <Atom className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-white">Class 10 Physics</h1>
-                <p className="text-white/80 text-sm">Heat, Waves, Optics, Electricity & Nuclear Physics — with derivation-focused interactive labs</p>
+                <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 10 Physics")}</h1>
+                <p className="text-white/80 text-sm">{t("Heat, Waves, Optics, Electricity & Nuclear Physics — with derivation-focused interactive labs")}</p>
               </div>
             </div>
           </div>
@@ -82,7 +83,7 @@ export default function Class10Physics() {
             }`}
           >
             <Beaker className="w-4 h-4" />
-            Labs
+            {t("Labs")}
             <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400">
               {readyCount - derivationModules.length}
             </span>
@@ -96,7 +97,7 @@ export default function Class10Physics() {
             }`}
           >
             <GraduationCap className="w-4 h-4" />
-            Derivations
+            {t("Derivations")}
             <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
               {derivationModules.length}
             </span>
@@ -111,8 +112,8 @@ export default function Class10Physics() {
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center mb-4 opacity-50">
                   <Rocket className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-700 mb-2">No Labs Available</h3>
-                <p className="text-slate-500 max-w-md text-center">There are no labs available for this selection.</p>
+                <h3 className="text-xl font-bold text-slate-700 mb-2">{t("No Labs Available")}</h3>
+                <p className="text-slate-500 max-w-md text-center">{t("There are no labs available for this selection.")}</p>
               </div>
             ) : (
               <div>
@@ -133,19 +134,19 @@ export default function Class10Physics() {
                           <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
                           {isBuilt && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>}
                           <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
-                            {formatSubject(lab.subject)} &middot; Class {lab.classLevel}
+                            {t(formatSubject(lab.subject))} {t("&middot; Class")} {lab.classLevel}
                           </div>
                           {hasCalculator(lab) && (
                             <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-400/90 text-amber-900 text-[10px] font-bold backdrop-blur-sm shadow-sm">
-                              🧮 Calc
+                              {t("🧮 Calc")}
                             </div>
                           )}
                           {isBuilt ? (
                             <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">
-                              <Rocket className="w-3.5 h-3.5" /> Ready
+                              <Rocket className="w-3.5 h-3.5" /> {t("Ready")}
                             </div>
                           ) : (
-                            <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/30 text-white/70 text-xs font-bold backdrop-blur-sm">Coming Soon</div>
+                            <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/30 text-white/70 text-xs font-bold backdrop-blur-sm">{t("Coming Soon")}</div>
                           )}
                         </div>
                         <div className="p-6 flex-1 flex flex-col bg-transparent">
@@ -156,12 +157,12 @@ export default function Class10Physics() {
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
-                              <span className="text-xs font-bold">~15 min</span>
+                              <span className="text-xs font-bold">{t("~15 min")}</span>
                             </div>
                             {isBuilt ? (
-                              <span className="text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-600 group-hover:scale-105 transition-transform inline-flex items-center gap-1">Launch <ArrowRight className="w-3 h-3" /></span>
+                              <span className="text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r from-teal-500 to-cyan-600 group-hover:scale-105 transition-transform inline-flex items-center gap-1">{t("Launch")} <ArrowRight className="w-3 h-3" /></span>
                             ) : (
-                              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Soon</span>
+                              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t("Soon")}</span>
                             )}
                           </div>
                         </div>
@@ -194,15 +195,15 @@ export default function Class10Physics() {
                       <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
                       {isBuilt && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>}
                       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
-                        Derivation &middot; Class 10 Physics
+                        {t("Derivation &middot; Class 10 Physics")}
                       </div>
                       {hasCalculator(lab) && (
                         <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-400/90 text-amber-900 text-[10px] font-bold backdrop-blur-sm shadow-sm">
-                          🧮 Calc
+                          {t("🧮 Calc")}
                         </div>
                       )}
                       <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-500/90 text-white text-xs font-bold backdrop-blur-sm">
-                        <BookOpen className="w-3.5 h-3.5" /> Step-by-Step
+                        <BookOpen className="w-3.5 h-3.5" /> {t("Step-by-Step")}
                       </div>
                     </div>
                     <div className="p-6 flex-1 flex flex-col bg-transparent">
@@ -211,14 +212,14 @@ export default function Class10Physics() {
                       <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                         <div className="flex items-center gap-1.5 text-slate-400">
                           <GraduationCap className="w-3.5 h-3.5" />
-                          <span className="text-xs font-bold">Interactive</span>
+                          <span className="text-xs font-bold">{t("Interactive")}</span>
                         </div>
                         {isBuilt ? (
                           <span className="text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-500 to-teal-600 group-hover:scale-105 transition-transform inline-flex items-center gap-1">
-                            Start Derivation <ArrowRight className="w-3 h-3" />
+                            {t("Start Derivation")} <ArrowRight className="w-3 h-3" />
                           </span>
                         ) : (
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Soon</span>
+                          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t("Soon")}</span>
                         )}
                       </div>
                     </div>

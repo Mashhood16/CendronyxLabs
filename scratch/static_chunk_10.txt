@@ -1,0 +1,6 @@
+🧮 Same double-squaring technique as the ellipse. But the sign difference (subtraction vs addition) leads to a different final form.
+Let b² = c²−a² to get standard form
+✅ Define b² = c²−a². The standard form x²/a² − y²/b² = 1 has two branches (left and \). Asymptotes: y = ±(b/a)x. The LORAN ship: if stations are 100km apart (2c=100) and the constant difference is 60km (2a=60), then b² = 50²−30² = 1600, and the ship lies on x²/900 − y²/1600 = 1!
+Hyperbola x²/16 − y²/9 = 1. Find c (focus distance from center).
+a²=16, b²=9. c² = a²+b² = 16+9 = 25. c = 5
+For hyperbola, c² = a²+b²

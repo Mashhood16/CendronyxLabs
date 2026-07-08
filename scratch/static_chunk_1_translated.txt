@@ -1,0 +1,100 @@
+sin θ / cos θ = (a/c) / (b/c) = (a/c) × (c/b) = a/b. The hypotenuse (c) cancels out! And a/b is exactly tan θ. === sin θ / cos θ = (a/c) / (b/c) = (a/c) × (c/b) = a/b. hypotenuse (c) cancel ho jata hai! Aur a/b bilkul tan θ hai.
+Similarly for cotangent === Isi tarah cotangent ke liye
+Similarly, cos θ / sin θ = b/a = cot θ. These are the Quotient Identities. They connect the primary ratios (sin, cos) to the secondary ones (tan, cot). === Isi tarah, cos θ / sin θ = b/a = cot θ. Ye Quotient Identities hain. Ye primary ratios (sin, cos) ko secondary ratios (tan, cot) se connect karte hain.
+sin(30°) = 0.5, cos(30°) ≈ 0.866. Find tan(30°). === sin(30°) = 0.5, cos(30°) ≈ 0.866. tan(30°) maloom karein.
+tan(30°) = sin(30°)/cos(30°) = 0.5/0.866 === tan(30°) = sin(30°)/cos(30°) = 0.5/0.866
+tan θ = sin θ / cos θ === tan θ = sin θ / cos θ
+Pythagorean Trigonometric Identities === Pythagorean Trigonometric Identities
+The Pythagorean Theorem restated in trigonometric form. === Pythagorean Theorem ko trigonometric form mein dobara likha gaya hai.
+Start with the Pythagorean Theorem === Pythagorean Theorem se shuru karein
+📐 In any right triangle with legs a, b and hypotenuse c: a² + b² = c². This is the most famous relationship in all of geometry. === 📐 Kisi bhi right triangle mein jiske legs a, b aur hypotenuse c hon: a² + b² = c². Ye geometry ki sab se mashhoor relationship hai.
+Express in trig terms === Trig terms mein express karein
+sin θ = a/c and cos θ = b/c. Square both: sin²θ = a²/c² and cos²θ = b²/c². === sin θ = a/c aur cos θ = b/c. Dono ka square lein: sin²θ = a²/c² aur cos²θ = b²/c².
+Add the squares === Squares ko add karein
+sin²θ + cos²θ = a²/c² + b²/c² = (a² + b²)/c² = c²/c² = 1. The triangle\ === sin²θ + cos²θ = a²/c² + b²/c² = (a² + b²)/c² = c²/c² = 1. Triangle\
+The identity is born === Identity wajood mein aati hai
+sin²θ + cos²θ = 1 — it doesn\ === sin²θ + cos²θ = 1 — ye nahi\
+sin(30°) = 0.5. Find sin²(30°) + cos²(30°). === sin(30°) = 0.5. sin²(30°) + cos²(30°) maloom karein.
+cos(30°) = 0.866. Compute 0.25 + 0.75 === cos(30°) = 0.866. 0.25 + 0.75 calculate karein
+sin²θ + cos²θ = 1 always! === sin²θ + cos²θ = 1 hamesha!
+The Distance Formula === Distance Formula
+Calculate the distance between any two points on a coordinate plane. === Coordinate plane par kisi bhi do points ke darmiyan distance calculate karein.
+Plot two points === Do points plot karein
+🗺️ You\ === 🗺️ Aap\
+Draw perpendiculars === Perpendiculars draw karein
+Draw lines from P₁ and P₂ to the x-axis. These create a right triangle. The horizontal leg runs from x₁ to x₂, and the vertical leg from y₁ to y₂. === P₁ aur P₂ se x-axis tak lines draw karein. Ye ek right triangle banate hain. horizontal leg x₁ se x₂ tak jata hai, aur vertical leg y₁ se y₂ tak.
+Apply Pythagoras === Pythagoras apply karein
+d² = (Δx)² + (Δy)² → d = √((x₂−x₁)² + (y₂−y₁)²) = √(6² + 4²) = √(36 + 16) = √52 ≈ 7.21 units. === d² = (Δx)² + (Δy)² → d = √((x₂−x₁)² + (y₂−y₁)²) = √(6² + 4²) = √(36 + 16) = √52 ≈ 7.21 units.
+Final formula === Final formula
+This formula is the GPS backbone: your phone calculates distance between satellites and your position using this exact formula in 3D! === Ye formula GPS ki backbone hai: aap ka phone satellites aur aap ki position ke darmiyan distance 3D mein isi exact formula ko use kar ke calculate karta hai!
+P₁(0,0), P₂(3,4). Find the distance. === P₁(0,0), P₂(3,4). distance maloom karein.
+d = √(3² + 4²) = √(9+16) === d = √(3² + 4²) = √(9+16)
+d = √((x₂−x₁)² + (y₂−y₁)²) === d = √((x₂−x₁)² + (y₂−y₁)²)
+Slope-Intercept Form === Slope-Intercept Form
+Equation of a straight line with slope m and y-intercept c. === Ek straight line ki equation jiski slope m aur y-intercept c hai.
+Identify slope and intercept === Slope aur intercept identify karein
+📈 You\ === 📈 Aap\
+Pick a general point === Ek general point pick karein
+Let P(x, y) be any point on the line. The point where the line crosses the y-axis is A(0, c) — your starting savings at week 0. === Farz karein line par koi point P(x, y) hai. Wo point jahan line y-axis ko cross karti hai A(0, c) hai — week 0 par aap ki starting savings.
+Calculate slope === Slope calculate karein
+Slope m = (y − c) / (x − 0) = (y − c) / x. This means the rise over run from A to P equals the constant slope of the line. === Slope m = (y − c) / (x − 0) = (y − c) / x. Is ka matlab hai A se P tak rise over run line ki constant slope ke barabar hai.
+Rearrange for y === y ke liye rearrange karein
+m = (y − c)/x → y − c = mx → y = mx + c. That\ === m = (y − c)/x → y − c = mx → y = mx + c. Wo\
+A line has slope m = 3 and intercept c = 2. What is y when x = 4? === Ek line ki slope m = 3 aur intercept c = 2 hai. Jab x = 4 ho tou y kya hoga?
+y = 3×4 + 2 = 12 + 2 === y = 3×4 + 2 = 12 + 2
+y = mx + c === y = mx + c
+Point-Slope Form === Point-Slope Form
+Equation of a line through a point with a given slope. === Ek di hui slope ke sath ek point se guzarne wali line ki equation.
+The problem === Problem
+📍 You know a line passes through the point (2, 3) and has slope m = 1.5. You need the equation of the line to graph it on your digital map. === 📍 Aap jante hain ke ek line point (2, 3) se guzarti hai aur uski slope m = 1.5 hai. Aap ko apne digital map par graph karne ke liye line ki equation chahiye.
+Use slope formula === Slope formula use karein
+Let P(x, y) be any point on the line. With B(x₁, y₁) = (2, 3), the slope m = (y − y₁)/(x − x₁). === Farz karein P(x, y) line par koi point hai. B(x₁, y₁) = (2, 3) ke sath, slope m = (y − y₁)/(x − x₁).
+Cross-multiply === Cross-multiply karein
+m(x − x₁) = y − y₁. This equation says  === m(x − x₁) = y − y₁. Ye equation kehti hai 
+The result === Result
+y − y₁ = m(x − x₁). For our example: y − 3 = 1.5(x − 2) → y = 1.5x. === y − y₁ = m(x − x₁). Hamari example ke liye: y − 3 = 1.5(x − 2) → y = 1.5x.
+Line through (1,2) with slope m = 4. Find y when x = 3. === (1,2) se guzarne wali line jiski slope m = 4 hai. Jab x = 3 ho tou y maloom karein.
+y − 2 = 4(3−1). So y = 2+8 === y − 2 = 4(3−1). Tou y = 2+8
+y − y₁ = m(x − x₁) === y − y₁ = m(x − x₁)
+Two-Point Form === Two-Point Form
+Equation of a line through two given points. === Do diye gaye points se guzarne wali line ki equation.
+Two points define a line === Do points ek line ko define karte hain
+🔗 You have two points A(1, 2) and B(4, 8). Only one straight line passes through both — the shortest path between them. === 🔗 Aap ke paas do points A(1, 2) aur B(4, 8) hain. Dono se sirf ek straight line guzarti hai — un ke darmiyan sab se chota path.
+Find the slope === Slope maloom karein
+Slope m = (y₂ − y₁)/(x₂ − x₁) = (8 − 2)/(4 − 1) = 6/3 = 2. This line rises 2 units for every 1 unit horizontally. === Slope m = (y₂ − y₁)/(x₂ − x₁) = (8 − 2)/(4 − 1) = 6/3 = 2. Ye line har 1 unit horizontally ke liye 2 units rise karti hai.
+Apply Point-Slope Form === Point-Slope Form apply karein
+Now that we have m = 2, use the Point-Slope Form with either point: y − y₁ = m(x − x₁) → y − 2 = 2(x − 1). === Ab jab ke hamare paas m = 2 hai, Point-Slope Form ko kisi bhi point ke sath use karein: y − y₁ = m(x − x₁) → y − 2 = 2(x − 1).
+The formula === Formula
+Substituting the slope formula directly gives: y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁). This is the Two-Point Form. === Slope formula ko directly substitute karne se milta hai: y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁). Ye Two-Point Form hai.
+Line through (0,0) and (2,6). Find y when x = 5. === (0,0) aur (2,6) se guzarne wali line. Jab x = 5 ho tou y maloom karein.
+Slope = 6/2 = 3. y − 0 = 3(5−0) === Slope = 6/2 = 3. y − 0 = 3(5−0)
+y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁) === y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁)
+Two-Intercept Form === Two-Intercept Form
+Equation of a line using its x-intercept a and y-intercept b. === x-intercept a aur y-intercept b ko use karte hue line ki equation.
+Identify intercepts === Intercepts identify karein
+🎯 A line crosses the x-axis at x = 4 (the x-intercept a = 4) and the y-axis at y = 3 (the y-intercept b = 3). === 🎯 Ek line x-axis ko x = 4 par (x-intercept a = 4) aur y-axis ko y = 3 par (y-intercept b = 3) cross karti hai.
+Slope m = (b − 0)/(0 − a) = b/(−a) = −b/a = −3/4. The line goes down 3 for every 4 right. === Slope m = (b − 0)/(0 − a) = b/(−a) = −b/a = −3/4. Line har 4 right ke liye 3 down jati hai.
+Use Point-Slope === Point-Slope use karein
+Using point (0, b): y − b = (−b/a)x → ay − ab = −bx → bx + ay = ab. === Point (0, b) use karte hue: y − b = (−b/a)x → ay − ab = −bx → bx + ay = ab.
+Divide by ab === ab se divide karein
+(bx)/(ab) + (ay)/(ab) = 1 → x/a + y/b = 1. This elegant form shows the intercepts directly. === (bx)/(ab) + (ay)/(ab) = 1 → x/a + y/b = 1. Ye elegant form directly intercepts show karti hai.
+x-intercept = 6, y-intercept = 3. Find y when x = 2. === x-intercept = 6, y-intercept = 3. Jab x = 2 ho tou y maloom karein.
+2/6 + y/3 = 1. So y/3 = 1 − 1/3 = 2/3 === 2/6 + y/3 = 1. Tou y/3 = 1 − 1/3 = 2/3
+x/a + y/b = 1 === x/a + y/b = 1
+Normal Form of a Line === Normal Form of a Line
+Equation using perpendicular distance p from origin and inclination α. === Origin se perpendicular distance p aur inclination α use karte hue equation.
+Define the normal === Normal ko define karein
+🧭 Imagine a line L and a perpendicular from the origin O to L meeting at point C. The distance OC = p, and the angle this perpendicular makes with the x-axis is α. === 🧭 Imagine karein ek line L aur origin O se L tak ek perpendicular jo point C par milta hai. Distance OC = p hai, aur ye perpendicular x-axis ke sath jo angle banata hai wo α hai.
+Find intercepts === Intercepts maloom karein
+From right triangle OCA: cos α = p/OA → OA = p/cos α (x-intercept). From triangle OCB: sin α = p/OB → OB = p/sin α (y-intercept). === Right triangle OCA se: cos α = p/OA → OA = p/cos α (x-intercept). Triangle OCB se: sin α = p/OB → OB = p/sin α (y-intercept).
+Apply Two-Intercept Form === Two-Intercept Form apply karein
+Using x/a + y/b = 1: x/(p/cos α) + y/(p/sin α) = 1 → (x cos α)/p + (y sin α)/p = 1. === x/a + y/b = 1 use karte hue: x/(p/cos α) + y/(p/sin α) = 1 → (x cos α)/p + (y sin α)/p = 1.
+Multiply by p === p se multiply karein
+x cos α + y sin α = p. The Normal Form! This is particularly useful in physics and engineering for finding distances from a point to a line. === x cos α + y sin α = p. Normal Form! Ye physics aur engineering mein kisi point se line tak distances maloom karne ke liye khas taur par useful hai.
+α = 60°, p = 5. Find cos α and evaluate x cos α + y sin α at x=2, y=3. === α = 60°, p = 5. cos α maloom karein aur x=2, y=3 par x cos α + y sin α ko evaluate karein.
+cos 60° = 0.5, sin 60° = 0.866. LHS = 2×0.5+3×0.866 === cos 60° = 0.5, sin 60° = 0.866. LHS = 2×0.5+3×0.866
+x cos α + y sin α = p === x cos α + y sin α = p
+Angle Between Two Lines === Do Lines ke darmiyan Angle
+Find the acute angle between two intersecting lines from their slopes. === Un ki slopes se do intersecting lines ke darmiyan acute angle maloom karein.
+Lines and inclinations === Lines aur inclinations
+🔄 Two roads cross at an intersection. One has a gentle slope m₁ = 0.5 (gentle hill), the other is steeper m₂ = 2. === 🔄 Do roads ek intersection par cross karti hain. Ek ki gentle slope m₁ = 0.5 hai (halki pahari), aur dosri ziyada steep hai m₂ = 2.

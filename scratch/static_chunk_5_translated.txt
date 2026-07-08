@@ -1,0 +1,100 @@
+AC is radius r₁, BC is radius r₂. Since C lies on line AB: AB = r₁ + r₂. === AC radius r₁ hai, BC radius r₂ hai. Kyun ke C line AB par hai: AB = r₁ + r₂.
+Two circles of radii 3 cm and 4 cm touch externally. Distance between centres? === 3 cm aur 4 cm radii ke do circles externally touch karte hain. Centres ke darmiyan distance kya hai?
+d = r₁ + r₂ = 3 + 4 === d = r₁ + r₂ = 3 + 4
+d = r₁ + r₂ (external touch) === d = r₁ + r₂ (external touch)
+Theorem 10.5: Internally Touching Circles === Theorem 10.5: Internally Touching Circles
+If circles touch internally, distance equals difference of radii. === Agar circles internally touch karein, to distance radii ke difference ke barabar hota hai.
+Draw circles touching internally === Internally touch karte hue circles draw karein
+⭕🔵 Draw a larger circle (radius r₁) and a smaller one (radius r₂) inside it, touching at C. === ⭕🔵 Ek bada circle (radius r₁) aur ek chota circle (radius r₂) uske andar draw karein, jo C par touch kar rahe hon.
+Point C on line AB === Line AB par point C
+The circles touch at C, which lies on line AB. The smaller circle is inside the larger one. === Circles C par touch karte hain, jo line AB par hai. Chota circle bade circle ke andar hai.
+For the outer circle: AC = r₁. For the inner circle: BC = r₂. Since B is inside: AB = r₁ − r₂. === Outer circle ke liye: AC = r₁. Inner circle ke liye: BC = r₂. Kyun ke B andar hai: AB = r₁ − r₂.
+Two circles of radii 5 cm and 2 cm touch internally. Distance between centres? === 5 cm aur 2 cm radii ke do circles internally touch karte hain. Centres ke darmiyan distance kya hai?
+d = |r₁ − r₂| = 5 − 2 === d = |r₁ − r₂| = 5 − 2
+d = |r₁ − r₂| (internal touch) === d = |r₁ − r₂| (internal touch)
+Theorem 10.6: Alternate Segment Theorem === Theorem 10.6: Alternate Segment Theorem
+Angle between tangent and chord equals angle in the alternate segment. === Tangent aur chord ke darmiyan angle alternate segment mein angle ke barabar hota hai.
+Draw tangent and chord === Tangent aur chord draw karein
+🎯 Draw a circle with tangent PT at point A. Draw chord AB, creating ∠APT between tangent and chord. === 🎯 Point A par tangent PT ke sath ek circle draw karein. Chord AB draw karein, jis se tangent aur chord ke darmiyan ∠APT banay.
+Identify alternate segment === Alternate segment ko identify karein
+The chord AB divides the circle into two segments. The alternate segment is opposite the tangent. === Chord AB circle ko do segments mein divide karta hai. Alternate segment tangent ke opposite hota hai.
+Measure both angles === Dono angles ko measure karein
+The angle between tangent and chord equals the angle in the alternate segment. === Tangent aur chord ke darmiyan angle alternate segment ke angle ke barabar hota hai.
+∠APT = 55°. What is ∠ABP? === ∠APT = 55°. ∠ABP kya hai?
+Alternate Segment Theorem: ∠ABP = ∠APT === Alternate Segment Theorem: ∠ABP = ∠APT
+∠APT = ∠ABP (alternate segment) === ∠APT = ∠ABP (alternate segment)
+Theorem 10.7: Central Angle = 2 × Inscribed Angle === Theorem 10.7: Central Angle = 2 × Inscribed Angle
+The central angle is double any inscribed angle subtended by the same arc. === Central angle kisi bhi inscribed angle se double hota hai jo same arc se subtended ho.
+Draw central and inscribed angles === Central aur inscribed angles draw karein
+📐 Draw chord CD. Central angle ∠COD and inscribed angle ∠CED subtend the same chord CD. === 📐 Chord CD draw karein. Central angle ∠COD aur inscribed angle ∠CED same chord CD ko subtend karte hain.
+Join O to E and extend === O ko E se join karein aur extend karein
+Extend OE to F. Since OC = OE (radii), triangle COE is isosceles. The exterior angle ∠COF = 2∠CEO. === OE ko F tak extend karein. Kyun ke OC = OE (radii), triangle COE isosceles hai. Exterior angle ∠COF = 2∠CEO.
+Similarly for ∠DOF === Similarly ∠DOF ke liye
+Similarly, ∠DOF = 2∠DEO. === Similarly, ∠DOF = 2∠DEO.
+Combine === Combine karein
+∠COD = 2∠CEO + 2∠DEO = 2(∠CEO + ∠DEO) = 2∠CED. The central angle is ALWAYS twice the inscribed angle! === ∠COD = 2∠CEO + 2∠DEO = 2(∠CEO + ∠DEO) = 2∠CED. Central angle hamesha inscribed angle se double hota hai!
+An inscribed angle subtended by an arc is 35°. What is the central angle? === Ek arc se subtended inscribed angle 35° hai. Central angle kya hai?
+Central angle = 2 × inscribed angle. === Central angle = 2 × inscribed angle.
+Central = 2 × inscribed === Central = 2 × inscribed
+Theorem 10.8: Angles in Same Segment are Equal === Theorem 10.8: Angles in Same Segment are Equal
+All angles subtended by a chord in the same segment are equal. === Same segment mein chord se subtended tamam angles equal hote hain.
+Take chord AB and points on same segment === Chord AB aur same segment par points lein
+🎯 Draw a chord AB. Take three points C, D, E on the SAME segment of the circle. === 🎯 Ek chord AB draw karein. Circle ke SAME segment par teen points C, D, E lein.
+Measure inscribed angles === Inscribed angles ko measure karein
+Each of these angles is subtended by chord AB at different points on the same arc. === In mein se har angle chord AB se same arc par mukhtalif points par subtended hai.
+All equal half of ∠AOB === Sab ∠AOB ke half ke equal hain
+Each equals half the central angle ∠AOB (Theorem 10.7). Since they equal half of the same central angle, they must be equal! === Har ek central angle ∠AOB ke half ke equal hai (Theorem 10.7). Kyun ke wo same central angle ke half ke equal hain, unhein equal hona chahiye!
+∠ACB = 40° in a segment. What is ∠ADB if D is also in the same segment? === Ek segment mein ∠ACB = 40° hai. ∠ADB kya hoga agar D bhi same segment mein ho?
+Angles in the same segment are equal. === Same segment mein angles equal hote hain.
+Angles in same segment are equal === Same segment mein angles equal hote hain
+Theorem 10.9: Angle in a Semicircle is a Right Angle === Theorem 10.9: Angle in a Semicircle is a Right Angle
+An angle inscribed in a semicircle is always 90°. === Semicircle mein inscribed angle hamesha 90° hota hai.
+Draw diameter AB === Diameter AB draw karein
+🌓 Draw a circle with diameter AB passing through centre O. Take any point P on the semicircle arc. === 🌓 Centre O se guzarta hua diameter AB wala ek circle draw karein. Semicircle arc par koi bhi point P lein.
+Apply central angle theorem === Central angle theorem apply karein
+The central angle for chord AB is ∠AOB = 180°. By Theorem 10.7, ∠APB = ½ × 180° = 90°. === Chord AB ke liye central angle ∠AOB = 180° hai. Theorem 10.7 ke mutabiq, ∠APB = ½ × 180° = 90°.
+Works for any point P === Kisi bhi point P ke liye kaam karta hai
+No matter where P is on the semicircle arc, ∠APB always equals 90°! === P semicircle arc par kahin bhi ho, ∠APB hamesha 90° ke equal hota hai!
+AB is a diameter. Point P is on the semicircle. What is ∠APB? === AB ek diameter hai. Point P semicircle par hai. ∠APB kya hai?
+Angle in a semicircle is always... === Semicircle mein angle hamesha hota hai...
+Angle in a semicircle = 90° === Angle in a semicircle = 90°
+Theorem 10.10: Angle in Major Segment < 90° === Theorem 10.10: Angle in Major Segment < 90°
+An angle in a segment greater than a semicircle is acute. === Semicircle se bade segment mein angle acute hota hai.
+Draw chord AB forming a major segment === Major segment banate hue chord AB draw karein
+📐 Draw chord AB creating a major segment (larger than a semicircle). Pick a point P on the major arc. === 📐 Chord AB draw karein jo ek major segment (semicircle se bada) banaye. Major arc par ek point P chun lein.
+Central angle < 180° === Central angle < 180°
+The central angle subtended by the major segment is less than 180°. === Major segment se subtended central angle 180° se kam hota hai.
+Apply Theorem 10.7 === Theorem 10.7 apply karein
+Since the central angle is less than 180°, the inscribed angle is less than 90° (acute). === Kyun ke central angle 180° se kam hai, inscribed angle 90° se kam (acute) hota hai.
+An angle in a major segment is: acute or obtuse? === Major segment mein angle kya hota hai: acute ya obtuse?
+Major segment > semicircle → angle < 90° === Major segment > semicircle → angle < 90°
+Major segment → angle < 90° (acute) === Major segment → angle < 90° (acute)
+Theorem 10.11: Angle in Minor Segment > 90° === Theorem 10.11: Angle in Minor Segment > 90°
+An angle in a segment less than a semicircle is obtuse. === Semicircle se chote segment mein angle obtuse hota hai.
+Draw chord forming a minor segment === Minor segment banate hue chord draw karein
+📐 Draw chord AB forming a minor segment (smaller than a semicircle). === 📐 Chord AB draw karein jo ek minor segment (semicircle se chota) banaye.
+Central angle > 180° === Central angle > 180°
+The central angle subtended by the minor segment is greater than 180°. === Minor segment se subtended central angle 180° se zyada hota hai.
+Half of an angle greater than 180° gives an inscribed angle greater than 90°. === 180° se bade angle ka half ek inscribed angle deta hai jo 90° se bada hota hai.
+An angle in a minor segment is: acute or obtuse? === Minor segment mein angle kya hota hai: acute ya obtuse?
+Minor segment < semicircle → angle > 90° === Minor segment < semicircle → angle > 90°
+Minor segment → angle > 90° (obtuse) === Minor segment → angle > 90° (obtuse)
+Theorem 10.12: Opposite Angles of Cyclic Quadrilateral are Supplementary === Theorem 10.12: Opposite Angles of Cyclic Quadrilateral are Supplementary
+The sum of opposite angles in a cyclic quadrilateral is 180°. === Ek cyclic quadrilateral mein opposite angles ka sum 180° hota hai.
+Draw cyclic quadrilateral ABCD === Cyclic quadrilateral ABCD draw karein
+🔷 Draw a quadrilateral ABCD inscribed in a circle (all vertices on the circle). === 🔷 Ek circle mein inscribed quadrilateral ABCD draw karein (tamam vertices circle par hon).
+Join centre O to vertices === Centre O ko vertices se join karein
+Join O to A, B, C, D. Arc BCD subtends reflex ∠BOD at centre. Arc BAD subtends ∠BOD. === O ko A, B, C, D se join karein. Arc BCD centre par reflex ∠BOD subtend karti hai. Arc BAD ∠BOD subtend karti hai.
+∠A = ½×(reflex ∠BOD) and ∠C = ½×(∠BOD). The two central angles sum to 360°. === ∠A = ½×(reflex ∠BOD) aur ∠C = ½×(∠BOD). Dono central angles ka sum 360° hota hai.
+Sum of opposite angles = 180° === Sum of opposite angles = 180°
+∠A + ∠C = ½(360°) = 180°. Similarly, ∠B + ∠D = 180°. Opposite angles of a cyclic quadrilateral are supplementary! === ∠A + ∠C = ½(360°) = 180°. Similarly, ∠B + ∠D = 180°. Cyclic quadrilateral ke opposite angles supplementary hote hain!
+In a cyclic quadrilateral, ∠A = 80°. Find ∠C. === Ek cyclic quadrilateral mein, ∠A = 80°. ∠C find karein.
+∠A + ∠C = 180° (opposite angles supplementary) === ∠A + ∠C = 180° (opposite angles supplementary)
+∠A + ∠C = 180° (cyclic quadrilateral) === ∠A + ∠C = 180° (cyclic quadrilateral)
+Magnitude of a Complex Number === Ek Complex Number ka Magnitude
+The magnitude of z = x + iy is the distance from the origin in the complex plane. === z = x + iy ka magnitude complex plane mein origin se distance hota hai.
+Let z = x + iy === Let z = x + iy
+Definition of magnitude === Magnitude ki definition
+📏 The magnitude is defined as |z| = √(x² + y²). Since squares of real numbers are always ≥ 0: x² ≥ 0 and y² ≥ 0, so x² + y² ≥ 0. The square root of a non-negative number is also non-negative, therefore |z| ≥ 0. === 📏 Magnitude |z| = √(x² + y²) ke tor par define kiya jata hai. Kyun ke real numbers ke squares hamesha ≥ 0 hote hain: x² ≥ 0 aur y² ≥ 0, is liye x² + y² ≥ 0. Ek non-negative number ka square root bhi non-negative hota hai, is liye |z| ≥ 0.
+If |z| = 0, then z = 0 === Agar |z| = 0, to z = 0
+🧮 Suppose |z| = 0. Then √(x² + y²) = 0 → x² + y² = 0. The sum of two squares can only be zero if both are zero: x = 0 AND y = 0. So z = 0 + 0i = 0. === 🧮 Suppose |z| = 0. Phir √(x² + y²) = 0 → x² + y² = 0. Do squares ka sum sirf tab zero ho sakta hai agar dono zero hon: x = 0 AUR y = 0. To z = 0 + 0i = 0.

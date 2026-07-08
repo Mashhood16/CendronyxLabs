@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { BookOpen, CheckCircle, FileText, Lightbulb, ChevronDown, ChevronRight, ArrowRight, FlaskConical } from 'lucide-react';
 
@@ -31,6 +32,7 @@ interface ResearchPaperAnalysisProps {
 }
 
 export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }: ResearchPaperAnalysisProps) {
+  const { t } = useTranslate();
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [results, setResults] = useState<Record<number, 'correct' | 'incorrect' | null>>({});
@@ -58,7 +60,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
         <div className="flex items-center gap-2">
           <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
           <span className="text-sm font-bold text-slate-800 dark:text-[#ffffff]">
-            Real Research: "{paper.title}"
+            {t("Real Research: \"")}{paper.title}"
           </span>
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
             {paper.journal} ({paper.year})
@@ -74,10 +76,10 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
             <div className="flex items-start gap-2">
               <BookOpen className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
               <div>
-                <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">Abstract</span>
+                <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">{t("Abstract")}</span>
                 <p className="text-xs text-slate-700 dark:text-[#ffffff] mt-1">{paper.abstract}</p>
                 <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mt-1 italic">
-                  <strong>Key Finding:</strong> {paper.keyFinding}
+                  <strong>{t("Key Finding:")}</strong> {paper.keyFinding}
                 </p>
               </div>
             </div>
@@ -88,7 +90,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
             <div className="flex items-start gap-2">
               <FlaskConical className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
               <div>
-                <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">Connection to This Lab</span>
+                <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">{t("Connection to This Lab")}</span>
                 <p className="text-xs text-slate-700 dark:text-[#ffffff] mt-1">{paper.connectionToLab}</p>
               </div>
             </div>
@@ -96,7 +98,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
 
           {/* Methods */}
           <div>
-            <span className="text-[10px] font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">Methodology</span>
+            <span className="text-[10px] font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">{t("Methodology")}</span>
             <div className="flex flex-wrap gap-1.5 mt-1">
               {paper.methods.map((method, i) => (
                 <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#2a2a2a]">
@@ -108,7 +110,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
 
           {/* Data to Analyze */}
           <div className="bg-[#000000] dark:bg-[#000000] rounded-lg p-3 border border-[#1c1b1b]">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Experimental Data</span>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{t("Experimental Data")}</span>
             <div className="mt-2">
               <div className="flex items-end gap-1 h-24">
                 {paper.dataToAnalyze.values.map((val, i) => {
@@ -132,7 +134,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
           {/* Questions */}
           <div className="space-y-3">
             <span className="text-[10px] font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider">
-              What Experiment Would You Design?
+              {t("What Experiment Would You Design?")}
             </span>
             {paper.questions.map((q) => (
               <div key={q.id} className="bg-slate-50 dark:bg-[#1c1b1b] rounded-lg p-3 border border-slate-200 dark:border-[#2a2a2a]">
@@ -144,14 +146,14 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
                     type="text"
                     value={answers[q.id] || ''}
                     onChange={e => setAnswers(prev => ({ ...prev, [q.id]: e.target.value }))}
-                    placeholder="Your answer..."
+                    placeholder={t("Your answer...")}
                     className="flex-1 text-xs px-3 py-1.5 border border-slate-300 dark:border-[#2a2a2a] rounded-md bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none"
                   />
                   <button
                     onClick={() => handleAnswer(q.id)}
                     className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-md transition-colors"
                   >
-                    Check
+                    {t("Check")}
                   </button>
                   <button
                     onClick={() => setShowHint(prev => ({ ...prev, [q.id]: !prev[q.id] }))}
@@ -181,15 +183,14 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
               <Lightbulb className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
               <div>
                 <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">
-                  Your Turn — Design a Follow-up Experiment
+                  {t("Your Turn — Design a Follow-up Experiment")}
                 </span>
                 <p className="text-xs text-slate-700 dark:text-[#ffffff] mt-1">
-                  Based on this paper's findings, what experiment would you design next? 
-                  What variables would you test, and what controls would you use?
+                  {t("Based on this paper's findings, what experiment would you design next? What variables would you test, and what controls would you use?")}
                 </p>
                 <textarea
                   className="w-full text-xs p-2 mt-2 border border-slate-300 dark:border-[#2a2a2a] rounded-md bg-white dark:bg-[#121212] min-h-[60px] resize-none"
-                  placeholder="Describe your proposed experiment..."
+                  placeholder={t("Describe your proposed experiment...")}
                 />
               </div>
             </div>

@@ -1264,7 +1264,7 @@ export default function LabM9Theorems({ onExit }: { onExit?: () => void }) {
             <h1 className="text-xl font-bold flex items-center gap-2">
               <GraduationCap className="w-6 h-6" />
               
-                                        Class 9 Math Interactive Theorems
+                                        {t("Class 9 Math Interactive Theorems")}
                                       </h1>
             <p className="text-sm text-white/80 mt-1">{t('lab.m9theorems_master_17_essential_theorems_t')}</p>
           </div>

@@ -1,0 +1,100 @@
+AC is radius r₁, BC is radius r₂. Since C lies on line AB: AB = r₁ + r₂.
+Two circles of radii 3 cm and 4 cm touch externally. Distance between centres?
+d = r₁ + r₂ = 3 + 4
+d = r₁ + r₂ (external touch)
+Theorem 10.5: Internally Touching Circles
+If circles touch internally, distance equals difference of radii.
+Draw circles touching internally
+⭕🔵 Draw a larger circle (radius r₁) and a smaller one (radius r₂) inside it, touching at C.
+Point C on line AB
+The circles touch at C, which lies on line AB. The smaller circle is inside the larger one.
+For the outer circle: AC = r₁. For the inner circle: BC = r₂. Since B is inside: AB = r₁ − r₂.
+Two circles of radii 5 cm and 2 cm touch internally. Distance between centres?
+d = |r₁ − r₂| = 5 − 2
+d = |r₁ − r₂| (internal touch)
+Theorem 10.6: Alternate Segment Theorem
+Angle between tangent and chord equals angle in the alternate segment.
+Draw tangent and chord
+🎯 Draw a circle with tangent PT at point A. Draw chord AB, creating ∠APT between tangent and chord.
+Identify alternate segment
+The chord AB divides the circle into two segments. The alternate segment is opposite the tangent.
+Measure both angles
+The angle between tangent and chord equals the angle in the alternate segment.
+∠APT = 55°. What is ∠ABP?
+Alternate Segment Theorem: ∠ABP = ∠APT
+∠APT = ∠ABP (alternate segment)
+Theorem 10.7: Central Angle = 2 × Inscribed Angle
+The central angle is double any inscribed angle subtended by the same arc.
+Draw central and inscribed angles
+📐 Draw chord CD. Central angle ∠COD and inscribed angle ∠CED subtend the same chord CD.
+Join O to E and extend
+Extend OE to F. Since OC = OE (radii), triangle COE is isosceles. The exterior angle ∠COF = 2∠CEO.
+Similarly for ∠DOF
+Similarly, ∠DOF = 2∠DEO.
+Combine
+∠COD = 2∠CEO + 2∠DEO = 2(∠CEO + ∠DEO) = 2∠CED. The central angle is ALWAYS twice the inscribed angle!
+An inscribed angle subtended by an arc is 35°. What is the central angle?
+Central angle = 2 × inscribed angle.
+Central = 2 × inscribed
+Theorem 10.8: Angles in Same Segment are Equal
+All angles subtended by a chord in the same segment are equal.
+Take chord AB and points on same segment
+🎯 Draw a chord AB. Take three points C, D, E on the SAME segment of the circle.
+Measure inscribed angles
+Each of these angles is subtended by chord AB at different points on the same arc.
+All equal half of ∠AOB
+Each equals half the central angle ∠AOB (Theorem 10.7). Since they equal half of the same central angle, they must be equal!
+∠ACB = 40° in a segment. What is ∠ADB if D is also in the same segment?
+Angles in the same segment are equal.
+Angles in same segment are equal
+Theorem 10.9: Angle in a Semicircle is a Right Angle
+An angle inscribed in a semicircle is always 90°.
+Draw diameter AB
+🌓 Draw a circle with diameter AB passing through centre O. Take any point P on the semicircle arc.
+Apply central angle theorem
+The central angle for chord AB is ∠AOB = 180°. By Theorem 10.7, ∠APB = ½ × 180° = 90°.
+Works for any point P
+No matter where P is on the semicircle arc, ∠APB always equals 90°!
+AB is a diameter. Point P is on the semicircle. What is ∠APB?
+Angle in a semicircle is always...
+Angle in a semicircle = 90°
+Theorem 10.10: Angle in Major Segment < 90°
+An angle in a segment greater than a semicircle is acute.
+Draw chord AB forming a major segment
+📐 Draw chord AB creating a major segment (larger than a semicircle). Pick a point P on the major arc.
+Central angle < 180°
+The central angle subtended by the major segment is less than 180°.
+Apply Theorem 10.7
+Since the central angle is less than 180°, the inscribed angle is less than 90° (acute).
+An angle in a major segment is: acute or obtuse?
+Major segment > semicircle → angle < 90°
+Major segment → angle < 90° (acute)
+Theorem 10.11: Angle in Minor Segment > 90°
+An angle in a segment less than a semicircle is obtuse.
+Draw chord forming a minor segment
+📐 Draw chord AB forming a minor segment (smaller than a semicircle).
+Central angle > 180°
+The central angle subtended by the minor segment is greater than 180°.
+Half of an angle greater than 180° gives an inscribed angle greater than 90°.
+An angle in a minor segment is: acute or obtuse?
+Minor segment < semicircle → angle > 90°
+Minor segment → angle > 90° (obtuse)
+Theorem 10.12: Opposite Angles of Cyclic Quadrilateral are Supplementary
+The sum of opposite angles in a cyclic quadrilateral is 180°.
+Draw cyclic quadrilateral ABCD
+🔷 Draw a quadrilateral ABCD inscribed in a circle (all vertices on the circle).
+Join centre O to vertices
+Join O to A, B, C, D. Arc BCD subtends reflex ∠BOD at centre. Arc BAD subtends ∠BOD.
+∠A = ½×(reflex ∠BOD) and ∠C = ½×(∠BOD). The two central angles sum to 360°.
+Sum of opposite angles = 180°
+∠A + ∠C = ½(360°) = 180°. Similarly, ∠B + ∠D = 180°. Opposite angles of a cyclic quadrilateral are supplementary!
+In a cyclic quadrilateral, ∠A = 80°. Find ∠C.
+∠A + ∠C = 180° (opposite angles supplementary)
+∠A + ∠C = 180° (cyclic quadrilateral)
+Magnitude of a Complex Number
+The magnitude of z = x + iy is the distance from the origin in the complex plane.
+Let z = x + iy
+Definition of magnitude
+📏 The magnitude is defined as |z| = √(x² + y²). Since squares of real numbers are always ≥ 0: x² ≥ 0 and y² ≥ 0, so x² + y² ≥ 0. The square root of a non-negative number is also non-negative, therefore |z| ≥ 0.
+If |z| = 0, then z = 0
+🧮 Suppose |z| = 0. Then √(x² + y²) = 0 → x² + y² = 0. The sum of two squares can only be zero if both are zero: x = 0 AND y = 0. So z = 0 + 0i = 0.

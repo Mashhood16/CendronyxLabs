@@ -98,7 +98,7 @@ export default function ModuleSelection() {
                     })() : <BookOpen className="w-5 h-5 text-white" />}
                   </div>
                   <div>
-                    <h1 className="text-2xl md:text-3xl font-bold text-white">Class {classId} {subjectId && formatSubject(subjectId)}</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class")} {classId} {subjectId && t(formatSubject(subjectId))}</h1>
                     <p className="text-white/80 text-sm">{(subjectId && SUBJECT_BANNER[subjectId]?.description) || 'Interactive experiments and virtual labs'}</p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function ModuleSelection() {
                       
                       {/* Module number badge */}
                       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
-                        {formatSubject(lab.subject)} &middot; Class {lab.classLevel}
+                        {t(formatSubject(lab.subject))} {t("&middot; Class")} {lab.classLevel}
                       </div>
                       
                       {/* Built indicator */}

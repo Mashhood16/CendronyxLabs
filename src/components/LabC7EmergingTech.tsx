@@ -30,7 +30,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
 
   {!videoWatched ? (
    <div className="bg-black rounded-2xl w-full max-w-3xl aspect-video flex flex-col items-center justify-center text-white relative shadow-2xl overflow-hidden group cursor-pointer" onClick={() => setVideoWatched(true)}>
-   <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Tech" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity" />
+   <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt={t("Tech")} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-40 transition-opacity" />
    <div className="z-10 bg-blue-600/80 p-6 rounded-full backdrop-blur-sm group-hover:scale-110 transition-transform dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
     <Play className="w-12 h-12 fill-current" />
    </div>

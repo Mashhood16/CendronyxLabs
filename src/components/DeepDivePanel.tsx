@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { GraduationCap, ChevronDown, ChevronRight, Lightbulb, Sigma, BookOpen, ArrowRight } from 'lucide-react';
 
@@ -21,6 +22,7 @@ interface DeepDivePanelProps {
 }
 
 const StepBlock = ({ step, index, isLast }: { step: DerivationStep; index: number; isLast: boolean }) => {
+  const { t } = useTranslate();
   const [expanded, setExpanded] = useState(index === 0);
   return (
     <div className="border-l-2 border-indigo-500/30 pl-4 ml-2 mb-3">
@@ -30,7 +32,7 @@ const StepBlock = ({ step, index, isLast }: { step: DerivationStep; index: numbe
       >
         {expanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
         <span className="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-1.5 py-0.5 rounded font-mono">
-          Step {index + 1}
+          {t("Step")} {index + 1}
         </span>
         {step.label}
       </button>
@@ -56,6 +58,7 @@ const StepBlock = ({ step, index, isLast }: { step: DerivationStep; index: numbe
 };
 
 export default function DeepDivePanel({ derivation, defaultExpanded = false }: DeepDivePanelProps) {
+  const { t } = useTranslate();
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
@@ -67,10 +70,10 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
         <div className="flex items-center gap-2">
           <GraduationCap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
           <span className="text-sm font-bold text-indigo-800 dark:text-indigo-300">
-            Deep Dive: {derivation.title}
+            {t("Deep Dive:")} {derivation.title}
           </span>
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
-            STEM Track
+            {t("STEM Track")}
           </span>
         </div>
         {isExpanded ? <ChevronDown className="w-4 h-4 text-indigo-500" /> : <ChevronRight className="w-4 h-4 text-indigo-500" />}
@@ -83,7 +86,7 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
             <div className="flex items-start gap-2">
               <Lightbulb className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider">Core Question</span>
+                <span className="text-xs font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider">{t("Core Question")}</span>
                 <p className="text-sm text-slate-700 dark:text-[#ffffff] mt-1 font-medium">
                   {derivation.question}
                 </p>
@@ -96,7 +99,7 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
             <div className="flex items-center gap-2 mb-2">
               <Sigma className="w-4 h-4 text-indigo-500" />
               <span className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider">
-                Step-by-Step Derivation
+                {t("Step-by-Step Derivation")}
               </span>
             </div>
             {derivation.steps.map((step, idx) => (
@@ -109,7 +112,7 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
             <div className="flex items-start gap-2">
               <BookOpen className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">Conclusion</span>
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">{t("Conclusion")}</span>
                 <p className="text-sm text-slate-700 dark:text-[#ffffff] mt-1">{derivation.conclusion}</p>
               </div>
             </div>
@@ -120,7 +123,7 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
             <div className="flex items-start gap-2">
               <Lightbulb className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
               <div>
-                <span className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">Real-World Application</span>
+                <span className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">{t("Real-World Application")}</span>
                 <p className="text-sm text-slate-700 dark:text-[#ffffff] mt-1">{derivation.realWorldApplication}</p>
               </div>
             </div>

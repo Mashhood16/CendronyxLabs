@@ -40,7 +40,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
   <div className="fixed inset-0 bg-black z-50 flex items-center justify-center font-sans text-white min-h-screen lg:h-screen overflow-x-hidden w-full" onClick={() => setIsPlaying(false)}>
   <div className="max-w-6xl w-full h-[80vh] flex flex-col items-center justify-center relative px-12">
    {movieData && (
-   <img src={movieData.img} alt="Background" className="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" />
+   <img src={movieData.img} alt={t("Background")} className="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" />
    )}
    <div className="relative z-10 text-center w-full">
    <h1 className="text-6xl font-black mb-12 drop-shadow-lg">{current.title || 'Untitled Slide'}</h1>

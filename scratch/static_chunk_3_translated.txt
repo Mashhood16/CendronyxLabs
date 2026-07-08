@@ -1,0 +1,100 @@
+Substitute === Substitute
+If α = 90°, \sin 90° = 1, so Δ = ½bc — the familiar right triangle area formula! === Agar α = 90°, \sin 90° = 1, to Δ = ½bc — wo hi jaana pehchaana right triangle area formula!
+b=5, c=6, α=30°. Find the area. === b=5, c=6, α=30°. area maloom karein.
+sin 30° = 0.5. Δ = ½×5×6×0.5 === sin 30° = 0.5. Δ = ½×5×6×0.5
+Δ = ½ bc sin α === Δ = ½ bc sin α
+Area of a Triangle (AAS) === Area of a Triangle (AAS)
+The area using one side and two angles. === Aik side aur do angles ka istemaal karte hue area.
+Start with SAS formula === SAS formula se shuru karein
+📋 When you know two angles (β, γ) and the included side a (AAS), start from Δ = ½ ab \sin γ. === 📋 Jab aapko do angles (β, γ) aur included side a (AAS) maloom ho, to Δ = ½ ab \sin γ se shuru karein.
+Use Law of Sines to find b === b maloom karne ke liye Law of Sines use karein
+From Law of Sines: b/\sin β = a/\sin α → b = a \sin β / \sin α. === Law of Sines se: b/\sin β = a/\sin α → b = a \sin β / \sin α.
+Δ = ½ a × (a \sin β / \sin α) × \sin γ. This formula requires only one side length and two angles! === Δ = ½ a × (a \sin β / \sin α) × \sin γ. Is formula ke liye sirf aik side ki length aur do angles chahiye!
+a=7, β=70°, γ=60°. α=50°. Find the area. === a=7, β=70°, γ=60°. α=50°. area maloom karein.
+Δ = ½×49×sin70°×sin60°/sin50° === Δ = ½×49×sin70°×sin60°/sin50°
+Δ = ½ a² sin β sin γ / sin α === Δ = ½ a² sin β sin γ / sin α
+Hero\ === Hero\
+The area of a triangle from its three side lengths alone. === Sirf uski teen side lengths se triangle ka area.
+Start with Δ = ½ bc \sin α === Δ = ½ bc \sin α se shuru karein
+📏 You\ === 📏 You\
+Use \sin α = 2 \sin(α/2) \cos(α/2) === \sin α = 2 \sin(α/2) \cos(α/2) use karein
+Using the double-angle identity: \sin α = 2 \sin(α/2) \cos(α/2). Now substitute the half-angle formulas. === double-angle identity: \sin α = 2 \sin(α/2) \cos(α/2) ka istemaal karte hue. Ab half-angle formulas substitute karein.
+Substitute half-angle formulas === half-angle formulas substitute karein
+Substituting \sin(α/2) = √[(S−b)(S−c)/(bc)] and \cos(α/2) = √[S(S−a)/(bc)], the bc factors cancel, leaving Hero\ === \sin(α/2) = √[(S−b)(S−c)/(bc)] aur \cos(α/2) = √[S(S−a)/(bc)] substitute karne se, bc factors cancel ho jaate hain, aur Hero\ bach jaata hai
+a=5, b=12, c=13. Find S and the area. === a=5, b=12, c=13. S aur area maloom karein.
+S = (5+12+13)/2 = 15. Δ = √[15×10×3×2] === S = (5+12+13)/2 = 15. Δ = √[15×10×3×2]
+Δ = √[S(S−a)(S−b)(S−c)] === Δ = √[S(S−a)(S−b)(S−c)]
+Circum-Radius of a Triangle === Circum-Radius of a Triangle
+The radius of the circle passing through all three vertices. === Circle ka radius jo teeno vertices se guzarta hai.
+Draw circumscribed circle === circumscribed circle draw karein
+🌍 Draw a circle through all three vertices. Draw diameter BD. Since α and ∠BDC are in the same segment, ∠BDC = α. === 🌍 Teeno vertices se guzarta hua aik circle draw karein. diameter BD draw karein. Kyunki α aur ∠BDC same segment mein hain, ∠BDC = α hoga.
+Apply sine in right triangle === right triangle mein sine apply karein
+In right triangle BCD (angle in a semicircle): a/(2R) = \sin α → R = a/(2 \sin α). === right triangle BCD mein (semicircle mein angle): a/(2R) = \sin α → R = a/(2 \sin α).
+Express in terms of sides and area === sides aur area ki terms mein express karein
+From area formula: Δ = ½ bc \sin α → \sin α = 2Δ/(bc). === area formula se: Δ = ½ bc \sin α → \sin α = 2Δ/(bc).
+Substitute to get formula === formula haasil karne ke liye substitute karein
+R = a/(2 × 2Δ/(bc)) = abc/(4Δ). The circumradius relates all three sides and the area! === R = a/(2 × 2Δ/(bc)) = abc/(4Δ). circumradius teeno sides aur area ko relate karta hai!
+a=5, b=6, c=7, Δ≈14.7. Find R. === a=5, b=6, c=7, Δ≈14.7. R maloom karein.
+R = (5×6×7)/(4×14.7) = 210/58.8 === R = (5×6×7)/(4×14.7) = 210/58.8
+R = abc/(4Δ) === R = abc/(4Δ)
+In-Radius of a Triangle === In-Radius of a Triangle
+The radius of the circle inscribed inside a triangle. === triangle ke andar inscribed circle ka radius.
+Draw the incircle === incircle draw karein
+🎯 The incircle touches all three sides of a triangle from the inside. Its centre I is the intersection of the angle bisectors. === 🎯 incircle triangle ki teeno sides ko andar se touch karta hai. Iska centre I angle bisectors ka intersection hai.
+Split triangle into three === triangle ko teen hisson mein split karein
+The incentre I divides ΔABC into three smaller triangles, each with height r. === incentre I ΔABC ko teen chote triangles mein divide karta hai, jin mein se har aik ki height r hai.
+Factor and simplify === Factor aur simplify karein
+Δ = r(a+b+c)/2 = rS. So r = Δ/S. === Δ = r(a+b+c)/2 = rS. To r = Δ/S hoga.
+a=6, b=8, c=10. Area=24. Find the inradius. === a=6, b=8, c=10. Area=24. inradius maloom karein.
+S = (6+8+10)/2 = 12. r = Δ/S = 24/12 === S = (6+8+10)/2 = 12. r = Δ/S = 24/12
+r = Δ / S === r = Δ / S
+Ex-Radius of a Triangle === Ex-Radius of a Triangle
+The radius of the excircle opposite vertex A. === vertex A ke opposite excircle ka radius.
+Draw the excircle opposite A === A ke opposite excircle draw karein
+🔵 Draw the ex-centre I₁ opposite vertex A. Connect it to all three vertices, creating three regions. === 🔵 vertex A ke opposite ex-centre I₁ draw karein. Ise teeno vertices se connect karein, taa ke teen regions ban jayein.
+Sum the signed areas === signed areas ka sum karein
+Δ = Area(I₁AB) + Area(I₁AC) − Area(I₁BC) because I₁BC is outside the original triangle. === Δ = Area(I₁AB) + Area(I₁AC) − Area(I₁BC) kyunki I₁BC original triangle ke baahar hai.
+Simplify === Simplify karein
+b + c − a = 2S − 2a = 2(S−a). So Δ = ½r₁ × 2(S−a) = r₁(S−a). === b + c − a = 2S − 2a = 2(S−a). To Δ = ½r₁ × 2(S−a) = r₁(S−a).
+a=5, b=6, c=7, S=9, Δ≈14.7. Find r₁. === a=5, b=6, c=7, S=9, Δ≈14.7. r₁ maloom karein.
+r₁ = 14.7 / (9−5) = 14.7/4 === r₁ = 14.7 / (9−5) = 14.7/4
+r₁ = Δ/(S−a) === r₁ = Δ/(S−a)
+Theorem 9.1: Three Non-Collinear Points Determine a Circle === Theorem 9.1: Three Non-Collinear Points se aik Circle banta hai
+Three points not on a line uniquely define a circle. === Teen points jo aik line par nahi hote, aik circle uniquely define karte hain.
+Take three non-collinear points === Teen non-collinear points lein
+📍 Pick any three points A, B, C that don\ === 📍 Koi se bhi teen points A, B, C lein jo don\
+Draw perpendicular bisectors === perpendicular bisectors draw karein
+Draw the perpendicular bisectors of any two sides. They meet at a single point O, the circumcentre. === Kisi bhi do sides ke perpendicular bisectors draw karein. Wo aik single point O par milte hain, jo circumcentre hai.
+O is equidistant === O equidistant hai
+O lies on the bisector of AB, so OA = OB. It also lies on the bisector of BC, so OB = OC. Therefore OA = OB = OC. === O AB ke bisector par lie karta hai, is liye OA = OB. Ye BC ke bisector par bhi lie karta hai, is liye OB = OC. To phir OA = OB = OC.
+Draw the circle === circle draw karein
+If the points were collinear, the bisectors would be parallel and never meet — proving collinear points can never lie on a circle! === Agar points collinear hote, to bisectors parallel hote aur kabhi na milte — ye prove karta hai ke collinear points kabhi circle par nahi aate!
+Three points form a triangle with sides 3, 4, 5. What shape defines the unique circle through them? === Teen points 3, 4, 5 sides wala triangle banate hain. Un se guzarne wala unique circle konsi shape define karta hai?
+Every triangle has a unique circumcircle. === Har triangle ka aik unique circumcircle hota hai.
+Any three non-collinear points define one circle === Koi se bhi teen non-collinear points aik circle define karte hain
+Theorem 9.2: Centre to Midpoint of Chord is Perpendicular === Theorem 9.2: Centre se Chord ke Midpoint tak line Perpendicular hoti hai
+A line from the centre to the midpoint of a chord is perpendicular to the chord. === centre se chord ke midpoint tak aane wali line chord par perpendicular hoti hai.
+Draw chord AB with midpoint C === midpoint C ke saath chord AB draw karein
+⚽ Take a chord AB on a circle. Mark its midpoint C. Draw a line from the centre O to C. === ⚽ Circle par aik chord AB lein. Iska midpoint C mark karein. centre O se C tak aik line draw karein.
+Join OA and OB === OA aur OB ko join karein
+OA and OB are radii, so OA = OB. Triangle OAB is isosceles with apex at O. === OA aur OB radii hain, to OA = OB. Triangle OAB O par apex ke saath isosceles hai.
+Use isosceles property === isosceles property use karein
+In isosceles triangle OAB, the line from O to the midpoint C of base AB is also the altitude. So OC ⟂ AB. === isosceles triangle OAB mein, O se base AB ke midpoint C tak ki line altitude bhi hai. To OC ⟂ AB hoga.
+In a circle of radius 10, a chord has midpoint 6 units from centre. Find half the chord length. === radius 10 wale circle mein, chord ka midpoint centre se 6 units door hai. half chord length maloom karein.
+By Pythagoras: half-chord = √(10²−6²) === Pythagoras se: half-chord = √(10²−6²)
+Use Pythagoras: half-chord = √(r²−d²) === Pythagoras use karein: half-chord = √(r²−d²)
+Theorem 9.3: Perpendicular from Centre Bisects Chord === Theorem 9.3: Centre se Perpendicular Chord ko Bisect karta hai
+The perpendicular from the centre to a chord bisects it. === centre se chord par aane wala perpendicular usay bisect karta hai.
+Draw perpendicular from O === O se perpendicular draw karein
+🎯 Draw a chord AB and a perpendicular from centre O to meet AB at C. === 🎯 Aik chord AB aur centre O se aik perpendicular draw karein jo AB se C par mile.
+OA and OB are radii, so OA = OB. Triangle OAB is isosceles. === OA aur OB radii hain, to OA = OB. Triangle OAB isosceles hai.
+Prove triangles congruent === triangles ko congruent prove karein
+OA = OB (radii), OC = OC (common), ∠OCA = ∠OCB = 90°. So triangles are congruent by RHS. Therefore AC = BC. === OA = OB (radii), OC = OC (common), ∠OCA = ∠OCB = 90°. To RHS se triangles congruent hain. Is liye AC = BC.
+A chord 16 units long has distance 6 from the centre. Find the radius. === 16 units lambi chord ka centre se distance 6 hai. radius maloom karein.
+r² = 6² + (16/2)² = 36 + 64 === r² = 6² + (16/2)² = 36 + 64
+r² = d² + (c/2)² === r² = d² + (c/2)²
+Theorem 9.4: Equal Chords are Equidistant from Centre === Theorem 9.4: Equal Chords Centre se Equidistant hote hain
+Equal chords are at the same distance from the centre. === Equal chords centre se same distance par hote hain.
+Draw two equal chords === do equal chords draw karein
+✏️ Draw two chords AB and CD of equal length. Draw perpendiculars OE and OF from the centre to each chord. === ✏️ Equal length ki do chords AB aur CD draw karein. Centre se dono chords par perpendiculars OE aur OF draw karein.
+Apply perpendicular bisector property === perpendicular bisector property apply karein

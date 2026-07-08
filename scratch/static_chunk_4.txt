@@ -1,0 +1,100 @@
+By Theorem 9.3, E and F are midpoints. AE = AB/2, CF = CD/2. Since AB = CD, AE = CF.
+Use Pythagoras
+In right triangles OAE and OCF, since OA = OC (radii) and AE = CF: OE² = OF² → OE = OF.
+Two equal chords of length 16 have distance 6 from centre. What is the distance?
+Equal chords → equal distances from centre.
+Equal chords are equidistant from centre
+Theorem 9.5: Equidistant Chords are Congruent
+Chords at equal distance from the centre are equal in length.
+Draw chords at equal distance
+🎪 Draw two chords AB and CD such that their perpendicular distances from the centre (OE and OF) are equal.
+Since OA = OC (radii) and OE = OF: AE² = CF² → AE = CF.
+Double the half-lengths
+E and F are midpoints (Theorem 9.3), so AB = 2×AE and CD = 2×CF. Since AE = CF, we get AB = CD.
+Two chords are both 8 units from the centre of a circle of radius 10. Are they equal?
+Equal distances from centre → equal chords.
+Equal distance from centre → equal chords
+Theorem 9.6: Congruent Arcs → Equal Chords
+Congruent arcs subtend equal chords.
+Take two congruent arcs
+🎵 Imagine two identical arcs on a circle — like equal-length curved sections of a circular railway track.
+Rotate to coincide
+Since the arcs are congruent, rotate one arc onto the other. Their endpoints match up.
+Chords are equal
+The chords connect corresponding endpoints. Since arcs perfectly overlap, chords must be equal.
+Arcs AB and CD each subtend 60° at the centre. Are chords AB and CD equal?
+Equal central angles → equal arcs → equal chords.
+Congruent arcs → equal chords
+Theorem 9.7: Equal Chords → Congruent Arcs
+Equal chords subtend congruent arcs.
+🔗 Draw two equal chords AB and CD on a circle, like two equal-length strings on a circular instrument.
+Join centre to endpoints
+OA = OB = OC = OD = r and AB = CD. So triangles are congruent by SSS.
+Central angles are equal
+From congruency of triangles, the central angles are equal. Equal central angles mean equal arcs.
+Two equal chords subtend what kind of arcs?
+Equal chords → equal central angles → equal arcs.
+Equal chords → congruent arcs
+Theorem 9.8: Equal Chords → Equal Angles at Centre
+Equal chords subtend equal angles at the centre.
+🎯 Draw two equal chords AB and CD in a circle. Connect their endpoints to the centre O.
+Compare triangles
+OA = OC (radii), OB = OD (radii), AB = CD (given). SSS congruence.
+Corresponding angles equal
+From the congruence, ∠AOB = ∠COD. Equal chords subtend equal central angles.
+Chord AB = chord CD in the same circle. If ∠AOB = 60°, what is ∠COD?
+Equal chords → equal central angles.
+Equal chords subtend equal central angles
+Theorem 9.9: Equal Central Angles → Equal Chords
+Equal angles at the centre subtend equal chords.
+Draw chords with equal central angles
+📐 Draw two chords AB and CD with equal central angles.
+OA = OC (radii), OB = OD (radii), ∠AOB = ∠COD (given). SAS congruence.
+Corresponding sides equal
+From the congruence, AB = CD. Equal central angles subtend equal chords.
+Central angles ∠AOB = ∠COD = 45°. Are chords AB and CD equal?
+Equal central angles → equal chords.
+Equal central angles → equal chords
+Theorem 10.1: Perpendicular to Radius = Tangent
+A line perpendicular to a radius at its endpoint on the circle is a tangent.
+Draw radius and perpendicular
+🔄 Draw a radial segment OA from centre O to point A on the circle. Draw line PQ ⟂ OA at A.
+Check distance from centre
+Since OA is the perpendicular distance, it\
+Only one intersection
+The distance from O to any other point on PQ is greater than the radius, so no other point lies on the circle.
+PQ is a tangent
+A line touching a circle at exactly one point is a tangent. Draw a perpendicular at a radius endpoint to construct a tangent!
+A line is drawn perpendicular to a radius at its endpoint on the circle. What is it?
+A line perpendicular to radius at endpoint is a...
+Perpendicular at endpoint of radius = tangent
+Theorem 10.2: Tangent ⟂ Radius at Point of Contact
+The tangent and the radius at the point of contact are perpendicular.
+Draw tangent and radius
+⭕ Draw a circle with centre O. Draw a tangent PQ touching the circle at B. Draw radius OB.
+Assume not ⟂ (contradiction)
+If OB is NOT perpendicular, then some other point on PQ is closer to O than B.
+Contradiction
+That closer point would be inside the circle, meaning PQ intersects the circle at two points — contradicting that PQ is a tangent.
+Therefore OB ⟂ PQ
+The assumption is false, so OB ⟂ PQ. The radius and tangent are always perpendicular.
+Radius OB meets tangent at B. What is the angle between them?
+Tangent is perpendicular to radius at point of contact.
+Tangent ⟂ radius = 90°
+Theorem 10.3: Two Tangents from External Point are Equal
+The lengths of two tangents from an external point to a circle are equal.
+Draw tangents from external point
+📍 Take point A outside the circle. Draw two tangents AB and AC touching the circle at B and C.
+Join centre to points
+Join OA, OB, OC. By Theorem 10.2: OB ⟂ AB and OC ⟂ AC, so ∠OBA = ∠OCA = 90°.
+OB = OC (radii), OA = OA (common), ∠OBA = ∠OCA = 90°. RHS congruence → AB = AC.
+Two tangents are drawn from point A to a circle. If one tangent is 12 cm, how long is the other?
+Two tangents from the same external point are equal.
+Tangents from same point are equal
+Theorem 10.4: Externally Touching Circles
+If circles touch externally, distance between centres equals sum of radii.
+Draw two circles touching externally
+🔵🔵 Draw two circles with centres A and B that touch at exactly one point C.
+Point C lies on line AB
+The shortest distance between A and B passes through point of contact C.
+AC = r₁, BC = r₂

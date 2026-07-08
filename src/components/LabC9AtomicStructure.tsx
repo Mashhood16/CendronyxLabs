@@ -179,10 +179,10 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
     <div>
      <div className="text-sm font-bold text-gray-500 mb-2 text-center">{t('lab.c9atomicstructure_halogen_waters')}</div>
      <div className="flex gap-2">
-     <ChemicalBottle label="F₂" color="#ffffcc" selected={selHalogen === 'F2'} onClick={() => setSelHalogen('F2')} />
+     <ChemicalBottle label={t("F₂")} color="#ffffcc" selected={selHalogen === 'F2'} onClick={() => setSelHalogen('F2')} />
      <ChemicalBottle label={t('lab.c9atomicstructure_cl')} color="#ccffcc" selected={selHalogen === 'Cl2'} onClick={() => setSelHalogen('Cl2')} />
      <ChemicalBottle label={t('lab.c9atomicstructure_br')} color="#ffcc99" selected={selHalogen === 'Br2'} onClick={() => setSelHalogen('Br2')} />
-     <ChemicalBottle label="I₂" color="#e6ccff" selected={selHalogen === 'I2'} onClick={() => setSelHalogen('I2')} />
+     <ChemicalBottle label={t("I₂")} color="#e6ccff" selected={selHalogen === 'I2'} onClick={() => setSelHalogen('I2')} />
      </div>
     </div>
     <div>

@@ -1,0 +1,100 @@
+✅ Write the equations for all three bisectors. The coefficient determinant has its first row become zero after adding R₂ + R₃. Zero determinant = concurrency. The intersection point (circumcenter) is equidistant from all three vertices — the center of the circumscribed circle!
+What is the center of the circumscribed circle called?
+Hint: 
+circum + center = ?
+Concurrency of Medians
+The three medians of a triangle intersect at the centroid — the triangle’s center of mass.
+Median AD: vertex A to midpoint of BC
+⚖️ An architect is designing a triangular steel truss for a bridge roof. The center of mass (centroid) is where the medians intersect — this is where the main support column should be placed.
+Two-point form of median AD
+📐 The median AD passes through A(x₁, y₁) and the midpoint of BC. Using the two-point formula.
+Simplify to linear equation
+🧮 Cross-multiply and simplify to get a standard linear form.
+✅ Write all three median equations. Their coefficient determinant becomes zero after adding rows, proving concurrency. The intersection point G = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3) — the centroid. This is also the average of the vertices, making it the center of mass!
+Triangle with vertices (0,0), (6,0), (3,6). Find the centroid x-coordinate.
+Centroid = ((0+6+3)/3, (0+0+6)/3) = (3, 2). x = 3
+Centroid = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)
+Homogeneous Second-Degree Equations
+Every homogeneous second-degree equation represents a pair of lines through the origin.
+Multiply both sides by a
+🔦 A physicist is analyzing a beam of light spreading from a point source. The light cone is described by a homogeneous equation: ax² + 2hxy + by² = 0. The goal is to factor it into two distinct rays.
+Add and subtract h²y²
+📐 The key insight: complete a perfect square by adding and subtracting h²y².
+Condense into perfect square
+🧮 The first three terms form (ax + hy)². The remaining terms become −y²(h²−ab).
+Factor as difference of squares
+✅ As a difference of squares: (ax + hy)² − (y√(h²−ab))² = 0. This factors into two linear equations: ax + y(h ± √(h²−ab)) = 0. Both pass through the origin (no constant term). If h² > ab: two distinct real lines. If h² = ab: one repeated line. If h² < ab: complex (imaginary) lines.
+Does x² − y² = 0 factor into two lines?
+x² − y² = (x−y)(x+y) = 0 gives lines x=y and x=−y
+Check if h² − ab > 0
+General Equation of a Circle
+The general equation represents a circle with center (−g, −f) and radius √(g²+f²−c).
+Start with general equation
+🗺️ A GPS receiver detects signals from three satellites. Each satellite’s signal defines a circle: x² + y² + 2gx + 2fy + c = 0. The receiver needs to find the center and radius of each circle to triangulate your position.
+Group x and y terms
+📐 Separate the x and y terms, moving c to the right side.
+Complete the square for x and y
+🧮 Add g² (to complete (x+g)²) and f² (to complete (y+f)²). Balance by subtracting g² and f² on the same side.
+Rewrite in standard form
+✅ This matches the standard circle form (x−h)² + (y−k)² = r² where h = −g, k = −f, r = √(g²+f²−c). The center is (−g, −f) and radius is √(g²+f²−c). For a real circle, we need g²+f²−c > 0!
+x²+y²+4x+6y+4=0. Find the center x-coordinate.
+Center = (−g, −f) = (−2, −3). x = −2
+Complete the square: center = (−g, −f)
+Tangent to a Circle at a Given Point
+Equation of the tangent to the circle at point P(x₁, y₁).
+Find the slope by implicit differentiation
+🎯 A machinist needs to cut a gear tooth that makes contact at a precise point on a circular gear. The cutting tool must follow the tangent line at the contact point.
+Solve for dy/dx
+📐 Differentiate implicitly: 2x + 2y·y\
+Point-slope form at P(x₁, y₁)
+🧮 At point P(x₁, y₁), substitute into dy/dx: slope m = −(x₁+g)/(y₁+f). The tangent line in point-slope form: y − y₁ = m(x − x₁).
+Rearrange to T = 0 form
+✅ Cross-multiply and rearrange. The result is the elegant T = 0 formula: replace x² → x₁x, y² → y₁y, 2gx → g(x+x₁), 2fy → f(y+y₁), c → c. The tangent equation is written without computing the derivative explicitly!
+Circle x²+y²=25 at point (3,4). Tangent slope = −x₁/y₁ = −3/4 = ?
+−3/4 = −0.75
+Slope = −(x₁+g)/(y₁+f)
+Standard Equation of a Parabola
+A parabola with focus at (a, 0) and directrix x = −a.
+Definition: distance to focus = distance to directrix
+📡 A satellite dish antenna has a parabolic shape. Signals arriving parallel to the axis reflect to the focus where the receiver is placed. The definition: every point P on the parabola is equidistant from the focus F and the directrix line.
+Place focus at (a, 0) and directrix x = −a
+📐 Choose coordinate axes so the focus F = (a, 0) and the directrix is x = −a. The distance from P(x,y) to F is √[(x−a)²+y²]. The distance to the directrix is |x−(−a)| = |x + a|.
+Square both sides
+🧮 Square both sides (both are non-negative): (x−a)² + y² = (x+a)².
+Simplify to y² = 4ax
+✅ Expand: x²−2ax+a²+y² = x²+2ax+a². Cancel x² and a² on both sides. Solve: y² = 4ax. This is the standard equation of a parabola opening to the right. For satellite dishes: the receiver is at the focus (a, 0) and the dish follows y² = 4ax!
+Parabola y² = 12x. Find the focus (a, 0).
+y² = 4ax → 4a = 12 → a = 3
+y² = 4ax. Solve for a from 4a = coefficient.
+Tangent to a Parabola
+Condition for tangency: substitute y = mx + c into y² = 4ax and set discriminant = 0.
+Substitute line into parabola
+🎯 An architect is designing a parabolic arch and needs to find the tangent line at a point to calculate the support beam angle. Substitute the line equation y = mx + c into the parabola y² = 4ax.
+Expand to quadratic in x
+📐 Expand: m²x² + 2mcx + c² = 4ax. Rearrange: m²x² + 2(mc−2a)x + c² = 0. This is a quadratic in x.
+Set discriminant = 0 for tangency
+🧮 For tangency, the line must intersect at exactly one point. This means the quadratic has a double root: its discriminant D = b²−4ac must be zero.
+Solve for c
+✅ Expand: 4(m²c²−4amc+4a²) − 4m²c² = 0 → −16amc + 16a² = 0 → mc = a → c = a/m. The tangent equation in slope form: y = mx + a/m. This formula allows architects to find the support beam angle at any point on a parabolic arch!
+Parabola y² = 8x. Line slope m = 2. Find c for tangency (c = a/m).
+y² = 8x → 4a = 8 → a = 2. c = 2/2 = 1
+c = a/m (coefficient from 4a)
+Standard Equation of an Ellipse
+An ellipse with foci at (±c, 0) where c² = a²−b².
+Definition: sum of distances to foci = 2a
+🌍 Johannes Kepler discovered that planets orbit the Sun in elliptical paths. The Sun is at one focus. The sum of distances from any point on the ellipse to the two foci is constant — the length of the major axis.
+Set foci at (±c, 0) and point P(x, y)
+📐 Place foci at F₁(−c, 0) and F₂(c, 0). For any point P(x,y) on the ellipse: √[(x+c)²+y²] + √[(x−c)²+y²] = 2a.
+Isolate and square twice
+🧮 Isolate one radical, square both sides, isolate the remaining radical, square again. After simplifying: (a²−c²)x² + a²y² = a²(a²−c²).
+Let b² = a²−c² to get standard form
+✅ Define b² = a²−c². Then b²x² + a²y² = a²b² → x²/a² + y²/b² = 1. For Earth’s orbit: a ≈ 149.6 million km, b ≈ 149.5 million km (nearly circular, e ≈ 0.017). Mars has e ≈ 0.093 — noticeably more elliptical!
+Ellipse x²/25 + y²/9 = 1. Find c (distance from center to focus).
+a²=25, b²=9. c² = a²−b² = 25−9 = 16. c = 4
+c² = a²−b²
+Standard Equation of a Hyperbola
+A hyperbola with foci at (±c, 0) where c² = a²+b².
+Definition: difference of distances to foci = 2a
+🚢 A ship uses LORAN navigation: two radio stations at F₁ and F₂ transmit synchronized signals. The ship measures the difference in arrival times. The locus of constant time difference is a hyperbola with foci at the stations.
+📐 The absolute difference of distances to F₁(−c,0) and F₂(c,0) equals 2a. Choose the branch where PF₁ > PF₂.
+Square twice (same process as ellipse but sign differs)

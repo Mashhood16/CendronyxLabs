@@ -75,12 +75,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         <div className={`h-[72px] w-full flex items-center justify-start px-6 shrink-0 relative z-10 border-b ${isDark ? 'border-[#1c1b1b]' : 'border-slate-200'}`}>
           <img 
             src="/logo.png" 
-            alt="Cendronyx Labs" 
+            alt={t("Cendronyx Labs")} 
             className={`h-full py-3 object-contain origin-left pointer-events-none ${isDark ? 'drop-shadow-[0_0_15px_rgba(168,85,247,0.4)] drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]' : 'drop-shadow-[0_0_20px_rgba(168,85,247,0.9)] drop-shadow-[0_0_45px_rgba(56,189,248,0.7)]'}`} 
           />
           <span className="text-[22px] font-bold whitespace-nowrap tracking-tight flex items-center -ml-1">
-            <span className={`${isDark ? 'text-white' : 'text-slate-800'}`}>Cendronyx</span>
-            <span className="bg-gradient-to-r from-[#4158D1] to-[#5560F1] text-transparent bg-clip-text">Labs</span>
+            <span className={`${isDark ? 'text-white' : 'text-slate-800'}`}>{t("Cendronyx")}</span>
+            <span className="bg-gradient-to-r from-[#4158D1] to-[#5560F1] text-transparent bg-clip-text">{t("Labs")}</span>
           </span>
         </div>
 

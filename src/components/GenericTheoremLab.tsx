@@ -52,7 +52,7 @@ function useTheoremT(config: TheoremConfig) {
       const translated = t(fullKey);
       if (translated !== fullKey) return translated;
     }
-    return fallback;
+    return t(fallback);
   };
 }
 

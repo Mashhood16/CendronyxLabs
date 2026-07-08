@@ -90,7 +90,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
     
     {/* Background Image */}
     {bgSet && (
-    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=1000" alt="Park" className="absolute inset-0 w-full h-full object-cover" />
+    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?auto=format&fit=crop&q=80&w=1000" alt={t("Park")} className="absolute inset-0 w-full h-full object-cover" />
     )}
 
     {/* Sprite 1 */}

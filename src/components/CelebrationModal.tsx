@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../store';
 import { Trophy, Star, X } from 'lucide-react';
@@ -11,6 +12,7 @@ interface CelebrationModalProps {
 }
 
 export default function CelebrationModal({ isOpen, onClose, title, message, type = 'milestone' }: CelebrationModalProps) {
+  const { t } = useTranslate();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
@@ -88,7 +90,7 @@ export default function CelebrationModal({ isOpen, onClose, title, message, type
             onClick={onClose}
             className="w-full px-6 py-3 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 transition-opacity shadow-lg"
           >
-            Awesome!
+            {t("Awesome!")}
           </button>
         </div>
       </div>

@@ -142,7 +142,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
           </button>
           <img 
             src="/logo.png" 
-            alt="Logo" 
+            alt={t("Logo")} 
             className={`h-8 w-auto object-contain pointer-events-none ${isDark ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]' : 'drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]'}`}
           />
         </div>
@@ -161,7 +161,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
               className={`!bg-transparent border-none outline-none focus:ring-0 focus:outline-none text-sm w-full font-medium ${isDark ? 'text-[#ffffff] placeholder:text-[#71717a]' : 'text-slate-900 placeholder:text-slate-500'}`}
             />
             <div className={`ml-2 px-1.5 py-0.5 rounded border text-[10px] font-bold tracking-wide flex items-center shrink-0 ${isDark ? 'border-[#1c1b1b] bg-[#000000] text-[#71717a]' : 'border-slate-300 bg-slate-100 text-slate-500 shadow-sm'}`}>
-              ctrl + k
+              {t("ctrl + k")}
             </div>
           </div>
 
@@ -179,7 +179,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                         <div className="flex items-center justify-between">
                           <span className={`font-semibold text-sm ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{lab.title}</span>
                           <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ml-2 ${isDark ? 'bg-[#000000] text-[#a1a1aa] border border-[#1c1b1b]' : 'bg-slate-100 text-slate-600'}`}>
-                            Class {lab.classLevel} · {formatSubject(lab.subject)}
+                            {t("Class")} {lab.classLevel} · {t(formatSubject(lab.subject))}
                           </span>
                         </div>
                         <span className={`text-xs line-clamp-1 ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>{lab.desc}</span>
@@ -211,7 +211,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         <button
           onClick={handleHardReload}
           className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
-          title="Clear Cache & Reload"
+          title={t("Clear Cache & Reload")}
         >
           <RefreshCw className="w-5 h-5" />
         </button>
@@ -326,7 +326,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                     : isDark ? 'bg-[#1c1b1b] text-[#71717a] hover:text-[#a1a1aa]' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
                 }`}
               >
-                {filter === 'all' ? t('search.filter_all') : formatSubject(filter)}
+                {filter === 'all' ? t('search.filter_all') : t(formatSubject(filter))}
               </button>
             ))}
           </div>
@@ -344,7 +344,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                         <div className="flex items-center justify-between gap-2">
                           <span className={`font-semibold text-sm ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{lab.title}</span>
                           <span className={`text-[10px] font-medium px-2 py-0.5 rounded whitespace-nowrap ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
-                            Class {lab.classLevel}
+                            {t("Class")} {lab.classLevel}
                           </span>
                         </div>
                       </button>

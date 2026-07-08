@@ -1,0 +1,100 @@
+Exterior angle theorem
+When these lines cross, they form a triangle with the x-axis. The exterior angle of this triangle equals the sum of the two opposite interior angles: α = β + θ.
+Apply tan to both sides
+θ = α − β. Take tan of both sides: tan θ = tan(α − β). Using the tangent subtraction formula: tan(α−β) = (tan α − tan β)/(1 + tan α × tan β).
+Substitute slopes
+Since tan α = m₂ and tan β = m₁: tan θ = (m₂ − m₁)/(1 + m₁m₂). Take absolute value for the acute angle. If tan θ = 0, lines are parallel. If 1 + m₁m₂ = 0, lines are perpendicular!
+m₁ = 1, m₂ = 2. Find the acute angle between them.
+tan θ = |(2−1)/(1+2)| = |1/3| = 0.333
+tan θ = |(m₂−m₁)/(1+m₁m₂)|
+Derivation of the Quadratic Formula
+A universal formula to solve any quadratic equation ax² + bx + c = 0.
+Start with standard form
+🏗️ You\
+Move constant term
+Shift the constant c to the right side: ax² + bx = −c. The arch\
+Divide by a
+Divide by a to make the coefficient of x² equal to 1. This sets up the next step: completing the square.
+Complete the square
+Add (b/2a)² to both sides: x² + (b/a)x + (b/2a)² = (b/2a)² − c/a. The left simplifies to (x + b/2a)², and the right becomes (b²−4ac)/(4a²).
+Take square root and solve
+Take the square root: x + b/2a = ±√(b²−4ac)/(2a). Isolate x to get the Quadratic Formula. This is the single most used formula in algebra!
+Solve x² − 5x + 6 = 0 using the formula.
+a=1, b=−5, c=6. D = 25−24 = 1, x = [5±1]/2
+Use x = [−b ± √(b²−4ac)] / 2a
+Finding a Vector from Position Vectors
+The vector AB equals the position vector of B minus the position vector of A.
+Define position vectors
+Use triangle law
+To travel from O to B via A: OA + AB = OB. This is the triangle law of vector addition.
+Rearrange
+AB = OB − OA. The vector from A to B is the difference between the two position vectors.
+Substitute coordinates
+AB = (x₂−x₁, y₂−y₁). The components tell you the displacement in each direction. The magnitude |AB| = √((x₂−x₁)² + (y₂−y₁)²) gives the straight-line distance.
+A=(1,2), B=(4,6). Find the x-component of AB.
+AB = (4−1, 6−2) = (3, 4)
+AB = (x₂−x₁, y₂−y₁)
+Law of Cosines
+Generalizes Pythagoras for ANY triangle, not just right-angled ones.
+Draw altitude AD ⟂ BC
+🏔️ Drop a perpendicular AD from A to side BC, creating two right triangles.
+Find CD = a − BD
+CD = a − c \\cos β. The altitude splits the base into two segments.
+Apply Pythagoras in right triangle ADC
+b² = c² \\sin²β + a² + c² \\cos²β − 2ac \\cos β.
+Simplify using \\sin²+\\cos²=1
+b² = a² + c²(\\sin²β + \\cos²β) − 2ac \\cos β = a² + c² − 2ac \\cos β. When β = 90°, this becomes the Pythagorean Theorem!
+b=5, c=6, α=60°. Find side a.
+a² = 5² + 6² − 2×5×6×cos 60° = 25+36−60×0.5 = 31
+a² = b² + c² − 2bc cos α
+Law of Sines
+The ratio of a side to the sine of its opposite angle is constant.
+Draw altitude h from B to AC
+🌄 Drop a perpendicular from B to base AC. The altitude h can be expressed in two ways: h = c \\sin α and h = a \\sin γ.
+Equate the expressions
+Since both equal the same altitude: c \\sin α = a \\sin γ → a/\\sin α = c/\\sin γ.
+Repeat for other sides
+Repeat with other altitudes to get the complete Law of Sines.
+a=7, α=50°, β=70°. Find side b.
+b = 7 × sin(70°)/sin(50°) = 7×0.9397/0.7660
+a/sin α = b/sin β
+Law of Tangents
+Relates side lengths to tangent of half angle sums and differences.
+Start with Law of Sines
+📐 From a/\\sin α = b/\\sin β, we get a/b = \\sin α/\\sin β.
+Apply componendo-dividendo
+Using componendo-dividendo: (a+b)/(a−b) = (\\sin α + \\sin β)/(\\sin α − \\sin β).
+Apply sum-to-product
+\\sin α + \\sin β = 2 \\sin[(α+β)/2] \\cos[(α−β)/2] and \\sin α − \\sin β = 2 \\cos[(α+β)/2] \\sin[(α−β)/2]. The ratio simplifies to the tangent form.
+α=80°, β=40°. Find tan[(α+β)/2]/tan[(α−β)/2].
+(80+40)/2 = 60°, (80-40)/2 = 20°. tan60°/tan20°
+Use tan[(α+β)/2] / tan[(α−β)/2]
+Half Angle Formula for Cosines
+Express half-angle cosines directly in terms of side lengths.
+Start with Law of Cosines
+📊 \\cos α = (b²+c²−a²)/(2bc). This gives \\cos of the full angle in terms of side lengths.
+Use double-angle identity
+Since \\cos α = 2cos²(α/2) − 1, substitute: 2cos²(α/2) − 1 = (b²+c²−a²)/(2bc).
+Solve for \\cos²(α/2)
+After algebra using the semi-perimeter S = (a+b+c)/2, we get \\cos²(α/2) = S(S−a)/(bc).
+Take square root
+Taking the positive square root gives the half-angle cosine. This formula expresses a trigonometric ratio purely in terms of side lengths!
+a=5, b=6, c=7. S=9. Find cos(α/2).
+S=9, S−a=4, bc=42. cos(α/2) = √(9×4/42) = √(36/42)
+cos(α/2) = √[S(S−a)/(bc)]
+Half Angle Formula for Sines
+Express half-angle sines directly in terms of side lengths.
+Use \\cos α = 1 − 2sin²(α/2)
+🔄 Starting with \\cos α = 1 − 2sin²(α/2), substitute the Law of Cosines.
+Solve for \\sin²(α/2)
+After algebraic manipulation using the semi-perimeter S, we get \\sin²(α/2) = (S−b)(S−c)/(bc).
+Together with the cosine half-angle formula, these are used extensively in navigation and astronomy for celestial calculations!
+a=5, b=6, c=7. S=9. Find sin(α/2).
+S−b=3, S−c=2, bc=42. sin(α/2) = √(3×2/42) = √(6/42)
+sin(α/2) = √[(S−b)(S−c)/(bc)]
+Area of a Triangle (SAS)
+The area of a triangle using two sides and the included angle.
+Basic area formula
+🌳 Take side c = AB as the base. The height is the perpendicular from C to AB.
+Express height
+From right triangle ACD, the height h = b \\sin α.

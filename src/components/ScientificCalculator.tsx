@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 interface CalculatorProps {
@@ -72,6 +73,7 @@ function compute(a: number, op: CalcOperator, b: number): number {
 }
 
 export default function ScientificCalculator({ onClose }: CalculatorProps) {
+  const { t } = useTranslate();
   const [state, setState] = useState<CalculatorState>({
     display: '0',
     expression: '',
@@ -373,13 +375,13 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
         >
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-              Scientific Calculator
+              {t("Scientific Calculator")}
             </span>
           </div>
           <button
             onClick={onClose}
             className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-[#2a2a2a] text-slate-500 dark:text-slate-400 transition-colors"
-            title="Close"
+            title={t("Close")}
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -423,7 +425,7 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
             {showHistory && (
               <div className="flex-1 overflow-y-auto p-3 bg-slate-50/50 dark:bg-[#0a0a0a] border-b border-slate-200 dark:border-[#1c1b1b]">
                 {state.history.length === 0 ? (
-                  <p className="text-xs text-slate-400 text-center py-4">No calculations yet</p>
+                  <p className="text-xs text-slate-400 text-center py-4">{t("No calculations yet")}</p>
                 ) : (
                   state.history.map((entry, i) => (
                     <div key={i} className="text-xs font-mono text-slate-600 dark:text-[#a1a1aa] py-1 border-b border-slate-100 dark:border-[#1c1b1b] last:border-0">

@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState, useEffect } from 'react';
 import { useTheme } from '../store';
 import { X, ArrowRight, Beaker, Sparkles, Calculator } from 'lucide-react';
@@ -32,6 +33,7 @@ const TOUR_STEPS = [
 ];
 
 export default function WelcomeTour() {
+  const { t } = useTranslate();
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const { theme } = useTheme();
@@ -123,7 +125,7 @@ export default function WelcomeTour() {
                 isDark ? 'text-[#71717a] hover:text-white hover:bg-[#1c1b1b]' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-100'
               }`}
             >
-              Skip
+              {t("Skip")}
             </button>
             <button
               onClick={handleNext}

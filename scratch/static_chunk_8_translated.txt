@@ -1,0 +1,101 @@
+sin(2α) = 2 sin α cos α === sin(2α) = 2 sin α cos α
+Power Rule for Differentiation === Differentiation ke liye Power Rule
+The derivative of xⁿ is n·xⁿ⁻¹ for any positive integer n. === Kisi bhi positive integer n ke liye xⁿ ka derivative n·xⁿ⁻¹ hota hai.
+Definition of derivative === derivative ki definition
+📈 A rocket scientist needs to calculate the velocity of a spacecraft at every instant. Position s(t) = t³. By definition, velocity = derivative = limit of (s(t+h)−s(t))/h as h→0. === 📈 Ek rocket scientist ko har instant par spacecraft ki velocity calculate karni hoti hai. Position s(t) = t³. Definition ke mutabiq, velocity = derivative = limit of (s(t+h)−s(t))/h as h→0.
+Expand using binomial theorem === binomial theorem ko use karte hue expand karein
+📐 Expand (x+h)ⁿ using the binomial theorem. The terms are: xⁿ + n·xⁿ⁻¹·h + n(n−1)/2!·xⁿ⁻²·h² + ... + hⁿ. === 📐 binomial theorem ko use karte hue (x+h)ⁿ ko expand karein. Terms ye hain: xⁿ + n·xⁿ⁻¹·h + n(n−1)/2!·xⁿ⁻²·h² + ... + hⁿ.
+Cancel xⁿ terms === xⁿ terms ko cancel karein
+🧮 Subtract xⁿ and divide by h. The xⁿ cancels, and every remaining term contains h. Factor h: the numerator becomes h[n·xⁿ⁻¹ + ... + hⁿ⁻¹]. Cancel h with denominator. === 🧮 xⁿ ko subtract karein aur h se divide karein. xⁿ cancel ho jata hai, aur baqi har term mein h hota hai. h ko factor karein: numerator h[n·xⁿ⁻¹ + ... + hⁿ⁻¹] ban jata hai. h ko denominator ke sath cancel karein.
+Take limit as h→0 === Limit lein as h→0
+✅ As h→0, all terms with h vanish, leaving only n·xⁿ⁻¹. For the rocket: if s(t) = t³, velocity v(t) = 3t². At t=5 seconds: v = 3×25 = 75 m/s. The power rule makes differentiation instant! === ✅ As h→0, h wali sab terms khatam ho jati hain, sirf n·xⁿ⁻¹ bach jata hai. Rocket ke liye: agar s(t) = t³ hai, toh velocity v(t) = 3t². t=5 seconds par: v = 3×25 = 75 m/s. Power rule differentiation ko instant bana deta hai!
+d/dx x⁵ = ? === d/dx x⁵ = ?
+d/dx xⁿ = n·xⁿ⁻¹, so d/dx x⁵ = 5·x⁴ === d/dx xⁿ = n·xⁿ⁻¹, is liye d/dx x⁵ = 5·x⁴
+d/dx xⁿ = n·xⁿ⁻¹ === d/dx xⁿ = n·xⁿ⁻¹
+Derivative of Sine Function === Sine Function ka Derivative
+The derivative of sin x is cos x. === sin x ka derivative cos x hota hai.
+🎵 An audio engineer analyzing sound waves needs to know how the amplitude changes. A sine wave sin(440t) represents musical note A440. The rate of change gives the velocity of the speaker cone. === 🎵 Ek audio engineer jo sound waves ko analyze kar raha hai, usay yeh pata hona chahiye ke amplitude kaise change hota hai. Ek sine wave sin(440t) musical note A440 ko represent karti hai. Rate of change speaker cone ki velocity deta hai.
+Apply sum identity === sum identity apply karein
+📐 Use the identity sin(A+B) = sin A cos B + cos A sin B: sin(x+h) = sin x cos h + cos x sin h. === 📐 Identity sin(A+B) = sin A cos B + cos A sin B ko use karein: sin(x+h) = sin x cos h + cos x sin h.
+Group and rearrange === Group karein aur rearrange karein
+🧮 Factor: = lim[sin x(cos h − 1)/h + cos x(sin h)/h]. Two special limits emerge! === 🧮 Factor: = lim[sin x(cos h − 1)/h + cos x(sin h)/h]. Do special limits aati hain!
+Apply known limits === Known limits apply karein
+✅ The two fundamental limits: (1) lim(cos h − 1)/h = 0 (the graph of cos is flat at h=0), (2) lim(sin h)/h = 1 (the small-angle approximation). Result: d/dx sin x = sin x·0 + cos x·1 = cos x. Similarly, d/dx cos x = −sin x. === ✅ Do fundamental limits: (1) lim(cos h − 1)/h = 0 (cos ka graph h=0 par flat hota hai), (2) lim(sin h)/h = 1 (small-angle approximation). Result: d/dx sin x = sin x·0 + cos x·1 = cos x. Isi tarah, d/dx cos x = −sin x.
+d/dx sin(π/3) = cos(π/3) = ? === d/dx sin(π/3) = cos(π/3) = ?
+cos(60°) = 0.5 === cos(60°) = 0.5
+d/dx sin x = cos x === d/dx sin x = cos x
+Derivatives of Inverse Trigonometric Functions === Inverse Trigonometric Functions ke Derivatives
+Derivatives of inverse trig functions using implicit differentiation. === Implicit differentiation ko use karte hue inverse trig functions ke derivatives.
+Let y = sin⁻¹ x ⇒ x = sin y === Farz karein y = sin⁻¹ x ⇒ x = sin y
+🎯 A ballistics expert measures the ratio of vertical to horizontal velocity (x) and needs the angle. If x = 0.5, then y = sin⁻¹(0.5) = 30°. Implicit differentiation finds how the angle changes with the ratio. === 🎯 Ek ballistics expert vertical se horizontal velocity ki ratio (x) measure karta hai aur usay angle ki zaroorat hoti hai. Agar x = 0.5 hai, toh y = sin⁻¹(0.5) = 30°. Implicit differentiation ye maloom karti hai ke angle ratio ke sath kaise change hota hai.
+Differentiate implicitly === Implicitly differentiate karein
+📐 Using implicit differentiation: d/dx(x) = d/dx(sin y) → 1 = cos y · dy/dx → dy/dx = 1/cos y. === 📐 Implicit differentiation ko use karte hue: d/dx(x) = d/dx(sin y) → 1 = cos y · dy/dx → dy/dx = 1/cos y.
+Substitute cos y = √(1−sin²y) === cos y = √(1−sin²y) substitute karein
+🧮 Using the identity cos²y + sin²y = 1: cos y = √(1−sin²y) = √(1−x²). Therefore d/dx sin⁻¹ x = 1/√(1−x²). === 🧮 Identity cos²y + sin²y = 1 ko use karte hue: cos y = √(1−sin²y) = √(1−x²). Is liye d/dx sin⁻¹ x = 1/√(1−x²).
+Same process for tan⁻¹ x === tan⁻¹ x ke liye same process
+✅ For tan⁻¹: differentiate x = tan y → 1 = sec²y·dy/dx. Since sec²y = 1 + tan²y = 1 + x², we get d/dx tan⁻¹ x = 1/(1+x²). These formulas are the key to integrating rational functions! === ✅ tan⁻¹ ke liye: x = tan y ko differentiate karein → 1 = sec²y·dy/dx. Kyunke sec²y = 1 + tan²y = 1 + x², humein d/dx tan⁻¹ x = 1/(1+x²) milta hai. Ye formulas rational functions ko integrate karne ke liye key hain!
+d/dx sin⁻¹(0) = 1/√(1−0²) = ? === d/dx sin⁻¹(0) = 1/√(1−0²) = ?
+1/√1 = 1 === 1/√1 = 1
+d/dx sin⁻¹ x = 1/√(1−x²) === d/dx sin⁻¹ x = 1/√(1−x²)
+Basic Indefinite Integrals === Basic Indefinite Integrals
+Basic integral formulas derived from reverse differentiation. === Reverse differentiation se derive kiye gaye basic integral formulas.
+Reverse the power rule === Power rule ko reverse karein
+🏗️ A civil engineer calculating the volume of an irregular foundation uses integration. If the cross-sectional area is A(x) = x², the volume from x=0 to x=3 is ∫₀³ x² dx = [x³/3]₀³ = 9 cubic meters. === 🏗️ Ek civil engineer kisi irregular foundation ka volume calculate karne ke liye integration use karta hai. Agar cross-sectional area A(x) = x² hai, toh x=0 se x=3 tak volume ∫₀³ x² dx = [x³/3]₀³ = 9 cubic meters hai.
+The special case n = −1 === Special case n = −1
+📐 The power rule fails when n = −1 (would give division by zero). But d/dx[ln x] = 1/x, so ∫ 1/x dx = ln|x| + C. This is the bridge between algebraic and logarithmic functions. === 📐 Power rule tab fail ho jata hai jab n = −1 (is se division by zero milta). Lekin d/dx[ln x] = 1/x, is liye ∫ 1/x dx = ln|x| + C. Ye algebraic aur logarithmic functions ke darmiyan aik bridge hai.
+Integral of exponential aˣ === Exponential aˣ ka Integral
+🧮 Differentiate aˣ/ln a: the derivative is aˣ·ln a / ln a = aˣ. Therefore ∫ aˣ dx = aˣ/ln a + C. For the natural exponential: ∫ eˣ dx = eˣ + C (since ln e = 1). === 🧮 aˣ/ln a ko differentiate karein: derivative aˣ·ln a / ln a = aˣ hai. Is liye ∫ aˣ dx = aˣ/ln a + C. Natural exponential ke liye: ∫ eˣ dx = eˣ + C (kyunke ln e = 1).
+Linearity of integration === Integration ki linearity
+✅ Integration is linear: the integral of a sum is the sum of integrals, and constants factor out. This is why ∫ (3x² + 2x + 1) dx = 3·x³/3 + 2·x²/2 + x + C = x³ + x² + x + C. === ✅ Integration linear hoti hai: sum ka integral integrals ka sum hota hai, aur constants factor out ho jate hain. Is wajah se ∫ (3x² + 2x + 1) dx = 3·x³/3 + 2·x²/2 + x + C = x³ + x² + x + C.
+∫ x³ dx = ? (Evaluate at x=2 minus x=0) === ∫ x³ dx = ? (x=2 minus x=0 par evaluate karein)
+∫ x³ dx = x⁴/4. From 0 to 2: 2⁴/4 = 16/4 = 4 === ∫ x³ dx = x⁴/4. 0 se 2 tak: 2⁴/4 = 16/4 = 4
+∫ xⁿ dx = xⁿ⁺¹/(n+1) === ∫ xⁿ dx = xⁿ⁺¹/(n+1)
+Integration by Substitution === Substitution ke zariye Integration
+Standard integrals derived via trigonometric substitution. === Trigonometric substitution ke zariye derive kiye gaye standard integrals.
+Substitute x = a sin θ === x = a sin θ substitute karein
+📐 An astronomer is calculating the area of a circular telescope mirror of radius a. The integral ∫ √(a²−x²) dx appears. Substitute x = a sin θ, which converts the circle’s equation into a trigonometric form. === 📐 Ek astronomer kisi circular telescope mirror jiska radius a hai, uska area calculate kar raha hai. Integral ∫ √(a²−x²) dx aata hai. x = a sin θ substitute karein, jo circle ki equation ko trigonometric form mein convert kar deta hai.
+Simplify the square root === Square root ko simplify karein
+🧮 √(a²−x²) = √(a²−a²sin²θ) = a√(1−sin²θ) = a cos θ. The integral becomes ∫ a cos θ · a cos θ dθ = a² ∫ cos²θ dθ. === 🧮 √(a²−x²) = √(a²−a²sin²θ) = a√(1−sin²θ) = a cos θ. Integral ∫ a cos θ · a cos θ dθ = a² ∫ cos²θ dθ ban jata hai.
+Integrate using half-angle === half-angle use karte hue integrate karein
+📐 Use cos²θ = (1+cos 2θ)/2. Integrate: a²[θ/2 + sin 2θ/4] + C = (a²/2)θ + (a²/4) sin 2θ + C. === 📐 cos²θ = (1+cos 2θ)/2 ko use karein. Integrate: a²[θ/2 + sin 2θ/4] + C = (a²/2)θ + (a²/4) sin 2θ + C.
+Convert back to x === Wapas x mein convert karein
+✅ Substituting back: ∫√(a²−x²)dx = (a²/2)sin⁻¹(x/a) + (x√(a²−x²))/2 + C. This formula gives the area of a circular segment of height x — used in civil engineering for water flow in partially filled pipes! === ✅ Wapas substitute karte hue: ∫√(a²−x²)dx = (a²/2)sin⁻¹(x/a) + (x√(a²−x²))/2 + C. Ye formula x height ke circular segment ka area deta hai — jo partially filled pipes mein water flow ke liye civil engineering mein use hota hai!
+∫₀³ 1/√(9−x²) dx = sin⁻¹(3/3) − sin⁻¹(0/3) = ? === ∫₀³ 1/√(9−x²) dx = sin⁻¹(3/3) − sin⁻¹(0/3) = ?
+sin⁻¹(1) = π/2 ≈ 1.57 === sin⁻¹(1) = π/2 ≈ 1.57
+Use the formula ∫ 1/√(a²−x²) dx = sin⁻¹(x/a) + C === Formula ∫ 1/√(a²−x²) dx = sin⁻¹(x/a) + C use karein
+Fundamental Theorem of Calculus === Calculus ka Fundamental Theorem
+The definite integral equals the difference of the antiderivative at the bounds. === definite integral bounds par antiderivative ke difference ke equal hota hai.
+Define the area function === Area function ko define karein
+🏔️ A geologist is calculating the volume of sediment in a river delta. The cross-sectional area varies with distance x from the shore. Define A(x) = ∫ₐˣ f(t) dt as the accumulated area from a to x. === 🏔️ Ek geologist kisi river delta mein sediment ka volume calculate kar raha hai. Cross-sectional area shore se distance x ke sath vary karta hai. A(x) = ∫ₐˣ f(t) dt ko a se x tak accumulated area ke tor par define karein.
+Show A\ === Show A\
+📐 By definition: A\ === 📐 By definition: A\
+Any antiderivative F === Koi bhi antiderivative F
+🧮 Since A\ === 🧮 Since A\
+Final result === Final result
+✅ But A(a) = ∫ₐᵃ f(t) dt = 0, so F(b)−F(a) = A(b) = ∫ₐᵇ f(x) dx. The definite integral equals the antiderivative evaluated at the bounds. The river delta volume: if A\ === ✅ But A(a) = ∫ₐᵃ f(t) dt = 0, so F(b)−F(a) = A(b) = ∫ₐᵇ f(x) dx. Definite integral bounds par evaluate kiye gaye antiderivative ke equal hota hai. River delta volume: if A\
+∫₁³ (2x) dx. Find F(3) − F(1) where F(x) = x². === ∫₁³ (2x) dx. F(3) − F(1) find karein jahan F(x) = x².
+F(3) = 9, F(1) = 1, so 9 − 1 = 8 === F(3) = 9, F(1) = 1, is liye 9 − 1 = 8
+FTC: ∫ₐᵇ f(x) dx = F(b)−F(a) === FTC: ∫ₐᵇ f(x) dx = F(b)−F(a)
+Concurrency of Altitudes in a Triangle === Ek Triangle mein Altitudes ki Concurrency
+The three altitudes of a triangle always intersect at a single point (the orthocenter). === Kisi triangle ke teen altitudes hamesha ek hi point par intersect karte hain (orthocenter).
+Define vertices and slopes === Vertices aur slopes ko define karein
+🏔️ A surveyor is mapping a triangular plot of land. To find the orthocenter (where all lines of elevation meet), they need to prove the three altitudes intersect at one point. === 🏔️ Ek surveyor land ke kisi triangular plot ki mapping kar raha hai. Orthocenter find karne ke liye (jahan sab lines of elevation milti hain), unhein ye prove karna hota hai ke teeno altitudes ek point par intersect karte hain.
+Slope of BC → altitude AD === BC ki Slope → altitude AD
+📐 The slope of BC is (y₃−y₂)/(x₃−x₂). Altitude AD ∦ BC, so its slope is the negative reciprocal: m_AD = −(x₃−x₂)/(y₃−y₂). === 📐 BC ki slope (y₃−y₂)/(x₃−x₂) hai. Altitude AD ∦ BC, is liye iski slope negative reciprocal hai: m_AD = −(x₃−x₂)/(y₃−y₂).
+Equation of altitude AD === Altitude AD ki Equation
+🧮 Using point-slope form with point A(x₁, y₁): y − y₁ = m_AD(x − x₁). Rearranging: (x₃−x₂)x + (y₃−y₂)y − x₁(x₃−x₂) − y₁(y₃−y₂) = 0. === 🧮 Point A(x₁, y₁) ke sath point-slope form ko use karte hue: y − y₁ = m_AD(x − x₁). Rearrange karte hue: (x₃−x₂)x + (y₃−y₂)y − x₁(x₃−x₂) − y₁(y₃−y₂) = 0.
+Determinant of coefficients = 0 === Coefficients ka Determinant = 0
+✅ Write similar equations for BE and CF. Place their coefficients in a determinant. Adding R₂ + R₃ to R₁ makes the first row zero (since the sums of coefficients from each row cancel). A zero row means the determinant = 0, proving the lines are concurrent at the orthocenter! === ✅ BE aur CF ke liye similar equations likhein. Unke coefficients ko aik determinant mein rakhein. R₂ + R₃ ko R₁ mein add karne se pehli row zero ho jati hai (kyunke har row se coefficients ka sum cancel ho jata hai). Ek zero row ka matlab hai ke determinant = 0, jo ye prove karta hai ke lines orthocenter par concurrent hain!
+Triangle with vertices (0,0), (4,0), (2,5). The three altitudes meet at a single point. What is this property called? === Triangle jiske vertices (0,0), (4,0), (2,5) hain. Teeno altitudes ek hi point par milte hain. Is property ko kya kehte hain?
+Hint: It starts with  === Hint: Ye is se start hota hai 
+Think about what it means for three lines to meet at one point === Sochein ke teen lines ke ek point par milne ka kya matlab hai
+Concurrency of Right Bisectors === Right Bisectors ki Concurrency
+The perpendicular bisectors of a triangle\ === Kisi triangle ke perpendicular bisectors\
+Midpoint and slope of BC === BC ka Midpoint aur slope
+📍 GPS triangulation: Three satellite positions A, B, C are known. To find your location, construct the perpendicular bisectors of AB and BC — their intersection is your position (circumcenter)! === 📍 GPS triangulation: Teen satellite positions A, B, C known hain. Apni location find karne ke liye, AB aur BC ke perpendicular bisectors construct karein — inka intersection aapki position hai (circumcenter)!
+Equation of right bisector === Right bisector ki Equation
+📐 The right bisector of BC passes through the midpoint with slope perpendicular to BC. === 📐 BC ka right bisector midpoint se paas hota hai jiski slope BC ke perpendicular hoti hai.
+Simplify and write in standard form === Simplify karein aur standard form mein likhein
+🧮 Multiplying through and rearranging gives the standard linear equation. Note the constant terms involve squares of coordinates. === 🧮 Multiply karte hue aur rearrange karne se standard linear equation milti hai. Note karein ke constant terms mein coordinates ke squares shamil hote hain.
+Determinant test === Determinant test
+ === 

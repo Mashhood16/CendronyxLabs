@@ -1,0 +1,100 @@
+Product Law of Logarithms === Logarithms ka Product Law
+The log of a product equals the sum of the logs. === Ek product ka log un logs ke sum ke barabar hota hai.
+Set up variables === variables set karein
+🧮 You\ === 🧮 Aap\
+Convert to exponentials === exponentials mein convert karein
+Converting back: m = b^x and n = b^y. In our concert, if b = 2 (binary amplification), then m = 2^x and n = 2^y. The exponential form reveals the actual multipliers hiding behind the log values. === Wapas convert karte hue: m = b^x aur n = b^y. Hamare concert mein, agar b = 2 (binary amplification), toh m = 2^x aur n = 2^y. Exponential form un asal multipliers ko zahir karti hai jo log values ke peeche chhupe hote hain.
+Multiply the equations === equations ko multiply karein
+Now multiply m × n: mn = b^x · b^y. When multiplying powers with the same base, we ADD the exponents: mn = b^(x+y). This is the key insight — multiplication in the real world becomes addition in log world. === Ab m × n ko multiply karein: mn = b^x · b^y. Jab same base wali powers ko multiply karte hain, toh hum exponents ko ADD karte hain: mn = b^(x+y). Yeh aham baat hai — real world mein multiplication, log world mein addition ban jati hai.
+Convert back to logs === Wapas logs mein convert karein
+Convert mn = b^(x+y) back to logarithmic form: log_b(mn) = x + y. Substitute x = log_b m and y = log_b n, and you get: log_b(mn) = log_b m + log_b n. The total sound power (product) equals the sum of the individual log powers. === mn = b^(x+y) ko wapas logarithmic form mein convert karein: log_b(mn) = x + y. x = log_b m aur y = log_b n substitute karein, aur aapko milega: log_b(mn) = log_b m + log_b n. Total sound power (product) alag alag log powers ke sum ke barabar hoti hai.
+log₂(4) = 2, log₂(8) = 3. Find log₂(32). === log₂(4) = 2, log₂(8) = 3. log₂(32) find karein.
+32 = 4 × 8. Use product law: log₂(4) + log₂(8) === 32 = 4 × 8. product law use karein: log₂(4) + log₂(8)
+log_b(mn) = log_b m + log_b n === log_b(mn) = log_b m + log_b n
+Quotient Law of Logarithms === Logarithms ka Quotient Law
+The log of a quotient equals the difference of the logs. === Ek quotient ka log un logs ke difference ke barabar hota hai.
+🔬 You\ === 🔬 Aap\
+Convert to exponential form: m = b^x and n = b^y. With base b = 10 (common log), we have 32 = 10^x and 4 = 10^y. The exponents x and y are the powers of 10 that give us these concentrations. === exponential form mein convert karein: m = b^x aur n = b^y. base b = 10 (common log) ke sath, hamare paas 32 = 10^x aur 4 = 10^y hai. x aur y exponents 10 ki wo powers hain jo humein yeh concentrations deti hain.
+Divide the equations === equations ko divide karein
+Divide m by n: m/n = b^x / b^y. When dividing powers with the same base, we SUBTRACT the exponents: m/n = b^(x−y). Division in the real world becomes subtraction in log world. === m ko n se divide karein: m/n = b^x / b^y. Jab same base wali powers ko divide karte hain, toh hum exponents ko SUBTRACT karte hain: m/n = b^(x−y). Real world mein division, log world mein subtraction ban jati hai.
+Convert m/n = b^(x−y) to log form: log_b(m/n) = x − y. Substituting back: log_b(m/n) = log_b m − log_b n. The dilution factor in log terms is just the difference of the individual log concentrations. === m/n = b^(x−y) ko log form mein convert karein: log_b(m/n) = x − y. Wapas substitute karte hue: log_b(m/n) = log_b m − log_b n. log terms mein dilution factor sirf alag alag log concentrations ka difference hota hai.
+log₁₀(100) = 2, log₁₀(10) = 1. Find log₁₀(10). === log₁₀(100) = 2, log₁₀(10) = 1. log₁₀(10) find karein.
+10 = 100/10. Use quotient law: log₁₀(100) − log₁₀(10) === 10 = 100/10. quotient law use karein: log₁₀(100) − log₁₀(10)
+log_b(m/n) = log_b m − log_b n === log_b(m/n) = log_b m − log_b n
+Power Law of Logarithms === Logarithms ka Power Law
+The log of a power equals the exponent times the log of the base. === Ek power ka log exponent ko base ke log se multiply karne ke barabar hota hai.
+Set up the equation === equation set karein
+💰 You\ === 💰 Aap\
+Convert to exponential === exponential mein convert karein
+Convert m = b^x. Your initial $3,000 = 2^x means x = log₂(3000) ≈ 11.55 — the  === m = b^x ko convert karein. Aapka initial $3,000 = 2^x ka matlab hai x = log₂(3000) ≈ 11.55 — the 
+Raise both sides to power n === Dono sides ko power n tak raise karein
+Raise both sides to the n-th power: m^n = (b^x)^n. Using the power of a power rule: m^n = b^(nx). Your investment after 4 years: 3000^4? No — this is a mathematical power, not financial. === Dono sides ko n-th power tak raise karein: m^n = (b^x)^n. power of a power rule use karte hue: m^n = b^(nx). 4 saal baad aapki investment: 3000^4? Nahi — yeh ek mathematical power hai, financial nahi.
+Convert to log form === log form mein convert karein
+Converting m^n = b^(nx) to log form: log_b(m^n) = nx. Substituting x = log_b m: log_b(m^n) = n log_b m. The exponent  === m^n = b^(nx) ko log form mein convert karte hue: log_b(m^n) = nx. x = log_b m substitute karte hue: log_b(m^n) = n log_b m. exponent 
+log₂(3) ≈ 1.585. Find log₂(81). === log₂(3) ≈ 1.585. log₂(81) find karein.
+81 = 3⁴. Use power law: 4 × log₂(3) === 81 = 3⁴. power law use karein: 4 × log₂(3)
+log_b(m^n) = n log_b m === log_b(m^n) = n log_b m
+Change of Base Law === Change of Base Law
+Convert a logarithm from one base to any other base. === Ek logarithm ko ek base se kisi dusre base mein convert karein.
+📱 You\ === 📱 Aap\
+Convert: m = b^x. We want to express this in terms of a known base a. Taking log_a of both sides: log_a m = log_a(b^x). Now we can use the Power Law in reverse! === Convert karein: m = b^x. Hum isko ek known base a ki terms mein express karna chahte hain. Dono sides ka log_a lete hue: log_a m = log_a(b^x). Ab hum Power Law ko reverse mein use kar sakte hain!
+Apply the Power Law === Power Law apply karein
+log_a m = x · log_a b. The exponent x  === log_a m = x · log_a b. exponent x 
+Substitute back === Wapas substitute karein
+Since x = log_b m, we get: log_b m = log_a m / log_a b. So log₂(8) = log₁₀(8) / log₁₀(2) = 0.9031 / 0.3010 = 3. Indeed, 2³ = 8. === Kyunki x = log_b m, humein milta hai: log_b m = log_a m / log_a b. Toh log₂(8) = log₁₀(8) / log₁₀(2) = 0.9031 / 0.3010 = 3. Wakai, 2³ = 8.
+log₁₀(100) = 2. Find log₂(100) using change of base. === log₁₀(100) = 2. change of base use karte hue log₂(100) find karein.
+log₂(100) = log₁₀(100) / log₁₀(2) === log₂(100) = log₁₀(100) / log₁₀(2)
+log_b m = log_a m / log_a b === log_b m = log_a m / log_a b
+Associative Property of Union === Union ki Associative Property
+The union operation is associative — grouping doesn\ === union operation associative hota hai — grouping doesn\
+Let x be an element === Farz karein x ek element hai
+🏟️ Imagine three groups of students at a school fair: Group A runs the food stall, Group B runs games, and Group C runs the raffle. Let x be any student. If x is in (A ∪ B) ∪ C, then... === 🏟️ Tasawwur karein ke school fair mein students ke teen groups hain: Group A food stall chalata hai, Group B games chalata hai, aur Group C raffle chalata hai. Farz karein x koi student hai. Agar x (A ∪ B) ∪ C mein hai, toh...
+Apply union definition === union definition apply karein
+x ∈ (A ∪ B) ∪ C means x ∈ (A ∪ B) OR x ∈ C. And x ∈ (A ∪ B) means x ∈ A OR x ∈ B. So overall: (x ∈ A OR x ∈ B) OR x ∈ C. === x ∈ (A ∪ B) ∪ C ka matlab hai x ∈ (A ∪ B) OR x ∈ C. Aur x ∈ (A ∪ B) ka matlab hai x ∈ A OR x ∈ B. Toh overall: (x ∈ A OR x ∈ B) OR x ∈ C.
+Re-group the ORs === ORs ko re-group karein
+The logical OR is associative — (P OR Q) OR R = P OR (Q OR R). So (x ∈ A OR x ∈ B) OR x ∈ C = x ∈ A OR (x ∈ B OR x ∈ C). The school fair doesn\ === logical OR associative hota hai — (P OR Q) OR R = P OR (Q OR R). Toh (x ∈ A OR x ∈ B) OR x ∈ C = x ∈ A OR (x ∈ B OR x ∈ C). School fair doesn\
+Convert back to sets === Wapas sets mein convert karein
+x ∈ A OR (x ∈ B OR x ∈ C) means x ∈ A OR x ∈ (B ∪ C), which means x ∈ A ∪ (B ∪ C). The reverse containment proves equality. Thus (A ∪ B) ∪ C = A ∪ (B ∪ C). Grouping doesn\ === x ∈ A OR (x ∈ B OR x ∈ C) ka matlab hai x ∈ A OR x ∈ (B ∪ C), jiska matlab hai x ∈ A ∪ (B ∪ C). Reverse containment equality ko prove karti hai. Is liye (A ∪ B) ∪ C = A ∪ (B ∪ C). Grouping doesn\
+A={1,2}, B={2,3}, C={3,4}. Elements in (A∪B)∪C? === A={1,2}, B={2,3}, C={3,4}. (A∪B)∪C mein elements?
+A∪B = {1,2,3}. Then ∪C = {1,2,3,4} === A∪B = {1,2,3}. Phir ∪C = {1,2,3,4}
+(A∪B)∪C = A∪(B∪C) === (A∪B)∪C = A∪(B∪C)
+Associative Property of Intersection === Intersection ki Associative Property
+The intersection operation is also associative. === intersection operation bhi associative hota hai.
+Let y be an element === Farz karein y ek element hai
+🎭 Three clubs at school: Art Club A, Music Club B, and Drama Club C. A triple threat student does all three. Let y ∈ (A ∩ B) ∩ C. === 🎭 School mein teen clubs: Art Club A, Music Club B, aur Drama Club C. Ek triple threat student teeno karta hai. Farz karein y ∈ (A ∩ B) ∩ C.
+Apply intersection definition === intersection definition apply karein
+y ∈ (A ∩ B) ∩ C means y ∈ (A ∩ B) AND y ∈ C. And y ∈ (A ∩ B) means y ∈ A AND y ∈ B. So: (y ∈ A AND y ∈ B) AND y ∈ C. === y ∈ (A ∩ B) ∩ C ka matlab hai y ∈ (A ∩ B) AND y ∈ C. Aur y ∈ (A ∩ B) ka matlab hai y ∈ A AND y ∈ B. Toh: (y ∈ A AND y ∈ B) AND y ∈ C.
+Re-group the ANDs === ANDs ko re-group karein
+Logical AND is associative: (P AND Q) AND R = P AND (Q AND R). So (y ∈ A AND y ∈ B) AND y ∈ C = y ∈ A AND (y ∈ B AND y ∈ C). === Logical AND associative hota hai: (P AND Q) AND R = P AND (Q AND R). Toh (y ∈ A AND y ∈ B) AND y ∈ C = y ∈ A AND (y ∈ B AND y ∈ C).
+y ∈ A AND (y ∈ B AND y ∈ C) means y ∈ A AND y ∈ (B ∩ C), which means y ∈ A ∩ (B ∩ C). Reverse containment proves equality. Just like union, intersection is associative! === y ∈ A AND (y ∈ B AND y ∈ C) ka matlab hai y ∈ A AND y ∈ (B ∩ C), jiska matlab hai y ∈ A ∩ (B ∩ C). Reverse containment equality ko prove karti hai. Union ki tarah, intersection bhi associative hota hai!
+A={1,2,3}, B={2,3,4}, C={3,4,5}. Elements in (A∩B)∩C? === A={1,2,3}, B={2,3,4}, C={3,4,5}. (A∩B)∩C mein elements?
+A∩B = {2,3}. Then ∩C = {3} === A∩B = {2,3}. Phir ∩C = {3}
+(A∩B)∩C = A∩(B∩C) === (A∩B)∩C = A∩(B∩C)
+Distributive: Union over Intersection === Distributive: Union over Intersection
+Union distributes over intersection, like multiplication over addition. === Union intersection par distribute hota hai, jaise multiplication addition par.
+Let x ∈ A ∪ (B ∩ C) === Farz karein x ∈ A ∪ (B ∩ C)
+🧩 Think of a school prize: winners get a free period (A) OR they get both extra recess AND homework pass (B ∩ C). === 🧩 School ke inaam ka sochain: jeetne walon ko free period (A) milta hai OR unhein extra recess AND homework pass (B ∩ C) dono milte hain.
+Break down the OR === OR ko break down karein
+x ∈ A OR x ∈ (B ∩ C). That means either x ∈ A, OR (x ∈ B AND x ∈ C). === x ∈ A OR x ∈ (B ∩ C). Iska matlab hai ya toh x ∈ A, OR (x ∈ B AND x ∈ C).
+Use logical distribution === logical distribution use karein
+(P OR Q) AND (P OR R) is logically equivalent to P OR (Q AND R). So: (x ∈ A OR x ∈ B) AND (x ∈ A OR x ∈ C). === (P OR Q) AND (P OR R) logically equivalent hai P OR (Q AND R) ke. Toh: (x ∈ A OR x ∈ B) AND (x ∈ A OR x ∈ C).
+(x ∈ A ∪ B) AND (x ∈ A ∪ C) means x ∈ (A ∪ B) ∩ (A ∪ C). So A ∪ (B ∩ C) ⊆ (A ∪ B) ∩ (A ∪ C). The reverse containment also holds. Just like 2×(3+4) = 2×3 + 2×4! === (x ∈ A ∪ B) AND (x ∈ A ∪ C) ka matlab hai x ∈ (A ∪ B) ∩ (A ∪ C). Toh A ∪ (B ∩ C) ⊆ (A ∪ B) ∩ (A ∪ C). Reverse containment bhi hold karti hai. Bilkul jaise 2×(3+4) = 2×3 + 2×4!
+A={1,2}, B={2,3}, C={3,4}. Elements in A∪(B∩C)? === A={1,2}, B={2,3}, C={3,4}. A∪(B∩C) mein elements?
+B∩C = {3}. A∪{3} = {1,2,3} === B∩C = {3}. A∪{3} = {1,2,3}
+Are you sure? === Kya aapko yaqeen hai?
+Distributive: Intersection over Union === Distributive: Intersection over Union
+Intersection also distributes over union. === Intersection bhi union par distribute hota hai.
+Let x ∈ A ∩ (B ∪ C) === Farz karein x ∈ A ∩ (B ∪ C)
+🏫 School library rule: you need a library card (A) AND (either a valid ID OR a teacher note) (B ∪ C). === 🏫 School library ka rule: aapko ek library card (A) chahiye AND (ya toh valid ID OR teacher ka note) (B ∪ C).
+Break down the AND === AND ko break down karein
+x ∈ A AND x ∈ (B ∪ C). That means x ∈ A AND (x ∈ B OR x ∈ C). === x ∈ A AND x ∈ (B ∪ C). Iska matlab hai x ∈ A AND (x ∈ B OR x ∈ C).
+P AND (Q OR R) = (P AND Q) OR (P AND R). So: (x ∈ A AND x ∈ B) OR (x ∈ A AND x ∈ C). === P AND (Q OR R) = (P AND Q) OR (P AND R). Toh: (x ∈ A AND x ∈ B) OR (x ∈ A AND x ∈ C).
+x ∈ (A ∩ B) OR x ∈ (A ∩ C) means x ∈ (A ∩ B) ∪ (A ∩ C). So A ∩ (B ∪ C) ⊆ (A ∩ B) ∪ (A ∩ C). The reverse direction similarly proves equality. === x ∈ (A ∩ B) OR x ∈ (A ∩ C) ka matlab hai x ∈ (A ∩ B) ∪ (A ∩ C). Toh A ∩ (B ∪ C) ⊆ (A ∩ B) ∪ (A ∩ C). Reverse direction bhi isi tarah equality ko prove karti hai.
+A={1,2}, B={2,3}, C={3,4}. Elements in A∩(B∪C)? === A={1,2}, B={2,3}, C={3,4}. A∩(B∪C) mein elements?
+B∪C = {2,3,4}. A∩{2,3,4} = {2} === B∪C = {2,3,4}. A∩{2,3,4} = {2}
+A∩(B∪C) = (A∩B)∪(A∩C) === A∩(B∪C) = (A∩B)∪(A∩C)
+Quotient Trigonometric Identities === Quotient Trigonometric Identities
+Tangent is sine divided by cosine; cotangent is the reciprocal. === Tangent, sine ko cosine se divide karne se banta hai; cotangent reciprocal hota hai.
+Consider a right triangle === Ek right triangle consider karein
+🔺 You\ === 🔺 Aap\
+Divide sin by cos === sin ko cos se divide karein

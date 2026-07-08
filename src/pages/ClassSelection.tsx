@@ -50,12 +50,12 @@ export default function ClassSelection() {
               </h1>
               
               <p className="text-white/85 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
-                Explore{' '}
+                {t("Explore")}{' '}
                 <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg shadow-sm inline-flex items-center gap-1.5">
                   <Beaker className="w-4 h-4" />
-                  {moduleCount} immersive simulations
+                  {moduleCount} {t("immersive simulations")}
                 </span>{' '}
-                through hands-on experiments across science, math, and technology.
+                {t("through hands-on experiments across science, math, and technology.")}
               </p>
             </div>
             
@@ -124,7 +124,7 @@ export default function ClassSelection() {
                     </div>
 
                     <h3 className={`text-xl font-bold font-outfit mb-2 ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
-                      Class {cls}
+                      {t("Class")} {cls}
                     </h3>
                     
                     <p className={`text-sm mb-6 flex-1 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>

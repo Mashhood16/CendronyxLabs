@@ -1,0 +1,100 @@
+sin θ / cos θ = (a/c) / (b/c) = (a/c) × (c/b) = a/b. The hypotenuse (c) cancels out! And a/b is exactly tan θ.
+Similarly for cotangent
+Similarly, cos θ / sin θ = b/a = cot θ. These are the Quotient Identities. They connect the primary ratios (sin, cos) to the secondary ones (tan, cot).
+sin(30°) = 0.5, cos(30°) ≈ 0.866. Find tan(30°).
+tan(30°) = sin(30°)/cos(30°) = 0.5/0.866
+tan θ = sin θ / cos θ
+Pythagorean Trigonometric Identities
+The Pythagorean Theorem restated in trigonometric form.
+Start with the Pythagorean Theorem
+📐 In any right triangle with legs a, b and hypotenuse c: a² + b² = c². This is the most famous relationship in all of geometry.
+Express in trig terms
+sin θ = a/c and cos θ = b/c. Square both: sin²θ = a²/c² and cos²θ = b²/c².
+Add the squares
+sin²θ + cos²θ = a²/c² + b²/c² = (a² + b²)/c² = c²/c² = 1. The triangle\
+The identity is born
+sin²θ + cos²θ = 1 — it doesn\
+sin(30°) = 0.5. Find sin²(30°) + cos²(30°).
+cos(30°) = 0.866. Compute 0.25 + 0.75
+sin²θ + cos²θ = 1 always!
+The Distance Formula
+Calculate the distance between any two points on a coordinate plane.
+Plot two points
+🗺️ You\
+Draw perpendiculars
+Draw lines from P₁ and P₂ to the x-axis. These create a right triangle. The horizontal leg runs from x₁ to x₂, and the vertical leg from y₁ to y₂.
+Apply Pythagoras
+d² = (Δx)² + (Δy)² → d = √((x₂−x₁)² + (y₂−y₁)²) = √(6² + 4²) = √(36 + 16) = √52 ≈ 7.21 units.
+Final formula
+This formula is the GPS backbone: your phone calculates distance between satellites and your position using this exact formula in 3D!
+P₁(0,0), P₂(3,4). Find the distance.
+d = √(3² + 4²) = √(9+16)
+d = √((x₂−x₁)² + (y₂−y₁)²)
+Slope-Intercept Form
+Equation of a straight line with slope m and y-intercept c.
+Identify slope and intercept
+📈 You\
+Pick a general point
+Let P(x, y) be any point on the line. The point where the line crosses the y-axis is A(0, c) — your starting savings at week 0.
+Calculate slope
+Slope m = (y − c) / (x − 0) = (y − c) / x. This means the rise over run from A to P equals the constant slope of the line.
+Rearrange for y
+m = (y − c)/x → y − c = mx → y = mx + c. That\
+A line has slope m = 3 and intercept c = 2. What is y when x = 4?
+y = 3×4 + 2 = 12 + 2
+y = mx + c
+Point-Slope Form
+Equation of a line through a point with a given slope.
+The problem
+📍 You know a line passes through the point (2, 3) and has slope m = 1.5. You need the equation of the line to graph it on your digital map.
+Use slope formula
+Let P(x, y) be any point on the line. With B(x₁, y₁) = (2, 3), the slope m = (y − y₁)/(x − x₁).
+Cross-multiply
+m(x − x₁) = y − y₁. This equation says 
+The result
+y − y₁ = m(x − x₁). For our example: y − 3 = 1.5(x − 2) → y = 1.5x.
+Line through (1,2) with slope m = 4. Find y when x = 3.
+y − 2 = 4(3−1). So y = 2+8
+y − y₁ = m(x − x₁)
+Two-Point Form
+Equation of a line through two given points.
+Two points define a line
+🔗 You have two points A(1, 2) and B(4, 8). Only one straight line passes through both — the shortest path between them.
+Find the slope
+Slope m = (y₂ − y₁)/(x₂ − x₁) = (8 − 2)/(4 − 1) = 6/3 = 2. This line rises 2 units for every 1 unit horizontally.
+Apply Point-Slope Form
+Now that we have m = 2, use the Point-Slope Form with either point: y − y₁ = m(x − x₁) → y − 2 = 2(x − 1).
+The formula
+Substituting the slope formula directly gives: y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁). This is the Two-Point Form.
+Line through (0,0) and (2,6). Find y when x = 5.
+Slope = 6/2 = 3. y − 0 = 3(5−0)
+y − y₁ = ((y₂−y₁)/(x₂−x₁))(x − x₁)
+Two-Intercept Form
+Equation of a line using its x-intercept a and y-intercept b.
+Identify intercepts
+🎯 A line crosses the x-axis at x = 4 (the x-intercept a = 4) and the y-axis at y = 3 (the y-intercept b = 3).
+Slope m = (b − 0)/(0 − a) = b/(−a) = −b/a = −3/4. The line goes down 3 for every 4 right.
+Use Point-Slope
+Using point (0, b): y − b = (−b/a)x → ay − ab = −bx → bx + ay = ab.
+Divide by ab
+(bx)/(ab) + (ay)/(ab) = 1 → x/a + y/b = 1. This elegant form shows the intercepts directly.
+x-intercept = 6, y-intercept = 3. Find y when x = 2.
+2/6 + y/3 = 1. So y/3 = 1 − 1/3 = 2/3
+x/a + y/b = 1
+Normal Form of a Line
+Equation using perpendicular distance p from origin and inclination α.
+Define the normal
+🧭 Imagine a line L and a perpendicular from the origin O to L meeting at point C. The distance OC = p, and the angle this perpendicular makes with the x-axis is α.
+Find intercepts
+From right triangle OCA: cos α = p/OA → OA = p/cos α (x-intercept). From triangle OCB: sin α = p/OB → OB = p/sin α (y-intercept).
+Apply Two-Intercept Form
+Using x/a + y/b = 1: x/(p/cos α) + y/(p/sin α) = 1 → (x cos α)/p + (y sin α)/p = 1.
+Multiply by p
+x cos α + y sin α = p. The Normal Form! This is particularly useful in physics and engineering for finding distances from a point to a line.
+α = 60°, p = 5. Find cos α and evaluate x cos α + y sin α at x=2, y=3.
+cos 60° = 0.5, sin 60° = 0.866. LHS = 2×0.5+3×0.866
+x cos α + y sin α = p
+Angle Between Two Lines
+Find the acute angle between two intersecting lines from their slopes.
+Lines and inclinations
+🔄 Two roads cross at an intersection. One has a gentle slope m₁ = 0.5 (gentle hill), the other is steeper m₂ = 2.

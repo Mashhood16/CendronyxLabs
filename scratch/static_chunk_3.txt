@@ -1,0 +1,100 @@
+Substitute
+If α = 90°, \\sin 90° = 1, so Δ = ½bc — the familiar right triangle area formula!
+b=5, c=6, α=30°. Find the area.
+sin 30° = 0.5. Δ = ½×5×6×0.5
+Δ = ½ bc sin α
+Area of a Triangle (AAS)
+The area using one side and two angles.
+Start with SAS formula
+📋 When you know two angles (β, γ) and the included side a (AAS), start from Δ = ½ ab \\sin γ.
+Use Law of Sines to find b
+From Law of Sines: b/\\sin β = a/\\sin α → b = a \\sin β / \\sin α.
+Δ = ½ a × (a \\sin β / \\sin α) × \\sin γ. This formula requires only one side length and two angles!
+a=7, β=70°, γ=60°. α=50°. Find the area.
+Δ = ½×49×sin70°×sin60°/sin50°
+Δ = ½ a² sin β sin γ / sin α
+Hero\
+The area of a triangle from its three side lengths alone.
+Start with Δ = ½ bc \\sin α
+📏 You\
+Use \\sin α = 2 \\sin(α/2) \\cos(α/2)
+Using the double-angle identity: \\sin α = 2 \\sin(α/2) \\cos(α/2). Now substitute the half-angle formulas.
+Substitute half-angle formulas
+Substituting \\sin(α/2) = √[(S−b)(S−c)/(bc)] and \\cos(α/2) = √[S(S−a)/(bc)], the bc factors cancel, leaving Hero\
+a=5, b=12, c=13. Find S and the area.
+S = (5+12+13)/2 = 15. Δ = √[15×10×3×2]
+Δ = √[S(S−a)(S−b)(S−c)]
+Circum-Radius of a Triangle
+The radius of the circle passing through all three vertices.
+Draw circumscribed circle
+🌍 Draw a circle through all three vertices. Draw diameter BD. Since α and ∠BDC are in the same segment, ∠BDC = α.
+Apply sine in right triangle
+In right triangle BCD (angle in a semicircle): a/(2R) = \\sin α → R = a/(2 \\sin α).
+Express in terms of sides and area
+From area formula: Δ = ½ bc \\sin α → \\sin α = 2Δ/(bc).
+Substitute to get formula
+R = a/(2 × 2Δ/(bc)) = abc/(4Δ). The circumradius relates all three sides and the area!
+a=5, b=6, c=7, Δ≈14.7. Find R.
+R = (5×6×7)/(4×14.7) = 210/58.8
+R = abc/(4Δ)
+In-Radius of a Triangle
+The radius of the circle inscribed inside a triangle.
+Draw the incircle
+🎯 The incircle touches all three sides of a triangle from the inside. Its centre I is the intersection of the angle bisectors.
+Split triangle into three
+The incentre I divides ΔABC into three smaller triangles, each with height r.
+Factor and simplify
+Δ = r(a+b+c)/2 = rS. So r = Δ/S.
+a=6, b=8, c=10. Area=24. Find the inradius.
+S = (6+8+10)/2 = 12. r = Δ/S = 24/12
+r = Δ / S
+Ex-Radius of a Triangle
+The radius of the excircle opposite vertex A.
+Draw the excircle opposite A
+🔵 Draw the ex-centre I₁ opposite vertex A. Connect it to all three vertices, creating three regions.
+Sum the signed areas
+Δ = Area(I₁AB) + Area(I₁AC) − Area(I₁BC) because I₁BC is outside the original triangle.
+Simplify
+b + c − a = 2S − 2a = 2(S−a). So Δ = ½r₁ × 2(S−a) = r₁(S−a).
+a=5, b=6, c=7, S=9, Δ≈14.7. Find r₁.
+r₁ = 14.7 / (9−5) = 14.7/4
+r₁ = Δ/(S−a)
+Theorem 9.1: Three Non-Collinear Points Determine a Circle
+Three points not on a line uniquely define a circle.
+Take three non-collinear points
+📍 Pick any three points A, B, C that don\
+Draw perpendicular bisectors
+Draw the perpendicular bisectors of any two sides. They meet at a single point O, the circumcentre.
+O is equidistant
+O lies on the bisector of AB, so OA = OB. It also lies on the bisector of BC, so OB = OC. Therefore OA = OB = OC.
+Draw the circle
+If the points were collinear, the bisectors would be parallel and never meet — proving collinear points can never lie on a circle!
+Three points form a triangle with sides 3, 4, 5. What shape defines the unique circle through them?
+Every triangle has a unique circumcircle.
+Any three non-collinear points define one circle
+Theorem 9.2: Centre to Midpoint of Chord is Perpendicular
+A line from the centre to the midpoint of a chord is perpendicular to the chord.
+Draw chord AB with midpoint C
+⚽ Take a chord AB on a circle. Mark its midpoint C. Draw a line from the centre O to C.
+Join OA and OB
+OA and OB are radii, so OA = OB. Triangle OAB is isosceles with apex at O.
+Use isosceles property
+In isosceles triangle OAB, the line from O to the midpoint C of base AB is also the altitude. So OC ⟂ AB.
+In a circle of radius 10, a chord has midpoint 6 units from centre. Find half the chord length.
+By Pythagoras: half-chord = √(10²−6²)
+Use Pythagoras: half-chord = √(r²−d²)
+Theorem 9.3: Perpendicular from Centre Bisects Chord
+The perpendicular from the centre to a chord bisects it.
+Draw perpendicular from O
+🎯 Draw a chord AB and a perpendicular from centre O to meet AB at C.
+OA and OB are radii, so OA = OB. Triangle OAB is isosceles.
+Prove triangles congruent
+OA = OB (radii), OC = OC (common), ∠OCA = ∠OCB = 90°. So triangles are congruent by RHS. Therefore AC = BC.
+A chord 16 units long has distance 6 from the centre. Find the radius.
+r² = 6² + (16/2)² = 36 + 64
+r² = d² + (c/2)²
+Theorem 9.4: Equal Chords are Equidistant from Centre
+Equal chords are at the same distance from the centre.
+Draw two equal chords
+✏️ Draw two chords AB and CD of equal length. Draw perpendiculars OE and OF from the centre to each chord.
+Apply perpendicular bisector property

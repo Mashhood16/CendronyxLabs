@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store';
@@ -6,6 +7,7 @@ import { Eye, EyeOff, ArrowLeft, Mail, Lock, User, BookOpen, Users } from 'lucid
 type Tab = 'login' | 'register';
 
 export default function Login() {
+  const { t } = useTranslate();
   const [tab, setTab] = useState<Tab>('login');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,7 +89,7 @@ export default function Login() {
           className="flex items-center gap-2 text-sm text-slate-500 dark:text-[#71717a] hover:text-blue-600 dark:hover:text-blue-600 transition-colors mb-6 ml-1 font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          {t("Back to Home")}
         </button>
 
         <div className="glass rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
@@ -114,7 +116,7 @@ export default function Login() {
                   : 'text-slate-500 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-700'
               }`}
             >
-              Sign In
+              {t("Sign In")}
             </button>
             <button
               onClick={() => switchTab('register')}
@@ -124,7 +126,7 @@ export default function Login() {
                   : 'text-slate-500 dark:text-slate-600 hover:text-slate-700 dark:hover:text-slate-700'
               }`}
             >
-              Register
+              {t("Register")}
             </button>
           </div>
 
@@ -139,14 +141,14 @@ export default function Login() {
           {tab === 'login' && (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className={labelClass}>Email</label>
+                <label className={labelClass}>{t("Email")}</label>
                 <div className="relative">
                   <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type="email"
                     value={loginEmail}
                     onChange={(e) => setLoginEmail(e.target.value)}
-                    placeholder="you@school.edu"
+                    placeholder={t("you@school.edu")}
                     className={`${inputClass} pl-10`}
                     required
                     autoComplete="email"
@@ -154,14 +156,14 @@ export default function Login() {
                 </div>
               </div>
               <div>
-                <label className={labelClass}>Password</label>
+                <label className={labelClass}>{t("Password")}</label>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
-                    placeholder="Enter your password"
+                    placeholder={t("Enter your password")}
                     className={`${inputClass} pl-10 pr-10`}
                     required
                     autoComplete="current-password"
@@ -193,14 +195,14 @@ export default function Login() {
           {tab === 'register' && (
             <form onSubmit={handleRegister} className="space-y-4">
               <div>
-                <label className={labelClass}>Full Name</label>
+                <label className={labelClass}>{t("Full Name")}</label>
                 <div className="relative">
                   <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type="text"
                     value={regName}
                     onChange={(e) => setRegName(e.target.value)}
-                    placeholder="Enter your full name"
+                    placeholder={t("Enter your full name")}
                     className={`${inputClass} pl-10`}
                     required
                     autoComplete="name"
@@ -208,14 +210,14 @@ export default function Login() {
                 </div>
               </div>
               <div>
-                <label className={labelClass}>Email</label>
+                <label className={labelClass}>{t("Email")}</label>
                 <div className="relative">
                   <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type="email"
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
-                    placeholder="you@school.edu"
+                    placeholder={t("you@school.edu")}
                     className={`${inputClass} pl-10`}
                     required
                     autoComplete="email"
@@ -224,7 +226,7 @@ export default function Login() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className={labelClass}>Class</label>
+                  <label className={labelClass}>{t("Class")}</label>
                   <div className="relative">
                     <BookOpen className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <select
@@ -233,22 +235,22 @@ export default function Login() {
                       className={`${inputClass} pl-10 appearance-none cursor-pointer`}
                       required
                     >
-                      <option value="">Select</option>
+                      <option value="">{t("Select")}</option>
                       {[6, 7, 8, 9, 10, 11, 12].map((c) => (
-                        <option key={c} value={String(c)}>Class {c}</option>
+                        <option key={c} value={String(c)}>{t("Class")} {c}</option>
                       ))}
                     </select>
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>Section</label>
+                  <label className={labelClass}>{t("Section")}</label>
                   <div className="relative">
                     <Users className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
                       type="text"
                       value={regSection}
                       onChange={(e) => setRegSection(e.target.value)}
-                      placeholder="e.g. A"
+                      placeholder={t("e.g. A")}
                       className={`${inputClass} pl-10`}
                       required
                     />
@@ -256,14 +258,14 @@ export default function Login() {
                 </div>
               </div>
               <div>
-                <label className={labelClass}>Password</label>
+                <label className={labelClass}>{t("Password")}</label>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={regPassword}
                     onChange={(e) => setRegPassword(e.target.value)}
-                    placeholder="Min. 6 characters"
+                    placeholder={t("Min. 6 characters")}
                     className={`${inputClass} pl-10 pr-10`}
                     required
                     minLength={6}
@@ -279,14 +281,14 @@ export default function Login() {
                 </div>
               </div>
               <div>
-                <label className={labelClass}>Confirm Password</label>
+                <label className={labelClass}>{t("Confirm Password")}</label>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={regConfirm}
                     onChange={(e) => setRegConfirm(e.target.value)}
-                    placeholder="Re-enter your password"
+                    placeholder={t("Re-enter your password")}
                     className={`${inputClass} pl-10`}
                     required
                     autoComplete="new-password"
@@ -309,7 +311,7 @@ export default function Login() {
 
           {/* Footer */}
           <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-300/60 text-center">
-            <p className="text-xs text-slate-400 dark:text-[#71717a]">Cendronyx Labs v2.0</p>
+            <p className="text-xs text-slate-400 dark:text-[#71717a]">{t("Cendronyx Labs v2.0")}</p>
           </div>
         </div>
       </div>

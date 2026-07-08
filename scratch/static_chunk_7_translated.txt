@@ -1,0 +1,100 @@
+Trapezium with AB=8cm, DC=12cm (parallel). Find the length of the segment joining midpoints of non-parallel sides. === Trapezium jisme AB=8cm, DC=12cm (parallel). Non-parallel sides ke midpoints ko milane wale segment ki length maloom karein.
+Length = ½(AB + DC) = ½(8+12) = 10 === Length = ½(AB + DC) = ½(8+12) = 10
+Length = ½(AB + DC) === Length = ½(AB + DC)
+Sum of First n Terms of a Geometric Series === Geometric Series ke First n Terms ka Sum
+Sum of a geometric series: Sₙ = a₁(1−rⁿ)/(1−r) for r ≠ 1. === Ek geometric series ka sum: Sₙ = a₁(1−rⁿ)/(1−r) jab r ≠ 1 ho.
+Write the geometric series === Geometric series likhein
+Multiply both sides by r === Dono sides ko r se multiply karein
+📐 Multiply the entire series by r: rSₙ = a₁r + a₁r² + a₁r³ + ... + a₁rⁿ. This shifts every term by one position. === 📐 Poori series ko r se multiply karein: rSₙ = a₁r + a₁r² + a₁r³ + ... + a₁rⁿ. Yeh har term ko aik position shift kar deta hai.
+Subtract the equations === Equations ko subtract karein
+🧮 Subtract rSₙ from Sₙ: Sₙ − rSₙ = a₁ − a₁rⁿ. All the intermediate terms (a₁r through a₁rⁿ⁻¹) cancel out perfectly — the elegance of the telescoping subtraction! === 🧮 Sₙ mein se rSₙ subtract karein: Sₙ − rSₙ = a₁ − a₁rⁿ. Tamaam intermediate terms (a₁r se a₁rⁿ⁻¹ tak) perfectly cancel out ho jate hain — telescoping subtraction ki khubsoorti!
+Solve for Sₙ === Sₙ ke liye solve karein
+✅ Sₙ(1−r) = a₁(1−rⁿ) → Sₙ = a₁(1−rⁿ)/(1−r). For infinite series (|r| < 1): S∞ = a₁/(1−r). Your $1000 at 5%: if you kept it forever earning 5%, the present value of all future earnings = 1000/(1−0.05) = $20,000! === ✅ Sₙ(1−r) = a₁(1−rⁿ) → Sₙ = a₁(1−rⁿ)/(1−r). Infinite series ke liye (|r| < 1): S∞ = a₁/(1−r). Aapke $1000 5% par: agar aap ise hamesha 5% earn karne ke liye rakhte hain, toh tamam future earnings ki present value = 1000/(1−0.05) = $20,000 hogi!
+a₁ = 2, r = 3, n = 4. Find S₄. === a₁ = 2, r = 3, n = 4. S₄ maloom karein.
+S₄ = 2(1−3⁴)/(1−3) = 2(1−81)/(−2) = 2(−80)/(−2) === S₄ = 2(1−3⁴)/(1−3) = 2(1−81)/(−2) = 2(−80)/(−2)
+Sₙ = a₁(1−rⁿ)/(1−r) === Sₙ = a₁(1−rⁿ)/(1−r)
+Sum of an Arithmetico-Geometric Series === Arithmetico-Geometric Series ka Sum
+Sum of an arithmetico-geometric series (arithmetic × geometric). === Ek arithmetico-geometric series ka sum (arithmetic × geometric).
+Write the series === Series likhein
+🏦 You\ === 🏦 Aap\
+Multiply by r === r se multiply karein
+📐 Multiply by r: rSₙ = ar + (a+d)r² + (a+2d)r³ + ... + [a+(n−1)d]rⁿ. === 📐 r se multiply karein: rSₙ = ar + (a+d)r² + (a+2d)r³ + ... + [a+(n−1)d]rⁿ.
+Subtract === Subtract karein
+🧮 Subtracting: (1−r)Sₙ = a + dr + dr² + ... + drⁿ⁻¹ − (a+nd)rⁿ. The a terms telescope, and the d terms form a geometric series itself! === 🧮 Subtract karne par: (1−r)Sₙ = a + dr + dr² + ... + drⁿ⁻¹ − (a+nd)rⁿ. a terms telescope karte hain, aur d terms khud ek geometric series banate hain!
+Apply geometric sum === Geometric sum apply karein
+✅ The middle dr terms form a geometric series: dr(1+r+...+rⁿ⁻²) = dr(1−rⁿ⁻¹)/(1−r). Dividing through by (1−r) gives the complete formula. This is how actuaries calculate tiered annuity payments! === ✅ Darmiyan wale dr terms ek geometric series banate hain: dr(1+r+...+rⁿ⁻²) = dr(1−rⁿ⁻¹)/(1−r). (1−r) se divide karne par complete formula milta hai. Is tarah actuaries tiered annuity payments calculate karte hain!
+a=1, d=2, r=3, n=2. Find S₂ (first term = a=1, second term = (a+d)r = 9). === a=1, d=2, r=3, n=2. S₂ maloom karein (first term = a=1, second term = (a+d)r = 9).
+S₂ = 1 + (1+2)×3 = 1 + 9 = 10 === S₂ = 1 + (1+2)×3 = 1 + 9 = 10
+Write out the first n terms and add them === Pehle n terms likhein aur unhein add karein
+Remainder Theorem === Remainder Theorem
+The remainder when dividing by (x−c) equals p(c). === (x−c) se divide karne par remainder p(c) ke barabar hota hai.
+Division algorithm === Division algorithm
+Substitute x = c === x = c substitute karein
+📐 Substitute x = c into the identity: p(c) = (c−c)q(c) + r. The (c−c) term becomes zero. === 📐 Identity mein x = c substitute karein: p(c) = (c−c)q(c) + r. (c−c) term zero ban jati hai.
+🧮 Since c−c = 0, the term (c−c)q(c) = 0 × q(c) = 0. Therefore p(c) = r. The remainder when dividing p(x) by (x−c) equals p(c) — the polynomial evaluated at x = c! === 🧮 Kyunke c−c = 0, toh term (c−c)q(c) = 0 × q(c) = 0. Is liye p(c) = r. p(x) ko (x−c) se divide karne par remainder p(c) ke barabar hota hai — x = c par polynomial ki value!
+Application: Synthetic Division === Application: Synthetic Division
+✅ This theorem is the basis of synthetic division — a shortcut that divides polynomials using only coefficients. It\ === ✅ Yeh theorem synthetic division ki buniyad hai — ek shortcut jo polynomials ko sirf coefficients use karke divide karta hai. Yeh\
+p(x) = x² − 5x + 6. Find the remainder when divided by (x−2). === p(x) = x² − 5x + 6. (x−2) se divide karne par remainder maloom karein.
+p(2) = 4 − 10 + 6 === p(2) = 4 − 10 + 6
+Remainder = p(c) === Remainder = p(c)
+Factor Theorem === Factor Theorem
+(x−c) is a factor of p(x) if and only if p(c) = 0. === (x−c), p(x) ka ek factor hai sirf agar p(c) = 0 ho.
+Part 1: If (x−c) is a factor === Part 1: Agar (x−c) ek factor hai
+🔍 You\ === 🔍 Aap\
+By Remainder Theorem === Remainder Theorem ke zariye
+📐 If (x−c) is a factor, the division p(x) ÷ (x−c) leaves no remainder, so r = 0. By the Remainder Theorem, r = p(c). Therefore p(c) = 0. === 📐 Agar (x−c) ek factor hai, toh division p(x) ÷ (x−c) koi remainder nahi chhorti, is liye r = 0. Remainder Theorem ke mutabiq, r = p(c). Is liye p(c) = 0.
+Part 2: If p(c) = 0 === Part 2: Agar p(c) = 0
+🔄 Conversely, if p(c) = 0, then by the Remainder Theorem the remainder r = 0. Substituting r = 0: p(x) = (x−c)q(x). This proves (x−c) is a factor. === 🔄 Conversely, agar p(c) = 0, toh Remainder Theorem ke mutabiq remainder r = 0 hoga. r = 0 substitute karne par: p(x) = (x−c)q(x). Yeh prove karta hai ke (x−c) ek factor hai.
+Example === Example
+✅ For p(x) = x³ − 2x² − x + 2: p(1) = 1 − 2 − 1 + 2 = 0. So (x−1) is a factor! Dividing: p(x) = (x−1)(x² − x − 2) = (x−1)(x−2)(x+1). One root found, the rest follows easily! === ✅ p(x) = x³ − 2x² − x + 2 ke liye: p(1) = 1 − 2 − 1 + 2 = 0. Toh (x−1) ek factor hai! Divide karne par: p(x) = (x−1)(x² − x − 2) = (x−1)(x−2)(x+1). Ek root mil gaya, baqi asani se nikal aate hain!
+p(x) = x² − 5x + 6. Is (x−2) a factor? === p(x) = x² − 5x + 6. Kya (x−2) ek factor hai?
+Check p(2). If p(2) = 0, it\ === p(2) check karein. Agar p(2) = 0, toh yeh\
+Check if p(c) = 0 === Check karein agar p(c) = 0
+Combination Formula (ⁿCᵣ) === Combination Formula (ⁿCᵣ)
+Number of ways to choose r objects from n distinct objects. === n distinct objects mein se r objects ko choose karne ke number of ways.
+Let X = number of combinations === Farz karein X = number of combinations
+Relationship to permutations === Permutations ke sath relationship
+📐 Each combination of r objects can be arranged in r! different ways. So the number of permutations (ordered) = number of combinations × arrangements: ⁿPᵣ = X × r!. === 📐 r objects ki har combination ko r! different ways mein arrange kiya ja sakta hai. Is liye number of permutations (ordered) = number of combinations × arrangements: ⁿPᵣ = X × r!.
+Substitute permutation formula === Permutation formula substitute karein
+🧮 We know ⁿPᵣ = n!/(n−r)!. Substituting: X × r! = n!/(n−r)!. === 🧮 Hum jante hain ⁿPᵣ = n!/(n−r)!. Substitute karne par: X × r! = n!/(n−r)!.
+Solve for X === X ke liye solve karein
+✅ Divide both sides by r!: X = ⁿCᵣ = n!/(r!(n−r)!). For 5-choose-3: ⁵C₃ = 5!/(3!2!) = 120/(6×2) = 10. There are 10 possible 3-person teams from 5 people. This is the foundation of the binomial distribution and Pascal\ === ✅ Dono sides ko r! se divide karein: X = ⁿCᵣ = n!/(r!(n−r)!). 5-choose-3 ke liye: ⁵C₃ = 5!/(3!2!) = 120/(6×2) = 10. 5 logon mein se 10 possible 3-person teams ban sakti hain. Yeh binomial distribution aur Pascal\ ki buniyad hai.
+Find ⁵C₂ (5 choose 2). === ⁵C₂ (5 choose 2) maloom karein.
+5!/(2!(5−2)!) = 120/(2×6) === 5!/(2!(5−2)!) = 120/(2×6)
+ⁿCᵣ = n!/(r!(n−r)!) === ⁿCᵣ = n!/(r!(n−r)!)
+Binomial Theorem for Positive Integers === Positive Integers ke liye Binomial Theorem
+Expand (a+b)ⁿ as a sum of terms with binomial coefficients. === (a+b)ⁿ ko binomial coefficients ke sath terms ke sum ke tor par expand karein.
+Basis step: n = 1 === Basis step: n = 1
+🌳 You\ === 🌳 Aap\
+Assume true for n = k === Assume karein ke n = k ke liye true hai
+📐 Assume the theorem holds for n = k: (a+b)ᵏ = Σ ᵏCᵢ aᵏ⁻ⁱ bⁱ. === 📐 Assume karein ke theorem n = k ke liye hold karta hai: (a+b)ᵏ = Σ ᵏCᵢ aᵏ⁻ⁱ bⁱ.
+Multiply both sides by (a+b) === Dono sides ko (a+b) se multiply karein
+🧮 To prove for k+1, multiply both sides by (a+b): (a+b)ᵏ⁺¹ = (a+b)(ᵏC₀aᵏ + ᵏC₁aᵏ⁻¹b + ... + ᵏCₖbᵏ). === 🧮 k+1 ke liye prove karne ke liye, dono sides ko (a+b) se multiply karein: (a+b)ᵏ⁺¹ = (a+b)(ᵏC₀aᵏ + ᵏC₁aᵏ⁻¹b + ... + ᵏCₖbᵏ).
+Apply Pascal\ === Pascal\ apply karein
+✅ After distributing and grouping like terms, the coefficients follow Pascal\ === ✅ Distribute aur like terms ko group karne ke baad, coefficients Pascal\ ko follow karte hain
+Find the coefficient of a²b² in (a+b)⁴. === (a+b)⁴ mein a²b² ka coefficient maloom karein.
+Row 4 of Pascal\ === Pascal\ ki Row 4
+Use Pascal\ === Pascal\ use karein
+Fundamental Law of Trigonometry: cos(α−β) === Fundamental Law of Trigonometry: cos(α−β)
+The cosine of a difference equals the product of cosines plus product of sines. === Ek difference ka cosine, cosines ke product plus sines ke product ke barabar hota hai.
+Unit circle setup === Unit circle setup
+Distance CD = AB === Distance CD = AB
+📐 The central angle between C and D is α−β. Construct angle AOB = α−β with A(1,0) and B(cos(α−β), sin(α−β)). Since the central angles are equal, chords CD and AB are equal. === 📐 C aur D ke darmiyan central angle α−β hai. A(1,0) aur B(cos(α−β), sin(α−β)) ke sath angle AOB = α−β construct karein. Kyunke central angles barabar hain, chords CD aur AB barabar hain.
+Apply distance formula === Distance formula apply karein
+🧮 Equating CD² = AB² and expanding both sides. On the left: cos²α + cos²β − 2cosαcosβ + sin²α + sin²β − 2sinαsinβ = 2 − 2(cosαcosβ + sinαsinβ). On the right: 1 − 2cos(α−β) + 1 = 2 − 2cos(α−β). === 🧮 CD² = AB² ko equate karte hue aur dono sides ko expand karte hue. Left par: cos²α + cos²β − 2cosαcosβ + sin²α + sin²β − 2sinαsinβ = 2 − 2(cosαcosβ + sinαsinβ). Right par: 1 − 2cos(α−β) + 1 = 2 − 2cos(α−β).
+✅ Equating: 2 − 2(cosαcosβ + sinαsinβ) = 2 − 2cos(α−β). Cancel 2 and divide by −2: cos(α−β) = cosαcosβ + sinαsinβ. From this single identity flows ALL of trigonometry! === ✅ Equate karne par: 2 − 2(cosαcosβ + sinαsinβ) = 2 − 2cos(α−β). 2 ko cancel karein aur −2 se divide karein: cos(α−β) = cosαcosβ + sinαsinβ. Is akeli identity se sari trigonometry nikalti hai!
+cos(60°−30°) = cos 60° cos 30° + sin 60° sin 30°. Compute cos(30°). === cos(60°−30°) = cos 60° cos 30° + sin 60° sin 30°. cos(30°) compute karein.
+cos 30° = √3/2 ≈ 0.866 === cos 30° = √3/2 ≈ 0.866
+Use cos(α−β) = cosαcosβ + sinαsinβ === cos(α−β) = cosαcosβ + sinαsinβ use karein
+Trigonometric Identities (Double & Triple Angle) === Trigonometric Identities (Double & Triple Angle)
+Double-angle formulas derived from the fundamental law. === Double-angle formulas jo fundamental law se derive hue hain.
+cos(−β) = cos β === cos(−β) = cos β
+🧭 Navigation: If you turn 30° clockwise vs 30° counterclockwise, the eastward component is the same! By the fundamental law with α=0: cos(−β) = cos 0 cos β + sin 0 sin β = cos β. === 🧭 Navigation: Agar aap 30° clockwise ya 30° counterclockwise turn karein, eastward component same rehta hai! α=0 ke sath fundamental law ke zariye: cos(−β) = cos 0 cos β + sin 0 sin β = cos β.
+sin(α+β) === sin(α+β)
+🔄 Using co-ratios: sin(α+β) = cos(π/2−(α+β)) = cos[(π/2−α)−β] = cos(π/2−α)cos β + sin(π/2−α)sin β = sin α cos β + cos α sin β. === 🔄 Co-ratios use karte hue: sin(α+β) = cos(π/2−(α+β)) = cos[(π/2−α)−β] = cos(π/2−α)cos β + sin(π/2−α)sin β = sin α cos β + cos α sin β.
+Double-angle identities === Double-angle identities
+🧮 Let β = α in sin(α+β): sin(2α) = sin α cos α + cos α sin α = 2 sin α cos α. For cos: cos(2α) = cos²α − sin²α = 2cos²α − 1 = 1 − 2sin²α. === 🧮 sin(α+β) mein β = α farz karein: sin(2α) = sin α cos α + cos α sin α = 2 sin α cos α. cos ke liye: cos(2α) = cos²α − sin²α = 2cos²α − 1 = 1 − 2sin²α.
+Triple-angle for sin === sin ke liye Triple-angle
+🔊 Audio engineers use this: sin(3α) = sin(2α+α) = sin(2α)cos α + cos(2α)sin α = (2 sin α cos α)cos α + (1 − 2 sin²α)sin α = 2 sin α(1−sin²α) + sin α − 2 sin³α = 3 sin α − 4 sin³α. This generates the third harmonic in synthesizers! === 🔊 Audio engineers isey use karte hain: sin(3α) = sin(2α+α) = sin(2α)cos α + cos(2α)sin α = (2 sin α cos α)cos α + (1 − 2 sin²α)sin α = 2 sin α(1−sin²α) + sin α − 2 sin³α = 3 sin α − 4 sin³α. Yeh synthesizers mein third harmonic generate karta hai!
+sin(30°) = 0.5. Find sin(60°) using the double-angle formula. === sin(30°) = 0.5. Double-angle formula use karte hue sin(60°) maloom karein.
+sin(60°) = sin(2×30°) = 2×sin30°×cos30° = 2×0.5×0.866 === sin(60°) = sin(2×30°) = 2×sin30°×cos30° = 2×0.5×0.866

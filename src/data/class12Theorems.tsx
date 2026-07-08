@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { CheckCircle, XCircle, Hash, Infinity, Move3d, Circle, Target } from 'lucide-react';
 import type { TheoremConfig } from '../components/GenericTheoremLab';
@@ -5,6 +6,7 @@ import type { TheoremConfig } from '../components/GenericTheoremLab';
 // ========== Shared Interactive Components ==========
 
 function CalcInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => void; mode?: string }) {
+  const { t } = useTranslate();
   const [n, setN] = useState(3);
   const [x, setX] = useState(2);
   const [userAns, setUserAns] = useState('');
@@ -42,31 +44,32 @@ function CalcInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => v
       <div className="grid grid-cols-2 gap-3">
         {mode !== 'invsin' && (
           <div>
-            <label className="text-xs font-semibold">n (exponent)</label>
+            <label className="text-xs font-semibold">{t("n (exponent)")}</label>
             <input type="range" min="1" max="8" step="1" value={n} onChange={e => { setN(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" />
-            <span className="text-xs">n = {n}</span>
+            <span className="text-xs">{t("n =")} {n}</span>
           </div>
         )}
         <div>
-          <label className="text-xs font-semibold">x value</label>
+          <label className="text-xs font-semibold">{t("x value")}</label>
           <input type="range" min="1" max="5" step="1" value={x} onChange={e => { setX(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" />
-          <span className="text-xs">x = {x}</span>
+          <span className="text-xs">{t("x =")} {x}</span>
         </div>
       </div>
       <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800">
         <p className="text-xs text-indigo-700 dark:text-indigo-300 font-mono">{formula}<br />{resultStr}</p>
       </div>
       <div className="flex gap-2">
-        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="f'(x) = ?" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("f'(x) = ?")} step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-indigo-500 outline-none" />
+        <button onClick={handleCheck} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct!</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try computing the derivative formula</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct!")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try computing the derivative formula")}</p>}
     </div>
   );
 }
 
 function IntegralInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => void; mode?: string }) {
+  const { t } = useTranslate();
   const [aVal, setAVal] = useState(2);
   const [bVal, setBVal] = useState(4);
   const [nExp, setNExp] = useState(2);
@@ -86,39 +89,40 @@ function IntegralInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) 
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <label className="text-xs font-semibold">Lower bound (a)</label>
+          <label className="text-xs font-semibold">{t("Lower bound (a)")}</label>
           <input type="range" min="0" max="5" step="1" value={aVal} onChange={e => { setAVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
-          <span className="text-xs">a = {aVal}</span>
+          <span className="text-xs">{t("a =")} {aVal}</span>
         </div>
         <div>
-          <label className="text-xs font-semibold">Upper bound (b)</label>
+          <label className="text-xs font-semibold">{t("Upper bound (b)")}</label>
           <input type="range" min="1" max="5" step="1" value={bVal} onChange={e => { setBVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
-          <span className="text-xs">b = {bVal}</span>
+          <span className="text-xs">{t("b =")} {bVal}</span>
         </div>
         <div>
           <label className="text-xs font-semibold">n</label>
           <input type="range" min="1" max="5" step="1" value={nExp} onChange={e => { setNExp(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
-          <span className="text-xs">n = {nExp}</span>
+          <span className="text-xs">{t("n =")} {nExp}</span>
         </div>
       </div>
       <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
         <p className="text-xs text-emerald-700 dark:text-emerald-300 font-mono">
-          ∫ₐᵇ xⁿ dx = [xⁿ⁺¹/(n+1)]ₐᵇ<br />
+          {t("∫ₐᵇ xⁿ dx = [xⁿ⁺¹/(n+1)]ₐᵇ")}<br />
           = {bVal}^{nExp+1}/{nExp+1} - {aVal}^{nExp+1}/{nExp+1}<br />
           = <strong>{integral.toFixed(2)}</strong>
         </p>
       </div>
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="∫ = ?" step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-emerald-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <button onClick={handleCheck} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! Integral = {integral.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Apply ∫ xⁿ = xⁿ⁺¹/(n+1)</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! Integral =")} {integral.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Apply ∫ xⁿ = xⁿ⁺¹/(n+1)")}</p>}
     </div>
   );
 }
 
 function FTCInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [aVal, setAVal] = useState(1);
   const [bVal, setBVal] = useState(3);
   const [coeffA, setCoeffA] = useState(1);
@@ -131,6 +135,7 @@ function FTCInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
   const integral = F(bVal) - F(aVal);
 
   const handleCheck = () => {
+  const { t } = useTranslate();
     const val = parseFloat(userAns);
     if (isNaN(val)) return;
     setCheckResult(Math.abs(val - integral) < 0.5 ? 'correct' : 'incorrect');
@@ -141,51 +146,52 @@ function FTCInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-2">
         <div>
-          <label className="text-[10px] font-semibold">a (coeff of x²)</label>
+          <label className="text-[10px] font-semibold">{t("a (coeff of x²)")}</label>
           <input type="range" min="0" max="3" step="1" value={coeffA} onChange={e => { setCoeffA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
           <span className="text-xs">{coeffA}</span>
         </div>
         <div>
-          <label className="text-[10px] font-semibold">b (coeff of x)</label>
+          <label className="text-[10px] font-semibold">{t("b (coeff of x)")}</label>
           <input type="range" min="0" max="3" step="1" value={coeffB} onChange={e => { setCoeffB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
           <span className="text-xs">{coeffB}</span>
         </div>
         <div>
-          <label className="text-[10px] font-semibold">c (constant)</label>
+          <label className="text-[10px] font-semibold">{t("c (constant)")}</label>
           <input type="range" min="0" max="3" step="1" value={coeffC} onChange={e => { setCoeffC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
           <span className="text-xs">{coeffC}</span>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div>
-          <label className="text-xs font-semibold">Lower bound a</label>
+          <label className="text-xs font-semibold">{t("Lower bound a")}</label>
           <input type="range" min="0" max="5" step="1" value={aVal} onChange={e => { setAVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
-          <span className="text-xs">a = {aVal}</span>
+          <span className="text-xs">{t("a =")} {aVal}</span>
         </div>
         <div>
-          <label className="text-xs font-semibold">Upper bound b</label>
+          <label className="text-xs font-semibold">{t("Upper bound b")}</label>
           <input type="range" min="1" max="5" step="1" value={bVal} onChange={e => { setBVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" />
-          <span className="text-xs">b = {bVal}</span>
+          <span className="text-xs">{t("b =")} {bVal}</span>
         </div>
       </div>
       <div className="bg-rose-50 dark:bg-rose-900/20 rounded-lg p-3 border border-rose-200 dark:border-rose-800">
         <p className="text-xs text-rose-700 dark:text-rose-300 font-mono">
-          f(x) = {coeffA}x² + {coeffB}x + {coeffC}<br />
-          F(x) = {coeffA}x³/3 + {coeffB}x²/2 + {coeffC}x<br />
-          ∫ₐᵇ = F({bVal}) − F({aVal}) = <strong>{integral.toFixed(2)}</strong>
+          {t("f(x) =")} {coeffA}{t("x² +")} {coeffB}{t("x +")} {coeffC}<br />
+          {t("F(x) =")} {coeffA}{t("x³/3 +")} {coeffB}{t("x²/2 +")} {coeffC}x<br />
+          {t("∫ₐᵇ = F(")}{bVal}{t(") − F(")}{aVal}) = <strong>{integral.toFixed(2)}</strong>
         </p>
       </div>
       <div className="flex gap-2">
-        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="∫ f(x) dx = ?" step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-rose-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("∫ f(x) dx = ?")} step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-rose-500 outline-none" />
+        <button onClick={handleCheck} className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! ∫ = {integral.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Use F(b) − F(a)</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! ∫ =")} {integral.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Use F(b) − F(a)")}</p>}
     </div>
   );
 }
 
 function ConcurrencyInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [x1, setX1] = useState(1); const [y1, setY1] = useState(1);
   const [x2, setX2] = useState(7); const [y2, setY2] = useState(1);
   const [x3, setX3] = useState(4); const [y3, setY3] = useState(6);
@@ -206,7 +212,7 @@ function ConcurrencyInteractive({ onAnswer }: { onAnswer: (correct: boolean) => 
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-2">
         <div>
-          <label className="text-[10px] font-semibold">A (x₁,y₁)</label>
+          <label className="text-[10px] font-semibold">{t("A (x₁,y₁)")}</label>
           <div className="grid grid-cols-2 gap-1">
             <input type="range" min="1" max="8" step="1" value={x1} onChange={e => { setX1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
             <input type="range" min="1" max="8" step="1" value={y1} onChange={e => { setY1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
@@ -214,7 +220,7 @@ function ConcurrencyInteractive({ onAnswer }: { onAnswer: (correct: boolean) => 
           <span className="text-xs">({x1},{y1})</span>
         </div>
         <div>
-          <label className="text-[10px] font-semibold">B (x₂,y₂)</label>
+          <label className="text-[10px] font-semibold">{t("B (x₂,y₂)")}</label>
           <div className="grid grid-cols-2 gap-1">
             <input type="range" min="1" max="8" step="1" value={x2} onChange={e => { setX2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
             <input type="range" min="1" max="8" step="1" value={y2} onChange={e => { setY2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
@@ -222,7 +228,7 @@ function ConcurrencyInteractive({ onAnswer }: { onAnswer: (correct: boolean) => 
           <span className="text-xs">({x2},{y2})</span>
         </div>
         <div>
-          <label className="text-[10px] font-semibold">C (x₃,y₃)</label>
+          <label className="text-[10px] font-semibold">{t("C (x₃,y₃)")}</label>
           <div className="grid grid-cols-2 gap-1">
             <input type="range" min="1" max="8" step="1" value={x3} onChange={e => { setX3(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
             <input type="range" min="1" max="8" step="1" value={y3} onChange={e => { setY3(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" />
@@ -232,22 +238,23 @@ function ConcurrencyInteractive({ onAnswer }: { onAnswer: (correct: boolean) => 
       </div>
       <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-3 border border-cyan-200 dark:border-cyan-800">
         <p className="text-xs text-cyan-700 dark:text-cyan-300 font-mono">
-          Triangle: ({x1},{y1}), ({x2},{y2}), ({x3},{y3})<br />
-          Centroid: (({x1}+{x2}+{x3})/3, ({y1}+{y2}+{y3})/3)<br />
+          {t("Triangle: (")}{x1},{y1}), ({x2},{y2}), ({x3},{y3})<br />
+          {t("Centroid: ((")}{x1}+{x2}+{x3})/3, ({y1}+{y2}+{y3})/3)<br />
           = <strong>({centroidX.toFixed(1)}, {centroidY.toFixed(1)})</strong>
         </p>
       </div>
       <div className="flex gap-2">
-        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Centroid x = ?" step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-cyan-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Centroid x = ?")} step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-cyan-500 outline-none" />
+        <button onClick={handleCheck} className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Centroid x = {centroidX.toFixed(1)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Centroid = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Centroid x =")} {centroidX.toFixed(1)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Centroid = ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3)")}</p>}
     </div>
   );
 }
 
 function CircleInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => void; mode?: string }) {
+  const { t } = useTranslate();
   const [gVal, setGVal] = useState(2);
   const [fVal, setFVal] = useState(3);
   const [cVal, setCVal] = useState(1);
@@ -273,38 +280,39 @@ function CircleInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) =>
         <div>
           <label className="text-[10px] font-semibold">g</label>
           <input type="range" min="0" max="5" step="1" value={gVal} onChange={e => { setGVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" />
-          <span className="text-xs">g = {gVal}</span>
+          <span className="text-xs">{t("g =")} {gVal}</span>
         </div>
         <div>
           <label className="text-[10px] font-semibold">f</label>
           <input type="range" min="0" max="5" step="1" value={fVal} onChange={e => { setFVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" />
-          <span className="text-xs">f = {fVal}</span>
+          <span className="text-xs">{t("f =")} {fVal}</span>
         </div>
         <div>
           <label className="text-[10px] font-semibold">c</label>
           <input type="range" min="0" max="5" step="1" value={cVal} onChange={e => { setCVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" />
-          <span className="text-xs">c = {cVal}</span>
+          <span className="text-xs">{t("c =")} {cVal}</span>
         </div>
       </div>
       <div className="bg-violet-50 dark:bg-violet-900/20 rounded-lg p-3 border border-violet-200 dark:border-violet-800">
         <p className="text-xs text-violet-700 dark:text-violet-300 font-mono">
-          x² + y² + 2({gVal})x + 2({fVal})y + {cVal} = 0<br />
-          Center: ({-gVal}, {-fVal})<br />
-          radius² = {gVal}² + {fVal}² − {cVal} = {gVal * gVal + fVal * fVal - cVal}<br />
-          r = {isValid ? radius.toFixed(2) : 'imaginary - no real circle'}
+          {t("x² + y² + 2(")}{gVal}{t(")x + 2(")}{fVal}{t(")y +")} {cVal} = 0<br />
+          {t("Center: (")}{-gVal}, {-fVal})<br />
+          {t("radius² =")} {gVal}² + {fVal}² − {cVal} = {gVal * gVal + fVal * fVal - cVal}<br />
+          {t("r =")} {isValid ? radius.toFixed(2) : 'imaginary - no real circle'}
         </p>
       </div>
       <div className="flex gap-2">
         <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={mode === 'radius' ? 'r = ?' : 'h = ?'} step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-violet-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <button onClick={handleCheck} className="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct!</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Complete the square: (x+g)² + (y+f)² = g²+f²-c</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct!")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Complete the square: (x+g)² + (y+f)² = g²+f²-c")}</p>}
     </div>
   );
 }
 
 function ConicInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => void; mode?: string }) {
+  const { t } = useTranslate();
   const [aVal, setAVal] = useState(4);
   const [bVal, setBVal] = useState(2);
   const [cEcc, setCEcc] = useState(3);
@@ -343,22 +351,22 @@ function ConicInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => 
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-xs font-semibold">a (semi-major)</label>
+          <label className="text-xs font-semibold">{t("a (semi-major)")}</label>
           <input type="range" min="2" max="6" step="1" value={aVal} onChange={e => { setAVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-fuchsia-500" />
-          <span className="text-xs">a = {aVal}</span>
+          <span className="text-xs">{t("a =")} {aVal}</span>
         </div>
         {mode !== 'parabola' && (
           <div>
-            <label className="text-xs font-semibold">b (semi-minor)</label>
+            <label className="text-xs font-semibold">{t("b (semi-minor)")}</label>
             <input type="range" min="1" max={aVal} step="1" value={bVal} onChange={e => { setBVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-fuchsia-500" />
-            <span className="text-xs">b = {bVal}</span>
+            <span className="text-xs">{t("b =")} {bVal}</span>
           </div>
         )}
         {mode === 'parabola' && (
           <div>
-            <label className="text-xs font-semibold">a (focal length)</label>
+            <label className="text-xs font-semibold">{t("a (focal length)")}</label>
             <input type="range" min="1" max="6" step="1" value={cEcc} onChange={e => { setCEcc(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-fuchsia-500" />
-            <span className="text-xs">a = {cEcc}</span>
+            <span className="text-xs">{t("a =")} {cEcc}</span>
           </div>
         )}
       </div>
@@ -366,24 +374,32 @@ function ConicInteractive({ onAnswer, mode }: { onAnswer: (correct: boolean) => 
         <p className="text-xs text-fuchsia-700 dark:text-fuchsia-300 font-mono whitespace-pre-line">{displayStr}</p>
       </div>
       <div className="flex gap-2">
-        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Value" step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-fuchsia-500 outline-none" />
-        <button onClick={handleCheck} className="px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm font-semibold rounded-lg">Check</button>
+        <input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Value")} step="0.1" className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-fuchsia-500 outline-none" />
+        <button onClick={handleCheck} className="px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button>
       </div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct!</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Apply the standard formula</p>}
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct!")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Apply the standard formula")}</p>}
     </div>
   );
 }
 
 // Wrapper components
-function PowerRuleInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <CalcInteractive onAnswer={p.onAnswer} mode="power" />; }
-function SinDerivativeInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <CalcInteractive onAnswer={p.onAnswer} mode="sin" />; }
-function InverseTrigInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <CalcInteractive onAnswer={p.onAnswer} mode="invsin" />; }
-function EllipseInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <ConicInteractive onAnswer={p.onAnswer} mode="ellipse" />; }
-function HyperbolaInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <ConicInteractive onAnswer={p.onAnswer} mode="hyperbola" />; }
-function ParabolaInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <ConicInteractive onAnswer={p.onAnswer} mode="parabola" />; }
-function CircleCenterInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <CircleInteractive onAnswer={p.onAnswer} mode="center" />; }
-function CircleRadiusInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) { return <CircleInteractive onAnswer={p.onAnswer} mode="radius" />; }
+function PowerRuleInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <CalcInteractive onAnswer={p.onAnswer} mode="power" />; }
+function SinDerivativeInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <CalcInteractive onAnswer={p.onAnswer} mode="sin" />; }
+function InverseTrigInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <CalcInteractive onAnswer={p.onAnswer} mode="invsin" />; }
+function EllipseInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <ConicInteractive onAnswer={p.onAnswer} mode="ellipse" />; }
+function HyperbolaInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <ConicInteractive onAnswer={p.onAnswer} mode="hyperbola" />; }
+function ParabolaInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <ConicInteractive onAnswer={p.onAnswer} mode="parabola" />; }
+function CircleCenterInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <CircleInteractive onAnswer={p.onAnswer} mode="center" />; }
+function CircleRadiusInteractiveWrapper(p: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate(); return <CircleInteractive onAnswer={p.onAnswer} mode="radius" />; }
 
 // ========== Theorem Configs ==========
 

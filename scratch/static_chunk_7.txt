@@ -1,0 +1,100 @@
+Trapezium with AB=8cm, DC=12cm (parallel). Find the length of the segment joining midpoints of non-parallel sides.
+Length = ½(AB + DC) = ½(8+12) = 10
+Length = ½(AB + DC)
+Sum of First n Terms of a Geometric Series
+Sum of a geometric series: Sₙ = a₁(1−rⁿ)/(1−r) for r ≠ 1.
+Write the geometric series
+Multiply both sides by r
+📐 Multiply the entire series by r: rSₙ = a₁r + a₁r² + a₁r³ + ... + a₁rⁿ. This shifts every term by one position.
+Subtract the equations
+🧮 Subtract rSₙ from Sₙ: Sₙ − rSₙ = a₁ − a₁rⁿ. All the intermediate terms (a₁r through a₁rⁿ⁻¹) cancel out perfectly — the elegance of the telescoping subtraction!
+Solve for Sₙ
+✅ Sₙ(1−r) = a₁(1−rⁿ) → Sₙ = a₁(1−rⁿ)/(1−r). For infinite series (|r| < 1): S∞ = a₁/(1−r). Your $1000 at 5%: if you kept it forever earning 5%, the present value of all future earnings = 1000/(1−0.05) = $20,000!
+a₁ = 2, r = 3, n = 4. Find S₄.
+S₄ = 2(1−3⁴)/(1−3) = 2(1−81)/(−2) = 2(−80)/(−2)
+Sₙ = a₁(1−rⁿ)/(1−r)
+Sum of an Arithmetico-Geometric Series
+Sum of an arithmetico-geometric series (arithmetic × geometric).
+Write the series
+🏦 You\
+Multiply by r
+📐 Multiply by r: rSₙ = ar + (a+d)r² + (a+2d)r³ + ... + [a+(n−1)d]rⁿ.
+Subtract
+🧮 Subtracting: (1−r)Sₙ = a + dr + dr² + ... + drⁿ⁻¹ − (a+nd)rⁿ. The a terms telescope, and the d terms form a geometric series itself!
+Apply geometric sum
+✅ The middle dr terms form a geometric series: dr(1+r+...+rⁿ⁻²) = dr(1−rⁿ⁻¹)/(1−r). Dividing through by (1−r) gives the complete formula. This is how actuaries calculate tiered annuity payments!
+a=1, d=2, r=3, n=2. Find S₂ (first term = a=1, second term = (a+d)r = 9).
+S₂ = 1 + (1+2)×3 = 1 + 9 = 10
+Write out the first n terms and add them
+Remainder Theorem
+The remainder when dividing by (x−c) equals p(c).
+Division algorithm
+Substitute x = c
+📐 Substitute x = c into the identity: p(c) = (c−c)q(c) + r. The (c−c) term becomes zero.
+🧮 Since c−c = 0, the term (c−c)q(c) = 0 × q(c) = 0. Therefore p(c) = r. The remainder when dividing p(x) by (x−c) equals p(c) — the polynomial evaluated at x = c!
+Application: Synthetic Division
+✅ This theorem is the basis of synthetic division — a shortcut that divides polynomials using only coefficients. It\
+p(x) = x² − 5x + 6. Find the remainder when divided by (x−2).
+p(2) = 4 − 10 + 6
+Remainder = p(c)
+Factor Theorem
+(x−c) is a factor of p(x) if and only if p(c) = 0.
+Part 1: If (x−c) is a factor
+🔍 You\
+By Remainder Theorem
+📐 If (x−c) is a factor, the division p(x) ÷ (x−c) leaves no remainder, so r = 0. By the Remainder Theorem, r = p(c). Therefore p(c) = 0.
+Part 2: If p(c) = 0
+🔄 Conversely, if p(c) = 0, then by the Remainder Theorem the remainder r = 0. Substituting r = 0: p(x) = (x−c)q(x). This proves (x−c) is a factor.
+Example
+✅ For p(x) = x³ − 2x² − x + 2: p(1) = 1 − 2 − 1 + 2 = 0. So (x−1) is a factor! Dividing: p(x) = (x−1)(x² − x − 2) = (x−1)(x−2)(x+1). One root found, the rest follows easily!
+p(x) = x² − 5x + 6. Is (x−2) a factor?
+Check p(2). If p(2) = 0, it\
+Check if p(c) = 0
+Combination Formula (ⁿCᵣ)
+Number of ways to choose r objects from n distinct objects.
+Let X = number of combinations
+Relationship to permutations
+📐 Each combination of r objects can be arranged in r! different ways. So the number of permutations (ordered) = number of combinations × arrangements: ⁿPᵣ = X × r!.
+Substitute permutation formula
+🧮 We know ⁿPᵣ = n!/(n−r)!. Substituting: X × r! = n!/(n−r)!.
+Solve for X
+✅ Divide both sides by r!: X = ⁿCᵣ = n!/(r!(n−r)!). For 5-choose-3: ⁵C₃ = 5!/(3!2!) = 120/(6×2) = 10. There are 10 possible 3-person teams from 5 people. This is the foundation of the binomial distribution and Pascal\
+Find ⁵C₂ (5 choose 2).
+5!/(2!(5−2)!) = 120/(2×6)
+ⁿCᵣ = n!/(r!(n−r)!)
+Binomial Theorem for Positive Integers
+Expand (a+b)ⁿ as a sum of terms with binomial coefficients.
+Basis step: n = 1
+🌳 You\
+Assume true for n = k
+📐 Assume the theorem holds for n = k: (a+b)ᵏ = Σ ᵏCᵢ aᵏ⁻ⁱ bⁱ.
+Multiply both sides by (a+b)
+🧮 To prove for k+1, multiply both sides by (a+b): (a+b)ᵏ⁺¹ = (a+b)(ᵏC₀aᵏ + ᵏC₁aᵏ⁻¹b + ... + ᵏCₖbᵏ).
+Apply Pascal\
+✅ After distributing and grouping like terms, the coefficients follow Pascal\
+Find the coefficient of a²b² in (a+b)⁴.
+Row 4 of Pascal\
+Use Pascal\
+Fundamental Law of Trigonometry: cos(α−β)
+The cosine of a difference equals the product of cosines plus product of sines.
+Unit circle setup
+Distance CD = AB
+📐 The central angle between C and D is α−β. Construct angle AOB = α−β with A(1,0) and B(cos(α−β), sin(α−β)). Since the central angles are equal, chords CD and AB are equal.
+Apply distance formula
+🧮 Equating CD² = AB² and expanding both sides. On the left: cos²α + cos²β − 2cosαcosβ + sin²α + sin²β − 2sinαsinβ = 2 − 2(cosαcosβ + sinαsinβ). On the right: 1 − 2cos(α−β) + 1 = 2 − 2cos(α−β).
+✅ Equating: 2 − 2(cosαcosβ + sinαsinβ) = 2 − 2cos(α−β). Cancel 2 and divide by −2: cos(α−β) = cosαcosβ + sinαsinβ. From this single identity flows ALL of trigonometry!
+cos(60°−30°) = cos 60° cos 30° + sin 60° sin 30°. Compute cos(30°).
+cos 30° = √3/2 ≈ 0.866
+Use cos(α−β) = cosαcosβ + sinαsinβ
+Trigonometric Identities (Double & Triple Angle)
+Double-angle formulas derived from the fundamental law.
+cos(−β) = cos β
+🧭 Navigation: If you turn 30° clockwise vs 30° counterclockwise, the eastward component is the same! By the fundamental law with α=0: cos(−β) = cos 0 cos β + sin 0 sin β = cos β.
+sin(α+β)
+🔄 Using co-ratios: sin(α+β) = cos(π/2−(α+β)) = cos[(π/2−α)−β] = cos(π/2−α)cos β + sin(π/2−α)sin β = sin α cos β + cos α sin β.
+Double-angle identities
+🧮 Let β = α in sin(α+β): sin(2α) = sin α cos α + cos α sin α = 2 sin α cos α. For cos: cos(2α) = cos²α − sin²α = 2cos²α − 1 = 1 − 2sin²α.
+Triple-angle for sin
+🔊 Audio engineers use this: sin(3α) = sin(2α+α) = sin(2α)cos α + cos(2α)sin α = (2 sin α cos α)cos α + (1 − 2 sin²α)sin α = 2 sin α(1−sin²α) + sin α − 2 sin³α = 3 sin α − 4 sin³α. This generates the third harmonic in synthesizers!
+sin(30°) = 0.5. Find sin(60°) using the double-angle formula.
+sin(60°) = sin(2×30°) = 2×sin30°×cos30° = 2×0.5×0.866

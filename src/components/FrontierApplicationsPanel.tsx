@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { Atom, Leaf, Cpu, ChevronDown, ChevronRight, ExternalLink, FlaskConical, Crosshair } from 'lucide-react';
 
@@ -36,6 +37,7 @@ const TOPIC_LABELS = {
 };
 
 function TopicCard({ topic }: { topic: FrontierTopic }) {
+  const { t } = useTranslate();
   const [expanded, setExpanded] = useState(false);
   const Icon = ICON_MAP[topic.icon];
   const theme = THEME_MAP[topic.icon];
@@ -69,7 +71,7 @@ function TopicCard({ topic }: { topic: FrontierTopic }) {
               <div className="flex items-center gap-1.5 mb-1">
                 <FlaskConical className="w-3 h-3 text-indigo-500" />
                 <span className="text-[10px] font-bold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider">
-                  Connection to this Lab
+                  {t("Connection to this Lab")}
                 </span>
               </div>
               <p className="text-xs text-slate-700 dark:text-[#ffffff]">{topic.connectionToLab}</p>
@@ -79,7 +81,7 @@ function TopicCard({ topic }: { topic: FrontierTopic }) {
               <div className="flex items-center gap-1.5 mb-1">
                 <Crosshair className="w-3 h-3 text-amber-500" />
                 <span className="text-[10px] font-bold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider">
-                  Current Research
+                  {t("Current Research")}
                 </span>
               </div>
               <p className="text-xs text-slate-700 dark:text-[#ffffff]">{topic.currentResearch}</p>
@@ -91,7 +93,7 @@ function TopicCard({ topic }: { topic: FrontierTopic }) {
               <div className="flex items-center gap-1.5 mb-1">
                 <ExternalLink className="w-3 h-3 text-emerald-500" />
                 <span className="text-[10px] font-bold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider">
-                  Career Pathway
+                  {t("Career Pathway")}
                 </span>
               </div>
               <p className="text-xs text-slate-700 dark:text-[#ffffff]">{topic.careerPath}</p>
@@ -101,7 +103,7 @@ function TopicCard({ topic }: { topic: FrontierTopic }) {
               <div className="flex items-center gap-1.5 mb-1">
                 <Cpu className="w-3 h-3 text-violet-500" />
                 <span className="text-[10px] font-bold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider">
-                  Key Concept
+                  {t("Key Concept")}
                 </span>
               </div>
               <p className="text-xs text-slate-700 dark:text-[#ffffff]">{topic.keyConcept}</p>
@@ -114,6 +116,7 @@ function TopicCard({ topic }: { topic: FrontierTopic }) {
 }
 
 export default function FrontierApplicationsPanel({ topics, defaultExpanded = false }: FrontierApplicationsPanelProps) {
+  const { t } = useTranslate();
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
@@ -125,10 +128,10 @@ export default function FrontierApplicationsPanel({ topics, defaultExpanded = fa
         <div className="flex items-center gap-2">
           <Leaf className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
           <span className="text-sm font-bold text-emerald-800 dark:text-emerald-300">
-            Frontier Applications
+            {t("Frontier Applications")}
           </span>
           <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
-            Cutting Edge
+            {t("Cutting Edge")}
           </span>
         </div>
         {isExpanded ? <ChevronDown className="w-4 h-4 text-emerald-500" /> : <ChevronRight className="w-4 h-4 text-emerald-500" />}
@@ -137,7 +140,7 @@ export default function FrontierApplicationsPanel({ topics, defaultExpanded = fa
       {isExpanded && (
         <div className="p-4 pt-2 space-y-3">
           <p className="text-xs text-slate-500 dark:text-[#71717a] mb-2">
-            Explore how the concepts from this lab are applied in cutting-edge research and emerging technologies.
+            {t("Explore how the concepts from this lab are applied in cutting-edge research and emerging technologies.")}
           </p>
           {topics.map((topic) => (
             <TopicCard key={topic.id} topic={topic} />

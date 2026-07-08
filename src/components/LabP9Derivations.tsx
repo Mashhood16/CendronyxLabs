@@ -716,7 +716,7 @@ export default function LabP9Derivations() {
         <h1 className="text-xl font-bold flex items-center gap-2">
           <GraduationCap className="w-6 h-6" />
           
-                            Class 9 Physics Interactive Derivations
+                            {t("Class 9 Physics Interactive Derivations")}
                           </h1>
         <p className="text-sm text-white/80 mt-1">{t('lab.p9derivations_master_7_essential_derivations')}</p>
       </div>

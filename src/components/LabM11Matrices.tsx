@@ -212,14 +212,14 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
     <input 
     type="number" 
     className="w-1/2 p-2 border rounded text-sm" 
-    placeholder="x'"
+    placeholder={t("x'")}
     value={cipherX}
     onChange={(e) => { setCipherX(e.target.value); setCipherStatus("idle"); }}
     />
     <input 
     type="number" 
     className="w-1/2 p-2 border rounded text-sm" 
-    placeholder="y'"
+    placeholder={t("y'")}
     value={cipherY}
     onChange={(e) => { setCipherY(e.target.value); setCipherStatus("idle"); }}
     />

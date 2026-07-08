@@ -1,0 +1,100 @@
+Product Law of Logarithms
+The log of a product equals the sum of the logs.
+Set up variables
+🧮 You\
+Convert to exponentials
+Converting back: m = b^x and n = b^y. In our concert, if b = 2 (binary amplification), then m = 2^x and n = 2^y. The exponential form reveals the actual multipliers hiding behind the log values.
+Multiply the equations
+Now multiply m × n: mn = b^x · b^y. When multiplying powers with the same base, we ADD the exponents: mn = b^(x+y). This is the key insight — multiplication in the real world becomes addition in log world.
+Convert back to logs
+Convert mn = b^(x+y) back to logarithmic form: log_b(mn) = x + y. Substitute x = log_b m and y = log_b n, and you get: log_b(mn) = log_b m + log_b n. The total sound power (product) equals the sum of the individual log powers.
+log₂(4) = 2, log₂(8) = 3. Find log₂(32).
+32 = 4 × 8. Use product law: log₂(4) + log₂(8)
+log_b(mn) = log_b m + log_b n
+Quotient Law of Logarithms
+The log of a quotient equals the difference of the logs.
+🔬 You\
+Convert to exponential form: m = b^x and n = b^y. With base b = 10 (common log), we have 32 = 10^x and 4 = 10^y. The exponents x and y are the powers of 10 that give us these concentrations.
+Divide the equations
+Divide m by n: m/n = b^x / b^y. When dividing powers with the same base, we SUBTRACT the exponents: m/n = b^(x−y). Division in the real world becomes subtraction in log world.
+Convert m/n = b^(x−y) to log form: log_b(m/n) = x − y. Substituting back: log_b(m/n) = log_b m − log_b n. The dilution factor in log terms is just the difference of the individual log concentrations.
+log₁₀(100) = 2, log₁₀(10) = 1. Find log₁₀(10).
+10 = 100/10. Use quotient law: log₁₀(100) − log₁₀(10)
+log_b(m/n) = log_b m − log_b n
+Power Law of Logarithms
+The log of a power equals the exponent times the log of the base.
+Set up the equation
+💰 You\
+Convert to exponential
+Convert m = b^x. Your initial $3,000 = 2^x means x = log₂(3000) ≈ 11.55 — the 
+Raise both sides to power n
+Raise both sides to the n-th power: m^n = (b^x)^n. Using the power of a power rule: m^n = b^(nx). Your investment after 4 years: 3000^4? No — this is a mathematical power, not financial.
+Convert to log form
+Converting m^n = b^(nx) to log form: log_b(m^n) = nx. Substituting x = log_b m: log_b(m^n) = n log_b m. The exponent 
+log₂(3) ≈ 1.585. Find log₂(81).
+81 = 3⁴. Use power law: 4 × log₂(3)
+log_b(m^n) = n log_b m
+Change of Base Law
+Convert a logarithm from one base to any other base.
+📱 You\
+Convert: m = b^x. We want to express this in terms of a known base a. Taking log_a of both sides: log_a m = log_a(b^x). Now we can use the Power Law in reverse!
+Apply the Power Law
+log_a m = x · log_a b. The exponent x 
+Substitute back
+Since x = log_b m, we get: log_b m = log_a m / log_a b. So log₂(8) = log₁₀(8) / log₁₀(2) = 0.9031 / 0.3010 = 3. Indeed, 2³ = 8.
+log₁₀(100) = 2. Find log₂(100) using change of base.
+log₂(100) = log₁₀(100) / log₁₀(2)
+log_b m = log_a m / log_a b
+Associative Property of Union
+The union operation is associative — grouping doesn\
+Let x be an element
+🏟️ Imagine three groups of students at a school fair: Group A runs the food stall, Group B runs games, and Group C runs the raffle. Let x be any student. If x is in (A ∪ B) ∪ C, then...
+Apply union definition
+x ∈ (A ∪ B) ∪ C means x ∈ (A ∪ B) OR x ∈ C. And x ∈ (A ∪ B) means x ∈ A OR x ∈ B. So overall: (x ∈ A OR x ∈ B) OR x ∈ C.
+Re-group the ORs
+The logical OR is associative — (P OR Q) OR R = P OR (Q OR R). So (x ∈ A OR x ∈ B) OR x ∈ C = x ∈ A OR (x ∈ B OR x ∈ C). The school fair doesn\
+Convert back to sets
+x ∈ A OR (x ∈ B OR x ∈ C) means x ∈ A OR x ∈ (B ∪ C), which means x ∈ A ∪ (B ∪ C). The reverse containment proves equality. Thus (A ∪ B) ∪ C = A ∪ (B ∪ C). Grouping doesn\
+A={1,2}, B={2,3}, C={3,4}. Elements in (A∪B)∪C?
+A∪B = {1,2,3}. Then ∪C = {1,2,3,4}
+(A∪B)∪C = A∪(B∪C)
+Associative Property of Intersection
+The intersection operation is also associative.
+Let y be an element
+🎭 Three clubs at school: Art Club A, Music Club B, and Drama Club C. A triple threat student does all three. Let y ∈ (A ∩ B) ∩ C.
+Apply intersection definition
+y ∈ (A ∩ B) ∩ C means y ∈ (A ∩ B) AND y ∈ C. And y ∈ (A ∩ B) means y ∈ A AND y ∈ B. So: (y ∈ A AND y ∈ B) AND y ∈ C.
+Re-group the ANDs
+Logical AND is associative: (P AND Q) AND R = P AND (Q AND R). So (y ∈ A AND y ∈ B) AND y ∈ C = y ∈ A AND (y ∈ B AND y ∈ C).
+y ∈ A AND (y ∈ B AND y ∈ C) means y ∈ A AND y ∈ (B ∩ C), which means y ∈ A ∩ (B ∩ C). Reverse containment proves equality. Just like union, intersection is associative!
+A={1,2,3}, B={2,3,4}, C={3,4,5}. Elements in (A∩B)∩C?
+A∩B = {2,3}. Then ∩C = {3}
+(A∩B)∩C = A∩(B∩C)
+Distributive: Union over Intersection
+Union distributes over intersection, like multiplication over addition.
+Let x ∈ A ∪ (B ∩ C)
+🧩 Think of a school prize: winners get a free period (A) OR they get both extra recess AND homework pass (B ∩ C).
+Break down the OR
+x ∈ A OR x ∈ (B ∩ C). That means either x ∈ A, OR (x ∈ B AND x ∈ C).
+Use logical distribution
+(P OR Q) AND (P OR R) is logically equivalent to P OR (Q AND R). So: (x ∈ A OR x ∈ B) AND (x ∈ A OR x ∈ C).
+(x ∈ A ∪ B) AND (x ∈ A ∪ C) means x ∈ (A ∪ B) ∩ (A ∪ C). So A ∪ (B ∩ C) ⊆ (A ∪ B) ∩ (A ∪ C). The reverse containment also holds. Just like 2×(3+4) = 2×3 + 2×4!
+A={1,2}, B={2,3}, C={3,4}. Elements in A∪(B∩C)?
+B∩C = {3}. A∪{3} = {1,2,3}
+Are you sure?
+Distributive: Intersection over Union
+Intersection also distributes over union.
+Let x ∈ A ∩ (B ∪ C)
+🏫 School library rule: you need a library card (A) AND (either a valid ID OR a teacher note) (B ∪ C).
+Break down the AND
+x ∈ A AND x ∈ (B ∪ C). That means x ∈ A AND (x ∈ B OR x ∈ C).
+P AND (Q OR R) = (P AND Q) OR (P AND R). So: (x ∈ A AND x ∈ B) OR (x ∈ A AND x ∈ C).
+x ∈ (A ∩ B) OR x ∈ (A ∩ C) means x ∈ (A ∩ B) ∪ (A ∩ C). So A ∩ (B ∪ C) ⊆ (A ∩ B) ∪ (A ∩ C). The reverse direction similarly proves equality.
+A={1,2}, B={2,3}, C={3,4}. Elements in A∩(B∪C)?
+B∪C = {2,3,4}. A∩{2,3,4} = {2}
+A∩(B∪C) = (A∩B)∪(A∩C)
+Quotient Trigonometric Identities
+Tangent is sine divided by cosine; cotangent is the reciprocal.
+Consider a right triangle
+🔺 You\
+Divide sin by cos

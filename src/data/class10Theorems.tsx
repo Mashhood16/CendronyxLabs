@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 import type { TheoremConfig } from '../components/GenericTheoremLab';
@@ -6,6 +7,7 @@ import { Hash, Move3d, Triangle, Square, Circle, Target, Ruler } from 'lucide-re
 // ========== Interactive Components ==========
 
 function QuadraticFormulaInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [a, setA] = useState(2); const [b, setB] = useState(7); const [cVal, setCVal] = useState(3);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const discriminant = b*b - 4*a*cVal;
@@ -15,21 +17,22 @@ function QuadraticFormulaInteractive({ onAnswer }: { onAnswer: (correct: boolean
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold text-slate-600">a</label><input type="range" min="-10" max="10" step="1" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">a = {a}</span></div>
-        <div><label className="text-xs font-semibold text-slate-600">b</label><input type="range" min="-10" max="10" step="1" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">b = {b}</span></div>
-        <div><label className="text-xs font-semibold text-slate-600">c</label><input type="range" min="-10" max="10" step="1" value={cVal} onChange={e => { setCVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">c = {cVal}</span></div>
+        <div><label className="text-xs font-semibold text-slate-600">a</label><input type="range" min="-10" max="10" step="1" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">{t("a =")} {a}</span></div>
+        <div><label className="text-xs font-semibold text-slate-600">b</label><input type="range" min="-10" max="10" step="1" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">{t("b =")} {b}</span></div>
+        <div><label className="text-xs font-semibold text-slate-600">c</label><input type="range" min="-10" max="10" step="1" value={cVal} onChange={e => { setCVal(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-blue-500" /><span className="text-xs font-mono text-blue-600">{t("c =")} {cVal}</span></div>
       </div>
       <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
-        <p className="text-xs text-blue-700 font-mono">Equation: {a}x² + {b}x + {cVal} = 0<br />D = b²−4ac = {b}²−4({a})({cVal}) = <strong>{discriminant}</strong><br />{discriminant >= 0 ? <>Roots: x = [{root1.toFixed(2)}, {root2.toFixed(2)}]</> : <span className="text-red-500">No real roots</span>}</p>
+        <p className="text-xs text-blue-700 font-mono">{t("Equation:")} {a}{t("x² +")} {b}{t("x +")} {cVal} = 0<br />{t("D = b²−4ac =")} {b}²−4({a})({cVal}) = <strong>{discriminant}</strong><br />{discriminant >= 0 ? <>Roots: x = [{root1.toFixed(2)}, {root2.toFixed(2)}]</> : <span className="text-red-500">{t("No real roots")}</span>}</p>
       </div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Enter a root" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> Correct!</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> Try x = [−b ± √(b²−4ac)] / 2a</p>}
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Enter a root")} step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600 flex items-center gap-1"><CheckCircle className="w-3 h-3" /> {t("Correct!")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500 flex items-center gap-1"><XCircle className="w-3 h-3" /> {t("Try x = [−b ± √(b²−4ac)] / 2a")}</p>}
     </div>
   );
 }
 
 function VectorDiffInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [ax, setAx] = useState(2); const [ay, setAy] = useState(3); const [bx, setBx] = useState(7); const [by, setBy] = useState(5);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const compX = bx - ax; const compY = by - ay; const mag = Math.sqrt(compX*compX + compY*compY);
@@ -37,19 +40,20 @@ function VectorDiffInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
-        <div><label className="text-xs font-semibold">A = (x₁, y₁)</label><div className="grid grid-cols-2 gap-2"><div><span className="text-[10px]">x₁</span><input type="range" min="-5" max="5" step="1" value={ax} onChange={e => { setAx(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{ax}</span></div><div><span className="text-[10px]">y₁</span><input type="range" min="-5" max="5" step="1" value={ay} onChange={e => { setAy(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{ay}</span></div></div></div>
-        <div><label className="text-xs font-semibold">B = (x₂, y₂)</label><div className="grid grid-cols-2 gap-2"><div><span className="text-[10px]">x₂</span><input type="range" min="-5" max="5" step="1" value={bx} onChange={e => { setBx(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /><span className="text-xs">{bx}</span></div><div><span className="text-[10px]">y₂</span><input type="range" min="-5" max="5" step="1" value={by} onChange={e => { setBy(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /><span className="text-xs">{by}</span></div></div></div>
+        <div><label className="text-xs font-semibold">{t("A = (x₁, y₁)")}</label><div className="grid grid-cols-2 gap-2"><div><span className="text-[10px]">x₁</span><input type="range" min="-5" max="5" step="1" value={ax} onChange={e => { setAx(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{ax}</span></div><div><span className="text-[10px]">y₁</span><input type="range" min="-5" max="5" step="1" value={ay} onChange={e => { setAy(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{ay}</span></div></div></div>
+        <div><label className="text-xs font-semibold">{t("B = (x₂, y₂)")}</label><div className="grid grid-cols-2 gap-2"><div><span className="text-[10px]">x₂</span><input type="range" min="-5" max="5" step="1" value={bx} onChange={e => { setBx(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /><span className="text-xs">{bx}</span></div><div><span className="text-[10px]">y₂</span><input type="range" min="-5" max="5" step="1" value={by} onChange={e => { setBy(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /><span className="text-xs">{by}</span></div></div></div>
       </div>
       <div className="relative h-28 bg-white rounded-lg overflow-hidden border border-slate-200"><svg viewBox="0 0 240 120" className="w-full h-full"><line x1="120" y1="0" x2="120" y2="120" stroke="#cbd5e1" strokeWidth="0.5" /><line x1="0" y1="60" x2="240" y2="60" stroke="#cbd5e1" strokeWidth="0.5" /><circle cx={120 + ax*15} cy={60 - ay*15} r="4" fill="#10b981" /><text x={120 + ax*15 + 5} y={60 - ay*15 + 3} className="text-[8px] fill-emerald-600">A</text><circle cx={120 + bx*15} cy={60 - by*15} r="4" fill="#8b5cf6" /><text x={120 + bx*15 + 5} y={60 - by*15 + 3} className="text-[8px] fill-violet-600">B</text><defs><marker id="arrowhead" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto"><polygon points="0,0 6,2 0,4" fill="#f59e0b" /></marker></defs><line x1={120 + ax*15} y1={60 - ay*15} x2={120 + bx*15} y2={60 - by*15} stroke="#f59e0b" strokeWidth="2" markerEnd="url(#arrowhead)" /></svg></div>
-      <div className="bg-amber-50 rounded-lg p-3 border border-amber-200"><p className="text-xs text-amber-700 font-mono">ã = ({ax}, {ay}), b⃗ = ({bx}, {by})<br />AB = b − ã = ({bx}−{ax}, {by}−{ay}) = <strong>({compX}, {compY})</strong><br />|AB| = √{compX*compX + compY*compY} = <strong>{mag.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="x-component of AB" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-amber-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! AB = b − a</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try AB = (x₂−x₁, y₂−y₁)</p>}
+      <div className="bg-amber-50 rounded-lg p-3 border border-amber-200"><p className="text-xs text-amber-700 font-mono">ã = ({ax}, {ay}{t("), b⃗ = (")}{bx}, {by})<br />{t("AB = b − ã = (")}{bx}−{ax}, {by}−{ay}) = <strong>({compX}, {compY})</strong><br />{t("|AB| = √")}{compX*compX + compY*compY} = <strong>{mag.toFixed(2)}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("x-component of AB")} className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-amber-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! AB = b − a")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try AB = (x₂−x₁, y₂−y₁)")}</p>}
     </div>
   );
 }
 
 function LawCosinesInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [b, setB] = useState(5); const [c, setC] = useState(6); const [alpha, setAlpha] = useState(60);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const rad = alpha * Math.PI / 180; const aCalc = Math.sqrt(b*b + c*c - 2*b*c*Math.cos(rad));
@@ -57,19 +61,20 @@ function LawCosinesInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold">Side b</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{b}</span></div>
-        <div><label className="text-xs font-semibold">Side c</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{c}</span></div>
-        <div><label className="text-xs font-semibold">Angle α</label><input type="range" min="1" max="179" step="1" value={alpha} onChange={e => { setAlpha(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{alpha}°</span></div>
+        <div><label className="text-xs font-semibold">{t("Side b")}</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{b}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side c")}</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{c}</span></div>
+        <div><label className="text-xs font-semibold">{t("Angle α")}</label><input type="range" min="1" max="179" step="1" value={alpha} onChange={e => { setAlpha(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /><span className="text-xs">{alpha}°</span></div>
       </div>
-      <div className="bg-rose-50 rounded-lg p-3 border border-rose-200"><p className="text-xs text-rose-700 font-mono">a² = {b}² + {c}² − 2({b})({c}) cos({alpha}°)<br />a = <strong>{aCalc.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Side a" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-rose-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! a = {aCalc.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try a² = b² + c² − 2bc cos α</p>}
+      <div className="bg-rose-50 rounded-lg p-3 border border-rose-200"><p className="text-xs text-rose-700 font-mono">{t("a² =")} {b}² + {c}² − 2({b})({c}{t(") cos(")}{alpha}°)<br />{t("a =")} <strong>{aCalc.toFixed(2)}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Side a")} step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-rose-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! a =")} {aCalc.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try a² = b² + c² − 2bc cos α")}</p>}
     </div>
   );
 }
 
 function LawSinesInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [a, setA] = useState(7); const [alpha, setAlpha] = useState(50); const [beta, setBeta] = useState(70);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const gamma = 180 - alpha - beta; const b = a * Math.sin(beta * Math.PI/180) / Math.sin(alpha * Math.PI/180);
@@ -77,79 +82,86 @@ function LawSinesInteractive({ onAnswer }: { onAnswer: (correct: boolean) => voi
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold">Side a</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-sky-500" /><span className="text-xs">{a}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side a")}</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-sky-500" /><span className="text-xs">{a}</span></div>
         <div><label className="text-xs font-semibold">∠α</label><input type="range" min="1" max="178" step="1" value={alpha} onChange={e => { setAlpha(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-sky-500" /><span className="text-xs">{alpha}°</span></div>
         <div><label className="text-xs font-semibold">∠β</label><input type="range" min="1" max={178-alpha} step="1" value={beta} onChange={e => { setBeta(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-sky-500" /><span className="text-xs">{beta}°</span></div>
       </div>
-      <div className="bg-sky-50 rounded-lg p-3 border border-sky-200"><p className="text-xs text-sky-700 font-mono">γ = 180°−{alpha}°−{beta}° = {gamma}°<br />b = a × sin β / sin α = {a} × sin({beta}°)/sin({alpha}°) = <strong>{b.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Side b" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-sky-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! b = {b.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try a/sin α = b/sin β</p>}
+      <div className="bg-sky-50 rounded-lg p-3 border border-sky-200"><p className="text-xs text-sky-700 font-mono">γ = 180°−{alpha}°−{beta}° = {gamma}°<br />{t("b = a × sin β / sin α =")} {a} {t("× sin(")}{beta}{t("°)/sin(")}{alpha}°) = <strong>{b.toFixed(2)}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Side b")} step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-sky-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! b =")} {b.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try a/sin α = b/sin β")}</p>}
     </div>
   );
 }
 
 function HerosFormulaInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [a, setA] = useState(5); const [b, setB] = useState(6); const [c, setC] = useState(7);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const S = (a + b + c) / 2; const area = Math.sqrt(S * (S-a) * (S-b) * (S-c));
-  const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - area) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - area) < 0.1) onAnswer(true); };
+  const handleCheck = () => {
+  const { t } = useTranslate(); const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - area) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - area) < 0.1) onAnswer(true); };
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold">Side a</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{a}</span></div>
-        <div><label className="text-xs font-semibold">Side b</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{b}</span></div>
-        <div><label className="text-xs font-semibold">Side c</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{c}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side a")}</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{a}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side b")}</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{b}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side c")}</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" /><span className="text-xs">{c}</span></div>
       </div>
       <div className="bg-emerald-50 rounded-lg p-3 border border-emerald-200"><p className="text-xs text-emerald-700 font-mono">S = ({a}+{b}+{c})/2 = <strong>{S.toFixed(1)}</strong><br />Δ = √[{S.toFixed(1)}×{(S-a).toFixed(1)}×{(S-b).toFixed(1)}×{(S-c).toFixed(1)}] = <strong>{area.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Area" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-emerald-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! Δ = {area.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try Hero's formula: √[S(S−a)(S−b)(S−c)]</p>}
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Area")} step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-emerald-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! Δ =")} {area.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try Hero's formula: √[S(S−a)(S−b)(S−c)]")}</p>}
     </div>
   );
 }
 
 function CircumRadiusInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [a, setA] = useState(5); const [b, setB] = useState(6); const [c, setC] = useState(7);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const S = (a + b + c) / 2; const area = Math.sqrt(S * (S-a) * (S-b) * (S-c)); const R = (a * b * c) / (4 * area);
-  const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - R) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - R) < 0.1) onAnswer(true); };
+  const handleCheck = () => {
+  const { t } = useTranslate(); const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - R) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - R) < 0.1) onAnswer(true); };
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold">Side a</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{a}</span></div>
-        <div><label className="text-xs font-semibold">Side b</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{b}</span></div>
-        <div><label className="text-xs font-semibold">Side c</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{c}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side a")}</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{a}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side b")}</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{b}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side c")}</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" /><span className="text-xs">{c}</span></div>
       </div>
       <div className="bg-orange-50 rounded-lg p-3 border border-orange-200"><p className="text-xs text-orange-700 font-mono">Δ = {area.toFixed(2)}<br />R = ({a}×{b}×{c})/(4×{area.toFixed(2)}) = <strong>{R.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="R" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! R = {R.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try R = abc / (4Δ)</p>}
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="R" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-orange-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! R =")} {R.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try R = abc / (4Δ)")}</p>}
     </div>
   );
 }
 
 function InRadiusInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [a, setA] = useState(5); const [b, setB] = useState(6); const [c, setC] = useState(7);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const S = (a + b + c) / 2; const area = Math.sqrt(S * (S-a) * (S-b) * (S-c)); const r = area / S;
-  const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - r) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - r) < 0.1) onAnswer(true); };
+  const handleCheck = () => {
+  const { t } = useTranslate(); const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - r) < 0.1 ? 'correct' : 'incorrect'); if (Math.abs(val - r) < 0.1) onAnswer(true); };
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
-        <div><label className="text-xs font-semibold">Side a</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{a}</span></div>
-        <div><label className="text-xs font-semibold">Side b</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{b}</span></div>
-        <div><label className="text-xs font-semibold">Side c</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{c}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side a")}</label><input type="range" min="1" max="10" step="0.5" value={a} onChange={e => { setA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{a}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side b")}</label><input type="range" min="1" max="10" step="0.5" value={b} onChange={e => { setB(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{b}</span></div>
+        <div><label className="text-xs font-semibold">{t("Side c")}</label><input type="range" min="1" max="10" step="0.5" value={c} onChange={e => { setC(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-teal-500" /><span className="text-xs">{c}</span></div>
       </div>
-      <div className="bg-teal-50 rounded-lg p-3 border border-teal-200"><p className="text-xs text-teal-700 font-mono">S = {S.toFixed(1)}, Δ = {area.toFixed(2)}<br />r = Δ / S = <strong>{r.toFixed(2)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="r" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-teal-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! r = {r.toFixed(2)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try r = Δ / S</p>}
+      <div className="bg-teal-50 rounded-lg p-3 border border-teal-200"><p className="text-xs text-teal-700 font-mono">S = {S.toFixed(1)}, Δ = {area.toFixed(2)}<br />{t("r = Δ / S =")} <strong>{r.toFixed(2)}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="r" step="0.01" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-teal-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! r =")} {r.toFixed(2)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try r = Δ / S")}</p>}
     </div>
   );
 }
 
 function CircleChordInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [radius, setRadius] = useState(70); const [chordOffset, setChordOffset] = useState(20);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const halfChord = Math.sqrt(radius*radius - chordOffset*chordOffset);
@@ -157,18 +169,19 @@ function CircleChordInteractive({ onAnswer }: { onAnswer: (correct: boolean) => 
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
-        <div><label className="text-xs font-semibold">Radius (r)</label><input type="range" min="30" max="90" step="1" value={radius} onChange={e => { setRadius(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" /><span className="text-xs">{radius}</span></div>
-        <div><label className="text-xs font-semibold">Dist from Centre</label><input type="range" min="0" max={radius-1} step="1" value={chordOffset} onChange={e => { setChordOffset(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" /><span className="text-xs">{chordOffset}</span></div>
+        <div><label className="text-xs font-semibold">{t("Radius (r)")}</label><input type="range" min="30" max="90" step="1" value={radius} onChange={e => { setRadius(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" /><span className="text-xs">{radius}</span></div>
+        <div><label className="text-xs font-semibold">{t("Dist from Centre")}</label><input type="range" min="0" max={radius-1} step="1" value={chordOffset} onChange={e => { setChordOffset(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-indigo-500" /><span className="text-xs">{chordOffset}</span></div>
       </div>
-      <div className="bg-indigo-50 rounded-lg p-3 border border-indigo-200"><p className="text-xs text-indigo-700 font-mono">Half-chord = √({radius}²−{chordOffset}²) = {halfChord.toFixed(1)}<br />Full chord = <strong>{(halfChord*2).toFixed(1)}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Chord length" step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! Chord = {(halfChord*2).toFixed(1)}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try chord = 2√(r²−d²)</p>}
+      <div className="bg-indigo-50 rounded-lg p-3 border border-indigo-200"><p className="text-xs text-indigo-700 font-mono">{t("Half-chord = √(")}{radius}²−{chordOffset}²) = {halfChord.toFixed(1)}<br />{t("Full chord =")} <strong>{(halfChord*2).toFixed(1)}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Chord length")} step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! Chord =")} {(halfChord*2).toFixed(1)}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try chord = 2√(r²−d²)")}</p>}
     </div>
   );
 }
 
 function TangentCircleInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [r1, setR1] = useState(50); const [r2, setR2] = useState(30); const [mode, setMode] = useState<'external'|'internal'>('external');
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const distance = mode === 'external' ? r1 + r2 : Math.abs(r1 - r2);
@@ -176,63 +189,66 @@ function TangentCircleInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
   return (
     <div className="space-y-4">
       <div className="flex gap-2 mb-2">
-        <button onClick={() => setMode('external')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${mode === 'external' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600'}`}>External Touch</button>
-        <button onClick={() => setMode('internal')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${mode === 'internal' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600'}`}>Internal Touch</button>
+        <button onClick={() => setMode('external')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${mode === 'external' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{t("External Touch")}</button>
+        <button onClick={() => setMode('internal')} className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors ${mode === 'internal' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-600'}`}>{t("Internal Touch")}</button>
       </div>
       <div className="grid grid-cols-2 gap-3">
-        <div><label className="text-xs font-semibold">Radius r₁</label><input type="range" min="20" max="80" step="1" value={r1} onChange={e => { setR1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" /><span className="text-xs">{r1}</span></div>
-        <div><label className="text-xs font-semibold">Radius r₂</label><input type="range" min="10" max="70" step="1" value={r2} onChange={e => { setR2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" /><span className="text-xs">{r2}</span></div>
+        <div><label className="text-xs font-semibold">{t("Radius r₁")}</label><input type="range" min="20" max="80" step="1" value={r1} onChange={e => { setR1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" /><span className="text-xs">{r1}</span></div>
+        <div><label className="text-xs font-semibold">{t("Radius r₂")}</label><input type="range" min="10" max="70" step="1" value={r2} onChange={e => { setR2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-purple-500" /><span className="text-xs">{r2}</span></div>
       </div>
-      <div className="bg-purple-50 rounded-lg p-3 border border-purple-200"><p className="text-xs text-purple-700 font-mono">r₁ = {r1}, r₂ = {r2}<br />Distance d = {mode === 'external' ? 'r₁ + r₂' : '|r₁ − r₂|'} = <strong>{distance}</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="Distance d" step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-purple-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! d = {distance}</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> d = {mode === 'external' ? 'r₁ + r₂' : '|r₁ − r₂|'}</p>}
+      <div className="bg-purple-50 rounded-lg p-3 border border-purple-200"><p className="text-xs text-purple-700 font-mono">{t("r₁ =")} {r1}{t(", r₂ =")} {r2}<br />{t("Distance d =")} {mode === 'external' ? 'r₁ + r₂' : '|r₁ − r₂|'} = <strong>{distance}</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("Distance d")} step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-purple-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! d =")} {distance}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("d =")} {mode === 'external' ? 'r₁ + r₂' : '|r₁ − r₂|'}</p>}
     </div>
   );
 }
 
 function CyclicQuadInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [angleA, setAngleA] = useState(70);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const angleC = 180 - angleA;
   const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - angleC) < 0.5 ? 'correct' : 'incorrect'); if (Math.abs(val - angleC) < 0.5) onAnswer(true); };
   return (
     <div className="space-y-4">
-      <div><label className="text-xs font-semibold">∠A</label><input type="range" min="1" max="179" step="1" value={angleA} onChange={e => { setAngleA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" /><span className="text-xs">∠A = {angleA}°</span></div>
-      <div className="bg-cyan-50 rounded-lg p-3 border border-cyan-200"><p className="text-xs text-cyan-700 font-mono">∠A + ∠C = {angleA}° + {angleC}° = <strong>180°</strong> ✓</p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="∠C" step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-cyan-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! ∠A+∠C=180°</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Try ∠C = 180° − ∠A</p>}
+      <div><label className="text-xs font-semibold">∠A</label><input type="range" min="1" max="179" step="1" value={angleA} onChange={e => { setAngleA(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-cyan-500" /><span className="text-xs">{t("∠A =")} {angleA}°</span></div>
+      <div className="bg-cyan-50 rounded-lg p-3 border border-cyan-200"><p className="text-xs text-cyan-700 font-mono">{t("∠A + ∠C =")} {angleA}° + {angleC}° = <strong>180°</strong> ✓</p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("∠C")} step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-cyan-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! ∠A+∠C=180°")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Try ∠C = 180° − ∠A")}</p>}
     </div>
   );
 }
 
 function AlternateSegmentInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [angle, setAngle] = useState(40);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - angle) < 0.5 ? 'correct' : 'incorrect'); if (Math.abs(val - angle) < 0.5) onAnswer(true); };
   return (
     <div className="space-y-4">
-      <div><label className="text-xs font-semibold">∠APT</label><input type="range" min="10" max="80" step="1" value={angle} onChange={e => { setAngle(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-pink-500" /><span className="text-xs">∠APT = {angle}°</span></div>
-      <div className="bg-pink-50 rounded-lg p-3 border border-pink-200"><p className="text-xs text-pink-700 font-mono">Alternate Segment Theorem: ∠APT = ∠ABP<br />∠ABP = <strong>{angle}°</strong></p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="∠ABP" step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-pink-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! ∠ABP = {angle}°</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> ∠ABP equals ∠APT in the alternate segment</p>}
+      <div><label className="text-xs font-semibold">{t("∠APT")}</label><input type="range" min="10" max="80" step="1" value={angle} onChange={e => { setAngle(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-pink-500" /><span className="text-xs">{t("∠APT =")} {angle}°</span></div>
+      <div className="bg-pink-50 rounded-lg p-3 border border-pink-200"><p className="text-xs text-pink-700 font-mono">{t("Alternate Segment Theorem: ∠APT = ∠ABP")}<br />{t("∠ABP =")} <strong>{angle}°</strong></p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("∠ABP")} step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-pink-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! ∠ABP =")} {angle}°</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("∠ABP equals ∠APT in the alternate segment")}</p>}
     </div>
   );
 }
 
 function SemicircleAngleInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
+  const { t } = useTranslate();
   const [position, setPosition] = useState(40);
   const [userAns, setUserAns] = useState(''); const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
   const handleCheck = () => { const val = parseFloat(userAns); if (isNaN(val)) return; setCheckResult(Math.abs(val - 90) < 1 ? 'correct' : 'incorrect'); if (Math.abs(val - 90) < 1) onAnswer(true); };
   return (
     <div className="space-y-4">
-      <div><label className="text-xs font-semibold">Point P on semicircle</label><input type="range" min="0" max="100" step="1" value={position} onChange={e => setPosition(parseFloat(e.target.value))} className="w-full accent-blue-500" /></div>
-      <div className="bg-blue-50 rounded-lg p-3 border border-blue-200"><p className="text-xs text-blue-700 font-mono">∠APB = <strong>90°</strong> (angle in a semicircle)</p></div>
-      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder="∠APB" step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg">Check</button></div>
-      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> Correct! Always 90°!</p>}
-      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> Angle in a semicircle is always 90°!</p>}
+      <div><label className="text-xs font-semibold">{t("Point P on semicircle")}</label><input type="range" min="0" max="100" step="1" value={position} onChange={e => setPosition(parseFloat(e.target.value))} className="w-full accent-blue-500" /></div>
+      <div className="bg-blue-50 rounded-lg p-3 border border-blue-200"><p className="text-xs text-blue-700 font-mono">{t("∠APB =")} <strong>90°</strong> {t("(angle in a semicircle)")}</p></div>
+      <div className="flex gap-2"><input type="number" value={userAns} onChange={e => setUserAns(e.target.value)} placeholder={t("∠APB")} step="1" className="flex-1 px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 outline-none" /><button onClick={handleCheck} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg">{t("Check")}</button></div>
+      {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t("Correct! Always 90°!")}</p>}
+      {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t("Angle in a semicircle is always 90°!")}</p>}
     </div>
   );
 }

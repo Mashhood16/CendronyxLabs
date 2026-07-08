@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState } from 'react';
 import { Lightbulb, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 import { PredictionChallenge as PredictionChallengeType } from '../utils/labScaffolding';
@@ -13,6 +14,7 @@ export default function PredictionChallenge({
   onComplete,
   showResult = true,
 }: PredictionChallengeProps) {
+  const { t } = useTranslate();
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
 
@@ -30,7 +32,7 @@ export default function PredictionChallenge({
       <div className="flex items-center gap-2 mb-3">
         <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400" />
         <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-          Prediction Challenge
+          {t("Prediction Challenge")}
         </span>
       </div>
 

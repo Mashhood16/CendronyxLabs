@@ -72,7 +72,7 @@ export default function LabC7CVCreation({ onExit }: LabProps) {
    </div>
    {hasPicture ? (
     <div className="w-32 h-32 rounded bg-slate-200 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center overflow-hidden shrink-0">
-    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=200" alt="Profile" className="w-full h-full object-cover" />
+    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=80&w=200" alt={t("Profile")} className="w-full h-full object-cover" />
     </div>
    ) : (
     <div className="w-32 h-32 rounded border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center text-slate-400 text-sm font-medium text-center p-4 bg-slate-50 dark:bg-[#121212]">

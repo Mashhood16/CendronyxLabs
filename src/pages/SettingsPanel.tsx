@@ -147,7 +147,7 @@ export default function SettingsPanel() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t('settings.class_label')}</span>
-                    <p className="text-sm font-semibold text-slate-700">Class {user.classLevel}</p>
+                    <p className="text-sm font-semibold text-slate-700">{t("Class")} {user.classLevel}</p>
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t('settings.section_label')}</span>
@@ -200,8 +200,8 @@ export default function SettingsPanel() {
                 onChange={(e) => setLanguage(e.target.value as Language)}
                 className={`px-3 py-2 rounded-xl text-sm font-medium border transition-colors ${theme === 'dark' ? 'bg-[#121212] border-[#1c1b1b] text-[#ffffff]' : 'bg-white border-slate-200 text-slate-800'}`}
               >
-                <option value="en">English</option>
-                <option value="roman-urdu">Roman Urdu</option>
+                <option value="en">{t("English")}</option>
+                <option value="roman-urdu">{t("Roman Urdu")}</option>
               </select>
             </div>
           </div>

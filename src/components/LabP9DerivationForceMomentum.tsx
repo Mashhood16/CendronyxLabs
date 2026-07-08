@@ -33,7 +33,7 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
 
   return (
     <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:bg-[#000000] font-sans select-none text-slate-800 dark:text-white overflow-x-hidden w-full">
-      <LabHeader onExit={onExit} title="Derivation: Force & Change in Momentum" />
+      <LabHeader onExit={onExit} title={t("Derivation: Force & Change in Momentum")} />
 
       {/* Mobile Tabs */}
       <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 shrink-0">

@@ -1,0 +1,100 @@
+If z = 0, then |z| = 0
+🔄 Conversely, if z = 0 = 0 + 0i, then |z| = √(0² + 0²) = 0. Therefore, |z| = 0 if and only if z = 0. This fact is used in control systems to check if a feedback signal has converged to zero!
+z = 3 + 4i. Find |z|.
+|z| = √(3² + 4²) = √(9 + 16)
+|z| = √(x² + y²)
+Inverse of a Complex Number in Polar Form
+The multiplicative inverse in polar form uses the conjugate.
+Write 1/z
+🔄 You\
+Multiply by conjugate
+📐 To rationalize, multiply numerator and denominator by the conjugate cos θ − i sin θ. This is the complex analog of rationalizing a denominator with √.
+Simplify denominator
+🧮 Since i² = −1: cos²θ − i² sin²θ = cos²θ + sin²θ = 1 (the Pythagorean identity!). The denominator collapses to r × 1 = r.
+✅ z⁻¹ = (1/r)(cos θ − i sin θ). The magnitude is 1/r and the angle is −θ. In AC circuits, this means the inverse impedance has reciprocal magnitude and opposite phase angle — essential for parallel circuit analysis!
+z = 2(cos 60° + i sin 60°). Find |z⁻¹|.
+|z⁻¹| = 1/|z| = 1/2
+|z⁻¹| = 1/r
+Division of Complex Numbers in Polar Form
+Divide magnitudes, subtract angles.
+Write the ratio
+🔌 An electrical engineer is analyzing a power grid. Two AC voltages are z₁ = r₁(cos θ₁ + i sin θ₁) and z₂ = r₂(cos θ₂ + i sin θ₂). To find their ratio, divide them in polar form.
+Multiply numerator and denominator
+📐 Multiply numerator and denominator by the conjugate of the denominator.
+Simplify using trig identities
+🧮 After expanding: the denominator becomes cos²θ₂ + sin²θ₂ = 1. The numerator simplifies using angle sum/difference identities.
+Apply difference identities
+✅ cos θ₁ cos θ₂ + sin θ₁ sin θ₂ = cos(θ₁−θ₂) and sin θ₁ cos θ₂ − cos θ₁ sin θ₂ = sin(θ₁−θ₂). So z₁/z₂ = (r₁/r₂)[cos(θ₁−θ₂) + i sin(θ₁−θ₂)] — divide magnitudes, subtract angles!
+z₁=4(cos 90°+i sin 90°), z₂=2(cos 30°+i sin 30°). Find r₁/r₂.
+r₁/r₂ = 4/2 = 2
+r₁/r₂
+Determinant of a Transpose |A| = |Aᵀ|
+Transposing a matrix does not change its determinant.
+Consider a 3×3 matrix A
+📊 You\
+Define the transpose
+📐 The transpose Aᵀ swaps rows and columns: Aᵀ = [[a₁₁, a₂₁, a₃₁], [a₁₂, a₂₂, a₃₂], [a₁₃, a₂₃, a₃₃]]. The element at position (i,j) in A goes to position (j,i) in Aᵀ.
+Expand both determinants
+🧮 Expanding |Aᵀ| from Column 1 gives the exact same expression as expanding |A| from Row 1. Every term matches identically.
+Compare expansions
+✅ The two expansions are identical, so |A| = |Aᵀ|. This is why any theorem about rows in determinants automatically applies to columns too — a powerful symmetry in linear algebra!
+A 2×2 matrix has det(A) = 7. What is det(Aᵀ)?
+|Aᵀ| = |A| (they are always equal)
+|Aᵀ| = |A|
+Row/Column Interchange Flips Determinant Sign
+Swapping any two rows or columns multiplies the determinant by −1.
+Swap two rows of A to get B
+🎯 You\
+Expand B by Row 1
+📐 Expanding |B| by its first row gives a different-looking expression.
+Factor out −1
+🧮 By rearranging terms and factoring, the expression inside brackets matches exactly the expansion of |A| from Row 1.
+Therefore |B| = −|A|
+✅ The determinant changes sign. Swapping rows twice returns the original sign. This property is why Cramer\
+det(A) = 5. You swap two rows. What is the new determinant?
+Swapping rows flips the sign.
+Swapping rows → sign flips
+Identical Rows/Columns ⇒ Zero Determinant
+A matrix with two identical rows or columns has determinant zero.
+Suppose Row 1 = Row 2
+📉 Your GPS receiver uses three satellite signals (rows) to triangulate your position. If two satellites send identical signals (identical rows), the receiver can\
+Swap Row 1 and Row 2
+🎯 If we swap Row 1 and Row 2, since they\
+Equate the two expressions
+🧮 Since B = A (identical rows), |B| = |A|. But also |B| = −|A| (from the interchange property). Therefore |A| = −|A|.
+Solve for |A|
+✅ Adding |A| to both sides: 2|A| = 0 → |A| = 0. This is why Gauss-Jordan elimination breaks when rows are dependent — the determinant being zero tells us the matrix is singular!
+A 3×3 matrix has identical first and second rows. What is det(A)?
+Identical rows → the determinant must be zero
+Identical rows → det = 0
+Diagonals of a Parallelogram Bisect Each Other
+The midpoints of both diagonals of a parallelogram coincide.
+Midpoint of diagonal AC
+📐 The midpoint M₁ of diagonal AC has position vector (ã + c⃗)/2 — the average of the two endpoint vectors.
+Midpoint of diagonal BD
+📐 The midpoint M₂ of diagonal BD has position vector (b⃗ + d⃗)/2.
+Use parallelogram property
+🧮 In a parallelogram, AB = DC. In vectors: b⃗ − ã = c⃗ − d⃗ → b⃗ + d⃗ = ã + c⃗ → (ã + c⃗)/2 = (b⃗ + d⃗)/2. The midpoints are identical — the diagonals bisect each other!
+Parallelogram with A(1,2), B(4,3), C(6,7). Find midpoint of diagonal AC.
+Midpoint = ((1+6)/2, (2+7)/2) = (3.5, 4.5)
+M = ((x₁+x₂)/2, (y₁+y₂)/2)
+Triangle Midpoint Theorem
+The segment joining midpoints of two sides is parallel to and half the third side.
+Define triangle vertices
+Midpoints M₁ and M₂
+📐 M₁ is the midpoint of CA: (ã + c⃗)/2. M₂ is the midpoint of BC: (b⃗ + c⃗)/2. These are the truss\
+Vector M₁M₂
+🧮 M₁M₂ = M₂ − M₁ = (b⃗ + c⃗)/2 − (ã + c⃗)/2 = ½(b⃗ − ã) = ½AB. The c⃗ terms cancel!
+Interpretation
+✅ M₁M₂ = ½AB. This means: (1) M₁M₂ is parallel to AB (scalar multiple), and (2) its length is exactly half of AB. Your roof truss beam is perfectly positioned at half-scale of the base!
+Triangle with A(0,0), B(6,0), C(2,4). Find the length of M₁M₂ (midpoints of CA and BC).
+M₁ = ((0+2)/2, (0+4)/2) = (1,2), M₂ = ((6+2)/2, (0+4)/2) = (4,2). Distance = 3
+M₁M₂ = ½ × AB
+Trapezium Midpoint Theorem
+The segment joining midpoints of non-parallel sides is half the sum of parallel sides.
+Define trapezium
+🌉 You\
+📐 M₁ is the midpoint of side AD, M₂ is the midpoint of side BC — these are the endpoints of your mid-span beam.
+🧮 M₁M₂ = ½[(b⃗ − ã) + (c⃗ − d⃗)] = ½(AB + DC). The sum of the parallel side vectors, halved.
+Parallel property
+✅ Since AB ∥ DC, M₁M₂ is parallel to both. Its length = ½(|AB| + |DC|). For a bridge with top=10m and bottom=16m: midspan = ½(10+16) = 13m. This is why the trapezoidal rule in calculus uses the average of endpoints!

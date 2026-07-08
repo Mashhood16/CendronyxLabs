@@ -1335,7 +1335,7 @@ export default function LabM10Theorems({ onExit }: { onExit?: () => void }) {
             <h1 className="text-xl font-bold flex items-center gap-2">
               <GraduationCap className="w-6 h-6" />
               
-                                        Class 10 Math Interactive Theorems
+                                        {t("Class 10 Math Interactive Theorems")}
                                       </h1>
             <p className="text-sm text-white/80 mt-1">{t('lab.m10theorems_master_34_essential_theorems_t')}</p>
           </div>

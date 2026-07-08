@@ -1,3 +1,4 @@
+import { useTranslate } from '../i18n';
 import { useState, useRef } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Plus, RotateCcw, Download, Database, Activity } from 'lucide-react';
@@ -40,6 +41,7 @@ export default function DataChart({
   recordLabel = 'Record Data Point',
   chartType = 'line',
 }: DataChartProps) {
+  const { t } = useTranslate();
   const seedRef = useRef(noiseSeed);
 
   const handleRecord = () => {
@@ -92,7 +94,7 @@ export default function DataChart({
           <h3 className="font-semibold text-sm text-slate-700 dark:text-slate-200">{title}</h3>
           {hasData && (
             <span className="text-[10px] font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">
-              {data.length} pts
+              {data.length} {t("pts")}
             </span>
           )}
         </div>
@@ -101,7 +103,7 @@ export default function DataChart({
             <button
               onClick={handleExportCSV}
               className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
-              title="Export CSV"
+              title={t("Export CSV")}
             >
               <Download className="w-3.5 h-3.5" />
             </button>
@@ -109,7 +111,7 @@ export default function DataChart({
           <button
             onClick={onReset}
             className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
-            title="Clear Data"
+            title={t("Clear Data")}
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -162,8 +164,8 @@ export default function DataChart({
           ) : (
             <div className="h-full flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
               <Activity className="w-8 h-8 mb-2 opacity-40" />
-              <p className="text-xs font-medium">No data recorded yet</p>
-              <p className="text-[10px] mt-1">Click "{recordLabel}" to start logging</p>
+              <p className="text-xs font-medium">{t("No data recorded yet")}</p>
+              <p className="text-[10px] mt-1">{t("Click \"")}{recordLabel}{t("\" to start logging")}</p>
             </div>
           )}
         </div>
@@ -177,7 +179,7 @@ export default function DataChart({
         >
           <Plus className="w-3.5 h-3.5" />
           {recordLabel}
-          <span className="text-[10px] opacity-70 ml-1">(±{noisePercent}% noise)</span>
+          <span className="text-[10px] opacity-70 ml-1">(±{noisePercent}{t("% noise)")}</span>
         </button>
       </div>
 
@@ -210,7 +212,7 @@ export default function DataChart({
           </div>
           <div className="flex items-center gap-1.5 mt-2 text-[10px] text-slate-400 dark:text-slate-500">
             <Activity className="w-3 h-3" />
-            <span>Realistic measurements with ±{noisePercent}% experimental noise</span>
+            <span>{t("Realistic measurements with ±")}{noisePercent}{t("% experimental noise")}</span>
           </div>
         </div>
       )}

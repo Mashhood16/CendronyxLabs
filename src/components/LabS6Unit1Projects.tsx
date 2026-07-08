@@ -95,7 +95,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
      <input id="cell-upload" type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setCellPhoto)} />
      {cellPhoto ? (
       <div className="relative">
-      <img src={cellPhoto} alt="Uploaded model" className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-[#1c1b1b]" />
+      <img src={cellPhoto} alt={t("Uploaded model")} className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-[#1c1b1b]" />
       <button onClick={() => setCellPhoto(null)} className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"><X className="w-4 h-4" /></button>
       <p className="text-sm text-emerald-600 font-medium mt-2 text-center">{t('lab.s6unit1projects_photo_uploaded_successfully')}</p>
       </div>
@@ -151,7 +151,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
      <input id="organ-upload" type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setOrganPhoto)} />
      {organPhoto ? (
       <div className="relative">
-      <img src={organPhoto} alt="Uploaded model" className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-[#1c1b1b]" />
+      <img src={organPhoto} alt={t("Uploaded model")} className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-[#1c1b1b]" />
       <button onClick={() => setOrganPhoto(null)} className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40"><X className="w-4 h-4" /></button>
       <p className="text-sm text-emerald-600 font-medium mt-2 text-center">{t('lab.s6unit1projects_photo_uploaded_successfully')}</p>
       </div>

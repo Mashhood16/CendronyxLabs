@@ -1,0 +1,100 @@
+By Theorem 9.3, E and F are midpoints. AE = AB/2, CF = CD/2. Since AB = CD, AE = CF. === By Theorem 9.3, E aur F midpoints hain. AE = AB/2, CF = CD/2. Kyunki AB = CD, AE = CF.
+Use Pythagoras === Pythagoras use karein
+In right triangles OAE and OCF, since OA = OC (radii) and AE = CF: OE² = OF² → OE = OF. === Right triangles OAE aur OCF mein, kyunki OA = OC (radii) aur AE = CF: OE² = OF² → OE = OF.
+Two equal chords of length 16 have distance 6 from centre. What is the distance? === Do equal chords jin ki length 16 hai unka centre se distance 6 hai. Distance kya hai?
+Equal chords → equal distances from centre. === Equal chords → centre se equal distances.
+Equal chords are equidistant from centre === Equal chords centre se equidistant hoti hain
+Theorem 9.5: Equidistant Chords are Congruent === Theorem 9.5: Equidistant Chords Congruent hoti hain
+Chords at equal distance from the centre are equal in length. === Chords jo centre se equal distance par hoti hain unki length equal hoti hai.
+Draw chords at equal distance === Equal distance par chords draw karein
+🎪 Draw two chords AB and CD such that their perpendicular distances from the centre (OE and OF) are equal. === 🎪 Do chords AB aur CD aise draw karein ke unke centre se perpendicular distances (OE aur OF) equal hon.
+Since OA = OC (radii) and OE = OF: AE² = CF² → AE = CF. === Kyunki OA = OC (radii) aur OE = OF: AE² = CF² → AE = CF.
+Double the half-lengths === Half-lengths ko double karein
+E and F are midpoints (Theorem 9.3), so AB = 2×AE and CD = 2×CF. Since AE = CF, we get AB = CD. === E aur F midpoints hain (Theorem 9.3), is liye AB = 2×AE aur CD = 2×CF. Kyunki AE = CF, humein AB = CD milta hai.
+Two chords are both 8 units from the centre of a circle of radius 10. Are they equal? === Do chords radius 10 ke circle ke centre se 8 units door hain. Kya wo equal hain?
+Equal distances from centre → equal chords. === Centre se equal distances → equal chords.
+Equal distance from centre → equal chords === Centre se equal distance → equal chords
+Theorem 9.6: Congruent Arcs → Equal Chords === Theorem 9.6: Congruent Arcs → Equal Chords
+Congruent arcs subtend equal chords. === Congruent arcs equal chords subtend karti hain.
+Take two congruent arcs === Do congruent arcs lein
+🎵 Imagine two identical arcs on a circle — like equal-length curved sections of a circular railway track. === 🎵 Circle par do identical arcs imagine karein — jaise circular railway track ke equal-length curved sections.
+Rotate to coincide === Rotate karein taake coincide kar jayein
+Since the arcs are congruent, rotate one arc onto the other. Their endpoints match up. === Kyunki arcs congruent hain, ek arc ko doosri par rotate karein. Unke endpoints match kar jayenge.
+Chords are equal === Chords equal hain
+The chords connect corresponding endpoints. Since arcs perfectly overlap, chords must be equal. === Chords corresponding endpoints ko connect karti hain. Kyunki arcs perfectly overlap karti hain, chords equal honi chahiyein.
+Arcs AB and CD each subtend 60° at the centre. Are chords AB and CD equal? === Arcs AB aur CD dono centre par 60° subtend karti hain. Kya chords AB aur CD equal hain?
+Equal central angles → equal arcs → equal chords. === Equal central angles → equal arcs → equal chords.
+Congruent arcs → equal chords === Congruent arcs → equal chords
+Theorem 9.7: Equal Chords → Congruent Arcs === Theorem 9.7: Equal Chords → Congruent Arcs
+Equal chords subtend congruent arcs. === Equal chords congruent arcs subtend karti hain.
+🔗 Draw two equal chords AB and CD on a circle, like two equal-length strings on a circular instrument. === 🔗 Circle par do equal chords AB aur CD draw karein, jaise kisi circular instrument par do equal-length ki strings.
+Join centre to endpoints === Centre ko endpoints se join karein
+OA = OB = OC = OD = r and AB = CD. So triangles are congruent by SSS. === OA = OB = OC = OD = r aur AB = CD. Toh triangles SSS se congruent hain.
+Central angles are equal === Central angles equal hain
+From congruency of triangles, the central angles are equal. Equal central angles mean equal arcs. === Triangles ki congruency se, central angles equal hain. Equal central angles ka matlab equal arcs hota hai.
+Two equal chords subtend what kind of arcs? === Do equal chords kis tarah ki arcs subtend karti hain?
+Equal chords → equal central angles → equal arcs. === Equal chords → equal central angles → equal arcs.
+Equal chords → congruent arcs === Equal chords → congruent arcs
+Theorem 9.8: Equal Chords → Equal Angles at Centre === Theorem 9.8: Equal Chords → Equal Angles at Centre
+Equal chords subtend equal angles at the centre. === Equal chords centre par equal angles subtend karti hain.
+🎯 Draw two equal chords AB and CD in a circle. Connect their endpoints to the centre O. === 🎯 Circle mein do equal chords AB aur CD draw karein. Unke endpoints ko centre O se connect karein.
+Compare triangles === Triangles ko compare karein
+OA = OC (radii), OB = OD (radii), AB = CD (given). SSS congruence. === OA = OC (radii), OB = OD (radii), AB = CD (given). SSS congruence.
+Corresponding angles equal === Corresponding angles equal hain
+From the congruence, ∠AOB = ∠COD. Equal chords subtend equal central angles. === Congruence se, ∠AOB = ∠COD. Equal chords equal central angles subtend karti hain.
+Chord AB = chord CD in the same circle. If ∠AOB = 60°, what is ∠COD? === Ek hi circle mein chord AB = chord CD. Agar ∠AOB = 60° hai, toh ∠COD kya hai?
+Equal chords → equal central angles. === Equal chords → equal central angles.
+Equal chords subtend equal central angles === Equal chords equal central angles subtend karti hain
+Theorem 9.9: Equal Central Angles → Equal Chords === Theorem 9.9: Equal Central Angles → Equal Chords
+Equal angles at the centre subtend equal chords. === Centre par equal angles equal chords subtend karte hain.
+Draw chords with equal central angles === Equal central angles ke sath chords draw karein
+📐 Draw two chords AB and CD with equal central angles. === 📐 Equal central angles ke sath do chords AB aur CD draw karein.
+OA = OC (radii), OB = OD (radii), ∠AOB = ∠COD (given). SAS congruence. === OA = OC (radii), OB = OD (radii), ∠AOB = ∠COD (given). SAS congruence.
+Corresponding sides equal === Corresponding sides equal hain
+From the congruence, AB = CD. Equal central angles subtend equal chords. === Congruence se, AB = CD. Equal central angles equal chords subtend karte hain.
+Central angles ∠AOB = ∠COD = 45°. Are chords AB and CD equal? === Central angles ∠AOB = ∠COD = 45°. Kya chords AB aur CD equal hain?
+Equal central angles → equal chords. === Equal central angles → equal chords.
+Equal central angles → equal chords === Equal central angles → equal chords
+Theorem 10.1: Perpendicular to Radius = Tangent === Theorem 10.1: Perpendicular to Radius = Tangent
+A line perpendicular to a radius at its endpoint on the circle is a tangent. === Circle par radius ke endpoint par perpendicular line ek tangent hoti hai.
+Draw radius and perpendicular === Radius aur perpendicular draw karein
+🔄 Draw a radial segment OA from centre O to point A on the circle. Draw line PQ ⟂ OA at A. === 🔄 Centre O se circle par point A tak ek radial segment OA draw karein. A par line PQ ⟂ OA draw karein.
+Check distance from centre === Centre se distance check karein
+Since OA is the perpendicular distance, it\ === Kyunki OA perpendicular distance hai, yeh\
+Only one intersection === Sirf ek intersection
+The distance from O to any other point on PQ is greater than the radius, so no other point lies on the circle. === O se PQ ke kisi bhi doosre point ka distance radius se zyada hai, is liye circle par koi aur point nahi hai.
+PQ is a tangent === PQ ek tangent hai
+A line touching a circle at exactly one point is a tangent. Draw a perpendicular at a radius endpoint to construct a tangent! === Ek line jo circle ko exactly ek point par touch karti hai wo tangent hoti hai. Tangent construct karne ke liye radius ke endpoint par perpendicular draw karein!
+A line is drawn perpendicular to a radius at its endpoint on the circle. What is it? === Circle par radius ke endpoint par ek line perpendicular draw ki gayi hai. Yeh kya hai?
+A line perpendicular to radius at endpoint is a... === Endpoint par radius ke perpendicular line ek...
+Perpendicular at endpoint of radius = tangent === Radius ke endpoint par perpendicular = tangent
+Theorem 10.2: Tangent ⟂ Radius at Point of Contact === Theorem 10.2: Tangent ⟂ Radius at Point of Contact
+The tangent and the radius at the point of contact are perpendicular. === Tangent aur point of contact par radius perpendicular hote hain.
+Draw tangent and radius === Tangent aur radius draw karein
+⭕ Draw a circle with centre O. Draw a tangent PQ touching the circle at B. Draw radius OB. === ⭕ Centre O ke sath ek circle draw karein. Circle ko B par touch karta hua ek tangent PQ draw karein. Radius OB draw karein.
+Assume not ⟂ (contradiction) === Assume karein ke ⟂ nahi hai (contradiction)
+If OB is NOT perpendicular, then some other point on PQ is closer to O than B. === Agar OB perpendicular NAHI hai, toh PQ par koi aur point B ki nisbat O ke zyada qareeb hai.
+Contradiction === Contradiction
+That closer point would be inside the circle, meaning PQ intersects the circle at two points — contradicting that PQ is a tangent. === Wo qareeb wala point circle ke andar hoga, jis ka matlab hai ke PQ circle ko do points par intersect karta hai — yeh contradict karta hai ke PQ ek tangent hai.
+Therefore OB ⟂ PQ === Is liye OB ⟂ PQ
+The assumption is false, so OB ⟂ PQ. The radius and tangent are always perpendicular. === Assumption false hai, is liye OB ⟂ PQ. Radius aur tangent hamesha perpendicular hote hain.
+Radius OB meets tangent at B. What is the angle between them? === Radius OB tangent se B par milta hai. Unke darmiyan angle kya hai?
+Tangent is perpendicular to radius at point of contact. === Tangent point of contact par radius ke perpendicular hota hai.
+Tangent ⟂ radius = 90° === Tangent ⟂ radius = 90°
+Theorem 10.3: Two Tangents from External Point are Equal === Theorem 10.3: Two Tangents from External Point are Equal
+The lengths of two tangents from an external point to a circle are equal. === Ek external point se circle tak do tangents ki lengths equal hoti hain.
+Draw tangents from external point === External point se tangents draw karein
+📍 Take point A outside the circle. Draw two tangents AB and AC touching the circle at B and C. === 📍 Circle ke bahar point A lein. Circle ko B aur C par touch karte hue do tangents AB aur AC draw karein.
+Join centre to points === Centre ko points se join karein
+Join OA, OB, OC. By Theorem 10.2: OB ⟂ AB and OC ⟂ AC, so ∠OBA = ∠OCA = 90°. === OA, OB, OC ko join karein. Theorem 10.2 ke mutabiq: OB ⟂ AB aur OC ⟂ AC, is liye ∠OBA = ∠OCA = 90°.
+OB = OC (radii), OA = OA (common), ∠OBA = ∠OCA = 90°. RHS congruence → AB = AC. === OB = OC (radii), OA = OA (common), ∠OBA = ∠OCA = 90°. RHS congruence → AB = AC.
+Two tangents are drawn from point A to a circle. If one tangent is 12 cm, how long is the other? === Point A se circle tak do tangents draw kiye gaye hain. Agar ek tangent 12 cm hai, toh doosra kitna lamba hai?
+Two tangents from the same external point are equal. === Ek hi external point se do tangents equal hote hain.
+Tangents from same point are equal === Ek hi point se tangents equal hote hain
+Theorem 10.4: Externally Touching Circles === Theorem 10.4: Externally Touching Circles
+If circles touch externally, distance between centres equals sum of radii. === Agar circles externally touch karte hain, toh centres ke darmiyan distance radii ke sum ke equal hota hai.
+Draw two circles touching externally === Externally touch karte hue do circles draw karein
+🔵🔵 Draw two circles with centres A and B that touch at exactly one point C. === 🔵🔵 Centres A aur B ke sath do circles draw karein jo exactly ek point C par touch karte hon.
+Point C lies on line AB === Point C line AB par lie karta hai
+The shortest distance between A and B passes through point of contact C. === A aur B ke darmiyan shortest distance point of contact C se pass karta hai.
+AC = r₁, BC = r₂ === AC = r₁, BC = r₂
