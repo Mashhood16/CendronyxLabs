@@ -53,6 +53,10 @@ const DB_VERSION = 5;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
+export const resetDB = () => {
+  dbPromise = null;
+};
+
 export const initDB = () => {
   if (!dbPromise) {
     dbPromise = openDB<VirtualLabDB>(DB_NAME, DB_VERSION, {

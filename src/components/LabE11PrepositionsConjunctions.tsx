@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, BookOpen, Puzzle, AlertCircle, List } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Check, BookOpen, Puzzle, AlertCircle, List } from 'lucide-react';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
@@ -80,20 +81,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center p-4 shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <button 
-   onClick={onExit} 
-   className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-[#2a2a2a] transition-colors whitespace-nowrap flex-shrink-0"
-   aria-label="Go Back"
-  >
-   <ArrowLeft size={24} className="text-slate-700 dark:text-slate-300" />
-  </button>
-  <h1 className="text-2xl font-bold flex-1 flex items-center gap-2 text-slate-900 dark:text-white">
-   <BookOpen className="text-[#4158D1]" />
-   
-                    {t('lab.e11prepositionsconjunctions_prepositions_conjunctions')}
-                   </h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e11prepositionsconjunctions_prepositions_conjunctions')} />
 
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden px-4 pt-4 md:px-6 flex gap-2 shrink-0">

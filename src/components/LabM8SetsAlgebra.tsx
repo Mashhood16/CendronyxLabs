@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Check, PieChart, TrendingUp } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Check, PieChart, TrendingUp } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
@@ -65,20 +66,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <div className="flex items-center p-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b]">
-  <button onClick={onExit} className="p-2 mr-4 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full flex-shrink-0 whitespace-nowrap transition-colors">
-   <ArrowLeft size={20} />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 truncate">{t('lab.m8setsalgebra_unit_5_6_sets_and_sequences')}</h1>
-  <div className="flex space-x-2">
-   <button onClick={() => setMode('sets')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sets' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
-   <PieChart size={18} className="mr-2" />  {t('lab.m8setsalgebra_sets_analysis')}
-                        </button>
-   <button onClick={() => setMode('sequences')} className={`px-4 py-2 rounded-lg font-medium flex items-center transition-colors ${mode === 'sequences' ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-200 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:bg-slate-700 dark:text-[#ffffff] dark:hover:bg-slate-600'}`}>
-   <TrendingUp size={18} className="mr-2" />  {t('lab.m8setsalgebra_sequences')}
-                        </button>
-  </div>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.m8setsalgebra_unit_5_6_sets_and_sequences')} />
 
   {/* Main content: 2-column layout */}
   <div className="flex flex-1 overflow-hidden">

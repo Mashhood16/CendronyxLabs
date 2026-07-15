@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Triangle, Compass, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Triangle, Compass, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import type { ChangeEvent } from 'react';
 import MathText from './MathText';
 import { useTranslate } from "../i18n";
@@ -250,18 +251,7 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
-  <header className="flex items-center p-4 shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft size={24} />
-  </button>
-  <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">
-   
-                    {t('lab.m8geometrytriangles_unit_9_10_geometry_similar_tri')}
-                   </h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m8geometrytriangles_unit_9_10_geometry_similar_tri')} />
 
   <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
   {/* Left Column: Controls */}

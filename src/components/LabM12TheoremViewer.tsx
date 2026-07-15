@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import LabHeader from './LabHeader';
 import { GenericTheoremLab } from '../components/GenericTheoremLab';
 import { CLASS12_THEOREMS } from '../data/class12Theorems';
 import { useTranslate } from "../i18n";
@@ -32,16 +33,7 @@ export default function LabM12TheoremViewer({ onExit }: { onExit?: () => void })
   if (!config) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-slate-50 dark:bg-[#000000]">
-        <div className="text-center p-8">
-          <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-2">{t('lab.m12theoremviewer_theorem_not_found')}</h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{t('lab.m12theoremviewer_the_requested_theorem_could_no')}</p>
-          {onExit && (
-            <button onClick={onExit} className="mt-4 px-4 py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg">
-              
-                                      {t('lab.m12theoremviewer_go_back')}
-                                    </button>
-          )}
-        </div>
+        <LabHeader onExit={onExit} title={t('lab.m12theoremviewer_theorem_not_found')} />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import { useState, useRef, useMemo } from 'react';
-import { ArrowLeft, Database, CheckCircle, Activity, Ruler } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Database, CheckCircle, Activity, Ruler } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
@@ -68,23 +69,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000] font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* HEADER */}
-  <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
-  <div className="flex items-center gap-3">
-   {onExit && (
-   <button
-    onClick={onExit}
-    className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0"
-   >
-    <ArrowLeft className="w-5 h-5" />
-   </button>
-   )}
-   <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
-   <Ruler className="w-6 h-6 text-indigo-500" />
-   
-                        {t('lab.m8mensuration_advanced_mensuration_solid_pro')}
-                        </h1>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m8mensuration_advanced_mensuration_solid_pro')} />
 
   {/* 3-COLUMN LAYOUT */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex-1 items-start">

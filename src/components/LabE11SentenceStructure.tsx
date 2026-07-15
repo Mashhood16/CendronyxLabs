@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Info, BookOpen, RefreshCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle, XCircle, Info, BookOpen, RefreshCcw } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 type SentenceTopic = 'types' | 'modifiers';
@@ -89,16 +90,7 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center justify-between p-4 shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
-  <div className="flex items-center gap-3">
-   {onExit && (
-   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors whitespace-nowrap flex-shrink-0">
-    <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-[#a1a1aa]" />
-   </button>
-   )}
-   <h1 className="text-lg md:text-xl font-bold text-indigo-700 dark:text-indigo-400">{t('lab.e11sentencestructure_lab_e11_sentence_structure_mod')}</h1>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e11sentencestructure_lab_e11_sentence_structure_mod')} />
 
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">

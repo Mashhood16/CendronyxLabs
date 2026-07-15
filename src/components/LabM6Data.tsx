@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Dices, Coins, BarChart3, PieChart, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Dices, Coins, BarChart3, PieChart, CheckCircle, XCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM6Data({ onExit }: { onExit?: () => void }) {
@@ -106,12 +107,7 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
 
  return (
  <div ref={containerRef} className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 shadow-sm z-10">
-  <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-   <ArrowLeft size={24} />
-  </button>
-  <h1 className="text-2xl font-bold flex-1">{t('lab.m6data_unit_10_data_dashboard')}</h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m6data_unit_10_data_dashboard')} />
 
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:overflow-visible">
   {/* Left: Controls */}

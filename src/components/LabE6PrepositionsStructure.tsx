@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, RefreshCw, Navigation, Box, MousePointer2 , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Check, RefreshCw, Navigation, Box, MousePointer2 } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
 export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [prep, setPrep] = useState('over');
  const [animating, setAnimating] = useState(false);
 
@@ -98,22 +99,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
   <style>{styleSheet}</style>
-  <header className="flex items-center justify-between p-4 shadow-sm z-10">
-  <div className="flex items-center gap-4">
-   <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors whitespace-nowrap flex-shrink-0">
-   <ArrowLeft className="w-5 h-5" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold">{t('lab.e6prepositionsstructure_prepositions_structure_lab')}</h1>
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e6prepositionsstructure_prepositions_structure_lab')} />
 
   <main className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg: lg:overflow-visible">
   {/* Left Column: Controls & Workspace */}

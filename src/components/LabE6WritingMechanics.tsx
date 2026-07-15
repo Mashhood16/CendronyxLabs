@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, RotateCw, Globe, Star, Image as ImageIcon, DownloadCloud, CheckCircle, XCircle , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { ArrowLeft, ArrowRight, RotateCw, Globe, Star, Image as ImageIcon, DownloadCloud, CheckCircle, XCircle } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
@@ -34,7 +35,7 @@ const tasks = [
 
 export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [currentIndex, setCurrentIndex] = useState(0);
  const [selectedAction, setSelectedAction] = useState<string | null>(null);
  const [browserAction, setBrowserAction] = useState<string | null>(null);
@@ -73,35 +74,12 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center justify-between p-4 shadow-sm z-10">
-  <div className="flex items-center gap-4">
-   {onExit && (
-   <button
-    onClick={onExit}
-    className="px-4 py-2 flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa] hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap flex-shrink-0"
-   >
-    <ArrowLeft className="w-5 h-5" />
-    
-                             {t('lab.e6writingmechanics_go_back')}
-                            </button>
-   )}
-   <h1 className="text-lg md:text-xl font-bold">{t('lab.e6writingmechanics_class_6_writing_mechanics_inte')}</h1>
-  </div>
-  <div className="flex items-center gap-4">
-   <div className="text-sm font-medium bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-full">
-   
-                        {t('lab.e6writingmechanics_score')} {score}/{tasks.length}
-   </div>
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e6writingmechanics_class_6_writing_mechanics_inte')} rightContent={
+          <div className="flex items-center gap-2 bg-black/20 dark:bg-white/10 px-4 py-2 rounded-full font-bold text-white text-xs">
+            <span className="opacity-90">{t('lab.e6writingmechanics_score')}</span>
+            <span className="text-yellow-300 font-mono text-sm">{score}</span>
+          </div>
+        } />
 
   {/* Main content */}
   <div className="lg:flex-1 lg: flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 lg:overflow-visible">

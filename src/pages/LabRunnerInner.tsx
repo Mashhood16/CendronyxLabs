@@ -5,9 +5,9 @@ import { LAB_MODULES } from '../data/labModules';
 import { historyDB } from '../services/dbService';
 import type { LabDataEntry } from '../store';
 import { useAuth, useLab, LabProvider } from '../store';
-
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
+import { theme } from '../utils/labTheme';
 
 interface LabRunnerInnerProps {
   moduleId: string | undefined;
@@ -129,7 +129,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   if (!LabComponent || !moduleId) {
     return (
       <Layout>
-        <div className="flex flex-col items-center justify-center min-h-[60vh] bg-slate-50 rounded-2xl border border-slate-200 dark:bg-[#000000] dark:border-[#1c1b1b]">
+        <div className={`flex flex-col items-center justify-center min-h-[60vh] ${theme.page.bg} rounded-2xl border ${theme.border.default}`}>
           <h2 className="text-2xl font-bold text-slate-800 mb-2">{t("Module Not Found")}</h2>
           <p className="text-slate-500 mb-6">{t("The module \"")}{moduleId}{t("\" does not exist or is still under construction.")}</p>
           <button onClick={handleExit} className="px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
@@ -142,7 +142,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
 
   return (
     <LabProvider value={{ hideCalculator, isEnglishLab, moduleId }}>
-      <div className={`${isEnglishLab ? 'english-lab-runner' : ''} text-slate-800 dark:text-[#ffffff] bg-slate-50 dark:bg-[#000000] min-h-screen`}>
+      <div className={`${isEnglishLab ? 'english-lab-runner' : ''} ${theme.text.primary} ${theme.page.bg} min-h-screen`}>
         <LabComponent onExit={handleExit} />
       </div>
     </LabProvider>

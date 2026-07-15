@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Anchor, CheckCircle2, XCircle, RefreshCw , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Anchor, CheckCircle2, XCircle, RefreshCw } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
@@ -64,7 +65,7 @@ const QUESTIONS: Question[] = [
 
 export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
  const [selectedConjunction, setSelectedConjunction] = useState<string | null>(null);
  const [feedback, setFeedback] = useState<'idle' | 'correct' | 'incorrect'>('idle');
@@ -176,41 +177,12 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] overflow-hidden">
   {/* Header */}
-  <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] z-10">
-  <div className="flex items-center gap-4">
-   <button
-   onClick={onExit}
-   className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-   aria-label="Go back"
-   >
-   <ArrowLeft className="w-6 h-6 text-slate-600 dark:text-[#a1a1aa]" />
-   </button>
-   <div>
-   <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-[#ffffff]">
-    
-                             {t('lab.e7conjunctions_clause_bridge_builder')}
-                            </h1>
-   <p className="text-sm text-slate-500 dark:text-[#71717a]">
-    
-                             {t('lab.e7conjunctions_class_7_english_conjunctions_c')}
-                            </p>
-   </div>
-  </div>
-  <div className="flex items-center gap-2">
-   <span className="font-semibold text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/30 px-3 py-1 rounded-full border border-amber-200 dark:border-amber-800">
-   
-                        {t('lab.e7conjunctions_score')} {score}
-   </span>
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e7conjunctions_clause_bridge_builder')} rightContent={
+          <div className="flex items-center gap-2 bg-black/20 dark:bg-white/10 px-4 py-2 rounded-full font-bold text-white text-xs animate-fade-in">
+            <span className="opacity-90">{t('lab.e7conjunctions_score')}</span>
+            <span className="text-yellow-300 font-mono text-sm">{score}</span>
+          </div>
+        } />
 
   {/* Main 2-column layout */}
   <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">

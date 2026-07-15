@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, BookOpen, Volume2, Search, Type , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle2, XCircle, BookOpen, Volume2, Search, Type } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -44,7 +45,7 @@ const WORD_LIST = [
 
 export default function LabE8NounsPhonetics({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [currentWordIdx, setCurrentWordIdx] = useState(0);
  const [type1, setType1] = useState("");
  const [type2, setType2] = useState("");
@@ -90,26 +91,7 @@ export default function LabE8NounsPhonetics({ onExit }: { onExit?: () => void })
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <div className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] dark:bg-[#121212] shrink-0">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">{t('lab.e8nounsphonetics_nouns_phonetics_lexicon_lab')}</h1>
-  <div className="flex gap-2">
-   <button onClick={handlePrev} className="px-4 py-2 bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-700 rounded-lg hover:bg-slate-300 dark:bg-[#121212]/50 dark:hover:bg-slate-600 transition-colors whitespace-nowrap flex-shrink-0">{t('lab.e8nounsphonetics_prev')}</button>
-   <button onClick={handleNext} className="px-4 py-2 bg-slate-200 dark:bg-[#121212]/50 dark:bg-slate-700 rounded-lg hover:bg-slate-300 dark:bg-[#121212]/50 dark:hover:bg-slate-600 transition-colors whitespace-nowrap flex-shrink-0">{t('lab.e8nounsphonetics_next')}</button>
-  </div>
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:/10 transition-colors shrink-0 ml-4"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.e8nounsphonetics_nouns_phonetics_lexicon_lab')} />
 
   <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
   {/* Left Column: Controls */}

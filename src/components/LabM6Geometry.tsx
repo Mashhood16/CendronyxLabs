@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Navigation, Disc, PencilRuler } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Navigation, Disc, PencilRuler } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
@@ -35,12 +36,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min-min- lg: bg-slate-50 dark:bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 shadow-sm z-10">
-  <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold">{t('lab.m6geometry_class_6_geometry_symmetry_cons')}</h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m6geometry_class_6_geometry_symmetry_cons')} />
 
   <div className="flex-1 min-w-0 flex flex-col lg:flex-row lg:overflow-hidden">
   {/* Left Column */}

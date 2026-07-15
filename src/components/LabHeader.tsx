@@ -19,58 +19,7 @@ interface LabHeaderProps {
   variant?: LabHeaderVariant;
 }
 
-interface SolidTheme {
-  lightBg: string;
-  darkBg: string;
-  text: string;
-  subtext: string;
-  button: string;
-}
-
-const SOLID_THEMES: SolidTheme[] = [
-  {
-    lightBg: 'bg-indigo-600 shadow-md shadow-indigo-500/10',
-    darkBg: 'bg-indigo-900 shadow-md shadow-indigo-950/40 border-b border-indigo-800/50',
-    text: 'text-white',
-    subtext: 'text-indigo-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  },
-  {
-    lightBg: 'bg-emerald-600 shadow-md shadow-emerald-500/10',
-    darkBg: 'bg-emerald-900 shadow-md shadow-emerald-950/40 border-b border-emerald-800/50',
-    text: 'text-white',
-    subtext: 'text-emerald-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  },
-  {
-    lightBg: 'bg-rose-600 shadow-md shadow-rose-500/10',
-    darkBg: 'bg-rose-900 shadow-md shadow-rose-950/40 border-b border-rose-800/50',
-    text: 'text-white',
-    subtext: 'text-rose-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  },
-  {
-    lightBg: 'bg-amber-600 shadow-md shadow-amber-500/10',
-    darkBg: 'bg-amber-900 shadow-md shadow-amber-950/40 border-b border-amber-800/50',
-    text: 'text-white',
-    subtext: 'text-amber-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  },
-  {
-    lightBg: 'bg-blue-600 shadow-md shadow-blue-500/10',
-    darkBg: 'bg-blue-900 shadow-md shadow-blue-950/40 border-b border-blue-800/50',
-    text: 'text-white',
-    subtext: 'text-blue-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  },
-  {
-    lightBg: 'bg-purple-600 shadow-md shadow-purple-500/10',
-    darkBg: 'bg-purple-900 shadow-md shadow-purple-950/40 border-b border-purple-800/50',
-    text: 'text-white',
-    subtext: 'text-purple-100/90',
-    button: 'p-2 rounded-full transition-colors text-white hover:bg-white/20 border-0 outline-none focus:outline-none focus:ring-0',
-  }
-];
+import { SOLID_THEMES, type SolidTheme } from '../utils/labTheme';
 
 export default function LabHeader({ onExit, title, titleKey, subtitle, subtitleKey, icon, rightContent }: LabHeaderProps) {
   const [calcOpen, setCalcOpen] = useState(false);

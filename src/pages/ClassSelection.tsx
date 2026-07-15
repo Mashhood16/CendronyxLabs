@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES } from '../data/labModules';
 import Layout from '../components/Layout';
 import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, LayoutGrid, List, Rocket, Sparkles, ArrowRight, Beaker } from 'lucide-react';
-import { useTheme } from '../store';
 import { useTranslate } from '../i18n';
+import { theme } from '../utils/labTheme';
 
 const CLASS_CONFIG: Record<string, { color: string; icon: typeof FlaskConical; iconBg: string; textColor: string; label: string; desc: string }> = {
   '6':  { color: '#f97316', icon: FlaskConical, iconBg: 'bg-orange-500/20', textColor: 'text-orange-500', label: 'Science', desc: 'Foundations of Science. Introduction to basic concepts and principles.' },
@@ -18,8 +18,6 @@ const CLASS_CONFIG: Record<string, { color: string; icon: typeof FlaskConical; i
 
 export default function ClassSelection() {
   const navigate = useNavigate();
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
   const { t } = useTranslate();
   
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -36,7 +34,7 @@ export default function ClassSelection() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></div>
           
           {/* Dot pattern overlay */}
-          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgCGU9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+          <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAyIiBoZWlnaHQ9IjIwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMSIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==')]"></div>
           
           <div className="relative z-10 px-5 py-6 sm:px-7 md:px-9 md:py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div className="max-w-2xl">
@@ -73,19 +71,19 @@ export default function ClassSelection() {
 
         {/* Section Header */}
         <div id="class-grid" className="flex items-center justify-between mb-6 scroll-mt-20">
-          <h2 className={`text-xl md:text-2xl font-bold tracking-tight ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
+          <h2 className={`text-xl md:text-2xl font-bold tracking-tight ${theme.text.primary}`}>
             {t('class.select')}
           </h2>
           <div className="flex items-center gap-2">
             <button 
               onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? (isDark ? 'bg-[#121212] border border-[#1c1b1b] text-[#ffffff]' : 'bg-slate-100 border border-slate-200 text-slate-800') : (isDark ? 'bg-[#121212]/50 border border-[#1c1b1b]/50 text-[#71717a] hover:text-[#a1a1aa]' : 'bg-white border border-slate-100 text-slate-400 hover:text-slate-600')}`}
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? `${theme.card.bg} border ${theme.border.default} ${theme.text.primary}` : `${theme.innerCard.bg} border ${theme.innerCard.border} ${theme.text.subtle} hover:${theme.text.primary}`}`}
             >
               <LayoutGrid className="w-4 h-4" />
             </button>
             <button 
               onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? (isDark ? 'bg-[#121212] border border-[#1c1b1b] text-[#ffffff]' : 'bg-slate-100 border border-slate-200 text-slate-800') : (isDark ? 'bg-[#121212]/50 border border-[#1c1b1b]/50 text-[#71717a] hover:text-[#a1a1aa]' : 'bg-white border border-slate-100 text-slate-400 hover:text-slate-600')}`}
+              className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? `${theme.card.bg} border ${theme.border.default} ${theme.text.primary}` : `${theme.innerCard.bg} border ${theme.innerCard.border} ${theme.text.subtle} hover:${theme.text.primary}`}`}
             >
               <List className="w-4 h-4" />
             </button>
@@ -102,9 +100,7 @@ export default function ClassSelection() {
               <button
                 key={cls}
                 onClick={() => navigate(`/class/${cls}`)}
-                className={`group p-6 rounded-2xl border transition-all duration-300 text-left overflow-hidden relative ${
-                  isDark ? 'bg-[#121212] border-[#1c1b1b] hover:border-[#2a2a2a]' : 'bg-white border-slate-200 hover:shadow-xl'
-                } ${viewMode === 'list' ? 'flex items-center gap-5 sm:gap-8' : 'flex flex-col'}`}
+                className={`group p-6 rounded-2xl border transition-all duration-300 text-left overflow-hidden relative ${theme.card.bg} ${theme.border.default} hover:${theme.hover.border} ${viewMode === 'list' ? 'flex items-center gap-5 sm:gap-8' : 'flex flex-col'}`}
               >
                 {/* Colored Top or Left Border */}
                 <div 
@@ -118,16 +114,16 @@ export default function ClassSelection() {
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${config.iconBg} ${config.textColor}`}>
                         <Icon className="w-5 h-5" strokeWidth={2.5} />
                       </div>
-                      <div className={`text-xs font-semibold px-2.5 py-1 rounded-full ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                      <div className={`text-xs font-semibold px-2.5 py-1 rounded-full ${theme.innerCard.bg} ${theme.text.subtle}`}>
                         {t('class.modules_count', { count: classModuleCount })}
                       </div>
                     </div>
 
-                    <h3 className={`text-xl font-bold font-outfit mb-2 ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
+                    <h3 className={`text-xl font-bold font-outfit mb-2 ${theme.text.primary}`}>
                       {t("Class")} {cls}
                     </h3>
                     
-                    <p className={`text-sm mb-6 flex-1 ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>
+                    <p className={`text-sm mb-6 flex-1 ${theme.text.muted}`}>
                       {config.desc}
                     </p>
 
@@ -142,14 +138,14 @@ export default function ClassSelection() {
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col justify-center py-1">
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className={`text-xl font-bold font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{t('class.title', { number: cls })}</h3>
-                        <div className={`text-[10px] font-semibold px-2 py-0.5 rounded-full sm:hidden ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                        <h3 className={`text-xl font-bold font-outfit ${theme.text.primary}`}>{t('class.title', { number: cls })}</h3>
+                        <div className={`text-[10px] font-semibold px-2 py-0.5 rounded-full sm:hidden ${theme.innerCard.bg} ${theme.text.subtle}`}>
                           {classModuleCount} {t('class.modules')}
                         </div>
                       </div>
-                      <p className={`text-sm truncate ${isDark ? 'text-[#a1a1aa]' : 'text-slate-500'}`}>{config.desc}</p>
+                      <p className={`text-sm truncate ${theme.text.muted}`}>{config.desc}</p>
                     </div>
-                    <div className={`text-xs font-semibold px-3 py-1.5 rounded-full shrink-0 hidden sm:block ${isDark ? 'bg-[#1c1b1b] text-[#71717a]' : 'bg-slate-100 text-slate-500'}`}>
+                    <div className={`text-xs font-semibold px-3 py-1.5 rounded-full shrink-0 hidden sm:block ${theme.innerCard.bg} ${theme.text.subtle}`}>
                       {t('class.modules_count', { count: classModuleCount })}
                     </div>
                     <div className={`text-sm font-bold flex items-center gap-1 ${config.textColor} transition-transform group-hover:translate-x-1 shrink-0 ml-2 hidden md:flex`}>

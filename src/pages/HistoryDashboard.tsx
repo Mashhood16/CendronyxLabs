@@ -6,6 +6,7 @@ import { historyDB, initDB } from '../services/dbService';
 import { getAnonymousId } from '../utils/sessionId';
 import { useAuth } from '../store';
 import Layout from '../components/Layout';
+import { theme } from '../utils/labTheme';
 import {
   Clock,
   Trophy,
@@ -125,17 +126,17 @@ export default function HistoryDashboard() {
 
   return (
     <Layout>
-      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-4 md:mt-8 p-4 sm:p-8 md:p-12 dark:bg-[#000000]">
+      <div className={`flex flex-col min-h-[70vh] ${theme.card.bg} rounded-3xl border ${theme.border.default} ${theme.card.shadow} mt-4 md:mt-8 p-4 sm:p-8 md:p-12`}>
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 md:mb-10 border-b border-slate-100 pb-6 dark:border-zinc-800">
+        <div className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8 md:mb-10 border-b ${theme.border.subtle} pb-6`}>
           <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
             <BarChart3 className="w-6 h-6 md:w-7 md:h-7 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 font-outfit tracking-tight dark:text-white">
+            <h2 className={`text-2xl md:text-3xl font-bold ${theme.text.primary} font-outfit tracking-tight`}>
               {t('history.title') || 'My Progress'}
             </h2>
-            <p className="text-slate-500 text-sm md:text-base dark:text-zinc-400">
+            <p className={`${theme.text.subtle} text-sm md:text-base`}>
               {t('history.subtitle') || 'Track your lab performance and learning journey'}
             </p>
           </div>
@@ -143,13 +144,13 @@ export default function HistoryDashboard() {
 
         {history.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center py-20">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center mb-4 dark:from-zinc-800 dark:to-zinc-700">
-              <Beaker className="w-10 h-10 text-slate-300 dark:text-zinc-500" />
+            <div className={`w-20 h-20 rounded-full ${theme.innerCard.bg} flex items-center justify-center mb-4 border ${theme.innerCard.border}`}>
+              <Beaker className={`w-10 h-10 ${theme.text.faint}`} />
             </div>
-            <h3 className="text-xl font-bold text-slate-700 mb-2 dark:text-zinc-300">
+            <h3 className={`text-xl font-bold ${theme.text.secondary} mb-2`}>
               {t('history.empty_title') || 'No labs completed yet'}
             </h3>
-            <p className="text-slate-500 max-w-sm text-center dark:text-zinc-400">
+            <p className={`${theme.text.subtle} max-w-sm text-center`}>
               {t('history.empty_desc') ||
                 'Complete your first interactive lab to see your progress analytics here.'}
             </p>
@@ -159,7 +160,7 @@ export default function HistoryDashboard() {
               <button
                 onClick={runDiagnostic}
                 disabled={runningDiagnostic}
-                className="px-5 py-2.5 bg-slate-100 text-slate-600 font-semibold rounded-xl hover:bg-slate-200 transition-colors text-sm disabled:opacity-50 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
+                className={`px-5 py-2.5 ${theme.button.default} font-semibold rounded-xl transition-colors text-sm disabled:opacity-50`}
               >
                 {runningDiagnostic ? 'Running diagnostic...' : 'Run Diagnostic'}
               </button>
@@ -175,30 +176,30 @@ export default function HistoryDashboard() {
             {/* === Stats Cards Row === */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {/* Total Labs */}
-              <div className="bg-indigo-50 rounded-2xl p-4 md:p-5 border border-indigo-100 dark:bg-indigo-950/20 dark:border-indigo-900/30">
+              <div className={`${theme.accent.indigo.stepBg} rounded-2xl p-4 md:p-5 border ${theme.accent.indigo.stepBorder}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center">
                     <BookOpen className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider dark:text-indigo-400">
+                  <span className={`text-xs font-bold ${theme.accent.indigo.stepText} uppercase tracking-wider`}>
                     {t('Completed') || 'Completed'}
                   </span>
                 </div>
-                <span className="text-3xl md:text-4xl font-bold text-indigo-700 dark:text-indigo-300">
+                <span className={`text-3xl md:text-4xl font-bold ${theme.accent.indigo.stepText}`}>
                   {stats.totalLabs}
                 </span>
-                <span className="text-xs text-indigo-500 ml-1 dark:text-indigo-400">
+                <span className={`text-xs ${theme.accent.indigo.stepText} ml-1`}>
                   labs
                 </span>
               </div>
 
               {/* Average Score */}
-              <div className="bg-emerald-50 rounded-2xl p-4 md:p-5 border border-emerald-100 dark:bg-emerald-950/20 dark:border-emerald-900/30">
+              <div className={`${theme.accent.emerald.stepBg} rounded-2xl p-4 md:p-5 border ${theme.accent.emerald.stepBorder}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center">
                     <Trophy className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider dark:text-emerald-400">
+                  <span className={`text-xs font-bold ${theme.accent.emerald.stepText} uppercase tracking-wider`}>
                     {t('Avg Score') || 'Avg Score'}
                   </span>
                 </div>
@@ -208,12 +209,12 @@ export default function HistoryDashboard() {
               </div>
 
               {/* Pass Rate */}
-              <div className="bg-amber-50 rounded-2xl p-4 md:p-5 border border-amber-100 dark:bg-amber-950/20 dark:border-amber-900/30">
+              <div className={`${theme.accent.amber.stepBg} rounded-2xl p-4 md:p-5 border ${theme.accent.amber.stepBorder}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-xs font-bold text-amber-600 uppercase tracking-wider dark:text-amber-400">
+                  <span className={`text-xs font-bold ${theme.accent.amber.stepText} uppercase tracking-wider`}>
                     {t('Pass Rate') || 'Pass Rate'}
                   </span>
                 </div>
@@ -223,12 +224,12 @@ export default function HistoryDashboard() {
               </div>
 
               {/* Streak */}
-              <div className="bg-rose-50 rounded-2xl p-4 md:p-5 border border-rose-100 dark:bg-rose-950/20 dark:border-rose-900/30">
+              <div className={`${theme.accent.rose.stepBg} rounded-2xl p-4 md:p-5 border ${theme.accent.rose.stepBorder}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-rose-500 flex items-center justify-center">
                     <Flame className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-xs font-bold text-rose-600 uppercase tracking-wider dark:text-rose-400">
+                  <span className={`text-xs font-bold ${theme.accent.rose.stepText} uppercase tracking-wider`}>
                     {t('Streak') || 'Streak'}
                   </span>
                 </div>
@@ -244,8 +245,8 @@ export default function HistoryDashboard() {
             {/* === Subject Breakdown + Performance Trend === */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Subject Breakdown */}
-              <div className="bg-slate-50 rounded-2xl p-5 md:p-6 border border-slate-200 dark:bg-zinc-900/50 dark:border-zinc-800">
-                <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2 dark:text-zinc-200">
+              <div className={`${theme.innerCard.bg} rounded-2xl p-5 md:p-6 border ${theme.innerCard.border}`}>
+                <h3 className={`text-base font-bold ${theme.text.primary} mb-4 flex items-center gap-2`}>
                   <BarChart3 className="w-4 h-4 text-indigo-500" />
                   {t('Subject Breakdown') || 'Subject Breakdown'}
                 </h3>
@@ -268,28 +269,28 @@ export default function HistoryDashboard() {
                               <div
                                 className={`w-2.5 h-2.5 rounded-full ${barColor}`}
                               />
-                              <span className="text-sm font-semibold text-slate-700 dark:text-zinc-300">
+                              <span className={`text-sm font-semibold ${theme.text.secondary}`}>
                                 {subjectLabel}
                               </span>
-                              <span className="text-xs text-slate-400 dark:text-zinc-500">
+                              <span className={`text-xs ${theme.text.faint}`}>
                                 {s.total} labs
                               </span>
                             </div>
-                            <span className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+                            <span className={`text-sm font-bold ${theme.text.secondary}`}>
                               {s.averageScore}%
                             </span>
                           </div>
-                          <div className="w-full bg-slate-200 rounded-full h-2 dark:bg-zinc-700">
+                          <div className={`w-full ${theme.progress.track} rounded-full h-2`}>
                             <div
                               className={`h-2 rounded-full transition-all duration-500 ${barColor}`}
                               style={{ width: `${pct}%` }}
                             />
                           </div>
                           <div className="flex justify-between mt-0.5">
-                            <span className="text-[10px] text-slate-400 dark:text-zinc-500">
+                            <span className={`text-[10px] ${theme.text.faint}`}>
                               {s.passed}/{s.total} passed
                             </span>
-                            <span className="text-[10px] text-slate-400 dark:text-zinc-500">
+                            <span className={`text-[10px] ${theme.text.faint}`}>
                               {s.totalTimeMinutes}m
                             </span>
                           </div>
@@ -297,7 +298,7 @@ export default function HistoryDashboard() {
                       );
                     })
                   ) : (
-                    <p className="text-sm text-slate-400 dark:text-zinc-500">
+                    <p className={`text-sm ${theme.text.faint}`}>
                       No data yet
                     </p>
                   )}
@@ -305,13 +306,13 @@ export default function HistoryDashboard() {
 
                 {/* Best & Weakest */}
                 {(stats.bestSubject || stats.weakestSubject) && (
-                  <div className="mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700 grid grid-cols-2 gap-4">
+                  <div className={`mt-4 pt-4 border-t ${theme.divider.default} grid grid-cols-2 gap-4`}>
                     {stats.bestSubject && (
                       <div>
                         <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider dark:text-emerald-400">
                           Best
                         </span>
-                        <p className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+                        <p className={`text-sm font-bold ${theme.text.secondary}`}>
                           {SUBJECT_LABELS[stats.bestSubject.subject] ||
                             stats.bestSubject.subject.charAt(0).toUpperCase() +
                               stats.bestSubject.subject.slice(1)}
@@ -326,7 +327,7 @@ export default function HistoryDashboard() {
                         <span className="text-[10px] font-bold text-rose-600 uppercase tracking-wider dark:text-rose-400">
                           Needs Work
                         </span>
-                        <p className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+                        <p className={`text-sm font-bold ${theme.text.secondary}`}>
                           {SUBJECT_LABELS[stats.weakestSubject.subject] ||
                             stats.weakestSubject.subject.charAt(0).toUpperCase() +
                               stats.weakestSubject.subject.slice(1)}
@@ -341,8 +342,8 @@ export default function HistoryDashboard() {
               </div>
 
               {/* Performance Trend Chart */}
-              <div className="bg-slate-50 rounded-2xl p-5 md:p-6 border border-slate-200 dark:bg-zinc-900/50 dark:border-zinc-800">
-                <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2 dark:text-zinc-200">
+              <div className={`${theme.innerCard.bg} rounded-2xl p-5 md:p-6 border ${theme.innerCard.border}`}>
+                <h3 className={`text-base font-bold ${theme.text.primary} mb-4 flex items-center gap-2`}>
                   <TrendingUp className="w-4 h-4 text-indigo-500" />
                   {t('Performance Trend') || 'Performance Trend'}
                 </h3>
@@ -362,7 +363,7 @@ export default function HistoryDashboard() {
                             key={p.index}
                             className="flex-1 flex flex-col items-center gap-1"
                           >
-                            <span className="text-[10px] font-bold text-slate-500 dark:text-zinc-400">
+                            <span className={`text-[10px] font-bold ${theme.text.subtle}`}>
                               {p.score}%
                             </span>
                             <div className="w-full flex justify-center">
@@ -384,43 +385,42 @@ export default function HistoryDashboard() {
                           key={p.index}
                           className="flex-1 text-center"
                         >
-                          <span className="text-[8px] text-slate-400 dark:text-zinc-500 leading-tight block truncate">
+                          <span className={`text-[8px] ${theme.text.faint} leading-tight block truncate`}>
                             {p.label}
                           </span>
                         </div>
                       ))}
                     </div>
-                    <p className="text-[10px] text-slate-400 mt-1 dark:text-zinc-500">
-                      Last {stats.recentPerformance.length} labs (newest →
-                      oldest)
+                    <p className={`text-xs ${theme.text.faint} mt-1`}>
+                      Last {stats.recentPerformance.length} labs (newest → oldest)
                     </p>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-32 text-sm text-slate-400 dark:text-zinc-500">
+                  <div className={`flex items-center justify-center h-32 text-sm ${theme.text.faint}`}>
                     Complete labs to see your trend
                   </div>
                 )}
 
                 {/* Quick stats row */}
-                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700 grid grid-cols-2 gap-4">
+                <div className={`mt-4 pt-4 border-t ${theme.divider.default} grid grid-cols-2 gap-4`}>
                   <div className="flex items-center gap-2">
-                    <Timer className="w-4 h-4 text-slate-400" />
+                    <Timer className={`w-4 h-4 ${theme.text.subtle}`} />
                     <div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider dark:text-zinc-500">
+                      <span className={`text-[10px] font-bold ${theme.text.faint} uppercase tracking-wider`}>
                         Total Time
                       </span>
-                      <p className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+                      <p className={`text-sm font-bold ${theme.text.secondary}`}>
                         {stats.totalTimeMinutes}m
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-slate-400" />
+                    <Zap className={`w-4 h-4 ${theme.text.subtle}`} />
                     <div>
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider dark:text-zinc-500">
+                      <span className={`text-[10px] font-bold ${theme.text.faint} uppercase tracking-wider`}>
                         Avg per Lab
                       </span>
-                      <p className="text-sm font-bold text-slate-700 dark:text-zinc-300">
+                      <p className={`text-sm font-bold ${theme.text.secondary}`}>
                         {stats.totalLabs > 0
                           ? Math.round(stats.totalTimeMinutes / stats.totalLabs)
                           : 0}
@@ -433,10 +433,10 @@ export default function HistoryDashboard() {
             </div>
 
             {/* === Recent Activity + Full History Toggle === */}
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden dark:bg-zinc-900/50 dark:border-zinc-800">
+            <div className={`${theme.innerCard.bg} rounded-2xl border ${theme.innerCard.border} overflow-hidden`}>
               {/* Section header */}
               <div className="px-5 md:px-6 pt-5 md:pt-6 pb-3 flex items-center justify-between">
-                <h3 className="text-base font-bold text-slate-800 flex items-center gap-2 dark:text-zinc-200">
+                <h3 className={`text-base font-bold ${theme.text.primary} flex items-center gap-2`}>
                   <Clock className="w-4 h-4 text-indigo-500" />
                   {showFullHistory
                     ? t('Full History') || 'Full History'
@@ -474,7 +474,7 @@ export default function HistoryDashboard() {
                     return (
                       <div
                         key={i}
-                        className="bg-white border-2 border-slate-100 rounded-xl p-4 hover:border-slate-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group dark:bg-black dark:border-zinc-800 dark:hover:border-zinc-700"
+                        className={`${theme.card.bg} border-2 ${theme.border.subtle} rounded-xl p-4 hover:${theme.hover.border} hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group`}
                       >
                         {/* Subject badge + date */}
                         <div className="flex justify-between items-start mb-3">
@@ -483,28 +483,28 @@ export default function HistoryDashboard() {
                           >
                             {record.subject}
                           </span>
-                          <span className="text-[10px] font-medium text-slate-400 dark:text-zinc-500">
+                          <span className={`text-[10px] font-medium ${theme.text.faint}`}>
                             {new Date(record.timestamp).toLocaleDateString()}
                           </span>
                         </div>
-                        <h3 className="text-sm font-bold text-slate-800 mb-3 line-clamp-2 leading-tight font-outfit dark:text-zinc-200">
+                        <h3 className={`text-sm font-bold ${theme.text.primary} mb-3 line-clamp-2 leading-tight font-outfit`}>
                           {record.title}
                         </h3>
 
                         {record.experimentData &&
                           Object.keys(record.experimentData).length > 0 && (
-                            <div className="mb-3 bg-slate-50 rounded-xl p-2.5 border border-slate-100 dark:bg-zinc-900 dark:border-zinc-800">
-                              <h4 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 dark:text-zinc-500">
+                            <div className={`mb-3 ${theme.innerCard.bg} rounded-xl p-2.5 border ${theme.innerCard.border}`}>
+                              <h4 className={`text-[9px] font-bold ${theme.text.faint} uppercase tracking-widest mb-1.5`}>
                                 Data
                               </h4>
                               <div className="grid grid-cols-2 gap-1.5">
                                 {Object.entries(record.experimentData).map(
                                   ([key, value]) => (
                                     <div key={key} className="flex flex-col">
-                                      <span className="text-[9px] text-slate-400 font-medium truncate dark:text-zinc-500">
+                                      <span className={`text-[9px] ${theme.text.faint} font-medium truncate`}>
                                         {key}
                                       </span>
-                                      <span className="text-xs font-bold text-slate-700 dark:text-zinc-300">
+                                      <span className={`text-xs font-bold ${theme.text.secondary}`}>
                                         {value}
                                       </span>
                                     </div>
@@ -514,7 +514,7 @@ export default function HistoryDashboard() {
                             </div>
                           )}
 
-                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between dark:border-zinc-800">
+                        <div className={`pt-3 border-t ${theme.border.subtle} flex items-center justify-between`}>
                           <div className="flex items-center gap-2">
                             <Trophy
                               className={`w-4 h-4 ${passed ? 'text-emerald-500' : 'text-amber-500'}`}
@@ -524,7 +524,7 @@ export default function HistoryDashboard() {
                                 className={`text-base font-bold font-outfit ${passed ? 'text-emerald-500' : 'text-amber-500'}`}
                               >
                                 {record.score}
-                                <span className="text-xs text-slate-400 font-medium dark:text-zinc-500">
+                                <span className={`text-xs ${theme.text.faint} font-medium`}>
                                   {' '}
                                   / {record.maxScore}
                                 </span>
@@ -532,8 +532,8 @@ export default function HistoryDashboard() {
                             </div>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <Timer className="w-3.5 h-3.5 text-slate-400" />
-                            <span className="text-xs font-bold text-slate-500 dark:text-zinc-400">
+                            <Timer className={`w-3.5 h-3.5 ${theme.text.subtle}`} />
+                            <span className={`text-xs font-bold ${theme.text.subtle}`}>
                               {Math.floor(record.timeSpentSeconds / 60)}m{' '}
                               {record.timeSpentSeconds % 60}s
                             </span>

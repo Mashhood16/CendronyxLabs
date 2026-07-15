@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, BookOpen, List, Activity, HelpCircle, AlertCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Check, BookOpen, List, Activity, HelpCircle, AlertCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
@@ -85,19 +86,7 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#121212] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 bg-white dark:bg-[#1c1b1b] shadow-sm z-10 border-b border-slate-200 dark:border-[#2a2a2a]">
-  <button 
-   onClick={onExit} 
-   className="mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-[#2a2a2a] transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft size={24} />
-  </button>
-  <h1 className="text-2xl font-bold flex-1 flex items-center gap-2">
-   <Activity className="text-indigo-500" />
-   
-                    {t('lab.e11verbsmodals_verbs_modals')}
-                   </h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e11verbsmodals_verbs_modals')} />
 
   {/* Mobile Tab Navigation */}
   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">

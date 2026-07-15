@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Box, Database, BarChart3, PieChart, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Box, Database, BarChart3, PieChart, CheckCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM7MensurationData({ onExit }: { onExit?: () => void }) {
@@ -299,12 +300,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <div className="flex items-center p-4 bg-indigo-600 text-white shadow-md z-10">
-  <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-   <ArrowLeft className="w-5 h-5" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold">{t('lab.m7mensurationdata_class_7_maths_mensuration_data')}</h1>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.m7mensurationdata_class_7_maths_mensuration_data')} />
 
   <div className="flex flex-1 overflow-hidden">
   {/* Left Column Controls */}

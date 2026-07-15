@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
@@ -203,18 +204,7 @@ line-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b
  return (
   <div className="flex flex-col min-h-screen lg:h-screen bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff]">
    {/* Header */}
-   <header className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-[#1c1b1b] flex-shrink-0">
-    <div className="flex items-center gap-4">
-     <button 
-      onClick={onExit}
-      className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
-      title={t('lab.e11adjectivesadverbs_go_back')}
-     >
-      <ArrowLeft className="w-6 h-6" />
-     </button>
-     <h1 className="text-xl font-bold">{t('lab.e11adjectivesadverbs_adjectives_adverbs_sequence_bu')}</h1>
-    </div>
-   </header>
+   <LabHeader onExit={onExit} title={t('lab.e11adjectivesadverbs_adjectives_adverbs_sequence_bu')} />
 
    {/* Mobile Tab Navigation */}
    <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">

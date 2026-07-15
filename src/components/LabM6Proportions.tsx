@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Car, Briefcase, PieChart, CheckCircle2, XCircle, RefreshCw, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Car, Briefcase, PieChart, CheckCircle2, XCircle, RefreshCw, Info } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
@@ -92,25 +93,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <div className="flex items-center justify-between p-4 shadow-sm z-10 shrink-0 border-b border-slate-200 dark:border-[#1c1b1b]">
-  <div className="flex items-center gap-4">
-   <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title={t('lab.m6proportions_go_back')}>
-   <ArrowLeft className="w-6 h-6" />
-   </button>
-   <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{t('lab.m6proportions_unit_3_proportions_engine')}</h1>
-  </div>
-  <div className="flex gap-2 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-   <button onClick={() => setActiveTab('rate')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'rate' ? ' shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
-   <Car className="w-4 h-4" />  {t('lab.m6proportions_rate')}
-                        </button>
-   <button onClick={() => setActiveTab('ratio')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'ratio' ? ' shadow text-indigo-600 dark:text-indigo-400' : 'hover:text-indigo-600 dark:hover:text-indigo-400'}`}>
-   <Briefcase className="w-4 h-4" />  {t('lab.m6proportions_ratio')}
-                        </button>
-   <button onClick={() => setActiveTab('percentage')} className={`px-4 py-2 rounded-md flex items-center gap-2 font-medium transition-all ${activeTab === 'percentage' ? ' shadow text-emerald-600 dark:text-emerald-400' : 'hover:text-emerald-600 dark:hover:text-emerald-400'}`}>
-   <PieChart className="w-4 h-4" />  {t('lab.m6proportions_percent')}
-                        </button>
-  </div>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.m6proportions_unit_3_proportions_engine')} />
 
   <div className="flex flex-1 overflow-hidden">
   {/* Left Column: Controls & Questions */}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Utensils, Droplets, Car, Calculator, Check, RefreshCw, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Utensils, Droplets, Car, Calculator, Check, RefreshCw, Play } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => void }) {
@@ -140,14 +141,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center p-4 shadow-sm z-20 shrink-0">
-  {onExit && (
-   <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-[#a1a1aa]">
-   <ArrowLeft className="w-6 h-6" />
-   </button>
-  )}
-  <h1 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">{t('lab.m7proportionskinematics_class_7_labs_proportions_kinem')}</h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m7proportionskinematics_class_7_labs_proportions_kinem')} />
   
   {/* Main Content */}
   <main className="flex-1 min-w-0 flex lg:overflow-hidden">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, BookOpen, Feather, CheckCircle2, XCircle, Award, Sparkles, Type , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { BookOpen, Feather, CheckCircle2, XCircle, Award, Sparkles, Type } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -35,7 +36,7 @@ const adjectiveData = [
 
 export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [activeTab, setActiveTab] = useState<'poetry' | 'adjectives'>('poetry');
  const [poemIndex, setPoemIndex] = useState(0);
  const [adjIndex, setAdjIndex] = useState(0);
@@ -86,24 +87,7 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 dark:bg-[#121212] shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
-   <button onClick={onExit} className="mr-4 whitespace-nowrap flex-shrink-0 p-2 rounded-full hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700 transition-colors">
-    <ArrowLeft size={24} />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
-   <Feather className="text-blue-500 dark:text-blue-400" />
-   
-                    {t('lab.e8adjectivespoetry_poet_s_workshop_adjective_stud')}
-                    </h1>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:/20 transition-colors shrink-0 ml-4"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e8adjectivespoetry_poet_s_workshop_adjective_stud')} />
 
   <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
    {/* Left Column - Controls */}

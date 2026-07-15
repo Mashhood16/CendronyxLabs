@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, XCircle, ArrowLeftRight, Clock, RefreshCw, Undo , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { ArrowRight, CheckCircle2, XCircle, ArrowLeftRight, Clock, RefreshCw, Undo } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -116,7 +117,7 @@ const tensesInfo: Record<string, any> = {
 
 export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [activeTab, setActiveTab] = useState<'voice'|'timeline'>('voice');
  
  const [vQIdx, setVQIdx] = useState(0);
@@ -144,22 +145,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center justify-between p-4 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <h1 className="text-lg md:text-xl font-bold">{t('lab.e8tensesvoice_class_8_english_tenses_voice')}</h1>
-  {onExit && (
-   <button onClick={onExit} className="whitespace-nowrap flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600 rounded-lg font-medium transition-colors">
-   <Undo className="w-4 h-4" />  {t('lab.e8tensesvoice_go_back')}
-                        </button>
-  )}
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:/20 transition-colors shrink-0 ml-4"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e8tensesvoice_class_8_english_tenses_voice')} />
   
   <main className="flex-1 p-6">
   <div className="max-w-7xl mx-auto lg:h-full flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-6 lg:overflow-visible">

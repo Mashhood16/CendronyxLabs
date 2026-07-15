@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle2, Maximize2, User, Repeat, Type, Wand2 , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle2, Maximize2, User, Repeat, Type, Wand2 } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -23,7 +24,7 @@ const POEM_LINES = [
 
 export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [activeTool, setActiveTool] = useState<DeviceId | null>(null);
  const [solvedLines, setSolvedLines] = useState<Record<string, DeviceId>>({});
  const [errorLine, setErrorLine] = useState<string | null>(null);
@@ -67,20 +68,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
   `}</style>
   
   {/* Header */}
-  <header className="flex items-center p-4 shadow-sm z-10">
-  <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
-   <ArrowLeft size={20} />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold">{t('lab.e7figuresofspeech_poetry_visualizer_figures_of_s')}</h1>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e7figuresofspeech_poetry_visualizer_figures_of_s')} />
 
   {/* Main layout */}
   <div className="flex-1 flex flex-col md:flex-row lg:overflow-hidden">

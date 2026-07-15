@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 import type { DragEvent } from 'react';
-import { ArrowLeft, Shapes, CircleDot } from 'lucide-react';
+import { Shapes, CircleDot } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
@@ -63,19 +64,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 shadow-sm z-10">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-  >
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1">{t('lab.m7setsalgebra_unit_5_6_sets_algebra_lab')}</h1>
-  <div className="flex space-x-2">
-   <button onClick={() => setActiveTab('sets')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'sets' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7setsalgebra_sets')}</button>
-   <button onClick={() => setActiveTab('algebra')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'algebra' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7setsalgebra_algebra')}</button>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m7setsalgebra_unit_5_6_sets_algebra_lab')} />
 
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">
   {/* Left Controls */}

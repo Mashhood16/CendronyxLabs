@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Play , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle, XCircle, Play } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -44,7 +45,7 @@ const QUESTIONS = [
 
 export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [currentQIdx, setCurrentQIdx] = useState(0);
  const [manner, setManner] = useState("");
  const [place, setPlace] = useState("");
@@ -102,25 +103,7 @@ export default function LabE8AdverbsPrepositions({ onExit }: { onExit?: () => vo
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex items-center p-4 bg-indigo-600 dark:bg-indigo-800 text-white shadow-md flex-shrink-0">
-  <button 
-   onClick={onExit} 
-   className="flex items-center gap-2 hover:/20 px-3 py-1.5 rounded transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft size={18} />
-   
-                    {t('lab.e8adverbsprepositions_go_back')}
-                   </button>
-  <h1 className="text-lg md:text-xl font-bold ml-6 flex-1 text-center">{t('lab.e8adverbsprepositions_scene_director_adverbs_preposi')}</h1>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:/20 transition-colors shrink-0 ml-4"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e8adverbsprepositions_scene_director_adverbs_preposi')} />
 
   <div className="flex flex-1 flex-col lg:flex-row overflow-hidden">
   <div className="w-full lg:w-1/2 p-6 flex flex-col gap-6 lg:overflow-y-auto dark:bg-[#121212] border-r border-slate-200 dark:border-[#1c1b1b]">

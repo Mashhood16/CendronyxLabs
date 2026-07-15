@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, LayoutGrid, Puzzle, CheckCircle2, XCircle, Circle, DoorClosed, Bell, Book, RotateCcw , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Play, LayoutGrid, Puzzle, CheckCircle2, XCircle, Circle, DoorClosed, Bell, Book, RotateCcw } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -26,7 +27,7 @@ const shuffle = (array: any[]) => [...array].sort(() => Math.random() - 0.5);
 
 export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [activeTab, setActiveTab] = useState<"stage" | "puzzle">("stage");
 
  // Stage State
@@ -107,44 +108,33 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
  return (
  <div className="flex flex-col min- lg: overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <div className="flex items-center space-x-4">
-   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
-   <ArrowLeft className="w-5 h-5" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold hidden sm:block">{t('lab.e7verbscollocations_verb_types_collocations')}</h1>
-  </div>
-  <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-700 rounded-lg p-1">
-   <button
-   onClick={() => setActiveTab("stage")}
-   className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "stage" ? " shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
-   >
-   <LayoutGrid className="w-4 h-4 mr-2" />
-   
-                        {t('lab.e7verbscollocations_action_stage')}
-                        </button>
-   <button
-   onClick={() => setActiveTab("puzzle")}
-   className={`px-4 py-2 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap flex-shrink-0 ${activeTab === "puzzle" ? " shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
-   >
-   <Puzzle className="w-4 h-4 mr-2" />
-   
-                        {t('lab.e7verbscollocations_collocation_puzzle')}
-                        </button>
-  </div>
-  <div className="font-semibold px-4 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full shadow-inner hidden lg:block">
-   
-                    {t('lab.e7verbscollocations_score')} {activeTab === "stage" ? stageScore : puzzleScore}
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader
+    onExit={onExit}
+    title={t('lab.e7verbscollocations_verb_types_collocations')}
+    rightContent={
+      <div className="flex items-center gap-4">
+        <div className="flex items-center space-x-2 bg-slate-100 dark:bg-slate-700/50 rounded-lg p-1 text-slate-800 dark:text-white text-xs">
+          <button
+            onClick={() => setActiveTab("stage")}
+            className={`px-3 py-1.5 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap ${activeTab === "stage" ? "bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+          >
+            <LayoutGrid className="w-3 h-3 mr-1" />
+            {t('lab.e7verbscollocations_action_stage')}
+          </button>
+          <button
+            onClick={() => setActiveTab("puzzle")}
+            className={`px-3 py-1.5 rounded-md font-semibold flex items-center transition-colors whitespace-nowrap ${activeTab === "puzzle" ? "bg-white dark:bg-slate-600 shadow-sm text-indigo-600 dark:text-indigo-400" : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"}`}
+          >
+            <Puzzle className="w-3 h-3 mr-1" />
+            {t('lab.e7verbscollocations_collocation_puzzle')}
+          </button>
+        </div>
+        <div className="font-semibold px-3 py-1.5 bg-black/20 dark:bg-white/10 text-white rounded-full text-xs">
+          {t('lab.e7verbscollocations_score')} {activeTab === "stage" ? stageScore : puzzleScore}
+        </div>
+      </div>
+    }
+  />
 
   <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">
   {/* Left Column: Controls */}

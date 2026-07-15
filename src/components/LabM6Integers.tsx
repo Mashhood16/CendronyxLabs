@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, X, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Check, X, Info } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
@@ -35,30 +36,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
-  <div className="flex items-center gap-4">
-   <button onClick={onExit} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors" title={t('lab.m6integers_go_back')}>
-   <ArrowLeft className="w-6 h-6" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold">{t('lab.m6integers_class_6_math_integers')}</h1>
-  </div>
-  <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
-   <button
-   onClick={() => setActiveTab('TEMP')}
-   className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'TEMP' ? ' shadow-sm text-red-600 dark:text-red-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
-   >
-   
-                        {t('lab.m6integers_temperature')}
-                        </button>
-   <button
-   onClick={() => setActiveTab('DEPTH')}
-   className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'DEPTH' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
-   >
-   
-                        {t('lab.m6integers_depth_gauge')}
-                        </button>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m6integers_class_6_math_integers')} />
 
   {/* Main 2-Column Layout */}
   <div className="flex flex-1 overflow-hidden">

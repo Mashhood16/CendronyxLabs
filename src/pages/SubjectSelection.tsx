@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { LAB_MODULES } from '../data/labModules';
 import { useTranslate } from '../i18n';
+import { theme } from '../utils/labTheme';
 
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
@@ -38,8 +39,8 @@ export default function SubjectSelection() {
       <div className="flex flex-col">
         <Breadcrumbs />
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">{t('subject.select')}</h2>
-          <p className="text-slate-500 mt-1 mb-6">{t('subject.curriculum', { classId: classId! })}</p>
+          <h2 className={`text-2xl md:text-3xl font-bold tracking-tight ${theme.text.primary}`}>{t('subject.select')}</h2>
+          <p className={`${theme.text.subtle} mt-1 mb-6`}>{t('subject.curriculum', { classId: classId! })}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {subjects.map(subject => {
@@ -50,7 +51,7 @@ export default function SubjectSelection() {
                 <button
                   key={subject}
                   onClick={() => navigate(`/class/${classId}/${subject}`)}
-                  className="relative group p-6 rounded-2xl bg-white dark:bg-[#121212] border border-slate-200/50 dark:border-[#1c1b1b] hover:-translate-y-2 hover:shadow-xl hover:border-transparent transition-all duration-300 overflow-hidden text-left hover:gradient-border"
+                  className={`relative group p-6 rounded-2xl border ${theme.card.bg} ${theme.border.default} hover:-translate-y-2 hover:shadow-xl hover:border-transparent transition-all duration-300 overflow-hidden text-left hover:gradient-border`}
                 >
                   {/* Top accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>
@@ -65,8 +66,8 @@ export default function SubjectSelection() {
                       <Icon className="w-5 h-5 md:w-7 md:h-7" strokeWidth={2} />
                     </div>
                     <div className="flex flex-col flex-1 min-w-0">
-                      <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-[#ffffff] font-outfit mb-1">{t(formatSubject(subject))}</h3>
-                      <p className="text-sm font-medium text-slate-500 dark:text-[#a1a1aa] leading-snug mb-3">{config.description}</p>
+                      <h3 className={`text-lg md:text-xl font-bold ${theme.text.primary} font-outfit mb-1`}>{t(formatSubject(subject))}</h3>
+                      <p className={`text-sm font-medium ${theme.text.muted} leading-snug mb-3`}>{config.description}</p>
                       <div className="flex items-center gap-2 mt-auto">
                         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${config.gradient}`}>
                           {count} {t("modules")}

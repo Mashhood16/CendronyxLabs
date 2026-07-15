@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Send, CheckCircle2, XCircle, Mail, Newspaper, User, PenTool , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { ArrowLeft, Send, CheckCircle2, XCircle, Mail, Newspaper, User, PenTool } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
@@ -54,7 +55,7 @@ const SCENARIOS = [
 
 export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [currentScenarioIdx, setCurrentScenarioIdx] = useState(0);
  const [selections, setSelections] = useState<Record<string, string>>({});
  const [status, setStatus] = useState<"drafting" | "error" | "published" | "finished">("drafting");
@@ -158,28 +159,12 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
  return (
  <div className="flex flex-col min-h-screen lg:h-screen overflow-hidden bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none">
   {/* Header */}
-  <header className="flex items-center justify-between px-6 py-4 shadow-sm border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <div className="flex items-center space-x-4">
-   <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 whitespace-nowrap flex-shrink-0 transition-colors">
-   <ArrowLeft className="w-5 h-5" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold hidden sm:block">{t('lab.e7prepositionsmodals_advice_columnist_simulator')}</h1>
-  </div>
-  <div className="flex items-center space-x-4">
-   <div className="font-semibold px-4 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 rounded-full shadow-inner">
-   
-                        {t('lab.e7prepositionsmodals_score')} {score}
-   </div>
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e7prepositionsmodals_advice_columnist_simulator')} rightContent={
+          <div className="flex items-center gap-2 bg-black/20 dark:bg-white/10 px-4 py-2 rounded-full font-bold text-white text-xs animate-fade-in">
+            <span className="opacity-90">{t('lab.e7prepositionsmodals_score')}</span>
+            <span className="text-yellow-300 font-mono text-sm">{score}</span>
+          </div>
+        } />
 
   <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">
   {/* Left Column: Interactive Controls / Workspace */}

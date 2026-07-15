@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Search, Check, AlertCircle, FastForward , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Clock, Search, Check, AlertCircle, FastForward } from 'lucide-react';
 import type { ChangeEvent } from 'react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
@@ -58,7 +59,7 @@ const GERUND_TASKS = [
 
 export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [activeTab, setActiveTab] = useState<'tenses' | 'gerunds'>('tenses');
 
  // Tenses State
@@ -119,29 +120,7 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-6 py-4 border-b border-slate-200 dark:border-[#1c1b1b] shrink-0">
-  <div className="flex items-center gap-4">
-   <button 
-   onClick={onExit}
-   className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-   >
-   <ArrowLeft className="w-5 h-5" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
-   <Clock className="w-6 h-6 text-blue-500" />
-   
-                        {t('lab.e6tensespunctuation_tenses_punctuation_lab')}
-                        </h1>
-  </div>
-  
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.e6tensespunctuation_tenses_punctuation_lab')} />
 
   <main className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:overflow-y-auto">
   {/* Left Column: Interactive Controls */}

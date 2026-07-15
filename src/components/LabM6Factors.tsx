@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, Check, X, Info, Star, Timer, Lightbulb, Award } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Play, Pause, RotateCcw, Check, X, Info, Star, Timer, Lightbulb, Award } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 const PB_KEY = 'cendronyx-m6-pb';
@@ -176,34 +177,7 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans transition-colors duration-300 min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
-  <div className="flex items-center gap-4">
-   <button
-   onClick={onExit}
-   className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors"
-   title={t('lab.m6factors_go_back')}
-   >
-   <ArrowLeft className="w-6 h-6" />
-   </button>
-   <h1 className="text-lg md:text-xl font-bold">{t('lab.m6factors_class_6_math_factors_multiples')}</h1>
-  </div>
-  <div className="flex bg-slate-100 dark:bg-[#121212] rounded-lg p-1">
-   <button
-   onClick={() => setActiveTab('LCM')}
-   className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'LCM' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
-   >
-   
-                        {t('lab.m6factors_lcm_lighthouses')}
-                        </button>
-   <button
-   onClick={() => setActiveTab('HCF')}
-   className={`px-4 py-2 rounded-md font-medium transition-colors ${ activeTab === 'HCF' ? ' shadow-sm text-green-600 dark:text-green-400' : 'text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:hover:text-slate-200' }`}
-   >
-   
-                        {t('lab.m6factors_hcf_pipe_cutting')}
-                        </button>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m6factors_class_6_math_factors_multiples')} />
 
   {/* Main 2-Column Layout */}
   <div className="flex flex-1 overflow-hidden">

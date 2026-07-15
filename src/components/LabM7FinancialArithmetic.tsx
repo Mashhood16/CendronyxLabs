@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Calculator, Coins, Landmark, FileText } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Calculator, Coins, Landmark, FileText } from 'lucide-react';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
@@ -58,20 +59,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center p-4 shadow-sm z-10">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-  >
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1">{t('lab.m7financialarithmetic_unit_4_financial_arithmetic_la')}</h1>
-  <div className="flex space-x-2">
-   <button onClick={() => {setActiveTab('business'); setUserAnswer(''); setFeedback('');}} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'business' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7financialarithmetic_business')}</button>
-   <button onClick={() => {setActiveTab('zakat'); setUserAnswer(''); setFeedback('');}} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'zakat' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7financialarithmetic_zakat')}</button>
-   <button onClick={() => {setActiveTab('ushr'); setUserAnswer(''); setFeedback('');}} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'ushr' ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600'}`}>{t('lab.m7financialarithmetic_ushr')}</button>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m7financialarithmetic_unit_4_financial_arithmetic_la')} />
 
   {/* 2-column Layout */}
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: lg:overflow-visible">

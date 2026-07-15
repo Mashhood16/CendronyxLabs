@@ -1,0 +1,907 @@
+{
+  "summary": {
+    "totalEntries": 166,
+    "verified": 142,
+    "skipped": 24,
+    "mismatches": 69
+  },
+  "mismatches": [
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 276,
+      "question": "Solve x² − 5x + 6 = 0 using the formula.",
+      "hint": "a=1, b=−5, c=6. D = 25−24 = 1, x = [5±1]/2",
+      "stored": 3,
+      "recomputed": 2,
+      "diff": 1,
+      "tolerance": 0.5,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 296,
+      "question": "A=(1,2), B=(4,6). Find the x-component of AB.",
+      "hint": "AB = (4−1, 6−2) = (3, 4)",
+      "stored": 3,
+      "recomputed": 5,
+      "diff": 2,
+      "tolerance": 0.1,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 316,
+      "question": "b=5, c=6, α=60°. Find side a.",
+      "hint": "a² = 5² + 6² − 2×5×6×cos 60° = 25+36−60×0.5 = 31",
+      "stored": 5.57,
+      "recomputed": 31,
+      "diff": 25.43,
+      "tolerance": 0.1,
+      "method": "hint-final-value"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 350,
+      "question": "α=80°, β=40°. Find tan[(α+β)/2]/tan[(α−β)/2].",
+      "hint": "(80+40)/2 = 60°, (80-40)/2 = 20°. tan60°/tan20°",
+      "stored": 4.76,
+      "recomputed": 120,
+      "diff": 115.24,
+      "tolerance": 0.5,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 368,
+      "question": "a=5, b=6, c=7. S=9. Find cos(α/2).",
+      "hint": "S=9, S−a=4, bc=42. cos(α/2) = √(9×4/42) = √(36/42)",
+      "stored": 0.926,
+      "recomputed": 0.8571428571428571,
+      "diff": 0.06885714285714295,
+      "tolerance": 0.05,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 385,
+      "question": "a=5, b=6, c=7. S=9. Find sin(α/2).",
+      "hint": "S−b=3, S−c=2, bc=42. sin(α/2) = √(3×2/42) = √(6/42)",
+      "stored": 0.378,
+      "recomputed": 0.14285714285714285,
+      "diff": 0.23514285714285715,
+      "tolerance": 0.05,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 542,
+      "question": "A chord 16 units long has distance 6 from the centre. Find the radius.",
+      "hint": "r² = 6² + (16/2)² = 36 + 64",
+      "stored": 10,
+      "recomputed": 100,
+      "diff": 90,
+      "tolerance": 0.5,
+      "method": "hint-arithmetic"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 733,
+      "question": "Two circles of radii 5 cm and 2 cm touch internally. Distance between centres?",
+      "hint": "d = |r₁ − r₂| = 5 − 2",
+      "stored": 3,
+      "recomputed": 5,
+      "diff": 2,
+      "tolerance": 0.5,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 768,
+      "question": "An inscribed angle subtended by an arc is 35°. What is the central angle?",
+      "hint": "Central angle = 2 × inscribed angle.",
+      "stored": 70,
+      "recomputed": 2,
+      "diff": 68,
+      "tolerance": 1,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 854,
+      "question": "In a cyclic quadrilateral, ∠A = 80°. Find ∠C.",
+      "hint": "∠A + ∠C = 180° (opposite angles supplementary)",
+      "stored": 100,
+      "recomputed": 180,
+      "diff": 80,
+      "tolerance": 1,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 29,
+      "question": "Electron m = 9.11e-31 kg, v = 2e6 m/s. Find lambda (h = 6.63e-34).",
+      "hint": "lambda = 6.63e-34/(9.11e-31 x 2e6)",
+      "stored": 3.64e-10,
+      "recomputed": 0.364,
+      "diff": 0.363999999636,
+      "tolerance": 1e-10,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 53,
+      "question": "A pendulum of length l = 1 m. Find its period (g = 9.81).",
+      "hint": "T = 2pi sqrt(1/9.81)",
+      "stored": 2.006,
+      "recomputed": 0.1019367991845056,
+      "diff": 1.9040632008154943,
+      "tolerance": 0.2,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 108,
+      "question": "vi = 0 m/s, a = 9.81 m/s2, t = 3 s. Find vf.",
+      "hint": "vf = 0 + 9.81 x 3",
+      "stored": 29.43,
+      "recomputed": 9.81,
+      "diff": 19.619999999999997,
+      "tolerance": 1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 134,
+      "question": "vi = 0, a = 9.81, t = 2 s. Find distance S.",
+      "hint": "S = 0 + 0.5 x 9.81 x 4",
+      "stored": 19.62,
+      "recomputed": 0.5,
+      "diff": 19.12,
+      "tolerance": 1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 160,
+      "question": "vi = 0, a = 9.81, S = 20 m. Find vf.",
+      "hint": "vf^2 = 0 + 2 x 9.81 x 20",
+      "stored": 19.81,
+      "recomputed": 2,
+      "diff": 17.81,
+      "tolerance": 1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 186,
+      "question": "vi = 30 m/s, theta = 45 deg. Find max height (g = 9.81).",
+      "hint": "H = 900 x sin^2(45) / 19.62 = 900 x 0.5 / 19.62",
+      "stored": 22.94,
+      "recomputed": 0.0254841997961264,
+      "diff": 22.914515800203876,
+      "tolerance": 2,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 212,
+      "question": "vi = 30 m/s, theta = 45 deg. Find range (g = 9.81).",
+      "hint": "R = 900 x sin(90) / 9.81 = 900 x 1/9.81",
+      "stored": 91.74,
+      "recomputed": 0.1019367991845056,
+      "diff": 91.6380632008155,
+      "tolerance": 5,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 317,
+      "question": "m = 1000 kg, v = 20 m/s. Find KE.",
+      "hint": "KE = 0.5 x 1000 x 400",
+      "stored": 200000,
+      "recomputed": 200,
+      "diff": 199800,
+      "tolerance": 10000,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 369,
+      "question": "A1 = 0.05 m2, v1 = 2 m/s, A2 = 0.01 m2. Find v2.",
+      "hint": "v2 = 0.05 x 2 / 0.01",
+      "stored": 10,
+      "recomputed": 200,
+      "diff": 190,
+      "tolerance": 1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 395,
+      "question": "P = 200000 Pa, v = 5 m/s, h = 10 m. Find Bernoulli constant (rho = 1000).",
+      "hint": "C = 200000 + 0.5x1000x25 + 1000x9.81x10",
+      "stored": 310600,
+      "recomputed": 200000.5,
+      "diff": 110599.5,
+      "tolerance": 20000,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 582,
+      "question": "N = 100, dPhi = 0.2 Wb, dt = 0.1 s. Find induced EMF.",
+      "hint": "epsilon = 100 x 0.2/0.1",
+      "stored": 200,
+      "recomputed": 2,
+      "diff": 198,
+      "tolerance": 20,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 609,
+      "question": "vi = 30 m/s, \\u03B8 = 45 deg. Find time of flight (g = 9.81).",
+      "hint": "T = 2\\u00D730\\u00D7sin(45)/9.81 = 2\\u00D730\\u00D70.707/9.81",
+      "stored": 4.32,
+      "recomputed": 7.207645259938837,
+      "diff": 2.8876452599388367,
+      "tolerance": 0.5,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 774,
+      "question": "R\\u2081 = 100 \\u03A9, R\\u2082 = 50 \\u03A9. Find R_eq in parallel.",
+      "hint": "1/R_eq = 1/100 + 1/50 = 0.01 + 0.02 = 0.03",
+      "stored": 33.33,
+      "recomputed": 0.03,
+      "diff": 33.3,
+      "tolerance": 3,
+      "method": "hint-final-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 802,
+      "question": "A\\u2081 = 0.05 m\\u00B2, A\\u2082 = 0.01 m\\u00B2, h = 0.15 m. Find v\\u2081.",
+      "hint": "ratio = 5, v\\u2081 = \\u221A(2x9.81x0.15/24)",
+      "stored": 0.35,
+      "recomputed": 0.0062499999999999995,
+      "diff": 0.34375,
+      "tolerance": 0.05,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 960,
+      "question": "L = 1 m, n = 2, v = 343 m/s. Find f_n.",
+      "hint": "f = 2 x 343 / 2 = 343 Hz",
+      "stored": 343,
+      "recomputed": 171.5,
+      "diff": 171.5,
+      "tolerance": 20,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1042,
+      "question": "P = 100 \\u03A9, Q = 50 \\u03A9, S = 75 \\u03A9. Find unknown R.",
+      "hint": "R = 100 x 75 / 50",
+      "stored": 150,
+      "recomputed": 1.5,
+      "diff": 148.5,
+      "tolerance": 10,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1070,
+      "question": "I\\u2081 = 5 A, I\\u2082 = 5 A, r = 0.1 m. Find F/L (\\u03BC\\u2080 = 4\\u03C0\\u00D710\\u207B\\u2077).",
+      "hint": "F/L = (4\\u03C0\\u00D710\\u207B\\u2077)\\u00D75\\u00D75/(2\\u03C0\\u00D70.1)",
+      "stored": 0.00005,
+      "recomputed": 5,
+      "diff": 4.99995,
+      "tolerance": 0.00001,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1098,
+      "question": "Electron m = 9.11e-31 kg, v = 2e6 m/s, B = 0.1 T. Find r.",
+      "hint": "r = 9.11e-31 x 2e6 / (1.6e-19 x 0.1)",
+      "stored": 0.000114,
+      "recomputed": 1.14,
+      "diff": 1.139886,
+      "tolerance": 0.00002,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1177,
+      "question": "\\u03B5\\u2081 = 1.5 V, l\\u2081 = 60 cm, l\\u2082 = 40 cm. Find \\u03B5\\u2082.",
+      "hint": "\\u03B5\\u2082 = 1.5 x 40/60 = 1.5 x 0.667",
+      "stored": 1,
+      "recomputed": 0.6666666666666666,
+      "diff": 0.33333333333333337,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 215,
+      "question": "z = 3 + 4i. Find |z|.",
+      "hint": "|z| = √(3² + 4²) = √(9 + 16)",
+      "stored": 5,
+      "recomputed": 6,
+      "diff": 1,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 331,
+      "question": "Parallelogram with A(1,2), B(4,3), C(6,7). Find midpoint of diagonal AC.",
+      "hint": "Midpoint = ((1+6)/2, (2+7)/2) = (3.5, 4.5)",
+      "stored": 3.5,
+      "recomputed": 7,
+      "diff": 3.5,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 428,
+      "question": "p(x) = x² − 5x + 6. Find the remainder when divided by (x−2).",
+      "hint": "p(2) = 4 − 10 + 6",
+      "stored": 0,
+      "recomputed": 16,
+      "diff": 16,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 447,
+      "question": "p(x) = x² − 5x + 6. Is (x−2) a factor?",
+      "hint": "Check p(2). If p(2) = 0, it\\",
+      "stored": 1,
+      "recomputed": 4,
+      "diff": 3,
+      "tolerance": 0.5,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 467,
+      "question": "Find ⁵C₂ (5 choose 2).",
+      "hint": "5!/(2!(5−2)!) = 120/(2×6)",
+      "stored": 10,
+      "recomputed": 12,
+      "diff": 2,
+      "tolerance": 0.5,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 507,
+      "question": "cos(60°−30°) = cos 60° cos 30° + sin 60° sin 30°. Compute cos(30°).",
+      "hint": "cos 30° = √3/2 ≈ 0.866",
+      "stored": 0.866,
+      "recomputed": 1.5,
+      "diff": 0.634,
+      "tolerance": 0.01,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 37,
+      "question": "Two 10 kg masses are 2 m apart. Find the gravitational force between them.",
+      "hint": "F = 6.67\\u00D710\\u207B\\u00B9\\u00B9 \\u00D7 10 \\u00D7 10 / 2\\u00B2 = ?",
+      "stored": 1.6675e-9,
+      "recomputed": 5,
+      "diff": 4.9999999983325,
+      "tolerance": 1e-10,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 117,
+      "question": "What is g at the International Space Station (h = 400 km)?",
+      "hint": "R_E = 6370 km. g_h = 9.81 \\u00D7 (6370) \\u00B2 / (6370+400) \\u00B2 = ?",
+      "stored": 8.69,
+      "recomputed": 6770,
+      "diff": 6761.31,
+      "tolerance": 0.5,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 157,
+      "question": "Find orbital velocity at r = 7000 km from Earth\\",
+      "hint": "v_o = \\u221A(6.67\\u00D710\\u207B\\u00B9\\u00B9 \\u00D7 5.97\\u00D710\\u00B2\\u2074 / 7\\u00D710\\u2076) = ?",
+      "stored": 7540,
+      "recomputed": 296.2857142857143,
+      "diff": 7243.714285714285,
+      "tolerance": 500,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 197,
+      "question": "Calculate the geostationary orbit radius (T = 86400 s).",
+      "hint": "r = (6.67e-11 \\u00D7 5.97e24 \\u00D7 86400\\u00B2 / 4\\u03C0\\u00B2)^(1/3)",
+      "stored": 42164,
+      "recomputed": 0.5,
+      "diff": 42163.5,
+      "tolerance": 1000,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 276,
+      "question": "Calculate gravitational potential at Earth\\",
+      "hint": "V = \\u22126.67e-11 \\u00D7 5.97e24 / 6.37e6 = ?",
+      "stored": -62500000,
+      "recomputed": 937205651491365800,
+      "diff": 937205651553865700,
+      "tolerance": 5000000,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 317,
+      "question": "If <v\\u00B2> = 5\\u00D710\\u2075 m\\u00B2/s\\u00B2 and \\u03C1 = 1.2 kg/m\\u00B3, find the gas pressure.",
+      "hint": "P = (1/3) \\u00D7 1.2 \\u00D7 5\\u00D710\\u2075 = ?",
+      "stored": 200000,
+      "recomputed": 0.3333333333333333,
+      "diff": 199999.66666666666,
+      "tolerance": 20000,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 354,
+      "question": "If KE_avg = 6.2\\u00D710\\u207B\\u00B2\\u00B9 J, N/V = 2.5\\u00D710\\u00B2\\u2075 m\\u207B\\u00B3, find P.",
+      "hint": "P = (2/3) \\u00D7 2.5e25 \\u00D7 6.2e-21 = ?",
+      "stored": 103333,
+      "recomputed": 0.6666666666666666,
+      "diff": 103332.33333333333,
+      "tolerance": 15000,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 392,
+      "question": "What is the average KE of a gas molecule at 300 K? (k = 1.38\\u00D710\\u207B\\u00B2\\u00B3 J/K)",
+      "hint": "KE = (3/2) \\u00D7 1.38e-23 \\u00D7 300 = ?",
+      "stored": 6.21e-21,
+      "recomputed": 1.5,
+      "diff": 1.5,
+      "tolerance": 1e-21,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 432,
+      "question": "Find v_rms for N\\u2082 at 300 K (m = 4.65\\u00D710\\u207B\\u00B2\\u2076 kg, k = 1.38\\u00D710\\u207B\\u00B2\\u00B3 J/K).",
+      "hint": "v_rms = \\u221A(3 \\u00D7 1.38e-23 \\u00D7 300 / 4.65e-26) = ?",
+      "stored": 517,
+      "recomputed": 6.451612903225807e+27,
+      "diff": 6.451612903225807e+27,
+      "tolerance": 50,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 472,
+      "question": "A mass m = 0.5 kg is attached to a spring with k = 50 N/m. Find the time period.",
+      "hint": "T = 2\\u03C0 \\u00D7 \\u221A(0.5/50) = ?",
+      "stored": 0.628,
+      "recomputed": 0.01,
+      "diff": 0.618,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 553,
+      "question": "A pendulum of length l = 2 m. Find its period (g = 9.81 m/s\\u00B2).",
+      "hint": "T = 2\\u03C0 \\u00D7 \\u221A(2/9.81) = ?",
+      "stored": 2.837,
+      "recomputed": 0.2038735983690112,
+      "diff": 2.6331264016309888,
+      "tolerance": 0.2,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 598,
+      "question": "A spring with k = 100 N/m, x_o = 0.5 m. Find total energy.",
+      "hint": "E = (1/2) \\u00D7 100 \\u00D7 (0.5)\\u00B2 = ?",
+      "stored": 12.5,
+      "recomputed": 0.5,
+      "diff": 12,
+      "tolerance": 1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 639,
+      "question": "\\u03BB = 500 nm, d = 0.4 mm, L = 2 m. Find fringe spacing.",
+      "hint": "\\u0394y = (500e-9 \\u00D7 2) / (0.4e-3) = ?",
+      "stored": 0.0025,
+      "recomputed": 2.5,
+      "diff": 2.4975,
+      "tolerance": 0.0005,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 681,
+      "question": "Grating: 500 lines/mm, \\u03BB = 600 nm. Find the angle for m=1.",
+      "hint": "d = 1/500 mm = 2\\u00D710\\u207B\\u2076 m. \\u03B8 = sin\\u207B\\u00B9(600e-9 / 2e-6) = ?",
+      "stored": 17.46,
+      "recomputed": 0.002,
+      "diff": 17.458000000000002,
+      "tolerance": 2,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 758,
+      "question": "Area = 0.2 m\\u00B2, d = 0.005 m. Find capacitance. (\\u03B5\\u2080 = 8.85\\u00D710\\u207B\\u00B9\\u00B2)",
+      "hint": "C = 8.85e-12 \\u00D7 0.2 / 0.005 = ?",
+      "stored": 3.54e-10,
+      "recomputed": 40,
+      "diff": 39.999999999646,
+      "tolerance": 1e-10,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 799,
+      "question": "Two capacitors C\\u2081 = 10 \\u03BCF, C\\u2082 = 20 \\u03BCF in series. Find C_eq.",
+      "hint": "1/C_eq = 1/10 + 1/20 = 3/20. C_eq = ?",
+      "stored": 0.00000667,
+      "recomputed": 0.15000000000000002,
+      "diff": 0.14999333000000004,
+      "tolerance": 0.000001,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 838,
+      "question": "C = 47 \\u03BCF, V = 9 V. Find stored energy.",
+      "hint": "E = (1/2) \\u00D7 47e-6 \\u00D7 9\\u00B2 = ?",
+      "stored": 0.0019035,
+      "recomputed": 0.5,
+      "diff": 0.4980965,
+      "tolerance": 0.0005,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 919,
+      "question": "I_o = 2 A, R = 50 \\u03A9. Find mean power.",
+      "hint": "<P> = (1/2) \\u00D7 2\\u00B2 \\u00D7 50 = ?",
+      "stored": 100,
+      "recomputed": 0.5,
+      "diff": 99.5,
+      "tolerance": 10,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 1030,
+      "question": "R = 100 \\u03A9, X_L = 75 \\u03A9. Find Z.",
+      "hint": "Z = \\u221A(100\\u00B2 + 75\\u00B2) = ?",
+      "stored": 125,
+      "recomputed": 77,
+      "diff": 48,
+      "tolerance": 10,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 1109,
+      "question": "Electron mass = 9.11\\u00D710\\u207B\\u00B3\\u00B9 kg, v = 2\\u00D710\\u2076 m/s. Find \\u03BB. (h = 6.63\\u00D710\\u207B\\u00B3\\u2074)",
+      "hint": "\\u03BB = 6.63e-34 / (9.11e-31 \\u00D7 2e6) = ?",
+      "stored": 3.64e-10,
+      "recomputed": 0.364,
+      "diff": 0.363999999636,
+      "tolerance": 1e-10,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 1147,
+      "question": "Mass defect = 1.67\\u00D710\\u207B\\u00B2\\u2077 kg (1 amu \\u2248 1.66e-27). Find energy in J (c = 3\\u00D710\\u2078 m/s).",
+      "hint": "E = 1.67e-27 \\u00D7 (3e8)\\u00B2 = ?",
+      "stored": 1.503e-10,
+      "recomputed": 1.5,
+      "diff": 1.4999999998497,
+      "tolerance": 5e-11,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class12Theorems.tsx",
+      "line": 616,
+      "question": "x²+y²+4x+6y+4=0. Find the center x-coordinate.",
+      "hint": "Center = (−g, −f) = (−2, −3). x = −2",
+      "stored": -2,
+      "recomputed": 2,
+      "diff": 4,
+      "tolerance": 0.5,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class12Theorems.tsx",
+      "line": 635,
+      "question": "Circle x²+y²=25 at point (3,4). Tangent slope = −x₁/y₁ = −3/4 = ?",
+      "hint": "−3/4 = −0.75",
+      "stored": -0.75,
+      "recomputed": 0.75,
+      "diff": 1.5,
+      "tolerance": 0.05,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 338,
+      "question": "log₂(4) = 2, log₂(8) = 3. Find log₂(32).",
+      "hint": "32 = 4 × 8. Use product law: log₂(4) + log₂(8)",
+      "stored": 5,
+      "recomputed": 32,
+      "diff": 27,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 357,
+      "question": "log₁₀(100) = 2, log₁₀(10) = 1. Find log₁₀(10).",
+      "hint": "10 = 100/10. Use quotient law: log₁₀(100) − log₁₀(10)",
+      "stored": 1,
+      "recomputed": 10,
+      "diff": 9,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 376,
+      "question": "log₂(3) ≈ 1.585. Find log₂(81).",
+      "hint": "81 = 3⁴. Use power law: 4 × log₂(3)",
+      "stored": 6.34,
+      "recomputed": 4,
+      "diff": 2.34,
+      "tolerance": 0.1,
+      "method": "explanation-value"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 414,
+      "question": "A={1,2}, B={2,3}, C={3,4}. Elements in (A∪B)∪C?",
+      "hint": "A∪B = {1,2,3}. Then ∪C = {1,2,3,4}",
+      "stored": 4,
+      "recomputed": 3,
+      "diff": 1,
+      "tolerance": 0.1,
+      "method": "set-cardinality"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 433,
+      "question": "A={1,2,3}, B={2,3,4}, C={3,4,5}. Elements in (A∩B)∩C?",
+      "hint": "A∩B = {2,3}. Then ∩C = {3}",
+      "stored": 1,
+      "recomputed": 2,
+      "diff": 1,
+      "tolerance": 0.1,
+      "method": "set-cardinality"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 452,
+      "question": "A={1,2}, B={2,3}, C={3,4}. Elements in A∪(B∩C)?",
+      "hint": "B∩C = {3}. A∪{3} = {1,2,3}",
+      "stored": 3,
+      "recomputed": 1,
+      "diff": 2,
+      "tolerance": 0.1,
+      "method": "set-cardinality"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 471,
+      "question": "A={1,2}, B={2,3}, C={3,4}. Elements in A∩(B∪C)?",
+      "hint": "B∪C = {2,3,4}. A∩{2,3,4} = {2}",
+      "stored": 1,
+      "recomputed": 3,
+      "diff": 2,
+      "tolerance": 0.1,
+      "method": "set-cardinality"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 527,
+      "question": "P₁(0,0), P₂(3,4). Find the distance.",
+      "hint": "d = √(3² + 4²) = √(9+16)",
+      "stored": 5,
+      "recomputed": 6,
+      "diff": 1,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 584,
+      "question": "Line through (0,0) and (2,6). Find y when x = 5.",
+      "hint": "Slope = 6/2 = 3. y − 0 = 3(5−0)",
+      "stored": 15,
+      "recomputed": 3,
+      "diff": 12,
+      "tolerance": 0.1,
+      "method": "hint-expression"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 603,
+      "question": "x-intercept = 6, y-intercept = 3. Find y when x = 2.",
+      "hint": "2/6 + y/3 = 1. So y/3 = 1 − 1/3 = 2/3",
+      "stored": 2,
+      "recomputed": 0.6666666666666666,
+      "diff": 1.3333333333333335,
+      "tolerance": 0.1,
+      "method": "hint-arithmetic"
+    },
+    {
+      "file": "src/data/class9Theorems.tsx",
+      "line": 641,
+      "question": "m₁ = 1, m₂ = 2. Find the acute angle between them.",
+      "hint": "tan θ = |(2−1)/(1+2)| = |1/3| = 0.333",
+      "stored": 18.43,
+      "recomputed": 0.333,
+      "diff": 18.097,
+      "tolerance": 1,
+      "method": "hint-final-value"
+    }
+  ],
+  "unverified": [
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 559,
+      "question": "Two equal chords of length 16 have distance 6 from centre. What is the distance?",
+      "hint": "Equal chords → equal distances from centre.",
+      "stored": 6,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 593,
+      "question": "Arcs AB and CD each subtend 60° at the centre. Are chords AB and CD equal?",
+      "hint": "Equal central angles → equal arcs → equal chords.",
+      "stored": 1,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 610,
+      "question": "Two equal chords subtend what kind of arcs?",
+      "hint": "Equal chords → equal central angles → equal arcs.",
+      "stored": 1,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 644,
+      "question": "Central angles ∠AOB = ∠COD = 45°. Are chords AB and CD equal?",
+      "hint": "Equal central angles → equal chords.",
+      "stored": 1,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 682,
+      "question": "Radius OB meets tangent at B. What is the angle between them?",
+      "hint": "Tangent is perpendicular to radius at point of contact.",
+      "stored": 90,
+      "tolerance": 1
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 819,
+      "question": "An angle in a major segment is: acute or obtuse?",
+      "hint": "Major segment > semicircle → angle < 90°",
+      "stored": 1,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class10Theorems.tsx",
+      "line": 836,
+      "question": "An angle in a minor segment is: acute or obtuse?",
+      "hint": "Minor segment < semicircle → angle > 90°",
+      "stored": 0,
+      "tolerance": 0.5
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 448,
+      "question": "f = 440 Hz, vL = 20 m/s, v = 340 m/s. Find apparent f.",
+      "hint": "f",
+      "stored": 465.88,
+      "tolerance": 10
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 907,
+      "question": "f = 440 Hz, vL = 20 m/s, v = 340 m/s. Find apparent f.",
+      "hint": "f",
+      "stored": 414.12,
+      "tolerance": 10
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 933,
+      "question": "f = 440 Hz, vS = 20 m/s, v = 340 m/s. Find apparent f.",
+      "hint": "f",
+      "stored": 467.5,
+      "tolerance": 10
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1150,
+      "question": "f = 440 Hz, vS = 20 m/s, v = 340 m/s. Find apparent f.",
+      "hint": "f",
+      "stored": 415.56,
+      "tolerance": 10
+    },
+    {
+      "file": "src/data/class11Derivations.tsx",
+      "line": 1206,
+      "question": "E = 3e-12 J, m = 9.11e-31 kg (electron). Find p (c = 3e8).",
+      "hint": "mc\\u00B2 = 9.11e-31 x 9e16 = 8.2e-14. p = √(9e-24 - 6.7e-27)/3e8",
+      "stored": 3.16e-20,
+      "tolerance": 1e-20
+    },
+    {
+      "file": "src/data/class11Theorems.tsx",
+      "line": 292,
+      "question": "det(A) = 5. You swap two rows. What is the new determinant?",
+      "hint": "Swapping rows flips the sign.",
+      "stored": -5,
+      "tolerance": 0.1
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 237,
+      "question": "A 1000 kg satellite is at r = 7000 km from Earth\\",
+      "hint": "U = \\u22126.67e-11 \\u00D7 5.97e24 \\u00D7 1000 / 7e6",
+      "stored": -56900000000,
+      "tolerance": 1000000000
+    },
+    {
+      "file": "src/data/class12Derivations.tsx",
+      "line": 1382,
+      "question": "Find the orbital speed for a_c = g near Earth. (g = 9.81, R = 6370000 m)",
+      "hint": "v = \\u221A(gR) = \\u221A(9.81 \\u00D7 6.37e6) = ?",
+      "stored": 7905,
+      "tolerance": 500
+    },
+    {
+      "file": "src/components/LabM10Theorems.tsx",
+      "line": 683,
+      "question": "(inline comparison)",
+      "hint": "",
+      "stored": 90,
+      "tolerance": 1
+    },
+    {
+      "file": "src/components/LabM10Theorems.tsx",
+      "line": 684,
+      "question": "(inline comparison)",
+      "hint": "",
+      "stored": 90,
+      "tolerance": 1
+    }
+  ]
+}

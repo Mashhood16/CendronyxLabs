@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Calculator, Ruler, CheckCircle2, XCircle, PieChart, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { Calculator, Ruler, CheckCircle2, XCircle, PieChart, Info } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM8RealEstimation({ onExit }: { onExit?: () => void }) {
@@ -74,30 +75,7 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <header className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] shrink-0 overflow-x-auto">
-  <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0">
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 whitespace-nowrap mr-4">{t('lab.m8realestimation_class_8_real_numbers_estimatio')}</h1>
-  <div className="flex flex-wrap gap-2">
-   <button 
-   onClick={() => setActiveTab('finance')}
-   className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'finance' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
-   >
-   <PieChart className="w-4 h-4 inline-block mr-2" />
-   
-                        {t('lab.m8realestimation_budgeting_fractions')}
-                        </button>
-   <button 
-   onClick={() => setActiveTab('bounds')}
-   className={`px-4 py-2 rounded-md font-medium whitespace-nowrap flex-shrink-0 transition-colors ${activeTab === 'bounds' ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
-   >
-   <Ruler className="w-4 h-4 inline-block mr-2" />
-   
-                        {t('lab.m8realestimation_error_bounds')}
-                        </button>
-  </div>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m8realestimation_class_8_real_numbers_estimatio')} />
 
   {/* Main 2-Column Layout */}
   <main className="flex flex-1 lg:overflow-hidden flex-col lg:flex-row">

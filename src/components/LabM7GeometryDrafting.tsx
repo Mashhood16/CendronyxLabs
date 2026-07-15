@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
+import LabHeader from './LabHeader';
 import type { MouseEvent as ReactMouseEvent } from 'react';
-import { ArrowLeft, Circle, Ruler, MapPin, Trash2, CheckCircle } from 'lucide-react';
+import { Circle, Ruler, MapPin, Trash2, CheckCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 type Point = { id: string; x: number; y: number };
@@ -149,12 +150,7 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
 
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <div className="flex items-center p-4 bg-rose-600 text-white shadow-md z-10">
-  <button onClick={onExit} className="mr-4 hover:bg-rose-700 p-2 rounded-full transition-colors dark:text-white dark:text-white dark:bg-rose-600 dark:hover:bg-rose-500 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">
-   <ArrowLeft className="w-5 h-5" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold">{t('lab.m7geometrydrafting_class_7_maths_practical_geomet')}</h1>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.m7geometrydrafting_class_7_maths_practical_geomet')} />
 
   <div className="flex flex-1 overflow-hidden">
   {/* Left Column Controls */}

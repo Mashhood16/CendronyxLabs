@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Puzzle, Target, Beaker, Link2, Sparkles , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle2, XCircle, Puzzle, Target, Beaker, Link2, Sparkles } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 
@@ -40,7 +41,7 @@ const PRONOUN_TYPES = ["Personal", "Possessive", "Reflexive", "Demonstrative", "
 
 export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [mode, setMode] = useState<'morphology' | 'pronoun'>('morphology');
 
  // Morphology State
@@ -108,36 +109,7 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000]/50 dark:!bg-[#000000] dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa] min-h-screen lg:h-screen overflow-x-hidden w-full">
   {/* Header */}
-  <div className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] dark:bg-[#121212] shrink-0">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-lg md:text-xl font-bold flex-1 min-w-0 truncate">{t('lab.e8pronounsmorphology_grammar_morphology_lab')}</h1>
-  <div className="flex gap-2 p-1 bg-slate-100 dark:bg-[#121212]/50 dark:bg-[#121212]/60 dark:bg-slate-700 rounded-lg">
-   <button 
-    onClick={() => setMode('morphology')} 
-    className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'morphology' ? ' dark:bg-[#121212] shadow-sm text-blue-600 dark:text-blue-400 dark:text-blue-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
-   >
-    <Puzzle className="w-4 h-4" />  {t('lab.e8pronounsmorphology_morphology')}
-                        </button>
-   <button 
-    onClick={() => setMode('pronoun')} 
-    className={`px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${mode === 'pronoun' ? ' dark:bg-[#121212] shadow-sm text-indigo-600 dark:text-indigo-400 dark:text-indigo-400' : 'text-slate-600 dark:text-[#a1a1aa] dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]/50 dark:hover:bg-slate-600'}`}
-   >
-    <Target className="w-4 h-4" />  {t('lab.e8pronounsmorphology_pronouns')}
-                        </button>
-  </div>
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:/10 transition-colors shrink-0 ml-4"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.e8pronounsmorphology_grammar_morphology_lab')} />
 
   <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
   

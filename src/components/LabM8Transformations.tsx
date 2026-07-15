@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RotateCw, FlipHorizontal, Maximize, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
+import { RotateCw, FlipHorizontal, Maximize, CheckCircle, XCircle } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 type TransformationMode = 'rotation' | 'reflection' | 'dilation';
@@ -181,18 +182,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
 
  return (
  <div className="flex flex-col min-h-screen lg:h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff]">
-  <header className="flex items-center p-4 shadow-sm z-10 border-b border-slate-200 dark:border-[#1c1b1b]">
-  <button
-   onClick={onExit}
-   className="mr-4 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap flex-shrink-0"
-  >
-   <ArrowLeft size={24} />
-  </button>
-  <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-   
-                    {t('lab.m8transformations_unit_8_transformations_lab')}
-                   </h1>
-  </header>
+  <LabHeader onExit={onExit} title={t('lab.m8transformations_unit_8_transformations_lab')} />
 
   <div className="flex flex-col lg:flex-row flex-1 overflow-hidden">
   {/* Left Column: Interactive Controls */}

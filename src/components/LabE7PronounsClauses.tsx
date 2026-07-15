@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, Search, ShieldAlert, Award, Zap , Sun, Moon} from 'lucide-react';
+import LabHeader from './LabHeader';
+import { CheckCircle, Search, ShieldAlert, Award, Zap } from 'lucide-react';
 import { useTheme } from '../store';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
@@ -33,7 +34,7 @@ const SYNTAX_TASKS = [
 
 export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }) {
     const { t } = useTranslate();
- const { theme, toggleTheme } = useTheme();
+ const { theme } = useTheme();
  const [mode, setMode] = useState<'pronouns' | 'syntax'>('pronouns');
  const [taskIndex, setTaskIndex] = useState(0);
  const [selectedWordIndex, setSelectedWordIndex] = useState<number | null>(null);
@@ -109,32 +110,12 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
  return (
   <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
    {/* Header */}
-   <div className="flex items-center justify-between p-4 bg-indigo-600 text-white shadow-md">
-    <div className="flex items-center gap-3">
-     <button onClick={onExit} className="p-2 hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/20 rounded-full transition-colors whitespace-nowrap flex-shrink-0 dark:bg-[#121212]">
-      <ArrowLeft className="w-6 h-6" />
-     </button>
-     <h1 className="text-lg md:text-xl font-bold flex items-center gap-2">
-      <Search className="w-6 h-6" />
-      
-                           {t('lab.e7pronounsclauses_syntax_scanner_pronouns_clause')}
-                          </h1>
-    </div>
-  <button
-   onClick={toggleTheme}
-   className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white dark:bg-[#121212] dark:border-[#1c1b1b]/10 transition-colors shrink-0 ml-4 dark:bg-[#121212]"
-   title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-  >
-   {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
-    <div className="flex items-center gap-4">
-     <div className="flex items-center gap-2 bg-indigo-800 px-4 py-2 rounded-full font-bold">
-      <Award className="w-5 h-5 text-yellow-400" />
-      
-                           {t('lab.e7pronounsclauses_score')} {score}
-     </div>
-    </div>
-   </div>
+   <LabHeader onExit={onExit} title={t('lab.e7pronounsclauses_syntax_scanner_pronouns_clause')} rightContent={
+          <div className="flex items-center gap-2 bg-black/20 dark:bg-white/10 px-4 py-2 rounded-full font-bold text-white text-xs">
+            <span className="opacity-90">{t('lab.e7pronounsclauses_score')}</span>
+            <span className="text-yellow-300 font-mono text-sm">{score}</span>
+          </div>
+        } />
 
    {/* Main Content */}
    <div className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">

@@ -1,4 +1,5 @@
 import { useMemo, useEffect } from 'react';
+import { theme } from '../utils/labTheme';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LAB_MODULES, formatSubject, hasCalculator } from '../data/labModules';
 import { useTranslate } from '../i18n';
@@ -73,7 +74,7 @@ export default function Class10Physics() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-2 mb-6 bg-slate-100 dark:bg-[#1c1b1b] p-1.5 rounded-xl w-full sm:w-fit">
+        <div className={`flex gap-2 mb-6 ${theme.innerCard.bg} border ${theme.innerCard.border} p-1.5 rounded-xl w-full sm:w-fit`}>
           <button
             onClick={() => setActiveTab('labs')}
             className={`flex flex-1 sm:flex-none justify-center items-center gap-2 px-3 sm:px-5 py-2.5 text-sm font-bold rounded-lg transition-all ${
@@ -108,12 +109,12 @@ export default function Class10Physics() {
         {activeTab === 'labs' && (
           <div className="flex-1">
             {filteredModules.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 glass rounded-2xl border border-dashed border-slate-200/50 dark:border-neutral-900/50">
+              <div className={`flex flex-col items-center justify-center py-20 ${theme.card.bg} rounded-2xl border border-dashed ${theme.border.default}`}>
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center mb-4 opacity-50">
                   <Rocket className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-700 mb-2">{t("No Labs Available")}</h3>
-                <p className="text-slate-500 max-w-md text-center">{t("There are no labs available for this selection.")}</p>
+                <h3 className="text-xl font-bold ${theme.text.secondary} mb-2">{t("No Labs Available")}</h3>
+                <p className="${theme.text.subtle} max-w-md text-center">{t("There are no labs available for this selection.")}</p>
               </div>
             ) : (
               <div>
@@ -125,9 +126,7 @@ export default function Class10Physics() {
                         key={lab.id}
                         onClick={() => isBuilt && goToLab(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
                         className={`relative group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
-                          isBuilt
-                            ? 'glass border border-slate-200/50 dark:border-[#1c1b1b]/50 hover:-translate-y-2 hover:shadow-xl hover:border-transparent cursor-pointer hover:gradient-border'
-                            : 'glass border border-dashed border-slate-200/50 dark:border-[#1c1b1b]/50 opacity-70'
+                          isBuilt ? `${theme.card.bg} border ${theme.border.default} hover:-translate-y-2 hover:shadow-xl hover:border-transparent cursor-pointer hover:gradient-border` : `${theme.card.bg} border border-dashed ${theme.border.default} opacity-70`
                         }`}
                       >
                         <div className={`relative h-32 bg-gradient-to-br ${lab.bg} overflow-hidden`}>
@@ -150,10 +149,10 @@ export default function Class10Physics() {
                           )}
                         </div>
                         <div className="p-6 flex-1 flex flex-col bg-transparent">
-                          <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? 'text-slate-800 group-hover:text-slate-900' : 'text-slate-600'}`}>{lab.title}</h3>
-                          <p className="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2 flex-1">{translateLabDesc(lab.id, lab.desc, language)}</p>
-                          <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                            <div className="flex items-center gap-1.5 text-slate-400">
+                          <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{lab.title}</h3>
+                          <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>{translateLabDesc(lab.id, lab.desc, language)}</p>
+                          <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
+                            <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -186,9 +185,7 @@ export default function Class10Physics() {
                     key={lab.id}
                     onClick={() => isBuilt && navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
                     className={`relative group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
-                      isBuilt
-                        ? 'glass border border-slate-200/50 dark:border-[#1c1b1b]/50 hover:-translate-y-2 hover:shadow-xl hover:border-transparent cursor-pointer hover:gradient-border'
-                        : 'glass border border-dashed border-slate-200/50 dark:border-[#1c1b1b]/50 opacity-70'
+                      isBuilt ? `${theme.card.bg} border ${theme.border.default} hover:-translate-y-2 hover:shadow-xl hover:border-transparent cursor-pointer hover:gradient-border` : `${theme.card.bg} border border-dashed ${theme.border.default} opacity-70`
                     }`}
                   >
                     <div className={`relative h-32 bg-gradient-to-br ${lab.bg} overflow-hidden`}>
@@ -207,10 +204,10 @@ export default function Class10Physics() {
                       </div>
                     </div>
                     <div className="p-6 flex-1 flex flex-col bg-transparent">
-                      <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? 'text-slate-800 group-hover:text-slate-900' : 'text-slate-600'}`}>{lab.title}</h3>
-                      <p className="text-sm text-slate-500 leading-relaxed mb-4 line-clamp-2 flex-1">{lab.desc}</p>
-                      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                        <div className="flex items-center gap-1.5 text-slate-400">
+                      <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{lab.title}</h3>
+                      <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>{lab.desc}</p>
+                      <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
+                        <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
                           <GraduationCap className="w-3.5 h-3.5" />
                           <span className="text-xs font-bold">{t("Interactive")}</span>
                         </div>

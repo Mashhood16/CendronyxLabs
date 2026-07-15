@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 import type { MouseEvent } from 'react';
-import { ArrowLeft, RefreshCcw, MapPin, Move, RotateCw, CheckCircle2 } from 'lucide-react';
+import { RefreshCcw, MapPin, Move, RotateCw, CheckCircle2 } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM7Transformations({ onExit }: { onExit?: () => void }) {
@@ -51,12 +52,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
  
  return (
  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <div className="flex items-center p-4 border-b border-slate-200 dark:border-[#1c1b1b] shadow-sm z-10">
-  <button onClick={onExit} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors mr-4">
-   <ArrowLeft className="w-6 h-6" />
-  </button>
-  <h1 className="text-2xl font-bold">{t('lab.m7transformations_unit_7_transformations_coordin')}</h1>
-  </div>
+  <LabHeader onExit={onExit} title={t('lab.m7transformations_unit_7_transformations_coordin')} />
 
   <div className="flex flex-1 overflow-hidden">
   {/* Left Column */}

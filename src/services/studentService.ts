@@ -25,6 +25,10 @@ const DB_VERSION = 1;
 
 let dbPromise: Promise<IDBPDatabase<StudentDB>> | null = null;
 
+export const resetStudentDB = () => {
+  dbPromise = null;
+};
+
 const getDB = () => {
   if (!dbPromise) {
     dbPromise = openDB<StudentDB>(DB_NAME, DB_VERSION, {
