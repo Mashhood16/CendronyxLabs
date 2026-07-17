@@ -8,95 +8,95 @@ interface LabProps {
 }
 
 export default function LabS7MakingRockCandy({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [days, setDays] = useState(0);
  const [running, setRunning] = useState(false);
 
  useEffect(() => {
  let interval: number;
  if (running && days < 7) {
-  interval = window.setInterval(() => {
-  setDays(d => Math.min(7, d + 1));
-  }, 1000);
+ interval = window.setInterval(() => {
+ setDays(d => Math.min(7, d + 1));
+ }, 1000);
  } else if (days === 7) {
-  setRunning(false);
+ setRunning(false);
  }
  return () => clearInterval(interval);
  }, [running, days]);
 
  return (
- <div className="flex flex-col min- lg: bg-pink-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s7makingrockcandy_unit_7_making_rock_candy')} />
+ <div className="flex flex-col min- bg-pink-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s7makingrockcandy_unit_7_making_rock_candy')} />
 
-  <div className="flex-1 p-8 flex flex-col items-center">
-  <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-pink-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-pink-800 mb-4">{t('lab.s7makingrockcandy_crystallization')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7makingrockcandy_a_supersaturated_solution_of_s')}</p>
-   
-   <div className="flex justify-center gap-4">
-   <button 
-    onClick={() => setRunning(!running)}
-    disabled={days === 7}
-    className="flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 disabled:opacity-50 font-medium dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
-   >
-    <Clock className="w-5 h-5 mr-2" />
-    {running ? 'Pause Time' : days === 7 ? 'Crystallization Complete' : 'Wait 7 Days'}
-   </button>
-   <button 
-    onClick={() => { setDays(0); setRunning(false); }}
-    className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
-   >
-    
-                             {t('lab.s7makingrockcandy_reset')}
-                            </button>
-   </div>
-   <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">{t('lab.s7makingrockcandy_time_elapsed')} {days}  {t('lab.s7makingrockcandy_days')}</div>
-  </div>
+ <div className="flex-1 p-8 flex flex-col items-center">
+ <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-pink-100 max-w-2xl w-full text-center mb-8">
+ <h2 className="text-2xl font-bold text-pink-800 mb-4">{t('lab.s7makingrockcandy_crystallization')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7makingrockcandy_a_supersaturated_solution_of_s')}</p>
+ 
+ <div className="flex justify-center gap-4">
+ <button 
+ onClick={() => setRunning(!running)}
+ disabled={days === 7}
+ className="flex items-center px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 disabled:opacity-50 font-medium dark:bg-pink-500 dark:hover:bg-pink-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-pink-500/40"
+ >
+ <Clock className="w-5 h-5 mr-2" />
+ {running ? 'Pause Time' : days === 7 ? 'Crystallization Complete' : 'Wait 7 Days'}
+ </button>
+ <button 
+ onClick={() => { setDays(0); setRunning(false); }}
+ className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
+ >
+ 
+ {t('lab.s7makingrockcandy_reset')}
+ </button>
+ </div>
+ <div className="mt-4 font-bold text-lg text-slate-700 dark:text-[#ffffff]">{t('lab.s7makingrockcandy_time_elapsed')} {days} {t('lab.s7makingrockcandy_days')}</div>
+ </div>
 
-  <div className="flex gap-16 justify-center mt-12 w-full flex-wrap">
-   
-   {[
-   { color: 'text-red-500', bg: 'bg-red-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]' },
-   { color: 'text-blue-500', bg: 'bg-blue-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]' },
-   { color: 'text-indigo-500', bg: 'bg-indigo-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]' }
-   ].map((theme, idx) => (
-   <div key={idx} className="relative w-32 h-64 flex justify-center">
-    
-    {/* Stick & Crystals */}
-    <div className="absolute top-4 w-2 h-56 bg-amber-200 z-10 flex flex-col justify-end items-center pb-4">
-     {/* Crystals growing */}
-     <div 
-     className="relative transition-all duration-1000 flex flex-col items-center justify-end"
-     style={{ height: `${Math.max(10, days * 20)}px`, width: `${Math.max(4, days * 8)}px` }}
-     >
-      <div className={`absolute inset-0 ${theme.bg} opacity-90 backdrop-blur-sm rounded ${theme.dropShadow} flex flex-wrap content-end overflow-hidden border border-white/20`} style={{ clipPath: 'polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%)' }}>
-      {/* Geometric facets to look like crystals */}
-      <div className="w-full h-1/2 bg-slate-50 dark:bg-[#121212]/20 absolute top-0 -rotate-12 transform origin-top-left"></div>
-      <div className="w-full h-1/2 bg-black/10 absolute bottom-0 rotate-12 transform origin-bottom-right"></div>
-      </div>
-     </div>
-    </div>
+ <div className="flex gap-16 justify-center mt-12 w-full flex-wrap">
+ 
+ {[
+ { color: 'text-red-500', bg: 'bg-red-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(239,68,68,0.5)]' },
+ { color: 'text-blue-500', bg: 'bg-blue-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]' },
+ { color: 'text-indigo-500', bg: 'bg-indigo-400', dropShadow: 'drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]' }
+ ].map((theme, idx) => (
+ <div key={idx} className="relative w-32 h-64 flex justify-center">
+ 
+ {/* Stick & Crystals */}
+ <div className="absolute top-4 w-2 h-56 bg-amber-200 z-10 flex flex-col justify-end items-center pb-4">
+ {/* Crystals growing */}
+ <div 
+ className="relative transition-all duration-1000 flex flex-col items-center justify-end"
+ style={{ height: `${Math.max(10, days * 20)}px`, width: `${Math.max(4, days * 8)}px` }}
+ >
+ <div className={`absolute inset-0 ${theme.bg} opacity-90 backdrop-blur-sm rounded ${theme.dropShadow} flex flex-wrap content-end overflow-hidden border border-white/20`} style={{ clipPath: 'polygon(20% 0, 80% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0 80%, 0 20%)' }}>
+ {/* Geometric facets to look like crystals */}
+ <div className="w-full h-1/2 bg-slate-50 dark:bg-[#121212]/20 absolute top-0 -rotate-12 transform origin-top-left"></div>
+ <div className="w-full h-1/2 bg-black/10 absolute bottom-0 rotate-12 transform origin-bottom-right"></div>
+ </div>
+ </div>
+ </div>
 
-    {/* Jar */}
-    <div className="absolute bottom-0 w-32 h-40 border-4 border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212]/10 backdrop-blur-sm rounded-b-xl rounded-t-sm z-20 flex justify-center items-end shadow-inner overflow-hidden">
-     {/* Syrup level decreases slightly as water evaporates */}
-     <div 
-     className={`w-full transition-all duration-1000 ${theme.bg} opacity-50 border-t-2 border-white/40`}
-     style={{ height: `${100 - (days * 3)}%` }}
-     ></div>
-    </div>
-   </div>
-   ))}
+ {/* Jar */}
+ <div className="absolute bottom-0 w-32 h-40 border-4 border-slate-300 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212]/10 backdrop-blur-sm rounded-b-xl rounded-t-sm z-20 flex justify-center items-end shadow-inner overflow-hidden">
+ {/* Syrup level decreases slightly as water evaporates */}
+ <div 
+ className={`w-full transition-all duration-1000 ${theme.bg} opacity-50 border-t-2 border-white/40`}
+ style={{ height: `${100 - (days * 3)}%` }}
+ ></div>
+ </div>
+ </div>
+ ))}
 
-  </div>
+ </div>
 
-  {days === 7 && (
-   <div className="mt-16 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-pink-500 max-w-2xl text-center">
-   <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Diamond className="w-5 h-5 mr-2 text-pink-500" />  {t('lab.s7makingrockcandy_conclusion')}</h4>
-   <p>{t('lab.s7makingrockcandy_hot_water_can_dissolve_much_mo')} <strong>{t('lab.s7makingrockcandy_supersaturated_solution')}</strong>{t('lab.s7makingrockcandy_as_the_water_cools_and_evapora')}</p>
-   </div>
-  )}
-  </div>
+ {days === 7 && (
+ <div className="mt-16 p-6 bg-slate-50 dark:!bg-[#121212] shadow-lg text-slate-800 dark:text-[#ffffff] rounded-xl border-t-4 border-pink-500 max-w-2xl text-center">
+ <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><Diamond className="w-5 h-5 mr-2 text-pink-500" /> {t('lab.s7makingrockcandy_conclusion')}</h4>
+ <p>{t('lab.s7makingrockcandy_hot_water_can_dissolve_much_mo')} <strong>{t('lab.s7makingrockcandy_supersaturated_solution')}</strong>{t('lab.s7makingrockcandy_as_the_water_cools_and_evapora')}</p>
+ </div>
+ )}
+ </div>
  </div>
  );
 }

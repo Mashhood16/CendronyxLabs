@@ -5,8 +5,8 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => void }) {
-  const { recordLabData, setLabScore } = useLab();
-    const { t } = useTranslate();
+ const { recordLabData, setLabScore } = useLab();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
  const [time, setTime] = useState(0);
@@ -20,9 +20,9 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
  useEffect(() => {
  let timer: number;
  if (isPlaying && currentVol < maxVol * 0.99) {
-  timer = window.setInterval(() => setTime(t => t + 1), 500);
+ timer = window.setInterval(() => setTime(t => t + 1), 500);
  } else if (currentVol >= maxVol * 0.99) {
-  setIsPlaying(false);
+ setIsPlaying(false);
  }
  return () => window.clearInterval(timer);
  }, [isPlaying, currentVol, maxVol]);
@@ -35,7 +35,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
 
  const recordData = () => {
  setData(prev => [...prev, { t: time, vol: parseFloat(currentVol.toFixed(1)), tabs: tablets }]);
-   recordLabData({ timestamp: Date.now(),  t: time, vol: parseFloat(currentVol.toFixed(1)), tabs: tablets });
+ recordLabData({ timestamp: Date.now(), t: time, vol: parseFloat(currentVol.toFixed(1)), tabs: tablets });
  };
 
  const [assQ] = useState({ moles: Math.floor(Math.random() * 5 + 1) * 0.005 });
@@ -46,7 +46,7 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
  const expected = assQ.moles * 24000;
  if (Math.abs(parseFloat(answer) - expected) < 1) setIsCorrect(true);
  else setIsCorrect(false);
-    setLabScore(isCorrect ? 100 : 0, 100);
+ setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {
@@ -56,175 +56,175 @@ export default function LabC10ConcentrationRate({ onExit }: { onExit?: () => voi
  const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.vol / maxY) * 100}`).join(' ');
 
  return (
-  <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
-  <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
-  <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
-  <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
-  {data.map((d, i) => (
-   <circle key={i} cx={(d.t / maxT) * 100} cy={100 - (d.vol / maxY) * 100} r="2" fill="#ef4444" />
-  ))}
-  <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">{t('lab.c10concentrationrate_time_s')}</text>
-  <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">{t('lab.c10concentrationrate_gas_vol_ml')}</text>
-  </svg>
+ <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
+ <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
+ <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
+ <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
+ {data.map((d, i) => (
+ <circle key={i} cx={(d.t / maxT) * 100} cy={100 - (d.vol / maxY) * 100} r="2" fill="#ef4444" />
+ ))}
+ <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">{t('lab.c10concentrationrate_time_s')}</text>
+ <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">{t('lab.c10concentrationrate_gas_vol_ml')}</text>
+ </svg>
  );
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
 <LabHeader onExit={onExit} title={t('lab.c10concentrationrate_reaction_kinetics_reactant_qua')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c10concentrationrate_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c10concentrationrate_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10concentrationrate_theory_setup')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-   
-                        {t('lab.c10concentrationrate_increasing_the_amount_of_react')}
-                        </p>
-   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   
-                        {t('lab.c10concentrationrate_caco_s_2hcl_aq_cacl_aq_h_o_l_c')}
-                        </div>
-   
-   <div className="space-y-6">
-   <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10concentrationrate_number_of_tablets')}</label>
-    <select 
-    value={tablets} 
-    onChange={(e) => { setTablets(parseInt(e.target.value)); handleReset(); }}
-    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md"
-    >
-    <option value="1">{t('lab.c10concentrationrate_1_tablet')}</option>
-    <option value="2">{t('lab.c10concentrationrate_2_tablets')}</option>
-    </select>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c10concentrationrate_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c10concentrationrate_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 min-h-0 lg:overflow-hidden">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10concentrationrate_theory_setup')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
+ 
+ {t('lab.c10concentrationrate_increasing_the_amount_of_react')}
+ </p>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ 
+ {t('lab.c10concentrationrate_caco_s_2hcl_aq_cacl_aq_h_o_l_c')}
+ </div>
+ 
+ <div className="space-y-6">
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10concentrationrate_number_of_tablets')}</label>
+ <select 
+ value={tablets} 
+ onChange={(e) => { setTablets(parseInt(e.target.value)); handleReset(); }}
+ className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md"
+ >
+ <option value="1">{t('lab.c10concentrationrate_1_tablet')}</option>
+ <option value="2">{t('lab.c10concentrationrate_2_tablets')}</option>
+ </select>
+ </div>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">{t('lab.c10concentrationrate_simulation_viewer')}</h2>
-   
-   <div className="w-full flex justify-center space-x-4 mb-6">
-   <button onClick={() => setIsPlaying(!isPlaying)} className={`flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
-    {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-    {isPlaying ? 'Pause' : 'Start'}
-   </button>
-   <button onClick={handleReset} className={`flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] flex-col `}>
-    <RotateCcw className="w-4 h-4 mr-2" />  {t('lab.c10concentrationrate_reset')}
-                            </button>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">{t('lab.c10concentrationrate_simulation_viewer')}</h2>
+ 
+ <div className="w-full flex justify-center space-x-4 mb-6">
+ <button onClick={() => setIsPlaying(!isPlaying)} className={`flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
+ {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+ {isPlaying ? 'Pause' : 'Start'}
+ </button>
+ <button onClick={handleReset} className={`flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] flex-col `}>
+ <RotateCcw className="w-4 h-4 mr-2" /> {t('lab.c10concentrationrate_reset')}
+ </button>
+ </div>
 
-   <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
-   <svg viewBox="0 0 200 200" className="w-full h-full">
-    {/* Flask */}
-    <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
-    {/* Acid Liquid */}
-    <path d="M 40 130 L 120 130 L 127 160 Q 140 180 110 180 L 50 180 Q 20 180 33 160 Z" fill="#fef08a" opacity="0.6" />
-    
-    {/* Tablets */}
-    <circle cx="70" cy="165" r="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
-    {tablets === 2 && <circle cx="90" cy="165" r="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />}
+ <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
+ <svg viewBox="0 0 200 200" className="w-full h-full">
+ {/* Flask */}
+ <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
+ {/* Acid Liquid */}
+ <path d="M 40 130 L 120 130 L 127 160 Q 140 180 110 180 L 50 180 Q 20 180 33 160 Z" fill="#fef08a" opacity="0.6" />
+ 
+ {/* Tablets */}
+ <circle cx="70" cy="165" r="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
+ {tablets === 2 && <circle cx="90" cy="165" r="8" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />}
 
-    {/* Bubbles */}
-    {isPlaying && currentVol < maxVol * 0.99 && (
-    <>
-     {[...Array(tablets === 2 ? 8 : 4)].map((_, i) => (
-     <circle key={i} cx={70 + (i * 5) + (time % 2)} cy={140 - ((time * 10 + i * 15) % 40)} r="2" fill="white" opacity="0.8" />
-     ))}
-    </>
-    )}
+ {/* Bubbles */}
+ {isPlaying && currentVol < maxVol * 0.99 && (
+ <>
+ {[...Array(tablets === 2 ? 8 : 4)].map((_, i) => (
+ <circle key={i} cx={70 + (i * 5) + (time % 2)} cy={140 - ((time * 10 + i * 15) % 40)} r="2" fill="white" opacity="0.8" />
+ ))}
+ </>
+ )}
 
-    {/* Gas Syringe Tube */}
-    <path d="M 100 60 L 140 60 L 140 80 L 100 80" fill="none" stroke="#94a3b8" strokeWidth="2" />
-    {/* Syringe Body */}
-    <rect x="140" y="50" width="50" height="40" fill="none" stroke="#94a3b8" strokeWidth="2" />
-    {/* Plunger (Scaled by 80max) */}
-    <rect x={140 + (currentVol / 80) * 45} y="52" width="5" height="36" fill="#475569" />
-    <line x1={145 + (currentVol / 80) * 45} y1="70" x2={190} y2="70" stroke="#475569" strokeWidth="4" />
-   </svg>
-   </div>
+ {/* Gas Syringe Tube */}
+ <path d="M 100 60 L 140 60 L 140 80 L 100 80" fill="none" stroke="#94a3b8" strokeWidth="2" />
+ {/* Syringe Body */}
+ <rect x="140" y="50" width="50" height="40" fill="none" stroke="#94a3b8" strokeWidth="2" />
+ {/* Plunger (Scaled by 80max) */}
+ <rect x={140 + (currentVol / 80) * 45} y="52" width="5" height="36" fill="#475569" />
+ <line x1={145 + (currentVol / 80) * 45} y1="70" x2={190} y2="70" stroke="#475569" strokeWidth="4" />
+ </svg>
+ </div>
 
-   <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block">
-   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10concentrationrate_time')}</div>
-    <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{time} s</div>
-   </div>
-   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
-    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10concentrationrate_co_volume')}</div>
-    <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{currentVol.toFixed(1)} mL</div>
-   </div>
-   </div>
-  </div>
+ <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block">
+ <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+ <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10concentrationrate_time')}</div>
+ <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{time} s</div>
+ </div>
+ <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+ <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10concentrationrate_co_volume')}</div>
+ <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{currentVol.toFixed(1)} mL</div>
+ </div>
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10concentrationrate_data_analysis')}</h2>
-   <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    <Save className="w-4 h-4 mr-1" />  {t('lab.c10concentrationrate_record')}
-                            </button>
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex justify-between items-center mb-4">
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10concentrationrate_data_analysis')}</h2>
+ <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
+ <Save className="w-4 h-4 mr-1" /> {t('lab.c10concentrationrate_record')}
+ </button>
+ </div>
 
-   {renderGraph()}
+ {renderGraph()}
 
-   <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-   <table className="w-full text-sm text-left">
-    <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
-    <tr>
-     <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_time_s')}</th>
-     <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_tablets')}</th>
-     <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_volume_ml')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {data.map((d, i) => (
-     <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
-     <td className="px-3 py-2">{d.t}</td>
-     <td className="px-3 py-2">{d.tabs}</td>
-     <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>
-     </tr>
-    ))}
-    </tbody>
-   </table>
-   </div>
+ <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <table className="w-full text-sm text-left">
+ <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
+ <tr>
+ <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_time_s')}</th>
+ <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_tablets')}</th>
+ <th className="px-3 py-2 border-b">{t('lab.c10concentrationrate_volume_ml')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {data.map((d, i) => (
+ <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
+ <td className="px-3 py-2">{d.t}</td>
+ <td className="px-3 py-2">{d.tabs}</td>
+ <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c10concentrationrate_assessment')}</h3>
-   <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
-    
-                             {t('lab.c10concentrationrate_if_an_antacid_tablet_contains')} {assQ.moles}  {t('lab.c10concentrationrate_moles_of_caco_calculate_the_th')}
-                            </p>
-   <div className="flex items-center space-x-2">
-    <input 
-    type="number" 
-    value={answer}
-    onChange={e => setAnswer(e.target.value)}
-    placeholder={t('lab.c10concentrationrate_volume_ml')} 
-    className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
-    />
-    <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    
-                                 {t('lab.c10concentrationrate_check')}
-                                 </button>
-   </div>
-   {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" />  {t('lab.c10concentrationrate_correct')}</div>}
-   {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" />  {t('lab.c10concentrationrate_incorrect_try_again')}</div>}
-   </div>
-  </div>
-  </div>
+ <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+ <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c10concentrationrate_assessment')}</h3>
+ <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
+ 
+ {t('lab.c10concentrationrate_if_an_antacid_tablet_contains')} {assQ.moles} {t('lab.c10concentrationrate_moles_of_caco_calculate_the_th')}
+ </p>
+ <div className="flex items-center space-x-2">
+ <input 
+ type="number" 
+ value={answer}
+ onChange={e => setAnswer(e.target.value)}
+ placeholder={t('lab.c10concentrationrate_volume_ml')} 
+ className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
+ />
+ <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.c10concentrationrate_check')}
+ </button>
+ </div>
+ {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> {t('lab.c10concentrationrate_correct')}</div>}
+ {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" /> {t('lab.c10concentrationrate_incorrect_try_again')}</div>}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

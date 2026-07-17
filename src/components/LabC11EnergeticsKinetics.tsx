@@ -11,7 +11,7 @@ interface LoggedData {
 
 export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => void }) {
  const { setLabScore } = useLab();
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [reactionType, setReactionType] = useState<'exo' | 'endo'>('exo');
  const [waterMass, setWaterMass] = useState<number>(100);
@@ -53,28 +53,28 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
 
  useEffect(() => {
  if (isRunning) {
-  timerRef.current = window.setInterval(() => {
-  setTime(t => {
-   const newT = t + 1;
-   if (newT > 60) {
-   setIsRunning(false);
-   return 60;
-   }
-   return newT;
-  });
-  }, 200);
+ timerRef.current = window.setInterval(() => {
+ setTime(t => {
+ const newT = t + 1;
+ if (newT > 60) {
+ setIsRunning(false);
+ return 60;
+ }
+ return newT;
+ });
+ }, 200);
  } else if (timerRef.current !== null) {
-  clearInterval(timerRef.current);
+ clearInterval(timerRef.current);
  }
  return () => {
-  if (timerRef.current !== null) clearInterval(timerRef.current);
+ if (timerRef.current !== null) clearInterval(timerRef.current);
  };
  }, [isRunning]);
 
  useEffect(() => {
  if (time === 0) {
-  setTemperature(T_initial);
-  return;
+ setTemperature(T_initial);
+ return;
  }
  
  const molarMass = reactionType === 'exo' ? 40 : 80;
@@ -92,10 +92,10 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
  
  let currentT = T_initial;
  if (reactionType === 'exo') {
-  currentT = T_initial + deltaT_max * progress * cooling;
+ currentT = T_initial + deltaT_max * progress * cooling;
  } else {
-  currentT = T_initial - deltaT_max * progress; 
-  currentT += (T_initial - currentT) * (1 - cooling);
+ currentT = T_initial - deltaT_max * progress; 
+ currentT += (T_initial - currentT) * (1 - cooling);
  }
  
  setTemperature(currentT);
@@ -104,10 +104,10 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
 
  useEffect(() => {
  if (time > 0 && (time % 5 === 0 || time === 60)) {
-  setLogs(prev => {
-  if (prev.find(p => p.time === time)) return prev;
-  return [...prev, { time, temp: Number(temperature.toFixed(1)) }];
-  });
+ setLogs(prev => {
+ if (prev.find(p => p.time === time)) return prev;
+ return [...prev, { time, temp: Number(temperature.toFixed(1)) }];
+ });
  }
  }, [time, temperature]);
 
@@ -116,10 +116,10 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
  const expected = deltaH_kJ_mol;
  const userAns = parseFloat(userDeltaH);
  if (!isNaN(userAns) && Math.abs(userAns - expected) <= 3) {
-  setIsCorrect(true);
+ setIsCorrect(true);
  } else {
-  setIsCorrect(false);
-    setLabScore(isCorrect ? 100 : 0, 100);
+ setIsCorrect(false);
+ setLabScore(isCorrect ? 100 : 0, 100);
  }
  };
 
@@ -132,189 +132,189 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
  const height = 150;
  
  const points = logs.map(log => {
-  const x = (log.time / maxTime) * width;
-  const y = height - ((log.temp - minTemp) / (maxTemp - minTemp)) * height;
-  return `${x},${y}`;
+ const x = (log.time / maxTime) * width;
+ const y = height - ((log.temp - minTemp) / (maxTemp - minTemp)) * height;
+ return `${x},${y}`;
  }).join(' ');
 
  return (
-  <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-[#121212] border rounded mt-4">
-   <polyline points={points} fill="none" stroke="#3b82f6" strokeWidth="2" />
-   {logs.map((log, i) => {
-   const x = (log.time / maxTime) * width;
-   const y = height - ((log.temp - minTemp) / (maxTemp - minTemp)) * height;
-   return <circle key={i} cx={x} cy={y} r="3" fill="#2563eb" />;
-   })}
-  </svg>
+ <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 dark:bg-[#121212] border rounded mt-4">
+ <polyline points={points} fill="none" stroke="#3b82f6" strokeWidth="2" />
+ {logs.map((log, i) => {
+ const x = (log.time / maxTime) * width;
+ const y = height - ((log.temp - minTemp) / (maxTemp - minTemp)) * height;
+ return <circle key={i} cx={x} cy={y} r="3" fill="#2563eb" />;
+ })}
+ </svg>
  );
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c11energeticskinetics_energetics_kinetics')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c11energeticskinetics_energetics_kinetics')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c11energeticskinetics_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c11energeticskinetics_lab')}</button>
-  </div>
-  <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
-   <Info size={20} className="text-blue-500" />  {t('lab.c11energeticskinetics_theory_setup')}
-                        </h2>
-   <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
-   <p><strong>{t('lab.c11energeticskinetics_calorimetry')}</strong>  {t('lab.c11energeticskinetics_measures_the_heat_transferred_')} <em>q</em>  {t('lab.c11energeticskinetics_is_calculated_using')} <code>{t('lab.c11energeticskinetics_q_mc_t')}</code>.</p>
-   <p>{t('lab.c11energeticskinetics_if_the_temperature_rises_the_r')} <strong>{t('lab.c11energeticskinetics_exothermic')}</strong>  {t('lab.c11energeticskinetics_h_is_negative_if_it_falls_it_i')} <strong>{t('lab.c11energeticskinetics_endothermic')}</strong>  {t('lab.c11energeticskinetics_h_is_positive')}</p>
-   </div>
-   
-   <div className="mt-4 space-y-4">
-   <div>
-    <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_reaction_type')}</label>
-    <select 
-    disabled={isRunning || time > 0}
-    className={`w-full p-2 border rounded bg-slate-50 dark:bg-[#121212] flex-col `}
-    value={reactionType} 
-    onChange={(e) => setReactionType(e.target.value as 'exo' | 'endo')}
-    >
-    <option value="exo">{t('lab.c11energeticskinetics_naoh_hcl_exothermic')}</option>
-    <option value="endo">{t('lab.c11energeticskinetics_nh4no3_h2o_endothermic')}</option>
-    </select>
-   </div>
-   
-   <div>
-    <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_water_mass_g')} {waterMass}</label>
-    <input 
-    type="range" min="50" max="200" step="10" 
-    value={waterMass} onChange={e => setWaterMass(Number(e.target.value))}
-    disabled={isRunning || time > 0}
-    className="w-full cursor-pointer"
-    />
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c11energeticskinetics_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c11energeticskinetics_lab')}</button>
+ </div>
+ <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 min-h-0 lg:overflow-hidden">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4 ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
+ <Info size={20} className="text-blue-500" /> {t('lab.c11energeticskinetics_theory_setup')}
+ </h2>
+ <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-2">
+ <p><strong>{t('lab.c11energeticskinetics_calorimetry')}</strong> {t('lab.c11energeticskinetics_measures_the_heat_transferred_')} <em>q</em> {t('lab.c11energeticskinetics_is_calculated_using')} <code>{t('lab.c11energeticskinetics_q_mc_t')}</code>.</p>
+ <p>{t('lab.c11energeticskinetics_if_the_temperature_rises_the_r')} <strong>{t('lab.c11energeticskinetics_exothermic')}</strong> {t('lab.c11energeticskinetics_h_is_negative_if_it_falls_it_i')} <strong>{t('lab.c11energeticskinetics_endothermic')}</strong> {t('lab.c11energeticskinetics_h_is_positive')}</p>
+ </div>
+ 
+ <div className="mt-4 space-y-4">
+ <div>
+ <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_reaction_type')}</label>
+ <select 
+ disabled={isRunning || time > 0}
+ className={`w-full p-2 border rounded bg-slate-50 dark:bg-[#121212] flex-col `}
+ value={reactionType} 
+ onChange={(e) => setReactionType(e.target.value as 'exo' | 'endo')}
+ >
+ <option value="exo">{t('lab.c11energeticskinetics_naoh_hcl_exothermic')}</option>
+ <option value="endo">{t('lab.c11energeticskinetics_nh4no3_h2o_endothermic')}</option>
+ </select>
+ </div>
+ 
+ <div>
+ <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_water_mass_g')} {waterMass}</label>
+ <input 
+ type="range" min="50" max="200" step="10" 
+ value={waterMass} onChange={e => setWaterMass(Number(e.target.value))}
+ disabled={isRunning || time > 0}
+ className="w-full cursor-pointer"
+ />
+ </div>
 
-   <div>
-    <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_reactant_mass_g')} {reactantMass}</label>
-    <input 
-    type="range" min="1" max="20" step="1" 
-    value={reactantMass} onChange={e => setReactantMass(Number(e.target.value))}
-    disabled={isRunning || time > 0}
-    className="w-full cursor-pointer"
-    />
-   </div>
-   </div>
-  </div>
+ <div>
+ <label className="block text-sm font-semibold mb-1">{t('lab.c11energeticskinetics_reactant_mass_g')} {reactantMass}</label>
+ <input 
+ type="range" min="1" max="20" step="1" 
+ value={reactantMass} onChange={e => setReactantMass(Number(e.target.value))}
+ disabled={isRunning || time > 0}
+ className="w-full cursor-pointer"
+ />
+ </div>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
-   <Activity size={20} className="text-blue-500" />  {t('lab.c11energeticskinetics_coffee_cup_calorimeter')}
-                        </h2>
-   
-   <div className={`w-full lg:flex-1 flex flex-col items-center justify-center bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg border p-4 relative  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <div className={`absolute top-2 left-2 text-xs font-mono bg-slate-50 dark:bg-[#121212] px-2 py-1 border rounded shadow-sm flex-col `}>
-    
-                             {t('lab.c11energeticskinetics_time')} {time}s
-   </div>
-   
-   <svg viewBox="0 0 200 300" className="w-full h-64 drop-shadow-md">
-    <path d="M 50 100 L 60 250 Q 100 260 140 250 L 150 100 Z" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="4"/>
-    <path d="M 55 150 L 60 250 Q 100 260 140 250 L 145 150 Z" fill={reactionType === 'exo' ? "#bae6fd" : "#93c5fd"} opacity="0.8"/>
-    {isRunning && (
-     <circle cx="100" cy="200" r="4" fill="#3b82f6" className="animate-ping" />
-    )}
-    <rect x="95" y="20" width="10" height="220" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2"/>
-    <circle cx="100" cy="240" r="12" fill="#ef4444" />
-    <rect x="98" y={230 - (temperature * 2)} width="4" height={10 + (temperature * 2)} fill="#ef4444" className="transition-all duration-300" />
-    <text x="120" y="245" fontSize="16" fill="#334155" fontWeight="bold">{temperature.toFixed(1)} °C</text>
-   </svg>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
+ <Activity size={20} className="text-blue-500" /> {t('lab.c11energeticskinetics_coffee_cup_calorimeter')}
+ </h2>
+ 
+ <div className={`w-full lg:flex-1 flex flex-col items-center justify-center bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg border p-4 relative 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <div className={`absolute top-2 left-2 text-xs font-mono bg-slate-50 dark:bg-[#121212] px-2 py-1 border rounded shadow-sm flex-col `}>
+ 
+ {t('lab.c11energeticskinetics_time')} {time}s
+ </div>
+ 
+ <svg viewBox="0 0 200 300" className="w-full h-64 drop-shadow-md">
+ <path d="M 50 100 L 60 250 Q 100 260 140 250 L 150 100 Z" fill="#e2e8f0" stroke="#94a3b8" strokeWidth="4"/>
+ <path d="M 55 150 L 60 250 Q 100 260 140 250 L 145 150 Z" fill={reactionType === 'exo' ? "#bae6fd" : "#93c5fd"} opacity="0.8"/>
+ {isRunning && (
+ <circle cx="100" cy="200" r="4" fill="#3b82f6" className="animate-ping" />
+ )}
+ <rect x="95" y="20" width="10" height="220" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2"/>
+ <circle cx="100" cy="240" r="12" fill="#ef4444" />
+ <rect x="98" y={230 - (temperature * 2)} width="4" height={10 + (temperature * 2)} fill="#ef4444" className="transition-all duration-300" />
+ <text x="120" y="245" fontSize="16" fill="#334155" fontWeight="bold">{temperature.toFixed(1)} °C</text>
+ </svg>
+ </div>
 
-   <div className="flex justify-center gap-3 mt-2">
-   {!isRunning && time === 0 && (
-    <button onClick={startExperiment} className={`flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 flex-col `}>
-    <Play size={18} />  {t('lab.c11energeticskinetics_start')}
-                                 </button>
-   )}
-   {isRunning && (
-    <button onClick={stopExperiment} className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
-    <Square size={18} />  {t('lab.c11energeticskinetics_stop')}
-                                 </button>
-   )}
-   {(time > 0 && !isRunning) && (
-    <button onClick={resetExperiment} className="flex items-center gap-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
-    <RefreshCw size={18} />  {t('lab.c11energeticskinetics_reset')}
-                                 </button>
-   )}
-   </div>
-  </div>
+ <div className="flex justify-center gap-3 mt-2">
+ {!isRunning && time === 0 && (
+ <button onClick={startExperiment} className={`flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40 flex-col `}>
+ <Play size={18} /> {t('lab.c11energeticskinetics_start')}
+ </button>
+ )}
+ {isRunning && (
+ <button onClick={stopExperiment} className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
+ <Square size={18} /> {t('lab.c11energeticskinetics_stop')}
+ </button>
+ )}
+ {(time > 0 && !isRunning) && (
+ <button onClick={resetExperiment} className="flex items-center gap-2 bg-slate-600 dark:bg-[#121212] hover:bg-slate-700 dark:bg-[#121212] text-white px-4 py-2 rounded-lg font-semibold transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent">
+ <RefreshCw size={18} /> {t('lab.c11energeticskinetics_reset')}
+ </button>
+ )}
+ </div>
+ </div>
 
-  <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
-   <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
-   <Database size={20} className="text-blue-500" />  {t('lab.c11energeticskinetics_data_analysis')}
-                        </h2>
-   
-   <div className="h-32 lg:overflow-y-auto border rounded bg-slate-50 dark:bg-[#121212] p-2 text-sm font-mono flex-shrink-0">
-   <table className="w-full text-center">
-    <thead>
-    <tr className="border-b text-slate-500 dark:text-[#71717a]">
-     <th className="pb-1">{t('lab.c11energeticskinetics_time_s')}</th>
-     <th className="pb-1">{t('lab.c11energeticskinetics_temp_c')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {logs.length === 0 && <tr><td colSpan={2} className="py-2 text-slate-400">{t('lab.c11energeticskinetics_no_data_logged_yet')}</td></tr>}
-    {logs.map((log, i) => (
-     <tr key={i} className="border-b border-slate-200 dark:border-[#1c1b1b] last:border-0">
-     <td className="py-1">{log.time}</td>
-     <td>{log.temp.toFixed(1)}</td>
-     </tr>
-    ))}
-    </tbody>
-   </table>
-   </div>
+ <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+ <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
+ <Database size={20} className="text-blue-500" /> {t('lab.c11energeticskinetics_data_analysis')}
+ </h2>
+ 
+ <div className="h-32 lg:overflow-y-auto border rounded bg-slate-50 dark:bg-[#121212] p-2 text-sm font-mono flex-shrink-0">
+ <table className="w-full text-center">
+ <thead>
+ <tr className="border-b text-slate-500 dark:text-[#71717a]">
+ <th className="pb-1">{t('lab.c11energeticskinetics_time_s')}</th>
+ <th className="pb-1">{t('lab.c11energeticskinetics_temp_c')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {logs.length === 0 && <tr><td colSpan={2} className="py-2 text-slate-400">{t('lab.c11energeticskinetics_no_data_logged_yet')}</td></tr>}
+ {logs.map((log, i) => (
+ <tr key={i} className="border-b border-slate-200 dark:border-[#1c1b1b] last:border-0">
+ <td className="py-1">{log.time}</td>
+ <td>{log.temp.toFixed(1)}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-   {renderGraph()}
+ {renderGraph()}
 
-   <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]"><Beaker size={16}/>  {t('lab.c11energeticskinetics_calculate_h')}</h3>
-   <p className="text-xs text-blue-800 mb-3 dark:text-[#ffffff]">
-    
-                             {t('lab.c11energeticskinetics_using_the_maximum_temperature_')} <strong>{t('lab.c11energeticskinetics_kj_mol')}</strong>{t('lab.c11energeticskinetics_assume_c_4_18_j_g_c_provide_yo')}
-                            </p>
-   <div className="flex gap-2">
-    <input 
-    type="text" 
-    placeholder={t('lab.c11energeticskinetics_h_kj_mol')}
-    className="flex-1 p-2 border rounded"
-    value={userDeltaH}
-    onChange={e => setUserDeltaH(e.target.value)}
-    />
-    <button 
-    onClick={checkAnswer}
-    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.c11energeticskinetics_check')}
-                                 </button>
-   </div>
-   {isCorrect === true && (
-    <p className="text-green-600 font-semibold flex items-center gap-1 mt-2 text-sm"><CheckCircle size={16}/>  {t('lab.c11energeticskinetics_correct_excellent_work')}</p>
-   )}
-   {isCorrect === false && (
-    <p className="text-red-600 font-semibold flex items-center gap-1 mt-2 text-sm"><XCircle size={16}/>  {t('lab.c11energeticskinetics_incorrect_check_your_calculati')}</p>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 mt-auto dark:bg-teal-950/20 dark:border-teal-900">
+ <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2 dark:text-[#ffffff]"><Beaker size={16}/> {t('lab.c11energeticskinetics_calculate_h')}</h3>
+ <p className="text-xs text-blue-800 mb-3 dark:text-[#ffffff]">
+ 
+ {t('lab.c11energeticskinetics_using_the_maximum_temperature_')} <strong>{t('lab.c11energeticskinetics_kj_mol')}</strong>{t('lab.c11energeticskinetics_assume_c_4_18_j_g_c_provide_yo')}
+ </p>
+ <div className="flex gap-2">
+ <input 
+ type="text" 
+ placeholder={t('lab.c11energeticskinetics_h_kj_mol')}
+ className="flex-1 p-2 border rounded"
+ value={userDeltaH}
+ onChange={e => setUserDeltaH(e.target.value)}
+ />
+ <button 
+ onClick={checkAnswer}
+ className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded font-semibold transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.c11energeticskinetics_check')}
+ </button>
+ </div>
+ {isCorrect === true && (
+ <p className="text-green-600 font-semibold flex items-center gap-1 mt-2 text-sm"><CheckCircle size={16}/> {t('lab.c11energeticskinetics_correct_excellent_work')}</p>
+ )}
+ {isCorrect === false && (
+ <p className="text-red-600 font-semibold flex items-center gap-1 mt-2 text-sm"><XCircle size={16}/> {t('lab.c11energeticskinetics_incorrect_check_your_calculati')}</p>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

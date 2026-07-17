@@ -22,7 +22,7 @@ const metals: Record<string, Metal> = {
 };
 
 export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [leftElectrode, setLeftElectrode] = useState<string>('Zn');
  const [rightElectrode, setRightElectrode] = useState<string>('Cu');
@@ -56,170 +56,170 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
  const val = parseFloat(ansCell);
  const exactVolts = e0Cell - (0.0592 / lcm) * Math.log10(Q);
  if (!isNaN(val) && Math.abs(val - exactVolts) < 0.05) {
-  setFeedback('Correct! You used the Nernst equation accurately.');
+ setFeedback('Correct! You used the Nernst equation accurately.');
  } else {
-  setFeedback('Incorrect. E = E° - (0.0592/n) * log(Q). Check n and Q!');
+ setFeedback('Incorrect. E = E° - (0.0592/n) * log(Q). Check n and Q!');
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c12electrochemistry_virtual_lab_electrochemistry')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c12electrochemistry_virtual_lab_electrochemistry')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c12electrochemistry_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c12electrochemistry_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
-   <Beaker className="mr-2" />  {t('lab.c12electrochemistry_theory_setup')}
-                        </h2>
-   <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
-   <p><strong>{t('lab.c12electrochemistry_galvanic_cells')}</strong>  {t('lab.c12electrochemistry_convert_chemical_energy_to_ele')}</p>
-   <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_standard_potential_e')}</h3>
-   <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>{t('lab.c12electrochemistry_e_cell_e_cathode_e_anode')}</div>
-   
-   <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_nernst_equation')}</h3>
-   <p>{t('lab.c12electrochemistry_for_non_standard_concentration')}</p>
-   <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>
-    
-                             {t('lab.c12electrochemistry_e_e_0_0592_n_log_q')}
-                            </div>
-   
-   <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_winkler_method_bod')}</h3>
-   <p>{t('lab.c12electrochemistry_biochemical_oxygen_demand_bod_')}</p>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c12electrochemistry_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c12electrochemistry_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 min-h-0 lg:overflow-hidden">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
+ <Beaker className="mr-2" /> {t('lab.c12electrochemistry_theory_setup')}
+ </h2>
+ <div className="prose text-sm text-slate-700 dark:text-[#ffffff]">
+ <p><strong>{t('lab.c12electrochemistry_galvanic_cells')}</strong> {t('lab.c12electrochemistry_convert_chemical_energy_to_ele')}</p>
+ <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_standard_potential_e')}</h3>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>{t('lab.c12electrochemistry_e_cell_e_cathode_e_anode')}</div>
+ 
+ <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_nernst_equation')}</h3>
+ <p>{t('lab.c12electrochemistry_for_non_standard_concentration')}</p>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 flex-col `}>
+ 
+ {t('lab.c12electrochemistry_e_e_0_0592_n_log_q')}
+ </div>
+ 
+ <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_winkler_method_bod')}</h3>
+ <p>{t('lab.c12electrochemistry_biochemical_oxygen_demand_bod_')}</p>
 
-   <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_standard_potentials')}</h3>
-   <ul className="list-disc pl-5">
-    {Object.values(metals).map(m => (
-    <li key={m.symbol}>{m.ion} + {m.n}{t('lab.c12electrochemistry_e')} {m.symbol} ({m.e0 > 0 ? '+' : ''}{m.e0.toFixed(2)} V)</li>
-    ))}
-   </ul>
-   </div>
-  </div>
+ <h3 className="text-md font-semibold mt-4">{t('lab.c12electrochemistry_standard_potentials')}</h3>
+ <ul className="list-disc pl-5">
+ {Object.values(metals).map(m => (
+ <li key={m.symbol}>{m.ion} + {m.n}{t('lab.c12electrochemistry_e')} {m.symbol} ({m.e0 > 0 ? '+' : ''}{m.e0.toFixed(2)} V)</li>
+ ))}
+ </ul>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col items-center border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">{t('lab.c12electrochemistry_galvanic_cell_simulator')}</h2>
-   
-   <div className="flex w-full justify-between mb-4 gap-4">
-   <div className="w-1/2 space-y-2">
-    <label className="block text-sm font-semibold">{t('lab.c12electrochemistry_left_beaker_anode')}</label>
-    <select 
-    className={`w-full p-2 border rounded bg-slate-50 dark:bg-[#121212] flex-col `}
-    value={leftElectrode}
-    onChange={e => setLeftElectrode(e.target.value)}
-    >
-    {Object.keys(metals).map(k => <option key={k} value={k}>{metals[k].name} ({k})</option>)}
-    </select>
-    <label className="block text-sm">[{mLeft.ion}{t('lab.c12electrochemistry_m')}</label>
-    <input type="range" min="0.01" max="2" step="0.01" value={leftConc} onChange={e => setLeftConc(parseFloat(e.target.value))} className="w-full" />
-    <div className="text-center text-xs font-mono">{leftConc.toFixed(2)} M</div>
-   </div>
-   
-   <div className="w-1/2 space-y-2">
-    <label className="block text-sm font-semibold">{t('lab.c12electrochemistry_right_beaker_cathode')}</label>
-    <select 
-    className="w-full p-2 border rounded bg-slate-50 dark:bg-[#121212]"
-    value={rightElectrode}
-    onChange={e => setRightElectrode(e.target.value)}
-    >
-    {Object.keys(metals).map(k => <option key={k} value={k}>{metals[k].name} ({k})</option>)}
-    </select>
-    <label className="block text-sm">[{mRight.ion}{t('lab.c12electrochemistry_m')}</label>
-    <input type="range" min="0.01" max="2" step="0.01" value={rightConc} onChange={e => setRightConc(parseFloat(e.target.value))} className="w-full" />
-    <div className="text-center text-xs font-mono">{rightConc.toFixed(2)} M</div>
-   </div>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col items-center border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-indigo-900 mb-4 dark:text-[#ffffff]">{t('lab.c12electrochemistry_galvanic_cell_simulator')}</h2>
+ 
+ <div className="flex w-full justify-between mb-4 gap-4">
+ <div className="w-1/2 space-y-2">
+ <label className="block text-sm font-semibold">{t('lab.c12electrochemistry_left_beaker_anode')}</label>
+ <select 
+ className={`w-full p-2 border rounded bg-slate-50 dark:bg-[#121212] flex-col `}
+ value={leftElectrode}
+ onChange={e => setLeftElectrode(e.target.value)}
+ >
+ {Object.keys(metals).map(k => <option key={k} value={k}>{metals[k].name} ({k})</option>)}
+ </select>
+ <label className="block text-sm">[{mLeft.ion}{t('lab.c12electrochemistry_m')}</label>
+ <input type="range" min="0.01" max="2" step="0.01" value={leftConc} onChange={e => setLeftConc(parseFloat(e.target.value))} className="w-full" />
+ <div className="text-center text-xs font-mono">{leftConc.toFixed(2)} M</div>
+ </div>
+ 
+ <div className="w-1/2 space-y-2">
+ <label className="block text-sm font-semibold">{t('lab.c12electrochemistry_right_beaker_cathode')}</label>
+ <select 
+ className="w-full p-2 border rounded bg-slate-50 dark:bg-[#121212]"
+ value={rightElectrode}
+ onChange={e => setRightElectrode(e.target.value)}
+ >
+ {Object.keys(metals).map(k => <option key={k} value={k}>{metals[k].name} ({k})</option>)}
+ </select>
+ <label className="block text-sm">[{mRight.ion}{t('lab.c12electrochemistry_m')}</label>
+ <input type="range" min="0.01" max="2" step="0.01" value={rightConc} onChange={e => setRightConc(parseFloat(e.target.value))} className="w-full" />
+ <div className="text-center text-xs font-mono">{rightConc.toFixed(2)} M</div>
+ </div>
+ </div>
 
-   <div className="relative w-full max-w-sm aspect-video bg-slate-50 dark:bg-[#121212] border rounded-xl overflow-hidden mt-4">
-   <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-gray-800 text-green-400 font-mono text-xl px-4 py-2 rounded-lg shadow-inner z-10 border-2 border-gray-900">
-    {cellVoltage.toFixed(3)} V
-   </div>
-   
-   <svg viewBox="0 0 400 200" className="w-full h-full">
-    <path d="M 100 120 L 100 30 L 200 30" stroke="#333" strokeWidth="4" fill="none" />
-    <path d="M 300 120 L 300 30 L 200 30" stroke="#333" strokeWidth="4" fill="none" />
-    <path d="M 140 100 L 140 70 A 60 60 0 0 1 260 70 L 260 100" stroke="#a7f3d0" strokeWidth="16" fill="none" opacity="0.8" />
-    <text x="200" y="85" textAnchor="middle" fontSize="10" fill="#065f46" fontWeight="bold">{t('lab.c12electrochemistry_kno_salt_bridge')}</text>
-    
-    <path d="M 50 80 L 50 180 Q 50 190 60 190 L 140 190 Q 150 190 150 180 L 150 80" stroke="#94a3b8" strokeWidth="3" fill="none" />
-    <rect x="52" y="100" width="96" height="88" fill="#e0f2fe" opacity="0.6" />
-    <rect x="80" y="60" width="40" height="100" fill={mLeft.color} stroke="#64748b" strokeWidth="2" />
-    <text x="100" y="140" textAnchor="middle" fontSize="14" fill="#1e293b" fontWeight="bold">{mLeft.symbol}</text>
-    <text x="100" y="160" textAnchor="middle" fontSize="12" fill="#0369a1">{mLeft.ion}</text>
-    
-    <path d="M 250 80 L 250 180 Q 250 190 260 190 L 340 190 Q 350 190 350 180 L 350 80" stroke="#94a3b8" strokeWidth="3" fill="none" />
-    <rect x="252" y="100" width="96" height="88" fill="#e0f2fe" opacity="0.6" />
-    <rect x="280" y="60" width="40" height="100" fill={mRight.color} stroke="#64748b" strokeWidth="2" />
-    <text x="300" y="140" textAnchor="middle" fontSize="14" fill="#1e293b" fontWeight="bold">{mRight.symbol}</text>
-    <text x="300" y="160" textAnchor="middle" fontSize="12" fill="#0369a1">{mRight.ion}</text>
-   </svg>
-   </div>
-   
-   <button 
-   onClick={handleLog}
-   className="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors w-full dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-   >
-   
-                        {t('lab.c12electrochemistry_record_data_point')}
-                        </button>
-  </div>
+ <div className="relative w-full max-w-sm aspect-video bg-slate-50 dark:bg-[#121212] border rounded-xl overflow-hidden mt-4">
+ <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-gray-800 text-green-400 font-mono text-xl px-4 py-2 rounded-lg shadow-inner z-10 border-2 border-gray-900">
+ {cellVoltage.toFixed(3)} V
+ </div>
+ 
+ <svg viewBox="0 0 400 200" className="w-full h-full">
+ <path d="M 100 120 L 100 30 L 200 30" stroke="#333" strokeWidth="4" fill="none" />
+ <path d="M 300 120 L 300 30 L 200 30" stroke="#333" strokeWidth="4" fill="none" />
+ <path d="M 140 100 L 140 70 A 60 60 0 0 1 260 70 L 260 100" stroke="#a7f3d0" strokeWidth="16" fill="none" opacity="0.8" />
+ <text x="200" y="85" textAnchor="middle" fontSize="10" fill="#065f46" fontWeight="bold">{t('lab.c12electrochemistry_kno_salt_bridge')}</text>
+ 
+ <path d="M 50 80 L 50 180 Q 50 190 60 190 L 140 190 Q 150 190 150 180 L 150 80" stroke="#94a3b8" strokeWidth="3" fill="none" />
+ <rect x="52" y="100" width="96" height="88" fill="#e0f2fe" opacity="0.6" />
+ <rect x="80" y="60" width="40" height="100" fill={mLeft.color} stroke="#64748b" strokeWidth="2" />
+ <text x="100" y="140" textAnchor="middle" fontSize="14" fill="#1e293b" fontWeight="bold">{mLeft.symbol}</text>
+ <text x="100" y="160" textAnchor="middle" fontSize="12" fill="#0369a1">{mLeft.ion}</text>
+ 
+ <path d="M 250 80 L 250 180 Q 250 190 260 190 L 340 190 Q 350 190 350 180 L 350 80" stroke="#94a3b8" strokeWidth="3" fill="none" />
+ <rect x="252" y="100" width="96" height="88" fill="#e0f2fe" opacity="0.6" />
+ <rect x="280" y="60" width="40" height="100" fill={mRight.color} stroke="#64748b" strokeWidth="2" />
+ <text x="300" y="140" textAnchor="middle" fontSize="14" fill="#1e293b" fontWeight="bold">{mRight.symbol}</text>
+ <text x="300" y="160" textAnchor="middle" fontSize="12" fill="#0369a1">{mRight.ion}</text>
+ </svg>
+ </div>
+ 
+ <button 
+ onClick={handleLog}
+ className="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors w-full dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ 
+ {t('lab.c12electrochemistry_record_data_point')}
+ </button>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
-   <Activity className="mr-2" />  {t('lab.c12electrochemistry_assessment')}
-                        </h2>
-   
-   <div className={`flex-1 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] rounded-lg p-4 border border-slate-200 dark:border-[#1c1b1b] text-sm font-mono mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 border-b pb-1">{t('lab.c12electrochemistry_lab_journal')}</h3>
-   {logs.length === 0 ? (
-    <p className="text-slate-400 italic">{t('lab.c12electrochemistry_no_data_recorded_build_a_cell_')}</p>
-   ) : (
-    <ul className="space-y-2">
-    {logs.map((log, i) => <li key={i} className="text-xs">{i+1}. {log}</li>)}
-    </ul>
-   )}
-   </div>
-   
-   <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c12electrochemistry_theoretical_calculation')}</h3>
-   <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
-    
-                             {t('lab.c12electrochemistry_calculate_the_precise_theoreti')}
-                            </p>
-   <input 
-    type="text" 
-    placeholder={t('lab.c12electrochemistry_e_g_1_100')} 
-    value={ansCell}
-    onChange={e => setAnsCell(e.target.value)}
-    className="w-full p-2 border border-indigo-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3"
-   />
-   <button 
-    onClick={checkAnswer}
-    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-   >
-    <CheckCircle2 className="mr-2" size={18} />  {t('lab.c12electrochemistry_check_answer')}
-                            </button>
-   {feedback && (
-    <p className={`mt-3 text-sm font-semibold p-2 rounded ${feedback.includes('Correct') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-    {feedback}
-    </p>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center dark:text-[#ffffff]">
+ <Activity className="mr-2" /> {t('lab.c12electrochemistry_assessment')}
+ </h2>
+ 
+ <div className={`flex-1 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212] rounded-lg p-4 border border-slate-200 dark:border-[#1c1b1b] text-sm font-mono mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2 border-b pb-1">{t('lab.c12electrochemistry_lab_journal')}</h3>
+ {logs.length === 0 ? (
+ <p className="text-slate-400 italic">{t('lab.c12electrochemistry_no_data_recorded_build_a_cell_')}</p>
+ ) : (
+ <ul className="space-y-2">
+ {logs.map((log, i) => <li key={i} className="text-xs">{i+1}. {log}</li>)}
+ </ul>
+ )}
+ </div>
+ 
+ <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b]">
+ <h3 className="font-semibold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c12electrochemistry_theoretical_calculation')}</h3>
+ <p className="text-sm text-indigo-800 mb-3 dark:text-[#ffffff]">
+ 
+ {t('lab.c12electrochemistry_calculate_the_precise_theoreti')}
+ </p>
+ <input 
+ type="text" 
+ placeholder={t('lab.c12electrochemistry_e_g_1_100')} 
+ value={ansCell}
+ onChange={e => setAnsCell(e.target.value)}
+ className="w-full p-2 border border-indigo-200 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3"
+ />
+ <button 
+ onClick={checkAnswer}
+ className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded transition-colors flex items-center justify-center dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ <CheckCircle2 className="mr-2" size={18} /> {t('lab.c12electrochemistry_check_answer')}
+ </button>
+ {feedback && (
+ <p className={`mt-3 text-sm font-semibold p-2 rounded ${feedback.includes('Correct') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+ {feedback}
+ </p>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabM9Trigonometry({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'ladder' | 'ship'>('ladder');
@@ -25,13 +25,13 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
 
  const handleRecord = () => {
  if (mode === 'ladder') {
-  const h = lLen * Math.sin(lAng * Math.PI / 180);
-  const b = lLen * Math.cos(lAng * Math.PI / 180);
-  setLogs([{ mode: 'ladder', input: `L=${lLen}, θ=${lAng}°`, res: `H=${h.toFixed(1)}, B=${b.toFixed(1)}` }, ...logs]);
+ const h = lLen * Math.sin(lAng * Math.PI / 180);
+ const b = lLen * Math.cos(lAng * Math.PI / 180);
+ setLogs([{ mode: 'ladder', input: `L=${lLen}, θ=${lAng}°`, res: `H=${h.toFixed(1)}, B=${b.toFixed(1)}` }, ...logs]);
  } else {
-  const n = dist * Math.cos(brg * Math.PI / 180);
-  const e = dist * Math.sin(brg * Math.PI / 180);
-  setLogs([{ mode: 'ship', input: `D=${dist}, Brg=${brg}°`, res: `N=${n.toFixed(1)}, E=${e.toFixed(1)}` }, ...logs]);
+ const n = dist * Math.cos(brg * Math.PI / 180);
+ const e = dist * Math.sin(brg * Math.PI / 180);
+ setLogs([{ mode: 'ship', input: `D=${dist}, Brg=${brg}°`, res: `N=${n.toFixed(1)}, E=${e.toFixed(1)}` }, ...logs]);
  }
  };
 
@@ -66,7 +66,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  if (correctB < 0) correctB += 360;
  
  if (Math.abs(parseFloat(ansShipD) - correctD) < 0.5 && Math.abs(parseFloat(ansShipB) - correctB) < 1.0) {
-  setStatusShip(true);
+ setStatusShip(true);
  } else setStatusShip(false);
  };
 
@@ -77,257 +77,257 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  const shipE = dist * Math.sin(brg * Math.PI / 180);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m9trigonometry_virtual_lab_trigonometry_beari')} />
-  
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m9trigonometry_virtual_lab_trigonometry_beari')} />
+ 
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m9trigonometry_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m9trigonometry_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  {/* Column 1: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
-   <BookOpen className="mr-2" />  {t('lab.m9trigonometry_theory_context')}
-                        </h2>
-   
-   <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0 flex-col `}>
-   <button
-    className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ladder' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('ladder')}
-   >
-    
-                             {t('lab.m9trigonometry_right_triangles')}
-                            </button>
-   <button
-    className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ship' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('ship')}
-   >
-    
-                             {t('lab.m9trigonometry_ship_navigation')}
-                            </button>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m9trigonometry_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m9trigonometry_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
+ <BookOpen className="mr-2" /> {t('lab.m9trigonometry_theory_context')}
+ </h2>
+ 
+ <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0 flex-col `}>
+ <button
+ className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ladder' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('ladder')}
+ >
+ 
+ {t('lab.m9trigonometry_right_triangles')}
+ </button>
+ <button
+ className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'ship' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('ship')}
+ >
+ 
+ {t('lab.m9trigonometry_ship_navigation')}
+ </button>
+ </div>
 
-   <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   {mode === 'ladder' ? (
-    <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9trigonometry_soh_cah_toa')}</h3>
-    <p>{t('lab.m9trigonometry_trigonometric_ratios_relate_an')}</p>
-    <ul className="list-disc pl-5 space-y-1">
-     <li><strong>{t('lab.m9trigonometry_sin_opposite_hypotenuse')}</strong></li>
-     <li><strong>{t('lab.m9trigonometry_cos_adjacent_hypotenuse')}</strong></li>
-     <li><strong>{t('lab.m9trigonometry_tan_opposite_adjacent')}</strong></li>
-    </ul>
-    <p>{t('lab.m9trigonometry_in_our_ladder_model_the_ladder')}</p>
-    </>
-   ) : (
-    <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9trigonometry_bearings_in_navigation')}</h3>
-    <p>{t('lab.m9trigonometry_bearings_are_angles_measured_c')}</p>
-    <p>{t('lab.m9trigonometry_to_convert_a_bearing_and_dista')}</p>
-    <ul className="list-disc pl-5 space-y-1">
-     <li><strong>{t('lab.m9trigonometry_n_distance_cos_bearing')}</strong></li>
-     <li><strong>{t('lab.m9trigonometry_e_distance_sin_bearing')}</strong></li>
-    </ul>
-    <p>{t('lab.m9trigonometry_conversely_use_pythagoras_and_')}</p>
-    </>
-   )}
-   </div>
-  </div>
+ <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
+ {mode === 'ladder' ? (
+ <>
+ <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9trigonometry_soh_cah_toa')}</h3>
+ <p>{t('lab.m9trigonometry_trigonometric_ratios_relate_an')}</p>
+ <ul className="list-disc pl-5 space-y-1">
+ <li><strong>{t('lab.m9trigonometry_sin_opposite_hypotenuse')}</strong></li>
+ <li><strong>{t('lab.m9trigonometry_cos_adjacent_hypotenuse')}</strong></li>
+ <li><strong>{t('lab.m9trigonometry_tan_opposite_adjacent')}</strong></li>
+ </ul>
+ <p>{t('lab.m9trigonometry_in_our_ladder_model_the_ladder')}</p>
+ </>
+ ) : (
+ <>
+ <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9trigonometry_bearings_in_navigation')}</h3>
+ <p>{t('lab.m9trigonometry_bearings_are_angles_measured_c')}</p>
+ <p>{t('lab.m9trigonometry_to_convert_a_bearing_and_dista')}</p>
+ <ul className="list-disc pl-5 space-y-1">
+ <li><strong>{t('lab.m9trigonometry_n_distance_cos_bearing')}</strong></li>
+ <li><strong>{t('lab.m9trigonometry_e_distance_sin_bearing')}</strong></li>
+ </ul>
+ <p>{t('lab.m9trigonometry_conversely_use_pythagoras_and_')}</p>
+ </>
+ )}
+ </div>
+ </div>
 
-  {/* Column 2: Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
-   <Activity className="mr-2" />  {t('lab.m9trigonometry_interactive_simulator')}
-                        </h2>
+ {/* Column 2: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
+ <Activity className="mr-2" /> {t('lab.m9trigonometry_interactive_simulator')}
+ </h2>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-1 flex-col mb-4 min-h-[300px] justify-center items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <svg width="100%" height="250" viewBox="0 0 300 250" className="bg-sky-50/50 rounded border border-sky-100">
-    {mode === 'ladder' ? (
-    <g>
-     {/* Wall & Floor */}
-     <rect x="150" y="50" width="30" height="170" fill="#cbd5e1" />
-     <line x1="20" y1="220" x2="280" y2="220" stroke="#94a3b8" strokeWidth="4" />
-     {/* Ladder */}
-     <line x1={150 - ladderB*8} y1="220" x2="150" y2={220 - ladderH*8} stroke="#d97706" strokeWidth="5" strokeLinecap="round" />
-     {/* Angle Arc */}
-     <path d={`M ${150 - ladderB*8 + 15} 220 A 15 15 0 0 0 ${150 - ladderB*8 + 8} ${220 - 12}`} fill="none" stroke="#ef4444" />
-     <text x={150 - ladderB*8 + 25} y="215" fontSize="12" fill="#ef4444" fontWeight="bold">{lAng}°</text>
-     
-     {/* Height and Base labels */}
-     <text x="160" y={220 - ladderH*4} fontSize="12" fill="#334155" fontWeight="bold">H={ladderH.toFixed(1)}m</text>
-     <text x={150 - ladderB*4 - 20} y="235" fontSize="12" fill="#334155" fontWeight="bold">B={ladderB.toFixed(1)}m</text>
-    </g>
-    ) : (
-    <g>
-     {/* Radar grid */}
-     <circle cx="150" cy="125" r="100" fill="none" stroke="#bae6fd" strokeWidth="2" />
-     <circle cx="150" cy="125" r="50" fill="none" stroke="#bae6fd" strokeWidth="1" />
-     <line x1="150" y1="15" x2="150" y2="235" stroke="#bae6fd" />
-     <line x1="40" y1="125" x2="260" y2="125" stroke="#bae6fd" />
-     <text x="145" y="12" fontSize="14" fill="#0ea5e9" fontWeight="bold">N</text>
-     <text x="255" y="120" fontSize="14" fill="#0ea5e9" fontWeight="bold">E</text>
+ <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-1 flex-col mb-4 min-h-[300px] justify-center items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <svg width="100%" height="250" viewBox="0 0 300 250" className="bg-sky-50/50 rounded border border-sky-100">
+ {mode === 'ladder' ? (
+ <g>
+ {/* Wall & Floor */}
+ <rect x="150" y="50" width="30" height="170" fill="#cbd5e1" />
+ <line x1="20" y1="220" x2="280" y2="220" stroke="#94a3b8" strokeWidth="4" />
+ {/* Ladder */}
+ <line x1={150 - ladderB*8} y1="220" x2="150" y2={220 - ladderH*8} stroke="#d97706" strokeWidth="5" strokeLinecap="round" />
+ {/* Angle Arc */}
+ <path d={`M ${150 - ladderB*8 + 15} 220 A 15 15 0 0 0 ${150 - ladderB*8 + 8} ${220 - 12}`} fill="none" stroke="#ef4444" />
+ <text x={150 - ladderB*8 + 25} y="215" fontSize="12" fill="#ef4444" fontWeight="bold">{lAng}°</text>
+ 
+ {/* Height and Base labels */}
+ <text x="160" y={220 - ladderH*4} fontSize="12" fill="#334155" fontWeight="bold">H={ladderH.toFixed(1)}m</text>
+ <text x={150 - ladderB*4 - 20} y="235" fontSize="12" fill="#334155" fontWeight="bold">B={ladderB.toFixed(1)}m</text>
+ </g>
+ ) : (
+ <g>
+ {/* Radar grid */}
+ <circle cx="150" cy="125" r="100" fill="none" stroke="#bae6fd" strokeWidth="2" />
+ <circle cx="150" cy="125" r="50" fill="none" stroke="#bae6fd" strokeWidth="1" />
+ <line x1="150" y1="15" x2="150" y2="235" stroke="#bae6fd" />
+ <line x1="40" y1="125" x2="260" y2="125" stroke="#bae6fd" />
+ <text x="145" y="12" fontSize="14" fill="#0ea5e9" fontWeight="bold">N</text>
+ <text x="255" y="120" fontSize="14" fill="#0ea5e9" fontWeight="bold">E</text>
 
-     {/* Ship Path */}
-     <line x1="150" y1="125" x2={150 + shipE} y2={125 - shipN} stroke="#3b82f6" strokeWidth="3" strokeDasharray="4" />
-     <circle cx={150 + shipE} cy={125 - shipN} r="6" fill="#ef4444" />
-     <text x={150 + shipE + 10} y={125 - shipN + 5} fontSize="12" fill="#ef4444" fontWeight="bold">{t('lab.m9trigonometry_ship')}</text>
-     
-     {/* Arc */}
-     <path d={`M 150 100 A 25 25 0 ${brg > 180 ? 1 : 0} 1 ${150 + 25*Math.sin(brg*Math.PI/180)} ${125 - 25*Math.cos(brg*Math.PI/180)}`} fill="none" stroke="#eab308" strokeWidth="2" />
-     <text x="160" y="115" fontSize="12" fill="#ca8a04" fontWeight="bold">{brg}°</text>
-    </g>
-    )}
-   </svg>
-   </div>
+ {/* Ship Path */}
+ <line x1="150" y1="125" x2={150 + shipE} y2={125 - shipN} stroke="#3b82f6" strokeWidth="3" strokeDasharray="4" />
+ <circle cx={150 + shipE} cy={125 - shipN} r="6" fill="#ef4444" />
+ <text x={150 + shipE + 10} y={125 - shipN + 5} fontSize="12" fill="#ef4444" fontWeight="bold">{t('lab.m9trigonometry_ship')}</text>
+ 
+ {/* Arc */}
+ <path d={`M 150 100 A 25 25 0 ${brg > 180 ? 1 : 0} 1 ${150 + 25*Math.sin(brg*Math.PI/180)} ${125 - 25*Math.cos(brg*Math.PI/180)}`} fill="none" stroke="#eab308" strokeWidth="2" />
+ <text x="160" y="115" fontSize="12" fill="#ca8a04" fontWeight="bold">{brg}°</text>
+ </g>
+ )}
+ </svg>
+ </div>
 
-   <div className="space-y-3">
-   {mode === 'ladder' ? (
-    <>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_angle')}</label>
-     <input type="range" min="30" max="80" value={lAng} onChange={(e) => setLAng(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
-     <span className="w-8 text-right font-mono">{lAng}</span>
-    </div>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_length_m')}</label>
-     <input type="range" min="5" max="15" value={lLen} onChange={(e) => setLLen(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
-     <span className="w-8 text-right font-mono">{lLen}</span>
-    </div>
-    </>
-   ) : (
-    <>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_bearing')}</label>
-     <input type="range" min="0" max="360" value={brg} onChange={(e) => setBrg(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
-     <span className="w-8 text-right font-mono">{brg}</span>
-    </div>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_dist_km')}</label>
-     <input type="range" min="10" max="100" value={dist} onChange={(e) => setDist(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
-     <span className="w-8 text-right font-mono">{dist}</span>
-    </div>
-    </>
-   )}
-   <button 
-    onClick={handleRecord}
-    className={`w-full mt-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
-   >
-    
-                             {t('lab.m9trigonometry_record_data')}
-                            </button>
-   </div>
-  </div>
+ <div className="space-y-3">
+ {mode === 'ladder' ? (
+ <>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_angle')}</label>
+ <input type="range" min="30" max="80" value={lAng} onChange={(e) => setLAng(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
+ <span className="w-8 text-right font-mono">{lAng}</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_length_m')}</label>
+ <input type="range" min="5" max="15" value={lLen} onChange={(e) => setLLen(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
+ <span className="w-8 text-right font-mono">{lLen}</span>
+ </div>
+ </>
+ ) : (
+ <>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_bearing')}</label>
+ <input type="range" min="0" max="360" value={brg} onChange={(e) => setBrg(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
+ <span className="w-8 text-right font-mono">{brg}</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9trigonometry_dist_km')}</label>
+ <input type="range" min="10" max="100" value={dist} onChange={(e) => setDist(Number(e.target.value))} className="flex-1 min-w-0 accent-blue-600" />
+ <span className="w-8 text-right font-mono">{dist}</span>
+ </div>
+ </>
+ )}
+ <button 
+ onClick={handleRecord}
+ className={`w-full mt-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}
+ >
+ 
+ {t('lab.m9trigonometry_record_data')}
+ </button>
+ </div>
+ </div>
 
-  {/* Column 3: Analysis */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
-   <TableIcon className="mr-2" />  {t('lab.m9trigonometry_analysis_data')}
-                        </h2>
+ {/* Column 3: Analysis */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-blue-700">
+ <TableIcon className="mr-2" /> {t('lab.m9trigonometry_analysis_data')}
+ </h2>
 
-   <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
-   <table className="w-full text-sm text-left">
-    <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
-    <tr>
-     <th className="pb-2">{t('lab.m9trigonometry_type')}</th>
-     <th className="pb-2">{t('lab.m9trigonometry_inputs')}</th>
-     <th className="pb-2">{t('lab.m9trigonometry_result')}</th>
-    </tr>
-    </thead>
-    <tbody className="divide-y divide-slate-100 font-mono text-xs">
-    {logs.length === 0 ? (
-     <tr><td colSpan={3} className="py-4 text-center text-slate-400">{t('lab.m9trigonometry_no_data_recorded')}</td></tr>
-    ) : (
-     logs.map((log, i) => (
-     <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
-      <td className="py-2">{log.mode}</td>
-      <td className="py-2">{log.input}</td>
-      <td className="py-2 font-semibold text-blue-600">{log.res}</td>
-     </tr>
-     ))
-    )}
-    </tbody>
-   </table>
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
+ <table className="w-full text-sm text-left">
+ <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
+ <tr>
+ <th className="pb-2">{t('lab.m9trigonometry_type')}</th>
+ <th className="pb-2">{t('lab.m9trigonometry_inputs')}</th>
+ <th className="pb-2">{t('lab.m9trigonometry_result')}</th>
+ </tr>
+ </thead>
+ <tbody className="divide-y divide-slate-100 font-mono text-xs">
+ {logs.length === 0 ? (
+ <tr><td colSpan={3} className="py-4 text-center text-slate-400">{t('lab.m9trigonometry_no_data_recorded')}</td></tr>
+ ) : (
+ logs.map((log, i) => (
+ <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
+ <td className="py-2">{log.mode}</td>
+ <td className="py-2">{log.input}</td>
+ <td className="py-2 font-semibold text-blue-600">{log.res}</td>
+ </tr>
+ ))
+ )}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.m9trigonometry_knowledge_check')}</h3>
-   
-   {mode === 'ladder' ? (
-    <div className="space-y-4">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     
-                                      {t('lab.m9trigonometry_a_ladder_of_length')} <strong>{qLadderL}m</strong>  {t('lab.m9trigonometry_leans_against_a_wall_at_an_ang')} <strong>{qLadderA}°</strong>  {t('lab.m9trigonometry_to_the_horizontal')} <br/>{t('lab.m9trigonometry_calculate_the_height_of_the_wa')}
-                                     </p>
-    <div className="flex items-center gap-2">
-     <span>{t('lab.m9trigonometry_h')} </span>
-     <input 
-     type="number" 
-     value={ansLadderH} 
-     onChange={(e) => setAnsLadderH(e.target.value)}
-     className="w-20 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
-     placeholder="0.0"
-     />
-     <span>m</span>
-    </div>
-    <div className="flex items-center gap-4 mt-4">
-     <button onClick={checkLadder} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     
-                                          {t('lab.m9trigonometry_verify')}
-                                          </button>
-     {statusLadder === true && <CheckCircle2 className="text-emerald-500" />}
-     {statusLadder === false && <XCircle className="text-red-500" />}
-    </div>
-    </div>
-   ) : (
-    <div className="space-y-4">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     
-                                          {t('lab.m9trigonometry_a_ship_travels_until_it_is_exa')} <strong>{qShipE}{t('lab.m9trigonometry_km_east')}</strong>  {t('lab.m9trigonometry_and')} <strong>{qShipN}{t('lab.m9trigonometry_km_north')}</strong>  {t('lab.m9trigonometry_of_its_starting_point_calculat')}
-                                         </p>
-    <div className="flex items-center gap-2 text-sm">
-     <span>{t('lab.m9trigonometry_dist')} </span>
-     <input 
-     type="number" 
-     value={ansShipD} 
-     onChange={(e) => setAnsShipD(e.target.value)}
-     className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
-     />
-     <span>km</span>
-     <span className="ml-2">{t('lab.m9trigonometry_brg')} </span>
-     <input 
-     type="number" 
-     value={ansShipB} 
-     onChange={(e) => setAnsShipB(e.target.value)}
-     className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
-     />
-     <span>°</span>
-    </div>
-    <div className="flex items-center gap-4 mt-4">
-     <button onClick={checkShip} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     
-                                              {t('lab.m9trigonometry_verify')}
-                                              </button>
-     {statusShip === true && <CheckCircle2 className="text-emerald-500" />}
-     {statusShip === false && <XCircle className="text-red-500" />}
-    </div>
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.m9trigonometry_knowledge_check')}</h3>
+ 
+ {mode === 'ladder' ? (
+ <div className="space-y-4">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m9trigonometry_a_ladder_of_length')} <strong>{qLadderL}m</strong> {t('lab.m9trigonometry_leans_against_a_wall_at_an_ang')} <strong>{qLadderA}°</strong> {t('lab.m9trigonometry_to_the_horizontal')} <br/>{t('lab.m9trigonometry_calculate_the_height_of_the_wa')}
+ </p>
+ <div className="flex items-center gap-2">
+ <span>{t('lab.m9trigonometry_h')} </span>
+ <input 
+ type="number" 
+ value={ansLadderH} 
+ onChange={(e) => setAnsLadderH(e.target.value)}
+ className="w-20 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+ placeholder="0.0"
+ />
+ <span>m</span>
+ </div>
+ <div className="flex items-center gap-4 mt-4">
+ <button onClick={checkLadder} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
+ 
+ {t('lab.m9trigonometry_verify')}
+ </button>
+ {statusLadder === true && <CheckCircle2 className="text-emerald-500" />}
+ {statusLadder === false && <XCircle className="text-red-500" />}
+ </div>
+ </div>
+ ) : (
+ <div className="space-y-4">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m9trigonometry_a_ship_travels_until_it_is_exa')} <strong>{qShipE}{t('lab.m9trigonometry_km_east')}</strong> {t('lab.m9trigonometry_and')} <strong>{qShipN}{t('lab.m9trigonometry_km_north')}</strong> {t('lab.m9trigonometry_of_its_starting_point_calculat')}
+ </p>
+ <div className="flex items-center gap-2 text-sm">
+ <span>{t('lab.m9trigonometry_dist')} </span>
+ <input 
+ type="number" 
+ value={ansShipD} 
+ onChange={(e) => setAnsShipD(e.target.value)}
+ className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+ />
+ <span>km</span>
+ <span className="ml-2">{t('lab.m9trigonometry_brg')} </span>
+ <input 
+ type="number" 
+ value={ansShipB} 
+ onChange={(e) => setAnsShipB(e.target.value)}
+ className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
+ />
+ <span>°</span>
+ </div>
+ <div className="flex items-center gap-4 mt-4">
+ <button onClick={checkShip} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
+ 
+ {t('lab.m9trigonometry_verify')}
+ </button>
+ {statusShip === true && <CheckCircle2 className="text-emerald-500" />}
+ {statusShip === false && <XCircle className="text-red-500" />}
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

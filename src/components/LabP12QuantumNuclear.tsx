@@ -30,26 +30,26 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
 
  useEffect(() => {
  const interval = setInterval(() => {
-  if (meltdownRef.current) return;
-  
-  const reactivity = 100 - controlRodDepth;
-  const cooling = coolantFlow * 2;
-  const heating = reactivity * 18;
-  
-  const targetTemp = 300 + Math.max(0, heating - cooling * 0.5);
-  
-  tempRef.current += (targetTemp - tempRef.current) * 0.02;
-  
-  if (tempRef.current > 2000) {
-  meltdownRef.current = true;
-  setMeltdown(true);
-  }
-  
-  const pwr = Math.max(0, tempRef.current > 400 ? (tempRef.current - 400) * 3 : 0);
-  powerRef.current += (pwr - powerRef.current) * 0.05;
-  
-  setTemperature(Math.round(tempRef.current));
-  setPower(Math.round(powerRef.current));
+ if (meltdownRef.current) return;
+ 
+ const reactivity = 100 - controlRodDepth;
+ const cooling = coolantFlow * 2;
+ const heating = reactivity * 18;
+ 
+ const targetTemp = 300 + Math.max(0, heating - cooling * 0.5);
+ 
+ tempRef.current += (targetTemp - tempRef.current) * 0.02;
+ 
+ if (tempRef.current > 2000) {
+ meltdownRef.current = true;
+ setMeltdown(true);
+ }
+ 
+ const pwr = Math.max(0, tempRef.current > 400 ? (tempRef.current - 400) * 3 : 0);
+ powerRef.current += (pwr - powerRef.current) * 0.05;
+ 
+ setTemperature(Math.round(tempRef.current));
+ setPower(Math.round(powerRef.current));
  }, 50);
  return () => clearInterval(interval);
  }, [controlRodDepth, coolantFlow]);
@@ -68,26 +68,26 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  };
 
  const frontierTopics: FrontierTopic[] = [
-  {
-   id: 'quantum-comp',
-   icon: 'quantum',
-   title: 'Quantum Computing & Nuclear Physics',
-   summary: 'Quantum computers use principles from nuclear and quantum physics — superposition, entanglement, and tunneling — to perform calculations that are impossible for classical computers. The same E = hc/λ and E = mc² equations that govern nuclear reactions also set fundamental limits on quantum computing hardware.',
-   connectionToLab: 'The PET scan detectors in this lab use scintillation crystals that convert gamma-ray photons into electrical signals — a process governed by the photoelectric effect (E = hc/λ). Quantum computing research is exploring similar scintillator materials for qubit readout.',
-   currentResearch: 'Researchers at CERN are exploring how nuclear physics detectors can be adapted for quantum computing. In 2024, a team used a nuclear reactor\'s neutron flux to demonstrate the first nuclear-assisted quantum error correction protocol.',
-   careerPath: 'Quantum Engineer, Nuclear MedTech Researcher, Particle Physics Data Scientist',
-   keyConcept: 'Quantum tunneling in nuclear fusion — the sun runs on protons quantum-tunneling through the Coulomb barrier, a phenomenon that quantum computers may help us harness for clean energy.'
-  },
-  {
-   id: 'nanotech',
-   icon: 'nanotech',
-   title: 'Nanomaterials for Radiation Detection',
-   summary: 'Nanotechnology is revolutionizing radiation detection. Perovskite nanocrystals and quantum dots can detect individual gamma photons at room temperature, potentially replacing bulky traditional scintillators used in PET scans and nuclear reactors.',
-   connectionToLab: 'The reactor control panel in this lab simulates real-time temperature and power monitoring. In real reactors, nano-scale thermocouples and radiation-hardened nanosensors provide distributed sensing that improves safety margins.',
-   currentResearch: 'MIT and KAIST are developing graphene-based radiation sensors that are 100x more sensitive than traditional Geiger-Müller tubes. These could be deployed in swarms across nuclear facilities for real-time 3D radiation mapping.',
-   careerPath: 'Nanomaterials Scientist, Radiation Detection Engineer, Nuclear Safety Technologist',
-   keyConcept: 'Quantum dots — semiconductor nanoparticles that emit light at specific wavelengths when struck by radiation. By tuning their size (quantum confinement), they can be engineered to detect specific photon energies.'
-  }
+ {
+ id: 'quantum-comp',
+ icon: 'quantum',
+ title: 'Quantum Computing & Nuclear Physics',
+ summary: 'Quantum computers use principles from nuclear and quantum physics — superposition, entanglement, and tunneling — to perform calculations that are impossible for classical computers. The same E = hc/λ and E = mc² equations that govern nuclear reactions also set fundamental limits on quantum computing hardware.',
+ connectionToLab: 'The PET scan detectors in this lab use scintillation crystals that convert gamma-ray photons into electrical signals — a process governed by the photoelectric effect (E = hc/λ). Quantum computing research is exploring similar scintillator materials for qubit readout.',
+ currentResearch: 'Researchers at CERN are exploring how nuclear physics detectors can be adapted for quantum computing. In 2024, a team used a nuclear reactor\'s neutron flux to demonstrate the first nuclear-assisted quantum error correction protocol.',
+ careerPath: 'Quantum Engineer, Nuclear MedTech Researcher, Particle Physics Data Scientist',
+ keyConcept: 'Quantum tunneling in nuclear fusion — the sun runs on protons quantum-tunneling through the Coulomb barrier, a phenomenon that quantum computers may help us harness for clean energy.'
+ },
+ {
+ id: 'nanotech',
+ icon: 'nanotech',
+ title: 'Nanomaterials for Radiation Detection',
+ summary: 'Nanotechnology is revolutionizing radiation detection. Perovskite nanocrystals and quantum dots can detect individual gamma photons at room temperature, potentially replacing bulky traditional scintillators used in PET scans and nuclear reactors.',
+ connectionToLab: 'The reactor control panel in this lab simulates real-time temperature and power monitoring. In real reactors, nano-scale thermocouples and radiation-hardened nanosensors provide distributed sensing that improves safety margins.',
+ currentResearch: 'MIT and KAIST are developing graphene-based radiation sensors that are 100x more sensitive than traditional Geiger-Müller tubes. These could be deployed in swarms across nuclear facilities for real-time 3D radiation mapping.',
+ careerPath: 'Nanomaterials Scientist, Radiation Detection Engineer, Nuclear Safety Technologist',
+ keyConcept: 'Quantum dots — semiconductor nanoparticles that emit light at specific wavelengths when struck by radiation. By tuning their size (quantum confinement), they can be engineered to detect specific photon energies.'
+ }
  ];
 
  const restart = () => {
@@ -100,236 +100,236 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p12quantumnuclear_lab_12_1_quantum_nuclear_engin')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p12quantumnuclear_lab_12_1_quantum_nuclear_engin')} />
 
-  <div className="px-4 pt-2">
-   
-  </div>
-  
-  {/* Difficulty Selector */}
-  <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
-     </div>
+ <div className="px-4 pt-2">
+ 
+ </div>
+ 
+ {/* Difficulty Selector */}
+ <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+ </div>
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.p12quantumnuclear_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.12quantumnuclear_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">{t('lab.p12quantumnuclear_theory_context')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}</h2>
-   
-   {config.showDerivations && (
-    <DeepDivePanel 
-     derivation={{
-      title: 'Why ΔE = hc/λ? — Photon Energy from Quantum Mechanics',
-      question: 'Why is the energy of a photon inversely proportional to its wavelength? Where does the formula E = hc/λ actually come from?',
-      steps: [
-       {
-        label: 'Start with Planck\'s Quantum Hypothesis',
-        latex: 'E = hf\n\nWhere:\nE = energy of a single quantum (photon)\nh = Planck\'s constant = 6.626 × 10⁻³⁴ J·s\nf = frequency of the electromagnetic radiation',
-        explanation: 'In 1900, Max Planck proposed that energy is quantized — it can only be emitted or absorbed in discrete packets called "quanta." The energy of each quantum is proportional to the frequency of the radiation, with h as the fundamental constant of proportionality.'
-       },
-       {
-        label: 'Use the wave equation: c = fλ',
-        latex: 'c = f × λ\n\nRearranged: f = c / λ\n\nWhere:\nc = speed of light in vacuum = 3.0 × 10⁸ m/s\nλ = wavelength of the photon',
-        explanation: 'All electromagnetic radiation travels at the speed of light c. The fundamental wave equation tells us that frequency and wavelength are inversely related — a shorter wavelength means a higher frequency, and vice versa.'
-       },
-       {
-        label: 'Substitute f into E = hf',
-        latex: 'E = h × f\nE = h × (c / λ)\n\nTherefore:\nE = hc / λ\n\nOr equivalently:\nE = hc × (1/λ)',
-        explanation: 'By substituting f = c/λ into Planck\'s equation, we derive the classic formula. This shows that photon energy is inversely proportional to wavelength — blue light (short λ) carries more energy per photon than red light (long λ).'
-       },
-       {
-        label: 'Express in electron-volts (eV) for atomic scales',
-        latex: 'hc = (6.626 × 10⁻³⁴ J·s)(3.0 × 10⁸ m/s)\n   = 1.986 × 10⁻²⁵ J·m\n\nIn eV·nm:\nhc = 1240 eV·nm\n\nSo: E(eV) = 1240 / λ(nm)',
-        explanation: 'At atomic and molecular scales, energies are more conveniently expressed in electron-volts (eV). The product hc is a fundamental constant that appears throughout quantum mechanics. When λ is in nanometers, E = 1240/λ gives energy directly in eV — a handy formula for spectroscopy.'
-       }
-      ],
-      conclusion: 'The formula ΔE = hc/λ falls directly out of Planck\'s quantum hypothesis and the wave nature of light. It is the bridge between the wave picture (wavelength) and the particle picture (photon energy) of light — the essence of wave-particle duality. This equation governs everything from the colors of fireworks to the spectral lines used to identify elements in distant stars.',
-      realWorldApplication: 'In PET scans (explored in this lab), the annihilation of an electron and positron produces two 511 keV gamma rays. Using E = hc/λ, we find λ = 1240 eV·nm / (511 × 10³ eV) = 0.00243 nm — this is a gamma-ray wavelength. Detectors are specifically designed to catch these photons and reconstruct the 3D location of the annihilation event, creating the PET scan image.'
-     }}
-    />
-   )}
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.p12quantumnuclear_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.12quantumnuclear_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2">{t('lab.p12quantumnuclear_theory_context')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}</h2>
+ 
+ {config.showDerivations && (
+ <DeepDivePanel 
+ derivation={{
+ title: 'Why ΔE = hc/λ? — Photon Energy from Quantum Mechanics',
+ question: 'Why is the energy of a photon inversely proportional to its wavelength? Where does the formula E = hc/λ actually come from?',
+ steps: [
+ {
+ label: 'Start with Planck\'s Quantum Hypothesis',
+ latex: 'E = hf\n\nWhere:\nE = energy of a single quantum (photon)\nh = Planck\'s constant = 6.626 × 10⁻³⁴ J·s\nf = frequency of the electromagnetic radiation',
+ explanation: 'In 1900, Max Planck proposed that energy is quantized — it can only be emitted or absorbed in discrete packets called "quanta." The energy of each quantum is proportional to the frequency of the radiation, with h as the fundamental constant of proportionality.'
+ },
+ {
+ label: 'Use the wave equation: c = fλ',
+ latex: 'c = f × λ\n\nRearranged: f = c / λ\n\nWhere:\nc = speed of light in vacuum = 3.0 × 10⁸ m/s\nλ = wavelength of the photon',
+ explanation: 'All electromagnetic radiation travels at the speed of light c. The fundamental wave equation tells us that frequency and wavelength are inversely related — a shorter wavelength means a higher frequency, and vice versa.'
+ },
+ {
+ label: 'Substitute f into E = hf',
+ latex: 'E = h × f\nE = h × (c / λ)\n\nTherefore:\nE = hc / λ\n\nOr equivalently:\nE = hc × (1/λ)',
+ explanation: 'By substituting f = c/λ into Planck\'s equation, we derive the classic formula. This shows that photon energy is inversely proportional to wavelength — blue light (short λ) carries more energy per photon than red light (long λ).'
+ },
+ {
+ label: 'Express in electron-volts (eV) for atomic scales',
+ latex: 'hc = (6.626 × 10⁻³⁴ J·s)(3.0 × 10⁸ m/s)\n = 1.986 × 10⁻²⁵ J·m\n\nIn eV·nm:\nhc = 1240 eV·nm\n\nSo: E(eV) = 1240 / λ(nm)',
+ explanation: 'At atomic and molecular scales, energies are more conveniently expressed in electron-volts (eV). The product hc is a fundamental constant that appears throughout quantum mechanics. When λ is in nanometers, E = 1240/λ gives energy directly in eV — a handy formula for spectroscopy.'
+ }
+ ],
+ conclusion: 'The formula ΔE = hc/λ falls directly out of Planck\'s quantum hypothesis and the wave nature of light. It is the bridge between the wave picture (wavelength) and the particle picture (photon energy) of light — the essence of wave-particle duality. This equation governs everything from the colors of fireworks to the spectral lines used to identify elements in distant stars.',
+ realWorldApplication: 'In PET scans (explored in this lab), the annihilation of an electron and positron produces two 511 keV gamma rays. Using E = hc/λ, we find λ = 1240 eV·nm / (511 × 10³ eV) = 0.00243 nm — this is a gamma-ray wavelength. Detectors are specifically designed to catch these photons and reconstruct the 3D location of the annihilation event, creating the PET scan image.'
+ }}
+ />
+ )}
 
-   <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
-   <section>
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
-    <Shield size={16} className="text-emerald-600"/>  {t('lab.p12quantumnuclear_nuclear_fission_reactors')}
-                                 </h3>
-    <p className="mt-1">
-    
-                                 {t('lab.p12quantumnuclear_nuclear_power_harnesses_the_en')}
-                                 </p>
-    <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li><b>{t('lab.12quantumnuclear_moderator')}</b>  {t('lab.p12quantumnuclear_slows_down_fast_neutrons_to_th')}</li>
-    <li><b>{t('lab.12quantumnuclear_controlrods')}</b>  {t('lab.p12quantumnuclear_e_g_boron_cadmium_absorb_neutr')}</li>
-    <li><b>{t('lab.12quantumnuclear_coolant')}</b>{t('lab.12quantumnuclear_transfersheattogeneratesteamproduci')}</li>
-    </ul>
-   </section>
+ <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
+ <section>
+ <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
+ <Shield size={16} className="text-emerald-600"/> {t('lab.p12quantumnuclear_nuclear_fission_reactors')}
+ </h3>
+ <p className="mt-1">
+ 
+ {t('lab.p12quantumnuclear_nuclear_power_harnesses_the_en')}
+ </p>
+ <ul className="list-disc pl-5 mt-2 space-y-1">
+ <li><b>{t('lab.12quantumnuclear_moderator')}</b> {t('lab.p12quantumnuclear_slows_down_fast_neutrons_to_th')}</li>
+ <li><b>{t('lab.12quantumnuclear_controlrods')}</b> {t('lab.p12quantumnuclear_e_g_boron_cadmium_absorb_neutr')}</li>
+ <li><b>{t('lab.12quantumnuclear_coolant')}</b>{t('lab.12quantumnuclear_transfersheattogeneratesteamproduci')}</li>
+ </ul>
+ </section>
 
-   <section>
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
-    <Zap size={16} className="text-amber-500"/>  {t('lab.p12quantumnuclear_pet_scans_antimatter')}
-                                 </h3>
-    <p className="mt-1">
-    
-                                 {t('lab.p12quantumnuclear_positron_emission_tomography_p')}
-                                 </p>
-   </section>
-   </div>
-  </div>
+ <section>
+ <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
+ <Zap size={16} className="text-amber-500"/> {t('lab.p12quantumnuclear_pet_scans_antimatter')}
+ </h3>
+ <p className="mt-1">
+ 
+ {t('lab.p12quantumnuclear_positron_emission_tomography_p')}
+ </p>
+ </section>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col relative overflow- '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_reactorcontrolpanel')}</h2>
-   
-   <div className={`w-full flex gap-4 mb-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <div className="flex-1">
-    <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
-    
-                                 {t('lab.p12quantumnuclear_control_rod_depth')} {controlRodDepth}%
-    </label>
-    <input 
-    type="range" min="0" max="100" value={controlRodDepth} 
-    onChange={(e) => setControlRodDepth(Number(e.target.value))}
-    disabled={meltdown}
-    className="w-full accent-slate-700"
-    />
-   </div>
-   <div className="flex-1">
-    <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
-    
-                                 {t('lab.p12quantumnuclear_coolant_flow')} {coolantFlow}%
-    </label>
-    <input 
-    type="range" min="0" max="100" value={coolantFlow} 
-    onChange={(e) => setCoolantFlow(Number(e.target.value))}
-    disabled={meltdown}
-    className="w-full accent-blue-500"
-    />
-   </div>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_reactorcontrolpanel')}</h2>
+ 
+ <div className={`w-full flex gap-4 mb-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-3 rounded-lg flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <div className="flex-1">
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
+ 
+ {t('lab.p12quantumnuclear_control_rod_depth')} {controlRodDepth}%
+ </label>
+ <input 
+ type="range" min="0" max="100" value={controlRodDepth} 
+ onChange={(e) => setControlRodDepth(Number(e.target.value))}
+ disabled={meltdown}
+ className="w-full accent-slate-700"
+ />
+ </div>
+ <div className="flex-1">
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase tracking-wider block mb-1">
+ 
+ {t('lab.p12quantumnuclear_coolant_flow')} {coolantFlow}%
+ </label>
+ <input 
+ type="range" min="0" max="100" value={coolantFlow} 
+ onChange={(e) => setCoolantFlow(Number(e.target.value))}
+ disabled={meltdown}
+ className="w-full accent-blue-500"
+ />
+ </div>
+ </div>
 
-   <div className="flex justify-around mb-4">
-   <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]'}`}>
-    <ThermometerSun size={24} className="mb-1" />
-    <span className="text-xl font-bold">{temperature}°C</span>
-    <span className="text-xs">{t('lab.12quantumnuclear_coretemp')}</span>
-   </div>
-   <div className={`p-3 rounded-lg flex flex-col items-center bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] `}>
-    <Activity size={24} className="mb-1 text-emerald-600" />
-    <span className="text-xl font-bold">{power} MW</span>
-    <span className="text-xs">{t('lab.12quantumnuclear_poweroutput')}</span>
-   </div>
-   </div>
+ <div className="flex justify-around mb-4">
+ <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]'}`}>
+ <ThermometerSun size={24} className="mb-1" />
+ <span className="text-xl font-bold">{temperature}°C</span>
+ <span className="text-xs">{t('lab.12quantumnuclear_coretemp')}</span>
+ </div>
+ <div className={`p-3 rounded-lg flex flex-col items-center bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] `}>
+ <Activity size={24} className="mb-1 text-emerald-600" />
+ <span className="text-xl font-bold">{power} MW</span>
+ <span className="text-xs">{t('lab.12quantumnuclear_poweroutput')}</span>
+ </div>
+ </div>
 
-   <div className={`flex-1 border-2 border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-[#000000] dark:bg-[#121212] relative overflow- flex items-center justify-center flex-col `}>
-   {meltdown ? (
-    <div className="text-center text-red-500 animate-pulse flex flex-col items-center">
-    <AlertTriangle size={64} className="mb-4" />
-    <h3 className="text-2xl font-bold uppercase tracking-widest">{t('lab.12quantumnuclear_meltdown')}</h3>
-    <p className="text-sm mt-2 text-slate-300">{t('lab.12quantumnuclear_coretemperatureexceeded2000c')}</p>
-    <button onClick={restart} className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
-     
-                                      {t('lab.p12quantumnuclear_reset_system')}
-                                     </button>
-    </div>
-   ) : (
-    <svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
-    <rect x="50" y="40" width="100" height="140" fill="#3b82f6" opacity={0.2 + (coolantFlow/200)} />
-    <rect x="45" y="30" width="110" height="160" rx="10" fill="none" stroke="#64748b" strokeWidth="4" />
-    
-    <rect x="60" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
-    <rect x="92.5" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
-    <rect x="125" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
-    
-    <g fill="#334155" transform={`translate(0, ${(100 - controlRodDepth) * -1.2})`}>
-     <rect x="78" y="40" width="10" height="130" />
-     <rect x="111" y="40" width="10" height="130" />
-    </g>
-    
-    <rect x="50" y="40" width="100" height="140" fill="#ef4444" opacity={Math.max(0, (temperature - 500)/2000)} style={{ mixBlendMode: 'screen' }} />
-    </svg>
-   )}
-   </div>
-  </div>
+ <div className={`flex-1 border-2 border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-[#000000] dark:bg-[#121212] relative flex items-center justify-center flex-col `}>
+ {meltdown ? (
+ <div className="text-center text-red-500 animate-pulse flex flex-col items-center">
+ <AlertTriangle size={64} className="mb-4" />
+ <h3 className="text-2xl font-bold uppercase tracking-widest">{t('lab.12quantumnuclear_meltdown')}</h3>
+ <p className="text-sm mt-2 text-slate-300">{t('lab.12quantumnuclear_coretemperatureexceeded2000c')}</p>
+ <button onClick={restart} className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 dark:text-white dark:text-white dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
+ 
+ {t('lab.p12quantumnuclear_reset_system')}
+ </button>
+ </div>
+ ) : (
+ <svg width="100%" height="100%" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+ <rect x="50" y="40" width="100" height="140" fill="#3b82f6" opacity={0.2 + (coolantFlow/200)} />
+ <rect x="45" y="30" width="110" height="160" rx="10" fill="none" stroke="#64748b" strokeWidth="4" />
+ 
+ <rect x="60" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
+ <rect x="92.5" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
+ <rect x="125" y="60" width="15" height="110" fill="#ef4444" opacity={temperature > 500 ? 1 : 0.6} />
+ 
+ <g fill="#334155" transform={`translate(0, ${(100 - controlRodDepth) * -1.2})`}>
+ <rect x="78" y="40" width="10" height="130" />
+ <rect x="111" y="40" width="10" height="130" />
+ </g>
+ 
+ <rect x="50" y="40" width="100" height="140" fill="#ef4444" opacity={Math.max(0, (temperature - 500)/2000)} style={{ mixBlendMode: 'screen' }} />
+ </svg>
+ )}
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   {/* Research Paper Analysis */}
-   {config.showResearchConnections && (
-    <div className="mt-2">
-     <ResearchPaperAnalysis paper={RESEARCH_PAPERS['pet-imaging']} />
-    </div>
-   )}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {/* Research Paper Analysis */}
+ {config.showResearchConnections && (
+ <div className="mt-2">
+ <ResearchPaperAnalysis paper={RESEARCH_PAPERS['pet-imaging']} />
+ </div>
+ )}
 
-   {/* Frontier Applications */}
-   {config.showDerivations && (
-    <div className="mt-2">
-     <FrontierApplicationsPanel 
-      topics={frontierTopics}
-     />
-    </div>
-   )}
+ {/* Frontier Applications */}
+ {config.showDerivations && (
+ <div className="mt-2">
+ <FrontierApplicationsPanel 
+ topics={frontierTopics}
+ />
+ </div>
+ )}
 
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12quantumnuclear_analysis_andcomputing')}</h2>
-   
-   <div className="space-y-6">
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q1petscanannihilation')}</h3>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    
-                                 {t('lab.p12quantumnuclear_in_a_pet_scan_a_positron_and_e')} <strong>{t('lab.12quantumnuclear_mev')}</strong>.
-    <br/><span className="text-xs italic">{t('lab.p12quantumnuclear_m_e_9_11_10_kg_c_3_10_m_s_1_ev')}</span>
-    </p>
-    <div className="flex gap-2">
-    <input 
-     type="number" value={petAns} onChange={e => setPetAns(e.target.value)}
-     placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg1022')} 
-     className="flex-1 border rounded px-3 py-1.5 text-sm"
-    />
-    <button onClick={checkPet} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     
-                                      {t('lab.p12quantumnuclear_check')}
-                                     </button>
-    </div>
-    {petFeedback && <p className={`mt-2 text-sm font-medium ${petFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{petFeedback}</p>}
-   </div>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12quantumnuclear_analysis_andcomputing')}</h2>
+ 
+ <div className="space-y-6">
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q1petscanannihilation')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
+ 
+ {t('lab.p12quantumnuclear_in_a_pet_scan_a_positron_and_e')} <strong>{t('lab.12quantumnuclear_mev')}</strong>.
+ <br/><span className="text-xs italic">{t('lab.p12quantumnuclear_m_e_9_11_10_kg_c_3_10_m_s_1_ev')}</span>
+ </p>
+ <div className="flex gap-2">
+ <input 
+ type="number" value={petAns} onChange={e => setPetAns(e.target.value)}
+ placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg1022')} 
+ className="flex-1 border rounded px-3 py-1.5 text-sm"
+ />
+ <button onClick={checkPet} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.p12quantumnuclear_check')}
+ </button>
+ </div>
+ {petFeedback && <p className={`mt-2 text-sm font-medium ${petFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{petFeedback}</p>}
+ </div>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q2massdefect')}</h3>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    
-                                 {t('lab.p12quantumnuclear_if_your_reactor_operates_conti')} <strong>{t('lab.12quantumnuclear_10kg')}</strong>).
-    <br/><span className="text-xs italic">{t('lab.12quantumnuclear_useemc')}</span>
-    </p>
-    <div className="flex gap-2 items-center">
-    <input 
-     type="number" value={reactorAns} onChange={e => setReactorAns(e.target.value)}
-     placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg111')} 
-     className="flex-1 border rounded px-3 py-1.5 text-sm"
-    />
-    <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12quantumnuclear_10kg')}</span>
-    <button onClick={checkReactor} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     
-                                      {t('lab.p12quantumnuclear_check')}
-                                     </button>
-    </div>
-    {reactorFeedback && <p className={`mt-2 text-sm font-medium ${reactorFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{reactorFeedback}</p>}
-   </div>
-   </div>
-  </div>
-  </div>
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12quantumnuclear_q2massdefect')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
+ 
+ {t('lab.p12quantumnuclear_if_your_reactor_operates_conti')} <strong>{t('lab.12quantumnuclear_10kg')}</strong>).
+ <br/><span className="text-xs italic">{t('lab.12quantumnuclear_useemc')}</span>
+ </p>
+ <div className="flex gap-2 items-center">
+ <input 
+ type="number" value={reactorAns} onChange={e => setReactorAns(e.target.value)}
+ placeholder={t('lab.p12quantumnuclear_t_lab_12quantumnuclear_eg111')} 
+ className="flex-1 border rounded px-3 py-1.5 text-sm"
+ />
+ <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12quantumnuclear_10kg')}</span>
+ <button onClick={checkReactor} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.p12quantumnuclear_check')}
+ </button>
+ </div>
+ {reactorFeedback && <p className={`mt-2 text-sm font-medium ${reactorFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{reactorFeedback}</p>}
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

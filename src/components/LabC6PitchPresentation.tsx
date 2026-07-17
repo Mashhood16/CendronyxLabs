@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC6PitchPresentation({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [slide, setSlide] = useState(0);
  const [inputs, setInputs] = useState({
  problem: '',
@@ -18,62 +18,62 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
 
  const slides = [
  {
-  title: "The Problem",
-  icon: AlertTriangle,
-  content: (
-  <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_what_specific_agricultural_pro')}</p>
-   <textarea 
-   value={inputs.problem}
-   onChange={e => setInputs({...inputs, problem: e.target.value})}
-   placeholder={t('lab.c6pitchpresentation_e_g_lack_of_weather_data_leadi')}
-   className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
-   />
-  </div>
-  )
+ title: "The Problem",
+ icon: AlertTriangle,
+ content: (
+ <div className="flex flex-col gap-4">
+ <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_what_specific_agricultural_pro')}</p>
+ <textarea 
+ value={inputs.problem}
+ onChange={e => setInputs({...inputs, problem: e.target.value})}
+ placeholder={t('lab.c6pitchpresentation_e_g_lack_of_weather_data_leadi')}
+ className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
+ />
+ </div>
+ )
  },
  {
-  title: "Our IT Solution",
-  icon: Lightbulb,
-  content: (
-  <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_how_will_your_technology_app_w')}</p>
-   <textarea 
-   value={inputs.solution}
-   onChange={e => setInputs({...inputs, solution: e.target.value})}
-   placeholder={t('lab.c6pitchpresentation_e_g_a_mobile_app_that_sends_sm')}
-   className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
-   />
-  </div>
-  )
+ title: "Our IT Solution",
+ icon: Lightbulb,
+ content: (
+ <div className="flex flex-col gap-4">
+ <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_how_will_your_technology_app_w')}</p>
+ <textarea 
+ value={inputs.solution}
+ onChange={e => setInputs({...inputs, solution: e.target.value})}
+ placeholder={t('lab.c6pitchpresentation_e_g_a_mobile_app_that_sends_sm')}
+ className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
+ />
+ </div>
+ )
  },
  {
-  title: "Target Audience",
-  icon: Users,
-  content: (
-  <div className="flex flex-col gap-4">
-   <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_who_exactly_will_use_this_prod')}</p>
-   <textarea 
-   value={inputs.audience}
-   onChange={e => setInputs({...inputs, audience: e.target.value})}
-   placeholder={t('lab.c6pitchpresentation_e_g_small_scale_farmers_in_pun')}
-   className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
-   />
-  </div>
-  )
+ title: "Target Audience",
+ icon: Users,
+ content: (
+ <div className="flex flex-col gap-4">
+ <p className="text-lg text-slate-600 dark:text-[#a1a1aa]">{t('lab.c6pitchpresentation_who_exactly_will_use_this_prod')}</p>
+ <textarea 
+ value={inputs.audience}
+ onChange={e => setInputs({...inputs, audience: e.target.value})}
+ placeholder={t('lab.c6pitchpresentation_e_g_small_scale_farmers_in_pun')}
+ className="w-full h-32 p-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg text-lg resize-none focus:ring-2 focus:ring-emerald-500"
+ />
+ </div>
+ )
  },
  {
-  title: "Pitch Ready!",
-  icon: Target,
-  content: (
-  <div className="flex flex-col items-center text-center gap-6">
-   <CheckCircle className="w-24 h-24 text-emerald-500" />
-   <p className="text-xl text-slate-700 dark:text-[#ffffff] max-w-lg">
-   
-                 {t('lab.c6pitchpresentation_your_presentation_is_complete_')}
-                 </p>
-  </div>
-  )
+ title: "Pitch Ready!",
+ icon: Target,
+ content: (
+ <div className="flex flex-col items-center text-center gap-6">
+ <CheckCircle className="w-24 h-24 text-emerald-500" />
+ <p className="text-xl text-slate-700 dark:text-[#ffffff] max-w-lg">
+ 
+ {t('lab.c6pitchpresentation_your_presentation_is_complete_')}
+ </p>
+ </div>
+ )
  }
  ];
 
@@ -84,60 +84,60 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
  const SlideIcon = slides[slide].icon;
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c6pitchpresentation_tech_startup_pitch')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-  
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c6pitchpresentation_tech_startup_pitch')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ 
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6pitchpresentation_prepare_a_presentation_to_pitc')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6pitchpresentation_prepare_a_presentation_to_pitc')}</p>
 
-  <div className="flex-1 flex flex-col items-center justify-center">
-   
-   {/* Presentation Viewer */}
-   <div className="w-full max-w-4xl aspect-video bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-2xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden relative">
-   
-   {/* Header / Theme */}
-   <div className="h-4 bg-emerald-600 w-full"></div>
-   
-   <div className="flex-1 p-12 flex flex-col">
-    <div className="flex items-center gap-4 mb-8">
-    <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-     <SlideIcon className="w-8 h-8" />
-    </div>
-    <h2 className="text-4xl font-bold text-slate-800 dark:text-[#ffffff]">{slides[slide].title}</h2>
-    </div>
-    
-    <div className="flex-1">
-    {slides[slide].content}
-    </div>
-   </div>
+ <div className="flex-1 flex flex-col items-center justify-center">
+ 
+ {/* Presentation Viewer */}
+ <div className="w-full max-w-4xl aspect-video bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-2xl border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden relative">
+ 
+ {/* Header / Theme */}
+ <div className="h-4 bg-emerald-600 w-full"></div>
+ 
+ <div className="flex-1 p-12 flex flex-col">
+ <div className="flex items-center gap-4 mb-8">
+ <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+ <SlideIcon className="w-8 h-8" />
+ </div>
+ <h2 className="text-4xl font-bold text-slate-800 dark:text-[#ffffff]">{slides[slide].title}</h2>
+ </div>
+ 
+ <div className="flex-1">
+ {slides[slide].content}
+ </div>
+ </div>
 
-   {/* Slide Navigation inside presentation */}
-   <div className="bg-slate-50 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] p-4 flex justify-between items-center px-12">
-    <button 
-    onClick={() => setSlide(s => Math.max(0, s - 1))}
-    disabled={slide === 0}
-    className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-white disabled:opacity-30 font-bold transition-colors"
-    >
-    <ChevronLeft className="w-5 h-5" />  {t('lab.c6pitchpresentation_previous')}
-                                 </button>
-    <div className="text-sm font-bold text-slate-400">
-    
-                                 {t('lab.c6pitchpresentation_slide')} {slide + 1} of {slides.length}
-    </div>
-    <button 
-    onClick={() => setSlide(s => Math.min(slides.length - 1, s + 1))}
-    disabled={slide === slides.length - 1}
-    className="flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg disabled:opacity-30 font-bold transition-colors shadow-sm dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-    >
-    
-                                 {t('lab.c6pitchpresentation_next')} <ChevronRight className="w-5 h-5" />
-    </button>
-   </div>
-   </div>
+ {/* Slide Navigation inside presentation */}
+ <div className="bg-slate-50 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] p-4 flex justify-between items-center px-12">
+ <button 
+ onClick={() => setSlide(s => Math.max(0, s - 1))}
+ disabled={slide === 0}
+ className="flex items-center gap-2 px-4 py-2 text-slate-600 dark:text-[#a1a1aa] hover:text-slate-900 dark:text-white disabled:opacity-30 font-bold transition-colors"
+ >
+ <ChevronLeft className="w-5 h-5" /> {t('lab.c6pitchpresentation_previous')}
+ </button>
+ <div className="text-sm font-bold text-slate-400">
+ 
+ {t('lab.c6pitchpresentation_slide')} {slide + 1} of {slides.length}
+ </div>
+ <button 
+ onClick={() => setSlide(s => Math.min(slides.length - 1, s + 1))}
+ disabled={slide === slides.length - 1}
+ className="flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg disabled:opacity-30 font-bold transition-colors shadow-sm dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
+ >
+ 
+ {t('lab.c6pitchpresentation_next')} <ChevronRight className="w-5 h-5" />
+ </button>
+ </div>
+ </div>
 
-  </div>
-  </div>
+ </div>
+ </div>
  </div>
  );
 }

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function LabM10TangentProperties({ onExit }: Props) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'tangent' | 'touching'>('tangent');
@@ -33,17 +33,17 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  const types = ['pythagoras', 'ext_touch', 'int_touch'];
  const type = types[Math.floor(Math.random() * types.length)];
  if (type === 'pythagoras') {
-  const triples = [[3,4,5], [5,12,13], [8,15,17], [7,24,25]];
-  const t = triples[Math.floor(Math.random() * triples.length)];
-  setQuestionParams({ r: t[0], d: t[2], ans: t[1], type });
+ const triples = [[3,4,5], [5,12,13], [8,15,17], [7,24,25]];
+ const t = triples[Math.floor(Math.random() * triples.length)];
+ setQuestionParams({ r: t[0], d: t[2], ans: t[1], type });
  } else if (type === 'ext_touch') {
-  const R1 = Math.floor(Math.random() * 10) + 5;
-  const R2 = Math.floor(Math.random() * 8) + 3;
-  setQuestionParams({ r: R1, d: R2, ans: R1 + R2, type });
+ const R1 = Math.floor(Math.random() * 10) + 5;
+ const R2 = Math.floor(Math.random() * 8) + 3;
+ setQuestionParams({ r: R1, d: R2, ans: R1 + R2, type });
  } else {
-  const R1 = Math.floor(Math.random() * 10) + 10;
-  const R2 = Math.floor(Math.random() * 5) + 3;
-  setQuestionParams({ r: R1, d: R2, ans: R1 - R2, type });
+ const R1 = Math.floor(Math.random() * 10) + 10;
+ const R2 = Math.floor(Math.random() * 5) + 3;
+ setQuestionParams({ r: R1, d: R2, ans: R1 - R2, type });
  }
  }, []);
 
@@ -52,9 +52,9 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  const checkAnswer = () => {
  const num = parseFloat(userAnswer);
  if (!isNaN(num) && Math.abs(num - questionParams.ans) < 0.1) {
-  setFeedback('correct');
+ setFeedback('correct');
  } else {
-  setFeedback('incorrect');
+ setFeedback('incorrect');
  }
  };
 
@@ -73,19 +73,19 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  const cursor = pt.matrixTransform(svg.getScreenCTM()?.inverse());
  
  if (isDragging === 'P') {
-  setAngleP(Math.atan2(cursor.y - c1.y, cursor.x - c1.x));
+ setAngleP(Math.atan2(cursor.y - c1.y, cursor.x - c1.x));
  } else if (isDragging === 'C2') {
-  let nx = cursor.x;
-  let ny = cursor.y;
-  const d = Math.hypot(nx - c1.x, ny - c1.y);
-  if (Math.abs(d - (r1 + r2)) < 15) {
-  nx = c1.x + (nx - c1.x) / d * (r1 + r2);
-  ny = c1.y + (ny - c1.y) / d * (r1 + r2);
-  } else if (Math.abs(d - Math.abs(r1 - r2)) < 15) {
-  nx = c1.x + (nx - c1.x) / d * Math.abs(r1 - r2);
-  ny = c1.y + (ny - c1.y) / d * Math.abs(r1 - r2);
-  }
-  setC2({ x: nx, y: ny });
+ let nx = cursor.x;
+ let ny = cursor.y;
+ const d = Math.hypot(nx - c1.x, ny - c1.y);
+ if (Math.abs(d - (r1 + r2)) < 15) {
+ nx = c1.x + (nx - c1.x) / d * (r1 + r2);
+ ny = c1.y + (ny - c1.y) / d * (r1 + r2);
+ } else if (Math.abs(d - Math.abs(r1 - r2)) < 15) {
+ nx = c1.x + (nx - c1.x) / d * Math.abs(r1 - r2);
+ ny = c1.y + (ny - c1.y) / d * Math.abs(r1 - r2);
+ }
+ setC2({ x: nx, y: ny });
  }
  };
 
@@ -95,233 +95,233 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  {/* Header */}
-  <div className="bg-slate-50 dark:bg-[#121212] shadow-sm px-6 py-4 flex items-center justify-between z-10">
-  <LabHeader onExit={onExit} title={t('lab.m10tangentproperties_lab_tangent_circle_properties')} />
-  </div>
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ {/* Header */}
+ <div className="bg-slate-50 dark:bg-[#121212] shadow-sm px-6 py-4 flex items-center justify-between z-10">
+ <LabHeader onExit={onExit} title={t('lab.m10tangentproperties_lab_tangent_circle_properties')} />
+ </div>
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m10tangentproperties_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m10tangentproperties_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
-  {/* Left Column: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
-   <div>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
-    <Info className="w-5 h-5 text-blue-500" />  {t('lab.m10tangentproperties_theory')}
-                            </h2>
-   <div className="prose prose-slate text-sm">
-    <p><strong>{t('lab.m10tangentproperties_1_tangent_perpendicularity')}</strong>  {t('lab.m10tangentproperties_a_tangent_to_a_circle_is_perpe')}</p>
-    <p><strong>{t('lab.m10tangentproperties_2_touching_circles')}</strong>  {t('lab.m10tangentproperties_if_two_circles_touch_externall')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r')}</code>{t('lab.m10tangentproperties_if_they_touch_internally_the_d')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r_1')}</code>.</p>
-   </div>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m10tangentproperties_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m10tangentproperties_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
+ {/* Left Column: Theory & Setup */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 ? 'flex' : 'hidden'} lg:flex`}>
+ <div>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
+ <Info className="w-5 h-5 text-blue-500" /> {t('lab.m10tangentproperties_theory')}
+ </h2>
+ <div className="prose prose-slate text-sm">
+ <p><strong>{t('lab.m10tangentproperties_1_tangent_perpendicularity')}</strong> {t('lab.m10tangentproperties_a_tangent_to_a_circle_is_perpe')}</p>
+ <p><strong>{t('lab.m10tangentproperties_2_touching_circles')}</strong> {t('lab.m10tangentproperties_if_two_circles_touch_externall')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r')}</code>{t('lab.m10tangentproperties_if_they_touch_internally_the_d')} <code className="bg-slate-100 dark:bg-[#121212] px-1 rounded">{t('lab.m10tangentproperties_r_r_1')}</code>.</p>
+ </div>
+ </div>
 
-   <div>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Settings2 className="w-5 h-5 text-blue-500" />  {t('lab.m10tangentproperties_simulation_controls')}
-                            </h2>
-   
-   <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-6 flex-col `}>
-    <button 
-    onClick={() => setMode('tangent')}
-    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
-    >
-    
-                                 {t('lab.m10tangentproperties_tangent_to_radius')}
-                                 </button>
-    <button 
-    onClick={() => setMode('touching')}
-    className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
-    >
-    
-                                 {t('lab.m10tangentproperties_touching_circles')}
-                                 </button>
-   </div>
+ <div>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <Settings2 className="w-5 h-5 text-blue-500" /> {t('lab.m10tangentproperties_simulation_controls')}
+ </h2>
+ 
+ <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-6 flex-col `}>
+ <button 
+ onClick={() => setMode('tangent')}
+ className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
+ >
+ 
+ {t('lab.m10tangentproperties_tangent_to_radius')}
+ </button>
+ <button 
+ onClick={() => setMode('touching')}
+ className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}
+ >
+ 
+ {t('lab.m10tangentproperties_touching_circles')}
+ </button>
+ </div>
 
-   {mode === 'touching' && (
-    <div className="space-y-4">
-    <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_1_radius')}{r1})</label>
-     <input type="range" min="30" max="120" value={r1} onChange={e => setR1(Number(e.target.value))} className="w-full accent-blue-600" />
-    </div>
-    <div>
-     <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_2_radius')}{r2})</label>
-     <input type="range" min="30" max="120" value={r2} onChange={e => setR2(Number(e.target.value))} className="w-full accent-blue-600" />
-    </div>
-    </div>
-   )}
-   {mode === 'tangent' && (
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10tangentproperties_drag_the_red_point_on_the_circ')}</p>
-   )}
-   </div>
-  </div>
+ {mode === 'touching' && (
+ <div className="space-y-4">
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_1_radius')}{r1})</label>
+ <input type="range" min="30" max="120" value={r1} onChange={e => setR1(Number(e.target.value))} className="w-full accent-blue-600" />
+ </div>
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m10tangentproperties_circle_2_radius')}{r2})</label>
+ <input type="range" min="30" max="120" value={r2} onChange={e => setR2(Number(e.target.value))} className="w-full accent-blue-600" />
+ </div>
+ </div>
+ )}
+ {mode === 'tangent' && (
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10tangentproperties_drag_the_red_point_on_the_circ')}</p>
+ )}
+ </div>
+ </div>
 
-  {/* Middle Column: Interactive Canvas */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
-   <Crosshair className="w-5 h-5 text-indigo-500" />  {t('lab.m10tangentproperties_interactive_simulation')}
-                        </h2>
+ {/* Middle Column: Interactive Canvas */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative lg:min-h-[35vh] lg:min-h-[400px] 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
+ <Crosshair className="w-5 h-5 text-indigo-500" /> {t('lab.m10tangentproperties_interactive_simulation')}
+ </h2>
 
-   <svg 
-   ref={svgRef}
-   viewBox="0 0 400 400" 
-   className={`w-full max-w-[400px] aspect-square border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] touch-none flex-col `}
-   onPointerMove={handlePointerMove}
-   onPointerUp={handlePointerUp}
-   onPointerLeave={handlePointerUp}
-   >
-   {/* Grid */}
-   <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="0.5" />
-   </pattern>
-   <rect width="100%" height="100%" fill="url(#grid)" />
+ <svg 
+ ref={svgRef}
+ viewBox="0 0 400 400" 
+ className={`w-full max-w-[400px] aspect-square border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] touch-none flex-col `}
+ onPointerMove={handlePointerMove}
+ onPointerUp={handlePointerUp}
+ onPointerLeave={handlePointerUp}
+ >
+ {/* Grid */}
+ <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+ <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="0.5" />
+ </pattern>
+ <rect width="100%" height="100%" fill="url(#grid)" />
 
-   {mode === 'tangent' && (() => {
-    const px = c1.x + r1 * Math.cos(angleP);
-    const py = c1.y + r1 * Math.sin(angleP);
-    const tx = Math.cos(angleP + Math.PI/2);
-    const ty = Math.sin(angleP + Math.PI/2);
-    
-    return (
-    <>
-     <circle cx={c1.x} cy={c1.y} r={r1} fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
-     <circle cx={c1.x} cy={c1.y} r={3} fill="#1e40af" />
-     
-     {/* Radius */}
-     <line x1={c1.x} y1={c1.y} x2={px} y2={py} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
-     
-     {/* Tangent */}
-     <line 
-     x1={px - 200*tx} y1={py - 200*ty} 
-     x2={px + 200*tx} y2={py + 200*ty} 
-     stroke="#ef4444" strokeWidth="2" 
-     />
+ {mode === 'tangent' && (() => {
+ const px = c1.x + r1 * Math.cos(angleP);
+ const py = c1.y + r1 * Math.sin(angleP);
+ const tx = Math.cos(angleP + Math.PI/2);
+ const ty = Math.sin(angleP + Math.PI/2);
+ 
+ return (
+ <>
+ <circle cx={c1.x} cy={c1.y} r={r1} fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
+ <circle cx={c1.x} cy={c1.y} r={3} fill="#1e40af" />
+ 
+ {/* Radius */}
+ <line x1={c1.x} y1={c1.y} x2={px} y2={py} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
+ 
+ {/* Tangent */}
+ <line 
+ x1={px - 200*tx} y1={py - 200*ty} 
+ x2={px + 200*tx} y2={py + 200*ty} 
+ stroke="#ef4444" strokeWidth="2" 
+ />
 
-     {/* Right angle marker */}
-     <path 
-     d={`M ${px - 15*Math.cos(angleP)} ${py - 15*Math.sin(angleP)} 
-      L ${px - 15*Math.cos(angleP) + 15*tx} ${py - 15*Math.sin(angleP) + 15*ty}
-      L ${px + 15*tx} ${py + 15*ty}`} 
-     fill="none" stroke="#ef4444" strokeWidth="2" 
-     />
+ {/* Right angle marker */}
+ <path 
+ d={`M ${px - 15*Math.cos(angleP)} ${py - 15*Math.sin(angleP)} 
+ L ${px - 15*Math.cos(angleP) + 15*tx} ${py - 15*Math.sin(angleP) + 15*ty}
+ L ${px + 15*tx} ${py + 15*ty}`} 
+ fill="none" stroke="#ef4444" strokeWidth="2" 
+ />
 
-     {/* Drag Handle */}
-     <circle 
-     cx={px} cy={py} r={8} fill="#ef4444" 
-     className="cursor-pointer hover:r-[10px] transition-all"
-     onPointerDown={(e) => handlePointerDown(e, 'P')}
-     />
-     
-     <text x={c1.x - 15} y={c1.y + 15} className="text-xs fill-slate-600 font-bold">O</text>
-     <text x={px + 10} y={py + 10} className="text-xs fill-slate-600 font-bold">P</text>
-     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_radius_tangent')}</text>
-     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_angle_90')}</text>
-    </>
-    );
-   })()}
+ {/* Drag Handle */}
+ <circle 
+ cx={px} cy={py} r={8} fill="#ef4444" 
+ className="cursor-pointer hover:r-[10px] transition-all"
+ onPointerDown={(e) => handlePointerDown(e, 'P')}
+ />
+ 
+ <text x={c1.x - 15} y={c1.y + 15} className="text-xs fill-slate-600 font-bold">O</text>
+ <text x={px + 10} y={py + 10} className="text-xs fill-slate-600 font-bold">P</text>
+ <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_radius_tangent')}</text>
+ <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_angle_90')}</text>
+ </>
+ );
+ })()}
 
-   {mode === 'touching' && (() => {
-    const isExt = Math.abs(distCenters - (r1 + r2)) < 2;
-    const isInt = Math.abs(distCenters - Math.abs(r1 - r2)) < 2;
-    
-    return (
-    <>
-     <circle cx={c1.x} cy={c1.y} r={r1} fill="transparent" stroke="#3b82f6" strokeWidth="2" />
-     <circle cx={c1.x} cy={c1.y} r={3} fill="#1e40af" />
-     
-     <circle cx={c2.x} cy={c2.y} r={r2} fill="transparent" stroke="#ef4444" strokeWidth="2" />
-     
-     {/* Line between centers */}
-     <line x1={c1.x} y1={c1.y} x2={c2.x} y2={c2.y} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
-     
-     {/* Center drag handle */}
-     <circle 
-     cx={c2.x} cy={c2.y} r={8} fill="#ef4444" 
-     className="cursor-move hover:r-[10px] transition-all"
-     onPointerDown={(e) => handlePointerDown(e, 'C2')}
-     />
-     
-     <text x={10} y={330} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_distance_d')} {distCenters.toFixed(1)}</text>
-     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_2')} {r1 + r2}</text>
-     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_3')} {Math.abs(r1 - r2)}</text>
-     
-     {isExt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-green-600 font-bold">{t('lab.m10tangentproperties_touches_externally_d_r_r')}</text>}
-     {isInt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-orange-600 font-bold">{t('lab.m10tangentproperties_touches_internally_d_r_r')}</text>}
-    </>
-    );
-   })()}
-   </svg>
-  </div>
+ {mode === 'touching' && (() => {
+ const isExt = Math.abs(distCenters - (r1 + r2)) < 2;
+ const isInt = Math.abs(distCenters - Math.abs(r1 - r2)) < 2;
+ 
+ return (
+ <>
+ <circle cx={c1.x} cy={c1.y} r={r1} fill="transparent" stroke="#3b82f6" strokeWidth="2" />
+ <circle cx={c1.x} cy={c1.y} r={3} fill="#1e40af" />
+ 
+ <circle cx={c2.x} cy={c2.y} r={r2} fill="transparent" stroke="#ef4444" strokeWidth="2" />
+ 
+ {/* Line between centers */}
+ <line x1={c1.x} y1={c1.y} x2={c2.x} y2={c2.y} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
+ 
+ {/* Center drag handle */}
+ <circle 
+ cx={c2.x} cy={c2.y} r={8} fill="#ef4444" 
+ className="cursor-move hover:r-[10px] transition-all"
+ onPointerDown={(e) => handlePointerDown(e, 'C2')}
+ />
+ 
+ <text x={10} y={330} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_distance_d')} {distCenters.toFixed(1)}</text>
+ <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_2')} {r1 + r2}</text>
+ <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10tangentproperties_r_r_3')} {Math.abs(r1 - r2)}</text>
+ 
+ {isExt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-green-600 font-bold">{t('lab.m10tangentproperties_touches_externally_d_r_r')}</text>}
+ {isInt && <text x={200} y={380} textAnchor="middle" className="text-sm fill-orange-600 font-bold">{t('lab.m10tangentproperties_touches_internally_d_r_r')}</text>}
+ </>
+ );
+ })()}
+ </svg>
+ </div>
 
-  {/* Right Column: Assessment */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Calculator className="w-5 h-5 text-green-500" />  {t('lab.m10tangentproperties_assessment')}
-                        </h2>
-   
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
-   <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
-    {questionParams.type === 'pythagoras' && 
-    `A point P is ${questionParams.d} cm away from the center of a circle. If the radius is ${questionParams.r} cm, find the length of the tangent from P to the circle.`
-    }
-    {questionParams.type === 'ext_touch' && 
-    `Two circles of radii ${questionParams.r} cm and ${questionParams.d} cm touch externally. What is the distance between their centers?`
-    }
-    {questionParams.type === 'int_touch' && 
-    `Two circles of radii ${questionParams.r} cm and ${questionParams.d} cm touch internally. What is the distance between their centers?`
-    }
-   </p>
-   
-   <div className="flex flex-wrap gap-2">
-    <input 
-    type="number" 
-    value={userAnswer}
-    onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder={t('lab.m10tangentproperties_enter_answer_cm')}
-    className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <button 
-    onClick={checkAnswer}
-    className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.m10tangentproperties_check')}
-                                 </button>
-   </div>
-   
-   {feedback === 'correct' && (
-    <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <CheckCircle2 className="w-4 h-4" />  {t('lab.m10tangentproperties_correct_great_job')}
-                                 </div>
-   )}
-   {feedback === 'incorrect' && (
-    <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
-    <XCircle className="w-4 h-4" />  {t('lab.m10tangentproperties_incorrect_try_again')}
-                                 </div>
-   )}
-   </div>
+ {/* Right Column: Assessment */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Calculator className="w-5 h-5 text-green-500" /> {t('lab.m10tangentproperties_assessment')}
+ </h2>
+ 
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
+ <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
+ {questionParams.type === 'pythagoras' && 
+ `A point P is ${questionParams.d} cm away from the center of a circle. If the radius is ${questionParams.r} cm, find the length of the tangent from P to the circle.`
+ }
+ {questionParams.type === 'ext_touch' && 
+ `Two circles of radii ${questionParams.r} cm and ${questionParams.d} cm touch externally. What is the distance between their centers?`
+ }
+ {questionParams.type === 'int_touch' && 
+ `Two circles of radii ${questionParams.r} cm and ${questionParams.d} cm touch internally. What is the distance between their centers?`
+ }
+ </p>
+ 
+ <div className="flex flex-wrap gap-2">
+ <input 
+ type="number" 
+ value={userAnswer}
+ onChange={(e) => setUserAnswer(e.target.value)}
+ placeholder={t('lab.m10tangentproperties_enter_answer_cm')}
+ className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+ />
+ <button 
+ onClick={checkAnswer}
+ className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.m10tangentproperties_check')}
+ </button>
+ </div>
+ 
+ {feedback === 'correct' && (
+ <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
+ <CheckCircle2 className="w-4 h-4" /> {t('lab.m10tangentproperties_correct_great_job')}
+ </div>
+ )}
+ {feedback === 'incorrect' && (
+ <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
+ <XCircle className="w-4 h-4" /> {t('lab.m10tangentproperties_incorrect_try_again')}
+ </div>
+ )}
+ </div>
 
-   <button 
-   onClick={generateQuestion}
-   className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
-   >
-   <RefreshCw className="w-4 h-4" />  {t('lab.m10tangentproperties_next_question')}
-                        </button>
-  </div>
-  </div>
+ <button 
+ onClick={generateQuestion}
+ className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
+ >
+ <RefreshCw className="w-4 h-4" /> {t('lab.m10tangentproperties_next_question')}
+ </button>
+ </div>
+ </div>
  </div>
  );
 }

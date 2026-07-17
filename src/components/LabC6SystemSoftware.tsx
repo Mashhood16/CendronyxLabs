@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC6SystemSoftware({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const devices = [
  { id: 'usb', name: 'USB Flash Drive', icon: Usb, isPnP: true },
  { id: 'mouse', name: 'USB Mouse', icon: Mouse, isPnP: true },
@@ -28,76 +28,76 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
 
  const togglePnP = (id: string) => {
  if (identifiedPnP.includes(id)) {
-  setIdentifiedPnP(identifiedPnP.filter(i => i !== id));
+ setIdentifiedPnP(identifiedPnP.filter(i => i !== id));
  } else {
-  setIdentifiedPnP([...identifiedPnP, id]);
+ setIdentifiedPnP([...identifiedPnP, id]);
  }
  };
 
  const isPnPComplete = devices.filter(d => d.isPnP).every(d => identifiedPnP.includes(d.id)) && 
-      identifiedPnP.every(id => devices.find(d => d.id === id)?.isPnP);
+ identifiedPnP.every(id => devices.find(d => d.id === id)?.isPnP);
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c6systemsoftware_system_software_devices')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-  
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c6systemsoftware_system_software_devices')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ 
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6systemsoftware_identify_plug_and_play_pnp_dev')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6systemsoftware_identify_plug_and_play_pnp_dev')}</p>
 
-  <div className="flex gap-8 flex-1 min-h-[500px]">
-   {/* Left Column: PnP */}
-   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_1_plug_and_play_devices')}</h2>
-   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_select_all_the_devices_below_t')}</p>
+ <div className="flex gap-8 flex-1 ">
+ {/* Left Column: PnP */}
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
+ <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_1_plug_and_play_devices')}</h2>
+ <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_select_all_the_devices_below_t')}</p>
 
-   <div className="flex flex-col gap-3 flex-1">
-    {devices.map(device => {
-    const Icon = device.icon;
-    const isSelected = identifiedPnP.includes(device.id);
-    
-    return (
-     <button
-     key={device.id}
-     onClick={() => togglePnP(device.id)}
-     className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${ isSelected ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:hover:border-slate-600 bg-slate-50 dark:bg-[#121212]' }`}
-     >
-     <div className={`p-3 rounded-lg ${isSelected ? 'bg-blue-200 dark:bg-blue-800 text-blue-700 dark:text-blue-200' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-[#a1a1aa]'}`}>
-      <Icon className="w-6 h-6" />
-     </div>
-     <span className="font-bold text-lg">{device.name}</span>
-     </button>
-    );
-    })}
-   </div>
+ <div className="flex flex-col gap-3 flex-1">
+ {devices.map(device => {
+ const Icon = device.icon;
+ const isSelected = identifiedPnP.includes(device.id);
+ 
+ return (
+ <button
+ key={device.id}
+ onClick={() => togglePnP(device.id)}
+ className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${ isSelected ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 text-blue-900 dark:text-blue-100' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:hover:border-slate-600 bg-slate-50 dark:bg-[#121212]' }`}
+ >
+ <div className={`p-3 rounded-lg ${isSelected ? 'bg-blue-200 dark:bg-blue-800 text-blue-700 dark:text-blue-200' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-[#a1a1aa]'}`}>
+ <Icon className="w-6 h-6" />
+ </div>
+ <span className="font-bold text-lg">{device.name}</span>
+ </button>
+ );
+ })}
+ </div>
 
-   <div className={`mt-6 p-4 rounded-xl font-bold text-center ${ isPnPComplete ? 'bg-green-100 text-green-700 border-green-200 border' : 'text-slate-500 dark:text-[#a1a1aa]' }`}>
-    {isPnPComplete ? "Correct! You've identified all PnP devices." : "Select the PnP devices above."}
-   </div>
-   </div>
+ <div className={`mt-6 p-4 rounded-xl font-bold text-center ${ isPnPComplete ? 'bg-green-100 text-green-700 border-green-200 border' : 'text-slate-500 dark:text-[#a1a1aa]' }`}>
+ {isPnPComplete ? "Correct! You've identified all PnP devices." : "Select the PnP devices above."}
+ </div>
+ </div>
 
-   {/* Right Column: Utilities */}
-   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_2_utility_programs')}</h2>
-   <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_review_these_essential_system_')}</p>
+ {/* Right Column: Utilities */}
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
+ <h2 className="text-xl font-bold mb-2">{t('lab.c6systemsoftware_2_utility_programs')}</h2>
+ <p className="text-slate-500 dark:text-[#71717a] mb-6 text-sm">{t('lab.c6systemsoftware_review_these_essential_system_')}</p>
 
-   <div className="grid grid-cols-2 gap-4 flex-1">
-    {utilities.map(util => {
-    const Icon = util.icon;
-    return (
-     <div key={util.id} className="p-5 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] flex flex-col items-center justify-center text-center hover:border-indigo-300 transition-colors">
-     <div className="w-16 h-16 bg-slate-50 dark:bg-[#121212] rounded-full flex items-center justify-center shadow-sm mb-4 border border-slate-100">
-      <Icon className="w-8 h-8 text-indigo-500" />
-     </div>
-     <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{util.name}</h3>
-     <p className="text-sm text-slate-500 dark:text-[#71717a] leading-snug">{util.desc}</p>
-     </div>
-    );
-    })}
-   </div>
-   </div>
-  </div>
-  </div>
+ <div className="grid grid-cols-2 gap-4 flex-1">
+ {utilities.map(util => {
+ const Icon = util.icon;
+ return (
+ <div key={util.id} className="p-5 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] flex flex-col items-center justify-center text-center hover:border-indigo-300 transition-colors">
+ <div className="w-16 h-16 bg-slate-50 dark:bg-[#121212] rounded-full flex items-center justify-center shadow-sm mb-4 border border-slate-100">
+ <Icon className="w-8 h-8 text-indigo-500" />
+ </div>
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{util.name}</h3>
+ <p className="text-sm text-slate-500 dark:text-[#71717a] leading-snug">{util.desc}</p>
+ </div>
+ );
+ })}
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

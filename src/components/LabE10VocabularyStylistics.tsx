@@ -221,7 +221,7 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative min-h-0 overflow-y-auto p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="w-full max-w-md h-full flex flex-col">
    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-300 dark:border-[#1c1b1b]">
     <Target className="w-6 h-6 text-[#4158D1]" />

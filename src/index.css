@@ -1449,3 +1449,77 @@ html:not(.dark) .english-lab-runner .glass {
   backdrop-filter: blur(12px) !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
+
+/* ==============================================================
+   GLOBAL DARK MODE CONTRAST & BACKGROUND OPACITY OVERRIDES
+   Ensures slate, gray, and white backgrounds with opacity (e.g. /40, /50, /60)
+   correctly use dark colors rather than rendering as light silver in dark mode.
+   ============================================================= */
+.dark [class*="bg-slate-950/"] {
+  background-color: rgba(10, 10, 12, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-900/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-800/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-700/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-600/"] {
+  background-color: rgba(40, 40, 40, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-500/"] {
+  background-color: rgba(40, 40, 40, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-400/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-300/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-200/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-100/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-slate-50/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+
+.dark [class*="bg-gray-900/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-800/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-700/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-600/"] {
+  background-color: rgba(40, 40, 40, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-500/"] {
+  background-color: rgba(40, 40, 40, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-400/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-300/"] {
+  background-color: rgba(28, 27, 27, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-200/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-100/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+.dark [class*="bg-gray-50/"] {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}
+
+.dark [class*="bg-white/"]:not([class*="dark:bg-"]) {
+  background-color: rgba(18, 18, 18, var(--tw-bg-opacity, 1)) !important;
+}

@@ -4,7 +4,7 @@ import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 
 export default function LabCS12DataStructures({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeTab, setActiveTab] = useState<'Stack' | 'Queue' | 'Tree'>('Tree');
@@ -33,20 +33,20 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
  setActiveNode(null);
  let i = 0;
  const step = () => {
-  if (i < sequence.length) {
-  setActiveNode(sequence[i]);
-  i++;
-  timeoutRef.current = setTimeout(step, 800);
-  } else {
-  timeoutRef.current = setTimeout(() => setActiveNode(null), 800);
-  }
+ if (i < sequence.length) {
+ setActiveNode(sequence[i]);
+ i++;
+ timeoutRef.current = setTimeout(step, 800);
+ } else {
+ timeoutRef.current = setTimeout(() => setActiveNode(null), 800);
+ }
  };
  step();
  };
 
  useEffect(() => {
  return () => {
-  if (timeoutRef.current) clearTimeout(timeoutRef.current);
+ if (timeoutRef.current) clearTimeout(timeoutRef.current);
  };
  }, []);
 
@@ -60,188 +60,188 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
  const [q3Status, setQ3Status] = useState<boolean | null>(null);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="dark" title={t('lab.cs12datastructures_interactive_memory_management')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} variant="dark" title={t('lab.cs12datastructures_interactive_memory_management')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.cs12datastructures_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.cs12datastructures_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  {/* Theory Column */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_theory_context')}</h2>
-   <div className={`space-y-4 text-slate-700 dark:text-[#ffffff] lg:overflow-y-auto pr-2 flex-1 text-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   <p>
-    <strong>{t('lab.cs12datastructures_data_structures')}</strong>  {t('lab.cs12datastructures_organize_and_store_data_to_ena')}
-                            </p>
-   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_stacks_lifo')}</h3>
-   <p>
-    
-                             {t('lab.cs12datastructures_a_stack_follows_the_last_in_fi')} <code>{t('lab.cs12datastructures_push')}</code>  {t('lab.cs12datastructures_add_to_top_and')} <code>{t('lab.cs12datastructures_pop')}</code>  {t('lab.cs12datastructures_remove_from_top_execute_in_o_1')}
-                            </p>
-   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_queues_fifo')}</h3>
-   <p>
-    
-                             {t('lab.cs12datastructures_a_queue_follows_the_first_in_f')} <code>{t('lab.cs12datastructures_enqueue')}</code>  {t('lab.cs12datastructures_adds_to_the_back')} <code>{t('lab.cs12datastructures_dequeue')}</code>  {t('lab.cs12datastructures_removes_from_the_front_used_in')}
-                            </p>
-   <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_binary_trees')}</h3>
-   <p>
-    
-                             {t('lab.cs12datastructures_a_hierarchical_structure_where')} 
-                             <br/>- <strong>{t('lab.cs12datastructures_pre_order')}</strong>  {t('lab.cs12datastructures_root_left_right')}
-                             <br/>- <strong>{t('lab.cs12datastructures_in_order')}</strong>  {t('lab.cs12datastructures_left_root_right')}
-                             <br/>- <strong>{t('lab.cs12datastructures_post_order')}</strong>  {t('lab.cs12datastructures_left_right_root')}
-                            </p>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.cs12datastructures_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.cs12datastructures_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 min-h-0 lg:overflow-hidden">
+ {/* Theory Column */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_theory_context')}</h2>
+ <div className={`space-y-4 text-slate-700 dark:text-[#ffffff] lg:overflow-y-auto pr-2 flex-1 text-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
+ <p>
+ <strong>{t('lab.cs12datastructures_data_structures')}</strong> {t('lab.cs12datastructures_organize_and_store_data_to_ena')}
+ </p>
+ <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_stacks_lifo')}</h3>
+ <p>
+ 
+ {t('lab.cs12datastructures_a_stack_follows_the_last_in_fi')} <code>{t('lab.cs12datastructures_push')}</code> {t('lab.cs12datastructures_add_to_top_and')} <code>{t('lab.cs12datastructures_pop')}</code> {t('lab.cs12datastructures_remove_from_top_execute_in_o_1')}
+ </p>
+ <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_queues_fifo')}</h3>
+ <p>
+ 
+ {t('lab.cs12datastructures_a_queue_follows_the_first_in_f')} <code>{t('lab.cs12datastructures_enqueue')}</code> {t('lab.cs12datastructures_adds_to_the_back')} <code>{t('lab.cs12datastructures_dequeue')}</code> {t('lab.cs12datastructures_removes_from_the_front_used_in')}
+ </p>
+ <h3 className="font-semibold text-teal-700 mt-2">{t('lab.cs12datastructures_binary_trees')}</h3>
+ <p>
+ 
+ {t('lab.cs12datastructures_a_hierarchical_structure_where')} 
+ <br/>- <strong>{t('lab.cs12datastructures_pre_order')}</strong> {t('lab.cs12datastructures_root_left_right')}
+ <br/>- <strong>{t('lab.cs12datastructures_in_order')}</strong> {t('lab.cs12datastructures_left_root_right')}
+ <br/>- <strong>{t('lab.cs12datastructures_post_order')}</strong> {t('lab.cs12datastructures_left_right_root')}
+ </p>
+ </div>
+ </div>
 
-  {/* Simulation Column */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_visualizer')}</h2>
-   
-   <div className="flex gap-2 mb-4">
-   <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_tree')}</button>
-   <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_stack')}</button>
-   <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_queue')}</button>
-   </div>
+ {/* Simulation Column */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_visualizer')}</h2>
+ 
+ <div className="flex gap-2 mb-4">
+ <button onClick={() => setActiveTab('Tree')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Tree' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_tree')}</button>
+ <button onClick={() => setActiveTab('Stack')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Stack' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_stack')}</button>
+ <button onClick={() => setActiveTab('Queue')} className={`px-4 py-1 rounded-full text-sm font-bold ${activeTab === 'Queue' ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}>{t('lab.cs12datastructures_queue')}</button>
+ </div>
 
-   <div className={`flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative lg:overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   {activeTab === 'Tree' && (
-    <div className="w-full flex flex-col items-center">
-    <svg width="100%" height="220" viewBox="0 0 300 200" className="mt-2">
-     <line x1="150" y1="30" x2="75" y2="100" stroke="#94a3b8" strokeWidth="2" />
-     <line x1="150" y1="30" x2="225" y2="100" stroke="#94a3b8" strokeWidth="2" />
-     <line x1="75" y1="100" x2="37.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
-     <line x1="75" y1="100" x2="112.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
-     <line x1="225" y1="100" x2="187.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
-     <line x1="225" y1="100" x2="262.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
+ <div className={`flex-1 flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-4 relative lg:${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {activeTab === 'Tree' && (
+ <div className="w-full flex flex-col items-center">
+ <svg width="100%" height="220" viewBox="0 0 300 200" className="mt-2">
+ <line x1="150" y1="30" x2="75" y2="100" stroke="#94a3b8" strokeWidth="2" />
+ <line x1="150" y1="30" x2="225" y2="100" stroke="#94a3b8" strokeWidth="2" />
+ <line x1="75" y1="100" x2="37.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
+ <line x1="75" y1="100" x2="112.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
+ <line x1="225" y1="100" x2="187.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
+ <line x1="225" y1="100" x2="262.5" y2="170" stroke="#94a3b8" strokeWidth="2" />
 
-     {treeNodes.map((node, i) => {
-     const coords = [
-      { x: 150, y: 30 }, { x: 75, y: 100 }, { x: 225, y: 100 },
-      { x: 37.5, y: 170 }, { x: 112.5, y: 170 }, { x: 187.5, y: 170 }, { x: 262.5, y: 170 }
-     ];
-     const isActive = activeNode === node;
-     return (
-      <g key={node}>
-      <circle cx={coords[i].x} cy={coords[i].y} r="18" fill={isActive ? '#14b8a6' : '#e2e8f0'} stroke="#0f766e" strokeWidth="2" className="transition-colors duration-300" />
-      <text x={coords[i].x} y={coords[i].y} textAnchor="middle" dy=".3em" fill={isActive ? '#ffffff' : '#0f766e'} fontSize="14" fontWeight="bold">
-       {node}
-      </text>
-      </g>
-     );
-     })}
-    </svg>
-    <div className="flex gap-2 mt-4">
-     <button onClick={() => animateTraversal(preOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_pre_order_1')}</button>
-     <button onClick={() => animateTraversal(inOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_in_order_1')}</button>
-     <button onClick={() => animateTraversal(postOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/>  {t('lab.cs12datastructures_post_order_1')}</button>
-    </div>
-    </div>
-   )}
+ {treeNodes.map((node, i) => {
+ const coords = [
+ { x: 150, y: 30 }, { x: 75, y: 100 }, { x: 225, y: 100 },
+ { x: 37.5, y: 170 }, { x: 112.5, y: 170 }, { x: 187.5, y: 170 }, { x: 262.5, y: 170 }
+ ];
+ const isActive = activeNode === node;
+ return (
+ <g key={node}>
+ <circle cx={coords[i].x} cy={coords[i].y} r="18" fill={isActive ? '#14b8a6' : '#e2e8f0'} stroke="#0f766e" strokeWidth="2" className="transition-colors duration-300" />
+ <text x={coords[i].x} y={coords[i].y} textAnchor="middle" dy=".3em" fill={isActive ? '#ffffff' : '#0f766e'} fontSize="14" fontWeight="bold">
+ {node}
+ </text>
+ </g>
+ );
+ })}
+ </svg>
+ <div className="flex gap-2 mt-4">
+ <button onClick={() => animateTraversal(preOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> {t('lab.cs12datastructures_pre_order_1')}</button>
+ <button onClick={() => animateTraversal(inOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> {t('lab.cs12datastructures_in_order_1')}</button>
+ <button onClick={() => animateTraversal(postOrder)} className={`px-3 py-1 bg-[#121212] dark:bg-[#121212] text-white text-xs rounded hover:bg-slate-700 dark:bg-[#121212] flex items-center gap-1 flex-col `}><Play size={12}/> {t('lab.cs12datastructures_post_order_1')}</button>
+ </div>
+ </div>
+ )}
 
-   {activeTab === 'Stack' && (
-    <div className="w-full flex flex-col items-center h-full justify-end pb-4">
-    <div className="flex gap-2 mb-6">
-     <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_push')}</button>
-     <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_pop')}</button>
-    </div>
-    <div className="w-32 border-x-4 border-b-4 border-[#1c1b1b] dark:border-[#1c1b1b] min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50 dark:bg-[#121212]">
-     {stack.map((val, idx) => (
-     <div key={idx} className="w-full bg-teal-500 text-white text-center font-bold py-2 mb-1 rounded border border-teal-700 animate-fade-in dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">
-      {val}
-     </div>
-     ))}
-     {stack.length === 0 && <span className="text-slate-400 text-sm mt-auto mb-2">{t('lab.cs12datastructures_empty_stack')}</span>}
-    </div>
-    </div>
-   )}
+ {activeTab === 'Stack' && (
+ <div className="w-full flex flex-col items-center h-full justify-end pb-4">
+ <div className="flex gap-2 mb-6">
+ <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_push')}</button>
+ <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_pop')}</button>
+ </div>
+ <div className="w-32 border-x-4 border-b-4 border-[#1c1b1b] dark:border-[#1c1b1b] min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50 dark:bg-[#121212]">
+ {stack.map((val, idx) => (
+ <div key={idx} className="w-full bg-teal-500 text-white text-center font-bold py-2 mb-1 rounded border border-teal-700 animate-fade-in dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">
+ {val}
+ </div>
+ ))}
+ {stack.length === 0 && <span className="text-slate-400 text-sm mt-auto mb-2">{t('lab.cs12datastructures_empty_stack')}</span>}
+ </div>
+ </div>
+ )}
 
-   {activeTab === 'Queue' && (
-    <div className="w-full flex flex-col items-center h-full justify-center">
-    <div className="flex gap-2 mb-6">
-     <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_enqueue')}</button>
-     <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_dequeue')}</button>
-    </div>
-    <div className="w-full max-w-sm h-20 border-y-4 border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center p-1 bg-slate-50 dark:bg-[#121212] overflow-x-auto gap-1">
-     {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">{t('lab.cs12datastructures_empty_queue')}</span>}
-     {queue.map((val, idx) => (
-     <div key={idx} className="min-w-[3rem] h-full bg-teal-500 text-white flex items-center justify-center font-bold rounded border border-teal-700">
-      {val}
-     </div>
-     ))}
-    </div>
-    <div className="w-full max-w-sm flex justify-between mt-2 text-xs font-bold text-slate-500 dark:text-[#71717a]">
-     <span>{t('lab.cs12datastructures_front_dequeue')}</span>
-     <span>{t('lab.cs12datastructures_back_enqueue')}</span>
-    </div>
-    </div>
-   )}
-   </div>
-  </div>
+ {activeTab === 'Queue' && (
+ <div className="w-full flex flex-col items-center h-full justify-center">
+ <div className="flex gap-2 mb-6">
+ <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_enqueue')}</button>
+ <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50 dark:text-white dark:text-white dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">{t('lab.cs12datastructures_dequeue')}</button>
+ </div>
+ <div className="w-full max-w-sm h-20 border-y-4 border-[#1c1b1b] dark:border-[#1c1b1b] flex items-center p-1 bg-slate-50 dark:bg-[#121212] overflow-x-auto gap-1">
+ {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">{t('lab.cs12datastructures_empty_queue')}</span>}
+ {queue.map((val, idx) => (
+ <div key={idx} className="min-w-[3rem] h-full bg-teal-500 text-white flex items-center justify-center font-bold rounded border border-teal-700">
+ {val}
+ </div>
+ ))}
+ </div>
+ <div className="w-full max-w-sm flex justify-between mt-2 text-xs font-bold text-slate-500 dark:text-[#71717a]">
+ <span>{t('lab.cs12datastructures_front_dequeue')}</span>
+ <span>{t('lab.cs12datastructures_back_enqueue')}</span>
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
 
-  {/* Assessment Column */}
-  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_analysis_assessment')}</h2>
-   
-   <div className="space-y-4 lg:overflow-y-auto pr-2">
-   <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q1_if_an_empty_stack_performs_')}</label>
-    <div className="flex gap-2">
-    <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_enter_number')} />
-    <button onClick={() => setQ1Status(q1.trim() === '3')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
-    </div>
-    {q1Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
-    {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
-   </div>
+ {/* Assessment Column */}
+ <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">{t('lab.cs12datastructures_analysis_assessment')}</h2>
+ 
+ <div className="space-y-4 lg:overflow-y-auto pr-2">
+ <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+ <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q1_if_an_empty_stack_performs_')}</label>
+ <div className="flex gap-2">
+ <input type="text" value={q1} onChange={e => setQ1(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_enter_number')} />
+ <button onClick={() => setQ1Status(q1.trim() === '3')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
+ </div>
+ {q1Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_correct')}</p>}
+ {q1Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_incorrect')}</p>}
+ </div>
 
-   <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q2_based_on_the_visualizer_tre')}</label>
-    <div className="flex gap-2">
-    <input type="text" value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_a_b_d_e_c_f_g')} />
-    <button onClick={() => setQ2Status(q2.replace(/\s/g, '').toUpperCase() === 'A,B,D,E,C,F,G')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
-    </div>
-    {q2Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
-    {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+ <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q2_based_on_the_visualizer_tre')}</label>
+ <div className="flex gap-2">
+ <input type="text" value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_a_b_d_e_c_f_g')} />
+ <button onClick={() => setQ2Status(q2.replace(/\s/g, '').toUpperCase() === 'A,B,D,E,C,F,G')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
+ </div>
+ {q2Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_correct')}</p>}
+ {q2Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_incorrect')}</p>}
+ </div>
 
-   <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q3_which_data_structure_operat')}</label>
-    <div className="flex gap-2">
-    <input type="text" value={q3} onChange={e => setQ3(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_e_g_stack_or_queue')} />
-    <button onClick={() => setQ3Status(q3.trim().toLowerCase() === 'queue')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
-    </div>
-    {q3Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_correct')}</p>}
-    {q3Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/>  {t('lab.cs12datastructures_incorrect')}</p>}
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+ <label className="block text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.cs12datastructures_q3_which_data_structure_operat')}</label>
+ <div className="flex gap-2">
+ <input type="text" value={q3} onChange={e => setQ3(e.target.value)} className="flex-1 border rounded px-2 py-1" placeholder={t('lab.cs12datastructures_e_g_stack_or_queue')} />
+ <button onClick={() => setQ3Status(q3.trim().toLowerCase() === 'queue')} className="bg-teal-600 text-white px-3 py-1 rounded font-bold text-sm dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40">{t('lab.cs12datastructures_check')}</button>
+ </div>
+ {q3Status === true && <p className="text-green-600 text-xs font-bold mt-1 flex items-center"><CheckCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_correct')}</p>}
+ {q3Status === false && <p className="text-red-500 text-xs font-bold mt-1 flex items-center"><XCircle size={12} className="mr-1"/> {t('lab.cs12datastructures_incorrect')}</p>}
+ </div>
 
-   <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] mt-6">
-    <button 
-    onClick={() => {
-     if (onExit) onExit();
-    }}
-    className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-    >
-    <Save size={20} />
-    
-                                 {t('lab.cs12datastructures_submit_results_exit')}
-                                 </button>
-   </div>
-   </div>
-  </div>
-  </div>
+ <div className="pt-4 border-t border-slate-200 dark:border-[#1c1b1b] mt-6">
+ <button 
+ onClick={() => {
+ if (onExit) onExit();
+ }}
+ className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
+ >
+ <Save size={20} />
+ 
+ {t('lab.cs12datastructures_submit_results_exit')}
+ </button>
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

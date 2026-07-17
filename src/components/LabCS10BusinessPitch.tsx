@@ -11,7 +11,7 @@ interface Props {
 export default function LabCS10BusinessPitch({ onExit }: Props) {
 
 const { recordLabData, setLabScore } = useLab();
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // Middle Column: Pitch Simulator
@@ -47,53 +47,53 @@ const { recordLabData, setLabScore } = useLab();
 
  useEffect(() => {
  if (timerRunning && timeLeft > 0) {
-  timerRef.current = setTimeout(() => setTimeLeft(prev => prev - 1), 1000);
-  
-  // Update stage based on time
-  if (timeLeft <= 15) setPitchStage('Ask');
-  else if (timeLeft <= 35) setPitchStage('Solution');
-  else if (timeLeft <= 50) setPitchStage('Problem');
-  else setPitchStage('Hook');
-  
+ timerRef.current = setTimeout(() => setTimeLeft(prev => prev - 1), 1000);
+ 
+ // Update stage based on time
+ if (timeLeft <= 15) setPitchStage('Ask');
+ else if (timeLeft <= 35) setPitchStage('Solution');
+ else if (timeLeft <= 50) setPitchStage('Problem');
+ else setPitchStage('Hook');
+ 
  } else if (timeLeft === 0 && timerRunning) {
-  setTimerRunning(false);
-  handleRecordData();
+ setTimerRunning(false);
+ handleRecordData();
  }
  return () => {
-  if (timerRef.current) clearTimeout(timerRef.current);
+ if (timerRef.current) clearTimeout(timerRef.current);
  };
  }, [timerRunning, timeLeft]);
 
  const toggleTimer = () => {
  if (timerRunning) {
-  setTimerRunning(false);
-  if (timerRef.current) clearTimeout(timerRef.current);
+ setTimerRunning(false);
+ if (timerRef.current) clearTimeout(timerRef.current);
  } else {
-  if (timeLeft === 0) setTimeLeft(60);
-  setTimerRunning(true);
+ if (timeLeft === 0) setTimeLeft(60);
+ setTimerRunning(true);
  }
  };
 
  const handleRecordData = () => {
  setLogs(prev => [...prev, {
-  id: prev.length + 1,
-  timeLogged: 60 - timeLeft,
-  stageCompleted: pitchStage
+ id: prev.length + 1,
+ timeLogged: 60 - timeLeft,
+ stageCompleted: pitchStage
  }]);
-   recordLabData({ timestamp: Date.now(), 
-  id: logs.length + 1,
-  timeLogged: 60 - timeLeft,
-  stageCompleted: pitchStage
+ recordLabData({ timestamp: Date.now(), 
+ id: logs.length + 1,
+ timeLogged: 60 - timeLeft,
+ stageCompleted: pitchStage
  });
  };
 
  const addNote = () => {
  if (!newNote.trim()) return;
  setNotes(prev => [...prev, {
-  id: Date.now(),
-  text: newNote,
-  x: Math.random() * 50,
-  y: Math.random() * 50
+ id: Date.now(),
+ text: newNote,
+ x: Math.random() * 50,
+ y: Math.random() * 50
  }]);
  setNewNote('');
  };
@@ -105,212 +105,212 @@ const { recordLabData, setLabScore } = useLab();
  const checkCategorization = () => {
  const allAssigned = categorizedItems.every(i => i.assigned !== null);
  if (!allAssigned) {
-  setAnalyzerFeedback("Please categorize all items first.");
-  return;
+ setAnalyzerFeedback("Please categorize all items first.");
+ return;
  }
  const allCorrect = categorizedItems.every(i => i.assigned === i.correct);
  if (allCorrect) {
-  setAnalyzerFeedback("Perfect! You correctly identified Business Plan vs Pitch Deck components.");
+ setAnalyzerFeedback("Perfect! You correctly identified Business Plan vs Pitch Deck components.");
  } else {
-  setAnalyzerFeedback("Some items are incorrect. Remember: A Pitch Deck is visual and high-level, a Business Plan is detailed and text-heavy.");
+ setAnalyzerFeedback("Some items are incorrect. Remember: A Pitch Deck is visual and high-level, a Business Plan is detailed and text-heavy.");
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.cs10businesspitch_lab_business_pitch_brainstormi')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.cs10businesspitch_lab_business_pitch_brainstormi')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.cs10businesspitch_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.cs10businesspitch_lab')}</button>
-  </div>
-  <main className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
-  
-  {/* Column 1: Theory */}
-  <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <Layout className="text-indigo-600" />  {t('lab.cs10businesspitch_pitch_theory')}
-                        </h2>
-   
-   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
-   <div>
-    <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.cs10businesspitch_the_elevator_pitch')}</h3>
-    <p>{t('lab.cs10businesspitch_a_brief_persuasive_speech_that')}</p>
-    <ul className="list-disc pl-5 mt-2 space-y-1">
-    <li><strong>{t('lab.cs10businesspitch_hook')}</strong>  {t('lab.cs10businesspitch_grab_attention_immediately')}</li>
-    <li><strong>{t('lab.cs10businesspitch_problem')}</strong>  {t('lab.cs10businesspitch_what_pain_point_are_you_solvin')}</li>
-    <li><strong>{t('lab.cs10businesspitch_solution')}</strong>  {t('lab.cs10businesspitch_your_unique_product_service')}</li>
-    <li><strong>{t('lab.cs10businesspitch_the_ask')}</strong>  {t('lab.cs10businesspitch_what_do_you_want_from_the_list')}</li>
-    </ul>
-   </div>
-   
-   <div>
-    <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.cs10businesspitch_business_plan_vs_pitch_deck')}</h3>
-    <p><strong>{t('lab.cs10businesspitch_pitch_deck')}</strong>  {t('lab.cs10businesspitch_a_10_15_slide_presentation_use')}</p>
-    <p><strong>{t('lab.cs10businesspitch_business_plan')}</strong>  {t('lab.cs10businesspitch_a_15_50_page_document_detailin')}</p>
-   </div>
-   </div>
-  </section>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.cs10businesspitch_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.cs10businesspitch_lab')}</button>
+ </div>
+ <main className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 min-h-0 lg:overflow-hidden">
+ 
+ {/* Column 1: Theory */}
+ <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <Layout className="text-indigo-600" /> {t('lab.cs10businesspitch_pitch_theory')}
+ </h2>
+ 
+ <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
+ <div>
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.cs10businesspitch_the_elevator_pitch')}</h3>
+ <p>{t('lab.cs10businesspitch_a_brief_persuasive_speech_that')}</p>
+ <ul className="list-disc pl-5 mt-2 space-y-1">
+ <li><strong>{t('lab.cs10businesspitch_hook')}</strong> {t('lab.cs10businesspitch_grab_attention_immediately')}</li>
+ <li><strong>{t('lab.cs10businesspitch_problem')}</strong> {t('lab.cs10businesspitch_what_pain_point_are_you_solvin')}</li>
+ <li><strong>{t('lab.cs10businesspitch_solution')}</strong> {t('lab.cs10businesspitch_your_unique_product_service')}</li>
+ <li><strong>{t('lab.cs10businesspitch_the_ask')}</strong> {t('lab.cs10businesspitch_what_do_you_want_from_the_list')}</li>
+ </ul>
+ </div>
+ 
+ <div>
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.cs10businesspitch_business_plan_vs_pitch_deck')}</h3>
+ <p><strong>{t('lab.cs10businesspitch_pitch_deck')}</strong> {t('lab.cs10businesspitch_a_10_15_slide_presentation_use')}</p>
+ <p><strong>{t('lab.cs10businesspitch_business_plan')}</strong> {t('lab.cs10businesspitch_a_15_50_page_document_detailin')}</p>
+ </div>
+ </div>
+ </section>
 
-  {/* Column 2: Simulation */}
-  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <Clock className="text-indigo-600" />  {t('lab.cs10businesspitch_pitch_simulator')}
-                        </h2>
-   
-   {/* Timed Simulator */}
-   <div className={`w-full bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212] text-white p-6 rounded-xl flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <div className={`absolute top-0 left-0 h-1 bg-indigo-500 transition-all duration-1000`} style={{ width: `${(timeLeft/60)*100}%` }} />
-   
-   <div className="text-6xl font-mono font-black mb-2 tracking-wider">
-    00:{timeLeft.toString().padStart(2, '0')}
-   </div>
-   <div className="text-lg font-bold text-indigo-300 uppercase tracking-widest mb-6">
-    
-                             {t('lab.cs10businesspitch_stage')} {pitchStage}
-   </div>
+ {/* Column 2: Simulation */}
+ <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-6 '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <Clock className="text-indigo-600" /> {t('lab.cs10businesspitch_pitch_simulator')}
+ </h2>
+ 
+ {/* Timed Simulator */}
+ <div className={`w-full bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212] text-white p-6 rounded-xl flex flex-col items-center justify-center relative 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <div className={`absolute top-0 left-0 h-1 bg-indigo-500 transition-all duration-1000`} style={{ width: `${(timeLeft/60)*100}%` }} />
+ 
+ <div className="text-6xl font-mono font-black mb-2 tracking-wider">
+ 00:{timeLeft.toString().padStart(2, '0')}
+ </div>
+ <div className="text-lg font-bold text-indigo-300 uppercase tracking-widest mb-6">
+ 
+ {t('lab.cs10businesspitch_stage')} {pitchStage}
+ </div>
 
-   <div className="flex gap-4">
-    <button 
-    onClick={toggleTimer}
-    className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-transform active:scale-95 ${timerRunning ? 'bg-red-500 hover:bg-red-600' : 'bg-indigo-600 hover:bg-indigo-700'}`}
-    >
-    {timerRunning ? <><Square size={20} fill="currentColor" />  {t('lab.cs10businesspitch_stop')}</> : <><Play size={20} fill="currentColor" />  {t('lab.cs10businesspitch_start_pitch')}</>}
-    </button>
-   </div>
-   </div>
+ <div className="flex gap-4">
+ <button 
+ onClick={toggleTimer}
+ className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-transform active:scale-95 ${timerRunning ? 'bg-red-500 hover:bg-red-600' : 'bg-indigo-600 hover:bg-indigo-700'}`}
+ >
+ {timerRunning ? <><Square size={20} fill="currentColor" /> {t('lab.cs10businesspitch_stop')}</> : <><Play size={20} fill="currentColor" /> {t('lab.cs10businesspitch_start_pitch')}</>}
+ </button>
+ </div>
+ </div>
 
-   {/* Sticky Note Board */}
-   <div className={`flex-1 bg-amber-50 rounded-lg border-2 border-dashed border-amber-200 p-2 relative min-h-[200px] lg:overflow- dark:bg-[#121212] dark:border-[#1c1b1b] `}>
-   <h3 className="text-xs font-bold text-amber-800/50 absolute top-2 left-2 uppercase tracking-widest dark:text-[#ffffff]">{t('lab.cs10businesspitch_ideation_board')}</h3>
-   
-   {notes.map(note => (
-    <div 
-    key={note.id}
-    className={`absolute w-32 h-32 bg-yellow-200 shadow-md p-2 text-xs font-handwriting cursor-move transform rotate-1 transition-transform hover:scale-105 hover:z-10 text-slate-800 dark:text-[#ffffff] flex-col `}
-    style={{ left: `${note.x}%`, top: `${note.y}%` }}
-    onMouseDown={() => setDraggingNoteId(note.id)}
-    onMouseMove={(e) => {
-     if (draggingNoteId === note.id) {
-     const rect = e.currentTarget.parentElement?.getBoundingClientRect();
-     if (!rect) return;
-     const x = ((e.clientX - rect.left) / rect.width) * 100 - 10;
-     const y = ((e.clientY - rect.top) / rect.height) * 100 - 10;
-     setNotes(prev => prev.map(n => n.id === note.id ? { ...n, x: Math.max(0, Math.min(x, 80)), y: Math.max(0, Math.min(y, 80)) } : n));
-     }
-    }}
-    onMouseUp={() => setDraggingNoteId(null)}
-    onMouseLeave={() => setDraggingNoteId(null)}
-    >
-    {note.text}
-    </div>
-   ))}
-   </div>
-   
-   <div className="flex gap-2">
-   <input 
-    type="text" 
-    value={newNote}
-    onChange={(e) => setNewNote(e.target.value)}
-    onKeyDown={(e) => e.key === 'Enter' && addNote()}
-    className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-    placeholder={t('lab.cs10businesspitch_type_idea_and_press_enter')}
-   />
-   <button onClick={addNote} className={`bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm font-semibold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}>
-    
-                             {t('lab.cs10businesspitch_add_note')}
-                            </button>
-   </div>
-  </section>
+ {/* Sticky Note Board */}
+ <div className={`flex-1 bg-amber-50 rounded-lg border-2 border-dashed border-amber-200 p-2 relative min-h-[200px] lg:dark:bg-[#121212] dark:border-[#1c1b1b] `}>
+ <h3 className="text-xs font-bold text-amber-800/50 absolute top-2 left-2 uppercase tracking-widest dark:text-[#ffffff]">{t('lab.cs10businesspitch_ideation_board')}</h3>
+ 
+ {notes.map(note => (
+ <div 
+ key={note.id}
+ className={`absolute w-32 h-32 bg-yellow-200 shadow-md p-2 text-xs font-handwriting cursor-move transform rotate-1 transition-transform hover:scale-105 hover:z-10 text-slate-800 dark:text-[#ffffff] flex-col `}
+ style={{ left: `${note.x}%`, top: `${note.y}%` }}
+ onMouseDown={() => setDraggingNoteId(note.id)}
+ onMouseMove={(e) => {
+ if (draggingNoteId === note.id) {
+ const rect = e.currentTarget.parentElement?.getBoundingClientRect();
+ if (!rect) return;
+ const x = ((e.clientX - rect.left) / rect.width) * 100 - 10;
+ const y = ((e.clientY - rect.top) / rect.height) * 100 - 10;
+ setNotes(prev => prev.map(n => n.id === note.id ? { ...n, x: Math.max(0, Math.min(x, 80)), y: Math.max(0, Math.min(y, 80)) } : n));
+ }
+ }}
+ onMouseUp={() => setDraggingNoteId(null)}
+ onMouseLeave={() => setDraggingNoteId(null)}
+ >
+ {note.text}
+ </div>
+ ))}
+ </div>
+ 
+ <div className="flex gap-2">
+ <input 
+ type="text" 
+ value={newNote}
+ onChange={(e) => setNewNote(e.target.value)}
+ onKeyDown={(e) => e.key === 'Enter' && addNote()}
+ className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+ placeholder={t('lab.cs10businesspitch_type_idea_and_press_enter')}
+ />
+ <button onClick={addNote} className={`bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm font-semibold dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}>
+ 
+ {t('lab.cs10businesspitch_add_note')}
+ </button>
+ </div>
+ </section>
 
-  {/* Column 3: Analysis */}
-  <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <CheckCircle className="text-indigo-600" />  {t('lab.cs10businesspitch_assessment_logs')}
-                        </h2>
+ {/* Column 3: Analysis */}
+ <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <CheckCircle className="text-indigo-600" /> {t('lab.cs10businesspitch_assessment_logs')}
+ </h2>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-sm">{t('lab.cs10businesspitch_document_analyzer')}</h3>
-   <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.cs10businesspitch_assign_each_item_to_its_correc')}</p>
-   
-   <div className="space-y-3">
-    {categorizedItems.map(item => (
-    <div key={item.id} className="flex flex-col gap-1 p-2 bg-slate-50 dark:bg-[#121212] rounded border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
-     <span className="text-xs font-medium text-slate-700 dark:text-[#ffffff]">{item.text}</span>
-     <div className="flex gap-2 mt-1">
-     <button 
-      onClick={() => handleCategorize(item.id, 'Plan')}
-      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Plan' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-     >
-      
-                          {t('lab.cs10businesspitch_business_plan_1')}
-                         </button>
-     <button 
-      onClick={() => handleCategorize(item.id, 'Deck')}
-      className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-     >
-      
-                          {t('lab.cs10businesspitch_pitch_deck_1')}
-                         </button>
-     </div>
-    </div>
-    ))}
-   </div>
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 text-sm">{t('lab.cs10businesspitch_document_analyzer')}</h3>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.cs10businesspitch_assign_each_item_to_its_correc')}</p>
+ 
+ <div className="space-y-3">
+ {categorizedItems.map(item => (
+ <div key={item.id} className="flex flex-col gap-1 p-2 bg-slate-50 dark:bg-[#121212] rounded border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
+ <span className="text-xs font-medium text-slate-700 dark:text-[#ffffff]">{item.text}</span>
+ <div className="flex gap-2 mt-1">
+ <button 
+ onClick={() => handleCategorize(item.id, 'Plan')}
+ className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Plan' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ >
+ 
+ {t('lab.cs10businesspitch_business_plan_1')}
+ </button>
+ <button 
+ onClick={() => handleCategorize(item.id, 'Deck')}
+ className={`flex-1 text-[10px] py-1 rounded transition-colors ${item.assigned === 'Deck' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ >
+ 
+ {t('lab.cs10businesspitch_pitch_deck_1')}
+ </button>
+ </div>
+ </div>
+ ))}
+ </div>
 
-   <button 
-    onClick={checkCategorization}
-    className="mt-4 w-full bg-[#121212] dark:bg-[#121212] text-white py-2 rounded-md hover:bg-[#000000] dark:bg-[#121212] transition-colors text-sm font-semibold"
-   >
-    
-                             {t('lab.cs10businesspitch_verify_assignments')}
-                            </button>
-   {analyzerFeedback && (
-    <div className={`mt-3 p-2 rounded-md text-sm ${analyzerFeedback.startsWith('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-    {analyzerFeedback}
-    </div>
-   )}
-   </div>
+ <button 
+ onClick={checkCategorization}
+ className="mt-4 w-full bg-[#121212] dark:bg-[#121212] text-white py-2 rounded-md hover:bg-[#000000] dark:bg-[#121212] transition-colors text-sm font-semibold"
+ >
+ 
+ {t('lab.cs10businesspitch_verify_assignments')}
+ </button>
+ {analyzerFeedback && (
+ <div className={`mt-3 p-2 rounded-md text-sm ${analyzerFeedback.startsWith('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+ {analyzerFeedback}
+ </div>
+ )}
+ </div>
 
-   <div className="flex-1 overflow-auto mt-2">
-   <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2 text-sm">{t('lab.cs10businesspitch_pitch_practice_logs')}</h3>
-   <table className="w-full text-xs text-left text-slate-600 dark:text-[#a1a1aa]">
-    <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] uppercase">
-    <tr>
-     <th className="p-2">{t('lab.cs10businesspitch_attempt')}</th>
-     <th className="p-2">{t('lab.cs10businesspitch_time_elapsed')}</th>
-     <th className="p-2">{t('lab.cs10businesspitch_final_stage')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {logs.length === 0 ? (
-     <tr><td colSpan={3} className="p-2 text-center text-slate-400">{t('lab.cs10businesspitch_no_pitches_recorded')}</td></tr>
-    ) : (
-     logs.map((log) => (
-     <tr key={log.id} className="border-b border-slate-100">
-      <td className="p-2">{log.id}</td>
-      <td className="p-2">{log.timeLogged}s</td>
-      <td className="p-2 font-medium text-indigo-600">{log.stageCompleted}</td>
-     </tr>
-     ))
-    )}
-    </tbody>
-   </table>
-   </div>
+ <div className="flex-1 overflow-auto mt-2">
+ <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-2 text-sm">{t('lab.cs10businesspitch_pitch_practice_logs')}</h3>
+ <table className="w-full text-xs text-left text-slate-600 dark:text-[#a1a1aa]">
+ <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] uppercase">
+ <tr>
+ <th className="p-2">{t('lab.cs10businesspitch_attempt')}</th>
+ <th className="p-2">{t('lab.cs10businesspitch_time_elapsed')}</th>
+ <th className="p-2">{t('lab.cs10businesspitch_final_stage')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {logs.length === 0 ? (
+ <tr><td colSpan={3} className="p-2 text-center text-slate-400">{t('lab.cs10businesspitch_no_pitches_recorded')}</td></tr>
+ ) : (
+ logs.map((log) => (
+ <tr key={log.id} className="border-b border-slate-100">
+ <td className="p-2">{log.id}</td>
+ <td className="p-2">{log.timeLogged}s</td>
+ <td className="p-2 font-medium text-indigo-600">{log.stageCompleted}</td>
+ </tr>
+ ))
+ )}
+ </tbody>
+ </table>
+ </div>
 
-  </section>
+ </section>
 
-  </main>
+ </main>
  </div>
  );
 }

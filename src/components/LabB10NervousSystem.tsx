@@ -6,7 +6,7 @@ import { useTranslate } from "../i18n";
 type SimState = 'idle' | 'striking' | 'sensory' | 'synapse' | 'motor' | 'kicking';
 
 export default function LabB10NervousSystem({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [simState, setSimState] = useState<SimState>('idle');
  const [bioTimeMs, setBioTimeMs] = useState(0);
@@ -26,23 +26,23 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
  setBioTimeMs(currentBioTime);
 
  if (currentBioTime < 5) {
-  setSimState('striking');
-  requestRef.current = requestAnimationFrame(animate);
+ setSimState('striking');
+ requestRef.current = requestAnimationFrame(animate);
  } else if (currentBioTime < 25) {
-  setSimState('sensory');
-  requestRef.current = requestAnimationFrame(animate);
+ setSimState('sensory');
+ requestRef.current = requestAnimationFrame(animate);
  } else if (currentBioTime < 30) {
-  setSimState('synapse');
-  requestRef.current = requestAnimationFrame(animate);
+ setSimState('synapse');
+ requestRef.current = requestAnimationFrame(animate);
  } else if (currentBioTime < 50) {
-  setSimState('motor');
-  requestRef.current = requestAnimationFrame(animate);
+ setSimState('motor');
+ requestRef.current = requestAnimationFrame(animate);
  } else if (currentBioTime < 80) {
-  setSimState('kicking');
-  requestRef.current = requestAnimationFrame(animate);
+ setSimState('kicking');
+ requestRef.current = requestAnimationFrame(animate);
  } else {
-  setSimState('idle');
-  setBioTimeMs(0);
+ setSimState('idle');
+ setBioTimeMs(0);
  }
  };
 
@@ -55,7 +55,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
 
  useEffect(() => {
  return () => {
-  if (requestRef.current) cancelAnimationFrame(requestRef.current);
+ if (requestRef.current) cancelAnimationFrame(requestRef.current);
  };
  }, []);
 
@@ -92,223 +92,223 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.b10nervoussystem_biology_lab_nervous_system_ref')} subtitle={t('lab.subtitle_investigate_speed_pathways')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.b10nervoussystem_biology_lab_nervous_system_ref')} subtitle={t('lab.subtitle_investigate_speed_pathways')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.b10nervoussystem_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.b10nervoussystem_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
-  {/* Left Column: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_the_patellar_reflex_arc')}</h2>
-   <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-   <p>
-    
-                             {t('lab.b10nervoussystem_a_reflex_arc_is_a_neural_pathw')}
-                            </p>
-   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_key_components')}</h3>
-   <ul className="list-disc pl-5 space-y-2">
-    <li>
-    <strong>{t('lab.b10nervoussystem_receptor')}</strong>  {t('lab.b10nervoussystem_the_muscle_spindle_in_the_pate')}
-                                 </li>
-    <li>
-    <strong>{t('lab.b10nervoussystem_sensory_afferent_neuron')}</strong>  {t('lab.b10nervoussystem_carries_the_electrical_action_')}
-                                 </li>
-    <li>
-    <strong>{t('lab.b10nervoussystem_integration_center')}</strong>  {t('lab.b10nervoussystem_in_a_monosynaptic_reflex_like_')}
-                                 </li>
-    <li>
-    <strong>{t('lab.b10nervoussystem_motor_efferent_neuron')}</strong>  {t('lab.b10nervoussystem_carries_the_signal_away_from_t')}
-                                 </li>
-    <li>
-    <strong>{t('lab.b10nervoussystem_effector')}</strong>  {t('lab.b10nervoussystem_the_quadriceps_muscle_contract')}
-                                 </li>
-   </ul>
-   <div className={`bg-blue-50 border border-blue-100 rounded-lg p-4 mt-4 dark:bg-teal-950/20 dark:border-teal-900 `}>
-    <h4 className="font-semibold text-blue-900 flex items-center mb-1 dark:text-[#ffffff]"><Zap className="w-4 h-4 mr-2" />  {t('lab.b10nervoussystem_did_you_know')}</h4>
-    <p className="text-sm text-blue-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_the_entire_process_from_hammer')}</p>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.b10nervoussystem_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.b10nervoussystem_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 min-h-0 lg:overflow-hidden">
+ {/* Left Column: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_the_patellar_reflex_arc')}</h2>
+ <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
+ <p>
+ 
+ {t('lab.b10nervoussystem_a_reflex_arc_is_a_neural_pathw')}
+ </p>
+ <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_key_components')}</h3>
+ <ul className="list-disc pl-5 space-y-2">
+ <li>
+ <strong>{t('lab.b10nervoussystem_receptor')}</strong> {t('lab.b10nervoussystem_the_muscle_spindle_in_the_pate')}
+ </li>
+ <li>
+ <strong>{t('lab.b10nervoussystem_sensory_afferent_neuron')}</strong> {t('lab.b10nervoussystem_carries_the_electrical_action_')}
+ </li>
+ <li>
+ <strong>{t('lab.b10nervoussystem_integration_center')}</strong> {t('lab.b10nervoussystem_in_a_monosynaptic_reflex_like_')}
+ </li>
+ <li>
+ <strong>{t('lab.b10nervoussystem_motor_efferent_neuron')}</strong> {t('lab.b10nervoussystem_carries_the_signal_away_from_t')}
+ </li>
+ <li>
+ <strong>{t('lab.b10nervoussystem_effector')}</strong> {t('lab.b10nervoussystem_the_quadriceps_muscle_contract')}
+ </li>
+ </ul>
+ <div className={`bg-blue-50 border border-blue-100 rounded-lg p-4 mt-4 dark:bg-teal-950/20 dark:border-teal-900 `}>
+ <h4 className="font-semibold text-blue-900 flex items-center mb-1 dark:text-[#ffffff]"><Zap className="w-4 h-4 mr-2" /> {t('lab.b10nervoussystem_did_you_know')}</h4>
+ <p className="text-sm text-blue-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_the_entire_process_from_hammer')}</p>
+ </div>
+ </div>
+ </div>
 
-  {/* Middle Column: Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center justify-between w-full mb-4">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_interactive_simulation')}</h2>
-   <button
-    onClick={triggerReflex}
-    disabled={simState !== 'idle'}
-    className={`bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}
-   >
-    
-                             {t('lab.b10nervoussystem_strike_knee')}
-                            </button>
-   </div>
+ {/* Middle Column: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center relative '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center justify-between w-full mb-4">
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b10nervoussystem_interactive_simulation')}</h2>
+ <button
+ onClick={triggerReflex}
+ disabled={simState !== 'idle'}
+ className={`bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-300 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40 flex-col `}
+ >
+ 
+ {t('lab.b10nervoussystem_strike_knee')}
+ </button>
+ </div>
 
-   <div className={`bg-[#121212] dark:bg-[#121212] w-full flex-1 rounded-xl flex items-center justify-center overflow- border-4 border-[#1c1b1b] dark:border-[#1c1b1b] relative flex-col `}>
-   <svg viewBox="0 0 600 400" className="w-full h-full">
-    <defs>
-    <filter id="glow-synapse">
-     <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-     <feMerge>
-     <feMergeNode in="coloredBlur"/>
-     <feMergeNode in="SourceGraphic"/>
-     </feMerge>
-    </filter>
-    </defs>
+ <div className={`bg-[#121212] dark:bg-[#121212] w-full flex-1 rounded-xl flex items-center justify-center border-4 border-[#1c1b1b] dark:border-[#1c1b1b] relative flex-col `}>
+ <svg viewBox="0 0 600 400" className="w-full h-full">
+ <defs>
+ <filter id="glow-synapse">
+ <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+ <feMerge>
+ <feMergeNode in="coloredBlur"/>
+ <feMergeNode in="SourceGraphic"/>
+ </feMerge>
+ </filter>
+ </defs>
 
-    {/* Spinal Cord Cross Section */}
-    <g transform="translate(450, 150)">
-    <circle cx="0" cy="0" r="60" fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="4" />
-    <path d="M -10,-40 L 10,-40 L 10,-10 L 30,-20 L 30,20 L 10,10 L 10,40 L -10,40 L -10,10 L -30,20 L -30,-20 L -10,-10 Z" fill="#94a3b8" />
-    
-    {/* Synapse effect */}
-    {simState === 'synapse' && (
-     <circle cx="0" cy="0" r="15" fill="#eab308" filter="url(#glow-synapse)" className="animate-ping" opacity="0.8" />
-    )}
-    </g>
+ {/* Spinal Cord Cross Section */}
+ <g transform="translate(450, 150)">
+ <circle cx="0" cy="0" r="60" fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="4" />
+ <path d="M -10,-40 L 10,-40 L 10,-10 L 30,-20 L 30,20 L 10,10 L 10,40 L -10,40 L -10,10 L -30,20 L -30,-20 L -10,-10 Z" fill="#94a3b8" />
+ 
+ {/* Synapse effect */}
+ {simState === 'synapse' && (
+ <circle cx="0" cy="0" r="15" fill="#eab308" filter="url(#glow-synapse)" className="animate-ping" opacity="0.8" />
+ )}
+ </g>
 
-    {/* Thigh */}
-    <path d="M 50,100 L 100,50 L 280,220 L 220,280 Z" fill="#fca5a5" />
-    
-    {/* Muscle Quadriceps */}
-    <ellipse cx="180" cy="180" rx="40" ry="20" fill={simState === 'kicking' ? '#ef4444' : '#f87171'} transform="rotate(45, 180, 180)" className="transition-colors duration-150" />
+ {/* Thigh */}
+ <path d="M 50,100 L 100,50 L 280,220 L 220,280 Z" fill="#fca5a5" />
+ 
+ {/* Muscle Quadriceps */}
+ <ellipse cx="180" cy="180" rx="40" ry="20" fill={simState === 'kicking' ? '#ef4444' : '#f87171'} transform="rotate(45, 180, 180)" className="transition-colors duration-150" />
 
-    {/* Lower Leg Group (rotates around knee) */}
-    <g transform={`translate(250, 250) rotate(${kickAngle})`}>
-    <path d="M -30,0 L 30,0 L 10,180 L -30,180 Z" fill="#fca5a5" />
-    <circle cx="0" cy="0" r="30" fill="#f87171" />
-    </g>
+ {/* Lower Leg Group (rotates around knee) */}
+ <g transform={`translate(250, 250) rotate(${kickAngle})`}>
+ <path d="M -30,0 L 30,0 L 10,180 L -30,180 Z" fill="#fca5a5" />
+ <circle cx="0" cy="0" r="30" fill="#f87171" />
+ </g>
 
-    {/* Nerve Pathways */}
-    <path d="M 250,250 Q 480,250 480,150" fill="none" stroke="#60a5fa" strokeWidth="4" strokeDasharray="6 6" />
-    <path d="M 420,150 Q 300,150 180,180" fill="none" stroke="#f87171" strokeWidth="4" strokeDasharray="6 6" />
+ {/* Nerve Pathways */}
+ <path d="M 250,250 Q 480,250 480,150" fill="none" stroke="#60a5fa" strokeWidth="4" strokeDasharray="6 6" />
+ <path d="M 420,150 Q 300,150 180,180" fill="none" stroke="#f87171" strokeWidth="4" strokeDasharray="6 6" />
 
-    {/* Animated Signals */}
-    {sensoryDot}
-    {motorDot}
+ {/* Animated Signals */}
+ {sensoryDot}
+ {motorDot}
 
-    {/* Hammer */}
-    <g transform={`translate(280, 220) rotate(${simState === 'striking' ? (bioTimeMs/5)*-30 : 0})`}>
-    <path d="M 0,0 L -15,30 L -25,25 L -10,-5 Z" fill="#78350f" />
-    <circle cx="-20" cy="27" r="8" fill="#94a3b8" />
-    </g>
-   </svg>
+ {/* Hammer */}
+ <g transform={`translate(280, 220) rotate(${simState === 'striking' ? (bioTimeMs/5)*-30 : 0})`}>
+ <path d="M 0,0 L -15,30 L -25,25 L -10,-5 Z" fill="#78350f" />
+ <circle cx="-20" cy="27" r="8" fill="#94a3b8" />
+ </g>
+ </svg>
 
-   <div className={`w-full absolute top-4 left-4 bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212]/80 text-white px-4 py-3 rounded-xl backdrop-blur-sm shadow-lg w-64 border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-    <div className="flex items-center text-sm font-semibold mb-2">
-    <Activity className="w-4 h-4 mr-2 text-indigo-400" />
-    
-                                 {t('lab.b10nervoussystem_data_logger')}
-                                 </div>
-    <div className="space-y-1 text-sm font-mono text-slate-300">
-    <div className="flex justify-between">
-     <span>{t('lab.b10nervoussystem_state')}</span>
-     <span className="text-white capitalize">{simState}</span>
-    </div>
-    <div className="flex justify-between">
-     <span>{t('lab.b10nervoussystem_time_elapsed')}</span>
-     <span className="text-white">{bioTimeMs.toFixed(1)} ms</span>
-    </div>
-    </div>
-   </div>
-   </div>
-  </div>
+ <div className={`w-full absolute top-4 left-4 bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212]/80 text-white px-4 py-3 rounded-xl backdrop-blur-sm shadow-lg w-64 border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <div className="flex items-center text-sm font-semibold mb-2">
+ <Activity className="w-4 h-4 mr-2 text-indigo-400" />
+ 
+ {t('lab.b10nervoussystem_data_logger')}
+ </div>
+ <div className="space-y-1 text-sm font-mono text-slate-300">
+ <div className="flex justify-between">
+ <span>{t('lab.b10nervoussystem_state')}</span>
+ <span className="text-white capitalize">{simState}</span>
+ </div>
+ <div className="flex justify-between">
+ <span>{t('lab.b10nervoussystem_time_elapsed')}</span>
+ <span className="text-white">{bioTimeMs.toFixed(1)} ms</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  {/* Right Column: Assessment */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="mb-6">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_laboratory_assessment')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-    
-                             {t('lab.b10nervoussystem_observe_the_simulation_data_lo')}
-                            </p>
-   </div>
+ {/* Right Column: Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="mb-6">
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.b10nervoussystem_laboratory_assessment')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
+ 
+ {t('lab.b10nervoussystem_observe_the_simulation_data_lo')}
+ </p>
+ </div>
 
-   <div className="flex-1 border-t border-slate-200 dark:border-[#1c1b1b] pt-6">
-   <div className="space-y-6">
-    <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-     
-                                      {t('lab.b10nervoussystem_1_if_the_distance_from_the_kne')}
-                                     </label>
-    <div className="flex space-x-2">
-     <input
-     type="number"
-     value={q1Answer}
-     onChange={(e) => setQ1Answer(e.target.value)}
-     placeholder={t('lab.b10nervoussystem_e_g_10')}
-     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-     />
-     <span className="flex items-center text-slate-600 dark:text-[#a1a1aa] font-medium">{t('lab.b10nervoussystem_m_s')}</span>
-    </div>
-    {q1Correct !== null && (
-     <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q1Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
-     {q1Correct ? (
-      <>
-      <CheckCircle2 className="w-5 h-5 shrink-0" />
-      <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_v_d_t_1_2_m_0_024_s_50')}</span>
-      </>
-     ) : (
-      <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_remember_to_convert_')}</span>
-     )}
-     </div>
-    )}
-    </div>
+ <div className="flex-1 border-t border-slate-200 dark:border-[#1c1b1b] pt-6">
+ <div className="space-y-6">
+ <div>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
+ 
+ {t('lab.b10nervoussystem_1_if_the_distance_from_the_kne')}
+ </label>
+ <div className="flex space-x-2">
+ <input
+ type="number"
+ value={q1Answer}
+ onChange={(e) => setQ1Answer(e.target.value)}
+ placeholder={t('lab.b10nervoussystem_e_g_10')}
+ className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+ />
+ <span className="flex items-center text-slate-600 dark:text-[#a1a1aa] font-medium">{t('lab.b10nervoussystem_m_s')}</span>
+ </div>
+ {q1Correct !== null && (
+ <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q1Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+ {q1Correct ? (
+ <>
+ <CheckCircle2 className="w-5 h-5 shrink-0" />
+ <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_v_d_t_1_2_m_0_024_s_50')}</span>
+ </>
+ ) : (
+ <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_remember_to_convert_')}</span>
+ )}
+ </div>
+ )}
+ </div>
 
-    <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
-     
-                                      {t('lab.b10nervoussystem_2_which_type_of_neuron_carries')} <i>{t('lab.b10nervoussystem_towards')}</i>  {t('lab.b10nervoussystem_the_central_nervous_system')}
-                                     </label>
-    <select
-     value={q2Answer}
-     onChange={(e) => setQ2Answer(e.target.value)}
-     className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 dark:bg-[#121212]"
-    >
-     <option value="">{t('lab.b10nervoussystem_select_a_neuron_type')}</option>
-     <option value="motor">{t('lab.b10nervoussystem_motor_neuron_efferent')}</option>
-     <option value="sensory">{t('lab.b10nervoussystem_sensory_neuron_afferent')}</option>
-     <option value="interneuron">{t('lab.b10nervoussystem_interneuron')}</option>
-    </select>
-    {q2Correct !== null && (
-     <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q2Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
-     {q2Correct ? (
-      <>
-      <CheckCircle2 className="w-5 h-5 shrink-0" />
-      <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_afferent_sensory_neuro')}</span>
-      </>
-     ) : (
-      <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_try_again')}</span>
-     )}
-     </div>
-    )}
-    </div>
+ <div>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">
+ 
+ {t('lab.b10nervoussystem_2_which_type_of_neuron_carries')} <i>{t('lab.b10nervoussystem_towards')}</i> {t('lab.b10nervoussystem_the_central_nervous_system')}
+ </label>
+ <select
+ value={q2Answer}
+ onChange={(e) => setQ2Answer(e.target.value)}
+ className="w-full px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 dark:bg-[#121212]"
+ >
+ <option value="">{t('lab.b10nervoussystem_select_a_neuron_type')}</option>
+ <option value="motor">{t('lab.b10nervoussystem_motor_neuron_efferent')}</option>
+ <option value="sensory">{t('lab.b10nervoussystem_sensory_neuron_afferent')}</option>
+ <option value="interneuron">{t('lab.b10nervoussystem_interneuron')}</option>
+ </select>
+ {q2Correct !== null && (
+ <div className={`mt-2 p-3 rounded-lg flex items-start space-x-2 ${q2Correct ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+ {q2Correct ? (
+ <>
+ <CheckCircle2 className="w-5 h-5 shrink-0" />
+ <span className="text-sm font-medium">{t('lab.b10nervoussystem_correct_afferent_sensory_neuro')}</span>
+ </>
+ ) : (
+ <span className="text-sm font-medium ml-7">{t('lab.b10nervoussystem_incorrect_try_again')}</span>
+ )}
+ </div>
+ )}
+ </div>
 
-    <button
-    onClick={checkAnswers}
-    className="w-full bg-[#121212] dark:!bg-[#121212] hover:bg-[#000000] dark:!bg-[#121212] text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-sm flex justify-center items-center"
-    >
-    
-                                 {t('lab.b10nervoussystem_submit_answers')}
-                                 </button>
-   </div>
-   </div>
-  </div>
-  </div>
+ <button
+ onClick={checkAnswers}
+ className="w-full bg-[#121212] dark:!bg-[#121212] hover:bg-[#000000] dark:!bg-[#121212] text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-sm flex justify-center items-center"
+ >
+ 
+ {t('lab.b10nervoussystem_submit_answers')}
+ </button>
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

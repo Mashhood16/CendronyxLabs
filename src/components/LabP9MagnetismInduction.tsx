@@ -25,10 +25,10 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
  const [isDragging, setIsDragging] = useState(false);
  const [domains, setDomains] = useState<Domain[]>(() => 
  Array.from({length: 24}).map((_, i) => ({
-  id: i,
-  x: 120 + (i % 8) * 22,
-  y: 185 + Math.floor(i / 8) * 15,
-  angle: Math.random() * 360
+ id: i,
+ x: 120 + (i % 8) * 22,
+ y: 185 + Math.floor(i / 8) * 15,
+ angle: Math.random() * 360
  }))
  );
  
@@ -41,9 +41,9 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
  let sumX = 0;
  let sumY = 0;
  currentDomains.forEach(d => {
-  const rad = d.angle * Math.PI / 180;
-  sumX += Math.cos(rad);
-  sumY += Math.sin(rad);
+ const rad = d.angle * Math.PI / 180;
+ sumX += Math.cos(rad);
+ sumY += Math.sin(rad);
  });
  const strength = Math.sqrt(sumX*sumX + sumY*sumY) / currentDomains.length * 100;
  return strength;
@@ -69,19 +69,19 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
  setMagnetPos({ x: mx, y: my });
 
  setDomains(prev => {
-  let changed = false;
-  const newDomains = prev.map(d => {
-  const dx = d.x - mx;
-  const dy = d.y - (my + 20); // N pole bottom
-  const r2 = dx*dx + dy*dy;
-  if (r2 < 3600) { // radius 60
-   const targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
-   changed = true;
-   return { ...d, angle: targetAngle };
-  }
-  return d;
-  });
-  return changed ? newDomains : prev;
+ let changed = false;
+ const newDomains = prev.map(d => {
+ const dx = d.x - mx;
+ const dy = d.y - (my + 20); // N pole bottom
+ const r2 = dx*dx + dy*dy;
+ if (r2 < 3600) { // radius 60
+ const targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+ changed = true;
+ return { ...d, angle: targetAngle };
+ }
+ return d;
+ });
+ return changed ? newDomains : prev;
  });
  };
 
@@ -89,229 +89,229 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
  setIsDragging(false);
  (e.target as Element).releasePointerCapture(e.pointerId);
  setDomains(prevDomains => {
-  const strength = calculateStrength(prevDomains);
-  setLogs(prevLogs => [...prevLogs, { id: Date.now(), action: 'Stroked with Magnet', strength }]);
-  return prevDomains;
+ const strength = calculateStrength(prevDomains);
+ setLogs(prevLogs => [...prevLogs, { id: Date.now(), action: 'Stroked with Magnet', strength }]);
+ return prevDomains;
  });
  };
 
  const hammerBar = () => {
  setDomains(prevDomains => {
-  const newDomains = prevDomains.map(d => {
-   if (barAlignment === 'EW') {
-   return { ...d, angle: Math.random() * 360 };
-   } else {
-   // NS alignment: roughly align to 0 (rightwards)
-   return { ...d, angle: (Math.random() * 60 - 30) };
-   }
-  });
-  const strength = calculateStrength(newDomains);
-  setLogs(prevLogs => [...prevLogs, { id: Date.now(), action: `Hammered (${barAlignment})`, strength }]);
-  return newDomains;
+ const newDomains = prevDomains.map(d => {
+ if (barAlignment === 'EW') {
+ return { ...d, angle: Math.random() * 360 };
+ } else {
+ // NS alignment: roughly align to 0 (rightwards)
+ return { ...d, angle: (Math.random() * 60 - 30) };
+ }
+ });
+ const strength = calculateStrength(newDomains);
+ setLogs(prevLogs => [...prevLogs, { id: Date.now(), action: `Hammered (${barAlignment})`, strength }]);
+ return newDomains;
  });
  };
 
  const checkAssessment = () => {
  const ans = assessmentAnswer.trim().toLowerCase();
  if (ans === 'left' || ans === 'l') {
-  setAssessmentResult("Correct! The domains' North poles are repelled by the magnet's North pole, ending up pointing left. So the left end becomes North.");
+ setAssessmentResult("Correct! The domains' North poles are repelled by the magnet's North pole, ending up pointing left. So the left end becomes North.");
  } else {
-  setAssessmentResult("Incorrect. Observe the red arrows (North poles of domains) after stroking from left to right. Which direction do they point?");
+ setAssessmentResult("Incorrect. Observe the red arrows (North poles of domains) after stroking from left to right. Which direction do they point?");
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p9magnetisminduction_lab_magnetic_induction')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p9magnetisminduction_lab_magnetic_induction')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.theory')}</button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
-  {/* Theory Column */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]">
-   <Info className="mr-2" />  {t('lab.p9magnetisminduction_theory_context')}
-                        </h2>
-   <div className="space-y-4 text-slate-700 dark:text-[#ffffff] leading-relaxed">
-   <p>
-    
-                             {t('lab.p9magnetisminduction_a_piece_of_unmagnetized_steel_')} <strong>{t('lab.p9magnetisminduction_magnetic_domains')}</strong>  {t('lab.p9magnetisminduction_groups_of_atoms_that_are_rando')}
-                            </p>
-   <p>{t('lab.p9magnetisminduction_we_can_induce_magnetization_by')}</p>
-   <ul className="list-disc pl-5 space-y-2">
-    <li>
-    <strong>{t('lab.p9magnetisminduction_stroking_method')}</strong>  {t('lab.p9magnetisminduction_repeatedly_dragging_a_permanen')} <em>{t('lab.p9magnetisminduction_one_direction')}</em>  {t('lab.p9magnetisminduction_forces_the_domains_to_align')}
-                                 </li>
-    <li>
-    <strong>{t('lab.p9magnetisminduction_hammering')}</strong>  {t('lab.p9magnetisminduction_striking_the_metal_vibrates_th')}
-                                 </li>
-   </ul>
-   <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-6 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_instructions')}</h3>
-    <ol className="list-decimal pl-5 space-y-2 text-sm">
-    <li><strong>{t('lab.p9magnetisminduction_drag_the_magnet')}</strong>  {t('lab.p9magnetisminduction_repeatedly_over_the_steel_bar_')}</li>
-    <li><strong>{t('lab.p9magnetisminduction_change_the_bar_s_orientation')}</strong>  {t('lab.p9magnetisminduction_and_press')} <em>{t('lab.p9magnetisminduction_hammer_bar')}</em>  {t('lab.p9magnetisminduction_to_see_the_effects_of_vibratio')}</li>
-    </ol>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.theory')}</button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
+ {/* Theory Column */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800 dark:text-[#ffffff]">
+ <Info className="mr-2" /> {t('lab.p9magnetisminduction_theory_context')}
+ </h2>
+ <div className="space-y-4 text-slate-700 dark:text-[#ffffff] leading-relaxed">
+ <p>
+ 
+ {t('lab.p9magnetisminduction_a_piece_of_unmagnetized_steel_')} <strong>{t('lab.p9magnetisminduction_magnetic_domains')}</strong> {t('lab.p9magnetisminduction_groups_of_atoms_that_are_rando')}
+ </p>
+ <p>{t('lab.p9magnetisminduction_we_can_induce_magnetization_by')}</p>
+ <ul className="list-disc pl-5 space-y-2">
+ <li>
+ <strong>{t('lab.p9magnetisminduction_stroking_method')}</strong> {t('lab.p9magnetisminduction_repeatedly_dragging_a_permanen')} <em>{t('lab.p9magnetisminduction_one_direction')}</em> {t('lab.p9magnetisminduction_forces_the_domains_to_align')}
+ </li>
+ <li>
+ <strong>{t('lab.p9magnetisminduction_hammering')}</strong> {t('lab.p9magnetisminduction_striking_the_metal_vibrates_th')}
+ </li>
+ </ul>
+ <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 mt-6 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
+ <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_instructions')}</h3>
+ <ol className="list-decimal pl-5 space-y-2 text-sm">
+ <li><strong>{t('lab.p9magnetisminduction_drag_the_magnet')}</strong> {t('lab.p9magnetisminduction_repeatedly_over_the_steel_bar_')}</li>
+ <li><strong>{t('lab.p9magnetisminduction_change_the_bar_s_orientation')}</strong> {t('lab.p9magnetisminduction_and_press')} <em>{t('lab.p9magnetisminduction_hammer_bar')}</em> {t('lab.p9magnetisminduction_to_see_the_effects_of_vibratio')}</li>
+ </ol>
+ </div>
+ </div>
+ </div>
 
-  {/* Simulator Column */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-indigo-800 text-center dark:text-[#ffffff]">{t('lab.p9magnetisminduction_interactive_simulator')}</h2>
-   
-   <div className="flex gap-4 mb-4 justify-center bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
-    <input type="radio" name="align" checked={barAlignment === 'EW'} onChange={() => setBarAlignment('EW')} className="w-4 h-4 text-indigo-600" />
-    
-                             {t('lab.p9magnetisminduction_bar_aligned_east_west')}
-                             </label>
-    <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
-    <input type="radio" name="align" checked={barAlignment === 'NS'} onChange={() => setBarAlignment('NS')} className="w-4 h-4 text-indigo-600" />
-    
-                             {t('lab.p9magnetisminduction_bar_aligned_north_south')}
-                             </label>
-   </div>
+ {/* Simulator Column */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 text-indigo-800 text-center dark:text-[#ffffff]">{t('lab.p9magnetisminduction_interactive_simulator')}</h2>
+ 
+ <div className="flex gap-4 mb-4 justify-center bg-slate-50 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+ <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
+ <input type="radio" name="align" checked={barAlignment === 'EW'} onChange={() => setBarAlignment('EW')} className="w-4 h-4 text-indigo-600" />
+ 
+ {t('lab.p9magnetisminduction_bar_aligned_east_west')}
+ </label>
+ <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-[#ffffff] cursor-pointer">
+ <input type="radio" name="align" checked={barAlignment === 'NS'} onChange={() => setBarAlignment('NS')} className="w-4 h-4 text-indigo-600" />
+ 
+ {t('lab.p9magnetisminduction_bar_aligned_north_south')}
+ </label>
+ </div>
 
-   <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-[#121212] rounded-xl overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
-   <svg
-    ref={svgRef}
-    viewBox="0 0 400 400"
-    className="w-full h-full"
-   >
-    {/* Steel Bar */}
-    <rect x="110" y="170" width="190" height="60" fill="#cbd5e1" stroke="#94a3b8" rx="4" />
-    <text x="205" y="160" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="bold">{t('lab.p9magnetisminduction_steel_bar')}</text>
-    
-    {/* Domains */}
-    {domains.map(d => (
-     <g key={d.id} transform={`translate(${d.x}, ${d.y}) rotate(${d.angle})`}>
-     <line x1="-8" y1="0" x2="8" y2="0" stroke="#333" strokeWidth="1.5" />
-     <polygon points="8,0 4,-4 4,4" fill="#ef4444" />
-     </g>
-    ))}
+ <div className="flex-1 relative flex items-center justify-center bg-slate-100 dark:bg-[#121212] rounded-xl overflow-hidden border-2 border-slate-300 dark:border-[#1c1b1b] shadow-inner">
+ <svg
+ ref={svgRef}
+ viewBox="0 0 400 400"
+ className="w-full h-full"
+ >
+ {/* Steel Bar */}
+ <rect x="110" y="170" width="190" height="60" fill="#cbd5e1" stroke="#94a3b8" rx="4" />
+ <text x="205" y="160" fontSize="12" fill="#64748b" textAnchor="middle" fontWeight="bold">{t('lab.p9magnetisminduction_steel_bar')}</text>
+ 
+ {/* Domains */}
+ {domains.map(d => (
+ <g key={d.id} transform={`translate(${d.x}, ${d.y}) rotate(${d.angle})`}>
+ <line x1="-8" y1="0" x2="8" y2="0" stroke="#333" strokeWidth="1.5" />
+ <polygon points="8,0 4,-4 4,4" fill="#ef4444" />
+ </g>
+ ))}
 
-    {/* Draggable Magnet */}
-    <g 
-    transform={`translate(${magnetPos.x}, ${magnetPos.y})`} 
-    onPointerDown={handleMagnetPointerDown}
-    onPointerMove={handleMagnetPointerMove}
-    onPointerUp={handleMagnetPointerUp}
-    onPointerCancel={handleMagnetPointerUp}
-    style={{ touchAction: 'none', cursor: isDragging ? 'grabbing' : 'grab' }}
-    >
-    <rect x="-15" y="-40" width="30" height="40" fill="#3b82f6" /> {/* South */}
-    <rect x="-15" y="0" width="30" height="40" fill="#ef4444" /> {/* North */}
-    <text x="0" y="25" fill="white" fontWeight="bold" textAnchor="middle" fontSize="14" pointerEvents="none">N</text>
-    <text x="0" y="-15" fill="white" fontWeight="bold" textAnchor="middle" fontSize="14" pointerEvents="none">S</text>
-    </g>
-   </svg>
-   </div>
-   <div className="mt-6 flex flex-wrap gap-3 justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <button
-    onClick={hammerBar}
-    className="flex items-center px-5 py-2 bg-slate-700 dark:!bg-[#121212] text-white rounded-lg font-medium hover:bg-[#121212] dark:!bg-[#121212] transition-colors shadow-sm"
-   >
-    
-                             {t('lab.p9magnetisminduction_hammer_bar')}
-                            </button>
-   <button
-    onClick={() => {
-     setDomains(prev => prev.map(d => ({...d, angle: Math.random() * 360})));
-     setLogs([]);
-    }}
-    className="flex items-center px-5 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200 transition-colors"
-   >
-    <RefreshCw className="w-4 h-4 mr-2" />
-    
-                             {t('lab.p9magnetisminduction_reset_steel')}
-                            </button>
-   </div>
-  </div>
+ {/* Draggable Magnet */}
+ <g 
+ transform={`translate(${magnetPos.x}, ${magnetPos.y})`} 
+ onPointerDown={handleMagnetPointerDown}
+ onPointerMove={handleMagnetPointerMove}
+ onPointerUp={handleMagnetPointerUp}
+ onPointerCancel={handleMagnetPointerUp}
+ style={{ touchAction: 'none', cursor: isDragging ? 'grabbing' : 'grab' }}
+ >
+ <rect x="-15" y="-40" width="30" height="40" fill="#3b82f6" /> {/* South */}
+ <rect x="-15" y="0" width="30" height="40" fill="#ef4444" /> {/* North */}
+ <text x="0" y="25" fill="white" fontWeight="bold" textAnchor="middle" fontSize="14" pointerEvents="none">N</text>
+ <text x="0" y="-15" fill="white" fontWeight="bold" textAnchor="middle" fontSize="14" pointerEvents="none">S</text>
+ </g>
+ </svg>
+ </div>
+ <div className="mt-6 flex flex-wrap gap-3 justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <button
+ onClick={hammerBar}
+ className="flex items-center px-5 py-2 bg-slate-700 dark:!bg-[#121212] text-white rounded-lg font-medium hover:bg-[#121212] dark:!bg-[#121212] transition-colors shadow-sm"
+ >
+ 
+ {t('lab.p9magnetisminduction_hammer_bar')}
+ </button>
+ <button
+ onClick={() => {
+ setDomains(prev => prev.map(d => ({...d, angle: Math.random() * 360})));
+ setLogs([]);
+ }}
+ className="flex items-center px-5 py-2 bg-red-100 text-red-700 rounded-lg font-medium hover:bg-red-200 transition-colors"
+ >
+ <RefreshCw className="w-4 h-4 mr-2" />
+ 
+ {t('lab.p9magnetisminduction_reset_steel')}
+ </button>
+ </div>
+ </div>
 
-  {/* Data & Analysis Column */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 text-indigo-800 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_data_logging_analysis')}</h2>
-   
-   <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-64">
-   <table className="w-full text-sm text-left">
-    <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
-    <tr>
-     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_action')}</th>
-     <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_net_magnetization')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {logs.length === 0 ? (
-     <tr>
-     <td colSpan={2} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">
-      
-                                               {t('lab.p9magnetisminduction_interact_with_the_simulator_to')}
-                                              </td>
-     </tr>
-    ) : (
-     logs.map((log) => (
-     <tr key={log.id} className="border-b hover:bg-slate-50 dark:bg-[#121212] transition-colors">
-      <td className="px-4 py-2 text-slate-600 dark:text-[#a1a1aa]">{log.action}</td>
-      <td className="px-4 py-2 font-mono font-medium">
-      <div className="flex items-center">
-       <div className="w-16 h-2 bg-slate-200 dark:bg-[#121212] rounded-full mr-2 overflow-hidden">
-        <div className="h-full bg-indigo-500 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{width: `${log.strength}%`}}></div>
-       </div>
-       {log.strength.toFixed(1)}%
-      </div>
-      </td>
-     </tr>
-     ))
-    )}
-    </tbody>
-   </table>
-   </div>
+ {/* Data & Analysis Column */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 text-indigo-800 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_data_logging_analysis')}</h2>
+ 
+ <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-64">
+ <table className="w-full text-sm text-left">
+ <thead className="bg-slate-100 dark:bg-[#121212] sticky top-0">
+ <tr>
+ <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_action')}</th>
+ <th className="px-4 py-3 border-b font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p9magnetisminduction_net_magnetization')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {logs.length === 0 ? (
+ <tr>
+ <td colSpan={2} className="px-4 py-8 text-center text-slate-500 dark:text-[#71717a] italic">
+ 
+ {t('lab.p9magnetisminduction_interact_with_the_simulator_to')}
+ </td>
+ </tr>
+ ) : (
+ logs.map((log) => (
+ <tr key={log.id} className="border-b hover:bg-slate-50 dark:bg-[#121212] transition-colors">
+ <td className="px-4 py-2 text-slate-600 dark:text-[#a1a1aa]">{log.action}</td>
+ <td className="px-4 py-2 font-mono font-medium">
+ <div className="flex items-center">
+ <div className="w-16 h-2 bg-slate-200 dark:bg-[#121212] rounded-full mr-2 overflow-hidden">
+ <div className="h-full bg-indigo-500 dark:bg-[#121212] dark:border-[#1c1b1b]" style={{width: `${log.strength}%`}}></div>
+ </div>
+ {log.strength.toFixed(1)}%
+ </div>
+ </td>
+ </tr>
+ ))
+ )}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="bg-indigo-50 p-5 rounded-xl border border-indigo-100 shadow-sm dark:!bg-[#121212] dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-indigo-800 mb-2 flex items-center dark:text-[#ffffff]">
-    <CheckCircle className="w-5 h-5 mr-2" />
-    
-                             {t('lab.p9magnetisminduction_assessment')}
-                            </h3>
-   <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 leading-relaxed">
-    
-                             {t('lab.p9magnetisminduction_if_you_stroke_the_unmagnetized')} <strong>{t('lab.p9magnetisminduction_north')}</strong>  {t('lab.p9magnetisminduction_pole_of_the_magnet_which_end_o')}
-                            </p>
-   <div className="flex gap-2">
-    <input
-    type="text"
-    value={assessmentAnswer}
-    onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder={t('lab.p9magnetisminduction_type_left_or_right')}
-    className="flex-1 px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
-    <button
-    onClick={checkAssessment}
-    className="px-5 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
-    >
-    
-                                 {t('lab.p9magnetisminduction_check')}
-                                 </button>
-   </div>
-   {assessmentResult && (
-    <div className={`mt-4 p-3 rounded-lg text-sm font-medium ${assessmentResult.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
-    {assessmentResult}
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className="bg-indigo-50 p-5 rounded-xl border border-indigo-100 shadow-sm dark:!bg-[#121212] dark:border-[#1c1b1b]">
+ <h3 className="font-bold text-indigo-800 mb-2 flex items-center dark:text-[#ffffff]">
+ <CheckCircle className="w-5 h-5 mr-2" />
+ 
+ {t('lab.p9magnetisminduction_assessment')}
+ </h3>
+ <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-4 leading-relaxed">
+ 
+ {t('lab.p9magnetisminduction_if_you_stroke_the_unmagnetized')} <strong>{t('lab.p9magnetisminduction_north')}</strong> {t('lab.p9magnetisminduction_pole_of_the_magnet_which_end_o')}
+ </p>
+ <div className="flex gap-2">
+ <input
+ type="text"
+ value={assessmentAnswer}
+ onChange={(e) => setAssessmentAnswer(e.target.value)}
+ placeholder={t('lab.p9magnetisminduction_type_left_or_right')}
+ className="flex-1 px-4 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+ />
+ <button
+ onClick={checkAssessment}
+ className="px-5 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
+ >
+ 
+ {t('lab.p9magnetisminduction_check')}
+ </button>
+ </div>
+ {assessmentResult && (
+ <div className={`mt-4 p-3 rounded-lg text-sm font-medium ${assessmentResult.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
+ {assessmentResult}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

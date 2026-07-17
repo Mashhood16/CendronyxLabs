@@ -8,7 +8,7 @@ type Sample = 'glucose' | 'starch' | 'protein' | 'lipid' | null;
 type Reagent = 'benedict' | 'iodine' | 'biuret' | 'sudan' | null;
 
 export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [selectedSample, setSelectedSample] = useState<Sample>(null);
  const [selectedReagent, setSelectedReagent] = useState<Reagent>(null);
@@ -25,28 +25,28 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
  
  // Benedict's Test (Needs Heat)
  if (selectedReagent === 'benedict') {
-  if (selectedSample === 'glucose') {
-  return isHeated ? 'fill-orange-500' : 'fill-blue-300';
-  }
-  return 'fill-blue-300'; // Negative
+ if (selectedSample === 'glucose') {
+ return isHeated ? 'fill-orange-500' : 'fill-blue-300';
+ }
+ return 'fill-blue-300'; // Negative
  }
 
  // Iodine Test
  if (selectedReagent === 'iodine') {
-  if (selectedSample === 'starch') return 'fill-slate-900'; // Blue-black
-  return 'fill-yellow-500'; // Negative (iodine color)
+ if (selectedSample === 'starch') return 'fill-slate-900'; // Blue-black
+ return 'fill-yellow-500'; // Negative (iodine color)
  }
 
  // Biuret Test
  if (selectedReagent === 'biuret') {
-  if (selectedSample === 'protein') return 'fill-indigo-500'; // Purple
-  return 'fill-blue-200'; // Negative
+ if (selectedSample === 'protein') return 'fill-indigo-500'; // Purple
+ return 'fill-blue-200'; // Negative
  }
 
  // Sudan III Test
  if (selectedReagent === 'sudan') {
-  if (selectedSample === 'lipid') return 'fill-red-500'; // Red stained lipid layer
-  return 'fill-pink-100'; // Negative
+ if (selectedSample === 'lipid') return 'fill-red-500'; // Red stained lipid layer
+ return 'fill-pink-100'; // Negative
  }
 
  return 'fill-blue-100';
@@ -69,227 +69,227 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} variant="emerald" title={t('lab.b11biomolecules_grade_11_biochemical_food_test')} subtitle={t('lab.subtitle_identification_biomolecules')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} variant="emerald" title={t('lab.b11biomolecules_grade_11_biochemical_food_test')} subtitle={t('lab.subtitle_identification_biomolecules')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.b11biomolecules_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.b11biomolecules_lab')}</button>
-  </div>
-  <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: lg:overflow-visible">
-  
-  {/* Column 1: Theory */}
-  <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.b11biomolecules_theory_principles')}</h2>
-   <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
-   <p>{t('lab.b11biomolecules_identifying_biological_molecul')}</p>
-   
-   <div className={`bg-orange-50 border-l-4 border-orange-400 p-3 flex-col `}>
-    <h3 className="font-bold text-orange-800">{t('lab.b11biomolecules_1_reducing_sugars_benedict_s')}</h3>
-    <p>{t('lab.b11biomolecules_benedict_s_reagent_contains_cu')} <strong>{t('lab.b11biomolecules_heated')}</strong>  {t('lab.b11biomolecules_with_reducing_sugars_like_gluc')}</p>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.b11biomolecules_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.b11biomolecules_lab')}</button>
+ </div>
+ <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 min-h-0 lg:overflow-hidden">
+ 
+ {/* Column 1: Theory */}
+ <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">{t('lab.b11biomolecules_theory_principles')}</h2>
+ <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
+ <p>{t('lab.b11biomolecules_identifying_biological_molecul')}</p>
+ 
+ <div className={`bg-orange-50 border-l-4 border-orange-400 p-3 flex-col `}>
+ <h3 className="font-bold text-orange-800">{t('lab.b11biomolecules_1_reducing_sugars_benedict_s')}</h3>
+ <p>{t('lab.b11biomolecules_benedict_s_reagent_contains_cu')} <strong>{t('lab.b11biomolecules_heated')}</strong> {t('lab.b11biomolecules_with_reducing_sugars_like_gluc')}</p>
+ </div>
 
-   <div className={`bg-slate-100 dark:bg-[#121212] border-l-4 border-[#1c1b1b] dark:border-[#1c1b1b] p-3 flex-col `}>
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b11biomolecules_2_starch_iodine')}</h3>
-    <p>{t('lab.b11biomolecules_iodine_solution_i_dissolved_in')} <strong>{t('lab.b11biomolecules_blue_black')}</strong>  {t('lab.b11biomolecules_complex')}</p>
-   </div>
+ <div className={`bg-slate-100 dark:bg-[#121212] border-l-4 border-[#1c1b1b] dark:border-[#1c1b1b] p-3 flex-col `}>
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.b11biomolecules_2_starch_iodine')}</h3>
+ <p>{t('lab.b11biomolecules_iodine_solution_i_dissolved_in')} <strong>{t('lab.b11biomolecules_blue_black')}</strong> {t('lab.b11biomolecules_complex')}</p>
+ </div>
 
-   <div className={`bg-indigo-50 border-l-4 border-indigo-500 p-3 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-bold text-indigo-800 dark:text-[#ffffff]">{t('lab.b11biomolecules_3_proteins_biuret')}</h3>
-    <p>{t('lab.b11biomolecules_biuret_reagent_detects_peptide')} <strong>{t('lab.b11biomolecules_purple_violet')}</strong>.</p>
-   </div>
+ <div className={`bg-indigo-50 border-l-4 border-indigo-500 p-3 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
+ <h3 className="font-bold text-indigo-800 dark:text-[#ffffff]">{t('lab.b11biomolecules_3_proteins_biuret')}</h3>
+ <p>{t('lab.b11biomolecules_biuret_reagent_detects_peptide')} <strong>{t('lab.b11biomolecules_purple_violet')}</strong>.</p>
+ </div>
 
-   <div className="bg-red-50 border-l-4 border-red-500 p-3">
-    <h3 className="font-bold text-red-800">{t('lab.b11biomolecules_4_lipids_sudan_iii_emulsion')}</h3>
-    <p>{t('lab.b11biomolecules_sudan_iii_is_a_fat_soluble_dye')} <strong>{t('lab.b11biomolecules_red')}</strong>{t('lab.b11biomolecules_alternatively_ethanol_forms_a_')}</p>
-   </div>
-   </div>
-  </section>
+ <div className="bg-red-50 border-l-4 border-red-500 p-3">
+ <h3 className="font-bold text-red-800">{t('lab.b11biomolecules_4_lipids_sudan_iii_emulsion')}</h3>
+ <p>{t('lab.b11biomolecules_sudan_iii_is_a_fat_soluble_dye')} <strong>{t('lab.b11biomolecules_red')}</strong>{t('lab.b11biomolecules_alternatively_ethanol_forms_a_')}</p>
+ </div>
+ </div>
+ </section>
 
-  {/* Column 2: Interactive Simulator */}
-  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center gap-2">
-   <TestTube className="text-emerald-600" />  {t('lab.b11biomolecules_virtual_chemistry_bench')}
-                        </h3>
-   
-   <div className="w-48 h-64 relative mb-8 flex justify-center items-end border-b-4 border-slate-300 dark:border-[#1c1b1b]">
-   {/* The SVG Test Tube */}
-   <svg viewBox="0 0 100 200" className="w-24 h-48 drop-shadow-lg transition-transform hover:scale-105">
-    {/* Liquid Content */}
-    <path d="M 30 50 L 30 180 A 20 20 0 0 0 70 180 L 70 50 Z" className={`${getTubeColor()} transition-colors duration-1000`} />
-    
-    {/* Boiling Bubbles if heated and liquid is present */}
-    {isHeated && selectedSample && (
-    <g className="text-white fill-current opacity-60 animate-bounce">
-     <circle cx="40" cy="150" r="3" />
-     <circle cx="60" cy="130" r="4" />
-     <circle cx="50" cy="170" r="2" />
-     <circle cx="45" cy="100" r="3" />
-    </g>
-    )}
+ {/* Column 2: Interactive Simulator */}
+ <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <h3 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-6 flex items-center gap-2">
+ <TestTube className="text-emerald-600" /> {t('lab.b11biomolecules_virtual_chemistry_bench')}
+ </h3>
+ 
+ <div className="w-48 h-64 relative mb-8 flex justify-center items-end border-b-4 border-slate-300 dark:border-[#1c1b1b]">
+ {/* The SVG Test Tube */}
+ <svg viewBox="0 0 100 200" className="w-24 h-48 drop-shadow-lg transition-transform hover:scale-105">
+ {/* Liquid Content */}
+ <path d="M 30 50 L 30 180 A 20 20 0 0 0 70 180 L 70 50 Z" className={`${getTubeColor()} transition-colors duration-1000`} />
+ 
+ {/* Boiling Bubbles if heated and liquid is present */}
+ {isHeated && selectedSample && (
+ <g className="text-white fill-current opacity-60 animate-bounce">
+ <circle cx="40" cy="150" r="3" />
+ <circle cx="60" cy="130" r="4" />
+ <circle cx="50" cy="170" r="2" />
+ <circle cx="45" cy="100" r="3" />
+ </g>
+ )}
 
-    {/* Glass Tube Outline */}
-    <path d="M 30 10 L 30 180 A 20 20 0 0 0 70 180 L 70 10" className="stroke-slate-400 fill-none opacity-50" strokeWidth="4" />
-    <ellipse cx="50" cy="10" rx="20" ry="5" className="stroke-slate-400 fill-none opacity-50" strokeWidth="4" />
-    
-    {/* Highlight */}
-    <path d="M 35 30 L 35 170" className="stroke-white fill-none opacity-60" strokeWidth="2" strokeLinecap="round" />
-   </svg>
+ {/* Glass Tube Outline */}
+ <path d="M 30 10 L 30 180 A 20 20 0 0 0 70 180 L 70 10" className="stroke-slate-400 fill-none opacity-50" strokeWidth="4" />
+ <ellipse cx="50" cy="10" rx="20" ry="5" className="stroke-slate-400 fill-none opacity-50" strokeWidth="4" />
+ 
+ {/* Highlight */}
+ <path d="M 35 30 L 35 170" className="stroke-white fill-none opacity-60" strokeWidth="2" strokeLinecap="round" />
+ </svg>
 
-   {/* Heat Source Indicator */}
-   {isHeated && (
-    <div className="absolute -bottom-8 animate-pulse text-orange-500">
-    <Flame size={40} />
-    </div>
-   )}
-   </div>
+ {/* Heat Source Indicator */}
+ {isHeated && (
+ <div className="absolute -bottom-8 animate-pulse text-orange-500">
+ <Flame size={40} />
+ </div>
+ )}
+ </div>
 
-   {/* Controls */}
-   <div className="w-full space-y-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <div>
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.b11biomolecules_1_add_sample')}</label>
-    <div className="grid grid-cols-2 gap-2 mt-1">
-    {[
-     { id: 'glucose', label: 'Glucose' },
-     { id: 'starch', label: 'Starch' },
-     { id: 'protein', label: 'Egg Albumen' },
-     { id: 'lipid', label: 'Vegetable Oil' }
-    ].map(s => (
-     <button 
-     key={s.id}
-     onClick={() => { setSelectedSample(s.id as Sample); setIsHeated(false); }}
-     className={`text-sm py-1 rounded border transition-colors ${selectedSample === s.id ? 'bg-emerald-100 border-emerald-500 text-emerald-800 font-bold' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212]'}`}
-     >
-     {s.label}
-     </button>
-    ))}
-    </div>
-   </div>
+ {/* Controls */}
+ <div className="w-full space-y-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-4 rounded-lg shadow-sm ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <div>
+ <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.b11biomolecules_1_add_sample')}</label>
+ <div className="grid grid-cols-2 gap-2 mt-1">
+ {[
+ { id: 'glucose', label: 'Glucose' },
+ { id: 'starch', label: 'Starch' },
+ { id: 'protein', label: 'Egg Albumen' },
+ { id: 'lipid', label: 'Vegetable Oil' }
+ ].map(s => (
+ <button 
+ key={s.id}
+ onClick={() => { setSelectedSample(s.id as Sample); setIsHeated(false); }}
+ className={`text-sm py-1 rounded border transition-colors ${selectedSample === s.id ? 'bg-emerald-100 border-emerald-500 text-emerald-800 font-bold' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212]'}`}
+ >
+ {s.label}
+ </button>
+ ))}
+ </div>
+ </div>
 
-   <div>
-    <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.b11biomolecules_2_add_reagent')}</label>
-    <div className="grid grid-cols-2 gap-2 mt-1">
-    {[
-     { id: 'benedict', label: "Benedict's" },
-     { id: 'iodine', label: 'Iodine' },
-     { id: 'biuret', label: 'Biuret' },
-     { id: 'sudan', label: 'Sudan III' }
-    ].map(r => (
-     <button 
-     key={r.id}
-     onClick={() => setSelectedReagent(r.id as Reagent)}
-     className={`text-sm py-1 rounded border transition-colors ${selectedReagent === r.id ? 'bg-blue-100 border-blue-500 text-blue-800 font-bold' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212]'}`}
-     >
-     {r.label}
-     </button>
-    ))}
-    </div>
-   </div>
+ <div>
+ <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.b11biomolecules_2_add_reagent')}</label>
+ <div className="grid grid-cols-2 gap-2 mt-1">
+ {[
+ { id: 'benedict', label: "Benedict's" },
+ { id: 'iodine', label: 'Iodine' },
+ { id: 'biuret', label: 'Biuret' },
+ { id: 'sudan', label: 'Sudan III' }
+ ].map(r => (
+ <button 
+ key={r.id}
+ onClick={() => setSelectedReagent(r.id as Reagent)}
+ className={`text-sm py-1 rounded border transition-colors ${selectedReagent === r.id ? 'bg-blue-100 border-blue-500 text-blue-800 font-bold' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-100 dark:bg-[#121212]'}`}
+ >
+ {r.label}
+ </button>
+ ))}
+ </div>
+ </div>
 
-   <div className="flex gap-2 pt-2 border-t">
-    <button 
-    onClick={() => setIsHeated(true)}
-    disabled={!selectedReagent || !selectedSample}
-    className="flex-1 py-2 bg-orange-100 hover:bg-orange-200 text-orange-800 rounded font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
-    >
-    <Flame size={18} />  {t('lab.b11biomolecules_apply_heat')}
-                                 </button>
-    <button 
-    onClick={handleReset}
-    className="px-4 py-2 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded font-semibold"
-    >
-    
-                                 {t('lab.b11biomolecules_clear')}
-                                 </button>
-   </div>
-   </div>
-  </section>
+ <div className="flex gap-2 pt-2 border-t">
+ <button 
+ onClick={() => setIsHeated(true)}
+ disabled={!selectedReagent || !selectedSample}
+ className="flex-1 py-2 bg-orange-100 hover:bg-orange-200 text-orange-800 rounded font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+ >
+ <Flame size={18} /> {t('lab.b11biomolecules_apply_heat')}
+ </button>
+ <button 
+ onClick={handleReset}
+ className="px-4 py-2 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded font-semibold"
+ >
+ 
+ {t('lab.b11biomolecules_clear')}
+ </button>
+ </div>
+ </div>
+ </section>
 
-  {/* Column 3: Assessment */}
-  <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <CheckCircle className="text-emerald-600" />  {t('lab.b11biomolecules_data_analysis')}
-                        </h2>
-   
-   <div className="bg-blue-50 p-3 rounded-lg flex gap-3 text-sm text-blue-800 border border-blue-100 mb-2 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-   <Info className="shrink-0 mt-0.5" size={18} />
-   <p>{t('lab.b11biomolecules_determine_the_biomolecules_pre')}</p>
-   </div>
+ {/* Column 3: Assessment */}
+ <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <CheckCircle className="text-emerald-600" /> {t('lab.b11biomolecules_data_analysis')}
+ </h2>
+ 
+ <div className="bg-blue-50 p-3 rounded-lg flex gap-3 text-sm text-blue-800 border border-blue-100 mb-2 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
+ <Info className="shrink-0 mt-0.5" size={18} />
+ <p>{t('lab.b11biomolecules_determine_the_biomolecules_pre')}</p>
+ </div>
 
-   <div className="space-y-5">
-   <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-    <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_a')}</p>
-    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_turned_purple_upon')}</p>
-    <select 
-    value={unk1} onChange={e => setUnk1(e.target.value)}
-    className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
-    >
-    <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
-    <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
-    <option value="starch">{t('lab.b11biomolecules_starch')}</option>
-    <option value="protein">{t('lab.b11biomolecules_protein')}</option>
-    <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
-    </select>
-   </div>
+ <div className="space-y-5">
+ <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_a')}</p>
+ <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_turned_purple_upon')}</p>
+ <select 
+ value={unk1} onChange={e => setUnk1(e.target.value)}
+ className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
+ >
+ <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
+ <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
+ <option value="starch">{t('lab.b11biomolecules_starch')}</option>
+ <option value="protein">{t('lab.b11biomolecules_protein')}</option>
+ <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
+ </select>
+ </div>
 
-   <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-    <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_b')}</p>
-    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_turned_blue_black_')}</p>
-    <select 
-    value={unk2} onChange={e => setUnk2(e.target.value)}
-    className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
-    >
-    <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
-    <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
-    <option value="starch">{t('lab.b11biomolecules_starch')}</option>
-    <option value="protein">{t('lab.b11biomolecules_protein')}</option>
-    <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
-    </select>
-   </div>
+ <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_b')}</p>
+ <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_turned_blue_black_')}</p>
+ <select 
+ value={unk2} onChange={e => setUnk2(e.target.value)}
+ className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
+ >
+ <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
+ <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
+ <option value="starch">{t('lab.b11biomolecules_starch')}</option>
+ <option value="protein">{t('lab.b11biomolecules_protein')}</option>
+ <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
+ </select>
+ </div>
 
-   <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-    <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_c')}</p>
-    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_formed_a_red_stain')}</p>
-    <select 
-    value={unk3} onChange={e => setUnk3(e.target.value)}
-    className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
-    >
-    <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
-    <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
-    <option value="starch">{t('lab.b11biomolecules_starch')}</option>
-    <option value="protein">{t('lab.b11biomolecules_protein')}</option>
-    <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
-    </select>
-   </div>
+ <div className="p-3 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <p className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.b11biomolecules_unknown_sample_c')}</p>
+ <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-2 italic">{t('lab.b11biomolecules_observation_formed_a_red_stain')}</p>
+ <select 
+ value={unk3} onChange={e => setUnk3(e.target.value)}
+ className="w-full p-2 border rounded text-sm bg-slate-50 dark:bg-[#121212]"
+ >
+ <option value="">{t('lab.b11biomolecules_select_biomolecule')}</option>
+ <option value="glucose">{t('lab.b11biomolecules_reducing_sugar')}</option>
+ <option value="starch">{t('lab.b11biomolecules_starch')}</option>
+ <option value="protein">{t('lab.b11biomolecules_protein')}</option>
+ <option value="lipid">{t('lab.b11biomolecules_lipid')}</option>
+ </select>
+ </div>
 
-   <button 
-    onClick={checkAssessment}
-    className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-sm dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-   >
-    
-                             {t('lab.b11biomolecules_submit_lab_report')}
-                            </button>
+ <button 
+ onClick={checkAssessment}
+ className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors shadow-sm dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
+ >
+ 
+ {t('lab.b11biomolecules_submit_lab_report')}
+ </button>
 
-   {feedback && (
-    <div className={`p-4 rounded-lg font-medium text-sm text-center ${feedback.includes('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-    {feedback}
-    </div>
-   )}
-   </div>
-  </section>
+ {feedback && (
+ <div className={`p-4 rounded-lg font-medium text-sm text-center ${feedback.includes('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+ {feedback}
+ </div>
+ )}
+ </div>
+ </section>
 
-  </main>
+ </main>
  </div>
  );
 }

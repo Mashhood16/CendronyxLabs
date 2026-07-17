@@ -1,5 +1,5 @@
 import { useTranslate } from '../i18n';
-import { useRef, useCallback, useMemo, useEffect } from 'react';
+import { useRef, useCallback, useMemo, useEffect, useState } from 'react';
 import { getLabComponent } from '../routes/labRoutes';
 import { LAB_MODULES } from '../data/labModules';
 import { historyDB } from '../services/dbService';
@@ -8,6 +8,8 @@ import { useAuth, useLab, LabProvider } from '../store';
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/Layout';
 import { theme } from '../utils/labTheme';
+import CustomLabRunner from '../components/CustomLabRunner';
+import { customLabService } from '../services/customLabService';
 
 interface LabRunnerInnerProps {
   moduleId: string | undefined;
@@ -41,11 +43,39 @@ function buildExperimentData(
 
 export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps) {
   const { t } = useTranslate();
-  const LabComponent = moduleId ? getLabComponent(moduleId) : null;
   const { user } = useAuth();
   const labCtx = useLab();
   const startTime = useRef(Date.now());
   const exiting = useRef(false);
+  const [customLab, setCustomLab] = useState<any | null>(null);
+
+  useEffect(() => {
+    if (moduleId && moduleId.startsWith('custom_')) {
+      customLabService.getLab(moduleId).then(setCustomLab);
+    }
+  }, [moduleId]);
+
+  const mod = useMemo(() => {
+    if (!moduleId) return null;
+    if (moduleId.startsWith('custom_')) {
+      if (!customLab) return null;
+      return {
+        id: customLab.id,
+        title: customLab.title,
+        subject: customLab.subject,
+        classLevel: customLab.classLevel,
+      };
+    }
+    return LAB_MODULES.find(m => m.id === moduleId) || null;
+  }, [moduleId, customLab]);
+
+  const LabComponent = useMemo(() => {
+    if (!moduleId) return null;
+    if (moduleId.startsWith('custom_')) {
+      return CustomLabRunner;
+    }
+    return getLabComponent(moduleId);
+  }, [moduleId]);
 
   // Keep refs for labData and labScore so the unmount cleanup always sees latest data
   const labDataRef = useRef(labCtx.labData);
@@ -57,9 +87,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   useEffect(() => {
     return () => {
       if (exiting.current) return;
-      if (!moduleId) return;
-      const mod = LAB_MODULES.find(m => m.id === moduleId);
-      if (!mod) return;
+      if (!moduleId || !mod) return;
       const userId = user?.id || getAnonymousId();
       const elapsed = Math.round((Date.now() - startTime.current) / 1000);
       const experimentData = buildExperimentData(labDataRef.current);
@@ -76,12 +104,10 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
         experimentData,
       }).catch(err => console.error('Unmount save failed', err));
     };
-  }, [moduleId, user]);
+  }, [moduleId, mod, user]);
 
   const saveRecord = useCallback(async (experimentData?: Record<string, string | number>, scoreOverride?: { score: number; maxScore: number }) => {
-    if (!moduleId) return;
-    const mod = LAB_MODULES.find(m => m.id === moduleId);
-    if (!mod) return;
+    if (!moduleId || !mod) return;
     const userId = user?.id || getAnonymousId();
     const elapsed = Math.round((Date.now() - startTime.current) / 1000);
     const { score, maxScore } = scoreOverride || { score: 0, maxScore: 100 };
@@ -94,13 +120,13 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
       timeSpentSeconds: elapsed,
       experimentData,
     });
-  }, [moduleId, user]);
+  }, [moduleId, mod, user]);
 
   const handleExit = useCallback(async () => {
     if (exiting.current) return;
     exiting.current = true;
 
-    if (moduleId) {
+    if (moduleId && mod) {
       try {
         const experimentData = buildExperimentData(labCtx.labData);
         // Use score from lab context if set, otherwise default to 0/100
@@ -112,21 +138,18 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     }
 
     onExit();
-  }, [moduleId, onExit, labCtx.labData, labCtx.labScore, saveRecord]);
+  }, [moduleId, mod, onExit, labCtx.labData, labCtx.labScore, saveRecord]);
 
   const hideCalculator = useMemo(() => {
-    const mod = LAB_MODULES.find(m => m.id === moduleId);
     if (!mod) return false;
     return mod.subject === 'english' || ['6', '7', '8'].includes(mod.classLevel);
-  }, [moduleId]);
+  }, [mod]);
 
   const isEnglishLab = useMemo(() => {
-    if (!moduleId) return false;
-    const mod = LAB_MODULES.find(m => m.id === moduleId);
     return mod?.subject === 'english';
-  }, [moduleId]);
+  }, [mod]);
 
-  if (!LabComponent || !moduleId) {
+  if (!LabComponent || !moduleId || (moduleId.startsWith('custom_') && !customLab)) {
     return (
       <Layout>
         <div className={`flex flex-col items-center justify-center min-h-[60vh] ${theme.page.bg} rounded-2xl border ${theme.border.default}`}>
@@ -143,7 +166,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   return (
     <LabProvider value={{ hideCalculator, isEnglishLab, moduleId }}>
       <div className={`${isEnglishLab ? 'english-lab-runner' : ''} ${theme.text.primary} ${theme.page.bg} min-h-screen`}>
-        <LabComponent onExit={handleExit} />
+        <LabComponent onExit={handleExit} moduleId={moduleId} />
       </div>
     </LabProvider>
   );

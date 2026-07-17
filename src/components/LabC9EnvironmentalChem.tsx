@@ -26,7 +26,7 @@ const REAGENTS: Reagent[] = [
 ];
 
 export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [activeMode, setActiveMode] = useState<Mode>('reactions');
@@ -51,49 +51,49 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
  // Handle bottle click
  const handleBottleClick = (reagent: Reagent) => {
  if (reactionComplete) {
-  setSelectedReagents([reagent]);
-  setReactionComplete(false);
-  setEquation(reagent.formula);
-  setBubbles([]);
-  return;
+ setSelectedReagents([reagent]);
+ setReactionComplete(false);
+ setEquation(reagent.formula);
+ setBubbles([]);
+ return;
  }
 
  if (selectedReagents.length < 2 && !selectedReagents.find(r => r.id === reagent.id)) {
-  const newReagents = [...selectedReagents, reagent];
-  setSelectedReagents(newReagents);
-  
-  let newEq = newReagents.map(r => r.formula).join(' + ');
-  
-  if (newReagents.length === 2) {
-  const hasAcid = newReagents.find(r => r.type === 'acid');
-  const hasMetal = newReagents.find(r => r.type === 'metal');
-  const hasCarbonate = newReagents.find(r => r.type === 'carbonate');
+ const newReagents = [...selectedReagents, reagent];
+ setSelectedReagents(newReagents);
+ 
+ let newEq = newReagents.map(r => r.formula).join(' + ');
+ 
+ if (newReagents.length === 2) {
+ const hasAcid = newReagents.find(r => r.type === 'acid');
+ const hasMetal = newReagents.find(r => r.type === 'metal');
+ const hasCarbonate = newReagents.find(r => r.type === 'carbonate');
 
-  if (hasAcid && hasMetal) {
-   const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
-   const salt = hasAcid.id === 'hcl' ? 'MgCl2' : 'MgSO4';
-   newEq = `Mg + ${acid} → ${salt} + H2(g)`;
-   triggerReaction();
-  } else if (hasAcid && hasCarbonate) {
-   const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
-   const salt = hasAcid.id === 'hcl' ? 'CaCl2' : 'CaSO4';
-   newEq = `CaCO3 + ${acid} → ${salt} + H2O(l) + CO2(g)`;
-   triggerReaction();
-  } else {
-   newEq += ' → No Reaction';
-   setReactionComplete(true);
-  }
-  }
-  setEquation(newEq);
+ if (hasAcid && hasMetal) {
+ const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
+ const salt = hasAcid.id === 'hcl' ? 'MgCl2' : 'MgSO4';
+ newEq = `Mg + ${acid} → ${salt} + H2(g)`;
+ triggerReaction();
+ } else if (hasAcid && hasCarbonate) {
+ const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
+ const salt = hasAcid.id === 'hcl' ? 'CaCl2' : 'CaSO4';
+ newEq = `CaCO3 + ${acid} → ${salt} + H2O(l) + CO2(g)`;
+ triggerReaction();
+ } else {
+ newEq += ' → No Reaction';
+ setReactionComplete(true);
+ }
+ }
+ setEquation(newEq);
  }
  };
 
  const triggerReaction = () => {
  setReactionComplete(true);
  const newBubbles = Array.from({ length: 20 }).map((_, i) => ({
-  id: i,
-  x: 30 + Math.random() * 40,
-  delay: Math.random() * 2
+ id: i,
+ x: 30 + Math.random() * 40,
+ delay: Math.random() * 2
  }));
  setBubbles(newBubbles);
  };
@@ -119,274 +119,274 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
  const meltingPoint = 0 - (impurityLevel * 0.5);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  {/* Header */}
-  <LabHeader onExit={onExit} title={t('lab.c9environmentalchem_grade_9_chemistry_environmenta')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ {/* Header */}
+ <LabHeader onExit={onExit} title={t('lab.c9environmentalchem_grade_9_chemistry_environmenta')} />
 
-  {/* Main Grid */}
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c9environmentalchem_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c9environmentalchem_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
-  
-  {/* Column 1: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <Beaker className="w-5 h-5 text-emerald-600" />  {t('lab.c9environmentalchem_theory_context')}
-                        </h2>
-   
-   <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
-   <div className={`bg-emerald-50 p-3 rounded-lg flex-col `}>
-    <h3 className="font-bold text-emerald-800 mb-1">{t('lab.c9environmentalchem_1_acid_reactions')}</h3>
-    <p>{t('lab.c9environmentalchem_acids_react_with_metals_to_pro')} <b>{t('lab.c9environmentalchem_hydrogen_gas_h')}</b>.</p>
-    <p>{t('lab.c9environmentalchem_acids_react_with_metal_carbona')} <b>{t('lab.c9environmentalchem_carbon_dioxide_gas_co')}</b>.</p>
-    <p className={`font-mono text-xs mt-2 bg-slate-50 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.c9environmentalchem_acid_metal_salt_hydrogen')}</p>
-   </div>
+ {/* Main Grid */}
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c9environmentalchem_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c9environmentalchem_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 min-h-0 lg:overflow-hidden">
+ 
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <Beaker className="w-5 h-5 text-emerald-600" /> {t('lab.c9environmentalchem_theory_context')}
+ </h2>
+ 
+ <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
+ <div className={`bg-emerald-50 p-3 rounded-lg flex-col `}>
+ <h3 className="font-bold text-emerald-800 mb-1">{t('lab.c9environmentalchem_1_acid_reactions')}</h3>
+ <p>{t('lab.c9environmentalchem_acids_react_with_metals_to_pro')} <b>{t('lab.c9environmentalchem_hydrogen_gas_h')}</b>.</p>
+ <p>{t('lab.c9environmentalchem_acids_react_with_metal_carbona')} <b>{t('lab.c9environmentalchem_carbon_dioxide_gas_co')}</b>.</p>
+ <p className={`font-mono text-xs mt-2 bg-slate-50 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.c9environmentalchem_acid_metal_salt_hydrogen')}</p>
+ </div>
 
-   <div className={`bg-blue-50 p-3 rounded-lg dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h3 className="font-bold text-blue-800 mb-1 dark:text-[#ffffff]">{t('lab.c9environmentalchem_2_water_purity')}</h3>
-    <p>{t('lab.c9environmentalchem_pure_water_boils_exactly_at_10')}</p>
-   </div>
+ <div className={`bg-blue-50 p-3 rounded-lg dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
+ <h3 className="font-bold text-blue-800 mb-1 dark:text-[#ffffff]">{t('lab.c9environmentalchem_2_water_purity')}</h3>
+ <p>{t('lab.c9environmentalchem_pure_water_boils_exactly_at_10')}</p>
+ </div>
 
-   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
-    <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-1">{t('lab.c9environmentalchem_3_catalytic_converters')}</h3>
-    <p>{t('lab.c9environmentalchem_found_in_car_exhausts_they_use')}</p>
-   </div>
-   </div>
-  </div>
+ <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-1">{t('lab.c9environmentalchem_3_catalytic_converters')}</h3>
+ <p>{t('lab.c9environmentalchem_found_in_car_exhausts_they_use')}</p>
+ </div>
+ </div>
+ </div>
 
-  {/* Column 2: Interactive Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex gap-2 mb-4 border-b pb-2">
-   <button 
-    onClick={() => setActiveMode('reactions')}
-    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'reactions' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
-   >
-    
-                             {t('lab.c9environmentalchem_reaction_mixer')}
-                            </button>
-   <button 
-    onClick={() => setActiveMode('water')}
-    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'water' ? 'bg-blue-100 text-blue-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
-   >
-    
-                             {t('lab.c9environmentalchem_water_purity_test')}
-                            </button>
-   <button 
-    onClick={() => setActiveMode('converter')}
-    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'converter' ? 'bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-slate-100' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
-   >
-    
-                             {t('lab.c9environmentalchem_catalytic_converter')}
-                            </button>
-   </div>
+ {/* Column 2: Interactive Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex gap-2 mb-4 border-b pb-2">
+ <button 
+ onClick={() => setActiveMode('reactions')}
+ className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'reactions' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
+ >
+ 
+ {t('lab.c9environmentalchem_reaction_mixer')}
+ </button>
+ <button 
+ onClick={() => setActiveMode('water')}
+ className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'water' ? 'bg-blue-100 text-blue-700' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
+ >
+ 
+ {t('lab.c9environmentalchem_water_purity_test')}
+ </button>
+ <button 
+ onClick={() => setActiveMode('converter')}
+ className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeMode === 'converter' ? 'bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-slate-100' : 'hover:bg-slate-100 dark:bg-[#121212]'}`}
+ >
+ 
+ {t('lab.c9environmentalchem_catalytic_converter')}
+ </button>
+ </div>
 
-   <div className="flex-1 flex flex-col items-center justify-center relative min-h-[300px]">
-   {activeMode === 'reactions' && (
-    <div className="w-full flex flex-col items-center gap-6">
-    {/* Bottles */}
-    <div className="flex gap-4 mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-     {REAGENTS.map(reagent => {
-     const isSelected = selectedReagents.find(r => r.id === reagent.id);
-     return (
-      <button
-      key={reagent.id}
-      onClick={() => handleBottleClick(reagent)}
-      className={`flex flex-col items-center gap-1 transition-transform ${isSelected ? 'scale-90 opacity-50' : 'hover:-translate-y-1'}`}
-      >
-      <div className={`w-12 h-16 rounded-t-xl rounded-b-md border-2 border-slate-300 dark:border-[#1c1b1b] relative overflow-hidden flex items-end ${reagent.color}`}>
-       <div className="absolute top-0 w-full h-3 bg-slate-50 dark:bg-[#121212]/40 border-b border-slate-300 dark:border-[#1c1b1b]"></div>
-       {reagent.type === 'metal' || reagent.type === 'carbonate' ? (
-       <div className="w-full h-1/2 bg-slate-600 dark:bg-[#121212]/20" />
-       ) : (
-       <div className="w-full h-3/4 bg-slate-50 dark:bg-[#121212]/20" />
-       )}
-      </div>
-      <span className="text-xs font-bold font-mono">{reagent.formula}</span>
-      </button>
-     )
-     })}
-    </div>
+ <div className="flex-1 flex flex-col items-center justify-center relative min-h-[300px]">
+ {activeMode === 'reactions' && (
+ <div className="w-full flex flex-col items-center gap-6">
+ {/* Bottles */}
+ <div className="flex gap-4 mb-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ {REAGENTS.map(reagent => {
+ const isSelected = selectedReagents.find(r => r.id === reagent.id);
+ return (
+ <button
+ key={reagent.id}
+ onClick={() => handleBottleClick(reagent)}
+ className={`flex flex-col items-center gap-1 transition-transform ${isSelected ? 'scale-90 opacity-50' : 'hover:-translate-y-1'}`}
+ >
+ <div className={`w-12 h-16 rounded-t-xl rounded-b-md border-2 border-slate-300 dark:border-[#1c1b1b] relative overflow-hidden flex items-end ${reagent.color}`}>
+ <div className="absolute top-0 w-full h-3 bg-slate-50 dark:bg-[#121212]/40 border-b border-slate-300 dark:border-[#1c1b1b]"></div>
+ {reagent.type === 'metal' || reagent.type === 'carbonate' ? (
+ <div className="w-full h-1/2 bg-slate-600 dark:bg-[#121212]/20" />
+ ) : (
+ <div className="w-full h-3/4 bg-slate-50 dark:bg-[#121212]/20" />
+ )}
+ </div>
+ <span className="text-xs font-bold font-mono">{reagent.formula}</span>
+ </button>
+ )
+ })}
+ </div>
 
-    {/* Flask */}
-    <div className="relative w-32 h-40">
-     <svg viewBox="0 0 100 120" className="w-full h-full drop-shadow-md">
-     <path d="M40 10 L40 40 L10 100 A10 10 0 0 0 20 115 L80 115 A10 10 0 0 0 90 100 L60 40 L60 10 Z" fill="none" stroke="#cbd5e1" strokeWidth="4"/>
-     {selectedReagents.length > 0 && (
-      <path d="M15 90 L85 90 L80 110 A5 5 0 0 1 75 113 L25 113 A5 5 0 0 1 20 110 Z" fill="#93c5fd" className="opacity-60"/>
-     )}
-     {reactionComplete && bubbles.map(b => (
-      <circle key={b.id} cx={b.x} cy="110" r="2" fill="white" className="animate-ping" style={{ animationDuration: '2s', animationDelay: `${b.delay}s`, animationIterationCount: 'infinite' }} />
-     ))}
-     </svg>
-    </div>
+ {/* Flask */}
+ <div className="relative w-32 h-40">
+ <svg viewBox="0 0 100 120" className="w-full h-full drop-shadow-md">
+ <path d="M40 10 L40 40 L10 100 A10 10 0 0 0 20 115 L80 115 A10 10 0 0 0 90 100 L60 40 L60 10 Z" fill="none" stroke="#cbd5e1" strokeWidth="4"/>
+ {selectedReagents.length > 0 && (
+ <path d="M15 90 L85 90 L80 110 A5 5 0 0 1 75 113 L25 113 A5 5 0 0 1 20 110 Z" fill="#93c5fd" className="opacity-60"/>
+ )}
+ {reactionComplete && bubbles.map(b => (
+ <circle key={b.id} cx={b.x} cy="110" r="2" fill="white" className="animate-ping" style={{ animationDuration: '2s', animationDelay: `${b.delay}s`, animationIterationCount: 'infinite' }} />
+ ))}
+ </svg>
+ </div>
 
-    {/* Equation Display */}
-    <div className="w-full bg-[#000000] dark:bg-[#121212] text-emerald-400 font-mono p-4 rounded-lg text-center min-h-[60px] flex items-center justify-center text-lg">
-     {equation || "Select reagents to build equation..."}
-    </div>
+ {/* Equation Display */}
+ <div className="w-full bg-[#000000] dark:bg-[#121212] text-emerald-400 font-mono p-4 rounded-lg text-center min-h-[60px] flex items-center justify-center text-lg">
+ {equation || "Select reagents to build equation..."}
+ </div>
 
-    <button onClick={resetReactions} className="text-sm text-slate-500 dark:text-[#71717a] hover:text-slate-800 dark:text-[#ffffff]">{t('lab.c9environmentalchem_clear_flask')}</button>
-    </div>
-   )}
+ <button onClick={resetReactions} className="text-sm text-slate-500 dark:text-[#71717a] hover:text-slate-800 dark:text-[#ffffff]">{t('lab.c9environmentalchem_clear_flask')}</button>
+ </div>
+ )}
 
-   {activeMode === 'water' && (
-    <div className="w-full flex flex-col items-center gap-6">
-    <div className="flex items-center gap-8">
-     <div className="flex flex-col items-center">
-     <Thermometer className="w-12 h-12 text-red-500 mb-2" />
-     <div className="text-2xl font-bold">{boilingPoint.toFixed(1)}°C</div>
-     <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_boiling_point')}</div>
-     </div>
-     
-     <div className="w-32 h-32 rounded-full border-4 border-blue-200 flex items-center justify-center relative overflow-hidden bg-blue-50 dark:bg-teal-950/20 dark:border-teal-900">
-     <Droplets className="w-10 h-10 text-blue-400 opacity-50" />
-     {impurityLevel > 0 && (
-      <div className="absolute inset-0 flex items-center justify-center flex-wrap gap-1 p-4 opacity-30">
-      {Array.from({ length: Math.min(20, impurityLevel * 2) }).map((_, i) => (
-       <div key={i} className="w-1.5 h-1.5 rounded-full bg-orange-800"></div>
-      ))}
-      </div>
-     )}
-     </div>
+ {activeMode === 'water' && (
+ <div className="w-full flex flex-col items-center gap-6">
+ <div className="flex items-center gap-8">
+ <div className="flex flex-col items-center">
+ <Thermometer className="w-12 h-12 text-red-500 mb-2" />
+ <div className="text-2xl font-bold">{boilingPoint.toFixed(1)}°C</div>
+ <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_boiling_point')}</div>
+ </div>
+ 
+ <div className="w-32 h-32 rounded-full border-4 border-blue-200 flex items-center justify-center relative overflow-hidden bg-blue-50 dark:bg-teal-950/20 dark:border-teal-900">
+ <Droplets className="w-10 h-10 text-blue-400 opacity-50" />
+ {impurityLevel > 0 && (
+ <div className="absolute inset-0 flex items-center justify-center flex-wrap gap-1 p-4 opacity-30">
+ {Array.from({ length: Math.min(20, impurityLevel * 2) }).map((_, i) => (
+ <div key={i} className="w-1.5 h-1.5 rounded-full bg-orange-800"></div>
+ ))}
+ </div>
+ )}
+ </div>
 
-     <div className="flex flex-col items-center">
-     <Thermometer className="w-12 h-12 text-blue-500 mb-2" />
-     <div className="text-2xl font-bold">{meltingPoint.toFixed(1)}°C</div>
-     <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_melting_point')}</div>
-     </div>
-    </div>
+ <div className="flex flex-col items-center">
+ <Thermometer className="w-12 h-12 text-blue-500 mb-2" />
+ <div className="text-2xl font-bold">{meltingPoint.toFixed(1)}°C</div>
+ <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_melting_point')}</div>
+ </div>
+ </div>
 
-    <div className="w-full max-w-xs mt-6">
-     <label className="text-sm font-bold flex justify-between">
-     <span>{t('lab.c9environmentalchem_added_impurities_salt')}</span>
-     <span>{impurityLevel} g</span>
-     </label>
-     <input 
-     type="range" min="0" max="10" value={impurityLevel} 
-     onChange={(e) => setImpurityLevel(Number(e.target.value))}
-     className="w-full mt-2"
-     />
-    </div>
-    </div>
-   )}
+ <div className="w-full max-w-xs mt-6">
+ <label className="text-sm font-bold flex justify-between">
+ <span>{t('lab.c9environmentalchem_added_impurities_salt')}</span>
+ <span>{impurityLevel} g</span>
+ </label>
+ <input 
+ type="range" min="0" max="10" value={impurityLevel} 
+ onChange={(e) => setImpurityLevel(Number(e.target.value))}
+ className="w-full mt-2"
+ />
+ </div>
+ </div>
+ )}
 
-   {activeMode === 'converter' && (
-    <div className="w-full flex flex-col items-center gap-8">
-    <div className="w-full max-w-sm flex items-center justify-between">
-     <div className="flex flex-col gap-2 font-mono text-sm">
-     <span className="bg-red-100 text-red-800 px-2 py-1 rounded">{t('lab.c9environmentalchem_2no')}</span>
-     <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded">{t('lab.c9environmentalchem_2co')}</span>
-     </div>
-     
-     <ArrowRight className="text-slate-400" />
-     
-     <div className="relative w-32 h-20 bg-slate-700 dark:bg-[#121212] rounded-xl flex items-center justify-center shadow-inner overflow-hidden">
-     <div className="absolute inset-0 grid grid-cols-4 gap-1 p-2 opacity-30">
-      {Array.from({length: 8}).map((_, i) => <div key={i} className="bg-slate-400 dark:bg-[#121212] rounded-sm" />)}
-     </div>
-     {converterTemp >= 400 && (
-      <div className="absolute inset-0 bg-orange-500/20 animate-pulse" />
-     )}
-     <span className="text-white font-bold z-10 text-xs">{t('lab.c9environmentalchem_catalyst_pt_pd')}</span>
-     </div>
+ {activeMode === 'converter' && (
+ <div className="w-full flex flex-col items-center gap-8">
+ <div className="w-full max-w-sm flex items-center justify-between">
+ <div className="flex flex-col gap-2 font-mono text-sm">
+ <span className="bg-red-100 text-red-800 px-2 py-1 rounded">{t('lab.c9environmentalchem_2no')}</span>
+ <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded">{t('lab.c9environmentalchem_2co')}</span>
+ </div>
+ 
+ <ArrowRight className="text-slate-400" />
+ 
+ <div className="relative w-32 h-20 bg-slate-700 dark:bg-[#121212] rounded-xl flex items-center justify-center shadow-inner overflow-hidden">
+ <div className="absolute inset-0 grid grid-cols-4 gap-1 p-2 opacity-30">
+ {Array.from({length: 8}).map((_, i) => <div key={i} className="bg-slate-400 dark:bg-[#121212] rounded-sm" />)}
+ </div>
+ {converterTemp >= 400 && (
+ <div className="absolute inset-0 bg-orange-500/20 animate-pulse" />
+ )}
+ <span className="text-white font-bold z-10 text-xs">{t('lab.c9environmentalchem_catalyst_pt_pd')}</span>
+ </div>
 
-     <ArrowRight className="text-slate-400" />
+ <ArrowRight className="text-slate-400" />
 
-     <div className="flex flex-col gap-2 font-mono text-sm">
-     {converterTemp >= 400 ? (
-      <>
-      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded transition-all dark:text-[#ffffff]">N₂</span>
-      <span className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded transition-all">{t('lab.c9environmentalchem_2co_1')}</span>
-      </>
-     ) : (
-      <>
-      <span className="bg-red-100 text-red-800 px-2 py-1 rounded opacity-50">{t('lab.c9environmentalchem_2no')}</span>
-      <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded opacity-50">{t('lab.c9environmentalchem_2co')}</span>
-      </>
-     )}
-     </div>
-    </div>
+ <div className="flex flex-col gap-2 font-mono text-sm">
+ {converterTemp >= 400 ? (
+ <>
+ <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded transition-all dark:text-[#ffffff]">N₂</span>
+ <span className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded transition-all">{t('lab.c9environmentalchem_2co_1')}</span>
+ </>
+ ) : (
+ <>
+ <span className="bg-red-100 text-red-800 px-2 py-1 rounded opacity-50">{t('lab.c9environmentalchem_2no')}</span>
+ <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded opacity-50">{t('lab.c9environmentalchem_2co')}</span>
+ </>
+ )}
+ </div>
+ </div>
 
-    <div className="w-full max-w-xs text-center">
-     <div className="text-sm font-bold mb-2">{t('lab.c9environmentalchem_exhaust_temperature')} {converterTemp}°C</div>
-     <input 
-     type="range" min="100" max="600" step="50" value={converterTemp} 
-     onChange={(e) => setConverterTemp(Number(e.target.value))}
-     className="w-full"
-     />
-     <div className="text-xs text-slate-500 dark:text-[#71717a] mt-2">
-     {converterTemp >= 400 ? "Optimal operating temperature reached." : "Too cold for catalytic conversion!"}
-     </div>
-    </div>
-    </div>
-   )}
-   </div>
-  </div>
+ <div className="w-full max-w-xs text-center">
+ <div className="text-sm font-bold mb-2">{t('lab.c9environmentalchem_exhaust_temperature')} {converterTemp}°C</div>
+ <input 
+ type="range" min="100" max="600" step="50" value={converterTemp} 
+ onChange={(e) => setConverterTemp(Number(e.target.value))}
+ className="w-full"
+ />
+ <div className="text-xs text-slate-500 dark:text-[#71717a] mt-2">
+ {converterTemp >= 400 ? "Optimal operating temperature reached." : "Too cold for catalytic conversion!"}
+ </div>
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
 
-  {/* Column 3: Assessment */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
-   <CheckCircle2 className="w-5 h-5 text-emerald-600" />  {t('lab.c9environmentalchem_assessment')}
-                        </h2>
+ {/* Column 3: Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2 flex items-center gap-2">
+ <CheckCircle2 className="w-5 h-5 text-emerald-600" /> {t('lab.c9environmentalchem_assessment')}
+ </h2>
 
-   <div className="flex-1 space-y-6 lg:overflow-y-auto pr-2">
-   <div className="space-y-2">
-    <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
-    
-                                 {t('lab.c9environmentalchem_1_what_gas_is_produced_when_ca')}
-                                 </label>
-    <input 
-    type="text" 
-    value={answer1}
-    onChange={(e) => setAnswer1(e.target.value)}
-    placeholder={t('lab.c9environmentalchem_name_or_formula')}
-    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
-    />
-   </div>
+ <div className="flex-1 space-y-6 lg:overflow-y-auto pr-2">
+ <div className="space-y-2">
+ <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.c9environmentalchem_1_what_gas_is_produced_when_ca')}
+ </label>
+ <input 
+ type="text" 
+ value={answer1}
+ onChange={(e) => setAnswer1(e.target.value)}
+ placeholder={t('lab.c9environmentalchem_name_or_formula')}
+ className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
+ />
+ </div>
 
-   <div className="space-y-2">
-    <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
-    
-                                 {t('lab.c9environmentalchem_2_if_a_water_sample_is_contami')}
-                                 </label>
-    <input 
-    type="number" 
-    value={answer2}
-    onChange={(e) => setAnswer2(e.target.value)}
-    placeholder={t('lab.c9environmentalchem_e_g_100')}
-    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
-    />
-   </div>
+ <div className="space-y-2">
+ <label className="text-sm font-bold text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.c9environmentalchem_2_if_a_water_sample_is_contami')}
+ </label>
+ <input 
+ type="number" 
+ value={answer2}
+ onChange={(e) => setAnswer2(e.target.value)}
+ placeholder={t('lab.c9environmentalchem_e_g_100')}
+ className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500 outline-none text-sm"
+ />
+ </div>
 
-   <button 
-    onClick={checkAssessment}
-    className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-   >
-    
-                             {t('lab.c9environmentalchem_check_answers')}
-                            </button>
+ <button 
+ onClick={checkAssessment}
+ className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
+ >
+ 
+ {t('lab.c9environmentalchem_check_answers')}
+ </button>
 
-   {feedback && (
-    <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-    {feedback}
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ {feedback && (
+ <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Perfect') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+ {feedback}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

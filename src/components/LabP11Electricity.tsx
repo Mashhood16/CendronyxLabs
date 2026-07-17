@@ -49,214 +49,214 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
 
  const renderSimulation = () => {
  if (mode === 'sensor') {
-  const isAlarmOn = Vout > 2.5;
-  return (
-  <svg viewBox="0 0 400 250" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg">
-   {/* Wires */}
-   <path d="M 100 200 L 100 80 L 150 80" stroke="#cbd5e1" strokeWidth={3} fill="none" />
-   <path d="M 210 80 L 300 80 L 300 120" stroke="#cbd5e1" strokeWidth={3} fill="none" />
-   <path d="M 300 180 L 300 230 L 100 230 L 100 210" stroke="#cbd5e1" strokeWidth={3} fill="none" />
-   
-   {/* Battery */}
-   <rect x="85" y="200" width="30" height="10" fill="#ef4444" />
-   <rect x="90" y="210" width="20" height="20" fill="#3b82f6" />
-   <text x="50" y="220" fill="white" fontSize="12">5V</text>
+ const isAlarmOn = Vout > 2.5;
+ return (
+ <svg viewBox="0 0 400 250" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg">
+ {/* Wires */}
+ <path d="M 100 200 L 100 80 L 150 80" stroke="#cbd5e1" strokeWidth={3} fill="none" />
+ <path d="M 210 80 L 300 80 L 300 120" stroke="#cbd5e1" strokeWidth={3} fill="none" />
+ <path d="M 300 180 L 300 230 L 100 230 L 100 210" stroke="#cbd5e1" strokeWidth={3} fill="none" />
+ 
+ {/* Battery */}
+ <rect x="85" y="200" width="30" height="10" fill="#ef4444" />
+ <rect x="90" y="210" width="20" height="20" fill="#3b82f6" />
+ <text x="50" y="220" fill="white" fontSize="12">5V</text>
 
-   {/* LDR R1 */}
-   <rect x="150" y="70" width="60" height="20" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
-   <text x="180" y="105" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_ldr')}{R1}  {t('lab.p11electricity_k')}</text>
-   {/* Light aura */}
-   <circle cx="180" cy="80" r="25" fill="#eab308" opacity={lightIntensity / 150} />
+ {/* LDR R1 */}
+ <rect x="150" y="70" width="60" height="20" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
+ <text x="180" y="105" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_ldr')}{R1} {t('lab.p11electricity_k')}</text>
+ {/* Light aura */}
+ <circle cx="180" cy="80" r="25" fill="#eab308" opacity={lightIntensity / 150} />
 
-   {/* Fixed R2 */}
-   <rect x="290" y="120" width="20" height="60" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
-   <text x="340" y="150" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_10_k')}</text>
+ {/* Fixed R2 */}
+ <rect x="290" y="120" width="20" height="60" fill="#1e293b" stroke="#cbd5e1" strokeWidth={2} />
+ <text x="340" y="150" fill="white" fontSize="12" textAnchor="middle">{t('lab.p11electricity_10_k')}</text>
 
-   {/* Vout Node */}
-   <circle cx="300" cy="100" r="5" fill="#ef4444" />
-   <text x="320" y="105" fill="#ef4444" fontSize="14" fontWeight="bold">{t('lab.p11_elec_v_out')}</text>
+ {/* Vout Node */}
+ <circle cx="300" cy="100" r="5" fill="#ef4444" />
+ <text x="320" y="105" fill="#ef4444" fontSize="14" fontWeight="bold">{t('lab.p11_elec_v_out')}</text>
 
-   {/* Alarm indicator */}
-   <circle cx="300" cy="100" r={isAlarmOn ? 15 : 0} fill="red" opacity={0.5} className="animate-ping" />
-   {isAlarmOn && <text x="250" y="40" fill="red" fontSize="16" fontWeight="bold">{t('lab.p11_elec_alarmtriggered')}</text>}
-  </svg>
-  );
+ {/* Alarm indicator */}
+ <circle cx="300" cy="100" r={isAlarmOn ? 15 : 0} fill="red" opacity={0.5} className="animate-ping" />
+ {isAlarmOn && <text x="250" y="40" fill="red" fontSize="16" fontWeight="bold">{t('lab.p11_elec_alarmtriggered')}</text>}
+ </svg>
+ );
  } else {
-  const crackPath = `M 200 50 L 210 70 L 190 90 L 220 120 L 200 150 L 230 180`;
-  return (
-  <svg viewBox="0 0 400 250" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg">
-   {/* Concrete Block */}
-   <rect x="100" y="50" width="200" height="150" fill="#475569" stroke="#334155" strokeWidth={4} rx="4" />
-   
-   {/* Crack */}
-   <path 
-   d={crackPath} 
-   stroke="#0f172a" 
-   strokeWidth={3} 
-   fill="none" 
-   strokeDasharray="200" 
-   strokeDashoffset={200 - severity * 2} 
-   className="transition-all duration-300"
-   />
+ const crackPath = `M 200 50 L 210 70 L 190 90 L 220 120 L 200 150 L 230 180`;
+ return (
+ <svg viewBox="0 0 400 250" className="w-full h-full bg-[#000000] dark:bg-[#121212] rounded-lg">
+ {/* Concrete Block */}
+ <rect x="100" y="50" width="200" height="150" fill="#475569" stroke="#334155" strokeWidth={4} rx="4" />
+ 
+ {/* Crack */}
+ <path 
+ d={crackPath} 
+ stroke="#0f172a" 
+ strokeWidth={3} 
+ fill="none" 
+ strokeDasharray="200" 
+ strokeDashoffset={200 - severity * 2} 
+ className="transition-all duration-300"
+ />
 
-   {/* Probes */}
-   <line x1="50" y1="125" x2="100" y2="125" stroke="#ef4444" strokeWidth={4} />
-   <line x1="300" y1="125" x2="350" y2="125" stroke="#0f172a" strokeWidth={4} />
-   
-   {/* Multimeter */}
-   <rect x="140" y="210" width="120" height="30" fill="#1e293b" stroke="#64748b" strokeWidth={2} rx="4" />
-   <text x="200" y="230" fill="#38bdf8" fontSize="16" textAnchor="middle" fontWeight="bold" className="font-mono">
-   
-                 {t('lab.p11electricity_v')} {V_drop.toFixed(2)} V
-   </text>
-   
-   <text x="200" y="30" fill="white" fontSize="14" textAnchor="middle">{t('lab.p11_elec_carbonfiberconcretebridgesupport')}</text>
-  </svg>
-  );
+ {/* Probes */}
+ <line x1="50" y1="125" x2="100" y2="125" stroke="#ef4444" strokeWidth={4} />
+ <line x1="300" y1="125" x2="350" y2="125" stroke="#0f172a" strokeWidth={4} />
+ 
+ {/* Multimeter */}
+ <rect x="140" y="210" width="120" height="30" fill="#1e293b" stroke="#64748b" strokeWidth={2} rx="4" />
+ <text x="200" y="230" fill="#38bdf8" fontSize="16" textAnchor="middle" fontWeight="bold" className="font-mono">
+ 
+ {t('lab.p11electricity_v')} {V_drop.toFixed(2)} V
+ </text>
+ 
+ <text x="200" y="30" fill="white" fontSize="14" textAnchor="middle">{t('lab.p11_elec_carbonfiberconcretebridgesupport')}</text>
+ </svg>
+ );
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p11electricity_grade_11_physics_practical_ele')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p11electricity_grade_11_physics_practical_ele')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.p11electricity_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.p11_elec_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
-  {/* Theory & Controls */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Lightbulb className="text-yellow-500" />  {t('lab.p11electricity_circuit_builder')}
-                        </h2>
-   
-   <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <button 
-    className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'sensor' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('sensor')}
-   >
-    
-                             {t('lab.p11electricity_ldr_alarm_circuit')}
-                            </button>
-   <button 
-    className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'concrete' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('concrete')}
-   >
-    
-                             {t('lab.p11electricity_smart_concrete')}
-                            </button>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.p11electricity_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.p11_elec_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 flex-grow lg:overflow-visible">
+ {/* Theory & Controls */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Lightbulb className="text-yellow-500" /> {t('lab.p11electricity_circuit_builder')}
+ </h2>
+ 
+ <div className={`flex gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg flex-col ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+ <button 
+ className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'sensor' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('sensor')}
+ >
+ 
+ {t('lab.p11electricity_ldr_alarm_circuit')}
+ </button>
+ <button 
+ className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'concrete' ? 'bg-slate-50 dark:bg-[#121212] shadow text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('concrete')}
+ >
+ 
+ {t('lab.p11electricity_smart_concrete')}
+ </button>
+ </div>
 
-   <div className="flex-grow space-y-4">
-   {mode === 'sensor' ? (
-    <>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     
-                                      {t('lab.p11electricity_a_potential_divider_uses_two_r')}
-                                      {"$$V_{out} = V_{in} \\times \\frac{R_2}{R_1 + R_2}$$"}
-    </p>
-    <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_light_intensity')} {lightIntensity}%</label>
-     <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-yellow-500" />
-    </div>
-    </>
-   ) : (
-    <>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
-     
-                                          {t('lab.p11electricity_carbon_fiber_is_mixed_into_con')}
-                                         </p>
-    <div className="space-y-2">
-     <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_crack_severity')} {severity}%</label>
-     <input type="range" min="0" max="100" value={severity} onChange={(e) => setSeverity(Number(e.target.value))} className="w-full accent-slate-800" />
-    </div>
-    </>
-   )}
-   </div>
-  </div>
+ <div className="flex-grow space-y-4">
+ {mode === 'sensor' ? (
+ <>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
+ 
+ {t('lab.p11electricity_a_potential_divider_uses_two_r')}
+ {"$$V_{out} = V_{in} \\times \\frac{R_2}{R_1 + R_2}$$"}
+ </p>
+ <div className="space-y-2">
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_light_intensity')} {lightIntensity}%</label>
+ <input type="range" min="0" max="100" value={lightIntensity} onChange={(e) => setLightIntensity(Number(e.target.value))} className="w-full accent-yellow-500" />
+ </div>
+ </>
+ ) : (
+ <>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] leading-relaxed">
+ 
+ {t('lab.p11electricity_carbon_fiber_is_mixed_into_con')}
+ </p>
+ <div className="space-y-2">
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11electricity_crack_severity')} {severity}%</label>
+ <input type="range" min="0" max="100" value={severity} onChange={(e) => setSeverity(Number(e.target.value))} className="w-full accent-slate-800" />
+ </div>
+ </>
+ )}
+ </div>
+ </div>
 
-  {/* Simulation */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex justify-between items-center">
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p11_elec_interactiveboard')}</h2>
-   </div>
-   <div className="flex-grow flex items-center justify-center">
-   {renderSimulation()}
-   </div>
-  </div>
+ {/* Simulation */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-4 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:col-span-1 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex justify-between items-center">
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p11_elec_interactiveboard')}</h2>
+ </div>
+ <div className="flex-grow flex items-center justify-center">
+ {renderSimulation()}
+ </div>
+ </div>
 
-  {/* Assessment & Data */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Activity className="text-blue-500" />  {t('lab.p11electricity_analysis_assessment')}
-                        </h2>
-   
-   <div className="space-y-4">
-   <button 
-    onClick={mode === 'sensor' ? logSensor : logConcrete}
-    className={`w-full flex items-center justify-center gap-2 px-4 py-2 bg-[#121212] dark:bg-[#121212] hover:bg-[#000000] dark:bg-[#121212] text-white rounded-lg font-medium transition-colors flex-col `}
-   >
-    <Save size={18} />  {t('lab.p11electricity_record_data')}
-                            </button>
-   
-   <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-    <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
-    <thead className={`bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] sticky top-0 flex-col `}>
-     {mode === 'sensor' ? (
-     <tr><th className="p-2">{t('lab.p11electricity_light')}</th><th className="p-2">{t('lab.p11electricity_r_1_k')}</th><th className="p-2">{t('lab.p11electricity_v_out_v')}</th></tr>
-     ) : (
-     <tr><th className="p-2">{t('lab.p11electricity_severity')}</th><th className="p-2">{t('lab.p11electricity_r')}</th><th className="p-2">{t('lab.p11electricity_v_drop_v')}</th></tr>
-     )}
-    </thead>
-    <tbody>
-     {mode === 'sensor' ? sensorLogs.map(l => (
-     <tr key={l.id} className="border-t border-slate-100"><td className="p-2">{l.light}</td><td className="p-2">{l.r1}</td><td className="p-2 font-mono text-red-600">{l.vout}</td></tr>
-     )) : concreteLogs.map(l => (
-     <tr key={l.id} className="border-t border-slate-100"><td className="p-2">{l.sev}</td><td className="p-2">{l.r}</td><td className="p-2 font-mono text-blue-600">{l.vdrop}</td></tr>
-     ))}
-    </tbody>
-    </table>
-   </div>
-   </div>
+ {/* Assessment & Data */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col gap-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Activity className="text-blue-500" /> {t('lab.p11electricity_analysis_assessment')}
+ </h2>
+ 
+ <div className="space-y-4">
+ <button 
+ onClick={mode === 'sensor' ? logSensor : logConcrete}
+ className={`w-full flex items-center justify-center gap-2 px-4 py-2 bg-[#121212] dark:bg-[#121212] hover:bg-[#000000] dark:bg-[#121212] text-white rounded-lg font-medium transition-colors flex-col `}
+ >
+ <Save size={18} /> {t('lab.p11electricity_record_data')}
+ </button>
+ 
+ <div className="max-h-40 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <table className="w-full text-sm text-left text-slate-600 dark:text-[#a1a1aa]">
+ <thead className={`bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] sticky top-0 flex-col `}>
+ {mode === 'sensor' ? (
+ <tr><th className="p-2">{t('lab.p11electricity_light')}</th><th className="p-2">{t('lab.p11electricity_r_1_k')}</th><th className="p-2">{t('lab.p11electricity_v_out_v')}</th></tr>
+ ) : (
+ <tr><th className="p-2">{t('lab.p11electricity_severity')}</th><th className="p-2">{t('lab.p11electricity_r')}</th><th className="p-2">{t('lab.p11electricity_v_drop_v')}</th></tr>
+ )}
+ </thead>
+ <tbody>
+ {mode === 'sensor' ? sensorLogs.map(l => (
+ <tr key={l.id} className="border-t border-slate-100"><td className="p-2">{l.light}</td><td className="p-2">{l.r1}</td><td className="p-2 font-mono text-red-600">{l.vout}</td></tr>
+ )) : concreteLogs.map(l => (
+ <tr key={l.id} className="border-t border-slate-100"><td className="p-2">{l.sev}</td><td className="p-2">{l.r}</td><td className="p-2 font-mono text-blue-600">{l.vdrop}</td></tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ </div>
 
-   <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p11_elec_q_title')}</h3>
-   {mode === 'sensor' ? (
-    <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_in_a_voltage_divider')} {"$V_{in} = 9V$"}, {"$R_1$"}  {t('lab.p11electricity_ldr_1')} {"$= 2k\\Omega$"}{t('lab.p11electricity_and')} {"$R_2 = 10k\\Omega$"}{t('lab.p11electricity_find')} {"$V_{out}$"}{t('lab.p11electricity_v_1')}</p>
-    <div className="flex gap-2">
-     <input type="number" step="0.1" value={sensorAns} onChange={e => {setSensorAns(e.target.value); setSensorStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg75')} />
-     <button onClick={checkSensor} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
-    </div>
-    {sensorStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
-    {sensorStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrecttryagain')}</p>}
-    </div>
-   ) : (
-    <div className="space-y-3">
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_a_concrete_beam_has_an_initial')}</p>
-    <div className="flex gap-2">
-     <input type="number" step="0.1" value={concreteAns} onChange={e => {setConcreteAns(e.target.value); setConcreteStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg625')} />
-     <button onClick={checkConcrete} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
-    </div>
-    {concreteStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
-    {concreteStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrectrememberrpropto1a')}</p>}
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className="mt-auto pt-4 border-t border-slate-200 dark:border-[#1c1b1b]">
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p11_elec_q_title')}</h3>
+ {mode === 'sensor' ? (
+ <div className="space-y-3">
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_in_a_voltage_divider')} {"$V_{in} = 9V$"}, {"$R_1$"} {t('lab.p11electricity_ldr_1')} {"$= 2k\\Omega$"}{t('lab.p11electricity_and')} {"$R_2 = 10k\\Omega$"}{t('lab.p11electricity_find')} {"$V_{out}$"}{t('lab.p11electricity_v_1')}</p>
+ <div className="flex gap-2">
+ <input type="number" step="0.1" value={sensorAns} onChange={e => {setSensorAns(e.target.value); setSensorStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg75')} />
+ <button onClick={checkSensor} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
+ </div>
+ {sensorStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
+ {sensorStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrecttryagain')}</p>}
+ </div>
+ ) : (
+ <div className="space-y-3">
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11electricity_a_concrete_beam_has_an_initial')}</p>
+ <div className="flex gap-2">
+ <input type="number" step="0.1" value={concreteAns} onChange={e => {setConcreteAns(e.target.value); setConcreteStatus('idle');}} className="flex-grow px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={t('lab.p11_elec_eg625')} />
+ <button onClick={checkConcrete} className="px-4 py-2 bg-blue-100 text-blue-700 font-medium rounded-lg hover:bg-blue-200 transition-colors">{t('lab.p11_elec_check')}</button>
+ </div>
+ {concreteStatus === 'correct' && <p className="text-green-600 text-sm flex items-center gap-1"><CheckCircle2 size={16}/>{t('lab.p11_elec_correct')}</p>}
+ {concreteStatus === 'incorrect' && <p className="text-red-600 text-sm flex items-center gap-1"><XCircle size={16}/>{t('lab.p11_elec_incorrectrememberrpropto1a')}</p>}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

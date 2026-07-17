@@ -22,7 +22,7 @@ const { recordLabData, setLabScore } = useLab();
  // Periodic noise for angle measurement
  useEffect(() => {
  const interval = setInterval(() => {
-  setNoise((Math.random() - 0.5) * 1.5); // +/- 0.75 deg noise
+ setNoise((Math.random() - 0.5) * 1.5); // +/- 0.75 deg noise
  }, 800);
  return () => clearInterval(interval);
  }, []);
@@ -35,11 +35,11 @@ const { recordLabData, setLabScore } = useLab();
  // When distance goes to 0, conduction happens (charge transfers to electroscope)
  useEffect(() => {
  if (distance === 0) {
-  // Transfer charge proportional to the rod's charge.
-  // To prevent infinite loop/feedback, only transfer if there's a difference.
-  if (Math.abs(qNet - qRod * 0.5) > 0.1) {
-  setQNet(qRod * 0.5);
-  }
+ // Transfer charge proportional to the rod's charge.
+ // To prevent infinite loop/feedback, only transfer if there's a difference.
+ if (Math.abs(qNet - qRod * 0.5) > 0.1) {
+ setQNet(qRod * 0.5);
+ }
  }
  }, [distance, qRod, qNet]);
 
@@ -59,11 +59,11 @@ const { recordLabData, setLabScore } = useLab();
  const [dataPoints, setDataPoints] = useState<Array<{ id: number; qRod: number; d: number; qNet: number; angle: number }>>([]);
  const recordData = () => {
  setDataPoints((prev) => [
-  ...prev,
-  { id: Date.now(), qRod, d: distance, qNet: parseFloat(qNet.toFixed(1)), angle: measuredAngle }
+ ...prev,
+ { id: Date.now(), qRod, d: distance, qNet: parseFloat(qNet.toFixed(1)), angle: measuredAngle }
  ]);
  
-  recordLabData({ timestamp: Date.now() });
+ recordLabData({ timestamp: Date.now() });
 };
 
  // Assessment
@@ -73,235 +73,235 @@ const { recordLabData, setLabScore } = useLab();
  const checkAnswer = () => {
  const val = assessmentAnswer.trim().toLowerCase();
  if (val === 'repel' || val === 'repels' || val === 'diverge' || val === 'diverges') {
-  setAssessmentStatus('correct');
+ setAssessmentStatus('correct');
  } else {
-  setAssessmentStatus('incorrect');
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ setAssessmentStatus('incorrect');
+ setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  {/* Header */}
-  <LabHeader onExit={onExit} title={t('lab.p10_escope_title')} subtitle={t('lab.p10_escope_subtitle')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ {/* Header */}
+ <LabHeader onExit={onExit} title={t('lab.p10_escope_title')} subtitle={t('lab.p10_escope_subtitle')} />
 
-  {/* Main Grid */}
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.theory')}</button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
-  
-  {/* Column 1: Theory & Setup */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.theory')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_theory') }} />
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_induction') }} />
-   <p className={`text-xs text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] p-2 rounded flex-col `}>
-    {t('lab.p10_escope_angle')}
-   </p>
-   </div>
+ {/* Main Grid */}
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.theory')}</button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 max-w-7xl mx-auto w-full lg:overflow-visible">
+ 
+ {/* Column 1: Theory & Setup */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+ <div className={`${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.theory')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_theory') }} />
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_induction') }} />
+ <p className={`text-xs text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] p-2 rounded flex-col `}>
+ {t('lab.p10_escope_angle')}
+ </p>
+ </div>
 
-   <div className="h-px bg-slate-200 dark:bg-[#121212]" />
+ <div className="h-px bg-slate-200 dark:bg-[#121212]" />
 
-   <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p10_escope_setup')}</h2>
-   
-   <div className="mb-5">
-    <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_rod_label')}</label>
-    <span className={`text-sm font-mono ${qRod > 0 ? 'text-blue-600' : qRod < 0 ? 'text-red-600' : 'text-slate-600 dark:text-[#ffffff]'}`}>
-     {qRod > 0 ? '+' : ''}{qRod} μC
-    </span>
-    </div>
-    <input 
-    type="range" min="-10" max="10" step="1" value={qRod}
-    onChange={(e) => setQRod(parseFloat(e.target.value))}
-    className="w-full accent-blue-600"
-    />
-   </div>
+ <div>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.p10_escope_setup')}</h2>
+ 
+ <div className="mb-5">
+ <div className="flex justify-between mb-1">
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_rod_label')}</label>
+ <span className={`text-sm font-mono ${qRod > 0 ? 'text-blue-600' : qRod < 0 ? 'text-red-600' : 'text-slate-600 dark:text-[#ffffff]'}`}>
+ {qRod > 0 ? '+' : ''}{qRod} μC
+ </span>
+ </div>
+ <input 
+ type="range" min="-10" max="10" step="1" value={qRod}
+ onChange={(e) => setQRod(parseFloat(e.target.value))}
+ className="w-full accent-blue-600"
+ />
+ </div>
 
-   <div className="mb-5">
-    <div className="flex justify-between mb-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_dist_label')}</label>
-    <span className="text-sm font-mono text-emerald-600">{distance} cm</span>
-    </div>
-    <input 
-    type="range" min="0" max="20" step="0.5" value={distance}
-    onChange={(e) => setDistance(parseFloat(e.target.value))}
-    className="w-full accent-emerald-600"
-    />
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.p10_escope_dist_hint')}</p>
-   </div>
+ <div className="mb-5">
+ <div className="flex justify-between mb-1">
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_dist_label')}</label>
+ <span className="text-sm font-mono text-emerald-600">{distance} cm</span>
+ </div>
+ <input 
+ type="range" min="0" max="20" step="0.5" value={distance}
+ onChange={(e) => setDistance(parseFloat(e.target.value))}
+ className="w-full accent-emerald-600"
+ />
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.p10_escope_dist_hint')}</p>
+ </div>
 
-   <button 
-    onClick={handleGround}
-    className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded font-medium hover:bg-slate-700 dark:bg-[#121212] transition-colors"
-   >
-    {t('lab.p10_escope_ground_btn')}
-   </button>
-   </div>
-  </div>
+ <button 
+ onClick={handleGround}
+ className="w-full py-2 bg-[#121212] dark:bg-[#121212] text-white rounded font-medium hover:bg-slate-700 dark:bg-[#121212] transition-colors"
+ >
+ {t('lab.p10_escope_ground_btn')}
+ </button>
+ </div>
+ </div>
 
-  {/* Column 2: Simulation */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   
-   {/* Angle Display overlay */}
-   <div className={`w-full absolute top-4 right-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.p10_escope_angle_display')}</span>
-   <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}°</span>
-   </div>
+ {/* Column 2: Simulation */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-2xl shadow-inner border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ 
+ {/* Angle Display overlay */}
+ <div className={`w-full absolute top-4 right-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.p10_escope_angle_display')}</span>
+ <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}°</span>
+ </div>
 
-   <div className="relative w-[300px] h-[400px] flex justify-center">
-   
-   {/* Charged Rod */}
-   <div 
-    className="absolute left-1/2 w-48 h-8 rounded-full border-2 z-30 flex items-center justify-evenly transition-all duration-300 shadow-md"
-    style={{
-    transform: `translateX(-50%) translateY(${20 + (distance * 8)}px)`,
-    backgroundColor: qRod > 0 ? '#60a5fa' : qRod < 0 ? '#f87171' : '#cbd5e1',
-    borderColor: qRod > 0 ? '#2563eb' : qRod < 0 ? '#dc2626' : '#94a3b8'
-    }}
-   >
-    {[...Array(5)].map((_, i) => (
-     <span key={i} className="text-white font-bold text-xl leading-none">
-     {qRod > 0 ? '+' : qRod < 0 ? '-' : '0'}
-     </span>
-    ))}
-    <div className="absolute -right-16 text-slate-600 dark:text-[#a1a1aa] font-mono text-sm bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{t('lab.10electroscope_rod')}</div>
-   </div>
+ <div className="relative w-[300px] h-[400px] flex justify-center">
+ 
+ {/* Charged Rod */}
+ <div 
+ className="absolute left-1/2 w-48 h-8 rounded-full border-2 z-30 flex items-center justify-evenly transition-all duration-300 shadow-md"
+ style={{
+ transform: `translateX(-50%) translateY(${20 + (distance * 8)}px)`,
+ backgroundColor: qRod > 0 ? '#60a5fa' : qRod < 0 ? '#f87171' : '#cbd5e1',
+ borderColor: qRod > 0 ? '#2563eb' : qRod < 0 ? '#dc2626' : '#94a3b8'
+ }}
+ >
+ {[...Array(5)].map((_, i) => (
+ <span key={i} className="text-white font-bold text-xl leading-none">
+ {qRod > 0 ? '+' : qRod < 0 ? '-' : '0'}
+ </span>
+ ))}
+ <div className="absolute -right-16 text-slate-600 dark:text-[#a1a1aa] font-mono text-sm bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{t('lab.10electroscope_rod')}</div>
+ </div>
 
-   {/* Electroscope Structure */}
-   <div className="absolute bottom-10 flex flex-col items-center">
-    
-    {/* Brass Disc */}
-    <div className={`w-20 h-6 bg-yellow-500 rounded-full border-2 border-yellow-600 z-20 flex justify-center items-center shadow-md relative flex-col `}>
-     <div className="absolute top-1/2 -translate-y-1/2 text-slate-800 dark:text-[#ffffff] text-xs font-bold mix-blend-overlay">{t('lab.10electroscope_disc')}</div>
-    </div>
-    
-    {/* Insulator plug */}
-    <div className="w-12 h-6 bg-[#121212] dark:bg-[#121212] -mt-2 z-10" />
+ {/* Electroscope Structure */}
+ <div className="absolute bottom-10 flex flex-col items-center">
+ 
+ {/* Brass Disc */}
+ <div className={`w-20 h-6 bg-yellow-500 rounded-full border-2 border-yellow-600 z-20 flex justify-center items-center shadow-md relative flex-col `}>
+ <div className="absolute top-1/2 -translate-y-1/2 text-slate-800 dark:text-[#ffffff] text-xs font-bold mix-blend-overlay">{t('lab.10electroscope_disc')}</div>
+ </div>
+ 
+ {/* Insulator plug */}
+ <div className="w-12 h-6 bg-[#121212] dark:bg-[#121212] -mt-2 z-10" />
 
-    {/* Glass Flask Envelope */}
-    <div className="absolute top-8 w-48 h-56 border-4 border-sky-200/60 bg-sky-50/30 rounded-t-xl rounded-b-[4rem] z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.8)]" />
+ {/* Glass Flask Envelope */}
+ <div className="absolute top-8 w-48 h-56 border-4 border-sky-200/60 bg-sky-50/30 rounded-t-xl rounded-b-[4rem] z-0 shadow-[inset_0_0_20px_rgba(255,255,255,0.8)]" />
 
-    {/* Brass Rod (Stem) */}
-    <div className="w-2 h-44 bg-yellow-500 border-x border-yellow-600 z-10 relative flex justify-center">
-    {/* Leaf Pivot Pivot */}
-    <div className="absolute bottom-6 w-3 h-3 bg-yellow-700 rounded-full" />
-    
-    {/* Fixed Stem extension */}
-    <div className="absolute bottom-0 w-2 h-6 bg-yellow-500 border-x border-yellow-600" />
-    
-    {/* Movable Gold Leaf */}
-    <div 
-     className="absolute bottom-6 w-1.5 h-20 bg-yellow-400 origin-top shadow-sm border border-yellow-500 transition-transform duration-[400ms] ease-out z-20 rounded-b-full" 
-     style={{ transform: `rotate(-${rawAngle}deg)` }}
-    />
-    </div>
+ {/* Brass Rod (Stem) */}
+ <div className="w-2 h-44 bg-yellow-500 border-x border-yellow-600 z-10 relative flex justify-center">
+ {/* Leaf Pivot Pivot */}
+ <div className="absolute bottom-6 w-3 h-3 bg-yellow-700 rounded-full" />
+ 
+ {/* Fixed Stem extension */}
+ <div className="absolute bottom-0 w-2 h-6 bg-yellow-500 border-x border-yellow-600" />
+ 
+ {/* Movable Gold Leaf */}
+ <div 
+ className="absolute bottom-6 w-1.5 h-20 bg-yellow-400 origin-top shadow-sm border border-yellow-500 transition-transform duration-[400ms] ease-out z-20 rounded-b-full" 
+ style={{ transform: `rotate(-${rawAngle}deg)` }}
+ />
+ </div>
 
-   </div>
+ </div>
 
-   </div>
+ </div>
 
-   <div className="absolute bottom-4 left-4 flex gap-2">
-   <div className="bg-slate-50 dark:bg-[#121212]/80 px-2 py-1 rounded text-xs border border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-mono shadow-sm">
-    {t('lab.p10_escope_qnet_label', { q: qNet.toFixed(1) })}
-   </div>
-   </div>
-  </div>
+ <div className="absolute bottom-4 left-4 flex gap-2">
+ <div className="bg-slate-50 dark:bg-[#121212]/80 px-2 py-1 rounded text-xs border border-slate-300 dark:border-[#1c1b1b] text-slate-600 dark:text-[#a1a1aa] font-mono shadow-sm">
+ {t('lab.p10_escope_qnet_label', { q: qNet.toFixed(1) })}
+ </div>
+ </div>
+ </div>
 
-  {/* Column 3: Data & Analysis */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col h-full overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p10_escope_data')}</h2>
-   <button 
-    onClick={recordData}
-    className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-   >
-    <Plus className="w-4 h-4" /> {t('lab.p10_escope_record')}
-   </button>
-   </div>
+ {/* Column 3: Data & Analysis */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col h-full ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex justify-between items-center mb-4">
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.p10_escope_data')}</h2>
+ <button 
+ onClick={recordData}
+ className="flex items-center gap-1 bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-sm font-medium transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ <Plus className="w-4 h-4" /> {t('lab.p10_escope_record')}
+ </button>
+ </div>
 
-   <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[200px]">
-   <table className="w-full text-sm text-left">
-    <thead className="text-xs text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
-    <tr>
-     <th className="px-4 py-2">{t('lab.p10_escope_table_qrod')}</th>
-     <th className="px-4 py-2">{t('lab.p10_escope_table_d')}</th>
-     <th className="px-4 py-2">{t('lab.p10_escope_table_qnet')}</th>
-     <th className="px-4 py-2">{t('lab.p10_escope_table_angle')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {dataPoints.length === 0 ? (
-     <tr>
-     <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.p10_escope_no_data')}</td>
-     </tr>
-    ) : (
-     dataPoints.map((dp) => (
-     <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
-      <td className="px-4 py-2 font-mono">{dp.qRod}</td>
-      <td className="px-4 py-2 font-mono">{dp.d}</td>
-      <td className="px-4 py-2 font-mono">{dp.qNet}</td>
-      <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}°</td>
-     </tr>
-     ))
-    )}
-    </tbody>
-   </table>
-   </div>
+ <div className="flex-1 lg:overflow-y-auto mb-6 border border-slate-200 dark:border-[#1c1b1b] rounded-lg max-h-[200px]">
+ <table className="w-full text-sm text-left">
+ <thead className="text-xs text-slate-600 dark:text-[#a1a1aa] uppercase bg-slate-50 dark:bg-[#121212] sticky top-0">
+ <tr>
+ <th className="px-4 py-2">{t('lab.p10_escope_table_qrod')}</th>
+ <th className="px-4 py-2">{t('lab.p10_escope_table_d')}</th>
+ <th className="px-4 py-2">{t('lab.p10_escope_table_qnet')}</th>
+ <th className="px-4 py-2">{t('lab.p10_escope_table_angle')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {dataPoints.length === 0 ? (
+ <tr>
+ <td colSpan={4} className="px-4 py-4 text-center text-slate-500 dark:text-[#71717a] italic">{t('lab.p10_escope_no_data')}</td>
+ </tr>
+ ) : (
+ dataPoints.map((dp) => (
+ <tr key={dp.id} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
+ <td className="px-4 py-2 font-mono">{dp.qRod}</td>
+ <td className="px-4 py-2 font-mono">{dp.d}</td>
+ <td className="px-4 py-2 font-mono">{dp.qNet}</td>
+ <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}°</td>
+ </tr>
+ ))
+ )}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="h-px bg-slate-200 dark:bg-[#121212] mb-6" />
+ <div className="h-px bg-slate-200 dark:bg-[#121212] mb-6" />
 
-   {/* Assessment Section */}
-   <div>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p10_escope_analysis')}</h2>
-   <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_q') }} />
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">({t('lab.p10_escope_hint')})</p>
-    <div className="flex gap-2 items-center">
-    <input 
-     type="text" 
-     placeholder={t('lab.p10_escope_placeholder')}
-     value={assessmentAnswer}
-     onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
-     className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <button 
-     onClick={checkAnswer}
-     className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-     
-                                      {t('lab.p10electroscope_check')}
-                                     </button>
-    </div>
-    {assessmentStatus === 'correct' && (
-    <div className="mt-3 flex items-start gap-1 text-emerald-700 text-sm font-medium bg-emerald-100 p-2 rounded">
-     <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" /> 
-      
-                                      {t('lab.p10electroscope_correct_the_positive_rod_attra')}
-                                     </div>
-    )}
-    {assessmentStatus === 'incorrect' && (
-    <div className="mt-3 flex items-center gap-1 text-rose-600 text-sm font-medium">
-     <XCircle className="w-4 h-4" />  {t('lab.p10electroscope_incorrect_try_simulating_it_gi')}
-                                     </div>
-    )}
-   </div>
-   </div>
-  </div>
+ {/* Assessment Section */}
+ <div>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p10_escope_analysis')}</h2>
+ <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg dark:bg-teal-950/20 dark:border-teal-900">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3" dangerouslySetInnerHTML={{ __html: t('lab.p10_escope_q') }} />
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mb-3">({t('lab.p10_escope_hint')})</p>
+ <div className="flex gap-2 items-center">
+ <input 
+ type="text" 
+ placeholder={t('lab.p10_escope_placeholder')}
+ value={assessmentAnswer}
+ onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
+ className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+ />
+ <button 
+ onClick={checkAnswer}
+ className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors shrink-0 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.p10electroscope_check')}
+ </button>
+ </div>
+ {assessmentStatus === 'correct' && (
+ <div className="mt-3 flex items-start gap-1 text-emerald-700 text-sm font-medium bg-emerald-100 p-2 rounded">
+ <CheckCircle className="w-4 h-4 shrink-0 mt-0.5" /> 
+ 
+ {t('lab.p10electroscope_correct_the_positive_rod_attra')}
+ </div>
+ )}
+ {assessmentStatus === 'incorrect' && (
+ <div className="mt-3 flex items-center gap-1 text-rose-600 text-sm font-medium">
+ <XCircle className="w-4 h-4" /> {t('lab.p10electroscope_incorrect_try_simulating_it_gi')}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
 
-  </div>
+ </div>
  </div>
  );
 }

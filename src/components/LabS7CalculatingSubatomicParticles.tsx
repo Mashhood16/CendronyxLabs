@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabS7CalculatingSubatomicParticles({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [protons, setProtons] = useState('');
  const [neutrons, setNeutrons] = useState('');
  const [electrons, setElectrons] = useState('');
@@ -23,93 +23,93 @@ export default function LabS7CalculatingSubatomicParticles({ onExit }: LabProps)
  const allCorrect = isProtonsCorrect && isElectronsCorrect && isNeutronsCorrect;
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s7calculatingsubatomicparticles_unit_5_subatomic_particles')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s7calculatingsubatomicparticles_unit_5_subatomic_particles')} />
 
-  <div className="flex-1 p-8 flex flex-col items-center">
-  <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-2xl w-full">
-   <h2 className="text-2xl font-bold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.s7calculatingsubatomicparticles_calculate_the_particles')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">
-   
-                        {t('lab.s7calculatingsubatomicparticles_you_are_given_an_element_with_')} <strong>{t('lab.s7calculatingsubatomicparticles_atomic_number_of_9')}</strong>  {t('lab.s7calculatingsubatomicparticles_and_a')} <strong>{t('lab.s7calculatingsubatomicparticles_mass_number_of_19')}</strong>{t('lab.s7calculatingsubatomicparticles_calculate_the_number_of_proton')}
-                        </p>
-   
-   <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-8 flex justify-between items-center px-12 dark:bg-teal-950/20 dark:border-teal-900">
-   <div className="text-center">
-    <div className="text-sm font-bold text-blue-500 uppercase tracking-wider">{t('lab.s7calculatingsubatomicparticles_atomic_number_z')}</div>
-    <div className="text-5xl font-black text-blue-900 dark:text-[#ffffff]">{targetAtomicNumber}</div>
-   </div>
-   <div className="text-center text-3xl font-bold text-blue-200">+</div>
-   <div className="text-center">
-    <div className="text-sm font-bold text-indigo-500 uppercase tracking-wider">{t('lab.s7calculatingsubatomicparticles_mass_number_a')}</div>
-    <div className="text-5xl font-black text-indigo-900 dark:text-[#ffffff]">{targetMassNumber}</div>
-   </div>
-   </div>
+ <div className="flex-1 p-8 flex flex-col items-center">
+ <div className="bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-w-2xl w-full">
+ <h2 className="text-2xl font-bold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.s7calculatingsubatomicparticles_calculate_the_particles')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">
+ 
+ {t('lab.s7calculatingsubatomicparticles_you_are_given_an_element_with_')} <strong>{t('lab.s7calculatingsubatomicparticles_atomic_number_of_9')}</strong> {t('lab.s7calculatingsubatomicparticles_and_a')} <strong>{t('lab.s7calculatingsubatomicparticles_mass_number_of_19')}</strong>{t('lab.s7calculatingsubatomicparticles_calculate_the_number_of_proton')}
+ </p>
+ 
+ <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-8 flex justify-between items-center px-12 dark:bg-teal-950/20 dark:border-teal-900">
+ <div className="text-center">
+ <div className="text-sm font-bold text-blue-500 uppercase tracking-wider">{t('lab.s7calculatingsubatomicparticles_atomic_number_z')}</div>
+ <div className="text-5xl font-black text-blue-900 dark:text-[#ffffff]">{targetAtomicNumber}</div>
+ </div>
+ <div className="text-center text-3xl font-bold text-blue-200">+</div>
+ <div className="text-center">
+ <div className="text-sm font-bold text-indigo-500 uppercase tracking-wider">{t('lab.s7calculatingsubatomicparticles_mass_number_a')}</div>
+ <div className="text-5xl font-black text-indigo-900 dark:text-[#ffffff]">{targetMassNumber}</div>
+ </div>
+ </div>
 
-   <div className="space-y-6">
-   {/* Protons Input */}
-   <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_protons_p')}</label>
-    <div className="flex items-center gap-4">
-    <input 
-     type="number" 
-     value={protons} 
-     onChange={e => setProtons(e.target.value)}
-     className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
-     placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
-    />
-    {protons !== '' && (
-     isProtonsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
-    )}
-    </div>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_atomic_number_equals_the_')}</p>
-   </div>
+ <div className="space-y-6">
+ {/* Protons Input */}
+ <div>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_protons_p')}</label>
+ <div className="flex items-center gap-4">
+ <input 
+ type="number" 
+ value={protons} 
+ onChange={e => setProtons(e.target.value)}
+ className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
+ placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
+ />
+ {protons !== '' && (
+ isProtonsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
+ )}
+ </div>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_atomic_number_equals_the_')}</p>
+ </div>
 
-   {/* Electrons Input */}
-   <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_electrons_e')}</label>
-    <div className="flex items-center gap-4">
-    <input 
-     type="number" 
-     value={electrons} 
-     onChange={e => setElectrons(e.target.value)}
-     className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
-     placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
-    />
-    {electrons !== '' && (
-     isElectronsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
-    )}
-    </div>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_in_a_neutral_atom_protons')}</p>
-   </div>
+ {/* Electrons Input */}
+ <div>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_electrons_e')}</label>
+ <div className="flex items-center gap-4">
+ <input 
+ type="number" 
+ value={electrons} 
+ onChange={e => setElectrons(e.target.value)}
+ className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
+ placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
+ />
+ {electrons !== '' && (
+ isElectronsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
+ )}
+ </div>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_in_a_neutral_atom_protons')}</p>
+ </div>
 
-   {/* Neutrons Input */}
-   <div>
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_neutrons_n')}</label>
-    <div className="flex items-center gap-4">
-    <input 
-     type="number" 
-     value={neutrons} 
-     onChange={e => setNeutrons(e.target.value)}
-     className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
-     placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
-    />
-    {neutrons !== '' && (
-     isNeutronsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
-    )}
-    </div>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_mass_number_protons_neutr')}</p>
-   </div>
-   </div>
+ {/* Neutrons Input */}
+ <div>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7calculatingsubatomicparticles_number_of_neutrons_n')}</label>
+ <div className="flex items-center gap-4">
+ <input 
+ type="number" 
+ value={neutrons} 
+ onChange={e => setNeutrons(e.target.value)}
+ className="flex-1 p-3 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-lg"
+ placeholder={t('lab.s7calculatingsubatomicparticles_enter_number')}
+ />
+ {neutrons !== '' && (
+ isNeutronsCorrect ? <CheckCircle className="text-green-500 w-6 h-6" /> : <XCircle className="text-red-500 w-6 h-6" />
+ )}
+ </div>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mt-1">{t('lab.s7calculatingsubatomicparticles_hint_mass_number_protons_neutr')}</p>
+ </div>
+ </div>
 
-   {allCorrect && (
-   <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-bold animate-pulse dark:text-[#ffffff]">
-    
-                             {t('lab.s7calculatingsubatomicparticles_excellent_fluorine_f_has_an_at')}
-                            </div>
-   )}
-  </div>
-  </div>
+ {allCorrect && (
+ <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-bold animate-pulse dark:text-[#ffffff]">
+ 
+ {t('lab.s7calculatingsubatomicparticles_excellent_fluorine_f_has_an_at')}
+ </div>
+ )}
+ </div>
+ </div>
  </div>
  );
 }

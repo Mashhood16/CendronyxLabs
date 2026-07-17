@@ -2,5 +2,5 @@ import GenericDerivationLab from './GenericDerivationLab';
 import { CLASS11_DERIVATIONS } from '../data/class11Derivations';
 
 export default function LabP11DerivationCentripetalAcceleration({ onExit }: { onExit?: () => void }) {
-  return <GenericDerivationLab onExit={onExit} config={CLASS11_DERIVATIONS.centripetal_acceleration} />;
+ return <GenericDerivationLab onExit={onExit} config={CLASS11_DERIVATIONS.centripetal_acceleration} />;
 }

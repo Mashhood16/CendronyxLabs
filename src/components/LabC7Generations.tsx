@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC7Generations({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [matches, setMatches] = useState<Record<string, string>>({});
  const [draggedTech, setDraggedTech] = useState<string | null>(null);
 
@@ -28,88 +28,88 @@ export default function LabC7Generations({ onExit }: LabProps) {
 
  const handleDrop = (genId: string) => {
  if (draggedTech) {
-  setMatches(prev => ({ ...prev, [genId]: draggedTech }));
-  setDraggedTech(null);
+ setMatches(prev => ({ ...prev, [genId]: draggedTech }));
+ setDraggedTech(null);
  }
  };
 
  const isComplete = generations.every(gen => matches[gen.id] === gen.correctTech);
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c7generations_computer_generations')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c7generations_computer_generations')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7generations_drag_and_drop_the_core_computi')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7generations_drag_and_drop_the_core_computi')}</p>
 
-  {isComplete && (
-   <div className="bg-emerald-100 border border-emerald-400 text-emerald-800 p-4 rounded-xl mb-8 flex items-center shadow-sm">
-   <CheckCircle className="w-6 h-6 mr-3" />
-   <span className="font-bold">{t('lab.c7generations_excellent')}</span>  {t('lab.c7generations_you_ve_correctly_identified_th')}
-                        </div>
-  )}
+ {isComplete && (
+ <div className="bg-emerald-100 border border-emerald-400 text-emerald-800 p-4 rounded-xl mb-8 flex items-center shadow-sm">
+ <CheckCircle className="w-6 h-6 mr-3" />
+ <span className="font-bold">{t('lab.c7generations_excellent')}</span> {t('lab.c7generations_you_ve_correctly_identified_th')}
+ </div>
+ )}
 
-  <div className="grid grid-cols-4 gap-4 mb-12">
-   {generations.map(gen => {
-   const placedTech = matches[gen.id] ? technologies.find(t => t.id === matches[gen.id]) : null;
-   const isCorrect = matches[gen.id] === gen.correctTech;
-   
-   return (
-    <div 
-    key={gen.id}
-    className={`bg-slate-50 dark:bg-[#121212] rounded-xl border-2 p-4 min-h-[200px] flex flex-col shadow-sm transition-colors ${draggedTech ? 'border-dashed border-blue-300 bg-blue-50/50' : 'border-slate-200 dark:border-[#1c1b1b]'}`}
-    onDragOver={(e) => e.preventDefault()}
-    onDrop={() => handleDrop(gen.id)}
-    >
-    <div className="text-center mb-4 pb-2 border-b border-slate-100">
-     <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{gen.title}</h3>
-     <p className="text-xs text-slate-400">{gen.years}</p>
-    </div>
-    
-    <div className="flex-1 flex items-center justify-center relative">
-     {placedTech ? (
-     <div 
-      className={`w-full p-4 rounded-lg border-2 text-center text-sm font-bold shadow-sm ${placedTech.color} ${isCorrect ? 'ring-2 ring-emerald-500 ring-offset-2' : 'opacity-70'}`}
-      onClick={() => setMatches(prev => { const nm = {...prev}; delete nm[gen.id]; return nm; })} // Click to remove
-     >
-      {placedTech.name}
-      {isCorrect && <CheckCircle className="w-4 h-4 text-emerald-600 absolute top-2 right-2" />}
-     </div>
-     ) : (
-     <span className="text-slate-300 text-sm italic text-center px-4">{t('lab.c7generations_drop_technology_here')}</span>
-     )}
-    </div>
-    </div>
-   );
-   })}
-  </div>
+ <div className="grid grid-cols-4 gap-4 mb-12">
+ {generations.map(gen => {
+ const placedTech = matches[gen.id] ? technologies.find(t => t.id === matches[gen.id]) : null;
+ const isCorrect = matches[gen.id] === gen.correctTech;
+ 
+ return (
+ <div 
+ key={gen.id}
+ className={`bg-slate-50 dark:bg-[#121212] rounded-xl border-2 p-4 min-h-[200px] flex flex-col shadow-sm transition-colors ${draggedTech ? 'border-dashed border-blue-300 bg-blue-50/50' : 'border-slate-200 dark:border-[#1c1b1b]'}`}
+ onDragOver={(e) => e.preventDefault()}
+ onDrop={() => handleDrop(gen.id)}
+ >
+ <div className="text-center mb-4 pb-2 border-b border-slate-100">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{gen.title}</h3>
+ <p className="text-xs text-slate-400">{gen.years}</p>
+ </div>
+ 
+ <div className="flex-1 flex items-center justify-center relative">
+ {placedTech ? (
+ <div 
+ className={`w-full p-4 rounded-lg border-2 text-center text-sm font-bold shadow-sm ${placedTech.color} ${isCorrect ? 'ring-2 ring-emerald-500 ring-offset-2' : 'opacity-70'}`}
+ onClick={() => setMatches(prev => { const nm = {...prev}; delete nm[gen.id]; return nm; })} // Click to remove
+ >
+ {placedTech.name}
+ {isCorrect && <CheckCircle className="w-4 h-4 text-emerald-600 absolute top-2 right-2" />}
+ </div>
+ ) : (
+ <span className="text-slate-300 text-sm italic text-center px-4">{t('lab.c7generations_drop_technology_here')}</span>
+ )}
+ </div>
+ </div>
+ );
+ })}
+ </div>
 
-  <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
-   <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.c7generations_core_technologies')}</h2>
-   <div className="flex gap-4">
-   {technologies.map(tech => {
-    // Hide if already placed
-    if (Object.values(matches).includes(tech.id)) return null;
-    
-    return (
-    <div
-     key={tech.id}
-     draggable
-     onDragStart={() => setDraggedTech(tech.id)}
-     onDragEnd={() => setDraggedTech(null)}
-     className={`px-6 py-3 rounded-lg border-2 cursor-grab active:cursor-grabbing font-bold shadow-sm hover:-translate-y-1 transition-transform ${tech.color}`}
-    >
-     {tech.name}
-    </div>
-    )
-   })}
-   {Object.values(matches).length === 4 && !isComplete && (
-    <p className="text-rose-500 font-medium py-3">{t('lab.c7generations_some_are_incorrect_click_a_tec')}</p>
-   )}
-   </div>
-  </div>
+ <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-sm">
+ <h2 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.c7generations_core_technologies')}</h2>
+ <div className="flex gap-4">
+ {technologies.map(tech => {
+ // Hide if already placed
+ if (Object.values(matches).includes(tech.id)) return null;
+ 
+ return (
+ <div
+ key={tech.id}
+ draggable
+ onDragStart={() => setDraggedTech(tech.id)}
+ onDragEnd={() => setDraggedTech(null)}
+ className={`px-6 py-3 rounded-lg border-2 cursor-grab active:cursor-grabbing font-bold shadow-sm hover:-translate-y-1 transition-transform ${tech.color}`}
+ >
+ {tech.name}
+ </div>
+ )
+ })}
+ {Object.values(matches).length === 4 && !isComplete && (
+ <p className="text-rose-500 font-medium py-3">{t('lab.c7generations_some_are_incorrect_click_a_tec')}</p>
+ )}
+ </div>
+ </div>
 
-  </div>
+ </div>
  </div>
  );
 }

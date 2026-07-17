@@ -33,7 +33,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
  const allCorrect = isF5Correct && isF7Correct && isG7Correct && isD10Correct && isE11Correct;
 
  return (
- <div className="w-full min- lg: bg-[#1d6f42] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
+ <div className="w-full   bg-[#1d6f42] text-slate-800 dark:text-[#ffffff] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title={t('lab.cricketspreadsheet_act_2_1_cricket_score_calculat')} subtitle={t('lab.subtitle_excel_functions_calculate')} variant="emerald" />
 
   <div className="flex-1 flex lg:overflow-hidden">

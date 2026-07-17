@@ -8,110 +8,110 @@ interface LabProps {
 }
 
 export default function LabS7TranspirationObservation({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [time, setTime] = useState(0);
  const [running, setRunning] = useState(false);
 
  useEffect(() => {
  let interval: number;
  if (running && time < 100) {
-  interval = window.setInterval(() => {
-  setTime(t => Math.min(100, t + 10));
-  }, 500);
+ interval = window.setInterval(() => {
+ setTime(t => Math.min(100, t + 10));
+ }, 500);
  }
  return () => clearInterval(interval);
  }, [running, time]);
 
  return (
- <div className="flex flex-col min- lg: bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s7transpirationobservation_unit_1_transpiration_observati')} />
+ <div className="flex flex-col min- bg-green-50 font-sans dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s7transpirationobservation_unit_1_transpiration_observati')} />
 
-  <div className="flex-1 p-8 flex flex-col items-center">
-  <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
-   <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">{t('lab.s7transpirationobservation_water_loss_in_plants')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7transpirationobservation_two_branches_are_covered_with_')}</p>
-   
-   <div className="flex justify-center gap-4">
-   <button 
-    onClick={() => setRunning(!running)}
-    disabled={time === 100}
-    className="flex items-center px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 font-medium dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
-   >
-    <Clock className="w-5 h-5 mr-2" />
-    {running ? 'Pause Time' : time === 100 ? 'Experiment Complete' : 'Wait 30 Minutes'}
-   </button>
-   <button 
-    onClick={() => { setTime(0); setRunning(false); }}
-    className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
-   >
-    
-                             {t('lab.s7transpirationobservation_reset')}
-                            </button>
-   </div>
-  </div>
+ <div className="flex-1 p-8 flex flex-col items-center">
+ <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
+ <h2 className="text-2xl font-bold text-green-800 mb-4 dark:text-[#ffffff]">{t('lab.s7transpirationobservation_water_loss_in_plants')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-6">{t('lab.s7transpirationobservation_two_branches_are_covered_with_')}</p>
+ 
+ <div className="flex justify-center gap-4">
+ <button 
+ onClick={() => setRunning(!running)}
+ disabled={time === 100}
+ className="flex items-center px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 font-medium dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
+ >
+ <Clock className="w-5 h-5 mr-2" />
+ {running ? 'Pause Time' : time === 100 ? 'Experiment Complete' : 'Wait 30 Minutes'}
+ </button>
+ <button 
+ onClick={() => { setTime(0); setRunning(false); }}
+ className="flex items-center px-6 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] font-medium"
+ >
+ 
+ {t('lab.s7transpirationobservation_reset')}
+ </button>
+ </div>
+ </div>
 
-  {/* Experiment Setup */}
-  <div className="flex gap-12 items-end justify-center">
-   
-   {/* Branch A (With Leaves) */}
-   <div className="flex flex-col items-center">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_a_with_leaves')}</h3>
-   <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
-    {/* Plant Stem */}
-    <div className="w-4 h-40 bg-green-700 relative z-10">
-    {/* Leaves */}
-    <div className="absolute top-4 -left-6 w-12 h-6 bg-green-500 rounded-full rotate-[-20deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
-    <div className="absolute top-12 -right-6 w-12 h-6 bg-green-500 rounded-full rotate-[20deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
-    <div className="absolute top-20 -left-6 w-12 h-6 bg-green-500 rounded-full rotate-[-10deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
-    <div className="absolute top-28 -right-6 w-12 h-6 bg-green-500 rounded-full rotate-[30deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
-    </div>
-    
-    {/* Polythene Bag */}
-    <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212]/30 rounded-t-3xl rounded-b-lg border-dashed flex justify-center items-center z-20">
-    {/* Condensation Drops */}
-    <div 
-     className="w-full h-full relative transition-opacity duration-1000"
-     style={{ opacity: time / 100 }}
-    >
-     <div className="absolute top-4 left-8 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
-     <div className="absolute top-12 right-6 w-3 h-3 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
-     <div className="absolute top-24 left-4 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
-     <div className="absolute top-32 right-12 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
-     <div className="absolute top-10 left-20 w-3 h-3 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
-    </div>
-    </div>
-   </div>
-   </div>
+ {/* Experiment Setup */}
+ <div className="flex gap-12 items-end justify-center">
+ 
+ {/* Branch A (With Leaves) */}
+ <div className="flex flex-col items-center">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_a_with_leaves')}</h3>
+ <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+ {/* Plant Stem */}
+ <div className="w-4 h-40 bg-green-700 relative z-10">
+ {/* Leaves */}
+ <div className="absolute top-4 -left-6 w-12 h-6 bg-green-500 rounded-full rotate-[-20deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
+ <div className="absolute top-12 -right-6 w-12 h-6 bg-green-500 rounded-full rotate-[20deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
+ <div className="absolute top-20 -left-6 w-12 h-6 bg-green-500 rounded-full rotate-[-10deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
+ <div className="absolute top-28 -right-6 w-12 h-6 bg-green-500 rounded-full rotate-[30deg] dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"></div>
+ </div>
+ 
+ {/* Polythene Bag */}
+ <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212]/30 rounded-t-3xl rounded-b-lg border-dashed flex justify-center items-center z-20">
+ {/* Condensation Drops */}
+ <div 
+ className="w-full h-full relative transition-opacity duration-1000"
+ style={{ opacity: time / 100 }}
+ >
+ <div className="absolute top-4 left-8 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
+ <div className="absolute top-12 right-6 w-3 h-3 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
+ <div className="absolute top-24 left-4 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
+ <div className="absolute top-32 right-12 w-2 h-2 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
+ <div className="absolute top-10 left-20 w-3 h-3 bg-blue-400 rounded-full drop-shadow dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"></div>
+ </div>
+ </div>
+ </div>
+ </div>
 
-   {/* Branch B (No Leaves) */}
-   <div className="flex flex-col items-center">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_b_bare')}</h3>
-   <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
-    {/* Plant Stem */}
-    <div className="w-4 h-40 bg-green-700 relative z-10">
-     {/* Empty knots where leaves were */}
-     <div className="absolute top-4 -left-1 w-2 h-2 bg-green-900 rounded-full"></div>
-     <div className="absolute top-12 -right-1 w-2 h-2 bg-green-900 rounded-full"></div>
-     <div className="absolute top-20 -left-1 w-2 h-2 bg-green-900 rounded-full"></div>
-    </div>
-    
-    {/* Polythene Bag */}
-    <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212]/30 rounded-t-3xl rounded-b-lg border-dashed z-20">
-     {/* No condensation */}
-    </div>
-   </div>
-   </div>
+ {/* Branch B (No Leaves) */}
+ <div className="flex flex-col items-center">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.s7transpirationobservation_branch_b_bare')}</h3>
+ <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b]">
+ {/* Plant Stem */}
+ <div className="w-4 h-40 bg-green-700 relative z-10">
+ {/* Empty knots where leaves were */}
+ <div className="absolute top-4 -left-1 w-2 h-2 bg-green-900 rounded-full"></div>
+ <div className="absolute top-12 -right-1 w-2 h-2 bg-green-900 rounded-full"></div>
+ <div className="absolute top-20 -left-1 w-2 h-2 bg-green-900 rounded-full"></div>
+ </div>
+ 
+ {/* Polythene Bag */}
+ <div className="absolute bottom-8 w-40 h-48 border-2 border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212]/30 rounded-t-3xl rounded-b-lg border-dashed z-20">
+ {/* No condensation */}
+ </div>
+ </div>
+ </div>
 
-  </div>
+ </div>
 
-  {time === 100 && (
-   <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-medium max-w-xl dark:text-[#ffffff]">
-   <div className="flex justify-center mb-2"><Info className="w-6 h-6" /></div>
-   
-                        {t('lab.s7transpirationobservation_water_droplets_appeared_only_i')}
-                        </div>
-  )}
-  </div>
+ {time === 100 && (
+ <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-medium max-w-xl dark:text-[#ffffff]">
+ <div className="flex justify-center mb-2"><Info className="w-6 h-6" /></div>
+ 
+ {t('lab.s7transpirationobservation_water_droplets_appeared_only_i')}
+ </div>
+ )}
+ </div>
  </div>
  );
 }

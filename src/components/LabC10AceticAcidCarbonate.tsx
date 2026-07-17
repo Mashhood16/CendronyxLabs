@@ -5,8 +5,8 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => void }) {
-  const { recordLabData, setLabScore } = useLab();
-    const { t } = useTranslate();
+ const { recordLabData, setLabScore } = useLab();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [acidAdded, setAcidAdded] = useState(false);
  const [carbMass, setCarbMass] = useState<number>(0.2);
@@ -45,19 +45,19 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  if (reactionInterval.current) window.clearInterval(reactionInterval.current);
 
  reactionInterval.current = window.setInterval(() => {
-  currentVol += (targetVol - gasVolume) * 0.15 + 2;
-  if (currentVol >= targetVol) {
-  currentVol = targetVol;
-  setIsReacting(false);
-  if (reactionInterval.current) window.clearInterval(reactionInterval.current);
-  }
-  setGasVolume(parseFloat(currentVol.toFixed(1)));
+ currentVol += (targetVol - gasVolume) * 0.15 + 2;
+ if (currentVol >= targetVol) {
+ currentVol = targetVol;
+ setIsReacting(false);
+ if (reactionInterval.current) window.clearInterval(reactionInterval.current);
+ }
+ setGasVolume(parseFloat(currentVol.toFixed(1)));
  }, 100);
  };
 
  useEffect(() => {
  return () => {
-  if (reactionInterval.current) window.clearInterval(reactionInterval.current);
+ if (reactionInterval.current) window.clearInterval(reactionInterval.current);
  };
  }, []);
 
@@ -72,18 +72,18 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
 
  const recordData = () => {
  if (acidAdded && totalCarbAdded > 0 && !isReacting) {
-  setLogs((prev) => [...prev, { id: Date.now(), mass: totalCarbAdded, volume: gasVolume }]);
-    recordLabData({ timestamp: Date.now(),  mass: totalCarbAdded, volume: gasVolume });
+ setLogs((prev) => [...prev, { id: Date.now(), mass: totalCarbAdded, volume: gasVolume }]);
+ recordLabData({ timestamp: Date.now(), mass: totalCarbAdded, volume: gasVolume });
  }
  };
 
  const checkAns = () => {
  const expected = targetMass * 226.4;
  if (Math.abs(parseFloat(assessmentAns) - expected) < expected * 0.05) {
-  setAssessmentStatus('correct');
+ setAssessmentStatus('correct');
  } else {
-  setAssessmentStatus('incorrect');
-    setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
+ setAssessmentStatus('incorrect');
+ setLabScore(assessmentStatus === 'correct' ? 100 : 0, 100);
  }
  };
 
@@ -91,212 +91,212 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  const maxVol = Math.max(500, ...logs.map((l) => l.volume));
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c10aceticacidcarbonate_acid_carbonate_reaction_acetic')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c10aceticacidcarbonate_acid_carbonate_reaction_acetic')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c10aceticacidcarbonate_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c10aceticacidcarbonate_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
-  {/* Theory Section */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Info className="w-5 h-5 text-teal-500" />  {t('lab.c10aceticacidcarbonate_theory_setup')}
-                        </h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
-   
-                        {t('lab.c10aceticacidcarbonate_acids_react_with_metal_carbona')}
-                        </p>
-   <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff] flex-col  ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   
-                        {t('lab.c10aceticacidcarbonate_2ch_cooh_na_co_2ch_coona_h_o_c')}
-                        </div>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mt-2">
-   
-                        {t('lab.c10aceticacidcarbonate_the_volume_of_co_gas_produced_')}
-                        </p>
-   
-   <div className={`bg-teal-50 p-4 rounded-lg mt-4 border border-teal-100 flex-col `}>
-   <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
-    
-                             {t('lab.c10aceticacidcarbonate_mass_of_na_co_to_add_g')} {carbMass.toFixed(1)} g
-   </label>
-   <input 
-    type="range" 
-    min="0.2" max="1.0" step="0.2" 
-    value={carbMass} 
-    onChange={(e) => setCarbMass(parseFloat(e.target.value))}
-    disabled={isReacting}
-    className="w-full"
-   />
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c10aceticacidcarbonate_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c10aceticacidcarbonate_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 min-h-0 lg:overflow-hidden">
+ {/* Theory Section */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+ <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
+ <Info className="w-5 h-5 text-teal-500" /> {t('lab.c10aceticacidcarbonate_theory_setup')}
+ </h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed">
+ 
+ {t('lab.c10aceticacidcarbonate_acids_react_with_metal_carbona')}
+ </p>
+ <div className={`p-3 bg-slate-100 dark:bg-[#121212] rounded text-center font-mono text-sm font-bold text-slate-700 dark:text-[#ffffff] flex-col ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+ 
+ {t('lab.c10aceticacidcarbonate_2ch_cooh_na_co_2ch_coona_h_o_c')}
+ </div>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm leading-relaxed mt-2">
+ 
+ {t('lab.c10aceticacidcarbonate_the_volume_of_co_gas_produced_')}
+ </p>
+ 
+ <div className={`bg-teal-50 p-4 rounded-lg mt-4 border border-teal-100 flex-col `}>
+ <label className="block text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
+ 
+ {t('lab.c10aceticacidcarbonate_mass_of_na_co_to_add_g')} {carbMass.toFixed(1)} g
+ </label>
+ <input 
+ type="range" 
+ min="0.2" max="1.0" step="0.2" 
+ value={carbMass} 
+ onChange={(e) => setCarbMass(parseFloat(e.target.value))}
+ disabled={isReacting}
+ className="w-full"
+ />
+ </div>
+ </div>
 
-  {/* Simulation Section */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className={`flex justify-around w-full mb-6 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg flex-col `}>
-   <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-teal-50 disabled:opacity-50 transition-colors">
-    <Beaker className="text-teal-500 w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">{t('lab.c10aceticacidcarbonate_add_acid_excess')}</span>
-   </button>
-   <button onClick={addCarbonate} disabled={!acidAdded || isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50 transition-colors">
-    <Box className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">+ {carbMass.toFixed(1)}{t('lab.c10aceticacidcarbonate_g_na_co')}</span>
-   </button>
-   <button onClick={resetFlask} disabled={isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-red-50 disabled:opacity-50 transition-colors">
-    <RefreshCw className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
-    <span className="text-xs font-semibold">{t('lab.c10aceticacidcarbonate_reset')}</span>
-   </button>
-   </div>
+ {/* Simulation Section */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className={`flex justify-around w-full mb-6 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg flex-col `}>
+ <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-teal-50 disabled:opacity-50 transition-colors">
+ <Beaker className="text-teal-500 w-8 h-8 mb-1" />
+ <span className="text-xs font-semibold">{t('lab.c10aceticacidcarbonate_add_acid_excess')}</span>
+ </button>
+ <button onClick={addCarbonate} disabled={!acidAdded || isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50 transition-colors">
+ <Box className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
+ <span className="text-xs font-semibold">+ {carbMass.toFixed(1)}{t('lab.c10aceticacidcarbonate_g_na_co')}</span>
+ </button>
+ <button onClick={resetFlask} disabled={isReacting} className="flex flex-col items-center p-2 border rounded hover:bg-red-50 disabled:opacity-50 transition-colors">
+ <RefreshCw className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
+ <span className="text-xs font-semibold">{t('lab.c10aceticacidcarbonate_reset')}</span>
+ </button>
+ </div>
 
-   <div className={`relative w-full max-w-[300px] h-64 flex-col items-center justify-end bg-slate-50 dark:bg-[#121212] rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   {/* Gas Syringe */}
-   <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-sm flex bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    <div className="h-full bg-teal-100 transition-all" style={{ width: `${(gasVolume / 500) * 100}%` }}></div>
-    <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-[#ffffff]">
-     {gasVolume.toFixed(1)}  {t('lab.c10aceticacidcarbonate_ml_co')}
-                                 </div>
-   </div>
-   {/* Tube from flask to syringe */}
-   <svg className="absolute inset-0 w-full h-full pointer-events-none">
-    <path d="M150,110 C150,70 180,50 210,50" fill="none" stroke="#94a3b8" strokeWidth="4" />
-   </svg>
+ <div className={`relative w-full max-w-[300px] h-64 flex-col items-center justify-end bg-slate-50 dark:bg-[#121212] rounded-xl p-4 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {/* Gas Syringe */}
+ <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-sm flex bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <div className="h-full bg-teal-100 transition-all" style={{ width: `${(gasVolume / 500) * 100}%` }}></div>
+ <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-[#ffffff]">
+ {gasVolume.toFixed(1)} {t('lab.c10aceticacidcarbonate_ml_co')}
+ </div>
+ </div>
+ {/* Tube from flask to syringe */}
+ <svg className="absolute inset-0 w-full h-full pointer-events-none">
+ <path d="M150,110 C150,70 180,50 210,50" fill="none" stroke="#94a3b8" strokeWidth="4" />
+ </svg>
 
-   {/* Flask */}
-   <svg viewBox="0 0 200 200" className="w-32 h-32 relative z-10">
-    <clipPath id="flask-clip-3">
-    <path d="M80,40 L80,100 L40,180 L160,180 L120,100 L120,40 Z" />
-    </clipPath>
-    <path d="M80,40 L80,100 L40,180 L160,180 L120,100 L120,40 Z" fill="rgba(255,255,255,0.9)" stroke="#475569" strokeWidth="4" />
-    
-    {acidAdded && (
-    <rect 
-     x="0" 
-     y="120" 
-     width="200" 
-     height="200" 
-     fill="rgba(204, 253, 246, 0.6)" 
-     clipPath="url(#flask-clip-3)" 
-    />
-    )}
-    {isReacting && (
-    <g clipPath="url(#flask-clip-3)">
-     <circle cx="90" cy="170" r="4" fill="#fff" className="animate-bounce" />
-     <circle cx="110" cy="160" r="3" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.1s' }} />
-     <circle cx="100" cy="150" r="5" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.3s' }} />
-     <circle cx="80" cy="140" r="2" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.2s' }} />
-    </g>
-    )}
-    {totalCarbAdded > 0 && (
-    <ellipse cx="100" cy="175" rx="30" ry="5" fill="#e2e8f0" clipPath="url(#flask-clip-3)"/>
-    )}
-   </svg>
-   </div>
+ {/* Flask */}
+ <svg viewBox="0 0 200 200" className="w-32 h-32 relative z-10">
+ <clipPath id="flask-clip-3">
+ <path d="M80,40 L80,100 L40,180 L160,180 L120,100 L120,40 Z" />
+ </clipPath>
+ <path d="M80,40 L80,100 L40,180 L160,180 L120,100 L120,40 Z" fill="rgba(255,255,255,0.9)" stroke="#475569" strokeWidth="4" />
+ 
+ {acidAdded && (
+ <rect 
+ x="0" 
+ y="120" 
+ width="200" 
+ height="200" 
+ fill="rgba(204, 253, 246, 0.6)" 
+ clipPath="url(#flask-clip-3)" 
+ />
+ )}
+ {isReacting && (
+ <g clipPath="url(#flask-clip-3)">
+ <circle cx="90" cy="170" r="4" fill="#fff" className="animate-bounce" />
+ <circle cx="110" cy="160" r="3" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.1s' }} />
+ <circle cx="100" cy="150" r="5" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.3s' }} />
+ <circle cx="80" cy="140" r="2" fill="#fff" className="animate-bounce" style={{ animationDelay: '0.2s' }} />
+ </g>
+ )}
+ {totalCarbAdded > 0 && (
+ <ellipse cx="100" cy="175" rx="30" ry="5" fill="#e2e8f0" clipPath="url(#flask-clip-3)"/>
+ )}
+ </svg>
+ </div>
 
-   <div className="w-full mt-6 bg-[#121212] dark:bg-[#121212] text-green-400 font-mono text-sm p-4 rounded-lg min-h-[60px] flex items-center justify-center text-center">
-   {equation}
-   </div>
-   
-   <button 
-   onClick={recordData} 
-   disabled={!acidAdded || totalCarbAdded === 0 || isReacting}
-   className="mt-4 flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors font-semibold dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
-   >
-   <Plus className="w-5 h-5" />
-   
-                        {t('lab.c10aceticacidcarbonate_record_data_point')}
-                        </button>
-  </div>
+ <div className="w-full mt-6 bg-[#121212] dark:bg-[#121212] text-green-400 font-mono text-sm p-4 rounded-lg min-h-[60px] flex items-center justify-center text-center">
+ {equation}
+ </div>
+ 
+ <button 
+ onClick={recordData} 
+ disabled={!acidAdded || totalCarbAdded === 0 || isReacting}
+ className="mt-4 flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors font-semibold dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
+ >
+ <Plus className="w-5 h-5" />
+ 
+ {t('lab.c10aceticacidcarbonate_record_data_point')}
+ </button>
+ </div>
 
-  {/* Data Section */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
-   <Activity className="w-5 h-5 text-green-500" />  {t('lab.c10aceticacidcarbonate_data_analysis')}
-                        </h2>
-   
-   <div className="overflow-x-auto">
-   <table className="w-full text-sm text-left">
-    <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
-    <tr>
-     <th className="px-3 py-2 rounded-tl-lg">{t('lab.c10aceticacidcarbonate_total_na_co_g')}</th>
-     <th className="px-3 py-2 rounded-tr-lg">{t('lab.c10aceticacidcarbonate_vol_co_ml')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {logs.length === 0 && <tr><td colSpan={2} className="text-center p-3 text-slate-400">{t('lab.c10aceticacidcarbonate_no_data_recorded')}</td></tr>}
-    {logs.map((log) => (
-     <tr key={log.id} className="border-b border-slate-100">
-     <td className="px-3 py-2">{log.mass.toFixed(1)}</td>
-     <td className="px-3 py-2">{log.volume.toFixed(1)}</td>
-     </tr>
-    ))}
-    </tbody>
-   </table>
-   </div>
+ {/* Data Section */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
+ <Activity className="w-5 h-5 text-green-500" /> {t('lab.c10aceticacidcarbonate_data_analysis')}
+ </h2>
+ 
+ <div className="overflow-x-auto">
+ <table className="w-full text-sm text-left">
+ <thead className="bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]">
+ <tr>
+ <th className="px-3 py-2 rounded-tl-lg">{t('lab.c10aceticacidcarbonate_total_na_co_g')}</th>
+ <th className="px-3 py-2 rounded-tr-lg">{t('lab.c10aceticacidcarbonate_vol_co_ml')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {logs.length === 0 && <tr><td colSpan={2} className="text-center p-3 text-slate-400">{t('lab.c10aceticacidcarbonate_no_data_recorded')}</td></tr>}
+ {logs.map((log) => (
+ <tr key={log.id} className="border-b border-slate-100">
+ <td className="px-3 py-2">{log.mass.toFixed(1)}</td>
+ <td className="px-3 py-2">{log.volume.toFixed(1)}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="h-48 w-full border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-2 bg-slate-50 dark:bg-[#121212] relative mt-2">
-   <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">{t('lab.c10aceticacidcarbonate_vol_co_vs_mass_na_co')}</div>
-   <svg viewBox="0 0 100 100" className="w-full h-full transform scale-y-[-1] overflow-visible pb-6 pl-8">
-    <line x1="0" y1="0" x2="100" y2="0" stroke="#94a3b8" strokeWidth="1" />
-    <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
-    {logs.map((log, i) => (
-     <circle 
-     key={i} 
-     cx={(log.mass / maxMass) * 90} 
-     cy={(log.volume / maxVol) * 90} 
-     r="3" 
-     fill="#0d9488" 
-     />
-    ))}
-    {logs.length > 1 && (
-     <line 
-     x1="0" y1="0" 
-     x2="90" y2={90 * ((maxMass * 226.4) / maxVol)} 
-     stroke="#0d9488" strokeWidth="1" strokeDasharray="2,2" 
-     />
-    )}
-   </svg>
-   </div>
+ <div className="h-48 w-full border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-2 bg-slate-50 dark:bg-[#121212] relative mt-2">
+ <div className="absolute top-2 left-2 text-xs font-semibold text-slate-500 dark:text-[#71717a]">{t('lab.c10aceticacidcarbonate_vol_co_vs_mass_na_co')}</div>
+ <svg viewBox="0 0 100 100" className="w-full h-full transform scale-y-[-1] overflow-visible pb-6 pl-8">
+ <line x1="0" y1="0" x2="100" y2="0" stroke="#94a3b8" strokeWidth="1" />
+ <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
+ {logs.map((log, i) => (
+ <circle 
+ key={i} 
+ cx={(log.mass / maxMass) * 90} 
+ cy={(log.volume / maxVol) * 90} 
+ r="3" 
+ fill="#0d9488" 
+ />
+ ))}
+ {logs.length > 1 && (
+ <line 
+ x1="0" y1="0" 
+ x2="90" y2={90 * ((maxMass * 226.4) / maxVol)} 
+ stroke="#0d9488" strokeWidth="1" strokeDasharray="2,2" 
+ />
+ )}
+ </svg>
+ </div>
 
-   <div className="bg-teal-50 p-4 rounded-lg mt-auto border border-teal-100">
-   <h3 className="font-bold text-sm text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c10aceticacidcarbonate_assessment')}</h3>
-   <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
-    
-                             {t('lab.c10aceticacidcarbonate_calculate_the_theoretical_volu')} {targetMass}  {t('lab.c10aceticacidcarbonate_g_of_na_co_completely_reacts_m')}
-                            </p>
-   <div className="flex gap-2">
-    <input 
-    type="number" 
-    value={assessmentAns} 
-    onChange={(e) => setAssessmentAns(e.target.value)}
-    placeholder={t('lab.c10aceticacidcarbonate_vol_ml')} 
-    className="w-24 px-2 py-1 text-sm border rounded"
-    />
-    <button 
-    onClick={checkAns}
-    className="bg-teal-600 text-white px-3 py-1 text-sm rounded hover:bg-teal-700 transition-colors dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
-    >
-    
-                                 {t('lab.c10aceticacidcarbonate_check')}
-                                 </button>
-   </div>
-   {assessmentStatus === 'correct' && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/>  {t('lab.c10aceticacidcarbonate_correct')}</div>}
-   {assessmentStatus === 'incorrect' && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/>  {t('lab.c10aceticacidcarbonate_incorrect_use_vol_mass_106_240')}</div>}
-   </div>
-  </div>
-  </div>
+ <div className="bg-teal-50 p-4 rounded-lg mt-auto border border-teal-100">
+ <h3 className="font-bold text-sm text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.c10aceticacidcarbonate_assessment')}</h3>
+ <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
+ 
+ {t('lab.c10aceticacidcarbonate_calculate_the_theoretical_volu')} {targetMass} {t('lab.c10aceticacidcarbonate_g_of_na_co_completely_reacts_m')}
+ </p>
+ <div className="flex gap-2">
+ <input 
+ type="number" 
+ value={assessmentAns} 
+ onChange={(e) => setAssessmentAns(e.target.value)}
+ placeholder={t('lab.c10aceticacidcarbonate_vol_ml')} 
+ className="w-24 px-2 py-1 text-sm border rounded"
+ />
+ <button 
+ onClick={checkAns}
+ className="bg-teal-600 text-white px-3 py-1 text-sm rounded hover:bg-teal-700 transition-colors dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
+ >
+ 
+ {t('lab.c10aceticacidcarbonate_check')}
+ </button>
+ </div>
+ {assessmentStatus === 'correct' && <div className="mt-2 text-green-600 text-xs font-bold flex items-center gap-1"><CheckCircle2 className="w-4 h-4"/> {t('lab.c10aceticacidcarbonate_correct')}</div>}
+ {assessmentStatus === 'incorrect' && <div className="mt-2 text-red-600 text-xs font-bold flex items-center gap-1"><XCircle className="w-4 h-4"/> {t('lab.c10aceticacidcarbonate_incorrect_use_vol_mass_106_240')}</div>}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC7IllustratedStory({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [story, setStory] = useState('');
  const [images, setImages] = useState<string[]>([]);
  const [showGallery, setShowGallery] = useState(false);
@@ -26,86 +26,86 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c7illustratedstory_illustrated_story_writing')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c7illustratedstory_illustrated_story_writing')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7illustratedstory_write_a_short_story_and_insert')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7illustratedstory_write_a_short_story_and_insert')}</p>
 
-  <div className="bg-slate-50 dark:bg-[#121212] rounded-xl shadow border border-slate-300 dark:border-[#1c1b1b] flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden relative">
-   
-   {/* Toolbar */}
-   <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-3 flex gap-4 items-center">
-   <button 
-    onClick={() => setShowGallery(!showGallery)}
-    className="flex items-center px-4 py-2 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] rounded text-sm font-medium transition-colors"
-   >
-    <ImageIcon className="w-4 h-4 mr-2 text-rose-500" />
-    
-                             {t('lab.c7illustratedstory_insert_picture')}
-                            </button>
-   <div className="ml-auto flex items-center text-slate-400 text-sm">
-    <BookOpen className="w-4 h-4 mr-2" />
-    
-                             {t('lab.c7illustratedstory_story_mode')}
-                            </div>
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] rounded-xl shadow border border-slate-300 dark:border-[#1c1b1b] flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden relative">
+ 
+ {/* Toolbar */}
+ <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] p-3 flex gap-4 items-center">
+ <button 
+ onClick={() => setShowGallery(!showGallery)}
+ className="flex items-center px-4 py-2 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] rounded text-sm font-medium transition-colors"
+ >
+ <ImageIcon className="w-4 h-4 mr-2 text-rose-500" />
+ 
+ {t('lab.c7illustratedstory_insert_picture')}
+ </button>
+ <div className="ml-auto flex items-center text-slate-400 text-sm">
+ <BookOpen className="w-4 h-4 mr-2" />
+ 
+ {t('lab.c7illustratedstory_story_mode')}
+ </div>
+ </div>
 
-   {/* Gallery Modal Overlay */}
-   {showGallery && (
-   <div className="absolute top-16 left-0 right-0 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-lg p-6 z-20 grid grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
-    <div className="col-span-4 flex justify-between items-center mb-2">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c7illustratedstory_select_image_to_insert')}</h3>
-    <button onClick={() => setShowGallery(false)} className="text-slate-400 hover:text-slate-800 dark:text-[#ffffff]">{t('lab.c7illustratedstory_close')}</button>
-    </div>
-    {gallery.map(img => (
-    <button 
-     key={img.id}
-     onClick={() => handleInsertImage(img.url)}
-     className="rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-500 hover:shadow-md transition-all aspect-video group relative"
-    >
-     <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
-     <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-     <span className="text-white font-medium text-sm">{t('lab.c7illustratedstory_insert')}</span>
-     </div>
-    </button>
-    ))}
-   </div>
-   )}
+ {/* Gallery Modal Overlay */}
+ {showGallery && (
+ <div className="absolute top-16 left-0 right-0 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] shadow-lg p-6 z-20 grid grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
+ <div className="col-span-4 flex justify-between items-center mb-2">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.c7illustratedstory_select_image_to_insert')}</h3>
+ <button onClick={() => setShowGallery(false)} className="text-slate-400 hover:text-slate-800 dark:text-[#ffffff]">{t('lab.c7illustratedstory_close')}</button>
+ </div>
+ {gallery.map(img => (
+ <button 
+ key={img.id}
+ onClick={() => handleInsertImage(img.url)}
+ className="rounded-lg overflow-hidden border-2 border-transparent hover:border-blue-500 hover:shadow-md transition-all aspect-video group relative"
+ >
+ <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
+ <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+ <span className="text-white font-medium text-sm">{t('lab.c7illustratedstory_insert')}</span>
+ </div>
+ </button>
+ ))}
+ </div>
+ )}
 
-   {/* Document Body */}
-   <div className="flex-1 p-12 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
-   <textarea
-    className="w-full min-h-[200px] bg-transparent resize-none outline-none text-lg font-serif text-slate-800 dark:text-[#ffffff] leading-relaxed mb-8 placeholder:text-slate-300"
-    placeholder={t('lab.c7illustratedstory_once_upon_a_time')}
-    value={story}
-    onChange={(e) => setStory(e.target.value)}
-   />
-   
-   <div className="flex flex-col gap-6 items-center">
-    {images.map((url, i) => (
-    <div key={i} className="relative group">
-     <img src={url} alt={t("Story illustration")} className="max-w-md rounded-xl shadow-md border-4 border-white" />
-     <button 
-     onClick={() => setImages(images.filter((_, index) => index !== i))}
-     className="absolute -top-3 -right-3 bg-slate-50 dark:bg-[#121212] text-rose-500 rounded-full p-1 shadow-md border border-slate-200 dark:border-[#1c1b1b] opacity-0 group-hover:opacity-100 transition-opacity font-bold w-8 h-8 flex items-center justify-center"
-     >
-     ×
-     </button>
-    </div>
-    ))}
-   </div>
-   
-   {images.length === 0 && story.length > 50 && (
-    <div className="text-center text-slate-400 italic mt-12 animate-pulse">
-    
-                                 {t('lab.c7illustratedstory_click_insert_picture_to_add_an')}
-                                 </div>
-   )}
-   </div>
+ {/* Document Body */}
+ <div className="flex-1 p-12 lg:overflow-y-auto bg-slate-50 dark:bg-[#121212]">
+ <textarea
+ className="w-full min-h-[200px] bg-transparent resize-none outline-none text-lg font-serif text-slate-800 dark:text-[#ffffff] leading-relaxed mb-8 placeholder:text-slate-300"
+ placeholder={t('lab.c7illustratedstory_once_upon_a_time')}
+ value={story}
+ onChange={(e) => setStory(e.target.value)}
+ />
+ 
+ <div className="flex flex-col gap-6 items-center">
+ {images.map((url, i) => (
+ <div key={i} className="relative group">
+ <img src={url} alt={t("Story illustration")} className="max-w-md rounded-xl shadow-md border-4 border-white" />
+ <button 
+ onClick={() => setImages(images.filter((_, index) => index !== i))}
+ className="absolute -top-3 -right-3 bg-slate-50 dark:bg-[#121212] text-rose-500 rounded-full p-1 shadow-md border border-slate-200 dark:border-[#1c1b1b] opacity-0 group-hover:opacity-100 transition-opacity font-bold w-8 h-8 flex items-center justify-center"
+ >
+ ×
+ </button>
+ </div>
+ ))}
+ </div>
+ 
+ {images.length === 0 && story.length > 50 && (
+ <div className="text-center text-slate-400 italic mt-12 animate-pulse">
+ 
+ {t('lab.c7illustratedstory_click_insert_picture_to_add_an')}
+ </div>
+ )}
+ </div>
 
-  </div>
-  </div>
+ </div>
+ </div>
  </div>
  );
 }

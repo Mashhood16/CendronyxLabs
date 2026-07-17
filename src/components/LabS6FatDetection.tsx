@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabS6FatDetection({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [step, setStep] = useState(0);
 
  const nextStep = () => {
@@ -24,99 +24,99 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
  };
 
  return (
- <div className="lg:overflow-y-auto flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s6fatdetection_unit_3_fat_detection_in_food')} />
+ <div className="lg:overflow-y-auto flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s6fatdetection_unit_3_fat_detection_in_food')} />
 
-  <div className="flex-1 flex p-8 items-center justify-center gap-16">
-  
-  <div className="w-96 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-2xl font-bold mb-6 text-amber-700">{t('lab.s6fatdetection_lab_procedure')}</h2>
-   
-   <div className="space-y-4">
-   <button 
-    onClick={nextStep} disabled={step !== 0}
-    className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 0 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 0 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
-   >
-    <span>{t('lab.s6fatdetection_1_add_crushed_food_sample_to_t')}</span>
-    {step > 0 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-   </button>
-   <button 
-    onClick={nextStep} disabled={step !== 1}
-    className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 1 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 1 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
-   >
-    <span>{t('lab.s6fatdetection_2_add_ethanol_above_food_level')}</span>
-    {step > 1 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-   </button>
-   <button 
-    onClick={nextStep} disabled={step !== 2}
-    className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 2 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 2 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
-   >
-    <span>{t('lab.s6fatdetection_3_shake_test_tube_well')}</span>
-    {step > 2 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-   </button>
-   <button 
-    onClick={nextStep} disabled={step !== 3}
-    className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 3 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 3 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
-   >
-    <span>{t('lab.s6fatdetection_4_add_water_and_observe')}</span>
-    {step > 3 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
-   </button>
-   </div>
+ <div className="flex-1 flex p-8 items-center justify-center gap-16">
+ 
+ <div className="w-96 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+ <h2 className="text-2xl font-bold mb-6 text-amber-700">{t('lab.s6fatdetection_lab_procedure')}</h2>
+ 
+ <div className="space-y-4">
+ <button 
+ onClick={nextStep} disabled={step !== 0}
+ className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 0 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 0 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
+ >
+ <span>{t('lab.s6fatdetection_1_add_crushed_food_sample_to_t')}</span>
+ {step > 0 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
+ </button>
+ <button 
+ onClick={nextStep} disabled={step !== 1}
+ className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 1 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 1 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
+ >
+ <span>{t('lab.s6fatdetection_2_add_ethanol_above_food_level')}</span>
+ {step > 1 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
+ </button>
+ <button 
+ onClick={nextStep} disabled={step !== 2}
+ className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 2 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 2 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
+ >
+ <span>{t('lab.s6fatdetection_3_shake_test_tube_well')}</span>
+ {step > 2 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
+ </button>
+ <button 
+ onClick={nextStep} disabled={step !== 3}
+ className={`w-full p-4 rounded-xl text-left border-2 flex items-center justify-between transition-colors ${step === 3 ? 'border-amber-500 bg-amber-50 text-amber-900 font-bold' : step > 3 ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]' : 'border-slate-200 dark:border-[#1c1b1b] text-slate-400'}`}
+ >
+ <span>{t('lab.s6fatdetection_4_add_water_and_observe')}</span>
+ {step > 3 && <CheckCircle className="w-5 h-5 text-emerald-500" />}
+ </button>
+ </div>
 
-   {step === 4 && (
-   <div className="mt-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800">
-    <h3 className="font-bold flex items-center gap-2 mb-2"><CheckCircle className="w-5 h-5" />  {t('lab.s6fatdetection_test_complete')}</h3>
-    <p className="text-sm">{t('lab.s6fatdetection_a_cloudy_milky_white_emulsion_')}</p>
-    <button onClick={() => setStep(0)} className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded font-bold text-sm hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.s6fatdetection_reset_experiment')}</button>
-   </div>
-   )}
-  </div>
+ {step === 4 && (
+ <div className="mt-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800">
+ <h3 className="font-bold flex items-center gap-2 mb-2"><CheckCircle className="w-5 h-5" /> {t('lab.s6fatdetection_test_complete')}</h3>
+ <p className="text-sm">{t('lab.s6fatdetection_a_cloudy_milky_white_emulsion_')}</p>
+ <button onClick={() => setStep(0)} className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded font-bold text-sm hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.s6fatdetection_reset_experiment')}</button>
+ </div>
+ )}
+ </div>
 
-  <div className="w-80 h-128 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-end relative overflow-hidden">
-   {/* Test Tube */}
-   <div className={`w-16 h-80 border-4 border-t-0 border-slate-300 dark:border-[#1c1b1b] rounded-b-3xl relative overflow-hidden transition-transform duration-500 ${step === 3 ? 'animate-shake' : ''}`}>
-   {/* Contents based on step */}
-   {getTubeContent() === 'food' && (
-    <div className="absolute bottom-0 w-full h-8 bg-amber-800 rounded-b-2xl"></div>
-   )}
-   {getTubeContent() === 'ethanol' && (
-    <>
-    <div className="absolute bottom-8 w-full h-24 bg-blue-100/50 backdrop-blur-sm"></div>
-    <div className="absolute bottom-0 w-full h-8 bg-amber-800 rounded-b-2xl"></div>
-    </>
-   )}
-   {getTubeContent() === 'shaken' && (
-    <div className="absolute bottom-0 w-full h-32 bg-amber-600/60 rounded-b-2xl backdrop-blur-md flex items-center justify-center dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
-    <div className="w-full h-full opacity-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900 to-transparent"></div>
-    </div>
-   )}
-   {getTubeContent() === 'cloudy' && (
-    <>
-    <div className="absolute bottom-32 w-full h-16 bg-slate-50 dark:bg-[#121212]/90 backdrop-blur-xl border-t border-slate-200 dark:border-[#1c1b1b]"></div>
-    <div className="absolute bottom-0 w-full h-32 bg-amber-600/30 rounded-b-2xl dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"></div>
-    </>
-   )}
-   
-   {/* Glass reflection */}
-   <div className="absolute top-0 left-2 w-2 h-full bg-slate-50 dark:bg-[#121212]/40 rounded-full"></div>
-   </div>
-   <div className="mt-4 flex flex-col items-center">
-   <Beaker className="w-8 h-8 text-slate-400 mb-2" />
-   <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider text-sm">{t('lab.s6fatdetection_test_tube')}</span>
-   </div>
+ <div className="w-80 h-128 bg-slate-50 dark:!bg-[#121212] p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-end relative overflow-hidden">
+ {/* Test Tube */}
+ <div className={`w-16 h-80 border-4 border-t-0 border-slate-300 dark:border-[#1c1b1b] rounded-b-3xl relative overflow-hidden transition-transform duration-500 ${step === 3 ? 'animate-shake' : ''}`}>
+ {/* Contents based on step */}
+ {getTubeContent() === 'food' && (
+ <div className="absolute bottom-0 w-full h-8 bg-amber-800 rounded-b-2xl"></div>
+ )}
+ {getTubeContent() === 'ethanol' && (
+ <>
+ <div className="absolute bottom-8 w-full h-24 bg-blue-100/50 backdrop-blur-sm"></div>
+ <div className="absolute bottom-0 w-full h-8 bg-amber-800 rounded-b-2xl"></div>
+ </>
+ )}
+ {getTubeContent() === 'shaken' && (
+ <div className="absolute bottom-0 w-full h-32 bg-amber-600/60 rounded-b-2xl backdrop-blur-md flex items-center justify-center dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
+ <div className="w-full h-full opacity-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900 to-transparent"></div>
+ </div>
+ )}
+ {getTubeContent() === 'cloudy' && (
+ <>
+ <div className="absolute bottom-32 w-full h-16 bg-slate-50 dark:bg-[#121212]/90 backdrop-blur-xl border-t border-slate-200 dark:border-[#1c1b1b]"></div>
+ <div className="absolute bottom-0 w-full h-32 bg-amber-600/30 rounded-b-2xl dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40"></div>
+ </>
+ )}
+ 
+ {/* Glass reflection */}
+ <div className="absolute top-0 left-2 w-2 h-full bg-slate-50 dark:bg-[#121212]/40 rounded-full"></div>
+ </div>
+ <div className="mt-4 flex flex-col items-center">
+ <Beaker className="w-8 h-8 text-slate-400 mb-2" />
+ <span className="text-slate-500 dark:text-[#71717a] font-bold uppercase tracking-wider text-sm">{t('lab.s6fatdetection_test_tube')}</span>
+ </div>
 
-   <style dangerouslySetInnerHTML={{__html: `
-   @keyframes shake {
-    0%, 100% { transform: translateX(0) rotate(0); }
-    25% { transform: translateX(-10px) rotate(-5deg); }
-    50% { transform: translateX(10px) rotate(5deg); }
-    75% { transform: translateX(-10px) rotate(-5deg); }
-   }
-   .animate-shake { animation: shake 0.5s ease-in-out infinite; }
-   `}} />
-  </div>
+ <style dangerouslySetInnerHTML={{__html: `
+ @keyframes shake {
+ 0%, 100% { transform: translateX(0) rotate(0); }
+ 25% { transform: translateX(-10px) rotate(-5deg); }
+ 50% { transform: translateX(10px) rotate(5deg); }
+ 75% { transform: translateX(-10px) rotate(-5deg); }
+ }
+ .animate-shake { animation: shake 0.5s ease-in-out infinite; }
+ `}} />
+ </div>
 
-  </div>
+ </div>
  </div>
  );
 }

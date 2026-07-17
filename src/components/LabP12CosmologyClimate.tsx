@@ -50,210 +50,210 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
  const renderSpectrum = () => {
  const lines = [410, 434, 486, 656]; 
  return (
-  <svg width="100%" height="60" className="bg-[#000000] dark:bg-[#121212] rounded-lg mt-2">
-  <defs>
-   <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
-   <stop offset="0%" stopColor="purple" />
-   <stop offset="20%" stopColor="blue" />
-   <stop offset="40%" stopColor="cyan" />
-   <stop offset="60%" stopColor="green" />
-   <stop offset="80%" stopColor="yellow" />
-   <stop offset="90%" stopColor="orange" />
-   <stop offset="100%" stopColor="red" />
-   </linearGradient>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#rainbow)" opacity="0.3" />
-  
-  {lines.map((l, i) => {
-   const shifted = getShiftedWavelength(l, velocityC);
-   const xRest = ((l - 380) / (750 - 380)) * 100;
-   const xShift = ((shifted - 380) / (750 - 380)) * 100;
-   
-   return (
-   <g key={i}>
-    <line x1={`${xRest}%`} y1="0" x2={`${xRest}%`} y2="20" stroke="white" strokeWidth="1" opacity="0.5" strokeDasharray="2 2" />
-    {xShift >= 0 && xShift <= 100 && (
-    <line x1={`${xShift}%`} y1="0" x2={`${xShift}%`} y2="60" stroke="black" strokeWidth="3" />
-    )}
-   </g>
-   );
-  })}
-  </svg>
+ <svg width="100%" height="60" className="bg-[#000000] dark:bg-[#121212] rounded-lg mt-2">
+ <defs>
+ <linearGradient id="rainbow" x1="0%" y1="0%" x2="100%" y2="0%">
+ <stop offset="0%" stopColor="purple" />
+ <stop offset="20%" stopColor="blue" />
+ <stop offset="40%" stopColor="cyan" />
+ <stop offset="60%" stopColor="green" />
+ <stop offset="80%" stopColor="yellow" />
+ <stop offset="90%" stopColor="orange" />
+ <stop offset="100%" stopColor="red" />
+ </linearGradient>
+ </defs>
+ <rect width="100%" height="100%" fill="url(#rainbow)" opacity="0.3" />
+ 
+ {lines.map((l, i) => {
+ const shifted = getShiftedWavelength(l, velocityC);
+ const xRest = ((l - 380) / (750 - 380)) * 100;
+ const xShift = ((shifted - 380) / (750 - 380)) * 100;
+ 
+ return (
+ <g key={i}>
+ <line x1={`${xRest}%`} y1="0" x2={`${xRest}%`} y2="20" stroke="white" strokeWidth="1" opacity="0.5" strokeDasharray="2 2" />
+ {xShift >= 0 && xShift <= 100 && (
+ <line x1={`${xShift}%`} y1="0" x2={`${xShift}%`} y2="60" stroke="black" strokeWidth="3" />
+ )}
+ </g>
+ );
+ })}
+ </svg>
  );
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p12cosmologyclimate_lab_12_2_astrophysics_climate_')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p12cosmologyclimate_lab_12_2_astrophysics_climate_')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.p12cosmologyclimate_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.12cosmologyclimate_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12cosmologyclimate_theory')}</h2>
-   
-   <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
-   <section>
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
-    <Star size={16} className="text-amber-500"/>  {t('lab.p12cosmologyclimate_wien_s_displacement_law')}
-                                 </h3>
-    <p className="mt-1">
-    
-                                 {t('lab.p12cosmologyclimate_a_black_body_s_temperature_is_')}
-                                 <br/><br/>
-    <code className={`bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.12cosmologyclimate_maxbt')}</code>
-    <br/><br/>
-    
-                                 {t('lab.p12cosmologyclimate_where_b_2_898_10_m_k_hotter_st')}
-                                 </p>
-   </section>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.p12cosmologyclimate_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.12cosmologyclimate_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 lg:overflow-visible">
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12cosmologyclimate_theory')}</h2>
+ 
+ <div className="space-y-4 text-slate-700 dark:text-[#ffffff] text-sm leading-relaxed">
+ <section>
+ <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2">
+ <Star size={16} className="text-amber-500"/> {t('lab.p12cosmologyclimate_wien_s_displacement_law')}
+ </h3>
+ <p className="mt-1">
+ 
+ {t('lab.p12cosmologyclimate_a_black_body_s_temperature_is_')}
+ <br/><br/>
+ <code className={`bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.12cosmologyclimate_maxbt')}</code>
+ <br/><br/>
+ 
+ {t('lab.p12cosmologyclimate_where_b_2_898_10_m_k_hotter_st')}
+ </p>
+ </section>
 
-   <section>
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
-    <Orbit size={16} className="text-blue-500"/>  {t('lab.p12cosmologyclimate_doppler_red_shift')}
-                                 </h3>
-    <p className="mt-1">
-    
-                                 {t('lab.p12cosmologyclimate_as_galaxies_move_away_from_us_')}
-                                 <br/><br/>
-    <code className={`bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.p12cosmologyclimate_obs_rest_1_v_c_1_v_c')}</code>
-    <br/><br/>
-    
-                                 {t('lab.p12cosmologyclimate_where_v_is_positive_for_recess')}
-                                 </p>
-   </section>
+ <section>
+ <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
+ <Orbit size={16} className="text-blue-500"/> {t('lab.p12cosmologyclimate_doppler_red_shift')}
+ </h3>
+ <p className="mt-1">
+ 
+ {t('lab.p12cosmologyclimate_as_galaxies_move_away_from_us_')}
+ <br/><br/>
+ <code className={`bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.p12cosmologyclimate_obs_rest_1_v_c_1_v_c')}</code>
+ <br/><br/>
+ 
+ {t('lab.p12cosmologyclimate_where_v_is_positive_for_recess')}
+ </p>
+ </section>
 
-   <section>
-    <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
-    <Waves size={16} className="text-teal-500"/>  {t('lab.p12cosmologyclimate_thermohaline_circulation')}
-                                 </h3>
-    <p className="mt-1">
-    
-                                 {t('lab.p12cosmologyclimate_ocean_currents_are_driven_by_d')}
-                                 </p>
-   </section>
-   </div>
-  </div>
+ <section>
+ <h3 className="font-semibold text-slate-900 dark:text-[#ffffff] flex items-center gap-2 mt-4">
+ <Waves size={16} className="text-teal-500"/> {t('lab.p12cosmologyclimate_thermohaline_circulation')}
+ </h3>
+ <p className="mt-1">
+ 
+ {t('lab.p12cosmologyclimate_ocean_currents_are_driven_by_d')}
+ </p>
+ </section>
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_stellarthermometer')}</h3>
-   <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
-    
-                             {t('lab.p12cosmologyclimate_surface_temperature')} {starTemp} K
-   </label>
-   <input 
-    type="range" min="2000" max="15000" step="100" value={starTemp} 
-    onChange={(e) => setStarTemp(Number(e.target.value))}
-    className="w-full mb-4 accent-amber-500"
-   />
-   <div className={`w-full flex gap-4 items-center bg-[#000000] dark:bg-[#121212] p-4 rounded-lg overflow-hidden flex-col  ? 'flex' : 'hidden'} lg:flex`}>
-    <div 
-     className="w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)] flex-shrink-0"
-     style={{ backgroundColor: getStarColor(starTemp), boxShadow: `0 0 ${starTemp/200}px ${getStarColor(starTemp)}` }}
-    />
-    <div className="text-white">
-     <p className="text-sm text-slate-300">{t('lab.p12cosmologyclimate_peak_wavelength_max')}</p>
-     <p className="text-xl font-mono text-cyan-300">{Math.round(getPeakWavelength(starTemp))} nm</p>
-     <p className="text-xs mt-1 opacity-70">{t('lab.12cosmologyclimate_visiblelightrange380to750nm')}</p>
-    </div>
-   </div>
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_stellarthermometer')}</h3>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
+ 
+ {t('lab.p12cosmologyclimate_surface_temperature')} {starTemp} K
+ </label>
+ <input 
+ type="range" min="2000" max="15000" step="100" value={starTemp} 
+ onChange={(e) => setStarTemp(Number(e.target.value))}
+ className="w-full mb-4 accent-amber-500"
+ />
+ <div className={`w-full flex gap-4 items-center bg-[#000000] dark:bg-[#121212] p-4 rounded-lg overflow-hidden flex-col ? 'flex' : 'hidden'} lg:flex`}>
+ <div 
+ className="w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)] flex-shrink-0"
+ style={{ backgroundColor: getStarColor(starTemp), boxShadow: `0 0 ${starTemp/200}px ${getStarColor(starTemp)}` }}
+ />
+ <div className="text-white">
+ <p className="text-sm text-slate-300">{t('lab.p12cosmologyclimate_peak_wavelength_max')}</p>
+ <p className="text-xl font-mono text-cyan-300">{Math.round(getPeakWavelength(starTemp))} nm</p>
+ <p className="text-xs mt-1 opacity-70">{t('lab.12cosmologyclimate_visiblelightrange380to750nm')}</p>
+ </div>
+ </div>
+ </div>
 
-   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p12cosmologyclimate_spectrometer_doppler_shift')}</h3>
-   <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
-    
-                             {t('lab.p12cosmologyclimate_relative_velocity_v_c')} {velocityC.toFixed(2)}c {velocityC > 0 ? '(Receding)' : velocityC < 0 ? '(Approaching)' : ''}
-   </label>
-   <input 
-    type="range" min="-0.5" max="0.5" step="0.01" value={velocityC} 
-    onChange={(e) => setVelocityC(Number(e.target.value))}
-    className="w-full mb-2 accent-blue-500"
-   />
-   {renderSpectrum()}
-   <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 text-center">{t('lab.p12cosmologyclimate_black_lines_observed_absorptio')}</p>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.p12cosmologyclimate_spectrometer_doppler_shift')}</h3>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
+ 
+ {t('lab.p12cosmologyclimate_relative_velocity_v_c')} {velocityC.toFixed(2)}c {velocityC > 0 ? '(Receding)' : velocityC < 0 ? '(Approaching)' : ''}
+ </label>
+ <input 
+ type="range" min="-0.5" max="0.5" step="0.01" value={velocityC} 
+ onChange={(e) => setVelocityC(Number(e.target.value))}
+ className="w-full mb-2 accent-blue-500"
+ />
+ {renderSpectrum()}
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 text-center">{t('lab.p12cosmologyclimate_black_lines_observed_absorptio')}</p>
+ </div>
 
-   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_thermohalinedownwelling')}</h3>
-   <div className="flex gap-4 mb-2">
-    <div className="flex-1">
-    <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">{t('lab.p12cosmologyclimate_temp_c')} {oceanTemp}</label>
-    <input type="range" min="-2" max="30" value={oceanTemp} onChange={e=>setOceanTemp(Number(e.target.value))} className="w-full accent-teal-500" />
-    </div>
-    <div className="flex-1">
-    <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">{t('lab.p12cosmologyclimate_salinity_psu')} {salinity}</label>
-    <input type="range" min="30" max="40" value={salinity} onChange={e=>setSalinity(Number(e.target.value))} className="w-full accent-teal-500" />
-    </div>
-   </div>
-   <div className={`p-2 rounded text-center text-sm font-bold ${downwelling ? 'bg-blue-600 text-white' : 'bg-blue-200 text-blue-800'}`}>
-    {downwelling ? 'Deep Water Formation Active (Sinking)' : 'Surface Water Layer (Stable)'}
-   </div>
-   </div>
-  </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_thermohalinedownwelling')}</h3>
+ <div className="flex gap-4 mb-2">
+ <div className="flex-1">
+ <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">{t('lab.p12cosmologyclimate_temp_c')} {oceanTemp}</label>
+ <input type="range" min="-2" max="30" value={oceanTemp} onChange={e=>setOceanTemp(Number(e.target.value))} className="w-full accent-teal-500" />
+ </div>
+ <div className="flex-1">
+ <label className="text-xs text-slate-600 dark:text-[#a1a1aa] block">{t('lab.p12cosmologyclimate_salinity_psu')} {salinity}</label>
+ <input type="range" min="30" max="40" value={salinity} onChange={e=>setSalinity(Number(e.target.value))} className="w-full accent-teal-500" />
+ </div>
+ </div>
+ <div className={`p-2 rounded text-center text-sm font-bold ${downwelling ? 'bg-blue-600 text-white' : 'bg-blue-200 text-blue-800'}`}>
+ {downwelling ? 'Deep Water Formation Active (Sinking)' : 'Surface Water Layer (Stable)'}
+ </div>
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12cosmologyclimate_assessments')}</h2>
-   
-   <div className="space-y-6">
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_q1reddwarfstar')}</h3>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    
-                                 {t('lab.p12cosmologyclimate_calculate_the_peak_wavelength_')}
-                                 </p>
-    <div className="flex gap-2 items-center">
-    <input 
-     type="number" value={wienAns} onChange={e => setWienAns(e.target.value)}
-     placeholder={t('lab.p12cosmologyclimate_t_lab_12cosmologyclimate_eg500')} 
-     className="flex-1 border rounded px-3 py-1.5 text-sm"
-    />
-    <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12cosmologyclimate_nm')}</span>
-    <button onClick={checkWien} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     
-                                      {t('lab.p12cosmologyclimate_check')}
-                                     </button>
-    </div>
-    {wienFeedback && <p className={`mt-2 text-sm font-medium ${wienFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{wienFeedback}</p>}
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.12cosmologyclimate_assessments')}</h2>
+ 
+ <div className="space-y-6">
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_q1reddwarfstar')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
+ 
+ {t('lab.p12cosmologyclimate_calculate_the_peak_wavelength_')}
+ </p>
+ <div className="flex gap-2 items-center">
+ <input 
+ type="number" value={wienAns} onChange={e => setWienAns(e.target.value)}
+ placeholder={t('lab.p12cosmologyclimate_t_lab_12cosmologyclimate_eg500')} 
+ className="flex-1 border rounded px-3 py-1.5 text-sm"
+ />
+ <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12cosmologyclimate_nm')}</span>
+ <button onClick={checkWien} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.p12cosmologyclimate_check')}
+ </button>
+ </div>
+ {wienFeedback && <p className={`mt-2 text-sm font-medium ${wienFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{wienFeedback}</p>}
+ </div>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_q2distantgalaxy')}</h3>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
-    
-                                 {t('lab.p12cosmologyclimate_a_galaxy_is_receding_at_10_the')}
-                                 </p>
-    <div className="flex gap-2 items-center">
-    <input 
-     type="number" value={dopplerAns} onChange={e => setDopplerAns(e.target.value)}
-     placeholder={t('lab.p12cosmologyclimate_t_lab_12cosmologyclimate_eg700')} 
-     className="flex-1 border rounded px-3 py-1.5 text-sm"
-    />
-    <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12cosmologyclimate_nm')}</span>
-    <button onClick={checkDoppler} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-     
-                                      {t('lab.p12cosmologyclimate_check')}
-                                     </button>
-    </div>
-    {dopplerFeedback && <p className={`mt-2 text-sm font-medium ${dopplerFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{dopplerFeedback}</p>}
-   </div>
-   </div>
-  </div>
-  </div>
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.12cosmologyclimate_q2distantgalaxy')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
+ 
+ {t('lab.p12cosmologyclimate_a_galaxy_is_receding_at_10_the')}
+ </p>
+ <div className="flex gap-2 items-center">
+ <input 
+ type="number" value={dopplerAns} onChange={e => setDopplerAns(e.target.value)}
+ placeholder={t('lab.p12cosmologyclimate_t_lab_12cosmologyclimate_eg700')} 
+ className="flex-1 border rounded px-3 py-1.5 text-sm"
+ />
+ <span className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.12cosmologyclimate_nm')}</span>
+ <button onClick={checkDoppler} className="bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.p12cosmologyclimate_check')}
+ </button>
+ </div>
+ {dopplerFeedback && <p className={`mt-2 text-sm font-medium ${dopplerFeedback.includes('Correct') ? 'text-emerald-600' : 'text-red-600'}`}>{dopplerFeedback}</p>}
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

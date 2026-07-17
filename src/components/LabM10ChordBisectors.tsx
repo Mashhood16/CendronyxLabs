@@ -17,7 +17,7 @@ const triples = [
 ];
 
 export default function LabM10ChordBisectors({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const svgRef = useRef<SVGSVGElement>(null);
@@ -66,14 +66,14 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
  const sin = Math.sin(angle);
 
  return (
-  <g>
-  {/* Full bisector line */}
-  <line x1={origin.x - ex} y1={origin.y - ey} x2={origin.x + ex} y2={origin.y + ey} stroke={color} strokeDasharray="5,5" strokeWidth="2" opacity="0.6" />
-  {/* Right angle square */}
-  <path d={`M ${mx} ${my} L ${mx + 10*cos} ${my + 10*sin} L ${mx + 10*cos - 10*(dx/len)} ${my + 10*sin - 10*(dy/len)} L ${mx - 10*(dx/len)} ${my - 10*(dy/len)} Z`} fill="none" stroke={color} strokeWidth="1.5" />
-  {/* Thick radius from center to midpoint */}
-  <line x1={origin.x} y1={origin.y} x2={mx} y2={my} stroke={color} strokeWidth="3" opacity="0.4" />
-  </g>
+ <g>
+ {/* Full bisector line */}
+ <line x1={origin.x - ex} y1={origin.y - ey} x2={origin.x + ex} y2={origin.y + ey} stroke={color} strokeDasharray="5,5" strokeWidth="2" opacity="0.6" />
+ {/* Right angle square */}
+ <path d={`M ${mx} ${my} L ${mx + 10*cos} ${my + 10*sin} L ${mx + 10*cos - 10*(dx/len)} ${my + 10*sin - 10*(dy/len)} L ${mx - 10*(dx/len)} ${my - 10*(dy/len)} Z`} fill="none" stroke={color} strokeWidth="1.5" />
+ {/* Thick radius from center to midpoint */}
+ <line x1={origin.x} y1={origin.y} x2={mx} y2={my} stroke={color} strokeWidth="3" opacity="0.4" />
+ </g>
  );
  };
 
@@ -95,164 +95,164 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
  const handleCheckQuiz = () => {
  const numericAns = parseFloat(ans);
  if (isNaN(numericAns)) {
-  setFeedback('Please enter a valid number.');
-  return;
+ setFeedback('Please enter a valid number.');
+ return;
  }
  if (Math.abs(numericAns - triples[quizIdx].L) < 0.1) {
-  setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 × √(R² - D²).');
+ setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 × √(R² - D²).');
  } else {
-  setFeedback(`Incorrect. Hint: Half the chord forms a right triangle with the radius and the distance D.`);
+ setFeedback(`Incorrect. Hint: Half the chord forms a right triangle with the radius and the distance D.`);
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m10chordbisectors_lab_m10_chord_bisectors')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m10chordbisectors_lab_m10_chord_bisectors')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m10chordbisectors_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m10chordbisectors_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
-  {/* Left Column: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <BookOpen className="w-5 h-5 text-blue-600" />
-   
-                        {t('lab.m10chordbisectors_theory_concepts')}
-                        </h2>
-   <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
-   <p>
-    A <strong>{t('lab.m10chordbisectors_chord')}</strong>  {t('lab.m10chordbisectors_is_a_line_segment_whose_endpoi')}
-                            </p>
-   <p>
-    A <strong>{t('lab.m10chordbisectors_perpendicular_bisector')}</strong>  {t('lab.m10chordbisectors_of_a_chord_is_a_line_that_divi')}
-                            </p>
-   <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.m10chordbisectors_key_theorem')}</h3>
-    <p className="text-indigo-700">
-    
-                                 {t('lab.m10chordbisectors_the_perpendicular_bisector_of_')}
-                                 </p>
-   </div>
-   <p>
-    
-                             {t('lab.m10chordbisectors_consequently_if_you_draw_a_lin')}
-                            </p>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m10chordbisectors_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m10chordbisectors_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
+ {/* Left Column: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <BookOpen className="w-5 h-5 text-blue-600" />
+ 
+ {t('lab.m10chordbisectors_theory_concepts')}
+ </h2>
+ <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
+ <p>
+ A <strong>{t('lab.m10chordbisectors_chord')}</strong> {t('lab.m10chordbisectors_is_a_line_segment_whose_endpoi')}
+ </p>
+ <p>
+ A <strong>{t('lab.m10chordbisectors_perpendicular_bisector')}</strong> {t('lab.m10chordbisectors_of_a_chord_is_a_line_that_divi')}
+ </p>
+ <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
+ <h3 className="font-semibold text-indigo-800 mb-2 dark:text-[#ffffff]">{t('lab.m10chordbisectors_key_theorem')}</h3>
+ <p className="text-indigo-700">
+ 
+ {t('lab.m10chordbisectors_the_perpendicular_bisector_of_')}
+ </p>
+ </div>
+ <p>
+ 
+ {t('lab.m10chordbisectors_consequently_if_you_draw_a_lin')}
+ </p>
+ </div>
+ </div>
 
-  {/* Middle Column: Interactive Lab */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] overflow- relative flex flex-col lg:h-[500px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <div className={`p-4 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-center">{t('lab.m10chordbisectors_interactive_canvas')}</h3>
-   <p className="text-xs text-slate-500 dark:text-[#71717a] text-center">{t('lab.m10chordbisectors_drag_points_a_b_and_c_along_th')}</p>
-   </div>
-   <div className="flex-1 min-w-0 relative">
-   <svg 
-    ref={svgRef} 
-    className="w-full h-full touch-none" 
-    viewBox="0 0 500 500"
-    onPointerMove={handlePointerMove} 
-    onPointerUp={handlePointerUp} 
-    onPointerLeave={handlePointerUp}
-   >
-    <circle cx={origin.x} cy={origin.y} r={R} fill="none" stroke="#94a3b8" strokeWidth="2" />
-    <circle cx={origin.x} cy={origin.y} r={4} fill="#475569" />
-    <text x={origin.x + 8} y={origin.y + 16} fontSize="12" fill="#475569" fontWeight="bold">{t('lab.m10chordbisectors_center')}</text>
+ {/* Middle Column: Interactive Lab */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex flex-col lg:h-[500px] 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <div className={`p-4 bg-slate-50 dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] text-center">{t('lab.m10chordbisectors_interactive_canvas')}</h3>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] text-center">{t('lab.m10chordbisectors_drag_points_a_b_and_c_along_th')}</p>
+ </div>
+ <div className="flex-1 min-w-0 relative">
+ <svg 
+ ref={svgRef} 
+ className="w-full h-full touch-none" 
+ viewBox="0 0 500 500"
+ onPointerMove={handlePointerMove} 
+ onPointerUp={handlePointerUp} 
+ onPointerLeave={handlePointerUp}
+ >
+ <circle cx={origin.x} cy={origin.y} r={R} fill="none" stroke="#94a3b8" strokeWidth="2" />
+ <circle cx={origin.x} cy={origin.y} r={4} fill="#475569" />
+ <text x={origin.x + 8} y={origin.y + 16} fontSize="12" fill="#475569" fontWeight="bold">{t('lab.m10chordbisectors_center')}</text>
 
-    {/* Chords */}
-    <line x1={ptA.x} y1={ptA.y} x2={ptB.x} y2={ptB.y} stroke="#ef4444" strokeWidth="3" />
-    <line x1={ptB.x} y1={ptB.y} x2={ptC.x} y2={ptC.y} stroke="#3b82f6" strokeWidth="3" />
-    <line x1={ptC.x} y1={ptC.y} x2={ptA.x} y2={ptA.y} stroke="#22c55e" strokeWidth="3" />
+ {/* Chords */}
+ <line x1={ptA.x} y1={ptA.y} x2={ptB.x} y2={ptB.y} stroke="#ef4444" strokeWidth="3" />
+ <line x1={ptB.x} y1={ptB.y} x2={ptC.x} y2={ptC.y} stroke="#3b82f6" strokeWidth="3" />
+ <line x1={ptC.x} y1={ptC.y} x2={ptA.x} y2={ptA.y} stroke="#22c55e" strokeWidth="3" />
 
-    {/* Perpendicular Bisectors */}
-    {drawBisector(ptA, ptB, "#ef4444")}
-    {drawBisector(ptB, ptC, "#3b82f6")}
-    {drawBisector(ptC, ptA, "#22c55e")}
+ {/* Perpendicular Bisectors */}
+ {drawBisector(ptA, ptB, "#ef4444")}
+ {drawBisector(ptB, ptC, "#3b82f6")}
+ {drawBisector(ptC, ptA, "#22c55e")}
 
-    {/* Draggable Points */}
-    <g className="cursor-pointer" onPointerDown={() => handlePointerDown('A')}>
-    <circle cx={ptA.x} cy={ptA.y} r={10} fill="#ef4444" opacity="0.8" />
-    <text x={ptA.x + 12} y={ptA.y - 12} fontSize="14" fill="#ef4444" fontWeight="bold">A</text>
-    </g>
-    <g className="cursor-pointer" onPointerDown={() => handlePointerDown('B')}>
-    <circle cx={ptB.x} cy={ptB.y} r={10} fill="#3b82f6" opacity="0.8" />
-    <text x={ptB.x + 12} y={ptB.y - 12} fontSize="14" fill="#3b82f6" fontWeight="bold">B</text>
-    </g>
-    <g className="cursor-pointer" onPointerDown={() => handlePointerDown('C')}>
-    <circle cx={ptC.x} cy={ptC.y} r={10} fill="#22c55e" opacity="0.8" />
-    <text x={ptC.x + 12} y={ptC.y - 12} fontSize="14" fill="#22c55e" fontWeight="bold">C</text>
-    </g>
-   </svg>
-   <div className="absolute bottom-2 left-2 right-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-2 rounded text-xs border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] text-center text-slate-700 dark:text-[#ffffff] shadow-sm pointer-events-none ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    
-                             {t('lab.m10chordbisectors_notice_how_the_perpendicular_b')}
-                            </div>
-   </div>
-  </div>
+ {/* Draggable Points */}
+ <g className="cursor-pointer" onPointerDown={() => handlePointerDown('A')}>
+ <circle cx={ptA.x} cy={ptA.y} r={10} fill="#ef4444" opacity="0.8" />
+ <text x={ptA.x + 12} y={ptA.y - 12} fontSize="14" fill="#ef4444" fontWeight="bold">A</text>
+ </g>
+ <g className="cursor-pointer" onPointerDown={() => handlePointerDown('B')}>
+ <circle cx={ptB.x} cy={ptB.y} r={10} fill="#3b82f6" opacity="0.8" />
+ <text x={ptB.x + 12} y={ptB.y - 12} fontSize="14" fill="#3b82f6" fontWeight="bold">B</text>
+ </g>
+ <g className="cursor-pointer" onPointerDown={() => handlePointerDown('C')}>
+ <circle cx={ptC.x} cy={ptC.y} r={10} fill="#22c55e" opacity="0.8" />
+ <text x={ptC.x + 12} y={ptC.y - 12} fontSize="14" fill="#22c55e" fontWeight="bold">C</text>
+ </g>
+ </svg>
+ <div className="absolute bottom-2 left-2 right-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-2 rounded text-xs border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] text-center text-slate-700 dark:text-[#ffffff] shadow-sm pointer-events-none ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ 
+ {t('lab.m10chordbisectors_notice_how_the_perpendicular_b')}
+ </div>
+ </div>
+ </div>
 
-  {/* Right Column: Assessment */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center justify-between mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <CheckCircle className="w-5 h-5 text-green-600" />
-    
-                             {t('lab.m10chordbisectors_assessment')}
-                            </h2>
-   <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title={t('lab.m10chordbisectors_new_question')}>
-    <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
-   </button>
-   </div>
-   
-   <div className="space-y-4">
-   <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3 leading-relaxed">
-    
-                                 {t('lab.m10chordbisectors_a_circle_has_a_radius_of')} <strong className="text-slate-900 dark:text-[#ffffff]">{triples[quizIdx].R} cm</strong>{t('lab.m10chordbisectors_a_chord_is_drawn_at_a_perpendi')} <strong className="text-slate-900 dark:text-[#ffffff]">{triples[quizIdx].D} cm</strong>  {t('lab.m10chordbisectors_from_the_center')}
-                                 </p>
-    <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-2">
-    
-                                 {t('lab.m10chordbisectors_what_is_the_total_length_of_th')}
-                                 </p>
-    <div className="flex items-center gap-2">
-    <input 
-     type="number" 
-     value={ans}
-     onChange={(e) => setAns(e.target.value)}
-     className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-     placeholder={t('lab.m10chordbisectors_e_g_10')}
-    />
-    <span className="text-sm text-slate-500 dark:text-[#71717a]">cm</span>
-    </div>
-    <button 
-    onClick={handleCheckQuiz}
-    className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.m10chordbisectors_check_answer')}
-                                 </button>
-   </div>
-   
-   {feedback && (
-    <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
-    {feedback}
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ {/* Right Column: Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center justify-between mb-4">
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <CheckCircle className="w-5 h-5 text-green-600" />
+ 
+ {t('lab.m10chordbisectors_assessment')}
+ </h2>
+ <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title={t('lab.m10chordbisectors_new_question')}>
+ <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
+ </button>
+ </div>
+ 
+ <div className="space-y-4">
+ <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3 leading-relaxed">
+ 
+ {t('lab.m10chordbisectors_a_circle_has_a_radius_of')} <strong className="text-slate-900 dark:text-[#ffffff]">{triples[quizIdx].R} cm</strong>{t('lab.m10chordbisectors_a_chord_is_drawn_at_a_perpendi')} <strong className="text-slate-900 dark:text-[#ffffff]">{triples[quizIdx].D} cm</strong> {t('lab.m10chordbisectors_from_the_center')}
+ </p>
+ <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-2">
+ 
+ {t('lab.m10chordbisectors_what_is_the_total_length_of_th')}
+ </p>
+ <div className="flex items-center gap-2">
+ <input 
+ type="number" 
+ value={ans}
+ onChange={(e) => setAns(e.target.value)}
+ className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+ placeholder={t('lab.m10chordbisectors_e_g_10')}
+ />
+ <span className="text-sm text-slate-500 dark:text-[#71717a]">cm</span>
+ </div>
+ <button 
+ onClick={handleCheckQuiz}
+ className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.m10chordbisectors_check_answer')}
+ </button>
+ </div>
+ 
+ {feedback && (
+ <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+ {feedback}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

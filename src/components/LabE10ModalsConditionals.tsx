@@ -239,7 +239,7 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
   </section>
 
   {/* Window 3: Simulation (Logic Engine) */}
-  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative min-h-0 overflow-y-auto p-4 md:p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`w-full max-w-xl flex-col h-full rounded-2xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] p-6 overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#2a2a2a] shrink-0">
     <div className="p-2 bg-blue-100 dark:bg-blue-900/50 text-[#4158D1] dark:text-blue-400 rounded-lg">

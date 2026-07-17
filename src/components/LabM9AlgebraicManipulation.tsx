@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'poly' | 'optics'>('poly');
@@ -27,11 +27,11 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
 
  const handleRecord = () => {
  if (mode === 'poly') {
-  const area = (xVal + aVal) * (xVal + bVal);
-  setLogs([{ mode: 'poly', input: `x=${xVal}, a=${aVal}, b=${bVal}`, res: `Area = ${area}` }, ...logs]);
+ const area = (xVal + aVal) * (xVal + bVal);
+ setLogs([{ mode: 'poly', input: `x=${xVal}, a=${aVal}, b=${bVal}`, res: `Area = ${area}` }, ...logs]);
  } else {
-  const focal = (uVal * vVal) / (uVal + vVal);
-  setLogs([{ mode: 'optics', input: `u=${uVal}, v=${vVal}`, res: `f = ${focal.toFixed(2)}` }, ...logs]);
+ const focal = (uVal * vVal) / (uVal + vVal);
+ setLogs([{ mode: 'optics', input: `u=${uVal}, v=${vVal}`, res: `f = ${focal.toFixed(2)}` }, ...logs]);
  }
  };
 
@@ -59,18 +59,18 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
  const correctX = qPolyA + qPolyB;
  const correctC = qPolyA * qPolyB;
  if (parseInt(ansPolyX) === correctX && parseInt(ansPolyC) === correctC) {
-  setStatusPoly(true);
+ setStatusPoly(true);
  } else {
-  setStatusPoly(false);
+ setStatusPoly(false);
  }
  };
 
  const checkOptics = () => {
  const correctF = (qOpticsU * qOpticsV) / (qOpticsU + qOpticsV);
  if (Math.abs(parseFloat(ansOpticsF) - correctF) < 0.2) {
-  setStatusOptics(true);
+ setStatusOptics(true);
  } else {
-  setStatusOptics(false);
+ setStatusOptics(false);
  }
  };
 
@@ -81,275 +81,275 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
  const objX = 150 - uVal * 3;
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m9algebraicmanipulation_virtual_lab_algebraic_manipula')} />
-  
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m9algebraicmanipulation_virtual_lab_algebraic_manipula')} />
+ 
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m9algebraicmanipulation_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m9algebraicmanipulation_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  {/* Column 1: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
-   <BookOpen className="mr-2" />  {t('lab.m9algebraicmanipulation_theory_context')}
-                        </h2>
-   
-   <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0 flex-col `}>
-   <button
-    className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('poly')}
-   >
-    
-                             {t('lab.m9algebraicmanipulation_polynomials')}
-                            </button>
-   <button
-    className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setMode('optics')}
-   >
-    
-                             {t('lab.m9algebraicmanipulation_optics_lcm')}
-                            </button>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m9algebraicmanipulation_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m9algebraicmanipulation_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
+ <BookOpen className="mr-2" /> {t('lab.m9algebraicmanipulation_theory_context')}
+ </h2>
+ 
+ <div className={`flex bg-slate-100 dark:bg-[#121212] p-1 rounded-lg mb-6 shrink-0 flex-col `}>
+ <button
+ className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('poly')}
+ >
+ 
+ {t('lab.m9algebraicmanipulation_polynomials')}
+ </button>
+ <button
+ className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-slate-50 dark:bg-[#121212] shadow text-indigo-700' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setMode('optics')}
+ >
+ 
+ {t('lab.m9algebraicmanipulation_optics_lcm')}
+ </button>
+ </div>
 
-   <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
-   {mode === 'poly' ? (
-    <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_area_model_for_binomials')}</h3>
-    <p>{t('lab.m9algebraicmanipulation_to_multiply_two_binomials_like')} <strong>{t('lab.m9algebraicmanipulation_x_a_x_b')}</strong>{t('lab.m9algebraicmanipulation_we_can_use_an_area_model')}</p>
-    <p>{t('lab.m9algebraicmanipulation_imagine_a_rectangle_with_width')} <code>{t('lab.m9algebraicmanipulation_x_a')}</code>  {t('lab.m9algebraicmanipulation_and_height')} <code>{t('lab.m9algebraicmanipulation_x_b')}</code>{t('lab.m9algebraicmanipulation_the_total_area_is_the_sum_of_f')}</p>
-    <ul className="list-disc pl-5 space-y-1">
-     <li><strong>{t('lab.m9algebraicmanipulation_x_x_x')}</strong></li>
-     <li><strong>{t('lab.m9algebraicmanipulation_a_x_ax')}</strong></li>
-     <li><strong>{t('lab.m9algebraicmanipulation_x_b_bx')}</strong></li>
-     <li><strong>{t('lab.m9algebraicmanipulation_a_b_ab')}</strong></li>
-    </ul>
-    <p>{t('lab.m9algebraicmanipulation_adding_them_up_gives_the_expan')} <code>{t('lab.m9algebraicmanipulation_x_a_b_x_ab')}</code>.</p>
-    </>
-   ) : (
-    <>
-    <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_algebraic_fractions_in_optics')}</h3>
-    <p>{t('lab.m9algebraicmanipulation_the_thin_lens_equation_relates')} <code>u</code>{t('lab.m9algebraicmanipulation_image_distance')} <code>v</code>{t('lab.m9algebraicmanipulation_and_focal_length')} <code>f</code>:</p>
-    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono text-lg my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-     
-                                          {t('lab.m9algebraicmanipulation_1_f_1_u_1_v')}
-                                         </div>
-    <p>{t('lab.m9algebraicmanipulation_to_find_the_focal_length')} <code>f</code>{t('lab.m9algebraicmanipulation_we_find_the_lowest_common_mult')}</p>
-    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
-     
-                                          {t('lab.m9algebraicmanipulation_1_f_v_u_uv')}
-                                         </div>
-    <p>{t('lab.m9algebraicmanipulation_taking_the_reciprocal_gives')} <code>{t('lab.m9algebraicmanipulation_f_uv_u_v')}</code>{t('lab.m9algebraicmanipulation_this_demonstrates_how_algebrai')}</p>
-    </>
-   )}
-   </div>
-  </div>
+ <div className={`flex-1 min-w-0 lg:overflow-y-auto pr-2 prose prose-sm text-slate-700 dark:text-[#ffffff] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
+ {mode === 'poly' ? (
+ <>
+ <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_area_model_for_binomials')}</h3>
+ <p>{t('lab.m9algebraicmanipulation_to_multiply_two_binomials_like')} <strong>{t('lab.m9algebraicmanipulation_x_a_x_b')}</strong>{t('lab.m9algebraicmanipulation_we_can_use_an_area_model')}</p>
+ <p>{t('lab.m9algebraicmanipulation_imagine_a_rectangle_with_width')} <code>{t('lab.m9algebraicmanipulation_x_a')}</code> {t('lab.m9algebraicmanipulation_and_height')} <code>{t('lab.m9algebraicmanipulation_x_b')}</code>{t('lab.m9algebraicmanipulation_the_total_area_is_the_sum_of_f')}</p>
+ <ul className="list-disc pl-5 space-y-1">
+ <li><strong>{t('lab.m9algebraicmanipulation_x_x_x')}</strong></li>
+ <li><strong>{t('lab.m9algebraicmanipulation_a_x_ax')}</strong></li>
+ <li><strong>{t('lab.m9algebraicmanipulation_x_b_bx')}</strong></li>
+ <li><strong>{t('lab.m9algebraicmanipulation_a_b_ab')}</strong></li>
+ </ul>
+ <p>{t('lab.m9algebraicmanipulation_adding_them_up_gives_the_expan')} <code>{t('lab.m9algebraicmanipulation_x_a_b_x_ab')}</code>.</p>
+ </>
+ ) : (
+ <>
+ <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_algebraic_fractions_in_optics')}</h3>
+ <p>{t('lab.m9algebraicmanipulation_the_thin_lens_equation_relates')} <code>u</code>{t('lab.m9algebraicmanipulation_image_distance')} <code>v</code>{t('lab.m9algebraicmanipulation_and_focal_length')} <code>f</code>:</p>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono text-lg my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
+ 
+ {t('lab.m9algebraicmanipulation_1_f_1_u_1_v')}
+ </div>
+ <p>{t('lab.m9algebraicmanipulation_to_find_the_focal_length')} <code>f</code>{t('lab.m9algebraicmanipulation_we_find_the_lowest_common_mult')}</p>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded text-center font-mono my-2 border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
+ 
+ {t('lab.m9algebraicmanipulation_1_f_v_u_uv')}
+ </div>
+ <p>{t('lab.m9algebraicmanipulation_taking_the_reciprocal_gives')} <code>{t('lab.m9algebraicmanipulation_f_uv_u_v')}</code>{t('lab.m9algebraicmanipulation_this_demonstrates_how_algebrai')}</p>
+ </>
+ )}
+ </div>
+ </div>
 
-  {/* Column 2: Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
-   <Activity className="mr-2" />  {t('lab.m9algebraicmanipulation_interactive_simulator')}
-                        </h2>
+ {/* Column 2: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
+ <Activity className="mr-2" /> {t('lab.m9algebraicmanipulation_interactive_simulator')}
+ </h2>
 
-   <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-1 flex-col mb-4 min-h-[300px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   {mode === 'poly' ? (
-    <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
-    <svg width="250" height="250" viewBox="0 0 250 250" className="drop-shadow-md">
-     <rect x="10" y="10" width={xVal*10} height={xVal*10} fill="#3b82f6" opacity="0.8" stroke="#1e40af" strokeWidth="2" />
-     <text x={10 + xVal*5} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">x²</text>
-     
-     <rect x={10 + xVal*10} y="10" width={aVal*20} height={xVal*10} fill="#10b981" opacity="0.8" stroke="#047857" strokeWidth="2" />
-     <text x={10 + xVal*10 + aVal*10} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{aVal}x</text>
+ <div className={`bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 flex-1 flex-col mb-4 min-h-[300px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {mode === 'poly' ? (
+ <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
+ <svg width="250" height="250" viewBox="0 0 250 250" className="drop-shadow-md">
+ <rect x="10" y="10" width={xVal*10} height={xVal*10} fill="#3b82f6" opacity="0.8" stroke="#1e40af" strokeWidth="2" />
+ <text x={10 + xVal*5} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">x²</text>
+ 
+ <rect x={10 + xVal*10} y="10" width={aVal*20} height={xVal*10} fill="#10b981" opacity="0.8" stroke="#047857" strokeWidth="2" />
+ <text x={10 + xVal*10 + aVal*10} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{aVal}x</text>
 
-     <rect x="10" y={10 + xVal*10} width={xVal*10} height={bVal*20} fill="#f59e0b" opacity="0.8" stroke="#b45309" strokeWidth="2" />
-     <text x={10 + xVal*5} y={10 + xVal*10 + bVal*10} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{bVal}x</text>
+ <rect x="10" y={10 + xVal*10} width={xVal*10} height={bVal*20} fill="#f59e0b" opacity="0.8" stroke="#b45309" strokeWidth="2" />
+ <text x={10 + xVal*5} y={10 + xVal*10 + bVal*10} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{bVal}x</text>
 
-     <rect x={10 + xVal*10} y={10 + xVal*10} width={aVal*20} height={bVal*20} fill="#ef4444" opacity="0.8" stroke="#b91c1c" strokeWidth="2" />
-     <text x={10 + xVal*10 + aVal*10} y={10 + xVal*10 + bVal*10} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{aVal*bVal}</text>
-    </svg>
-    </div>
-   ) : (
-    <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
-    <svg width="100%" height="200" viewBox="0 0 300 200" className="bg-blue-50/50 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-     <line x1="0" y1="100" x2="300" y2="100" stroke="#94a3b8" strokeDasharray="4" />
-     <ellipse cx="150" cy="100" rx="5" ry="50" fill="#38bdf8" opacity="0.5" stroke="#0284c7" />
-     
-     <circle cx={150 - f*3} cy="100" r="3" fill="#ef4444" />
-     <text x={150 - f*3 - 5} y="115" fontSize="10" fill="#ef4444">F</text>
-     <circle cx={150 + f*3} cy="100" r="3" fill="#ef4444" />
-     <text x={150 + f*3 - 5} y="115" fontSize="10" fill="#ef4444">F</text>
+ <rect x={10 + xVal*10} y={10 + xVal*10} width={aVal*20} height={bVal*20} fill="#ef4444" opacity="0.8" stroke="#b91c1c" strokeWidth="2" />
+ <text x={10 + xVal*10 + aVal*10} y={10 + xVal*10 + bVal*10} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{aVal*bVal}</text>
+ </svg>
+ </div>
+ ) : (
+ <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative">
+ <svg width="100%" height="200" viewBox="0 0 300 200" className="bg-blue-50/50 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+ <line x1="0" y1="100" x2="300" y2="100" stroke="#94a3b8" strokeDasharray="4" />
+ <ellipse cx="150" cy="100" rx="5" ry="50" fill="#38bdf8" opacity="0.5" stroke="#0284c7" />
+ 
+ <circle cx={150 - f*3} cy="100" r="3" fill="#ef4444" />
+ <text x={150 - f*3 - 5} y="115" fontSize="10" fill="#ef4444">F</text>
+ <circle cx={150 + f*3} cy="100" r="3" fill="#ef4444" />
+ <text x={150 + f*3 - 5} y="115" fontSize="10" fill="#ef4444">F</text>
 
-     <line x1={objX} y1="100" x2={objX} y2="60" stroke="#16a34a" strokeWidth="3" />
-     <polygon points={`${objX-4},60 ${objX+4},60 ${objX},52`} fill="#16a34a" />
-     <text x={objX - 10} y="45" fontSize="10" fill="#16a34a">{t('lab.m9algebraicmanipulation_obj')}</text>
+ <line x1={objX} y1="100" x2={objX} y2="60" stroke="#16a34a" strokeWidth="3" />
+ <polygon points={`${objX-4},60 ${objX+4},60 ${objX},52`} fill="#16a34a" />
+ <text x={objX - 10} y="45" fontSize="10" fill="#16a34a">{t('lab.m9algebraicmanipulation_obj')}</text>
 
-     <line x1={imgX} y1="100" x2={imgX} y2={imgY} stroke="#eab308" strokeWidth="3" />
-     <polygon points={`${imgX-4},${imgY} ${imgX+4},${imgY} ${imgX},${imgY+8}`} fill="#eab308" />
-     <text x={imgX - 10} y={imgY + 20} fontSize="10" fill="#eab308">{t('lab.m9algebraicmanipulation_img')}</text>
+ <line x1={imgX} y1="100" x2={imgX} y2={imgY} stroke="#eab308" strokeWidth="3" />
+ <polygon points={`${imgX-4},${imgY} ${imgX+4},${imgY} ${imgX},${imgY+8}`} fill="#eab308" />
+ <text x={imgX - 10} y={imgY + 20} fontSize="10" fill="#eab308">{t('lab.m9algebraicmanipulation_img')}</text>
 
-     <path d={`M ${objX} 60 L 150 60 L ${imgX} ${imgY}`} stroke="#ef4444" fill="none" strokeWidth="1.5" opacity="0.7" />
-     <path d={`M ${objX} 60 L 150 100 L ${imgX} ${imgY}`} stroke="#3b82f6" fill="none" strokeWidth="1.5" opacity="0.7" />
-    </svg>
-    <div className="absolute top-2 right-2 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-[#1c1b1b]">
-     
-                                          {t('lab.m9algebraicmanipulation_f')} {f.toFixed(2)} cm
-    </div>
-    </div>
-   )}
-   </div>
+ <path d={`M ${objX} 60 L 150 60 L ${imgX} ${imgY}`} stroke="#ef4444" fill="none" strokeWidth="1.5" opacity="0.7" />
+ <path d={`M ${objX} 60 L 150 100 L ${imgX} ${imgY}`} stroke="#3b82f6" fill="none" strokeWidth="1.5" opacity="0.7" />
+ </svg>
+ <div className="absolute top-2 right-2 bg-slate-50 dark:bg-[#121212]/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200 dark:border-[#1c1b1b]">
+ 
+ {t('lab.m9algebraicmanipulation_f')} {f.toFixed(2)} cm
+ </div>
+ </div>
+ )}
+ </div>
 
-   <div className="space-y-3">
-   {mode === 'poly' ? (
-    <>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_base_x')}</label>
-     <input type="range" min="3" max="10" value={xVal} onChange={(e) => setXVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
-     <span className="w-8 text-right font-mono">{xVal}</span>
-    </div>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_value_a')}</label>
-     <input type="range" min="1" max="5" value={aVal} onChange={(e) => setAVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
-     <span className="w-8 text-right font-mono">{aVal}</span>
-    </div>
-    <div className="flex items-center gap-4">
-     <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_value_b')}</label>
-     <input type="range" min="1" max="5" value={bVal} onChange={(e) => setBVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
-     <span className="w-8 text-right font-mono">{bVal}</span>
-    </div>
-    </>
-   ) : (
-    <>
-    <div className="flex items-center gap-4">
-     <label className="w-32 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_obj_dist_u')}</label>
-     <input type="range" min="10" max="40" value={uVal} onChange={(e) => setUVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
-     <span className="w-12 text-right font-mono">{uVal}</span>
-    </div>
-    <div className="flex items-center gap-4">
-     <label className="w-32 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_img_dist_v')}</label>
-     <input type="range" min="10" max="40" value={vVal} onChange={(e) => setVVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
-     <span className="w-12 text-right font-mono">{vVal}</span>
-    </div>
-    </>
-   )}
-   <button 
-    onClick={handleRecord}
-    className="w-full mt-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-   >
-    
-                             {t('lab.m9algebraicmanipulation_record_data')}
-                            </button>
-   </div>
-  </div>
+ <div className="space-y-3">
+ {mode === 'poly' ? (
+ <>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_base_x')}</label>
+ <input type="range" min="3" max="10" value={xVal} onChange={(e) => setXVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
+ <span className="w-8 text-right font-mono">{xVal}</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_value_a')}</label>
+ <input type="range" min="1" max="5" value={aVal} onChange={(e) => setAVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
+ <span className="w-8 text-right font-mono">{aVal}</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <label className="w-24 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_value_b')}</label>
+ <input type="range" min="1" max="5" value={bVal} onChange={(e) => setBVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
+ <span className="w-8 text-right font-mono">{bVal}</span>
+ </div>
+ </>
+ ) : (
+ <>
+ <div className="flex items-center gap-4">
+ <label className="w-32 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_obj_dist_u')}</label>
+ <input type="range" min="10" max="40" value={uVal} onChange={(e) => setUVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
+ <span className="w-12 text-right font-mono">{uVal}</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <label className="w-32 text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m9algebraicmanipulation_img_dist_v')}</label>
+ <input type="range" min="10" max="40" value={vVal} onChange={(e) => setVVal(Number(e.target.value))} className="flex-1 min-w-0 accent-indigo-600" />
+ <span className="w-12 text-right font-mono">{vVal}</span>
+ </div>
+ </>
+ )}
+ <button 
+ onClick={handleRecord}
+ className="w-full mt-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ 
+ {t('lab.m9algebraicmanipulation_record_data')}
+ </button>
+ </div>
+ </div>
 
-  {/* Column 3: Analysis */}
-  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
-   <TableIcon className="mr-2" />  {t('lab.m9algebraicmanipulation_analysis_data')}
-                        </h2>
+ {/* Column 3: Analysis */}
+ <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex-col border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
+ <TableIcon className="mr-2" /> {t('lab.m9algebraicmanipulation_analysis_data')}
+ </h2>
 
-   <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
-   <table className="w-full text-sm text-left">
-    <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
-    <tr>
-     <th className="pb-2">{t('lab.m9algebraicmanipulation_type')}</th>
-     <th className="pb-2">{t('lab.m9algebraicmanipulation_inputs')}</th>
-     <th className="pb-2">{t('lab.m9algebraicmanipulation_result')}</th>
-    </tr>
-    </thead>
-    <tbody className="divide-y divide-slate-100 font-mono text-xs">
-    {logs.length === 0 ? (
-     <tr><td colSpan={3} className="py-4 text-center text-slate-400">{t('lab.m9algebraicmanipulation_no_data_recorded')}</td></tr>
-    ) : (
-     logs.map((log, i) => (
-     <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
-      <td className="py-2">{log.mode}</td>
-      <td className="py-2">{log.input}</td>
-      <td className="py-2 font-semibold text-indigo-600">{log.res}</td>
-     </tr>
-     ))
-    )}
-    </tbody>
-   </table>
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3 mb-6 h-48 lg:overflow-y-auto">
+ <table className="w-full text-sm text-left">
+ <thead className="sticky top-0 bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-semibold border-b border-slate-200 dark:border-[#1c1b1b]">
+ <tr>
+ <th className="pb-2">{t('lab.m9algebraicmanipulation_type')}</th>
+ <th className="pb-2">{t('lab.m9algebraicmanipulation_inputs')}</th>
+ <th className="pb-2">{t('lab.m9algebraicmanipulation_result')}</th>
+ </tr>
+ </thead>
+ <tbody className="divide-y divide-slate-100 font-mono text-xs">
+ {logs.length === 0 ? (
+ <tr><td colSpan={3} className="py-4 text-center text-slate-400">{t('lab.m9algebraicmanipulation_no_data_recorded')}</td></tr>
+ ) : (
+ logs.map((log, i) => (
+ <tr key={i} className="hover:bg-slate-100 dark:bg-[#121212] transition">
+ <td className="py-2">{log.mode}</td>
+ <td className="py-2">{log.input}</td>
+ <td className="py-2 font-semibold text-indigo-600">{log.res}</td>
+ </tr>
+ ))
+ )}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.m9algebraicmanipulation_knowledge_check')}</h3>
-   
-   {mode === 'poly' ? (
-    <div className="space-y-4">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     
-                                      {t('lab.m9algebraicmanipulation_expand')} <code className="font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded dark:bg-[#121212] dark:border-[#1c1b1b]">{t('lab.m9algebraicmanipulation_x')} {qPolyA}{t('lab.m9algebraicmanipulation_x_1')} {qPolyB})</code>
-    </p>
-    <div className="flex items-center gap-2">
-     <span>{t('lab.m9algebraicmanipulation_x_2')} </span>
-     <input 
-     type="number" 
-     value={ansPolyX} 
-     onChange={(e) => setAnsPolyX(e.target.value)}
-     className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
-     />
-     <span>{t('lab.m9algebraicmanipulation_x_3')} </span>
-     <input 
-     type="number" 
-     value={ansPolyC} 
-     onChange={(e) => setAnsPolyC(e.target.value)}
-     className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
-     />
-    </div>
-    <div className="flex items-center gap-4 mt-4">
-     <button onClick={checkPoly} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     
-                                          {t('lab.m9algebraicmanipulation_verify')}
-                                          </button>
-     {statusPoly === true && <CheckCircle2 className="text-emerald-500" />}
-     {statusPoly === false && <XCircle className="text-red-500" />}
-    </div>
-    </div>
-   ) : (
-    <div className="space-y-4">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff]">
-     
-                                          {t('lab.m9algebraicmanipulation_given_u')} {qOpticsU}  {t('lab.m9algebraicmanipulation_cm_v')} {qOpticsV}  {t('lab.m9algebraicmanipulation_cm')} <br/>
-     
-                                          {t('lab.m9algebraicmanipulation_find_focal_length_f_2_decimal_')}
-                                         </p>
-    <div className="flex items-center gap-2">
-     <span>{t('lab.m9algebraicmanipulation_f')} </span>
-     <input 
-     type="number" 
-     value={ansOpticsF} 
-     onChange={(e) => setAnsOpticsF(e.target.value)}
-     className="w-24 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-indigo-500 outline-none"
-     placeholder="0.00"
-     />
-     <span>cm</span>
-    </div>
-    <div className="flex items-center gap-4 mt-4">
-     <button onClick={checkOptics} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-     
-                                              {t('lab.m9algebraicmanipulation_verify')}
-                                              </button>
-     {statusOptics === true && <CheckCircle2 className="text-emerald-500" />}
-     {statusOptics === false && <XCircle className="text-red-500" />}
-    </div>
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ <div className="flex-1 min-w-0 border-t border-slate-200 dark:border-[#1c1b1b] pt-4">
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.m9algebraicmanipulation_knowledge_check')}</h3>
+ 
+ {mode === 'poly' ? (
+ <div className="space-y-4">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m9algebraicmanipulation_expand')} <code className="font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded dark:bg-[#121212] dark:border-[#1c1b1b]">{t('lab.m9algebraicmanipulation_x')} {qPolyA}{t('lab.m9algebraicmanipulation_x_1')} {qPolyB})</code>
+ </p>
+ <div className="flex items-center gap-2">
+ <span>{t('lab.m9algebraicmanipulation_x_2')} </span>
+ <input 
+ type="number" 
+ value={ansPolyX} 
+ onChange={(e) => setAnsPolyX(e.target.value)}
+ className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
+ />
+ <span>{t('lab.m9algebraicmanipulation_x_3')} </span>
+ <input 
+ type="number" 
+ value={ansPolyC} 
+ onChange={(e) => setAnsPolyC(e.target.value)}
+ className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 text-center focus:ring-2 focus:ring-indigo-500 outline-none"
+ />
+ </div>
+ <div className="flex items-center gap-4 mt-4">
+ <button onClick={checkPoly} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
+ 
+ {t('lab.m9algebraicmanipulation_verify')}
+ </button>
+ {statusPoly === true && <CheckCircle2 className="text-emerald-500" />}
+ {statusPoly === false && <XCircle className="text-red-500" />}
+ </div>
+ </div>
+ ) : (
+ <div className="space-y-4">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m9algebraicmanipulation_given_u')} {qOpticsU} {t('lab.m9algebraicmanipulation_cm_v')} {qOpticsV} {t('lab.m9algebraicmanipulation_cm')} <br/>
+ 
+ {t('lab.m9algebraicmanipulation_find_focal_length_f_2_decimal_')}
+ </p>
+ <div className="flex items-center gap-2">
+ <span>{t('lab.m9algebraicmanipulation_f')} </span>
+ <input 
+ type="number" 
+ value={ansOpticsF} 
+ onChange={(e) => setAnsOpticsF(e.target.value)}
+ className="w-24 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-indigo-500 outline-none"
+ placeholder="0.00"
+ />
+ <span>cm</span>
+ </div>
+ <div className="flex items-center gap-4 mt-4">
+ <button onClick={checkOptics} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
+ 
+ {t('lab.m9algebraicmanipulation_verify')}
+ </button>
+ {statusOptics === true && <CheckCircle2 className="text-emerald-500" />}
+ {statusOptics === false && <XCircle className="text-red-500" />}
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

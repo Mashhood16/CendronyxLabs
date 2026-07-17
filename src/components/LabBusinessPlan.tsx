@@ -37,7 +37,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
  };
 
  return (
- <div className="w-full min- lg: bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
+ <div className="w-full   bg-slate-50 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title={t('lab.businessplan_act_6_1_business_plan_drafting')} subtitle={t('lab.subtitle_draft_your_startup')} variant="dark" />
 
   <div className="flex-1 flex lg:overflow-hidden">

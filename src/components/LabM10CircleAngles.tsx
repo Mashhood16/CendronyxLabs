@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function LabM10CircleAngles({ onExit }: Props) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [mode, setMode] = useState<'cyclic' | 'segment' | 'alternate'>('cyclic');
@@ -77,11 +77,11 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  const types = ['cyclic', 'segment', 'alternate'];
  const qType = types[Math.floor(Math.random() * types.length)];
  if (qType === 'cyclic') {
-  const given = Math.floor(Math.random() * 80) + 50;
-  setQuestionParams({ type: qType, given, ans: 180 - given });
+ const given = Math.floor(Math.random() * 80) + 50;
+ setQuestionParams({ type: qType, given, ans: 180 - given });
  } else {
-  const given = Math.floor(Math.random() * 60) + 30;
-  setQuestionParams({ type: qType, given, ans: given });
+ const given = Math.floor(Math.random() * 60) + 30;
+ setQuestionParams({ type: qType, given, ans: given });
  }
  }, []);
 
@@ -90,213 +90,213 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  const checkAnswer = () => {
  const num = parseFloat(userAnswer);
  if (!isNaN(num) && Math.abs(num - questionParams.ans) < 0.1) {
-  setFeedback('correct');
+ setFeedback('correct');
  } else {
-  setFeedback('incorrect');
+ setFeedback('incorrect');
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m10circleangles_lab_circle_angles_theorems')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m10circleangles_lab_circle_angles_theorems')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m10circleangles_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m10circleangles_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
-  {/* Left Column */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  ? 'flex' : 'hidden'} lg:flex`}>
-   <div>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
-    <Info className="w-5 h-5 text-blue-500" />  {t('lab.m10circleangles_theorems')}
-                            </h2>
-   <div className="prose prose-slate text-sm space-y-3">
-    <p><strong>{t('lab.m10circleangles_1_cyclic_quadrilateral')}</strong>  {t('lab.m10circleangles_a_quadrilateral_inscribed_in_a')}</p>
-    <p><strong>{t('lab.m10circleangles_2_angles_in_same_segment')}</strong>  {t('lab.m10circleangles_angles_subtended_by_the_same_a')}</p>
-    <p><strong>{t('lab.m10circleangles_3_alternate_segment_theorem')}</strong>  {t('lab.m10circleangles_the_angle_between_a_tangent_an')}</p>
-   </div>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m10circleangles_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m10circleangles_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
+ {/* Left Column */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 ? 'flex' : 'hidden'} lg:flex`}>
+ <div>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
+ <Info className="w-5 h-5 text-blue-500" /> {t('lab.m10circleangles_theorems')}
+ </h2>
+ <div className="prose prose-slate text-sm space-y-3">
+ <p><strong>{t('lab.m10circleangles_1_cyclic_quadrilateral')}</strong> {t('lab.m10circleangles_a_quadrilateral_inscribed_in_a')}</p>
+ <p><strong>{t('lab.m10circleangles_2_angles_in_same_segment')}</strong> {t('lab.m10circleangles_angles_subtended_by_the_same_a')}</p>
+ <p><strong>{t('lab.m10circleangles_3_alternate_segment_theorem')}</strong> {t('lab.m10circleangles_the_angle_between_a_tangent_an')}</p>
+ </div>
+ </div>
 
-   <div>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Settings2 className="w-5 h-5 text-blue-500" />  {t('lab.m10circleangles_interactive_modes')}
-                            </h2>
-   
-   <div className={`flex flex-col gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-4 `}>
-    <button onClick={() => setMode('cyclic')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'cyclic' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
-    
-                                 {t('lab.m10circleangles_cyclic_quadrilateral')}
-                                 </button>
-    <button onClick={() => setMode('segment')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'segment' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
-    
-                                 {t('lab.m10circleangles_angles_in_same_segment')}
-                                 </button>
-    <button onClick={() => setMode('alternate')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'alternate' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
-    
-                                 {t('lab.m10circleangles_alternate_segment')}
-                                 </button>
-   </div>
-   
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10circleangles_drag_the_red_points_on_the_cir')}</p>
-   </div>
-  </div>
+ <div>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <Settings2 className="w-5 h-5 text-blue-500" /> {t('lab.m10circleangles_interactive_modes')}
+ </h2>
+ 
+ <div className={`flex flex-col gap-2 p-1 bg-slate-100 dark:bg-[#121212] rounded-lg mb-4 `}>
+ <button onClick={() => setMode('cyclic')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'cyclic' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
+ 
+ {t('lab.m10circleangles_cyclic_quadrilateral')}
+ </button>
+ <button onClick={() => setMode('segment')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'segment' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
+ 
+ {t('lab.m10circleangles_angles_in_same_segment')}
+ </button>
+ <button onClick={() => setMode('alternate')} className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'alternate' ? 'bg-slate-50 dark:bg-[#121212] shadow-sm text-blue-600' : 'text-slate-600 dark:text-[#ffffff] hover:text-slate-800 dark:text-slate-100'}`}>
+ 
+ {t('lab.m10circleangles_alternate_segment')}
+ </button>
+ </div>
+ 
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] italic">{t('lab.m10circleangles_drag_the_red_points_on_the_cir')}</p>
+ </div>
+ </div>
 
-  {/* Middle Column */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow- lg:min-h-[35vh] lg:min-h-[400px]  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
-   <Target className="w-5 h-5 text-indigo-500" />  {t('lab.m10circleangles_interactive_simulation')}
-                        </h2>
+ {/* Middle Column */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative lg:min-h-[35vh] lg:min-h-[400px] 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2 z-10">
+ <Target className="w-5 h-5 text-indigo-500" /> {t('lab.m10circleangles_interactive_simulation')}
+ </h2>
 
-   <svg 
-   ref={svgRef}
-   viewBox="0 0 400 400" 
-   className={`w-full max-w-[400px] aspect-square border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] touch-none flex-col `}
-   onPointerMove={handlePointerMove}
-   onPointerUp={handlePointerUp}
-   onPointerLeave={handlePointerUp}
-   >
-   <circle cx={center.x} cy={center.y} r={radius} fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
-   <circle cx={center.x} cy={center.y} r={3} fill="#1e40af" />
-   
-   {mode === 'cyclic' && (
-    <>
-    <polygon 
-     points={pts.map(p => `${p.x},${p.y}`).join(' ')} 
-     fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" strokeWidth="2" 
-    />
-    <text x={pts[0].x > center.x ? pts[0].x+10 : pts[0].x-30} y={pts[0].y > center.y ? pts[0].y+20 : pts[0].y-10} className="text-xs font-bold">{getAngleDeg(pts[3], pts[0], pts[1])}°</text>
-    <text x={pts[1].x > center.x ? pts[1].x+10 : pts[1].x-30} y={pts[1].y > center.y ? pts[1].y+20 : pts[1].y-10} className="text-xs font-bold">{getAngleDeg(pts[0], pts[1], pts[2])}°</text>
-    <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[1], pts[2], pts[3])}°</text>
-    <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[2], pts[3], pts[0])}°</text>
-    
-    <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_opposite_angles_sum_180')}</text>
-    </>
-   )}
+ <svg 
+ ref={svgRef}
+ viewBox="0 0 400 400" 
+ className={`w-full max-w-[400px] aspect-square border border-slate-200 dark:border-[#1c1b1b] rounded-lg bg-slate-50 dark:bg-[#121212] touch-none flex-col `}
+ onPointerMove={handlePointerMove}
+ onPointerUp={handlePointerUp}
+ onPointerLeave={handlePointerUp}
+ >
+ <circle cx={center.x} cy={center.y} r={radius} fill="#eff6ff" stroke="#3b82f6" strokeWidth="2" />
+ <circle cx={center.x} cy={center.y} r={3} fill="#1e40af" />
+ 
+ {mode === 'cyclic' && (
+ <>
+ <polygon 
+ points={pts.map(p => `${p.x},${p.y}`).join(' ')} 
+ fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" strokeWidth="2" 
+ />
+ <text x={pts[0].x > center.x ? pts[0].x+10 : pts[0].x-30} y={pts[0].y > center.y ? pts[0].y+20 : pts[0].y-10} className="text-xs font-bold">{getAngleDeg(pts[3], pts[0], pts[1])}°</text>
+ <text x={pts[1].x > center.x ? pts[1].x+10 : pts[1].x-30} y={pts[1].y > center.y ? pts[1].y+20 : pts[1].y-10} className="text-xs font-bold">{getAngleDeg(pts[0], pts[1], pts[2])}°</text>
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[1], pts[2], pts[3])}°</text>
+ <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[2], pts[3], pts[0])}°</text>
+ 
+ <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_opposite_angles_sum_180')}</text>
+ </>
+ )}
 
-   {mode === 'segment' && (
-    <>
-    <line x1={pts[0].x} y1={pts[0].y} x2={pts[1].x} y2={pts[1].y} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
-    <line x1={pts[0].x} y1={pts[0].y} x2={pts[2].x} y2={pts[2].y} stroke="#3b82f6" strokeWidth="2" />
-    <line x1={pts[1].x} y1={pts[1].y} x2={pts[2].x} y2={pts[2].y} stroke="#3b82f6" strokeWidth="2" />
-    
-    <line x1={pts[0].x} y1={pts[0].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
-    <line x1={pts[1].x} y1={pts[1].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
-    
-    <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-blue-600">{getAngleDeg(pts[0], pts[2], pts[1])}°</text>
-    <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-green-600">{getAngleDeg(pts[0], pts[3], pts[1])}°</text>
-    
-    <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angles_in_the_same_segment_are')}</text>
-    </>
-   )}
+ {mode === 'segment' && (
+ <>
+ <line x1={pts[0].x} y1={pts[0].y} x2={pts[1].x} y2={pts[1].y} stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" />
+ <line x1={pts[0].x} y1={pts[0].y} x2={pts[2].x} y2={pts[2].y} stroke="#3b82f6" strokeWidth="2" />
+ <line x1={pts[1].x} y1={pts[1].y} x2={pts[2].x} y2={pts[2].y} stroke="#3b82f6" strokeWidth="2" />
+ 
+ <line x1={pts[0].x} y1={pts[0].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
+ <line x1={pts[1].x} y1={pts[1].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
+ 
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-blue-600">{getAngleDeg(pts[0], pts[2], pts[1])}°</text>
+ <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-green-600">{getAngleDeg(pts[0], pts[3], pts[1])}°</text>
+ 
+ <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angles_in_the_same_segment_are')}</text>
+ </>
+ )}
 
-   {mode === 'alternate' && (() => {
-    const tx = Math.cos(sortedValues[0] + Math.PI/2);
-    const ty = Math.sin(sortedValues[0] + Math.PI/2);
-    const altAng = getAngleDeg(pts[0], pts[2], pts[1]);
-    
-    return (
-    <>
-     <polygon points={`${pts[0].x},${pts[0].y} ${pts[1].x},${pts[1].y} ${pts[2].x},${pts[2].y}`} fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" strokeWidth="2" />
-     
-     {/* Tangent at pts[0] */}
-     <line 
-     x1={pts[0].x - 150*tx} y1={pts[0].y - 150*ty} 
-     x2={pts[0].x + 150*tx} y2={pts[0].y + 150*ty} 
-     stroke="#ef4444" strokeWidth="2" 
-     />
-     
-     <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-green-600">{altAng}°</text>
-     <text x={pts[0].x + 30*tx} y={pts[0].y + 30*ty} className="text-xs font-bold text-red-600">{altAng}°</text>
-     
-     <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_between_tangent_and_chor')}</text>
-     <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_in_alternate_segment')}</text>
-    </>
-    );
-   })()}
+ {mode === 'alternate' && (() => {
+ const tx = Math.cos(sortedValues[0] + Math.PI/2);
+ const ty = Math.sin(sortedValues[0] + Math.PI/2);
+ const altAng = getAngleDeg(pts[0], pts[2], pts[1]);
+ 
+ return (
+ <>
+ <polygon points={`${pts[0].x},${pts[0].y} ${pts[1].x},${pts[1].y} ${pts[2].x},${pts[2].y}`} fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" strokeWidth="2" />
+ 
+ {/* Tangent at pts[0] */}
+ <line 
+ x1={pts[0].x - 150*tx} y1={pts[0].y - 150*ty} 
+ x2={pts[0].x + 150*tx} y2={pts[0].y + 150*ty} 
+ stroke="#ef4444" strokeWidth="2" 
+ />
+ 
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-green-600">{altAng}°</text>
+ <text x={pts[0].x + 30*tx} y={pts[0].y + 30*ty} className="text-xs font-bold text-red-600">{altAng}°</text>
+ 
+ <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_between_tangent_and_chor')}</text>
+ <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_in_alternate_segment')}</text>
+ </>
+ );
+ })()}
 
-   {/* Render drag handles on original angles so dragging doesn't jump randomly */}
-   {angles.map((ang, idx) => {
-    if (mode === 'alternate' && idx === 3) return null; // Hide 4th point in alternate mode
-    const p = getPt(ang);
-    return (
-    <circle 
-     key={idx} cx={p.x} cy={p.y} r={8} fill="#ef4444" 
-     className="cursor-pointer hover:r-[10px] transition-all"
-     onPointerDown={(e) => handlePointerDown(e, idx)}
-    />
-    );
-   })}
-   </svg>
-  </div>
+ {/* Render drag handles on original angles so dragging doesn't jump randomly */}
+ {angles.map((ang, idx) => {
+ if (mode === 'alternate' && idx === 3) return null; // Hide 4th point in alternate mode
+ const p = getPt(ang);
+ return (
+ <circle 
+ key={idx} cx={p.x} cy={p.y} r={8} fill="#ef4444" 
+ className="cursor-pointer hover:r-[10px] transition-all"
+ onPointerDown={(e) => handlePointerDown(e, idx)}
+ />
+ );
+ })}
+ </svg>
+ </div>
 
-  {/* Right Column */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-   <Calculator className="w-5 h-5 text-green-500" />  {t('lab.m10circleangles_assessment')}
-                        </h2>
-   
-   <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
-   <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
-    {questionParams.type === 'cyclic' && 
-    `In a cyclic quadrilateral ABCD, an interior angle is ${questionParams.given}°. What is the measure of the opposite interior angle?`
-    }
-    {questionParams.type === 'segment' && 
-    `Two angles subtended by the same arc at the circumference are x° and ${questionParams.given}°. What is the value of x?`
-    }
-    {questionParams.type === 'alternate' && 
-    `The angle between a tangent and a chord is ${questionParams.given}°. What is the angle subtended by this chord in the alternate segment?`
-    }
-   </p>
-   
-   <div className="flex flex-wrap gap-2">
-    <input 
-    type="number" 
-    value={userAnswer}
-    onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder={t('lab.m10circleangles_enter_angle')}
-    className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <button 
-    onClick={checkAnswer}
-    className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.m10circleangles_check')}
-                                 </button>
-   </div>
-   
-   {feedback === 'correct' && (
-    <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <CheckCircle2 className="w-4 h-4" />  {t('lab.m10circleangles_correct_great_job')}
-                                 </div>
-   )}
-   {feedback === 'incorrect' && (
-    <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
-    <XCircle className="w-4 h-4" />  {t('lab.m10circleangles_incorrect_try_again')}
-                                 </div>
-   )}
-   </div>
+ {/* Right Column */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 flex flex-col gap-6 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Calculator className="w-5 h-5 text-green-500" /> {t('lab.m10circleangles_assessment')}
+ </h2>
+ 
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
+ <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
+ {questionParams.type === 'cyclic' && 
+ `In a cyclic quadrilateral ABCD, an interior angle is ${questionParams.given}°. What is the measure of the opposite interior angle?`
+ }
+ {questionParams.type === 'segment' && 
+ `Two angles subtended by the same arc at the circumference are x° and ${questionParams.given}°. What is the value of x?`
+ }
+ {questionParams.type === 'alternate' && 
+ `The angle between a tangent and a chord is ${questionParams.given}°. What is the angle subtended by this chord in the alternate segment?`
+ }
+ </p>
+ 
+ <div className="flex flex-wrap gap-2">
+ <input 
+ type="number" 
+ value={userAnswer}
+ onChange={(e) => setUserAnswer(e.target.value)}
+ placeholder={t('lab.m10circleangles_enter_angle')}
+ className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+ />
+ <button 
+ onClick={checkAnswer}
+ className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.m10circleangles_check')}
+ </button>
+ </div>
+ 
+ {feedback === 'correct' && (
+ <div className="mt-3 p-2 bg-green-50 text-green-700 rounded-md flex items-center gap-2 text-sm font-medium dark:bg-[#121212] dark:border-[#1c1b1b]">
+ <CheckCircle2 className="w-4 h-4" /> {t('lab.m10circleangles_correct_great_job')}
+ </div>
+ )}
+ {feedback === 'incorrect' && (
+ <div className="mt-3 p-2 bg-red-50 text-red-700 rounded-md flex items-center gap-2 text-sm font-medium">
+ <XCircle className="w-4 h-4" /> {t('lab.m10circleangles_incorrect_try_again')}
+ </div>
+ )}
+ </div>
 
-   <button 
-   onClick={generateQuestion}
-   className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
-   >
-   <RefreshCw className="w-4 h-4" />  {t('lab.m10circleangles_next_question')}
-                        </button>
-  </div>
-  </div>
+ <button 
+ onClick={generateQuestion}
+ className="flex items-center justify-center gap-2 py-2 text-blue-600 border border-blue-600 rounded-md text-sm font-medium hover:bg-blue-50 transition-colors dark:bg-teal-950/20 dark:border-teal-900"
+ >
+ <RefreshCw className="w-4 h-4" /> {t('lab.m10circleangles_next_question')}
+ </button>
+ </div>
+ </div>
  </div>
  );
 }

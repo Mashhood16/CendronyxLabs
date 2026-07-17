@@ -181,7 +181,7 @@ export default function LabE12PrepositionsConjunctions({ onExit }: { onExit?: ()
     </section>
 
     {/* Window 3: Simulation */}
-    <section className={`w-full bg-blue-900 dark:bg-[#121212] lg:dark:bg-[#0a1128] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full bg-blue-900 dark:bg-[#121212] lg:dark:bg-[#0a1128] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative min-h-0 overflow-y-auto p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
      {/* Ocean Background */}
      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at center, #1e3a8a 0%, transparent 100%)' }} />
 

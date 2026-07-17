@@ -47,7 +47,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
  };
 
  return (
- <div className="w-full min- lg: bg-slate-200 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
+ <div className="w-full   bg-slate-200 dark:!bg-[#000000] flex flex-col font-sans min-h-screen lg:h-screen overflow-x-hidden">
   <LabHeader onExit={onExit} title={t('lab.cyberscout_act_5_1_cyber_scout_registrati')} subtitle={t('lab.subtitle_practice_filling_secure')} variant="blue" />
 
   <div className="flex-1 flex lg:overflow-hidden p-8 justify-center items-center bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]">

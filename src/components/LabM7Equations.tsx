@@ -4,7 +4,7 @@ import { Scale, Calculator, RefreshCcw, CheckCircle2 } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeTab, setActiveTab] = useState<'balance' | 'formula'>('balance');
 
  // Balance Scale State
@@ -21,15 +21,15 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
 
  const handleDivide = (divisor: number) => {
  if (eq.lx % divisor === 0 && eq.lc % divisor === 0 && eq.rx % divisor === 0 && eq.rc % divisor === 0) {
-  setEq({
-  lx: eq.lx / divisor,
-  lc: eq.lc / divisor,
-  rx: eq.rx / divisor,
-  rc: eq.rc / divisor
-  });
-  setDivError('');
+ setEq({
+ lx: eq.lx / divisor,
+ lc: eq.lc / divisor,
+ rx: eq.rx / divisor,
+ rc: eq.rc / divisor
+ });
+ setDivError('');
  } else {
-  setDivError(`Cannot divide evenly by ${divisor} using these blocks.`);
+ setDivError(`Cannot divide evenly by ${divisor} using these blocks.`);
  }
  };
 
@@ -46,9 +46,9 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
  let s = '';
  if (x !== 0) s += x === 1 ? 'x' : x === -1 ? '-x' : `${x}x`;
  if (c !== 0) {
-  if (c > 0 && x !== 0) s += ` + ${c}`;
-  else if (c < 0 && x !== 0) s += ` - ${Math.abs(c)}`;
-  else s += `${c}`;
+ if (c > 0 && x !== 0) s += ` + ${c}`;
+ else if (c < 0 && x !== 0) s += ` - ${Math.abs(c)}`;
+ else s += `${c}`;
  }
  return s;
  };
@@ -60,28 +60,28 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
 
  // Draw X boxes
  for (let i = 0; i < Math.abs(xCount); i++) {
-  const isNeg = xCount < 0;
-  items.push(
-  <g key={`x-${i}`} transform={`translate(${curX}, ${curY})`}>
-   <rect x="-15" y="-30" width="30" height="30" rx="4" className={`stroke-2 ${isNeg ? 'fill-red-200 stroke-red-600' : 'fill-green-200 stroke-green-600'}`} />
-   <text x="0" y="-10" textAnchor="middle" className="text-sm font-bold fill-slate-800">{isNeg ? '-x' : 'x'}</text>
-  </g>
-  );
-  curX += 35;
-  if (curX > startX + 30) { curX = startX - 30; curY -= 35; }
+ const isNeg = xCount < 0;
+ items.push(
+ <g key={`x-${i}`} transform={`translate(${curX}, ${curY})`}>
+ <rect x="-15" y="-30" width="30" height="30" rx="4" className={`stroke-2 ${isNeg ? 'fill-red-200 stroke-red-600' : 'fill-green-200 stroke-green-600'}`} />
+ <text x="0" y="-10" textAnchor="middle" className="text-sm font-bold fill-slate-800">{isNeg ? '-x' : 'x'}</text>
+ </g>
+ );
+ curX += 35;
+ if (curX > startX + 30) { curX = startX - 30; curY -= 35; }
  }
 
  // Draw C balls
  for (let i = 0; i < Math.abs(cCount); i++) {
-  const isNeg = cCount < 0;
-  items.push(
-  <g key={`c-${i}`} transform={`translate(${curX}, ${curY - 5})`}>
-   <circle cx="0" cy="-10" r="12" className={`stroke-2 ${isNeg ? 'fill-orange-200 stroke-orange-600' : 'fill-blue-200 stroke-blue-600'}`} />
-   <text x="0" y="-6" textAnchor="middle" className="text-[10px] font-bold fill-slate-800">{isNeg ? '-1' : '+1'}</text>
-  </g>
-  );
-  curX += 28;
-  if (curX > startX + 40) { curX = startX - 30; curY -= 28; }
+ const isNeg = cCount < 0;
+ items.push(
+ <g key={`c-${i}`} transform={`translate(${curX}, ${curY - 5})`}>
+ <circle cx="0" cy="-10" r="12" className={`stroke-2 ${isNeg ? 'fill-orange-200 stroke-orange-600' : 'fill-blue-200 stroke-blue-600'}`} />
+ <text x="0" y="-6" textAnchor="middle" className="text-[10px] font-bold fill-slate-800">{isNeg ? '-1' : '+1'}</text>
+ </g>
+ );
+ curX += 28;
+ if (curX > startX + 40) { curX = startX - 30; curY -= 28; }
  }
  return items;
  };
@@ -103,175 +103,175 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
-  {/* Header */}
-  <LabHeader onExit={onExit} title={t('lab.m7equations_unit_8_linear_equations_formul')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] font-sans select-none overflow-hidden min-h-screen lg:h-screen overflow-x-hidden w-full">
+ {/* Header */}
+ <LabHeader onExit={onExit} title={t('lab.m7equations_unit_8_linear_equations_formul')} />
 
-  {/* Main Content */}
-  <div className="flex flex-1 overflow-hidden">
-  {/* Left Column: Controls */}
-  <div className="w-1/3 p-6 border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6">
-   <div className="flex space-x-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
-   <button 
-    className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'balance' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
-    onClick={() => setActiveTab('balance')}
-   >
-    <Scale className="w-4 h-4" />  {t('lab.m7equations_balance_scale')}
-                            </button>
-   <button 
-    className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'formula' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
-    onClick={() => setActiveTab('formula')}
-   >
-    <Calculator className="w-4 h-4" />  {t('lab.m7equations_formulas')}
-                            </button>
-   </div>
+ {/* Main Content */}
+ <div className="flex flex-1 overflow-hidden">
+ {/* Left Column: Controls */}
+ <div className="w-1/3 p-6 border-r border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-6">
+ <div className="flex space-x-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
+ <button 
+ className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'balance' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
+ onClick={() => setActiveTab('balance')}
+ >
+ <Scale className="w-4 h-4" /> {t('lab.m7equations_balance_scale')}
+ </button>
+ <button 
+ className={`flex-1 py-2 px-3 flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'formula' ? 'bg-white dark:bg-slate-600 shadow-sm' : 'hover:bg-slate-200 dark:hover:bg-slate-600/50'}`}
+ onClick={() => setActiveTab('formula')}
+ >
+ <Calculator className="w-4 h-4" /> {t('lab.m7equations_formulas')}
+ </button>
+ </div>
 
-   {activeTab === 'balance' && (
-   <div className="space-y-6">
-    <div>
-    <h2 className="text-xl font-bold">{t('lab.m7equations_solve_for_x')}</h2>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
-     
-                                      {t('lab.m7equations_keep_the_equation_balanced_do_')} <span className="font-bold">x</span>.
-    </p>
-    </div>
+ {activeTab === 'balance' && (
+ <div className="space-y-6">
+ <div>
+ <h2 className="text-xl font-bold">{t('lab.m7equations_solve_for_x')}</h2>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
+ 
+ {t('lab.m7equations_keep_the_equation_balanced_do_')} <span className="font-bold">x</span>.
+ </p>
+ </div>
 
-    <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-200 dark:border-indigo-800 text-center">
-    <div className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">
-     {formatEq(eq.lx, eq.lc)} = {formatEq(eq.rx, eq.rc)}
-    </div>
-    </div>
+ <div className="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-200 dark:border-indigo-800 text-center">
+ <div className="text-2xl font-bold text-indigo-700 dark:text-indigo-300">
+ {formatEq(eq.lx, eq.lc)} = {formatEq(eq.rx, eq.rc)}
+ </div>
+ </div>
 
-    {isSolved ? (
-    <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg border border-green-200 dark:border-green-800">
-     <CheckCircle2 className="w-6 h-6" />
-     
-                                      {t('lab.m7equations_equation_solved')}
-                                     </div>
-    ) : (
-    <div className="space-y-4">
-     <div className="grid grid-cols-2 gap-3">
-     <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_1')}</button>
-     <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_1')}</button>
-     <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_x')}</button>
-     <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_x')}</button>
-     </div>
-     
-     <div className="grid grid-cols-2 gap-3">
-     <button onClick={() => handleDivide(2)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_2')}</button>
-     <button onClick={() => handleDivide(3)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_3')}</button>
-     </div>
+ {isSolved ? (
+ <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg border border-green-200 dark:border-green-800">
+ <CheckCircle2 className="w-6 h-6" />
+ 
+ {t('lab.m7equations_equation_solved')}
+ </div>
+ ) : (
+ <div className="space-y-4">
+ <div className="grid grid-cols-2 gap-3">
+ <button onClick={() => applyOp('addC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_1')}</button>
+ <button onClick={() => applyOp('subC')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_1')}</button>
+ <button onClick={() => applyOp('addX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_add_x')}</button>
+ <button onClick={() => applyOp('subX')} className="py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded font-medium border border-slate-300 dark:border-[#1c1b1b] transition-colors">{t('lab.m7equations_subtract_x')}</button>
+ </div>
+ 
+ <div className="grid grid-cols-2 gap-3">
+ <button onClick={() => handleDivide(2)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_2')}</button>
+ <button onClick={() => handleDivide(3)} className="py-2 bg-blue-100 dark:bg-blue-900/50 hover:bg-blue-200 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded font-medium border border-blue-300 dark:border-blue-700 transition-colors">{t('lab.m7equations_divide_by_3')}</button>
+ </div>
 
-     {divError && <div className="text-red-500 dark:text-red-400 text-sm font-medium">{divError}</div>}
-    </div>
-    )}
+ {divError && <div className="text-red-500 dark:text-red-400 text-sm font-medium">{divError}</div>}
+ </div>
+ )}
 
-    <button 
-    onClick={resetBalance}
-    className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
-    >
-    <RefreshCcw className="w-4 h-4" />  {t('lab.m7equations_reset_equation')}
-                                 </button>
-   </div>
-   )}
+ <button 
+ onClick={resetBalance}
+ className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+ >
+ <RefreshCcw className="w-4 h-4" /> {t('lab.m7equations_reset_equation')}
+ </button>
+ </div>
+ )}
 
-   {activeTab === 'formula' && (
-   <div className="space-y-6">
-    <div>
-    <h2 className="text-xl font-bold">{t('lab.m7equations_literal_formulas')}</h2>
-    <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
-     
-                                      {t('lab.m7equations_rearrange_the_temperature_conv')} <b>F</b>  {t('lab.m7equations_the_subject')}
-                                     </p>
-    </div>
+ {activeTab === 'formula' && (
+ <div className="space-y-6">
+ <div>
+ <h2 className="text-xl font-bold">{t('lab.m7equations_literal_formulas')}</h2>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-1">
+ 
+ {t('lab.m7equations_rearrange_the_temperature_conv')} <b>F</b> {t('lab.m7equations_the_subject')}
+ </p>
+ </div>
 
-    <div className="bg-slate-100 dark:bg-slate-700 p-6 rounded-lg text-center shadow-inner border border-slate-200 dark:border-[#1c1b1b]">
-    <div className="text-xl font-mono font-bold text-indigo-700 dark:text-indigo-300">
-     {formulaSteps[fStep].text}
-    </div>
-    </div>
-    
-    <div className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-100 dark:border-blue-800/50">
-    
-                                 {t('lab.m7equations_hint')} {formulaSteps[fStep].hint}
-    </div>
+ <div className="bg-slate-100 dark:bg-slate-700 p-6 rounded-lg text-center shadow-inner border border-slate-200 dark:border-[#1c1b1b]">
+ <div className="text-xl font-mono font-bold text-indigo-700 dark:text-indigo-300">
+ {formulaSteps[fStep].text}
+ </div>
+ </div>
+ 
+ <div className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-100 dark:border-blue-800/50">
+ 
+ {t('lab.m7equations_hint')} {formulaSteps[fStep].hint}
+ </div>
 
-    {fStep < 3 ? (
-    <div className="space-y-3">
-     <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">{t('lab.m7equations_choose_an_operation')}</h3>
-     <button onClick={() => handleFormulaAction('mult9')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     
-                                          {t('lab.m7equations_multiply_both_sides_by_9')}
-                                          </button>
-     <button onClick={() => handleFormulaAction('div5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     
-                                          {t('lab.m7equations_divide_both_sides_by_5')}
-                                          </button>
-     <button onClick={() => handleFormulaAction('add32')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     
-                                          {t('lab.m7equations_add_32_to_both_sides')}
-                                          </button>
-     <button onClick={() => handleFormulaAction('mult5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
-     
-                                          {t('lab.m7equations_multiply_both_sides_by_5')}
-                                          </button>
-    </div>
-    ) : (
-    <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg mt-4 border border-green-200 dark:border-green-800">
-     <CheckCircle2 className="w-6 h-6" />
-     
-                                          {t('lab.m7equations_formula_rearranged')}
-                                         </div>
-    )}
-    
-    <button 
-    onClick={() => setFStep(0)}
-    className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
-    >
-    <RefreshCcw className="w-4 h-4" />  {t('lab.m7equations_start_over')}
-                                 </button>
-   </div>
-   )}
-  </div>
+ {fStep < 3 ? (
+ <div className="space-y-3">
+ <h3 className="font-bold text-sm text-slate-500 uppercase tracking-wider">{t('lab.m7equations_choose_an_operation')}</h3>
+ <button onClick={() => handleFormulaAction('mult9')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+ 
+ {t('lab.m7equations_multiply_both_sides_by_9')}
+ </button>
+ <button onClick={() => handleFormulaAction('div5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+ 
+ {t('lab.m7equations_divide_both_sides_by_5')}
+ </button>
+ <button onClick={() => handleFormulaAction('add32')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+ 
+ {t('lab.m7equations_add_32_to_both_sides')}
+ </button>
+ <button onClick={() => handleFormulaAction('mult5')} className="w-full py-2 px-4 border border-slate-300 dark:border-[#1c1b1b] rounded-lg hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-left font-medium transition-colors">
+ 
+ {t('lab.m7equations_multiply_both_sides_by_5')}
+ </button>
+ </div>
+ ) : (
+ <div className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 p-4 rounded-lg flex items-center gap-3 font-bold text-lg mt-4 border border-green-200 dark:border-green-800">
+ <CheckCircle2 className="w-6 h-6" />
+ 
+ {t('lab.m7equations_formula_rearranged')}
+ </div>
+ )}
+ 
+ <button 
+ onClick={() => setFStep(0)}
+ className="flex items-center justify-center gap-2 w-full py-2 mt-4 text-slate-600 dark:text-[#71717a] hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+ >
+ <RefreshCcw className="w-4 h-4" /> {t('lab.m7equations_start_over')}
+ </button>
+ </div>
+ )}
+ </div>
 
-  {/* Right Column: Stage */}
-  <div className="w-2/3 p-6 bg-slate-200 dark:bg-slate-950 flex items-center justify-center">
-   {activeTab === 'balance' && (
-   <svg width="400" height="400" className="overflow-visible bg-white dark:!bg-[#121212] rounded-xl shadow-lg">
-    <g transform="translate(0, 20)">
-    {/* Fulcrum Base */}
-    <polygon points="200,300 160,360 240,360" className="fill-slate-700 dark:fill-slate-400" />
-    <path d="M 160 360 Q 200 370 240 360" className="fill-slate-800 dark:fill-slate-300" />
-    
-    {/* Balance Beam (Always level in this ideal visualization) */}
-    <rect x="50" y="230" width="300" height="8" rx="4" className="fill-slate-600 dark:fill-slate-500" />
-    <circle cx="200" cy="234" r="6" className="fill-slate-300 dark:fill-slate-700 stroke-2 stroke-slate-500" />
+ {/* Right Column: Stage */}
+ <div className="w-2/3 p-6 bg-slate-200 dark:bg-slate-950 flex items-center justify-center">
+ {activeTab === 'balance' && (
+ <svg width="400" height="400" className="overflow-visible bg-white dark:!bg-[#121212] rounded-xl shadow-lg">
+ <g transform="translate(0, 20)">
+ {/* Fulcrum Base */}
+ <polygon points="200,300 160,360 240,360" className="fill-slate-700 dark:fill-slate-400" />
+ <path d="M 160 360 Q 200 370 240 360" className="fill-slate-800 dark:fill-slate-300" />
+ 
+ {/* Balance Beam (Always level in this ideal visualization) */}
+ <rect x="50" y="230" width="300" height="8" rx="4" className="fill-slate-600 dark:fill-slate-500" />
+ <circle cx="200" cy="234" r="6" className="fill-slate-300 dark:fill-slate-700 stroke-2 stroke-slate-500" />
 
-    {/* Left Pan */}
-    <line x1="80" y1="230" x2="80" y2="310" className="stroke-slate-400 dark:stroke-slate-600 stroke-2" />
-    <rect x="30" y="310" width="100" height="6" rx="2" className="fill-slate-500 dark:fill-slate-400" />
-    {drawItems(eq.lx, eq.lc, 80, 300)}
+ {/* Left Pan */}
+ <line x1="80" y1="230" x2="80" y2="310" className="stroke-slate-400 dark:stroke-slate-600 stroke-2" />
+ <rect x="30" y="310" width="100" height="6" rx="2" className="fill-slate-500 dark:fill-slate-400" />
+ {drawItems(eq.lx, eq.lc, 80, 300)}
 
-    {/* Right Pan */}
-    <line x1="320" y1="230" x2="320" y2="310" className="stroke-slate-400 dark:stroke-slate-600 stroke-2" />
-    <rect x="270" y="310" width="100" height="6" rx="2" className="fill-slate-500 dark:fill-slate-400" />
-    {drawItems(eq.rx, eq.rc, 320, 300)}
-    </g>
-   </svg>
-   )}
+ {/* Right Pan */}
+ <line x1="320" y1="230" x2="320" y2="310" className="stroke-slate-400 dark:stroke-slate-600 stroke-2" />
+ <rect x="270" y="310" width="100" height="6" rx="2" className="fill-slate-500 dark:fill-slate-400" />
+ {drawItems(eq.rx, eq.rc, 320, 300)}
+ </g>
+ </svg>
+ )}
 
-   {activeTab === 'formula' && (
-   <div className="text-center w-full max-w-lg bg-white dark:!bg-[#121212] p-12 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b]">
-    <div className="text-[100px] mb-6">🌡️</div>
-    <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m7equations_celsius_to_fahrenheit')}</h3>
-    <p className="text-slate-600 dark:text-[#71717a] leading-relaxed">
-    
-                                 {t('lab.m7equations_rearranging_formulas_is_just_l')}
-                                 </p>
-   </div>
-   )}
-  </div>
-  </div>
+ {activeTab === 'formula' && (
+ <div className="text-center w-full max-w-lg bg-white dark:!bg-[#121212] p-12 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b]">
+ <div className="text-[100px] mb-6">🌡️</div>
+ <h3 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m7equations_celsius_to_fahrenheit')}</h3>
+ <p className="text-slate-600 dark:text-[#71717a] leading-relaxed">
+ 
+ {t('lab.m7equations_rearranging_formulas_is_just_l')}
+ </p>
+ </div>
+ )}
+ </div>
+ </div>
  </div>
  );
 }

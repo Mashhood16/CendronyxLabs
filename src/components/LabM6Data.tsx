@@ -4,7 +4,7 @@ import { Dices, Coins, BarChart3, PieChart, CheckCircle, XCircle } from 'lucide-
 import { useTranslate } from "../i18n";
 
 export default function LabM6Data({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const containerRef = useRef<HTMLDivElement>(null);
  const [source, setSource] = useState<'coin' | 'dice'>('coin');
  const [results, setResults] = useState<number[]>([]);
@@ -24,11 +24,11 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
  const roll = (count: number) => {
  setIsRolling(true);
  setTimeout(() => {
-  const newResults = Array.from({ length: count }, () => Math.floor(Math.random() * optionsCount));
-  setResults(prev => [...prev, ...newResults]);
-  setIsRolling(false);
-  setFeedback('none');
-  setStudentAnswer('');
+ const newResults = Array.from({ length: count }, () => Math.floor(Math.random() * optionsCount));
+ setResults(prev => [...prev, ...newResults]);
+ setIsRolling(false);
+ setFeedback('none');
+ setStudentAnswer('');
  }, 300);
  };
 
@@ -54,9 +54,9 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
  if (targetIndex === -1) return;
  const correctValue = frequencies[targetIndex];
  if (parseInt(studentAnswer) === correctValue) {
-  setFeedback('correct');
+ setFeedback('correct');
  } else {
-  setFeedback('incorrect');
+ setFeedback('incorrect');
  }
  };
 
@@ -89,202 +89,202 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
  const remainder = count % 5;
  const elements = [];
  for (let i = 0; i < groups; i++) {
-  elements.push(
-   <span key={`g-${i}`} className="inline-block mr-2 font-bold tracking-tighter line-through decoration-2">
-   ||||
-   </span>
-  );
+ elements.push(
+ <span key={`g-${i}`} className="inline-block mr-2 font-bold tracking-tighter line-through decoration-2">
+ ||||
+ </span>
+ );
  }
  if (remainder > 0) {
-  elements.push(
-  <span key={`r`} className="inline-block font-bold tracking-tighter">
-   {'|'.repeat(remainder)}
-  </span>
-  );
+ elements.push(
+ <span key={`r`} className="inline-block font-bold tracking-tighter">
+ {'|'.repeat(remainder)}
+ </span>
+ );
  }
  return elements;
  };
 
  return (
- <div ref={containerRef} className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m6data_unit_10_data_dashboard')} />
+ <div ref={containerRef} className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m6data_unit_10_data_dashboard')} />
 
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:overflow-visible">
-  {/* Left: Controls */}
-  <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
-   <button
-    onClick={() => setSource('coin')}
-    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'coin' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
-   >
-    <Coins size={20} />  {t('lab.m6data_coin_flipper')}
-                            </button>
-   <button
-    onClick={() => setSource('dice')}
-    className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'dice' ? 'bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
-   >
-    <Dices size={20} />  {t('lab.m6data_dice_roller')}
-                            </button>
-   </div>
+ <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:overflow-visible">
+ {/* Left: Controls */}
+ <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
+ <button
+ onClick={() => setSource('coin')}
+ className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'coin' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
+ >
+ <Coins size={20} /> {t('lab.m6data_coin_flipper')}
+ </button>
+ <button
+ onClick={() => setSource('dice')}
+ className={`flex-1 py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors ${source === 'dice' ? 'bg-rose-100 text-rose-700 dark:bg-rose-900 dark:text-rose-200' : 'bg-slate-100 dark:bg-[#1c1b1b] text-slate-600 dark:bg-slate-700 dark:text-[#ffffff]'}`}
+ >
+ <Dices size={20} /> {t('lab.m6data_dice_roller')}
+ </button>
+ </div>
 
-   <div className="flex flex-wrap gap-2">
-   <button onClick={() => roll(1)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_1')}</button>
-   <button onClick={() => roll(10)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_10')}</button>
-   <button onClick={() => roll(100)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_100')}</button>
-   <button onClick={clearData} className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#ffffff] rounded-lg transition-colors ml-auto">{t('lab.m6data_clear')}</button>
-   </div>
+ <div className="flex flex-wrap gap-2">
+ <button onClick={() => roll(1)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_1')}</button>
+ <button onClick={() => roll(10)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_10')}</button>
+ <button onClick={() => roll(100)} disabled={isRolling} className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white rounded-lg transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">{t('lab.m6data_generate_100')}</button>
+ <button onClick={clearData} className="px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-[#ffffff] rounded-lg transition-colors ml-auto">{t('lab.m6data_clear')}</button>
+ </div>
 
-   <div className="mt-2">
-   <h3 className="font-semibold mb-2">{t('lab.m6data_tally_table_total')} {total})</h3>
-   <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-xl overflow-hidden">
-    <table className="w-full text-sm text-left">
-    <thead className="bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
-     <tr>
-     <th className="px-4 py-2">{t('lab.m6data_outcome')}</th>
-     <th className="px-4 py-2">{t('lab.m6data_tally_marks')}</th>
-     <th className="px-4 py-2 text-right">{t('lab.m6data_freq')}</th>
-     </tr>
-    </thead>
-    <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
-     {labels.map((label, i) => (
-     <tr key={label} className="">
-      <td className="px-4 py-2 font-medium">{label}</td>
-      <td className="px-4 py-2 text-lg text-slate-500 dark:text-[#71717a]">
-      {renderTally(frequencies[i])}
-      </td>
-      <td className="px-4 py-2 text-right font-semibold">{frequencies[i]}</td>
-     </tr>
-     ))}
-    </tbody>
-    </table>
-   </div>
-   </div>
+ <div className="mt-2">
+ <h3 className="font-semibold mb-2">{t('lab.m6data_tally_table_total')} {total})</h3>
+ <div className="border border-slate-200 dark:border-[#1c1b1b] rounded-xl overflow-hidden">
+ <table className="w-full text-sm text-left">
+ <thead className="bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-[#a1a1aa] border-b border-slate-200 dark:border-[#1c1b1b]">
+ <tr>
+ <th className="px-4 py-2">{t('lab.m6data_outcome')}</th>
+ <th className="px-4 py-2">{t('lab.m6data_tally_marks')}</th>
+ <th className="px-4 py-2 text-right">{t('lab.m6data_freq')}</th>
+ </tr>
+ </thead>
+ <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+ {labels.map((label, i) => (
+ <tr key={label} className="">
+ <td className="px-4 py-2 font-medium">{label}</td>
+ <td className="px-4 py-2 text-lg text-slate-500 dark:text-[#71717a]">
+ {renderTally(frequencies[i])}
+ </td>
+ <td className="px-4 py-2 text-right font-semibold">{frequencies[i]}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ </div>
 
-   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 p-4 rounded-xl space-y-4 mt-auto  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <h2 className="text-xl font-semibold">{t('lab.m6data_assessment')}</h2>
-   <div className="flex flex-col gap-2">
-    <label className="text-sm dark:text-[#a1a1aa] flex items-center flex-wrap">
-    
-                                 {t('lab.m6data_what_is_the_exact_frequency_of')}
-                                 <select value={questionVal} onChange={e => setQuestionVal(e.target.value)} className="mx-2 p-1 rounded border border-slate-300 dark:border-[#1c1b1b] outline-none">
-     {labels.map(l => <option key={l} value={l}>{l}</option>)}
-    </select>?
-    </label>
-   </div>
-   <div className="flex flex-wrap gap-2">
-    <input
-    type="number"
-    value={studentAnswer}
-    onChange={(e) => setStudentAnswer(e.target.value)}
-    placeholder={t('lab.m6data_enter_frequency')}
-    className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    />
-    <button
-    onClick={checkAnswer}
-    className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-    >
-    
-                                 {t('lab.m6data_check')}
-                                 </button>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-700 p-4 rounded-xl space-y-4 mt-auto 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <h2 className="text-xl font-semibold">{t('lab.m6data_assessment')}</h2>
+ <div className="flex flex-col gap-2">
+ <label className="text-sm dark:text-[#a1a1aa] flex items-center flex-wrap">
+ 
+ {t('lab.m6data_what_is_the_exact_frequency_of')}
+ <select value={questionVal} onChange={e => setQuestionVal(e.target.value)} className="mx-2 p-1 rounded border border-slate-300 dark:border-[#1c1b1b] outline-none">
+ {labels.map(l => <option key={l} value={l}>{l}</option>)}
+ </select>?
+ </label>
+ </div>
+ <div className="flex flex-wrap gap-2">
+ <input
+ type="number"
+ value={studentAnswer}
+ onChange={(e) => setStudentAnswer(e.target.value)}
+ placeholder={t('lab.m6data_enter_frequency')}
+ className="flex-1 min-w-0 px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b] focus:outline-none focus:ring-2 focus:ring-indigo-500"
+ />
+ <button
+ onClick={checkAnswer}
+ className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ 
+ {t('lab.m6data_check')}
+ </button>
+ </div>
 
-   {feedback !== 'none' && (
-    <div className={`w-full flex items-center gap-2 p-3 rounded-lg ${feedback === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'} flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-    {feedback === 'correct' ? <CheckCircle size={20} /> : <XCircle size={20} />}
-    <span className="font-medium">{feedback === 'correct' ? 'Correct!' : 'Incorrect. Check the tally table!'}</span>
-    </div>
-   )}
-   </div>
-  </div>
+ {feedback !== 'none' && (
+ <div className={`w-full flex items-center gap-2 p-3 rounded-lg ${feedback === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'} flex-col 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ {feedback === 'correct' ? <CheckCircle size={20} /> : <XCircle size={20} />}
+ <span className="font-medium">{feedback === 'correct' ? 'Correct!' : 'Incorrect. Check the tally table!'}</span>
+ </div>
+ )}
+ </div>
+ </div>
 
-  {/* Right: Simulation Stage */}
-  <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col items-center min-h-[400px]">
-   <div className="flex justify-between w-full items-center mb-6">
-   <h2 className="text-xl font-semibold">{t('lab.m6data_live_graph')}</h2>
-   <div className="flex gap-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
-    <button onClick={() => setChartType('bar')} className={`p-2 rounded-md transition-colors ${chartType === 'bar' ? ' shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
-    <BarChart3 size={20} />
-    </button>
-    <button onClick={() => setChartType('pie')} className={`p-2 rounded-md transition-colors ${chartType === 'pie' ? ' shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
-    <PieChart size={20} />
-    </button>
-   </div>
-   </div>
+ {/* Right: Simulation Stage */}
+ <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col items-center min-h-[400px]">
+ <div className="flex justify-between w-full items-center mb-6">
+ <h2 className="text-xl font-semibold">{t('lab.m6data_live_graph')}</h2>
+ <div className="flex gap-2 bg-slate-100 dark:bg-slate-700 p-1 rounded-lg">
+ <button onClick={() => setChartType('bar')} className={`p-2 rounded-md transition-colors ${chartType === 'bar' ? ' shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
+ <BarChart3 size={20} />
+ </button>
+ <button onClick={() => setChartType('pie')} className={`p-2 rounded-md transition-colors ${chartType === 'pie' ? ' shadow' : 'hover:bg-slate-200 dark:hover:bg-slate-600'}`}>
+ <PieChart size={20} />
+ </button>
+ </div>
+ </div>
 
-   <div className="flex-1 min-w-0 w-full flex items-center justify-center relative">
-   {total === 0 ? (
-    <div className="text-slate-400 dark:text-[#71717a] flex flex-col items-center">
-    <BarChart3 size={48} className="mb-4 opacity-50" />
-    <p>{t('lab.m6data_no_data_yet_generate_some_roll')}</p>
-    </div>
-   ) : chartType === 'bar' ? (
-    <svg viewBox="0 0 400 300" className="w-full h-full max-h-[400px]">
-    {/* Axes */}
-    <line x1="40" y1="260" x2="380" y2="260" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" />
-    <line x1="40" y1="260" x2="40" y2="20" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" />
-    
-    {/* Y-axis labels */}
-    <text x="30" y="260" textAnchor="end" fill="currentColor" className="text-xs">0</text>
-    <text x="30" y="40" textAnchor="end" fill="currentColor" className="text-xs">{maxFreq}</text>
-    <text x="30" y="150" textAnchor="end" fill="currentColor" className="text-xs">{Math.round(maxFreq / 2)}</text>
+ <div className="flex-1 min-w-0 w-full flex items-center justify-center relative">
+ {total === 0 ? (
+ <div className="text-slate-400 dark:text-[#71717a] flex flex-col items-center">
+ <BarChart3 size={48} className="mb-4 opacity-50" />
+ <p>{t('lab.m6data_no_data_yet_generate_some_roll')}</p>
+ </div>
+ ) : chartType === 'bar' ? (
+ <svg viewBox="0 0 400 300" className="w-full h-full max-h-[400px]">
+ {/* Axes */}
+ <line x1="40" y1="260" x2="380" y2="260" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" />
+ <line x1="40" y1="260" x2="40" y2="20" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" />
+ 
+ {/* Y-axis labels */}
+ <text x="30" y="260" textAnchor="end" fill="currentColor" className="text-xs">0</text>
+ <text x="30" y="40" textAnchor="end" fill="currentColor" className="text-xs">{maxFreq}</text>
+ <text x="30" y="150" textAnchor="end" fill="currentColor" className="text-xs">{Math.round(maxFreq / 2)}</text>
 
-    {/* Bars */}
-    {frequencies.map((f, i) => {
-     const barWidth = (320 / optionsCount) * 0.6;
-     const spacing = (320 / optionsCount);
-     const barHeight = (f / maxFreq) * 220;
-     const x = 40 + spacing * i + (spacing - barWidth) / 2;
-     const y = 260 - barHeight;
-     return (
-     <g key={`bar-${i}`}>
-      <rect
-      x={x}
-      y={y}
-      width={barWidth}
-      height={barHeight}
-      fill={colors[i % colors.length]}
-      rx="2"
-      className="transition-all duration-300"
-      />
-      <text x={x + barWidth / 2} y="275" textAnchor="middle" fill="currentColor" className="text-xs font-medium">{labels[i]}</text>
-      <text x={x + barWidth / 2} y={y - 5} textAnchor="middle" fill="currentColor" className="text-xs font-semibold">{f}</text>
-     </g>
-     );
-    })}
-    </svg>
-   ) : (
-    <svg viewBox="-150 -150 300 300" className="w-full h-full max-h-[400px]">
-    {pieSlices.map((slice, i) => {
-     if (!slice || slice.angle === 0) return null;
-     return (
-     <g key={`pie-${i}`}>
-      <path
-      d={getPiePath(slice.startAngle, slice.angle)}
-      fill={slice.color}
-      stroke="#fff"
-      strokeWidth="1"
-      className="transition-all duration-300 dark:stroke-slate-800"
-      />
-      {slice.angle > 15 && (
-      <text
-       x={140 * Math.cos((slice.startAngle + slice.angle / 2 - 90) * Math.PI / 180)}
-       y={140 * Math.sin((slice.startAngle + slice.angle / 2 - 90) * Math.PI / 180)}
-       textAnchor="middle"
-       dominantBaseline="middle"
-       fill="currentColor"
-       className="text-xs font-semibold"
-      >
-       {slice.label} ({(slice.f / total * 100).toFixed(1)}%)
-      </text>
-      )}
-     </g>
-     );
-    })}
-    </svg>
-   )}
-   </div>
-  </div>
-  </div>
+ {/* Bars */}
+ {frequencies.map((f, i) => {
+ const barWidth = (320 / optionsCount) * 0.6;
+ const spacing = (320 / optionsCount);
+ const barHeight = (f / maxFreq) * 220;
+ const x = 40 + spacing * i + (spacing - barWidth) / 2;
+ const y = 260 - barHeight;
+ return (
+ <g key={`bar-${i}`}>
+ <rect
+ x={x}
+ y={y}
+ width={barWidth}
+ height={barHeight}
+ fill={colors[i % colors.length]}
+ rx="2"
+ className="transition-all duration-300"
+ />
+ <text x={x + barWidth / 2} y="275" textAnchor="middle" fill="currentColor" className="text-xs font-medium">{labels[i]}</text>
+ <text x={x + barWidth / 2} y={y - 5} textAnchor="middle" fill="currentColor" className="text-xs font-semibold">{f}</text>
+ </g>
+ );
+ })}
+ </svg>
+ ) : (
+ <svg viewBox="-150 -150 300 300" className="w-full h-full max-h-[400px]">
+ {pieSlices.map((slice, i) => {
+ if (!slice || slice.angle === 0) return null;
+ return (
+ <g key={`pie-${i}`}>
+ <path
+ d={getPiePath(slice.startAngle, slice.angle)}
+ fill={slice.color}
+ stroke="#fff"
+ strokeWidth="1"
+ className="transition-all duration-300 dark:stroke-slate-800"
+ />
+ {slice.angle > 15 && (
+ <text
+ x={140 * Math.cos((slice.startAngle + slice.angle / 2 - 90) * Math.PI / 180)}
+ y={140 * Math.sin((slice.startAngle + slice.angle / 2 - 90) * Math.PI / 180)}
+ textAnchor="middle"
+ dominantBaseline="middle"
+ fill="currentColor"
+ className="text-xs font-semibold"
+ >
+ {slice.label} ({(slice.f / total * 100).toFixed(1)}%)
+ </text>
+ )}
+ </g>
+ );
+ })}
+ </svg>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

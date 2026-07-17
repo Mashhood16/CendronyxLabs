@@ -8,7 +8,7 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const config = DIFFICULTY_CONFIGS['deep-dive'];
  const [sample, setSample] = useState<'Ethanol' | 'Acetone'>('Ethanol');
@@ -20,29 +20,29 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
  const [isRunning, setIsRunning] = useState(false);
 
  useEffect(() => {
-  let timer: ReturnType<typeof setInterval>;
-  if (isRunning) {
-   timer = setInterval(() => {
-    setTlcRunTime(prev => {
-     if (prev >= 100) {
-      setIsRunning(false);
-      return 100;
-     }
-     return prev + 2;
-    });
-   }, 50);
-  }
-  return () => clearInterval(timer);
+ let timer: ReturnType<typeof setInterval>;
+ if (isRunning) {
+ timer = setInterval(() => {
+ setTlcRunTime(prev => {
+ if (prev >= 100) {
+ setIsRunning(false);
+ return 100;
+ }
+ return prev + 2;
+ });
+ }, 50);
+ }
+ return () => clearInterval(timer);
  }, [isRunning]);
 
  const runTLC = () => {
-  setTlcRunTime(0);
-  setIsRunning(true);
+ setTlcRunTime(0);
+ setIsRunning(true);
  };
 
  const resetTLC = () => {
-  setTlcRunTime(0);
-  setIsRunning(false);
+ setTlcRunTime(0);
+ setIsRunning(false);
  };
 
  const rfEthanol = Math.min(0.95, solventPolarity / 120);
@@ -56,23 +56,23 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
  const acetoneIR = "M 0 10 L 105 10 L 110 90 L 115 10 L 220 10 L 228 140 L 235 10 L 350 10";
 
  const nmrPeaks = {
-  Ethanol: [
-   { x: (10-3.6)*35, h: 40, label: 'Quartet (2H)', ppm: '3.6' },
-   { x: (10-2.6)*35, h: 20, label: 'Singlet (1H)', ppm: '2.6' },
-   { x: (10-1.2)*35, h: 60, label: 'Triplet (3H)', ppm: '1.2' }
-  ],
-  Acetone: [
-   { x: (10-2.1)*35, h: 100, label: 'Singlet (6H)', ppm: '2.1' }
-  ]
+ Ethanol: [
+ { x: (10-3.6)*35, h: 40, label: 'Quartet (2H)', ppm: '3.6' },
+ { x: (10-2.6)*35, h: 20, label: 'Singlet (1H)', ppm: '2.6' },
+ { x: (10-1.2)*35, h: 60, label: 'Triplet (3H)', ppm: '1.2' }
+ ],
+ Acetone: [
+ { x: (10-2.1)*35, h: 100, label: 'Singlet (6H)', ppm: '2.1' }
+ ]
  };
 
  const msPeaks = {
-  Ethanol: [
-   { mz: 15, h: 20 }, { mz: 31, h: 100 }, { mz: 45, h: 40 }, { mz: 46, h: 30 }
-  ],
-  Acetone: [
-   { mz: 15, h: 30 }, { mz: 43, h: 100 }, { mz: 58, h: 50 }
-  ]
+ Ethanol: [
+ { mz: 15, h: 20 }, { mz: 31, h: 100 }, { mz: 45, h: 40 }, { mz: 46, h: 30 }
+ ],
+ Acetone: [
+ { mz: 15, h: 30 }, { mz: 43, h: 100 }, { mz: 58, h: 50 }
+ ]
  };
 
  // Assessment
@@ -81,252 +81,252 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
  const [score, setScore] = useState<number | null>(null);
 
  const checkAnswers = () => {
-  let s = 0;
-  if (q1.trim().toLowerCase() === 'ethanol') s++;
-  if (q2.trim() === '43') s++;
-  setScore(s);
+ let s = 0;
+ if (q1.trim().toLowerCase() === 'ethanol') s++;
+ if (q2.trim() === '43') s++;
+ setScore(s);
  };
 
  return (
-  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">   <LabHeader onExit={onExit} title={t('lab.c12spectroscopychromatography_analytical_chemistry_spectrome')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full"> <LabHeader onExit={onExit} title={t('lab.c12spectroscopychromatography_analytical_chemistry_spectrome')} />
 
-  <div className="px-4 pt-2">
-   
-  </div>
+ <div className="px-4 pt-2">
+ 
+ </div>
 
-  {/* Difficulty Selector */}
-  <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
-     </div>
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c12spectroscopychromatography_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c12spectroscopychromatography_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 lg:overflow-visible">
-    {/* Theory */}
-    <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-      <BookOpen size={20} className="text-yellow-600" />
-      
-                           {t('lab.c12spectroscopychromatography_analytical_theory')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
-     </h2>
+ {/* Difficulty Selector */}
+ <div className="w-full px-4 py-2 md:px-6 bg-white dark:bg-[#121212] border-b border-slate-200 dark:border-[#1c1b1b]">
+ </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c12spectroscopychromatography_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c12spectroscopychromatography_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:flex-1 min-h-0 lg:overflow-hidden">
+ {/* Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <BookOpen size={20} className="text-yellow-600" />
+ 
+ {t('lab.c12spectroscopychromatography_analytical_theory')} {config.showDerivations && <GraduationCap className="w-4 h-4 text-indigo-500" />}
+ </h2>
 
-     {config.showDerivations && (
-      <DeepDivePanel
-       derivation={{
-        title: 'Beer-Lambert Law — Why A = εbc?',
-        question: 'Why does absorbance increase linearly with concentration and path length? What is the physical origin of the logarithmic relationship?',
-        steps: [
-         {
-          label: 'Start with the probability of photon absorption',
-          latex: 'dI / I = -α × c × dx\n\nWhere:\ndI = change in transmitted intensity\nI = incident intensity at depth x\nα = molar absorption coefficient\nc = concentration of absorbing species\ndx = infinitesimal path length',
-          explanation: 'When a beam of light passes through a medium, the probability of a photon being absorbed in any thin slice is proportional to both the concentration of absorbing molecules and the number of photons present. This is analogous to radioactive decay where the decay rate is proportional to the remaining nuclei.'
-         },
-         {
-          label: 'Integrate over the full path length b',
-          latex: '∫(dI/I) = -αc ∫ dx\n\nFrom I₀ to I, and x=0 to x=b:\nln(I/I₀) = -α c × b\n\n-Rearranging:\nI = I₀ × e^(-αcb)',
-          explanation: 'Integrating both sides gives the exponential attenuation law. This is the same mathematical form as radioactive decay (N = N₀e^(-λt)) and capacitor discharge (Q = Q₀e^(-t/RC)) — all governed by the same exponential decay differential equation.'
-         },
-         {
-          label: 'Convert to base-10 logarithms (absorbance)',
-          latex: 'A = -log₁₀(I/I₀)\n\nA = -log₁₀(e^(-αcb))\nA = (α / ln(10)) × c × b\n\nA = ε × c × b\n\nWhere ε = α / ln(10) is the molar absorptivity',
-          explanation: 'The absorbance A is defined using base-10 logarithms for historical and practical reasons. The Beer-Lambert law shows that absorbance is linearly proportional to both concentration and path length — which is why every spectrophotometer cuvette has a precisely known path length (usually 1 cm).'
-         }
-        ],
-        conclusion: 'The Beer-Lambert law falls out of simple probability theory — the chance of a photon being absorbed is proportional to the number of molecules it encounters. This linear relationship is the foundation of all quantitative spectroscopy, from measuring protein concentrations in biochemistry to monitoring pollutants in environmental chemistry.',
-        realWorldApplication: 'In forensic toxicology, the concentration of alcohol in a blood sample is determined using the Beer-Lambert law. A spectrophotometer measures the absorbance of the sample at 340 nm after enzymatic reaction with NADH. The absorbance reading directly gives the ethanol concentration via A = εbc — the exact same principle demonstrated in this lab for the IR, NMR, and MS data.'
-       }}
-      />
-     )}
+ {config.showDerivations && (
+ <DeepDivePanel
+ derivation={{
+ title: 'Beer-Lambert Law — Why A = εbc?',
+ question: 'Why does absorbance increase linearly with concentration and path length? What is the physical origin of the logarithmic relationship?',
+ steps: [
+ {
+ label: 'Start with the probability of photon absorption',
+ latex: 'dI / I = -α × c × dx\n\nWhere:\ndI = change in transmitted intensity\nI = incident intensity at depth x\nα = molar absorption coefficient\nc = concentration of absorbing species\ndx = infinitesimal path length',
+ explanation: 'When a beam of light passes through a medium, the probability of a photon being absorbed in any thin slice is proportional to both the concentration of absorbing molecules and the number of photons present. This is analogous to radioactive decay where the decay rate is proportional to the remaining nuclei.'
+ },
+ {
+ label: 'Integrate over the full path length b',
+ latex: '∫(dI/I) = -αc ∫ dx\n\nFrom I₀ to I, and x=0 to x=b:\nln(I/I₀) = -α c × b\n\n-Rearranging:\nI = I₀ × e^(-αcb)',
+ explanation: 'Integrating both sides gives the exponential attenuation law. This is the same mathematical form as radioactive decay (N = N₀e^(-λt)) and capacitor discharge (Q = Q₀e^(-t/RC)) — all governed by the same exponential decay differential equation.'
+ },
+ {
+ label: 'Convert to base-10 logarithms (absorbance)',
+ latex: 'A = -log₁₀(I/I₀)\n\nA = -log₁₀(e^(-αcb))\nA = (α / ln(10)) × c × b\n\nA = ε × c × b\n\nWhere ε = α / ln(10) is the molar absorptivity',
+ explanation: 'The absorbance A is defined using base-10 logarithms for historical and practical reasons. The Beer-Lambert law shows that absorbance is linearly proportional to both concentration and path length — which is why every spectrophotometer cuvette has a precisely known path length (usually 1 cm).'
+ }
+ ],
+ conclusion: 'The Beer-Lambert law falls out of simple probability theory — the chance of a photon being absorbed is proportional to the number of molecules it encounters. This linear relationship is the foundation of all quantitative spectroscopy, from measuring protein concentrations in biochemistry to monitoring pollutants in environmental chemistry.',
+ realWorldApplication: 'In forensic toxicology, the concentration of alcohol in a blood sample is determined using the Beer-Lambert law. A spectrophotometer measures the absorbance of the sample at 340 nm after enzymatic reaction with NADH. The absorbance reading directly gives the ethanol concentration via A = εbc — the exact same principle demonstrated in this lab for the IR, NMR, and MS data.'
+ }}
+ />
+ )}
 
-     
-     <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.c12spectroscopychromatography_ir_spectroscopy')}</h3>
-      <p>{t('lab.c12spectroscopychromatography_identifies_functional_groups_o')}</p>
+ 
+ <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.c12spectroscopychromatography_ir_spectroscopy')}</h3>
+ <p>{t('lab.c12spectroscopychromatography_identifies_functional_groups_o')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_1h_nmr')}</h3>
-      <p>{t('lab.c12spectroscopychromatography_identifies_hydrogen_environmen')}</p>
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_1h_nmr')}</h3>
+ <p>{t('lab.c12spectroscopychromatography_identifies_hydrogen_environmen')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_mass_spectrometry_ms')}</h3>
-      <p>{t('lab.c12spectroscopychromatography_determines_molecular_weight_m_')}</p>
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_mass_spectrometry_ms')}</h3>
+ <p>{t('lab.c12spectroscopychromatography_determines_molecular_weight_m_')}</p>
 
-      <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_thin_layer_chromatography_tlc')}</h3>
-      <p>{t('lab.c12spectroscopychromatography_separates_compounds_by_polarit')}</p>
-     </div>
-    </div>
+ <h3 className="text-md font-semibold text-slate-700 dark:text-[#ffffff] mt-2">{t('lab.c12spectroscopychromatography_thin_layer_chromatography_tlc')}</h3>
+ <p>{t('lab.c12spectroscopychromatography_separates_compounds_by_polarit')}</p>
+ </div>
+ </div>
 
-    {/* Simulation */}
-    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <div className="flex items-center justify-between mb-2">
-      <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-       <Activity size={20} className="text-indigo-600" />
-       
-                                {t('lab.c12spectroscopychromatography_instrument_panel')}
-                               </h2>
-      <select 
-       value={sample} 
-       onChange={(e) => {setSample(e.target.value as any); resetTLC();}}
-       className={`bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm rounded p-1 font-medium dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}
-      >
-       <option value="Ethanol">{t('lab.c12spectroscopychromatography_sample_a_unknown')}</option>
-       <option value="Acetone">{t('lab.c12spectroscopychromatography_sample_b_unknown')}</option>
-      </select>
-     </div>
+ {/* Simulation */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col gap-4 '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center justify-between mb-2">
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Activity size={20} className="text-indigo-600" />
+ 
+ {t('lab.c12spectroscopychromatography_instrument_panel')}
+ </h2>
+ <select 
+ value={sample} 
+ onChange={(e) => {setSample(e.target.value as any); resetTLC();}}
+ className={`bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm rounded p-1 font-medium dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}
+ >
+ <option value="Ethanol">{t('lab.c12spectroscopychromatography_sample_a_unknown')}</option>
+ <option value="Acetone">{t('lab.c12spectroscopychromatography_sample_b_unknown')}</option>
+ </select>
+ </div>
 
-     <div className={`flex gap-2 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
-      {['IR', 'NMR', 'MS', 'TLC'].map(t => (
-       <button 
-        key={t}
-        className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-slate-50 dark:bg-[#121212] shadow text-slate-800 dark:text-slate-100' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
-        onClick={() => setTab(t as any)}
-       >
-        {t}
-       </button>
-      ))}
-     </div>
+ <div className={`flex gap-2 bg-slate-100 dark:bg-[#121212] p-1 rounded-lg flex-col `}>
+ {['IR', 'NMR', 'MS', 'TLC'].map(t => (
+ <button 
+ key={t}
+ className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-slate-50 dark:bg-[#121212] shadow text-slate-800 dark:text-slate-100' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:text-[#ffffff]'}`}
+ onClick={() => setTab(t as any)}
+ >
+ {t}
+ </button>
+ ))}
+ </div>
 
-     <div className={`flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative min-h-[250px] items-center justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-      {tab === 'IR' && (
-       <svg viewBox="0 0 350 150" className="w-full h-full">
-        <line x1="0" y1="10" x2="350" y2="10" stroke="#cbd5e1" strokeDasharray="2" />
-        <text x="5" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_4000_cm')}</text>
-        <text x="310" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_500_cm')}</text>
-        <path d={sample === 'Ethanol' ? ethanolIR : acetoneIR} fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinejoin="round" />
-       </svg>
-      )}
-      {tab === 'NMR' && (
-       <svg viewBox="0 0 350 150" className="w-full h-full">
-        <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
-        <text x="5" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_10_ppm')}</text>
-        <text x="330" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_0_ppm')}</text>
-        {nmrPeaks[sample].map((peak, i) => (
-         <g key={i}>
-          <line x1={peak.x} y1={130} x2={peak.x} y2={130 - peak.h} stroke="#0ea5e9" strokeWidth="2" />
-          <text x={peak.x} y={130 - peak.h - 5} fontSize="9" textAnchor="middle" fill="#0284c7">{peak.label}</text>
-          <text x={peak.x} y={145} fontSize="8" textAnchor="middle" fill="#64748b">{peak.ppm}</text>
-         </g>
-        ))}
-       </svg>
-      )}
-      {tab === 'MS' && (
-       <svg viewBox="0 0 350 150" className="w-full h-full">
-        <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
-        <text x="170" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_m_z')}</text>
-        {msPeaks[sample].map((peak, i) => (
-         <g key={i}>
-          <line x1={peak.mz * 3.5} y1={130} x2={peak.mz * 3.5} y2={130 - peak.h} stroke="#ef4444" strokeWidth="3" />
-          <text x={peak.mz * 3.5} y={130 - peak.h - 5} fontSize="9" textAnchor="middle" fill="#b91c1c">{peak.mz}</text>
-         </g>
-        ))}
-       </svg>
-      )}
-      {tab === 'TLC' && (
-       <div className="w-full h-full flex items-center justify-around">
-        <div className="flex flex-col items-center gap-2 w-1/2">
-         <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa]">{t('lab.c12spectroscopychromatography_solvent_polarity')}</label>
-         <input 
-          type="range" min="0" max="100" 
-          value={solventPolarity} 
-          onChange={(e) => {setSolventPolarity(Number(e.target.value)); resetTLC();}}
-          disabled={isRunning}
-          className="w-full accent-indigo-500"
-         />
-         <div className="flex gap-2 w-full mt-2">
-          <button onClick={runTLC} disabled={isRunning} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><Play size={14} className="inline"/>  {t('lab.c12spectroscopychromatography_run')}</button>
-          <button onClick={resetTLC} className="px-2 py-1 bg-slate-300 dark:bg-[#121212] rounded text-xs hover:bg-slate-400 dark:bg-[#121212]"><RefreshCw size={14}/></button>
-         </div>
-        </div>
+ <div className={`flex-1 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg p-4 relative min-h-[250px] items-center justify-center flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {tab === 'IR' && (
+ <svg viewBox="0 0 350 150" className="w-full h-full">
+ <line x1="0" y1="10" x2="350" y2="10" stroke="#cbd5e1" strokeDasharray="2" />
+ <text x="5" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_4000_cm')}</text>
+ <text x="310" y="140" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_500_cm')}</text>
+ <path d={sample === 'Ethanol' ? ethanolIR : acetoneIR} fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinejoin="round" />
+ </svg>
+ )}
+ {tab === 'NMR' && (
+ <svg viewBox="0 0 350 150" className="w-full h-full">
+ <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
+ <text x="5" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_10_ppm')}</text>
+ <text x="330" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_0_ppm')}</text>
+ {nmrPeaks[sample].map((peak, i) => (
+ <g key={i}>
+ <line x1={peak.x} y1={130} x2={peak.x} y2={130 - peak.h} stroke="#0ea5e9" strokeWidth="2" />
+ <text x={peak.x} y={130 - peak.h - 5} fontSize="9" textAnchor="middle" fill="#0284c7">{peak.label}</text>
+ <text x={peak.x} y={145} fontSize="8" textAnchor="middle" fill="#64748b">{peak.ppm}</text>
+ </g>
+ ))}
+ </svg>
+ )}
+ {tab === 'MS' && (
+ <svg viewBox="0 0 350 150" className="w-full h-full">
+ <line x1="0" y1="130" x2="350" y2="130" stroke="#94a3b8" strokeWidth="2" />
+ <text x="170" y="145" fontSize="10" fill="#94a3b8">{t('lab.c12spectroscopychromatography_m_z')}</text>
+ {msPeaks[sample].map((peak, i) => (
+ <g key={i}>
+ <line x1={peak.mz * 3.5} y1={130} x2={peak.mz * 3.5} y2={130 - peak.h} stroke="#ef4444" strokeWidth="3" />
+ <text x={peak.mz * 3.5} y={130 - peak.h - 5} fontSize="9" textAnchor="middle" fill="#b91c1c">{peak.mz}</text>
+ </g>
+ ))}
+ </svg>
+ )}
+ {tab === 'TLC' && (
+ <div className="w-full h-full flex items-center justify-around">
+ <div className="flex flex-col items-center gap-2 w-1/2">
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa]">{t('lab.c12spectroscopychromatography_solvent_polarity')}</label>
+ <input 
+ type="range" min="0" max="100" 
+ value={solventPolarity} 
+ onChange={(e) => {setSolventPolarity(Number(e.target.value)); resetTLC();}}
+ disabled={isRunning}
+ className="w-full accent-indigo-500"
+ />
+ <div className="flex gap-2 w-full mt-2">
+ <button onClick={runTLC} disabled={isRunning} className="flex-1 py-1 bg-indigo-600 text-white rounded text-xs hover:bg-indigo-700 disabled:opacity-50 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"><Play size={14} className="inline"/> {t('lab.c12spectroscopychromatography_run')}</button>
+ <button onClick={resetTLC} className="px-2 py-1 bg-slate-300 dark:bg-[#121212] rounded text-xs hover:bg-slate-400 dark:bg-[#121212]"><RefreshCw size={14}/></button>
+ </div>
+ </div>
 
-        <div className="w-32 h-48 bg-slate-50 dark:bg-[#121212] border-2 border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner relative flex justify-around items-end pb-5">
-         {/* Solvent Front */}
-         <div className="absolute w-full border-t-2 border-indigo-200" style={{bottom: `${20 + 160*(tlcRunTime/100)}px`}}></div>
-         <div className="absolute bottom-5 w-full border-t border-slate-300 dark:border-[#1c1b1b] border-dashed"></div>
-         
-         {/* Spots */}
-         {sample === 'Ethanol' ? (
-          <div className={`w-full w-3 h-3 rounded-full bg-blue-500 opacity-80 absolute dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`} style={{left: '40%', bottom: `${yEthanol}px`}}></div>
-         ) : (
-          <div className="w-3 h-3 rounded-full bg-red-500 opacity-80 absolute" style={{left: '40%', bottom: `${yAcetone}px`}}></div>
-         )}
-        </div>
-       </div>
-      )}
-     </div>
-    </div>
+ <div className="w-32 h-48 bg-slate-50 dark:bg-[#121212] border-2 border-slate-300 dark:border-[#1c1b1b] rounded shadow-inner relative flex justify-around items-end pb-5">
+ {/* Solvent Front */}
+ <div className="absolute w-full border-t-2 border-indigo-200" style={{bottom: `${20 + 160*(tlcRunTime/100)}px`}}></div>
+ <div className="absolute bottom-5 w-full border-t border-slate-300 dark:border-[#1c1b1b] border-dashed"></div>
+ 
+ {/* Spots */}
+ {sample === 'Ethanol' ? (
+ <div className={`w-full w-3 h-3 rounded-full bg-blue-500 opacity-80 absolute dark:bg-teal-950/20 dark:border-teal-900 flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`} style={{left: '40%', bottom: `${yEthanol}px`}}></div>
+ ) : (
+ <div className="w-3 h-3 rounded-full bg-red-500 opacity-80 absolute" style={{left: '40%', bottom: `${yAcetone}px`}}></div>
+ )}
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
 
-    {/* Assessment */}
-    <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-      <Layers size={20} className="text-emerald-600" />
-      
-                           {t('lab.c12spectroscopychromatography_structure_elucidation')}
-                          </h2>
+ {/* Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <Layers size={20} className="text-emerald-600" />
+ 
+ {t('lab.c12spectroscopychromatography_structure_elucidation')}
+ </h2>
 
-     {config.showResearchConnections && (
-      <div className="mb-2">
-       <ResearchPaperAnalysis paper={RESEARCH_PAPERS['protein-mass-spec']} />
-      </div>
-     )}
+ {config.showResearchConnections && (
+ <div className="mb-2">
+ <ResearchPaperAnalysis paper={RESEARCH_PAPERS['protein-mass-spec']} />
+ </div>
+ )}
 
 
 
-     <div className="flex-1 lg:overflow-y-auto pr-2 space-y-5">
-      <div className="space-y-2">
-       <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-        
-                                     {t('lab.c12spectroscopychromatography_1_based_on_the_ir_broad_peak_a')}
-                                    </label>
-       <input 
-        type="text" 
-        value={q1} 
-        onChange={(e) => setQ1(e.target.value)}
-        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
-        placeholder={t('lab.c12spectroscopychromatography_enter_compound_name')}
-       />
-      </div>
+ <div className="flex-1 lg:overflow-y-auto pr-2 space-y-5">
+ <div className="space-y-2">
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
+ 
+ {t('lab.c12spectroscopychromatography_1_based_on_the_ir_broad_peak_a')}
+ </label>
+ <input 
+ type="text" 
+ value={q1} 
+ onChange={(e) => setQ1(e.target.value)}
+ className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
+ placeholder={t('lab.c12spectroscopychromatography_enter_compound_name')}
+ />
+ </div>
 
-      <div className="space-y-2">
-       <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
-        
-                                     {t('lab.c12spectroscopychromatography_2_for_sample_b_the_1h_nmr_show')}
-                                    </label>
-       <input 
-        type="number" 
-        value={q2} 
-        onChange={(e) => setQ2(e.target.value)}
-        className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
-        placeholder={t('lab.c12spectroscopychromatography_enter_m_z_value')}
-       />
-      </div>
-     </div>
+ <div className="space-y-2">
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] block">
+ 
+ {t('lab.c12spectroscopychromatography_2_for_sample_b_the_1h_nmr_show')}
+ </label>
+ <input 
+ type="number" 
+ value={q2} 
+ onChange={(e) => setQ2(e.target.value)}
+ className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md focus:ring-2 focus:ring-emerald-500"
+ placeholder={t('lab.c12spectroscopychromatography_enter_m_z_value')}
+ />
+ </div>
+ </div>
 
-     <div className="pt-4 border-t border-slate-100">
-      <button 
-       onClick={checkAnswers}
-       className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-      >
-       <CheckCircle size={18} />  {t('lab.c12spectroscopychromatography_verify_results')}
-                               </button>
+ <div className="pt-4 border-t border-slate-100">
+ <button 
+ onClick={checkAnswers}
+ className="w-full py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
+ >
+ <CheckCircle size={18} /> {t('lab.c12spectroscopychromatography_verify_results')}
+ </button>
 
-      {score !== null && (
-       <div className={`mt-4 p-3 rounded-md text-center font-bold ${score === 2 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-        
-                                     {t('lab.c12spectroscopychromatography_score')} {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review data and retry.'}
-       </div>
-      )}
-     </div>
-    </div>
-   </div>
-  </div>
+ {score !== null && (
+ <div className={`mt-4 p-3 rounded-md text-center font-bold ${score === 2 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+ 
+ {t('lab.c12spectroscopychromatography_score')} {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review data and retry.'}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
+ </div>
  );
 }

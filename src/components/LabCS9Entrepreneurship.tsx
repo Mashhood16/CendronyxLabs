@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [units, setUnits] = useState(100);
@@ -22,10 +22,10 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
  const costPerUnit = totalCost / units;
 
  const platforms = [
-  { id: 'insta', name: 'Instagram Ads', cost: 100, reach: 5000 },
-  { id: 'tiktok', name: 'TikTok Influencer', cost: 150, reach: 8000 },
-  { id: 'linkedin', name: 'LinkedIn B2B', cost: 200, reach: 2000 },
-  { id: 'flyers', name: 'Local Flyers', cost: 50, reach: 500 },
+ { id: 'insta', name: 'Instagram Ads', cost: 100, reach: 5000 },
+ { id: 'tiktok', name: 'TikTok Influencer', cost: 150, reach: 8000 },
+ { id: 'linkedin', name: 'LinkedIn B2B', cost: 200, reach: 2000 },
+ { id: 'flyers', name: 'Local Flyers', cost: 50, reach: 500 },
  ];
  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
 
@@ -39,224 +39,224 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
  const [assessmentFeedback, setAssessmentFeedback] = useState('');
 
  useEffect(() => {
-  setAssessmentFixedCost(Math.floor(Math.random() * 500) + 500);
-  setAssessmentVariableCost(Math.floor(Math.random() * 10) + 5);
-  setAssessmentSellingPrice(Math.floor(Math.random() * 20) + 20);
+ setAssessmentFixedCost(Math.floor(Math.random() * 500) + 500);
+ setAssessmentVariableCost(Math.floor(Math.random() * 10) + 5);
+ setAssessmentSellingPrice(Math.floor(Math.random() * 20) + 20);
  }, []);
 
  const correctBEP = Math.ceil(assessmentFixedCost / (assessmentSellingPrice - assessmentVariableCost));
 
  const checkBEP = () => {
-  const parsed = parseInt(userBEP);
-  if (isNaN(parsed)) {
-   setAssessmentFeedback("Please enter a valid number.");
-   return;
-  }
-  if (parsed === correctBEP) {
-   setAssessmentFeedback("Correct! You calculated the Break-Even Point correctly.");
-  } else {
-   setAssessmentFeedback(`Incorrect. Hint: BEP = Fixed Costs / (Selling Price - Variable Cost). Try again!`);
-  }
+ const parsed = parseInt(userBEP);
+ if (isNaN(parsed)) {
+ setAssessmentFeedback("Please enter a valid number.");
+ return;
+ }
+ if (parsed === correctBEP) {
+ setAssessmentFeedback("Correct! You calculated the Break-Even Point correctly.");
+ } else {
+ setAssessmentFeedback(`Incorrect. Hint: BEP = Fixed Costs / (Selling Price - Variable Cost). Try again!`);
+ }
  };
 
  const togglePlatform = (id: string) => {
-  if (selectedPlatforms.includes(id)) {
-   setSelectedPlatforms(selectedPlatforms.filter(p => p !== id));
-  } else {
-   setSelectedPlatforms([...selectedPlatforms, id]);
-  }
+ if (selectedPlatforms.includes(id)) {
+ setSelectedPlatforms(selectedPlatforms.filter(p => p !== id));
+ } else {
+ setSelectedPlatforms([...selectedPlatforms, id]);
+ }
  };
 
  return (
-  <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-   <LabHeader onExit={onExit} title={t('lab.cs9entrepreneurship_tech_entrepreneurship')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.cs9entrepreneurship_tech_entrepreneurship')} />
 
-   
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.cs9entrepreneurship_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.cs9entrepreneurship_lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-    {/* Column 1: Theory */}
-    <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100  ? 'flex' : 'hidden'} lg:flex`}>
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-      <TrendingUp className="w-6 h-6 text-emerald-600" />
-      
-                           {t('lab.cs9entrepreneurship_business_economics')}
-                          </h2>
-     <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
-      <p>{t('lab.cs9entrepreneurship_entrepreneurship_in_tech_invol')}</p>
-      
-      <div className="space-y-2">
-       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><DollarSign className="w-4 h-4 text-emerald-500"/>  {t('lab.cs9entrepreneurship_cost_structure')}</h3>
-       <ul className="list-disc pl-5 space-y-1">
-        <li><strong>{t('lab.cs9entrepreneurship_fixed_costs')}</strong>  {t('lab.cs9entrepreneurship_expenses_that_don_t_change_bas')}</li>
-        <li><strong>{t('lab.cs9entrepreneurship_variable_costs')}</strong>  {t('lab.cs9entrepreneurship_expenses_that_scale_with_produ')}</li>
-       </ul>
-      </div>
-      
-      <div className="space-y-2">
-       <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><Target className="w-4 h-4 text-emerald-500"/>  {t('lab.cs9entrepreneurship_break_even_point_bep')}</h3>
-       <p className={`bg-slate-50 dark:bg-[#121212] p-2 rounded border font-mono text-xs text-center flex-col `}>{t('lab.cs9entrepreneurship_bep_fixed_costs_price_variable')}</p>
-       <p>{t('lab.cs9entrepreneurship_the_number_of_units_you_must_s')}</p>
-      </div>
-     </div>
-    </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.cs9entrepreneurship_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.cs9entrepreneurship_lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 min-h-0 lg:overflow-hidden">
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100 ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <TrendingUp className="w-6 h-6 text-emerald-600" />
+ 
+ {t('lab.cs9entrepreneurship_business_economics')}
+ </h2>
+ <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-4">
+ <p>{t('lab.cs9entrepreneurship_entrepreneurship_in_tech_invol')}</p>
+ 
+ <div className="space-y-2">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><DollarSign className="w-4 h-4 text-emerald-500"/> {t('lab.cs9entrepreneurship_cost_structure')}</h3>
+ <ul className="list-disc pl-5 space-y-1">
+ <li><strong>{t('lab.cs9entrepreneurship_fixed_costs')}</strong> {t('lab.cs9entrepreneurship_expenses_that_don_t_change_bas')}</li>
+ <li><strong>{t('lab.cs9entrepreneurship_variable_costs')}</strong> {t('lab.cs9entrepreneurship_expenses_that_scale_with_produ')}</li>
+ </ul>
+ </div>
+ 
+ <div className="space-y-2">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] flex items-center gap-2"><Target className="w-4 h-4 text-emerald-500"/> {t('lab.cs9entrepreneurship_break_even_point_bep')}</h3>
+ <p className={`bg-slate-50 dark:bg-[#121212] p-2 rounded border font-mono text-xs text-center flex-col `}>{t('lab.cs9entrepreneurship_bep_fixed_costs_price_variable')}</p>
+ <p>{t('lab.cs9entrepreneurship_the_number_of_units_you_must_s')}</p>
+ </div>
+ </div>
+ </div>
 
-    {/* Column 2: Simulator */}
-    <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col border border-slate-100 lg:  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-      <Calculator className="w-6 h-6 text-emerald-600" />
-      
-                           {t('lab.cs9entrepreneurship_business_planner')}
-                          </h2>
-     
-     {/* Cost Calculator */}
-     <div className={`w-full mb-6 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-      <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.cs9entrepreneurship_production_costs')}</h3>
-      <div className={`space-y-4 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-       <div>
-        <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
-         <span>{t('lab.cs9entrepreneurship_units_to_produce')}</span>
-         <span>{units}  {t('lab.cs9entrepreneurship_units')}</span>
-        </label>
-        <input type="range" min="10" max="1000" step="10" value={units} onChange={e => setUnits(parseInt(e.target.value))} className="w-full accent-emerald-500" />
-       </div>
-       <div>
-        <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
-         <span>{t('lab.cs9entrepreneurship_raw_material_cost_unit')}</span>
-         <span>${rawMaterial}</span>
-        </label>
-        <input type="range" min="1" max="50" step="1" value={rawMaterial} onChange={e => setRawMaterial(parseInt(e.target.value))} className="w-full accent-emerald-500" />
-       </div>
-       <div>
-        <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
-         <span>{t('lab.cs9entrepreneurship_labor_cost_unit')}</span>
-         <span>${labor}</span>
-        </label>
-        <input type="range" min="1" max="50" step="1" value={labor} onChange={e => setLabor(parseInt(e.target.value))} className="w-full accent-emerald-500" />
-       </div>
-       <div>
-        <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
-         <span>{t('lab.cs9entrepreneurship_fixed_overhead')}</span>
-         <span>${fixedOverhead}</span>
-        </label>
-        <input type="range" min="100" max="5000" step="100" value={fixedOverhead} onChange={e => setFixedOverhead(parseInt(e.target.value))} className="w-full accent-emerald-500" />
-       </div>
-      </div>
-     </div>
+ {/* Column 2: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col border border-slate-100 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <Calculator className="w-6 h-6 text-emerald-600" />
+ 
+ {t('lab.cs9entrepreneurship_business_planner')}
+ </h2>
+ 
+ {/* Cost Calculator */}
+ <div className={`w-full mb-6 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+ <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2">{t('lab.cs9entrepreneurship_production_costs')}</h3>
+ <div className={`space-y-4 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+ <div>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
+ <span>{t('lab.cs9entrepreneurship_units_to_produce')}</span>
+ <span>{units} {t('lab.cs9entrepreneurship_units')}</span>
+ </label>
+ <input type="range" min="10" max="1000" step="10" value={units} onChange={e => setUnits(parseInt(e.target.value))} className="w-full accent-emerald-500" />
+ </div>
+ <div>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
+ <span>{t('lab.cs9entrepreneurship_raw_material_cost_unit')}</span>
+ <span>${rawMaterial}</span>
+ </label>
+ <input type="range" min="1" max="50" step="1" value={rawMaterial} onChange={e => setRawMaterial(parseInt(e.target.value))} className="w-full accent-emerald-500" />
+ </div>
+ <div>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
+ <span>{t('lab.cs9entrepreneurship_labor_cost_unit')}</span>
+ <span>${labor}</span>
+ </label>
+ <input type="range" min="1" max="50" step="1" value={labor} onChange={e => setLabor(parseInt(e.target.value))} className="w-full accent-emerald-500" />
+ </div>
+ <div>
+ <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] flex justify-between">
+ <span>{t('lab.cs9entrepreneurship_fixed_overhead')}</span>
+ <span>${fixedOverhead}</span>
+ </label>
+ <input type="range" min="100" max="5000" step="100" value={fixedOverhead} onChange={e => setFixedOverhead(parseInt(e.target.value))} className="w-full accent-emerald-500" />
+ </div>
+ </div>
+ </div>
 
-     {/* Marketing Board */}
-     <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-      <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2"><Users className="w-4 h-4"/>  {t('lab.cs9entrepreneurship_social_media_strategy')}</h3>
-      <div className="space-y-2">
-       {platforms.map(p => (
-        <label key={p.id} className={`flex items-center gap-3 p-2 rounded border cursor-pointer transition-colors ${selectedPlatforms.includes(p.id) ? 'bg-emerald-50 border-emerald-300' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212]'}`}>
-         <input 
-          type="checkbox" 
-          checked={selectedPlatforms.includes(p.id)}
-          onChange={() => togglePlatform(p.id)}
-          className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500"
-         />
-         <div className="flex-1">
-          <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff]">{p.name}</p>
-          <p className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.cs9entrepreneurship_est_reach')} {p.reach.toLocaleString()}</p>
-         </div>
-         <span className="text-sm font-bold text-emerald-700">${p.cost}</span>
-        </label>
-       ))}
-      </div>
-     </div>
-    </div>
+ {/* Marketing Board */}
+ <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-sm text-slate-700 dark:text-[#ffffff] mb-3 border-b pb-2 flex items-center gap-2"><Users className="w-4 h-4"/> {t('lab.cs9entrepreneurship_social_media_strategy')}</h3>
+ <div className="space-y-2">
+ {platforms.map(p => (
+ <label key={p.id} className={`flex items-center gap-3 p-2 rounded border cursor-pointer transition-colors ${selectedPlatforms.includes(p.id) ? 'bg-emerald-50 border-emerald-300' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212]'}`}>
+ <input 
+ type="checkbox" 
+ checked={selectedPlatforms.includes(p.id)}
+ onChange={() => togglePlatform(p.id)}
+ className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500"
+ />
+ <div className="flex-1">
+ <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff]">{p.name}</p>
+ <p className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.cs9entrepreneurship_est_reach')} {p.reach.toLocaleString()}</p>
+ </div>
+ <span className="text-sm font-bold text-emerald-700">${p.cost}</span>
+ </label>
+ ))}
+ </div>
+ </div>
+ </div>
 
-    {/* Column 3: Analysis */}
-    <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
-     <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-      <BarChart2 className="w-6 h-6 text-emerald-600" />
-      
-                           {t('lab.cs9entrepreneurship_financial_overview')}
-                          </h2>
-     
-     <div className={`flex-1 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner space-y-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-      <div>
-       <h3 className="font-semibold text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">{t('lab.cs9entrepreneurship_cost_breakdown')}</h3>
-       <div className="grid grid-cols-2 gap-2 text-sm">
-        <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border flex flex-col items-center">
-         <span className="text-slate-500 dark:text-[#71717a] text-xs">{t('lab.cs9entrepreneurship_total_var_cost')}</span>
-         <span className="font-bold text-slate-800 dark:text-[#ffffff]">${totalVariableCost.toLocaleString()}</span>
-        </div>
-        <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border flex flex-col items-center">
-         <span className="text-slate-500 dark:text-[#71717a] text-xs">{t('lab.cs9entrepreneurship_fixed_costs_1')}</span>
-         <span className="font-bold text-slate-800 dark:text-[#ffffff]">${fixedOverhead.toLocaleString()}</span>
-        </div>
-        <div className="p-2 bg-emerald-100 rounded border border-emerald-200 col-span-2 flex justify-between items-center px-4">
-         <span className="font-semibold text-emerald-900">{t('lab.cs9entrepreneurship_total_production_cost')}</span>
-         <span className="font-bold text-lg text-emerald-700">${totalCost.toLocaleString()}</span>
-        </div>
-        <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border col-span-2 flex justify-between items-center px-4 text-xs">
-         <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_cost_per_unit_produced')}</span>
-         <span className="font-bold text-slate-800 dark:text-[#ffffff]">${costPerUnit.toFixed(2)}{t('lab.cs9entrepreneurship_unit')}</span>
-        </div>
-       </div>
-      </div>
+ {/* Column 3: Analysis */}
+ <div className="bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
+ <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <BarChart2 className="w-6 h-6 text-emerald-600" />
+ 
+ {t('lab.cs9entrepreneurship_financial_overview')}
+ </h2>
+ 
+ <div className={`flex-1 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] mb-6 shadow-inner space-y-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div>
+ <h3 className="font-semibold text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">{t('lab.cs9entrepreneurship_cost_breakdown')}</h3>
+ <div className="grid grid-cols-2 gap-2 text-sm">
+ <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border flex flex-col items-center">
+ <span className="text-slate-500 dark:text-[#71717a] text-xs">{t('lab.cs9entrepreneurship_total_var_cost')}</span>
+ <span className="font-bold text-slate-800 dark:text-[#ffffff]">${totalVariableCost.toLocaleString()}</span>
+ </div>
+ <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border flex flex-col items-center">
+ <span className="text-slate-500 dark:text-[#71717a] text-xs">{t('lab.cs9entrepreneurship_fixed_costs_1')}</span>
+ <span className="font-bold text-slate-800 dark:text-[#ffffff]">${fixedOverhead.toLocaleString()}</span>
+ </div>
+ <div className="p-2 bg-emerald-100 rounded border border-emerald-200 col-span-2 flex justify-between items-center px-4">
+ <span className="font-semibold text-emerald-900">{t('lab.cs9entrepreneurship_total_production_cost')}</span>
+ <span className="font-bold text-lg text-emerald-700">${totalCost.toLocaleString()}</span>
+ </div>
+ <div className="p-2 bg-slate-50 dark:bg-[#121212] rounded border col-span-2 flex justify-between items-center px-4 text-xs">
+ <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_cost_per_unit_produced')}</span>
+ <span className="font-bold text-slate-800 dark:text-[#ffffff]">${costPerUnit.toFixed(2)}{t('lab.cs9entrepreneurship_unit')}</span>
+ </div>
+ </div>
+ </div>
 
-      <div className="pt-2 border-t border-slate-200 dark:border-[#1c1b1b]">
-       <h3 className="font-semibold text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">{t('lab.cs9entrepreneurship_marketing_totals')}</h3>
-       <div className="flex justify-between items-center text-sm p-2 bg-slate-50 dark:bg-[#121212] rounded border mb-2">
-        <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_budget_spent')}</span>
-        <span className="font-bold text-red-600">${totalMarketingCost.toLocaleString()}</span>
-       </div>
-       <div className="flex justify-between items-center text-sm p-2 bg-slate-50 dark:bg-[#121212] rounded border">
-        <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_expected_reach')}</span>
-        <span className="font-bold text-blue-600">{totalReach.toLocaleString()}  {t('lab.cs9entrepreneurship_people')}</span>
-       </div>
-      </div>
-     </div>
+ <div className="pt-2 border-t border-slate-200 dark:border-[#1c1b1b]">
+ <h3 className="font-semibold text-xs text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">{t('lab.cs9entrepreneurship_marketing_totals')}</h3>
+ <div className="flex justify-between items-center text-sm p-2 bg-slate-50 dark:bg-[#121212] rounded border mb-2">
+ <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_budget_spent')}</span>
+ <span className="font-bold text-red-600">${totalMarketingCost.toLocaleString()}</span>
+ </div>
+ <div className="flex justify-between items-center text-sm p-2 bg-slate-50 dark:bg-[#121212] rounded border">
+ <span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_expected_reach')}</span>
+ <span className="font-bold text-blue-600">{totalReach.toLocaleString()} {t('lab.cs9entrepreneurship_people')}</span>
+ </div>
+ </div>
+ </div>
 
-     <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200 shadow-sm">
-      <h3 className="font-bold text-emerald-900 mb-2 text-sm flex items-center gap-2">{t('lab.cs9entrepreneurship_assessment_find_the_bep')}</h3>
-      <p className="text-xs text-emerald-800 mb-3">{t('lab.cs9entrepreneurship_calculate_the_break_even_point')}</p>
-      
-      <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-emerald-100 text-sm mb-4 space-y-1 shadow-sm">
-       <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_fixed_costs')}</span> <span className="font-bold">${assessmentFixedCost}</span></div>
-       <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_variable_cost_unit')}</span> <span className="font-bold">${assessmentVariableCost}</span></div>
-       <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_selling_price_unit')}</span> <span className="font-bold">${assessmentSellingPrice}</span></div>
-      </div>
+ <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200 shadow-sm">
+ <h3 className="font-bold text-emerald-900 mb-2 text-sm flex items-center gap-2">{t('lab.cs9entrepreneurship_assessment_find_the_bep')}</h3>
+ <p className="text-xs text-emerald-800 mb-3">{t('lab.cs9entrepreneurship_calculate_the_break_even_point')}</p>
+ 
+ <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-emerald-100 text-sm mb-4 space-y-1 shadow-sm">
+ <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_fixed_costs')}</span> <span className="font-bold">${assessmentFixedCost}</span></div>
+ <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_variable_cost_unit')}</span> <span className="font-bold">${assessmentVariableCost}</span></div>
+ <div className="flex justify-between"><span className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.cs9entrepreneurship_selling_price_unit')}</span> <span className="font-bold">${assessmentSellingPrice}</span></div>
+ </div>
 
-      <div className="flex flex-col gap-3">
-       <input 
-        type="number" 
-        value={userBEP}
-        onChange={e => setUserBEP(e.target.value)}
-        placeholder={t('lab.cs9entrepreneurship_enter_break_even_units')}
-        className="px-3 py-2 border border-emerald-300 rounded-md text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-shadow"
-       />
-       <button 
-        onClick={checkBEP}
-        className={`bg-emerald-600 text-white py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold shadow-sm flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40 `}
-       >
-        
-                                     {t('lab.cs9entrepreneurship_submit_calculation')} <CheckCircle2 className="w-4 h-4"/>
-       </button>
-       {assessmentFeedback && (
-        <div className={`mt-2 p-2 rounded text-xs font-semibold ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
-         {assessmentFeedback}
-        </div>
-       )}
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
+ <div className="flex flex-col gap-3">
+ <input 
+ type="number" 
+ value={userBEP}
+ onChange={e => setUserBEP(e.target.value)}
+ placeholder={t('lab.cs9entrepreneurship_enter_break_even_units')}
+ className="px-3 py-2 border border-emerald-300 rounded-md text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-shadow"
+ />
+ <button 
+ onClick={checkBEP}
+ className={`bg-emerald-600 text-white py-2 rounded-md hover:bg-emerald-700 transition-colors text-sm font-semibold shadow-sm flex items-center justify-center gap-2 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40 `}
+ >
+ 
+ {t('lab.cs9entrepreneurship_submit_calculation')} <CheckCircle2 className="w-4 h-4"/>
+ </button>
+ {assessmentFeedback && (
+ <div className={`mt-2 p-2 rounded text-xs font-semibold ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
+ {assessmentFeedback}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
  );
 }

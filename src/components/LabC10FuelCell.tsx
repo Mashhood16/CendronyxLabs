@@ -5,8 +5,8 @@ import { useTranslate } from "../i18n";
 import { useLab } from '../store';
 
 export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
-  const { recordLabData, setLabScore } = useLab();
-    const { t } = useTranslate();
+ const { recordLabData, setLabScore } = useLab();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [isPlaying, setIsPlaying] = useState(false);
  const [time, setTime] = useState(0);
@@ -22,7 +22,7 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  useEffect(() => {
  let timer: number;
  if (isPlaying) {
-  timer = window.setInterval(() => setTime(t => t + 1), 1000);
+ timer = window.setInterval(() => setTime(t => t + 1), 1000);
  }
  return () => window.clearInterval(timer);
  }, [isPlaying]);
@@ -35,18 +35,18 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
 
  const recordData = () => {
  setData(prev => [...prev, { 
-  t: time, 
-  p: parseFloat(power.toFixed(3)), 
-  v: parseFloat(voltage.toFixed(2)), 
-  i: parseFloat(current.toFixed(2)), 
-  r: resistance 
+ t: time, 
+ p: parseFloat(power.toFixed(3)), 
+ v: parseFloat(voltage.toFixed(2)), 
+ i: parseFloat(current.toFixed(2)), 
+ r: resistance 
  }]);
-   recordLabData({ timestamp: Date.now(),  
-  t: time, 
-  p: parseFloat(power.toFixed(3)), 
-  v: parseFloat(voltage.toFixed(2)), 
-  i: parseFloat(current.toFixed(2)), 
-  r: resistance 
+ recordLabData({ timestamp: Date.now(), 
+ t: time, 
+ p: parseFloat(power.toFixed(3)), 
+ v: parseFloat(voltage.toFixed(2)), 
+ i: parseFloat(current.toFixed(2)), 
+ r: resistance 
  });
  };
 
@@ -58,7 +58,7 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  const expected = 1.23 / (assQ.r + R_int);
  if (Math.abs(parseFloat(answer) - expected) < 0.05) setIsCorrect(true);
  else setIsCorrect(false);
-    setLabScore(isCorrect ? 100 : 0, 100);
+ setLabScore(isCorrect ? 100 : 0, 100);
  };
 
  const renderGraph = () => {
@@ -68,184 +68,184 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.p / maxP) * 100}`).join(' ');
 
  return (
-  <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
-  <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
-  <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
-  <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
-  {data.map((d, idx) => (
-   <circle key={idx} cx={(d.t / maxT) * 100} cy={100 - (d.p / maxP) * 100} r="2" fill="#ef4444" />
-  ))}
-  <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">{t('lab.c10fuelcell_time_s')}</text>
-  <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">{t('lab.c10fuelcell_power_w')}</text>
-  </svg>
+ <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
+ <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
+ <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
+ <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
+ {data.map((d, idx) => (
+ <circle key={idx} cx={(d.t / maxT) * 100} cy={100 - (d.p / maxP) * 100} r="2" fill="#ef4444" />
+ ))}
+ <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">{t('lab.c10fuelcell_time_s')}</text>
+ <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">{t('lab.c10fuelcell_power_w')}</text>
+ </svg>
  );
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4 min-h-screen lg:h-screen overflow-x-hidden w-full">
 <LabHeader onExit={onExit} title={t('lab.c10fuelcell_hydrogen_oxygen_fuel_cell')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c10fuelcell_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c10fuelcell_lab')}</button>
-  </div>
-  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10fuelcell_theory_setup')}</h2>
-   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-   
-                        {t('lab.c10fuelcell_a_hydrogen_fuel_cell_generates')}
-                        </p>
-   <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto space-y-1 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
-   <div>{t('lab.c10fuelcell_anode_h_2h_2e')}</div>
-   <div>{t('lab.c10fuelcell_cathode_o_4h_4e_2h_o')}</div>
-   </div>
-   
-   <div className="space-y-6">
-   <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10fuelcell_load_resistance')} {resistance} Ω</label>
-    <input 
-    type="range" min="1" max="10" step="1" 
-    value={resistance} onChange={(e) => setResistance(parseFloat(e.target.value))}
-    className="w-full"
-    />
-   </div>
-   <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] text-sm flex-col `}>
-    <div className="flex justify-between mb-1"><span>{t('lab.c10fuelcell_cell_voltage_e_ocv')}</span> <span>{t('lab.c10fuelcell_1_23_v')}</span></div>
-    <div className="flex justify-between"><span>{t('lab.c10fuelcell_internal_resistance')}</span> <span>0.50 Ω</span></div>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c10fuelcell_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c10fuelcell_lab')}</button>
+ </div>
+ <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 min-h-0 lg:overflow-hidden">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : activeMobileTab === 'lab' ? 'flex mb-4' : 'hidden'} lg:flex lg:order-none`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">{t('lab.c10fuelcell_theory_setup')}</h2>
+ <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
+ 
+ {t('lab.c10fuelcell_a_hydrogen_fuel_cell_generates')}
+ </p>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto space-y-1 flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+ <div>{t('lab.c10fuelcell_anode_h_2h_2e')}</div>
+ <div>{t('lab.c10fuelcell_cathode_o_4h_4e_2h_o')}</div>
+ </div>
+ 
+ <div className="space-y-6">
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10fuelcell_load_resistance')} {resistance} Ω</label>
+ <input 
+ type="range" min="1" max="10" step="1" 
+ value={resistance} onChange={(e) => setResistance(parseFloat(e.target.value))}
+ className="w-full"
+ />
+ </div>
+ <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] text-sm flex-col `}>
+ <div className="flex justify-between mb-1"><span>{t('lab.c10fuelcell_cell_voltage_e_ocv')}</span> <span>{t('lab.c10fuelcell_1_23_v')}</span></div>
+ <div className="flex justify-between"><span>{t('lab.c10fuelcell_internal_resistance')}</span> <span>0.50 Ω</span></div>
+ </div>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">{t('lab.c10fuelcell_simulation_viewer')}</h2>
-   
-   <div className="w-full flex justify-center space-x-4 mb-6">
-   <button onClick={() => setIsPlaying(!isPlaying)} className={`flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
-    {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-    {isPlaying ? 'Turn Off' : 'Turn On'}
-   </button>
-   <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212]">
-    <RotateCcw className="w-4 h-4 mr-2" />  {t('lab.c10fuelcell_reset')}
-                            </button>
-   </div>
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">{t('lab.c10fuelcell_simulation_viewer')}</h2>
+ 
+ <div className="w-full flex justify-center space-x-4 mb-6">
+ <button onClick={() => setIsPlaying(!isPlaying)} className={`flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
+ {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+ {isPlaying ? 'Turn Off' : 'Turn On'}
+ </button>
+ <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212]">
+ <RotateCcw className="w-4 h-4 mr-2" /> {t('lab.c10fuelcell_reset')}
+ </button>
+ </div>
 
-   <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
-   <svg viewBox="0 0 200 200" className="w-full h-full">
-    {/* Main Body */}
-    <rect x="50" y="50" width="100" height="100" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" rx="4" />
-    {/* PEM Membrane */}
-    <rect x="95" y="50" width="10" height="100" fill="#22c55e" opacity="0.8" />
-    
-    {/* Inlets / Outlets */}
-    <path d="M 30 70 L 50 70" fill="none" stroke="#3b82f6" strokeWidth="6" />
-    <text x="15" y="74" fontSize="10" fill="#3b82f6">H₂</text>
-    <path d="M 170 70 L 150 70" fill="none" stroke="#ef4444" strokeWidth="6" />
-    <text x="175" y="74" fontSize="10" fill="#ef4444">O₂</text>
-    <path d="M 150 130 L 170 130" fill="none" stroke="#0ea5e9" strokeWidth="6" />
-    <text x="175" y="134" fontSize="10" fill="#0ea5e9">{t('lab.c10fuelcell_h_o')}</text>
+ <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
+ <svg viewBox="0 0 200 200" className="w-full h-full">
+ {/* Main Body */}
+ <rect x="50" y="50" width="100" height="100" fill="#f8fafc" stroke="#94a3b8" strokeWidth="2" rx="4" />
+ {/* PEM Membrane */}
+ <rect x="95" y="50" width="10" height="100" fill="#22c55e" opacity="0.8" />
+ 
+ {/* Inlets / Outlets */}
+ <path d="M 30 70 L 50 70" fill="none" stroke="#3b82f6" strokeWidth="6" />
+ <text x="15" y="74" fontSize="10" fill="#3b82f6">H₂</text>
+ <path d="M 170 70 L 150 70" fill="none" stroke="#ef4444" strokeWidth="6" />
+ <text x="175" y="74" fontSize="10" fill="#ef4444">O₂</text>
+ <path d="M 150 130 L 170 130" fill="none" stroke="#0ea5e9" strokeWidth="6" />
+ <text x="175" y="134" fontSize="10" fill="#0ea5e9">{t('lab.c10fuelcell_h_o')}</text>
 
-    {/* Circuit */}
-    <polyline points="75,50 75,20 125,20 125,50" fill="none" stroke="#1e293b" strokeWidth="2" />
-    <circle cx="100" cy="20" r="12" fill={isPlaying ? "#fef08a" : "#cbd5e1"} stroke="#64748b" strokeWidth="2" />
-    {isPlaying && <circle cx="100" cy="20" r="16" fill="#fef08a" opacity={power / 1.5} />}
+ {/* Circuit */}
+ <polyline points="75,50 75,20 125,20 125,50" fill="none" stroke="#1e293b" strokeWidth="2" />
+ <circle cx="100" cy="20" r="12" fill={isPlaying ? "#fef08a" : "#cbd5e1"} stroke="#64748b" strokeWidth="2" />
+ {isPlaying && <circle cx="100" cy="20" r="16" fill="#fef08a" opacity={power / 1.5} />}
 
-    {/* Animations */}
-    {isPlaying && (
-    <>
-     <circle cx={55 + (time % 5)*8} cy="85" r="2" fill="#3b82f6" />
-     <circle cx={145 - (time % 5)*8} cy="85" r="2" fill="#ef4444" />
-     <circle cx="100" cy="100" r="2" fill="#22c55e">
-     <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
-     </circle>
-     <circle cx={130 + (time % 5)*8} cy="130" r="2" fill="#0ea5e9" />
-    </>
-    )}
-   </svg>
-   </div>
+ {/* Animations */}
+ {isPlaying && (
+ <>
+ <circle cx={55 + (time % 5)*8} cy="85" r="2" fill="#3b82f6" />
+ <circle cx={145 - (time % 5)*8} cy="85" r="2" fill="#ef4444" />
+ <circle cx="100" cy="100" r="2" fill="#22c55e">
+ <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />
+ </circle>
+ <circle cx={130 + (time % 5)*8} cy="130" r="2" fill="#0ea5e9" />
+ </>
+ )}
+ </svg>
+ </div>
 
-   <div className="mt-4 w-full grid grid-cols-3 gap-2 text-center ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block">
-   <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg">
-    <div className="text-[10px] text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10fuelcell_voltage')}</div>
-    <div className="text-lg font-mono text-slate-800 dark:text-[#ffffff]">{voltage.toFixed(2)}V</div>
-   </div>
-   <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg">
-    <div className="text-[10px] text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10fuelcell_current')}</div>
-    <div className="text-lg font-mono text-slate-800 dark:text-[#ffffff]">{current.toFixed(2)}A</div>
-   </div>
-   <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg border border-blue-200">
-    <div className="text-[10px] text-blue-500 uppercase font-bold">{t('lab.c10fuelcell_power')}</div>
-    <div className="text-lg font-mono text-blue-800 dark:text-[#ffffff]">{power.toFixed(2)}W</div>
-   </div>
-   </div>
-  </div>
+ <div className="mt-4 w-full grid grid-cols-3 gap-2 text-center ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block">
+ <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg">
+ <div className="text-[10px] text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10fuelcell_voltage')}</div>
+ <div className="text-lg font-mono text-slate-800 dark:text-[#ffffff]">{voltage.toFixed(2)}V</div>
+ </div>
+ <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg">
+ <div className="text-[10px] text-slate-500 dark:text-[#71717a] uppercase font-bold">{t('lab.c10fuelcell_current')}</div>
+ <div className="text-lg font-mono text-slate-800 dark:text-[#ffffff]">{current.toFixed(2)}A</div>
+ </div>
+ <div className="bg-slate-100 dark:bg-[#121212] p-2 rounded-lg border border-blue-200">
+ <div className="text-[10px] text-blue-500 uppercase font-bold">{t('lab.c10fuelcell_power')}</div>
+ <div className="text-lg font-mono text-blue-800 dark:text-[#ffffff]">{power.toFixed(2)}W</div>
+ </div>
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex justify-between items-center mb-4">
-   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10fuelcell_data_analysis')}</h2>
-   <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-    <Save className="w-4 h-4 mr-1" />  {t('lab.c10fuelcell_record')}
-                            </button>
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:overflow-y-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex justify-between items-center mb-4">
+ <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.c10fuelcell_data_analysis')}</h2>
+ <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
+ <Save className="w-4 h-4 mr-1" /> {t('lab.c10fuelcell_record')}
+ </button>
+ </div>
 
-   {renderGraph()}
+ {renderGraph()}
 
-   <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-   <table className="w-full text-sm text-left">
-    <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
-    <tr>
-     <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_load')}</th>
-     <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_current_a')}</th>
-     <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_power_w')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {data.map((d, i) => (
-     <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
-     <td className="px-3 py-2">{d.r}</td>
-     <td className="px-3 py-2">{d.i}</td>
-     <td className="px-3 py-2 font-mono text-blue-600">{d.p}</td>
-     </tr>
-    ))}
-    </tbody>
-   </table>
-   </div>
+ <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+ <table className="w-full text-sm text-left">
+ <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
+ <tr>
+ <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_load')}</th>
+ <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_current_a')}</th>
+ <th className="px-3 py-2 border-b">{t('lab.c10fuelcell_power_w')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {data.map((d, i) => (
+ <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
+ <td className="px-3 py-2">{d.r}</td>
+ <td className="px-3 py-2">{d.i}</td>
+ <td className="px-3 py-2 font-mono text-blue-600">{d.p}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
 
-   <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c10fuelcell_assessment')}</h3>
-   <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
-    
-                             {t('lab.c10fuelcell_calculate_the_theoretical_curr')} {assQ.r}  {t('lab.c10fuelcell_external_load_if_the_cell_ocv_')} {R_int}  {t('lab.c10fuelcell_provide_answer_to_2_decimal_pl')}
-                            </p>
-   <div className="flex items-center space-x-2">
-    <input 
-    type="number" 
-    value={answer}
-    onChange={e => setAnswer(e.target.value)}
-    placeholder={t('lab.c10fuelcell_current_a')} 
-    className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
-    />
-    <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    
-                                 {t('lab.c10fuelcell_check')}
-                                 </button>
-   </div>
-   {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" />  {t('lab.c10fuelcell_correct')}</div>}
-   {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" />  {t('lab.c10fuelcell_incorrect_try_again')}</div>}
-   </div>
-  </div>
-  </div>
+ <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+ <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c10fuelcell_assessment')}</h3>
+ <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
+ 
+ {t('lab.c10fuelcell_calculate_the_theoretical_curr')} {assQ.r} {t('lab.c10fuelcell_external_load_if_the_cell_ocv_')} {R_int} {t('lab.c10fuelcell_provide_answer_to_2_decimal_pl')}
+ </p>
+ <div className="flex items-center space-x-2">
+ <input 
+ type="number" 
+ value={answer}
+ onChange={e => setAnswer(e.target.value)}
+ placeholder={t('lab.c10fuelcell_current_a')} 
+ className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
+ />
+ <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.c10fuelcell_check')}
+ </button>
+ </div>
+ {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> {t('lab.c10fuelcell_correct')}</div>}
+ {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" /> {t('lab.c10fuelcell_incorrect_try_again')}</div>}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

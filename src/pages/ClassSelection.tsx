@@ -59,6 +59,18 @@ export default function ClassSelection() {
             
             <div className="flex flex-col sm:flex-row gap-3 md:shrink-0">
               <button 
+                onClick={() => navigate('/create-lab')}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
+              >
+                🧪 {t("Create Custom Lab")}
+              </button>
+              <button 
+                onClick={() => navigate('/simulation-studio')}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
+              >
+                🎨 {t("Simulation Studio")}
+              </button>
+              <button 
                 onClick={() => document.getElementById('class-grid')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
               >

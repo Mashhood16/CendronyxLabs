@@ -9,7 +9,7 @@ interface LabProps {
 }
 
 export default function LabM10Vectors({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  // SVG Vector Canvas State
@@ -93,14 +93,14 @@ export default function LabM10Vectors({ onExit }: LabProps) {
  const handleCheckQuiz = () => {
  const numericAns = parseFloat(ans);
  if (isNaN(numericAns)) {
-  setFeedback('Please enter a valid number.');
-  return;
+ setFeedback('Please enter a valid number.');
+ return;
  }
  const expected = Math.hypot(qX, qY);
  if (Math.abs(numericAns - expected) < 0.2) {
-  setFeedback('Correct! Well done.');
+ setFeedback('Correct! Well done.');
  } else {
-  setFeedback(`Incorrect. Try again! (Hint: Use Pythagorean theorem)`);
+ setFeedback(`Incorrect. Try again! (Hint: Use Pythagorean theorem)`);
  }
  };
 
@@ -111,184 +111,184 @@ export default function LabM10Vectors({ onExit }: LabProps) {
  }
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m10vectors_lab_m10_vectors_scalars')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m10vectors_lab_m10_vectors_scalars')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m10vectors_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m10vectors_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
-  {/* Left Column: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-   <BookOpen className="w-5 h-5 text-blue-600" />
-   
-                        {t('lab.m10vectors_theory_concepts')}
-                        </h2>
-   <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
-   <p>
-    <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.m10vectors_scalars')}</strong>  {t('lab.m10vectors_are_physical_quantities_that_h')}
-                            </p>
-   <p>
-    <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.m10vectors_vectors')}</strong>  {t('lab.m10vectors_are_physical_quantities_that_h_1')}
-                            </p>
-   <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.m10vectors_vector_addition')}</h3>
-    <p className="text-blue-700">
-    
-                                 {t('lab.m10vectors_when_adding_two_vectors_you_ca')}
-                                 </p>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m10vectors_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m10vectors_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 max-w-7xl mx-auto w-full lg:overflow-visible">
+ {/* Left Column: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <BookOpen className="w-5 h-5 text-blue-600" />
+ 
+ {t('lab.m10vectors_theory_concepts')}
+ </h2>
+ <div className="space-y-4 text-slate-600 dark:text-[#a1a1aa] text-sm">
+ <p>
+ <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.m10vectors_scalars')}</strong> {t('lab.m10vectors_are_physical_quantities_that_h')}
+ </p>
+ <p>
+ <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.m10vectors_vectors')}</strong> {t('lab.m10vectors_are_physical_quantities_that_h_1')}
+ </p>
+ <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
+ <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.m10vectors_vector_addition')}</h3>
+ <p className="text-blue-700">
+ 
+ {t('lab.m10vectors_when_adding_two_vectors_you_ca')}
+ </p>
+ </div>
+ </div>
+ </div>
 
-  {/* Middle Column: Interactive Lab */}
-  <div className="flex flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] overflow- relative h-[400px] flex-col `}>
-   <svg 
-    ref={svgRef} 
-    className="w-full h-full touch-none" 
-    viewBox="0 0 500 400"
-    onPointerMove={handlePointerMove} 
-    onPointerUp={handlePointerUp} 
-    onPointerLeave={handlePointerUp}
-   >
-    <defs>
-    <marker id="arrowU" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-     <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
-    </marker>
-    <marker id="arrowV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-     <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
-    </marker>
-    <marker id="arrowSum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-     <path d="M 0 0 L 10 5 L 0 10 z" fill="#22c55e" />
-    </marker>
-    </defs>
-    {gridLines}
-    
-    {/* Parallelogram guidelines */}
-    <line x1={uSvg.x} y1={uSvg.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#ef4444" strokeWidth="2" strokeDasharray="4" opacity="0.4" />
-    <line x1={vSvg.x} y1={vSvg.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#3b82f6" strokeWidth="2" strokeDasharray="4" opacity="0.4" />
-    
-    {/* Vectors */}
-    <line x1={origin.x} y1={origin.y} x2={uSvg.x} y2={uSvg.y} stroke="#3b82f6" strokeWidth="3" markerEnd="url(#arrowU)" />
-    <line x1={origin.x} y1={origin.y} x2={vSvg.x} y2={vSvg.y} stroke="#ef4444" strokeWidth="3" markerEnd="url(#arrowV)" />
-    <line x1={origin.x} y1={origin.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#22c55e" strokeWidth="3" markerEnd="url(#arrowSum)" />
-    
-    {/* Draggable heads */}
-    <circle cx={uSvg.x} cy={uSvg.y} r={8} fill="#3b82f6" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('U')} />
-    <circle cx={vSvg.x} cy={vSvg.y} r={8} fill="#ef4444" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('V')} />
-   </svg>
-   <div className="absolute top-2 left-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-2 rounded text-xs border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] pointer-events-none ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-    <div className="text-blue-600 font-bold">{t('lab.m10vectors_vector_u_blue')} {uMag}  {t('lab.m10vectors_units')}</div>
-    <div className="text-red-600 font-bold">{t('lab.m10vectors_vector_v_red')} {vMag}  {t('lab.m10vectors_units')}</div>
-    <div className="text-green-600 font-bold">{t('lab.m10vectors_resultant_u_v')} {sumMag}  {t('lab.m10vectors_units')}</div>
-   </div>
-   </div>
+ {/* Middle Column: Interactive Lab */}
+ <div className="flex flex-col gap-4 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative h-[400px] flex-col `}>
+ <svg 
+ ref={svgRef} 
+ className="w-full h-full touch-none" 
+ viewBox="0 0 500 400"
+ onPointerMove={handlePointerMove} 
+ onPointerUp={handlePointerUp} 
+ onPointerLeave={handlePointerUp}
+ >
+ <defs>
+ <marker id="arrowU" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+ <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+ </marker>
+ <marker id="arrowV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+ <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
+ </marker>
+ <marker id="arrowSum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+ <path d="M 0 0 L 10 5 L 0 10 z" fill="#22c55e" />
+ </marker>
+ </defs>
+ {gridLines}
+ 
+ {/* Parallelogram guidelines */}
+ <line x1={uSvg.x} y1={uSvg.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#ef4444" strokeWidth="2" strokeDasharray="4" opacity="0.4" />
+ <line x1={vSvg.x} y1={vSvg.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#3b82f6" strokeWidth="2" strokeDasharray="4" opacity="0.4" />
+ 
+ {/* Vectors */}
+ <line x1={origin.x} y1={origin.y} x2={uSvg.x} y2={uSvg.y} stroke="#3b82f6" strokeWidth="3" markerEnd="url(#arrowU)" />
+ <line x1={origin.x} y1={origin.y} x2={vSvg.x} y2={vSvg.y} stroke="#ef4444" strokeWidth="3" markerEnd="url(#arrowV)" />
+ <line x1={origin.x} y1={origin.y} x2={sumSvg.x} y2={sumSvg.y} stroke="#22c55e" strokeWidth="3" markerEnd="url(#arrowSum)" />
+ 
+ {/* Draggable heads */}
+ <circle cx={uSvg.x} cy={uSvg.y} r={8} fill="#3b82f6" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('U')} />
+ <circle cx={vSvg.x} cy={vSvg.y} r={8} fill="#ef4444" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('V')} />
+ </svg>
+ <div className="absolute top-2 left-2 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/90 p-2 rounded text-xs border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] pointer-events-none ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <div className="text-blue-600 font-bold">{t('lab.m10vectors_vector_u_blue')} {uMag} {t('lab.m10vectors_units')}</div>
+ <div className="text-red-600 font-bold">{t('lab.m10vectors_vector_v_red')} {vMag} {t('lab.m10vectors_units')}</div>
+ <div className="text-green-600 font-bold">{t('lab.m10vectors_resultant_u_v')} {sumMag} {t('lab.m10vectors_units')}</div>
+ </div>
+ </div>
 
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m10vectors_classify_quantities')}</h3>
-   <div className="flex gap-2 flex-wrap mb-4 min-h-[30px]">
-    {items.filter(i => i.status === 'pool').map(item => (
-    <button key={item.id} onClick={() => setSelectedItem(item.id)} className={`px-3 py-1 text-sm rounded-full border ${selectedItem === item.id ? 'bg-blue-100 border-blue-400' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b]'}`}>
-     {item.text}
-    </button>
-    ))}
-    {items.filter(i => i.status === 'pool').length === 0 && <span className="text-sm text-slate-400 italic">{t('lab.m10vectors_all_items_classified')}</span>}
-   </div>
-   <div className="grid grid-cols-2 gap-4">
-    <div className={`border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors `} onClick={() => moveItem('scalar')}>
-    <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">{t('lab.m10vectors_scalars')}</div>
-    <div className="flex flex-col gap-1">
-     {items.filter(i => i.status === 'scalar').map(item => (
-     <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-blue-400' : ''}`}>
-      {item.text}
-     </div>
-     ))}
-    </div>
-    </div>
-    <div className={`border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors `} onClick={() => moveItem('vector')}>
-    <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">{t('lab.m10vectors_vectors')}</div>
-    <div className="flex flex-col gap-1">
-     {items.filter(i => i.status === 'vector').map(item => (
-     <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-red-50 text-red-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-red-400' : ''}`}>
-      {item.text}
-     </div>
-     ))}
-    </div>
-    </div>
-   </div>
-   {isAllClassified && (
-    <div className={`mt-3 p-2 flex items-center justify-center gap-2 rounded text-sm font-bold ${checkClassification() ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-    {checkClassification() ? <CheckCircle className="w-4 h-4" /> : null}
-    {checkClassification() ? 'All Correct! Great Job!' : 'Some are incorrect. Keep trying!'}
-    </div>
-   )}
-   </div>
-  </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.m10vectors_classify_quantities')}</h3>
+ <div className="flex gap-2 flex-wrap mb-4 min-h-[30px]">
+ {items.filter(i => i.status === 'pool').map(item => (
+ <button key={item.id} onClick={() => setSelectedItem(item.id)} className={`px-3 py-1 text-sm rounded-full border ${selectedItem === item.id ? 'bg-blue-100 border-blue-400' : 'bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b]'}`}>
+ {item.text}
+ </button>
+ ))}
+ {items.filter(i => i.status === 'pool').length === 0 && <span className="text-sm text-slate-400 italic">{t('lab.m10vectors_all_items_classified')}</span>}
+ </div>
+ <div className="grid grid-cols-2 gap-4">
+ <div className={`border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors `} onClick={() => moveItem('scalar')}>
+ <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">{t('lab.m10vectors_scalars')}</div>
+ <div className="flex flex-col gap-1">
+ {items.filter(i => i.status === 'scalar').map(item => (
+ <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-blue-400' : ''}`}>
+ {item.text}
+ </div>
+ ))}
+ </div>
+ </div>
+ <div className={`border-2 border-dashed border-slate-300 dark:border-[#1c1b1b] rounded-lg p-3 min-h-[120px] cursor-pointer hover:bg-slate-50 dark:bg-[#121212] transition-colors `} onClick={() => moveItem('vector')}>
+ <div className="font-bold text-center text-slate-500 dark:text-[#71717a] mb-2">{t('lab.m10vectors_vectors')}</div>
+ <div className="flex flex-col gap-1">
+ {items.filter(i => i.status === 'vector').map(item => (
+ <div key={item.id} onClick={(e) => { e.stopPropagation(); setSelectedItem(item.id); }} className={`text-xs bg-red-50 text-red-800 px-2 py-1 rounded text-center cursor-pointer ${selectedItem === item.id ? 'ring-2 ring-red-400' : ''}`}>
+ {item.text}
+ </div>
+ ))}
+ </div>
+ </div>
+ </div>
+ {isAllClassified && (
+ <div className={`mt-3 p-2 flex items-center justify-center gap-2 rounded text-sm font-bold ${checkClassification() ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+ {checkClassification() ? <CheckCircle className="w-4 h-4" /> : null}
+ {checkClassification() ? 'All Correct! Great Job!' : 'Some are incorrect. Keep trying!'}
+ </div>
+ )}
+ </div>
+ </div>
 
-  {/* Right Column: Assessment */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center justify-between mb-4">
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
-    <CheckCircle className="w-5 h-5 text-green-600" />
-    
-                             {t('lab.m10vectors_assessment')}
-                            </h2>
-   <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title={t('lab.m10vectors_new_question')}>
-    <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
-   </button>
-   </div>
-   
-   <div className="space-y-4">
-   <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
-    <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
-    
-                                 {t('lab.m10vectors_a_drone_flies_exactly')} <strong className="text-slate-900 dark:text-[#ffffff]">{qX}  {t('lab.m10vectors_km_north')}</strong>{t('lab.m10vectors_and_then_turns_and_flies')} <strong className="text-slate-900 dark:text-[#ffffff]">{qY}  {t('lab.m10vectors_km_east')}</strong>.
-    </p>
-    <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-2">
-    
-                                 {t('lab.m10vectors_what_is_the_magnitude_of_its_t')}
-                                 </p>
-    <div className="flex items-center gap-2">
-    <input 
-     type="number" 
-     value={ans}
-     onChange={(e) => setAns(e.target.value)}
-     className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-     placeholder={t('lab.m10vectors_e_g_5')}
-    />
-    <span className="text-sm text-slate-500 dark:text-[#71717a]">km</span>
-    </div>
-    <button 
-    onClick={handleCheckQuiz}
-    className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.m10vectors_check_answer')}
-                                 </button>
-   </div>
-   
-   {feedback && (
-    <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
-    {feedback}
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ {/* Right Column: Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center justify-between mb-4">
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] flex items-center gap-2">
+ <CheckCircle className="w-5 h-5 text-green-600" />
+ 
+ {t('lab.m10vectors_assessment')}
+ </h2>
+ <button onClick={generateQuiz} className="p-2 hover:bg-slate-100 dark:bg-[#121212] rounded-full transition-colors" title={t('lab.m10vectors_new_question')}>
+ <RefreshCw className="w-4 h-4 text-slate-600 dark:text-[#a1a1aa]" />
+ </button>
+ </div>
+ 
+ <div className="space-y-4">
+ <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100">
+ <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-3">
+ 
+ {t('lab.m10vectors_a_drone_flies_exactly')} <strong className="text-slate-900 dark:text-[#ffffff]">{qX} {t('lab.m10vectors_km_north')}</strong>{t('lab.m10vectors_and_then_turns_and_flies')} <strong className="text-slate-900 dark:text-[#ffffff]">{qY} {t('lab.m10vectors_km_east')}</strong>.
+ </p>
+ <p className="text-sm font-semibold text-slate-800 dark:text-[#ffffff] mb-2">
+ 
+ {t('lab.m10vectors_what_is_the_magnitude_of_its_t')}
+ </p>
+ <div className="flex items-center gap-2">
+ <input 
+ type="number" 
+ value={ans}
+ onChange={(e) => setAns(e.target.value)}
+ className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+ placeholder={t('lab.m10vectors_e_g_5')}
+ />
+ <span className="text-sm text-slate-500 dark:text-[#71717a]">km</span>
+ </div>
+ <button 
+ onClick={handleCheckQuiz}
+ className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors text-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.m10vectors_check_answer')}
+ </button>
+ </div>
+ 
+ {feedback && (
+ <div className={`p-3 rounded-lg text-sm font-medium ${feedback.includes('Correct') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+ {feedback}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

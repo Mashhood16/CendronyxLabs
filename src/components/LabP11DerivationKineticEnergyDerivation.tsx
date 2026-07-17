@@ -2,5 +2,5 @@ import GenericDerivationLab from './GenericDerivationLab';
 import { CLASS11_DERIVATIONS } from '../data/class11Derivations';
 
 export default function LabP11DerivationKineticEnergyDerivation({ onExit }: { onExit?: () => void }) {
-  return <GenericDerivationLab onExit={onExit} config={CLASS11_DERIVATIONS.kinetic_energy} />;
+ return <GenericDerivationLab onExit={onExit} config={CLASS11_DERIVATIONS.kinetic_energy} />;
 }

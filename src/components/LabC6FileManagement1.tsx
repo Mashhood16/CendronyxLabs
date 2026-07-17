@@ -15,7 +15,7 @@ type FileSystemItem = {
 };
 
 export default function LabC6FileManagement1({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [items, setItems] = useState<FileSystemItem[]>([
  { id: 'drive_d', name: 'Drive D:', type: 'folder', parentId: null },
  { id: 'desktop', name: 'Desktop', type: 'folder', parentId: null },
@@ -39,12 +39,12 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
 
  const handleCreate = () => {
  if (inputName.trim()) {
-  setItems([...items, {
-  id: `item_${Date.now()}`,
-  name: inputName.trim(),
-  type: 'folder',
-  parentId: currentFolderId
-  }]);
+ setItems([...items, {
+ id: `item_${Date.now()}`,
+ name: inputName.trim(),
+ type: 'folder',
+ parentId: currentFolderId
+ }]);
  }
  setIsCreating(false);
  setInputName('');
@@ -52,7 +52,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
 
  const handleRename = () => {
  if (selectedItemId && inputName.trim()) {
-  setItems(items.map(i => i.id === selectedItemId ? { ...i, name: inputName.trim() } : i));
+ setItems(items.map(i => i.id === selectedItemId ? { ...i, name: inputName.trim() } : i));
  }
  setIsRenaming(false);
  setInputName('');
@@ -62,163 +62,163 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
  const handlePaste = () => {
  const folderToCopy = items.find(i => i.id === clipboardFolderId);
  if (folderToCopy) {
-  setItems([...items, {
-  id: `item_${Date.now()}`,
-  name: `${folderToCopy.name} - Copy`,
-  type: folderToCopy.type,
-  parentId: currentFolderId
-  }]);
+ setItems([...items, {
+ id: `item_${Date.now()}`,
+ name: `${folderToCopy.name} - Copy`,
+ type: folderToCopy.type,
+ parentId: currentFolderId
+ }]);
  }
  setClipboardFolderId(null);
  };
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c6filemanagement1_file_and_folder_management_1')} subtitle={t('lab.subtitle_practice_creating_folders')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-  <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-   <h3 className="font-bold mb-2">{t('lab.c6filemanagement1_tasks_to_complete')}</h3>
-   <ul className="list-disc pl-5 space-y-1 text-sm">
-   <li className={hasRollNumFolderInD ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_create_a_folder_in_drive_d_sav')}</li>
-   <li className={hasHomeworkFolder ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_open_it_and_create_a_sub_folde')}</li>
-   <li className={hasAssignmentOnDesktop ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_copy_this_folder_to_the_deskto')}</li>
-   </ul>
-  </div>
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c6filemanagement1_file_and_folder_management_1')} subtitle={t('lab.subtitle_practice_creating_folders')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
+ <h3 className="font-bold mb-2">{t('lab.c6filemanagement1_tasks_to_complete')}</h3>
+ <ul className="list-disc pl-5 space-y-1 text-sm">
+ <li className={hasRollNumFolderInD ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_create_a_folder_in_drive_d_sav')}</li>
+ <li className={hasHomeworkFolder ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_open_it_and_create_a_sub_folde')}</li>
+ <li className={hasAssignmentOnDesktop ? 'text-green-600 line-through' : ''}>{t('lab.c6filemanagement1_copy_this_folder_to_the_deskto')}</li>
+ </ul>
+ </div>
 
-  {isComplete && (
-   <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg mb-6 flex items-center gap-3 font-bold dark:text-[#ffffff]">
-   <CheckCircle className="w-6 h-6" />  {t('lab.c6filemanagement1_all_tasks_completed_successful')}
-                        </div>
-  )}
+ {isComplete && (
+ <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg mb-6 flex items-center gap-3 font-bold dark:text-[#ffffff]">
+ <CheckCircle className="w-6 h-6" /> {t('lab.c6filemanagement1_all_tasks_completed_successful')}
+ </div>
+ )}
 
-  <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-300 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
-   {/* Simulated File Explorer Header */}
-   <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] p-3 flex items-center justify-between">
-   <div className="flex items-center gap-4">
-    <button 
-    onClick={() => {
-     if (currentFolder?.parentId) setCurrentFolderId(currentFolder.parentId);
-     else setCurrentFolderId('drive_d');
-    }}
-    disabled={currentFolderId === 'drive_d' || currentFolderId === 'desktop'}
-    className="p-1 rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50"
-    >
-    <ArrowLeft className="w-5 h-5" />
-    </button>
-    <div className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa]">
-    {currentFolderId === 'desktop' ? <Monitor className="w-4 h-4" /> : <Folder className="w-4 h-4" />}
-    {currentFolder?.name}
-    </div>
-   </div>
-   
-   <div className="flex items-center gap-2">
-    <button onClick={() => setCurrentFolderId('desktop')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
-    <Monitor className="w-4 h-4" />  {t('lab.c6filemanagement1_desktop')}
-                                 </button>
-    <button onClick={() => setCurrentFolderId('drive_d')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
-    <HardDriveIcon className="w-4 h-4" />  {t('lab.c6filemanagement1_drive_d')}
-                                 </button>
-   </div>
-   </div>
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-300 dark:border-[#1c1b1b] flex flex-col lg:overflow-hidden">
+ {/* Simulated File Explorer Header */}
+ <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] p-3 flex items-center justify-between">
+ <div className="flex items-center gap-4">
+ <button 
+ onClick={() => {
+ if (currentFolder?.parentId) setCurrentFolderId(currentFolder.parentId);
+ else setCurrentFolderId('drive_d');
+ }}
+ disabled={currentFolderId === 'drive_d' || currentFolderId === 'desktop'}
+ className="p-1 rounded hover:bg-slate-200 dark:bg-[#121212] disabled:opacity-50"
+ >
+ <ArrowLeft className="w-5 h-5" />
+ </button>
+ <div className="bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600 dark:text-[#a1a1aa]">
+ {currentFolderId === 'desktop' ? <Monitor className="w-4 h-4" /> : <Folder className="w-4 h-4" />}
+ {currentFolder?.name}
+ </div>
+ </div>
+ 
+ <div className="flex items-center gap-2">
+ <button onClick={() => setCurrentFolderId('desktop')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
+ <Monitor className="w-4 h-4" /> {t('lab.c6filemanagement1_desktop')}
+ </button>
+ <button onClick={() => setCurrentFolderId('drive_d')} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] hover:bg-slate-300 dark:bg-[#121212] rounded text-sm font-bold flex items-center gap-2">
+ <HardDriveIcon className="w-4 h-4" /> {t('lab.c6filemanagement1_drive_d')}
+ </button>
+ </div>
+ </div>
 
-   {/* Toolbar */}
-   <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] px-4 py-2 flex items-center gap-2">
-   <button onClick={() => setIsCreating(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm font-bold transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
-    <Folder className="w-4 h-4" />  {t('lab.c6filemanagement1_new_folder')}
-                            </button>
-   {selectedItemId && (
-    <button onClick={() => { setIsRenaming(true); setInputName(selectedItem?.name || ''); }} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-    
-                                 {t('lab.c6filemanagement1_rename')}
-                                 </button>
-   )}
-   {selectedItemId && selectedItem?.type === 'folder' && (
-    <button onClick={() => setClipboardFolderId(selectedItemId)} className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded text-sm font-bold transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
-    
-                                 {t('lab.c6filemanagement1_copy')}
-                                 </button>
-   )}
-   {clipboardFolderId && (
-    <button onClick={handlePaste} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
-    
-                                 {t('lab.c6filemanagement1_paste')}
-                                 </button>
-   )}
-   </div>
+ {/* Toolbar */}
+ <div className="bg-slate-100 dark:bg-[#121212] border-b border-slate-300 dark:border-[#1c1b1b] px-4 py-2 flex items-center gap-2">
+ <button onClick={() => setIsCreating(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm font-bold transition-colors dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">
+ <Folder className="w-4 h-4" /> {t('lab.c6filemanagement1_new_folder')}
+ </button>
+ {selectedItemId && (
+ <button onClick={() => { setIsRenaming(true); setInputName(selectedItem?.name || ''); }} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+ 
+ {t('lab.c6filemanagement1_rename')}
+ </button>
+ )}
+ {selectedItemId && selectedItem?.type === 'folder' && (
+ <button onClick={() => setClipboardFolderId(selectedItemId)} className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded text-sm font-bold transition-colors dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">
+ 
+ {t('lab.c6filemanagement1_copy')}
+ </button>
+ )}
+ {clipboardFolderId && (
+ <button onClick={handlePaste} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded text-sm font-bold transition-colors dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">
+ 
+ {t('lab.c6filemanagement1_paste')}
+ </button>
+ )}
+ </div>
 
-   {/* File Grid */}
-   <div className="flex-1 p-6 bg-slate-50 dark:bg-[#121212] lg:overflow-y-auto">
-   {isCreating && (
-    <div className="mb-6 p-4 border border-blue-300 bg-blue-50 rounded-lg max-w-sm dark:bg-teal-950/20 dark:border-teal-900">
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c6filemanagement1_new_folder_name')}</label>
-    <div className="flex gap-2">
-     <input 
-     autoFocus
-     type="text" 
-     value={inputName} 
-     onChange={e => setInputName(e.target.value)}
-     onKeyDown={e => e.key === 'Enter' && handleCreate()}
-     className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] rounded"
-     />
-     <button onClick={handleCreate} className="px-3 py-1.5 bg-blue-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">OK</button>
-     <button onClick={() => setIsCreating(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] rounded font-bold">{t('lab.c6filemanagement1_cancel')}</button>
-    </div>
-    </div>
-   )}
+ {/* File Grid */}
+ <div className="flex-1 p-6 bg-slate-50 dark:bg-[#121212] lg:overflow-y-auto">
+ {isCreating && (
+ <div className="mb-6 p-4 border border-blue-300 bg-blue-50 rounded-lg max-w-sm dark:bg-teal-950/20 dark:border-teal-900">
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c6filemanagement1_new_folder_name')}</label>
+ <div className="flex gap-2">
+ <input 
+ autoFocus
+ type="text" 
+ value={inputName} 
+ onChange={e => setInputName(e.target.value)}
+ onKeyDown={e => e.key === 'Enter' && handleCreate()}
+ className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] rounded"
+ />
+ <button onClick={handleCreate} className="px-3 py-1.5 bg-blue-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">OK</button>
+ <button onClick={() => setIsCreating(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] rounded font-bold">{t('lab.c6filemanagement1_cancel')}</button>
+ </div>
+ </div>
+ )}
 
-   {isRenaming && selectedItem && (
-    <div className="mb-6 p-4 border border-amber-300 bg-amber-50 rounded-lg max-w-sm dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c6filemanagement1_rename_1')}{selectedItem.name}'</label>
-    <div className="flex gap-2">
-     <input 
-     autoFocus
-     type="text" 
-     value={inputName} 
-     onChange={e => setInputName(e.target.value)}
-     onKeyDown={e => e.key === 'Enter' && handleRename()}
-     className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] rounded"
-     />
-     <button onClick={handleRename} className="px-3 py-1.5 bg-amber-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">OK</button>
-     <button onClick={() => setIsRenaming(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] rounded font-bold">{t('lab.c6filemanagement1_cancel')}</button>
-    </div>
-    </div>
-   )}
+ {isRenaming && selectedItem && (
+ <div className="mb-6 p-4 border border-amber-300 bg-amber-50 rounded-lg max-w-sm dark:bg-[#121212] dark:border-[#1c1b1b]">
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c6filemanagement1_rename_1')}{selectedItem.name}'</label>
+ <div className="flex gap-2">
+ <input 
+ autoFocus
+ type="text" 
+ value={inputName} 
+ onChange={e => setInputName(e.target.value)}
+ onKeyDown={e => e.key === 'Enter' && handleRename()}
+ className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-[#1c1b1b] rounded"
+ />
+ <button onClick={handleRename} className="px-3 py-1.5 bg-amber-600 text-white rounded font-bold dark:text-white dark:text-white dark:bg-amber-500 dark:hover:bg-amber-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-amber-500/40">OK</button>
+ <button onClick={() => setIsRenaming(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-[#121212] rounded font-bold">{t('lab.c6filemanagement1_cancel')}</button>
+ </div>
+ </div>
+ )}
 
-   <div className="flex flex-wrap gap-6">
-    {currentItems.length === 0 && !isCreating && !isRenaming && (
-    <div className="w-full text-center py-12 text-slate-400">
-     
-                                      {t('lab.c6filemanagement1_this_folder_is_empty')}
-                                     </div>
-    )}
-    {currentItems.map(item => (
-    <button
-     key={item.id}
-     onClick={() => setSelectedItemId(item.id)}
-     onDoubleClick={() => {
-     if (item.type === 'folder') {
-      setCurrentFolderId(item.id);
-      setSelectedItemId(null);
-     }
-     }}
-     className={`w-28 flex flex-col items-center gap-2 p-3 rounded-lg border-2 border-transparent transition-colors ${ selectedItemId === item.id ? 'bg-blue-50 border-blue-200' : 'hover:bg-slate-100 dark:bg-[#121212]' }`}
-    >
-     {item.type === 'folder' ? (
-     <Folder className={`w-12 h-12 ${selectedItemId === item.id ? 'text-amber-500' : 'text-amber-400'}`} fill="currentColor" />
-     ) : (
-     <File className={`w-12 h-12 ${selectedItemId === item.id ? 'text-blue-500' : 'text-blue-400'}`} />
-     )}
-     <span className="text-sm font-medium text-center break-words w-full truncate">{item.name}</span>
-    </button>
-    ))}
-   </div>
-   </div>
-   
-   <div className="bg-slate-100 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] p-2 text-xs text-slate-500 dark:text-[#71717a]">
-   {currentItems.length}  {t('lab.c6filemanagement1_items')} {selectedItemId ? '1 item selected' : ''}
-   </div>
-  </div>
-  </div>
+ <div className="flex flex-wrap gap-6">
+ {currentItems.length === 0 && !isCreating && !isRenaming && (
+ <div className="w-full text-center py-12 text-slate-400">
+ 
+ {t('lab.c6filemanagement1_this_folder_is_empty')}
+ </div>
+ )}
+ {currentItems.map(item => (
+ <button
+ key={item.id}
+ onClick={() => setSelectedItemId(item.id)}
+ onDoubleClick={() => {
+ if (item.type === 'folder') {
+ setCurrentFolderId(item.id);
+ setSelectedItemId(null);
+ }
+ }}
+ className={`w-28 flex flex-col items-center gap-2 p-3 rounded-lg border-2 border-transparent transition-colors ${ selectedItemId === item.id ? 'bg-blue-50 border-blue-200' : 'hover:bg-slate-100 dark:bg-[#121212]' }`}
+ >
+ {item.type === 'folder' ? (
+ <Folder className={`w-12 h-12 ${selectedItemId === item.id ? 'text-amber-500' : 'text-amber-400'}`} fill="currentColor" />
+ ) : (
+ <File className={`w-12 h-12 ${selectedItemId === item.id ? 'text-blue-500' : 'text-blue-400'}`} />
+ )}
+ <span className="text-sm font-medium text-center break-words w-full truncate">{item.name}</span>
+ </button>
+ ))}
+ </div>
+ </div>
+ 
+ <div className="bg-slate-100 dark:bg-[#121212] border-t border-slate-200 dark:border-[#1c1b1b] p-2 text-xs text-slate-500 dark:text-[#71717a]">
+ {currentItems.length} {t('lab.c6filemanagement1_items')} {selectedItemId ? '1 item selected' : ''}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

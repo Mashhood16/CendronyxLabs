@@ -18,7 +18,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
 
 const { recordLabData } = useLab();
  const { t } = useTranslate();
-  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
 
  const [material, setMaterial] = useState(MATERIALS[0]);
  const [angle, setAngle] = useState(45); // Angle of incidence
@@ -48,7 +48,7 @@ const { recordLabData } = useLab();
  const sinR = Math.sin(measuredRefractedDeg * Math.PI / 180);
  setDataPoints(prev => [...prev, {i: angle, r: measuredRefractedDeg, sinI, sinR}].sort((a,b) => a.i - b.i));
  
-  recordLabData({ timestamp: Date.now() });
+ recordLabData({ timestamp: Date.now() });
 };
 
  const reset = () => {
@@ -62,209 +62,209 @@ const { recordLabData } = useLab();
  const checkAnswer = () => {
  const userN = parseFloat(answerN);
  if (isNaN(userN)) {
-  setFeedback('Please enter a valid number.');
-  return;
+ setFeedback('Please enter a valid number.');
+ return;
  }
  const error = Math.abs((userN - material.n) / material.n) * 100;
  if (error < 5) {
-  setFeedback(`Correct! The refractive index is ${material.n.toFixed(2)}.`);
+ setFeedback(`Correct! The refractive index is ${material.n.toFixed(2)}.`);
  } else {
-  setFeedback(`Incorrect. Check your calculations. (Error: ${error.toFixed(1)}%)`);
+ setFeedback(`Incorrect. Check your calculations. (Error: ${error.toFixed(1)}%)`);
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p10refractionblocks_unit_14_refraction_snell_s_law')} subtitle={t('lab.subtitle_determine_refractive_index')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p10refractionblocks_unit_14_refraction_snell_s_law')} subtitle={t('lab.subtitle_determine_refractive_index')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.p10refractionblocks_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.10refractionblocks_lab')}</button>
-  </div>
-  <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
-  
-  {/* Left Panel: Theory & Controls */}
-  <div className="lg:col-span-1 flex flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_theorysnellslaw')}</h2>
-   <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
-    <p>{t('lab.p10refractionblocks_when_light_travels_from_air_le')}</p>
-    <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded font-mono text-center text-lg text-slate-800 dark:text-[#ffffff] font-bold flex-col `}>
-    <MathText>{"$n_1 \\sin(i) = n_2 \\sin(r)$"}</MathText>
-    </div>
-    <p><MathText>{t('lab.p10refractionblocks_since_air_has_a_refractive_ind')}</MathText></p>
-    <div className={`bg-blue-50 p-2 rounded text-center text-blue-800 font-bold font-mono dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    <MathText>{"$n = \\sin(i) / \\sin(r)$"}</MathText>
-    </div>
-   </div>
-   </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.p10refractionblocks_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.10refractionblocks_lab')}</button>
+ </div>
+ <div className="lg:flex-1 p-6 max-w-7xl mx-auto w-full flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
+ 
+ {/* Left Panel: Theory & Controls */}
+ <div className="lg:col-span-1 flex flex-col gap-6 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_theorysnellslaw')}</h2>
+ <div className="text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
+ <p>{t('lab.p10refractionblocks_when_light_travels_from_air_le')}</p>
+ <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded font-mono text-center text-lg text-slate-800 dark:text-[#ffffff] font-bold flex-col `}>
+ <MathText>{"$n_1 \\sin(i) = n_2 \\sin(r)$"}</MathText>
+ </div>
+ <p><MathText>{t('lab.p10refractionblocks_since_air_has_a_refractive_ind')}</MathText></p>
+ <div className={`bg-blue-50 p-2 rounded text-center text-blue-800 font-bold font-mono dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
+ <MathText>{"$n = \\sin(i) / \\sin(r)$"}</MathText>
+ </div>
+ </div>
+ </div>
 
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_setup')}</h2>
-   <div className="space-y-6">
-    <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.10refractionblocks_selectmaterial')}</label>
-    <div className="grid grid-cols-2 gap-2">
-     {MATERIALS.map(m => (
-     <button 
-      key={m.id}
-      onClick={() => { setMaterial(m); reset(); }}
-      className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-[#121212] dark:bg-[#121212] text-white border-[#1c1b1b] dark:border-slate-500' : 'bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212]'}`}
-     >
-      {m.id}
-     </button>
-     ))}
-    </div>
-    </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_setup')}</h2>
+ <div className="space-y-6">
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.10refractionblocks_selectmaterial')}</label>
+ <div className="grid grid-cols-2 gap-2">
+ {MATERIALS.map(m => (
+ <button 
+ key={m.id}
+ onClick={() => { setMaterial(m); reset(); }}
+ className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-[#121212] dark:bg-[#121212] text-white border-[#1c1b1b] dark:border-slate-500' : 'bg-slate-50 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212]'}`}
+ >
+ {m.id}
+ </button>
+ ))}
+ </div>
+ </div>
 
-    <div>
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 flex justify-between">
-     <span>{t('lab.p10refractionblocks_angle_of_incidence_i')}</span>
-     <span className="text-red-600 font-bold">{angle}°</span>
-    </label>
-    <input 
-     type="range" 
-     min="0" max="85" step="1" 
-     value={angle} 
-     onChange={e => setAngle(Number(e.target.value))} 
-     className={`w-full accent-red-500 h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer flex-col `} 
-    />
-    </div>
+ <div>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 flex justify-between">
+ <span>{t('lab.p10refractionblocks_angle_of_incidence_i')}</span>
+ <span className="text-red-600 font-bold">{angle}°</span>
+ </label>
+ <input 
+ type="range" 
+ min="0" max="85" step="1" 
+ value={angle} 
+ onChange={e => setAngle(Number(e.target.value))} 
+ className={`w-full accent-red-500 h-2 bg-slate-200 dark:bg-[#121212] rounded-lg appearance-none cursor-pointer flex-col `} 
+ />
+ </div>
 
-    <button 
-    onClick={recordData}
-    disabled={dataPoints.some(p => p.i === angle)}
-    className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white py-3 rounded-lg font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    <Activity className="w-5 h-5" />  {t('lab.p10refractionblocks_record_angles')}
-                                 </button>
-   </div>
-   </div>
+ <button 
+ onClick={recordData}
+ disabled={dataPoints.some(p => p.i === angle)}
+ className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white py-3 rounded-lg font-bold transition-colors dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ <Activity className="w-5 h-5" /> {t('lab.p10refractionblocks_record_angles')}
+ </button>
+ </div>
+ </div>
 
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_analysis')}</h2>
-   <div className="space-y-3">
-    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10refractionblocks_calculate_refractive_index_n')}</label>
-    <div className="flex gap-2">
-    <input 
-     type="number" 
-     step="0.01"
-     value={answerN}
-     onChange={e => setAnswerN(e.target.value)}
-     className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-blue-500 font-mono"
-     placeholder={t('lab.p10refractionblocks_t_lab_10refractionblocks_eg150')}
-    />
-    <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.10refractionblocks_check')}</button>
-    </div>
-    {feedback && (
-    <div className={`p-3 rounded text-sm ${feedback.includes('Correct') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-     {feedback}
-    </div>
-    )}
-   </div>
-   </div>
-  </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">{t('lab.10refractionblocks_analysis')}</h2>
+ <div className="space-y-3">
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10refractionblocks_calculate_refractive_index_n')}</label>
+ <div className="flex gap-2">
+ <input 
+ type="number" 
+ step="0.01"
+ value={answerN}
+ onChange={e => setAnswerN(e.target.value)}
+ className="flex-1 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded focus:outline-none focus:border-blue-500 font-mono"
+ placeholder={t('lab.p10refractionblocks_t_lab_10refractionblocks_eg150')}
+ />
+ <button onClick={checkAnswer} className="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">{t('lab.10refractionblocks_check')}</button>
+ </div>
+ {feedback && (
+ <div className={`p-3 rounded text-sm ${feedback.includes('Correct') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+ {feedback}
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
 
-  {/* Center Panel: Laser Simulation & Data */}
-  <div className="lg:col-span-2 flex flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   
-   <div className="bg-[#000000] dark:!bg-[#121212] rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative min-h-[400px] overflow-hidden">
-   <h3 className="absolute top-4 left-4 font-bold text-slate-300">{t('lab.10refractionblocks_laserrayboxsimulation')}</h3>
-   
-   <div className="relative w-full max-w-lg h-[300px] flex items-center justify-center mt-6">
-    
-    {/* The Block */}
-    <div className={`w-full w-[80%] lg:h-[150px] border-2 rounded-sm backdrop-blur-md z-10 relative flex items-center justify-center ${material.color} flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-     <div className="text-white/50 text-xl font-bold tracking-widest uppercase">{material.id}</div>
-    </div>
+ {/* Center Panel: Laser Simulation & Data */}
+ <div className="lg:col-span-2 flex flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ 
+ <div className="bg-[#000000] dark:!bg-[#121212] rounded-xl shadow-sm border border-[#1c1b1b] dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative min-h-[400px] overflow-hidden">
+ <h3 className="absolute top-4 left-4 font-bold text-slate-300">{t('lab.10refractionblocks_laserrayboxsimulation')}</h3>
+ 
+ <div className="relative w-full max-w-lg h-[300px] flex items-center justify-center mt-6">
+ 
+ {/* The Block */}
+ <div className={`w-full w-[80%] lg:h-[150px] border-2 rounded-sm backdrop-blur-md z-10 relative flex items-center justify-center ${material.color} flex-col 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <div className="text-white/50 text-xl font-bold tracking-widest uppercase">{material.id}</div>
+ </div>
 
-    {/* Normal Lines */}
-    <div className="absolute top-0 bottom-1/2 left-1/2 w-px border-l-2 border-dashed border-white/40 z-0" />
-    <div className="absolute top-1/2 bottom-0 left-1/2 w-px border-l-2 border-dashed border-white/40 z-0" 
-     style={{ transform: `translateX(${Math.tan(measuredRefractedDeg * Math.PI / 180) * 150}px)` }} />
+ {/* Normal Lines */}
+ <div className="absolute top-0 bottom-1/2 left-1/2 w-px border-l-2 border-dashed border-white/40 z-0" />
+ <div className="absolute top-1/2 bottom-0 left-1/2 w-px border-l-2 border-dashed border-white/40 z-0" 
+ style={{ transform: `translateX(${Math.tan(measuredRefractedDeg * Math.PI / 180) * 150}px)` }} />
 
-    {/* Incident Beam */}
-    <div className="absolute top-[75px] left-1/2 w-[300px] h-1 bg-red-500 shadow-[0_0_12px_red] origin-right z-20" 
-     style={{ transform: `translate(-100%, -50%) rotate(${angle}deg)` }}>
-    <div className="absolute right-10 top-1/2 -translate-y-1/2 w-0 h-0 border-y-4 border-y-transparent border-l-8 border-l-white" />
-    </div>
+ {/* Incident Beam */}
+ <div className="absolute top-[75px] left-1/2 w-[300px] h-1 bg-red-500 shadow-[0_0_12px_red] origin-right z-20" 
+ style={{ transform: `translate(-100%, -50%) rotate(${angle}deg)` }}>
+ <div className="absolute right-10 top-1/2 -translate-y-1/2 w-0 h-0 border-y-4 border-y-transparent border-l-8 border-l-white" />
+ </div>
 
-    {/* Refracted Beam */}
-    <div className="absolute top-[75px] left-1/2 h-1 bg-red-500/80 shadow-[0_0_8px_red] origin-left z-20" 
-     style={{ 
-      width: `${150 / Math.cos(measuredRefractedDeg * Math.PI / 180)}px`,
-      transform: `translateY(-50%) rotate(${90 - measuredRefractedDeg}deg)` 
-     }} />
+ {/* Refracted Beam */}
+ <div className="absolute top-[75px] left-1/2 h-1 bg-red-500/80 shadow-[0_0_8px_red] origin-left z-20" 
+ style={{ 
+ width: `${150 / Math.cos(measuredRefractedDeg * Math.PI / 180)}px`,
+ transform: `translateY(-50%) rotate(${90 - measuredRefractedDeg}deg)` 
+ }} />
 
-    {/* Emergent Beam */}
-    <div className="absolute top-[225px] h-1 w-[300px] bg-red-500 shadow-[0_0_10px_red] origin-left z-20" 
-     style={{ 
-      left: `calc(50% + ${Math.tan(measuredRefractedDeg * Math.PI / 180) * 150}px)`,
-      transform: `translateY(-50%) rotate(${90 - emergentAngle}deg)` 
-     }}>
-     <div className="absolute left-[50px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-4 border-y-transparent border-l-8 border-l-white" />
-    </div>
+ {/* Emergent Beam */}
+ <div className="absolute top-[225px] h-1 w-[300px] bg-red-500 shadow-[0_0_10px_red] origin-left z-20" 
+ style={{ 
+ left: `calc(50% + ${Math.tan(measuredRefractedDeg * Math.PI / 180) * 150}px)`,
+ transform: `translateY(-50%) rotate(${90 - emergentAngle}deg)` 
+ }}>
+ <div className="absolute left-[50px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-4 border-y-transparent border-l-8 border-l-white" />
+ </div>
 
-    {/* Angle Labels */}
-    <div className="absolute top-10 left-1/2 -translate-x-16 text-red-400 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_i')} {angle}°</div>
-    <div className="absolute top-[100px] left-1/2 translate-x-4 text-red-300 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_r')} {measuredRefractedDeg.toFixed(1)}°</div>
+ {/* Angle Labels */}
+ <div className="absolute top-10 left-1/2 -translate-x-16 text-red-400 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_i')} {angle}°</div>
+ <div className="absolute top-[100px] left-1/2 translate-x-4 text-red-300 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_r')} {measuredRefractedDeg.toFixed(1)}°</div>
 
-   </div>
-   </div>
+ </div>
+ </div>
 
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col flex-1 min-h-[250px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.p10refractionblocks_experimental_data_snell_s_law_')}</h3>
-   <div className="flex-1 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto">
-    <table className="w-full text-sm text-center">
-    <thead className="bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] sticky top-0">
-     <tr>
-     <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_angle_of_incidence_i_1')}</th>
-     <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_angle_of_refraction_r')}</th>
-     <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_sin_i')}</th>
-     <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_sin_r')}</th>
-     <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_n_sin_i_sin_r')}</th>
-     </tr>
-    </thead>
-    <tbody>
-     {dataPoints.map((pt, i) => {
-     const nCalc = pt.sinI === 0 ? 0 : pt.sinI / pt.sinR;
-     return (
-      <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 dark:bg-[#121212]">
-      <td className="py-2 px-3 font-mono">{pt.i}</td>
-      <td className="py-2 px-3 font-mono">{pt.r.toFixed(1)}</td>
-      <td className="py-2 px-3 font-mono text-blue-600">{pt.sinI.toFixed(4)}</td>
-      <td className="py-2 px-3 font-mono text-blue-600">{pt.sinR.toFixed(4)}</td>
-      <td className="py-2 px-3 font-mono font-bold text-emerald-600">
-       {pt.i === 0 ? '-' : nCalc.toFixed(2)}
-      </td>
-      </tr>
-     );
-     })}
-     {dataPoints.length === 0 && (
-     <tr><td colSpan={5} className="py-8 text-slate-400">{t('lab.10refractionblocks_adjustthelaserangleandclickrecordan')}</td></tr>
-     )}
-    </tbody>
-    </table>
-   </div>
-   <p className="text-sm text-slate-500 dark:text-[#71717a] mt-4 text-center">
-    
-                             {t('lab.p10refractionblocks_notice_that_the_ratio_of')} <strong>{t('lab.p10refractionblocks_sin_i_sin_r')}</strong>  {t('lab.p10refractionblocks_remains_constant_regardless_of')}
-                            </p>
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col flex-1 min-h-[250px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.p10refractionblocks_experimental_data_snell_s_law_')}</h3>
+ <div className="flex-1 border border-slate-200 dark:border-[#1c1b1b] rounded-lg lg:overflow-y-auto">
+ <table className="w-full text-sm text-center">
+ <thead className="bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] sticky top-0">
+ <tr>
+ <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_angle_of_incidence_i_1')}</th>
+ <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_angle_of_refraction_r')}</th>
+ <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_sin_i')}</th>
+ <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_sin_r')}</th>
+ <th className="py-3 px-3 font-medium">{t('lab.p10refractionblocks_n_sin_i_sin_r')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {dataPoints.map((pt, i) => {
+ const nCalc = pt.sinI === 0 ? 0 : pt.sinI / pt.sinR;
+ return (
+ <tr key={i} className="border-t border-slate-100 hover:bg-slate-50 dark:bg-[#121212]">
+ <td className="py-2 px-3 font-mono">{pt.i}</td>
+ <td className="py-2 px-3 font-mono">{pt.r.toFixed(1)}</td>
+ <td className="py-2 px-3 font-mono text-blue-600">{pt.sinI.toFixed(4)}</td>
+ <td className="py-2 px-3 font-mono text-blue-600">{pt.sinR.toFixed(4)}</td>
+ <td className="py-2 px-3 font-mono font-bold text-emerald-600">
+ {pt.i === 0 ? '-' : nCalc.toFixed(2)}
+ </td>
+ </tr>
+ );
+ })}
+ {dataPoints.length === 0 && (
+ <tr><td colSpan={5} className="py-8 text-slate-400">{t('lab.10refractionblocks_adjustthelaserangleandclickrecordan')}</td></tr>
+ )}
+ </tbody>
+ </table>
+ </div>
+ <p className="text-sm text-slate-500 dark:text-[#71717a] mt-4 text-center">
+ 
+ {t('lab.p10refractionblocks_notice_that_the_ratio_of')} <strong>{t('lab.p10refractionblocks_sin_i_sin_r')}</strong> {t('lab.p10refractionblocks_remains_constant_regardless_of')}
+ </p>
+ </div>
 
-  </div>
-  </div>
+ </div>
+ </div>
  </div>
  );
 }

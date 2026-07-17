@@ -5,7 +5,7 @@ import MathText from './MathText';
 import { useTranslate } from "../i18n";
 
 export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  // Airplane Vector (Va)
  const [speedA, setSpeedA] = useState<number>(200);
@@ -41,9 +41,9 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
 
  const checkSpeed = () => {
  if (Math.abs(parseFloat(ansSpeed) - resSpeed) < 2) {
-  setAnsSpeedStatus("correct");
+ setAnsSpeedStatus("correct");
  } else {
-  setAnsSpeedStatus("incorrect");
+ setAnsSpeedStatus("incorrect");
  }
  };
 
@@ -51,169 +51,169 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
  // Dot product of Va and Vw
  const expectedDot = ax * wx + ay * wy;
  if (Math.abs(parseFloat(ansDot) - expectedDot) < 10) {
-  setAnsDotStatus("correct");
+ setAnsDotStatus("correct");
  } else {
-  setAnsDotStatus("incorrect");
+ setAnsDotStatus("incorrect");
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m11vectors_vector_aviation_operations')} variant="dark" subtitle={t('lab.subtitle_mathematics_class')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m11vectors_vector_aviation_operations')} variant="dark" subtitle={t('lab.subtitle_mathematics_class')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m11vectors_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m11vectors_lab')}</button>
-  </div>
-  <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:overflow-visible">
-  {/* LEFT: Theory */}
-  <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 lg:overflow-y-auto border-t-4 border-teal-500  ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center gap-2"><Navigation size={20} />  {t('lab.m11vectors_vector_components')}</h2>
-   <p className="text-gray-600 text-sm">
-   
-                        {t('lab.m11vectors_in_aviation_a_plane_s_true_vel')}<b>Va</b>{t('lab.m11vectors_and_the_wind_velocity')}<b>Vw</b>).
-   </p>
-   <p className={`font-mono text-center text-sm text-teal-800 bg-teal-50 p-2 rounded flex-col `}>
-   <MathText>{"$$ \\vec{V}_r = \\vec{V}_a + \\vec{V}_w $$"}</MathText>
-   </p>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m11vectors_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m11vectors_lab')}</button>
+ </div>
+ <main className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:overflow-visible">
+ {/* LEFT: Theory */}
+ <div className={`w-full bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 lg:overflow-y-auto border-t-4 border-teal-500 ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] flex items-center gap-2"><Navigation size={20} /> {t('lab.m11vectors_vector_components')}</h2>
+ <p className="text-gray-600 text-sm">
+ 
+ {t('lab.m11vectors_in_aviation_a_plane_s_true_vel')}<b>Va</b>{t('lab.m11vectors_and_the_wind_velocity')}<b>Vw</b>).
+ </p>
+ <p className={`font-mono text-center text-sm text-teal-800 bg-teal-50 p-2 rounded flex-col `}>
+ <MathText>{"$$ \\vec{V}_r = \\vec{V}_a + \\vec{V}_w $$"}</MathText>
+ </p>
 
-   <div className="mt-4 space-y-4">
-   <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1">{t('lab.m11vectors_plane_velocity_va')}</h3>
-   <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_speed')} {speedA}  {t('lab.m11vectors_km_h')}</label>
-    <input type="range" min="100" max="500" step="10" value={speedA} onChange={(e) => setSpeedA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
-   </div>
-   <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_heading')} {angleA}{t('lab.m11vectors_0_n_90_e')}</label>
-    <input type="range" min="0" max="360" step="5" value={angleA} onChange={(e) => setAngleA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
-   </div>
+ <div className="mt-4 space-y-4">
+ <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1">{t('lab.m11vectors_plane_velocity_va')}</h3>
+ <div>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_speed')} {speedA} {t('lab.m11vectors_km_h')}</label>
+ <input type="range" min="100" max="500" step="10" value={speedA} onChange={(e) => setSpeedA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
+ </div>
+ <div>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_heading')} {angleA}{t('lab.m11vectors_0_n_90_e')}</label>
+ <input type="range" min="0" max="360" step="5" value={angleA} onChange={(e) => setAngleA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
+ </div>
 
-   <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1 mt-6">{t('lab.m11vectors_wind_velocity_vw')}</h3>
-   <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_speed')} {speedW}  {t('lab.m11vectors_km_h')}</label>
-    <input type="range" min="0" max="150" step="5" value={speedW} onChange={(e) => setSpeedW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
-   </div>
-   <div>
-    <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_blowing_towards')} {angleW}°</label>
-    <input type="range" min="0" max="360" step="5" value={angleW} onChange={(e) => setAngleW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
-   </div>
-   </div>
-  </div>
+ <h3 className="font-bold text-gray-800 dark:text-[#ffffff] border-b pb-1 mt-6">{t('lab.m11vectors_wind_velocity_vw')}</h3>
+ <div>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_speed')} {speedW} {t('lab.m11vectors_km_h')}</label>
+ <input type="range" min="0" max="150" step="5" value={speedW} onChange={(e) => setSpeedW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
+ </div>
+ <div>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_blowing_towards')} {angleW}°</label>
+ <input type="range" min="0" max="360" step="5" value={angleW} onChange={(e) => setAngleW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
+ </div>
+ </div>
+ </div>
 
-  {/* MIDDLE: Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-cyan-500 relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] absolute top-4 left-6">{t('lab.m11vectors_radar_display')}</h2>
-   
-   {/* Compass rose background */}
-   <div className="absolute opacity-10 pointer-events-none" style={{width: 300, height: 300}}>
-    <svg viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="45" fill="none" stroke="black" strokeWidth="1" />
-    <line x1="50" y1="5" x2="50" y2="95" stroke="black" strokeWidth="0.5" />
-    <line x1="5" y1="50" x2="95" y2="50" stroke="black" strokeWidth="0.5" />
-    <text x="48" y="12" fontSize="5">N</text>
-    <text x="88" y="52" fontSize="5">E</text>
-    <text x="48" y="92" fontSize="5">S</text>
-    <text x="8" y="52" fontSize="5">W</text>
-    </svg>
-   </div>
+ {/* MIDDLE: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-cyan-500 relative 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+ <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff] absolute top-4 left-6">{t('lab.m11vectors_radar_display')}</h2>
+ 
+ {/* Compass rose background */}
+ <div className="absolute opacity-10 pointer-events-none" style={{width: 300, height: 300}}>
+ <svg viewBox="0 0 100 100">
+ <circle cx="50" cy="50" r="45" fill="none" stroke="black" strokeWidth="1" />
+ <line x1="50" y1="5" x2="50" y2="95" stroke="black" strokeWidth="0.5" />
+ <line x1="5" y1="50" x2="95" y2="50" stroke="black" strokeWidth="0.5" />
+ <text x="48" y="12" fontSize="5">N</text>
+ <text x="88" y="52" fontSize="5">E</text>
+ <text x="48" y="92" fontSize="5">S</text>
+ <text x="8" y="52" fontSize="5">W</text>
+ </svg>
+ </div>
 
-   <svg viewBox="-300 -300 600 600" className="w-full h-80 max-w-md mt-6">
-   <defs>
-    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-    <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb" />
-    </marker>
-    <marker id="arrowhead-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-    <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
-    </marker>
-    <marker id="arrowhead-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-    <polygon points="0 0, 10 3.5, 0 7" fill="#0d9488" />
-    </marker>
-   </defs>
+ <svg viewBox="-300 -300 600 600" className="w-full h-80 max-w-md mt-6">
+ <defs>
+ <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+ <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb" />
+ </marker>
+ <marker id="arrowhead-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+ <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
+ </marker>
+ <marker id="arrowhead-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+ <polygon points="0 0, 10 3.5, 0 7" fill="#0d9488" />
+ </marker>
+ </defs>
 
-   {/* Plane Vector (Blue) */}
-   <line x1="0" y1="0" x2={ax} y2={-ay} stroke="#2563eb" strokeWidth="4" markerEnd="url(#arrowhead-blue)" />
-   
-   {/* Wind Vector added to tip of Plane Vector (Gray) */}
-   <line x1={ax} y1={-ay} x2={rx} y2={-ry} stroke="#6b7280" strokeWidth="4" markerEnd="url(#arrowhead-gray)" strokeDasharray="5,5" />
-   
-   {/* Origin Wind Vector (Gray) - just for visualization */}
-   <line x1="0" y1="0" x2={wx} y2={-wy} stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead-gray)" opacity="0.3" />
+ {/* Plane Vector (Blue) */}
+ <line x1="0" y1="0" x2={ax} y2={-ay} stroke="#2563eb" strokeWidth="4" markerEnd="url(#arrowhead-blue)" />
+ 
+ {/* Wind Vector added to tip of Plane Vector (Gray) */}
+ <line x1={ax} y1={-ay} x2={rx} y2={-ry} stroke="#6b7280" strokeWidth="4" markerEnd="url(#arrowhead-gray)" strokeDasharray="5,5" />
+ 
+ {/* Origin Wind Vector (Gray) - just for visualization */}
+ <line x1="0" y1="0" x2={wx} y2={-wy} stroke="#6b7280" strokeWidth="2" markerEnd="url(#arrowhead-gray)" opacity="0.3" />
 
-   {/* Resultant Vector (Teal) */}
-   <line x1="0" y1="0" x2={rx} y2={-ry} stroke="#0d9488" strokeWidth="5" markerEnd="url(#arrowhead-teal)" />
-   
-   <circle cx="0" cy="0" r="5" fill="#ef4444" />
-   </svg>
+ {/* Resultant Vector (Teal) */}
+ <line x1="0" y1="0" x2={rx} y2={-ry} stroke="#0d9488" strokeWidth="5" markerEnd="url(#arrowhead-teal)" />
+ 
+ <circle cx="0" cy="0" r="5" fill="#ef4444" />
+ </svg>
 
-   <div className="mt-6 flex flex-col items-center text-sm gap-2 w-full px-8 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-   <div className="flex justify-between w-full">
-    <span className="text-blue-600 font-bold">{t('lab.m11vectors_plane')} {speedA}  {t('lab.m11vectors_km_h_1')} {angleA}°</span>
-    <span className="text-gray-600 font-bold">{t('lab.m11vectors_wind')} {speedW}  {t('lab.m11vectors_km_h_1')} {angleW}°</span>
-   </div>
-   <div className={`bg-teal-50 w-full text-center p-2 rounded text-teal-800 font-bold border border-teal-200 flex-col `}>
-    
-                             {t('lab.m11vectors_resultant')} {resSpeed.toFixed(1)}  {t('lab.m11vectors_km_h_1')} {resAngle.toFixed(1)}°
-   </div>
-   </div>
-  </div>
+ <div className="mt-6 flex flex-col items-center text-sm gap-2 w-full px-8 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <div className="flex justify-between w-full">
+ <span className="text-blue-600 font-bold">{t('lab.m11vectors_plane')} {speedA} {t('lab.m11vectors_km_h_1')} {angleA}°</span>
+ <span className="text-gray-600 font-bold">{t('lab.m11vectors_wind')} {speedW} {t('lab.m11vectors_km_h_1')} {angleW}°</span>
+ </div>
+ <div className={`bg-teal-50 w-full text-center p-2 rounded text-teal-800 font-bold border border-teal-200 flex-col `}>
+ 
+ {t('lab.m11vectors_resultant')} {resSpeed.toFixed(1)} {t('lab.m11vectors_km_h_1')} {resAngle.toFixed(1)}°
+ </div>
+ </div>
+ </div>
 
-  {/* RIGHT: Assessment */}
-  <div className={`bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500 `}>
-   <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.m11vectors_flight_analysis')}</h2>
+ {/* RIGHT: Assessment */}
+ <div className={`bg-slate-50 dark:bg-[#121212] p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500 `}>
+ <h2 className="text-xl font-bold text-gray-800 dark:text-[#ffffff]">{t('lab.m11vectors_flight_analysis')}</h2>
 
-   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11vectors_1_resultant_speed')}</p>
-   <p className="text-xs text-gray-600 mb-3">
-    <MathText>{t('lab.m11vectors_calculate_the_resultant_speed')} {"$$ |\\vec{V}_r| $$"}  {t('lab.m11vectors_using_the_law_of_cosines_or_co')}</MathText>
-   </p>
-   <div className="flex items-center gap-2">
-    <input 
-    type="number" 
-    className="flex-1 min-w-0 p-2 border rounded text-sm" 
-    placeholder={t('lab.m11vectors_speed_km_h')}
-    value={ansSpeed}
-    onChange={(e) => { setAnsSpeed(e.target.value); setAnsSpeedStatus("idle"); }}
-    />
-    <button onClick={checkSpeed} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11vectors_check')}</button>
-   </div>
-   {ansSpeedStatus === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} />  {t('lab.m11vectors_spot_on')}</p>}
-   {ansSpeedStatus === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} />  {t('lab.m11vectors_incorrect_try_components')}</p>}
-   </div>
+ <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+ <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11vectors_1_resultant_speed')}</p>
+ <p className="text-xs text-gray-600 mb-3">
+ <MathText>{t('lab.m11vectors_calculate_the_resultant_speed')} {"$$ |\\vec{V}_r| $$"} {t('lab.m11vectors_using_the_law_of_cosines_or_co')}</MathText>
+ </p>
+ <div className="flex items-center gap-2">
+ <input 
+ type="number" 
+ className="flex-1 min-w-0 p-2 border rounded text-sm" 
+ placeholder={t('lab.m11vectors_speed_km_h')}
+ value={ansSpeed}
+ onChange={(e) => { setAnsSpeed(e.target.value); setAnsSpeedStatus("idle"); }}
+ />
+ <button onClick={checkSpeed} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11vectors_check')}</button>
+ </div>
+ {ansSpeedStatus === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> {t('lab.m11vectors_spot_on')}</p>}
+ {ansSpeedStatus === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} /> {t('lab.m11vectors_incorrect_try_components')}</p>}
+ </div>
 
-   <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-   <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11vectors_2_dot_product_work_analogy')}</p>
-   <p className="text-xs text-gray-600 mb-3">
-    <MathText>{t('lab.m11vectors_calculate_the_dot_product')} {"$$ \\vec{V}_a \\cdot \\vec{V}_w $$"}.</MathText>
-    <br/>
-    <MathText>{t('lab.m11vectors_formula')} {"$$ x_a x_w + y_a y_w $$"} or {"$$ |V_a||V_w|\\cos(\\theta) $$"})</MathText>
-   </p>
-   <div className="flex items-center gap-2">
-    <input 
-    type="number" 
-    className="flex-1 min-w-0 p-2 border rounded text-sm" 
-    placeholder={t('lab.m11vectors_dot_product')}
-    value={ansDot}
-    onChange={(e) => { setAnsDot(e.target.value); setAnsDotStatus("idle"); }}
-    />
-    <button onClick={checkDot} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11vectors_check')}</button>
-   </div>
-   {ansDotStatus === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} />  {t('lab.m11vectors_correct_calculation')}</p>}
-   {ansDotStatus === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} />  {t('lab.m11vectors_check_your_math')}</p>}
-   </div>
+ <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+ <p className="text-sm font-semibold text-gray-800 dark:text-[#ffffff] mb-2">{t('lab.m11vectors_2_dot_product_work_analogy')}</p>
+ <p className="text-xs text-gray-600 mb-3">
+ <MathText>{t('lab.m11vectors_calculate_the_dot_product')} {"$$ \\vec{V}_a \\cdot \\vec{V}_w $$"}.</MathText>
+ <br/>
+ <MathText>{t('lab.m11vectors_formula')} {"$$ x_a x_w + y_a y_w $$"} or {"$$ |V_a||V_w|\\cos(\\theta) $$"})</MathText>
+ </p>
+ <div className="flex items-center gap-2">
+ <input 
+ type="number" 
+ className="flex-1 min-w-0 p-2 border rounded text-sm" 
+ placeholder={t('lab.m11vectors_dot_product')}
+ value={ansDot}
+ onChange={(e) => { setAnsDot(e.target.value); setAnsDotStatus("idle"); }}
+ />
+ <button onClick={checkDot} className="bg-emerald-600 text-white px-3 py-2 rounded text-sm font-bold hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.m11vectors_check')}</button>
+ </div>
+ {ansDotStatus === "correct" && <p className="text-emerald-600 text-xs mt-2 flex items-center gap-1"><CheckCircle size={14} /> {t('lab.m11vectors_correct_calculation')}</p>}
+ {ansDotStatus === "incorrect" && <p className="text-red-600 text-xs mt-2 flex items-center gap-1"><XCircle size={14} /> {t('lab.m11vectors_check_your_math')}</p>}
+ </div>
 
-  </div>
-  </main>
+ </div>
+ </main>
  </div>
  );
 }

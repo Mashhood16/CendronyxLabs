@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC7ReverseFlowchart({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
  const options = [
@@ -21,81 +21,81 @@ export default function LabC7ReverseFlowchart({ onExit }: LabProps) {
  const correctOption = 1; // "To determine where a student should be..."
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c7reverseflowchart_reverse_engineering_a_flowchar')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c7reverseflowchart_reverse_engineering_a_flowchar')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <div className="max-w-4xl w-full mx-auto">
-   <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7reverseflowchart_analyze_the_flowchart_below_an')}</p>
+ <div className="max-w-4xl w-full mx-auto">
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7reverseflowchart_analyze_the_flowchart_below_an')}</p>
 
-   <div className="flex gap-8">
-   {/* Flowchart Visual */}
-   <div className="flex-1 p-8 rounded-xl shadow border flex flex-col items-center" style={{backgroundColor: 'rgb(var(--slate-50))', borderColor: 'rgb(var(--slate-200))'}}>
-    <div className="px-6 py-2 bg-blue-100 border-2 border-blue-400 rounded-full font-bold mb-6">{t('lab.c7reverseflowchart_start')}</div>
-    <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212]" />
-    <div className="px-6 py-3 bg-indigo-50 border-2 border-indigo-300 font-medium skew-x-[-15deg] mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
-    <span className="block skew-x-[15deg]">{t('lab.c7reverseflowchart_check_time_t')}</span>
-    </div>
-    
-    <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212]" />
-    
-    <div className="w-32 h-32 bg-yellow-50 border-2 border-yellow-400 rotate-45 flex items-center justify-center mb-10">
-    <span className="-rotate-45 font-bold text-center text-sm">{t('lab.c7reverseflowchart_is_t')}<br/>{t('lab.c7reverseflowchart_between')}<br/>{t('lab.c7reverseflowchart_8am_2pm')}</span>
-    </div>
+ <div className="flex gap-8">
+ {/* Flowchart Visual */}
+ <div className="flex-1 p-8 rounded-xl shadow border flex flex-col items-center" style={{backgroundColor: 'rgb(var(--slate-50))', borderColor: 'rgb(var(--slate-200))'}}>
+ <div className="px-6 py-2 bg-blue-100 border-2 border-blue-400 rounded-full font-bold mb-6">{t('lab.c7reverseflowchart_start')}</div>
+ <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212]" />
+ <div className="px-6 py-3 bg-indigo-50 border-2 border-indigo-300 font-medium skew-x-[-15deg] mb-6 dark:bg-[#121212] dark:border-[#1c1b1b]">
+ <span className="block skew-x-[15deg]">{t('lab.c7reverseflowchart_check_time_t')}</span>
+ </div>
+ 
+ <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212]" />
+ 
+ <div className="w-32 h-32 bg-yellow-50 border-2 border-yellow-400 rotate-45 flex items-center justify-center mb-10">
+ <span className="-rotate-45 font-bold text-center text-sm">{t('lab.c7reverseflowchart_is_t')}<br/>{t('lab.c7reverseflowchart_between')}<br/>{t('lab.c7reverseflowchart_8am_2pm')}</span>
+ </div>
 
-    <div className="flex w-full justify-around items-start mb-12">
-    <div className="flex flex-col items-center">
-     <span className="font-bold text-emerald-600 mb-2">{t('lab.c7reverseflowchart_yes')}</span>
-     <div className="px-4 py-2 bg-emerald-50 border-2 border-emerald-300 rounded-lg font-bold">{t('lab.c7reverseflowchart_go_to_school')}</div>
-    </div>
-    <div className="flex flex-col items-center">
-     <span className="font-bold text-rose-600 mb-2">No</span>
-     <div className="w-1 h-12 bg-slate-300 dark:bg-[#121212]" />
-    </div>
-    </div>
+ <div className="flex w-full justify-around items-start mb-12">
+ <div className="flex flex-col items-center">
+ <span className="font-bold text-emerald-600 mb-2">{t('lab.c7reverseflowchart_yes')}</span>
+ <div className="px-4 py-2 bg-emerald-50 border-2 border-emerald-300 rounded-lg font-bold">{t('lab.c7reverseflowchart_go_to_school')}</div>
+ </div>
+ <div className="flex flex-col items-center">
+ <span className="font-bold text-rose-600 mb-2">No</span>
+ <div className="w-1 h-12 bg-slate-300 dark:bg-[#121212]" />
+ </div>
+ </div>
 
-    <div className="w-1 h-16 bg-slate-300 dark:bg-[#121212] mb-4" />
+ <div className="w-1 h-16 bg-slate-300 dark:bg-[#121212] mb-4" />
 
-    <div className="w-32 h-32 bg-yellow-50 border-2 border-yellow-400 rotate-45 flex items-center justify-center mb-4">
-    <span className="-rotate-45 font-bold text-center text-sm">{t('lab.c7reverseflowchart_is_t')}<br/>{t('lab.c7reverseflowchart_between')}<br/>{t('lab.c7reverseflowchart_4pm_6pm')}</span>
-    </div>
+ <div className="w-32 h-32 bg-yellow-50 border-2 border-yellow-400 rotate-45 flex items-center justify-center mb-4">
+ <span className="-rotate-45 font-bold text-center text-sm">{t('lab.c7reverseflowchart_is_t')}<br/>{t('lab.c7reverseflowchart_between')}<br/>{t('lab.c7reverseflowchart_4pm_6pm')}</span>
+ </div>
 
-    <div className="flex w-full justify-around items-start mb-8">
-    <div className="flex flex-col items-center">
-     <span className="font-bold text-emerald-600 mb-2">{t('lab.c7reverseflowchart_yes')}</span>
-     <div className="px-4 py-2 bg-emerald-50 border-2 border-emerald-300 rounded-lg font-bold">{t('lab.c7reverseflowchart_go_to_playground')}</div>
-    </div>
-    <div className="flex flex-col items-center">
-     <span className="font-bold text-rose-600 mb-2">No</span>
-     <div className="px-4 py-2 bg-slate-100 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] rounded-lg font-bold">{t('lab.c7reverseflowchart_stay_at_home')}</div>
-    </div>
-    </div>
+ <div className="flex w-full justify-around items-start mb-8">
+ <div className="flex flex-col items-center">
+ <span className="font-bold text-emerald-600 mb-2">{t('lab.c7reverseflowchart_yes')}</span>
+ <div className="px-4 py-2 bg-emerald-50 border-2 border-emerald-300 rounded-lg font-bold">{t('lab.c7reverseflowchart_go_to_playground')}</div>
+ </div>
+ <div className="flex flex-col items-center">
+ <span className="font-bold text-rose-600 mb-2">No</span>
+ <div className="px-4 py-2 bg-slate-100 dark:bg-[#121212] border-2 border-slate-400 dark:border-[#1c1b1b] rounded-lg font-bold">{t('lab.c7reverseflowchart_stay_at_home')}</div>
+ </div>
+ </div>
 
-    <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212] mb-6" />
-    <div className="px-6 py-2 bg-rose-100 border-2 border-rose-400 rounded-full font-bold">{t('lab.c7reverseflowchart_end')}</div>
-   </div>
+ <div className="w-1 h-6 bg-slate-300 dark:bg-[#121212] mb-6" />
+ <div className="px-6 py-2 bg-rose-100 border-2 border-rose-400 rounded-full font-bold">{t('lab.c7reverseflowchart_end')}</div>
+ </div>
 
-   {/* Quiz Panel */}
-   <div className="w-96 flex flex-col gap-4">
-    <h3 className="font-bold text-xl mb-2 text-slate-800 dark:text-[#ffffff]">{t('lab.c7reverseflowchart_what_is_the_problem_statement')}</h3>
-    {options.map((opt, i) => (
-    <button
-     key={i}
-     onClick={() => setSelectedOption(i)}
-     className={`p-4 rounded-xl border-2 text-left transition-all ${ selectedOption === i ? (i === correctOption ? 'bg-emerald-100 border-emerald-500 text-emerald-900' : 'bg-rose-100 border-rose-500 text-rose-900') : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-blue-400 hover:bg-blue-50' }`}
-    >
-     <span className="font-medium">{opt}</span>
-     {selectedOption === i && i === correctOption && <CheckCircle className="w-5 h-5 text-emerald-600 mt-2" />}
-    </button>
-    ))}
+ {/* Quiz Panel */}
+ <div className="w-96 flex flex-col gap-4">
+ <h3 className="font-bold text-xl mb-2 text-slate-800 dark:text-[#ffffff]">{t('lab.c7reverseflowchart_what_is_the_problem_statement')}</h3>
+ {options.map((opt, i) => (
+ <button
+ key={i}
+ onClick={() => setSelectedOption(i)}
+ className={`p-4 rounded-xl border-2 text-left transition-all ${ selectedOption === i ? (i === correctOption ? 'bg-emerald-100 border-emerald-500 text-emerald-900' : 'bg-rose-100 border-rose-500 text-rose-900') : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] hover:border-blue-400 hover:bg-blue-50' }`}
+ >
+ <span className="font-medium">{opt}</span>
+ {selectedOption === i && i === correctOption && <CheckCircle className="w-5 h-5 text-emerald-600 mt-2" />}
+ </button>
+ ))}
 
-    {selectedOption !== null && selectedOption !== correctOption && (
-    <p className="text-rose-600 font-bold mt-2">{t('lab.c7reverseflowchart_incorrect_look_at_the_decision')}</p>
-    )}
-   </div>
-   </div>
-  </div>
-  </div>
+ {selectedOption !== null && selectedOption !== correctOption && (
+ <p className="text-rose-600 font-bold mt-2">{t('lab.c7reverseflowchart_incorrect_look_at_the_decision')}</p>
+ )}
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC6HardwareCharts({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const hardwareItems = [
  { id: 'monitor', label: 'Monitor', icon: Monitor },
  { id: 'keyboard', label: 'Keyboard', icon: Keyboard },
@@ -23,16 +23,16 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
  
  const handleSlotClick = (slotId: string) => {
  if (selectedLabel) {
-  setMatches(prev => ({ ...prev, [slotId]: selectedLabel }));
-  setSelectedLabel(null);
+ setMatches(prev => ({ ...prev, [slotId]: selectedLabel }));
+ setSelectedLabel(null);
  }
  };
 
  const removeMatch = (slotId: string) => {
  setMatches(prev => {
-  const next = { ...prev };
-  delete next[slotId];
-  return next;
+ const next = { ...prev };
+ delete next[slotId];
+ return next;
  });
  };
 
@@ -40,78 +40,78 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
  const isCorrect = isComplete && hardwareItems.every(item => matches[item.id] === item.id);
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c6hardwarecharts_hardware_identification_charts')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-  
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c6hardwarecharts_hardware_identification_charts')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ 
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6hardwarecharts_click_a_label_from_the_word_ba')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6hardwarecharts_click_a_label_from_the_word_ba')}</p>
 
-  <div className="flex flex-col lg:flex-row gap-8 flex-1">
-   {/* Main Chart Area */}
-   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-   <h2 className="text-xl font-bold mb-6 text-center">{t('lab.c6hardwarecharts_hardware_components')}</h2>
-   
-   <div className="grid grid-cols-3 gap-8 flex-1">
-    {hardwareItems.map(item => {
-    const Icon = item.icon;
-    const matchedLabelId = matches[item.id];
-    const matchedLabel = hardwareItems.find(h => h.id === matchedLabelId)?.label;
+ <div className="flex flex-col lg:flex-row gap-8 flex-1">
+ {/* Main Chart Area */}
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
+ <h2 className="text-xl font-bold mb-6 text-center">{t('lab.c6hardwarecharts_hardware_components')}</h2>
+ 
+ <div className="grid grid-cols-3 gap-8 flex-1">
+ {hardwareItems.map(item => {
+ const Icon = item.icon;
+ const matchedLabelId = matches[item.id];
+ const matchedLabel = hardwareItems.find(h => h.id === matchedLabelId)?.label;
 
-    return (
-     <div key={item.id} className="flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-[#121212] rounded-xl border-2 border-slate-100">
-     <Icon className="w-24 h-24 text-slate-700 dark:text-[#ffffff] mb-6" strokeWidth={1.5} />
-     
-     <button 
-      onClick={() => matchedLabelId ? removeMatch(item.id) : handleSlotClick(item.id)}
-      className={`w-full h-12 rounded-lg border-2 border-dashed flex items-center justify-center font-bold text-sm transition-colors ${ matchedLabelId ? 'border-blue-500 bg-blue-50 text-blue-700 hover:bg-blue-100' : selectedLabel ? 'border-blue-300 bg-slate-50 dark:bg-[#121212] hover:border-blue-500 hover:bg-blue-50 text-slate-400' : 'border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212] text-slate-400' }`}
-     >
-      {matchedLabel || 'Click to Place Label'}
-     </button>
-     </div>
-    );
-    })}
-   </div>
+ return (
+ <div key={item.id} className="flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-[#121212] rounded-xl border-2 border-slate-100">
+ <Icon className="w-24 h-24 text-slate-700 dark:text-[#ffffff] mb-6" strokeWidth={1.5} />
+ 
+ <button 
+ onClick={() => matchedLabelId ? removeMatch(item.id) : handleSlotClick(item.id)}
+ className={`w-full h-12 rounded-lg border-2 border-dashed flex items-center justify-center font-bold text-sm transition-colors ${ matchedLabelId ? 'border-blue-500 bg-blue-50 text-blue-700 hover:bg-blue-100' : selectedLabel ? 'border-blue-300 bg-slate-50 dark:bg-[#121212] hover:border-blue-500 hover:bg-blue-50 text-slate-400' : 'border-slate-300 dark:border-[#1c1b1b] bg-slate-100 dark:bg-[#121212] text-slate-400' }`}
+ >
+ {matchedLabel || 'Click to Place Label'}
+ </button>
+ </div>
+ );
+ })}
+ </div>
 
-   {isComplete && (
-    <div className={`mt-8 p-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-    {isCorrect ? (
-     <>
-     <CheckCircle className="w-6 h-6" />
-     
-                                          {t('lab.c6hardwarecharts_all_components_labeled_correct')}
-                                          </>
-    ) : (
-     "Some labels are incorrect. Click a label to remove it and try again."
-    )}
-    </div>
-   )}
-   </div>
+ {isComplete && (
+ <div className={`mt-8 p-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+ {isCorrect ? (
+ <>
+ <CheckCircle className="w-6 h-6" />
+ 
+ {t('lab.c6hardwarecharts_all_components_labeled_correct')}
+ </>
+ ) : (
+ "Some labels are incorrect. Click a label to remove it and try again."
+ )}
+ </div>
+ )}
+ </div>
 
-   {/* Word Bank Sidebar */}
-   <div className="w-full lg:w-64 flex flex-col gap-4">
-   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-    <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6hardwarecharts_word_bank')}</h3>
-    <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3">
-    {hardwareItems.map(item => {
-     const isUsed = Object.values(matches).includes(item.id);
-     return (
-     <button
-      key={item.id}
-      disabled={isUsed}
-      onClick={() => setSelectedLabel(item.id)}
-      className={`p-3 rounded-lg border-2 font-bold text-sm text-left transition-colors ${ isUsed ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-300 cursor-not-allowed' : selectedLabel === item.id ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]' }`}
-     >
-      {item.label}
-     </button>
-     );
-    })}
-    </div>
-   </div>
-   </div>
+ {/* Word Bank Sidebar */}
+ <div className="w-full lg:w-64 flex flex-col gap-4">
+ <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] mb-4 uppercase text-sm tracking-wider">{t('lab.c6hardwarecharts_word_bank')}</h3>
+ <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3">
+ {hardwareItems.map(item => {
+ const isUsed = Object.values(matches).includes(item.id);
+ return (
+ <button
+ key={item.id}
+ disabled={isUsed}
+ onClick={() => setSelectedLabel(item.id)}
+ className={`p-3 rounded-lg border-2 font-bold text-sm text-left transition-colors ${ isUsed ? 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] text-slate-300 cursor-not-allowed' : selectedLabel === item.id ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:bg-slate-50 dark:bg-[#121212]' }`}
+ >
+ {item.label}
+ </button>
+ );
+ })}
+ </div>
+ </div>
+ </div>
 
-  </div>
-  </div>
+ </div>
+ </div>
  </div>
  );
 }

@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC7Hardware({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
  const items = {
@@ -23,67 +23,67 @@ export default function LabC7Hardware({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c7hardware_hardware_demonstration')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c7hardware_hardware_demonstration')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7hardware_click_on_the_internal_componen')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c7hardware_click_on_the_internal_componen')}</p>
 
-  <div className="grid grid-cols-2 gap-8 max-w-4xl">
-   <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-xl font-bold mb-4 border-b pb-2">{t('lab.c7hardware_system_unit_internal')}</h2>
-   <div className="grid grid-cols-2 gap-4">
-    {['cpu', 'motherboard', 'ram', 'storage'].map(key => (
-    <button 
-     key={key}
-     onClick={() => setSelectedItem(key)}
-     className={`p-4 border-2 rounded-xl flex flex-col items-center justify-center gap-2 transition-all ${selectedItem === key ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
-    >
-     {items[key as keyof typeof items].icon}
-     <span className="font-medium text-sm">{items[key as keyof typeof items].name}</span>
-    </button>
-    ))}
-   </div>
-   </div>
+ <div className="grid grid-cols-2 gap-8 max-w-4xl">
+ <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b]">
+ <h2 className="text-xl font-bold mb-4 border-b pb-2">{t('lab.c7hardware_system_unit_internal')}</h2>
+ <div className="grid grid-cols-2 gap-4">
+ {['cpu', 'motherboard', 'ram', 'storage'].map(key => (
+ <button 
+ key={key}
+ onClick={() => setSelectedItem(key)}
+ className={`p-4 border-2 rounded-xl flex flex-col items-center justify-center gap-2 transition-all ${selectedItem === key ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
+ >
+ {items[key as keyof typeof items].icon}
+ <span className="font-medium text-sm">{items[key as keyof typeof items].name}</span>
+ </button>
+ ))}
+ </div>
+ </div>
 
-   <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-xl font-bold mb-4 border-b pb-2">{t('lab.c7hardware_peripherals_external')}</h2>
-   <div className="grid grid-cols-2 gap-4">
-    {['monitor', 'keyboard', 'mouse', 'speakers'].map(key => (
-    <button 
-     key={key}
-     onClick={() => setSelectedItem(key)}
-     className={`p-4 border-2 rounded-xl flex flex-col items-center justify-center gap-2 transition-all ${selectedItem === key ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
-    >
-     {items[key as keyof typeof items].icon}
-     <span className="font-medium text-sm">{items[key as keyof typeof items].name}</span>
-    </button>
-    ))}
-   </div>
-   </div>
-  </div>
-  </div>
+ <div className="bg-slate-50 dark:bg-[#121212] p-6 rounded-xl shadow border border-slate-200 dark:border-[#1c1b1b]">
+ <h2 className="text-xl font-bold mb-4 border-b pb-2">{t('lab.c7hardware_peripherals_external')}</h2>
+ <div className="grid grid-cols-2 gap-4">
+ {['monitor', 'keyboard', 'mouse', 'speakers'].map(key => (
+ <button 
+ key={key}
+ onClick={() => setSelectedItem(key)}
+ className={`p-4 border-2 rounded-xl flex flex-col items-center justify-center gap-2 transition-all ${selectedItem === key ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] hover:bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]'}`}
+ >
+ {items[key as keyof typeof items].icon}
+ <span className="font-medium text-sm">{items[key as keyof typeof items].name}</span>
+ </button>
+ ))}
+ </div>
+ </div>
+ </div>
+ </div>
 
-  <div className="w-96 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 lg:overflow-y-auto">
-  <h2 className="text-xl font-bold mb-6">{t('lab.c7hardware_component_inspector')}</h2>
-  
-  {selectedItem ? (
-   <div className="flex flex-col items-center text-center">
-   <div className="w-32 h-32 bg-slate-100 dark:bg-[#121212] rounded-full flex items-center justify-center text-slate-600 dark:text-[#a1a1aa] mb-6 shadow-inner">
-    {items[selectedItem as keyof typeof items].icon}
-   </div>
-   <h3 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{items[selectedItem as keyof typeof items].name}</h3>
-   <p className="text-slate-600 dark:text-[#a1a1aa] leading-relaxed text-lg bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-100">
-    {items[selectedItem as keyof typeof items].desc}
-   </p>
-   </div>
-  ) : (
-   <div className="flex-1 flex items-center justify-center text-slate-400 text-center p-6 border-2 border-dashed border-slate-200 dark:border-[#1c1b1b] rounded-xl">
-   
-                            {t('lab.c7hardware_select_a_component_to_view_its')}
-                            </div>
-  )}
-  </div>
+ <div className="w-96 bg-slate-50 dark:bg-[#121212] p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 lg:overflow-y-auto">
+ <h2 className="text-xl font-bold mb-6">{t('lab.c7hardware_component_inspector')}</h2>
+ 
+ {selectedItem ? (
+ <div className="flex flex-col items-center text-center">
+ <div className="w-32 h-32 bg-slate-100 dark:bg-[#121212] rounded-full flex items-center justify-center text-slate-600 dark:text-[#a1a1aa] mb-6 shadow-inner">
+ {items[selectedItem as keyof typeof items].icon}
+ </div>
+ <h3 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-4">{items[selectedItem as keyof typeof items].name}</h3>
+ <p className="text-slate-600 dark:text-[#a1a1aa] leading-relaxed text-lg bg-slate-50 dark:bg-[#121212] p-4 rounded-xl border border-slate-100">
+ {items[selectedItem as keyof typeof items].desc}
+ </p>
+ </div>
+ ) : (
+ <div className="flex-1 flex items-center justify-center text-slate-400 text-center p-6 border-2 border-dashed border-slate-200 dark:border-[#1c1b1b] rounded-xl">
+ 
+ {t('lab.c7hardware_select_a_component_to_view_its')}
+ </div>
+ )}
+ </div>
  </div>
  );
 }

@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function LabC9SeparationTech({ onExit }: Props) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const config = DIFFICULTY_CONFIGS['deep-dive'];
 
@@ -30,12 +30,12 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  useEffect(() => {
  let interval: number;
  if (distillationRunning) {
-  interval = window.setInterval(() => {
-  setTemperature(prev => {
-   if (prev < 100) return prev + 2;
-   return prev;
-  });
-  }, 100);
+ interval = window.setInterval(() => {
+ setTemperature(prev => {
+ if (prev < 100) return prev + 2;
+ return prev;
+ });
+ }, 100);
  }
  return () => clearInterval(interval);
  }, [distillationRunning]);
@@ -43,12 +43,12 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  useEffect(() => {
  let interval: number;
  if (distillationRunning && temperature >= 100) {
-  interval = window.setInterval(() => {
-  setVolumeCollected(prev => {
-   if (prev < 50) return prev + 0.5;
-   return prev;
-  });
-  }, 100);
+ interval = window.setInterval(() => {
+ setVolumeCollected(prev => {
+ if (prev < 50) return prev + 0.5;
+ return prev;
+ });
+ }, 100);
  }
  return () => clearInterval(interval);
  }, [distillationRunning, temperature]);
@@ -57,20 +57,20 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  useEffect(() => {
  let interval: number;
  if (chromaRunning) {
-  interval = window.setInterval(() => {
-  setSolventHeight(prev => {
-   if (prev < 200) return prev + 1;
-   return prev;
-  });
-  setSpot1Height(prev => {
-   if (prev < 200 * 0.4) return prev + 1 * 0.4;
-   return prev;
-  });
-  setSpot2Height(prev => {
-   if (prev < 200 * 0.8) return prev + 1 * 0.8;
-   return prev;
-  });
-  }, 50);
+ interval = window.setInterval(() => {
+ setSolventHeight(prev => {
+ if (prev < 200) return prev + 1;
+ return prev;
+ });
+ setSpot1Height(prev => {
+ if (prev < 200 * 0.4) return prev + 1 * 0.4;
+ return prev;
+ });
+ setSpot2Height(prev => {
+ if (prev < 200 * 0.8) return prev + 1 * 0.8;
+ return prev;
+ });
+ }, 50);
  }
  return () => clearInterval(interval);
  }, [chromaRunning]);
@@ -95,306 +95,306 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  const checkAnswer = () => {
  const val = parseFloat(answer1);
  if (!isNaN(val) && Math.abs(val - 0.8) < 0.05) {
-  setFeedback1('Correct! Rf = Distance moved by spot / Distance moved by solvent = 160 / 200 = 0.8');
+ setFeedback1('Correct! Rf = Distance moved by spot / Distance moved by solvent = 160 / 200 = 0.8');
  } else {
-  setFeedback1('Incorrect. Remember: Rf = (Distance moved by spot) / (Distance moved by solvent). For the Blue dye, it moved 160mm when the solvent moved 200mm.');
+ setFeedback1('Incorrect. Remember: Rf = (Distance moved by spot) / (Distance moved by solvent). For the Blue dye, it moved 160mm when the solvent moved 200mm.');
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c9separationtech_grade_9_chemistry_separation_t')} />
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans select-none min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c9separationtech_grade_9_chemistry_separation_t')} />
 
-  <div className="px-4 pt-2 lg:pt-0">
-   
-  </div>
+ <div className="px-4 pt-2 lg:pt-0">
+ 
+ </div>
 
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.c9separationtech_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.c9separationtech_lab')}</button>
-  </div>
-  <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:overflow-visible">
-  {/* Column 1: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-      <div className="flex items-center gap-2 mb-4 mt-2 text-blue-800 dark:text-[#ffffff]">
-   <BookOpen size={24} />
-   <h2 className="text-xl font-semibold">{t('lab.c9separationtech_theory_context')}</h2>
-   </div>
-   
-   <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
-   <p>
-    
-                             {t('lab.c9separationtech_mixtures_contain_different_sub')}
-                            </p>
-   
-   <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
-    <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c9separationtech_1_simple_distillation')}</h3>
-    <p className="text-sm">
-    
-                                 {t('lab.c9separationtech_used_to_separate_a_liquid_from')}
-                                 </p>
-   </div>
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.c9separationtech_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.c9separationtech_lab')}</button>
+ </div>
+ <main className="lg:flex-1 p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 min-h-0 lg:overflow-hidden">
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center gap-2 mb-4 mt-2 text-blue-800 dark:text-[#ffffff]">
+ <BookOpen size={24} />
+ <h2 className="text-xl font-semibold">{t('lab.c9separationtech_theory_context')}</h2>
+ </div>
+ 
+ <div className="space-y-4 text-slate-700 dark:text-[#ffffff]">
+ <p>
+ 
+ {t('lab.c9separationtech_mixtures_contain_different_sub')}
+ </p>
+ 
+ <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col `}>
+ <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c9separationtech_1_simple_distillation')}</h3>
+ <p className="text-sm">
+ 
+ {t('lab.c9separationtech_used_to_separate_a_liquid_from')}
+ </p>
+ </div>
 
-   <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
-    <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c9separationtech_2_paper_chromatography')}</h3>
-    <p className="text-sm">
-    
-                                 {t('lab.c9separationtech_used_to_separate_mixtures_of_s')}
-                                 </p>
-    <div className="mt-3 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-indigo-200">
-    <div className="text-sm font-semibold mb-1 text-indigo-800 dark:text-[#ffffff]">
-     
-                                      {t('lab.c9separationtech_retention_factor_rf')}
-                                     </div>
-    <p className="text-sm italic text-slate-600 dark:text-[#a1a1aa] font-mono">
-     
-                                      {t('lab.c9separationtech_rf_distance_moved_by_substance')}
-                                     </p>
-    </div>
-   </div>
-   </div>
-  </div>
+ <div className={`bg-indigo-50 p-4 rounded-lg border border-indigo-100 dark:bg-[#121212] dark:border-[#1c1b1b] flex-col `}>
+ <h3 className="font-bold text-indigo-900 mb-2 dark:text-[#ffffff]">{t('lab.c9separationtech_2_paper_chromatography')}</h3>
+ <p className="text-sm">
+ 
+ {t('lab.c9separationtech_used_to_separate_mixtures_of_s')}
+ </p>
+ <div className="mt-3 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-indigo-200">
+ <div className="text-sm font-semibold mb-1 text-indigo-800 dark:text-[#ffffff]">
+ 
+ {t('lab.c9separationtech_retention_factor_rf')}
+ </div>
+ <p className="text-sm italic text-slate-600 dark:text-[#a1a1aa] font-mono">
+ 
+ {t('lab.c9separationtech_rf_distance_moved_by_substance')}
+ </p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-  {/* Column 2: Simulator */}
-  <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col lg:h-[600px] lg:h-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   {config.showHints && (
-    <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
-     <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
-     <span><strong>{t('lab.c9separationtech_hint')}</strong>  {t('lab.c9separationtech_rf_distance_by_spot_distance_b')}</span>
-    </div>
-   )}
-   <div className="flex gap-4 mb-4 shrink-0">
-   <button 
-    className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setActiveTab('distillation')}
-   >
-    
-                             {t('lab.c9separationtech_distillation')}
-                            </button>
-   <button 
-    className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-    onClick={() => setActiveTab('chromatography')}
-   >
-    
-                             {t('lab.c9separationtech_chromatography')}
-                            </button>
-   </div>
+ {/* Column 2: Simulator */}
+ <div className={`bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col lg:h-[600px] lg:h-auto ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ {config.showHints && (
+ <div className="w-full mb-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 flex gap-2 text-sm text-blue-700 dark:text-blue-300">
+ <Lightbulb className="w-4 h-4 mt-0.5 shrink-0" />
+ <span><strong>{t('lab.c9separationtech_hint')}</strong> {t('lab.c9separationtech_rf_distance_by_spot_distance_b')}</span>
+ </div>
+ )}
+ <div className="flex gap-4 mb-4 shrink-0">
+ <button 
+ className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setActiveTab('distillation')}
+ >
+ 
+ {t('lab.c9separationtech_distillation')}
+ </button>
+ <button 
+ className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'chromatography' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+ onClick={() => setActiveTab('chromatography')}
+ >
+ 
+ {t('lab.c9separationtech_chromatography')}
+ </button>
+ </div>
 
-   <div className="flex-1 relative flex items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-xl overflow-hidden border border-slate-200 dark:border-[#1c1b1b]">
-   {activeTab === 'distillation' && (
-    <div className="w-full h-full flex flex-col items-center justify-center p-4">
-    <svg viewBox="0 0 400 300" className="w-full max-w-md h-auto">
-     {/* Heat source */}
-     <rect x="70" y="240" width="60" height="20" fill="#cbd5e1" rx="5" />
-     {distillationRunning && (
-     <path d="M85,240 Q90,220 95,240 T105,240 T115,240" fill="none" stroke="#ef4444" strokeWidth="4" className="animate-pulse" />
-     )}
-     {/* Flask Outline */}
-     <path d="M85,165 L85,100 L115,100 L115,165" fill="none" stroke="#475569" strokeWidth="3" />
-     <circle cx="100" cy="200" r="40" fill="rgba(191, 219, 254, 0.2)" stroke="#475569" strokeWidth="3" />
-     
-     {/* Solution inside flask */}
-     <path d="M63,215 Q100,215 137,215 A40,40 0 0,1 63,215 Z" fill="#3b82f6" opacity="0.6" />
-     
-     {/* Condenser Tube */}
-     <path d="M115,120 L280,180" fill="none" stroke="#475569" strokeWidth="12" opacity="0.2" />
-     <path d="M115,120 L280,180" fill="none" stroke="#e2e8f0" strokeWidth="8" />
-     
-     {/* Condenser outer cooling jacket */}
-     <polygon points="140,110 260,150 240,195 130,155" fill="rgba(56, 189, 248, 0.2)" stroke="#0ea5e9" strokeWidth="2" />
+ <div className="flex-1 relative flex items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-xl overflow-hidden border border-slate-200 dark:border-[#1c1b1b]">
+ {activeTab === 'distillation' && (
+ <div className="w-full h-full flex flex-col items-center justify-center p-4">
+ <svg viewBox="0 0 400 300" className="w-full max-w-md h-auto">
+ {/* Heat source */}
+ <rect x="70" y="240" width="60" height="20" fill="#cbd5e1" rx="5" />
+ {distillationRunning && (
+ <path d="M85,240 Q90,220 95,240 T105,240 T115,240" fill="none" stroke="#ef4444" strokeWidth="4" className="animate-pulse" />
+ )}
+ {/* Flask Outline */}
+ <path d="M85,165 L85,100 L115,100 L115,165" fill="none" stroke="#475569" strokeWidth="3" />
+ <circle cx="100" cy="200" r="40" fill="rgba(191, 219, 254, 0.2)" stroke="#475569" strokeWidth="3" />
+ 
+ {/* Solution inside flask */}
+ <path d="M63,215 Q100,215 137,215 A40,40 0 0,1 63,215 Z" fill="#3b82f6" opacity="0.6" />
+ 
+ {/* Condenser Tube */}
+ <path d="M115,120 L280,180" fill="none" stroke="#475569" strokeWidth="12" opacity="0.2" />
+ <path d="M115,120 L280,180" fill="none" stroke="#e2e8f0" strokeWidth="8" />
+ 
+ {/* Condenser outer cooling jacket */}
+ <polygon points="140,110 260,150 240,195 130,155" fill="rgba(56, 189, 248, 0.2)" stroke="#0ea5e9" strokeWidth="2" />
 
-     {/* Vapors */}
-     {temperature >= 100 && (
-     <g>
-      <circle cx="100" cy="150" r="5" fill="#93c5fd" className="animate-ping" />
-      <circle cx="150" cy="130" r="4" fill="#93c5fd" className="animate-ping" style={{animationDelay: '0.2s'}} />
-      <circle cx="200" cy="150" r="4" fill="#93c5fd" className="animate-ping" style={{animationDelay: '0.4s'}} />
-     </g>
-     )}
+ {/* Vapors */}
+ {temperature >= 100 && (
+ <g>
+ <circle cx="100" cy="150" r="5" fill="#93c5fd" className="animate-ping" />
+ <circle cx="150" cy="130" r="4" fill="#93c5fd" className="animate-ping" style={{animationDelay: '0.2s'}} />
+ <circle cx="200" cy="150" r="4" fill="#93c5fd" className="animate-ping" style={{animationDelay: '0.4s'}} />
+ </g>
+ )}
 
-     {/* Drips */}
-     {volumeCollected > 0 && (
-     <circle cx="280" cy="185" r="3" fill="#3b82f6" className="animate-bounce" />
-     )}
+ {/* Drips */}
+ {volumeCollected > 0 && (
+ <circle cx="280" cy="185" r="3" fill="#3b82f6" className="animate-bounce" />
+ )}
 
-     {/* Receiving Flask */}
-     <path d="M265,220 L265,260 A30,30 0 0,0 325,260 L325,220 Z" fill="rgba(191, 219, 254, 0.3)" stroke="#475569" strokeWidth="3" />
-     
-     {/* Distillate */}
-     {volumeCollected > 0 && (
-      <rect x="268" y={260 - volumeCollected * 0.8} width="54" height={volumeCollected * 0.8} fill="#3b82f6" opacity="0.6" />
-     )}
+ {/* Receiving Flask */}
+ <path d="M265,220 L265,260 A30,30 0 0,0 325,260 L325,220 Z" fill="rgba(191, 219, 254, 0.3)" stroke="#475569" strokeWidth="3" />
+ 
+ {/* Distillate */}
+ {volumeCollected > 0 && (
+ <rect x="268" y={260 - volumeCollected * 0.8} width="54" height={volumeCollected * 0.8} fill="#3b82f6" opacity="0.6" />
+ )}
 
-     {/* Labels */}
-     <text x="20" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_thermometer')}</text>
-     <text x="20" y="60" className="text-xl font-bold fill-red-600">{temperature.toFixed(0)}°C</text>
-     
-     <text x="250" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_volume_collected')}</text>
-     <text x="250" y="60" className="text-xl font-bold fill-blue-600">{volumeCollected.toFixed(1)} mL</text>
-    </svg>
-    
-    <div className="flex gap-4 mt-6 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
-     <button 
-     className="flex items-center gap-2 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
-     onClick={() => setDistillationRunning(true)}
-     disabled={distillationRunning || volumeCollected >= 50}
-     >
-     <Play size={18} />  {t('lab.c9separationtech_heat_flask')}
-                                          </button>
-     <button 
-     className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
-     onClick={resetDistillation}
-     >
-     <RotateCcw size={18} />  {t('lab.c9separationtech_reset')}
-                                          </button>
-    </div>
-    </div>
-   )}
+ {/* Labels */}
+ <text x="20" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_thermometer')}</text>
+ <text x="20" y="60" className="text-xl font-bold fill-red-600">{temperature.toFixed(0)}°C</text>
+ 
+ <text x="250" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_volume_collected')}</text>
+ <text x="250" y="60" className="text-xl font-bold fill-blue-600">{volumeCollected.toFixed(1)} mL</text>
+ </svg>
+ 
+ <div className="flex gap-4 mt-6 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <button 
+ className="flex items-center gap-2 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
+ onClick={() => setDistillationRunning(true)}
+ disabled={distillationRunning || volumeCollected >= 50}
+ >
+ <Play size={18} /> {t('lab.c9separationtech_heat_flask')}
+ </button>
+ <button 
+ className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
+ onClick={resetDistillation}
+ >
+ <RotateCcw size={18} /> {t('lab.c9separationtech_reset')}
+ </button>
+ </div>
+ </div>
+ )}
 
-   {activeTab === 'chromatography' && (
-    <div className="w-full h-full flex flex-col items-center justify-center p-4">
-    <svg viewBox="0 0 300 400" className="w-full max-w-sm h-auto">
-     {/* Beaker */}
-     <path d="M50,100 L50,350 A20,20 0 0,0 70,370 L230,370 A20,20 0 0,0 250,350 L250,100" fill="none" stroke="#94a3b8" strokeWidth="4" />
-     
-     {/* Solvent pool */}
-     <rect x="52" y="320" width="196" height="48" fill="#bae6fd" opacity="0.5" />
-     
-     {/* Paper */}
-     <rect x="100" y="50" width="100" height="300" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
-     
-     {/* Solvent Front on Paper */}
-     {solventHeight > 0 && (
-     <rect x="100" y={320 - solventHeight} width="100" height={solventHeight} fill="#bae6fd" opacity="0.4" />
-     )}
+ {activeTab === 'chromatography' && (
+ <div className="w-full h-full flex flex-col items-center justify-center p-4">
+ <svg viewBox="0 0 300 400" className="w-full max-w-sm h-auto">
+ {/* Beaker */}
+ <path d="M50,100 L50,350 A20,20 0 0,0 70,370 L230,370 A20,20 0 0,0 250,350 L250,100" fill="none" stroke="#94a3b8" strokeWidth="4" />
+ 
+ {/* Solvent pool */}
+ <rect x="52" y="320" width="196" height="48" fill="#bae6fd" opacity="0.5" />
+ 
+ {/* Paper */}
+ <rect x="100" y="50" width="100" height="300" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2" />
+ 
+ {/* Solvent Front on Paper */}
+ {solventHeight > 0 && (
+ <rect x="100" y={320 - solventHeight} width="100" height={solventHeight} fill="#bae6fd" opacity="0.4" />
+ )}
 
-     {/* Baseline */}
-     <line x1="105" y1="300" x2="195" y2="300" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" />
-     <text x="205" y="304" className="text-xs fill-slate-500 font-medium">{t('lab.c9separationtech_baseline')}</text>
-     
-     {/* Spots */}
-     <circle cx="150" cy={300 - spot1Height} r="6" fill="#ef4444" opacity={chromaRunning ? 0.7 : 1} />
-     <circle cx="150" cy={300 - spot2Height} r="6" fill="#3b82f6" opacity={chromaRunning ? 0.7 : 1} />
+ {/* Baseline */}
+ <line x1="105" y1="300" x2="195" y2="300" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" />
+ <text x="205" y="304" className="text-xs fill-slate-500 font-medium">{t('lab.c9separationtech_baseline')}</text>
+ 
+ {/* Spots */}
+ <circle cx="150" cy={300 - spot1Height} r="6" fill="#ef4444" opacity={chromaRunning ? 0.7 : 1} />
+ <circle cx="150" cy={300 - spot2Height} r="6" fill="#3b82f6" opacity={chromaRunning ? 0.7 : 1} />
 
-     {/* Scale line */}
-     <line x1="80" y1="300" x2="80" y2={300 - solventHeight} stroke="#64748b" strokeWidth="2" />
-     {solventHeight > 0 && (
-     <text x="35" y={300 - solventHeight/2} className="text-xs font-bold fill-slate-700">{solventHeight.toFixed(0)} mm</text>
-     )}
-    </svg>
+ {/* Scale line */}
+ <line x1="80" y1="300" x2="80" y2={300 - solventHeight} stroke="#64748b" strokeWidth="2" />
+ {solventHeight > 0 && (
+ <text x="35" y={300 - solventHeight/2} className="text-xs font-bold fill-slate-700">{solventHeight.toFixed(0)} mm</text>
+ )}
+ </svg>
 
-    <div className="flex gap-4 mt-6 shrink-0">
-     <button 
-     className="flex items-center gap-2 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-     onClick={() => setChromaRunning(true)}
-     disabled={chromaRunning || solventHeight >= 200}
-     >
-     <Play size={18} />  {t('lab.c9separationtech_run_solvent')}
-                                          </button>
-     <button 
-     className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
-     onClick={resetChroma}
-     >
-     <RotateCcw size={18} />  {t('lab.c9separationtech_reset')}
-                                          </button>
-    </div>
-    </div>
-   )}
-   </div>
-  </div>
+ <div className="flex gap-4 mt-6 shrink-0">
+ <button 
+ className="flex items-center gap-2 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ onClick={() => setChromaRunning(true)}
+ disabled={chromaRunning || solventHeight >= 200}
+ >
+ <Play size={18} /> {t('lab.c9separationtech_run_solvent')}
+ </button>
+ <button 
+ className="flex items-center gap-2 px-6 py-2 bg-slate-600 dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors dark:bg-cyan-400 dark:text-black dark:hover:bg-cyan-300 dark:border-transparent"
+ onClick={resetChroma}
+ >
+ <RotateCcw size={18} /> {t('lab.c9separationtech_reset')}
+ </button>
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
 
-  {/* Column 3: Assessment */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center gap-2 mb-4 text-green-800 dark:text-[#ffffff]">
-   <CheckCircle size={24} />
-   <h2 className="text-xl font-semibold">{t('lab.c9separationtech_assessment')}</h2>
-   </div>
+ {/* Column 3: Assessment */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] p-6 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center gap-2 mb-4 text-green-800 dark:text-[#ffffff]">
+ <CheckCircle size={24} />
+ <h2 className="text-xl font-semibold">{t('lab.c9separationtech_assessment')}</h2>
+ </div>
 
-   <div className="space-y-6">
-   <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.c9separationtech_live_data_collection')}</h3>
-    {activeTab === 'distillation' ? (
-    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-2 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
-     <div className="flex justify-between border-b pb-1">
-     <span>{t('lab.c9separationtech_target_boiling_point')}</span>
-     <span className="font-mono font-bold">{t('lab.c9separationtech_100_0_c')}</span>
-     </div>
-     <div className="flex justify-between border-b pb-1">
-     <span>{t('lab.c9separationtech_current_temperature')}</span>
-     <span className="font-mono font-bold text-red-600">{temperature.toFixed(1)}°C</span>
-     </div>
-     <div className="flex justify-between">
-     <span>{t('lab.c9separationtech_volume_collected')}</span>
-     <span className="font-mono font-bold text-blue-600">{volumeCollected.toFixed(1)} mL</span>
-     </div>
-    </div>
-    ) : (
-    <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-2 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
-     <div className="flex justify-between border-b pb-1">
-     <span>{t('lab.c9separationtech_solvent_front_moved')}</span>
-     <span className="font-mono font-bold">{solventHeight.toFixed(0)} mm</span>
-     </div>
-     <div className="flex justify-between border-b pb-1">
-     <span>{t('lab.c9separationtech_red_dye_moved')}</span>
-     <span className="font-mono font-bold text-red-600">{spot1Height.toFixed(0)} mm</span>
-     </div>
-     <div className="flex justify-between">
-     <span>{t('lab.c9separationtech_blue_dye_moved')}</span>
-     <span className="font-mono font-bold text-blue-600">{spot2Height.toFixed(0)} mm</span>
-     </div>
-    </div>
-    )}
-   </div>
+ <div className="space-y-6">
+ <div className={`p-4 bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded-lg flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.c9separationtech_live_data_collection')}</h3>
+ {activeTab === 'distillation' ? (
+ <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-2 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
+ <div className="flex justify-between border-b pb-1">
+ <span>{t('lab.c9separationtech_target_boiling_point')}</span>
+ <span className="font-mono font-bold">{t('lab.c9separationtech_100_0_c')}</span>
+ </div>
+ <div className="flex justify-between border-b pb-1">
+ <span>{t('lab.c9separationtech_current_temperature')}</span>
+ <span className="font-mono font-bold text-red-600">{temperature.toFixed(1)}°C</span>
+ </div>
+ <div className="flex justify-between">
+ <span>{t('lab.c9separationtech_volume_collected')}</span>
+ <span className="font-mono font-bold text-blue-600">{volumeCollected.toFixed(1)} mL</span>
+ </div>
+ </div>
+ ) : (
+ <div className="text-sm text-slate-700 dark:text-[#ffffff] space-y-2 bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b]">
+ <div className="flex justify-between border-b pb-1">
+ <span>{t('lab.c9separationtech_solvent_front_moved')}</span>
+ <span className="font-mono font-bold">{solventHeight.toFixed(0)} mm</span>
+ </div>
+ <div className="flex justify-between border-b pb-1">
+ <span>{t('lab.c9separationtech_red_dye_moved')}</span>
+ <span className="font-mono font-bold text-red-600">{spot1Height.toFixed(0)} mm</span>
+ </div>
+ <div className="flex justify-between">
+ <span>{t('lab.c9separationtech_blue_dye_moved')}</span>
+ <span className="font-mono font-bold text-blue-600">{spot2Height.toFixed(0)} mm</span>
+ </div>
+ </div>
+ )}
+ </div>
 
-   <div className="space-y-3 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-    <label className="block text-sm font-semibold text-blue-900 dark:text-[#ffffff]">
-    
-                                 {t('lab.c9separationtech_calculate_the_rf_value_for_the')}
-                                 </label>
-    <input 
-    type="number"
-    step="0.01"
-    className="w-full px-3 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
-    placeholder={t('lab.c9separationtech_enter_rf_value_e_g_0_50')}
-    value={answer1}
-    onChange={e => setAnswer1(e.target.value)}
-    />
-    <button 
-    onClick={checkAnswer}
-    className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.c9separationtech_check_answer')}
-                                 </button>
-    
-    {feedback1 && (
-    <div className={`p-3 rounded-md text-sm font-medium ${feedback1.startsWith('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
-     {feedback1}
-    </div>
-    )}
-   </div>
-   
-   <div className="mt-8 pt-6">
-    <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.c9separationtech_critical_thinking')}</h3>
-    <ul className="list-disc pl-5 text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
-    <li>{t('lab.c9separationtech_why_is_the_condenser_in_a_dist')}</li>
-    <li>{t('lab.c9separationtech_in_chromatography_why_must_the')}</li>
-    <li>{t('lab.c9separationtech_what_does_an_rf_value_of_1_0_i')}</li>
-    </ul>
-   </div>
-   </div>
-  </div>
-  </main>
+ <div className="space-y-3 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+ <label className="block text-sm font-semibold text-blue-900 dark:text-[#ffffff]">
+ 
+ {t('lab.c9separationtech_calculate_the_rf_value_for_the')}
+ </label>
+ <input 
+ type="number"
+ step="0.01"
+ className="w-full px-3 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+ placeholder={t('lab.c9separationtech_enter_rf_value_e_g_0_50')}
+ value={answer1}
+ onChange={e => setAnswer1(e.target.value)}
+ />
+ <button 
+ onClick={checkAnswer}
+ className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.c9separationtech_check_answer')}
+ </button>
+ 
+ {feedback1 && (
+ <div className={`p-3 rounded-md text-sm font-medium ${feedback1.startsWith('Correct') ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
+ {feedback1}
+ </div>
+ )}
+ </div>
+ 
+ <div className="mt-8 pt-6">
+ <h3 className="font-semibold text-slate-800 dark:text-[#ffffff] mb-3">{t('lab.c9separationtech_critical_thinking')}</h3>
+ <ul className="list-disc pl-5 text-sm text-slate-600 dark:text-[#a1a1aa] space-y-3">
+ <li>{t('lab.c9separationtech_why_is_the_condenser_in_a_dist')}</li>
+ <li>{t('lab.c9separationtech_in_chromatography_why_must_the')}</li>
+ <li>{t('lab.c9separationtech_what_does_an_rf_value_of_1_0_i')}</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ </main>
  </div>
  );
 }

@@ -22,7 +22,7 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
 
  useEffect(() => {
  return () => {
-  clearInterval(intervalRef.current);
+ clearInterval(intervalRef.current);
  };
  }, []);
 
@@ -43,198 +43,198 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
  const maxFrames = 30;
  
  intervalRef.current = window.setInterval(() => {
-  currentFrame++;
-  
-  if (flickForce < 40) {
-  // Force too low - friction moves both slowly
-  setCardX(prev => prev + 2);
-  setCoinX(prev => prev + 2);
-  } else {
-  // Force sufficient - card moves fast, coin stays due to inertia, then drops
-  setCardX(prev => prev + flickForce / 2);
-  if (currentFrame > 5) {
-   // Card has moved out from under
-   setCoinY(prev => Math.min(prev + 10, 100)); // Drop into glass
-  }
-  }
+ currentFrame++;
+ 
+ if (flickForce < 40) {
+ // Force too low - friction moves both slowly
+ setCardX(prev => prev + 2);
+ setCoinX(prev => prev + 2);
+ } else {
+ // Force sufficient - card moves fast, coin stays due to inertia, then drops
+ setCardX(prev => prev + flickForce / 2);
+ if (currentFrame > 5) {
+ // Card has moved out from under
+ setCoinY(prev => Math.min(prev + 10, 100)); // Drop into glass
+ }
+ }
 
-  if (currentFrame >= maxFrames) {
-  clearInterval(intervalRef.current);
-  setAnimationState('done');
-  }
+ if (currentFrame >= maxFrames) {
+ clearInterval(intervalRef.current);
+ setAnimationState('done');
+ }
  }, 16);
  };
 
  const checkAnalysis = () => {
  if (q1 === 'b' && q2 === 'a') {
-  setFeedback('correct');
+ setFeedback('correct');
  } else {
-  setFeedback('incorrect');
+ setFeedback('incorrect');
  }
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.p9inertia_physics_grade_9_inertia')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.p9inertia_physics_grade_9_inertia')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.theory')}</button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.tab.lab')}</button>
-  </div>
-  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  {/* Column 1: Theory */}
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9inertia_theory_newton_s_first_law')}</h2>
-   <div className="prose prose-sm space-y-4">
-   <p>
-    <strong>{t('lab.p9inertia_newton_s_first_law_of_motion_l')}</strong>  {t('lab.p9inertia_an_object_at_rest_stays_at_res')}
-                            </p>
-   <p>
-    <strong>{t('lab.p9inertia_inertia')}</strong>  {t('lab.p9inertia_is_the_tendency_of_an_object_t')}
-                            </p>
-   <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900 mt-4 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
-    <h3 className="font-semibold mb-2 flex items-center gap-2"><MousePointerClick size={16}/>  {t('lab.p9inertia_the_coin_drop_experiment')}</h3>
-    <ul className="list-disc pl-4 space-y-1">
-    <li>{t('lab.p9inertia_a_coin_rests_on_a_cardboard_ca')}</li>
-    <li>{t('lab.p9inertia_if_you_apply_a')} <em>{t('lab.p9inertia_slow_small_force')}</em>  {t('lab.p9inertia_to_the_card_friction_pulls_the')}</li>
-    <li>{t('lab.p9inertia_if_you_apply_a')} <em>{t('lab.p9inertia_sharp_large_force')}</em>  {t('lab.p9inertia_flick_the_card_accelerates_rap')}</li>
-    </ul>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.theory')}</button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.tab.lab')}</button>
+ </div>
+ <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
+ {/* Column 1: Theory */}
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9inertia_theory_newton_s_first_law')}</h2>
+ <div className="prose prose-sm space-y-4">
+ <p>
+ <strong>{t('lab.p9inertia_newton_s_first_law_of_motion_l')}</strong> {t('lab.p9inertia_an_object_at_rest_stays_at_res')}
+ </p>
+ <p>
+ <strong>{t('lab.p9inertia_inertia')}</strong> {t('lab.p9inertia_is_the_tendency_of_an_object_t')}
+ </p>
+ <div className={`bg-blue-50 p-4 rounded-lg border border-blue-100 text-blue-900 mt-4 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
+ <h3 className="font-semibold mb-2 flex items-center gap-2"><MousePointerClick size={16}/> {t('lab.p9inertia_the_coin_drop_experiment')}</h3>
+ <ul className="list-disc pl-4 space-y-1">
+ <li>{t('lab.p9inertia_a_coin_rests_on_a_cardboard_ca')}</li>
+ <li>{t('lab.p9inertia_if_you_apply_a')} <em>{t('lab.p9inertia_slow_small_force')}</em> {t('lab.p9inertia_to_the_card_friction_pulls_the')}</li>
+ <li>{t('lab.p9inertia_if_you_apply_a')} <em>{t('lab.p9inertia_sharp_large_force')}</em> {t('lab.p9inertia_flick_the_card_accelerates_rap')}</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
-  {/* Column 2: Simulator */}
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-6">{t('lab.p9inertia_simulator')}</h2>
+ {/* Column 2: Simulator */}
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2 w-full mb-6">{t('lab.p9inertia_simulator')}</h2>
 
-   <div className={`relative w-64 h-80 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] overflow- mb-8 shadow-inner flex-col `}>
-   {/* Glass */}
-   <div className={`w-full absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-40 border-x-4 border-b-4 border-blue-200 bg-blue-50/50 rounded-b-xl shadow-sm backdrop-blur-sm dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
-   
-   {/* Card */}
-   <div 
-    className="absolute w-40 h-2 bg-[#d4a373] shadow-md border-b border-[#bc8a5f]"
-    style={{ bottom: '160px', left: `calc(50% - 80px + ${cardX}px)` }}
-   ></div>
-   
-   {/* Coin */}
-   <div 
-    className="absolute w-12 h-4 bg-yellow-400 rounded-full shadow-[inset_0_-2px_4px_rgba(0,0,0,0.3)] border border-yellow-600 z-10"
-    style={{ bottom: `calc(162px - ${coinY}px)`, left: `calc(50% - 24px + ${coinX}px)` }}
-   >
-    <div className="absolute inset-1 rounded-full border border-yellow-500/50"></div>
-   </div>
-   </div>
+ <div className={`relative w-64 h-80 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl border-2 border-slate-200 dark:border-[#1c1b1b] mb-8 shadow-inner flex-col `}>
+ {/* Glass */}
+ <div className={`w-full absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-40 border-x-4 border-b-4 border-blue-200 bg-blue-50/50 rounded-b-xl shadow-sm backdrop-blur-sm dark:bg-teal-950/20 dark:border-teal-900 flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
+ 
+ {/* Card */}
+ <div 
+ className="absolute w-40 h-2 bg-[#d4a373] shadow-md border-b border-[#bc8a5f]"
+ style={{ bottom: '160px', left: `calc(50% - 80px + ${cardX}px)` }}
+ ></div>
+ 
+ {/* Coin */}
+ <div 
+ className="absolute w-12 h-4 bg-yellow-400 rounded-full shadow-[inset_0_-2px_4px_rgba(0,0,0,0.3)] border border-yellow-600 z-10"
+ style={{ bottom: `calc(162px - ${coinY}px)`, left: `calc(50% - 24px + ${coinX}px)` }}
+ >
+ <div className="absolute inset-1 rounded-full border border-yellow-500/50"></div>
+ </div>
+ </div>
 
-   <div className="w-full max-w-sm space-y-4">
-   <div>
-    <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] flex justify-between mb-1">
-    <span>{t('lab.p9inertia_flick_force')}</span>
-    <span>{flickForce} N</span>
-    </label>
-    <input 
-    type="range" 
-    min="10" 
-    max="100" 
-    value={flickForce} 
-    onChange={(e) => setFlickForce(parseInt(e.target.value))}
-    disabled={animationState !== 'idle'}
-    className="w-full accent-blue-600"
-    />
-   </div>
+ <div className="w-full max-w-sm space-y-4">
+ <div>
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff] flex justify-between mb-1">
+ <span>{t('lab.p9inertia_flick_force')}</span>
+ <span>{flickForce} N</span>
+ </label>
+ <input 
+ type="range" 
+ min="10" 
+ max="100" 
+ value={flickForce} 
+ onChange={(e) => setFlickForce(parseInt(e.target.value))}
+ disabled={animationState !== 'idle'}
+ className="w-full accent-blue-600"
+ />
+ </div>
 
-   <div className="flex gap-4">
-    <button 
-    onClick={flick}
-    disabled={animationState !== 'idle'}
-    className="flex-1 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-md active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-    >
-    
-                                 {t('lab.p9inertia_flick')}
-                                 </button>
-    <button 
-    onClick={resetSim}
-    className="px-4 py-3 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors"
-    >
-    <RefreshCw size={20} />
-    </button>
-   </div>
-   </div>
-  </div>
+ <div className="flex gap-4">
+ <button 
+ onClick={flick}
+ disabled={animationState !== 'idle'}
+ className="flex-1 bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors shadow-md active:scale-95 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.p9inertia_flick')}
+ </button>
+ <button 
+ onClick={resetSim}
+ className="px-4 py-3 bg-slate-200 dark:bg-[#121212] text-slate-800 dark:text-[#ffffff] font-bold rounded-lg hover:bg-slate-300 dark:bg-[#121212] transition-colors"
+ >
+ <RefreshCw size={20} />
+ </button>
+ </div>
+ </div>
+ </div>
 
-  {/* Column 3: Analysis */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9inertia_analysis')}</h2>
+ {/* Column 3: Analysis */}
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex-col gap-6 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-lg font-bold border-b border-slate-200 dark:border-[#1c1b1b] pb-2">{t('lab.p9inertia_analysis')}</h2>
 
-   <div className="space-y-4">
-   <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
-    <p className="text-sm font-semibold mb-2">{t('lab.p9inertia_1_why_did_the_coin_drop_into_t')}</p>
-    <div className="space-y-2 text-sm">
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q1" checked={q1==='a'} onChange={()=>setQ1('a')} className="mt-1" />
-     <span>{t('lab.p9inertia_the_card_transferred_its_kinet')}</span>
-    </label>
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q1" checked={q1==='b'} onChange={()=>setQ1('b')} className="mt-1" />
-     <span>{t('lab.p9inertia_the_coin_s_inertia_resisted_si')}</span>
-    </label>
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q1" checked={q1==='c'} onChange={()=>setQ1('c')} className="mt-1" />
-     <span>{t('lab.p9inertia_the_flicking_force_pushed_the_')}</span>
-    </label>
-    </div>
-   </div>
+ <div className="space-y-4">
+ <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
+ <p className="text-sm font-semibold mb-2">{t('lab.p9inertia_1_why_did_the_coin_drop_into_t')}</p>
+ <div className="space-y-2 text-sm">
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q1" checked={q1==='a'} onChange={()=>setQ1('a')} className="mt-1" />
+ <span>{t('lab.p9inertia_the_card_transferred_its_kinet')}</span>
+ </label>
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q1" checked={q1==='b'} onChange={()=>setQ1('b')} className="mt-1" />
+ <span>{t('lab.p9inertia_the_coin_s_inertia_resisted_si')}</span>
+ </label>
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q1" checked={q1==='c'} onChange={()=>setQ1('c')} className="mt-1" />
+ <span>{t('lab.p9inertia_the_flicking_force_pushed_the_')}</span>
+ </label>
+ </div>
+ </div>
 
-   <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
-    <p className="text-sm font-semibold mb-2">{t('lab.p9inertia_2_if_you_slowly_pull_the_card_')}</p>
-    <div className="space-y-2 text-sm">
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q2" checked={q2==='a'} onChange={()=>setQ2('a')} className="mt-1" />
-     <span>{t('lab.p9inertia_static_friction_is_not_broken_')}</span>
-    </label>
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q2" checked={q2==='b'} onChange={()=>setQ2('b')} className="mt-1" />
-     <span>{t('lab.p9inertia_the_coin_will_float_in_the_air')}</span>
-    </label>
-    <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
-     <input type="radio" name="q2" checked={q2==='c'} onChange={()=>setQ2('c')} className="mt-1" />
-     <span>{t('lab.p9inertia_the_coin_drops_into_the_glass_')}</span>
-    </label>
-    </div>
-   </div>
+ <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded border">
+ <p className="text-sm font-semibold mb-2">{t('lab.p9inertia_2_if_you_slowly_pull_the_card_')}</p>
+ <div className="space-y-2 text-sm">
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q2" checked={q2==='a'} onChange={()=>setQ2('a')} className="mt-1" />
+ <span>{t('lab.p9inertia_static_friction_is_not_broken_')}</span>
+ </label>
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q2" checked={q2==='b'} onChange={()=>setQ2('b')} className="mt-1" />
+ <span>{t('lab.p9inertia_the_coin_will_float_in_the_air')}</span>
+ </label>
+ <label className="flex items-start gap-2 cursor-pointer hover:bg-slate-100 dark:bg-[#121212] p-1 rounded">
+ <input type="radio" name="q2" checked={q2==='c'} onChange={()=>setQ2('c')} className="mt-1" />
+ <span>{t('lab.p9inertia_the_coin_drops_into_the_glass_')}</span>
+ </label>
+ </div>
+ </div>
 
-   <button 
-    onClick={checkAnalysis}
-    disabled={!q1 || !q2}
-    className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
-   >
-    
-                             {t('lab.p9inertia_submit_answers')}
-                            </button>
+ <button 
+ onClick={checkAnalysis}
+ disabled={!q1 || !q2}
+ className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
+ >
+ 
+ {t('lab.p9inertia_submit_answers')}
+ </button>
 
-   {feedback === 'correct' && (
-    <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-start gap-2 dark:text-[#ffffff]">
-    <CheckCircle size={20} className="shrink-0 mt-0.5" />
-    <span>{t('lab.p9inertia_great_job_the_rapid_force_over')}</span>
-    </div>
-   )}
-   {feedback === 'incorrect' && (
-    <div className="p-3 bg-red-100 text-red-800 rounded-lg flex items-start gap-2">
-    <XCircle size={20} className="shrink-0 mt-0.5" />
-    <span>{t('lab.p9inertia_some_answers_are_incorrect_rev')}</span>
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ {feedback === 'correct' && (
+ <div className="p-3 bg-green-100 text-green-800 rounded-lg flex items-start gap-2 dark:text-[#ffffff]">
+ <CheckCircle size={20} className="shrink-0 mt-0.5" />
+ <span>{t('lab.p9inertia_great_job_the_rapid_force_over')}</span>
+ </div>
+ )}
+ {feedback === 'incorrect' && (
+ <div className="p-3 bg-red-100 text-red-800 rounded-lg flex items-start gap-2">
+ <XCircle size={20} className="shrink-0 mt-0.5" />
+ <span>{t('lab.p9inertia_some_answers_are_incorrect_rev')}</span>
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

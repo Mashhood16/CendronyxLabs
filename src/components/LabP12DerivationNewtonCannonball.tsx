@@ -2,5 +2,5 @@ import GenericDerivationLab from './GenericDerivationLab';
 import { CLASS12_DERIVATIONS } from '../data/class12Derivations';
 
 export default function LabP12DerivationNewtonCannonball({ onExit }: { onExit?: () => void }) {
-  return <GenericDerivationLab onExit={onExit} config={CLASS12_DERIVATIONS.newton_cannon} />;
+ return <GenericDerivationLab onExit={onExit} config={CLASS12_DERIVATIONS.newton_cannon} />;
 }

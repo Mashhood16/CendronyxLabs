@@ -8,7 +8,7 @@ interface LabS8GreenhouseEffectProps {
 }
 
 export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [timePassed, setTimePassed] = useState(0);
  const [isRunning, setIsRunning] = useState(false);
  
@@ -21,13 +21,13 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  useEffect(() => {
  let interval: number | undefined;
  if (isRunning && timePassed < 20) {
-  interval = window.setInterval(() => {
-  setTimePassed(t => {
-   const next = t + 1;
-   if (next >= 20) setIsRunning(false);
-   return next;
-  });
-  }, 500);
+ interval = window.setInterval(() => {
+ setTimePassed(t => {
+ const next = t + 1;
+ if (next >= 20) setIsRunning(false);
+ return next;
+ });
+ }, 500);
  }
  return () => clearInterval(interval);
  }, [isRunning, timePassed]);
@@ -41,99 +41,99 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  }, [timePassed]);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s8greenhouseeffect_act_1_1_greenhouse_effect')} subtitle={t('lab.subtitle_observe_closed_environment')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s8greenhouseeffect_act_1_1_greenhouse_effect')} subtitle={t('lab.subtitle_observe_closed_environment')} />
 
-  <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-  {/* Left Column: Visual */}
-  <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
-   
-   <div className="absolute top-8 left-8">
-   <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />
-   <div className="text-sm text-center text-slate-500 dark:text-[#71717a] font-medium mt-2">{t('lab.s8greenhouseeffect_sunlight')}</div>
-   </div>
-   
-   <div className="absolute top-10 right-10">
-   <div className="flex items-center gap-2 text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-full font-bold">
-    
-                             {t('lab.s8greenhouseeffect_time')} {timePassed}  {t('lab.s8greenhouseeffect_minutes')}
-                            </div>
-   </div>
+ <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
+ {/* Left Column: Visual */}
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col items-center justify-center relative lg:overflow-hidden">
+ 
+ <div className="absolute top-8 left-8">
+ <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />
+ <div className="text-sm text-center text-slate-500 dark:text-[#71717a] font-medium mt-2">{t('lab.s8greenhouseeffect_sunlight')}</div>
+ </div>
+ 
+ <div className="absolute top-10 right-10">
+ <div className="flex items-center gap-2 text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-full font-bold">
+ 
+ {t('lab.s8greenhouseeffect_time')} {timePassed} {t('lab.s8greenhouseeffect_minutes')}
+ </div>
+ </div>
 
-   <div className="flex items-end justify-center gap-16 mt-16 w-full h-80 border-b-4 border-emerald-700 pb-2 relative">
-   
-   {/* Thermometer 1 (Outside) */}
-   <div className="flex flex-col items-center">
-    <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center">
-    <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
-     <div 
-     className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
-     style={{ height: `${(outsideTemp / 50) * 100}%` }}
-     />
-    </div>
-    {/* Wind icon to show air circulation */}
-    <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
-    </div>
-    <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
-    <div className="text-slate-500 dark:text-[#71717a] text-sm">{t('lab.s8greenhouseeffect_open_air')}</div>
-   </div>
+ <div className="flex items-end justify-center gap-16 mt-16 w-full h-80 border-b-4 border-emerald-700 pb-2 relative">
+ 
+ {/* Thermometer 1 (Outside) */}
+ <div className="flex flex-col items-center">
+ <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center">
+ <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
+ <div 
+ className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
+ style={{ height: `${(outsideTemp / 50) * 100}%` }}
+ />
+ </div>
+ {/* Wind icon to show air circulation */}
+ <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
+ </div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
+ <div className="text-slate-500 dark:text-[#71717a] text-sm">{t('lab.s8greenhouseeffect_open_air')}</div>
+ </div>
 
-   {/* Thermometer 2 (Inside Jar) */}
-   <div className="flex flex-col items-center relative z-10">
-    {/* Glass Jar Outline */}
-    <div className="absolute -top-6 -bottom-6 -left-8 -right-8 border-4 border-slate-300 dark:border-[#1c1b1b] rounded-t-3xl rounded-b-xl bg-blue-50/20 backdrop-blur-[2px] shadow-lg pointer-events-none z-20 flex flex-col items-center dark:bg-teal-950/20 dark:border-teal-900">
-    {/* Jar Lid */}
-    <div className="w-16 h-4 bg-slate-400 dark:bg-[#121212] rounded-t-sm -mt-4 border border-slate-500 dark:border-[#1c1b1b]" />
-    </div>
-    
-    <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center z-10">
-    <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
-     <div 
-     className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
-     style={{ height: `${(insideTemp / 50) * 100}%` }}
-     />
-    </div>
-    {/* Heat Waves */}
-    {insideTemp > 30 && (
-     <div className="absolute top-10 flex gap-2 animate-pulse opacity-50 text-red-500">
-     ⌇⌇
-     </div>
-    )}
-    </div>
-    <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
-    <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">{t('lab.s8greenhouseeffect_inside_closed_jar')}</div>
-   </div>
+ {/* Thermometer 2 (Inside Jar) */}
+ <div className="flex flex-col items-center relative z-10">
+ {/* Glass Jar Outline */}
+ <div className="absolute -top-6 -bottom-6 -left-8 -right-8 border-4 border-slate-300 dark:border-[#1c1b1b] rounded-t-3xl rounded-b-xl bg-blue-50/20 backdrop-blur-[2px] shadow-lg pointer-events-none z-20 flex flex-col items-center dark:bg-teal-950/20 dark:border-teal-900">
+ {/* Jar Lid */}
+ <div className="w-16 h-4 bg-slate-400 dark:bg-[#121212] rounded-t-sm -mt-4 border border-slate-500 dark:border-[#1c1b1b]" />
+ </div>
+ 
+ <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#1c1b1b] shadow-inner mb-4 relative w-24 h-48 flex items-end justify-center z-10">
+ <div className="w-4 h-full bg-slate-200 dark:bg-[#121212] rounded-full relative overflow-hidden border border-slate-300 dark:border-[#1c1b1b]">
+ <div 
+ className="absolute bottom-0 w-full bg-red-500 transition-all duration-300"
+ style={{ height: `${(insideTemp / 50) * 100}%` }}
+ />
+ </div>
+ {/* Heat Waves */}
+ {insideTemp > 30 && (
+ <div className="absolute top-10 flex gap-2 animate-pulse opacity-50 text-red-500">
+ ⌇⌇
+ </div>
+ )}
+ </div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
+ <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">{t('lab.s8greenhouseeffect_inside_closed_jar')}</div>
+ </div>
 
-   </div>
-  </div>
+ </div>
+ </div>
 
-  {/* Right Column: Information */}
-  <div className="w-full md:w-80 flex flex-col gap-4">
-   <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.s8greenhouseeffect_observation')}</h3>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
-    
-                             {t('lab.s8greenhouseeffect_as_time_passes_solar_energy_en')}
-                            </p>
-   <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
-    
-                             {t('lab.s8greenhouseeffect_the_glass_jar_allows_light_ene')}
-                            </p>
-   </div>
+ {/* Right Column: Information */}
+ <div className="w-full md:w-80 flex flex-col gap-4">
+ <div className="bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.s8greenhouseeffect_observation')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
+ 
+ {t('lab.s8greenhouseeffect_as_time_passes_solar_energy_en')}
+ </p>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
+ 
+ {t('lab.s8greenhouseeffect_the_glass_jar_allows_light_ene')}
+ </p>
+ </div>
 
-   <div className="bg-blue-50 rounded-2xl shadow-sm border border-blue-100 p-6 dark:bg-teal-950/20 dark:border-teal-900">
-   <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
-    <Thermometer className="w-5 h-5" />
-    
-                             {t('lab.s8greenhouseeffect_real_world_link')}
-                            </h3>
-   <p className="text-sm text-blue-700">
-    
-                             {t('lab.s8greenhouseeffect_this_experiment_perfectly_mode')} <strong>{t('lab.s8greenhouseeffect_greenhouse_effect')}</strong>  {t('lab.s8greenhouseeffect_in_our_atmosphere_gases_like_c')}
-                            </p>
-   </div>
-  </div>
-  </div>
+ <div className="bg-blue-50 rounded-2xl shadow-sm border border-blue-100 p-6 dark:bg-teal-950/20 dark:border-teal-900">
+ <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2 dark:text-[#ffffff]">
+ <Thermometer className="w-5 h-5" />
+ 
+ {t('lab.s8greenhouseeffect_real_world_link')}
+ </h3>
+ <p className="text-sm text-blue-700">
+ 
+ {t('lab.s8greenhouseeffect_this_experiment_perfectly_mode')} <strong>{t('lab.s8greenhouseeffect_greenhouse_effect')}</strong> {t('lab.s8greenhouseeffect_in_our_atmosphere_gases_like_c')}
+ </p>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

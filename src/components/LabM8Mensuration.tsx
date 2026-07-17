@@ -4,7 +4,7 @@ import { Database, CheckCircle, Activity, Ruler } from 'lucide-react';
 import { useTranslate } from "../i18n";
 
 export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  // --- STATE ---
  const [shape, setShape] = useState<'Sphere' | 'Cone' | 'Pyramid'>('Cone');
  const [radius, setRadius] = useState<number>(5); // Acts as base width/2 for pyramid
@@ -21,17 +21,17 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  let v = 0;
  let sa = 0;
  if (shape === 'Sphere') {
-  v = (4 / 3) * Math.PI * Math.pow(radius, 3);
-  sa = 4 * Math.PI * Math.pow(radius, 2);
+ v = (4 / 3) * Math.PI * Math.pow(radius, 3);
+ sa = 4 * Math.PI * Math.pow(radius, 2);
  } else if (shape === 'Cone') {
-  v = (1 / 3) * Math.PI * Math.pow(radius, 2) * height;
-  const slant = Math.sqrt(radius * radius + height * height);
-  sa = Math.PI * radius * (radius + slant);
+ v = (1 / 3) * Math.PI * Math.pow(radius, 2) * height;
+ const slant = Math.sqrt(radius * radius + height * height);
+ sa = Math.PI * radius * (radius + slant);
  } else if (shape === 'Pyramid') {
-  const baseWidth = radius * 2;
-  v = (1 / 3) * Math.pow(baseWidth, 2) * height;
-  const slant = Math.sqrt(height * height + radius * radius);
-  sa = Math.pow(baseWidth, 2) + 2 * baseWidth * slant;
+ const baseWidth = radius * 2;
+ v = (1 / 3) * Math.pow(baseWidth, 2) * height;
+ const slant = Math.sqrt(height * height + radius * radius);
+ sa = Math.pow(baseWidth, 2) + 2 * baseWidth * slant;
  }
  
  // Add 1.5% measurement noise to simulate real-world imperfection
@@ -44,8 +44,8 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  // --- HANDLERS ---
  const logData = () => {
  setMeasurements(prev => [
-  ...prev,
-  { id: nextId.current++, shape, r: radius, h: height, vol: volume, mass }
+ ...prev,
+ { id: nextId.current++, shape, r: radius, h: height, vol: volume, mass }
  ]);
  };
 
@@ -55,11 +55,11 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  const userAns = parseFloat(assessmentAnswer);
  
  if (isNaN(userAns)) {
-  setAssessmentFeedback("Please enter a valid number.");
+ setAssessmentFeedback("Please enter a valid number.");
  } else if (Math.abs(userAns - correctMassKg) < 0.5) {
-  setAssessmentFeedback("Correct! You accurately computed the volume and applied the density.");
+ setAssessmentFeedback("Correct! You accurately computed the volume and applied the density.");
  } else {
-  setAssessmentFeedback(`Incorrect. Try again. (Hint: Vol = 4/3 * π * r³, mass = Vol * density). Expected ~${correctMassKg.toFixed(2)} kg`);
+ setAssessmentFeedback(`Incorrect. Try again. (Hint: Vol = 4/3 * π * r³, mass = Vol * density). Expected ~${correctMassKg.toFixed(2)} kg`);
  }
  };
 
@@ -67,280 +67,280 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  const maxMass = Math.max(10, ...measurements.map(m => m.mass));
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:bg-[#000000] font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  {/* HEADER */}
-  <LabHeader onExit={onExit} title={t('lab.m8mensuration_advanced_mensuration_solid_pro')} />
+ <div className="flex flex-col min- bg-slate-50 dark:bg-[#000000] font-sans select-none dark:!bg-[#000000] dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ {/* HEADER */}
+ <LabHeader onExit={onExit} title={t('lab.m8mensuration_advanced_mensuration_solid_pro')} />
 
-  {/* 3-COLUMN LAYOUT */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex-1 items-start">
-  
-  {/* COLUMN 1: THEORY & SETUP */}
-  <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
-   <div>
-   <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
-    <Activity className="w-5 h-5 text-blue-500" />
-    
-                             {t('lab.m8mensuration_object_parameters')}
-                            </h2>
-   <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
-    
-                             {t('lab.m8mensuration_select_a_solid_shape_to_comput')}
-                            </p>
+ {/* 3-COLUMN LAYOUT */}
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 flex-1 items-start">
+ 
+ {/* COLUMN 1: THEORY & SETUP */}
+ <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col gap-6">
+ <div>
+ <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
+ <Activity className="w-5 h-5 text-blue-500" />
+ 
+ {t('lab.m8mensuration_object_parameters')}
+ </h2>
+ <p className="text-sm text-slate-600 dark:text-[#71717a] mb-4">
+ 
+ {t('lab.m8mensuration_select_a_solid_shape_to_comput')}
+ </p>
 
-   <div className="space-y-4">
-    <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium">{t('lab.m8mensuration_shape')}</label>
-    <select
-     value={shape}
-     onChange={(e) => setShape(e.target.value as any)}
-     className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
-    >
-     <option value="Cone">{t('lab.m8mensuration_solid_cone')}</option>
-     <option value="Sphere">{t('lab.m8mensuration_solid_sphere')}</option>
-     <option value="Pyramid">{t('lab.m8mensuration_square_pyramid')}</option>
-    </select>
-    </div>
+ <div className="space-y-4">
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium">{t('lab.m8mensuration_shape')}</label>
+ <select
+ value={shape}
+ onChange={(e) => setShape(e.target.value as any)}
+ className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
+ >
+ <option value="Cone">{t('lab.m8mensuration_solid_cone')}</option>
+ <option value="Sphere">{t('lab.m8mensuration_solid_sphere')}</option>
+ <option value="Pyramid">{t('lab.m8mensuration_square_pyramid')}</option>
+ </select>
+ </div>
 
-    <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium flex justify-between">
-     <span>{t('lab.m8mensuration_radius_half_base_cm')}</span>
-     <span>{radius} cm</span>
-    </label>
-    <input
-     type="range"
-     min="1"
-     max="20"
-     step="0.5"
-     value={radius}
-     onChange={(e) => setRadius(parseFloat(e.target.value))}
-     className="w-full"
-    />
-    </div>
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium flex justify-between">
+ <span>{t('lab.m8mensuration_radius_half_base_cm')}</span>
+ <span>{radius} cm</span>
+ </label>
+ <input
+ type="range"
+ min="1"
+ max="20"
+ step="0.5"
+ value={radius}
+ onChange={(e) => setRadius(parseFloat(e.target.value))}
+ className="w-full"
+ />
+ </div>
 
-    <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium flex justify-between">
-     <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{t('lab.m8mensuration_height_cm')}</span>
-     <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{shape === 'Sphere' ? 'N/A' : `${height} cm`}</span>
-    </label>
-    <input
-     type="range"
-     min="5"
-     max="30"
-     step="0.5"
-     value={height}
-     disabled={shape === 'Sphere'}
-     onChange={(e) => setHeight(parseFloat(e.target.value))}
-     className={`w-full ${shape === 'Sphere' ? 'opacity-50 cursor-not-allowed' : ''}`}
-    />
-    </div>
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium flex justify-between">
+ <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{t('lab.m8mensuration_height_cm')}</span>
+ <span className={shape === 'Sphere' ? 'opacity-50' : ''}>{shape === 'Sphere' ? 'N/A' : `${height} cm`}</span>
+ </label>
+ <input
+ type="range"
+ min="5"
+ max="30"
+ step="0.5"
+ value={height}
+ disabled={shape === 'Sphere'}
+ onChange={(e) => setHeight(parseFloat(e.target.value))}
+ className={`w-full ${shape === 'Sphere' ? 'opacity-50 cursor-not-allowed' : ''}`}
+ />
+ </div>
 
-    <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium flex justify-between">
-     <span>{t('lab.m8mensuration_material_density_kg_m')}</span>
-     <span>{density}</span>
-    </label>
-    <select
-     value={density}
-     onChange={(e) => setDensity(parseInt(e.target.value))}
-     className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
-    >
-     <option value={7800}>{t('lab.m8mensuration_iron_7800_kg_m')}</option>
-     <option value={2700}>{t('lab.m8mensuration_aluminum_2700_kg_m')}</option>
-     <option value={19300}>{t('lab.m8mensuration_gold_19300_kg_m')}</option>
-     <option value={1000}>{t('lab.m8mensuration_water_ice_1000_kg_m')}</option>
-    </select>
-    </div>
-   </div>
-   </div>
-   
-   <button
-   onClick={logData}
-   className="mt-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
-   >
-   <Database className="w-4 h-4" />
-   
-                        {t('lab.m8mensuration_log_measurement')}
-                        </button>
-  </div>
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium flex justify-between">
+ <span>{t('lab.m8mensuration_material_density_kg_m')}</span>
+ <span>{density}</span>
+ </label>
+ <select
+ value={density}
+ onChange={(e) => setDensity(parseInt(e.target.value))}
+ className="p-2 border rounded-md dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
+ >
+ <option value={7800}>{t('lab.m8mensuration_iron_7800_kg_m')}</option>
+ <option value={2700}>{t('lab.m8mensuration_aluminum_2700_kg_m')}</option>
+ <option value={19300}>{t('lab.m8mensuration_gold_19300_kg_m')}</option>
+ <option value={1000}>{t('lab.m8mensuration_water_ice_1000_kg_m')}</option>
+ </select>
+ </div>
+ </div>
+ </div>
+ 
+ <button
+ onClick={logData}
+ className="mt-2 w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-medium flex items-center justify-center gap-2 transition-colors whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40"
+ >
+ <Database className="w-4 h-4" />
+ 
+ {t('lab.m8mensuration_log_measurement')}
+ </button>
+ </div>
 
-  {/* COLUMN 2: SIMULATION STAGE */}
-  <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px] relative">
-   <h2 className="absolute top-4 left-4 text-lg font-semibold text-slate-800 dark:text-white">
-   
-                        {t('lab.m8mensuration_cross_section_visualizer')}
-                        </h2>
-   
-   <div className="w-full h-64 flex items-center justify-center mt-8">
-   <svg viewBox="-100 -100 200 200" className="w-full h-full max-w-[250px] drop-shadow-xl overflow-visible">
-    <defs>
-    <radialGradient id="sphereGrad" cx="30%" cy="30%" r="70%">
-     <stop offset="0%" stopColor="#94a3b8" />
-     <stop offset="100%" stopColor="#334155" />
-    </radialGradient>
-    <linearGradient id="coneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-     <stop offset="0%" stopColor="#64748b" />
-     <stop offset="50%" stopColor="#94a3b8" />
-     <stop offset="100%" stopColor="#475569" />
-    </linearGradient>
-    </defs>
+ {/* COLUMN 2: SIMULATION STAGE */}
+ <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center justify-center min-h-[400px] relative">
+ <h2 className="absolute top-4 left-4 text-lg font-semibold text-slate-800 dark:text-white">
+ 
+ {t('lab.m8mensuration_cross_section_visualizer')}
+ </h2>
+ 
+ <div className="w-full h-64 flex items-center justify-center mt-8">
+ <svg viewBox="-100 -100 200 200" className="w-full h-full max-w-[250px] drop-shadow-xl overflow-visible">
+ <defs>
+ <radialGradient id="sphereGrad" cx="30%" cy="30%" r="70%">
+ <stop offset="0%" stopColor="#94a3b8" />
+ <stop offset="100%" stopColor="#334155" />
+ </radialGradient>
+ <linearGradient id="coneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+ <stop offset="0%" stopColor="#64748b" />
+ <stop offset="50%" stopColor="#94a3b8" />
+ <stop offset="100%" stopColor="#475569" />
+ </linearGradient>
+ </defs>
 
-    {/* Dynamic rendering based on shape */}
-    {shape === 'Sphere' && (
-    <g>
-     <circle cx="0" cy="0" r={radius * 5} fill="url(#sphereGrad)" stroke="#1e293b" strokeWidth="2" />
-     {/* Equator line for 3D feel */}
-     <ellipse cx="0" cy="0" rx={radius * 5} ry={radius * 1.5} fill="none" stroke="#cbd5e1" strokeDasharray="4 4" opacity="0.6"/>
-     <line x1="0" y1="0" x2={radius * 5} y2="0" stroke="#f87171" strokeWidth="2" />
-     <text x={radius * 2.5} y="-5" fill="#f87171" fontSize="12" fontWeight="bold">r={radius}</text>
-    </g>
-    )}
+ {/* Dynamic rendering based on shape */}
+ {shape === 'Sphere' && (
+ <g>
+ <circle cx="0" cy="0" r={radius * 5} fill="url(#sphereGrad)" stroke="#1e293b" strokeWidth="2" />
+ {/* Equator line for 3D feel */}
+ <ellipse cx="0" cy="0" rx={radius * 5} ry={radius * 1.5} fill="none" stroke="#cbd5e1" strokeDasharray="4 4" opacity="0.6"/>
+ <line x1="0" y1="0" x2={radius * 5} y2="0" stroke="#f87171" strokeWidth="2" />
+ <text x={radius * 2.5} y="-5" fill="#f87171" fontSize="12" fontWeight="bold">r={radius}</text>
+ </g>
+ )}
 
-    {shape === 'Cone' && (
-    <g transform={`translate(0, ${height * 2.5})`}>
-     <path d={`M -${radius * 5} 0 L 0 -${height * 5} L ${radius * 5} 0 Z`} fill="url(#coneGrad)" stroke="#1e293b" strokeWidth="2" />
-     <ellipse cx="0" cy="0" rx={radius * 5} ry={radius * 1.5} fill="#475569" stroke="#1e293b" strokeWidth="2" />
-     <line x1="0" y1="0" x2={radius * 5} y2="0" stroke="#f87171" strokeWidth="2" />
-     <line x1="0" y1="0" x2="0" y2={-height * 5} stroke="#60a5fa" strokeWidth="2" strokeDasharray="4 2" />
-     <text x={radius * 2.5} y="15" fill="#f87171" fontSize="12" fontWeight="bold">r={radius}</text>
-     <text x="5" y={-height * 2.5} fill="#60a5fa" fontSize="12" fontWeight="bold">h={height}</text>
-    </g>
-    )}
+ {shape === 'Cone' && (
+ <g transform={`translate(0, ${height * 2.5})`}>
+ <path d={`M -${radius * 5} 0 L 0 -${height * 5} L ${radius * 5} 0 Z`} fill="url(#coneGrad)" stroke="#1e293b" strokeWidth="2" />
+ <ellipse cx="0" cy="0" rx={radius * 5} ry={radius * 1.5} fill="#475569" stroke="#1e293b" strokeWidth="2" />
+ <line x1="0" y1="0" x2={radius * 5} y2="0" stroke="#f87171" strokeWidth="2" />
+ <line x1="0" y1="0" x2="0" y2={-height * 5} stroke="#60a5fa" strokeWidth="2" strokeDasharray="4 2" />
+ <text x={radius * 2.5} y="15" fill="#f87171" fontSize="12" fontWeight="bold">r={radius}</text>
+ <text x="5" y={-height * 2.5} fill="#60a5fa" fontSize="12" fontWeight="bold">h={height}</text>
+ </g>
+ )}
 
-    {shape === 'Pyramid' && (
-    <g transform={`translate(0, ${height * 2.5})`}>
-     {/* Back faces */}
-     <path d={`M 0 -${height * 5} L -${radius * 3} -${radius * 1.5} L ${radius * 2} -${radius * 2} Z`} fill="#64748b" opacity="0.5" />
-     {/* Front left face */}
-     <path d={`M 0 -${height * 5} L -${radius * 5} 0 L 0 ${radius * 2} Z`} fill="#94a3b8" stroke="#1e293b" strokeWidth="1.5" />
-     {/* Front right face */}
-     <path d={`M 0 -${height * 5} L 0 ${radius * 2} L ${radius * 5} 0 Z`} fill="#475569" stroke="#1e293b" strokeWidth="1.5" />
-     <line x1="0" y1="0" x2="0" y2={-height * 5} stroke="#60a5fa" strokeWidth="2" strokeDasharray="4 2" />
-     <text x="5" y={-height * 2.5} fill="#60a5fa" fontSize="12" fontWeight="bold">h={height}</text>
-     <text x={radius * 2.5} y={radius + 10} fill="#f87171" fontSize="12" fontWeight="bold">b={radius * 2}</text>
-    </g>
-    )}
-   </svg>
-   </div>
+ {shape === 'Pyramid' && (
+ <g transform={`translate(0, ${height * 2.5})`}>
+ {/* Back faces */}
+ <path d={`M 0 -${height * 5} L -${radius * 3} -${radius * 1.5} L ${radius * 2} -${radius * 2} Z`} fill="#64748b" opacity="0.5" />
+ {/* Front left face */}
+ <path d={`M 0 -${height * 5} L -${radius * 5} 0 L 0 ${radius * 2} Z`} fill="#94a3b8" stroke="#1e293b" strokeWidth="1.5" />
+ {/* Front right face */}
+ <path d={`M 0 -${height * 5} L 0 ${radius * 2} L ${radius * 5} 0 Z`} fill="#475569" stroke="#1e293b" strokeWidth="1.5" />
+ <line x1="0" y1="0" x2="0" y2={-height * 5} stroke="#60a5fa" strokeWidth="2" strokeDasharray="4 2" />
+ <text x="5" y={-height * 2.5} fill="#60a5fa" fontSize="12" fontWeight="bold">h={height}</text>
+ <text x={radius * 2.5} y={radius + 10} fill="#f87171" fontSize="12" fontWeight="bold">b={radius * 2}</text>
+ </g>
+ )}
+ </svg>
+ </div>
 
-   <div className="w-full bg-slate-100 dark:bg-slate-700 p-3 rounded-lg mt-4 grid grid-cols-2 gap-2 text-sm">
-   <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
-    <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_exact_volume')}</span>
-    <span className="font-mono font-medium">{volume.toFixed(1)}  {t('lab.m8mensuration_cm')}</span>
-   </div>
-   <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
-    <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_surface_area')}</span>
-    <span className="font-mono font-medium">{surfaceArea.toFixed(1)}  {t('lab.m8mensuration_cm_1')}</span>
-   </div>
-   <div className="flex justify-between col-span-2 pt-1">
-    <span className="text-slate-600 dark:text-[#71717a] flex items-center gap-1">
-    
-                                 {t('lab.m8mensuration_measured_mass')} <span className="text-xs text-indigo-500">{t('lab.m8mensuration_w_1_5_tool_error')}</span>:
-    </span>
-    <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">{mass.toFixed(3)} kg</span>
-   </div>
-   </div>
-  </div>
+ <div className="w-full bg-slate-100 dark:bg-slate-700 p-3 rounded-lg mt-4 grid grid-cols-2 gap-2 text-sm">
+ <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
+ <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_exact_volume')}</span>
+ <span className="font-mono font-medium">{volume.toFixed(1)} {t('lab.m8mensuration_cm')}</span>
+ </div>
+ <div className="flex justify-between border-b border-slate-300 dark:border-[#1c1b1b] pb-1">
+ <span className="text-slate-600 dark:text-[#71717a]">{t('lab.m8mensuration_surface_area')}</span>
+ <span className="font-mono font-medium">{surfaceArea.toFixed(1)} {t('lab.m8mensuration_cm_1')}</span>
+ </div>
+ <div className="flex justify-between col-span-2 pt-1">
+ <span className="text-slate-600 dark:text-[#71717a] flex items-center gap-1">
+ 
+ {t('lab.m8mensuration_measured_mass')} <span className="text-xs text-indigo-500">{t('lab.m8mensuration_w_1_5_tool_error')}</span>:
+ </span>
+ <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">{mass.toFixed(3)} kg</span>
+ </div>
+ </div>
+ </div>
 
-  {/* COLUMN 3: DATA & ASSESSMENT */}
-  <div className="flex flex-col gap-4">
-   
-   {/* Data Table */}
-   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
-   <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_logged_data')}</h2>
-   <div className="lg:overflow-y-auto flex-1">
-    <table className="w-full text-sm text-left">
-    <thead className="sticky top-0 text-slate-500 dark:text-[#71717a]">
-     <tr>
-     <th className="py-2">{t('lab.m8mensuration_shape')}</th>
-     <th className="py-2">{t('lab.m8mensuration_r_b')}</th>
-     <th className="py-2">h</th>
-     <th className="py-2">{t('lab.m8mensuration_mass_kg')}</th>
-     </tr>
-    </thead>
-    <tbody>
-     {measurements.map(m => (
-     <tr key={m.id} className="border-t border-slate-100 dark:border-[#1c1b1b]">
-      <td className="py-2">{m.shape}</td>
-      <td className="py-2">{m.r}</td>
-      <td className="py-2">{m.h}</td>
-      <td className="py-2 font-mono text-indigo-600 dark:text-indigo-400">{m.mass.toFixed(2)}</td>
-     </tr>
-     ))}
-     {measurements.length === 0 && (
-     <tr>
-      <td colSpan={4} className="py-4 text-center text-slate-400 italic">{t('lab.m8mensuration_no_data_logged_yet')}</td>
-     </tr>
-     )}
-    </tbody>
-    </table>
-   </div>
-   </div>
+ {/* COLUMN 3: DATA & ASSESSMENT */}
+ <div className="flex flex-col gap-4">
+ 
+ {/* Data Table */}
+ <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] max-h-[300px] flex flex-col">
+ <h2 className="text-lg font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_logged_data')}</h2>
+ <div className="lg:overflow-y-auto flex-1">
+ <table className="w-full text-sm text-left">
+ <thead className="sticky top-0 text-slate-500 dark:text-[#71717a]">
+ <tr>
+ <th className="py-2">{t('lab.m8mensuration_shape')}</th>
+ <th className="py-2">{t('lab.m8mensuration_r_b')}</th>
+ <th className="py-2">h</th>
+ <th className="py-2">{t('lab.m8mensuration_mass_kg')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {measurements.map(m => (
+ <tr key={m.id} className="border-t border-slate-100 dark:border-[#1c1b1b]">
+ <td className="py-2">{m.shape}</td>
+ <td className="py-2">{m.r}</td>
+ <td className="py-2">{m.h}</td>
+ <td className="py-2 font-mono text-indigo-600 dark:text-indigo-400">{m.mass.toFixed(2)}</td>
+ </tr>
+ ))}
+ {measurements.length === 0 && (
+ <tr>
+ <td colSpan={4} className="py-4 text-center text-slate-400 italic">{t('lab.m8mensuration_no_data_logged_yet')}</td>
+ </tr>
+ )}
+ </tbody>
+ </table>
+ </div>
+ </div>
 
-   {/* Simple Graph */}
-   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-sm font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_mass_trend')}</h2>
-   <div className="h-32 w-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
-    {measurements.length > 1 ? (
-    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-     <polyline
-     points={measurements.map((m, i) => {
-      const x = (i / (measurements.length - 1)) * 100;
-      const y = 100 - (m.mass / maxMass) * 90; // scale 0-90
-      return `${x},${y}`;
-     }).join(' ')}
-     fill="none"
-     stroke="#4f46e5"
-     strokeWidth="2"
-     vectorEffect="non-scaling-stroke"
-     />
-     {measurements.map((m, i) => {
-     const x = (i / (measurements.length - 1)) * 100;
-     const y = 100 - (m.mass / maxMass) * 90;
-     return <circle key={m.id} cx={x} cy={y} r="3" fill="#4f46e5" vectorEffect="non-scaling-stroke" />;
-     })}
-    </svg>
-    ) : (
-    <div className="flex items-center justify-center h-full text-xs text-slate-400">{t('lab.m8mensuration_log_at_least_2_points_to_graph')}</div>
-    )}
-   </div>
-   </div>
+ {/* Simple Graph */}
+ <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+ <h2 className="text-sm font-semibold mb-2 text-slate-800 dark:text-white">{t('lab.m8mensuration_mass_trend')}</h2>
+ <div className="h-32 w-full bg-slate-50 dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b] rounded relative">
+ {measurements.length > 1 ? (
+ <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+ <polyline
+ points={measurements.map((m, i) => {
+ const x = (i / (measurements.length - 1)) * 100;
+ const y = 100 - (m.mass / maxMass) * 90; // scale 0-90
+ return `${x},${y}`;
+ }).join(' ')}
+ fill="none"
+ stroke="#4f46e5"
+ strokeWidth="2"
+ vectorEffect="non-scaling-stroke"
+ />
+ {measurements.map((m, i) => {
+ const x = (i / (measurements.length - 1)) * 100;
+ const y = 100 - (m.mass / maxMass) * 90;
+ return <circle key={m.id} cx={x} cy={y} r="3" fill="#4f46e5" vectorEffect="non-scaling-stroke" />;
+ })}
+ </svg>
+ ) : (
+ <div className="flex items-center justify-center h-full text-xs text-slate-400">{t('lab.m8mensuration_log_at_least_2_points_to_graph')}</div>
+ )}
+ </div>
+ </div>
 
-   {/* Assessment */}
-   <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
-   <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
-    <CheckCircle className="w-5 h-5 text-green-500" />
-    
-                             {t('lab.m8mensuration_assessment')}
-                            </h2>
-   <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
-    
-                             {t('lab.m8mensuration_a_solid_gold_sphere_has_a_radi')}
-                            </p>
-   <div className="flex flex-wrap gap-2">
-    <input
-    type="number"
-    value={assessmentAnswer}
-    onChange={(e) => setAssessmentAnswer(e.target.value)}
-    placeholder={t('lab.m8mensuration_e_g_50_5')}
-    className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
-    />
-    <button
-    onClick={checkAssessment}
-    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
-    >
-    
-                                 {t('lab.m8mensuration_check_answer')}
-                                 </button>
-   </div>
-   {assessmentFeedback && (
-    <div className={`mt-3 text-sm p-2 rounded-md ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'}`}>
-    {assessmentFeedback}
-    </div>
-   )}
-   </div>
+ {/* Assessment */}
+ <div className="bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]">
+ <h2 className="text-lg font-semibold mb-2 flex items-center gap-2 text-slate-800 dark:text-white">
+ <CheckCircle className="w-5 h-5 text-green-500" />
+ 
+ {t('lab.m8mensuration_assessment')}
+ </h2>
+ <p className="text-sm text-slate-600 dark:text-[#71717a] mb-3">
+ 
+ {t('lab.m8mensuration_a_solid_gold_sphere_has_a_radi')}
+ </p>
+ <div className="flex flex-wrap gap-2">
+ <input
+ type="number"
+ value={assessmentAnswer}
+ onChange={(e) => setAssessmentAnswer(e.target.value)}
+ placeholder={t('lab.m8mensuration_e_g_50_5')}
+ className="flex-1 min-w-0 p-2 border rounded-md text-sm dark:bg-slate-700 dark:border-[#1c1b1b] dark:text-white"
+ />
+ <button
+ onClick={checkAssessment}
+ className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium whitespace-nowrap flex-shrink-0 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40"
+ >
+ 
+ {t('lab.m8mensuration_check_answer')}
+ </button>
+ </div>
+ {assessmentFeedback && (
+ <div className={`mt-3 text-sm p-2 rounded-md ${assessmentFeedback.includes('Correct') ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'}`}>
+ {assessmentFeedback}
+ </div>
+ )}
+ </div>
 
-  </div>
-  </div>
+ </div>
+ </div>
  </div>
  );
 }

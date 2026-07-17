@@ -8,7 +8,7 @@ interface LabProps {
 }
 
 export default function LabC6EthicsChart({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [stickers, setStickers] = useState<{id: string, text: string, type: 'good'|'bad'|'info', x: number, y: number}[]>([]);
  
  const rules = [
@@ -30,82 +30,82 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
  };
 
  return (
- <div className="flex flex-col min- lg: font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.c6ethicschart_cyber_ethics_chart_builder')} />
-  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-  
+ <div className="flex flex-col font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.c6ethicschart_cyber_ethics_chart_builder')} />
+ <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+ 
 
-  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6ethicschart_drag_rules_from_the_bank_onto_')}</p>
+ <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">{t('lab.c6ethicschart_drag_rules_from_the_bank_onto_')}</p>
 
-  <div className="flex gap-8 flex-1 h-[600px]">
-   {/* Rule Bank */}
-   <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden p-6">
-   <h3 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm mb-4">{t('lab.c6ethicschart_rule_bank')}</h3>
-   <div className="flex flex-col gap-3 lg:overflow-y-auto pr-2 pb-2">
-    {rules.map((rule, idx) => (
-    <div 
-     key={idx}
-     draggable
-     onDragStart={(e) => {
-     e.dataTransfer.setData('text/plain', JSON.stringify(rule));
-     }}
-     className={`p-3 rounded-lg border-2 cursor-grab active:cursor-grabbing font-medium text-sm flex gap-3 items-start ${ rule.type === 'good' ? 'border-green-200 bg-green-50 text-green-800' : rule.type === 'bad' ? 'border-red-200 bg-red-50 text-red-800' : 'border-blue-200 bg-blue-50 text-blue-800' }`}
-    >
-     <Move className="w-4 h-4 shrink-0 mt-0.5 opacity-50" />
-     {rule.text}
-    </div>
-    ))}
-   </div>
-   </div>
+ <div className="flex gap-8 flex-1 h-[600px]">
+ {/* Rule Bank */}
+ <div className="w-80 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden p-6">
+ <h3 className="font-bold text-slate-700 dark:text-[#ffffff] uppercase tracking-wider text-sm mb-4">{t('lab.c6ethicschart_rule_bank')}</h3>
+ <div className="flex flex-col gap-3 lg:overflow-y-auto pr-2 pb-2">
+ {rules.map((rule, idx) => (
+ <div 
+ key={idx}
+ draggable
+ onDragStart={(e) => {
+ e.dataTransfer.setData('text/plain', JSON.stringify(rule));
+ }}
+ className={`p-3 rounded-lg border-2 cursor-grab active:cursor-grabbing font-medium text-sm flex gap-3 items-start ${ rule.type === 'good' ? 'border-green-200 bg-green-50 text-green-800' : rule.type === 'bad' ? 'border-red-200 bg-red-50 text-red-800' : 'border-blue-200 bg-blue-50 text-blue-800' }`}
+ >
+ <Move className="w-4 h-4 shrink-0 mt-0.5 opacity-50" />
+ {rule.text}
+ </div>
+ ))}
+ </div>
+ </div>
 
-   {/* Canvas */}
-   <div 
-   className="flex-1 bg-amber-50 rounded-xl shadow-md border-8 border-amber-800/20 relative overflow-hidden flex flex-col items-center dark:!bg-[#121212] dark:border-[#1c1b1b]"
-   onDragOver={(e) => e.preventDefault()}
-   onDrop={(e) => {
-    const rule = JSON.parse(e.dataTransfer.getData('text/plain'));
-    handleDrop(e, rule);
-   }}
-   style={{
-    backgroundImage: 'repeating-linear-gradient(transparent, transparent 28px, #fbbf24 28px, #fbbf24 29px)',
-    backgroundAttachment: 'local'
-   }}
-   >
-   <div className="bg-slate-50 dark:bg-[#121212] px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
-    
-                             {t('lab.c6ethicschart_classroom_cyber_ethics')}
-                            </div>
+ {/* Canvas */}
+ <div 
+ className="flex-1 bg-amber-50 rounded-xl shadow-md border-8 border-amber-800/20 relative overflow-hidden flex flex-col items-center dark:!bg-[#121212] dark:border-[#1c1b1b]"
+ onDragOver={(e) => e.preventDefault()}
+ onDrop={(e) => {
+ const rule = JSON.parse(e.dataTransfer.getData('text/plain'));
+ handleDrop(e, rule);
+ }}
+ style={{
+ backgroundImage: 'repeating-linear-gradient(transparent, transparent 28px, #fbbf24 28px, #fbbf24 29px)',
+ backgroundAttachment: 'local'
+ }}
+ >
+ <div className="bg-slate-50 dark:bg-[#121212] px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
+ 
+ {t('lab.c6ethicschart_classroom_cyber_ethics')}
+ </div>
 
-   {stickers.length === 0 && (
-    <div className="absolute inset-0 flex flex-col items-center justify-center opacity-50 pointer-events-none">
-    <Type className="w-16 h-16 text-amber-900 mb-4 dark:text-[#ffffff]" />
-    <p className="font-bold text-amber-900 text-xl dark:text-[#ffffff]">{t('lab.c6ethicschart_drag_rules_here_to_build_the_c')}</p>
-    </div>
-   )}
+ {stickers.length === 0 && (
+ <div className="absolute inset-0 flex flex-col items-center justify-center opacity-50 pointer-events-none">
+ <Type className="w-16 h-16 text-amber-900 mb-4 dark:text-[#ffffff]" />
+ <p className="font-bold text-amber-900 text-xl dark:text-[#ffffff]">{t('lab.c6ethicschart_drag_rules_here_to_build_the_c')}</p>
+ </div>
+ )}
 
-   {stickers.map(sticker => (
-    <div 
-    key={sticker.id}
-    className={`absolute p-4 rounded-lg shadow-lg font-bold text-sm max-w-xs flex gap-3 items-center ${ sticker.type === 'good' ? 'bg-green-500 text-white' : sticker.type === 'bad' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white' }`}
-    style={{ left: sticker.x, top: sticker.y, transform: 'rotate(-2deg)' }}
-    >
-    {sticker.type === 'good' && <CheckCircle className="w-5 h-5 shrink-0" />}
-    {sticker.type === 'bad' && <AlertTriangle className="w-5 h-5 shrink-0" />}
-    {sticker.type === 'info' && <Info className="w-5 h-5 shrink-0" />}
-    {sticker.text}
-    </div>
-   ))}
-   </div>
-  </div>
+ {stickers.map(sticker => (
+ <div 
+ key={sticker.id}
+ className={`absolute p-4 rounded-lg shadow-lg font-bold text-sm max-w-xs flex gap-3 items-center ${ sticker.type === 'good' ? 'bg-green-500 text-white' : sticker.type === 'bad' ? 'bg-red-500 text-white' : 'bg-blue-500 text-white' }`}
+ style={{ left: sticker.x, top: sticker.y, transform: 'rotate(-2deg)' }}
+ >
+ {sticker.type === 'good' && <CheckCircle className="w-5 h-5 shrink-0" />}
+ {sticker.type === 'bad' && <AlertTriangle className="w-5 h-5 shrink-0" />}
+ {sticker.type === 'info' && <Info className="w-5 h-5 shrink-0" />}
+ {sticker.text}
+ </div>
+ ))}
+ </div>
+ </div>
 
-  {stickers.length >= 4 && (
-   <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg dark:text-[#ffffff]">
-   <CheckCircle className="w-6 h-6" /> 
-    
-                        {t('lab.c6ethicschart_chart_is_looking_great_this_co')}
-                        </div>
-  )}
-  </div>
+ {stickers.length >= 4 && (
+ <div className="mt-8 bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg flex items-center justify-center gap-3 font-bold text-lg dark:text-[#ffffff]">
+ <CheckCircle className="w-6 h-6" /> 
+ 
+ {t('lab.c6ethicschart_chart_is_looking_great_this_co')}
+ </div>
+ )}
+ </div>
  </div>
  );
 }

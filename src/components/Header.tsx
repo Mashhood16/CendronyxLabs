@@ -272,13 +272,34 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
             </div>
             <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 ${isDark ? 'text-[#71717a]' : 'text-slate-400'}`} />
             
-            <button
-              onClick={() => { logout(); navigate('/login'); }}
-              className={`absolute right-0 top-10 sm:top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl px-4 py-2 flex items-center gap-2 font-semibold text-sm min-w-[150px] ${isDark ? 'bg-[#121212] border border-[#1c1b1b] text-rose-400 hover:bg-[#1a1515]' : 'bg-white border border-slate-200 text-rose-600 hover:bg-rose-50'}`}
-            >
-              <LogOut className="w-4 h-4" />
-              {t('auth.sign_out')}
-            </button>
+            <div className={`absolute right-0 top-10 sm:top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl p-2 flex flex-col gap-1 font-semibold text-sm min-w-[180px] z-50 ${isDark ? 'bg-[#121212] border border-[#1c1b1b]' : 'bg-white border border-slate-200'}`}>
+              <button
+                onClick={() => navigate('/create-lab')}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 transition-colors ${isDark ? 'text-slate-200 hover:bg-[#1c1b1b]' : 'text-slate-700 hover:bg-slate-50'}`}
+              >
+                🧪 Create Custom Lab
+              </button>
+              <button
+                onClick={() => navigate('/simulation-studio')}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 transition-colors ${isDark ? 'text-slate-200 hover:bg-[#1c1b1b]' : 'text-slate-700 hover:bg-slate-50'}`}
+              >
+                🎨 Simulation Studio
+              </button>
+              <button
+                onClick={() => navigate('/admin/review')}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 transition-colors ${isDark ? 'text-slate-200 hover:bg-[#1c1b1b]' : 'text-slate-700 hover:bg-slate-50'}`}
+              >
+                🛡️ Review Submissions
+              </button>
+              <div className={`border-t my-1 ${isDark ? 'border-[#1c1b1b]' : 'border-slate-100'}`} />
+              <button
+                onClick={() => { logout(); navigate('/login'); }}
+                className={`w-full text-left px-3 py-2 rounded-lg flex items-center gap-2 transition-colors ${isDark ? 'text-rose-400 hover:bg-[#1a1515]' : 'text-rose-600 hover:bg-rose-50'}`}
+              >
+                <LogOut className="w-4 h-4" />
+                {t('auth.sign_out')}
+              </button>
+            </div>
           </div>
         ) : (
           <button

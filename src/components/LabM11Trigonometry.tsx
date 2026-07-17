@@ -5,7 +5,7 @@ import MathText from './MathText';
 import { useTranslate } from "../i18n";
 
 export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [radius, setRadius] = useState<number>(20); // Amplitude A
  const [centerHeight, setCenterHeight] = useState<number>(50); // Vertical Shift D
@@ -27,18 +27,18 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
  const t = parseFloat(ansPeriod);
  
  if (isNaN(a) || isNaN(d) || isNaN(t)) {
-  setFeedback('Please fill in all fields with valid numbers.');
-  return;
+ setFeedback('Please fill in all fields with valid numbers.');
+ return;
  }
  
  if (a === radius && d === centerHeight && t === period) {
-  setFeedback('Excellent! You correctly identified the parameters of the sinusoidal function: h(t) = A sin(B t) + D.');
+ setFeedback('Excellent! You correctly identified the parameters of the sinusoidal function: h(t) = A sin(B t) + D.');
  } else {
-  const errs = [];
-  if (a !== radius) errs.push('Amplitude');
-  if (d !== centerHeight) errs.push('Vertical Shift');
-  if (t !== period) errs.push('Period');
-  setFeedback(`Check your values for: ${errs.join(', ')}.`);
+ const errs = [];
+ if (a !== radius) errs.push('Amplitude');
+ if (d !== centerHeight) errs.push('Vertical Shift');
+ if (t !== period) errs.push('Period');
+ setFeedback(`Check your values for: ${errs.join(', ')}.`);
  }
  };
 
@@ -50,15 +50,15 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
  setTime(prev => prev + dt);
 
  if (isPlaying) {
-  requestRef.current = requestAnimationFrame(animate);
+ requestRef.current = requestAnimationFrame(animate);
  }
  };
 
  useEffect(() => {
  if (isPlaying) {
-  requestRef.current = requestAnimationFrame(animate);
+ requestRef.current = requestAnimationFrame(animate);
  } else {
-  cancelAnimationFrame(requestRef.current);
+ cancelAnimationFrame(requestRef.current);
  }
  return () => cancelAnimationFrame(requestRef.current);
  }, [isPlaying]);
@@ -87,217 +87,217 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
  }
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.m11trigonometry_trigonometry_sinusoidal_ferris')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans select-none text-slate-800 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.m11trigonometry_trigonometry_sinusoidal_ferris')} />
 
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.m11trigonometry_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.m11trigonometry_lab')}</button>
-  </div>
-  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
-  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-teal-700 mb-4">{t('lab.m11trigonometry_theory_context')}</h2>
-   <div className="prose prose-slate">
-   <p>
-    
-                             {t('lab.m11trigonometry_many_periodic_real_world_pheno')} <strong>{t('lab.m11trigonometry_sinusoidal_functions')}</strong>.
-   </p>
-   <p>
-    
-                             {t('lab.m11trigonometry_the_general_equation_for_a_sin')}
-                            </p>
-   <p className={`text-center font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-teal-800 flex-col `}>
-    
-                             {t('lab.m11trigonometry_h_t_a_sin_b_t_c_d')}
-                            </p>
-   <ul className="text-sm mt-2 space-y-2">
-    <li><strong>{t('lab.m11trigonometry_amplitude_a')}</strong>  {t('lab.m11trigonometry_the_radius_of_the_wheel_it_det')}</li>
-    <li><strong>{t('lab.m11trigonometry_period_t')}</strong>  {t('lab.m11trigonometry_the_time_it_takes_to_complete_')} <MathText>{"$$T = \\frac{2\\pi}{|B|}$$"}</MathText>.</li>
-    <li><strong>{t('lab.m11trigonometry_phase_shift_c')}</strong>  {t('lab.m11trigonometry_horizontal_shift_we_ll_keep_it')}</li>
-    <li><strong>{t('lab.m11trigonometry_vertical_shift_d')}</strong>  {t('lab.m11trigonometry_the_height_of_the_center_of_th')}</li>
-   </ul>
-   <div className={`mt-4 bg-teal-50 border-l-4 border-teal-500 p-4 rounded flex-col `}>
-    <h3 className="font-bold text-teal-800">{t('lab.m11trigonometry_lab_challenge')}</h3>
-    <p className="text-sm text-teal-900 mt-1">
-    
-                                 {t('lab.m11trigonometry_observe_the_ferris_wheel_param')}
-                                 </p>
-   </div>
-   </div>
-  </div>
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.m11trigonometry_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.m11trigonometry_lab')}</button>
+ </div>
+ <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg:overflow-visible">
+ <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-teal-700 mb-4">{t('lab.m11trigonometry_theory_context')}</h2>
+ <div className="prose prose-slate">
+ <p>
+ 
+ {t('lab.m11trigonometry_many_periodic_real_world_pheno')} <strong>{t('lab.m11trigonometry_sinusoidal_functions')}</strong>.
+ </p>
+ <p>
+ 
+ {t('lab.m11trigonometry_the_general_equation_for_a_sin')}
+ </p>
+ <p className={`text-center font-mono bg-slate-100 dark:bg-[#121212] p-2 rounded text-teal-800 flex-col `}>
+ 
+ {t('lab.m11trigonometry_h_t_a_sin_b_t_c_d')}
+ </p>
+ <ul className="text-sm mt-2 space-y-2">
+ <li><strong>{t('lab.m11trigonometry_amplitude_a')}</strong> {t('lab.m11trigonometry_the_radius_of_the_wheel_it_det')}</li>
+ <li><strong>{t('lab.m11trigonometry_period_t')}</strong> {t('lab.m11trigonometry_the_time_it_takes_to_complete_')} <MathText>{"$$T = \\frac{2\\pi}{|B|}$$"}</MathText>.</li>
+ <li><strong>{t('lab.m11trigonometry_phase_shift_c')}</strong> {t('lab.m11trigonometry_horizontal_shift_we_ll_keep_it')}</li>
+ <li><strong>{t('lab.m11trigonometry_vertical_shift_d')}</strong> {t('lab.m11trigonometry_the_height_of_the_center_of_th')}</li>
+ </ul>
+ <div className={`mt-4 bg-teal-50 border-l-4 border-teal-500 p-4 rounded flex-col `}>
+ <h3 className="font-bold text-teal-800">{t('lab.m11trigonometry_lab_challenge')}</h3>
+ <p className="text-sm text-teal-900 mt-1">
+ 
+ {t('lab.m11trigonometry_observe_the_ferris_wheel_param')}
+ </p>
+ </div>
+ </div>
+ </div>
 
-  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-teal-700 mb-4">{t('lab.m11trigonometry_ferris_wheel_simulator')}</h2>
-   
-   <div className={`w-full flex justify-center items-center bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg p-4 mb-6 relative h-64 overflow- shadow-inner flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
-   <svg width="350" height="200" viewBox="0 -10 350 200" className="overflow-visible">
-    <line x1="0" y1="150" x2="350" y2="150" stroke="#334155" strokeWidth="2" />
-    
-    <polyline points={`30,150 50,${150 - centerHeight} 70,150`} fill="none" stroke="#475569" strokeWidth="4" />
-    
-    <line x1="100" y1={150 - centerHeight} x2="350" y2={150 - centerHeight} stroke="#334155" strokeDasharray="4 4" />
-    
-    <line x1="120" y1="20" x2="120" y2="150" stroke="#475569" strokeWidth="2" />
+ <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-teal-700 mb-4">{t('lab.m11trigonometry_ferris_wheel_simulator')}</h2>
+ 
+ <div className={`w-full flex justify-center items-center bg-[#000000] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg p-4 mb-6 relative h-64 shadow-inner flex-col 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+ <svg width="350" height="200" viewBox="0 -10 350 200" className="overflow-visible">
+ <line x1="0" y1="150" x2="350" y2="150" stroke="#334155" strokeWidth="2" />
+ 
+ <polyline points={`30,150 50,${150 - centerHeight} 70,150`} fill="none" stroke="#475569" strokeWidth="4" />
+ 
+ <line x1="100" y1={150 - centerHeight} x2="350" y2={150 - centerHeight} stroke="#334155" strokeDasharray="4 4" />
+ 
+ <line x1="120" y1="20" x2="120" y2="150" stroke="#475569" strokeWidth="2" />
 
-    {graphPoints.length > 0 && (
-    <polyline points={graphPoints.join(' ')} fill="none" stroke="#14b8a6" strokeWidth="2" />
-    )}
+ {graphPoints.length > 0 && (
+ <polyline points={graphPoints.join(' ')} fill="none" stroke="#14b8a6" strokeWidth="2" />
+ )}
 
-    <line x1={carX} y1={carY} x2="120" y2={carY} stroke="#14b8a6" strokeWidth="1" strokeDasharray="2 2" opacity="0.5" />
-    <circle cx="120" cy={carY} r="3" fill="#14b8a6" />
+ <line x1={carX} y1={carY} x2="120" y2={carY} stroke="#14b8a6" strokeWidth="1" strokeDasharray="2 2" opacity="0.5" />
+ <circle cx="120" cy={carY} r="3" fill="#14b8a6" />
 
-    <circle cx="50" cy={150 - centerHeight} r={radius} fill="none" stroke="#64748b" strokeWidth="2" />
-    <circle cx="50" cy={150 - centerHeight} r="3" fill="#cbd5e1" />
-    
-    <circle cx={carX} cy={carY} r="6" fill="#f43f5e" />
-   </svg>
-   
-   <div className={`absolute top-2 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-teal-400 flex-col `}>
-    
-                             {t('lab.m11trigonometry_t')} {time.toFixed(1)}s
-   </div>
-   <div className="absolute top-8 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-rose-400">
-    
-                             {t('lab.m11trigonometry_h')} {(150 - carY).toFixed(1)}m
-   </div>
-   </div>
+ <circle cx="50" cy={150 - centerHeight} r={radius} fill="none" stroke="#64748b" strokeWidth="2" />
+ <circle cx="50" cy={150 - centerHeight} r="3" fill="#cbd5e1" />
+ 
+ <circle cx={carX} cy={carY} r="6" fill="#f43f5e" />
+ </svg>
+ 
+ <div className={`absolute top-2 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-teal-400 flex-col `}>
+ 
+ {t('lab.m11trigonometry_t')} {time.toFixed(1)}s
+ </div>
+ <div className="absolute top-8 right-2 bg-[#121212] dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-xs font-mono text-rose-400">
+ 
+ {t('lab.m11trigonometry_h')} {(150 - carY).toFixed(1)}m
+ </div>
+ </div>
 
-   <div className="w-full space-y-4">
-   <div>
-    <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-    
-                                 {t('lab.m11trigonometry_wheel_radius')} {radius} m
-    </label>
-    <input 
-    type="range" min="10" max="40" step="5" 
-    value={radius} 
-    onChange={(e) => {setRadius(Number(e.target.value)); reset();}}
-    className="w-full accent-teal-600"
-    disabled={isPlaying}
-    />
-   </div>
-   <div>
-    <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-    
-                                 {t('lab.m11trigonometry_center_height')} {centerHeight} m
-    </label>
-    <input 
-    type="range" min="45" max="80" step="5" 
-    value={centerHeight} 
-    onChange={(e) => {setCenterHeight(Number(e.target.value)); reset();}}
-    className="w-full accent-teal-600"
-    disabled={isPlaying}
-    />
-   </div>
-   <div>
-    <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
-    
-                                 {t('lab.m11trigonometry_period_1_rotation')} {period} s
-    </label>
-    <input 
-    type="range" min="4" max="20" step="2" 
-    value={period} 
-    onChange={(e) => {setPeriod(Number(e.target.value)); reset();}}
-    className="w-full accent-teal-600"
-    disabled={isPlaying}
-    />
-   </div>
-   
-   <div className="flex gap-2 justify-center pt-2">
-    <button 
-    onClick={() => {
-     if(!isPlaying) { lastTimeRef.current = 0; }
-     setIsPlaying(!isPlaying);
-    }}
-    className={`flex items-center gap-2 px-6 py-2 rounded-lg font-medium text-white transition-colors ${isPlaying ? 'bg-amber-500 hover:bg-amber-600' : 'bg-teal-600 hover:bg-teal-700'}`}
-    >
-    {isPlaying ? <><Pause size={18}/>  {t('lab.m11trigonometry_pause')}</> : <><Play size={18}/>  {t('lab.m11trigonometry_start')}</>}
-    </button>
-    <button 
-    onClick={reset}
-    className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]"
-    >
-    <RotateCcw size={18} />  {t('lab.m11trigonometry_reset')}
-                                 </button>
-   </div>
-   </div>
-  </div>
+ <div className="w-full space-y-4">
+ <div>
+ <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m11trigonometry_wheel_radius')} {radius} m
+ </label>
+ <input 
+ type="range" min="10" max="40" step="5" 
+ value={radius} 
+ onChange={(e) => {setRadius(Number(e.target.value)); reset();}}
+ className="w-full accent-teal-600"
+ disabled={isPlaying}
+ />
+ </div>
+ <div>
+ <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m11trigonometry_center_height')} {centerHeight} m
+ </label>
+ <input 
+ type="range" min="45" max="80" step="5" 
+ value={centerHeight} 
+ onChange={(e) => {setCenterHeight(Number(e.target.value)); reset();}}
+ className="w-full accent-teal-600"
+ disabled={isPlaying}
+ />
+ </div>
+ <div>
+ <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
+ 
+ {t('lab.m11trigonometry_period_1_rotation')} {period} s
+ </label>
+ <input 
+ type="range" min="4" max="20" step="2" 
+ value={period} 
+ onChange={(e) => {setPeriod(Number(e.target.value)); reset();}}
+ className="w-full accent-teal-600"
+ disabled={isPlaying}
+ />
+ </div>
+ 
+ <div className="flex gap-2 justify-center pt-2">
+ <button 
+ onClick={() => {
+ if(!isPlaying) { lastTimeRef.current = 0; }
+ setIsPlaying(!isPlaying);
+ }}
+ className={`flex items-center gap-2 px-6 py-2 rounded-lg font-medium text-white transition-colors ${isPlaying ? 'bg-amber-500 hover:bg-amber-600' : 'bg-teal-600 hover:bg-teal-700'}`}
+ >
+ {isPlaying ? <><Pause size={18}/> {t('lab.m11trigonometry_pause')}</> : <><Play size={18}/> {t('lab.m11trigonometry_start')}</>}
+ </button>
+ <button 
+ onClick={reset}
+ className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] hover:bg-slate-300 dark:bg-[#121212]"
+ >
+ <RotateCcw size={18} /> {t('lab.m11trigonometry_reset')}
+ </button>
+ </div>
+ </div>
+ </div>
 
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <h2 className="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
-   <Activity size={24} />  {t('lab.m11trigonometry_equation_builder')}
-                        </h2>
-   
-   <div className="mb-6 text-sm text-slate-600 dark:text-[#a1a1aa]">
-   
-                        {t('lab.m11trigonometry_based_on_the_settings_in_the_s')}
-                        <br/><br/>
-   <strong>{t('lab.m11trigonometry_equation_format')}</strong> <br/>
-   <code className="bg-slate-100 dark:bg-[#121212] px-2 py-1 rounded text-teal-700 text-base">{t('lab.m11trigonometry_h_t_a_sin_b_t_d')}</code>
-   </div>
+ <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h2 className="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
+ <Activity size={24} /> {t('lab.m11trigonometry_equation_builder')}
+ </h2>
+ 
+ <div className="mb-6 text-sm text-slate-600 dark:text-[#a1a1aa]">
+ 
+ {t('lab.m11trigonometry_based_on_the_settings_in_the_s')}
+ <br/><br/>
+ <strong>{t('lab.m11trigonometry_equation_format')}</strong> <br/>
+ <code className="bg-slate-100 dark:bg-[#121212] px-2 py-1 rounded text-teal-700 text-base">{t('lab.m11trigonometry_h_t_a_sin_b_t_d')}</code>
+ </div>
 
-   <div className="space-y-4 flex-1">
-   
-   <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_amplitude_a_1')}</label>
-    <input 
-    type="number" 
-    value={ansAmplitude}
-    onChange={(e) => setAnsAmplitude(e.target.value)}
-    placeholder={t('lab.m11trigonometry_radius_of_the_wheel')}
-    className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-    />
-   </div>
+ <div className="space-y-4 flex-1">
+ 
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_amplitude_a_1')}</label>
+ <input 
+ type="number" 
+ value={ansAmplitude}
+ onChange={(e) => setAnsAmplitude(e.target.value)}
+ placeholder={t('lab.m11trigonometry_radius_of_the_wheel')}
+ className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+ />
+ </div>
 
-   <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_vertical_shift_d_1')}</label>
-    <input 
-    type="number" 
-    value={ansShift}
-    onChange={(e) => setAnsShift(e.target.value)}
-    placeholder={t('lab.m11trigonometry_center_height_1')}
-    className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-    />
-   </div>
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_vertical_shift_d_1')}</label>
+ <input 
+ type="number" 
+ value={ansShift}
+ onChange={(e) => setAnsShift(e.target.value)}
+ placeholder={t('lab.m11trigonometry_center_height_1')}
+ className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+ />
+ </div>
 
-   <div className="flex flex-col gap-1">
-    <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_period_t_1')}</label>
-    <input 
-    type="number" 
-    value={ansPeriod}
-    onChange={(e) => setAnsPeriod(e.target.value)}
-    placeholder={t('lab.m11trigonometry_time_for_one_revolution')}
-    className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-    />
-   </div>
+ <div className="flex flex-col gap-1">
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.m11trigonometry_period_t_1')}</label>
+ <input 
+ type="number" 
+ value={ansPeriod}
+ onChange={(e) => setAnsPeriod(e.target.value)}
+ placeholder={t('lab.m11trigonometry_time_for_one_revolution')}
+ className="px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+ />
+ </div>
 
-   <button 
-    onClick={checkAnswers}
-    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors mt-4 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
-   >
-    <CheckCircle size={18} />  {t('lab.m11trigonometry_verify_equation')}
-                            </button>
+ <button 
+ onClick={checkAnswers}
+ className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg font-medium hover:bg-teal-700 transition-colors mt-4 dark:text-white dark:text-white dark:bg-teal-500 dark:hover:bg-teal-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-teal-500/40"
+ >
+ <CheckCircle size={18} /> {t('lab.m11trigonometry_verify_equation')}
+ </button>
 
-   {feedback && (
-    <div className={`p-4 rounded-lg mt-4 flex items-start gap-3 ${feedback.includes('Excellent') ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'}`}>
-    {feedback.includes('Excellent') ? <CheckCircle size={20} className="text-emerald-500 shrink-0 mt-0.5" /> : <XCircle size={20} className="text-rose-500 shrink-0 mt-0.5" />}
-    <p className="text-sm">{feedback}</p>
-    </div>
-   )}
-   </div>
-  </div>
-  </div>
+ {feedback && (
+ <div className={`p-4 rounded-lg mt-4 flex items-start gap-3 ${feedback.includes('Excellent') ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'}`}>
+ {feedback.includes('Excellent') ? <CheckCircle size={20} className="text-emerald-500 shrink-0 mt-0.5" /> : <XCircle size={20} className="text-rose-500 shrink-0 mt-0.5" />}
+ <p className="text-sm">{feedback}</p>
+ </div>
+ )}
+ </div>
+ </div>
+ </div>
  </div>
  );
 }

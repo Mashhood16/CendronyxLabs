@@ -3,6 +3,7 @@ import { BookOpen, Target, CheckCircle2, Activity, ArrowRightLeft, Type, ListChe
 import LabHeader from './LabHeader';
 import { useTranslate } from "../i18n";
 import { useLab } from '../store';
+import { VocabularyPanel } from './WordCard';
 
 interface LabE10VerbsAdjectivesProps {
  onExit?: () => void;
@@ -41,7 +42,7 @@ const ADJECTIVE_ORDER_PUZZLE = [
 ];
 
 export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10VerbsAdjectivesProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
  const [activeVoiceIndex, setActiveVoiceIndex] = useState(0);
  const [isPassive, setIsPassive] = useState(false);
@@ -54,29 +55,29 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
 
  const questions = [
  {
-  q: "Which verb is Transitive in: 'He opened the door quietly'?",
-  options: ["He", "opened", "door", "quietly"],
-  correct: 1
+ q: "Which verb is Transitive in: 'He opened the door quietly'?",
+ options: ["He", "opened", "door", "quietly"],
+ correct: 1
  },
  {
-  q: "Identify the correct order of adjectives:",
-  options: [
-  "A red big plastic ball",
-  "A big red plastic ball",
-  "A plastic big red ball",
-  "A big plastic red ball"
-  ],
-  correct: 1
+ q: "Identify the correct order of adjectives:",
+ options: [
+ "A red big plastic ball",
+ "A big red plastic ball",
+ "A plastic big red ball",
+ "A big plastic red ball"
+ ],
+ correct: 1
  },
  {
-  q: "Convert to Passive Voice: 'The teacher graded the exams.'",
-  options: [
-  "The exams graded the teacher.",
-  "The teacher was grading the exams.",
-  "The exams were graded by the teacher.",
-  "The exams have been graded."
-  ],
-  correct: 2
+ q: "Convert to Passive Voice: 'The teacher graded the exams.'",
+ options: [
+ "The exams graded the teacher.",
+ "The teacher was grading the exams.",
+ "The exams were graded by the teacher.",
+ "The exams have been graded."
+ ],
+ correct: 2
  }
  ];
 
@@ -96,10 +97,10 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
  
  let lastIndex = -1;
  for (const item of adjectiveOrder) {
-  const currentIndex = correctOrder.indexOf(item.type);
-  if (currentIndex < lastIndex && item.type !== "Noun") return false;
-  if (item.type === "Noun" && currentIndex !== correctOrder.length - 1) return false;
-  lastIndex = currentIndex;
+ const currentIndex = correctOrder.indexOf(item.type);
+ if (currentIndex < lastIndex && item.type !== "Noun") return false;
+ if (item.type === "Noun" && currentIndex !== correctOrder.length - 1) return false;
+ lastIndex = currentIndex;
  }
  return adjectiveOrder[adjectiveOrder.length - 1].type === "Noun";
  };
@@ -107,307 +108,305 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
  const calculateScore = () => {
  let score = 0;
  questions.forEach((q, idx) => {
-  if (assessmentAnswers[idx] === q.correct) score++;
+ if (assessmentAnswers[idx] === q.correct) score++;
  });
  return score;
  };
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader title={t('lab.e10verbsadjectives_unit_2_action_description')} variant="dark" onExit={onExit} />
-  
-  {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
-   <button 
-    onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >
-    
-                     {t('lab.e10verbsadjectives_theory')}
-                    </button>
-   <button 
-    onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
-   >{t('lab.e10verbsadjectives_lab')}</button>
-  </div>
+ <div className="flex flex-col bg-slate-50 dark:!bg-[#000000] font-sans text-slate-900 dark:text-[#ffffff] min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader title={t('lab.e10verbsadjectives_unit_2_action_description')} variant="dark" onExit={onExit} />
+ 
+ {/* Mobile Tab Navigation */}
+ <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
+ <button 
+ onClick={() => setActiveMobileTab('theory')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >
+ 
+ {t('lab.e10verbsadjectives_theory')}
+ </button>
+ <button 
+ onClick={() => setActiveMobileTab('lab')}
+ className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+ >{t('lab.e10verbsadjectives_lab')}</button>
+ </div>
 
-  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: lg:overflow-visible">
-  
-  {/* Window 1: Theory */}
-  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center gap-3 mb-6">
-   <div className={`p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex-col `}>
-    <BookOpen className="w-5 h-5" />
-   </div>
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_verbs_adjectives')}</h2>
-   </div>
-   
-   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_verbs_transitive_and_intransit')}</h3>
-   <p>{t('lab.e10verbsadjectives_verbs_are_action_words_but_the')}</p>
-   
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_transitive_verbs')}</h4>
-   <p>A <strong>{t('lab.e10verbsadjectives_transitive_verb')}</strong>  {t('lab.e10verbsadjectives_requires_a_direct_object_to_co')}</p>
-   <ul className="list-disc pl-5 mb-4 space-y-1">
-    <li><em>{t('lab.e10verbsadjectives_the_dog')} <strong>{t('lab.e10verbsadjectives_chased')}</strong>  {t('lab.e10verbsadjectives_the_ball')}</em>  {t('lab.e10verbsadjectives_chased_what_the_ball')}</li>
-    <li><em>{t('lab.e10verbsadjectives_she')} <strong>{t('lab.e10verbsadjectives_wrote')}</strong>  {t('lab.e10verbsadjectives_a_letter')}</em>  {t('lab.e10verbsadjectives_wrote_what_a_letter')}</li>
-   </ul>
+ <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 min-h-0 lg:overflow-hidden">
+ 
+ {/* Window 1: Theory */}
+ <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+ <VocabularyPanel words={['cooked', 'opened', 'door', 'chef', 'beautiful', 'Italian', 'old', 'red', 'wooden', 'plastic', 'meal', 'wrote']} title="Key Words" />
+ <div className="flex items-center gap-3 mb-6">
+ <div className={`p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg flex-col `}>
+ <BookOpen className="w-5 h-5" />
+ </div>
+ <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_verbs_adjectives')}</h2>
+ </div>
+ 
+ <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] flex-1 min-h-0 overflow-y-auto pr-2">
+ <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_verbs_transitive_and_intransit')}</h3>
+ <p>{t('lab.e10verbsadjectives_verbs_are_action_words_but_the')}</p>
+ 
+ <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_transitive_verbs')}</h4>
+ <p>A <strong>{t('lab.e10verbsadjectives_transitive_verb')}</strong> {t('lab.e10verbsadjectives_requires_a_direct_object_to_co')}</p>
+ <ul className="list-disc pl-5 mb-4 space-y-1">
+ <li><em>{t('lab.e10verbsadjectives_the_dog')} <strong>{t('lab.e10verbsadjectives_chased')}</strong> {t('lab.e10verbsadjectives_the_ball')}</em> {t('lab.e10verbsadjectives_chased_what_the_ball')}</li>
+ <li><em>{t('lab.e10verbsadjectives_she')} <strong>{t('lab.e10verbsadjectives_wrote')}</strong> {t('lab.e10verbsadjectives_a_letter')}</em> {t('lab.e10verbsadjectives_wrote_what_a_letter')}</li>
+ </ul>
 
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_intransitive_verbs')}</h4>
-   <p>An <strong>{t('lab.e10verbsadjectives_intransitive_verb')}</strong>  {t('lab.e10verbsadjectives_does_not_require_an_object_the')}</p>
-   <ul className="list-disc pl-5 mb-4 space-y-1">
-    <li><em>{t('lab.e10verbsadjectives_the_baby')} <strong>{t('lab.e10verbsadjectives_slept')}</strong>.</em></li>
-    <li><em>{t('lab.e10verbsadjectives_the_sun')} <strong>{t('lab.e10verbsadjectives_shines')}</strong>  {t('lab.e10verbsadjectives_brightly')}</em>  {t('lab.e10verbsadjectives_brightly_is_an_adverb_not_an_o')}</li>
-   </ul>
+ <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_intransitive_verbs')}</h4>
+ <p>An <strong>{t('lab.e10verbsadjectives_intransitive_verb')}</strong> {t('lab.e10verbsadjectives_does_not_require_an_object_the')}</p>
+ <ul className="list-disc pl-5 mb-4 space-y-1">
+ <li><em>{t('lab.e10verbsadjectives_the_baby')} <strong>{t('lab.e10verbsadjectives_slept')}</strong>.</em></li>
+ <li><em>{t('lab.e10verbsadjectives_the_sun')} <strong>{t('lab.e10verbsadjectives_shines')}</strong> {t('lab.e10verbsadjectives_brightly')}</em> {t('lab.e10verbsadjectives_brightly_is_an_adverb_not_an_o')}</li>
+ </ul>
 
-   <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
+ <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
 
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_active_vs_passive_voice')}</h3>
-   <p>{t('lab.e10verbsadjectives_voice_determines_whether_the_s')}</p>
-   
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_active_voice')}</h4>
-   <p>{t('lab.e10verbsadjectives_in_active_voice_the_subject_pe')}</p>
-   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_subject_verb_object')}</p>
-   <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_chef')}</strong>  {t('lab.e10verbsadjectives_subject')} <strong>{t('lab.e10verbsadjectives_cooked')}</strong>  {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_the_meal')}</strong>  {t('lab.e10verbsadjectives_object')}</p>
+ <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_active_vs_passive_voice')}</h3>
+ <p>{t('lab.e10verbsadjectives_voice_determines_whether_the_s')}</p>
+ 
+ <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_active_voice')}</h4>
+ <p>{t('lab.e10verbsadjectives_in_active_voice_the_subject_pe')}</p>
+ <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_subject_verb_object')}</p>
+ <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_chef')}</strong> {t('lab.e10verbsadjectives_subject')} <strong>{t('lab.e10verbsadjectives_cooked')}</strong> {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_the_meal')}</strong> {t('lab.e10verbsadjectives_object')}</p>
 
-   <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_passive_voice')}</h4>
-   <p>{t('lab.e10verbsadjectives_in_passive_voice_the_subject_r')}</p>
-   <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_object_to_be_past_pa')}</p>
-   <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_meal_1')}</strong>  {t('lab.e10verbsadjectives_object_1')} <strong>{t('lab.e10verbsadjectives_was_cooked')}</strong>  {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_by_the_chef')}</strong>  {t('lab.e10verbsadjectives_subject_1')}</p>
+ <h4 className="font-bold text-slate-800 dark:text-[#e4e4e7] mt-4 mb-2">{t('lab.e10verbsadjectives_passive_voice')}</h4>
+ <p>{t('lab.e10verbsadjectives_in_passive_voice_the_subject_r')}</p>
+ <p className={`bg-slate-100 dark:bg-[#1c1b1b] p-3 rounded-lg my-2 font-mono text-xs flex-col `}>{t('lab.e10verbsadjectives_structure_object_to_be_past_pa')}</p>
+ <p><em>{t('lab.e10verbsadjectives_example')}</em> <strong>{t('lab.e10verbsadjectives_the_meal_1')}</strong> {t('lab.e10verbsadjectives_object_1')} <strong>{t('lab.e10verbsadjectives_was_cooked')}</strong> {t('lab.e10verbsadjectives_verb')} <strong>{t('lab.e10verbsadjectives_by_the_chef')}</strong> {t('lab.e10verbsadjectives_subject_1')}</p>
 
-   <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
+ <hr className="my-6 border-slate-200 dark:border-[#2a2a2a]" />
 
-   <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_the_royal_order_of_adjectives')}</h3>
-   <p>{t('lab.e10verbsadjectives_when_using_multiple_adjectives')}</p>
-   
-   <ol className="list-decimal pl-5 space-y-2 mb-4">
-    <li><strong>{t('lab.e10verbsadjectives_opinion_observation')}</strong>  {t('lab.e10verbsadjectives_beautiful_ugly_delicious')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_size')}</strong>  {t('lab.e10verbsadjectives_big_small_enormous')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_age')}</strong>  {t('lab.e10verbsadjectives_old_new_ancient')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_shape')}</strong>  {t('lab.e10verbsadjectives_round_square_flat')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_color')}</strong>  {t('lab.e10verbsadjectives_red_blue_green')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_origin')}</strong>  {t('lab.e10verbsadjectives_italian_lunar_american')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_material')}</strong>  {t('lab.e10verbsadjectives_wooden_metal_plastic')}</li>
-    <li><strong>{t('lab.e10verbsadjectives_purpose')}</strong>  {t('lab.e10verbsadjectives_sleeping_bag_roasting_pan')}</li>
-   </ol>
-   
-   <p><em>{t('lab.e10verbsadjectives_example')}</em>  {t('lab.e10verbsadjectives_a_beautiful_opinion_little_siz')}</p>
-   </div>
-  </section>
+ <h3 className="text-xl font-bold text-slate-900 dark:text-[#ffffff] mb-4">{t('lab.e10verbsadjectives_the_royal_order_of_adjectives')}</h3>
+ <p>{t('lab.e10verbsadjectives_when_using_multiple_adjectives')}</p>
+ 
+ <ol className="list-decimal pl-5 space-y-2 mb-4">
+ <li><strong>{t('lab.e10verbsadjectives_opinion_observation')}</strong> {t('lab.e10verbsadjectives_beautiful_ugly_delicious')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_size')}</strong> {t('lab.e10verbsadjectives_big_small_enormous')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_age')}</strong> {t('lab.e10verbsadjectives_old_new_ancient')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_shape')}</strong> {t('lab.e10verbsadjectives_round_square_flat')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_color')}</strong> {t('lab.e10verbsadjectives_red_blue_green')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_origin')}</strong> {t('lab.e10verbsadjectives_italian_lunar_american')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_material')}</strong> {t('lab.e10verbsadjectives_wooden_metal_plastic')}</li>
+ <li><strong>{t('lab.e10verbsadjectives_purpose')}</strong> {t('lab.e10verbsadjectives_sleeping_bag_roasting_pan')}</li>
+ </ol>
+ 
+ <p><em>{t('lab.e10verbsadjectives_example')}</em> {t('lab.e10verbsadjectives_a_beautiful_opinion_little_siz')}</p>
+ </div>
+ </section>
 
-  {/* Window 2: Controls */}
-  <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="flex items-center gap-3 mb-6">
-   <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
-    <Activity className="w-5 h-5" />
-   </div>
-   <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_interactive_controls')}</h2>
-   </div>
+ {/* Window 2: Controls */}
+ <section className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col '' : ''} rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center gap-3 mb-6">
+ <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg">
+ <Activity className="w-5 h-5" />
+ </div>
+ <h2 className="text-xl font-bold text-slate-900 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_interactive_controls')}</h2>
+ </div>
 
-   <div className="flex-1 overflow-y-auto pr-2 space-y-8">
-   
-   {/* Voice Controls */}
-   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <ArrowRightLeft className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_voice_conversion')}
-                                 </h3>
-    
-    <div className="flex flex-col gap-4">
-    <button 
-     onClick={() => setIsPassive(!isPassive)}
-     className="w-full py-2 bg-[#4158D1] hover:bg-[#3142a3] text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
-    >
-     {isPassive ? 'Switch to Active Voice' : 'Switch to Passive Voice'}
-    </button>
+ <div className="flex-1 overflow-y-auto pr-2 space-y-8">
+ 
+ {/* Voice Controls */}
+ <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <ArrowRightLeft className="w-4 h-4 text-indigo-500" /> {t('lab.e10verbsadjectives_voice_conversion')}
+ </h3>
+ 
+ <div className="flex flex-col gap-4">
+ <button 
+ onClick={() => setIsPassive(!isPassive)}
+ className="w-full py-2 bg-[#4158D1] hover:bg-[#3142a3] text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
+ >
+ {isPassive ? 'Switch to Active Voice' : 'Switch to Passive Voice'}
+ </button>
 
-    <div className="flex justify-between items-center text-sm font-medium text-slate-600 dark:text-[#a1a1aa]">
-     <span>{t('lab.e10verbsadjectives_sentence')} {activeVoiceIndex + 1} of {VOICE_EXERCISES.length}</span>
-     <div className="flex gap-2">
-     {VOICE_EXERCISES.map((_, i) => (
-      <button 
-      key={i}
-      onClick={() => setActiveVoiceIndex(i)}
-      className={`w-6 h-6 rounded-md flex items-center justify-center text-xs transition-colors ${activeVoiceIndex === i ? 'bg-[#4158D1] text-white font-bold' : 'bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 text-slate-600 dark:bg-[#1c1b1b] dark:hover:bg-[#2a2a2a] dark:text-[#71717a]'}`}
-      >
-      {i + 1}
-      </button>
-     ))}
-     </div>
-    </div>
-    </div>
-   </div>
+ <div className="flex justify-between items-center text-sm font-medium text-slate-600 dark:text-[#a1a1aa]">
+ <span>{t('lab.e10verbsadjectives_sentence')} {activeVoiceIndex + 1} of {VOICE_EXERCISES.length}</span>
+ <div className="flex gap-2">
+ {VOICE_EXERCISES.map((_, i) => (
+ <button 
+ key={i}
+ onClick={() => setActiveVoiceIndex(i)}
+ className={`w-6 h-6 rounded-md flex items-center justify-center text-xs transition-colors ${activeVoiceIndex === i ? 'bg-[#4158D1] text-white font-bold' : 'bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 text-slate-600 dark:bg-[#1c1b1b] dark:hover:bg-[#2a2a2a] dark:text-[#71717a]'}`}
+ >
+ {i + 1}
+ </button>
+ ))}
+ </div>
+ </div>
+ </div>
+ </div>
 
-   {/* Adjective Pool Controls */}
-   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
-    <Type className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_adjective_pool')}
-                                 </h3>
-    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.e10verbsadjectives_click_words_to_add_them_to_the')}</p>
-    
-    <div className="flex flex-wrap gap-2">
-    {availableAdjectives.length > 0 ? (
-     availableAdjectives.map((item, i) => (
-     <button
-      key={i}
-      onClick={() => handleSelectAdjective(item)}
-      className="px-3 py-1.5 bg-slate-100 dark:bg-[#1c1b1b] border border-slate-200 dark:border-[#2a2a2a] text-slate-700 dark:text-[#a1a1aa] rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-[#2a2a2a] transition-colors shadow-sm"
-     >
-      {item.word}
-     </button>
-     ))
-    ) : (
-     <p className="text-sm text-slate-400 italic">{t('lab.e10verbsadjectives_no_words_left_in_pool')}</p>
-    )}
-    </div>
-   </div>
+ {/* Adjective Pool Controls */}
+ <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
+ <Type className="w-4 h-4 text-indigo-500" /> {t('lab.e10verbsadjectives_adjective_pool')}
+ </h3>
+ <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.e10verbsadjectives_click_words_to_add_them_to_the')}</p>
+ 
+ <div className="flex flex-wrap gap-2">
+ {availableAdjectives.length > 0 ? (
+ availableAdjectives.map((item, i) => (
+ <button
+ key={i}
+ onClick={() => handleSelectAdjective(item)}
+ className="px-3 py-1.5 bg-slate-100 dark:bg-[#1c1b1b] border border-slate-200 dark:border-[#2a2a2a] text-slate-700 dark:text-[#a1a1aa] rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-[#2a2a2a] transition-colors shadow-sm"
+ >
+ {item.word}
+ </button>
+ ))
+ ) : (
+ <p className="text-sm text-slate-400 italic">{t('lab.e10verbsadjectives_no_words_left_in_pool')}</p>
+ )}
+ </div>
+ </div>
 
-   {/* Assessment Component */}
-   <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-    <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <ListChecks className="w-4 h-4 text-indigo-500" />  {t('lab.e10verbsadjectives_knowledge_check')}
-                                 </h3>
+ {/* Assessment Component */}
+ <div className={`p-5 rounded-xl border border-slate-200 dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <h3 className="text-md font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <ListChecks className="w-4 h-4 text-indigo-500" /> {t('lab.e10verbsadjectives_knowledge_check')}
+ </h3>
 
-    {!assessmentSubmitted ? (
-    <div className="space-y-6">
-     {questions.map((q, qIdx) => (
-     <div key={qIdx} className="space-y-3">
-      <p className="text-sm font-medium text-slate-800 dark:text-[#e4e4e7]">
-      {qIdx + 1}. {q.q}
-      </p>
-      <div className="space-y-2">
-      {q.options.map((opt, oIdx) => (
-       <label key={oIdx} className="flex items-start gap-3 cursor-pointer group">
-       <input
-        type="radio"
-        name={`question-${qIdx}`}
-        className="mt-1 text-indigo-600 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#2a2a2a] focus:ring-indigo-500"
-        checked={assessmentAnswers[qIdx] === oIdx}
-        onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
-       />
-       <span className="text-sm text-slate-600 dark:text-[#a1a1aa] group-hover:text-slate-900 dark:group-hover:text-slate-100">
-        {opt}
-       </span>
-       </label>
-      ))}
-      </div>
-     </div>
-     ))}
-     <button
-     onClick={() => setAssessmentSubmitted(true)}
-     disabled={Object.keys(assessmentAnswers).length < questions.length}
-     className="w-full mt-4 py-2 px-4 bg-[#4158D1] hover:bg-[#3142a3] disabled:bg-slate-300 disabled:text-slate-500 text-white rounded-lg font-bold transition-colors shadow-sm disabled:shadow-none dark:disabled:bg-[#2a2a2a] dark:disabled:text-[#71717a]"
-     >
-     
-                                          {t('lab.e10verbsadjectives_submit_evaluation')}
-                                          </button>
-    </div>
-    ) : (
-    <div className="text-center py-6">
-     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4">
-     <span className="text-2xl font-bold">{calculateScore()}/{questions.length}</span>
-     </div>
-     <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">{t('lab.e10verbsadjectives_assessment_complete')}</h3>
-     <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
-     {calculateScore() === questions.length 
-      ? "Perfect score! You've mastered verbs and adjectives." 
-      : "Good effort! Review the rules of passive voice and adjective ordering to improve."}
-     </p>
-     <button
-     onClick={() => {
-      setAssessmentSubmitted(false);
-      setAssessmentAnswers({});
-     }}
-     className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 dark:hover:bg-[#2a2a2a] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors border border-slate-200 dark:border-[#2a2a2a]"
-     >
-     
-                                              {t('lab.e10verbsadjectives_retry_quiz')}
-                                              </button>
-    </div>
-    )}
-   </div>
+ {!assessmentSubmitted ? (
+ <div className="space-y-6">
+ {questions.map((q, qIdx) => (
+ <div key={qIdx} className="space-y-3">
+ <p className="text-sm font-medium text-slate-800 dark:text-[#e4e4e7]">
+ {qIdx + 1}. {q.q}
+ </p>
+ <div className="space-y-2">
+ {q.options.map((opt, oIdx) => (
+ <label key={oIdx} className="flex items-start gap-3 cursor-pointer group">
+ <input
+ type="radio"
+ name={`question-${qIdx}`}
+ className="mt-1 text-indigo-600 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#2a2a2a] focus:ring-indigo-500"
+ checked={assessmentAnswers[qIdx] === oIdx}
+ onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
+ />
+ <span className="text-sm text-slate-600 dark:text-[#a1a1aa] group-hover:text-slate-900 dark:group-hover:text-slate-100">
+ {opt}
+ </span>
+ </label>
+ ))}
+ </div>
+ </div>
+ ))}
+ <button
+ onClick={() => setAssessmentSubmitted(true)}
+ disabled={Object.keys(assessmentAnswers).length < questions.length}
+ className="w-full mt-4 py-2 px-4 bg-[#4158D1] hover:bg-[#3142a3] disabled:bg-slate-300 disabled:text-slate-500 text-white rounded-lg font-bold transition-colors shadow-sm disabled:shadow-none dark:disabled:bg-[#2a2a2a] dark:disabled:text-[#71717a]"
+ >
+ 
+ {t('lab.e10verbsadjectives_submit_evaluation')}
+ </button>
+ </div>
+ ) : (
+ <div className="text-center py-6">
+ <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4">
+ <span className="text-2xl font-bold">{calculateScore()}/{questions.length}</span>
+ </div>
+ <h3 className="text-lg font-bold text-slate-900 dark:text-[#ffffff] mb-2">{t('lab.e10verbsadjectives_assessment_complete')}</h3>
+ <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-6">
+ {calculateScore() === questions.length 
+ ? "Perfect score! You've mastered verbs and adjectives." 
+ : "Good effort! Review the rules of passive voice and adjective ordering to improve."}
+ </p>
+ <button
+ onClick={() => {
+ setAssessmentSubmitted(false);
+ setAssessmentAnswers({});
+ }}
+ className="flex items-center justify-center gap-2 w-full py-2 px-4 bg-slate-100 dark:bg-[#1c1b1b] hover:bg-slate-200 dark:hover:bg-[#2a2a2a] text-slate-700 dark:text-[#ffffff] rounded-lg font-medium transition-colors border border-slate-200 dark:border-[#2a2a2a]"
+ >
+ 
+ {t('lab.e10verbsadjectives_retry_quiz')}
+ </button>
+ </div>
+ )}
+ </div>
 
-   </div>
-  </section>
+ </div>
+ </section>    {/* Window 3: Simulation */}
+    <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex flex-col min-h-0 overflow-y-auto p-4 md:p-8 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>      <div className="w-full max-w-2xl flex flex-col gap-6 pr-2">
+ 
+ {/* Voice Visualizer */}
+ <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center justify-center min-h-[200px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <span className={`text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full ${isPassive ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}`}>
+ {isPassive ? 'Passive Voice' : 'Active Voice'}
+ </span>
+ 
+ <p className="text-2xl font-medium text-slate-900 dark:text-[#ffffff] py-4 text-center leading-relaxed">
+ {isPassive ? VOICE_EXERCISES[activeVoiceIndex].passive : VOICE_EXERCISES[activeVoiceIndex].active}
+ </p>
+ 
+ <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs md:text-sm font-medium">
+ <div className="flex flex-col items-center gap-1">
+ <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_subject_2')}</span>
+ <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg text-blue-700 dark:text-blue-300">
+ {VOICE_EXERCISES[activeVoiceIndex].subject}
+ </span>
+ </div>
+ <div className="flex flex-col items-center gap-1">
+ <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_verb_1')}</span>
+ <span className="px-3 py-1 bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800/50 rounded-lg text-rose-700 dark:text-rose-300">
+ {VOICE_EXERCISES[activeVoiceIndex].verb}
+ </span>
+ </div>
+ <div className="flex flex-col items-center gap-1">
+ <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_object_2')}</span>
+ <span className="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg text-amber-700 dark:text-amber-300">
+ {VOICE_EXERCISES[activeVoiceIndex].object}
+ </span>
+ </div>
+ </div>
+ </div>
 
-  {/* Window 3: Simulation */}
-  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative items-center justify-center p-4 md:p-8 overflow- min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-   <div className="w-full max-w-2xl flex flex-col gap-6 overflow-y-auto max-h-full pr-2">
-    
-    {/* Voice Visualizer */}
-    <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center justify-center min-h-[200px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <span className={`text-xs font-bold uppercase tracking-wider mb-4 px-3 py-1 rounded-full ${isPassive ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}`}>
-      {isPassive ? 'Passive Voice' : 'Active Voice'}
-     </span>
-     
-     <p className="text-2xl font-medium text-slate-900 dark:text-[#ffffff] py-4 text-center leading-relaxed">
-      {isPassive ? VOICE_EXERCISES[activeVoiceIndex].passive : VOICE_EXERCISES[activeVoiceIndex].active}
-     </p>
-     
-     <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs md:text-sm font-medium">
-      <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_subject_2')}</span>
-      <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50 rounded-lg text-blue-700 dark:text-blue-300">
-       {VOICE_EXERCISES[activeVoiceIndex].subject}
-      </span>
-      </div>
-      <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_verb_1')}</span>
-      <span className="px-3 py-1 bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-800/50 rounded-lg text-rose-700 dark:text-rose-300">
-       {VOICE_EXERCISES[activeVoiceIndex].verb}
-      </span>
-      </div>
-      <div className="flex flex-col items-center gap-1">
-      <span className="text-slate-500 dark:text-[#71717a] text-[10px] uppercase tracking-wider">{t('lab.e10verbsadjectives_object_2')}</span>
-      <span className="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg text-amber-700 dark:text-amber-300">
-       {VOICE_EXERCISES[activeVoiceIndex].object}
-      </span>
-      </div>
-     </div>
-    </div>
+ {/* Adjective Output Visualizer */}
+ <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center min-h-[220px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+ <div className="flex items-center gap-2 mb-4">
+ <Target className="w-5 h-5 text-indigo-500" />
+ <h4 className="text-md font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_target_sentence')}</h4>
+ </div>
+ 
+ <p className="text-sm text-slate-500 dark:text-[#a1a1aa] mb-4 text-center">
+ 
+ {t('lab.e10verbsadjectives_arrange_the_adjectives_in_the_')}
+ </p>
 
-    {/* Adjective Output Visualizer */}
-    <div className={`p-6 rounded-xl border border-slate-200 dark:border-[#2a2a2a] shadow-sm flex-col items-center min-h-[220px] ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
-     <div className="flex items-center gap-2 mb-4">
-     <Target className="w-5 h-5 text-indigo-500" />
-     <h4 className="text-md font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.e10verbsadjectives_target_sentence')}</h4>
-     </div>
-     
-     <p className="text-sm text-slate-500 dark:text-[#a1a1aa] mb-4 text-center">
-     
-                                  {t('lab.e10verbsadjectives_arrange_the_adjectives_in_the_')}
-                                  </p>
+ <div className="w-full min-h-[100px] p-4 border-2 border-dashed border-indigo-200 dark:border-[#2a2a2a] rounded-xl flex flex-wrap gap-2 justify-center items-center bg-indigo-50/30 dark:bg-[#1c1b1b]">
+ {adjectiveOrder.map((item, i) => (
+ <button
+ key={i}
+ onClick={() => handleRemoveAdjective(item)}
+ className="px-4 py-2 bg-[#4158D1] text-white rounded-lg text-sm font-bold hover:bg-[#3142a3] transition-colors shadow-md flex flex-col items-center"
+ >
+ <span>{item.word}</span>
+ <span className="text-[10px] text-indigo-200 font-normal mt-0.5">{item.type}</span>
+ </button>
+ ))}
+ {adjectiveOrder.length === 0 && (
+ <span className="text-sm text-slate-400 dark:text-[#71717a]">{t('lab.e10verbsadjectives_empty_sentence')}</span>
+ )}
+ </div>
 
-     <div className="w-full min-h-[100px] p-4 border-2 border-dashed border-indigo-200 dark:border-[#2a2a2a] rounded-xl flex flex-wrap gap-2 justify-center items-center bg-indigo-50/30 dark:bg-[#1c1b1b]">
-      {adjectiveOrder.map((item, i) => (
-      <button
-       key={i}
-       onClick={() => handleRemoveAdjective(item)}
-       className="px-4 py-2 bg-[#4158D1] text-white rounded-lg text-sm font-bold hover:bg-[#3142a3] transition-colors shadow-md flex flex-col items-center"
-      >
-       <span>{item.word}</span>
-       <span className="text-[10px] text-indigo-200 font-normal mt-0.5">{item.type}</span>
-      </button>
-      ))}
-      {adjectiveOrder.length === 0 && (
-      <span className="text-sm text-slate-400 dark:text-[#71717a]">{t('lab.e10verbsadjectives_empty_sentence')}</span>
-      )}
-     </div>
+ {adjectiveOrder.length === ADJECTIVE_ORDER_PUZZLE.length && (
+ <div className={`mt-6 w-full p-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 ${checkAdjectiveOrder() ? 'bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800/50 dark:text-emerald-400' : 'bg-rose-50 border border-rose-200 text-rose-700 dark:bg-rose-900/20 dark:border-rose-800/50 dark:text-rose-400'}`}>
+ {checkAdjectiveOrder() ? (
+ <><CheckCircle2 className="w-5 h-5" /> {t('lab.e10verbsadjectives_perfect_adjective_order')}</>
+ ) : (
+ <>{t('lab.e10verbsadjectives_incorrect_order_remember_the_r')}</>
+ )}
+ </div>
+ )}
+ </div>
 
-     {adjectiveOrder.length === ADJECTIVE_ORDER_PUZZLE.length && (
-      <div className={`mt-6 w-full p-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 ${checkAdjectiveOrder() ? 'bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800/50 dark:text-emerald-400' : 'bg-rose-50 border border-rose-200 text-rose-700 dark:bg-rose-900/20 dark:border-rose-800/50 dark:text-rose-400'}`}>
-      {checkAdjectiveOrder() ? (
-       <><CheckCircle2 className="w-5 h-5" />  {t('lab.e10verbsadjectives_perfect_adjective_order')}</>
-      ) : (
-       <>{t('lab.e10verbsadjectives_incorrect_order_remember_the_r')}</>
-      )}
-      </div>
-     )}
-    </div>
+ </div>
+ </section>
 
-   </div>
-  </section>
-
-  </main>
+ </main>
  </div>
  );
 }

@@ -16,72 +16,72 @@ const PERIODS = [
 ];
 
 export default function LabS8PeriodicTable({ onExit }: LabProps) {
-    const { t } = useTranslate();
+ const { t } = useTranslate();
  const [selectedPeriod, setSelectedPeriod] = useState<number>(1);
 
  return (
- <div className="flex flex-col min- lg: bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
-  <LabHeader onExit={onExit} title={t('lab.s8periodictable_act_5_1_elements_in_periodic_t')} subtitle={t('lab.subtitle_count_number_elements')} />
+ <div className="flex flex-col min- bg-slate-50 dark:!bg-[#000000] font-sans min-h-screen lg:h-screen overflow-x-hidden w-full">
+ <LabHeader onExit={onExit} title={t('lab.s8periodictable_act_5_1_elements_in_periodic_t')} subtitle={t('lab.subtitle_count_number_elements')} />
 
-  <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-  <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
-   
-   <div className="flex gap-2 overflow-x-auto pb-4 mb-6">
-   {PERIODS.map(p => (
-    <button
-    key={p.p}
-    onClick={() => setSelectedPeriod(p.p)}
-    className={`px-4 py-2 rounded-lg font-bold border-2 whitespace-nowrap ${ selectedPeriod === p.p ? 'bg-blue-100 border-blue-500 text-blue-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-slate-300 dark:border-[#1c1b1b]' }`}
-    >
-    
-               {t('lab.s8periodictable_period')} {p.p}
-    </button>
-   ))}
-   </div>
+ <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
+ <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col">
+ 
+ <div className="flex gap-2 overflow-x-auto pb-4 mb-6">
+ {PERIODS.map(p => (
+ <button
+ key={p.p}
+ onClick={() => setSelectedPeriod(p.p)}
+ className={`px-4 py-2 rounded-lg font-bold border-2 whitespace-nowrap ${ selectedPeriod === p.p ? 'bg-blue-100 border-blue-500 text-blue-700' : 'bg-slate-50 dark:bg-[#121212] border-slate-200 dark:border-[#1c1b1b] text-slate-600 dark:text-[#ffffff] hover:border-slate-300 dark:border-[#1c1b1b]' }`}
+ >
+ 
+ {t('lab.s8periodictable_period')} {p.p}
+ </button>
+ ))}
+ </div>
 
-   <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-8">
-   <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-8">{t('lab.s8periodictable_period')} {selectedPeriod}</h2>
-   
-   <div className="flex flex-wrap gap-2 justify-center max-w-lg">
-    {PERIODS.find(x => x.p === selectedPeriod)?.names.map((name, i) => (
-    <div key={i} className="w-10 h-10 bg-indigo-500 text-white font-bold rounded-md flex items-center justify-center shadow-sm animate-fade-in text-xs dark:!bg-[#121212] dark:border-[#1c1b1b]" style={{ animationDelay: `${i * 20}ms` }}>
-     {name}
-    </div>
-    ))}
-   </div>
-   
-   <div className="mt-8 text-xl font-bold text-indigo-700 bg-indigo-100 px-6 py-3 rounded-full">
-    
-                             {t('lab.s8periodictable_total_elements')} {PERIODS.find(x => x.p === selectedPeriod)?.elements}
-   </div>
-   </div>
+ <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-8">
+ <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] mb-8">{t('lab.s8periodictable_period')} {selectedPeriod}</h2>
+ 
+ <div className="flex flex-wrap gap-2 justify-center max-w-lg">
+ {PERIODS.find(x => x.p === selectedPeriod)?.names.map((name, i) => (
+ <div key={i} className="w-10 h-10 bg-indigo-500 text-white font-bold rounded-md flex items-center justify-center shadow-sm animate-fade-in text-xs dark:!bg-[#121212] dark:border-[#1c1b1b]" style={{ animationDelay: `${i * 20}ms` }}>
+ {name}
+ </div>
+ ))}
+ </div>
+ 
+ <div className="mt-8 text-xl font-bold text-indigo-700 bg-indigo-100 px-6 py-3 rounded-full">
+ 
+ {t('lab.s8periodictable_total_elements')} {PERIODS.find(x => x.p === selectedPeriod)?.elements}
+ </div>
+ </div>
 
-  </div>
+ </div>
 
-  <div className="w-full md:w-80 flex flex-col gap-4">
-   <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm text-slate-800 dark:text-[#ffffff] p-6 border border-slate-200 dark:border-[#1c1b1b]">
-   <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
-    <Search className="w-5 h-5" />  {t('lab.s8periodictable_data_table')}
-                            </h3>
-   <table className="w-full text-sm text-left text-slate-700 dark:text-[#a1a1aa]">
-    <thead className="text-xs text-slate-500 dark:text-[#71717a] uppercase bg-slate-100 dark:bg-slate-700/50">
-    <tr>
-     <th className="px-4 py-2 rounded-tl-lg">{t('lab.s8periodictable_period')}</th>
-     <th className="px-4 py-2 rounded-tr-lg text-right">{t('lab.s8periodictable_elements')}</th>
-    </tr>
-    </thead>
-    <tbody>
-    {PERIODS.map(p => (
-     <tr key={p.p} className={`border-b border-slate-200 dark:border-[#1c1b1b] ${selectedPeriod === p.p ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 font-bold' : ''}`}>
-     <td className="px-4 py-2">{t('lab.s8periodictable_period')} {p.p}</td>
-     <td className="px-4 py-2 text-right">{p.elements}</td>
-     </tr>
-    ))}
-    </tbody>
-   </table>
-   </div>
-  </div>
-  </div>
+ <div className="w-full md:w-80 flex flex-col gap-4">
+ <div className="bg-white dark:!bg-[#121212] rounded-2xl shadow-sm text-slate-800 dark:text-[#ffffff] p-6 border border-slate-200 dark:border-[#1c1b1b]">
+ <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+ <Search className="w-5 h-5" /> {t('lab.s8periodictable_data_table')}
+ </h3>
+ <table className="w-full text-sm text-left text-slate-700 dark:text-[#a1a1aa]">
+ <thead className="text-xs text-slate-500 dark:text-[#71717a] uppercase bg-slate-100 dark:bg-slate-700/50">
+ <tr>
+ <th className="px-4 py-2 rounded-tl-lg">{t('lab.s8periodictable_period')}</th>
+ <th className="px-4 py-2 rounded-tr-lg text-right">{t('lab.s8periodictable_elements')}</th>
+ </tr>
+ </thead>
+ <tbody>
+ {PERIODS.map(p => (
+ <tr key={p.p} className={`border-b border-slate-200 dark:border-[#1c1b1b] ${selectedPeriod === p.p ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 font-bold' : ''}`}>
+ <td className="px-4 py-2">{t('lab.s8periodictable_period')} {p.p}</td>
+ <td className="px-4 py-2 text-right">{p.elements}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
  </div>
  );
 }
