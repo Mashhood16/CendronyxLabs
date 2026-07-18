@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { StoreProvider } from './store'
+import { setupConnectivityMonitor } from './utils/cacheExpiry'
+
+// Initialize cache expiry monitor — clears all caches after 3 days offline
+setupConnectivityMonitor()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

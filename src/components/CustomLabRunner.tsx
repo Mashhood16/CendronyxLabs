@@ -7,6 +7,7 @@ import { customLabService, type CustomLab } from '../services/customLabService';
 import DataChart from './DataChart';
 import { evaluateEquation } from '../utils/equationEvaluator';
 import { CustomSimulationRenderer } from './CustomSimulationRenderer';
+import { useTheme } from '../store';
 
 interface CustomLabRunnerProps {
   moduleId: string;
@@ -15,6 +16,8 @@ interface CustomLabRunnerProps {
 
 export default function CustomLabRunner({ moduleId, onExit }: CustomLabRunnerProps) {
   const { t } = useTranslate();
+  const { theme: currentTheme } = useTheme();
+  const isDark = currentTheme === 'dark';
   const [lab, setLab] = useState<CustomLab | null>(null);
   const [loading, setLoading] = useState(true);
   const [simState, setSimState] = useState<Record<string, any>>({});
@@ -367,10 +370,27 @@ export default function CustomLabRunner({ moduleId, onExit }: CustomLabRunnerPro
 
       case 'simulation':
         if (props.simType === 'custom') {
+          const simData = {
+            id: props.savedSimId || id,
+            name: props.simName || title || 'Custom Simulation',
+            description: '',
+            category: 'Custom',
+            createdAt: 0,
+            variables: props.variables || [],
+            equations: props.equations || [],
+            shapes: props.shapes || [],
+          };
+
           return (
-            <div key={id} className="flex flex-col items-center p-4 bg-slate-100 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 mb-6">
-              <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">{title || 'Custom Physics Sandbox'}</h4>
-              <canvas ref={customCanvasRef} width={400} height={260} className="w-full bg-white dark:bg-black rounded-xl border border-slate-200 dark:border-slate-800" />
+            <div key={id} className="flex flex-col w-full mb-6 p-4 bg-slate-100 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+              <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">{title || props.simName || 'Custom Simulation'}</h4>
+              <div className="w-full h-[450px]">
+                <CustomSimulationRenderer 
+                  sim={simData} 
+                  initialValues={simState} 
+                  isDark={isDark} 
+                />
+              </div>
             </div>
           );
         }

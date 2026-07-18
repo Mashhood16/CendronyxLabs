@@ -11,7 +11,7 @@ import HistoryDashboard from './pages/HistoryDashboard';
 import SettingsPanel from './pages/SettingsPanel';
 import LabBuilder from './pages/LabBuilder';
 import AdminReview from './pages/AdminReview';
-import SimulationStudio from './pages/SimulationStudio';
+import SimulationStudioSimple from './pages/SimulationStudioSimple';
 
 const Login = lazy(() => import('./components/Login'));
 
@@ -27,8 +27,8 @@ export default function App() {
         <Route path="/create-lab" element={<ProtectedRoute><LabBuilder /></ProtectedRoute>} />
         <Route path="/edit-lab/:labId" element={<ProtectedRoute><LabBuilder /></ProtectedRoute>} />
         <Route path="/admin/review" element={<ProtectedRoute><AdminReview /></ProtectedRoute>} />
-        <Route path="/simulation-studio" element={<ProtectedRoute><SimulationStudio /></ProtectedRoute>} />
-        <Route path="/edit-simulation/:simId" element={<ProtectedRoute><SimulationStudio /></ProtectedRoute>} />
+        <Route path="/simulation-studio" element={<ProtectedRoute><SimulationStudioSimple /></ProtectedRoute>} />
+        <Route path="/edit-simulation/:simId" element={<ProtectedRoute><SimulationStudioSimple /></ProtectedRoute>} />
         <Route path="/class/:classId" element={<SubjectSelection />} />
         <Route path="/class/:classId/:subjectId" element={<ModuleSelection />} />
         <Route path="/class/:classId/:subjectId/lab/:moduleId" element={<LabRunner />} />

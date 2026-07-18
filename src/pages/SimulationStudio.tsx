@@ -286,7 +286,7 @@ export default function SimulationStudio() {
   const selectedShapeIdx = selectedShapeId ? shapes.findIndex(s => s.id === selectedShapeId) : -1;
 
   // ── Shape property fields per type ──
-  const getShapeFields = (type: SavedSimulation['shapes'][number]['type']) => {
+  const getShapeFields = (type: SavedSimulation['shapes'][number]['type']): { field: string; label: string; type?: string }[] => {
     const common = [
       { field: 'color', label: 'Color (hex)', type: 'color' },
     ];
