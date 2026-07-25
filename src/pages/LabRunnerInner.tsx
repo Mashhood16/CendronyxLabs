@@ -6,9 +6,9 @@ import { historyDB } from '../services/dbService';
 import type { LabDataEntry } from '../store';
 import { useAuth, useLab, LabProvider } from '../store';
 import { getAnonymousId } from '../utils/sessionId';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { theme } from '../utils/labTheme';
-import CustomLabRunner from '../components/CustomLabRunner';
+import CustomLabRunner from '../components/generic/CustomLabRunner';
 import { customLabService } from '../services/customLabService';
 
 interface LabRunnerInnerProps {

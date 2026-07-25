@@ -3,11 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Save, Eye, Edit3, Trash2, Plus, ArrowLeft, ArrowUp, ArrowDown, HelpCircle, Layers, Settings, User, Sparkles } from 'lucide-react';
 import { useTranslate } from '../i18n';
 import { theme } from '../utils/labTheme';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { useAuth } from '../store';
 import { customLabService, type CustomLab } from '../services/customLabService';
-import CustomLabRunner from '../components/CustomLabRunner';
+import CustomLabRunner from '../components/generic/CustomLabRunner';
 import { customSimService } from '../services/customSimService';
 
 const SUBJECT_OPTIONS = ['physics', 'chemistry', 'biology', 'math', 'computer', 'science', 'english'];

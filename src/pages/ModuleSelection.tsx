@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LAB_MODULES, formatSubject } from '../data/labModules';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import Class9Physics from './Class9Physics';
 import Class10Physics from './Class10Physics';
 import Class11Physics from './Class11Physics';

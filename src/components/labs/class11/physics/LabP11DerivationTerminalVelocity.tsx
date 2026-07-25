@@ -1,0 +1,17 @@
+import { GenericDerivationLab } from '../../../generic/GenericDerivationLab';
+import { CLASS11_DERIVATIONS } from '../../../../data/derivations/class11Derivations';
+
+interface Props {
+ onExit: () => void;
+}
+
+export default function LabP11DerivationTerminalVelocity({ onExit }: Props) {
+ const key = 'terminal_velocity';
+ const config = CLASS11_DERIVATIONS[key];
+ return (
+ <GenericDerivationLab
+ onExit={onExit}
+ config={config}
+ />
+ );
+}

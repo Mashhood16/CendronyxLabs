@@ -5,7 +5,7 @@ import { useTranslate } from '../i18n';
 import type { Language } from '../i18n/types';
 import { progressDB } from '../services/dbService';
 import { syncService } from '../services/syncService';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { theme as centralTheme } from '../utils/labTheme';
 
 export default function SettingsPanel() {

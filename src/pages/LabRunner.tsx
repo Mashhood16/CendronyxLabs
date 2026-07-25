@@ -1,8 +1,8 @@
 import { useTranslate } from '../i18n';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import ErrorBoundary from '../components/ErrorBoundary';
-import Layout from '../components/Layout';
+import ErrorBoundary from '../components/layout/ErrorBoundary';
+import Layout from '../components/layout/Layout';
 
 const LabRunnerInner = lazy(() => import('./LabRunnerInner'));
 

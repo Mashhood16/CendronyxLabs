@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Microscope, Atom, Calculator, Laptop, Activity, BookOpen, Dna } from 'lucide-react';
 import { formatSubject } from '../data/labModules';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { LAB_MODULES } from '../data/labModules';
 import { useTranslate } from '../i18n';
 import { theme } from '../utils/labTheme';

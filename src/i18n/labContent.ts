@@ -24,9 +24,21 @@ export function translateLabTitle(
   if (language === 'en') return originalTitle;
   if (ENGLISH_SUBJECT_MODULES.has(moduleId)) return originalTitle;
 
-  const key = `lab.title.${moduleId}`;
-  const translated = UR_MAP[key];
-  if (language === 'roman-urdu' && translated) return translated;
+  if (language === 'roman-urdu') {
+    const candidates = [
+      `lab.title.${moduleId}`,
+      `derivations.${moduleId}.title`,
+      `derivations.${moduleId.replace(/^p\d+_deriv_/, '')}.title`,
+      `derivations.${moduleId.replace(/^p\d+_/, '')}.title`
+    ];
+
+    for (const key of candidates) {
+      const val = UR_MAP[key];
+      if (val && typeof val === 'string' && val.trim() !== '') {
+        return val;
+      }
+    }
+  }
 
   return originalTitle;
 }

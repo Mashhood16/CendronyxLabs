@@ -5,7 +5,7 @@ import { useProgressStats } from '../hooks/useProgressStats';
 import { historyDB, initDB } from '../services/dbService';
 import { getAnonymousId } from '../utils/sessionId';
 import { useAuth } from '../store';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { theme } from '../utils/labTheme';
 import {
   Clock,

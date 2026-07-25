@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES } from '../data/labModules';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { FlaskConical, Atom, Dna, Calculator, Cpu, Microscope, LayoutGrid, List, Rocket, Sparkles, ArrowRight, Beaker } from 'lucide-react';
 import { useTranslate } from '../i18n';
 import { theme } from '../utils/labTheme';
@@ -38,41 +38,41 @@ export default function ClassSelection() {
           
           <div className="relative z-10 px-5 py-6 sm:px-7 md:px-9 md:py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white/90 text-xs font-semibold mb-3 border border-white/20">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-white/95 text-xs font-semibold mb-3 border border-white/25 shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                 {t('class.platform_tagline')}
               </div>
               
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 font-outfit tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 font-outfit tracking-tight leading-tight">
                 {t('class.platform_name')}
               </h1>
               
-              <p className="text-white/85 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
+              <p className="text-white/90 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
                 {t("Explore")}{' '}
-                <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg shadow-sm inline-flex items-center gap-1.5">
-                  <Beaker className="w-4 h-4" />
-                  {moduleCount} {t("immersive simulations")}
+                <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg shadow-sm inline-flex items-center gap-1.5 border border-white/20">
+                  <Beaker className="w-4 h-4 text-sky-300" />
+                  {moduleCount} {t("interactive simulations")}
                 </span>{' '}
-                {t("through hands-on experiments across science, math, and technology.")}
+                {t("class.platform_desc")}
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-3 md:shrink-0">
+            <div className="flex flex-col gap-2.5 w-full sm:w-auto md:shrink-0">
               <button 
                 onClick={() => navigate('/create-lab')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
               >
                 🧪 {t("Create Custom Lab")}
               </button>
               <button 
                 onClick={() => navigate('/simulation-studio')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
               >
                 🎨 {t("Simulation Studio")}
               </button>
               <button 
                 onClick={() => document.getElementById('class-grid')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
               >
                 {t('class.start_exploring')}
                 <ArrowRight className="w-4 h-4" />

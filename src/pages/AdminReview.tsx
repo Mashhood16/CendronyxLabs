@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Check, X, Eye, ShieldAlert, Award, Calendar, BookOpen, User, RefreshCw } from 'lucide-react';
 import { useTranslate } from '../i18n';
 import { theme } from '../utils/labTheme';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { customLabService, type CustomLab } from '../services/customLabService';
-import CustomLabRunner from '../components/CustomLabRunner';
+import CustomLabRunner from '../components/generic/CustomLabRunner';
 
 export default function AdminReview() {
   const { t } = useTranslate();

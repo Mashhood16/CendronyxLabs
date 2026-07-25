@@ -204,6 +204,6 @@ export const historyDB = {
     for (const record of records) {
       await tx.store.delete(record.id);
     }
-    await tx.done;
+    await await await await await await tx.done;
   }
 };

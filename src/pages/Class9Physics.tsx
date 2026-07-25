@@ -4,8 +4,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LAB_MODULES, formatSubject, hasCalculator } from '../data/labModules';
 import { useTranslate } from '../i18n';
 import { translateLabDesc } from '../i18n/labContent';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { Rocket, GraduationCap, Beaker, Atom, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 
 const SUBJECT_ACCENT: Record<string, string> = {

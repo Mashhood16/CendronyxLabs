@@ -3,9 +3,9 @@ import { theme } from '../utils/labTheme';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LAB_MODULES, formatSubject, hasCalculator } from '../data/labModules';
 import { useTranslate } from '../i18n';
-import { translateLabDesc } from '../i18n/labContent';
-import Layout from '../components/Layout';
-import Breadcrumbs from '../components/Breadcrumbs';
+import { translateLabDesc, translateLabTitle } from '../i18n/labContent';
+import Layout from '../components/layout/Layout';
+import Breadcrumbs from '../components/layout/Breadcrumbs';
 import { Rocket, GraduationCap, Beaker, Atom, ArrowRight, BookOpen } from 'lucide-react';
 
 export default function Class12Physics() {
@@ -149,7 +149,7 @@ export default function Class12Physics() {
                           )}
                         </div>
                         <div className="p-6 flex-1 flex flex-col bg-transparent">
-                          <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{lab.title}</h3>
+                          <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{translateLabTitle(lab.id, lab.title, language)}</h3>
                           <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>{translateLabDesc(lab.id, lab.desc, language)}</p>
                           <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
                             <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
@@ -204,7 +204,7 @@ export default function Class12Physics() {
                       </div>
                     </div>
                     <div className="p-6 flex-1 flex flex-col bg-transparent">
-                      <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{lab.title}</h3>
+                      <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? `${theme.text.primary} group-hover:text-slate-900 dark:group-hover:text-white` : theme.text.subtle}`}>{translateLabTitle(lab.id, lab.title, language)}</h3>
                       <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>{translateLabDesc(lab.id, lab.desc, language)}</p>
                       <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
                         <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
