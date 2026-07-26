@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X, Languages, RefreshCw } from 'lucide-react';
+import { Search, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, Languages, RefreshCw } from 'lucide-react';
 import { useAuth, useTheme } from '../../store';
 import { useTranslate } from '../../i18n';
 import type { Language } from '../../i18n/types';
@@ -26,8 +26,10 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [subjectFilter, setSubjectFilter] = useState('all');
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const mobileSearchRef = useRef<HTMLInputElement>(null);
+  const langMenuRef = useRef<HTMLDivElement>(null);
   const isDark = theme === 'dark';
 
   const isMobileSearchOpen = externalMobileSearchOpen ?? mobileSearchOpen;
@@ -60,6 +62,9 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+      }
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setLangMenuOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -145,9 +150,9 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
           >
             <Menu className="w-6 h-6" />
           </button>
-          <img 
-            src="/logo.png" 
-            alt={t("Logo")} 
+          <img
+            src="/logo.png"
+            alt="Cendronyx Labs"
             className={`h-8 w-auto object-contain pointer-events-none ${isDark ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]' : 'drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]'}`}
           />
         </div>
@@ -215,53 +220,57 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
         {/* Reload / Clear Cache */}
         <button
           onClick={handleHardReload}
-          className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+          aria-label={t("Clear Cache & Reload")}
           title={t("Clear Cache & Reload")}
+          className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
         >
           <RefreshCw className="w-5 h-5" />
         </button>
 
-        {/* Language Switcher */}
-        <div className="relative group">
+        {/* Language Switcher — click-controlled for mobile touch support */}
+        <div ref={langMenuRef} className="relative">
           <button
-            className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
+            onClick={() => setLangMenuOpen(o => !o)}
+            aria-label={t('settings.language')}
             title={t('settings.language')}
+            className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
           >
             <Languages className="w-5 h-5" />
           </button>
-          <div className={`absolute right-0 top-12 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl rounded-xl overflow-hidden z-50 min-w-[160px] ${
-            isDark ? 'bg-[#121212] border border-[#1c1b1b]' : 'bg-white border border-slate-200'
-          }`}>
-            {[
-              { value: 'en' as Language, label: 'English' },
-              { value: 'roman-urdu' as Language, label: 'Roman Urdu' },
-            ].map((lang) => (
-              <button
-                key={lang.value}
-                onClick={() => setLanguage(lang.value)}
-                className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors ${
-                  language === lang.value
-                    ? isDark ? 'bg-[#1c1b1b] text-[#5560F1]' : 'bg-indigo-50 text-indigo-600'
-                    : isDark ? 'text-[#a1a1aa] hover:bg-[#1c1b1b]' : 'text-slate-600 hover:bg-slate-50'
-                }`}
-              >
-                {lang.label}
-              </button>
-            ))}
-          </div>
+          {langMenuOpen && (
+            <div className={`absolute right-0 top-12 shadow-xl rounded-xl overflow-hidden z-50 min-w-[160px] ${
+              isDark ? 'bg-[#121212] border border-[#1c1b1b]' : 'bg-white border border-slate-200'
+            }`}>
+              {[
+                { value: 'en' as Language, label: 'English' },
+                { value: 'roman-urdu' as Language, label: 'Roman Urdu' },
+              ].map((lang) => (
+                <button
+                  key={lang.value}
+                  onClick={() => { setLanguage(lang.value); setLangMenuOpen(false); }}
+                  className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors ${
+                    language === lang.value
+                      ? isDark ? 'bg-[#1c1b1b] text-[#5560F1]' : 'bg-indigo-50 text-indigo-600'
+                      : isDark ? 'text-[#a1a1aa] hover:bg-[#1c1b1b]' : 'text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <button
           onClick={toggleTheme}
+          aria-label={theme === 'dark' ? t('settings.light') : t('settings.dark')}
+          title={theme === 'dark' ? t('settings.light') : t('settings.dark')}
           className={`p-1.5 sm:p-2 rounded-full transition-colors ${isDark ? 'text-[#a1a1aa] hover:text-[#6366f1] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
-          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
         </button>
 
-        <button className={`relative p-1.5 sm:p-2 rounded-full transition-colors hidden sm:block ${isDark ? 'text-[#a1a1aa] hover:text-[#ffffff] hover:bg-[#121212]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}>
-          <Bell className="w-5 h-5" />
-        </button>
+
 
         {user ? (
           <div className="flex items-center gap-2 sm:gap-3 group relative ml-1 sm:ml-2 pl-2 sm:pl-4 border-l border-[#1c1b1b] cursor-pointer">

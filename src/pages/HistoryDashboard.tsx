@@ -1,4 +1,4 @@
-﻿import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useHistory } from '../store';
 import { useTranslate } from '../i18n';
 import { useProgressStats } from '../hooks/useProgressStats';
@@ -155,21 +155,23 @@ export default function HistoryDashboard() {
                 'Complete your first interactive lab to see your progress analytics here.'}
             </p>
 
-            {/* Diagnostic button */}
-            <div className="mt-8">
-              <button
-                onClick={runDiagnostic}
-                disabled={runningDiagnostic}
-                className={`px-5 py-2.5 ${theme.button.default} font-semibold rounded-xl transition-colors text-sm disabled:opacity-50`}
-              >
-                {runningDiagnostic ? 'Running diagnostic...' : 'Run Diagnostic'}
-              </button>
-              {debugInfo && (
-                <pre className="mt-4 p-4 bg-slate-900 text-green-300 text-xs rounded-xl max-w-md mx-auto text-left whitespace-pre-wrap font-mono leading-relaxed">
-                  {debugInfo}
-                </pre>
-              )}
-            </div>
+            {/* Diagnostic button — dev only */}
+            {import.meta.env.DEV && (
+              <div className="mt-8">
+                <button
+                  onClick={runDiagnostic}
+                  disabled={runningDiagnostic}
+                  className={`px-5 py-2.5 ${theme.button.default} font-semibold rounded-xl transition-colors text-sm disabled:opacity-50`}
+                >
+                  {runningDiagnostic ? 'Running diagnostic...' : 'Run Diagnostic'}
+                </button>
+                {debugInfo && (
+                  <pre className="mt-4 p-4 bg-slate-900 text-green-300 text-xs rounded-xl max-w-md mx-auto text-left whitespace-pre-wrap font-mono leading-relaxed">
+                    {debugInfo}
+                  </pre>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           <div className="space-y-8">
@@ -182,7 +184,7 @@ export default function HistoryDashboard() {
                     <BookOpen className="w-4 h-4 text-white" />
                   </div>
                   <span className={`text-xs font-bold ${theme.accent.indigo.stepText} uppercase tracking-wider`}>
-                    {t('Completed') || 'Completed'}
+                    {t('history.completed') || 'Completed'}
                   </span>
                 </div>
                 <span className={`text-3xl md:text-4xl font-bold ${theme.accent.indigo.stepText}`}>
@@ -237,7 +239,7 @@ export default function HistoryDashboard() {
                   {stats.currentStreak}
                 </span>
                 <span className="text-xs text-rose-500 ml-1 dark:text-rose-400">
-                  {t('days') || 'days'}
+                  {t('history.days') || 'days'}
                 </span>
               </div>
             </div>

@@ -1,4 +1,4 @@
-﻿import { openDB } from 'idb';
+import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
 
 export interface DataPoint {
@@ -173,7 +173,6 @@ export const historyDB = {
     for (const record of records) {
       await tx.store.delete(record.id);
     }
-    await await await await await await tx.done;
+    await tx.done;
   }
 };
-

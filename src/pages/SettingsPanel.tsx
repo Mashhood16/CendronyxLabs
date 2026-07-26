@@ -1,10 +1,8 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, useTheme } from '../store';
 import { useTranslate } from '../i18n';
 import type { Language } from '../i18n/types';
-import { progressDB } from '../services/dbService';
-import { syncService } from '../services/syncService';
 import Layout from '../components/layout/Layout';
 import { theme as centralTheme } from '../utils/labTheme';
 
@@ -18,8 +16,6 @@ export default function SettingsPanel() {
   const { t, language, setLanguage } = useTranslate();
   const [reducedMotion, setReducedMotion] = useState(() => localStorage.getItem('virtuallab_reduced_motion') === 'true');
   const [storageInfo, setStorageInfo] = useState<{ used: string; total: string } | null>(null);
-  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'done' | 'error'>('idle');
-  const [unsyncedCount, setUnsyncedCount] = useState(0);
 
   // Font size
   useEffect(() => {
@@ -44,10 +40,6 @@ export default function SettingsPanel() {
     }
   }, []);
 
-  // Check unsynced records
-  useEffect(() => {
-    progressDB.getUnsyncedRecords().then((records) => setUnsyncedCount(records.length));
-  }, []);
 
   const handleSaveName = async () => {
     if (editName.trim() && user) {
@@ -57,6 +49,13 @@ export default function SettingsPanel() {
   };
 
   const handleClearAllData = async () => {
+    const confirmed = window.confirm(
+      language === 'roman-urdu'
+        ? 'Kya aap wakai sab data delete karna chahte hain? Yeh action wapas nahi ho sakti. Aapka progress, account, aur settings sab mita diye jayenge.'
+        : 'Are you sure? This will permanently delete all your progress, account, and settings. This cannot be undone.'
+    );
+    if (!confirmed) return;
+
     logout();
     const keys = Object.keys(localStorage);
     keys.forEach((key) => {
@@ -72,28 +71,24 @@ export default function SettingsPanel() {
   };
 
   const handleClearCache = async () => {
-    if ('caches' in window) {
-      const cacheNames = await caches.keys();
-      for (const name of cacheNames) {
-        await caches.delete(name);
+    try {
+      // Unregister service workers first so they don't repopulate the cache
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (const reg of registrations) await reg.unregister();
       }
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        for (const name of cacheNames) {
+          await caches.delete(name);
+        }
+      }
+    } catch {
+      // Ignore errors
     }
     setTimeout(() => window.location.reload(), 200);
   };
 
-  const handleSyncNow = async () => {
-    setSyncStatus('syncing');
-    try {
-      await syncService.syncAllUnsynced();
-      setSyncStatus('done');
-      const records = await progressDB.getUnsyncedRecords();
-      setUnsyncedCount(records.length);
-      setTimeout(() => setSyncStatus('idle'), 2000);
-    } catch {
-      setSyncStatus('error');
-      setTimeout(() => setSyncStatus('idle'), 3000);
-    }
-  };
 
   return (
     <Layout>
@@ -224,9 +219,9 @@ export default function SettingsPanel() {
                   <span className={`${centralTheme.text.muted}`}>{t('settings.storage_used')}</span>
                   <span className={`font-semibold ${centralTheme.text.primary}`}>{t('settings.local_storage_used', { used: storageInfo.used, total: storageInfo.total })}</span>
                 </div>
-                <div className={`w-full ${centralTheme.progress.track} rounded-full h-2`}>
-                  <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${Math.min((parseFloat(storageInfo.used) / parseFloat(storageInfo.total)) * 100, 100)}%` }}></div>
-                </div>
+                  <div className={`w-full ${centralTheme.progress.track} rounded-full h-2`}>
+                    <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${Math.min(parseFloat(storageInfo.total) > 0 ? (parseFloat(storageInfo.used) / parseFloat(storageInfo.total)) * 100 : 0, 100)}%` }}></div>
+                  </div>
               </div>
             )}
             <button
@@ -254,28 +249,15 @@ export default function SettingsPanel() {
             </div>
             {t('settings.sync_status')}
           </h2>
-          <div className="space-y-3">
-            <div className={`flex items-center justify-between ${centralTheme.innerCard.bg} rounded-xl p-4 border ${centralTheme.innerCard.border}`}>
-              <div>
-                <p className={`text-sm font-semibold ${centralTheme.text.primary}`}>{t('settings.pending_records')}</p>
-                <p className={`text-xs ${centralTheme.text.subtle}`}>{t('settings.waiting_to_sync', { count: unsyncedCount })}</p>
-              </div>
-              <div className={`w-3 h-3 rounded-full ${unsyncedCount > 0 ? 'bg-amber-400' : 'bg-emerald-400'}`}></div>
+          <div className={`rounded-xl p-4 border ${centralTheme.innerCard.bg} ${centralTheme.innerCard.border} flex items-start gap-3`}>
+            <svg className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <div>
+              <p className={`text-sm font-semibold ${centralTheme.text.primary}`}>Cloud Sync — Coming Soon</p>
+              <p className={`text-xs ${centralTheme.text.subtle} mt-1`}>Your lab data is stored securely on this device. Cloud backup and sync across devices will be available in a future update.</p>
             </div>
-            <button
-              onClick={handleSyncNow}
-              disabled={syncStatus === 'syncing' || unsyncedCount === 0}
-              className={`w-full px-4 py-3 font-semibold rounded-xl text-sm flex items-center justify-center gap-2 transition-colors ${syncStatus === 'syncing' ? 'bg-blue-100 text-blue-600 cursor-wait' :
-                  syncStatus === 'done' ? 'bg-emerald-100 text-emerald-700' :
-                    syncStatus === 'error' ? 'bg-rose-100 text-rose-600' :
-                      unsyncedCount === 0 ? 'bg-slate-100 text-slate-400 cursor-not-allowed' :
-                        'bg-blue-600 text-white hover:bg-blue-700'
-                }`}
-            >
-              {syncStatus === 'syncing' ? t('settings.syncing') : syncStatus === 'done' ? t('settings.synced') : syncStatus === 'error' ? t('settings.sync_failed') : t('settings.sync_now')}
-            </button>
           </div>
         </div>
+
 
         {/* Accessibility */}
         <div className={`${centralTheme.card.bg} rounded-2xl border ${centralTheme.border.default} shadow-sm p-4 sm:p-6`}>

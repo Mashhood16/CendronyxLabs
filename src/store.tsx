@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { StudentAccount } from './services/studentService';
 import { studentService } from './services/studentService';
 import { historyDB } from './services/dbService';
@@ -221,7 +221,13 @@ const LabContext = createContext<LabContextType>({
   setLabScore: () => {},
 });
 
-export function LabProvider({ children, value }: { children: React.ReactNode, value?: any }) {
+interface LabProviderValue {
+  hideCalculator?: boolean;
+  isEnglishLab?: boolean;
+  moduleId?: string;
+}
+
+export function LabProvider({ children, value }: { children: React.ReactNode, value?: LabProviderValue }) {
   const [labData, setLabData] = useState<LabDataEntry[]>([]);
   const [labScore, setLabScoreState] = useState<LabScore | null>(null);
 

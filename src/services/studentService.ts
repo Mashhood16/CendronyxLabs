@@ -1,4 +1,4 @@
-﻿import { openDB } from 'idb';
+import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
 
 export interface StudentAccount {
@@ -76,7 +76,7 @@ async function hashPassword(password: string, saltHex: string): Promise<string> 
     {
       name: 'PBKDF2',
       salt: saltBuffer,
-      iterations: 100000,
+      iterations: 210000,
       hash: 'SHA-256',
     },
     keyMaterial,
@@ -87,7 +87,7 @@ async function hashPassword(password: string, saltHex: string): Promise<string> 
 }
 
 function generateSalt(): string {
-  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const salt = crypto.getRandomValues(new Uint8Array(32)); // 32 bytes per OWASP 2024
   return arrayBufferToHex(salt.buffer);
 }
 
