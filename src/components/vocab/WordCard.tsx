@@ -1,5 +1,5 @@
 ﻿/**
- * WordCard â€” displays an English word with pronunciation (TTS) and
+ * WordCard — displays an English word with pronunciation (TTS) and
  * Urdu script (Nastaliq) translation side by side.
  *
  * Uses the comprehensive dictionary from englishMeanings.ts for Urdu meanings
@@ -68,7 +68,7 @@ export default function WordCard({
 }
 
 /**
- * VocabularyPanel â€” displays a list of WordCards in a compact grid layout,
+ * VocabularyPanel — displays a list of WordCards in a compact grid layout,
  * with an optional title and header icon.
  */
 

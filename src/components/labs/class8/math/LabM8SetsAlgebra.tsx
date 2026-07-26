@@ -164,7 +164,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
  <div>
  <div className="flex justify-between mb-1">
  <label className="text-sm font-semibold">
- {seqType === 'arithmetic' ? 'Common Difference (+)' : 'Common Ratio (Ã—)'}
+ {seqType === 'arithmetic' ? 'Common Difference (+)' : 'Common Ratio (×)'}
  </label>
  <span className="text-sm font-bold bg-slate-200 dark:bg-slate-700 px-2 rounded">{ratio}</span>
  </div>

@@ -197,7 +197,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  <div className="w-2 rounded-t-full bg-red-500 transition-all duration-500" style={{ height: `${(temp - 20) * 8}px` }}></div>
  <div className="w-4 h-4 bg-red-500 rounded-full absolute bottom-1"></div>
  </div>
- <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}Â°C</div>
+ <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}°C</div>
  </div>
  <div className="text-sm font-bold text-gray-600">{t('lab.c9electrochemistry_total_volume_added')} {volAdded} mL</div>
  </div>
@@ -252,7 +252,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  </div>
 
  <div className="mb-4">
- <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (Â°C)" t={t} />
+ <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (°C)" t={t} />
  </div>
  </>
  )}

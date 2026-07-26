@@ -1,5 +1,5 @@
 ﻿/**
- * WordMeaning â€” displays the Urdu script meaning of an English word inline.
+ * WordMeaning — displays the Urdu script meaning of an English word inline.
  * Uses a built-in dictionary of common English vocabulary words mapped to
  * Urdu in Nastaliq script for easy readability.
  *
@@ -11,7 +11,7 @@
  *   // renders:  (Ø®ÙˆØ´ÛŒ)
  */
 
-// Comprehensive English â†’ Roman Urdu dictionary for vocabulary found in English labs
+// Comprehensive English → Roman Urdu dictionary for vocabulary found in English labs
 const WORD_MEANINGS: Record<string, string> = {
   // === Grammar / Parts of Speech ===
   'noun': 'Ø§Ø³Ù…',

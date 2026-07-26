@@ -30,14 +30,14 @@ export default function ProgressionPath({ links, currentClass }: ProgressionPath
             <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-1" />
             <span className="text-slate-600 dark:text-slate-300">
               <span className="font-semibold">{link.fromLab}</span>
-              <span className="text-slate-400 dark:text-slate-500"> â€” {link.toConcept}</span>
+              <span className="text-slate-400 dark:text-slate-500"> — {link.toConcept}</span>
             </span>
           </div>
         ))}
       </div>
       <div className="mt-2 pt-2 border-t border-indigo-200/50 dark:border-indigo-800/30">
         <span className="text-xs text-slate-500 dark:text-slate-400">
-          {t("Building on concepts from earlier classes â€” now going deeper in Class")} {currentClass}.
+          {t("Building on concepts from earlier classes — now going deeper in Class")} {currentClass}.
         </span>
       </div>
     </div>

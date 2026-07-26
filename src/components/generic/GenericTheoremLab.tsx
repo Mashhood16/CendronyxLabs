@@ -16,18 +16,18 @@ function normalizeEquation(eq: string): string {
     .replace(/âˆ©/g, 'intersect')
     .replace(/âˆˆ/g, 'in')
     .replace(/\s+/g, '')
-    .replace(/Ã—/g, '')
+    .replace(/×/g, '')
     .replace(/\*/g, '')
-    .replace(/Â·/g, '')
-    .replace(/Ã·/g, '/')
+    .replace(/·/g, '')
+    .replace(/÷/g, '/')
     .replace(/âˆ’/g, '-')
-    .replace(/â€“/g, '-')
+    .replace(/–/g, '-')
     .replace(/Î”/g, 'd')
     .replace(/Î´/g, 'd')
     .replace(/_/g, '')
-    .replace(/Â²/g, '^2')
-    .replace(/Â³/g, '^3')
-    .replace(/Â½/g, '0.5')
+    .replace(/²/g, '^2')
+    .replace(/³/g, '^3')
+    .replace(/½/g, '0.5')
     .replace(/Ï€/g, 'pi');
 }
 function checkEquation(userAnswer: string, expected: string): boolean {
@@ -105,7 +105,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
   const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
   const [testFullyCompleted, setTestFullyCompleted] = useState(false);
 
-  // Build test data from steps â€“ use formula as default testEquation
+  // Build test data from steps – use formula as default testEquation
   const testSteps = config.steps.map(step => ({
     testEquation: step.testEquation || step.formula,
     testHint: step.testHint || `Recall: ${step.label}`,

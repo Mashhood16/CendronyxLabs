@@ -54,7 +54,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  
  if (loss >= totalLoss * 0.99 && time > 5) {
  setRunning(false);
- setEquation("Reaction Complete: 2HCl(aq) + CaCOâ‚ƒ(s) â†’ CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)â†‘");
+ setEquation("Reaction Complete: 2HCl(aq) + CaCOâ‚ƒ(s) → CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)←‘");
  }
  }
  }, [time, step, running, hclVol, hclConc, caco3Mass]);
@@ -70,13 +70,13 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  setRunning(true);
  setTime(0);
  setMassData([{ time: 0, mass: 100 + hclVol + caco3Mass }]);
- setEquation("2HCl(aq) + CaCOâ‚ƒ(s) â†’ CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)â†‘");
+ setEquation("2HCl(aq) + CaCOâ‚ƒ(s) → CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)←‘");
  } else if (action === 'filter' && step === 2 && !running) {
  setStep(3);
  setEquation("Filtrate: CaClâ‚‚(aq) | Residue: Unreacted CaCOâ‚ƒ(s)");
  } else if (action === 'crystallize' && step === 3) {
  setStep(4);
- setEquation("CaClâ‚‚(aq) â†’ CaClâ‚‚Â·2Hâ‚‚O(s) + Heat");
+ setEquation("CaClâ‚‚(aq) → CaClâ‚‚·2Hâ‚‚O(s) + Heat");
  } else if (action === 'reset') {
  setStep(0);
  setCurrentMass(100.00);

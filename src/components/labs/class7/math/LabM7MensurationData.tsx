@@ -390,9 +390,9 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
 
  <div className="bg-indigo-50 dark:bg-indigo-900/30 p-5 rounded-xl border border-indigo-200 dark:border-indigo-800">
  <h3 className="font-bold text-indigo-800 dark:text-indigo-300 mb-2">{t('lab.m7mensurationdata_total_volume_capacity')}</h3>
- <p className="text-3xl font-mono font-bold text-indigo-600 dark:text-indigo-400">{shape === 'cylinder' ? cylVol : prismVol} mÂ³</p>
+ <p className="text-3xl font-mono font-bold text-indigo-600 dark:text-indigo-400">{shape === 'cylinder' ? cylVol : prismVol} m³</p>
  <p className="text-sm font-medium text-indigo-500 mt-2">
- {shape === 'cylinder' ? `Formula: Ï€ Ã— ${cylR}Â² Ã— ${cylH}` : `Formula: ${prismL} Ã— ${prismW} Ã— ${prismH}`}
+ {shape === 'cylinder' ? `Formula: Ï€ × ${cylR}² × ${cylH}` : `Formula: ${prismL} × ${prismW} × ${prismH}`}
  </p>
  </div>
 
@@ -405,7 +405,7 @@ export default function LabM7MensurationData({ onExit }: { onExit?: () => void }
  <p className="text-sm font-medium mt-3 text-slate-600 dark:text-[#71717a]">
  
  {t('lab.m7mensurationdata_current_liquid_volume')}{' '}
- <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{shape === 'cylinder' ? cylLiq : prismLiq} mÂ³</span>
+ <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{shape === 'cylinder' ? cylLiq : prismLiq} m³</span>
  </p>
  </div>
  </div>

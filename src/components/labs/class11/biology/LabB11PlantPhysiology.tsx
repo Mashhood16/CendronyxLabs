@@ -309,7 +309,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
  <div>
  <div className="flex justify-between text-sm mb-1">
  <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Activity size={14}/> {t('lab.b11plantphysiology_temperature_c')}</label>
- <span className="text-emerald-700 font-bold">{temperature}Â°C</span>
+ <span className="text-emerald-700 font-bold">{temperature}°C</span>
  </div>
  <input 
  type="range" min="10" max="40" step="1" 

@@ -49,7 +49,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  newStatus = 'Azo Dye (Orange II) Formed!';
  } else {
  newColor = '#fef08a'; // pale yellow
- newStatus = 'Diazonium Salt Formed (Stable < 10Â°C)';
+ newStatus = 'Diazonium Salt Formed (Stable < 10°C)';
  }
  }
  } else if (flaskContents.includes('Phthalic Anhydride') && flaskContents.includes('L-Glutamine')) {
@@ -134,7 +134,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  <div className={`flex-1 bg-slate-100 dark:bg-[#121212] rounded-lg p-4 flex flex-col items-center justify-center relative border border-slate-300 dark:border-[#1c1b1b] `}>
  <div className={`absolute top-4 right-4 bg-slate-50 dark:!bg-[#121212] px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
  
- {t('lab.c12organicsynthesis_temp')} {temperature}Â°C
+ {t('lab.c12organicsynthesis_temp')} {temperature}°C
  </div>
  
  <svg viewBox="0 0 100 120" className="w-48 h-48 drop-shadow-md">

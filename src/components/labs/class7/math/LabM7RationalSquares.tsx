@@ -147,7 +147,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
  <input type="range" min="-50" max="50" value={temperature} onChange={(e) => setTemperature(parseInt(e.target.value))} className="w-full h-2 bg-slate-300 dark:bg-slate-600 rounded-lg appearance-none cursor-pointer" />
  <div className="flex justify-between text-sm mt-2 font-medium text-slate-600 dark:text-[#71717a]">
  <span>{t('lab.m7rationalsquares_50_c')}</span>
- <span className="text-blue-600 dark:text-blue-400 font-bold">{temperature}Â°C</span>
+ <span className="text-blue-600 dark:text-blue-400 font-bold">{temperature}°C</span>
  <span>{t('lab.m7rationalsquares_50_c_1')}</span>
  </div>
  </div>
@@ -171,7 +171,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
  </h3>
  <p className="text-slate-700 dark:text-[#a1a1aa] mb-4 font-medium leading-relaxed">
  {ratQ.type === 'temp' ? 
- `The temperature is ${ratQ.start}Â°C. It ${ratQ.change > 0 ? 'rises' : 'drops'} by ${Math.abs(ratQ.change)}Â°C. What is the new temperature?` : 
+ `The temperature is ${ratQ.start}°C. It ${ratQ.change > 0 ? 'rises' : 'drops'} by ${Math.abs(ratQ.change)}°C. What is the new temperature?` : 
  `An object is at ${ratQ.start}m altitude. It moves ${ratQ.change > 0 ? 'up' : 'down'} by ${Math.abs(ratQ.change)}m. What is its new altitude?`
  }
  </p>
@@ -275,7 +275,7 @@ export default function LabM7RationalSquares({ onExit }: { onExit?: () => void }
  {[50, 25, 0, -25, -50].map(tick => (
  <g key={tick}>
  <line x1="25" y1={180 - (tick * 3.2)} x2="35" y2={180 - (tick * 3.2)} stroke="currentColor" strokeWidth="2" className="text-slate-400 dark:text-[#71717a]" />
- <text x="20" y={180 - (tick * 3.2) + 4} fontSize="12" textAnchor="end" className="fill-slate-600 dark:fill-slate-400 font-bold">{tick}Â°</text>
+ <text x="20" y={180 - (tick * 3.2) + 4} fontSize="12" textAnchor="end" className="fill-slate-600 dark:fill-slate-400 font-bold">{tick}°</text>
  </g>
  ))}
  </svg>

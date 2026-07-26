@@ -55,7 +55,7 @@ export function addRandomizedNoise(
  */
 export interface MeasurementWithUncertainty {
   value: number;
-  uncertainty: number; // Â±value
+  uncertainty: number; // ±value
   lowBound: number;
   highBound: number;
 }
@@ -63,7 +63,7 @@ export interface MeasurementWithUncertainty {
 /**
  * Create a measurement with explicit uncertainty bounds
  * @param value - Measured value
- * @param uncertaintyPercent - Uncertainty as percentage (e.g., 5 for Â±5%)
+ * @param uncertaintyPercent - Uncertainty as percentage (e.g., 5 for ±5%)
  */
 export function measurementWithUncertainty(
   value: number,

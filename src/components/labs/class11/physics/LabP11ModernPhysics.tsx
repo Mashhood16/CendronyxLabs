@@ -487,7 +487,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  {petCorrect !== null && (
  <div className={`p-4 rounded-md flex items-start gap-3 border ${petCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
  {petCorrect ? <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />}
- <span className="text-sm leading-relaxed">{petCorrect ? 'Correct! Since 2 photons are emitted, each carries half the total energy (0.511 MeV = 511 keV).' : 'Incorrect. The total mass is 2 * 0.511 MeV/cÂ², which converts to energy that is shared equally by two photons.'}</span>
+ <span className="text-sm leading-relaxed">{petCorrect ? 'Correct! Since 2 photons are emitted, each carries half the total energy (0.511 MeV = 511 keV).' : 'Incorrect. The total mass is 2 * 0.511 MeV/c², which converts to energy that is shared equally by two photons.'}</span>
  </div>
  )}
  </div>
@@ -526,7 +526,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  {syncCorrect !== null && (
  <div className={`p-4 rounded-md flex items-start gap-3 border ${syncCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
  {syncCorrect ? <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />}
- <span className="text-sm leading-relaxed">{syncCorrect ? 'Correct! You successfully computed the proton momentum for the current track configuration.' : 'Incorrect. Use p = q * B * r, where q = 1.6 Ã— 10^-19 C. Watch your powers of 10!'}</span>
+ <span className="text-sm leading-relaxed">{syncCorrect ? 'Correct! You successfully computed the proton momentum for the current track configuration.' : 'Incorrect. Use p = q * B * r, where q = 1.6 × 10^-19 C. Watch your powers of 10!'}</span>
  </div>
  )}
  </div>

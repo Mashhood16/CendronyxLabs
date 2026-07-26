@@ -74,7 +74,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  {/* Wind icon to show air circulation */}
  <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
  </div>
- <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}Â°C</div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
  <div className="text-slate-500 dark:text-[#71717a] text-sm">{t('lab.s8greenhouseeffect_open_air')}</div>
  </div>
 
@@ -100,7 +100,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  </div>
  )}
  </div>
- <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}Â°C</div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
  <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">{t('lab.s8greenhouseeffect_inside_closed_jar')}</div>
  </div>
 

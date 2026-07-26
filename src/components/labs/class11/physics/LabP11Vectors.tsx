@@ -84,7 +84,7 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
  </div>
  <div>
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
- <span>{t('lab.p11_vectors_slider_fangle')}</span> <span>{fAngle}Â°</span>
+ <span>{t('lab.p11_vectors_slider_fangle')}</span> <span>{fAngle}°</span>
  </label>
  <input type="range" min="-90" max="90" value={fAngle} onChange={e => setFAngle(Number(e.target.value))} className="w-full accent-orange-500" />
  </div>
@@ -96,7 +96,7 @@ export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {
  </div>
  <div>
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
- <span>{t('lab.p11_vectors_slider_dangle')}</span> <span>{dAngle}Â°</span>
+ <span>{t('lab.p11_vectors_slider_dangle')}</span> <span>{dAngle}°</span>
  </label>
  <input type="range" min="-90" max="90" value={dAngle} onChange={e => setDAngle(Number(e.target.value))} className="w-full accent-blue-500" />
  </div>

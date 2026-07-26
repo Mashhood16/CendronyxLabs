@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationElectricPower({ onExit }: { onExit?: () => void }) {
@@ -111,7 +111,7 @@ export default function LabP10DerivationElectricPower({ onExit }: { onExit?: () 
  </div>
  <div className="bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl p-5 text-center shadow-lg mb-3">
  <p className="text-xs text-pink-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p>
- <div className="text-lg font-bold text-white mt-1"><MathFormula formula="P = IV = IÂ²R = VÂ²/R" className="text-base font-bold" /></div>
+ <div className="text-lg font-bold text-white mt-1"><MathFormula formula="P = IV = I²R = V²/R" className="text-base font-bold" /></div>
  <p className="text-xs text-pink-200 mt-1">{t('lab.p10_power_final_desc')}</p>
  </div>
  <div className="space-y-0">

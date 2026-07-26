@@ -4,7 +4,7 @@ import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationGPE({ onExit }: { onExit?: () => void }) {
@@ -21,7 +21,7 @@ export default function LabP9DerivationGPE({ onExit }: { onExit?: () => void }) 
  const [showTestHint, setShowTestHint] = useState(false);
  const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
  const [testFullyCompleted, setTestFullyCompleted] = useState(false);
- const testSteps=[{testEquation:'E_p = Fh',testHint:'Gravitational PE equals the work done to lift an object: force Ã— height.'},{testEquation:'F = mg',testHint:'The lifting force must equal the weight of the object: mass Ã— gravity.'},{testEquation:'E_p = mgh',testHint:'Substitute F = mg into E_p = Fh to get the formula in terms of m, g, and h.'},{testEquation:'E_p = mgh',testHint:'Gravitational PE = mass Ã— gravity Ã— height.'}];
+ const testSteps=[{testEquation:'E_p = Fh',testHint:'Gravitational PE equals the work done to lift an object: force × height.'},{testEquation:'F = mg',testHint:'The lifting force must equal the weight of the object: mass × gravity.'},{testEquation:'E_p = mgh',testHint:'Substitute F = mg into E_p = Fh to get the formula in terms of m, g, and h.'},{testEquation:'E_p = mgh',testHint:'Gravitational PE = mass × gravity × height.'}];
  useEffect(() => { const el = document.querySelector(`[data-step-idx="${currentStep}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, [currentStep]);
  const handleTestCheck = () => { const expected = testSteps[currentStep].testEquation; const isCorrect = ck(testInput, expected); setTestStatus(isCorrect ? 'correct' : 'incorrect'); if (isCorrect) { setCompletedSteps(prev => ({ ...prev, [currentStep]: true })); if (currentStep + 1 >= steps.length) { setTestFullyCompleted(true); } else { setCurrentStep(currentStep + 1); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); } } };
  const resetTest = () => { setCurrentStep(0); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); setCompletedSteps({}); setTestFullyCompleted(false); }; const g = 9.81;
@@ -34,10 +34,10 @@ export default function LabP9DerivationGPE({ onExit }: { onExit?: () => void }) 
  };
 
  const steps = [
- { label: t('lab.gpe_step1_label'), formula: 'Eâ‚š = Work = F Ã— S', detail: t('lab.gpe_step1_detail') },
- { label: t('lab.gpe_step2_label'), formula: 'F = m Ã— g', detail: t('lab.gpe_step2_detail') },
+ { label: t('lab.gpe_step1_label'), formula: 'Eâ‚š = Work = F × S', detail: t('lab.gpe_step1_detail') },
+ { label: t('lab.gpe_step2_label'), formula: 'F = m × g', detail: t('lab.gpe_step2_detail') },
  { label: t('lab.gpe_step3_label'), formula: 'S = h', detail: t('lab.gpe_step3_detail') },
- { label: t('lab.gpe_step4_label'), formula: 'Eâ‚š = m Ã— g Ã— h', detail: t('lab.gpe_step4_detail') },
+ { label: t('lab.gpe_step4_label'), formula: 'Eâ‚š = m × g × h', detail: t('lab.gpe_step4_detail') },
  ];
 
  return (
@@ -55,7 +55,7 @@ export default function LabP9DerivationGPE({ onExit }: { onExit?: () => void }) 
  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-5 gap-0 lg:gap-6 p-4 lg:p-6 lg:overflow-visible">
  <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab==='theory'?'flex':'hidden'} lg:flex`}>
  <div className="flex items-center gap-2 mb-3"><div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg"><Mountain className="w-5 h-5 text-white" /></div><div><h2 className="text-lg font-bold">{t('lab.step_by_step')}</h2><p className="text-xs text-slate-500">{t('lab.gpe_subtitle')}</p></div></div>
- <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-emerald-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="Eâ‚š = m Ã— g Ã— h" /></p><p className="text-xs text-emerald-200 mt-1">{t('lab.gpe_final_desc')}</p></div>
+ <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-emerald-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="Eâ‚š = m × g × h" /></p><p className="text-xs text-emerald-200 mt-1">{t('lab.gpe_final_desc')}</p></div>
  <div className="space-y-0">{steps.map((step,idx)=><div key={idx} className="relative"><div className="flex gap-3"><div className="flex flex-col items-center"><div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">{idx+1}</div>{idx<steps.length-1&&<div className="w-0.5 h-full min-h-[24px] bg-gradient-to-b from-emerald-400 to-emerald-200 dark:from-emerald-600 dark:to-emerald-800" />}</div><div className="flex-1 pb-4"><div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800 mb-1"><p className="font-bold text-base text-emerald-800 dark:text-emerald-300">{step.label}</p></div><div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]"><MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" /></div><p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>{idx<steps.length-1&&<div className="flex justify-center mt-1"><ArrowRight className="w-4 h-4 text-emerald-400" /></div>}</div></div></div>)}</div>
  </div>
  <div className={`lg:col-span-2 w-full flex flex-col gap-5 ${activeMobileTab==='lab'?'flex':'hidden'} lg:flex`}>

@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationRadioactiveDecay({ onExit }: { onExit?: () => void }) {
@@ -28,10 +28,10 @@ export default function LabP10DerivationRadioactiveDecay({ onExit }: { onExit?: 
  };
 
  const steps = [
- { label: t('lab.p10_radDecay_step1_label'), formula: 'Nâ‚ = Â½ Nâ‚€', detail: t('lab.p10_radDecay_step1_detail') },
- { label: t('lab.p10_radDecay_step2_label'), formula: 'Nâ‚‚ = Â½ Ã— Â½ Nâ‚€ = (Â½)Â² Nâ‚€', detail: t('lab.p10_radDecay_step2_detail') },
- { label: t('lab.p10_radDecay_step3_label'), formula: 'N = (Â½)â¿ Nâ‚€ = Nâ‚€ / 2â¿', detail: t('lab.p10_radDecay_step3_detail') },
- { label: t('lab.p10_radDecay_step4_label'), formula: 'n = Î”t / TÂ½', detail: t('lab.p10_radDecay_step4_detail') }
+ { label: t('lab.p10_radDecay_step1_label'), formula: 'Nâ‚ = ½ Nâ‚€', detail: t('lab.p10_radDecay_step1_detail') },
+ { label: t('lab.p10_radDecay_step2_label'), formula: 'Nâ‚‚ = ½ × ½ Nâ‚€ = (½)² Nâ‚€', detail: t('lab.p10_radDecay_step2_detail') },
+ { label: t('lab.p10_radDecay_step3_label'), formula: 'N = (½)â¿ Nâ‚€ = Nâ‚€ / 2â¿', detail: t('lab.p10_radDecay_step3_detail') },
+ { label: t('lab.p10_radDecay_step4_label'), formula: 'n = Î”t / T½', detail: t('lab.p10_radDecay_step4_detail') }
  ];
   const [activeTab, setActiveTab] = useState<'learn' | 'test'>('learn');
   const [currentStep, setCurrentStep] = useState(0);
@@ -108,7 +108,7 @@ export default function LabP10DerivationRadioactiveDecay({ onExit }: { onExit?: 
  </div>
  <div className="bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl p-5 text-center shadow-lg mb-3">
  <p className="text-xs text-emerald-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p>
- <div className="text-2xl font-bold text-white mt-1"><MathFormula formula="N = Nâ‚€ / 2^(Î”t / TÂ½)" className="text-xl font-bold" /></div>
+ <div className="text-2xl font-bold text-white mt-1"><MathFormula formula="N = Nâ‚€ / 2^(Î”t / T½)" className="text-xl font-bold" /></div>
  <p className="text-xs text-emerald-200 mt-1">{t('lab.p10_radDecay_final_desc')}</p>
  </div>
  <div className="space-y-0">

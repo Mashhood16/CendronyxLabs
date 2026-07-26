@@ -286,7 +286,7 @@ nter mb-2">
  ) : (
  observations.map(obs => (
  <div key={obs.id} className="text-sm bg-slate-50 dark:bg-[#121212] p-2 rounded border shadow-sm flex items-start">
- <span className="text-emerald-600 mr-2 font-bold">â€¢</span>
+ <span className="text-emerald-600 mr-2 font-bold">”¢</span>
  <span className="text-gray-700 dark:text-[#ffffff]">{obs.text}</span>
  </div>
  ))

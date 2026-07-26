@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: () => void }) {
@@ -27,7 +27,7 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
  };
 
  const steps = [
- { label: t('lab.p10_tempCo_step1_label'), formula: 'Ïá´µ âˆ’ Ïâ‚€ âˆ Ïâ‚€ Ã— Î”T', detail: t('lab.p10_tempCo_step1_detail') },
+ { label: t('lab.p10_tempCo_step1_label'), formula: 'Ïá´µ âˆ’ Ïâ‚€ âˆ Ïâ‚€ × Î”T', detail: t('lab.p10_tempCo_step1_detail') },
  { label: t('lab.p10_tempCo_step2_label'), formula: 'Ïá´µ âˆ’ Ïâ‚€ = Î± Ïâ‚€ Î”T', detail: t('lab.p10_tempCo_step2_detail') },
  { label: t('lab.p10_tempCo_step3_label'), formula: 'Î± = (Ïá´µ âˆ’ Ïâ‚€) / (Ïâ‚€ Î”T)', detail: t('lab.p10_tempCo_step3_detail') },
  { label: t('lab.p10_tempCo_step4_label'), formula: 'Ïá´µ = Ïâ‚€ [1 + Î±(T âˆ’ Tâ‚€)]', detail: t('lab.p10_tempCo_step4_detail') }
@@ -136,7 +136,7 @@ export default function LabP10DerivationTempCoefficient({ onExit }: { onExit?: (
  <div className="space-y-3">
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_tempCo_rho0_label')}</span><span className="text-yellow-600 font-mono">{rho0.toExponential(2)} {t('lab.p10derivationtempcoefficient_m')}</span></div><input type="range" min="1e-8" max="1e-7" step="0.1e-8" value={rho0} onChange={e => { setRho0(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_tempCo_rhoT_label')}</span><span className="text-yellow-600 font-mono">{rhoT.toExponential(2)} {t('lab.p10derivationtempcoefficient_m')}</span></div><input type="range" min={rho0+0.1e-8} max="5e-7" step="0.1e-8" value={rhoT} onChange={e => { setRhoT(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
- <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_tempCo_dt_label')}</span><span className="text-yellow-600 font-mono">{dt}Â°C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
+ <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_tempCo_dt_label')}</span><span className="text-yellow-600 font-mono">{dt}°C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" /></div>
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
  <p className="text-xs text-slate-500 font-semibold uppercase">{t('lab.derivation_trace')}</p>
  <p className="text-sm text-slate-400">{t('lab.p10_tempCo_trace1', { alpha: alpha.toExponential(4) })}</p>

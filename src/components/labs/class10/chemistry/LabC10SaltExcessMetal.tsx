@@ -38,10 +38,10 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
  useEffect(() => {
  if (!acidAdded) setEquation("Empty");
  else if (acidAdded && znScoops === 0) setEquation("Hâ‚‚SOâ‚„(aq)");
- else if (isReacting) setEquation("Zn(s) + Hâ‚‚SOâ‚„(aq) âž” ZnSOâ‚„(aq) + Hâ‚‚(g)â†‘");
+ else if (isReacting) setEquation("Zn(s) + Hâ‚‚SOâ‚„(aq) âž” ZnSOâ‚„(aq) + Hâ‚‚(g)←‘");
  else if (hasExcessZn && !isFiltered) setEquation("ZnSOâ‚„(aq) + Excess Zn(s) [Reaction Complete]");
  else if (isFiltered && !isEvaporated) setEquation("Pure ZnSOâ‚„(aq) Filtrate");
- else if (isEvaporated && waterLevel > 0) setEquation("ZnSOâ‚„(aq) + Heat âž” ZnSOâ‚„(s) + Hâ‚‚O(g)â†‘");
+ else if (isEvaporated && waterLevel > 0) setEquation("ZnSOâ‚„(aq) + Heat âž” ZnSOâ‚„(s) + Hâ‚‚O(g)←‘");
  else if (isEvaporated && waterLevel === 0) setEquation("Solid ZnSOâ‚„ Crystals Formed!");
  }, [acidAdded, znScoops, isReacting, hasExcessZn, isFiltered, isEvaporated, waterLevel]);
 

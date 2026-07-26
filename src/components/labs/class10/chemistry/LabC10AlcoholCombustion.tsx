@@ -85,7 +85,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
  if (Math.abs(parseFloat(answer) - enthalpy) < 50) {
  setFeedback('Correct! Well done. In a real experiment, significant heat is lost to the surroundings.');
  } else {
- setFeedback(`Incorrect. Hint: q = mcÎ”T = ${targetV.current} Ã— 4.18 Ã— ${targetT.current}. Moles = Mass / 46. Î”H = (q in kJ) / moles.`);
+ setFeedback(`Incorrect. Hint: q = mcÎ”T = ${targetV.current} × 4.18 × ${targetT.current}. Moles = Mass / 46. Î”H = (q in kJ) / moles.`);
  }
  };
 
@@ -166,7 +166,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
  <rect x="98" y={180 - (waterTemp - 20)*2} width="4" height={(waterTemp - 20)*2 + 10} fill="red" />
  <circle cx="100" cy="185" r="6" fill="red" />
  
- <text x="120" y="80" fontSize="14" fontWeight="bold" fill="#333">{waterTemp.toFixed(1)}Â°C</text>
+ <text x="120" y="80" fontSize="14" fontWeight="bold" fill="#333">{waterTemp.toFixed(1)}°C</text>
  </svg>
 
  <div className="w-full mt-4 text-xs text-slate-600 dark:text-[#a1a1aa] space-y-1">
@@ -176,7 +176,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
  </div>
  <div className="flex justify-between">
  <span className="font-bold text-slate-800 dark:text-[#ffffff]">{t('lab.c10alcoholcombustion_water_temp')}</span>
- <span className="font-mono">{waterTemp.toFixed(1)} Â°C</span>
+ <span className="font-mono">{waterTemp.toFixed(1)} °C</span>
  </div>
  </div>
  </div>
@@ -242,7 +242,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
  </h3>
  <p className="text-sm text-orange-800 mb-3">
  
- {t('lab.c10alcoholcombustion_in_a_separate_experiment_a_stu')} <strong>{targetM.current} g</strong> {t('lab.c10alcoholcombustion_of_ethanol_to_heat')} <strong>{targetV.current} {t('lab.c10alcoholcombustion_cm')}</strong> {t('lab.c10alcoholcombustion_of_water_the_temperature_rise_')} <strong>{targetT.current} Â°C</strong>{t('lab.c10alcoholcombustion_calculate_the_enthalpy_of_comb')} <strong>{t('lab.c10alcoholcombustion_kj_mol')}</strong>{t('lab.c10alcoholcombustion_c_4_18_j_g_c_m_r_46')}
+ {t('lab.c10alcoholcombustion_in_a_separate_experiment_a_stu')} <strong>{targetM.current} g</strong> {t('lab.c10alcoholcombustion_of_ethanol_to_heat')} <strong>{targetV.current} {t('lab.c10alcoholcombustion_cm')}</strong> {t('lab.c10alcoholcombustion_of_water_the_temperature_rise_')} <strong>{targetT.current} °C</strong>{t('lab.c10alcoholcombustion_calculate_the_enthalpy_of_comb')} <strong>{t('lab.c10alcoholcombustion_kj_mol')}</strong>{t('lab.c10alcoholcombustion_c_4_18_j_g_c_m_r_46')}
  </p>
  <div className="flex gap-2">
  <input 

@@ -178,19 +178,19 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
  <p>{t('lab.e7vocabpunctuation_we_have_a_messy_manuscript_tha')}</p>
  <ul className="space-y-3">
  <li className="flex items-start gap-2">
- <span className="font-bold text-teal-600 dark:text-teal-400 mt-0.5">â€¢</span>
+ <span className="font-bold text-teal-600 dark:text-teal-400 mt-0.5">”¢</span>
  <div>
  <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_colons')}</strong> {t('lab.e7vocabpunctuation_find_where_a_colon_should_intr')}
  </div>
  </li>
  <li className="flex items-start gap-2">
- <span className="font-bold text-blue-600 dark:text-blue-400 mt-0.5">â€¢</span>
+ <span className="font-bold text-blue-600 dark:text-blue-400 mt-0.5">”¢</span>
  <div>
  <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_homophones')}</strong> {t('lab.e7vocabpunctuation_some')} <i>{t('lab.e7vocabpunctuation_there_their_they_re')}</i> {t('lab.e7vocabpunctuation_mix_ups_occurred_click_the_blu')}
  </div>
  </li>
  <li className="flex items-start gap-2">
- <span className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">â€¢</span>
+ <span className="font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">”¢</span>
  <div>
  <strong className="text-slate-800 dark:text-[#ffffff]">{t('lab.e7vocabpunctuation_modal_adverbs')}</strong> {t('lab.e7vocabpunctuation_the_tone_is_off_adjust_the_mod')}
  </div>

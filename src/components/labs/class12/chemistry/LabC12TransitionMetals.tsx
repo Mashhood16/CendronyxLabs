@@ -13,12 +13,12 @@ interface MetalComplex {
 }
 
 const complexes: MetalComplex[] = [
- { metal: 'CuÂ²âº', ligand: 'Hâ‚‚O', name: '[Cu(Hâ‚‚O)â‚†]Â²âº', color: '#93c5fd', lambda: 800, spin: 'High Spin' },
- { metal: 'CuÂ²âº', ligand: 'NHâ‚ƒ', name: '[Cu(NHâ‚ƒ)â‚„(Hâ‚‚O)â‚‚]Â²âº', color: '#1e3a8a', lambda: 600, spin: 'High Spin' },
- { metal: 'CoÂ²âº', ligand: 'Hâ‚‚O', name: '[Co(Hâ‚‚O)â‚†]Â²âº', color: '#fca5a5', lambda: 510, spin: 'High Spin' },
- { metal: 'CoÂ²âº', ligand: 'Clâ»', name: '[CoClâ‚„]Â²â»', color: '#3b82f6', lambda: 680, spin: 'High Spin (Tetrahedral)' },
- { metal: 'FeÂ³âº', ligand: 'Hâ‚‚O', name: '[Fe(Hâ‚‚O)â‚†]Â³âº', color: '#fef08a', lambda: 400, spin: 'High Spin' },
- { metal: 'FeÂ³âº', ligand: 'CNâ»', name: '[Fe(CN)â‚†]Â³â»', color: '#991b1b', lambda: 350, spin: 'Low Spin' },
+ { metal: 'Cu²âº', ligand: 'Hâ‚‚O', name: '[Cu(Hâ‚‚O)â‚†]²âº', color: '#93c5fd', lambda: 800, spin: 'High Spin' },
+ { metal: 'Cu²âº', ligand: 'NHâ‚ƒ', name: '[Cu(NHâ‚ƒ)â‚„(Hâ‚‚O)â‚‚]²âº', color: '#1e3a8a', lambda: 600, spin: 'High Spin' },
+ { metal: 'Co²âº', ligand: 'Hâ‚‚O', name: '[Co(Hâ‚‚O)â‚†]²âº', color: '#fca5a5', lambda: 510, spin: 'High Spin' },
+ { metal: 'Co²âº', ligand: 'Clâ»', name: '[CoClâ‚„]²â»', color: '#3b82f6', lambda: 680, spin: 'High Spin (Tetrahedral)' },
+ { metal: 'Fe³âº', ligand: 'Hâ‚‚O', name: '[Fe(Hâ‚‚O)â‚†]³âº', color: '#fef08a', lambda: 400, spin: 'High Spin' },
+ { metal: 'Fe³âº', ligand: 'CNâ»', name: '[Fe(CN)â‚†]³â»', color: '#991b1b', lambda: 350, spin: 'Low Spin' },
 ];
 
 export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void }) {
@@ -125,10 +125,10 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
  {/* eg level */}
  <div className="flex gap-2 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">←‘</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- {activeComplex.spin === 'High Spin' && <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>}
+ {activeComplex.spin === 'High Spin' && <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">←‘</span>}
  </div>
  </div>
  
@@ -140,13 +140,13 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
  {/* t2g level */}
  <div className="flex gap-2 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex lg:flex-1 overflow-y-auto min-h-0 lg:overflow-hidden rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘â†“</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">←‘←“</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">←‘</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">←‘</span>
  </div>
  </div>
  </div>

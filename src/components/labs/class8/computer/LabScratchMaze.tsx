@@ -167,8 +167,8 @@ export default function LabScratchMaze({ onExit }: LabProps) {
     >
      {block === 'MOVE_FORWARD' && 'move 1 step'}
      {block === 'JUMP' && 'jump 2 steps'}
-     {block === 'TURN_RIGHT' && 'turn â†» 90 degrees'}
-     {block === 'TURN_LEFT' && 'turn â†º 90 degrees'}
+     {block === 'TURN_RIGHT' && 'turn ←» 90 degrees'}
+     {block === 'TURN_LEFT' && 'turn ←º 90 degrees'}
      
      <button 
      onClick={() => setBlocks(blocks.filter((_, index) => index !== i))}

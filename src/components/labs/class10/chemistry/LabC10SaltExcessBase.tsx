@@ -38,13 +38,13 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
  setEquation("Hâ‚‚SOâ‚„(aq) + CuO(s)");
  } else if (action === 'heat' && step === 2) {
  setStep(3);
- setEquation("Hâ‚‚SOâ‚„(aq) + CuO(s) â†’ CuSOâ‚„(aq) + Hâ‚‚O(l) [Excess CuO remains]");
+ setEquation("Hâ‚‚SOâ‚„(aq) + CuO(s) → CuSOâ‚„(aq) + Hâ‚‚O(l) [Excess CuO remains]");
  } else if (action === 'filter' && step === 3) {
  setStep(4);
  setEquation("Filtrate: CuSOâ‚„(aq) | Residue: CuO(s)");
  } else if (action === 'crystallize' && step === 4) {
  setStep(5);
- setEquation("CuSOâ‚„(aq) â†’ CuSOâ‚„Â·5Hâ‚‚O(s) + Heat");
+ setEquation("CuSOâ‚„(aq) → CuSOâ‚„·5Hâ‚‚O(s) + Heat");
  setCurrentYield(theorYield * (0.80 + Math.random() * 0.10));
  }
  };

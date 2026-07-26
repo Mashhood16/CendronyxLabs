@@ -186,7 +186,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
  <div>
  <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.m10vectorapplications_angle')}</span>
- <span>{ang1}Â°</span>
+ <span>{ang1}°</span>
  </div>
  <input type="range" min="0" max="360" step="1" value={ang1} onChange={e => setAng1(Number(e.target.value))} className="w-full accent-blue-600" />
  </div>
@@ -204,7 +204,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
  <div>
  <div className="flex justify-between text-xs font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.m10vectorapplications_angle')}</span>
- <span>{ang2}Â°</span>
+ <span>{ang2}°</span>
  </div>
  <input type="range" min="0" max="360" step="1" value={ang2} onChange={e => setAng2(Number(e.target.value))} className="w-full accent-red-500" />
  </div>

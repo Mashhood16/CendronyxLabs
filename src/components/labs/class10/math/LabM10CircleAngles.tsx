@@ -176,10 +176,10 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  points={pts.map(p => `${p.x},${p.y}`).join(' ')} 
  fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" strokeWidth="2" 
  />
- <text x={pts[0].x > center.x ? pts[0].x+10 : pts[0].x-30} y={pts[0].y > center.y ? pts[0].y+20 : pts[0].y-10} className="text-xs font-bold">{getAngleDeg(pts[3], pts[0], pts[1])}Â°</text>
- <text x={pts[1].x > center.x ? pts[1].x+10 : pts[1].x-30} y={pts[1].y > center.y ? pts[1].y+20 : pts[1].y-10} className="text-xs font-bold">{getAngleDeg(pts[0], pts[1], pts[2])}Â°</text>
- <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[1], pts[2], pts[3])}Â°</text>
- <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[2], pts[3], pts[0])}Â°</text>
+ <text x={pts[0].x > center.x ? pts[0].x+10 : pts[0].x-30} y={pts[0].y > center.y ? pts[0].y+20 : pts[0].y-10} className="text-xs font-bold">{getAngleDeg(pts[3], pts[0], pts[1])}°</text>
+ <text x={pts[1].x > center.x ? pts[1].x+10 : pts[1].x-30} y={pts[1].y > center.y ? pts[1].y+20 : pts[1].y-10} className="text-xs font-bold">{getAngleDeg(pts[0], pts[1], pts[2])}°</text>
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[1], pts[2], pts[3])}°</text>
+ <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-red-600">{getAngleDeg(pts[2], pts[3], pts[0])}°</text>
  
  <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_opposite_angles_sum_180')}</text>
  </>
@@ -194,8 +194,8 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  <line x1={pts[0].x} y1={pts[0].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
  <line x1={pts[1].x} y1={pts[1].y} x2={pts[3].x} y2={pts[3].y} stroke="#10b981" strokeWidth="2" />
  
- <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-blue-600">{getAngleDeg(pts[0], pts[2], pts[1])}Â°</text>
- <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-green-600">{getAngleDeg(pts[0], pts[3], pts[1])}Â°</text>
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-blue-600">{getAngleDeg(pts[0], pts[2], pts[1])}°</text>
+ <text x={pts[3].x > center.x ? pts[3].x+10 : pts[3].x-30} y={pts[3].y > center.y ? pts[3].y+20 : pts[3].y-10} className="text-xs font-bold text-green-600">{getAngleDeg(pts[0], pts[3], pts[1])}°</text>
  
  <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angles_in_the_same_segment_are')}</text>
  </>
@@ -217,8 +217,8 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  stroke="#ef4444" strokeWidth="2" 
  />
  
- <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-green-600">{altAng}Â°</text>
- <text x={pts[0].x + 30*tx} y={pts[0].y + 30*ty} className="text-xs font-bold text-red-600">{altAng}Â°</text>
+ <text x={pts[2].x > center.x ? pts[2].x+10 : pts[2].x-30} y={pts[2].y > center.y ? pts[2].y+20 : pts[2].y-10} className="text-xs font-bold text-green-600">{altAng}°</text>
+ <text x={pts[0].x + 30*tx} y={pts[0].y + 30*ty} className="text-xs font-bold text-red-600">{altAng}°</text>
  
  <text x={10} y={350} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_between_tangent_and_chor')}</text>
  <text x={10} y={370} className="text-sm fill-slate-700 font-medium">{t('lab.m10circleangles_angle_in_alternate_segment')}</text>
@@ -250,13 +250,13 @@ export default function LabM10CircleAngles({ onExit }: Props) {
  <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
  <p className="text-sm text-slate-800 dark:text-[#ffffff] font-medium mb-4">
  {questionParams.type === 'cyclic' && 
- `In a cyclic quadrilateral ABCD, an interior angle is ${questionParams.given}Â°. What is the measure of the opposite interior angle?`
+ `In a cyclic quadrilateral ABCD, an interior angle is ${questionParams.given}°. What is the measure of the opposite interior angle?`
  }
  {questionParams.type === 'segment' && 
- `Two angles subtended by the same arc at the circumference are xÂ° and ${questionParams.given}Â°. What is the value of x?`
+ `Two angles subtended by the same arc at the circumference are x° and ${questionParams.given}°. What is the value of x?`
  }
  {questionParams.type === 'alternate' && 
- `The angle between a tangent and a chord is ${questionParams.given}Â°. What is the angle subtended by this chord in the alternate segment?`
+ `The angle between a tangent and a chord is ${questionParams.given}°. What is the angle subtended by this chord in the alternate segment?`
  }
  </p>
  

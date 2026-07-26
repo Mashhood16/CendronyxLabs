@@ -27,13 +27,13 @@ const SUBJECT_ACCENT: Record<string, string> = {
 };
 
 const SUBJECT_BANNER: Record<string, { icon: typeof Atom; gradient: string; description: string }> = {
-  physics:    { icon: Atom,        gradient: 'from-blue-600 via-indigo-600 to-purple-600',    description: 'Forces, Energy, Waves, Light & Electromagnetism â€” with interactive labs and step-by-step derivations' },
-  chemistry:  { icon: Beaker,      gradient: 'from-emerald-600 via-teal-600 to-cyan-600',     description: 'Reactions, Bonding, Atomic Structure & Organic Chemistry â€” with virtual lab experiments and simulations' },
-  biology:    { icon: Dna,         gradient: 'from-rose-600 via-pink-600 to-fuchsia-600',     description: 'Cells, Genetics, Ecology & Human Body Systems â€” with interactive dissections and microscopy' },
-  math:       { icon: Calculator,  gradient: 'from-violet-500 via-purple-600 to-indigo-600',  description: 'Algebra, Geometry, Trigonometry & Calculus â€” with interactive problem solving and theorem proofs' },
-  computer:   { icon: Laptop,      gradient: 'from-sky-500 via-blue-600 to-indigo-700',       description: 'Programming, Networks, AI, Data Science & Cyber Safety â€” with hands-on coding and simulations' },
-  science:    { icon: Activity,    gradient: 'from-amber-500 via-orange-600 to-red-600',       description: 'Integrated Science Curriculum â€” covering physics, chemistry, and biology fundamentals' },
-  english:    { icon: BookOpen,    gradient: 'from-fuchsia-500 via-pink-600 to-rose-600',      description: 'Grammar, Vocabulary, Reading Comprehension & Writing Mechanics â€” with interactive exercises' },
+  physics:    { icon: Atom,        gradient: 'from-blue-600 via-indigo-600 to-purple-600',    description: 'Forces, Energy, Waves, Light & Electromagnetism — with interactive labs and step-by-step derivations' },
+  chemistry:  { icon: Beaker,      gradient: 'from-emerald-600 via-teal-600 to-cyan-600',     description: 'Reactions, Bonding, Atomic Structure & Organic Chemistry — with virtual lab experiments and simulations' },
+  biology:    { icon: Dna,         gradient: 'from-rose-600 via-pink-600 to-fuchsia-600',     description: 'Cells, Genetics, Ecology & Human Body Systems — with interactive dissections and microscopy' },
+  math:       { icon: Calculator,  gradient: 'from-violet-500 via-purple-600 to-indigo-600',  description: 'Algebra, Geometry, Trigonometry & Calculus — with interactive problem solving and theorem proofs' },
+  computer:   { icon: Laptop,      gradient: 'from-sky-500 via-blue-600 to-indigo-700',       description: 'Programming, Networks, AI, Data Science & Cyber Safety — with hands-on coding and simulations' },
+  science:    { icon: Activity,    gradient: 'from-amber-500 via-orange-600 to-red-600',       description: 'Integrated Science Curriculum — covering physics, chemistry, and biology fundamentals' },
+  english:    { icon: BookOpen,    gradient: 'from-fuchsia-500 via-pink-600 to-rose-600',      description: 'Grammar, Vocabulary, Reading Comprehension & Writing Mechanics — with interactive exercises' },
 };
 
 export default function ModuleSelection() {

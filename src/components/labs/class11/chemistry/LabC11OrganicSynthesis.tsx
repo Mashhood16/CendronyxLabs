@@ -135,7 +135,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
  <div className="mt-auto shrink-0">
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
  <span>{t('lab.c11organicsynthesis_furnace_temperature')}</span>
- <span className="font-mono text-rose-600">{temperature}Â°C</span>
+ <span className="font-mono text-rose-600">{temperature}°C</span>
  </label>
  <input 
  type="range" 

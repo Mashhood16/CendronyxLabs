@@ -44,7 +44,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
  {t('lab.m8transformations_rotate_the_turbine_gear_by')} {targetAngle}{t('lab.m8transformations_clockwise_to_align_with_the_ge')}
  </p>
  <div className="flex flex-col gap-2">
- <label className="text-sm font-medium dark:text-[#ffffff]">{t('lab.m8transformations_angle')} {angle}Â°</label>
+ <label className="text-sm font-medium dark:text-[#ffffff]">{t('lab.m8transformations_angle')} {angle}°</label>
  <input 
  type="range" 
  min="0" 

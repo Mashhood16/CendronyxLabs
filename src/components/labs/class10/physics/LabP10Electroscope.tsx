@@ -158,7 +158,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Angle Display overlay */}
  <div className={`w-full absolute top-4 right-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
  <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.p10_escope_angle_display')}</span>
- <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}Â°</span>
+ <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}°</span>
  </div>
 
  <div className="relative w-[300px] h-[400px] flex justify-center">
@@ -253,7 +253,7 @@ const { recordLabData, setLabScore } = useLab();
  <td className="px-4 py-2 font-mono">{dp.qRod}</td>
  <td className="px-4 py-2 font-mono">{dp.d}</td>
  <td className="px-4 py-2 font-mono">{dp.qNet}</td>
- <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}Â°</td>
+ <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}°</td>
  </tr>
  ))
  )}

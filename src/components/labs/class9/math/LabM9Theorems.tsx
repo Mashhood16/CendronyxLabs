@@ -70,7 +70,7 @@ function ProductLogInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
  
  {t('lab.m9theorems_log')}<sub>{b}</sub>({n}) = {logN.toFixed(4)}<br />
  
- {t('lab.m9theorems_log')}<sub>{b}</sub>({m} Ã— {n}{t('lab.m9theorems_log_1')}<sub>{b}</sub>({m * n}) = <strong>{logMN.toFixed(4)}</strong><br />
+ {t('lab.m9theorems_log')}<sub>{b}</sub>({m} × {n}{t('lab.m9theorems_log_1')}<sub>{b}</sub>({m * n}) = <strong>{logMN.toFixed(4)}</strong><br />
  
  {t('lab.m9theorems_sum')} <strong>{(logM + logN).toFixed(4)}</strong> {t('lab.m9theorems_log_2')}<sub>{b}</sub>({m * n}) âœ“
  </p>
@@ -193,7 +193,7 @@ function PowerLogInteractive({ onAnswer }: { onAnswer: (correct: boolean) => voi
  
  {t('lab.m9theorems_log')}<sub>{b}</sub>({m}<sup>{n}</sup>{t('lab.m9theorems_log_1')}<sub>{b}</sub>({Math.pow(m, n)}) = <strong>{logMN.toFixed(4)}</strong><br />
  
- {t('lab.m9theorems_n_log')}<sub>{b}</sub>{t('lab.m9theorems_m_1')} {n} Ã— {logM.toFixed(4)} = <strong>{(n * logM).toFixed(4)}</strong> âœ“
+ {t('lab.m9theorems_n_log')}<sub>{b}</sub>{t('lab.m9theorems_m_1')} {n} × {logM.toFixed(4)} = <strong>{(n * logM).toFixed(4)}</strong> âœ“
  </p>
  </div>
  <div className="flex gap-2">
@@ -393,7 +393,7 @@ function QuotientIdentityInteractive({ onAnswer }: { onAnswer: (correct: boolean
  <div>
  <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.m9theorems_angle')}</label>
  <input type="range" min="0" max="89" step="1" value={angle} onChange={e => { setAngle(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-yellow-500" />
- <span className="text-sm font-mono text-yellow-600">Î¸ = {angle}Â°</span>
+ <span className="text-sm font-mono text-yellow-600">Î¸ = {angle}°</span>
  </div>
  {/* Right triangle visual */}
  <div className="relative h-28 bg-slate-100 dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-200 dark:border-[#2a2a2a]">
@@ -408,13 +408,13 @@ function QuotientIdentityInteractive({ onAnswer }: { onAnswer: (correct: boolean
  <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-800">
  <p className="text-xs text-yellow-700 dark:text-yellow-300 font-mono">
  
- {t('lab.m9theorems_sin')}{angle}Â°) = {sinVal.toFixed(4)}<br />
+ {t('lab.m9theorems_sin')}{angle}°) = {sinVal.toFixed(4)}<br />
  
- {t('lab.m9theorems_cos')}{angle}Â°) = {cosVal.toFixed(4)}<br />
+ {t('lab.m9theorems_cos')}{angle}°) = {cosVal.toFixed(4)}<br />
  
- {t('lab.m9theorems_tan')}{angle}Â°) = {tanVal.toFixed(4)}<br />
+ {t('lab.m9theorems_tan')}{angle}°) = {tanVal.toFixed(4)}<br />
  
- {t('lab.m9theorems_sin_cos')} {sinVal.toFixed(4)} / {cosVal.toFixed(4)} = <strong>{sinDivCos.toFixed(4)}</strong> {t('lab.m9theorems_tan_1')}{angle}Â°) âœ“<br />
+ {t('lab.m9theorems_sin_cos')} {sinVal.toFixed(4)} / {cosVal.toFixed(4)} = <strong>{sinDivCos.toFixed(4)}</strong> {t('lab.m9theorems_tan_1')}{angle}°) âœ“<br />
  
  {t('lab.m9theorems_cot_cos_sin')} {cosVal.toFixed(4)} / {sinVal.toFixed(4)} = <strong>{(cosVal/sinVal).toFixed(4)}</strong>
  </p>
@@ -430,7 +430,7 @@ function QuotientIdentityInteractive({ onAnswer }: { onAnswer: (correct: boolean
  );
 }
 
-// --- Pythagorean Identity: sinÂ² + cosÂ² = 1 ---
+// --- Pythagorean Identity: sin² + cos² = 1 ---
 function PythagoreanIdentityInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
  const { t } = useTranslate();
  const [angle, setAngle] = useState(37);
@@ -454,7 +454,7 @@ function PythagoreanIdentityInteractive({ onAnswer }: { onAnswer: (correct: bool
  <div>
  <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.m9theorems_angle')}</label>
  <input type="range" min="0" max="360" step="1" value={angle} onChange={e => { setAngle(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
- <span className="text-sm font-mono text-emerald-600">Î¸ = {angle}Â°</span>
+ <span className="text-sm font-mono text-emerald-600">Î¸ = {angle}°</span>
  </div>
  {/* Unit circle visualization */}
  <div className="relative h-32 bg-slate-100 dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-200 dark:border-[#2a2a2a]">
@@ -470,7 +470,7 @@ function PythagoreanIdentityInteractive({ onAnswer }: { onAnswer: (correct: bool
  <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
  <p className="text-xs text-emerald-700 dark:text-emerald-300 font-mono">
  
- {t('lab.m9theorems_sin_2')}{angle}{t('lab.m9theorems_cos_2')}{angle}Â°) = ({sinVal.toFixed(4)})Â² + ({cosVal.toFixed(4)})Â²<br />
+ {t('lab.m9theorems_sin_2')}{angle}{t('lab.m9theorems_cos_2')}{angle}°) = ({sinVal.toFixed(4)})² + ({cosVal.toFixed(4)})²<br />
  = {(sinVal * sinVal).toFixed(4)} + {(cosVal * cosVal).toFixed(4)} = <strong>{sin2cos2.toFixed(6)}</strong>
  </p>
  <p className="text-[10px] text-emerald-600 dark:text-emerald-400 mt-1 italic">{t('lab.m9theorems_no_matter_the_angle_sin_cos_al')}</p>
@@ -551,8 +551,8 @@ function DistanceFormulaInteractive({ onAnswer }: { onAnswer: (correct: boolean)
  <div className="bg-violet-50 dark:bg-violet-900/20 rounded-lg p-3 border border-violet-200 dark:border-violet-800">
  <p className="text-xs text-violet-700 dark:text-violet-300 font-mono">
  
- {t('lab.m9theorems_d')}{x2} âˆ’ {x1})Â² + ({y2} âˆ’ {y1})Â²)<br />
- = âˆš({dx}Â² + {dy}Â²) = âˆš({dx*dx} + {dy*dy}) = âˆš{dx*dx + dy*dy} = <strong>{distance.toFixed(2)}</strong>
+ {t('lab.m9theorems_d')}{x2} âˆ’ {x1})² + ({y2} âˆ’ {y1})²)<br />
+ = âˆš({dx}² + {dy}²) = âˆš({dx*dx} + {dy*dy}) = âˆš{dx*dx + dy*dy} = <strong>{distance.toFixed(2)}</strong>
  </p>
  </div>
  <div className="flex gap-2">
@@ -619,7 +619,7 @@ function SlopeInterceptInteractive({ onAnswer }: { onAnswer: (correct: boolean) 
  <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
  <p className="text-xs text-amber-700 dark:text-amber-300 font-mono">
  
- {t('lab.m9theorems_y_mx_c')} {m} Ã— {xVal} + {c} = <strong>{yResult}</strong>
+ {t('lab.m9theorems_y_mx_c')} {m} × {xVal} + {c} = <strong>{yResult}</strong>
  </p>
  </div>
  <div className="flex gap-2">
@@ -796,7 +796,7 @@ function TwoInterceptInteractive({ onAnswer }: { onAnswer: (correct: boolean) =>
  {t('lab.m9theorems_at_x')} {x}: {x}/{a} {t('lab.m9theorems_y_3')}{b} = 1<br />
  y/{b} = 1 âˆ’ {x}/{a} = {(1 - x/a).toFixed(3)}<br />
  
- {t('lab.m9theorems_y_1')} {(1 - x/a).toFixed(3)} Ã— {b} = <strong>{y.toFixed(2)}</strong>
+ {t('lab.m9theorems_y_1')} {(1 - x/a).toFixed(3)} × {b} = <strong>{y.toFixed(2)}</strong>
  </p>
  </div>
  <div className="flex gap-2">
@@ -835,7 +835,7 @@ function NormalFormInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
  <div className="grid grid-cols-2 gap-3">
  <div><label className="text-xs font-semibold">{t('lab.m9theorems_inclination')}</label>
  <input type="range" min="0" max="90" step="1" value={alpha} onChange={e => { setAlpha(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" />
- <span className="text-xs">{alpha}Â°</span></div>
+ <span className="text-xs">{alpha}°</span></div>
  <div><label className="text-xs font-semibold">{t('lab.m9theorems_p_perp_distance')}</label>
  <input type="range" min="1" max="10" step="0.5" value={p} onChange={e => { setP(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-orange-500" />
  <span className="text-xs">{p}</span></div>
@@ -845,7 +845,7 @@ function NormalFormInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
  <line x1="20" y1={100 - 10 * p} x2="180" y2={100 - 10 * p - 160 * Math.tan(rad) * 0.2} stroke="#f97316" strokeWidth="1.5" />
  <line x1="20" y1="100" x2="20" y2={100 - 10 * p} stroke="#8b5cf6" strokeWidth="1" strokeDasharray="3,3" />
  <text x="10" y={100 - 5 * p} className="text-[8px] fill-violet-600">p={p}</text>
- <text x="60" y="20" className="text-[8px] fill-orange-600">Î±={alpha}Â°</text>
+ <text x="60" y="20" className="text-[8px] fill-orange-600">Î±={alpha}°</text>
  </svg>
  </div>
  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
@@ -853,7 +853,7 @@ function NormalFormInteractive({ onAnswer }: { onAnswer: (correct: boolean) => v
  
  {t('lab.m9theorems_x_cos_y_sin_p')}<br />
  
- {t('lab.m9theorems_x_cos')}{alpha}{t('lab.m9theorems_y_sin')}{alpha}Â°) = {p}<br />
+ {t('lab.m9theorems_x_cos')}{alpha}{t('lab.m9theorems_y_sin')}{alpha}°) = {p}<br />
  x({cosA.toFixed(4)}{t('lab.m9theorems_y_4')}{sinA.toFixed(4)}) = {p}
  </p>
  </div>
@@ -909,8 +909,8 @@ function AngleBetweenLinesInteractive({ onAnswer }: { onAnswer: (correct: boolea
  <p className="text-xs text-rose-700 dark:text-rose-300 font-mono">
  
  {t('lab.m9theorems_tan_m_m_1_m_m')}<br />
- = |({m2} âˆ’ {m1}) / (1 + {m1}Ã—{m2})| = |{m2 - m1} / {1 + m1 * m2}|<br />
- Î¸ = <strong>{thetaDeg.toFixed(1)}Â°</strong>
+ = |({m2} âˆ’ {m1}) / (1 + {m1}×{m2})| = |{m2 - m1} / {1 + m1 * m2}|<br />
+ Î¸ = <strong>{thetaDeg.toFixed(1)}°</strong>
  </p>
  </div>
  <div className="flex gap-2">
@@ -918,7 +918,7 @@ function AngleBetweenLinesInteractive({ onAnswer }: { onAnswer: (correct: boolea
  placeholder={t('lab.m9theorems_degrees')} className="flex-1 px-3 py-2 text-sm border border-slate-300 dark:border-[#2a2a2a] rounded-lg bg-white dark:bg-[#121212] focus:ring-2 focus:ring-rose-500 outline-none" />
  <button onClick={handleCheck} className="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg transition-colors">{t('lab.m9theorems_check')}</button>
  </div>
- {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t('lab.m9theorems_correct')} {thetaDeg.toFixed(1)}Â°</p>}
+ {checkResult === 'correct' && <p className="text-xs text-emerald-600"><CheckCircle className="w-3 h-3 inline" /> {t('lab.m9theorems_correct')} {thetaDeg.toFixed(1)}°</p>}
  {checkResult === 'incorrect' && <p className="text-xs text-red-500"><XCircle className="w-3 h-3 inline" /> {t('lab.m9theorems_try_tan_m_m_1_m_m')}</p>}
  </div>
  );
@@ -936,10 +936,10 @@ const THEOREMS: TheoremModule[] = [
  formulaDesc: 'The log of a product equals the sum of the logs.',
  color: 'teal',
  steps: [
- { label: 'Set up variables', content: 'ðŸ§® You\'re a sound engineer mixing a live concert. The microphone picks up sound at power m = 4 units, and the amplifier adds n = 8 units. To figure out the total gain, you reach for logarithms. Let log_b m = x and log_b n = y â€” these represent the "logarithmic power" of each signal.' },
+ { label: 'Set up variables', content: 'ðŸ§® You\'re a sound engineer mixing a live concert. The microphone picks up sound at power m = 4 units, and the amplifier adds n = 8 units. To figure out the total gain, you reach for logarithms. Let log_b m = x and log_b n = y — these represent the "logarithmic power" of each signal.' },
  { label: 'Convert to exponentials', content: 'Converting back: m = b^x and n = b^y. In our concert, if b = 2 (binary amplification), then m = 2^x and n = 2^y. The exponential form reveals the actual multipliers hiding behind the log values.' },
- { label: 'Multiply the equations', content: 'Now multiply m Ã— n: mn = b^x Â· b^y. When multiplying powers with the same base, we ADD the exponents: mn = b^(x+y). This is the key insight â€” multiplication in the real world becomes addition in log world.' },
- { label: 'Convert back to logs', content: 'Convert mn = b^(x+y) back to logarithmic form: log_b(mn) = x + y. Substitute x = log_b m and y = log_b n, and you get: log_b(mn) = log_b m + log_b n. The total sound power (product) equals the sum of the individual log powers. This is why the Richter scale for earthquakes uses logs â€” a magnitude 8 earthquake isn\'t twice as powerful as a magnitude 4, it\'s 10,000 times!' },
+ { label: 'Multiply the equations', content: 'Now multiply m × n: mn = b^x · b^y. When multiplying powers with the same base, we ADD the exponents: mn = b^(x+y). This is the key insight — multiplication in the real world becomes addition in log world.' },
+ { label: 'Convert back to logs', content: 'Convert mn = b^(x+y) back to logarithmic form: log_b(mn) = x + y. Substitute x = log_b m and y = log_b n, and you get: log_b(mn) = log_b m + log_b n. The total sound power (product) equals the sum of the individual log powers. This is why the Richter scale for earthquakes uses logs — a magnitude 8 earthquake isn\'t twice as powerful as a magnitude 4, it\'s 10,000 times!' },
  ],
  interactive: ProductLogInteractive,
  },
@@ -953,8 +953,8 @@ const THEOREMS: TheoremModule[] = [
  steps: [
  { label: 'Set up variables', content: 'ðŸ”¬ You\'re a chemist measuring the concentration of a solution before and after dilution. The initial concentration is m = 32 M (molar) and after dilution it drops to n = 4 M. The ratio m/n tells you the dilution factor. Let\'s set log_b m = x and log_b n = y.' },
  { label: 'Convert to exponentials', content: 'Convert to exponential form: m = b^x and n = b^y. With base b = 10 (common log), we have 32 = 10^x and 4 = 10^y. The exponents x and y are the powers of 10 that give us these concentrations.' },
- { label: 'Divide the equations', content: 'Divide m by n: m/n = b^x / b^y. When dividing powers with the same base, we SUBTRACT the exponents: m/n = b^(xâˆ’y). Division in the real world becomes subtraction in log world â€” this is the magic that makes slide rules work!' },
- { label: 'Convert back to logs', content: 'Convert m/n = b^(xâˆ’y) to log form: log_b(m/n) = x âˆ’ y. Substituting back: log_b(m/n) = log_b m âˆ’ log_b n. The dilution factor in log terms is just the difference of the individual log concentrations. This is why pH = âˆ’log[Hâº] â€” a solution at pH 3 is 100Ã— more acidic than pH 5, because 10^(5âˆ’3) = 10Â² = 100!' },
+ { label: 'Divide the equations', content: 'Divide m by n: m/n = b^x / b^y. When dividing powers with the same base, we SUBTRACT the exponents: m/n = b^(xâˆ’y). Division in the real world becomes subtraction in log world — this is the magic that makes slide rules work!' },
+ { label: 'Convert back to logs', content: 'Convert m/n = b^(xâˆ’y) to log form: log_b(m/n) = x âˆ’ y. Substituting back: log_b(m/n) = log_b m âˆ’ log_b n. The dilution factor in log terms is just the difference of the individual log concentrations. This is why pH = âˆ’log[Hâº] — a solution at pH 3 is 100× more acidic than pH 5, because 10^(5âˆ’3) = 10² = 100!' },
  ],
  interactive: QuotientLogInteractive,
  },
@@ -966,10 +966,10 @@ const THEOREMS: TheoremModule[] = [
  formulaDesc: 'The log of a power equals the exponent times the log of the base.',
  color: 'rose',
  steps: [
- { label: 'Set up the equation', content: 'ðŸ’° You\'re an investor watching your money grow. Your initial investment of m = $3,000 grows at b = 2Ã— per year. After n = 4 years, your money multiplies by 2^4. Let log_b m = x, meaning b^x = m.' },
- { label: 'Convert m to exponential', content: 'Convert m = b^x. Your initial $3,000 = 2^x means x = logâ‚‚(3000) â‰ˆ 11.55 â€” the "doubling power" of your investment.' },
- { label: 'Raise both sides to power n', content: 'Raise both sides to the n-th power: m^n = (b^x)^n. Using the power of a power rule: m^n = b^(nx). Your investment after 4 years: 3000^4? No! Wait â€” m^n means (initial money) raised to n, which is different from compound interest. This is a mathematical power, not financial.' },
- { label: 'Convert to log form', content: 'Converting m^n = b^(nx) to log form: log_b(m^n) = nx. Substituting x = log_b m: log_b(m^n) = n log_b m. The exponent "pulls down" in front of the log! This is why astronomers love logs: the distance to the farthest galaxies is 10^26 meters â€” logâ‚â‚€(10^26) = 26 Ã— logâ‚â‚€(10) = 26. A 26 on the log scale is easy to write and compare!' },
+ { label: 'Set up the equation', content: 'ðŸ’° You\'re an investor watching your money grow. Your initial investment of m = $3,000 grows at b = 2× per year. After n = 4 years, your money multiplies by 2^4. Let log_b m = x, meaning b^x = m.' },
+ { label: 'Convert m to exponential', content: 'Convert m = b^x. Your initial $3,000 = 2^x means x = logâ‚‚(3000) â‰ˆ 11.55 — the "doubling power" of your investment.' },
+ { label: 'Raise both sides to power n', content: 'Raise both sides to the n-th power: m^n = (b^x)^n. Using the power of a power rule: m^n = b^(nx). Your investment after 4 years: 3000^4? No! Wait — m^n means (initial money) raised to n, which is different from compound interest. This is a mathematical power, not financial.' },
+ { label: 'Convert to log form', content: 'Converting m^n = b^(nx) to log form: log_b(m^n) = nx. Substituting x = log_b m: log_b(m^n) = n log_b m. The exponent "pulls down" in front of the log! This is why astronomers love logs: the distance to the farthest galaxies is 10^26 meters — logâ‚â‚€(10^26) = 26 × logâ‚â‚€(10) = 26. A 26 on the log scale is easy to write and compare!' },
  ],
  interactive: PowerLogInteractive,
  },
@@ -977,14 +977,14 @@ const THEOREMS: TheoremModule[] = [
  id: 'change-base',
  icon: Infinity,
  title: 'Change of Base Law',
- formula: 'log_a m = log_b m Â· log_a b',
+ formula: 'log_a m = log_b m · log_a b',
  formulaDesc: 'Convert a logarithm from one base to any other base.',
  color: 'cyan',
  steps: [
  { label: 'Set up the equation', content: 'ðŸ“± You\'re programming a calculator that only has logâ‚â‚€ (common log) and ln (natural log) buttons, but you need to compute logâ‚‚(8). This is the classic problem the Change of Base Law solves. Let log_b m = x, where b is the target base and m is the number.' },
  { label: 'Convert to exponentials', content: 'Convert: m = b^x. We want to express this in terms of a known base a. Taking log_a of both sides: log_a m = log_a(b^x). Now we can use the Power Law in reverse!' },
- { label: 'Apply the Power Law', content: 'log_a m = x Â· log_a b. The exponent x "pulls down" in front. Now isolate x: x = log_a m / log_a b.' },
- { label: 'Substitute back', content: 'Since x = log_b m, we get: log_b m = log_a m / log_a b. That\'s the formula! So logâ‚‚(8) = logâ‚â‚€(8) / logâ‚â‚€(2) = 0.9031 / 0.3010 = 3. Indeed, 2Â³ = 8. This is THE most practical log law because it lets you compute ANY log with just the logâ‚â‚€ or ln button on your calculator!' },
+ { label: 'Apply the Power Law', content: 'log_a m = x · log_a b. The exponent x "pulls down" in front. Now isolate x: x = log_a m / log_a b.' },
+ { label: 'Substitute back', content: 'Since x = log_b m, we get: log_b m = log_a m / log_a b. That\'s the formula! So logâ‚‚(8) = logâ‚â‚€(8) / logâ‚â‚€(2) = 0.9031 / 0.3010 = 3. Indeed, 2³ = 8. This is THE most practical log law because it lets you compute ANY log with just the logâ‚â‚€ or ln button on your calculator!' },
  ],
  interactive: ChangeBaseInteractive,
  },
@@ -995,13 +995,13 @@ const THEOREMS: TheoremModule[] = [
  icon: PieChart,
  title: 'Associative Property of Union',
  formula: '(A âˆª B) âˆª C = A âˆª (B âˆª C)',
- formulaDesc: 'The union operation is associative â€” grouping doesn\'t matter.',
+ formulaDesc: 'The union operation is associative — grouping doesn\'t matter.',
  color: 'indigo',
  steps: [
  { label: 'Let x be an element', content: 'ðŸŸï¸ Imagine three groups of students at a school fair: Group A runs the food stall, Group B runs games, and Group C runs the raffle. Let x be any student. If x is in (A âˆª B) âˆª C, then...' },
  { label: 'Apply union definition', content: 'x âˆˆ (A âˆª B) âˆª C means x âˆˆ (A âˆª B) OR x âˆˆ C. And x âˆˆ (A âˆª B) means x âˆˆ A OR x âˆˆ B. So overall: (x âˆˆ A OR x âˆˆ B) OR x âˆˆ C.' },
- { label: 'Re-group the ORs', content: 'The logical OR is associative â€” (P OR Q) OR R = P OR (Q OR R). So (x âˆˆ A OR x âˆˆ B) OR x âˆˆ C = x âˆˆ A OR (x âˆˆ B OR x âˆˆ C). The school fair doesn\'t care how you group the teams â€” either way, x is part of the combined group!' },
- { label: 'Convert back to sets', content: 'x âˆˆ A OR (x âˆˆ B OR x âˆˆ C) means x âˆˆ A OR x âˆˆ (B âˆª C), which means x âˆˆ A âˆª (B âˆª C). So (A âˆª B) âˆª C âŠ† A âˆª (B âˆª C). Proving the reverse containment works the same way. Thus (A âˆª B) âˆª C = A âˆª (B âˆª C). Grouping doesn\'t matter â€” the total union is the same!' },
+ { label: 'Re-group the ORs', content: 'The logical OR is associative — (P OR Q) OR R = P OR (Q OR R). So (x âˆˆ A OR x âˆˆ B) OR x âˆˆ C = x âˆˆ A OR (x âˆˆ B OR x âˆˆ C). The school fair doesn\'t care how you group the teams — either way, x is part of the combined group!' },
+ { label: 'Convert back to sets', content: 'x âˆˆ A OR (x âˆˆ B OR x âˆˆ C) means x âˆˆ A OR x âˆˆ (B âˆª C), which means x âˆˆ A âˆª (B âˆª C). So (A âˆª B) âˆª C âŠ† A âˆª (B âˆª C). Proving the reverse containment works the same way. Thus (A âˆª B) âˆª C = A âˆª (B âˆª C). Grouping doesn\'t matter — the total union is the same!' },
  ],
  interactive: UnionAssociativeInteractive,
  },
@@ -1015,7 +1015,7 @@ const THEOREMS: TheoremModule[] = [
  steps: [
  { label: 'Let y be an element', content: 'ðŸŽ­ Three clubs at school: Art Club A, Music Club B, and Drama Club C. A triple threat student does all three. Let y âˆˆ (A âˆ© B) âˆ© C.' },
  { label: 'Apply intersection definition', content: 'y âˆˆ (A âˆ© B) âˆ© C means y âˆˆ (A âˆ© B) AND y âˆˆ C. And y âˆˆ (A âˆ© B) means y âˆˆ A AND y âˆˆ B. So: (y âˆˆ A AND y âˆˆ B) AND y âˆˆ C.' },
- { label: 'Re-group the ANDs', content: 'Logical AND is associative: (P AND Q) AND R = P AND (Q AND R). So (y âˆˆ A AND y âˆˆ B) AND y âˆˆ C = y âˆˆ A AND (y âˆˆ B AND y âˆˆ C). A student who\'s in all three clubs is in all three â€” the grouping doesn\'t change anything!' },
+ { label: 'Re-group the ANDs', content: 'Logical AND is associative: (P AND Q) AND R = P AND (Q AND R). So (y âˆˆ A AND y âˆˆ B) AND y âˆˆ C = y âˆˆ A AND (y âˆˆ B AND y âˆˆ C). A student who\'s in all three clubs is in all three — the grouping doesn\'t change anything!' },
  { label: 'Convert back to sets', content: 'y âˆˆ A AND (y âˆˆ B AND y âˆˆ C) means y âˆˆ A AND y âˆˆ (B âˆ© C), which means y âˆˆ A âˆ© (B âˆ© C). So (A âˆ© B) âˆ© C âŠ† A âˆ© (B âˆ© C). Reverse containment proves equality. Thus (A âˆ© B) âˆ© C = A âˆ© (B âˆ© C). Just like union, intersection is associative!' },
  ],
  interactive: UnionAssociativeInteractive,
@@ -1031,7 +1031,7 @@ const THEOREMS: TheoremModule[] = [
  { label: 'Let x âˆˆ A âˆª (B âˆ© C)', content: 'ðŸ§© Think of a school prize: winners get a free period (A) OR they get both extra recess AND homework pass (B âˆ© C).' },
  { label: 'Break down the OR', content: 'x âˆˆ A OR x âˆˆ (B âˆ© C). That means either x âˆˆ A, OR (x âˆˆ B AND x âˆˆ C).' },
  { label: 'Use logical distribution', content: '(P OR Q) AND (P OR R) is logically equivalent to P OR (Q AND R). So: (x âˆˆ A OR x âˆˆ B) AND (x âˆˆ A OR x âˆˆ C).' },
- { label: 'Convert back to sets', content: '(x âˆˆ A âˆª B) AND (x âˆˆ A âˆª C) means x âˆˆ (A âˆª B) âˆ© (A âˆª C). So A âˆª (B âˆ© C) âŠ† (A âˆª B) âˆ© (A âˆª C). The reverse containment also holds. Just like 2Ã—(3+4) = 2Ã—3 + 2Ã—4, set union distributes over intersection!' },
+ { label: 'Convert back to sets', content: '(x âˆˆ A âˆª B) AND (x âˆˆ A âˆª C) means x âˆˆ (A âˆª B) âˆ© (A âˆª C). So A âˆª (B âˆ© C) âŠ† (A âˆª B) âˆ© (A âˆª C). The reverse containment also holds. Just like 2×(3+4) = 2×3 + 2×4, set union distributes over intersection!' },
  ],
  interactive: DistributeUnionInterInteractive,
  },
@@ -1062,7 +1062,7 @@ const THEOREMS: TheoremModule[] = [
  steps: [
  { label: 'Consider a right triangle', content: 'ðŸ”º You\'re standing at the base of a building, looking up at the top. The angle of elevation is Î¸. The height of the building is the "opposite" side, and your distance from it is the "adjacent" side. The hypotenuse is the line of sight.' },
  { label: 'Recall basic definitions', content: 'sin Î¸ = opposite / hypotenuse = a/c. cos Î¸ = adjacent / hypotenuse = b/c. tan Î¸ = opposite / adjacent = a/b. These three ratios define any right triangle.' },
- { label: 'Divide sin by cos', content: 'sin Î¸ / cos Î¸ = (a/c) / (b/c) = (a/c) Ã— (c/b) = a/b. The hypotenuse (c) cancels out! And a/b is exactly tan Î¸.' },
+ { label: 'Divide sin by cos', content: 'sin Î¸ / cos Î¸ = (a/c) / (b/c) = (a/c) × (c/b) = a/b. The hypotenuse (c) cancels out! And a/b is exactly tan Î¸.' },
  { label: 'Final identities', content: 'Therefore: tan Î¸ = sin Î¸ / cos Î¸ and cot Î¸ = cos Î¸ / sin Î¸. These are the Quotient Identities. They connect the primary ratios (sin, cos) to the secondary ones (tan, cot). This is why on a unit circle, the tangent at angle Î¸ is the y-coordinate divided by the x-coordinate!' },
  ],
  interactive: QuotientIdentityInteractive,
@@ -1071,14 +1071,14 @@ const THEOREMS: TheoremModule[] = [
  id: 'pythagorean-identities',
  icon: Move3d,
  title: 'Pythagorean Trigonometric Identities',
- formula: 'sinÂ²Î¸ + cosÂ²Î¸ = 1',
+ formula: 'sin²Î¸ + cos²Î¸ = 1',
  formulaDesc: 'The Pythagorean Theorem restated in trigonometric form.',
  color: 'emerald',
  steps: [
- { label: 'Start with the Pythagorean Theorem', content: 'ðŸ“ In any right triangle with legs a, b and hypotenuse c: aÂ² + bÂ² = cÂ². This is the most famous relationship in all of geometry, discovered over 2,500 years ago.' },
- { label: 'Express in trig terms', content: 'sin Î¸ = a/c and cos Î¸ = b/c. Square both: sinÂ²Î¸ = aÂ²/cÂ² and cosÂ²Î¸ = bÂ²/cÂ².' },
- { label: 'Add the squares', content: 'sinÂ²Î¸ + cosÂ²Î¸ = aÂ²/cÂ² + bÂ²/cÂ² = (aÂ² + bÂ²)/cÂ² = cÂ²/cÂ² = 1. The triangle\'s legs and hypotenuse cancel out perfectly!' },
- { label: 'The identity is born', content: 'sinÂ²Î¸ + cosÂ²Î¸ = 1 â€” it doesn\'t matter what Î¸ is, this always holds true! From this, we can derive: secÂ²Î¸ âˆ’ tanÂ²Î¸ = 1 and cosecÂ²Î¸ âˆ’ cotÂ²Î¸ = 1. These are the Pythagorean Identities, the most fundamental relationships in trigonometry. They\'re used in everything from signal processing to 3D graphics to orbital mechanics!' },
+ { label: 'Start with the Pythagorean Theorem', content: 'ðŸ“ In any right triangle with legs a, b and hypotenuse c: a² + b² = c². This is the most famous relationship in all of geometry, discovered over 2,500 years ago.' },
+ { label: 'Express in trig terms', content: 'sin Î¸ = a/c and cos Î¸ = b/c. Square both: sin²Î¸ = a²/c² and cos²Î¸ = b²/c².' },
+ { label: 'Add the squares', content: 'sin²Î¸ + cos²Î¸ = a²/c² + b²/c² = (a² + b²)/c² = c²/c² = 1. The triangle\'s legs and hypotenuse cancel out perfectly!' },
+ { label: 'The identity is born', content: 'sin²Î¸ + cos²Î¸ = 1 — it doesn\'t matter what Î¸ is, this always holds true! From this, we can derive: sec²Î¸ âˆ’ tan²Î¸ = 1 and cosec²Î¸ âˆ’ cot²Î¸ = 1. These are the Pythagorean Identities, the most fundamental relationships in trigonometry. They\'re used in everything from signal processing to 3D graphics to orbital mechanics!' },
  ],
  interactive: PythagoreanIdentityInteractive,
  },
@@ -1088,14 +1088,14 @@ const THEOREMS: TheoremModule[] = [
  id: 'distance-formula',
  icon: Ruler,
  title: 'The Distance Formula',
- formula: 'd = âˆš((xâ‚‚ âˆ’ xâ‚)Â² + (yâ‚‚ âˆ’ yâ‚)Â²)',
+ formula: 'd = âˆš((xâ‚‚ âˆ’ xâ‚)² + (yâ‚‚ âˆ’ yâ‚)²)',
  formulaDesc: 'Calculate the distance between any two points on a coordinate plane.',
  color: 'violet',
  steps: [
  { label: 'Plot two points', content: 'ðŸ—ºï¸ You\'re a city planner. Point Pâ‚(1, 2) is the library and Pâ‚‚(7, 6) is the hospital. You need the straight-line distance between them to plan a new road. The Pythagorean Theorem is your tool!' },
  { label: 'Draw perpendiculars', content: 'Draw lines from Pâ‚ and Pâ‚‚ to the x-axis. These create a right triangle. The horizontal leg runs from xâ‚ to xâ‚‚, and the vertical leg from yâ‚ to yâ‚‚.' },
  { label: 'Find the legs', content: 'Horizontal distance = |xâ‚‚ âˆ’ xâ‚| = |7 âˆ’ 1| = 6 blocks east. Vertical distance = |yâ‚‚ âˆ’ yâ‚| = |6 âˆ’ 2| = 4 blocks north.' },
- { label: 'Apply Pythagoras', content: 'dÂ² = (Î”x)Â² + (Î”y)Â² â†’ d = âˆš((xâ‚‚âˆ’xâ‚)Â² + (yâ‚‚âˆ’yâ‚)Â²) = âˆš(6Â² + 4Â²) = âˆš(36 + 16) = âˆš52 â‰ˆ 7.21 units. This formula is the GPS backbone: your phone calculates distance between satellites and your position using this exact formula in 3D!' },
+ { label: 'Apply Pythagoras', content: 'd² = (Î”x)² + (Î”y)² → d = âˆš((xâ‚‚âˆ’xâ‚)² + (yâ‚‚âˆ’yâ‚)²) = âˆš(6² + 4²) = âˆš(36 + 16) = âˆš52 â‰ˆ 7.21 units. This formula is the GPS backbone: your phone calculates distance between satellites and your position using this exact formula in 3D!' },
  ],
  interactive: DistanceFormulaInteractive,
  },
@@ -1110,9 +1110,9 @@ const THEOREMS: TheoremModule[] = [
  color: 'amber',
  steps: [
  { label: 'Identify slope and intercept', content: 'ðŸ“ˆ You\'re tracking your savings. You start with $100 (y-intercept c = 1 on a scaled graph) and save $2 per week (slope m = 2). The line shows your total savings over time.' },
- { label: 'Pick a general point', content: 'Let P(x, y) be any point on the line. The point where the line crosses the y-axis is A(0, c) â€” your starting savings at week 0.' },
+ { label: 'Pick a general point', content: 'Let P(x, y) be any point on the line. The point where the line crosses the y-axis is A(0, c) — your starting savings at week 0.' },
  { label: 'Calculate slope between points', content: 'Slope m = (y âˆ’ c) / (x âˆ’ 0) = (y âˆ’ c) / x. This means the rise over run from A to P equals the constant slope of the line.' },
- { label: 'Rearrange to solve for y', content: 'm = (y âˆ’ c)/x â†’ y âˆ’ c = mx â†’ y = mx + c. That\'s it! All straight lines can be written this way. In business, this models linear cost functions: Total Cost = Variable Cost Ã— Units + Fixed Cost.' },
+ { label: 'Rearrange to solve for y', content: 'm = (y âˆ’ c)/x → y âˆ’ c = mx → y = mx + c. That\'s it! All straight lines can be written this way. In business, this models linear cost functions: Total Cost = Variable Cost × Units + Fixed Cost.' },
  ],
  interactive: SlopeInterceptInteractive,
  },
@@ -1127,7 +1127,7 @@ const THEOREMS: TheoremModule[] = [
  { label: 'The problem', content: 'ðŸ“ You know a line passes through the point (2, 3) and has slope m = 1.5. You need the equation of the line to graph it on your digital map.' },
  { label: 'Use slope formula with general point', content: 'Let P(x, y) be any point on the line. With B(xâ‚, yâ‚) = (2, 3), the slope m = (y âˆ’ yâ‚)/(x âˆ’ xâ‚).' },
  { label: 'Cross-multiply', content: 'm(x âˆ’ xâ‚) = y âˆ’ yâ‚. This equation says "for any point on the line, the slope from (xâ‚, yâ‚) to (x, y) is always m."' },
- { label: 'The result', content: 'y âˆ’ yâ‚ = m(x âˆ’ xâ‚). This is the Point-Slope Form. It\'s incredibly useful in calculus, physics, and engineering when you know one point and the rate of change (slope). For our example: y âˆ’ 3 = 1.5(x âˆ’ 2) â†’ y = 1.5x.' },
+ { label: 'The result', content: 'y âˆ’ yâ‚ = m(x âˆ’ xâ‚). This is the Point-Slope Form. It\'s incredibly useful in calculus, physics, and engineering when you know one point and the rate of change (slope). For our example: y âˆ’ 3 = 1.5(x âˆ’ 2) → y = 1.5x.' },
  ],
  interactive: PointSlopeInteractive,
  },
@@ -1139,10 +1139,10 @@ const THEOREMS: TheoremModule[] = [
  formulaDesc: 'Equation of a line through two given points.',
  color: 'pink',
  steps: [
- { label: 'Two points define a line', content: 'ðŸ”— You have two points A(1, 2) and B(4, 8). Only one straight line passes through both â€” the shortest path between them.' },
+ { label: 'Two points define a line', content: 'ðŸ”— You have two points A(1, 2) and B(4, 8). Only one straight line passes through both — the shortest path between them.' },
  { label: 'Find the slope', content: 'Slope m = (yâ‚‚ âˆ’ yâ‚)/(xâ‚‚ âˆ’ xâ‚) = (8 âˆ’ 2)/(4 âˆ’ 1) = 6/3 = 2. This line rises 2 units for every 1 unit horizontally.' },
- { label: 'Apply Point-Slope Form', content: 'Now that we have m = 2, use the Point-Slope Form with either point: y âˆ’ yâ‚ = m(x âˆ’ xâ‚) â†’ y âˆ’ 2 = 2(x âˆ’ 1).' },
- { label: 'The formula', content: 'Substituting the slope formula directly gives: y âˆ’ yâ‚ = ((yâ‚‚âˆ’yâ‚)/(xâ‚‚âˆ’xâ‚))(x âˆ’ xâ‚). This is the Two-Point Form â€” it combines the slope calculation with the line equation in one step. Surveyors use this to map boundaries between measured points!' },
+ { label: 'Apply Point-Slope Form', content: 'Now that we have m = 2, use the Point-Slope Form with either point: y âˆ’ yâ‚ = m(x âˆ’ xâ‚) → y âˆ’ 2 = 2(x âˆ’ 1).' },
+ { label: 'The formula', content: 'Substituting the slope formula directly gives: y âˆ’ yâ‚ = ((yâ‚‚âˆ’yâ‚)/(xâ‚‚âˆ’xâ‚))(x âˆ’ xâ‚). This is the Two-Point Form — it combines the slope calculation with the line equation in one step. Surveyors use this to map boundaries between measured points!' },
  ],
  interactive: TwoPointFormInteractive,
  },
@@ -1156,8 +1156,8 @@ const THEOREMS: TheoremModule[] = [
  steps: [
  { label: 'Identify intercepts', content: 'ðŸŽ¯ A line crosses the x-axis at x = 4 (the x-intercept a = 4) and the y-axis at y = 3 (the y-intercept b = 3). These two points completely define the line.' },
  { label: 'Find the slope', content: 'Slope m = (b âˆ’ 0)/(0 âˆ’ a) = b/(âˆ’a) = âˆ’b/a = âˆ’3/4. The line goes down 3 for every 4 right.' },
- { label: 'Use Point-Slope with y-intercept', content: 'Using point (0, b): y âˆ’ b = m(x âˆ’ 0) â†’ y âˆ’ b = (âˆ’b/a)x â†’ ay âˆ’ ab = âˆ’bx â†’ bx + ay = ab.' },
- { label: 'Divide by ab', content: '(bx)/(ab) + (ay)/(ab) = 1 â†’ x/a + y/b = 1. This elegant form shows the intercepts directly. Economists use this to graph budget constraints: if you spend $a on food and $b on housing, x/a + y/b = 1 shows all possible spending combinations!' },
+ { label: 'Use Point-Slope with y-intercept', content: 'Using point (0, b): y âˆ’ b = m(x âˆ’ 0) → y âˆ’ b = (âˆ’b/a)x → ay âˆ’ ab = âˆ’bx → bx + ay = ab.' },
+ { label: 'Divide by ab', content: '(bx)/(ab) + (ay)/(ab) = 1 → x/a + y/b = 1. This elegant form shows the intercepts directly. Economists use this to graph budget constraints: if you spend $a on food and $b on housing, x/a + y/b = 1 shows all possible spending combinations!' },
  ],
  interactive: TwoInterceptInteractive,
  },
@@ -1170,8 +1170,8 @@ const THEOREMS: TheoremModule[] = [
  color: 'orange',
  steps: [
  { label: 'Define the normal', content: 'ðŸ§­ Imagine a line L and a perpendicular from the origin O to L meeting at point C. The distance OC = p, and the angle this perpendicular makes with the x-axis is Î±.' },
- { label: 'Find intercepts', content: 'From right triangle OCA: cos Î± = p/OA â†’ OA = p/cos Î± (x-intercept). From triangle OCB: sin Î± = p/OB â†’ OB = p/sin Î± (y-intercept).' },
- { label: 'Apply Two-Intercept Form', content: 'Using x/a + y/b = 1 where a = OA, b = OB: x/(p/cos Î±) + y/(p/sin Î±) = 1 â†’ (x cos Î±)/p + (y sin Î±)/p = 1.' },
+ { label: 'Find intercepts', content: 'From right triangle OCA: cos Î± = p/OA → OA = p/cos Î± (x-intercept). From triangle OCB: sin Î± = p/OB → OB = p/sin Î± (y-intercept).' },
+ { label: 'Apply Two-Intercept Form', content: 'Using x/a + y/b = 1 where a = OA, b = OB: x/(p/cos Î±) + y/(p/sin Î±) = 1 → (x cos Î±)/p + (y sin Î±)/p = 1.' },
  { label: 'Multiply by p', content: 'x cos Î± + y sin Î± = p. The Normal Form! This is particularly useful in physics and engineering for finding distances from a point to a line, and for describing wave fronts in optics.' },
  ],
  interactive: NormalFormInteractive,
@@ -1186,7 +1186,7 @@ const THEOREMS: TheoremModule[] = [
  steps: [
  { label: 'Lines and inclinations', content: 'ðŸ”„ Two roads cross at an intersection. One has a gentle slope mâ‚ = 0.5 (gentle hill), the other is steeper mâ‚‚ = 2. Their inclinations relative to the x-axis are Î± and Î².' },
  { label: 'Exterior angle theorem', content: 'When these lines cross, they form a triangle with the x-axis. The exterior angle of this triangle equals the sum of the two opposite interior angles: Î± = Î² + Î¸, where Î¸ is the angle between the lines.' },
- { label: 'Solve for Î¸ and apply tan', content: 'Î¸ = Î± âˆ’ Î². Take tan of both sides: tan Î¸ = tan(Î± âˆ’ Î²). Using the tangent subtraction formula: tan(Î±âˆ’Î²) = (tan Î± âˆ’ tan Î²)/(1 + tan Î± Ã— tan Î²).' },
+ { label: 'Solve for Î¸ and apply tan', content: 'Î¸ = Î± âˆ’ Î². Take tan of both sides: tan Î¸ = tan(Î± âˆ’ Î²). Using the tangent subtraction formula: tan(Î±âˆ’Î²) = (tan Î± âˆ’ tan Î²)/(1 + tan Î± × tan Î²).' },
  { label: 'Substitute slopes', content: 'Since tan Î± = mâ‚‚ and tan Î² = mâ‚: tan Î¸ = (mâ‚‚ âˆ’ mâ‚)/(1 + mâ‚mâ‚‚). Take absolute value for the acute angle. If tan Î¸ = 0, lines are parallel. If 1 + mâ‚mâ‚‚ = 0, lines are perpendicular. Road engineers use this to design safe intersection angles!' },
  ],
  interactive: AngleBetweenLinesInteractive,

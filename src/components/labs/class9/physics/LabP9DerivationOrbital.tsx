@@ -4,7 +4,7 @@ import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void }) {
@@ -20,7 +20,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  const [showTestHint, setShowTestHint] = useState(false);
  const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
  const [testFullyCompleted, setTestFullyCompleted] = useState(false);
- const testSteps=[{testEquation:'v = d/t',testHint:'Average speed is the ratio of distance traveled to time taken.'},{testEquation:'d = 2Ï€r',testHint:'The distance traveled in one complete circular orbit is the circumference.'},{testEquation:'v = 2Ï€r/T',testHint:'Combine the distance d = 2Ï€r with the orbital period T into the speed formula.'},{testEquation:'v = 2Ï€r/T',testHint:'Orbital speed = circumference of orbit Ã· orbital period.'}];
+ const testSteps=[{testEquation:'v = d/t',testHint:'Average speed is the ratio of distance traveled to time taken.'},{testEquation:'d = 2Ï€r',testHint:'The distance traveled in one complete circular orbit is the circumference.'},{testEquation:'v = 2Ï€r/T',testHint:'Combine the distance d = 2Ï€r with the orbital period T into the speed formula.'},{testEquation:'v = 2Ï€r/T',testHint:'Orbital speed = circumference of orbit ÷ orbital period.'}];
  useEffect(() => { const el = document.querySelector(`[data-step-idx="${currentStep}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, [currentStep]);
  const handleTestCheck = () => { const expected = testSteps[currentStep].testEquation; const isCorrect = ck(testInput, expected); setTestStatus(isCorrect ? 'correct' : 'incorrect'); if (isCorrect) { setCompletedSteps(prev => ({ ...prev, [currentStep]: true })); if (currentStep + 1 >= steps.length) { setTestFullyCompleted(true); } else { setCurrentStep(currentStep + 1); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); } } };
  const resetTest = () => { setCurrentStep(0); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); setCompletedSteps({}); setTestFullyCompleted(false); };

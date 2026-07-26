@@ -89,7 +89,7 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
  {isScanning && (
  <>
  <div className="absolute top-4 left-4 text-xs font-mono text-blue-400">{t('lab.s8skymap_ra')} {(panX * 0.24).toFixed(1)}h</div>
- <div className="absolute top-4 right-4 text-xs font-mono text-blue-400">{t('lab.s8skymap_dec')} {(panY - 50).toFixed(1)}Â°</div>
+ <div className="absolute top-4 right-4 text-xs font-mono text-blue-400">{t('lab.s8skymap_dec')} {(panY - 50).toFixed(1)}°</div>
  <div className="absolute bottom-4 w-full text-center text-[10px] text-slate-400 tracking-widest uppercase">{t('lab.s8skymap_point_device_at_sky')}</div>
  </>
  )}

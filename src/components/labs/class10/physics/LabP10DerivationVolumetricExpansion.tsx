@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationVolumetricExpansion({ onExit }: { onExit?: () => void }) {
@@ -27,7 +27,7 @@ export default function LabP10DerivationVolumetricExpansion({ onExit }: { onExit
  };
 
  const steps = [
- { label: t('lab.p10_volExp_step1_label'), formula: 'Î”V âˆ V_o Ã— Î”T', detail: t('lab.p10_volExp_step1_detail') },
+ { label: t('lab.p10_volExp_step1_label'), formula: 'Î”V âˆ V_o × Î”T', detail: t('lab.p10_volExp_step1_detail') },
  { label: t('lab.p10_volExp_step2_label'), formula: 'Î”V = Î² V_o Î”T', detail: t('lab.p10_volExp_step2_detail') },
  { label: t('lab.p10_volExp_step3_label'), formula: 'Î² = Î”V / (V_o Î”T)', detail: t('lab.p10_volExp_step3_detail') },
  { label: t('lab.p10_volExp_step4_label'), formula: 'Î² = 3Î±', detail: t('lab.p10_volExp_step4_detail') }
@@ -138,8 +138,8 @@ export default function LabP10DerivationVolumetricExpansion({ onExit }: { onExit
  <div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-rose-500" /><h2 className="text-lg font-bold">{t('lab.see_in_action')}</h2></div>
  <p className="text-sm text-slate-500 mb-4">{t('lab.p10_volExp_adjust_desc')}</p>
  <div className="space-y-3">
- <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_volExp_vo_label')}</span><span className="text-rose-600 font-mono">{vo} mÂ³</span></div><input type="range" min="0.1" max="2" step="0.05" value={vo} onChange={e => { setVo(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /></div>
- <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_volExp_dt_label')}</span><span className="text-rose-600 font-mono">{dt}Â°C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /></div>
+ <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_volExp_vo_label')}</span><span className="text-rose-600 font-mono">{vo} m³</span></div><input type="range" min="0.1" max="2" step="0.05" value={vo} onChange={e => { setVo(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /></div>
+ <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_volExp_dt_label')}</span><span className="text-rose-600 font-mono">{dt}°C</span></div><input type="range" min="10" max="200" step="5" value={dt} onChange={e => { setDt(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /></div>
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10_volExp_beta_label')}</span><span className="text-rose-600 font-mono">{betaInput.toExponential(1)}{t('lab.p10derivationvolumetricexpansion_c')}</span></div><input type="range" min="1e-5" max="1e-4" step="0.1e-5" value={betaInput} onChange={e => { setBetaInput(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-rose-500" /></div>
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
  <p className="text-xs text-slate-500 font-semibold uppercase">{t('lab.derivation_trace')}</p>

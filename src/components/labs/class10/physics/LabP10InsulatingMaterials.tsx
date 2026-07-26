@@ -71,7 +71,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
  const kEff = baseK / (1 + thickness * 0.15);
  
  const exactTemp = envTemp + (initialTemp - envTemp) * Math.exp(-kEff * time);
- // Realistic thermal noise Â±0.4Â°C
+ // Realistic thermal noise ±0.4°C
  const noise = (Math.random() - 0.5) * 0.8;
  setTemperature(Math.max(envTemp, exactTemp + noise));
  }
@@ -180,7 +180,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
  <div>
  <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
  <span>{t('lab.10insulatingmaterials_initialwatertemperature')}</span>
- <span className="text-blue-600">{initialTemp} Â°C</span>
+ <span className="text-blue-600">{initialTemp} °C</span>
  </label>
  <input 
  type="range" min="40" max="100" step="5" 
@@ -228,7 +228,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
  </div>
  <div className="text-center bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
  <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.10insulatingmaterials_thermometer')}</p>
- <p className="text-2xl font-mono text-blue-600">{temperature.toFixed(1)} Â°C</p>
+ <p className="text-2xl font-mono text-blue-600">{temperature.toFixed(1)} °C</p>
  </div>
  </div>
 

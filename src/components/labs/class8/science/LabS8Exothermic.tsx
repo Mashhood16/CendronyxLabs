@@ -69,7 +69,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
 
  {/* Thermometer */}
  <div className="w-12 h-64 bg-slate-200 dark:bg-[#121212] rounded-full border-4 border-slate-300 dark:border-[#1c1b1b] p-1 flex flex-col justify-end items-center relative shadow-inner">
- <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">Â°C</div>
+ <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">°C</div>
  {/* Markings */}
  {[10, 20, 30, 40, 50].map(m => (
  <div key={m} className="absolute w-full border-b border-slate-400 dark:border-[#1c1b1b]" style={{ bottom: `${(m/60)*100}%` }}>
@@ -87,7 +87,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
 
  <div className="text-center w-full max-w-sm">
  <div className="text-3xl font-mono font-bold mb-6 text-slate-800 dark:text-[#ffffff] flex items-center justify-center gap-2">
- {temp}Â°C
+ {temp}°C
  {temp > 35 && <Flame className="w-8 h-8 text-orange-500 animate-pulse" />}
  </div>
 

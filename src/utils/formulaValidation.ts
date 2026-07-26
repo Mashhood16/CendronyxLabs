@@ -8,16 +8,16 @@ export function normalizeFormula(formula: string): string {
   // Remove all whitespace
   f = f.replace(/\s+/g, '');
 
-  // Normalize multiplication symbols to 'Ã—'
-  f = f.replace(/\*/g, 'Ã—');
-  f = f.replace(/Â·/g, 'Ã—');
+  // Normalize multiplication symbols to '×'
+  f = f.replace(/\*/g, '×');
+  f = f.replace(/·/g, '×');
 
   // Normalize division
-  f = f.replace(/Ã·/g, '/');
+  f = f.replace(/÷/g, '/');
 
   // Normalize superscripts
-  f = f.replace(/Â²/g, '^2');
-  f = f.replace(/Â³/g, '^3');
+  f = f.replace(/²/g, '^2');
+  f = f.replace(/³/g, '^3');
 
   // Normalize subscripts (Unicode subscripts to _n format)
   f = f.replace(/â‚/g, '_1');
@@ -33,12 +33,12 @@ export function normalizeFormula(formula: string): string {
 
   // Normalize special characters
   f = f.replace(/âˆ’/g, '-'); // minus sign
-  f = f.replace(/â€“/g, '-');
-  f = f.replace(/Â½/g, '(1/2)');
+  f = f.replace(/–/g, '-');
+  f = f.replace(/½/g, '(1/2)');
   f = f.replace(/â…“/g, '(1/3)');
   f = f.replace(/â…”/g, '(2/3)');
-  f = f.replace(/Â¼/g, '(1/4)');
-  f = f.replace(/Â¾/g, '(3/4)');
+  f = f.replace(/¼/g, '(1/4)');
+  f = f.replace(/¾/g, '(3/4)');
 
   // Pi variations
   f = f.replace(/Ï€/g, 'pi');
@@ -75,12 +75,12 @@ export function normalizeFormula(formula: string): string {
   f = f.replace(/\beta\b/g, 'Î·');
   f = f.replace(/\bpi\b/g, 'Ï€');
 
-  // sqrt(x) â†’ sqrt{x}
+  // sqrt(x) → sqrt{x}
   f = f.replace(/sqrt\(([^)]+)\)/g, 'sqrt{$1}');
 
   // Normalize multiple equal signs or arrows
   f = f.replace(/â‡’/g, '=>');
-  f = f.replace(/â†’/g, '->');
+  f = f.replace(/→/g, '->');
 
   // Remove leading/trailing operator noise
   f = f.replace(/^[=:]+/, '');
@@ -100,14 +100,14 @@ export function checkFormulaMatch(userAnswer: string, expectedFormula: string): 
   if (!user || !expected) return 0;
   if (user === expected) return 1;
 
-  // Try with 'Ã—' replaced by nothing (implied multiplication)
-  const userNoMult = user.replace(/Ã—/g, '');
-  const expectedNoMult = expected.replace(/Ã—/g, '');
+  // Try with '×' replaced by nothing (implied multiplication)
+  const userNoMult = user.replace(/×/g, '');
+  const expectedNoMult = expected.replace(/×/g, '');
   if (userNoMult === expectedNoMult) return 0.95;
 
-  // Try with 'Ã—' replaced by space
-  const userSpaceMult = user.replace(/Ã—/g, ' ');
-  const expectedSpaceMult = expected.replace(/Ã—/g, ' ');
+  // Try with '×' replaced by space
+  const userSpaceMult = user.replace(/×/g, ' ');
+  const expectedSpaceMult = expected.replace(/×/g, ' ');
   if (userSpaceMult === expectedSpaceMult) return 0.9;
 
   // Try removing parentheses

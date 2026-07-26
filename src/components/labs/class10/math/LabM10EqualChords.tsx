@@ -11,7 +11,7 @@ interface LabProps {
 const questions = [
  { q: "Chords PQ and RS are equal in length. PQ is 12 cm from the center. How far is RS from the center?", a: "12", hint: "Equal chords are equidistant from the center." },
  { q: "Chords AB and CD are equidistant from the center. If AB = 15 cm, what is the length of CD?", a: "15", hint: "Chords equidistant from the center are equal in length." },
- { q: "Chord EF subtends an angle of 60Â° at the center. Chord GH is equal in length to EF. What angle does GH subtend at the center?", a: "60", hint: "Equal chords subtend equal angles at the center." }
+ { q: "Chord EF subtends an angle of 60° at the center. Chord GH is equal in length to EF. What angle does GH subtend at the center?", a: "60", hint: "Equal chords subtend equal angles at the center." }
 ];
 
 export default function LabM10EqualChords({ onExit }: LabProps) {
@@ -207,14 +207,14 @@ export default function LabM10EqualChords({ onExit }: LabProps) {
  <div className="font-bold text-blue-700 mb-1 border-b border-blue-100 pb-1">{t('lab.m10equalchords_chord_ab')}</div>
  <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_length')}</span> <span className="font-semibold">{lenAB.toFixed(0)} px</span></div>
  <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_distance_to_center')}</span> <span className="font-semibold">{distAB.toFixed(0)} px</span></div>
- <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angAB.toFixed(0)}Â°</span></div>
+ <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angAB.toFixed(0)}°</span></div>
  </div>
 
  <div className="absolute top-4 right-4 bg-slate-50 dark:bg-[#121212]/90 p-3 rounded-lg border border-red-200 shadow-sm pointer-events-none text-xs w-48">
  <div className="font-bold text-red-700 mb-1 border-b border-red-100 pb-1">{t('lab.m10equalchords_chord_cd')}</div>
  <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_length')}</span> <span className="font-semibold">{lenCD.toFixed(0)} px</span></div>
  <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_distance_to_center')}</span> <span className="font-semibold">{distCD.toFixed(0)} px</span></div>
- <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angCD.toFixed(0)}Â°</span></div>
+ <div className="flex justify-between text-slate-600 dark:text-[#a1a1aa]"><span>{t('lab.m10equalchords_central_angle')}</span> <span className="font-semibold">{angCD.toFixed(0)}°</span></div>
  </div>
  
  {Math.abs(lenAB - lenCD) < 2 && (

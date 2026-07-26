@@ -170,7 +170,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
  if (err < 0.05) {
  setFeedback("Correct! You have found the specific latent heat of fusion (L_f).");
  } else {
- setFeedback(`Incorrect. Check your calculations. Use L = Q / m, where Q = Power Ã— time during the plateau.`);
+ setFeedback(`Incorrect. Check your calculations. Use L = Q / m, where Q = Power × time during the plateau.`);
  }
  };
 
@@ -290,7 +290,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
  </div>
  
  <div className={`absolute top-4 right-4 text-white text-sm font-mono text-right bg-black/60 p-3 rounded-lg z-20 backdrop-blur-md border border-white/10 flex-col `}>
- <div className="text-2xl text-blue-300 font-bold">{temperature.toFixed(1)}Â°C</div>
+ <div className="text-2xl text-blue-300 font-bold">{temperature.toFixed(1)}°C</div>
  <div className="text-xs text-slate-400 mt-1">{t('lab.p10latentheat_energy')} {(energy/1000).toFixed(1)} kJ</div>
  </div>
 

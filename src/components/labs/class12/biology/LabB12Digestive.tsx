@@ -162,7 +162,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
  <div className={`w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 flex-col `}>
  <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff]">
  <span className="flex items-center gap-1"><Thermometer className="w-4 h-4"/> {t('lab.b12digestive_temperature')}</span>
- <span className="text-blue-600">{temperature}Â°C</span>
+ <span className="text-blue-600">{temperature}°C</span>
  </label>
  <input type="range" min="0" max="100" value={temperature} onChange={e => setTemperature(Number(e.target.value))} disabled={isDigesting || digestionLevel > 0} className="w-full accent-blue-600 cursor-pointer" />
  </div>

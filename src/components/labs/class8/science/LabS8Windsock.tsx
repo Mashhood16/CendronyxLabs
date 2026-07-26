@@ -126,7 +126,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
  {t('lab.s8windsock_the_windsock_fills_with_air_an')} <strong>{t('lab.s8windsock_opposite')}</strong> {t('lab.s8windsock_to_where_the_wind_is_blowing_f')}<br/>
  
  {t('lab.s8windsock_wind_from')} {getCompassDir(windDir)} {t('lab.s8windsock_rarr_sock_points')} {getSockDir(windDir)}.<br/>
- {windSpeed === 0 ? 'No wind â€” sock hangs limp.' : windSpeed < 30 ? 'Light breeze â€” sock droops slightly.' : windSpeed < 70 ? 'Strong wind â€” sock extends outward.' : 'Gale force â€” sock is nearly horizontal!'}
+ {windSpeed === 0 ? 'No wind — sock hangs limp.' : windSpeed < 30 ? 'Light breeze — sock droops slightly.' : windSpeed < 70 ? 'Strong wind — sock extends outward.' : 'Gale force — sock is nearly horizontal!'}
  </p>
  </div>
 

@@ -228,15 +228,15 @@ export default function LabE7Tenses({ onExit }: { onExit?: () => void }) {
  <h3 className="font-semibold text-slate-700 dark:text-[#ffffff] mb-3 border-b border-slate-100 dark:border-[#1c1b1b] pb-2">{t('lab.e7tenses_rule_reminder')}</h3>
  <ul className="space-y-3 text-sm text-slate-600 dark:text-[#a1a1aa]">
  <li className="flex gap-2">
- <span className="font-bold text-indigo-500">â€¢</span>
+ <span className="font-bold text-indigo-500">”¢</span>
  <span><strong>{t('lab.e7tenses_active_voice')}</strong> {t('lab.e7tenses_the_subject_performs_the_actio')}</span>
  </li>
  <li className="flex gap-2">
- <span className="font-bold text-indigo-500">â€¢</span>
+ <span className="font-bold text-indigo-500">”¢</span>
  <span><strong>{t('lab.e7tenses_passive_voice')}</strong> {t('lab.e7tenses_the_subject_receives_the_actio')}</span>
  </li>
  <li className="flex gap-2">
- <span className="font-bold text-emerald-500">â€¢</span>
+ <span className="font-bold text-emerald-500">”¢</span>
  <span><strong>{t('lab.e7tenses_continuous_tense')}</strong> {t('lab.e7tenses_shows_ongoing_action_needs_an_')}</span>
  </li>
  </ul>

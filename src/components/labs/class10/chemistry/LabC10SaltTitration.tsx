@@ -27,7 +27,7 @@ export default function LabC10SaltTitration({ onExit }: { onExit?: () => void })
  useEffect(() => {
  if (naohAdded && !hclAdded) setEquation("NaOH(aq)");
  else if (naohAdded && hclAdded && !heating && waterLevel === 100) setEquation("NaOH(aq) + HCl(aq) âž” NaCl(aq) + Hâ‚‚O(l)");
- else if (heating) setEquation("NaCl(aq) + Heat âž” NaCl(s) + Hâ‚‚O(g)â†‘");
+ else if (heating) setEquation("NaCl(aq) + Heat âž” NaCl(s) + Hâ‚‚O(g)←‘");
  else if (waterLevel === 0) setEquation("Solid NaCl Crystals Formed!");
  else if (!naohAdded && !hclAdded) setEquation("Empty Evaporating Dish");
  }, [naohAdded, hclAdded, heating, waterLevel]);

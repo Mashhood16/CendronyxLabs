@@ -89,8 +89,8 @@ export default function LabM7Equations({ onExit }: { onExit?: () => void }) {
  // Formula State
  const [fStep, setFStep] = useState(0);
  const formulaSteps = [
- { text: "C = (F - 32) Ã— 5/9", hint: "What's the best first step to isolate F?" },
- { text: "9C = (F - 32) Ã— 5", hint: "Good! We multiplied by 9. Now what?" },
+ { text: "C = (F - 32) × 5/9", hint: "What's the best first step to isolate F?" },
+ { text: "9C = (F - 32) × 5", hint: "Good! We multiplied by 9. Now what?" },
  { text: "9C / 5 = F - 32", hint: "Great, we divided by 5. Just one step left!" },
  { text: "9C / 5 + 32 = F", hint: "Solved! F is now the subject of the formula." }
  ];

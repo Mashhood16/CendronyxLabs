@@ -26,7 +26,7 @@ const { recordLabData, setLabScore } = useLab();
  useEffect(() => {
  const e = { 'Matt Black': 1.0, 'Shiny Black': 0.8, 'Matt White': 0.5, 'Shiny Silver': 0.1 }[surface] || 1.0;
  const baseI = (10000 * e) / (distance * distance);
- const noise = baseI * (Math.random() * 0.04 - 0.02); // Â±2% noise
+ const noise = baseI * (Math.random() * 0.04 - 0.02); // ±2% noise
  setIntensity(baseI + noise);
  }, [surface, distance]);
 

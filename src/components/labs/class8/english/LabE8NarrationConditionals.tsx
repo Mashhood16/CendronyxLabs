@@ -32,11 +32,11 @@ const conditionalQuestions = [
  id: 1,
  scenario: "Water Freezing",
  type: "Zero Conditional",
- fact: "General Truth: Water freezes at 0Â°C.",
+ fact: "General Truth: Water freezes at 0°C.",
  promptPart1: "If you",
  verb1Hint: "(cool)",
  verb1Ans: ["cool"],
- promptPart2: "water to 0Â°C, it",
+ promptPart2: "water to 0°C, it",
  verb2Hint: "(freeze)",
  verb2Ans: ["freezes"],
  endText: ".",
@@ -305,7 +305,7 @@ export default function LabE8NarrationConditionals({ onExit }: { onExit?: () => 
  <>
  <div className="flex flex-col items-center w-32">
  <Thermometer className={`w-20 h-20 ${cFeedback === 'correct' ? 'text-blue-500 dark:text-blue-400' : 'text-red-500 dark:text-red-400'} transition-colors duration-700`} />
- <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? '0Â°C (Cooled)' : '20Â°C (Room Temp)'}</span>
+ <span className="mt-4 font-bold text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa] text-center">{cFeedback === 'correct' ? '0°C (Cooled)' : '20°C (Room Temp)'}</span>
  </div>
  <ArrowRight className={`w-10 h-10 transition-colors duration-700 ${cFeedback === 'correct' ? 'text-green-500 dark:text-green-400' : 'text-slate-300 dark:text-[#ffffff]'} rotate-90 md:rotate-0`} />
  <div className="flex flex-col items-center w-32">

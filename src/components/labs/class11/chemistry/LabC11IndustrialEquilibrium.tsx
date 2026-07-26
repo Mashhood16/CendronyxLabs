@@ -102,7 +102,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
  <Settings size={18} /> {t('lab.c11industrialequilibrium_control_panel')}
  </h3>
  <div>
- <label className="block text-sm font-semibold mb-1">{t('lab.c11industrialequilibrium_temperature')} {temperature} Â°C</label>
+ <label className="block text-sm font-semibold mb-1">{t('lab.c11industrialequilibrium_temperature')} {temperature} °C</label>
  <input 
  type="range" min="100" max="800" step="10" 
  value={temperature} onChange={e => setTemperature(Number(e.target.value))}

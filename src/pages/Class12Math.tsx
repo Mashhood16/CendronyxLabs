@@ -66,7 +66,7 @@ export default function Class12Math() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 12 Mathematics")}</h1>
-                <p className="text-white/80 text-sm">{t("Calculus, Differential Equations, Analytical Geometry & Conics â€” with interactive labs and step-by-step theorem proofs")}</p>
+                <p className="text-white/80 text-sm">{t("Calculus, Differential Equations, Analytical Geometry & Conics — with interactive labs and step-by-step theorem proofs")}</p>
               </div>
             </div>
           </div>

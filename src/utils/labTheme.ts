@@ -579,7 +579,7 @@ export const labTheme = {
 
 /**
  * Helper to combine light + dark classes for a theme property.
- * Usage: labClasses('page') â†’ "bg-slate-50 dark:bg-[#0a0a0a]"
+ * Usage: labClasses('page') → "bg-slate-50 dark:bg-[#0a0a0a]"
  */
 export function labClasses(key: keyof typeof labTheme): string {
   const t = labTheme[key];

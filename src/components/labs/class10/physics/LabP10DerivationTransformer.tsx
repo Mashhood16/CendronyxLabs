@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationTransformer({ onExit }: { onExit?: () => void }) {
@@ -30,7 +30,7 @@ export default function LabP10DerivationTransformer({ onExit }: { onExit?: () =>
  const steps = [
  { label: t('lab.p10_trans_step1_label'), formula: 'Power_in = Power_out', detail: t('lab.p10_trans_step1_detail') },
  { label: t('lab.p10_trans_step2_label'), formula: 'I_p V_p = I_s V_s', detail: t('lab.p10_trans_step2_detail') },
- { label: t('lab.p10_trans_step3_label'), formula: 'I_s = (V_p / V_s) Ã— I_p', detail: t('lab.p10_trans_step3_detail') },
+ { label: t('lab.p10_trans_step3_label'), formula: 'I_s = (V_p / V_s) × I_p', detail: t('lab.p10_trans_step3_detail') },
  { label: t('lab.p10_trans_step4_label'), formula: 'V_s / V_p = N_s / N_p = I_p / I_s', detail: t('lab.p10_trans_step4_detail') }
  ];
   const [activeTab, setActiveTab] = useState<'learn' | 'test'>('learn');

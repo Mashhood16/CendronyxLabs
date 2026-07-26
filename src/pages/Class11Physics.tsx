@@ -65,7 +65,7 @@ export default function Class11Physics() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 11 Physics")}</h1>
-                <p className="text-white/80 text-sm">{t("Measurements, Vectors, Motion, Fluids, Thermodynamics, Waves & Electricity â€” with derivation-focused interactive labs")}</p>
+                <p className="text-white/80 text-sm">{t("Measurements, Vectors, Motion, Fluids, Thermodynamics, Waves & Electricity — with derivation-focused interactive labs")}</p>
               </div>
             </div>
           </div>

@@ -66,7 +66,7 @@ export default function Class9Math() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 9 Mathematics")}</h1>
-                <p className="text-white/80 text-sm">{t("Algebra, Geometry, Statistics & Problem Solving â€” with interactive labs and step-by-step theorem walkthroughs")}</p>
+                <p className="text-white/80 text-sm">{t("Algebra, Geometry, Statistics & Problem Solving — with interactive labs and step-by-step theorem walkthroughs")}</p>
               </div>
             </div>
           </div>

@@ -243,7 +243,7 @@ export const light = {
 
 // â”€â”€ Convenience helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Flatten all light mode tokens into a single string for quick use.
-// Usage: l.page â†’ "bg-slate-50", l.card â†’ "bg-white border-slate-200 shadow-sm"
+// Usage: l.page → "bg-slate-50", l.card → "bg-white border-slate-200 shadow-sm"
 
 function flattenLightMode(obj: Record<string, any>, prefix = ''): Record<string, string> {
   const result: Record<string, string> = {};
@@ -266,8 +266,8 @@ export function getLightTokens(): Record<string, string> {
  * Get a combined class string from a theme section.
  * 
  * @example
- *   lightSection('card')  â†’ "bg-white border-slate-200 shadow-sm"
- *   lightSection('page')  â†’ "bg-slate-50 text-slate-800"
+ *   lightSection('card')  → "bg-white border-slate-200 shadow-sm"
+ *   lightSection('page')  → "bg-slate-50 text-slate-800"
  */
 export function lightSection(key: keyof typeof light): string {
   const section = light[key];
@@ -281,7 +281,7 @@ export function lightSection(key: keyof typeof light): string {
  * 
  * @example
  *   lightWith('card', 'rounded-2xl p-6')
- *   // â†’ "bg-white border-slate-200 shadow-sm rounded-2xl p-6"
+ *   // → "bg-white border-slate-200 shadow-sm rounded-2xl p-6"
  */
 export function lightWith(key: keyof typeof light, ...extra: string[]): string {
   return `${lightSection(key)} ${extra.join(' ')}`.trim();

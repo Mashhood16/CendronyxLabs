@@ -240,7 +240,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
  <h4 className="font-bold">{isCorrect ? 'Correct!' : 'Incorrect'}</h4>
  <p className="text-sm mt-1">
  {isCorrect 
- ? '2940 N / 0.0049 mÂ² = 600,000 Pa = 0.6 MPa.' 
+ ? '2940 N / 0.0049 m² = 600,000 Pa = 0.6 MPa.' 
  : 'Check your calculation. Stress = 2940 / 0.0049. Convert to MPa by dividing by 1,000,000.'}
  </p>
  </div>

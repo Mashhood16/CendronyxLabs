@@ -181,7 +181,7 @@ const { recordLabData } = useLab();
  >
  {Object.entries(fluids).map(([key, mat]) => (
  <option key={key} value={key}>
- {mat.name} {key !== 'unknown' && `(Ï = ${mat.density} g/cmÂ³)`}
+ {mat.name} {key !== 'unknown' && `(Ï = ${mat.density} g/cm³)`}
  </option>
  ))}
  </select>

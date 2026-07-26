@@ -67,7 +67,7 @@ export default function Class10Physics() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 10 Physics")}</h1>
-                <p className="text-white/80 text-sm">{t("Heat, Waves, Optics, Electricity & Nuclear Physics â€” with derivation-focused interactive labs")}</p>
+                <p className="text-white/80 text-sm">{t("Heat, Waves, Optics, Electricity & Nuclear Physics — with derivation-focused interactive labs")}</p>
               </div>
             </div>
           </div>

@@ -50,7 +50,7 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
                 <th className="px-3 py-2 font-medium">{t("Time (m)")}</th>
                 <th className="px-3 py-2 font-medium">{t("Alt (km)")}</th>
                 <th className="px-3 py-2 font-medium">{t("Vel (m/s)")}</th>
-                <th className="px-3 py-2 font-medium text-blue-400">{t("g (m/sÂ²)")}</th>
+                <th className="px-3 py-2 font-medium text-blue-400">{t("g (m/s²)")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/50">

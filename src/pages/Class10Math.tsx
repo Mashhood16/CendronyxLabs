@@ -66,7 +66,7 @@ export default function Class10Math() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 10 Mathematics")}</h1>
-                <p className="text-white/80 text-sm">{t("Geometry, Vectors, Statistics & Trigonometry â€” with interactive labs and step-by-step theorem proofs")}</p>
+                <p className="text-white/80 text-sm">{t("Geometry, Vectors, Statistics & Trigonometry — with interactive labs and step-by-step theorem proofs")}</p>
               </div>
             </div>
           </div>

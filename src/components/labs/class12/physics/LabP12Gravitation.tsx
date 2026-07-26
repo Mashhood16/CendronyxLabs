@@ -119,27 +119,27 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
  steps: [
  {
  label: 'Newton\'s Universal Law of Gravitation (Center Force)',
- latex: 'F(r) = -GMm / rÂ² Ã— rÌ‚\n\nWhere:\nG = 6.674Ã—10â»Â¹Â¹ NÂ·mÂ²/kgÂ²\nM = mass of central body (Sun/Earth)\nm = mass of orbiting body (planet/satellite)\nr = distance between centers\nrÌ‚ = unit vector pointing radially outward',
- explanation: 'Newton realized that the same force that makes an apple fall also holds the Moon in orbit. The gravitational force is always attractive, central (pointing along the line connecting the two bodies), and follows an inverse-square law with distance. The minus sign indicates attraction â€” the force points opposite to the radial direction.'
+ latex: 'F(r) = -GMm / r² × rÌ‚\n\nWhere:\nG = 6.674×10â»¹¹ N·m²/kg²\nM = mass of central body (Sun/Earth)\nm = mass of orbiting body (planet/satellite)\nr = distance between centers\nrÌ‚ = unit vector pointing radially outward',
+ explanation: 'Newton realized that the same force that makes an apple fall also holds the Moon in orbit. The gravitational force is always attractive, central (pointing along the line connecting the two bodies), and follows an inverse-square law with distance. The minus sign indicates attraction — the force points opposite to the radial direction.'
  },
  {
- label: 'Conservation of Angular Momentum â†’ Constant Areal Velocity',
- latex: 'L = m Ã— r Ã— v_âŸ‚ = constant\n\nTorque Ï„ = r Ã— F = 0 (central force â†’ no torque)\nSo L is conserved!\n\nThis means:\ndA/dt = L/(2m) = constant\n(Ellipses sweep equal areas in equal times)',
+ label: 'Conservation of Angular Momentum → Constant Areal Velocity',
+ latex: 'L = m × r × v_âŸ‚ = constant\n\nTorque Ï„ = r × F = 0 (central force → no torque)\nSo L is conserved!\n\nThis means:\ndA/dt = L/(2m) = constant\n(Ellipses sweep equal areas in equal times)',
  explanation: 'Since the gravitational force is purely radial (no tangential component), it exerts zero torque on the orbiting body. Therefore, angular momentum L is conserved. This directly implies Kepler\'s Second Law: a line from the Sun to a planet sweeps out equal areas in equal times. When the planet is closer to the Sun, it must move faster to sweep the same area.'
  },
  {
  label: 'Derive the Orbital Equation (the Ellipse)',
- latex: 'From F = ma and F = -GMm/rÂ²:\n\ndÂ²u/dÎ¸Â² + u = GM / hÂ²\n\nWhere u = 1/r and h = L/m = rÂ² Â· dÎ¸/dt\n\nSolution:\nr(Î¸) = hÂ²/[GM Ã— (1 + e Ã— cos(Î¸))]\n\nThis is the equation of an ellipse with:\ne = sqrt(1 + 2EhÂ²/GÂ²MÂ²) = eccentricity\nE = total orbital energy per unit mass',
- explanation: 'The differential equation has a beautiful solution: the general orbit is a conic section. When e = 0, the orbit is a circle; when 0 < e < 1, it\'s an ellipse (Kepler\'s First Law!); when e = 1, it\'s a parabola; when e > 1, it\'s a hyperbola. The eccentricity e is determined by the total energy â€” bound orbits (E < 0) are ellipses, unbound (E â‰¥ 0) are parabolas or hyperbolas.'
+ latex: 'From F = ma and F = -GMm/r²:\n\nd²u/dÎ¸² + u = GM / h²\n\nWhere u = 1/r and h = L/m = r² · dÎ¸/dt\n\nSolution:\nr(Î¸) = h²/[GM × (1 + e × cos(Î¸))]\n\nThis is the equation of an ellipse with:\ne = sqrt(1 + 2Eh²/G²M²) = eccentricity\nE = total orbital energy per unit mass',
+ explanation: 'The differential equation has a beautiful solution: the general orbit is a conic section. When e = 0, the orbit is a circle; when 0 < e < 1, it\'s an ellipse (Kepler\'s First Law!); when e = 1, it\'s a parabola; when e > 1, it\'s a hyperbola. The eccentricity e is determined by the total energy — bound orbits (E < 0) are ellipses, unbound (E â‰¥ 0) are parabolas or hyperbolas.'
  },
  {
- label: 'Kepler\'s Third Law: TÂ² âˆ aÂ³',
- latex: 'For a circular orbit: centripetal = gravitational\nmvÂ²/r = GMm/rÂ²\nvÂ² = GM/r\n\nPeriod T = 2Ï€r / v\nTÂ² = 4Ï€Â²rÂ² / vÂ²\nTÂ² = 4Ï€Â²rÂ² / (GM/r)\nTÂ² = (4Ï€Â²/GM) Ã— rÂ³\n\nFor elliptical orbits (semi-major axis a):\nTÂ² = (4Ï€Â²/GM) Ã— aÂ³',
- explanation: 'Kepler\'s Third Law falls out directly from equating centripetal acceleration to gravitational acceleration. The key insight: TÂ² is proportional to aÂ³ with a constant of proportionality that depends ONLY on the central mass M â€” NOT on the orbiting body\'s mass. This is why all planets in our solar system follow the same TÂ²/aÂ³ = constant relationship, and why we can calculate the mass of any central body just by measuring a satellite\'s orbit!'
+ label: 'Kepler\'s Third Law: T² âˆ a³',
+ latex: 'For a circular orbit: centripetal = gravitational\nmv²/r = GMm/r²\nv² = GM/r\n\nPeriod T = 2Ï€r / v\nT² = 4Ï€²r² / v²\nT² = 4Ï€²r² / (GM/r)\nT² = (4Ï€²/GM) × r³\n\nFor elliptical orbits (semi-major axis a):\nT² = (4Ï€²/GM) × a³',
+ explanation: 'Kepler\'s Third Law falls out directly from equating centripetal acceleration to gravitational acceleration. The key insight: T² is proportional to a³ with a constant of proportionality that depends ONLY on the central mass M — NOT on the orbiting body\'s mass. This is why all planets in our solar system follow the same T²/a³ = constant relationship, and why we can calculate the mass of any central body just by measuring a satellite\'s orbit!'
  }
  ],
- conclusion: 'Newton\'s inverse-square law of gravity elegantly explains ALL of Kepler\'s empirical laws. The elliptical orbits (Kepler I) emerge from solving the orbital differential equation. Equal areas in equal times (Kepler II) come from angular momentum conservation. The TÂ² âˆ aÂ³ relation (Kepler III) follows directly from equating centripetal and gravitational forces. This unification of celestial and terrestrial mechanics was humanity\'s first grand unification of physics â€” showing that the same laws govern the fall of an apple and the motion of the planets.',
- realWorldApplication: 'This lab\'s orbit simulator uses exactly these equations! The numerical integration uses ax = -GMx/rÂ³ and ay = -GMy/rÂ³ â€” the same inverse-square law. When you set the velocity to 7.67 km/s at 400 km altitude, the satellite follows an elliptical orbit (or circular, if perfectly tuned). NASA\'s Mission Control uses these same Newtonian equations to plan every satellite launch, ISS resupply trajectory, and Mars rover landing â€” corrected slightly by Einstein\'s general relativity for GPS satellites where the 38 Î¼s/day relativistic drift would accumulate to 10 km of positioning error per day.'
+ conclusion: 'Newton\'s inverse-square law of gravity elegantly explains ALL of Kepler\'s empirical laws. The elliptical orbits (Kepler I) emerge from solving the orbital differential equation. Equal areas in equal times (Kepler II) come from angular momentum conservation. The T² âˆ a³ relation (Kepler III) follows directly from equating centripetal and gravitational forces. This unification of celestial and terrestrial mechanics was humanity\'s first grand unification of physics — showing that the same laws govern the fall of an apple and the motion of the planets.',
+ realWorldApplication: 'This lab\'s orbit simulator uses exactly these equations! The numerical integration uses ax = -GMx/r³ and ay = -GMy/r³ — the same inverse-square law. When you set the velocity to 7.67 km/s at 400 km altitude, the satellite follows an elliptical orbit (or circular, if perfectly tuned). NASA\'s Mission Control uses these same Newtonian equations to plan every satellite launch, ISS resupply trajectory, and Mars rover landing — corrected slightly by Einstein\'s general relativity for GPS satellites where the 38 Î¼s/day relativistic drift would accumulate to 10 km of positioning error per day.'
  }}
  />
  )}

@@ -59,7 +59,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
  if (val >= 11.5 && val <= 12.5) {
  setFeedback('Correct! The speed in the Mystery Liquid is 12 cm/s.');
  } else {
- setFeedback("Incorrect. Use Snell's Law: vâ‚‚ = vâ‚ Â· (sin Î¸r / sin Î¸i)");
+ setFeedback("Incorrect. Use Snell's Law: vâ‚‚ = vâ‚ · (sin Î¸r / sin Î¸i)");
  }
  };
 
@@ -163,7 +163,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
 
  <div className="space-y-4">
  <div>
- <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10rippletank_incident_angle_i')} {angleI}Â°</label>
+ <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.p10rippletank_incident_angle_i')} {angleI}°</label>
  <input
  type="range" min="10" max="80" step="1"
  value={angleI}
@@ -238,7 +238,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
  <rect x="230" y="240" width="160" height="45" fill="rgba(0,0,0,0.8)" rx="6" stroke="#38bdf8" strokeWidth="1" />
  <text x="245" y="268" fill="#38bdf8" fontSize="14" fontWeight="bold">
  
- {t('lab.p10rippletank_sensor')} {getSensorReading()}Â°
+ {t('lab.p10rippletank_sensor')} {getSensorReading()}°
  </text>
  </svg>
  </div>

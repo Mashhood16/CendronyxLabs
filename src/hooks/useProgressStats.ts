@@ -105,7 +105,7 @@ export function useProgressStats(history: LabRecord[]): ProgressStats {
       .map((r, i) => ({
         index: i,
         score: r.maxScore > 0 ? Math.round((r.score / r.maxScore) * 100) : 0,
-        label: r.title.length > 18 ? r.title.slice(0, 16) + 'â€¦' : r.title,
+        label: r.title.length > 18 ? r.title.slice(0, 16) + '”¦' : r.title,
       }));
 
     return {

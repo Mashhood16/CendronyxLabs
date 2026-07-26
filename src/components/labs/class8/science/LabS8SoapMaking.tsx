@@ -15,7 +15,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  const steps = [
  { title: "Safety Gear", desc: "Wear protective equipment." },
  { title: "Lye Solution", desc: "Dissolve 15g Lye in 30g Water." },
- { title: "Heat Oils", desc: "Heat 56g coconut oil and 28g olive oil to 50Â°C." },
+ { title: "Heat Oils", desc: "Heat 56g coconut oil and 28g olive oil to 50°C." },
  { title: "Saponification", desc: "Blend lye and oils into a paste." },
  { title: "Curing", desc: "Pour into molds and cure for 2 days." }
  ];

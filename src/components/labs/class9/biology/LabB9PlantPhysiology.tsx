@@ -102,7 +102,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
  const recordData = () => {
  let newDp;
  if (activeTab === 'Potometer') {
- newDp = { id: Date.now(), type: 'Transpiration', val1: `${temp}Â°C`, val2: `Wind: ${wind}`, result: `${Math.round(bubblePos)}mm` };
+ newDp = { id: Date.now(), type: 'Transpiration', val1: `${temp}°C`, val2: `Wind: ${wind}`, result: `${Math.round(bubblePos)}mm` };
  } else if (activeTab === 'Hydrilla') {
  newDp = { id: Date.now(), type: 'Photosynthesis', val1: `Light: ${lightIntensity}%`, val2: '-', result: `${Math.round(gasVolume)}mL O2` };
  } else {
@@ -166,7 +166,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
  <div className="space-y-2 pt-4">
  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
  <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> {t('lab.b9plantphysiology_temperature_c')}</span>
- <span>{temp}Â°C</span>
+ <span>{temp}°C</span>
  </label>
  <input type="range" min="10" max="40" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
  </div>

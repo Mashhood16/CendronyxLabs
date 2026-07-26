@@ -113,7 +113,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
  value={cubeIndex} onChange={(e) => setCubeIndex(parseInt(e.target.value))}
  className="w-full accent-blue-600"
  />
- <div className="text-right font-mono text-lg font-bold text-blue-600 dark:text-blue-400">{volume} mÂ³</div>
+ <div className="text-right font-mono text-lg font-bold text-blue-600 dark:text-blue-400">{volume} m³</div>
  </div>
  </div>
  </div>
@@ -321,7 +321,7 @@ export default function LabM8RootsFinance({ onExit }: { onExit?: () => void }) {
  </div>
  <div className="mt-6 text-center text-slate-600 dark:text-[#71717a] bg-white dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] w-full">
  
- {t('lab.m8rootsfinance_volume_side_side_side')} <span className="font-bold text-slate-800 dark:text-[#ffffff]">{volume} mÂ³</span>
+ {t('lab.m8rootsfinance_volume_side_side_side')} <span className="font-bold text-slate-800 dark:text-[#ffffff]">{volume} m³</span>
  </div>
  </div>
  )}

@@ -113,7 +113,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
  <div>
  <label className="text-sm font-semibold flex justify-between">
  <span>{t('lab.c10ethanolhydration_temperature_c')}</span>
- <span>{temp} Â°C</span>
+ <span>{temp} °C</span>
  </label>
  <input type="range" min="100" max="500" value={temp} onChange={(e) => { setTemp(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
  </div>
@@ -147,7 +147,7 @@ export default function LabC10EthanolHydration({ onExit }: { onExit?: () => void
  <text x="220" y="90" fontSize="12">{t('lab.c10ethanolhydration_ethanol')}</text>
  
  <rect x="110" y="60" width="80" height="80" fill={catalyst ? "rgba(255, 200, 0, 0.3)" : "rgba(100, 100, 100, 0.1)"} />
- <text x="150" y="105" textAnchor="middle" fontSize="14" fontWeight="bold">{temp}Â°C</text>
+ <text x="150" y="105" textAnchor="middle" fontSize="14" fontWeight="bold">{temp}°C</text>
  <text x="150" y="125" textAnchor="middle" fontSize="12">{pressure} {t('lab.c10ethanolhydration_atm')}</text>
  
  {running && time > 0 && Array.from({length: 6}).map((_, i) => (

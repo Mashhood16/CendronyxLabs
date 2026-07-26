@@ -188,8 +188,8 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
  };
 
  const getSliderConfig = () => {
- if (process === 'CementKiln') return { min: 1000, max: 1500, step: 50, label: 'Temperature (Â°C)' };
- if (process === 'CatalyticCracking') return { min: 400, max: 800, step: 10, label: 'Temperature (Â°C)' };
+ if (process === 'CementKiln') return { min: 1000, max: 1500, step: 50, label: 'Temperature (°C)' };
+ if (process === 'CatalyticCracking') return { min: 400, max: 800, step: 10, label: 'Temperature (°C)' };
  return { min: 1, max: 10, step: 0.5, label: 'Emulsifier (%)' };
  };
  const config = getSliderConfig();

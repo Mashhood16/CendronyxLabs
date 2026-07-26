@@ -99,7 +99,7 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
  return;
  }
  if (Math.abs(numericAns - triples[quizIdx].L) < 0.1) {
- setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 Ã— âˆš(RÂ² - DÂ²).');
+ setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 × âˆš(R² - D²).');
  } else {
  setFeedback(`Incorrect. Hint: Half the chord forms a right triangle with the radius and the distance D.`);
  }

@@ -19,7 +19,7 @@ interface ButtonGroup {
 
 /**
  * Comprehensive formula builder with all building blocks organized by category.
- * No calculator UI â€” just clean, organized clickable buttons for every formula element.
+ * No calculator UI — just clean, organized clickable buttons for every formula element.
  */
 export default function FormulaBuilder({
   value,
@@ -101,7 +101,7 @@ export default function FormulaBuilder({
     {
       label: 'Time & Constants',
       items: [
-        { text: 't', display: 't', tooltip: 'Time â€” increases when simulation runs', insert: 't' },
+        { text: 't', display: 't', tooltip: 'Time — increases when simulation runs', insert: 't' },
         { text: 'pi', display: 'Ï€', tooltip: 'Pi constant â‰ˆ 3.14159', insert: 'pi' },
         { text: 'e', display: 'e', tooltip: 'Euler\'s number â‰ˆ 2.71828', insert: 'e' },
       ],
@@ -134,8 +134,8 @@ export default function FormulaBuilder({
       items: [
         { text: '+', display: '+', tooltip: 'Addition', insert: ' + ' },
         { text: '-', display: 'âˆ’', tooltip: 'Subtraction', insert: ' - ' },
-        { text: '*', display: 'Ã—', tooltip: 'Multiplication', insert: ' * ' },
-        { text: '/', display: 'Ã·', tooltip: 'Division', insert: ' / ' },
+        { text: '*', display: '×', tooltip: 'Multiplication', insert: ' * ' },
+        { text: '/', display: '÷', tooltip: 'Division', insert: ' / ' },
         { text: '^', display: '^', tooltip: 'Power (e.g. 2^3 = 8)', insert: '^' },
         { text: '%', display: '%', tooltip: 'Percent (divides by 100)', insert: '/100' },
         { text: '(', display: '(', tooltip: 'Open bracket', insert: '(' },
@@ -179,8 +179,8 @@ export default function FormulaBuilder({
         { text: 'quote', display: '"text"', tooltip: 'Insert quoted string', insert: '""' },
         { text: 'toFixed()', display: '.toFixed()', tooltip: 'Format number to decimal places', insert: '.toFixed(1)' },
         { text: 'concat', display: '+ "text"', tooltip: 'Concatenate string', insert: ' + ""' },
-        { text: 'degrees', display: 'â†’ Â°', tooltip: 'Convert radians to degrees: (val * 180 / pi)', insert: ' * 180 / pi' },
-        { text: 'radians', display: 'â†’ rad', tooltip: 'Convert degrees to radians: (val * pi / 180)', insert: ' * pi / 180' },
+        { text: 'degrees', display: '→ °', tooltip: 'Convert radians to degrees: (val * 180 / pi)', insert: ' * 180 / pi' },
+        { text: 'radians', display: '→ rad', tooltip: 'Convert degrees to radians: (val * pi / 180)', insert: ' * pi / 180' },
       ],
     },
   ];
@@ -283,7 +283,7 @@ export default function FormulaBuilder({
 
       {/* â”€â”€ Tip â”€â”€ */}
       <div className={`text-[9px] font-medium text-center py-2 ${isDark ? 'text-slate-600' : 'text-slate-300'}`}>
-        Use <strong>t</strong> for time-based animation Â· Click any button to insert at cursor position
+        Use <strong>t</strong> for time-based animation · Click any button to insert at cursor position
       </div>
     </div>
   );

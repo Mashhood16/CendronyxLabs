@@ -72,15 +72,15 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
  if (hasAcid && hasMetal) {
  const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
  const salt = hasAcid.id === 'hcl' ? 'MgCl2' : 'MgSO4';
- newEq = `Mg + ${acid} â†’ ${salt} + H2(g)`;
+ newEq = `Mg + ${acid} → ${salt} + H2(g)`;
  triggerReaction();
  } else if (hasAcid && hasCarbonate) {
  const acid = hasAcid.id === 'hcl' ? '2HCl' : 'H2SO4';
  const salt = hasAcid.id === 'hcl' ? 'CaCl2' : 'CaSO4';
- newEq = `CaCO3 + ${acid} â†’ ${salt} + H2O(l) + CO2(g)`;
+ newEq = `CaCO3 + ${acid} → ${salt} + H2O(l) + CO2(g)`;
  triggerReaction();
  } else {
- newEq += ' â†’ No Reaction';
+ newEq += ' → No Reaction';
  setReactionComplete(true);
  }
  }
@@ -247,7 +247,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
  <div className="flex items-center gap-8">
  <div className="flex flex-col items-center">
  <Thermometer className="w-12 h-12 text-red-500 mb-2" />
- <div className="text-2xl font-bold">{boilingPoint.toFixed(1)}Â°C</div>
+ <div className="text-2xl font-bold">{boilingPoint.toFixed(1)}°C</div>
  <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_boiling_point')}</div>
  </div>
  
@@ -264,7 +264,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
 
  <div className="flex flex-col items-center">
  <Thermometer className="w-12 h-12 text-blue-500 mb-2" />
- <div className="text-2xl font-bold">{meltingPoint.toFixed(1)}Â°C</div>
+ <div className="text-2xl font-bold">{meltingPoint.toFixed(1)}°C</div>
  <div className="text-xs text-slate-500 dark:text-[#71717a]">{t('lab.c9environmentalchem_melting_point')}</div>
  </div>
  </div>
@@ -321,7 +321,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
  </div>
 
  <div className="w-full max-w-xs text-center">
- <div className="text-sm font-bold mb-2">{t('lab.c9environmentalchem_exhaust_temperature')} {converterTemp}Â°C</div>
+ <div className="text-sm font-bold mb-2">{t('lab.c9environmentalchem_exhaust_temperature')} {converterTemp}°C</div>
  <input 
  type="range" min="100" max="600" step="50" value={converterTemp} 
  onChange={(e) => setConverterTemp(Number(e.target.value))}

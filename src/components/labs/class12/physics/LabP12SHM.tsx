@@ -189,27 +189,27 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
  steps: [
  {
  label: "Hooke's Law & Newton's 2nd",
- latex: "F = -kx\nmÂ·a = -kx\nmÂ·dÂ²x/dtÂ² = -kx",
- explanation: "For an ideal spring, the restoring force is proportional to displacement (Hooke's Law). Apply Newton's 2nd Law: mÂ·dÂ²x/dtÂ² = -kx. Rearranging: dÂ²x/dtÂ² + (k/m)Â·x = 0. This is the fundamental equation of SHM."
+ latex: "F = -kx\nm·a = -kx\nm·d²x/dt² = -kx",
+ explanation: "For an ideal spring, the restoring force is proportional to displacement (Hooke's Law). Apply Newton's 2nd Law: m·d²x/dt² = -kx. Rearranging: d²x/dt² + (k/m)·x = 0. This is the fundamental equation of SHM."
  },
  {
  label: "Guess the Solution",
- latex: "x(t) = AÂ·cos(Ï‰t + Ï†)\ndx/dt = -AÂ·Ï‰Â·sin(Ï‰t + Ï†)\ndÂ²x/dtÂ² = -AÂ·Ï‰Â²Â·cos(Ï‰t + Ï†) = -Ï‰Â²Â·x",
- explanation: "We try x(t) = AÂ·cos(Ï‰t + Ï†), where A is amplitude, Ï‰ is angular frequency, and Ï† is phase. Differentiate twice: first derivative gives velocity, second gives acceleration. Notice dÂ²x/dtÂ² = -Ï‰Â²Â·x."
+ latex: "x(t) = A·cos(Ï‰t + Ï†)\ndx/dt = -A·Ï‰·sin(Ï‰t + Ï†)\nd²x/dt² = -A·Ï‰²·cos(Ï‰t + Ï†) = -Ï‰²·x",
+ explanation: "We try x(t) = A·cos(Ï‰t + Ï†), where A is amplitude, Ï‰ is angular frequency, and Ï† is phase. Differentiate twice: first derivative gives velocity, second gives acceleration. Notice d²x/dt² = -Ï‰²·x."
  },
  {
  label: "Substitute to Find Ï‰",
- latex: "dÂ²x/dtÂ² = -(k/m)Â·x (from Newton)\ndÂ²x/dtÂ² = -Ï‰Â²Â·x (from solution)\nâˆ´ -Ï‰Â²Â·x = -(k/m)Â·x\nÏ‰Â² = k/m\nÏ‰ = âˆš(k/m)",
- explanation: "Equating the two expressions for acceleration: -Ï‰Â²Â·x = -(k/m)Â·x. Cancel -x (assuming x â‰  0): Ï‰Â² = k/m. Therefore the angular frequency is Ï‰ = âˆš(k/m). The period T = 2Ï€/Ï‰ = 2Ï€âˆš(m/k)."
+ latex: "d²x/dt² = -(k/m)·x (from Newton)\nd²x/dt² = -Ï‰²·x (from solution)\nâˆ´ -Ï‰²·x = -(k/m)·x\nÏ‰² = k/m\nÏ‰ = âˆš(k/m)",
+ explanation: "Equating the two expressions for acceleration: -Ï‰²·x = -(k/m)·x. Cancel -x (assuming x â‰  0): Ï‰² = k/m. Therefore the angular frequency is Ï‰ = âˆš(k/m). The period T = 2Ï€/Ï‰ = 2Ï€âˆš(m/k)."
  },
  {
  label: "Energy in SHM",
- latex: "PE = Â½kxÂ² = Â½k[AÂ·cos(Ï‰t + Ï†)]Â²\nKE = Â½mvÂ² = Â½m[Ï‰AÂ·sin(Ï‰t + Ï†)]Â² = Â½kAÂ²Â·sinÂ²(Ï‰t + Ï†)\nE_total = PE + KE = Â½kAÂ²[cosÂ² + sinÂ²] = Â½kAÂ²",
- explanation: "Total mechanical energy is constant! PE is maximum at amplitude (x = Â±A), KE is maximum at equilibrium (x = 0). Using sinÂ² + cosÂ² = 1, total energy E = Â½kAÂ². This energy conservation is why undamped SHM oscillates forever."
+ latex: "PE = ½kx² = ½k[A·cos(Ï‰t + Ï†)]²\nKE = ½mv² = ½m[Ï‰A·sin(Ï‰t + Ï†)]² = ½kA²·sin²(Ï‰t + Ï†)\nE_total = PE + KE = ½kA²[cos² + sin²] = ½kA²",
+ explanation: "Total mechanical energy is constant! PE is maximum at amplitude (x = ±A), KE is maximum at equilibrium (x = 0). Using sin² + cos² = 1, total energy E = ½kA². This energy conservation is why undamped SHM oscillates forever."
  }
  ],
  conclusion: "Simple Harmonic Motion emerges naturally from Hooke's law (F = -kx) combined with Newton's 2nd law. The frequency depends only on spring constant k and mass m: Ï‰ = âˆš(k/m). This exact equation governs everything from car suspensions to MEMS oscillators.",
- realWorldApplication: "Car suspension tuning directly uses Ï‰ = âˆš(k/m) and critical damping c_c = 2âˆš(mk) â€” the same formulas in this lab. MEMS accelerometers in smartphones use tiny proof masses on springs oscillating at their resonant frequency, and by measuring the frequency shift from acceleration, they track your phone's orientation!"
+ realWorldApplication: "Car suspension tuning directly uses Ï‰ = âˆš(k/m) and critical damping c_c = 2âˆš(mk) — the same formulas in this lab. MEMS accelerometers in smartphones use tiny proof masses on springs oscillating at their resonant frequency, and by measuring the frequency shift from acceleration, they track your phone's orientation!"
  }}
  defaultExpanded={difficulty === 'deep-dive'}
  />

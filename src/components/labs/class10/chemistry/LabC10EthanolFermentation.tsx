@@ -85,7 +85,7 @@ export default function LabC10EthanolFermentation({ onExit }: { onExit?: () => v
  if (Math.abs(parseFloat(answer) - expected) < 0.5) {
  setFeedback('Correct! Well done.');
  } else {
- setFeedback(`Incorrect. Hint: Equation is Câ‚†Hâ‚â‚‚Oâ‚† â†’ 2Câ‚‚Hâ‚…OH + 2COâ‚‚. M_r of glucose = 180, M_r of ethanol = 46. Mass given = ${targetMass.current}g.`);
+ setFeedback(`Incorrect. Hint: Equation is Câ‚†Hâ‚â‚‚Oâ‚† → 2Câ‚‚Hâ‚…OH + 2COâ‚‚. M_r of glucose = 180, M_r of ethanol = 46. Mass given = ${targetMass.current}g.`);
  }
  };
 
@@ -141,7 +141,7 @@ export default function LabC10EthanolFermentation({ onExit }: { onExit?: () => v
  <div>
  <label className="text-sm font-semibold flex justify-between">
  <span>{t('lab.c10ethanolfermentation_temperature_c')}</span>
- <span>{temp} Â°C</span>
+ <span>{temp} °C</span>
  </label>
  <input type="range" min="10" max="60" value={temp} onChange={(e) => { setTemp(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
  </div>

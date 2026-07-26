@@ -47,9 +47,9 @@ export default function LabCS12DeepLearning({ onExit }: { onExit?: () => void })
  if (!selected) return <p className="text-sm text-slate-500 dark:text-[#71717a] italic p-4 bg-slate-50 dark:bg-[#121212] rounded">{t('lab.cs12deeplearning_click_a_weight_line_or_bias_no')}</p>;
  
  let val = 0, setVal: (n: number) => void = () => {}, label = '';
- if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 â†’ h1'; }
- else if (selected === 'w21') { val = w21; setVal = setW21; label = 'Weight i2 â†’ h1'; }
- else if (selected === 'w31') { val = w31; setVal = setW31; label = 'Weight h1 â†’ o1'; }
+ if (selected === 'w11') { val = w11; setVal = setW11; label = 'Weight i1 → h1'; }
+ else if (selected === 'w21') { val = w21; setVal = setW21; label = 'Weight i2 → h1'; }
+ else if (selected === 'w31') { val = w31; setVal = setW31; label = 'Weight h1 → o1'; }
  else if (selected === 'b1') { val = b1; setVal = setB1; label = 'Bias h1'; }
  else if (selected === 'b2') { val = b2; setVal = setB2; label = 'Bias o1'; }
 

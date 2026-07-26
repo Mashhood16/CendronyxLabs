@@ -57,7 +57,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
  if (val >= 0.075 && val <= 0.085) {
  setFeedback('Correct! The linear density is approx 0.08 kg/m.');
  } else {
- setFeedback('Incorrect. Remember Î¼ = T / (fÂ·Î»)Â². Try measuring Î» more carefully.');
+ setFeedback('Incorrect. Remember Î¼ = T / (f·Î»)². Try measuring Î» more carefully.');
  }
  };
 

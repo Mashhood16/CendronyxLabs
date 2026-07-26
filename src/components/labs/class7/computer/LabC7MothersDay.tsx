@@ -15,7 +15,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
 
  const backgrounds = ['bg-pink-100', 'bg-indigo-100', 'bg-rose-100', 'bg-amber-100', 'bg-sky-100'];
  const images = [
- 'ðŸŒ¸', 'ðŸ’', 'â¤ï¸', 'ðŸ’', 'ðŸ¦‹', 'ðŸ‘©â€ðŸ‘§â€ðŸ‘¦'
+ 'ðŸŒ¸', 'ðŸ’', 'â¤ï¸', 'ðŸ’', 'ðŸ¦‹', 'ðŸ‘©”ðŸ‘§”ðŸ‘¦'
  ];
 
  return (

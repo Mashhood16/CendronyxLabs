@@ -138,7 +138,7 @@ export function setupConnectivityMonitor(): void {
     }
   });
 
-  // Also update on visibility change (user returns to tab) â€” only if not expired
+  // Also update on visibility change (user returns to tab) — only if not expired
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && navigator.onLine) {
       if (!isCacheExpired()) {

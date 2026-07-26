@@ -119,7 +119,7 @@ export default function LabP11WorkEnergy({ onExit }: { onExit?: () => void }) {
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
  <span>{t('lab.p11_work_slider_area')}</span>
- <span>{area} mÂ²</span>
+ <span>{area} m²</span>
  </label>
  <input type="range" min="10" max="40" step="1" value={area} onChange={(e) => setArea(Number(e.target.value))} className="w-full mt-1" disabled={isRunning} />
  </div>

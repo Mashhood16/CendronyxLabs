@@ -60,7 +60,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
  const heater_V = current_I * 4.0;
  const P = heater_V * current_I;
  
- const k = insulation === 'None' ? 2.0 : 0.1; // Heat loss coefficient W/Â°C
+ const k = insulation === 'None' ? 2.0 : 0.1; // Heat loss coefficient W/°C
  const dQ_in = P * 5; // Energy in 5 seconds
  const dQ_loss = k * (prev - 20) * 5;
  
@@ -111,9 +111,9 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
  }
  const error = Math.abs(user_c - c_true) / c_true;
  if (error < 0.08) { 
- setFeedback({type: 'success', message: `Correct! The specific heat of ${material} is ~${c_true} J/kgÂ°C.`});
+ setFeedback({type: 'success', message: `Correct! The specific heat of ${material} is ~${c_true} J/kg°C.`});
  } else {
- setFeedback({type: 'error', message: `Incorrect. Remember c = Î”E / (m Ã— Î”T). Have you converted correctly?`});
+ setFeedback({type: 'error', message: `Incorrect. Remember c = Î”E / (m × Î”T). Have you converted correctly?`});
  }
  };
 
@@ -331,7 +331,7 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
  {/* Live readout near thermometer */}
  <rect x="295" y="180" width="60" height="26" fill="#0f172a" rx="4" stroke="#475569" strokeWidth="1" />
  <text x="325" y="198" fill="#f87171" fontSize="14" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
- {displayVals.T.toFixed(1)}Â°C
+ {displayVals.T.toFixed(1)}°C
  </text>
  </svg>
  </div>

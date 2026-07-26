@@ -43,7 +43,7 @@ const { recordLabData, setLabScore } = useLab();
  }
  }
 
- // Add Â±2% noise to measurement
+ // Add ±2% noise to measurement
  const noise = 1 + (Math.random() - 0.5) * 0.04;
  const measuredPower = isLaserOn ? (nClad < nCore ? laserPower * T * noise : 0) : 0;
 
@@ -175,7 +175,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className={`mt-6 p-4 bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
  <div className="text-sm text-slate-500 dark:text-[#71717a] mb-1">{t('lab.10opticalfibers_calculatedcriticalangle')}</div>
  <div className={`text-xl font-mono font-bold ${isNaN(criticalAngle) ? 'text-red-500' : 'text-slate-800 dark:text-slate-100'}`}>
- {isNaN(criticalAngle) ? 'No TIR (nâ‚ â‰¤ nâ‚‚)' : `${criticalAngle.toFixed(1)}Â°`}
+ {isNaN(criticalAngle) ? 'No TIR (nâ‚ â‰¤ nâ‚‚)' : `${criticalAngle.toFixed(1)}°`}
  </div>
  </div>
 
@@ -307,7 +307,7 @@ const { recordLabData, setLabScore } = useLab();
  <h2 className="text-lg font-bold mb-3 text-amber-400">{t('lab.10opticalfibers_analysisassessment')}</h2>
  <p className="text-sm text-slate-300 mb-4 leading-relaxed">
  
- {t('lab.p10opticalfibers_a_faulty_optical_fiber_starts_')} <strong>82.0Â°</strong>{t('lab.10opticalfibers_andyouknowthecoreindexis')}<strong>1.52</strong>{t('lab.p10opticalfibers_calculate_the_refractive_index')}
+ {t('lab.p10opticalfibers_a_faulty_optical_fiber_starts_')} <strong>82.0°</strong>{t('lab.10opticalfibers_andyouknowthecoreindexis')}<strong>1.52</strong>{t('lab.p10opticalfibers_calculate_the_refractive_index')}
  </p>
  <div className="flex gap-2">
  <input 

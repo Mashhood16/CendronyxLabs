@@ -53,8 +53,8 @@ export default function LabM10Vectors({ onExit }: LabProps) {
  // Classification State
  const initialItems = [
  { id: '1', text: '40 m/s West', type: 'vector', status: 'pool' },
- { id: '2', text: '144 mÂ²', type: 'scalar', status: 'pool' },
- { id: '3', text: '9.8 m/sÂ² down', type: 'vector', status: 'pool' },
+ { id: '2', text: '144 m²', type: 'scalar', status: 'pool' },
+ { id: '3', text: '9.8 m/s² down', type: 'vector', status: 'pool' },
  { id: '4', text: '15 kg', type: 'scalar', status: 'pool' },
  { id: '5', text: '120 Joules', type: 'scalar', status: 'pool' },
  { id: '6', text: '50 N upwards', type: 'vector', status: 'pool' },

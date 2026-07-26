@@ -203,7 +203,7 @@ const { recordLabData } = useLab();
  <div>
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.10gaspressureballoon_bathtemperature')}</label>
- <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{targetTemp}Â°C</span>
+ <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{targetTemp}°C</span>
  </div>
  <input 
  type="range" min="-20" max="100" step="5" 
@@ -237,8 +237,8 @@ const { recordLabData } = useLab();
  </div>
  
  <div className={`absolute top-4 right-4 text-white text-xs font-mono text-right bg-black/50 p-2 rounded flex-col `}>
- <div>{t('lab.p10gaspressureballoon_bath_temp')} {bathTemp.toFixed(1)}Â°C</div>
- <div>{t('lab.p10gaspressureballoon_gas_temp')} {gasTemp.toFixed(1)}Â°C</div>
+ <div>{t('lab.p10gaspressureballoon_bath_temp')} {bathTemp.toFixed(1)}°C</div>
+ <div>{t('lab.p10gaspressureballoon_gas_temp')} {gasTemp.toFixed(1)}°C</div>
  <div>{t('lab.p10gaspressureballoon_gas_volume')} {syringeVolume.toFixed(1)} mL</div>
  </div>
 

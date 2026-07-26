@@ -71,7 +71,7 @@ export default function Class9Physics() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 9 Physics")}</h1>
-                <p className="text-white/80 text-sm">{t("Forces, Motion, Energy & Pressure â€” with interactive labs and step-by-step derivations")}</p>
+                <p className="text-white/80 text-sm">{t("Forces, Motion, Energy & Pressure — with interactive labs and step-by-step derivations")}</p>
               </div>
             </div>
           </div>

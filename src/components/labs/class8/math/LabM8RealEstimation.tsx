@@ -309,11 +309,11 @@ export default function LabM8RealEstimation({ onExit }: { onExit?: () => void })
  {/* Labels */}
  <text x="50" y={50 - (width * scale)/2 - 3} fontSize="3.5" textAnchor="middle" fill="currentColor" className="text-slate-600 dark:text-[#a1a1aa] font-mono">
  
- {t('lab.m8realestimation_l')} {length.toFixed(1)} Â± 0.05
+ {t('lab.m8realestimation_l')} {length.toFixed(1)} ± 0.05
  </text>
  <text x={50 + (length * scale)/2 + 3} y="50" fontSize="3.5" textAnchor="middle" fill="currentColor" transform={`rotate(90, ${50 + (length * scale)/2 + 3}, 50)`} className="text-slate-600 dark:text-[#a1a1aa] font-mono">
  
- {t('lab.m8realestimation_w')} {width.toFixed(1)} Â± 0.05
+ {t('lab.m8realestimation_w')} {width.toFixed(1)} ± 0.05
  </text>
  </svg>
  </div>

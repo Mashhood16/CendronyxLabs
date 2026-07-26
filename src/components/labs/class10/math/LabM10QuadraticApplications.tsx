@@ -155,7 +155,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
  <input type="range" min="10" max="40" value={velocity} onChange={e => {setVelocity(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
  </div>
  <div>
- <label className="block text-xs font-semibold mb-1">{t('lab.m10quadraticapplications_angle')} {angle}Â°</label>
+ <label className="block text-xs font-semibold mb-1">{t('lab.m10quadraticapplications_angle')} {angle}°</label>
  <input type="range" min="10" max="85" value={angle} onChange={e => {setAngle(Number(e.target.value)); resetCannon();}} className="w-full accent-emerald-600" disabled={isFiring} />
  </div>
  <div>
@@ -210,8 +210,8 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
  {t('lab.m10quadraticapplications_using_the_current_simulator_pa')}
  </p>
  <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 font-mono text-xs">
- <p>{t('lab.m10quadraticapplications_v')} {velocity} {t('lab.m10quadraticapplications_m_s_1')} {angle}Â°</p>
- <p>{t('lab.m10quadraticapplications_v_y_1')} {velocity} {t('lab.m10quadraticapplications_sin')}{angle}Â°) â‰ˆ {v0y.toFixed(2)} {t('lab.m10quadraticapplications_m_s')}</p>
+ <p>{t('lab.m10quadraticapplications_v')} {velocity} {t('lab.m10quadraticapplications_m_s_1')} {angle}°</p>
+ <p>{t('lab.m10quadraticapplications_v_y_1')} {velocity} {t('lab.m10quadraticapplications_sin')}{angle}°) â‰ˆ {v0y.toFixed(2)} {t('lab.m10quadraticapplications_m_s')}</p>
  <p>{t('lab.m10quadraticapplications_h_1')} {height} m</p>
  <p className="mt-2 text-emerald-700">{t('lab.m10quadraticapplications_h_t_4_905t')} {v0y.toFixed(2)}{t('lab.m10quadraticapplications_t')} {height}</p>
  </div>

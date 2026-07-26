@@ -35,14 +35,14 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
  
  if (flaskSample === 'Butter') {
  setIsBrown(true);
- setEquation('R-CHâ‚‚-CHâ‚‚-R + Brâ‚‚ â†’ No Reaction');
+ setEquation('R-CHâ‚‚-CHâ‚‚-R + Brâ‚‚ → No Reaction');
  } else {
  if (newVol >= maxBr2ForOil) {
  setIsBrown(true);
- setEquation('R-CH=CH-R + excess Brâ‚‚ â†’ R-CH(Br)-CH(Br)-R + Brâ‚‚(aq)');
+ setEquation('R-CH=CH-R + excess Brâ‚‚ → R-CH(Br)-CH(Br)-R + Brâ‚‚(aq)');
  } else {
  setIsBrown(false);
- setEquation('R-CH=CH-R + Brâ‚‚ â†’ R-CH(Br)-CH(Br)-R');
+ setEquation('R-CH=CH-R + Brâ‚‚ → R-CH(Br)-CH(Br)-R');
  }
  }
  };

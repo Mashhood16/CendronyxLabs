@@ -197,32 +197,32 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  {config.showDerivations && (
  <DeepDivePanel
  derivation={{
- title: 'Wave-Particle Duality â€” Why dÂ·sinÎ¸ = mÎ» for Matter Too',
+ title: 'Wave-Particle Duality — Why d·sinÎ¸ = mÎ» for Matter Too',
  question: 'Light behaves as both a wave (interference pattern) AND a particle (photon). But de Broglie showed that particles ALSO have wave nature. How does the same diffraction equation apply to electrons?',
  steps: [
  {
  label: 'Light as an electromagnetic wave: Huygens\' Principle',
- latex: 'Each slit acts as a point source of spherical wavefronts.\nFor constructive interference: path difference = mÎ»\nPath diff = d Ã— sin(Î¸)\n\nTherefore:\nd Ã— sin(Î¸) = m Ã— Î»',
- explanation: 'When light passes through a double slit, each slit acts as a new wave source (Huygens\' Principle). Waves from the two slits travel different distances to reach a point on the screen. When the path difference equals an integer number of wavelengths, the waves arrive in phase, producing constructive interference â€” a bright fringe.'
+ latex: 'Each slit acts as a point source of spherical wavefronts.\nFor constructive interference: path difference = mÎ»\nPath diff = d × sin(Î¸)\n\nTherefore:\nd × sin(Î¸) = m × Î»',
+ explanation: 'When light passes through a double slit, each slit acts as a new wave source (Huygens\' Principle). Waves from the two slits travel different distances to reach a point on the screen. When the path difference equals an integer number of wavelengths, the waves arrive in phase, producing constructive interference — a bright fringe.'
  },
  {
  label: 'Einstein shows light is also a particle (photon)',
  latex: 'E_photon = hf = hc / Î»\np_photon = h / Î»\n\nPhotoelectric effect:\nK_max = hf - Î¦\n\nWhere Î¦ = work function (minimum energy to eject an electron)',
- explanation: 'Einstein\'s photoelectric effect (Nobel Prize 1921) proved that light consists of discrete quanta â€” photons. Each photon carries energy E = hf and momentum p = h/Î». A single photon hits one atom and ejects one electron instantly, ruling out the classical wave picture of gradual energy absorption.'
+ explanation: 'Einstein\'s photoelectric effect (Nobel Prize 1921) proved that light consists of discrete quanta — photons. Each photon carries energy E = hf and momentum p = h/Î». A single photon hits one atom and ejects one electron instantly, ruling out the classical wave picture of gradual energy absorption.'
  },
  {
  label: 'de Broglie: Particles are waves too! Î» = h/p',
- latex: 'Î» = h / p = h / (mv)\n\nWhere:\nh = Planck\'s constant = 6.63 Ã— 10â»Â³â´ JÂ·s\nm = mass of the particle\nv = velocity of the particle\np = mv = momentum\n\nFor an electron (m = 9.11Ã—10â»Â³Â¹ kg) at v = 10â¶ m/s:\nÎ» = 6.63Ã—10â»Â³â´ / (9.11Ã—10â»Â³Â¹ Ã— 10â¶)\nÎ» = 0.73 nm â€” comparable to X-ray wavelengths!',
- explanation: 'In 1924, Louis de Broglie proposed that every moving particle has an associated wavelength, inversely proportional to its momentum. This was revolutionary â€” it meant that electrons, neutrons, and even atoms should produce interference patterns just like light! The same dÂ·sinÎ¸ = mÎ» equation applies to all of them, you just plug in the de Broglie wavelength.'
+ latex: 'Î» = h / p = h / (mv)\n\nWhere:\nh = Planck\'s constant = 6.63 × 10â»³â´ J·s\nm = mass of the particle\nv = velocity of the particle\np = mv = momentum\n\nFor an electron (m = 9.11×10â»³¹ kg) at v = 10â¶ m/s:\nÎ» = 6.63×10â»³â´ / (9.11×10â»³¹ × 10â¶)\nÎ» = 0.73 nm — comparable to X-ray wavelengths!',
+ explanation: 'In 1924, Louis de Broglie proposed that every moving particle has an associated wavelength, inversely proportional to its momentum. This was revolutionary — it meant that electrons, neutrons, and even atoms should produce interference patterns just like light! The same d·sinÎ¸ = mÎ» equation applies to all of them, you just plug in the de Broglie wavelength.'
  },
  {
  label: 'Experimental confirmation: Davisson-Germer experiment',
- latex: 'Electron diffraction from a nickel crystal:\n\nBragg condition: nÎ» = 2d Ã— sin(Î¸)\n\nFor electrons accelerated through V volts:\nÎ» = h / âˆš(2meV)\nÎ» = 1.226 / âˆšV nm\n\nAt V = 54V:\nÎ» = 1.226 / âˆš54 = 0.167 nm\nThis matched the measured diffraction peak!',
- explanation: 'Davisson and Germer (Nobel Prize 1937) fired electrons at a nickel crystal and observed a diffraction pattern â€” exactly as de Broglie predicted. The same happened for neutrons, protons, and even Câ‚†â‚€ buckyballs. This is why electron microscopes can achieve atomic resolution â€” electrons have much shorter wavelengths than visible light, giving Î» âˆ¼ 0.01 nm at 15 keV.'
+ latex: 'Electron diffraction from a nickel crystal:\n\nBragg condition: nÎ» = 2d × sin(Î¸)\n\nFor electrons accelerated through V volts:\nÎ» = h / âˆš(2meV)\nÎ» = 1.226 / âˆšV nm\n\nAt V = 54V:\nÎ» = 1.226 / âˆš54 = 0.167 nm\nThis matched the measured diffraction peak!',
+ explanation: 'Davisson and Germer (Nobel Prize 1937) fired electrons at a nickel crystal and observed a diffraction pattern — exactly as de Broglie predicted. The same happened for neutrons, protons, and even Câ‚†â‚€ buckyballs. This is why electron microscopes can achieve atomic resolution — electrons have much shorter wavelengths than visible light, giving Î» âˆ¼ 0.01 nm at 15 keV.'
  }
  ],
- conclusion: 'Wave-particle duality is not a paradox â€” it is the fundamental nature of quantum objects. Light and matter both exhibit wave properties (interference, diffraction) and particle properties (localized detection, momentum). The dÂ·sinÎ¸ = mÎ» equation that you interact with in this lab is universal: it governs X-ray crystallography, electron microscopy, neutron scattering, and even the interference of large molecules like Câ‚†â‚€. The wave nature determines where things CAN go; the particle nature determines where they DO go when measured.',
- realWorldApplication: 'Transmission Electron Microscopes (TEMs) use the wave nature of electrons to image individual atoms. By accelerating electrons to 200 keV, their de Broglie wavelength is Î» = 0.0025 nm â€” 250,000x smaller than visible light. The same dÂ·sinÎ¸ = mÎ» equation determines the diffraction pattern that the TEM uses to reconstruct atomic positions with sub-angstrom precision. This is how scientists recently imaged individual hydrogen atoms in a protein structure.'
+ conclusion: 'Wave-particle duality is not a paradox — it is the fundamental nature of quantum objects. Light and matter both exhibit wave properties (interference, diffraction) and particle properties (localized detection, momentum). The d·sinÎ¸ = mÎ» equation that you interact with in this lab is universal: it governs X-ray crystallography, electron microscopy, neutron scattering, and even the interference of large molecules like Câ‚†â‚€. The wave nature determines where things CAN go; the particle nature determines where they DO go when measured.',
+ realWorldApplication: 'Transmission Electron Microscopes (TEMs) use the wave nature of electrons to image individual atoms. By accelerating electrons to 200 keV, their de Broglie wavelength is Î» = 0.0025 nm — 250,000x smaller than visible light. The same d·sinÎ¸ = mÎ» equation determines the diffraction pattern that the TEM uses to reconstruct atomic positions with sub-angstrom precision. This is how scientists recently imaged individual hydrogen atoms in a protein structure.'
  }}
  />
  )}
@@ -299,7 +299,7 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.p12diffraction_phase_shift_degrees')}</span>
- <span className="text-blue-600 font-bold">{phaseShift}Â°</span>
+ <span className="text-blue-600 font-bold">{phaseShift}°</span>
  </label>
  <input type="range" min="0" max="360" value={phaseShift} onChange={(e) => setPhaseShift(Number(e.target.value))} className="w-full accent-blue-600" />
  </div>

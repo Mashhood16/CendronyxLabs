@@ -184,9 +184,9 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
  <circle cx={100 + (timeC / 100) * 280} cy={280 - (currTemp / 200) * 260} r="5" fill="#ef4444" />
  
  <rect x="10" y="100" width="80" height="100" fill="none" stroke="#94a3b8" strokeDasharray="4" rx="4" />
- <text x="50" y="120" textAnchor="middle" fontSize="10" fill="#64748b">{t('lab.m12differentialeq_env')} {tEnv}Â°C</text>
+ <text x="50" y="120" textAnchor="middle" fontSize="10" fill="#64748b">{t('lab.m12differentialeq_env')} {tEnv}°C</text>
  <circle cx="50" cy="160" r="25" fill={interpolateColor(currTemp)} stroke="#334155" strokeWidth="2" />
- <text x="50" y="164" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">{Math.round(currTemp)}Â°C</text>
+ <text x="50" y="164" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">{Math.round(currTemp)}°C</text>
  </svg>
  <div className="flex space-x-2 mb-4">
  <button onClick={() => setRunC(!runC)} className="flex-1 min-w-0 bg-blue-100 text-blue-700 py-2 rounded-md font-medium flex items-center justify-center hover:bg-blue-200">
@@ -198,9 +198,9 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
  </div>
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_cooling_constant')}<MathText>{t('lab.m12differentialeq_k')}</MathText>): {kCool.toFixed(3)}</label>
  <input type="range" min="0.01" max="0.1" step="0.01" value={kCool} onChange={(e) => setKCool(Number(e.target.value))} className="mb-2" />
- <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_initial_temp')}<MathText>{t('lab.m12differentialeq_t_0')}</MathText>): {t0}Â°C</label>
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_initial_temp')}<MathText>{t('lab.m12differentialeq_t_0')}</MathText>): {t0}°C</label>
  <input type="range" min="50" max="200" step="10" value={t0} onChange={(e) => setT0(Number(e.target.value))} className="mb-2" />
- <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_ambient_temp')}<MathText>{"$T_{env}$"}</MathText>): {tEnv}Â°C</label>
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_ambient_temp')}<MathText>{"$T_{env}$"}</MathText>): {tEnv}°C</label>
  <input type="range" min="0" max="40" step="1" value={tEnv} onChange={(e) => setTEnv(Number(e.target.value))} />
  </div>
  )}
@@ -223,7 +223,7 @@ export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }
  </div>
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_drag_coefficient')}<MathText>{t('lab.m12differentialeq_k')}</MathText>): {drag.toFixed(2)} {t('lab.m12differentialeq_kg_s')}</label>
  <input type="range" min="0" max="0.5" step="0.05" value={drag} onChange={(e) => { setDrag(Number(e.target.value)); setTimeB(0); setRunB(false); }} className="mb-2" />
- <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_launch_angle')} {angle}Â°</label>
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">{t('lab.m12differentialeq_launch_angle')} {angle}°</label>
  <input type="range" min="15" max="85" step="5" value={angle} onChange={(e) => { setAngle(Number(e.target.value)); setTimeB(0); setRunB(false); }} />
  </div>
  )}

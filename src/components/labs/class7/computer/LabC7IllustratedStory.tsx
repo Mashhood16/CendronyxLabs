@@ -90,7 +90,7 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
  onClick={() => setImages(images.filter((_, index) => index !== i))}
  className="absolute -top-3 -right-3 bg-slate-50 dark:bg-[#121212] text-rose-500 rounded-full p-1 shadow-md border border-slate-200 dark:border-[#1c1b1b] opacity-0 group-hover:opacity-100 transition-opacity font-bold w-8 h-8 flex items-center justify-center"
  >
- Ã—
+ ×
  </button>
  </div>
  ))}

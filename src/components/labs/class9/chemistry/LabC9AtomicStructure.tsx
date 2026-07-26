@@ -63,12 +63,12 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  setTimeout(() => {
  let resultStr = "No Reaction";
  if (rank[h1] > rank[h2]) {
- setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, 'â†’', `2Na${h1}(aq)`, '+', `${h2}2(aq)`]);
+ setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, '→', `2Na${h1}(aq)`, '+', `${h2}2(aq)`]);
  const colors: Record<string, string> = { 'Cl': 'rgba(200,255,200,0.4)', 'Br': 'rgba(255,165,0,0.6)', 'I': 'rgba(139,69,19,0.8)' };
  setBeakerColor(colors[h2] || 'rgba(200,200,200,0.1)');
  resultStr = "Reaction Occurred";
  } else {
- setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, 'â†’', 'No Reaction']);
+ setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, '→', 'No Reaction']);
  setBeakerColor('rgba(200,200,200,0.1)');
  }
  setDisplacementData(prev => [...prev, { id: Date.now(), halogen: selHalogen, halide: selHalide, result: resultStr }]);
@@ -89,7 +89,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  });
  if (decayedThisTick > 0) {
  setTh234Count(t => t + decayedThisTick);
- setEquation(['Â²Â³â¸U', 'â†’', 'Â²Â³â´Th', '+', 'â´Î±']);
+ setEquation(['²³â¸U', '→', '²³â´Th', '+', 'â´Î±']);
  }
  }, 500);
  return () => clearInterval(interval);

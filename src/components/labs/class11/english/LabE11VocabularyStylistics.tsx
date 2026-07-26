@@ -306,7 +306,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
      "{LITERARY_QUOTES[quoteIndex].quote}"
      </div>
      <div className="text-center text-sm font-medium text-slate-500 dark:text-[#71717a] uppercase tracking-widest">
-     â€” {LITERARY_QUOTES[quoteIndex].author}
+     — {LITERARY_QUOTES[quoteIndex].author}
      </div>
     </div>
 

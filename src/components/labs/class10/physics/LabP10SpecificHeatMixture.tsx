@@ -5,7 +5,7 @@ import { useTranslate } from '../../../../i18n';
 
 interface LabProps { onExit?: () => void; }
 
-// Specific heats (J/kgÂ°C)
+// Specific heats (J/kg°C)
 const MATERIALS = [
  { id: 'A', name: 'Unknown A', c: 385, actual: 'Copper' },
  { id: 'B', name: 'Unknown B', c: 900, actual: 'Aluminum' },
@@ -28,9 +28,9 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
  const [feedback, setFeedback] = useState('');
 
  // Constants
- const C_WATER = 4186; // J/kgÂ°C
+ const C_WATER = 4186; // J/kg°C
  const MASS_CALORIMETER = 20; // g (Copper equivalent mass)
- const C_CALORIMETER = 385; // J/kgÂ°C
+ const C_CALORIMETER = 385; // J/kg°C
  
  // Calculate equilibrium temp
  const m_s = massSolid / 1000;
@@ -83,7 +83,7 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
  }
  const error = Math.abs((userC - material.c) / material.c) * 100;
  if (error < 5) {
- setFeedback(`Correct! The specific heat is approx ${material.c} J/kgÂ°C (${material.actual}).`);
+ setFeedback(`Correct! The specific heat is approx ${material.c} J/kg°C (${material.actual}).`);
  } else {
  setFeedback(`Incorrect. Check your calculations. (Error: ${error.toFixed(1)}%)`);
  }
@@ -236,7 +236,7 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
  )}
  </div>
  <div className="mt-4 font-mono font-bold text-2xl text-slate-800 dark:text-[#ffffff] bg-slate-100 dark:bg-[#121212] px-4 py-2 rounded-lg border border-slate-300 dark:border-[#1c1b1b]">
- {tempWater.toFixed(1)} Â°C
+ {tempWater.toFixed(1)} °C
  </div>
  </div>
  </div>

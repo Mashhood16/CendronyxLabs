@@ -45,7 +45,7 @@ const { recordLabData, setLabScore } = useLab();
  const L = turns * 2 * Math.PI * radius;
  const trueForce = selectedMagnet.B * current * L;
  
- // Add Â±2% real-world noise, and maybe internal resistance drop depending on turns
+ // Add ±2% real-world noise, and maybe internal resistance drop depending on turns
  // The more turns, the more resistance. Let's just add simple measurement noise.
  const noise = 1 + (Math.random() - 0.5) * 0.04;
  const peakForce = trueForce * noise;
@@ -76,7 +76,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userB = parseFloat(assessmentInput);
  if (isNaN(userB)) return;
- // Accept Â±5% error
+ // Accept ±5% error
  const error = Math.abs(userB - 0.12) / 0.12;
  if (error <= 0.05) {
  setAssessmentStatus('correct');

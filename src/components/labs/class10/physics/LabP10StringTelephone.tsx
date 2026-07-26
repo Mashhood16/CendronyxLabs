@@ -40,7 +40,7 @@ const { recordLabData, setLabScore } = useLab();
  const trueVelocity = Math.sqrt(tension / selectedMaterial.mu);
  const trueTime = length / trueVelocity;
  
- // Add Â±2% real-world noise
+ // Add ±2% real-world noise
  const noise = 1 + (Math.random() - 0.5) * 0.04;
  const measuredTime = trueTime * noise;
  
@@ -72,7 +72,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userMu = parseFloat(assessmentInput);
  if (isNaN(userMu)) return;
- // Accept Â±10% error
+ // Accept ±10% error
  const error = Math.abs(userMu - 0.0012) / 0.0012;
  if (error <= 0.1) {
  setAssessmentStatus('correct');

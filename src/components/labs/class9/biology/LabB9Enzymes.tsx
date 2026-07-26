@@ -135,7 +135,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
  <div className="space-y-2 pt-4">
  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-[#ffffff]">
  <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> {t('lab.b9enzymes_temperature_c')}</span>
- <span>{temp}Â°C</span>
+ <span>{temp}°C</span>
  </label>
  <input type="range" min="0" max="80" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
  </div>
@@ -259,7 +259,7 @@ export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {
  {dataPoints.map(dp => (
  <tr key={dp.id} className="border-t">
  <td className="px-3 py-1 font-medium">{dp.enzyme.substring(0,3)}</td>
- <td className="px-3 py-1">{dp.temp}Â°C</td>
+ <td className="px-3 py-1">{dp.temp}°C</td>
  <td className="px-3 py-1">{dp.ph}</td>
  <td className="px-3 py-1">{dp.rate}%</td>
  </tr>

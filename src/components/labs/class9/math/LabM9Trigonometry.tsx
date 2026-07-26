@@ -27,11 +27,11 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  if (mode === 'ladder') {
  const h = lLen * Math.sin(lAng * Math.PI / 180);
  const b = lLen * Math.cos(lAng * Math.PI / 180);
- setLogs([{ mode: 'ladder', input: `L=${lLen}, Î¸=${lAng}Â°`, res: `H=${h.toFixed(1)}, B=${b.toFixed(1)}` }, ...logs]);
+ setLogs([{ mode: 'ladder', input: `L=${lLen}, Î¸=${lAng}°`, res: `H=${h.toFixed(1)}, B=${b.toFixed(1)}` }, ...logs]);
  } else {
  const n = dist * Math.cos(brg * Math.PI / 180);
  const e = dist * Math.sin(brg * Math.PI / 180);
- setLogs([{ mode: 'ship', input: `D=${dist}, Brg=${brg}Â°`, res: `N=${n.toFixed(1)}, E=${e.toFixed(1)}` }, ...logs]);
+ setLogs([{ mode: 'ship', input: `D=${dist}, Brg=${brg}°`, res: `N=${n.toFixed(1)}, E=${e.toFixed(1)}` }, ...logs]);
  }
  };
 
@@ -164,7 +164,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  <line x1={150 - ladderB*8} y1="220" x2="150" y2={220 - ladderH*8} stroke="#d97706" strokeWidth="5" strokeLinecap="round" />
  {/* Angle Arc */}
  <path d={`M ${150 - ladderB*8 + 15} 220 A 15 15 0 0 0 ${150 - ladderB*8 + 8} ${220 - 12}`} fill="none" stroke="#ef4444" />
- <text x={150 - ladderB*8 + 25} y="215" fontSize="12" fill="#ef4444" fontWeight="bold">{lAng}Â°</text>
+ <text x={150 - ladderB*8 + 25} y="215" fontSize="12" fill="#ef4444" fontWeight="bold">{lAng}°</text>
  
  {/* Height and Base labels */}
  <text x="160" y={220 - ladderH*4} fontSize="12" fill="#334155" fontWeight="bold">H={ladderH.toFixed(1)}m</text>
@@ -187,7 +187,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  
  {/* Arc */}
  <path d={`M 150 100 A 25 25 0 ${brg > 180 ? 1 : 0} 1 ${150 + 25*Math.sin(brg*Math.PI/180)} ${125 - 25*Math.cos(brg*Math.PI/180)}`} fill="none" stroke="#eab308" strokeWidth="2" />
- <text x="160" y="115" fontSize="12" fill="#ca8a04" fontWeight="bold">{brg}Â°</text>
+ <text x="160" y="115" fontSize="12" fill="#ca8a04" fontWeight="bold">{brg}°</text>
  </g>
  )}
  </svg>
@@ -269,7 +269,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  <div className="space-y-4">
  <p className="text-sm text-slate-700 dark:text-[#ffffff]">
  
- {t('lab.m9trigonometry_a_ladder_of_length')} <strong>{qLadderL}m</strong> {t('lab.m9trigonometry_leans_against_a_wall_at_an_ang')} <strong>{qLadderA}Â°</strong> {t('lab.m9trigonometry_to_the_horizontal')} <br/>{t('lab.m9trigonometry_calculate_the_height_of_the_wa')}
+ {t('lab.m9trigonometry_a_ladder_of_length')} <strong>{qLadderL}m</strong> {t('lab.m9trigonometry_leans_against_a_wall_at_an_ang')} <strong>{qLadderA}°</strong> {t('lab.m9trigonometry_to_the_horizontal')} <br/>{t('lab.m9trigonometry_calculate_the_height_of_the_wa')}
  </p>
  <div className="flex items-center gap-2">
  <span>{t('lab.m9trigonometry_h')} </span>
@@ -313,7 +313,7 @@ export default function LabM9Trigonometry({ onExit }: LabProps) {
  onChange={(e) => setAnsShipB(e.target.value)}
  className="w-16 border border-slate-300 dark:border-[#1c1b1b] rounded p-1 focus:ring-2 focus:ring-blue-500 outline-none"
  />
- <span>Â°</span>
+ <span>°</span>
  </div>
  <div className="flex items-center gap-4 mt-4">
  <button onClick={checkShip} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-medium transition active:scale-95 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">

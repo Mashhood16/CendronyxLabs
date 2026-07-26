@@ -234,7 +234,7 @@ export default function LabC11EnergeticsKinetics({ onExit }: { onExit?: () => vo
  <rect x="95" y="20" width="10" height="220" rx="5" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="2"/>
  <circle cx="100" cy="240" r="12" fill="#ef4444" />
  <rect x="98" y={230 - (temperature * 2)} width="4" height={10 + (temperature * 2)} fill="#ef4444" className="transition-all duration-300" />
- <text x="120" y="245" fontSize="16" fill="#334155" fontWeight="bold">{temperature.toFixed(1)} Â°C</text>
+ <text x="120" y="245" fontSize="16" fill="#334155" fontWeight="bold">{temperature.toFixed(1)} °C</text>
  </svg>
  </div>
 

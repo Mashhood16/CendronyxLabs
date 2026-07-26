@@ -80,7 +80,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
  <div className="absolute bottom-10 right-10 bg-slate-50 dark:!bg-[#121212] px-6 py-4 rounded-xl shadow-lg border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center gap-2">
  <span className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.s8solarcooker_pot_temp')}</span>
  <span className={`text-4xl font-black font-mono transition-colors duration-1000 ${temperature > 50 ? 'text-red-500' : 'text-blue-500'}`}>
- {temperature}Â°C
+ {temperature}°C
  </span>
  </div>
 

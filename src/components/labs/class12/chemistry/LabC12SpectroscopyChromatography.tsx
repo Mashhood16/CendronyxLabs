@@ -124,27 +124,27 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
  {config.showDerivations && (
  <DeepDivePanel
  derivation={{
- title: 'Beer-Lambert Law â€” Why A = Îµbc?',
+ title: 'Beer-Lambert Law — Why A = Îµbc?',
  question: 'Why does absorbance increase linearly with concentration and path length? What is the physical origin of the logarithmic relationship?',
  steps: [
  {
  label: 'Start with the probability of photon absorption',
- latex: 'dI / I = -Î± Ã— c Ã— dx\n\nWhere:\ndI = change in transmitted intensity\nI = incident intensity at depth x\nÎ± = molar absorption coefficient\nc = concentration of absorbing species\ndx = infinitesimal path length',
+ latex: 'dI / I = -Î± × c × dx\n\nWhere:\ndI = change in transmitted intensity\nI = incident intensity at depth x\nÎ± = molar absorption coefficient\nc = concentration of absorbing species\ndx = infinitesimal path length',
  explanation: 'When a beam of light passes through a medium, the probability of a photon being absorbed in any thin slice is proportional to both the concentration of absorbing molecules and the number of photons present. This is analogous to radioactive decay where the decay rate is proportional to the remaining nuclei.'
  },
  {
  label: 'Integrate over the full path length b',
- latex: 'âˆ«(dI/I) = -Î±c âˆ« dx\n\nFrom Iâ‚€ to I, and x=0 to x=b:\nln(I/Iâ‚€) = -Î± c Ã— b\n\n-Rearranging:\nI = Iâ‚€ Ã— e^(-Î±cb)',
- explanation: 'Integrating both sides gives the exponential attenuation law. This is the same mathematical form as radioactive decay (N = Nâ‚€e^(-Î»t)) and capacitor discharge (Q = Qâ‚€e^(-t/RC)) â€” all governed by the same exponential decay differential equation.'
+ latex: 'âˆ«(dI/I) = -Î±c âˆ« dx\n\nFrom Iâ‚€ to I, and x=0 to x=b:\nln(I/Iâ‚€) = -Î± c × b\n\n-Rearranging:\nI = Iâ‚€ × e^(-Î±cb)',
+ explanation: 'Integrating both sides gives the exponential attenuation law. This is the same mathematical form as radioactive decay (N = Nâ‚€e^(-Î»t)) and capacitor discharge (Q = Qâ‚€e^(-t/RC)) — all governed by the same exponential decay differential equation.'
  },
  {
  label: 'Convert to base-10 logarithms (absorbance)',
- latex: 'A = -logâ‚â‚€(I/Iâ‚€)\n\nA = -logâ‚â‚€(e^(-Î±cb))\nA = (Î± / ln(10)) Ã— c Ã— b\n\nA = Îµ Ã— c Ã— b\n\nWhere Îµ = Î± / ln(10) is the molar absorptivity',
- explanation: 'The absorbance A is defined using base-10 logarithms for historical and practical reasons. The Beer-Lambert law shows that absorbance is linearly proportional to both concentration and path length â€” which is why every spectrophotometer cuvette has a precisely known path length (usually 1 cm).'
+ latex: 'A = -logâ‚â‚€(I/Iâ‚€)\n\nA = -logâ‚â‚€(e^(-Î±cb))\nA = (Î± / ln(10)) × c × b\n\nA = Îµ × c × b\n\nWhere Îµ = Î± / ln(10) is the molar absorptivity',
+ explanation: 'The absorbance A is defined using base-10 logarithms for historical and practical reasons. The Beer-Lambert law shows that absorbance is linearly proportional to both concentration and path length — which is why every spectrophotometer cuvette has a precisely known path length (usually 1 cm).'
  }
  ],
- conclusion: 'The Beer-Lambert law falls out of simple probability theory â€” the chance of a photon being absorbed is proportional to the number of molecules it encounters. This linear relationship is the foundation of all quantitative spectroscopy, from measuring protein concentrations in biochemistry to monitoring pollutants in environmental chemistry.',
- realWorldApplication: 'In forensic toxicology, the concentration of alcohol in a blood sample is determined using the Beer-Lambert law. A spectrophotometer measures the absorbance of the sample at 340 nm after enzymatic reaction with NADH. The absorbance reading directly gives the ethanol concentration via A = Îµbc â€” the exact same principle demonstrated in this lab for the IR, NMR, and MS data.'
+ conclusion: 'The Beer-Lambert law falls out of simple probability theory — the chance of a photon being absorbed is proportional to the number of molecules it encounters. This linear relationship is the foundation of all quantitative spectroscopy, from measuring protein concentrations in biochemistry to monitoring pollutants in environmental chemistry.',
+ realWorldApplication: 'In forensic toxicology, the concentration of alcohol in a blood sample is determined using the Beer-Lambert law. A spectrophotometer measures the absorbance of the sample at 340 nm after enzymatic reaction with NADH. The absorbance reading directly gives the ethanol concentration via A = Îµbc — the exact same principle demonstrated in this lab for the IR, NMR, and MS data.'
  }}
  />
  )}

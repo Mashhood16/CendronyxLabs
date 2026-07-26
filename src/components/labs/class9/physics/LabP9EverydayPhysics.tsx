@@ -175,9 +175,9 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  const checkGravity = () => {
  const v = parseFloat(ansGravity);
  if (!isNaN(v) && Math.abs(v - 9.8) < 0.5) {
- setResGravity("Correct! The acceleration due to gravity is approximately 9.8 m/sÂ².");
+ setResGravity("Correct! The acceleration due to gravity is approximately 9.8 m/s².");
  } else {
- setResGravity("Incorrect. Remember to use g = 2h / tÂ² with the measured values.");
+ setResGravity("Incorrect. Remember to use g = 2h / t² with the measured values.");
  }
  };
 
@@ -186,7 +186,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  if (!isNaN(v) && Math.abs(v - 0.5) < 0.05) {
  setResFriction("Correct! The coefficient of kinetic friction is 0.5.");
  } else {
- setResFriction("Incorrect. Use Î¼ = vâ‚€Â² / (2 * 9.8 * d) using logs.");
+ setResFriction("Incorrect. Use Î¼ = vâ‚€² / (2 * 9.8 * d) using logs.");
  }
  };
 

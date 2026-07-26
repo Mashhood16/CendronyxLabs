@@ -64,7 +64,7 @@ export default function Class11Math() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 11 Mathematics")}</h1>
-                <p className="text-white/80 text-sm">{t("Matrices, Trigonometry, Vectors & Calculus Prep â€” with interactive labs and step-by-step theorem proofs")}</p>
+                <p className="text-white/80 text-sm">{t("Matrices, Trigonometry, Vectors & Calculus Prep — with interactive labs and step-by-step theorem proofs")}</p>
               </div>
             </div>
           </div>

@@ -78,7 +78,7 @@ export default function LabS7CleaningCoins({ onExit }: LabProps) {
  <div className="relative w-24 h-24 rounded-full border-2 border-amber-700 bg-amber-500 flex justify-center items-center shadow-lg z-10 overflow-hidden dark:bg-[#121212] dark:border-[#1c1b1b]">
  {/* The shiny coin underneath */}
  <div className="absolute inset-0 bg-gradient-to-tr from-amber-600 via-yellow-500 to-amber-400"></div>
- <div className="absolute inset-2 border border-amber-600/30 rounded-full flex items-center justify-center font-bold text-amber-700/50">1Â¢</div>
+ <div className="absolute inset-2 border border-amber-600/30 rounded-full flex items-center justify-center font-bold text-amber-700/50">1¢</div>
  
  {/* The Tarnish Overlay */}
  <div 

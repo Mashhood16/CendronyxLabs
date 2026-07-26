@@ -229,27 +229,27 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  steps: [
  {
  label: "Coulomb's Force Law",
- latex: "F = (1/4Ï€Îµâ‚€) Â· qâ‚qâ‚‚ / rÂ²",
- explanation: "Coulomb's law gives the electrostatic force between two point charges. It is the fundamental experimental law of electrostatics, analogous to Newton's gravitational force law. The constant Îµâ‚€ = 8.85Ã—10â»Â¹Â² CÂ²/NÂ·mÂ² is the permittivity of free space."
+ latex: "F = (1/4Ï€Îµâ‚€) · qâ‚qâ‚‚ / r²",
+ explanation: "Coulomb's law gives the electrostatic force between two point charges. It is the fundamental experimental law of electrostatics, analogous to Newton's gravitational force law. The constant Îµâ‚€ = 8.85×10â»¹² C²/N·m² is the permittivity of free space."
  },
  {
  label: "Electric Field from a Point Charge",
- latex: "E = F / q = (1/4Ï€Îµâ‚€) Â· Q / rÂ²",
- explanation: "The electric field E is defined as force per unit test charge. For a point charge Q, the field radiates radially outward (positive) or inward (negative) with magnitude E = Q/(4Ï€Îµâ‚€rÂ²). This is the foundation for all electrostatics."
+ latex: "E = F / q = (1/4Ï€Îµâ‚€) · Q / r²",
+ explanation: "The electric field E is defined as force per unit test charge. For a point charge Q, the field radiates radially outward (positive) or inward (negative) with magnitude E = Q/(4Ï€Îµâ‚€r²). This is the foundation for all electrostatics."
  },
  {
  label: "Electric Flux through a Sphere",
- latex: "Î¦ = âˆ® E Â· dA = âˆ® EÂ·dAÂ·cos(0)\n = E Â· 4Ï€rÂ²\n = (Q / 4Ï€Îµâ‚€rÂ²) Â· 4Ï€rÂ²\n = Q / Îµâ‚€",
- explanation: "The electric flux Î¦ is the surface integral of EÂ·dA. For a spherical surface centered on the charge, E is constant and perpendicular to the surface (cos 0 = 1). The surface area is 4Ï€rÂ². The rÂ² cancels, giving Î¦ = Q/Îµâ‚€ â€” independent of radius!"
+ latex: "Î¦ = âˆ® E · dA = âˆ® E·dA·cos(0)\n = E · 4Ï€r²\n = (Q / 4Ï€Îµâ‚€r²) · 4Ï€r²\n = Q / Îµâ‚€",
+ explanation: "The electric flux Î¦ is the surface integral of E·dA. For a spherical surface centered on the charge, E is constant and perpendicular to the surface (cos 0 = 1). The surface area is 4Ï€r². The r² cancels, giving Î¦ = Q/Îµâ‚€ — independent of radius!"
  },
  {
  label: "Gauss's Law & Capacitance",
- latex: "âˆ® E Â· dA = Qâ‚‘â‚™ð’¸ / Îµâ‚€ (Gauss's Law)\n\nFor a parallel plate capacitor:\nE = Ïƒ / Îµâ‚€ = Q / (Îµâ‚€A)\nV = EÂ·d = Qd / (Îµâ‚€A)\nâˆ´ C = Q/V = Îµâ‚€A / d",
+ latex: "âˆ® E · dA = Qâ‚‘â‚™ð’¸ / Îµâ‚€ (Gauss's Law)\n\nFor a parallel plate capacitor:\nE = Ïƒ / Îµâ‚€ = Q / (Îµâ‚€A)\nV = E·d = Qd / (Îµâ‚€A)\nâˆ´ C = Q/V = Îµâ‚€A / d",
  explanation: "Gauss's law generalizes: the net flux through ANY closed surface equals the enclosed charge divided by Îµâ‚€. Applying it to parallel plates: the field is uniform E = Q/(Îµâ‚€A), so voltage V = Ed = Qd/(Îµâ‚€A), giving capacitance C = Îµâ‚€A/d. This is why the camera flash capacitor's geometry determines its charge storage!"
  }
  ],
- conclusion: "Gauss's law is a profound generalization of Coulomb's law: while Coulomb's law describes the force between individual charges, Gauss's law relates the electric field over a surface to the charge enclosed. This is one of Maxwell's four equations and the foundation of all capacitor physics â€” from the eel's bio-capacitors to the camera flash circuit.",
- realWorldApplication: "Every capacitor in electronics follows C = Îµâ‚€A/d. The eel's electrocytes are biological capacitors â€” each cell maintains an ion gradient across a membrane (the dielectric), creating a potential difference of ~0.15V. Stacking 5000 of these 'capacitors' in series produces 600V+. In the camera flash, the capacitor stores charge slowly through a large resistor (seconds), then discharges rapidly through a low-resistance bulb (milliseconds) â€” the RC time constant Ï„ = RC governs both processes."
+ conclusion: "Gauss's law is a profound generalization of Coulomb's law: while Coulomb's law describes the force between individual charges, Gauss's law relates the electric field over a surface to the charge enclosed. This is one of Maxwell's four equations and the foundation of all capacitor physics — from the eel's bio-capacitors to the camera flash circuit.",
+ realWorldApplication: "Every capacitor in electronics follows C = Îµâ‚€A/d. The eel's electrocytes are biological capacitors — each cell maintains an ion gradient across a membrane (the dielectric), creating a potential difference of ~0.15V. Stacking 5000 of these 'capacitors' in series produces 600V+. In the camera flash, the capacitor stores charge slowly through a large resistor (seconds), then discharges rapidly through a low-resistance bulb (milliseconds) — the RC time constant Ï„ = RC governs both processes."
  }}
  defaultExpanded={difficulty === 'deep-dive'}
  />

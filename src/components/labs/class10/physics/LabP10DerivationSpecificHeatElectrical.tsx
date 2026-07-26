@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onExit?: () => void }) {
@@ -31,7 +31,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
  };
 
  const steps = [
- { label: t('lab.p10_shElec_step1_label'), formula: 'Q_heater = V Ã— I Ã— t', detail: t('lab.p10_shElec_step1_detail') },
+ { label: t('lab.p10_shElec_step1_label'), formula: 'Q_heater = V × I × t', detail: t('lab.p10_shElec_step1_detail') },
  { label: t('lab.p10_shElec_step2_label'), formula: 'Q_heater = m_l c_l Î”T + m_c c_c Î”T', detail: t('lab.p10_shElec_step2_detail') },
  { label: t('lab.p10_shElec_step3_label'), formula: 'c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))', detail: t('lab.p10_shElec_step3_detail') }
  ];
@@ -147,7 +147,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10derivationspecificheatelectrical_liquid_mass_m_l')}</span><span className="text-violet-600 font-mono">{ml} kg</span></div><input type="range" min="0.1" max="1" step="0.05" value={ml} onChange={e => { setMl(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /></div>
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
  <p className="text-xs text-slate-500 font-semibold uppercase">{t('lab.10derivationspecificheatelectrical_derivationtrace')}</p>
- <p className="text-sm text-slate-400">{t('lab.p10derivationspecificheatelectrical_q_heater')} {v}Ã—{i}Ã—{timeSec} = {qHeater} J</p>
+ <p className="text-sm text-slate-400">{t('lab.p10derivationspecificheatelectrical_q_heater')} {v}×{i}×{timeSec} = {qHeater} J</p>
  <p className="text-sm text-slate-400">{t('lab.p10_shElec_trace1', { cl: cl.toFixed(0) })}</p>
  <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">{t('lab.10derivationspecificheatelectrical_c_l')}</span><span className="text-yellow-400 font-mono font-bold">{cl.toFixed(0)} {t('lab.p10derivationspecificheatelectrical_j_kg_k')}</span></p>
  </div>

@@ -222,7 +222,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
  {/* Measurement HUD */}
  <div className="absolute top-16 right-4 bg-[#121212] dark:bg-[#121212]/80 backdrop-blur p-3 rounded-lg border border-[#1c1b1b] dark:border-[#1c1b1b] text-slate-300 font-mono text-sm z-20 shadow-lg">
- <div>Î¸: {measuredTheta.toFixed(1)}Â°</div>
+ <div>Î¸: {measuredTheta.toFixed(1)}°</div>
  </div>
 
  </div>

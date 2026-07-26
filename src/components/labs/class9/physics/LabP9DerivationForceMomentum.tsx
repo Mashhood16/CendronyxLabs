@@ -10,18 +10,18 @@ function normalizeEquation(eq: string): string {
  return eq
  .toLowerCase()
  .replace(/\s+/g, '')
- .replace(/Ã—/g, '*')
+ .replace(/×/g, '*')
  .replace(/\*/g, '')
- .replace(/Â·/g, '')
- .replace(/Ã·/g, '/')
+ .replace(/·/g, '')
+ .replace(/÷/g, '/')
  .replace(/âˆ’/g, '-')
- .replace(/â€“/g, '-')
+ .replace(/–/g, '-')
  .replace(/Î”/g, 'd')
  .replace(/Î´/g, 'd')
  .replace(/_/g, '')
- .replace(/Â²/g, '^2')
- .replace(/Â³/g, '^3')
- .replace(/Â½/g, '0.5')
+ .replace(/²/g, '^2')
+ .replace(/³/g, '^3')
+ .replace(/½/g, '0.5')
  .replace(/Ï€/g, 'pi');
 }
 function checkEquation(userAnswer: string, expected: string): boolean {
@@ -98,9 +98,9 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
  };
 
  const steps = [
- { label: t('lab.step1_label'), formula: 'F = m Ã— a', detail: t('lab.step1_detail') },
+ { label: t('lab.step1_label'), formula: 'F = m × a', detail: t('lab.step1_detail') },
  { label: t('lab.step2_label'), formula: 'a = (vf âˆ’ vi) / Î”t', detail: t('lab.step2_detail') },
- { label: t('lab.step3_label'), formula: 'F = m Ã— (vf âˆ’ vi) / Î”t', detail: t('lab.step3_detail') },
+ { label: t('lab.step3_label'), formula: 'F = m × (vf âˆ’ vi) / Î”t', detail: t('lab.step3_detail') },
  { label: t('lab.step4_label'), formula: 'F = (pf âˆ’ pi) / Î”t = Î”p / Î”t', detail: t('lab.step4_detail') },
  ];
 
@@ -201,9 +201,9 @@ export default function LabP9DerivationForceMomentum({ onExit }: { onExit?: () =
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-2">
  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Derivation Trace</p>
  <div className="space-y-1.5">
- <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step1')}</span><span className="text-slate-500">F = {mass} Ã— a</span></div>
- <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step2')}</span><span className="text-slate-500">a = ({vf} âˆ’ {vi}) / {time} = {((vf - vi) / time).toFixed(1)} m/sÂ²</span></div>
- <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step3')}</span><span className="text-slate-500">F = {mass} Ã— {((vf - vi) / time).toFixed(1)}</span></div>
+ <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step1')}</span><span className="text-slate-500">F = {mass} × a</span></div>
+ <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step2')}</span><span className="text-slate-500">a = ({vf} âˆ’ {vi}) / {time} = {((vf - vi) / time).toFixed(1)} m/s²</span></div>
+ <div className="flex justify-between text-sm"><span className="text-slate-400">{t('lab.trace_step3')}</span><span className="text-slate-500">F = {mass} × {((vf - vi) / time).toFixed(1)}</span></div>
  <div className="border-t border-[#2a2a2a] pt-1.5 flex justify-between text-xs"><span className="text-green-400 font-bold">F = Î”p/Î”t</span><span className="text-yellow-400 font-mono font-bold">{force.toFixed(1)} N</span></div>
  </div>
  </div>

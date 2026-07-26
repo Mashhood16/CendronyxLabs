@@ -35,7 +35,7 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  const newCarb = totalCarbAdded + carbMass;
  setTotalCarbAdded(newCarb);
  setIsReacting(true);
- setEquation('2CHâ‚ƒCOOH(aq) + Naâ‚‚COâ‚ƒ(s) â†’ 2CHâ‚ƒCOONa(aq) + Hâ‚‚O(l) + COâ‚‚(g) â†‘');
+ setEquation('2CHâ‚ƒCOOH(aq) + Naâ‚‚COâ‚ƒ(s) → 2CHâ‚ƒCOONa(aq) + Hâ‚‚O(l) + COâ‚‚(g) ←‘');
  
  // Target gas volume = newCarb * 226.4 * (1 + (Math.random()*0.06 - 0.03)) // 3% noise
  const noise = 1 + (Math.random() * 0.06 - 0.03);

@@ -392,7 +392,7 @@ export default function HistoryDashboard() {
                       ))}
                     </div>
                     <p className={`text-xs ${theme.text.faint} mt-1`}>
-                      Last {stats.recentPerformance.length} labs (newest â†’ oldest)
+                      Last {stats.recentPerformance.length} labs (newest → oldest)
                     </p>
                   </div>
                 ) : (

@@ -4,7 +4,7 @@ import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(eq:string):string{return eq.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/âˆ’/g,'-').replace(/–/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void }) {
@@ -44,8 +44,8 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  const steps = [
  { label: t('lab.recoil_step1_label'), formula: 'pi = pf', detail: t('lab.recoil_step1_detail') },
  { label: t('lab.recoil_step2_label'), formula: 'pi = 0', detail: t('lab.recoil_step2_detail') },
- { label: t('lab.recoil_step3_label'), formula: 'mbÃ—vb + mgÃ—vg = 0', detail: t('lab.recoil_step3_detail') },
- { label: t('lab.recoil_step4_label'), formula: 'vg = âˆ’(mbÃ—vb) / mg', detail: t('lab.recoil_step4_detail') },
+ { label: t('lab.recoil_step3_label'), formula: 'mb×vb + mg×vg = 0', detail: t('lab.recoil_step3_detail') },
+ { label: t('lab.recoil_step4_label'), formula: 'vg = âˆ’(mb×vb) / mg', detail: t('lab.recoil_step4_detail') },
  ];
 
  return (
@@ -70,7 +70,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  </div>
  <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
  <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p>
- <p className="text-2xl font-bold text-white mt-1"><MathFormula formula="vg = âˆ’(mb Ã— vb) / mg" /></p>
+ <p className="text-2xl font-bold text-white mt-1"><MathFormula formula="vg = âˆ’(mb × vb) / mg" /></p>
  <p className="text-xs text-amber-200 mt-1">{t('lab.recoil_final_desc')}</p>
  </div>
  <div className="space-y-0">{steps.map((step,idx)=><div key={idx} className="relative"><div className="flex gap-3"><div className="flex flex-col items-center"><div className="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">{idx+1}</div>{idx<steps.length-1&&<div className="w-0.5 h-full min-h-[24px] bg-gradient-to-b from-amber-400 to-amber-200 dark:from-amber-600 dark:to-amber-800" />}</div><div className="flex-1 pb-4"><div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-800 mb-1"><p className="font-bold text-base text-amber-800 dark:text-amber-300">{step.label}</p></div><div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]"><MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" /></div><p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>{idx<steps.length-1&&<div className="flex justify-center mt-1"><ArrowRight className="w-4 h-4 text-amber-400" /></div>}</div></div></div>)}</div>

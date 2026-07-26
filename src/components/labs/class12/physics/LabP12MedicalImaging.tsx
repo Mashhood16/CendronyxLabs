@@ -163,7 +163,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
  
  <div className="mt-3 bg-[#121212] dark:bg-[#121212] text-cyan-400 font-mono text-sm p-2 rounded text-center">
  
- {t('lab.p12medicalimaging_echo_return_time')} {echoTime > 0 ? `${echoTime} Âµs` : '---'}
+ {t('lab.p12medicalimaging_echo_return_time')} {echoTime > 0 ? `${echoTime} µs` : '---'}
  </div>
  </div>
 

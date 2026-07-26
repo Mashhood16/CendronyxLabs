@@ -36,7 +36,7 @@ const { recordLabData, setLabScore } = useLab();
  const n2 = 1.0; // Air
 
  useEffect(() => {
- // Add Â±0.5 deg noise to refracted measurement when angle changes
+ // Add ±0.5 deg noise to refracted measurement when angle changes
  setNoise((Math.random() - 0.5) * 1.0);
  }, [angle1, materialId]);
 
@@ -70,7 +70,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userAns = parseFloat(assessmentInput);
  if (isNaN(userAns)) return;
- // Accept Â±0.05 error
+ // Accept ±0.05 error
  if (Math.abs(userAns - 1.65) <= 0.05) {
  setAssessmentStatus('correct');
  } else {
@@ -146,7 +146,7 @@ const { recordLabData, setLabScore } = useLab();
  <div>
  <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.p10totalinternalreflection_angle_of_incidence')}</span>
- <span className="text-blue-600 font-bold">{angle1}Â°</span>
+ <span className="text-blue-600 font-bold">{angle1}°</span>
  </label>
  <input 
  type="range" min="0" max="85" step="1"
@@ -262,7 +262,7 @@ const { recordLabData, setLabScore } = useLab();
  <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
  <tr>
  <th className="px-3 py-2 border-b">{t('lab.10totalinternalreflection_n')}</th>
- <th className="px-3 py-2 border-b">Î¸â‚ (Â°)</th>
+ <th className="px-3 py-2 border-b">Î¸â‚ (°)</th>
  <th className="px-3 py-2 border-b">{t('lab.p10totalinternalreflection_measured')}</th>
  </tr>
  </thead>

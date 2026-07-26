@@ -1,5 +1,5 @@
 ﻿/**
- * English â†’ Urdu (Ù†Ø³ØªØ¹Ù„ÛŒÙ‚) meanings dictionary
+ * English → Urdu (Ù†Ø³ØªØ¹Ù„ÛŒÙ‚) meanings dictionary
  * Used across Class 6, 7, and 8 English labs to display Urdu meanings with TTS.
  *
  * Display uses Urdu script (Ù†Ø³ØªØ¹Ù„ÛŒÙ‚).

@@ -167,7 +167,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  <div className="space-y-2">
  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
  <label>{t('lab.p10faradaylaw_coil_area_a')}</label>
- <span>{A.toFixed(3)} mÂ²</span>
+ <span>{A.toFixed(3)} m²</span>
  </div>
  <input 
  type="range" min="0.01" max="0.10" step="0.01" 
@@ -370,7 +370,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  {t('lab.p10faradaylaw_check')}
  </button>
  </div>
- {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_correct_you_found_a')} {mysteryA} mÂ²</div>}
+ {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_correct_you_found_a')} {mysteryA} m²</div>}
  {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_incorrect_a_0_1_n_b_v')}</div>}
  </div>
  )}

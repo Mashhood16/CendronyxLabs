@@ -44,7 +44,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
  if (Math.abs(numAnswer - problem.correctHeight) <= 0.5) {
  setFeedback("Correct! Excellent work using trigonometry.");
  } else {
- setFeedback(`Incorrect. Try again. (Hint: use tan(${problem.angle}Â°) * ${problem.distance} + ${problem.eyeHeight})`);
+ setFeedback(`Incorrect. Try again. (Hint: use tan(${problem.angle}°) * ${problem.distance} + ${problem.eyeHeight})`);
  }
  };
 
@@ -144,7 +144,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
  stroke="#ef4444" 
  strokeWidth="2" 
  />
- <text x={300 - distance * 2 + 45} y={250 - eyeHeight * 2 - 10} fill="#dc2626" fontSize="14" fontWeight="bold">{angle}Â°</text>
+ <text x={300 - distance * 2 + 45} y={250 - eyeHeight * 2 - 10} fill="#dc2626" fontSize="14" fontWeight="bold">{angle}°</text>
 
  {/* Distance Label */}
  <text x={300 - distance} y="265" textAnchor="middle" fill="#0f172a" fontSize="14" fontWeight="bold">{t('lab.m10trigapplications_d')} {distance} m</text>
@@ -169,7 +169,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
  <div>
  <div className="flex justify-between text-sm font-medium mb-1 text-slate-700 dark:text-[#ffffff]">
  <span>{t('lab.m10trigapplications_angle_of_elevation_1')}</span>
- <span className="text-red-600">{angle}Â°</span>
+ <span className="text-red-600">{angle}°</span>
  </div>
  <input
  type="range"
@@ -200,7 +200,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
  <div className="bg-emerald-50 p-5 rounded-lg border border-emerald-200">
  <p className="text-slate-800 dark:text-[#ffffff] mb-3 leading-relaxed">
  
- {t('lab.m10trigapplications_you_are_surveying_a_skyscraper')} <strong>{problem.distance} {t('lab.m10trigapplications_meters')}</strong> {t('lab.m10trigapplications_away_from_its_base_looking_up_')} <strong>{problem.angle}Â°</strong> {t('lab.m10trigapplications_to_the_very_top')}
+ {t('lab.m10trigapplications_you_are_surveying_a_skyscraper')} <strong>{problem.distance} {t('lab.m10trigapplications_meters')}</strong> {t('lab.m10trigapplications_away_from_its_base_looking_up_')} <strong>{problem.angle}°</strong> {t('lab.m10trigapplications_to_the_very_top')}
  </p>
  <p className="text-slate-800 dark:text-[#ffffff] font-semibold">
  

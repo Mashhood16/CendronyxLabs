@@ -32,8 +32,8 @@ const { recordLabData, setLabScore } = useLab();
 
  useEffect(() => {
  // Generate new random noise when inputs change
- const n1 = (Math.random() - 0.5) * 2; // Â±1 degree
- const n2 = (Math.random() - 0.5) * 2; // Â±1 degree
+ const n1 = (Math.random() - 0.5) * 2; // ±1 degree
+ const n2 = (Math.random() - 0.5) * 2; // ±1 degree
  setNoise1(n1);
  setNoise2(n2);
  }, [actualDist, rayAngle]);
@@ -78,7 +78,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userAns = parseFloat(assessmentInput);
  if (isNaN(userAns)) return;
- // Accept Â±2 cm error
+ // Accept ±2 cm error
  if (Math.abs(userAns - mysteryDist) <= 2.0) {
  setAssessmentStatus('correct');
  } else {
@@ -171,7 +171,7 @@ const { recordLabData, setLabScore } = useLab();
  <div>
  <label className="flex justify-between font-medium text-sm text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.p10planemirror_tracing_angle')}</span>
- <span className="text-emerald-600 font-bold">{rayAngle}Â°</span>
+ <span className="text-emerald-600 font-bold">{rayAngle}°</span>
  </label>
  <input 
  type="range" min="10" max="45" step="1"
@@ -234,7 +234,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Error visualization floating text */}
  <div className="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] text-xs text-slate-300 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  
- {t('lab.p10planemirror_noise')} {(noise1 > 0 ? '+' : '')}{noise1.toFixed(1)}Â°, {(noise2 > 0 ? '+' : '')}{noise2.toFixed(1)}Â°
+ {t('lab.p10planemirror_noise')} {(noise1 > 0 ? '+' : '')}{noise1.toFixed(1)}°, {(noise2 > 0 ? '+' : '')}{noise2.toFixed(1)}°
  </div>
  </div>
  </div>
@@ -256,7 +256,7 @@ const { recordLabData, setLabScore } = useLab();
  <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
  <tr>
  <th className="px-3 py-2 border-b">{t('lab.p10planemirror_d_o_cm')}</th>
- <th className="px-3 py-2 border-b">Î¸ (Â°)</th>
+ <th className="px-3 py-2 border-b">Î¸ (°)</th>
  <th className="px-3 py-2 border-b">{t('lab.p10planemirror_measured_d_i_cm')}</th>
  </tr>
  </thead>

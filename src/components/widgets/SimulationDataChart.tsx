@@ -83,7 +83,7 @@ export default function SimulationDataChart({
     };
   }, [data]);
 
-  // SVG â†’ canvas coordinates
+  // SVG → canvas coordinates
   const mapToCanvas = (t: number, val: number, width: number, height: number, padding: number) => {
     const x = padding + ((t - tRange.min) / (tRange.max - tRange.min || 1)) * (width - 2 * padding);
     const y = height - padding - ((val - yRange.min) / (yRange.max - yRange.min || 1)) * (height - 2 * padding);

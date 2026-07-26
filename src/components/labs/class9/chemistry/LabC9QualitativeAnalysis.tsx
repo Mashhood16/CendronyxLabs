@@ -22,7 +22,7 @@ const GAS_BOTTLES: Bottle[] = [
 ];
 
 const FLAME_BOTTLES: Bottle[] = [
- { id: 'cu', label: 'Copper(II) Ion', formula: 'CuÂ²âº', type: 'solid', color: '#059669' },
+ { id: 'cu', label: 'Copper(II) Ion', formula: 'Cu²âº', type: 'solid', color: '#059669' },
  { id: 'na', label: 'Sodium Ion', formula: 'Naâº', type: 'solid', color: '#ffffff' },
  { id: 'k', label: 'Potassium Ion', formula: 'Kâº', type: 'solid', color: '#f1f5f9' },
 ];
@@ -51,13 +51,13 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
  useEffect(() => {
  if (flaskContents.includes('zn') && flaskContents.includes('hcl')) {
  setReactionGas('H2');
- setReactionEquation('Zn(s) + 2HCl(aq) âž” ZnCl2(aq) + H2(g) â†‘');
+ setReactionEquation('Zn(s) + 2HCl(aq) âž” ZnCl2(aq) + H2(g) ←‘');
  } else if (flaskContents.includes('caco3') && flaskContents.includes('hcl')) {
  setReactionGas('CO2');
- setReactionEquation('CaCO3(s) + 2HCl(aq) âž” CaCl2(aq) + H2O(l) + CO2(g) â†‘');
+ setReactionEquation('CaCO3(s) + 2HCl(aq) âž” CaCl2(aq) + H2O(l) + CO2(g) ←‘');
  } else if (flaskContents.includes('h2o2') && flaskContents.includes('mno2')) {
  setReactionGas('O2');
- setReactionEquation('2H2O2(aq) âž” 2H2O(l) + O2(g) â†‘ [MnO2 catalyst]');
+ setReactionEquation('2H2O2(aq) âž” 2H2O(l) + O2(g) ←‘ [MnO2 catalyst]');
  } else {
  setReactionGas(null);
  // Dynamically build partial equation as user adds bottles

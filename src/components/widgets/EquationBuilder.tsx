@@ -48,11 +48,11 @@ const CATEGORIES: ButtonCategory[] = [
     buttons: [
       { label: '+', value: ' + ', title: 'Add' },
       { label: 'âˆ’', value: ' âˆ’ ', title: 'Subtract' },
-      { label: 'Ã—', value: ' Ã— ', title: 'Multiply' },
-      { label: 'Ã·', value: ' / ', title: 'Divide' },
+      { label: '×', value: ' × ', title: 'Multiply' },
+      { label: '÷', value: ' / ', title: 'Divide' },
       { label: '=', value: ' = ', title: 'Equals' },
-      { label: 'Â²', value: 'Â²', title: 'Squared' },
-      { label: 'Â³', value: 'Â³', title: 'Cubed' },
+      { label: '²', value: '²', title: 'Squared' },
+      { label: '³', value: '³', title: 'Cubed' },
       { label: '^', value: '^', title: 'Power' },
       { label: 'âˆš', value: 'sqrt(', title: 'Square root' },
       { label: '_', value: '_', title: 'Subscript' },
@@ -91,9 +91,9 @@ const CATEGORIES: ButtonCategory[] = [
       { label: 'tan', value: 'tan(', width: 'md', title: 'Tangent' },
       { label: 'log', value: 'log(', width: 'md', title: 'Logarithm' },
       { label: 'ln', value: 'ln(', width: 'md', title: 'Natural log' },
-      { label: 'sinâ»Â¹', value: 'asin(', width: 'md', title: 'Arc sine' },
-      { label: 'cosâ»Â¹', value: 'acos(', width: 'md', title: 'Arc cosine' },
-      { label: 'tanâ»Â¹', value: 'atan(', width: 'md', title: 'Arc tangent' },
+      { label: 'sinâ»¹', value: 'asin(', width: 'md', title: 'Arc sine' },
+      { label: 'cosâ»¹', value: 'acos(', width: 'md', title: 'Arc cosine' },
+      { label: 'tanâ»¹', value: 'atan(', width: 'md', title: 'Arc tangent' },
     ],
   },
 ];
@@ -199,9 +199,9 @@ export default function EquationBuilder({
   const getBtnStyle = (_rowIdx: number, btnLabel: string, btnValue: string) => {
     if (btnValue === '__BACKSPACE__' || btnValue === '__CLEAR__') return DANGER_BTN;
     if (['__LEFT__', '__RIGHT__'].includes(btnValue)) return OP_BTN;
-    if ([' + ', ' âˆ’ ', ' / ', ' Ã— ', ' = ', '^', 'Â²', 'Â³', '_', 'sqrt(', '|'].includes(btnValue)) return OP_BTN;
+    if ([' + ', ' âˆ’ ', ' / ', ' × ', ' = ', '^', '²', '³', '_', 'sqrt(', '|'].includes(btnValue)) return OP_BTN;
     if (['Î±', 'Î²', 'Î³', 'Î¸', 'Î»', 'Î¼', 'Ï', 'Ïƒ', 'Ï‰', 'Ï†', 'Î·', 'Ï€', 'Î”', 'Î£', 'âˆž', 'âˆ‚', '|x|'].includes(btnLabel)) return GREEK_BTN;
-    if (['sin', 'cos', 'tan', 'log', 'ln', 'sinâ»Â¹', 'cosâ»Â¹', 'tanâ»Â¹'].includes(btnLabel)) return FUNC_BTN;
+    if (['sin', 'cos', 'tan', 'log', 'ln', 'sinâ»¹', 'cosâ»¹', 'tanâ»¹'].includes(btnLabel)) return FUNC_BTN;
     return NUM_BTN;
   };
 
@@ -263,7 +263,7 @@ export default function EquationBuilder({
               : 'text-slate-500 dark:text-slate-400 hover:text-slate-700'
           }`}
         >
-          +âˆ’Ã—
+          +âˆ’×
         </button>
         <button
           onClick={() => { setActiveCategory(2); setShowVars(false); }}

@@ -36,7 +36,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  const newNa = totalNaAdded + naMass;
  setTotalNaAdded(newNa);
  setIsReacting(true);
- setEquation('2CHâ‚ƒCOOH(aq) + 2Na(s) â†’ 2CHâ‚ƒCOONa(aq) + Hâ‚‚(g) â†‘');
+ setEquation('2CHâ‚ƒCOOH(aq) + 2Na(s) → 2CHâ‚ƒCOONa(aq) + Hâ‚‚(g) ←‘');
  
  // Target gas volume = newNa * 521.7 * (1 + (Math.random()*0.04 - 0.02)) // 2% noise
  const noise = 1 + (Math.random() * 0.04 - 0.02);

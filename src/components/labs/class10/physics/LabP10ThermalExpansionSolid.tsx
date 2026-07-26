@@ -162,7 +162,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  <div>
  <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
  <span>{t('lab.p10thermalexpansionsolid_target_temperature_t')}</span>
- <span className="text-red-600">{targetTemp} Â°C</span>
+ <span className="text-red-600">{targetTemp} °C</span>
  </label>
  <input 
  type="range" min="20" max="200" step="10" 
@@ -220,7 +220,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  <div className="flex-1 text-center bg-slate-100 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
  <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.10thermalexpansionsolid_currenttemp')}</p>
  <p className={`text-2xl font-mono ${currentTemp > 50 ? 'text-red-600' : 'text-slate-800 dark:text-slate-100'}`}>
- {currentTemp.toFixed(1)} <span className="text-sm">Â°C</span>
+ {currentTemp.toFixed(1)} <span className="text-sm">°C</span>
  </p>
  </div>
  <div className="flex-1 text-center bg-blue-50 p-3 rounded-lg border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900">

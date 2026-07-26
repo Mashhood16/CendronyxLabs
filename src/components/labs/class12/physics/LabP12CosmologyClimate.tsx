@@ -38,7 +38,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
  const checkWien = () => {
  const v = parseFloat(wienAns);
  if (v >= 960 && v <= 970) setWienFeedback('Correct! ~966 nm');
- else setWienFeedback('Incorrect. Use Î» = b / T where b = 2.898Ã—10â»Â³ mÂ·K');
+ else setWienFeedback('Incorrect. Use Î» = b / T where b = 2.898×10â»³ m·K');
  };
 
  const checkDoppler = () => {
