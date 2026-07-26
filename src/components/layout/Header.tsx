@@ -113,37 +113,45 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
 
   const handleHardReload = async () => {
     try {
-      // 1. Unregister all PWA Service Workers
+      // 1. Clear Local & Session Storage immediately
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // 2. Unregister all PWA Service Workers
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
         for (const registration of registrations) {
-          await registration.unregister();
+          try {
+            await registration.unregister();
+          } catch (e) {
+            console.error('SW unregister error:', e);
+          }
         }
       }
-      // 2. Clear all PWA CacheStorage caches
+
+      // 3. Clear all PWA CacheStorage caches
       if ('caches' in window) {
         const keys = await caches.keys();
         await Promise.all(keys.map(key => caches.delete(key)));
       }
-      // 3. Clear IndexedDB databases
+
+      // 4. Trigger non-blocking IndexedDB deletion
       if ('indexedDB' in window) {
-        indexedDB.deleteDatabase('VirtualLabDB');
-        indexedDB.deleteDatabase('VirtualLabStudents');
-        if (typeof indexedDB.databases === 'function') {
-          const dbs = await indexedDB.databases();
-          for (const db of dbs) {
-            if (db.name) indexedDB.deleteDatabase(db.name);
-          }
+        try {
+          indexedDB.deleteDatabase('VirtualLabDB');
+          indexedDB.deleteDatabase('VirtualLabStudents');
+        } catch (e) {
+          console.error('IDB delete error:', e);
         }
       }
-      // 4. Clear Local & Session Storage
-      localStorage.clear();
-      sessionStorage.clear();
     } catch (e) {
       console.error('Failed to clear PWA cache and storage', e);
+    } finally {
+      // 5. Force a hard reload of the current page with a cache-busting timestamp
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set('_cb', Date.now().toString());
+      window.location.replace(currentUrl.toString());
     }
-    // 5. Hard reload to origin with cache-busting parameter
-    window.location.href = window.location.origin + '?_cb=' + Date.now();
   };
 
   return (
