@@ -1,4 +1,4 @@
-﻿import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X, Languages, RefreshCw } from 'lucide-react';
 import { useAuth, useTheme } from '../../store';
 import { useTranslate } from '../../i18n';
@@ -113,23 +113,37 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
 
   const handleHardReload = async () => {
     try {
+      // 1. Unregister all PWA Service Workers
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
-        for (let registration of registrations) {
+        for (const registration of registrations) {
           await registration.unregister();
         }
       }
+      // 2. Clear all PWA CacheStorage caches
       if ('caches' in window) {
         const keys = await caches.keys();
         await Promise.all(keys.map(key => caches.delete(key)));
       }
+      // 3. Clear IndexedDB databases
+      if ('indexedDB' in window) {
+        indexedDB.deleteDatabase('VirtualLabDB');
+        indexedDB.deleteDatabase('VirtualLabStudents');
+        if (typeof indexedDB.databases === 'function') {
+          const dbs = await indexedDB.databases();
+          for (const db of dbs) {
+            if (db.name) indexedDB.deleteDatabase(db.name);
+          }
+        }
+      }
+      // 4. Clear Local & Session Storage
+      localStorage.clear();
+      sessionStorage.clear();
     } catch (e) {
-      console.error('Failed to clear cache', e);
+      console.error('Failed to clear PWA cache and storage', e);
     }
-    // Use a cache-busting query param to bypass browser HTTP cache & Vercel CDN cache
-    const url = new URL(window.location.href);
-    url.searchParams.set('_cb', Date.now().toString());
-    window.location.href = url.toString();
+    // 5. Hard reload to origin with cache-busting parameter
+    window.location.href = window.location.origin + '?_cb=' + Date.now();
   };
 
   return (
